@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.swift_version = '4.1'
   s.ios.deployment_target = '10.0'
 
-  s.source_files  = "MozoSDK/Classes/**/*.{swift}"
+  s.source_files  = "MozoSDK/Classes/**/*.{h,swift}"
   
   s.resources = ['MozoSDK/Classes/**/*.xcdatamodeld']
   s.resource_bundles = {
