@@ -18,8 +18,6 @@ class AddressBookViewController: MozoBasicViewController {
     var addrBooks = [AddressBookDisplayItem]()
     var filteredSections : [AddressBookDisplaySection]?
     
-    let sectionTitles = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-    
     let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - View Setup
@@ -40,6 +38,7 @@ class AddressBookViewController: MozoBasicViewController {
         
         // Setup the search footer
         tableView.tableFooterView = searchFooter
+        tableView.sectionIndexColor = ThemeManager.shared.disable
         enableBackBarButton()
         eventHandler?.updateDisplayData()
     }
@@ -166,7 +165,7 @@ extension AddressBookViewController: UITableViewDelegate {
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sectionTitles
+        return displayData != nil ? displayData?.selectIndexTitles() : []
     }
 }
 
