@@ -22,17 +22,17 @@ With iOS 10 and higher you need to add some keys to the Info.plist of your proje
 1. The "Privacy - Camera Usage Description" key. Add the following code:
 ```
 <key>NSCameraUsageDescription</key>
-<string>Enable camera feature to scan QR Code.</string>
+<string>To scan QR Codes and detect your face.</string>
 ```
 2. The "Privacy - Location Always Usage Description" key.
 ```
 <key>NSLocationAlwaysUsageDescription</key>
-<string></string>
+<string>To assist you in finding Mozo Tokens.</string>
 ```
 3. The "Privacy - Bluetooth Peripheral Usage Description" key.
 ```
 <key>NSBluetoothPeripheralUsageDescription</key>
-<string></string>
+<string>To enable you to receive Mozo Tokens.</string>
 ```
 
 ## Include the SDK for iOS in an Existing Application
