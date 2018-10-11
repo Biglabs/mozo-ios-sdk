@@ -28,17 +28,6 @@ Pod::Spec.new do |s|
   }
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
 
-  s.preserve_path = 'module.map'
-  s.prepare_command = <<-CMD
-  cat > "module.map" << MAP
-  module AppAuth [system] {
-      header "${PODS_ROOT}/AppAuth/Source/AppAuth.h"
-      link "AppAuth"
-      export *
-  }
-  MAP
-  CMD
-
    s.dependency 'SwiftyJSON', '~> 3.1.4'
   # s.dependency 'EstimoteSDK'
   s.dependency 'web3swift', '~> 1.1.1'

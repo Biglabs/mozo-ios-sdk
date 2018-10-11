@@ -1,14 +1,13 @@
 # Mozo SDK for iOS
-[![Release](https://img.shields.io/github/release/aws/aws-sdk-ios.svg)]()
-[![CocoaPods](https://img.shields.io/cocoapods/v/AWSiOSSDKv2.svg)]()
+[ ![Download](https://api.bintray.com/packages/biglabs-vietnam/MozoSDK/mozo-sdk/images/download.svg) ](https://bintray.com/biglabs-vietnam/MozoSDK/mozo-sdk/_latestVersion)
 
 This open-source library allows you to integrate Mozo supported features into your iOS app.
 
-Learn more about the provided samples, documentation, integrating the SDK into your app, accessing source code, and more at https://developer.mozocoin.io/docs
+Learn more about the provided samples, documentation, integrating the SDK into your app, accessing source code, and more at [our website][1].
 
 ## Setting Up
 
-To get started with the Mozo SDK for iOS, check out the [Mozo Mobile Developer Guide for iOS](https://developer.mozocoin.io/docs/mozo-mobile/latest/developerguide/getting-started.html). You can set up the SDK and start building a new project, or you integrate the SDK in an existing project. You can also run the samples to get a sense of how the SDK works.
+To get started with the Mozo SDK for iOS, check out [our website][1]. You can set up the SDK and start building a new project, or you integrate the SDK in an existing project. You can also run the samples to get a sense of how the SDK works.
 
 To use the Mozo SDK for iOS, you will need the following installed on your development machine:
 
@@ -35,11 +34,6 @@ With iOS 10 and higher you need to add some keys to the Info.plist of your proje
 <key>NSBluetoothPeripheralUsageDescription</key>
 <string></string>
 ```
-
-### Standard pod install
-
-Go to
-[https://developer.mozocoin.io/docs/ios/setup](https://developer.mozocoin.io/docs/ios/setup).
 
 ## Include the SDK for iOS in an Existing Application
 
@@ -149,18 +143,19 @@ MozoSDK.displayTransactionHistory()
 
 ## FEATURES
 
-- Login - <https://developer.mozocoin.io/docs/mozo-login>
-- Wallet Management - <https://developer.mozocoin.io/docs/wallet-management>
-- UI Components - <https://developer.mozocoin.io/docs/ui-components>
-- Transfer Mozo Offchain - <https://developer.mozocoin.io/docs/transfer-mozo-offchain>
-- Transaction History - <https://developer.mozocoin.io/docs/transaction-history>
-- Address Book - <https://developer.mozocoin.io/docs/address-book>
+- [Login][https://github.com/Biglabs/mozo-ios-sdk/wiki/mozo-login]
+- [Wallet Management][https://github.com/Biglabs/mozo-ios-sdk/wiki/wallet-management]
+- [UI Components][https://github.com/Biglabs/mozo-ios-sdk/wiki/ui-components]
+- [Transfer Mozo Offchain][https://github.com/Biglabs/mozo-ios-sdk/wiki/transfer-mozo-offchain]
+- [Transaction History][https://github.com/Biglabs/mozo-ios-sdk/wiki/transaction-history]
+- [Address Book][https://github.com/Biglabs/mozo-ios-sdk/wiki/address-book]
 
 ## GIVE FEEDBACK
 
-Please report bugs or issues to <https://developer.mozocoin.io/bugs/>
+To report a specific problem or feature request, open a new issue on Github. For questions, suggestions, or anything else, email to <developer@mozocoin.io>, or join our Slack channel.
 
 ## LICENSE
 
 See the [LICENSE](LICENSE) file.
 
+[1]: https://mozocoin.io/
