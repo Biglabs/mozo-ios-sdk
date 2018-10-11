@@ -143,12 +143,10 @@ MozoSDK.displayTransactionHistory()
 
 ## FEATURES
 
-- [Login][https://github.com/Biglabs/mozo-ios-sdk/wiki/mozo-login]
-- [Wallet Management][https://github.com/Biglabs/mozo-ios-sdk/wiki/wallet-management]
+- [Authentication][https://github.com/Biglabs/mozo-ios-sdk/wiki/authentication]
 - [UI Components][https://github.com/Biglabs/mozo-ios-sdk/wiki/ui-components]
 - [Transfer Mozo Offchain][https://github.com/Biglabs/mozo-ios-sdk/wiki/transfer-mozo-offchain]
 - [Transaction History][https://github.com/Biglabs/mozo-ios-sdk/wiki/transaction-history]
-- [Address Book][https://github.com/Biglabs/mozo-ios-sdk/wiki/address-book]
 
 ## GIVE FEEDBACK
 
