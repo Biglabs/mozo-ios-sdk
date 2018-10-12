@@ -51,7 +51,7 @@ public class Configuration {
      The OAuth redirect URI for the client @c kClientID.
      For client configuration instructions, see the [README](https://github.com/openid/AppAuth-iOS/blob/master/Examples/Example-iOS_Swift-Carthage/README.md).
      */
-    public static let AUTH_REDIRECT_URL = "com.mozo.sdk:/oauth2redirect/mozo-provider"
+    public static let AUTH_REDIRECT_URL = "com.biglabs.mozosdk:/oauth2redirect/mozo-provider"
     
     /**
      NSCoding key for the authState property.
