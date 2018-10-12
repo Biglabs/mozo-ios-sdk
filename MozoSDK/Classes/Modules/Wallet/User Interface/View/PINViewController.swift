@@ -113,14 +113,18 @@ extension PINViewController : PINViewInterface {
         removeMozoSpinner()
     }
     
-    func displayTryAgain(_ error: String) {
-        let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-        alert.addAction(.init(title: "Cancel", style: .default, handler: nil))
-        alert.addAction(.init(title: "Try again", style: .default, handler: { (action) in
-            print("User try manage wallet again.")
+    func displayTryAgain(_ error: ConnectionError) {
+        displayMozoPopupError(error)
+        mozoPopupErrorView?.delegate = self
+    }
+}
+extension PINViewController : PopupErrorDelegate {
+    func didTouchTryAgainButton() {
+        print("User try manage wallet again.")
+        removeMozoPopupError()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
             self.eventHandler?.manageWallet(passPhrase: self.passPhrase, pin: self.pin!)
-        }))
-        self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 private extension PINViewController {
@@ -128,7 +132,6 @@ private extension PINViewController {
         self.view.endEditing(true)
         view.subviews.forEach({ $0.isHidden = true })
         enterPINLabel.isHidden = false
-        descriptionLabel.isHidden = false
         showActivityIndicator()
     }
     

@@ -24,11 +24,9 @@ class ConfirmTransferViewController: MozoBasicViewController {
     var transaction : TransactionDTO?
     var tokenInfo: TokenInfoDTO?
     var displayName: String?
-//    var ctrAmountValue : CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        ctrAmountValue = ctrAmount.constant
         enableBackBarButton()
         updateView()
     }
@@ -77,8 +75,21 @@ class ConfirmTransferViewController: MozoBasicViewController {
         eventHandler?.sendConfirmTransaction(transaction!)
     }
 }
-
+extension ConfirmTransferViewController : PopupErrorDelegate {
+    func didTouchTryAgainButton() {
+        print("User try transfer transaction again.")
+        removeMozoPopupError()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
+            self.eventHandler?.requestToRetryTransfer()
+        }
+    }
+}
 extension ConfirmTransferViewController : ConfirmTransferViewInterface {
+    func displayTryAgain(_ error: ConnectionError) {
+        displayMozoPopupError(error)
+        mozoPopupErrorView?.delegate = self
+    }
+    
     func displaySpinner() {
         displayMozoSpinner()
     }

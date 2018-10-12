@@ -54,9 +54,9 @@ extension WalletPresenter: WalletModuleInterface {
 }
 
 extension WalletPresenter: WalletInteractorOutput {
-    func errorWhileManageWallet(_ error: String, showTryAgain: Bool = false) {
+    func errorWhileManageWallet(_ error: String, connectionError: ConnectionError, showTryAgain: Bool = false) {
         if showTryAgain {
-            pinUserInterface?.displayTryAgain(error)
+            pinUserInterface?.displayTryAgain(connectionError)
         } else {
             pinUserInterface?.displayError(error)
         }

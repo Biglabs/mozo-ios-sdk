@@ -40,10 +40,7 @@ public class DisplayUtils {
             view.qrImage = img
             view.coverView = coverView
             
-            view.layer.cornerRadius = 0.02 * view.bounds.size.width
-            view.layer.borderWidth = 1
-            view.layer.borderColor = UIColor.white.cgColor
-            view.clipsToBounds = true
+            view.roundCorners(borderColor: .white, borderWidth: 1)
             
             view.center = parentView.center
             parentView.addSubview(view)

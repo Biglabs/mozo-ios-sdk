@@ -52,14 +52,9 @@ class TxHistoryViewController: MozoBasicViewController {
     }
     
     func setLayerBorder() {
-        btnSelect.layer.borderWidth = 1
-        btnSelect.layer.cornerRadius = 0.15 * btnSelect.bounds.size.width
-        btnSelect.layer.borderColor = ThemeManager.shared.borderInside.cgColor
+        btnSelect.roundCorners(cornerRadius: 0.15, borderColor: ThemeManager.shared.borderInside, borderWidth: 1)
         
-//        btnFloatingAll.layer.borderWidth = 1
-        btnFloatingAll.layer.cornerRadius = 0.15 * btnFloatingAll.bounds.size.width
-//        btnFloatingAll.layer.borderColor = ThemeManager.shared.borderInside.cgColor
-        
+        btnFloatingAll.roundCorners(cornerRadius: 0.15, borderColor: .clear, borderWidth: 0)
         floatingView.layer.borderWidth = 1
         floatingView.layer.borderColor = ThemeManager.shared.disable.cgColor
     }

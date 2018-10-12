@@ -15,6 +15,7 @@ class TransactionInteractor : NSObject {
     var originalTransaction: TransactionDTO?
     var transactionData : IntermediaryTransactionDTO?
     var tokenInfo: TokenInfoDTO?
+    var pinToRetry: String?
     
     init(apiManager: ApiManager) {
         self.apiManager = apiManager
@@ -46,9 +47,16 @@ extension TransactionInteractor : TransactionInteractorInput {
                 // Fix issue: Should keep previous value of transaction
                 self.originalTransaction = transaction
                 self.transactionData = interTx
-                self.output?.requestPinToSignTransaction()
+                if let pin = self.pinToRetry {
+                    self.performTransfer(pin: pin)
+                } else {
+                    self.output?.requestPinToSignTransaction()
+                }
             }
-        }
+            }.catch({ (error) in
+                print("Send create transaction failed, show popup to retry.")
+                self.output?.performTransferWithError(error as! ConnectionError)
+            })
     }
     
     func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayName: String?) {
@@ -110,6 +118,8 @@ extension TransactionInteractor : TransactionInteractorInput {
             .done { (signedInterTx) in
                 self.apiManager.sendSignedTransaction(signedInterTx).done({ (receivedTx) in
                     print("Send successfully with hash: \(receivedTx.tx?.hash ?? "NULL")")
+                    // Clear retry PIN
+                    self.pinToRetry = nil
                     // Fix issue: Should keep previous value of transaction
                     if let output = self.originalTransaction?.outputs![0] {
                         receivedTx.tx?.outputs![0] = output
@@ -118,7 +128,9 @@ extension TransactionInteractor : TransactionInteractorInput {
                     // TODO: Avoid depending on received transaction data
                     self.output?.didSendTransactionSuccess(receivedTx, tokenInfo: self.tokenInfo!)
                 }).catch({ (err) in
-                    self.output?.didReceiveError(err.localizedDescription)
+                    print("Send signed transaction failed, show popup to retry.")
+                    self.pinToRetry = pin
+                    self.output?.performTransferWithError(err as! ConnectionError)
                 })
             }.catch({ (err) in
                 self.output?.didReceiveError(err.localizedDescription)
@@ -134,6 +146,12 @@ extension TransactionInteractor : TransactionInteractorInput {
                         self.output?.didLoadTokenInfo(tokenInfo)
                     }
             }
+        }
+    }
+    
+    func requestToRetryTransfer() {
+        if let transaction = originalTransaction {
+            sendUserConfirmTransaction(transaction)
         }
     }
 }

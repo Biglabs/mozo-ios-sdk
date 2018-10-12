@@ -13,6 +13,7 @@ protocol TransactionModuleInterface {
     func showScanQRCodeInterface()
     func updateUserInterfaceWithAddress(_ address: String)
     func loadTokenInfo()
+    func requestToRetryTransfer()
     
     func showAddressBookInterface()
 }

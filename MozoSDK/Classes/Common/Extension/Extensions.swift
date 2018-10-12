@@ -128,11 +128,23 @@ extension UIColor {
 }
 
 extension UIView {
-    func roundCorners(corners:UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        self.layer.mask = mask
+    func roundCorners(cornerRadius: CGFloat = 0.02, borderColor: UIColor, borderWidth: CGFloat) {
+        layer.cornerRadius = cornerRadius * bounds.size.width
+        layer.borderWidth = borderWidth
+        layer.borderColor = borderColor.cgColor
+        clipsToBounds = true
+    }
+    
+    func dropShadow(scale: Bool = true) {
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.5
+        layer.shadowOffset = CGSize.zero
+        layer.shadowRadius = 3
+        
+        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        layer.shouldRasterize = true
+        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
 }
 

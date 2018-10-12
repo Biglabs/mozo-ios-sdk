@@ -20,6 +20,10 @@ class TransactionPresenter : NSObject {
 }
 
 extension TransactionPresenter: TransactionModuleInterface {
+    func requestToRetryTransfer() {
+        txInteractor?.requestToRetryTransfer()
+    }
+    
     func showAddressBookInterface() {
         transactionModuleDelegate?.requestAddressBookInterfaceForTransaction()
     }
@@ -47,6 +51,10 @@ extension TransactionPresenter: TransactionModuleInterface {
 }
 
 extension TransactionPresenter : TransactionInteractorOutput {
+    func performTransferWithError(_ error: ConnectionError) {
+        confirmUserInterface?.displayTryAgain(error)
+    }
+    
     func continueWithTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayName: String?) {
         transferUserInterface?.hideErrorValidation()
         txWireframe?.presentConfirmInterface(transaction: transaction, tokenInfo: tokenInfo, displayName: displayName)
