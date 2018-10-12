@@ -55,6 +55,8 @@ extension TransactionInteractor : TransactionInteractorInput {
             }
             }.catch({ (error) in
                 print("Send create transaction failed, show popup to retry.")
+                // Remember original transaction for retrying.
+                self.originalTransaction = transaction
                 self.output?.performTransferWithError(error as! ConnectionError)
             })
     }
@@ -124,6 +126,8 @@ extension TransactionInteractor : TransactionInteractorInput {
                     if let output = self.originalTransaction?.outputs![0] {
                         receivedTx.tx?.outputs![0] = output
                     }
+                    // Clear original transaction
+                    self.originalTransaction = nil
                     print("Original output value: \(receivedTx.tx?.outputs![0].value ?? 0)")
                     // TODO: Avoid depending on received transaction data
                     self.output?.didSendTransactionSuccess(receivedTx, tokenInfo: self.tokenInfo!)

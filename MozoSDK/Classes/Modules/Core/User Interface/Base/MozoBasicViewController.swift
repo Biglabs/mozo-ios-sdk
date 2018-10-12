@@ -64,10 +64,7 @@ public class MozoBasicViewController : UIViewController {
         mozoPopupErrorView?.containerView.roundCorners(borderColor: .white, borderWidth: 1)
         
         mozoPopupErrorView?.center = view.center
-        UIView.transition(with: view, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
-            self.view.addSubview(self.mozoPopupErrorView!)
-        }) { (_) in
-        }
+        self.view.addSubview(self.mozoPopupErrorView!)
     }
     
     func removeMozoPopupError() {
