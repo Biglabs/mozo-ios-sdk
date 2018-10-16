@@ -13,6 +13,8 @@ protocol CoreInteractorInput {
     func handleAferAuth(accessToken: String?)
     func notifyAuthSuccessForAllObservers()
     func notifyLogoutForAllObservers()
+    func notifyBalanceChangesForAllObservers()
+    func notifyAddressBookChangesForAllObservers()
 }
 
 protocol CoreInteractorOutput {

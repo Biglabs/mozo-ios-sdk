@@ -11,8 +11,56 @@ class CorePresenter : NSObject {
     var coreWireframe : CoreWireframe?
     var coreInteractor : CoreInteractorInput?
     var coreInteractorService : CoreInteractorService?
+    var rdnInteractor : RDNInteractorInput?
     weak var authDelegate: AuthenticationDelegate?
     var callBackModule: Module?
+    
+    override init() {
+        super.init()
+        initSilentServices()
+        addAppObservations()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+}
+
+// MARK: Silent services methods
+private extension CorePresenter {
+    private func initSilentServices() {
+        rdnInteractor = RDNInteractor()
+    }
+    
+    private func addAppObservations() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
+    }
+    
+    private func startSlientServices() {
+        // Check walletInfo from UserProfile to start silent services
+        if let userObj = SessionStoreManager.loadCurrentUser(), let profile = userObj.profile, profile.walletInfo?.offchainAddress != nil {
+            NSLog("CorePresenter - Start silent services.")
+            rdnInteractor?.startService()
+        }
+    }
+    
+    private func stopSilentServices() {
+        NSLog("CorePresenter - Stop silent services.")
+        // Stop silent services
+        rdnInteractor?.stopService()
+    }
+    
+    @objc func didEnterBackground(_ notification: Notification) {
+        NSLog("App did enter background.")
+        stopSilentServices()
+    }
+    
+    @objc func didBecomeActive(_ notification: Notification) {
+        NSLog("App did become active.")
+        // Check walletInfo from UserProfile to start silent services
+        startSlientServices()
+    }
 }
 
 extension CorePresenter : CoreModuleInterface {
@@ -61,6 +109,7 @@ extension CorePresenter : AuthModuleDelegate {
         // Notify for all observing objects
         coreInteractor?.notifyLogoutForAllObservers()
         requestForCloseAllMozoUIs()
+        stopSilentServices()
     }
     
     func authModuleDidCancelLogout() {
@@ -84,6 +133,7 @@ extension CorePresenter: WalletModuleDelegate {
         }
         // Notify for all observing objects
         self.coreInteractor?.notifyAuthSuccessForAllObservers()
+        startSlientServices()
     }
 }
 

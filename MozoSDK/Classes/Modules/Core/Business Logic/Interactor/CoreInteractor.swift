@@ -82,6 +82,14 @@ extension CoreInteractor: CoreInteractorInput {
     func notifyLogoutForAllObservers() {
         NotificationCenter.default.post(name: .didLogoutFromMozo, object: nil)
     }
+    
+    func notifyBalanceChangesForAllObservers() {
+        NotificationCenter.default.post(name: .didChangeBalance, object: nil)
+    }
+    
+    func notifyAddressBookChangesForAllObservers() {
+        NotificationCenter.default.post(name: .didChangeAddressBook, object: nil)
+    }
 }
 
 extension CoreInteractor: CoreInteractorService {

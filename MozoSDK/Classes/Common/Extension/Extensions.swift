@@ -229,4 +229,5 @@ extension Notification.Name {
     static let didAuthenticationSuccessWithMozo = Notification.Name("didAuthenticationSuccessWithMozo")
     static let didLogoutFromMozo = Notification.Name("didLogoutFromMozo")
     static let didChangeBalance = Notification.Name("didChangeBalance")
+    static let didChangeAddressBook = Notification.Name("didChangeAddressBook")
 }
