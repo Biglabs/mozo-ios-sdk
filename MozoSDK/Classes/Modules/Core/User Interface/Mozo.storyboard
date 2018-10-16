@@ -274,7 +274,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AhV-ES-kKw">
-                                                <rect key="frame" x="307.5" y="14.5" width="30" height="27"/>
+                                                <rect key="frame" x="307.5" y="15" width="30" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <state key="normal" title="Clear"/>
                                                 <connections>
@@ -1474,11 +1474,42 @@
                                     <constraint firstAttribute="height" constant="44" id="mLh-le-ScY"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" restorationIdentifier="MozoFoundNoDataView" translatesAutoresizingMaskIntoConstraints="NO" id="ENq-X9-dhn">
+                                <rect key="frame" x="97" y="223" width="181" height="221"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_search" translatesAutoresizingMaskIntoConstraints="NO" id="xxU-Nm-zFa">
+                                        <rect key="frame" x="0.0" y="0.0" width="181" height="185"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="181" id="3RA-dX-P2R"/>
+                                            <constraint firstAttribute="height" constant="185" id="3j4-CZ-DD6"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results not found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fm1-Be-5mw">
+                                        <rect key="frame" x="23" y="200" width="134" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="xxU-Nm-zFa" firstAttribute="leading" secondItem="MxD-KR-A6c" secondAttribute="leading" id="SY2-03-nIB"/>
+                                    <constraint firstAttribute="height" constant="221" id="UJk-Bn-qub"/>
+                                    <constraint firstItem="MxD-KR-A6c" firstAttribute="trailing" secondItem="xxU-Nm-zFa" secondAttribute="trailing" id="a8O-t9-azo"/>
+                                    <constraint firstItem="Fm1-Be-5mw" firstAttribute="centerX" secondItem="ENq-X9-dhn" secondAttribute="centerX" id="cd2-UQ-TIL"/>
+                                    <constraint firstItem="Fm1-Be-5mw" firstAttribute="top" secondItem="xxU-Nm-zFa" secondAttribute="bottom" constant="15" id="fpe-Mx-cXx"/>
+                                    <constraint firstAttribute="width" constant="181" id="sHe-IX-YZl"/>
+                                    <constraint firstItem="xxU-Nm-zFa" firstAttribute="top" secondItem="MxD-KR-A6c" secondAttribute="top" id="vPy-M4-LvF"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="MxD-KR-A6c"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eBy-2q-h4l" firstAttribute="top" secondItem="s1m-FT-Tgp" secondAttribute="bottom" id="7Qw-da-8NM"/>
+                            <constraint firstItem="ENq-X9-dhn" firstAttribute="centerY" secondItem="QkS-pL-CCo" secondAttribute="centerY" id="Ht0-tg-3Fq"/>
                             <constraint firstItem="atZ-Ao-pE6" firstAttribute="top" secondItem="QkS-pL-CCo" secondAttribute="top" id="LCH-oP-fPX"/>
+                            <constraint firstItem="ENq-X9-dhn" firstAttribute="centerX" secondItem="QkS-pL-CCo" secondAttribute="centerX" id="Qwg-tN-HiD"/>
                             <constraint firstItem="s1m-FT-Tgp" firstAttribute="leading" secondItem="QkS-pL-CCo" secondAttribute="leading" id="S6W-Ny-GOC"/>
                             <constraint firstItem="atZ-Ao-pE6" firstAttribute="leading" secondItem="QkS-pL-CCo" secondAttribute="leading" id="bc1-La-3cB"/>
                             <constraint firstItem="eBy-2q-h4l" firstAttribute="top" secondItem="atZ-Ao-pE6" secondAttribute="bottom" id="q8r-JI-EHY"/>
@@ -1489,6 +1520,7 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="noDataView" destination="ENq-X9-dhn" id="8g4-LW-uth"/>
                         <outlet property="searchFooter" destination="s1m-FT-Tgp" id="xWM-RE-ivg"/>
                         <outlet property="tableView" destination="atZ-Ao-pE6" id="x5D-Vd-iWN"/>
                         <outlet property="view" destination="QkS-pL-CCo" id="Dpt-1s-xiQ"/>
@@ -1727,6 +1759,7 @@
         <image name="ic_mozo_offchain" width="24" height="24"/>
         <image name="ic_paper" width="12" height="15"/>
         <image name="ic_scan" width="19" height="18"/>
+        <image name="ic_search" width="181" height="185"/>
         <image name="ic_sort_down" width="10" height="6"/>
         <image name="ic_tx_complete" width="165" height="100"/>
         <image name="ic_user" width="13" height="18"/>
