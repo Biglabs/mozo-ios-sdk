@@ -225,6 +225,16 @@ public extension NSNumber {
     }
 }
 
+extension Dictionary {
+    var queryString: String {
+        var output: String = ""
+        for (key,value) in self {
+            output +=  "\(key)=\(value)&"
+        }
+        return output
+    }
+}
+
 extension Notification.Name {
     static let didAuthenticationSuccessWithMozo = Notification.Name("didAuthenticationSuccessWithMozo")
     static let didLogoutFromMozo = Notification.Name("didLogoutFromMozo")

@@ -10,6 +10,6 @@ protocol RDNInteractorInput {
 }
 
 protocol RDNInteractorOutput {
-    func balanceDidChange(tokenInfo: TokenInfoDTO)
+    func balanceDidChange(balanceNoti: BalanceNotification)
     func addressBookDidChange(addressBookList: [AddressBookDTO])
 }

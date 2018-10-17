@@ -225,3 +225,14 @@ extension CorePresenter: TxHistoryModuleDelegate {
         coreWireframe?.presentTransactionDetailInterface(detailItem)
     }
 }
+
+extension CorePresenter : RDNInteractorOutput {
+    func balanceDidChange(balanceNoti: BalanceNotification) {
+        coreInteractor?.notifyBalanceChangesForAllObservers(balanceNoti: balanceNoti)
+    }
+    
+    func addressBookDidChange(addressBookList: [AddressBookDTO]) {
+        SessionStoreManager.addressBookList = addressBookList
+        coreInteractor?.notifyAddressBookChangesForAllObservers()
+    }
+}
