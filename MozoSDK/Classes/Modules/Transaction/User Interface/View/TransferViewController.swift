@@ -17,6 +17,7 @@ class TransferViewController: MozoBasicViewController {
     @IBOutlet weak var lbValidateAddrError: UILabel!
     @IBOutlet weak var btnAddressBook: UIButton!
     @IBOutlet weak var btnScan: UIButton!
+    @IBOutlet weak var addressBorderView: UIView!
     @IBOutlet weak var lbAmount: UILabel!
     @IBOutlet weak var txtAmount: UITextField!
     @IBOutlet weak var lbValidateAmountError: UILabel!
@@ -28,6 +29,8 @@ class TransferViewController: MozoBasicViewController {
     @IBOutlet weak var lbAbName: UILabel!
     @IBOutlet weak var lbAbAddress: UILabel!
     @IBOutlet weak var btnContinue: UIButton!
+    @IBOutlet weak var constraintTopSpace: NSLayoutConstraint!
+    let topSpace : CGFloat = 14.0
     
     private let refreshControl = UIRefreshControl()
     var tokenInfo : TokenInfoDTO?
@@ -35,32 +38,22 @@ class TransferViewController: MozoBasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         eventHandler?.loadTokenInfo()
-        setBtnLayer()
-        setTextFieldLayer()
         addDoneButtonOnKeyboard()
         
         // Add a "textFieldDidChange" notification method to the text field control.
         txtAddress.addTarget(self, action: #selector(textFieldAddressDidChange), for: UIControlEvents.editingChanged)
+        txtAddress.addTarget(self, action: #selector(textFieldAddressDidBeginEditing), for: UIControlEvents.editingDidBegin)
+        txtAddress.addTarget(self, action: #selector(textFieldAddressDidEndEditing), for: UIControlEvents.editingDidEnd)
         txtAmount.addTarget(self, action: #selector(textFieldAmountDidChange), for: UIControlEvents.editingChanged)
+        txtAmount.addTarget(self, action: #selector(textFieldAmountDidBeginEditing), for: UIControlEvents.editingDidBegin)
+        txtAmount.addTarget(self, action: #selector(textFieldAmountDidEndEditing), for: UIControlEvents.editingDidEnd)
         txtAmount.delegate = self
-//        setRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Fix issue: Title is not correct after navigation back from child controller
         self.title = "Send Mozo"
-    }
-    
-    func setTextFieldLayer() {
-        txtAddress.setBottomBorder()
-    }
-    
-    func setBtnLayer() {
-        btnAddressBook.layer.borderWidth = 1
-        btnAddressBook.layer.borderColor = ThemeManager.shared.main.cgColor
-        btnScan.layer.borderWidth = 1
-        btnScan.layer.borderColor = ThemeManager.shared.main.cgColor
     }
     
     func addDoneButtonOnKeyboard()
@@ -120,9 +113,22 @@ class TransferViewController: MozoBasicViewController {
     
     func clearAndHideAddressBookView() {
         txtAddress.isHidden = false
+        btnScan.isHidden = false
+        addressBorderView.isHidden = false
+        addressBorderView.backgroundColor = txtAddress.isEditing ? ThemeManager.shared.main : ThemeManager.shared.disable
         addressBookView.isHidden = true
         lbAbName.text = ""
         lbAbAddress.text = ""
+    }
+    
+    func setHighlightAddressTextField(isHighlighted: Bool) {
+        lbReceiverAddress.isHighlighted = isHighlighted
+        addressBorderView.backgroundColor = ThemeManager.shared.main
+    }
+    
+    func setHighlightAmountTextField(isHighlighted: Bool) {
+        lbAmount.isHighlighted = isHighlighted
+        amountBorderView.backgroundColor = ThemeManager.shared.main
     }
     
     // MARK: Validation
@@ -130,6 +136,16 @@ class TransferViewController: MozoBasicViewController {
     @objc func textFieldAddressDidChange() {
         print("TextFieldAddressDidChange")
         hideValidate(isAddress: true)
+    }
+    
+    @objc func textFieldAddressDidEndEditing() {
+        print("TextFieldAddressDidEndEditing")
+        setHighlightAddressTextField(isHighlighted: false)
+    }
+    
+    @objc func textFieldAddressDidBeginEditing() {
+        print("TextFieldAddressDidBeginEditing")
+        setHighlightAddressTextField(isHighlighted: true)
     }
     
     @objc func textFieldAmountDidChange() {
@@ -145,12 +161,23 @@ class TransferViewController: MozoBasicViewController {
         }
     }
     
+    @objc func textFieldAmountDidEndEditing() {
+        print("TextFieldAddressDidEndEditing")
+        setHighlightAmountTextField(isHighlighted: false)
+    }
+    
+    @objc func textFieldAmountDidBeginEditing() {
+        print("TextFieldAddressDidBeginEditing")
+        setHighlightAmountTextField(isHighlighted: true)
+    }
+    
     func showValidate(_ error: String?, isAddress: Bool) {
         print("Show validate error, isAddress: \(isAddress)")
         if isAddress {
             lbReceiverAddress.textColor = ThemeManager.shared.error
-            txtAddress.setBorderBottomLine(isError: true)
+            addressBorderView.backgroundColor = ThemeManager.shared.error
             lbValidateAddrError.isHidden = false
+            constraintTopSpace.constant = topSpace + lbValidateAddrError.frame.size.height
         } else {
             lbValidateAmountError.text = error
             lbAmount.textColor = ThemeManager.shared.error
@@ -163,8 +190,9 @@ class TransferViewController: MozoBasicViewController {
     func hideValidate(isAddress: Bool) {
         if isAddress {
             lbReceiverAddress.textColor = ThemeManager.shared.textContent
-            txtAddress.setBorderBottomLine(isError: false)
+            amountBorderView.backgroundColor = ThemeManager.shared.disable
             lbValidateAddrError.isHidden = true
+            constraintTopSpace.constant = topSpace
         } else {
             lbAmount.textColor = ThemeManager.shared.textContent
             amountBorderView.backgroundColor = ThemeManager.shared.disable
@@ -180,19 +208,7 @@ extension TransferViewController : TransferViewInterface {
         let balance = tokenInfo.balance ?? 0
         let displayBalance = balance.convertOutputValue(decimal: tokenInfo.decimals!)
         
-        lbBalance.text = "\(displayBalance)"
         lbSpendable.text = "\(displayBalance)"
-        
-        var exBalance = "0.0"
-        
-        if let rateInfo = SessionStoreManager.exchangeRateInfo {
-            if let type = CurrencyType(rawValue: rateInfo.currency ?? "") {
-                let value = (displayBalance * (rateInfo.rate ?? 0)).rounded(toPlaces: type.decimalRound)
-                exBalance = "\(type.unit)\(value)"
-            }
-        }
-        
-        lbExchange.text = exBalance
     }
     
     func updateUserInterfaceWithAddress(_ address: String) {
@@ -208,6 +224,8 @@ extension TransferViewController : TransferViewInterface {
     func updateInterfaceWithDisplayItem(_ displayItem: AddressBookDisplayItem) {
         hideValidate(isAddress: true)
         txtAddress.isHidden = true
+        btnScan.isHidden = true
+        addressBorderView.isHidden = true
         addressBookView.isHidden = false
         lbAbName.text = displayItem.name
         lbAbAddress.text = displayItem.address
