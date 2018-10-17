@@ -47,7 +47,12 @@ class AddressBookViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "ADDRESS BOOK"
+        // TODO: Change title according to requested module.
+        if isDisplayForSelect {
+            self.title = "Select Address"
+        } else {
+            self.title = "Address Book"
+        }
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = false
         }

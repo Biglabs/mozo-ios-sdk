@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--CREATE SECURITY PIN-->
+        <!--Cerate Security PIN-->
         <scene sceneID="Suj-KH-ZgQ">
             <objects>
                 <viewController storyboardIdentifier="PINViewController" id="kIe-cV-lG0" customClass="PINViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
@@ -129,7 +129,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hu4-DF-3bh"/>
                     </view>
-                    <navigationItem key="navigationItem" title="CREATE SECURITY PIN" id="A7d-rA-cPv"/>
+                    <navigationItem key="navigationItem" title="Cerate Security PIN" id="A7d-rA-cPv"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
@@ -166,10 +166,10 @@
             </objects>
             <point key="canvasLocation" x="802" y="-298"/>
         </scene>
-        <!--SEND MOZO OFFCHAIN-->
+        <!--Send Mozo-->
         <scene sceneID="91a-F8-xYw">
             <objects>
-                <viewController storyboardIdentifier="TransferViewController" title="SEND MOZO OFFCHAIN" id="ljP-Qq-otX" customClass="TransferViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TransferViewController" title="Send Mozo" id="ljP-Qq-otX" customClass="TransferViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hNH-eo-mIA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -502,7 +502,7 @@
             </objects>
             <point key="canvasLocation" x="1637.5999999999999" y="-298.2008995502249"/>
         </scene>
-        <!--BACKUP WALLET-->
+        <!--Backup Wallet-->
         <scene sceneID="cTU-vU-qiH">
             <objects>
                 <viewController storyboardIdentifier="PassPhraseViewController" id="EjY-q1-tUu" customClass="PassPhraseViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
@@ -528,12 +528,12 @@
                                 <color key="textColor" red="0.45490196078431372" green="0.45490196078431372" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you lose your recovery phase, your wallet cannot be recovered." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wW4-fu-mg3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*If you lose your recovery phase, your wallet cannot be recovered." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wW4-fu-mg3">
                                 <rect key="frame" x="40" y="231" width="295" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="295" id="1HL-55-lvS"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                 <color key="textColor" red="0.94117647058823528" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -620,11 +620,11 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have safely stored recovery phrase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eua-vR-3gy">
-                                        <rect key="frame" x="49" y="11" width="247" height="18"/>
+                                        <rect key="frame" x="49" y="0.0" width="247" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="247" id="1Z7-8a-gAE"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                         <color key="textColor" red="0.75686274509803919" green="0.75686274509803919" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -638,6 +638,7 @@
                                     <constraint firstAttribute="width" constant="292" id="aRj-BN-3XZ"/>
                                     <constraint firstItem="eua-vR-3gy" firstAttribute="centerY" secondItem="SIW-Xr-hF0" secondAttribute="centerY" id="dzO-GO-RDv"/>
                                     <constraint firstAttribute="bottom" secondItem="ZC4-xe-iX8" secondAttribute="bottom" id="eJs-pN-ugZ"/>
+                                    <constraint firstItem="eua-vR-3gy" firstAttribute="height" secondItem="SIW-Xr-hF0" secondAttribute="height" id="yWO-jT-yca"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -664,7 +665,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d8H-r3-fs8"/>
                     </view>
-                    <navigationItem key="navigationItem" title="BACKUP WALLET" id="lbe-aA-bBR"/>
+                    <navigationItem key="navigationItem" title="Backup Wallet" id="lbe-aA-bBR"/>
                     <connections>
                         <outlet property="checkImg" destination="ZC4-xe-iX8" id="CQD-cq-hg0"/>
                         <outlet property="checkLabel" destination="eua-vR-3gy" id="QSU-sv-Zpa"/>
@@ -695,10 +696,10 @@
             </objects>
             <point key="canvasLocation" x="-1391.304347826087" y="-296.73913043478262"/>
         </scene>
-        <!--CONFIRMATION-->
+        <!--Confirmation-->
         <scene sceneID="0HH-me-ycR">
             <objects>
-                <viewController storyboardIdentifier="ConfirmTransferViewController" title="CONFIRMATION" id="iKA-3Y-sf4" customClass="ConfirmTransferViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConfirmTransferViewController" title="Confirmation" id="iKA-3Y-sf4" customClass="ConfirmTransferViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d7L-ja-Akx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1120,10 +1121,10 @@
             </objects>
             <point key="canvasLocation" x="3197.5999999999999" y="-297.30134932533736"/>
         </scene>
-        <!--TRANSACTION DETAIL-->
+        <!--Transaction Detail-->
         <scene sceneID="CvP-1n-WpS">
             <objects>
-                <viewController storyboardIdentifier="TxDetailViewController" title="TRANSACTION DETAIL" id="enD-qA-CRJ" customClass="TxDetailViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TxDetailViewController" title="Transaction Detail" id="enD-qA-CRJ" customClass="TxDetailViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MbR-VZ-A4y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1306,10 +1307,10 @@
             </objects>
             <point key="canvasLocation" x="3962" y="-297"/>
         </scene>
-        <!--SAVE ADDRESS-->
+        <!--Add New Address-->
         <scene sceneID="9uj-SE-Cq7">
             <objects>
-                <viewController storyboardIdentifier="ABDetailViewController" title="SAVE ADDRESS" id="CQv-YH-Bn3" customClass="ABDetailViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ABDetailViewController" title="Add New Address" id="CQv-YH-Bn3" customClass="ABDetailViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D0Z-TS-58w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1421,10 +1422,10 @@
             </objects>
             <point key="canvasLocation" x="4700" y="-298.2008995502249"/>
         </scene>
-        <!--ADDRESS BOOK-->
+        <!--Address Book-->
         <scene sceneID="gKz-aM-SUF">
             <objects>
-                <viewController storyboardIdentifier="AddressBookViewController" title="ADDRESS BOOK" id="eWV-d2-l3p" customClass="AddressBookViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddressBookViewController" title="Address Book" id="eWV-d2-l3p" customClass="AddressBookViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dlw-Pg-alP"/>
                         <viewControllerLayoutGuide type="bottom" id="eBy-2q-h4l"/>
@@ -1530,10 +1531,10 @@
             </objects>
             <point key="canvasLocation" x="5436" y="-298"/>
         </scene>
-        <!--TRANSACTION HISTORY-->
+        <!--Transaction History-->
         <scene sceneID="JZy-t0-LTt">
             <objects>
-                <viewController storyboardIdentifier="TxHistoryViewController" title="TRANSACTION HISTORY" id="jeU-qY-uT5" customClass="TxHistoryViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TxHistoryViewController" title="Transaction History" id="jeU-qY-uT5" customClass="TxHistoryViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TF7-ws-AfI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

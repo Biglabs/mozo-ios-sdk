@@ -34,7 +34,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Fix issue: Title is not correct after showing alert
-        self.title = "CONFIRMATION"
+        self.title = "Confirmation"
     }
     
     func updateView() {

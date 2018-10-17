@@ -49,7 +49,7 @@ class TransferViewController: MozoBasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Fix issue: Title is not correct after navigation back from child controller
-        self.title = "SEND MOZO OFFCHAIN"
+        self.title = "Send Mozo"
     }
     
     func setTextFieldLayer() {
