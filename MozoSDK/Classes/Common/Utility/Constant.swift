@@ -163,8 +163,3 @@ public enum TransactionStatusType: String {
     case FAILED = "FAILED"
     case PENDING = "PENDING"
 }
-
-public enum RdnMessageType: String {
-    case BALANCE = "BALANCE"
-    case ADDRESS_BOOK = "ADDRESS_BOOK"
-}

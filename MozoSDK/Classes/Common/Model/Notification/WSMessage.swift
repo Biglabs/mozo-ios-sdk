@@ -8,8 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public class WSMessageDTO: ResponseObjectSerializable {
-    
+public class WSMessage: ResponseObjectSerializable {
     public var message: String?
     public var channel: String?
     public var messageType: String?

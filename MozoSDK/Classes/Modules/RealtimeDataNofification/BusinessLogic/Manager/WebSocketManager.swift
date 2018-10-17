@@ -17,20 +17,22 @@ public class WebSocketManager {
     }
 
     public func requestWithHeader() -> URLRequest{
-        var url = Configuration.WEB_SOCKET_URL + "?X-Atmosphere-tracking-id=0&X-Atmosphere-Framework=2.3.3-javascript&X-Atmosphere-Transport=websocket&Content-Type=application/json&X-atmo-protocol=true&Token="
+        let uuid = NSUUID().uuidString
+        var url = Configuration.WEB_SOCKET_URL + uuid
+        var headers = ["X-Atmosphere-tracking-id" : "0",
+                       "X-Atmosphere-Framework" : "2.3.3-javascript",
+                       "X-Atmosphere-Transport" : "websocket",
+                       "Content-Type" : "application/json",
+                       "X-atmo-protocol" : "true"]
+//        url += "/?\(headers.queryString)"
+        
         if let accessToken = AccessTokenManager.getAccessToken() {
-            url += accessToken
+//            url += "Authentication=bearer+\(accessToken)"
+            headers["Authentication"] = "bearer+\(accessToken)"
         }
         var request = URLRequest(url: URL(string: url)!)
+        request.allHTTPHeaderFields = headers
         request.timeoutInterval = 5
-//        request.setValue("0", forHTTPHeaderField: "X-Atmosphere-tracking-id")
-//        request.setValue("2.3.3-javascript", forHTTPHeaderField: "X-Atmosphere-Framework")
-//        request.setValue("websocket", forHTTPHeaderField: "X-Atmosphere-Transport")
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.setValue("true", forHTTPHeaderField: "X-atmo-protocol")
-//        if let accessToken = AccessTokenManager.getAccessToken() {
-//            request.setValue(accessToken, forHTTPHeaderField: "Token")
-//        }
         return request
     }
     

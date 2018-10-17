@@ -59,8 +59,8 @@ extension RDNInteractor {
         
         if strings.count == 3 {
             let jsonMessage = strings[1]
-            let json = SwiftyJSON.JSON(jsonMessage)
-            if let wsMessage = WSMessageDTO(json: json) {
+            let json = SwiftyJSON.JSON(parseJSON: jsonMessage)
+            if let wsMessage = WSMessage(json: json) {
                 processWSMessage(message: wsMessage)
             }
         } else if strings.count == 2 {
@@ -71,16 +71,19 @@ extension RDNInteractor {
         }
     }
     
-    private func processWSMessage(message: WSMessageDTO) {
-        if message.messageType == RdnMessageType.BALANCE.rawValue {
-            let tokenInfoJson = SwiftyJSON.JSON(message.message)
-            if let tokenInfo = TokenInfoDTO(json: tokenInfoJson) {
-                output?.balanceDidChange(tokenInfo: tokenInfo)
+    private func processWSMessage(message: WSMessage) {
+        if message.message != nil {
+            let jobj = SwiftyJSON.JSON(parseJSON: message.message!)
+            if let rdNoti = RdNotification(json: jobj) {
+                if rdNoti.event == NotificationEventType.BalanceChanged.rawValue,
+                    let balanceNoti = BalanceNotification(json: jobj) {
+                    output?.balanceDidChange(balanceNoti: balanceNoti)
+                } else if rdNoti.event == NotificationEventType.AddressBookChanged.rawValue,
+                    let abNoti = AddressBookNotification(json: jobj),
+                    let list = abNoti.data {
+                    output?.addressBookDidChange(addressBookList: list)
+                }
             }
-        } else if message.messageType == RdnMessageType.ADDRESS_BOOK.rawValue {
-            let jobj = SwiftyJSON.JSON(message.message)
-            let list = AddressBookDTO.arrayFromJson(jobj)
-            output?.addressBookDidChange(addressBookList: list)
         }
     }
 }
