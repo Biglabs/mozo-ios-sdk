@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 public class TxHistoryTableViewCell: UITableViewCell {
+    @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var lbAction: UILabel!
     @IBOutlet weak var lbDateTime: UILabel?
     @IBOutlet weak var lbAmount: UILabel!
@@ -27,14 +28,19 @@ public class TxHistoryTableViewCell: UITableViewCell {
     
     func bindData(){
         lbAction.text = txHistory?.action
-        lbDateTime?.text = txHistory?.date
+        lbDateTime?.attributedText = txHistory?.fromNameWithDate
+        var imageName = "ic_received_circle"
         if txHistory?.action == TransactionType.Received.value {
             lbAmount.textColor = ThemeManager.shared.main
-            lbAmount.text = "+ \(txHistory?.amount ?? 0) Mozo"
+            lbAmount.text = "+\(txHistory?.amount ?? 0)"
         } else {
-            lbAmount.textColor = .black
-            lbAmount.text = "- \(txHistory?.amount ?? 0) Mozo"
+            lbAmount.textColor = ThemeManager.shared.title
+            lbAmount.text = "-\(txHistory?.amount ?? 0)"
+            imageName = "ic_sent_circle"
         }
-        lbExchangeValue?.text = "₩\(txHistory?.exAmount ?? 0)"
+        img.image = UIImage(named: imageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
+        lbExchangeValue?.text = ""
+//        lbExchangeValue?.text = "₩\(txHistory?.exAmount ?? 0)"
+        
     }
 }

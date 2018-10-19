@@ -12,13 +12,19 @@ protocol TransactionInteractorInput {
     func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayName: String?)
     func sendUserConfirmTransaction(_ transaction: TransactionDTO)
     func performTransfer(pin: String)
+    func requestToRetryTransfer()
+    func validateValueFromScanner(_ scanValue: String)
+
 }
 
 protocol TransactionInteractorOutput {
     func didLoadTokenInfo(_ tokenInfo: TokenInfoDTO)
     func didReceiveError(_ error: String?)
+    func performTransferWithError(_ error: ConnectionError)
     func requestPinToSignTransaction()
     func didValidateTransferTransaction(_ error: String?, isAddress: Bool)
     func continueWithTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayName: String?)
     func didSendTransactionSuccess(_ transaction: IntermediaryTransactionDTO, tokenInfo: TokenInfoDTO)
+    func didReceiveAddressBookDisplayItem(_ item: AddressBookDisplayItem)
+    func didReceiveAddressfromScanner(_ address: String)
 }

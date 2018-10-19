@@ -54,4 +54,11 @@ public class AddressBookDTO: ResponseObjectSerializable {
     public static func arrayContainsItem(_ address: String, array: [AddressBookDTO]) -> Bool {
         return array.contains { $0.soloAddress?.lowercased() == address.lowercased() }
     }
+    
+    public static func addressBookFromAddress(_ address: String, array: [AddressBookDTO]) -> AddressBookDTO? {
+        if array.count == 0 {
+            return nil
+        }
+        return array.first { $0.soloAddress?.lowercased() == address.lowercased() }
+    }
 }

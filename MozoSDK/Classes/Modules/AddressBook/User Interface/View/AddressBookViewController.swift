@@ -13,12 +13,12 @@ class AddressBookViewController: MozoBasicViewController {
     // MARK: - Properties
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchFooter: MozoSearchFooter!
+    @IBOutlet weak var noDataView: UIView!
     
     var displayData : AddressBookDisplayData?
     var addrBooks = [AddressBookDisplayItem]()
     var filteredSections : [AddressBookDisplaySection]?
-    
-    let sectionTitles = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    var isDisplayForSelect = true
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -40,18 +40,22 @@ class AddressBookViewController: MozoBasicViewController {
         
         // Setup the search footer
         tableView.tableFooterView = searchFooter
+        tableView.sectionIndexColor = ThemeManager.shared.disable
         enableBackBarButton()
         eventHandler?.updateDisplayData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        if splitViewController!.isCollapsed {
-//            if let selectionIndexPath = tableView.indexPathForSelectedRow {
-//                tableView.deselectRow(at: selectionIndexPath, animated: animated)
-//            }
-//        }
         super.viewWillAppear(animated)
-        self.title = "ADDRESS BOOK"
+        // TODO: Change title according to requested module.
+        if isDisplayForSelect {
+            self.title = "Select Address"
+        } else {
+            self.title = "Address Book"
+        }
+        if #available(iOS 11.0, *) {
+            navigationItem.hidesSearchBarWhenScrolling = false
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,13 +84,26 @@ class AddressBookViewController: MozoBasicViewController {
         filteredSections = nil
         tableView.reloadData()
     }
+    
+    func loadFoundNoDataView() -> UIView {
+        let bundle = BundleManager.mozoBundle()
+        let nib = UINib(nibName: "MozoFoundNoDataView", bundle: bundle)
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        return view
+    }
 }
 // MARK: - Table View
 extension AddressBookViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         if isFiltering() {
+            if filteredSections!.count == 0 {
+                noDataView.isHidden = false
+            } else {
+                noDataView.isHidden = true
+            }
             return filteredSections!.count
         }
+        noDataView.isHidden = true
         return displayData?.sections.count ?? 0
     }
     
@@ -147,7 +164,7 @@ extension AddressBookViewController: UITableViewDataSource {
 extension AddressBookViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selectedItem = displayData?.sections[indexPath.section].items[indexPath.row] {
-            eventHandler?.selectAddressBookOnUI(selectedItem)
+            eventHandler?.selectAddressBookOnUI(selectedItem, isDisplayForSelect: isDisplayForSelect)
         }
     }
     
@@ -166,7 +183,7 @@ extension AddressBookViewController: UITableViewDelegate {
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sectionTitles
+        return displayData != nil ? displayData?.selectIndexTitles() : []
     }
 }
 

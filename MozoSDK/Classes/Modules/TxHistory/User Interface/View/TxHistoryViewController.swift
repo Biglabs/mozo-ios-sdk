@@ -25,6 +25,7 @@ class TxHistoryViewController: MozoBasicViewController {
     var collection : TxHistoryDisplayCollection?
     var filteredItems = [TxHistoryDisplayItem]()
     var currentPage : Int = 1
+    var currentFilterType : TransactionType? = nil // All
     
     // MARK: - View Setup
     override func viewDidLoad() {
@@ -49,24 +50,19 @@ class TxHistoryViewController: MozoBasicViewController {
         if let refreshControl = sender as? UIRefreshControl, refreshControl.isRefreshing {
             refreshControl.endRefreshing()
         }
+        updateDisplayButtons()
+        filterContentForType()
     }
     
     func setLayerBorder() {
-        btnSelect.layer.borderWidth = 1
-        btnSelect.layer.cornerRadius = 0.15 * btnSelect.bounds.size.width
-        btnSelect.layer.borderColor = ThemeManager.shared.borderInside.cgColor
-        
-//        btnFloatingAll.layer.borderWidth = 1
-        btnFloatingAll.layer.cornerRadius = 0.15 * btnFloatingAll.bounds.size.width
-//        btnFloatingAll.layer.borderColor = ThemeManager.shared.borderInside.cgColor
-        
-        floatingView.layer.borderWidth = 1
-        floatingView.layer.borderColor = ThemeManager.shared.disable.cgColor
+        btnFloatingAll.roundCorners(cornerRadius: 0.15, borderColor: .clear, borderWidth: 0)
+        btnFloatingReceived.roundCorners(cornerRadius: 0.15, borderColor: .clear, borderWidth: 0)
+        btnFloatingSent.roundCorners(cornerRadius: 0.15, borderColor: .clear, borderWidth: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "TRANSACTION HISTORY"
+        self.title = "Transaction History"
         // Fix issue: Back button show up after going back from transaction detail controller
         self.navigationItem.hidesBackButton = true
     }
@@ -77,7 +73,7 @@ class TxHistoryViewController: MozoBasicViewController {
     
     // MARK: - Private instance methods
     
-    func filterContentForType(_ type: TransactionType?) {
+    func filterContentForType(_ type: TransactionType? = nil) {
         if collection == nil || collection?.displayItems.count == 0 {
             return
         }
@@ -89,32 +85,50 @@ class TxHistoryViewController: MozoBasicViewController {
         tableView.reloadData()
     }
     
-    @IBAction func touchedBtnSelect(_ sender: Any) {
-        presentFloatingView()
-    }
-    
-    func presentFloatingView() {
-        floatingView.isHidden = false
-    }
-    
-    func dismissFloatingView() {
-        floatingView.isHidden = true
+    // MARK: Change display of buttons
+    func updateDisplayButtons(_ type: TransactionType? = nil) {
+        currentFilterType = type
+        if type == nil {
+            // All
+            btnFloatingAll.backgroundColor = ThemeManager.shared.main
+            btnFloatingAll.setTitleColor(.white, for: .normal)
+            btnFloatingReceived.backgroundColor = ThemeManager.shared.disable
+            btnFloatingReceived.setTitleColor(ThemeManager.shared.textSection, for: .normal)
+            btnFloatingSent.backgroundColor = ThemeManager.shared.disable
+            btnFloatingSent.setTitleColor(ThemeManager.shared.textSection, for: .normal)
+        } else if type == .Received {
+            // Received
+            btnFloatingAll.backgroundColor = ThemeManager.shared.disable
+            btnFloatingAll.setTitleColor(ThemeManager.shared.textSection, for: .normal)
+            btnFloatingReceived.backgroundColor = ThemeManager.shared.main
+            btnFloatingReceived.setTitleColor(.white, for: .normal)
+            btnFloatingSent.backgroundColor = ThemeManager.shared.disable
+            btnFloatingSent.setTitleColor(ThemeManager.shared.textSection, for: .normal)
+        } else {
+            // Sent
+            btnFloatingAll.backgroundColor = ThemeManager.shared.disable
+            btnFloatingAll.setTitleColor(ThemeManager.shared.textSection, for: .normal)
+            btnFloatingReceived.backgroundColor = ThemeManager.shared.disable
+            btnFloatingReceived.setTitleColor(ThemeManager.shared.textSection, for: .normal)
+            btnFloatingSent.backgroundColor = ThemeManager.shared.main
+            btnFloatingSent.setTitleColor(.white, for: .normal)
+        }
     }
     
     // MARK: Floating view actions
     @IBAction func touchedBtnFloatingAll(_ sender: Any) {
-        dismissFloatingView()
-        filterContentForType(nil)
+        updateDisplayButtons()
+        filterContentForType()
     }
     
     @IBAction func touchedBtnFloatingReceived(_ sender: Any) {
-        dismissFloatingView()
-        filterContentForType(TransactionType.Received)
+        updateDisplayButtons(.Received)
+        filterContentForType(.Received)
     }
     
     @IBAction func toucheBtnFloatingSent(_ sender: Any) {
-        dismissFloatingView()
-        filterContentForType(TransactionType.Sent)
+        updateDisplayButtons(.Sent)
+        filterContentForType(.Sent)
     }
 }
 // MARK: - Table View
@@ -171,7 +185,8 @@ extension TxHistoryViewController : TxHistoryViewInterface {
             isFiltering = false
             collection = data
         }
-        tableView.reloadData()
+        // Check current filter type
+        filterContentForType(currentFilterType)
     }
     
     func showNoContentMessage() {

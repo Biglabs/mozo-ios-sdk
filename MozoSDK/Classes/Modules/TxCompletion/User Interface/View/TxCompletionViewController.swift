@@ -28,7 +28,6 @@ class TxCompletionViewController: MozoBasicViewController {
     @IBOutlet weak var lbAddress: UILabel!
     @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var btnDetail: UIButton!
-    @IBOutlet weak var btnReplaceDetail: UIButton!
     
     var stopWaiting = false
     
@@ -62,25 +61,12 @@ class TxCompletionViewController: MozoBasicViewController {
             // Verify address is existing in address book list or not
             let list = SessionStoreManager.addressBookList
             let contain = AddressBookDTO.arrayContainsItem(detailItem.addressTo, array: list)
-            hideOptionButtons(contain)
-            hideReplaceButton(!contain)
+            btnSave.isHidden = contain
+            btnDetail.isHidden = false
         } else {
-            hideOptionButtons(true)
-            hideReplaceButton(true)
+            btnSave.isHidden = true
+            btnDetail.isHidden = true
         }
-    }
-    
-    func hideOptionButtons(_ state: Bool) {
-        btnSave.isHidden = state
-        btnDetail.isHidden = state
-    }
-    
-    func hideReplaceButton(_ state: Bool) {
-        btnReplaceDetail.isHidden = state
-    }
-    
-    func checkTxStatus() {
-        
     }
     
     func updateView() {
@@ -110,12 +96,8 @@ class TxCompletionViewController: MozoBasicViewController {
     }
     
     func setBtnLayer() {
-        btnSave.layer.borderWidth = 1
-        btnSave.layer.borderColor = ThemeManager.shared.main.cgColor
-        btnDetail.layer.borderWidth = 1
-        btnDetail.layer.borderColor = ThemeManager.shared.main.cgColor
-        btnReplaceDetail.layer.borderWidth = 1
-        btnReplaceDetail.layer.borderColor = ThemeManager.shared.main.cgColor
+        btnSave.roundCorners(cornerRadius: 0.08, borderColor: ThemeManager.shared.main, borderWidth: 1)
+        btnDetail.roundCorners(cornerRadius: 0.08, borderColor: ThemeManager.shared.main, borderWidth: 1)
     }
     
     @IBAction func btnSaveTapped(_ sender: Any) {

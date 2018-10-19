@@ -36,7 +36,7 @@ class TxCompletionInteractor: NSObject {
 extension TxCompletionInteractor: TxCompletionInteractorInput {
     func startWaitingStatusService(hash: String) {
         self.txHash = hash
-        txStatusTimer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(loadTxStatus), userInfo: nil, repeats: true)
+        txStatusTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(loadTxStatus), userInfo: nil, repeats: true)
     }
     
     func stopService() {

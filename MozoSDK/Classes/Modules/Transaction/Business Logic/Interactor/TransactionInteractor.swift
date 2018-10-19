@@ -15,6 +15,7 @@ class TransactionInteractor : NSObject {
     var originalTransaction: TransactionDTO?
     var transactionData : IntermediaryTransactionDTO?
     var tokenInfo: TokenInfoDTO?
+    var pinToRetry: String?
     
     init(apiManager: ApiManager) {
         self.apiManager = apiManager
@@ -38,6 +39,20 @@ class TransactionInteractor : NSObject {
 }
 
 extension TransactionInteractor : TransactionInteractorInput {
+    func validateValueFromScanner(_ scanValue: String) {
+        if !scanValue.isEthAddress() {
+            output?.didReceiveError("Scanning value is not a valid address. \n\(scanValue)")
+        } else {
+            let list = SessionStoreManager.addressBookList
+            if let addressBook = AddressBookDTO.addressBookFromAddress(scanValue, array: list) {
+                let displayItem = AddressBookDisplayItem(name: addressBook.name!, address: addressBook.soloAddress!)
+                output?.didReceiveAddressBookDisplayItem(displayItem)
+            } else {
+                output?.didReceiveAddressfromScanner(scanValue)
+            }
+        }
+    }
+    
     func sendUserConfirmTransaction(_ transaction: TransactionDTO) {
         _ = apiManager.transferTransaction(transaction).done { (interTx) in
             if (interTx.errors != nil) && (interTx.errors?.count)! > 0 {
@@ -46,9 +61,18 @@ extension TransactionInteractor : TransactionInteractorInput {
                 // Fix issue: Should keep previous value of transaction
                 self.originalTransaction = transaction
                 self.transactionData = interTx
-                self.output?.requestPinToSignTransaction()
+                if let pin = self.pinToRetry {
+                    self.performTransfer(pin: pin)
+                } else {
+                    self.output?.requestPinToSignTransaction()
+                }
             }
-        }
+            }.catch({ (error) in
+                print("Send create transaction failed, show popup to retry.")
+                // Remember original transaction for retrying.
+                self.originalTransaction = transaction
+                self.output?.performTransferWithError(error as! ConnectionError)
+            })
     }
     
     func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayName: String?) {
@@ -110,15 +134,21 @@ extension TransactionInteractor : TransactionInteractorInput {
             .done { (signedInterTx) in
                 self.apiManager.sendSignedTransaction(signedInterTx).done({ (receivedTx) in
                     print("Send successfully with hash: \(receivedTx.tx?.hash ?? "NULL")")
+                    // Clear retry PIN
+                    self.pinToRetry = nil
                     // Fix issue: Should keep previous value of transaction
                     if let output = self.originalTransaction?.outputs![0] {
                         receivedTx.tx?.outputs![0] = output
                     }
+                    // Clear original transaction
+                    self.originalTransaction = nil
                     print("Original output value: \(receivedTx.tx?.outputs![0].value ?? 0)")
                     // TODO: Avoid depending on received transaction data
                     self.output?.didSendTransactionSuccess(receivedTx, tokenInfo: self.tokenInfo!)
                 }).catch({ (err) in
-                    self.output?.didReceiveError(err.localizedDescription)
+                    print("Send signed transaction failed, show popup to retry.")
+                    self.pinToRetry = pin
+                    self.output?.performTransferWithError(err as! ConnectionError)
                 })
             }.catch({ (err) in
                 self.output?.didReceiveError(err.localizedDescription)
@@ -134,6 +164,12 @@ extension TransactionInteractor : TransactionInteractorInput {
                         self.output?.didLoadTokenInfo(tokenInfo)
                     }
             }
+        }
+    }
+    
+    func requestToRetryTransfer() {
+        if let transaction = originalTransaction {
+            sendUserConfirmTransaction(transaction)
         }
     }
 }

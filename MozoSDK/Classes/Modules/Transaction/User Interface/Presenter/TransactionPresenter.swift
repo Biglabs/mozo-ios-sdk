@@ -20,6 +20,10 @@ class TransactionPresenter : NSObject {
 }
 
 extension TransactionPresenter: TransactionModuleInterface {
+    func requestToRetryTransfer() {
+        txInteractor?.requestToRetryTransfer()
+    }
+    
     func showAddressBookInterface() {
         transactionModuleDelegate?.requestAddressBookInterfaceForTransaction()
     }
@@ -34,7 +38,7 @@ extension TransactionPresenter: TransactionModuleInterface {
     }
     
     func updateUserInterfaceWithAddress(_ address: String) {
-        transferUserInterface?.updateUserInterfaceWithAddress(address)
+        txInteractor?.validateValueFromScanner(address)
     }
     
     func showScanQRCodeInterface() {
@@ -47,6 +51,18 @@ extension TransactionPresenter: TransactionModuleInterface {
 }
 
 extension TransactionPresenter : TransactionInteractorOutput {
+    func didReceiveAddressBookDisplayItem(_ item: AddressBookDisplayItem) {
+        transferUserInterface?.updateInterfaceWithDisplayItem(item)
+    }
+    
+    func didReceiveAddressfromScanner(_ address: String) {
+        transferUserInterface?.updateUserInterfaceWithAddress(address)
+    }
+    
+    func performTransferWithError(_ error: ConnectionError) {
+        confirmUserInterface?.displayTryAgain(error)
+    }
+    
     func continueWithTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayName: String?) {
         transferUserInterface?.hideErrorValidation()
         txWireframe?.presentConfirmInterface(transaction: transaction, tokenInfo: tokenInfo, displayName: displayName)

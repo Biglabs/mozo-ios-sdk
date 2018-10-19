@@ -49,4 +49,27 @@ public class MozoBasicViewController : UIViewController {
             self.mozoSpinnerView?.removeFromSuperview()
         }
     }
+    
+    //MARK: Popup Error
+    var mozoPopupErrorView : MozoPopupErrorView?
+    
+    func displayMozoPopupError(_ error: ConnectionError? = nil) {
+        mozoPopupErrorView = MozoPopupErrorView(frame: CGRect(x: 0, y: 0, width: 315, height: 315))
+        if let err = error {
+            mozoPopupErrorView?.error = err
+        }
+        
+        mozoPopupErrorView?.clipsToBounds = false
+        mozoPopupErrorView?.dropShadow()
+        mozoPopupErrorView?.containerView.roundCorners(borderColor: .white, borderWidth: 1)
+        
+        mozoPopupErrorView?.center = view.center
+        self.view.addSubview(self.mozoPopupErrorView!)
+    }
+    
+    func removeMozoPopupError() {
+        DispatchQueue.main.async {
+            self.mozoPopupErrorView?.removeFromSuperview()
+        }
+    }
 }

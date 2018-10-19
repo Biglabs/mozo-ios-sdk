@@ -34,12 +34,8 @@ class MozoQRView : MozoView {
     }
     
     func setBorders() {
-        imgContainerView.layer.borderWidth = 1.2
-        imgContainerView.layer.borderColor = ThemeManager.shared.disable.cgColor
-        imgContainerView.layer.cornerRadius = 0.02 * imgContainerView.bounds.size.width
-        btnClose.layer.borderWidth = 1
-        btnClose.layer.cornerRadius = 0.02 * btnClose.bounds.size.width
-        btnClose.layer.borderColor = UIColor.clear.cgColor
+        imgContainerView.roundCorners(borderColor: ThemeManager.shared.disable, borderWidth: 1.2)
+        btnClose.roundCorners(borderColor: .clear, borderWidth: 1)
     }
     
     @IBAction func touchedCloseBtn(_ sender: Any) {

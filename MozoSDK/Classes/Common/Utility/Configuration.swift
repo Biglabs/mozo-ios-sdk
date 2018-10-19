@@ -32,7 +32,9 @@ public class Configuration {
     public static let WALLLET_ID = "WalletId"
     
     //development
-    public static let BASE_URL = "http://18.136.55.245:8080/solomon"
+    public static let DOMAIN = "dev.gateway.mozocoin.io"
+    public static let BASE_URL = "https://\(DOMAIN)/solomon"
+    public static let WEB_SOCKET_URL = "ws://18.136.38.11:8089/websocket/user/"
     
     // MARK: Auth
     /**
@@ -51,7 +53,7 @@ public class Configuration {
      The OAuth redirect URI for the client @c kClientID.
      For client configuration instructions, see the [README](https://github.com/openid/AppAuth-iOS/blob/master/Examples/Example-iOS_Swift-Carthage/README.md).
      */
-    public static let AUTH_REDIRECT_URL = "com.mozo.sdk:/oauth2redirect/mozo-provider"
+    public static let AUTH_REDIRECT_URL = "com.biglabs.mozosdk:/oauth2redirect/mozo-provider"
     
     /**
      NSCoding key for the authState property.

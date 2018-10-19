@@ -8,6 +8,6 @@
 import Foundation
 
 protocol AddressBookModuleInterface {
-    func selectAddressBookOnUI(_ addressBook: AddressBookDisplayItem)
+    func selectAddressBookOnUI(_ addressBook: AddressBookDisplayItem, isDisplayForSelect: Bool)
     func updateDisplayData()
 }

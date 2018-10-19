@@ -41,7 +41,7 @@ public class MozoNavigationController : UINavigationController {
             // TODO: Apply translation according to localizaion
             print("Controller title: \(viewController.navigationItem.title ?? "DEFAULT")")
             if viewController.navigationItem.rightBarButtonItem == nil {
-                addCloseBtn(item: viewController.navigationItem)
+                addCancelBtn(item: viewController.navigationItem)
             }
         }
     }
@@ -56,6 +56,11 @@ public class MozoNavigationController : UINavigationController {
         button?.addGestureRecognizer(tap)
     
         item.rightBarButtonItem = UIBarButtonItem(customView: button!)
+    }
+    
+    func addCancelBtn(item: UINavigationItem) {
+        let cancelBtn = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.tapCloseBtn))
+        item.rightBarButtonItem = cancelBtn
     }
     
     func loadButtonFromNib() -> UIButton! {

@@ -24,9 +24,14 @@ class PassPhraseViewController: MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addBorderForLabel()
         addTapForLabel()
         // Generate mnemonic
         eventHandler?.generateMnemonics()
+    }
+    
+    func addBorderForLabel() {
+        checkView.roundCorners(borderColor: ThemeManager.shared.disable, borderWidth: 1.1)
     }
     
     func addTapForLabel() {
@@ -47,6 +52,7 @@ class PassPhraseViewController: MozoBasicViewController {
             continueBtn.isEnabled = true
             continueBtn.backgroundColor = ThemeManager.shared.main
             checkImg.isHighlighted = true
+            checkView.layer.borderColor = ThemeManager.shared.main.cgColor
         }
     }
     

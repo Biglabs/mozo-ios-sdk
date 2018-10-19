@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MozoPopupErrorView" customModule="MozoSDK" customModuleProvider="target">
+            <connections>
+                <outlet property="btnTry" destination="Yai-pI-ITO" id="SbB-8D-ygY"/>
+                <outlet property="imgError" destination="b1J-GA-qdX" id="Wm7-FS-i8v"/>
+                <outlet property="labelError" destination="pbY-oY-A1H" id="J6G-SU-3c1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="MozoPopupErrorView" id="Zya-DE-1gu">
+            <rect key="frame" x="0.0" y="0.0" width="315" height="315"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_exclaim" translatesAutoresizingMaskIntoConstraints="NO" id="b1J-GA-qdX">
+                    <rect key="frame" x="115" y="50" width="85" height="85"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="85" id="3kk-Hw-RCY"/>
+                        <constraint firstAttribute="height" constant="85" id="giq-c3-72V"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There is an error occurred." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbY-oY-A1H">
+                    <rect key="frame" x="66" y="161" width="183" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yai-pI-ITO">
+                    <rect key="frame" x="85.5" y="206" width="143" height="45"/>
+                    <color key="backgroundColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="143" id="1sR-WN-rJs"/>
+                        <constraint firstAttribute="height" constant="45" id="Qbz-b7-oxb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Try Again">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="touchedTryBtn:" destination="-1" eventType="touchUpInside" id="dsa-Qf-gHj"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="b1J-GA-qdX" firstAttribute="centerX" secondItem="Zya-DE-1gu" secondAttribute="centerX" id="JVr-cI-ARU"/>
+                <constraint firstItem="pbY-oY-A1H" firstAttribute="top" secondItem="b1J-GA-qdX" secondAttribute="bottom" constant="26" id="KbX-8C-DmN"/>
+                <constraint firstItem="Yai-pI-ITO" firstAttribute="centerX" secondItem="Zya-DE-1gu" secondAttribute="centerX" id="QjU-Lp-cly"/>
+                <constraint firstItem="b1J-GA-qdX" firstAttribute="top" secondItem="Msf-R1-XL3" secondAttribute="top" constant="50" id="r7d-34-0eR"/>
+                <constraint firstItem="Yai-pI-ITO" firstAttribute="top" secondItem="pbY-oY-A1H" secondAttribute="bottom" constant="27" id="rCQ-27-Njb"/>
+                <constraint firstItem="pbY-oY-A1H" firstAttribute="centerX" secondItem="Zya-DE-1gu" secondAttribute="centerX" id="tr3-C4-swS"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="Msf-R1-XL3"/>
+            <point key="canvasLocation" x="-160.5" y="-115.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_exclaim" width="128" height="128"/>
+    </resources>
+</document>

@@ -91,7 +91,7 @@ class CoreWireframe : MozoWireframe {
     }
     
     func presentAddressBookInterfaceForTransaction() {
-        abWireframe?.presentAddressBookInterface()
+        abWireframe?.presentAddressBookInterface(isDisplayForSelect: true)
     }
     
     func updateAddressBookInterfaceForTransaction(displayItem: AddressBookDisplayItem) {
