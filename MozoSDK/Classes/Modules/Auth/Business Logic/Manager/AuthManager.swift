@@ -30,6 +30,7 @@ class AuthManager : NSObject {
     }
     
     func clearAll() {
+        print("AuthManager, clear all: token, user info, auth state.")
         AccessTokenManager.clearToken()
         SessionStoreManager.clearCurrentUser()
         setAuthState(nil)
@@ -60,18 +61,20 @@ class AuthManager : NSObject {
             self.loadNecessaryData()
             // TODO: Reload user info in case error with user info at the latest login
             // Remember: Authen flow and wallet flow might be affected by reloading here
+            self.checkRefreshToken()
         }).catch({ (err) in
             let error = err as! ConnectionError
             if error == ConnectionError.authenticationRequired {
+                let expiresAt : Date = (self.authState?.lastTokenResponse?.accessTokenExpirationDate)!
                 print("Token expired, clear token and user info")
+                print("Expires at: \(expiresAt)")
                 self.clearAll()
-                return
+                // Notify for all observing objects
+                NotificationCenter.default.post(name: .didLogoutFromMozo, object: nil)
+            } else {
+                self.checkRefreshToken()
             }
         })
-        // There is 2 cases here:
-        // 1. Token is alive
-        // 2. Token is dead but refresh token is still alive
-        self.checkRefreshToken()
     }
     
     private func loadNecessaryData() {

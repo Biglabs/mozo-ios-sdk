@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 class CorePresenter : NSObject {
     var coreWireframe : CoreWireframe?
@@ -19,6 +20,7 @@ class CorePresenter : NSObject {
         super.init()
         initSilentServices()
         addAppObservations()
+        initUserNotificationCenter()
     }
     
     deinit {
@@ -28,8 +30,16 @@ class CorePresenter : NSObject {
 
 // MARK: Silent services methods
 private extension CorePresenter {
+    private func initUserNotificationCenter() {
+        registerForRichNotifications()
+        // set UNUserNotificationCenter delegate
+        if UNUserNotificationCenter.current().delegate == nil {
+            UNUserNotificationCenter.current().delegate = self
+        }
+    }
+    
     private func initSilentServices() {
-        rdnInteractor = RDNInteractor()
+        
     }
     
     private func addAppObservations() {
@@ -40,24 +50,24 @@ private extension CorePresenter {
     private func startSlientServices() {
         // Check walletInfo from UserProfile to start silent services
         if let userObj = SessionStoreManager.loadCurrentUser(), let profile = userObj.profile, profile.walletInfo?.offchainAddress != nil {
-            NSLog("CorePresenter - Start silent services.")
+            print("CorePresenter - Start silent services.")
             rdnInteractor?.startService()
         }
     }
     
     private func stopSilentServices() {
-        NSLog("CorePresenter - Stop silent services.")
+        print("CorePresenter - Stop silent services.")
         // Stop silent services
         rdnInteractor?.stopService()
     }
     
     @objc func didEnterBackground(_ notification: Notification) {
-        NSLog("App did enter background.")
+        print("App did enter background.")
         stopSilentServices()
     }
     
     @objc func didBecomeActive(_ notification: Notification) {
-        NSLog("App did become active.")
+        print("App did become active.")
         // Check walletInfo from UserProfile to start silent services
         startSlientServices()
     }
@@ -201,9 +211,13 @@ extension CorePresenter: TxCompletionModuleDelegate {
 }
 
 extension CorePresenter: AddressBookModuleDelegate {
-    func addressBookModuleDidChooseItemOnUI(addressBook: AddressBookDisplayItem) {
-        coreWireframe?.updateAddressBookInterfaceForTransaction(displayItem: addressBook)
-        coreWireframe?.dismissAddressBookInterface()
+    func addressBookModuleDidChooseItemOnUI(addressBook: AddressBookDisplayItem, isDisplayForSelect: Bool) {
+        if isDisplayForSelect {
+            coreWireframe?.updateAddressBookInterfaceForTransaction(displayItem: addressBook)
+            coreWireframe?.dismissAddressBookInterface()
+        } else {
+            
+        }
     }
 }
 
@@ -229,6 +243,7 @@ extension CorePresenter: TxHistoryModuleDelegate {
 extension CorePresenter : RDNInteractorOutput {
     func balanceDidChange(balanceNoti: BalanceNotification) {
         coreInteractor?.notifyBalanceChangesForAllObservers(balanceNoti: balanceNoti)
+        performNotifications(noti: balanceNoti)
     }
     
     func addressBookDidChange(addressBookList: [AddressBookDTO]) {
