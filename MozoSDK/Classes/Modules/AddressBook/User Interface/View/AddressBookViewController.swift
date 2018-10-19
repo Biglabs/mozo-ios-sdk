@@ -164,7 +164,7 @@ extension AddressBookViewController: UITableViewDataSource {
 extension AddressBookViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selectedItem = displayData?.sections[indexPath.section].items[indexPath.row] {
-            eventHandler?.selectAddressBookOnUI(selectedItem)
+            eventHandler?.selectAddressBookOnUI(selectedItem, isDisplayForSelect: isDisplayForSelect)
         }
     }
     

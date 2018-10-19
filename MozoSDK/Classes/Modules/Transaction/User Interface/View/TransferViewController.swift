@@ -48,12 +48,28 @@ class TransferViewController: MozoBasicViewController {
         txtAmount.addTarget(self, action: #selector(textFieldAmountDidBeginEditing), for: UIControlEvents.editingDidBegin)
         txtAmount.addTarget(self, action: #selector(textFieldAmountDidEndEditing), for: UIControlEvents.editingDidEnd)
         txtAmount.delegate = self
+        
+        // Observer balance changed notification
+        NotificationCenter.default.addObserver(self, selector: #selector(onBalanceDidUpdate(_:)), name: .didChangeBalance, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Fix issue: Title is not correct after navigation back from child controller
         self.title = "Send Mozo"
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func onBalanceDidUpdate(_ notification: Notification){
+        print("Transfer viewcontroller: On Balance Did Update: Update only balance")
+        if let data = notification.userInfo as? [String : Any?] {
+            let balance = data["balance"] as! Double
+            lbSpendable.text = "\(balance)"
+            tokenInfo?.balance = balance.convertTokenValue(decimal: tokenInfo?.decimals ?? 0)
+        }
     }
     
     func addDoneButtonOnKeyboard()
@@ -123,12 +139,12 @@ class TransferViewController: MozoBasicViewController {
     
     func setHighlightAddressTextField(isHighlighted: Bool) {
         lbReceiverAddress.isHighlighted = isHighlighted
-        addressBorderView.backgroundColor = ThemeManager.shared.main
+        addressBorderView.backgroundColor = isHighlighted ? ThemeManager.shared.main : ThemeManager.shared.disable
     }
     
     func setHighlightAmountTextField(isHighlighted: Bool) {
         lbAmount.isHighlighted = isHighlighted
-        amountBorderView.backgroundColor = ThemeManager.shared.main
+        amountBorderView.backgroundColor = isHighlighted ? ThemeManager.shared.main : ThemeManager.shared.disable
     }
     
     // MARK: Validation
@@ -158,6 +174,8 @@ class TransferViewController: MozoBasicViewController {
                 let exValueStr = "\(type.unit)\(exValue )"
                 lbExchangeAmount.text = exValueStr
             }
+        } else {
+            
         }
     }
     
@@ -206,12 +224,13 @@ extension TransferViewController : TransferViewInterface {
     func updateUserInterfaceWithTokenInfo(_ tokenInfo: TokenInfoDTO) {
         self.tokenInfo = tokenInfo
         let balance = tokenInfo.balance ?? 0
-        let displayBalance = balance.convertOutputValue(decimal: tokenInfo.decimals!)
+        let displayBalance = balance.convertOutputValue(decimal: tokenInfo.decimals ?? 0)
         
         lbSpendable.text = "\(displayBalance)"
     }
     
     func updateUserInterfaceWithAddress(_ address: String) {
+        
         clearAndHideAddressBookView()
         txtAddress.text = address
         hideValidate(isAddress: true)

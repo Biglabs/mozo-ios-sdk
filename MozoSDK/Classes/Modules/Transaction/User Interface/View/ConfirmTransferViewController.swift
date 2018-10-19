@@ -11,8 +11,7 @@ import UIKit
 class ConfirmTransferViewController: MozoBasicViewController {
     var eventHandler : TransactionModuleInterface?
     
-    @IBOutlet weak var lbBalance: UILabel!
-    @IBOutlet weak var lbExchange: UILabel!
+    @IBOutlet weak var circleView: UIView!
     @IBOutlet weak var lbAddress: UILabel!
     @IBOutlet weak var lbAmountValue: UILabel!
     @IBOutlet weak var lbAmountValueExchange: UILabel!
@@ -27,6 +26,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCircleView()
         enableBackBarButton()
         updateView()
     }
@@ -37,11 +37,11 @@ class ConfirmTransferViewController: MozoBasicViewController {
         self.title = "Confirmation"
     }
     
+    func setupCircleView() {
+        circleView.roundCorners(cornerRadius: 0.5, borderColor: .clear, borderWidth: 0.1)
+    }
+    
     func updateView() {
-        let balance = tokenInfo?.balance ?? 0
-        let displayBalance = balance.convertOutputValue(decimal: tokenInfo?.decimals ?? 0)
-        lbBalance.text = "\(displayBalance)"
-        
         lbAddress.text = transaction?.outputs?.first?.addresses![0]
         let amount = transaction?.outputs?.first?.value?.convertOutputValue(decimal: tokenInfo?.decimals ?? 0) ?? 0.0
         lbAmountValue.text = "(\(amount))"
@@ -54,20 +54,16 @@ class ConfirmTransferViewController: MozoBasicViewController {
             ctrAmount.constant += 18
         }
         
-        var exBalance = "0.0"
         var exAmount = "0.0"
         
         if let rateInfo = SessionStoreManager.exchangeRateInfo {
             if let type = CurrencyType(rawValue: rateInfo.currency ?? "") {
                 let rate = rateInfo.rate ?? 0
-                let value = (displayBalance * rate).rounded(toPlaces: type.decimalRound)
-                exBalance = "\(type.unit)\(value)"
                 let amountValue = (amount * rate).rounded(toPlaces: type.decimalRound)
                 exAmount = "\(type.unit)\(amountValue)"
             }
         }
         
-        lbExchange.text = exBalance
         lbAmountValueExchange.text = exAmount
     }
     

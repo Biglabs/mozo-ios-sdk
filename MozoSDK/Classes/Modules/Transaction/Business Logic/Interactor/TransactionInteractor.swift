@@ -39,6 +39,20 @@ class TransactionInteractor : NSObject {
 }
 
 extension TransactionInteractor : TransactionInteractorInput {
+    func validateValueFromScanner(_ scanValue: String) {
+        if !scanValue.isEthAddress() {
+            output?.didReceiveError("Scanning value is not a valid address. \n\(scanValue)")
+        } else {
+            let list = SessionStoreManager.addressBookList
+            if let addressBook = AddressBookDTO.addressBookFromAddress(scanValue, array: list) {
+                let displayItem = AddressBookDisplayItem(name: addressBook.name!, address: addressBook.soloAddress!)
+                output?.didReceiveAddressBookDisplayItem(displayItem)
+            } else {
+                output?.didReceiveAddressfromScanner(scanValue)
+            }
+        }
+    }
+    
     func sendUserConfirmTransaction(_ transaction: TransactionDTO) {
         _ = apiManager.transferTransaction(transaction).done { (interTx) in
             if (interTx.errors != nil) && (interTx.errors?.count)! > 0 {

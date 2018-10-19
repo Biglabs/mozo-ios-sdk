@@ -8,5 +8,5 @@
 import Foundation
 
 protocol AddressBookModuleDelegate {
-    func addressBookModuleDidChooseItemOnUI(addressBook: AddressBookDisplayItem)
+    func addressBookModuleDidChooseItemOnUI(addressBook: AddressBookDisplayItem, isDisplayForSelect: Bool)
 }
