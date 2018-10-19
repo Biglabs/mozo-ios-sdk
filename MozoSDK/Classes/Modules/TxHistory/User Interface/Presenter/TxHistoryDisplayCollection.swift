@@ -28,9 +28,10 @@ class TxHistoryDisplayCollection {
     func displayItemForTxHistoryDTO(_ txHistory: TxHistoryDTO) -> TxHistoryDisplayItem {
         let action = self.buildAction(addressFrom: txHistory.addressFrom!)
         let date = self.formattedDateTime(txHistory.time ?? 0)
-        let amount = (txHistory.amount?.convertOutputValue(decimal: Int(txHistory.decimal!)))!
+        let amount = (txHistory.amount?.convertOutputValue(decimal: Int(txHistory.decimal ?? 0)))!
         let exAmount = self.calculateExchangeValue(amount)
-        return TxHistoryDisplayItem(action: action, date: date, amount: amount, exAmount: exAmount, txStatus: txHistory.txStatus ?? "", addressFrom: txHistory.addressFrom, addressTo: txHistory.addressTo)
+        let fromNameWithDate = self.buildFromNameWithDate(addressFrom: txHistory.addressFrom ?? "", addressTo: txHistory.addressTo ?? "", action: action, date: date)
+        return TxHistoryDisplayItem(action: action, date: date, fromNameWithDate: fromNameWithDate, amount: amount, exAmount: exAmount, txStatus: txHistory.txStatus ?? "", addressFrom: txHistory.addressFrom, addressTo: txHistory.addressTo)
     }
     
     func buildAction(addressFrom: String) -> String {
@@ -43,8 +44,40 @@ class TxHistoryDisplayCollection {
     }
     
     func formattedDateTime(_ dateTime: Int64) -> String {
-        let format = "MMM dd, yyyy - HH:mm a"
+        let format = "HH:mm MMM dd, yyyy"
         return DisplayUtils.convertInt64ToStringWithFormat(dateTime, format: format)
+    }
+    
+    func buildFromNameWithDate(addressFrom: String, addressTo: String, action: String, date: String) -> NSAttributedString {
+        let address = action == TransactionType.Received.value ? addressFrom : addressTo
+        var displayName = ""
+        if !address.isEmpty {
+            let list = SessionStoreManager.addressBookList
+            if let ab = AddressBookDTO.addressBookFromAddress(address, array: list), let name = ab.name {
+                displayName = name
+            } else {
+                // TODO: Find address in Store Book
+            }
+        }
+        var lStrLabelText: NSMutableAttributedString
+        if displayName.isEmpty {
+            let finalStr = NSAttributedString(string: date)
+            lStrLabelText = NSMutableAttributedString(attributedString: finalStr)
+        } else {
+            let prefrix = action == TransactionType.Received.value ? "From" : "To"
+            let fromNameWithDate = "\(prefrix) \(displayName) - \(date)"
+            let finalStr = NSAttributedString(string: fromNameWithDate)
+            lStrLabelText = NSMutableAttributedString(attributedString: finalStr)
+            let descriptor = UIFont.boldSystemFont(ofSize: 11).fontDescriptor.withSymbolicTraits([.traitBold, .traitItalic])
+            let font : UIFont = UIFont.init(descriptor: descriptor!, size: 11)
+            
+            let string = NSString(string: fromNameWithDate)
+            let range = string.range(of: displayName)
+            lStrLabelText.addAttribute(.font, value: font, range: range)
+            lStrLabelText.addAttribute(.foregroundColor, value: ThemeManager.shared.textSection, range: range)
+        }
+        
+        return lStrLabelText
     }
     
     func filterByTransactionType(_ txType: TransactionType) -> [TxHistoryDisplayItem] {

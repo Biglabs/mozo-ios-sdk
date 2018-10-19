@@ -47,7 +47,12 @@ class AddressBookViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "ADDRESS BOOK"
+        // TODO: Change title according to requested module.
+        if isDisplayForSelect {
+            self.title = "Select Address"
+        } else {
+            self.title = "Address Book"
+        }
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = false
         }
@@ -159,7 +164,7 @@ extension AddressBookViewController: UITableViewDataSource {
 extension AddressBookViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selectedItem = displayData?.sections[indexPath.section].items[indexPath.row] {
-            eventHandler?.selectAddressBookOnUI(selectedItem)
+            eventHandler?.selectAddressBookOnUI(selectedItem, isDisplayForSelect: isDisplayForSelect)
         }
     }
     

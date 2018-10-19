@@ -38,7 +38,7 @@ class PINViewController : MozoBasicViewController {
             if moduleRequested == Module.Transaction {
                 enterPINLabel.text = "ENTER YOUR SECURITY PIN"
                 descriptionLabel.text = "Security PIN must be 6 di-git numbers"
-                title = "SECURITY PIN CONFIRM"
+                title = "Create Security PIN"
             } else {
                 // Enter new pin and confirm new pin
                 enterPINLabel.text = "ENTER YOUR SECURITY PIN TO RESTORE WALLET"

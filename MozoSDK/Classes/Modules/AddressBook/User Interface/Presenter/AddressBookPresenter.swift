@@ -13,8 +13,8 @@ class AddressBookPresenter : NSObject {
     var abUserInterface: AddressBookViewInterface?
 }
 extension AddressBookPresenter : AddressBookModuleInterface {
-    func selectAddressBookOnUI(_ addressBook: AddressBookDisplayItem) {
-        abModuleDelegate?.addressBookModuleDidChooseItemOnUI(addressBook: addressBook)
+    func selectAddressBookOnUI(_ addressBook: AddressBookDisplayItem, isDisplayForSelect: Bool) {
+        abModuleDelegate?.addressBookModuleDidChooseItemOnUI(addressBook: addressBook, isDisplayForSelect: isDisplayForSelect)
     }
     func updateDisplayData() {
         abInteractor?.getListAddressBook()

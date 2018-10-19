@@ -11,11 +11,11 @@ class AddressBookWireframe : MozoWireframe {
     var abPresenter : AddressBookPresenter?
     var addressBookViewController : AddressBookViewController?
     
-    func presentAddressBookInterface() {
+    func presentAddressBookInterface(isDisplayForSelect: Bool) {
         let viewController = viewControllerFromStoryBoard(AddressBookViewControllerIdentifier) as! AddressBookViewController
         viewController.eventHandler = abPresenter
         addressBookViewController = viewController
-        
+        addressBookViewController?.isDisplayForSelect = isDisplayForSelect
         abPresenter?.abUserInterface = viewController
         rootWireframe?.displayViewController(viewController)
     }

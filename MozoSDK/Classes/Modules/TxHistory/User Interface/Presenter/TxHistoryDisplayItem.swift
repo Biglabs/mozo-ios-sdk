@@ -10,6 +10,7 @@ import Foundation
 struct TxHistoryDisplayItem {
     let action : String
     let date : String
+    let fromNameWithDate: NSAttributedString
     let amount: Double
     let exAmount: Double
     let txStatus: String
