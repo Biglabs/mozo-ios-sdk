@@ -15,14 +15,18 @@ class RDNInteractor: NSObject {
 }
 extension RDNInteractor : RDNInteractorInput {
     func startService() {
-        NSLog("RDNInteractor - Start services.")
-        manager.connect()
-        manager.socket.advancedDelegate = self
+        if !manager.isConnected() {
+            print("RDNInteractor - Start services.")
+            manager.connect()
+            manager.socket.advancedDelegate = self
+        }
     }
     
     func stopService() {
-        NSLog("RDNInteractor - Stop services.")
-        manager.disconnect()
+        if manager.isConnected() {
+            print("RDNInteractor - Stop services.")
+            manager.disconnect()
+        }
     }
 }
 // MARK: Websocket Delegate Methods.
@@ -38,11 +42,11 @@ extension RDNInteractor : WebSocketAdvancedDelegate {
         }
     }
     func websocketDidReceiveMessage(socket: WebSocket, text: String, response: WebSocket.WSResponse) {
-        print("Received text: \(text)")
+        print("Received notification text: \(text)")
         processMessage(message: text, response: response)
     }
     func websocketDidReceiveData(socket: WebSocket, data: Data, response: WebSocket.WSResponse) {
-        print("Received data: \(data.count)")
+        print("Received notification data: \(data.count)")
     }
     func websocketHttpUpgrade(socket: WebSocket, request: String) {
         print("websocket Http Upgrade with request: \(request)")
@@ -57,23 +61,27 @@ extension RDNInteractor {
         // split string by | character
         let strings = message.components(separatedBy: "|");
         
-        if strings.count == 3 {
+        if strings.count == 2 {
+            // Check connected response
+            if strings[0] == "71" {
+                return
+            }
+            // Check Ping
+            if strings[0] == "1" {
+                print("Received ping!")
+                return
+            }
             let jsonMessage = strings[1]
             let json = SwiftyJSON.JSON(parseJSON: jsonMessage)
             if let wsMessage = WSMessage(json: json) {
                 processWSMessage(message: wsMessage)
             }
-        } else if strings.count == 2 {
-            // Check Ping
-            if strings[0] == "1" {
-                print("Received ping!")
-            }
         }
     }
     
     private func processWSMessage(message: WSMessage) {
-        if message.message != nil {
-            let jobj = SwiftyJSON.JSON(parseJSON: message.message!)
+        if let messageContent = message.content {
+            let jobj = SwiftyJSON.JSON(parseJSON: messageContent)
             if let rdNoti = RdNotification(json: jobj) {
                 if rdNoti.event == NotificationEventType.BalanceChanged.rawValue,
                     let balanceNoti = BalanceNotification(json: jobj) {
@@ -82,6 +90,8 @@ extension RDNInteractor {
                     let abNoti = AddressBookNotification(json: jobj),
                     let list = abNoti.data {
                     output?.addressBookDidChange(addressBookList: list)
+                } else {
+                    print("Can not handle message: \(messageContent ?? "NULL")")
                 }
             }
         }

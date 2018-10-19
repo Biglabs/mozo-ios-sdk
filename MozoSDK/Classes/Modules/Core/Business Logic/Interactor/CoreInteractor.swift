@@ -84,8 +84,12 @@ extension CoreInteractor: CoreInteractorInput {
     }
     
     func notifyBalanceChangesForAllObservers(balanceNoti: BalanceNotification) {
-        if let balance = balanceNoti.amount?.convertOutputValue(decimal: balanceNoti.decimal!) {
-            NotificationCenter.default.post(name: .didChangeBalance, object: nil, userInfo: ["balance" : balance])
+        if let amount = balanceNoti.amount?.convertOutputValue(decimal: balanceNoti.decimal!), amount > 0.00 {
+            loadBalanceInfo().done { (displayItem) in
+                NotificationCenter.default.post(name: .didChangeBalance, object: nil, userInfo: ["balance" : displayItem.balance])
+            }.catch { (error) in
+                    
+            }
         }
     }
     

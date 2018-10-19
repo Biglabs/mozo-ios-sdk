@@ -100,7 +100,11 @@ class ModuleDependencies {
         let coreInteractor = CoreInteractor(anonManager: anonManager, apiManager: apiManager, userDataManager: userDataManager)
         coreInteractor.output = corePresenter
         
+        let rdnInteractor = RDNInteractor()
+        rdnInteractor.output = corePresenter
+        
         corePresenter.coreInteractor = coreInteractor
+        corePresenter.rdnInteractor = rdnInteractor
         corePresenter.coreInteractorService = coreInteractor
         corePresenter.coreWireframe = coreWireframe
         
