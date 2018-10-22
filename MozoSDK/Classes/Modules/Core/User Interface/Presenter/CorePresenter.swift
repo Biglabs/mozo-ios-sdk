@@ -210,6 +210,12 @@ extension CorePresenter: TxCompletionModuleDelegate {
     }
 }
 
+extension CorePresenter: TxDetailModuleDelegate {
+    func detailModuleRequestAddToAddressBook(_ address: String) {
+        requestAddToAddressBook(address)
+    }
+}
+
 extension CorePresenter: AddressBookModuleDelegate {
     func addressBookModuleDidChooseItemOnUI(addressBook: AddressBookDisplayItem, isDisplayForSelect: Bool) {
         if isDisplayForSelect {

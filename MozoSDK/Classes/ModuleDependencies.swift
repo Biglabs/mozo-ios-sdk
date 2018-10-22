@@ -152,6 +152,11 @@ class ModuleDependencies {
     }
     
     func transactionDetailDependencies() {
+        let txDetailPresenter = TxDetailPresenter()
+        
+        txDetailPresenter.detailModuleDelegate = coreWireframe.corePresenter
+        
+        txDetailWireframe.txDetailPresenter = txDetailPresenter
         txDetailWireframe.rootWireframe = rootWireframe
     }
     

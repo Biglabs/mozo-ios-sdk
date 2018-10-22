@@ -199,6 +199,7 @@ extension TxHistoryViewController : TxHistoryViewInterface {
     
     func removeSpinner() {
         removeMozoSpinner()
+        navigationItem.hidesBackButton = true
     }
     
     func displayError(_ error: String) {
