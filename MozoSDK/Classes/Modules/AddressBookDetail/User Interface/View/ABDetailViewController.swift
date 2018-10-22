@@ -11,7 +11,9 @@ class ABDetailViewController : MozoBasicViewController {
     var eventHandler : ABDetailModuleInterface?
     
     @IBOutlet var txtName : UITextField!
+    @IBOutlet weak var nameBorderView: UIView!
     @IBOutlet weak var txtAddress: UITextField!
+    @IBOutlet weak var addressBorderView: UIView!
     @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var successView: UIView!
     
@@ -26,6 +28,42 @@ class ABDetailViewController : MozoBasicViewController {
     
     func updateView() {
         txtAddress.text = address
+        txtName.addTarget(self, action: #selector(textFieldNameDidBeginEditing), for: UIControlEvents.editingDidBegin)
+        txtName.addTarget(self, action: #selector(textFieldNameDidEndEditing), for: UIControlEvents.editingDidEnd)
+        addDoneButtonOnKeyboard()
+    }
+    
+    @objc func textFieldNameDidBeginEditing() {
+        print("TextFieldNameDidBeginEditing")
+        setHighlightNameTextField(isHighlighted: true)
+    }
+    
+    @objc func textFieldNameDidEndEditing() {
+        print("TextFieldNameDidEndEditing")
+        setHighlightNameTextField(isHighlighted: false)
+    }
+    
+    func setHighlightNameTextField(isHighlighted: Bool) {
+        nameBorderView.backgroundColor = isHighlighted ? ThemeManager.shared.main : ThemeManager.shared.disable
+    }
+    
+    func addDoneButtonOnKeyboard()
+    {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        doneToolbar.barStyle = UIBarStyle.default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.doneButtonAction))
+        
+        doneToolbar.items = [flexSpace, done]
+        doneToolbar.sizeToFit()
+        
+        self.txtName.inputAccessoryView = doneToolbar
+    }
+    
+    @objc func doneButtonAction()
+    {
+        txtName.resignFirstResponder()
     }
     
     @IBAction func save(_ sender: AnyObject) {
