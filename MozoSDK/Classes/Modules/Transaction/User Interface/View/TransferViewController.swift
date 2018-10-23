@@ -267,6 +267,10 @@ extension TransferViewController: UITextFieldDelegate {
         if (finalText.isValidDecimalFormat() == false){
             showValidate("Error: Please input value in decimal format.", isAddress: false)
             return false
+        } else if let value = Decimal(string: finalText), value.significantFractionalDecimalDigits > tokenInfo?.decimals ?? 0 {
+            print("Digits: \(value)")
+            showValidate("Error: The length of decimal places must be equal or smaller than \(tokenInfo?.decimals ?? 0).", isAddress: false)
+            return false
         }
         hideValidate(isAddress: false)
         return true

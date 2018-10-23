@@ -152,6 +152,9 @@ extension Decimal {
     var toDouble:Double {
         return NSDecimalNumber(decimal:self).doubleValue
     }
+    var significantFractionalDecimalDigits: Int {
+        return max(-exponent, 0)
+    }
 }
 
 public extension UIWindow {
@@ -239,5 +242,9 @@ extension Notification.Name {
     static let didAuthenticationSuccessWithMozo = Notification.Name("didAuthenticationSuccessWithMozo")
     static let didLogoutFromMozo = Notification.Name("didLogoutFromMozo")
     static let didChangeBalance = Notification.Name("didChangeBalance")
+    static let didReceiveDetailDisplayItem = Notification.Name("didReceiveDetailDisplayItem")
+    static let didReceiveExchangeInfo = Notification.Name("didReceiveExchangeInfo")
     static let didChangeAddressBook = Notification.Name("didChangeAddressBook")
+    
+    static let didCheckAuthorizationWithSuccess = Notification.Name("didCheckAuthorizationWithSuccess")
 }

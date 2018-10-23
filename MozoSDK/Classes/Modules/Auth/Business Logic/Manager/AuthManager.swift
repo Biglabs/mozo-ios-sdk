@@ -56,9 +56,8 @@ class AuthManager : NSObject {
     private func checkAuthorization(){
         print("Check authorization, try request.")
         apiManager?.getListAddressBook().done({ (array) in
-            // Store downloaded address book
-            SessionStoreManager.addressBookList = array
-            self.loadNecessaryData()
+            print("Store downloaded address book")
+            self.notifyForAllObservers(.didCheckAuthorizationWithSuccess)
             // TODO: Reload user info in case error with user info at the latest login
             // Remember: Authen flow and wallet flow might be affected by reloading here
             self.checkRefreshToken()
@@ -69,18 +68,16 @@ class AuthManager : NSObject {
                 print("Token expired, clear token and user info")
                 print("Expires at: \(expiresAt)")
                 self.clearAll()
-                // Notify for all observing objects
-                NotificationCenter.default.post(name: .didLogoutFromMozo, object: nil)
+                self.notifyForAllObservers(.didLogoutFromMozo)
             } else {
                 self.checkRefreshToken()
             }
         })
     }
     
-    private func loadNecessaryData() {
-        _ = apiManager?.getExchangeRateInfo(currencyType: .KRW).done({ (rateInfo) in
-            SessionStoreManager.exchangeRateInfo = rateInfo
-        })
+    private func notifyForAllObservers(_ name: Notification.Name) {
+        // Notify for all observing objects
+        NotificationCenter.default.post(name: name, object: nil)
     }
     
     func setCurrentAuthorizationFlow(_ authorizationFlow: OIDAuthorizationFlowSession?) {

@@ -28,6 +28,7 @@ class ABDetailViewController : MozoBasicViewController {
     
     func updateView() {
         txtAddress.text = address
+        txtName.delegate = self
         txtName.addTarget(self, action: #selector(textFieldNameDidBeginEditing), for: UIControlEvents.editingDidBegin)
         txtName.addTarget(self, action: #selector(textFieldNameDidEndEditing), for: UIControlEvents.editingDidEnd)
         addDoneButtonOnKeyboard()
@@ -109,5 +110,13 @@ extension ABDetailViewController: ABDetailViewInterface {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
             self.eventHandler?.finishSaveAddressBook()
         }
+    }
+}
+
+extension ABDetailViewController : UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let count = text.count + string.count - range.length
+        return count <= Configuration.MAX_ADDRESS_BOOK_NAME_LENGTH
     }
 }

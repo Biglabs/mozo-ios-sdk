@@ -19,6 +19,24 @@ class CoreInteractor: NSObject {
         self.anonManager = anonManager
         self.apiManager = apiManager
         self.userDataManager = userDataManager
+        super.init()
+        NotificationCenter.default.addObserver(self, selector: #selector(onCheckAuthorizationDidSuccess(_:)), name: .didCheckAuthorizationWithSuccess, object: nil)
+    }
+    
+    // MARK: Dealloccation
+    deinit {
+        // TODO: Remove observation
+        removeAllMozoObserver()
+    }
+    
+    // MARK: Observation - REVOKE
+    func removeAllMozoObserver() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func onCheckAuthorizationDidSuccess(_ notification: Notification){
+        print("On Check Authorization Did Success: Download convenience data")
+        downloadConvenienceDataAndStoreAtLocal()
     }
     
     private func getUserProfile() -> Promise<Void> {
@@ -93,6 +111,14 @@ extension CoreInteractor: CoreInteractorInput {
         }
     }
     
+    func notifyDetailDisplayItemForAllObservers() {
+        NotificationCenter.default.post(name: .didReceiveDetailDisplayItem, object: nil)
+    }
+    
+    func notifyExchangeRateInfoForAllObservers() {
+        NotificationCenter.default.post(name: .didReceiveExchangeInfo, object: nil)
+    }
+    
     func notifyAddressBookChangesForAllObservers() {
         NotificationCenter.default.post(name: .didChangeAddressBook, object: nil)
     }
@@ -100,6 +126,7 @@ extension CoreInteractor: CoreInteractorInput {
 
 extension CoreInteractor: CoreInteractorService {
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem> {
+        print("😎 Load balance info.")
         return Promise { seal in
             // TODO: Check authen and authorization first
             if let userObj = SessionStoreManager.loadCurrentUser() {
@@ -108,16 +135,11 @@ extension CoreInteractor: CoreInteractorService {
                     _ = apiManager.getTokenInfoFromAddress(address)
                         .done { (tokenInfo) in
                             let item = DetailInfoDisplayItem(tokenInfo: tokenInfo)
-                            if SessionStoreManager.exchangeRateInfo == nil {
-                                _ = self.apiManager.getExchangeRateInfo(currencyType: .KRW).done({ (data) in
-                                    SessionStoreManager.exchangeRateInfo = data
-                                    seal.fulfill(item)
-                                }).catch({ (error) in
-                                    seal.fulfill(item)
-                                })
-                            } else {
-                                seal.fulfill(item)
+                            if LiveDataManager.shared.detailDisplayData == nil || LiveDataManager.shared.detailDisplayData != item {
+                                LiveDataManager.shared.detailDisplayData = item
+                                self.notifyDetailDisplayItemForAllObservers()
                             }
+                            seal.fulfill(item)
                         }.catch({ (err) in
                             seal.reject(err)
                         })
@@ -129,8 +151,10 @@ extension CoreInteractor: CoreInteractorService {
     }
     
     func downloadConvenienceDataAndStoreAtLocal() {
+        print("Download convenience data and store at local.")
         if AccessTokenManager.getAccessToken() != nil {
             downloadAddressBookAndStoreAtLocal()
+            _ = loadBalanceInfo()
             downloadExchangeRateInfoAndStoreAtLocal()
         }
     }
@@ -138,7 +162,7 @@ extension CoreInteractor: CoreInteractorService {
     func downloadAddressBookAndStoreAtLocal() {
         print("😎 Load address book list.")
         _ = apiManager.getListAddressBook().done({ (list) in
-            SessionStoreManager.addressBookList = list
+            LiveDataManager.shared.addressBookList = list
         }).catch({ (error) in
             //TODO: Handle case unable to load address book list
         })
@@ -148,6 +172,7 @@ extension CoreInteractor: CoreInteractorService {
         print("😎 Load exchange rate data.")
         _ = apiManager.getExchangeRateInfo(currencyType: .KRW).done({ (data) in
             SessionStoreManager.exchangeRateInfo = data
+            self.notifyExchangeRateInfoForAllObservers()
         }).catch({ (error) in
             //TODO: Handle case unable to load exchange rate info
         })

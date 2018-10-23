@@ -43,9 +43,9 @@ extension TransactionInteractor : TransactionInteractorInput {
         if !scanValue.isEthAddress() {
             output?.didReceiveError("Scanning value is not a valid address. \n\(scanValue)")
         } else {
-            let list = SessionStoreManager.addressBookList
+            let list = LiveDataManager.shared.addressBookList
             if let addressBook = AddressBookDTO.addressBookFromAddress(scanValue, array: list) {
-                let displayItem = AddressBookDisplayItem(name: addressBook.name!, address: addressBook.soloAddress!)
+                let displayItem = AddressBookDisplayItem(id: addressBook.id!, name: addressBook.name!, address: addressBook.soloAddress!)
                 output?.didReceiveAddressBookDisplayItem(displayItem)
             } else {
                 output?.didReceiveAddressfromScanner(scanValue)

@@ -18,6 +18,7 @@ let TxCompletionViewControllerIdentifier = "TxCompletionViewController"
 let TxDetailViewControllerIdentifier = "TxDetailViewController"
 let AddressBookViewControllerIdentifier = "AddressBookViewController"
 let ABDetailViewControllerIdentifier = "ABDetailViewController"
+let ABEditViewControllerIdentifier = "ABEditViewController"
 let TxHistoryViewControllerIdentifier = "TxHistoryViewController"
 let TxHistoryDetailViewControllerIdentifier = "TxHistoryDetailViewController"
 

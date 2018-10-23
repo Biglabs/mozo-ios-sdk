@@ -12,7 +12,7 @@ class AddressBookDisplayCollection {
     init(items: [AddressBookDTO]) {
         displayItems = []
         for item in items {
-            let displayItem = AddressBookDisplayItem(name: item.name!, address: item.soloAddress!)
+            let displayItem = AddressBookDisplayItem(id: item.id!, name: item.name!, address: item.soloAddress!)
             displayItems.append(displayItem)
         }
     }

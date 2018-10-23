@@ -1488,6 +1488,117 @@
             </objects>
             <point key="canvasLocation" x="4700" y="-298.2008995502249"/>
         </scene>
+        <!--Address Detail-->
+        <scene sceneID="HT6-L3-VL6">
+            <objects>
+                <viewController storyboardIdentifier="ABEditViewController" title="Address Detail" id="Q9h-Wt-LE4" customClass="ABEditViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eQx-su-eCq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user_profile" translatesAutoresizingMaskIntoConstraints="NO" id="I5A-42-oWn">
+                                <rect key="frame" x="120.5" y="50" width="134" height="134"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="134" id="vaY-gp-WpI"/>
+                                    <constraint firstAttribute="height" constant="134" id="xas-k1-0q4"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmq-iy-YB2">
+                                <rect key="frame" x="121" y="607" width="132" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete this address">
+                                    <color key="titleColor" red="0.94117647059999998" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchedBtnDelete:" destination="Q9h-Wt-LE4" eventType="touchUpInside" id="5aZ-K2-kWz"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Anh An Biglabs Biglabs An" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZL1-8g-5cc">
+                                <rect key="frame" x="110" y="210" width="154" height="62"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="4gE-Dr-mkV"/>
+                                    <constraint firstAttribute="width" constant="154" id="sPE-Uf-YDb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpI-os-jqM">
+                                <rect key="frame" x="272" y="227" width="50" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="PrK-04-qef"/>
+                                    <constraint firstAttribute="height" constant="13" id="SDa-ll-oBm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <inset key="titleEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="35" maxY="0.0"/>
+                                <state key="normal" title="Edit" image="ic_pencil">
+                                    <color key="titleColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchedBtnEdit:" destination="Q9h-Wt-LE4" eventType="touchUpInside" id="aGc-ap-VDj"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet List:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAf-1C-EyL">
+                                <rect key="frame" x="20" y="288" width="82" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.078431372549019607" green="0.10196078431372549" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaI-ov-UTB">
+                                <rect key="frame" x="20" y="327" width="335" height="58"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mozo_offchain" translatesAutoresizingMaskIntoConstraints="NO" id="SM3-kg-k0T">
+                                        <rect key="frame" x="16" y="17" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="0VL-xZ-dFS"/>
+                                            <constraint firstAttribute="width" constant="24" id="Onb-gt-Vmc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7Y-ia-T0v">
+                                        <rect key="frame" x="46" y="21" width="289" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="SM3-kg-k0T" firstAttribute="centerY" secondItem="VaI-ov-UTB" secondAttribute="centerY" id="3zd-6T-ecH"/>
+                                    <constraint firstItem="SM3-kg-k0T" firstAttribute="leading" secondItem="VaI-ov-UTB" secondAttribute="leading" constant="16" id="Gkh-EF-hfE"/>
+                                    <constraint firstItem="U7Y-ia-T0v" firstAttribute="leading" secondItem="SM3-kg-k0T" secondAttribute="trailing" constant="6" id="Qyh-hk-fOM"/>
+                                    <constraint firstAttribute="height" constant="58" id="RQI-B6-09E"/>
+                                    <constraint firstItem="U7Y-ia-T0v" firstAttribute="centerY" secondItem="SM3-kg-k0T" secondAttribute="centerY" id="Wwt-BW-aar"/>
+                                    <constraint firstAttribute="trailing" secondItem="U7Y-ia-T0v" secondAttribute="trailing" id="vdS-fj-ETq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VaI-ov-UTB" firstAttribute="leading" secondItem="sAf-1C-EyL" secondAttribute="leading" id="1kh-k1-62S"/>
+                            <constraint firstItem="I5A-42-oWn" firstAttribute="top" secondItem="0ZB-M3-uIG" secondAttribute="top" constant="30" id="Fk8-lr-ZJH"/>
+                            <constraint firstItem="jpI-os-jqM" firstAttribute="leading" secondItem="ZL1-8g-5cc" secondAttribute="trailing" constant="8" id="WHl-Kt-M8M"/>
+                            <constraint firstItem="jpI-os-jqM" firstAttribute="top" secondItem="I5A-42-oWn" secondAttribute="bottom" constant="43" id="bvP-Ao-wcH"/>
+                            <constraint firstItem="VaI-ov-UTB" firstAttribute="top" secondItem="sAf-1C-EyL" secondAttribute="bottom" constant="21" id="eT2-mu-d6b"/>
+                            <constraint firstItem="sAf-1C-EyL" firstAttribute="leading" secondItem="0ZB-M3-uIG" secondAttribute="leading" constant="20" id="eoB-XX-cYo"/>
+                            <constraint firstItem="I5A-42-oWn" firstAttribute="centerX" secondItem="eQx-su-eCq" secondAttribute="centerX" id="kha-7f-zK6"/>
+                            <constraint firstItem="ZL1-8g-5cc" firstAttribute="centerX" secondItem="eQx-su-eCq" secondAttribute="centerX" id="qew-y5-lEa"/>
+                            <constraint firstItem="0ZB-M3-uIG" firstAttribute="trailing" secondItem="VaI-ov-UTB" secondAttribute="trailing" constant="20" id="rmr-oW-wAb"/>
+                            <constraint firstItem="sAf-1C-EyL" firstAttribute="top" secondItem="ZL1-8g-5cc" secondAttribute="bottom" constant="16" id="yRB-LG-7Y4"/>
+                            <constraint firstItem="ZL1-8g-5cc" firstAttribute="top" secondItem="I5A-42-oWn" secondAttribute="bottom" constant="26" id="yw7-jg-MS4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0ZB-M3-uIG"/>
+                    </view>
+                    <connections>
+                        <outlet property="lbAddress" destination="U7Y-ia-T0v" id="Qz8-3w-zML"/>
+                        <outlet property="nameTextView" destination="ZL1-8g-5cc" id="Eie-6v-ZK4"/>
+                        <outlet property="touchedBtnEdit" destination="jpI-os-jqM" id="4U7-Ud-iMM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yeM-dy-wga" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5485.6000000000004" y="-298.2008995502249"/>
+        </scene>
         <!--Address Book-->
         <scene sceneID="gKz-aM-SUF">
             <objects>
@@ -1595,7 +1706,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7p0-lK-C2Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5436" y="-298"/>
+            <point key="canvasLocation" x="6340" y="-297"/>
         </scene>
         <!--Transaction History-->
         <scene sceneID="JZy-t0-LTt">
@@ -1748,7 +1859,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYT-I3-Ayz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6272.8000000000002" y="-298.2008995502249"/>
+            <point key="canvasLocation" x="7177" y="-297"/>
         </scene>
         <!--Send Mozo-->
         <scene sceneID="SkE-Ho-TSH">
@@ -2315,6 +2426,7 @@
         <image name="ic_loading" width="38" height="36"/>
         <image name="ic_mozo_offchain" width="24" height="24"/>
         <image name="ic_paper" width="12" height="15"/>
+        <image name="ic_pencil" width="26" height="26"/>
         <image name="ic_scan" width="19" height="18"/>
         <image name="ic_search" width="181" height="185"/>
         <image name="ic_send" width="13" height="15"/>
@@ -2323,5 +2435,6 @@
         <image name="ic_tx_complete" width="165" height="100"/>
         <image name="ic_user" width="13" height="18"/>
         <image name="ic_user_add" width="19" height="16"/>
+        <image name="ic_user_profile" width="201" height="201"/>
     </resources>
 </document>

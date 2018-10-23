@@ -196,7 +196,7 @@ extension CorePresenter: TransactionModuleDelegate {
 extension CorePresenter: TxCompletionModuleDelegate {
     func requestAddToAddressBook(_ address: String) {
         // Verify address is existing in address book list or not
-        let list = SessionStoreManager.addressBookList
+        let list = LiveDataManager.shared.addressBookList
         let contain = AddressBookDTO.arrayContainsItem(address, array: list)
         if contain {
             // TODO: Show message address is existing in address book list
@@ -253,7 +253,7 @@ extension CorePresenter : RDNInteractorOutput {
     }
     
     func addressBookDidChange(addressBookList: [AddressBookDTO]) {
-        SessionStoreManager.addressBookList = addressBookList
+        LiveDataManager.shared.addressBookList = addressBookList
         coreInteractor?.notifyAddressBookChangesForAllObservers()
     }
 }

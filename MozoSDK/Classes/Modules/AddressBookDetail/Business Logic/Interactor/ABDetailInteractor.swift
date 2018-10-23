@@ -16,7 +16,7 @@ extension ABDetailInteractor: ABDetailInteractorInput {
     func saveAddressBookWithName(_ name: String, address: String) {
         let model = AddressBookDTO(name: name, address: address)
         _ = apiManager?.updateAddressBook(model, isCreateNew: true).done({ (addressBook) in
-            SessionStoreManager.addressBookList.append(addressBook!)
+            LiveDataManager.shared.addressBookList.append(addressBook!)
             self.output?.finishSaveWithSuccess()
         }).catch({ (error) in
             self.output?.errorWhileSaving(error)

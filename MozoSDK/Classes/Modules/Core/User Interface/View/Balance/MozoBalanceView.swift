@@ -66,6 +66,7 @@ import Foundation
         super.loadViewFromNib()
         loadDisplayData()
         setupButtonBorder()
+        addOriginalObserver()
         addUniqueAuthObserver()
     }
     
@@ -74,14 +75,14 @@ import Foundation
         clearValueOnUI()
         if !isAnonymous {
             print("\(String(describing: self)) - Load display data.")
-            _ = MozoSDK.loadBalanceInfo().done { (item) in
-                    print("\(String(describing: self)) - Receive display data: \(item)")
-                    self.updateData(displayItem: item)
-                }.catch({ (error) in
-                    print("\(String(describing: self)) - Error: \(error.localizedDescription)")
-                    let itemNoData = DetailInfoDisplayItem(balance: 0.0, address: "")
-                    self.updateData(displayItem: itemNoData)
-                })
+            if let item = LiveDataManager.shared.detailDisplayData {
+                print("\(String(describing: self)) - Receive display data: \(item)")
+                self.updateData(displayItem: item)
+            } else {
+                print("\(String(describing: self)) - No data for displaying")
+                let itemNoData = DetailInfoDisplayItem(balance: 0.0, address: "")
+                self.updateData(displayItem: itemNoData)
+            }
         } else {
             switch displayType {
             case .DetailAddress:
@@ -102,6 +103,7 @@ import Foundation
     }
     
     override func updateOnlyBalance(_ balance : Double) {
+        print("Update balance on Mozo UI Components")
         lbBalance.text = "\(balance)"
         var result = "0.0"
         if let rateInfo = SessionStoreManager.exchangeRateInfo {

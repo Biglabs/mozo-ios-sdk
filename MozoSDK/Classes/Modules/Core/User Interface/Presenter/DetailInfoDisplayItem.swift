@@ -21,3 +21,9 @@ public struct DetailInfoDisplayItem {
         self.address = tokenInfo.address!
     }
 }
+
+extension DetailInfoDisplayItem : Equatable {
+    public static func == (leftSide: DetailInfoDisplayItem, rightSide: DetailInfoDisplayItem) -> Bool {
+        return rightSide.balance == leftSide.balance && rightSide.address == rightSide.address
+    }
+}

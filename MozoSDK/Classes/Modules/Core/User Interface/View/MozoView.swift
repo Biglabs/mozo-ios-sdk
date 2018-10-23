@@ -68,6 +68,12 @@ import UIKit
         NotificationCenter.default.addObserver(self, selector: #selector(onUserDidLoginSuccess(_:)), name: .didLogoutFromMozo, object: nil)
     }
     
+    func addOriginalObserver() {
+        print("Add original observers")
+        NotificationCenter.default.addObserver(self, selector: #selector(onDetailDisplayDataDidReceive(_:)), name: .didReceiveDetailDisplayItem, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onExchangeRateInfoDidReceive(_:)), name: .didReceiveExchangeInfo, object: nil)
+    }
+    
     func addUniqueBalanceChangeObserver() {
         print("Add unique balance change observer")
         NotificationCenter.default.removeObserver(self, name: .didChangeBalance, object: nil)
@@ -91,6 +97,16 @@ import UIKit
             let balance = data["balance"] as! Double
             updateOnlyBalance(balance)
         }
+    }
+    
+    @objc func onDetailDisplayDataDidReceive(_ notification: Notification){
+        print("On Detail Display Data Did Receive: Update view")
+        updateView()
+    }
+    
+    @objc func onExchangeRateInfoDidReceive(_ notification: Notification){
+        print("On Exchange Rate Info Did Receive: Update view")
+        updateView()
     }
     
     // MARK: Observation - REVOKE
