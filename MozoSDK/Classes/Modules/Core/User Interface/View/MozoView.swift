@@ -70,6 +70,8 @@ import UIKit
     
     func addOriginalObserver() {
         print("Add original observers")
+        NotificationCenter.default.removeObserver(self, name: .didReceiveDetailDisplayItem, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .didReceiveExchangeInfo, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onDetailDisplayDataDidReceive(_:)), name: .didReceiveDetailDisplayItem, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onExchangeRateInfoDidReceive(_:)), name: .didReceiveExchangeInfo, object: nil)
     }
@@ -80,6 +82,13 @@ import UIKit
         NotificationCenter.default.addObserver(self, selector: #selector(onBalanceDidUpdate(_:)), name: .didChangeBalance, object: nil)
     }
     
+    func removeObserverAfterLogout() {
+        print("Remove observer after logout")
+        NotificationCenter.default.removeObserver(self, name: .didChangeBalance, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .didReceiveDetailDisplayItem, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .didReceiveExchangeInfo, object: nil)
+    }
+    
     // MARK: Observation actions
     @objc func onUserDidLoginSuccess(_ notification: Notification){
         print("On User Did Login Success: Update view")
@@ -88,6 +97,7 @@ import UIKit
     
     @objc func onUserDidLogout(_ notification: Notification){
         print("On User Did Logout: Update view")
+        removeObserverAfterLogout()
         updateView()
     }
     
