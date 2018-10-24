@@ -8,6 +8,7 @@
 import Foundation
 
 protocol TxHistoryViewInterface {
+    func didReceiveTokenInfo(_ tokenInfo: TokenInfoDTO)
     func showTxHistoryDisplayData(_ data: TxHistoryDisplayCollection, forPage: Int)
     func showNoContentMessage()
     func displaySpinner()

@@ -27,6 +27,7 @@ class TxHistoryViewController: MozoBasicViewController {
     var currentPage : Int = 1
     var loadingPage : Int = 1
     var currentFilterType : TransactionType? = nil // All
+    var tokenInfo : TokenInfoDTO?
     
     // MARK: - View Setup
     override func viewDidLoad() {
@@ -43,6 +44,7 @@ class TxHistoryViewController: MozoBasicViewController {
         tableView.tableFooterView = UIView()
         
         setLayerBorder()
+        eventHandler?.loadTokenInfo()
         loadHistoryWithPage(page: currentPage)
     }
     
@@ -171,13 +173,17 @@ extension TxHistoryViewController: UITableViewDataSource {
 extension TxHistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let selectedItem = collection?.displayItems[indexPath.row] {
-            eventHandler?.selectTxHistoryOnUI(selectedItem)
+        if let selectedItem = collection?.displayItems[indexPath.row], let tokenInfo = tokenInfo {
+            eventHandler?.selectTxHistoryOnUI(selectedItem, tokenInfo: tokenInfo)
         }
     }
 }
 
 extension TxHistoryViewController : TxHistoryViewInterface {
+    func didReceiveTokenInfo(_ tokenInfo: TokenInfoDTO) {
+        self.tokenInfo = tokenInfo
+    }
+    
     func showTxHistoryDisplayData(_ data: TxHistoryDisplayCollection, forPage: Int) {
         if forPage > currentPage {
             if data.displayItems.count > 1 {
