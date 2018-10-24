@@ -59,8 +59,12 @@ extension TransactionPresenter : TransactionInteractorOutput {
         transferUserInterface?.updateUserInterfaceWithAddress(address)
     }
     
-    func performTransferWithError(_ error: ConnectionError) {
-        confirmUserInterface?.displayTryAgain(error)
+    func performTransferWithError(_ error: ConnectionError, isTransferScreen: Bool) {
+        if isTransferScreen {
+            transferUserInterface?.displayTryAgain(error)
+        } else {
+            confirmUserInterface?.displayTryAgain(error)
+        }
     }
     
     func continueWithTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayName: String?) {

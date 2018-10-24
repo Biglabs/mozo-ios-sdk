@@ -24,7 +24,7 @@ extension TxHistoryInteractor : TxHistoryInteractorInput {
                 .done { (listTxHistory) in
                     self.output?.finishGetListTxHistory(listTxHistory, forPage: page)
                 }.catch { (error) in
-                    // TODO: Handle in case error load tx history
+                    self.output?.errorWhileLoadTxHistory(error as! ConnectionError)
                 }
             }
         }

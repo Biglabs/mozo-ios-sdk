@@ -55,7 +55,7 @@ class TxDetailViewController: MozoBasicViewController {
         lbDateTime.text = displayItem.dateTime
         
         let address = displayItem.action == TransactionType.Sent.value ? displayItem.addressTo : displayItem.addressFrom
-        let list = LiveDataManager.shared.addressBookList
+        let list = SafetyDataManager.shared.addressBookList
         if let addressBook = AddressBookDTO.addressBookFromAddress(address, array: list) {
             // TODO: Search from <Store Book>
             detailView.isHidden = false

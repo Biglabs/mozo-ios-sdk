@@ -61,8 +61,19 @@ extension CoreInteractor: CoreInteractorInput {
         if AccessTokenManager.getAccessToken() != nil {
             if SessionStoreManager.loadCurrentUser() != nil {
                 // Check wallet
-                if let wallet = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo, wallet.encryptSeedPhrase != nil {
-                    output?.finishedCheckAuthentication(keepGoing: false, module: module)
+                if let wallet = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo, wallet.encryptSeedPhrase != nil, let id = SessionStoreManager.loadCurrentUser()?.id {
+                    // Check local wallet in DB
+                    _ = userDataManager.getWalletCountOfUser(id).done({ (value) in
+                        if value > 0 {
+                            self.output?.finishedCheckAuthentication(keepGoing: false, module: module)
+                        } else {
+                            // Re-authenicate, manage wallet
+                            self.output?.continueWithWallet(module)
+                        }
+                    }).catch({ (err) in
+                        // TODO: Handle Database Error here
+                        print("Get wallet count of user [\(id)], error: \(err)")
+                    })
                 } else {
                     // Re-authenicate, manage wallet
                     output?.continueWithWallet(module)
@@ -84,13 +95,17 @@ extension CoreInteractor: CoreInteractorInput {
     func handleAferAuth(accessToken: String?) {
         AccessTokenManager.saveToken(accessToken)
         // TODO: Start all background services including web socket
-        downloadConvenienceDataAndStoreAtLocal()
         anonManager.linkCoinFromAnonymousToCurrentUser()
         _ = getUserProfile().done({ () in
+            self.handleAfterGetUserProfile()
             self.output?.finishedHandleAferAuth()
         }).catch({ (err) in
             //TODO: Handle case unable to load user profile
         })
+    }
+    
+    func handleAfterGetUserProfile() {
+        downloadConvenienceDataAndStoreAtLocal()
     }
     
     func notifyAuthSuccessForAllObservers() {
@@ -135,8 +150,8 @@ extension CoreInteractor: CoreInteractorService {
                     _ = apiManager.getTokenInfoFromAddress(address)
                         .done { (tokenInfo) in
                             let item = DetailInfoDisplayItem(tokenInfo: tokenInfo)
-                            if LiveDataManager.shared.detailDisplayData == nil || LiveDataManager.shared.detailDisplayData != item {
-                                LiveDataManager.shared.detailDisplayData = item
+                            if SafetyDataManager.shared.detailDisplayData == nil || SafetyDataManager.shared.detailDisplayData != item {
+                                SafetyDataManager.shared.detailDisplayData = item
                                 self.notifyDetailDisplayItemForAllObservers()
                             }
                             seal.fulfill(item)
@@ -162,7 +177,7 @@ extension CoreInteractor: CoreInteractorService {
     func downloadAddressBookAndStoreAtLocal() {
         print("😎 Load address book list.")
         _ = apiManager.getListAddressBook().done({ (list) in
-            LiveDataManager.shared.addressBookList = list
+            SafetyDataManager.shared.addressBookList = list
         }).catch({ (error) in
             //TODO: Handle case unable to load address book list
         })

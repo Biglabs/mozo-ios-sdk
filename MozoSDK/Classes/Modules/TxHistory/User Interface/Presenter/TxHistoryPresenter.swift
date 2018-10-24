@@ -42,4 +42,8 @@ extension TxHistoryPresenter: TxHistoryInteractorOutput {
             txhUserInterface?.showNoContentMessage()
         }
     }
+    
+    func errorWhileLoadTxHistory(_ error: ConnectionError) {
+        txhUserInterface?.displayTryAgain(error)
+    }
 }

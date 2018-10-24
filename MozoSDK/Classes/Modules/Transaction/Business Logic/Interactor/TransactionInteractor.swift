@@ -43,7 +43,7 @@ extension TransactionInteractor : TransactionInteractorInput {
         if !scanValue.isEthAddress() {
             output?.didReceiveError("Scanning value is not a valid address. \n\(scanValue)")
         } else {
-            let list = LiveDataManager.shared.addressBookList
+            let list = SafetyDataManager.shared.addressBookList
             if let addressBook = AddressBookDTO.addressBookFromAddress(scanValue, array: list) {
                 let displayItem = AddressBookDisplayItem(id: addressBook.id!, name: addressBook.name!, address: addressBook.soloAddress!)
                 output?.didReceiveAddressBookDisplayItem(displayItem)
@@ -71,7 +71,7 @@ extension TransactionInteractor : TransactionInteractorInput {
                 print("Send create transaction failed, show popup to retry.")
                 // Remember original transaction for retrying.
                 self.originalTransaction = transaction
-                self.output?.performTransferWithError(error as! ConnectionError)
+                self.output?.performTransferWithError(error as! ConnectionError, isTransferScreen: false)
             })
     }
     
@@ -148,7 +148,7 @@ extension TransactionInteractor : TransactionInteractorInput {
                 }).catch({ (err) in
                     print("Send signed transaction failed, show popup to retry.")
                     self.pinToRetry = pin
-                    self.output?.performTransferWithError(err as! ConnectionError)
+                    self.output?.performTransferWithError(err as! ConnectionError, isTransferScreen: false)
                 })
             }.catch({ (err) in
                 self.output?.didReceiveError(err.localizedDescription)
@@ -162,7 +162,9 @@ extension TransactionInteractor : TransactionInteractorInput {
                 _ = apiManager.getTokenInfoFromAddress(address)
                     .done { (tokenInfo) in
                         self.output?.didLoadTokenInfo(tokenInfo)
-                    }
+                    }.catch({ (err) in
+                        self.output?.performTransferWithError(err as! ConnectionError, isTransferScreen: true)
+                    })
             }
         }
     }

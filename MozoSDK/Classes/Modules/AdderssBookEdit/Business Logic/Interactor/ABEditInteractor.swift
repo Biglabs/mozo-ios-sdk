@@ -18,7 +18,7 @@ extension ABEditInteractor: ABEditInteractorInput {
         model.id = addressBook.id
         _ = apiManager?.updateAddressBook(model, isCreateNew: false).done({ (adrBook) in
             if let item = adrBook {
-                AddressBookDTO.updateAddressBookName(item, array: &LiveDataManager.shared.addressBookList)
+                AddressBookDTO.updateAddressBookName(item, array: &SafetyDataManager.shared.addressBookList)
             }
             self.output?.finishUpdate()
         }).catch({ (error) in
@@ -28,7 +28,7 @@ extension ABEditInteractor: ABEditInteractorInput {
     
     func deleteAddressBook(_ addressBook: AddressBookDisplayItem) {
         _ = apiManager?.deleteAddressBook(addressBook.id).done({ (result) in
-            AddressBookDTO.removeAddressBook(addressBook.id, array: &LiveDataManager.shared.addressBookList)
+            AddressBookDTO.removeAddressBook(addressBook.id, array: &SafetyDataManager.shared.addressBookList)
             self.output?.finishDelete()
         }).catch({ (error) in
             self.output?.didReceiveError(error as! ConnectionError, forDelete: true)

@@ -35,4 +35,8 @@ class UserDataManager : NSObject {
         }
         return true
     }
+    
+    func getWalletCountOfUser(_ userId: String) -> Promise<Int> {
+        return coreDataStore.countWalletByUserId(userId)
+    }
 }

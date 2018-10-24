@@ -13,4 +13,5 @@ protocol TxHistoryViewInterface {
     func displaySpinner()
     func removeSpinner()
     func displayError(_ error: String)
+    func displayTryAgain(_ error: ConnectionError)
 }

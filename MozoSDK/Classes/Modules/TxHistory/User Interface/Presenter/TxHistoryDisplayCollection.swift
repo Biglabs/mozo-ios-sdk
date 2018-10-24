@@ -52,7 +52,7 @@ class TxHistoryDisplayCollection {
         let address = action == TransactionType.Received.value ? addressFrom : addressTo
         var displayName = ""
         if !address.isEmpty {
-            let list = LiveDataManager.shared.addressBookList
+            let list = SafetyDataManager.shared.addressBookList
             if let ab = AddressBookDTO.addressBookFromAddress(address, array: list), let name = ab.name {
                 displayName = name
             } else {

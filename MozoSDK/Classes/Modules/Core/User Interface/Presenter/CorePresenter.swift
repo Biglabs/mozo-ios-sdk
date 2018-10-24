@@ -107,6 +107,8 @@ extension CorePresenter : CoreModuleInterface {
 extension CorePresenter : AuthModuleDelegate {
     func authModuleDidFinishAuthentication(accessToken: String?) {
         coreInteractor?.handleAferAuth(accessToken: accessToken)
+        // Notify for all observing objects
+        self.coreInteractor?.notifyAuthSuccessForAllObservers()
     }
     
     func authModuleDidCancelAuthentication() {
@@ -141,8 +143,7 @@ extension CorePresenter: WalletModuleDelegate {
                 self.authDelegate?.mozoAuthenticationDidFinish()
             })
         }
-        // Notify for all observing objects
-        self.coreInteractor?.notifyAuthSuccessForAllObservers()
+        coreInteractor?.downloadConvenienceDataAndStoreAtLocal()
         startSlientServices()
     }
 }
@@ -196,7 +197,7 @@ extension CorePresenter: TransactionModuleDelegate {
 extension CorePresenter: TxCompletionModuleDelegate {
     func requestAddToAddressBook(_ address: String) {
         // Verify address is existing in address book list or not
-        let list = LiveDataManager.shared.addressBookList
+        let list = SafetyDataManager.shared.addressBookList
         let contain = AddressBookDTO.arrayContainsItem(address, array: list)
         if contain {
             // TODO: Show message address is existing in address book list
@@ -253,7 +254,7 @@ extension CorePresenter : RDNInteractorOutput {
     }
     
     func addressBookDidChange(addressBookList: [AddressBookDTO]) {
-        LiveDataManager.shared.addressBookList = addressBookList
+        SafetyDataManager.shared.addressBookList = addressBookList
         coreInteractor?.notifyAddressBookChangesForAllObservers()
     }
 }

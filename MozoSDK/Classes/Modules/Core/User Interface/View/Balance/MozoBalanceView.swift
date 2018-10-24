@@ -75,7 +75,7 @@ import Foundation
         clearValueOnUI()
         if !isAnonymous {
             print("\(String(describing: self)) - Load display data.")
-            if let item = LiveDataManager.shared.detailDisplayData {
+            if let item = SafetyDataManager.shared.detailDisplayData {
                 print("\(String(describing: self)) - Receive display data: \(item)")
                 self.updateData(displayItem: item)
             } else {
@@ -104,16 +104,18 @@ import Foundation
     
     override func updateOnlyBalance(_ balance : Double) {
         print("Update balance on Mozo UI Components")
-        lbBalance.text = "\(balance)"
-        var result = "0.0"
-        if let rateInfo = SessionStoreManager.exchangeRateInfo {
-            let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
-            if let type = type, let rateValue = rateInfo.rate {
-                let value = (balance * rateValue).rounded(toPlaces: type.decimalRound)
-                result = "\(type.unit)\(value)"
+        if lbBalance != nil {
+            lbBalance.text = "\(balance.rounded(toPlaces: 2))"
+            var result = "0.0"
+            if let rateInfo = SessionStoreManager.exchangeRateInfo {
+                let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
+                if let type = type, let rateValue = rateInfo.rate {
+                    let value = (balance * rateValue).rounded(toPlaces: type.decimalRound)
+                    result = "\(type.unit)\(value)"
+                }
             }
+            lbBalanceExchange.text = result
         }
-        lbBalanceExchange.text = result
     }
     
     func clearValueOnUI() {

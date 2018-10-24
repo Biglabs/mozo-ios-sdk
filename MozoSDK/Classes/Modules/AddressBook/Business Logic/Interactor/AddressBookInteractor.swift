@@ -12,6 +12,6 @@ class AddressBookInteractor: NSObject {
 }
 extension AddressBookInteractor : AddressBookInteractorInput {
     func getListAddressBook() {
-        output?.finishGetListAddressBook(LiveDataManager.shared.addressBookList)
+        output?.finishGetListAddressBook(SafetyDataManager.shared.addressBookList)
     }
 }
