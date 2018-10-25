@@ -12,6 +12,11 @@ class MozoRefreshView: UIView {
     var isRefreshing : Bool = false {
         didSet {
             ai.isHidden = !isRefreshing
+            if isRefreshing {
+                ai.startAnimating()
+            } else {
+                ai.stopAnimating()
+            }
             if btnRefresh != nil {
                 btnRefresh.isHidden = isRefreshing
             }
@@ -36,8 +41,9 @@ class MozoRefreshView: UIView {
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         view.backgroundColor = UIColor(white: 1, alpha: 0.75)
         containerView = view
+        setupAI()
+        containerView.addSubview(ai)
         addSubview(containerView)
-//        setupAI()
     }
     
     func setupAI() {
@@ -46,7 +52,6 @@ class MozoRefreshView: UIView {
         ai.frame = self.frame
         ai.center = self.center
         // set a background color
-        ai.layer.backgroundColor = UIColor(white: 0.0, alpha: 0.35).cgColor
         ai.isHidden = true
     }
     
