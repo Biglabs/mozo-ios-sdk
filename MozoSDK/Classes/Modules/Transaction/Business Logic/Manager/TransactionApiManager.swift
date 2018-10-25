@@ -19,8 +19,8 @@ public extension ApiManager {
                     // JSON info
                     print(json)
                     let jobj = SwiftyJSON.JSON(json)
-                    let userProfile = TokenInfoDTO.init(json: jobj)
-                    seal.fulfill(userProfile!)
+                    let tokenInfo = TokenInfoDTO.init(json: jobj)
+                    seal.fulfill(tokenInfo!)
                 }
                 .catch { error in
                     //Handle error or give feedback to the user
