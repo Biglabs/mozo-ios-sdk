@@ -7,7 +7,6 @@
 
 import Foundation
 import PromiseKit
-import Reachability
 
 class CoreInteractor: NSObject {
     var output: CoreInteractorOutput?
@@ -15,7 +14,6 @@ class CoreInteractor: NSObject {
     let anonManager: AnonManager
     let apiManager: ApiManager
     let userDataManager: UserDataManager
-    var reachability : Reachability?
     
     init(anonManager: AnonManager, apiManager : ApiManager, userDataManager: UserDataManager) {
         self.anonManager = anonManager
@@ -24,8 +22,6 @@ class CoreInteractor: NSObject {
         super.init()
         self.apiManager.delegate = self
     }
-    
-    // MARK: Reachability
     
     // MARK: Dealloccation
     deinit {

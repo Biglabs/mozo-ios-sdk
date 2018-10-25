@@ -7,6 +7,7 @@
 
 import Foundation
 import UserNotifications
+import Reachability
 
 class CorePresenter : NSObject {
     var coreWireframe : CoreWireframe?
@@ -15,15 +16,46 @@ class CorePresenter : NSObject {
     var rdnInteractor : RDNInteractorInput?
     weak var authDelegate: AuthenticationDelegate?
     var callBackModule: Module?
-    
+    var reachability : Reachability?
+
     override init() {
         super.init()
         initSilentServices()
         addAppObservations()
         initUserNotificationCenter()
+        setupReachability()
+    }
+    
+    // MARK: Reachability
+    func setupReachability() {
+        let hostName = Configuration.BASE_URL
+        print("Set up Reachability with host name: \(hostName)")
+        reachability = Reachability(hostname: hostName)
+        reachability?.whenReachable = { reachability in
+            print("Reachability when reachable: \(reachability.description) - \(reachability.connection)")
+            self.startSlientServices()
+            self.coreInteractor?.downloadConvenienceDataAndStoreAtLocal()
+        }
+        reachability?.whenUnreachable = { reachability in
+            print("Reachability when unreachable: \(reachability.description) - \(reachability.connection)")
+            self.stopSilentServices()
+        }
+        print("Reachability --- start notifier")
+        do {
+            try reachability?.startNotifier()
+        } catch {
+            
+        }
+    }
+    
+    func stopNotifier() {
+        print("Reachability --- stop notifier")
+        reachability?.stopNotifier()
+        reachability = nil
     }
     
     deinit {
+        stopNotifier()
         NotificationCenter.default.removeObserver(self)
     }
 }
@@ -43,7 +75,7 @@ private extension CorePresenter {
     }
     
     private func addAppObservations() {
-        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
     }
     
@@ -66,8 +98,8 @@ private extension CorePresenter {
         stopSilentServices()
     }
     
-    @objc func didBecomeActive(_ notification: Notification) {
-        print("App did become active.")
+    @objc func willEnterForeground(_ notification: Notification) {
+        print("App will enter foreground.")
         // Check walletInfo from UserProfile to start silent services
         startSlientServices()
     }
