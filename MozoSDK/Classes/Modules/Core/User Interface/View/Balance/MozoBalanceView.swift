@@ -78,10 +78,12 @@ import Foundation
             if let item = SafetyDataManager.shared.detailDisplayData {
                 print("\(String(describing: self)) - Receive display data: \(item)")
                 self.updateData(displayItem: item)
+                hideRefreshState()
             } else {
                 print("\(String(describing: self)) - No data for displaying")
                 let itemNoData = DetailInfoDisplayItem(balance: 0.0, address: "")
                 self.updateData(displayItem: itemNoData)
+                displayRefreshState()
             }
         } else {
             switch displayType {
@@ -157,5 +159,35 @@ import Foundation
     @IBAction func touchedLogin(_ sender: Any) {
         print("Touch login button")
         MozoSDK.authenticate()
+    }
+    
+    // MARK: Refresh state
+    var refreshView : MozoRefreshView?
+    
+    func displayRefreshState() {
+        print("Display refresh state")
+        if refreshView == nil {
+            refreshView = MozoRefreshView(frame: containerView.frame)
+            if refreshView != nil {
+                addSubview(refreshView!)
+            }
+        } else {
+            refreshView?.isHidden = false
+            bringSubview(toFront: refreshView!)
+        }
+        refreshView?.isRefreshing = false
+    }
+    
+    func hideRefreshState() {
+        if refreshView != nil {
+            print("Hide refresh state.")
+            refreshView?.isHidden = true
+            refreshView?.isRefreshing = false
+        }
+    }
+    
+    override func onLoadTokenInfoFailed(_ notification: Notification) {
+        print("On Load Token Info Failed: Display refresh state")
+        displayRefreshState()
     }
 }

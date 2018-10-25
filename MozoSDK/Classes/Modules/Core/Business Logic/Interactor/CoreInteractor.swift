@@ -7,6 +7,7 @@
 
 import Foundation
 import PromiseKit
+import Reachability
 
 class CoreInteractor: NSObject {
     var output: CoreInteractorOutput?
@@ -14,14 +15,17 @@ class CoreInteractor: NSObject {
     let anonManager: AnonManager
     let apiManager: ApiManager
     let userDataManager: UserDataManager
+    var reachability : Reachability?
     
     init(anonManager: AnonManager, apiManager : ApiManager, userDataManager: UserDataManager) {
         self.anonManager = anonManager
         self.apiManager = apiManager
         self.userDataManager = userDataManager
         super.init()
-        NotificationCenter.default.addObserver(self, selector: #selector(onCheckAuthorizationDidSuccess(_:)), name: .didCheckAuthorizationWithSuccess, object: nil)
+        self.apiManager.delegate = self
     }
+    
+    // MARK: Reachability
     
     // MARK: Dealloccation
     deinit {
@@ -32,11 +36,6 @@ class CoreInteractor: NSObject {
     // MARK: Observation - REVOKE
     func removeAllMozoObserver() {
         NotificationCenter.default.removeObserver(self)
-    }
-    
-    @objc func onCheckAuthorizationDidSuccess(_ notification: Notification){
-        print("On Check Authorization Did Success: Download convenience data")
-        downloadConvenienceDataAndStoreAtLocal()
     }
     
     private func getUserProfile() -> Promise<Void> {
@@ -137,6 +136,10 @@ extension CoreInteractor: CoreInteractorInput {
     func notifyAddressBookChangesForAllObservers() {
         NotificationCenter.default.post(name: .didChangeAddressBook, object: nil)
     }
+    
+    func notifyLoadTokenInfoFailedForAllObservers() {
+        NotificationCenter.default.post(name: .didLoadTokenInfoFailed, object: nil)
+    }
 }
 
 extension CoreInteractor: CoreInteractorService {
@@ -150,10 +153,6 @@ extension CoreInteractor: CoreInteractorService {
                     _ = apiManager.getTokenInfoFromAddress(address)
                         .done { (tokenInfo) in
                             let item = DetailInfoDisplayItem(tokenInfo: tokenInfo)
-                            if SafetyDataManager.shared.detailDisplayData == nil || SafetyDataManager.shared.detailDisplayData != item {
-                                SafetyDataManager.shared.detailDisplayData = item
-                                self.notifyDetailDisplayItemForAllObservers()
-                            }
                             seal.fulfill(item)
                         }.catch({ (err) in
                             seal.reject(err)
@@ -191,5 +190,19 @@ extension CoreInteractor: CoreInteractorService {
         }).catch({ (error) in
             //TODO: Handle case unable to load exchange rate info
         })
+    }
+}
+extension CoreInteractor: ApiManagerDelegate {
+    func didLoadTokenInfoSuccess(_ tokenInfo: TokenInfoDTO){
+        print("Did Load Token Info Success")
+        let item = DetailInfoDisplayItem(tokenInfo: tokenInfo)
+        if SafetyDataManager.shared.detailDisplayData == nil || SafetyDataManager.shared.detailDisplayData != item {
+            SafetyDataManager.shared.detailDisplayData = item
+            notifyDetailDisplayItemForAllObservers()
+        }
+    }
+    func didLoadTokenInfoFailed(){
+        print("Did Load Token Info Failed")
+        notifyLoadTokenInfoFailedForAllObservers()
     }
 }

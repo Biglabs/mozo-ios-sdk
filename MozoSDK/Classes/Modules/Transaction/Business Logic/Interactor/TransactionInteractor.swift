@@ -161,6 +161,7 @@ extension TransactionInteractor : TransactionInteractorInput {
                 print("Address used to load balance: \(address)")
                 _ = apiManager.getTokenInfoFromAddress(address)
                     .done { (tokenInfo) in
+                        // TODO: Notify for all observing objects.
                         self.output?.didLoadTokenInfo(tokenInfo)
                     }.catch({ (err) in
                         self.output?.performTransferWithError(err as! ConnectionError, isTransferScreen: true)

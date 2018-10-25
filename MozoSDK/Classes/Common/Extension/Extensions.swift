@@ -243,8 +243,7 @@ extension Notification.Name {
     static let didLogoutFromMozo = Notification.Name("didLogoutFromMozo")
     static let didChangeBalance = Notification.Name("didChangeBalance")
     static let didReceiveDetailDisplayItem = Notification.Name("didReceiveDetailDisplayItem")
+    static let didLoadTokenInfoFailed = Notification.Name("didLoadTokenInfoFailed")
     static let didReceiveExchangeInfo = Notification.Name("didReceiveExchangeInfo")
     static let didChangeAddressBook = Notification.Name("didChangeAddressBook")
-    
-    static let didCheckAuthorizationWithSuccess = Notification.Name("didCheckAuthorizationWithSuccess")
 }

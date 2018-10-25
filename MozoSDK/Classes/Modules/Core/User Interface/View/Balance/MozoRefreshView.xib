@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MozoRefreshView" customModule="MozoSDK" customModuleProvider="target">
+            <connections>
+                <outlet property="btnRefresh" destination="XJS-Rs-1nc" id="8sR-lE-iQU"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="MozoRefreshView" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="216" height="122"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJS-Rs-1nc">
+                    <rect key="frame" x="65" y="52" width="86" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="86" id="Dr6-eS-9ed"/>
+                        <constraint firstAttribute="height" constant="18" id="mK5-Vk-rjI"/>
+                    </constraints>
+                    <inset key="titleEdgeInsets" minX="7.4000000000000004" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Refresh" image="ic_refresh">
+                        <color key="titleColor" red="0.30588235294117649" green="0.58039215686274503" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="touchedRefreshBtn:" destination="-1" eventType="touchUpInside" id="SSQ-K3-Sdo"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="XJS-Rs-1nc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="BlD-Bt-YCI"/>
+                <constraint firstItem="XJS-Rs-1nc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="apP-mn-y2w"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-115" y="-101"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_refresh" width="16" height="18"/>
+    </resources>
+</document>

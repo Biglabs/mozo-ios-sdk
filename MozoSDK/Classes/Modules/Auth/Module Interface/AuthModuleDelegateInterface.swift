@@ -12,4 +12,8 @@ protocol AuthModuleDelegate {
     func authModuleDidCancelAuthentication()
     func authModuleDidFinishLogout()
     func authModuleDidCancelLogout()
+    
+    func didCheckAuthorizationSuccess()
+    func didCheckAuthorizationFailed()
+    func didRemoveTokenAndLogout()
 }

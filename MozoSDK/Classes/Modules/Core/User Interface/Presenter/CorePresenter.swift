@@ -105,6 +105,21 @@ extension CorePresenter : CoreModuleInterface {
 }
 
 extension CorePresenter : AuthModuleDelegate {
+    func didCheckAuthorizationSuccess() {
+        print("On Check Authorization Did Success: Download convenience data")
+        coreInteractor?.downloadConvenienceDataAndStoreAtLocal()
+    }
+    
+    func didCheckAuthorizationFailed() {
+        print("On Check Authorization Did Failed - No connection")
+        
+    }
+    
+    func didRemoveTokenAndLogout() {
+        // Notify for all observing objects
+        coreInteractor?.notifyLogoutForAllObservers()
+    }
+    
     func authModuleDidFinishAuthentication(accessToken: String?) {
         coreInteractor?.handleAferAuth(accessToken: accessToken)
         // Notify for all observing objects

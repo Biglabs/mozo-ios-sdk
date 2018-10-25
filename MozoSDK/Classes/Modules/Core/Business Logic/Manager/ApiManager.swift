@@ -11,6 +11,7 @@ import PromiseKit
 
 public class ApiManager {
     private (set) var client: SessionManager
+    var delegate: ApiManagerDelegate?
     var apiKey: String?
     
     public init() {

@@ -12,6 +12,8 @@ import PromiseKit
 typealias PostRegistrationCallback = (_ configuration: OIDServiceConfiguration?, _ registrationResponse: OIDRegistrationResponse?) -> Void
 
 class AuthManager : NSObject {
+    var delegate : AuthManagerDelegate?
+    
     private (set) var currentAuthorizationFlow: OIDAuthorizationFlowSession?
     var apiManager : ApiManager? {
         didSet {
@@ -57,7 +59,7 @@ class AuthManager : NSObject {
         print("Check authorization, try request.")
         apiManager?.getListAddressBook().done({ (array) in
             print("Store downloaded address book")
-            self.notifyForAllObservers(.didCheckAuthorizationWithSuccess)
+            self.delegate?.didCheckAuthorizationSuccess()
             // TODO: Reload user info in case error with user info at the latest login
             // Remember: Authen flow and wallet flow might be affected by reloading here
             self.checkRefreshToken()
@@ -68,16 +70,11 @@ class AuthManager : NSObject {
                 print("Token expired, clear token and user info")
                 print("Expires at: \(expiresAt)")
                 self.clearAll()
-                self.notifyForAllObservers(.didLogoutFromMozo)
+                self.delegate?.didRemoveTokenAndLogout()
             } else {
                 self.checkRefreshToken()
             }
         })
-    }
-    
-    private func notifyForAllObservers(_ name: Notification.Name) {
-        // Notify for all observing objects
-        NotificationCenter.default.post(name: name, object: nil)
     }
     
     func setCurrentAuthorizationFlow(_ authorizationFlow: OIDAuthorizationFlowSession?) {

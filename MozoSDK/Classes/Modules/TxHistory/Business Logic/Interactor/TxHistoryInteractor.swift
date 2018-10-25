@@ -17,8 +17,8 @@ class TxHistoryInteractor: NSObject {
 }
 extension TxHistoryInteractor : TxHistoryInteractorInput {
     func getListTxHistory(page: Int = 0) {
-        if let userObj = SessionStoreManager.loadCurrentUser() {
-            if let address = userObj.profile?.walletInfo?.offchainAddress {
+        if let userObj = SessionStoreManager.loadCurrentUser(),
+            let address = userObj.profile?.walletInfo?.offchainAddress {
                 print("Address used to load tx history: \(address)")
                 apiManager.getListTxHistory(address: address, page: page)
                 .done { (listTxHistory) in
@@ -26,21 +26,20 @@ extension TxHistoryInteractor : TxHistoryInteractorInput {
                 }.catch { (error) in
                     self.output?.errorWhileLoadTxHistory(error as! ConnectionError)
                 }
-            }
         }
     }
     
     func getTokenInfoForHistory() {
-        if let userObj = SessionStoreManager.loadCurrentUser() {
-            if let address = userObj.profile?.walletInfo?.offchainAddress {
+        if let userObj = SessionStoreManager.loadCurrentUser(),
+            let address = userObj.profile?.walletInfo?.offchainAddress {
                 print("Address used to load token info: \(address)")
                 apiManager.getTokenInfoFromAddress(address)
                     .done { (tokenInfo) in
+                        // TODO: Notify for all observing objects.
                         self.output?.finishGetTokenInfo(tokenInfo)
                     }.catch { (error) in
                         self.output?.errorWhileLoadTokenInfo(error: error.localizedDescription)
                     }
-            }
         }
     }
 }

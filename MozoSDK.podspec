@@ -37,4 +37,5 @@ Pod::Spec.new do |s|
   s.dependency 'CoreStore', '5.1.1'
   s.dependency 'AppAuth', '~> 0.92.0'
   s.dependency 'Starscream', '3.0.2'
+  s.dependency 'ReachabilitySwift', '~> 4.3.0'
 end

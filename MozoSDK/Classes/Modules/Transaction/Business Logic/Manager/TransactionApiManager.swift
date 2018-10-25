@@ -21,12 +21,14 @@ public extension ApiManager {
                     let jobj = SwiftyJSON.JSON(json)
                     let tokenInfo = TokenInfoDTO.init(json: jobj)
                     seal.fulfill(tokenInfo!)
+                    self.delegate?.didLoadTokenInfoSuccess(tokenInfo!)
                 }
                 .catch { error in
                     //Handle error or give feedback to the user
                     let err = error as! ConnectionError
                     print(err.localizedDescription)
                     seal.reject(err)
+                    self.delegate?.didLoadTokenInfoFailed()
                 }
                 .finally {
                     //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false

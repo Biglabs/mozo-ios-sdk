@@ -35,7 +35,7 @@ public class DisplayUtils {
             coverView.alpha = 0.5
             parentView.addSubview(coverView)
             
-            let view = MozoQRView(frame: CGRect(x: 0, y: 0, width: 315, height: 401))
+            let view = MozoQRView(frame: CGRect(x: 0, y: 0, width: 254, height: 284))
             let img = generateQRCode(from: address)
             view.qrImage = img
             view.coverView = coverView

@@ -72,8 +72,10 @@ import UIKit
         print("Add original observers")
         NotificationCenter.default.removeObserver(self, name: .didReceiveDetailDisplayItem, object: nil)
         NotificationCenter.default.removeObserver(self, name: .didReceiveExchangeInfo, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .didLoadTokenInfoFailed, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onDetailDisplayDataDidReceive(_:)), name: .didReceiveDetailDisplayItem, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onExchangeRateInfoDidReceive(_:)), name: .didReceiveExchangeInfo, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onLoadTokenInfoFailed(_:)), name: .didLoadTokenInfoFailed, object: nil)
     }
     
     func addUniqueBalanceChangeObserver() {
@@ -87,6 +89,7 @@ import UIKit
         NotificationCenter.default.removeObserver(self, name: .didChangeBalance, object: nil)
         NotificationCenter.default.removeObserver(self, name: .didReceiveDetailDisplayItem, object: nil)
         NotificationCenter.default.removeObserver(self, name: .didReceiveExchangeInfo, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .didLoadTokenInfoFailed, object: nil)
     }
     
     // MARK: Observation actions
@@ -112,6 +115,11 @@ import UIKit
     @objc func onDetailDisplayDataDidReceive(_ notification: Notification){
         print("On Detail Display Data Did Receive: Update view")
         updateView()
+    }
+    
+    @objc func onLoadTokenInfoFailed(_ notification: Notification){
+        print("On Load Token Info Failed: Update view")
+        
     }
     
     @objc func onExchangeRateInfoDidReceive(_ notification: Notification){
