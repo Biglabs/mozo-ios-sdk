@@ -58,13 +58,15 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUg-X0-0RX">
                     <rect key="frame" x="221" y="9.5" width="25" height="25"/>
-                    <color key="backgroundColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="65t-yu-Kdu"/>
                         <constraint firstAttribute="width" constant="25" id="X9y-IE-fdJ"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
                     <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                    <state key="normal" image="ic_close">
+                    <state key="normal" title="+">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -86,7 +88,4 @@
             <point key="canvasLocation" x="-155" y="-160"/>
         </view>
     </objects>
-    <resources>
-        <image name="ic_close" width="52" height="52"/>
-    </resources>
 </document>
