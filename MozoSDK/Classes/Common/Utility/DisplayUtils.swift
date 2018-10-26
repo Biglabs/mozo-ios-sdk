@@ -40,7 +40,9 @@ public class DisplayUtils {
             view.qrImage = img
             view.coverView = coverView
             
-            view.roundCorners(borderColor: .white, borderWidth: 1)
+            view.clipsToBounds = false
+            view.dropShadow()
+            view.containerView.roundCorners(borderColor: .white, borderWidth: 1)
             
             view.center = parentView.center
             parentView.addSubview(view)
