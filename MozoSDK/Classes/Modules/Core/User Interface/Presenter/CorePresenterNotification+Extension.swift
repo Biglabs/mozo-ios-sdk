@@ -63,7 +63,7 @@ extension CorePresenter {
                 if let user = SessionStoreManager.loadCurrentUser(), let address = user.profile?.walletInfo?.offchainAddress {
                 let content = UNMutableNotificationContent()
                 
-                let requestIdentifier = "mozoNotification"
+                let requestIdentifier = "mozoNotification_\(Date())"
                 
                 content.badge = 1
                 content.title = "MOZO"
@@ -77,7 +77,12 @@ extension CorePresenter {
                 }
                 let amount = blNoti.amount?.convertOutputValue(decimal: blNoti.decimal ?? 0)
                 content.subtitle = "You \(action.lowercased()) \(amount ?? 0.0) Mozo"
-                content.body = "\(prefix) Mozo wallet address \(displayAddress ?? "")"
+                let list = SafetyDataManager.shared.addressBookList
+                if let addressBook = AddressBookDTO.addressBookFromAddress(displayAddress ?? "", array: list) {
+                    content.body = "\(prefix) @\(addressBook.name ?? "")"
+                } else {
+                    content.body = "\(prefix) Mozo wallet address \(displayAddress ?? "")"
+                }
                 content.categoryIdentifier = "mozoActionCategory"
                 content.sound = UNNotificationSound.default()
                 
