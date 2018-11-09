@@ -49,6 +49,35 @@ class CoreInteractor: NSObject {
                 })
         }
     }
+    
+    // MARK: Prepare data
+    func downloadConvenienceDataAndStoreAtLocal() {
+        print("Download convenience data and store at local.")
+        if AccessTokenManager.getAccessToken() != nil {
+            downloadAddressBookAndStoreAtLocal()
+            _ = loadBalanceInfo()
+            downloadExchangeRateInfoAndStoreAtLocal()
+        }
+    }
+    
+    func downloadAddressBookAndStoreAtLocal() {
+        print("😎 Load address book list.")
+        _ = apiManager.getListAddressBook().done({ (list) in
+            SafetyDataManager.shared.addressBookList = list
+        }).catch({ (error) in
+            //TODO: Handle case unable to load address book list
+        })
+    }
+    
+    func downloadExchangeRateInfoAndStoreAtLocal() {
+        print("😎 Load exchange rate data.")
+        _ = apiManager.getExchangeRateInfo(currencyType: .KRW).done({ (data) in
+            SessionStoreManager.exchangeRateInfo = data
+            self.notifyExchangeRateInfoForAllObservers()
+        }).catch({ (error) in
+            //TODO: Handle case unable to load exchange rate info
+        })
+    }
 }
 
 extension CoreInteractor: CoreInteractorInput {
@@ -139,6 +168,26 @@ extension CoreInteractor: CoreInteractorInput {
 }
 
 extension CoreInteractor: CoreInteractorService {
+    func registerBeacon(parameters: Any?) -> Promise<[String: Any]>{
+        return apiManager.registerBeacon(parameters: parameters, isCreateNew: true)
+    }
+    
+    func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]>{
+        return apiManager.registerBeacon(parameters: parameters, isCreateNew: false)
+    }
+    
+    func getListBeacons() -> Promise<[String : Any]> {
+        return apiManager.getListBeacons()
+    }
+    
+    func getRetailerInfo() -> Promise<[String : Any]> {
+        return apiManager.getRetailerInfo()
+    }
+    
+    func addSalePerson(parameters: Any?) -> Promise<[String : Any]> {
+        return apiManager.addSalePerson(parameters: parameters)
+    }
+    
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem> {
         print("😎 Load balance info.")
         return Promise { seal in
@@ -158,34 +207,6 @@ extension CoreInteractor: CoreInteractorService {
                 seal.reject(SystemError.noAuthen)
             }
         }
-    }
-    
-    func downloadConvenienceDataAndStoreAtLocal() {
-        print("Download convenience data and store at local.")
-        if AccessTokenManager.getAccessToken() != nil {
-            downloadAddressBookAndStoreAtLocal()
-            _ = loadBalanceInfo()
-            downloadExchangeRateInfoAndStoreAtLocal()
-        }
-    }
-    
-    func downloadAddressBookAndStoreAtLocal() {
-        print("😎 Load address book list.")
-        _ = apiManager.getListAddressBook().done({ (list) in
-            SafetyDataManager.shared.addressBookList = list
-        }).catch({ (error) in
-            //TODO: Handle case unable to load address book list
-        })
-    }
-    
-    func downloadExchangeRateInfoAndStoreAtLocal() {
-        print("😎 Load exchange rate data.")
-        _ = apiManager.getExchangeRateInfo(currencyType: .KRW).done({ (data) in
-            SessionStoreManager.exchangeRateInfo = data
-            self.notifyExchangeRateInfoForAllObservers()
-        }).catch({ (error) in
-            //TODO: Handle case unable to load exchange rate info
-        })
     }
 }
 extension CoreInteractor: ApiManagerDelegate {

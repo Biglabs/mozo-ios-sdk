@@ -26,4 +26,9 @@ protocol CoreInteractorOutput {
 
 protocol CoreInteractorService {
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem>
+    func registerBeacon(parameters: Any?) -> Promise<[String: Any]>
+    func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]>
+    func getListBeacons() -> Promise<[String : Any]>
+    func getRetailerInfo() -> Promise<[String : Any]>
+    func addSalePerson(parameters: Any?) -> Promise<[String: Any]>
 }

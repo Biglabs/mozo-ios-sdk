@@ -38,7 +38,41 @@ public class MozoSDK {
         moduleDependencies.displayTransactionHistory()
     }
     
+    /**
+     Display Mozo wallet interface.
+     - Author:
+     Hoang Nguyen
+     
+     - Version:
+     0.1
+     
+     Return a view controller.
+     */
+    public static func getMyWalletViewController() {
+        
+    }
+    
     public static func loadBalanceInfo() -> Promise<DetailInfoDisplayItem> {
         return (moduleDependencies.loadBalanceInfo())
+    }
+    
+    public static func registerBeacon(parameters: Any?) -> Promise<[String: Any]> {
+        return (moduleDependencies.registerBeacon(parameters:parameters))
+    }
+    
+    public static func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]> {
+        return (moduleDependencies.updateBeaconSettings(parameters:parameters))
+    }
+    
+    public static func getListBeacons() -> Promise<[String : Any]> {
+        return (moduleDependencies.getListBeacons())
+    }
+    
+    public static func getRetailerInfo() -> Promise<[String : Any]> {
+        return (moduleDependencies.getRetailerInfo())
+    }
+    
+    public static func addRetailerSalePerson(parameters: Any?) -> Promise<[String: Any]> {
+        return (moduleDependencies.addRetailerSalePerson(parameters:parameters))
     }
 }

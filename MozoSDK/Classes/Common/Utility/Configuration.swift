@@ -35,6 +35,7 @@ public class Configuration {
     //development
     public static let DOMAIN = "dev.gateway.mozocoin.io"
     public static let BASE_URL = "https://\(DOMAIN)/solomon"
+    public static let BASE_STORE_URL = "https://\(DOMAIN)/store"
     public static let WEB_SOCKET_URL = "ws://18.136.38.11:8089/websocket/user/"
     
     // MARK: Auth

@@ -72,6 +72,26 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.loadBalanceInfo())!
     }
     
+    func registerBeacon(parameters: Any?) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.registerBeacon(parameters:parameters))!
+    }
+    
+    func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.updateBeaconSettings(parameters:parameters))!
+    }
+    
+    func getListBeacons() -> Promise<[String : Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getListBeacons())!
+    }
+    
+    func getRetailerInfo() -> Promise<[String : Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerInfo())!
+    }
+    
+    func addRetailerSalePerson(parameters: Any?) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.addSalePerson(parameters:parameters))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

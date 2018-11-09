@@ -21,6 +21,7 @@ let ABDetailViewControllerIdentifier = "ABDetailViewController"
 let ABEditViewControllerIdentifier = "ABEditViewController"
 let TxHistoryViewControllerIdentifier = "TxHistoryViewController"
 let TxHistoryDetailViewControllerIdentifier = "TxHistoryDetailViewController"
+let MyWalletViewControllerIdentifier = "MyWalletViewController"
 
 class RootWireframe : NSObject {
     let mozoNavigationController = MozoNavigationController()

@@ -1,0 +1,8 @@
+
+Example/Podfile\.lock
+
+Example/Pods/
+
+MozoSDK/Classes/\.DS_Store
+
+MozoSDK/Classes/Modules/\.DS_Store
