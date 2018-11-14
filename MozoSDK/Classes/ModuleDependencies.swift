@@ -92,6 +92,18 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.addSalePerson(parameters:parameters))!
     }
     
+    func getAirdropStoreNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropStoreNearby(params: params))!
+    }
+    
+    func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.sendRangedBeacons(beacons: beacons, status: status))!
+    }
+    
+    func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getRangeColorSettings())!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

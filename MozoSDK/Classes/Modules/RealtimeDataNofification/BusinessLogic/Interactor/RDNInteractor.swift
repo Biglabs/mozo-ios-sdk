@@ -90,6 +90,9 @@ extension RDNInteractor {
                     let abNoti = AddressBookNotification(json: jobj),
                     let list = abNoti.data {
                     output?.addressBookDidChange(addressBookList: list)
+                } else if rdNoti.event == NotificationEventType.Airdropped.rawValue,
+                    let balanceNoti = BalanceNotification(json: jobj) {
+                    output?.didAirdropped(balanceNoti: balanceNoti)
                 } else {
                     print("Can not handle message: \(messageContent ?? "NULL")")
                 }

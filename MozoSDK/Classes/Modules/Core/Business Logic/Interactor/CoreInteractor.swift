@@ -8,12 +8,21 @@
 import Foundation
 import PromiseKit
 
+enum CheckTokenExpiredStatus : String {
+    case IDLE = "IDLE"
+    case CHECKING = "CHECKING"
+    case CHECKED = "CHECKED"
+}
+
 class CoreInteractor: NSObject {
     var output: CoreInteractorOutput?
     
     let anonManager: AnonManager
     let apiManager: ApiManager
     let userDataManager: UserDataManager
+    
+    var checkTokenExpiredTimer : Timer?
+    var checkTokenExpiredModule : Module?
     
     init(anonManager: AnonManager, apiManager : ApiManager, userDataManager: UserDataManager) {
         self.anonManager = anonManager
@@ -78,10 +87,8 @@ class CoreInteractor: NSObject {
             //TODO: Handle case unable to load exchange rate info
         })
     }
-}
-
-extension CoreInteractor: CoreInteractorInput {
-    func checkForAuthentication(module: Module) {
+    
+    func checkAuthAndWallet(module: Module) {
         if AccessTokenManager.getAccessToken() != nil {
             if SessionStoreManager.loadCurrentUser() != nil {
                 // Check wallet
@@ -114,6 +121,24 @@ extension CoreInteractor: CoreInteractorInput {
         } else {
             output?.finishedCheckAuthentication(keepGoing: true, module: module)
         }
+    }
+}
+
+extension CoreInteractor: CoreInteractorInput {
+    @objc func repeatCheckForAuthentication() {
+        if SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING {
+            print("Continue with checking auth and wallet.")
+            self.checkAuthAndWallet(module: checkTokenExpiredModule!)
+            // your code here
+            checkTokenExpiredTimer?.invalidate()
+        }
+    }
+    
+    func checkForAuthentication(module: Module) {
+        // FIX ISSUE: Request for authentication must wait for checking token expired DONE.
+        print("CoreInteractor - Check for authentication. Waiting for check token expired.")
+        checkTokenExpiredModule = module
+        checkTokenExpiredTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.repeatCheckForAuthentication), userInfo: nil, repeats: true)
     }
     
     func handleAferAuth(accessToken: String?) {
@@ -168,6 +193,10 @@ extension CoreInteractor: CoreInteractorInput {
 }
 
 extension CoreInteractor: CoreInteractorService {
+    func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]> {
+        return apiManager.getRangeColorSettings()
+    }
+    
     func registerBeacon(parameters: Any?) -> Promise<[String: Any]>{
         return apiManager.registerBeacon(parameters: parameters, isCreateNew: true)
     }
@@ -186,6 +215,14 @@ extension CoreInteractor: CoreInteractorService {
     
     func addSalePerson(parameters: Any?) -> Promise<[String : Any]> {
         return apiManager.addSalePerson(parameters: parameters)
+    }
+    
+    func getAirdropStoreNearby(params: [String : Any]) -> Promise<[StoreInfoDTO]> {
+        return apiManager.getAirdropStoresNearby(params: params)
+    }
+    
+    func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
+        return apiManager.sendRangedBeacons(beacons: beacons, status: status)
     }
     
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem> {

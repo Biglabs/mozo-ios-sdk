@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-@IBDesignable class MozoSigninView: MozoView {
+@IBDesignable public class MozoSigninView: MozoView {
     @IBOutlet weak var button: UIButton!
     
     override func identifier() -> String {

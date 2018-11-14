@@ -1,5 +1,5 @@
 //
-//  RegisterBeaconApiManager.swift
+//  BeaconApiManager.swift
 //  MozoSDK
 //
 //  Created by Hoang Nguyen on 11/5/18.

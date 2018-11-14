@@ -31,4 +31,7 @@ protocol CoreInteractorService {
     func getListBeacons() -> Promise<[String : Any]>
     func getRetailerInfo() -> Promise<[String : Any]>
     func addSalePerson(parameters: Any?) -> Promise<[String: Any]>
+    func getAirdropStoreNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]>
+    func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String: Any]>
+    func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]>
 }

@@ -139,15 +139,16 @@ extension CorePresenter : CoreModuleInterface {
 extension CorePresenter : AuthModuleDelegate {
     func didCheckAuthorizationSuccess() {
         print("On Check Authorization Did Success: Download convenience data")
+        SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
         coreInteractor?.downloadConvenienceDataAndStoreAtLocal()
     }
     
     func didCheckAuthorizationFailed() {
         print("On Check Authorization Did Failed - No connection")
-        
     }
     
     func didRemoveTokenAndLogout() {
+        SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
         // Notify for all observing objects
         coreInteractor?.notifyLogoutForAllObservers()
     }
@@ -303,5 +304,9 @@ extension CorePresenter : RDNInteractorOutput {
     func addressBookDidChange(addressBookList: [AddressBookDTO]) {
         SafetyDataManager.shared.addressBookList = addressBookList
         coreInteractor?.notifyAddressBookChangesForAllObservers()
+    }
+    
+    func didAirdropped(balanceNoti: BalanceNotification) {
+        // TODO: Perform AirDrop Notification
     }
 }

@@ -49,5 +49,26 @@ class SafetyDataManager {
     // MARK: Initialization
     private init() {
         _addressBookList = []
+        _checkTokenExpiredStatus = CheckTokenExpiredStatus.IDLE
+    }
+    
+    // MARK: CheckTokenExpiredStatus - Serial dispatch queue
+    private let checkTokenExpiredStatusQueue = DispatchQueue(label: "SafetyDataManager.checkTokenExpiredStatus.lockQueue")
+    
+    private var _checkTokenExpiredStatus : CheckTokenExpiredStatus
+    
+    public var checkTokenExpiredStatus : CheckTokenExpiredStatus {
+        get {
+            print("Get check Token Expired Status")
+            return checkTokenExpiredStatusQueue.sync {
+                return self._checkTokenExpiredStatus
+            }
+        }
+        set {
+            print("Set check Token Expired Status")
+            checkTokenExpiredStatusQueue.sync {
+                self._checkTokenExpiredStatus = newValue
+            }
+        }
     }
 }

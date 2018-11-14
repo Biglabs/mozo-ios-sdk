@@ -6,3 +6,11 @@ Example/Pods/
 MozoSDK/Classes/\.DS_Store
 
 MozoSDK/Classes/Modules/\.DS_Store
+
+*.xcuserstate
+
+Example/example\.xcodeproj/xcuserdata/hoangnguyen\.xcuserdatad/xcschemes/xcschememanagement\.plist
+
+Example/example\.xcworkspace/xcshareddata/
+
+\.DS_Store

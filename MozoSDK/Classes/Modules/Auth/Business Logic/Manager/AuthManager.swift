@@ -57,8 +57,9 @@ class AuthManager : NSObject {
     
     private func checkAuthorization(){
         print("Check authorization, try request.")
-        apiManager?.getListAddressBook().done({ (array) in
-            print("Store downloaded address book")
+        SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKING
+        apiManager?.checkTokenExpired().done({ (result) in
+            print("Did check token expired success.")
             self.delegate?.didCheckAuthorizationSuccess()
             // TODO: Reload user info in case error with user info at the latest login
             // Remember: Authen flow and wallet flow might be affected by reloading here

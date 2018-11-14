@@ -75,4 +75,16 @@ public class MozoSDK {
     public static func addRetailerSalePerson(parameters: Any?) -> Promise<[String: Any]> {
         return (moduleDependencies.addRetailerSalePerson(parameters:parameters))
     }
+    
+    public static func getAirdropStoreNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]> {
+        return (moduleDependencies.getAirdropStoreNearby(params: params))
+    }
+    
+    public static func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
+        return (moduleDependencies.sendRangedBeacons(beacons: beacons, status: status))
+    }
+    
+    public static func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]> {
+        return (moduleDependencies.getRangeColorSettings())
+    }
 }
