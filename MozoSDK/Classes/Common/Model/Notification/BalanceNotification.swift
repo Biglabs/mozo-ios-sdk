@@ -14,16 +14,13 @@ public class BalanceNotification : RdNotification {
     public var amount: NSNumber?
     public var symbol: String?
     public var decimal: Int?
-    
-    public var storeName: String?
-    
+        
     public required init? (json: SwiftyJSON.JSON) {
         self.from = json["from"].string
         self.to = json["to"].string
         self.amount = json["amount"].number
         self.symbol = json["symbol"].string
         self.decimal = json["decimal"].int
-        self.storeName = json["storeName"].string
         super.init(json: json)
     }
 }

@@ -50,11 +50,6 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         addUniqueAuthObserver()
     }
     
-    func setupImages() {
-        btnReload.imageView?.image = UIImage(named: "ic_curved_arrows", in: BundleManager.mozoBundle(), compatibleWith: nil)
-        imgMozo.image = UIImage(named: "ic_mozo_offchain", in: BundleManager.mozoBundle(), compatibleWith: nil)
-    }
-    
     func setupTableView() {
         historyTable.register(UINib(nibName: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER)
         historyTable.dataSource = self
@@ -88,6 +83,22 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
                 let qrImg = DisplayUtils.generateQRCode(from: displayItem.address)
                 imgQR.image = qrImg
             }
+        }
+    }
+    
+    override func updateOnlyBalance(_ balance : Double) {
+        print("Update balance on Mozo UI Components")
+        if lbBalance != nil {
+            lbBalance.text = "\(balance.rounded(toPlaces: 2))"
+            var result = "0.0"
+            if let rateInfo = SessionStoreManager.exchangeRateInfo {
+                let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
+                if let type = type, let rateValue = rateInfo.rate {
+                    let value = (balance * rateValue).rounded(toPlaces: type.decimalRound)
+                    result = "\(type.unit)\(value)"
+                }
+            }
+            lbBalanceExchange.text = result
         }
     }
     

@@ -91,10 +91,13 @@ extension RDNInteractor {
                     let list = abNoti.data {
                     output?.addressBookDidChange(addressBookList: list)
                 } else if rdNoti.event == NotificationEventType.Airdropped.rawValue,
-                    let balanceNoti = BalanceNotification(json: jobj) {
-                    output?.didAirdropped(balanceNoti: balanceNoti)
+                    let airdropNoti = AirdropNotification(json: jobj) {
+                    output?.didAirdropped(airdropNoti: airdropNoti)
+                } else if rdNoti.event == NotificationEventType.CustomerCame.rawValue,
+                    let ccNoti = CustomerComeNotification(json: jobj) {
+                    output?.didCustomerCame(ccNoti: ccNoti)
                 } else {
-                    print("Can not handle message: \(messageContent ?? "NULL")")
+                    print("Can not handle message: \(messageContent)")
                 }
             }
         }

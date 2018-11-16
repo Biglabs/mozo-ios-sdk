@@ -20,10 +20,10 @@ Pod::Spec.new do |s|
 
   s.source_files  = "MozoSDK/Classes/**/*.{h,swift}"
   
-  s.resources = ['MozoSDK/Classes/**/*.xcdatamodeld']
+  s.resources = ['MozoSDK/Classes/**/*.xcdatamodeld',
+                 'MozoSDK/Assets/*.xcassets']
   s.resource_bundles = {
       'MozoSDK' => ['MozoSDK/Classes/**/*.{storyboard,xib}',
-                    'MozoSDK/Assets/*.xcassets',
                     'MozoSDK/Localization/*.lproj']
   }
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }

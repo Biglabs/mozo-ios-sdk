@@ -296,6 +296,10 @@ extension CorePresenter: TxHistoryModuleDelegate {
 }
 
 extension CorePresenter : RDNInteractorOutput {
+    func didCustomerCame(ccNoti: CustomerComeNotification) {
+        performNotifications(noti: ccNoti)
+    }
+    
     func balanceDidChange(balanceNoti: BalanceNotification) {
         coreInteractor?.notifyBalanceChangesForAllObservers(balanceNoti: balanceNoti)
         performNotifications(noti: balanceNoti)
@@ -306,7 +310,7 @@ extension CorePresenter : RDNInteractorOutput {
         coreInteractor?.notifyAddressBookChangesForAllObservers()
     }
     
-    func didAirdropped(balanceNoti: BalanceNotification) {
-        // TODO: Perform AirDrop Notification
+    func didAirdropped(airdropNoti: BalanceNotification) {
+        performNotifications(noti: airdropNoti)
     }
 }
