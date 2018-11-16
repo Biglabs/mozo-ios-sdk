@@ -79,9 +79,11 @@ extension CorePresenter {
                 content.subtitle = "You \(action.lowercased()) \(amount ?? 0.0) Mozo"
                 let list = SafetyDataManager.shared.addressBookList
                 if let addressBook = AddressBookDTO.addressBookFromAddress(displayAddress ?? "", array: list) {
-                    content.body = "\(prefix) @\(addressBook.name ?? "")"
+                    content.body = "\(prefix) \(addressBook.name ?? "")"
+                } else if let storeName = blNoti.storeName {
+                    content.body = "\(prefix) \(storeName)"
                 } else {
-                    content.body = "\(prefix) Mozo wallet address \(displayAddress ?? "")"
+                    content.body = "\(prefix) \(displayAddress ?? "")"
                 }
                 content.categoryIdentifier = "mozoActionCategory"
                 content.sound = UNNotificationSound.default()

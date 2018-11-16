@@ -104,6 +104,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRangeColorSettings())!
     }
     
+    func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getTxHistoryDisplayCollection())!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

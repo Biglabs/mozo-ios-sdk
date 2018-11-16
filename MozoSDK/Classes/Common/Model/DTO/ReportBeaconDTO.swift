@@ -14,12 +14,11 @@ public enum ReportBeaconStatus : String {
 }
 
 public class ReportBeaconDTO {
-    
-    public var beaconInfoDTOList: [BeaconInfoDTO]?
+    public var beaconMacList: [String]?
     public var status: ReportBeaconStatus?
     
     public required init(beaconInfoDTOList: [BeaconInfoDTO], status: Bool){
-        self.beaconInfoDTOList = beaconInfoDTOList
+        self.beaconMacList = beaconInfoDTOList.map { $0.macAddress! }
         self.status = status ? .ON : .OFF
     }
     
@@ -27,12 +26,17 @@ public class ReportBeaconDTO {
     
     public func toJSON() -> Dictionary<String, Any> {
         var json = Dictionary<String, Any>()
-        if let beaconInfoDTOList = self.beaconInfoDTOList {
-            json["beaconInfoDTOList"] = beaconInfoDTOList.map({$0.toJSON()})
+        if let beaconMacList = self.beaconMacList {
+            json["beaconMacList"] = beaconMacList
         }
         if let status = self.status {
             json["status"] = status.rawValue
         }
         return json
+    }
+    
+    func rawString() -> String? {
+        let json = JSON(self.toJSON())
+        return json.rawString()
     }
 }

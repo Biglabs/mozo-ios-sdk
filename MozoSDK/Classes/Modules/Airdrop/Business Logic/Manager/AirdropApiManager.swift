@@ -10,6 +10,7 @@ import PromiseKit
 import SwiftyJSON
 
 let SHOPPER_AIRDROP_API_PATH = "/api/shopper/airdrop"
+let SHOPPER_AIRDROP_REPORT_API_PATH = "/api/shopper-airdrop/report-beacon"
 public extension ApiManager {
     public func getAirdropStoresNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]> {
         return Promise { seal in
@@ -35,9 +36,10 @@ public extension ApiManager {
     
     public func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_API_PATH
+            let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_REPORT_API_PATH
             let data = ReportBeaconDTO(beaconInfoDTOList: beacons, status: status)
             let param = data.toJSON()
+            print("Report ranged beacons params: \(data.rawString() ?? "NULL")")
             self.execute(.post, url: url, parameters: param)
                 .done { json -> Void in
                     // JSON info

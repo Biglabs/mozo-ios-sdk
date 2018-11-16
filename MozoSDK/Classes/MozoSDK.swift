@@ -38,20 +38,6 @@ public class MozoSDK {
         moduleDependencies.displayTransactionHistory()
     }
     
-    /**
-     Display Mozo wallet interface.
-     - Author:
-     Hoang Nguyen
-     
-     - Version:
-     0.1
-     
-     Return a view controller.
-     */
-    public static func getMyWalletViewController() {
-        
-    }
-    
     public static func loadBalanceInfo() -> Promise<DetailInfoDisplayItem> {
         return (moduleDependencies.loadBalanceInfo())
     }
@@ -86,5 +72,9 @@ public class MozoSDK {
     
     public static func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]> {
         return (moduleDependencies.getRangeColorSettings())
+    }
+    
+    public static func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection> {
+        return (moduleDependencies.getTxHistoryDisplayCollection())
     }
 }

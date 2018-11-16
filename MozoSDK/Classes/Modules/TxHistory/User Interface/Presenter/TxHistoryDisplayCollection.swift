@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TxHistoryDisplayCollection {
+public class TxHistoryDisplayCollection {
     var displayItems : [TxHistoryDisplayItem]
     
     init(items: [TxHistoryDTO]) {

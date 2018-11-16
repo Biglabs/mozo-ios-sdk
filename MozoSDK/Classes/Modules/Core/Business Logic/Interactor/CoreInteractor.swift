@@ -193,6 +193,24 @@ extension CoreInteractor: CoreInteractorInput {
 }
 
 extension CoreInteractor: CoreInteractorService {
+    func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection> {
+        return Promise { seal in
+            if let userObj = SessionStoreManager.loadCurrentUser(),
+                let address = userObj.profile?.walletInfo?.offchainAddress {
+                print("Address used to load tx history: \(address)")
+                apiManager.getListTxHistory(address: address, page: 0)
+                .done { (listTxHistory) in
+                    let collection = TxHistoryDisplayCollection(items: listTxHistory)
+                    seal.fulfill(collection)
+                }.catch { (error) in
+                    seal.reject(error)
+                }
+            } else {
+                
+            }
+        }
+    }
+    
     func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]> {
         return apiManager.getRangeColorSettings()
     }

@@ -14,3 +14,5 @@ Example/example\.xcodeproj/xcuserdata/hoangnguyen\.xcuserdatad/xcschemes/xcschem
 Example/example\.xcworkspace/xcshareddata/
 
 \.DS_Store
+
+*.xcworkspacedata
