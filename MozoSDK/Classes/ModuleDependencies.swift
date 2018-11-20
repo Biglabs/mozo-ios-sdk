@@ -327,4 +327,13 @@ class ModuleDependencies {
         let result = "0x011df24265841dCdbf2e60984BB94007b0C1d76A".isEthAddress()
         print(result)
     }
+    
+    func testAssests() {
+        let img = UIImage(named: "ic_send", in: BundleManager.mozoBundle(), compatibleWith: nil)
+        if img != nil {
+            print("MOZO - TEST ASSESTS - CAN LOAD IMAGE")
+        } else {
+            print("MOZO - TEST ASSESTS - CAN NOT LOAD IMAGE")
+        }
+    }
 }

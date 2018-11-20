@@ -16,3 +16,5 @@ Example/example\.xcworkspace/xcshareddata/
 \.DS_Store
 
 *.xcworkspacedata
+
+*.xcbkptlist

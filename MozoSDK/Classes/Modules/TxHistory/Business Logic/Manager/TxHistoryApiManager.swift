@@ -50,7 +50,7 @@ public extension ApiManager {
     /// - currencyType: The currency type
     public func getExchangeRateInfo(currencyType: CurrencyType = .USD) -> Promise<RateInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + "/api/exchange/rate?currency=\(currencyType.rawValue)&symbol=\(SymbolType.MOZO.value)"
+            let url = Configuration.BASE_URL + "/api/exchange/rate?currency=\(currencyType.rawValue)&symbol=\(SymbolType.MOZOX.value)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

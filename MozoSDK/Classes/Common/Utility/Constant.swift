@@ -149,11 +149,13 @@ public enum CurrencyType: String {
 public enum SymbolType {
     case SOLO
     case MOZO
+    case MOZOX
     
     public var value : String {
         switch self {
         case .SOLO: return "SOLO"
         case .MOZO: return "MOZO"
+        case .MOZOX: return "MOZOX"
         }
     }
 }

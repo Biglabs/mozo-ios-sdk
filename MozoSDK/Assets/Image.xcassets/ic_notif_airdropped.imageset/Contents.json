@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ic_notif_airdropped.png",
+      "filename" : "ic_notif_airdropped-1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "ic_notif_airdropped.png",
       "scale" : "2x"
     },
     {

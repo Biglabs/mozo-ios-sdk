@@ -20,15 +20,15 @@ Pod::Spec.new do |s|
 
   s.source_files  = "MozoSDK/Classes/**/*.{h,swift}"
   
-  s.resources = ['MozoSDK/Classes/**/*.xcdatamodeld',
-                 'MozoSDK/Assets/*.xcassets']
+  s.resources = ['MozoSDK/Classes/**/*.xcdatamodeld']
   s.resource_bundles = {
       'MozoSDK' => ['MozoSDK/Classes/**/*.{storyboard,xib}',
+                    'MozoSDK/Assets/*.xcassets',
                     'MozoSDK/Localization/*.lproj']
   }
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
-
-   s.dependency 'SwiftyJSON', '~> 3.1.4'
+  
+  s.dependency 'SwiftyJSON', '~> 3.1.4'
   # s.dependency 'EstimoteSDK'
   s.dependency 'web3swift', '~> 1.1.1'
   s.dependency 'secp256k1_ios', '~> 0.1'

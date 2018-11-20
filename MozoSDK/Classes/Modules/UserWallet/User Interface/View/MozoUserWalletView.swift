@@ -44,10 +44,20 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         }
         super.loadViewFromNib()
         loadDisplayData()
+        testAssests()
         setupTableView()
         setupButtonBorder()
         addOriginalObserver()
         addUniqueAuthObserver()
+    }
+    
+    func testAssests() {
+        let img = UIImage(named: "ic_send", in: BundleManager.mozoBundle(), compatibleWith: nil)
+        if img != nil {
+            print("MozoUserWalletView - TEST ASSESTS - CAN LOAD IMAGE")
+        } else {
+            print("MozoUserWalletView - TEST ASSESTS - CAN NOT LOAD IMAGE")
+        }
     }
     
     func setupTableView() {
@@ -84,6 +94,8 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
                 imgQR.image = qrImg
             }
         }
+        print("Save display item for later usage.")
+        self.displayItem = displayItem
     }
     
     override func updateOnlyBalance(_ balance : Double) {
@@ -134,8 +146,8 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
 
     @IBAction func touchedShowQR(_ sender: Any) {
-        print("Touch Show QR code button")
-        if let address = displayItem?.address {
+        print("Touch Show QR code button, address: \(self.displayItem?.address ?? "NULL")")
+        if let address = self.displayItem?.address {
             DisplayUtils.displayQRView(address: address)
         }
     }
