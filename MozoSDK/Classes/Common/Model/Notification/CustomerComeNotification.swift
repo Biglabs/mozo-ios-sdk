@@ -10,11 +10,11 @@ import SwiftyJSON
 
 public class CustomerComeNotification : RdNotification {
     public var phoneNo: String?
-    public var isComeIn: Bool?
+    public var comeIn: Bool?
     
     public required init? (json: SwiftyJSON.JSON) {
         self.phoneNo = json["phoneNo"].string
-        self.isComeIn = json["isComeIn"].bool
+        self.comeIn = json["comeIn"].bool
         super.init(json: json)
     }
 }

@@ -63,10 +63,21 @@ class CoreInteractor: NSObject {
     func downloadConvenienceDataAndStoreAtLocal() {
         print("Download convenience data and store at local.")
         if AccessTokenManager.getAccessToken() != nil {
-            downloadAddressBookAndStoreAtLocal()
-            _ = loadBalanceInfo()
-            downloadExchangeRateInfoAndStoreAtLocal()
+            // Check User info here
+            if SessionStoreManager.loadCurrentUser() == nil {
+                _ = getUserProfile().done {
+                    self.downloadData()
+                }
+            } else {
+                downloadData()
+            }
         }
+    }
+    
+    func downloadData() {
+        downloadAddressBookAndStoreAtLocal()
+        _ = loadBalanceInfo()
+        downloadExchangeRateInfoAndStoreAtLocal()
     }
     
     func downloadAddressBookAndStoreAtLocal() {

@@ -20,6 +20,7 @@
                 <outlet property="infoView" destination="e5h-qz-jHv" id="EiM-db-1xJ"/>
                 <outlet property="lbBalance" destination="ktB-1e-Qoz" id="E9h-x1-Ifx"/>
                 <outlet property="lbBalanceExchange" destination="U6a-xQ-ndH" id="Yl8-ed-igB"/>
+                <outlet property="paymentRequestView" destination="B1n-Lm-BiE" id="3mV-tb-kWN"/>
                 <outlet property="sendMozoView" destination="4a2-EJ-NDC" id="5er-0C-m5d"/>
             </connections>
         </placeholder>
@@ -136,6 +137,10 @@
                         <action selector="touchedViewAllHistory:" destination="-1" eventType="touchUpInside" id="4zw-Bq-M1R"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B1n-Lm-BiE" customClass="MozoPaymentRequestView" customModule="MozoSDK" customModuleProvider="target">
+                    <rect key="frame" x="15" y="216" width="169" height="45"/>
+                    <color key="backgroundColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -143,10 +148,14 @@
                 <constraint firstItem="vcA-It-ew4" firstAttribute="centerY" secondItem="HLO-Yp-iJH" secondAttribute="centerY" id="5e1-ZZ-OOk"/>
                 <constraint firstItem="7bB-cU-eCA" firstAttribute="trailing" secondItem="e5h-qz-jHv" secondAttribute="trailing" id="8dC-Ms-rFa"/>
                 <constraint firstItem="7bB-cU-eCA" firstAttribute="top" secondItem="HLO-Yp-iJH" secondAttribute="bottom" constant="26" id="8pv-zQ-o5V"/>
+                <constraint firstItem="B1n-Lm-BiE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="BDv-Nc-KdL"/>
                 <constraint firstItem="HLO-Yp-iJH" firstAttribute="leading" secondItem="e5h-qz-jHv" secondAttribute="leading" id="NS7-dK-H8A"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="7bB-cU-eCA" secondAttribute="bottom" id="PtR-aF-phJ"/>
+                <constraint firstItem="B1n-Lm-BiE" firstAttribute="width" secondItem="4a2-EJ-NDC" secondAttribute="width" id="RkN-p3-gAK"/>
+                <constraint firstItem="B1n-Lm-BiE" firstAttribute="height" secondItem="4a2-EJ-NDC" secondAttribute="height" id="U4k-rN-Zkp"/>
                 <constraint firstItem="e5h-qz-jHv" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="YzD-eU-cPD"/>
                 <constraint firstItem="4a2-EJ-NDC" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.45" id="ZDc-e2-dvx"/>
+                <constraint firstItem="B1n-Lm-BiE" firstAttribute="centerY" secondItem="4a2-EJ-NDC" secondAttribute="centerY" id="ZaB-vz-3P4"/>
                 <constraint firstItem="HLO-Yp-iJH" firstAttribute="top" secondItem="4a2-EJ-NDC" secondAttribute="bottom" constant="52" id="fnZ-ww-lxe"/>
                 <constraint firstItem="4a2-EJ-NDC" firstAttribute="top" secondItem="e5h-qz-jHv" secondAttribute="bottom" constant="20" id="iQB-uH-3lM"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e5h-qz-jHv" secondAttribute="trailing" constant="15" id="mxU-x3-F2j"/>

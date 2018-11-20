@@ -18,8 +18,8 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     @IBOutlet weak var imgQR: UIImageView!
     @IBOutlet weak var btnShowQR: UIButton!
     
-    @IBOutlet weak var paymentRequestView: UIView!
     @IBOutlet weak var sendMozoView: MozoSendView!
+    @IBOutlet weak var paymentRequestView: MozoPaymentRequestView!
     
     @IBOutlet weak var historyTable: UITableView!
     
@@ -71,8 +71,8 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
 //        infoView.dropShadow()
 //        infoView.layer.shadowColor = UIColor(hexString: "a8c5ec").cgColor
         infoView.roundCorners(cornerRadius: 0.01, borderColor: ThemeManager.shared.disable, borderWidth: 0.5)
-//        paymentRequestView.roundCorners(cornerRadius: 0.5, borderColor: .white, borderWidth: 1)
-        sendMozoView.roundCorners(cornerRadius: 0.1 , borderColor: .white, borderWidth: 1)
+        sendMozoView.roundCorners(cornerRadius: 0.15 , borderColor: .white, borderWidth: 1)
+        paymentRequestView.roundCorners(cornerRadius: 0.15 , borderColor: .white, borderWidth: 1)
     }
 
     func clearValueOnUI() {
