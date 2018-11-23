@@ -248,6 +248,17 @@ extension CoreInteractor: CoreInteractorService {
     
     func getAirdropStoreNearby(params: [String : Any]) -> Promise<[StoreInfoDTO]> {
         return apiManager.getAirdropStoresNearby(params: params)
+//        return Promise { seal in
+//            _ = apiManager.getAirdropStoresNearby(params: params).done({ (stores) in
+//                let resultStores : [StoreInfoDTO] = stores.map {
+//                    $0.customerAirdropAmount = ($0.customerAirdropAmount ?? 0) / 100
+//                    return $0
+//                }
+//                return seal.fulfill(resultStores)
+//            }).catch({ (error) in
+//                
+//            })
+//        }
     }
     
     func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {

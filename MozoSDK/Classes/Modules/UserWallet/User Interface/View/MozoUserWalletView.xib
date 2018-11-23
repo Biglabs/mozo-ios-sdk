@@ -40,6 +40,9 @@
                                 <constraint firstAttribute="height" constant="20" id="Yty-7J-uam"/>
                             </constraints>
                             <state key="normal" title="Button" image="ic_curved_arrows"/>
+                            <connections>
+                                <action selector="touchedBtnReload:" destination="-1" eventType="touchUpInside" id="fs1-D8-M2X"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-hq-Utj">
                             <rect key="frame" x="228" y="131" width="85" height="14"/>

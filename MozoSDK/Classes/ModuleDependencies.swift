@@ -336,4 +336,8 @@ class ModuleDependencies {
             print("MOZO - TEST ASSESTS - CAN NOT LOAD IMAGE")
         }
     }
+    
+    func testLocalization() {
+        print("MozoSDK Localization: \(Locale.current.languageCode ?? "NULL")")
+    }
 }

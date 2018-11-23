@@ -113,7 +113,7 @@ class AuthManager : NSObject {
                     print("Error creating URL for : \(Configuration.AUTH_REDIRECT_URL)")
                     return
                 }
-                
+                let param = [Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE]
                 // builds authentication request
                 let request = OIDAuthorizationRequest(configuration: config,
                                                       clientId: clientId,
@@ -121,7 +121,7 @@ class AuthManager : NSObject {
                                                       scopes: [OIDScopeOpenID, OIDScopeProfile],
                                                       redirectURL: redirectURI,
                                                       responseType: OIDResponseTypeCode,
-                                                      additionalParameters: nil)
+                                                      additionalParameters: param)
                 
                 seal.fulfill(request)
             }

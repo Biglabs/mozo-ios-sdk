@@ -152,6 +152,20 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         }
     }
     
+    var isLoading = false
+    
+    @IBAction func touchedBtnReload(_ sender: Any) {
+        if !isLoading {
+            isLoading = true
+            MozoSDK.loadBalanceInfo().done { (displayItem) in
+                self.updateData(displayItem: displayItem)
+                self.isLoading = false
+            }.catch { (error) in
+                self.isLoading = false
+            }
+        }
+    }
+    
     // MARK: Refresh state
     var refreshView : MozoRefreshView?
     
