@@ -9,8 +9,8 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 
-let SHOPPER_AIRDROP_API_PATH = "/api/shopper/airdrop"
-let SHOPPER_AIRDROP_REPORT_API_PATH = "/api/shopper-airdrop/report-beacon"
+let SHOPPER_AIRDROP_API_PATH = "/shopper/airdrop"
+let SHOPPER_AIRDROP_REPORT_API_PATH = "/shopper-airdrop/report-beacon"
 public extension ApiManager {
     public func getAirdropStoresNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]> {
         return Promise { seal in

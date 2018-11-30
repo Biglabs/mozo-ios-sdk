@@ -9,7 +9,7 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 
-let TX_API_PATH = "/api/solo/contract/solo-token/"
+let TX_API_PATH = "/solo/contract/solo-token/"
 public extension ApiManager {
     public func getTokenInfoFromAddress(_ address: String) -> Promise<TokenInfoDTO> {
         return Promise { seal in

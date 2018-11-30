@@ -12,3 +12,6 @@ protocol CoreModuleInterface {
     func requestForLogout()
     func requestForCloseAllMozoUIs()
 }
+protocol CoreModuleWaitingInterface {
+    func retryGetUserProfile()
+}

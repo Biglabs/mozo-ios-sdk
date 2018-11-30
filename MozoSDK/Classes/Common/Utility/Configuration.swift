@@ -36,8 +36,12 @@ public class Configuration {
     public static let WALLLET_ID = "WalletId"
     
     public static let DOMAIN = "\(SUB_DOMAIN)gateway.mozocoin.io"
-    public static let BASE_URL = "https://\(DOMAIN)/solomon"
-    public static let BASE_STORE_URL = "https://\(DOMAIN)/store"
+    public static let API_APP_PATH = "/api/app"
+    
+    public static let BASE_HOST = "https://\(DOMAIN)"
+    public static let BASE_URL = "\(BASE_HOST)/solomon\(API_APP_PATH)"
+    public static let BASE_STORE_URL = "\(BASE_HOST)/store\(API_APP_PATH)"
+    
     // WEB_SOCKET
     public static let WEB_SOCKET_BASE = SUB_DOMAIN_ENUM.socket
     public static let WEB_SOCKET_URL = "ws://\(WEB_SOCKET_BASE)/websocket/user/"

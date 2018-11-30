@@ -126,7 +126,8 @@ class CoreInteractor: NSObject {
                 _ = getUserProfile().done({ () in
                     self.output?.finishedCheckAuthentication(keepGoing: false, module: module)
                 }).catch({ (err) in
-                    //TODO: No user profile, can not continue with any module
+                    // TODO: No user profile, can not continue with any module
+//                    self.output?.failToLoadUserInfo(err as! ConnectionError)
                 })
             }
         } else {
@@ -140,7 +141,6 @@ extension CoreInteractor: CoreInteractorInput {
         if SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING {
             print("Continue with checking auth and wallet.")
             self.checkAuthAndWallet(module: checkTokenExpiredModule!)
-            // your code here
             checkTokenExpiredTimer?.invalidate()
         }
     }

@@ -17,6 +17,8 @@ class CorePresenter : NSObject {
     weak var authDelegate: AuthenticationDelegate?
     var callBackModule: Module?
     var reachability : Reachability?
+    
+    var waitingViewInterface: WaitingViewInterface?
 
     override init() {
         super.init()
@@ -28,7 +30,7 @@ class CorePresenter : NSObject {
     
     // MARK: Reachability
     func setupReachability() {
-        let hostName = Configuration.BASE_URL
+        let hostName = Configuration.BASE_HOST
         print("Set up Reachability with host name: \(hostName)")
         reachability = Reachability(hostname: hostName)
         reachability?.whenReachable = { reachability in
@@ -104,7 +106,6 @@ private extension CorePresenter {
         startSlientServices()
     }
 }
-
 extension CorePresenter : CoreModuleInterface {
     func requestForAuthentication(module: Module) {
         coreInteractor?.checkForAuthentication(module: module)
@@ -135,7 +136,11 @@ extension CorePresenter : CoreModuleInterface {
         }
     }
 }
-
+extension CorePresenter : CoreModuleWaitingInterface {
+    func retryGetUserProfile() {
+        
+    }
+}
 extension CorePresenter : AuthModuleDelegate {
     func didCheckAuthorizationSuccess() {
         print("On Check Authorization Did Success: Download convenience data")
@@ -217,6 +222,10 @@ extension CorePresenter : CoreInteractorOutput {
     
     func finishedHandleAferAuth() {
         coreWireframe?.prepareForWalletInterface()
+    }
+    
+    func failToLoadUserInfo(_ error: ConnectionError) {
+        waitingViewInterface?.displayTryAgain(error)
     }
 }
 

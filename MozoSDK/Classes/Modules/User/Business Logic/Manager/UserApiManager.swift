@@ -9,7 +9,7 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 
-let USER_API_PATH = "/api/user-profile"
+let USER_API_PATH = "/user-profile"
 public extension ApiManager {
     public func getUserProfile() -> Promise<UserProfileDTO> {
         return Promise { seal in

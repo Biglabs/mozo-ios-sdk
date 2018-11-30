@@ -28,6 +28,9 @@ public class StoreInfoDTO : ResponseObjectSerializable {
     public var customerAirdropAmount: Int64?
     public var totalAirdropAmount: Int64?
     
+    public var isFavorite: Bool?
+    public var storeImages: [String]?
+    
     public required init(id: Int64){
         self.id = id
     }
@@ -50,6 +53,8 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         self.zip = json["zip"].string
         self.customerAirdropAmount = json["customerAirdropAmount"].int64
         self.totalAirdropAmount = json["totalAirdropAmount"].int64
+        self.isFavorite = json["isFavorite"].bool
+        self.storeImages = json["storeImages"].array?.filter({ $0.string != nil }).map({ $0.string! })
     }
     
     public required init?(){}
@@ -81,6 +86,9 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         if let zip = self.zip {json["zip"] = zip}
         if let customerAirdropAmount = self.customerAirdropAmount {json["customerAirdropAmount"] = customerAirdropAmount}
         if let totalAirdropAmount = self.totalAirdropAmount {json["totalAirdropAmount"] = totalAirdropAmount}
+        if let isFavorite = self.isFavorite {
+            json["isFavorite"] = isFavorite
+        }
         return json
     }
     

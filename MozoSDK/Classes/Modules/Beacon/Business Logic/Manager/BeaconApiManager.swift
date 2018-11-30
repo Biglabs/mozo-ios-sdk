@@ -9,9 +9,9 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 
-let RETAILER_BEACON_API_PATH = "/api/retailer/beacon"
-let RETAILER_INFO_API_PATH = "/api/retailer/info"
-let RETAILER_SALE_PERSON_API_PATH = "/api/retailer/saleperson"
+let RETAILER_BEACON_API_PATH = "/retailer/beacon"
+let RETAILER_INFO_API_PATH = "/retailer/info"
+let RETAILER_SALE_PERSON_API_PATH = "/retailer/saleperson"
 public extension ApiManager {
     public func registerBeacon(parameters: Any?, isCreateNew: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
