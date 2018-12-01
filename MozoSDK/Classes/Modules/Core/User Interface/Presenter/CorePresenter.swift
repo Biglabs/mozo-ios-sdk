@@ -138,7 +138,9 @@ extension CorePresenter : CoreModuleInterface {
 }
 extension CorePresenter : CoreModuleWaitingInterface {
     func retryGetUserProfile() {
-        
+        if let module = callBackModule {
+            requestForAuthentication(module: module)
+        }
     }
 }
 extension CorePresenter : AuthModuleDelegate {
@@ -224,7 +226,10 @@ extension CorePresenter : CoreInteractorOutput {
         coreWireframe?.prepareForWalletInterface()
     }
     
-    func failToLoadUserInfo(_ error: ConnectionError) {
+    func failToLoadUserInfo(_ error: ConnectionError, for requestingModule: Module?) {
+        if let requestingModule = requestingModule {
+            callBackModule = requestingModule
+        }
         waitingViewInterface?.displayTryAgain(error)
     }
 }

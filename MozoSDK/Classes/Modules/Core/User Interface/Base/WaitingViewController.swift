@@ -7,14 +7,14 @@
 
 import Foundation
 class WaitingViewController: MozoBasicViewController {
-    //var eventHandler: 
+    var eventHandler: CoreModuleWaitingInterface?
 }
 extension WaitingViewController : PopupErrorDelegate {
     func didTouchTryAgainButton() {
         print("User try reload user profile on waiting screen again.")
         removeMozoPopupError()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
-            
+            self.eventHandler?.retryGetUserProfile()
         }
     }
 }

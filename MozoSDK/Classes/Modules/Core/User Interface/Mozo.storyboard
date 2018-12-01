@@ -143,20 +143,23 @@
             </objects>
             <point key="canvasLocation" x="97" y="-297"/>
         </scene>
-        <!--Mozo Basic View Controller-->
+        <!--Waiting View Controller-->
         <scene sceneID="xp8-GB-oqW">
             <objects>
-                <viewController storyboardIdentifier="WaitingViewController" id="uvr-2c-nxW" customClass="MozoBasicViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WaitingViewController" id="uvr-2c-nxW" customClass="WaitingViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oIC-KR-wp0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zsR-Bc-dyT">
-                                <rect key="frame" x="177" y="323" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zsR-Bc-dyT">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zsR-Bc-dyT" firstAttribute="centerX" secondItem="oIC-KR-wp0" secondAttribute="centerX" id="Rr9-WY-gEK"/>
+                            <constraint firstItem="zsR-Bc-dyT" firstAttribute="centerY" secondItem="oIC-KR-wp0" secondAttribute="centerY" id="Yw9-Bb-8Qe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="RHC-y2-U7q"/>
                     </view>
                 </viewController>

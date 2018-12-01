@@ -22,7 +22,7 @@ protocol CoreInteractorOutput {
     func finishedCheckAuthentication(keepGoing: Bool, module: Module)
     func continueWithWallet(_ callbackModule: Module)
     func finishedHandleAferAuth()
-    func failToLoadUserInfo(_ error: ConnectionError)
+    func failToLoadUserInfo(_ error: ConnectionError, for requestingModule: Module?)
 }
 
 protocol CoreInteractorService {

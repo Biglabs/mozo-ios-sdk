@@ -20,7 +20,7 @@ class CoreWireframe : MozoWireframe {
     
     // MARK: Request
     func requestForAuthentication() {
-        presentWaitingInterface()
+        presentWaitingInterface(corePresenter: corePresenter)
         corePresenter?.requestForAuthentication(module: Module.Wallet)
     }
     
@@ -29,12 +29,12 @@ class CoreWireframe : MozoWireframe {
     }
     
     func requestForTransfer() {
-        presentWaitingInterface()
+        presentWaitingInterface(corePresenter: corePresenter)
         corePresenter?.requestForAuthentication(module: Module.Transaction)
     }
     
     func requestForTxHistory() {
-        presentWaitingInterface()
+        presentWaitingInterface(corePresenter: corePresenter)
         corePresenter?.requestForAuthentication(module: Module.TxHistory)
     }
     

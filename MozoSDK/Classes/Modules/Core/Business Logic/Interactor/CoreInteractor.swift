@@ -54,7 +54,7 @@ class CoreInteractor: NSObject {
                         seal.resolve(nil)
                     }
                 }.catch({ (err) in
-                    //TODO: Handle HTTP load failed for user profile
+                    seal.reject(err)
                 })
         }
     }
@@ -67,7 +67,9 @@ class CoreInteractor: NSObject {
             if SessionStoreManager.loadCurrentUser() == nil {
                 _ = getUserProfile().done {
                     self.downloadData()
-                }
+                }.catch({ (error) in
+                    self.output?.failToLoadUserInfo(error as! ConnectionError, for: nil)
+                })
             } else {
                 downloadData()
             }
@@ -126,8 +128,8 @@ class CoreInteractor: NSObject {
                 _ = getUserProfile().done({ () in
                     self.output?.finishedCheckAuthentication(keepGoing: false, module: module)
                 }).catch({ (err) in
-                    // TODO: No user profile, can not continue with any module
-//                    self.output?.failToLoadUserInfo(err as! ConnectionError)
+                    // No user profile, can not continue with any module
+                    self.output?.failToLoadUserInfo(err as! ConnectionError, for: module)
                 })
             }
         } else {
@@ -154,13 +156,13 @@ extension CoreInteractor: CoreInteractorInput {
     
     func handleAferAuth(accessToken: String?) {
         AccessTokenManager.saveToken(accessToken)
-        // TODO: Start all background services including web socket
         anonManager.linkCoinFromAnonymousToCurrentUser()
         _ = getUserProfile().done({ () in
             self.handleAfterGetUserProfile()
             self.output?.finishedHandleAferAuth()
         }).catch({ (err) in
-            //TODO: Handle case unable to load user profile
+            // Handle case unable to load user profile
+            self.output?.failToLoadUserInfo(err as! ConnectionError, for: nil)
         })
     }
     
