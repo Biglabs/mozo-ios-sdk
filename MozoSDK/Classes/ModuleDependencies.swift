@@ -39,6 +39,7 @@ class ModuleDependencies {
     let txDetailWireframe = TxDetailWireframe()
     let abDetailWireframe = ABDetailWireframe()
     let abWireframe = AddressBookWireframe()
+    let adWireframe = AirdropWireframe()
     
     let apiManager = ApiManager()
     
@@ -106,6 +107,10 @@ class ModuleDependencies {
     
     func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getTxHistoryDisplayCollection())!
+    }
+    
+    func createAirdropEvent(event: AirdropEventDTO, delegate: AirdropEventDelegate) {
+        adWireframe.requestCreateAndSignAirdropEvent(event, delegate: delegate)
     }
     
     func configureDependencies() {
@@ -231,7 +236,8 @@ class ModuleDependencies {
         
         let txDataManager = TransactionDataManager()
         txDataManager.coreDataStore = coreDataStore
-        txInteractor.signManager = TransactionSignManager(dataManager: txDataManager)
+        let signManager = TransactionSignManager(dataManager: txDataManager)
+        txInteractor.signManager = signManager
         
         txPresenter.txInteractor = txInteractor
         txPresenter.txWireframe = txWireframe
@@ -239,6 +245,8 @@ class ModuleDependencies {
         
         txWireframe.txPresenter = txPresenter
         txWireframe.rootWireframe = rootWireframe
+        
+        airdropDependencies(signManager: signManager)
     }
     
     func authDependencies() {
@@ -273,6 +281,21 @@ class ModuleDependencies {
         
         walletWireframe.walletPresenter = walletPresenter
         walletWireframe.rootWireframe = rootWireframe
+    }
+    
+    func airdropDependencies(signManager: TransactionSignManager) {
+        let adPresenter = AirdropPresenter()
+        
+        let adInteractor = AirdropInteractor()
+        adInteractor.apiManager = apiManager
+        adInteractor.output = adPresenter
+        adInteractor.signManager = signManager
+        
+        adPresenter.interactor = adInteractor
+        adPresenter.wireframe = adWireframe
+        
+        adWireframe.adPresenter = adPresenter
+        adWireframe.walletWireframe = walletWireframe
     }
     
     func testSign() {

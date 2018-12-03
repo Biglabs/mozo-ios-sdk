@@ -11,6 +11,7 @@ import SwiftyJSON
 
 let SHOPPER_AIRDROP_API_PATH = "/shopper/airdrop"
 let SHOPPER_AIRDROP_REPORT_API_PATH = "/shopper-airdrop/report-beacon"
+let RETAILER_AIRDROP_API_PATH = "/air-drops"
 public extension ApiManager {
     public func getAirdropStoresNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]> {
         return Promise { seal in
@@ -74,6 +75,53 @@ public extension ApiManager {
                 .finally {
                 //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
+        }
+    }
+    
+    public func createAirdropEvent(event: AirdropEventDTO) -> Promise<IntermediaryTransactionDTO> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_API_PATH + "/prepare-event"
+            let param = event.toJSON()
+//            print("Create airdrop event params: \(data.rawString() ?? "NULL")")
+            self.execute(.post, url: url, parameters: param)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to Create airdrop event, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    let tx = IntermediaryTransactionDTO(json: jobj)
+                    seal.fulfill(tx!)
+                }
+                .catch { error in
+                    print("Error when request Create airdrop event: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func sendSignedAirdropEventTx(_ transaction: IntermediaryTransactionDTO) -> Promise<IntermediaryTransactionDTO> {
+        return Promise { seal in
+            let url = Configuration.BASE_URL + RETAILER_AIRDROP_API_PATH + "/sign"
+            let param = transaction.toJSON()
+            self.execute(.post, url: url, parameters: param)
+                .done { json -> Void in
+                    // JSON info
+                    print(json)
+                    let jobj = SwiftyJSON.JSON(json)
+                    let tx = IntermediaryTransactionDTO(json: jobj)
+                    seal.fulfill(tx!)
+                }
+                .catch { error in
+                    //Handle error or give feedback to the user
+                    let err = error as! ConnectionError
+                    print(err.localizedDescription)
+                    seal.reject(err)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
         }
     }
 }

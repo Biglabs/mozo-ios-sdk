@@ -10,6 +10,10 @@ class WaitingViewController: MozoBasicViewController {
     var eventHandler: CoreModuleWaitingInterface?
 }
 extension WaitingViewController : PopupErrorDelegate {
+    func didClosePopupWithoutRetry() {
+        
+    }
+    
     func didTouchTryAgainButton() {
         print("User try reload user profile on waiting screen again.")
         removeMozoPopupError()

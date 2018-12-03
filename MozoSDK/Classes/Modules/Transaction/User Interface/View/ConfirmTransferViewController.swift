@@ -72,6 +72,10 @@ class ConfirmTransferViewController: MozoBasicViewController {
     }
 }
 extension ConfirmTransferViewController : PopupErrorDelegate {
+    func didClosePopupWithoutRetry() {
+        
+    }
+    
     func didTouchTryAgainButton() {
         print("User try transfer transaction again.")
         removeMozoPopupError()

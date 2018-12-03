@@ -77,4 +77,8 @@ public class MozoSDK {
     public static func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection> {
         return (moduleDependencies.getTxHistoryDisplayCollection())
     }
+    
+    public static func createAirdropEvent(event: AirdropEventDTO, delegate: AirdropEventDelegate) {
+        return (moduleDependencies.createAirdropEvent(event: event, delegate: delegate))
+    }
 }

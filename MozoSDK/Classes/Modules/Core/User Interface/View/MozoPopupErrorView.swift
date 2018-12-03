@@ -6,14 +6,18 @@
 //
 
 import Foundation
-protocol PopupErrorDelegate {
+public protocol PopupErrorDelegate {
     func didTouchTryAgainButton()
+    func didClosePopupWithoutRetry()
 }
 
 class MozoPopupErrorView : MozoView {
     @IBOutlet weak var imgError: UIImageView!
     @IBOutlet weak var labelError: UILabel!
     @IBOutlet weak var btnTry: UIButton!
+    
+    var modalCloseHandler: (() -> Void)?
+    var tapTryHandler: (() -> Void)?
     
     var error : ConnectionError = ConnectionError.internalServerError {
         didSet {
@@ -38,7 +42,14 @@ class MozoPopupErrorView : MozoView {
         }
     }
     
+    @objc
+    public func dismissView(sender: UIButton?=nil) {
+        modalCloseHandler?()
+        delegate?.didClosePopupWithoutRetry()
+    }
+    
     @IBAction func touchedTryBtn(_ sender: Any) {
         delegate?.didTouchTryAgainButton()
+        tapTryHandler?()
     }
 }

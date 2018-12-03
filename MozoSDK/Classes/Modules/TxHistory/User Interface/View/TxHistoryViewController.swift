@@ -240,6 +240,10 @@ extension TxHistoryViewController: UIScrollViewDelegate {
     }
 }
 extension TxHistoryViewController : PopupErrorDelegate {
+    func didClosePopupWithoutRetry() {
+        
+    }
+    
     func didTouchTryAgainButton() {
         print("User try reload transaction history again.")
         removeMozoPopupError()

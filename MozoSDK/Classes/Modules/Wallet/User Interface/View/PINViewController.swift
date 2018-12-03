@@ -119,6 +119,10 @@ extension PINViewController : PINViewInterface {
     }
 }
 extension PINViewController : PopupErrorDelegate {
+    func didClosePopupWithoutRetry() {
+        
+    }
+    
     func didTouchTryAgainButton() {
         print("User try manage wallet again.")
         removeMozoPopupError()

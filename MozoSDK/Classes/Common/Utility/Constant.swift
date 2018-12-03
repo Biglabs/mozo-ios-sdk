@@ -55,6 +55,7 @@ public enum Module {
     case Wallet
     case Transaction
     case TxHistory
+    case Airdrop
     
     public var key : String {
         switch self {
@@ -62,6 +63,7 @@ public enum Module {
             case .Wallet: return "Wallet"
             case .Transaction: return "Transaction"
             case .TxHistory: return "TxHistory"
+            case .Airdrop: return "Airdrop"
         }
     }
     
@@ -71,6 +73,7 @@ public enum Module {
             case .Wallet: return "Wallet"
             case .Transaction: return "Transaction"
             case .TxHistory: return "TxHistory"
+            case .Airdrop: return "Airdrop"
         }
     }
 }

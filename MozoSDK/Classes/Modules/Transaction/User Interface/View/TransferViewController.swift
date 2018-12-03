@@ -220,6 +220,10 @@ class TransferViewController: MozoBasicViewController {
     }
 }
 extension TransferViewController : PopupErrorDelegate {
+    func didClosePopupWithoutRetry() {
+        
+    }
+    
     func didTouchTryAgainButton() {
         print("User try reload balance on transfer screen again.")
         removeMozoPopupError()

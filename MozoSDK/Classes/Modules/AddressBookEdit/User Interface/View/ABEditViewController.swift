@@ -127,6 +127,10 @@ extension ABEditViewController : ABEditViewInterface {
     }
 }
 extension ABEditViewController : PopupErrorDelegate {
+    func didClosePopupWithoutRetry() {
+        
+    }
+    
     func didTouchTryAgainButton() {
         removeMozoPopupError()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {

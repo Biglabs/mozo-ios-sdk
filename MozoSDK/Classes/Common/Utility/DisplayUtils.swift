@@ -49,6 +49,49 @@ public class DisplayUtils {
         }
     }
     
+    public static func displayTryAgainPopup(allowTapToDismiss: Bool = true,
+                                            error: ConnectionError? = nil,
+                                            delegate: PopupErrorDelegate) {
+        if let topViewController = getTopViewController(), let parentView = topViewController.view {
+            let mozoPopupErrorView = MozoPopupErrorView(frame: CGRect(x: 0, y: 0, width: 315, height: 315))
+            mozoPopupErrorView.delegate = delegate
+            if let err = error {
+                mozoPopupErrorView.error = err
+            }
+            
+            mozoPopupErrorView.clipsToBounds = false
+            mozoPopupErrorView.dropShadow()
+            mozoPopupErrorView.containerView.roundCorners(borderColor: .white, borderWidth: 1)
+            
+            mozoPopupErrorView.center = parentView.center
+            
+            // cover view
+            let displayWidth: CGFloat = parentView.frame.width
+            let displayHeight: CGFloat = parentView.frame.height
+            let coverView = UIView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight))
+            coverView.backgroundColor = .black
+            coverView.alpha = 0.5
+            parentView.addSubview(coverView)
+            
+            if allowTapToDismiss {
+                let coverViewTap = UITapGestureRecognizer(target: self, action: #selector(MozoPopupErrorView.dismissView(sender:)))
+                coverView.addGestureRecognizer(coverViewTap)
+                
+                mozoPopupErrorView.modalCloseHandler = {
+                    mozoPopupErrorView.removeFromSuperview()
+                    coverView.removeFromSuperview()
+                }
+            }
+            
+            mozoPopupErrorView.tapTryHandler = {
+                mozoPopupErrorView.removeFromSuperview()
+                coverView.removeFromSuperview()
+            }
+            
+            parentView.addSubview(mozoPopupErrorView)
+        }
+    }
+    
     public static func convertInt64ToStringWithFormat(_ dateInt64: Int64, format: String) -> String{
         let date = Date(timeIntervalSince1970:Double(dateInt64))
         return convertDateToStringWithFormat(date, format: format)
