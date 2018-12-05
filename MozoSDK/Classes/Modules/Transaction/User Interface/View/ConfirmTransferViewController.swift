@@ -44,7 +44,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
     func updateView() {
         lbAddress.text = transaction?.outputs?.first?.addresses![0]
         let amount = transaction?.outputs?.first?.value?.convertOutputValue(decimal: tokenInfo?.decimals ?? 0) ?? 0.0
-        lbAmountValue.text = "(\(amount))"
+        lbAmountValue.text = amount.roundAndAddCommas()
         
         if let displayName = displayName {
             lbAddress.isHidden = true
@@ -60,7 +60,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
             if let type = CurrencyType(rawValue: rateInfo.currency ?? "") {
                 let rate = rateInfo.rate ?? 0
                 let amountValue = (amount * rate).rounded(toPlaces: type.decimalRound)
-                exAmount = "\(type.unit)\(amountValue)"
+                exAmount = "\(type.unit)\(amountValue.roundAndAddCommas())"
             }
         }
         

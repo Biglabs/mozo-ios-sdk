@@ -38,6 +38,11 @@ class CoreWireframe : MozoWireframe {
         corePresenter?.requestForAuthentication(module: Module.TxHistory)
     }
     
+    func requestForPaymentRequest() {
+        presentWaitingInterface(corePresenter: corePresenter)
+        corePresenter?.requestForAuthentication(module: Module.Payment)
+    }
+    
     func requestForCloseAllMozoUIs(completion: (() -> Swift.Void)? = nil) {
         rootWireframe?.closeAllMozoUIs(completion: {
             completion!()
@@ -63,6 +68,10 @@ class CoreWireframe : MozoWireframe {
     
     func prepareForWalletInterface() {
         walletWireframe?.presentInitialWalletInterface()
+    }
+    
+    func prepareForPaymentRequestInterface() {
+        
     }
     
     func presentPINInterfaceForTransaction() {

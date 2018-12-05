@@ -27,6 +27,11 @@ public enum ServiceType: String {
     }
 }
 
+public enum AppType: String {
+    case Shopper = "shopper"
+    case Retailer = "retailer"
+}
+
 public protocol ResponseObjectSerializable: class {
     init?(json: JSON)
 }

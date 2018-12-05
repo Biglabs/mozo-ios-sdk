@@ -67,7 +67,7 @@ class TransferViewController: MozoBasicViewController {
         print("Transfer viewcontroller: On Balance Did Update: Update only balance")
         if let data = notification.userInfo as? [String : Any?] {
             let balance = data["balance"] as! Double
-            lbSpendable.text = "\(balance)"
+            lbSpendable.text = balance.roundAndAddCommas()
             tokenInfo?.balance = balance.convertTokenValue(decimal: tokenInfo?.decimals ?? 0)
         }
     }
@@ -243,7 +243,7 @@ extension TransferViewController : TransferViewInterface {
         let balance = tokenInfo.balance ?? 0
         let displayBalance = balance.convertOutputValue(decimal: tokenInfo.decimals ?? 0)
         
-        lbSpendable.text = "\(displayBalance)"
+        lbSpendable.text = "\(displayBalance.roundAndAddCommas())"
     }
     
     func updateUserInterfaceWithAddress(_ address: String) {

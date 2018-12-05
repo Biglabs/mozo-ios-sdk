@@ -78,18 +78,18 @@ public extension ApiManager {
         }
     }
     
-    public func createAirdropEvent(event: AirdropEventDTO) -> Promise<IntermediaryTransactionDTO> {
+    public func createAirdropEvent(event: AirdropEventDTO) -> Promise<[IntermediaryTransactionDTO]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_API_PATH + "/prepare-event"
             let param = event.toJSON()
-//            print("Create airdrop event params: \(data.rawString() ?? "NULL")")
+            print("Create airdrop event params: \(param)")
             self.execute(.post, url: url, parameters: param)
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to Create airdrop event, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)
-                    let tx = IntermediaryTransactionDTO(json: jobj)
-                    seal.fulfill(tx!)
+                    let jobj = SwiftyJSON.JSON(json)["array"]
+                    let txArray = IntermediaryTransactionDTO.arrayFromJson(jobj)
+                    seal.fulfill(txArray)
                 }
                 .catch { error in
                     print("Error when request Create airdrop event: " + error.localizedDescription)
@@ -101,23 +101,50 @@ public extension ApiManager {
         }
     }
     
-    public func sendSignedAirdropEventTx(_ transaction: IntermediaryTransactionDTO) -> Promise<IntermediaryTransactionDTO> {
+    public func sendSignedAirdropEventTx(_ transactionArray: [IntermediaryTransactionDTO]) -> Promise<String?> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + RETAILER_AIRDROP_API_PATH + "/sign"
-            let param = transaction.toJSON()
+            let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_API_PATH + "/sign"
+            let param = IntermediaryTransactionDTO.arrayToJsonString(transactionArray)
             self.execute(.post, url: url, parameters: param)
                 .done { json -> Void in
                     // JSON info
                     print(json)
                     let jobj = SwiftyJSON.JSON(json)
-                    let tx = IntermediaryTransactionDTO(json: jobj)
-                    seal.fulfill(tx!)
+                    let smartContractAddress = jobj["message"].stringValue
+                    seal.fulfill(smartContractAddress)
                 }
                 .catch { error in
                     //Handle error or give feedback to the user
                     let err = error as! ConnectionError
                     print(err.localizedDescription)
                     seal.reject(err)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    /// Call API to get status of a smart contract belong to airdrop event.
+    ///
+    /// - Parameters:
+    ///   - address: the smart contract address
+    public func getSmartContractStatus(address: String) -> Promise<TransactionStatusType> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_API_PATH + "/check/\(address)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get Smart Contract Status, json response: \(json)")
+                    if let jobj = SwiftyJSON.JSON(json)["status"].string {
+                        if let status = TransactionStatusType(rawValue: jobj) {
+                            seal.fulfill(status)
+                        }
+                    }
+                }
+                .catch { error in
+                    print("Error when request get tx status: " + error.localizedDescription)
+                    seal.reject(error)
                 }
                 .finally {
                     //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false

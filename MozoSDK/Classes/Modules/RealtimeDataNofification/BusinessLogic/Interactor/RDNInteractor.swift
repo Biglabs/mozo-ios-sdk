@@ -11,7 +11,11 @@ import SwiftyJSON
 
 class RDNInteractor: NSObject {
     var output: RDNInteractorOutput?
-    let manager = WebSocketManager()
+    let manager : WebSocketManager
+    
+    init(webSocketManager: WebSocketManager) {
+        self.manager = webSocketManager
+    }
 }
 extension RDNInteractor : RDNInteractorInput {
     func startService() {

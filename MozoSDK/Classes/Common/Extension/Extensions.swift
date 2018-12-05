@@ -219,12 +219,25 @@ public extension Double {
         let divisor = pow(10.0, Double(places))
         return (self * divisor).rounded() / divisor
     }
+    
+    func roundAndAddCommas(toPlaces places:Int = 2) -> String {
+        let roundedBalance = self.rounded(toPlaces: 2)
+        let number = NSNumber(value: roundedBalance)
+        return number.addCommas()
+    }
 }
 
 public extension NSNumber {
     func convertOutputValue(decimal: Int) -> Double{
         let retValue = Double(truncating: self) / Double(truncating: pow(10, decimal) as NSNumber)
         return retValue
+    }
+    
+    func addCommas() -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        let formattedNumber = numberFormatter.string(from: self)
+        return formattedNumber ?? "0"
     }
 }
 

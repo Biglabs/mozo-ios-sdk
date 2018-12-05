@@ -28,12 +28,20 @@ class AirdropPresenter: NSObject {
 extension AirdropPresenter: PinModuleDelegate {
     func verifiedPINSuccess(_ pin: String) {
         wireframe?.removeDelegateAfterSigning()
-        if let event = airdropEvent {
-            interactor?.sendCreateAirdropEvent(event)
-        }
+        interactor?.sendSignedAirdropEventTx(pin: pin)
     }
 }
 extension AirdropPresenter: AirdropInteractorOutput {
+    func didReceiveTxStatus(_ statusType: TransactionStatusType) {
+        if statusType == .SUCCESS {
+            airdropEventDelegate?.createAirdropEventSuccess()
+            airdropEventDelegate = nil
+        } else {
+            airdropEventDelegate?.createAirdropEventFailure(error: "Airdrop event is created with failure status.", isDisplayingTryAgain: true)
+            DisplayUtils.displayTryAgainPopup(delegate: self)
+        }
+    }
+    
     func didSendSignedAirdropEventFailure(error: ConnectionError) {
         airdropEventDelegate?.createAirdropEventFailure(error: error.errorDescription, isDisplayingTryAgain: true)
         DisplayUtils.displayTryAgainPopup(delegate: self)
@@ -49,10 +57,6 @@ extension AirdropPresenter: AirdropInteractorOutput {
     
     func failedToCreateAirdropEvent(error: String?) {
         airdropEventDelegate?.createAirdropEventFailure(error: error, isDisplayingTryAgain: false)
-    }
-    
-    func didCreateAndSignAirdropEventSuccess() {
-        airdropEventDelegate?.createAirdropEventSuccess()
     }
 }
 extension AirdropPresenter: PopupErrorDelegate {

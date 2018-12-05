@@ -90,8 +90,4 @@ extension CoreInteractor: CoreInteractorService {
             }
         }
     }
-    
-    func createAirdropEvent(event: AirdropEventDTO) -> Promise<IntermediaryTransactionDTO> {
-        return apiManager.createAirdropEvent(event: event)
-    }
 }

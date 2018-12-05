@@ -27,6 +27,12 @@ class ModuleDependencies {
         }
     }
     
+    public var appType: AppType = .Shopper {
+        didSet {
+            webSocketManager.appType = appType
+        }
+    }
+    
     let coreDataStore = CoreDataStore()
     let rootWireframe = RootWireframe()
     
@@ -42,6 +48,7 @@ class ModuleDependencies {
     let adWireframe = AirdropWireframe()
     
     let apiManager = ApiManager()
+    let webSocketManager = WebSocketManager()
     
     // MARK: Initialization
     init() {
@@ -141,7 +148,7 @@ class ModuleDependencies {
         let coreInteractor = CoreInteractor(anonManager: anonManager, apiManager: apiManager, userDataManager: userDataManager)
         coreInteractor.output = corePresenter
         
-        let rdnInteractor = RDNInteractor()
+        let rdnInteractor = RDNInteractor(webSocketManager: webSocketManager)
         rdnInteractor.output = corePresenter
         
         corePresenter.coreInteractor = coreInteractor

@@ -37,16 +37,18 @@ extension TransactionPresenter: TransactionModuleInterface {
         txInteractor?.validateTransferTransaction(tokenInfo: tokenInfo, toAdress: toAdress, amount: amount, displayName: displayName)
     }
     
-    func updateUserInterfaceWithAddress(_ address: String) {
-        txInteractor?.validateValueFromScanner(address)
-    }
-    
     func showScanQRCodeInterface() {
         txWireframe?.presentScannerQRCodeInterface()
     }
     
     func loadTokenInfo() {
         txInteractor?.loadTokenInfo()
+    }
+}
+
+extension TransactionPresenter: ScannerViewControllerDelegate {
+    func didReceiveValueFromScanner(_ value: String) {
+        txInteractor?.validateValueFromScanner(value)
     }
 }
 

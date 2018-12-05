@@ -11,7 +11,6 @@ import UIKit
 class TransactionWireframe: MozoWireframe {
     var txPresenter : TransactionPresenter?
     var transferViewController : TransferViewController?
-    var scannerViewController: ScannerViewController?
     var confirmViewController: ConfirmTransferViewController?
     
     func presentTransferInterface() {
@@ -41,8 +40,7 @@ class TransactionWireframe: MozoWireframe {
     
     func presentScannerQRCodeInterface() {
         let viewController = ScannerViewController()
-        viewController.eventHandler = txPresenter
-        scannerViewController = viewController
+        viewController.delegate = txPresenter
         rootWireframe?.presentViewController(viewController)
     }
 }

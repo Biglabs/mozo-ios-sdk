@@ -132,6 +132,8 @@ extension CorePresenter : CoreModuleInterface {
             coreWireframe?.prepareForTransferInterface()
         case .TxHistory:
             coreWireframe?.prepareForTxHistoryInterface()
+        case .Payment:
+            coreWireframe?.prepareForPaymentRequestInterface()
         default: coreWireframe?.prepareForWalletInterface()
         }
     }

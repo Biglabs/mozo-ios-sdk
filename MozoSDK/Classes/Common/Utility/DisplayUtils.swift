@@ -74,7 +74,7 @@ public class DisplayUtils {
             parentView.addSubview(coverView)
             
             if allowTapToDismiss {
-                let coverViewTap = UITapGestureRecognizer(target: self, action: #selector(MozoPopupErrorView.dismissView(sender:)))
+                let coverViewTap = UITapGestureRecognizer(target: mozoPopupErrorView, action: #selector(MozoPopupErrorView.dismissView))
                 coverView.addGestureRecognizer(coverViewTap)
                 
                 mozoPopupErrorView.modalCloseHandler = {

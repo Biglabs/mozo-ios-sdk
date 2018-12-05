@@ -8,9 +8,11 @@
 import Foundation
 import AVFoundation
 import UIKit
-
+protocol ScannerViewControllerDelegate {
+    func didReceiveValueFromScanner(_ value: String)
+}
 class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOutputObjectsDelegate {
-    var eventHandler : TransactionModuleInterface?
+    var delegate: ScannerViewControllerDelegate?
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
 
@@ -113,7 +115,7 @@ class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOutputObj
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-            eventHandler?.updateUserInterfaceWithAddress(stringValue)
+            delegate?.didReceiveValueFromScanner(stringValue)
             self.back()
         }
 

@@ -49,7 +49,11 @@ class RootWireframe : NSObject {
     }
     
     func dismissTopViewController() {
-        _ = mozoNavigationController.viewControllers.popLast()
+        if mozoNavigationController.viewControllers.count > 1 {
+            _ = mozoNavigationController.viewControllers.popLast()
+        } else {
+            closeAllMozoUIs(completion: {})
+        }
     }
     
     public func getTopViewController() -> UIViewController! {

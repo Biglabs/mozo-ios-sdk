@@ -43,7 +43,7 @@ class MozoPopupErrorView : MozoView {
     }
     
     @objc
-    public func dismissView(sender: UIButton?=nil) {
+    public func dismissView() {
         modalCloseHandler?()
         delegate?.didClosePopupWithoutRetry()
     }

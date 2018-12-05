@@ -10,6 +10,7 @@ import Starscream
 
 public class WebSocketManager {
     var socket: WebSocket
+    var appType: AppType = .Shopper
     
     public init() {
         let request = URLRequest(url: URL(string: Configuration.WEB_SOCKET_URL)!)
@@ -18,7 +19,7 @@ public class WebSocketManager {
 
     public func requestWithHeader() -> URLRequest{
         let uuid = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
-        var url = Configuration.WEB_SOCKET_URL + uuid
+        var url = Configuration.WEB_SOCKET_URL + uuid + "/\(appType.rawValue)"
         let headers = ["X-Atmosphere-tracking-id" : "0",
                        "X-Atmosphere-Framework" : "2.3.3-javascript",
                        "X-Atmosphere-Transport" : "websocket",

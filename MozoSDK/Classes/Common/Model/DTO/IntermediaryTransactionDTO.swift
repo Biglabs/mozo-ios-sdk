@@ -64,4 +64,26 @@ public class IntermediaryTransactionDTO: ResponseObjectSerializable {
         }
         return json
     }
+    
+    public func rawString() -> String? {
+        let json = JSON(self.toJSON())
+        return json.rawString()
+    }
+    
+    public static func arrayFromJson(_ json: SwiftyJSON.JSON) -> [IntermediaryTransactionDTO] {
+        let array = json.array?.map({ IntermediaryTransactionDTO(json: $0)! })
+        return array ?? []
+    }
+    
+    public static func arrayToJsonString(_ array: [IntermediaryTransactionDTO]) -> String? {
+        var result = "["
+        for (index, item) in array.enumerated() {
+            result += "\(item.rawString() ?? "")"
+            if array.count > 1 && index < array.count - 1 {
+                result += ","
+            }
+        }
+        result += "\n]"
+        return result
+    }
 }

@@ -101,13 +101,14 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     override func updateOnlyBalance(_ balance : Double) {
         print("Update balance on Mozo UI Components")
         if lbBalance != nil {
-            lbBalance.text = "\(balance.rounded(toPlaces: 2))"
+            let balanceText = balance.roundAndAddCommas()
+            lbBalance.text = balanceText
             var result = "0.0"
             if let rateInfo = SessionStoreManager.exchangeRateInfo {
                 let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
                 if let type = type, let rateValue = rateInfo.rate {
-                    let value = (balance * rateValue).rounded(toPlaces: type.decimalRound)
-                    result = "\(type.unit)\(value)"
+                    let valueText = (balance * rateValue).roundAndAddCommas(toPlaces: type.decimalRound)
+                    result = "\(type.unit)\(valueText)"
                 }
             }
             lbBalanceExchange.text = result

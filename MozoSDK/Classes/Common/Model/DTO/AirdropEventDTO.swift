@@ -27,10 +27,11 @@ public class AirdropEventDTO {
     public var totalNumMozoOffchain: Int64?
     
     public init?(name: String, address: String, receivedShopper: Int,
-                          mozoAirdropPerCustomerVisit: Int, airdropFreq: Int,
-                          hourOfDayFrom: Int, hourOfDayTo: Int,
-                          periodFromDate: Int, periodToDate: Int,
-                          totalNumMozoOffchain: Int64){
+                  mozoAirdropPerCustomerVisit: Int, airdropFreq: Int,
+                  hourOfDayFrom: Int, hourOfDayTo: Int,
+                  periodFromDate: Int, periodToDate: Int,
+                  totalNumMozoOffchain: Int64, active: Bool, appliedDateOfWeek: [Int]){
+        self.active = active
         self.name = name
         self.address = address
         self.receivedShopper = receivedShopper
@@ -41,10 +42,14 @@ public class AirdropEventDTO {
         self.periodFromDate = periodFromDate
         self.periodToDate = periodToDate
         self.totalNumMozoOffchain = totalNumMozoOffchain
+        self.appliedDateOfWeek = appliedDateOfWeek
     }
 
     public func toJSON() -> Dictionary<String, Any> {
         var json = Dictionary<String, Any>()
+        if let active = self.active {
+            json["active"] = active
+        }
         if let name = self.name {
             json["name"] = name
         }
@@ -74,6 +79,9 @@ public class AirdropEventDTO {
         }
         if let totalNumMozoOffchain = self.totalNumMozoOffchain {
             json["totalNumMozoOffchain"] = totalNumMozoOffchain
+        }
+        if let appliedDateOfWeek = self.appliedDateOfWeek {
+            json["appliedDateOfWeek"] = appliedDateOfWeek
         }
         return json
     }

@@ -9,6 +9,7 @@ import Foundation
 protocol AirdropInteractorInput {
     func sendCreateAirdropEvent(_ event: AirdropEventDTO)
     func clearRetryPin()
+    func sendSignedAirdropEventTx(pin: String)
 }
 protocol AirdropInteractorOutput {
     func failedToCreateAirdropEvent(error: String?)
@@ -17,5 +18,5 @@ protocol AirdropInteractorOutput {
     func didSendSignedAirdropEventFailure(error: ConnectionError)
     func requestPinInterface()
     
-    func didCreateAndSignAirdropEventSuccess()
+    func didReceiveTxStatus(_ statusType: TransactionStatusType)
 }
