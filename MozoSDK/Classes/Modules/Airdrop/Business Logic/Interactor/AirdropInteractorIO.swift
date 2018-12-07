@@ -10,8 +10,11 @@ protocol AirdropInteractorInput {
     func sendCreateAirdropEvent(_ event: AirdropEventDTO)
     func clearRetryPin()
     func sendSignedAirdropEventTx(pin: String)
+    func calculatePerVisitAndTotal(_ event: AirdropEventDTO)
 }
 protocol AirdropInteractorOutput {
+    func didCalculatePerVisitAndTotal(event: AirdropEventDTO, tokenInfo: TokenInfoDTO)
+    func didFailedToLoadTokenInfo()
     func failedToCreateAirdropEvent(error: String?)
     func failedToSignAirdropEvent(error: String?)
     

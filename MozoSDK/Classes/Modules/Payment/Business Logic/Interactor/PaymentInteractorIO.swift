@@ -9,7 +9,8 @@ import Foundation
 protocol PaymentInteractorInput {
     func loadTokenInfo()
     func getListPaymentRequest(page: Int)
-    func validateValueFromScanner(_ scanValue: String)
+    func validateValueFromScanner(_ scanValue: String, tokenInfo: TokenInfoDTO)
+    func prepareTransactionFromRequest(_ request: PaymentRequestDisplayItem, tokenInfo: TokenInfoDTO)
 }
 protocol PaymentInteractorOutput {
     func didLoadTokenInfo(_ tokenInfo: TokenInfoDTO)
@@ -17,5 +18,5 @@ protocol PaymentInteractorOutput {
     func finishGetListPaymentRequest(_ list: [PaymentRequestDTO], forPage: Int)
     func errorWhileLoadPaymentRequest(_ error: ConnectionError)
     
-    func didValidateValueFromScanner()
+    func didReceiveTransaction(transaction: TransactionDTO, displayName: String?, isFromScannedValue: Bool)
 }

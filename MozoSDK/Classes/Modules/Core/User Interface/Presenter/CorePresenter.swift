@@ -19,6 +19,8 @@ class CorePresenter : NSObject {
     var reachability : Reachability?
     
     var waitingViewInterface: WaitingViewInterface?
+    
+    var requestingABModule: Module?
 
     override init() {
         super.init()
@@ -254,7 +256,8 @@ extension CorePresenter: TransactionModuleDelegate {
     }
     
     func requestAddressBookInterfaceForTransaction() {
-        coreWireframe?.presentAddressBookInterfaceForTransaction()
+        requestingABModule = Module.Transaction
+        coreWireframe?.presentAddressBookInterfaceForSelecting()
     }
 }
 
@@ -284,7 +287,16 @@ extension CorePresenter: TxDetailModuleDelegate {
 extension CorePresenter: AddressBookModuleDelegate {
     func addressBookModuleDidChooseItemOnUI(addressBook: AddressBookDisplayItem, isDisplayForSelect: Bool) {
         if isDisplayForSelect {
-            coreWireframe?.updateAddressBookInterfaceForTransaction(displayItem: addressBook)
+            if let module = requestingABModule {
+                switch module {
+                case .Transaction:
+                    coreWireframe?.updateAddressBookInterfaceForTransaction(displayItem: addressBook)
+                case .Payment:
+                    coreWireframe?.updateAddressBookInterfaceForPaymentRequest(displayItem: addressBook)
+                default: break
+                }
+                requestingABModule = nil
+            }
             coreWireframe?.dismissAddressBookInterface()
         } else {
             
@@ -328,5 +340,12 @@ extension CorePresenter : RDNInteractorOutput {
     
     func didAirdropped(airdropNoti: BalanceNotification) {
         performNotifications(noti: airdropNoti)
+    }
+}
+
+extension CorePresenter: PaymentQRModuleDelegate {
+    func requestAddressBookInterfaceForPaymentRequest() {
+        requestingABModule = .Payment
+        coreWireframe?.presentAddressBookInterfaceForSelecting()
     }
 }

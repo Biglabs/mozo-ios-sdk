@@ -39,6 +39,10 @@ public class MozoSDK {
         moduleDependencies.displayTransactionHistory()
     }
     
+    public static func displayPaymentRequest() {
+        moduleDependencies.displayPaymentRequest()
+    }
+    
     public static func loadBalanceInfo() -> Promise<DetailInfoDisplayItem> {
         return (moduleDependencies.loadBalanceInfo())
     }

@@ -42,6 +42,7 @@ class PaymentViewController: MozoBasicViewController {
         setupTableView()
         setupTarget()
         setupBorder()
+        loadRequestWithPage(page: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,12 +54,15 @@ class PaymentViewController: MozoBasicViewController {
         segmentControl.addTarget(self, action: #selector(self.segmmentControlChanged), for: .valueChanged)
         txtAmount.addTarget(self, action: #selector(textFieldAmountDidChange), for: UIControlEvents.editingChanged)
         txtAmount.delegate = self
+        txtAmount.doneAccessory = true
     }
     
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: PAYMENT_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: PAYMENT_TABLE_VIEW_CELL_IDENTIFIER)
         // Add Refresh Control to Table View
         if #available(iOS 10.0, *) {
             self.tableView?.refreshControl = refreshControl
@@ -82,7 +86,6 @@ class PaymentViewController: MozoBasicViewController {
     
     func setupBorder() {
         btnScan.roundCorners(cornerRadius: 0.02, borderColor: .white, borderWidth: 0.1)
-        btnScan.imageView?.tintColor = .white
         btnCreate.roundCorners(cornerRadius: 0.02, borderColor: .white, borderWidth: 0.1)
     }
     
@@ -118,14 +121,18 @@ class PaymentViewController: MozoBasicViewController {
     
     @IBAction func touchedBtnCreate(_ sender: Any) {
         if let text = txtAmount.text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            eventHandler?.createPaymentRequest(Double(text) ?? 0)
+            eventHandler?.createPaymentRequest(Double(text) ?? 0, tokenInfo: self.tokenInfo!)
         } else {
             displayMozoError("Amount is empty.")
         }
     }
     
     @IBAction func touchedBtnScan(_ sender: Any) {
-        eventHandler?.openScanner()
+        if let tokenInfo = self.tokenInfo {
+            eventHandler?.openScanner(tokenInfo: tokenInfo)
+        } else {
+            displayMozoError("No token info")
+        }
     }
 }
 extension PaymentViewController: UITextFieldDelegate {
@@ -148,11 +155,27 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: PAYMENT_TABLE_VIEW_CELL_IDENTIFIER, for: indexPath) as! PaymentTableViewCell
+        let item = (paymentCollection?.displayItems[indexPath.row])!
+        cell.paymentItem = item
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.deselectRow(at: indexPath, animated: false)
+        let item = (paymentCollection?.displayItems[indexPath.row])!
+        if let tokenInfo = self.tokenInfo {
+            eventHandler?.selectPaymentRequestOnUI(item, tokenInfo: tokenInfo)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 98
+    }
+    
+    // Set the spacing between sections
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
     }
 }
 extension PaymentViewController: PaymentViewInterface {

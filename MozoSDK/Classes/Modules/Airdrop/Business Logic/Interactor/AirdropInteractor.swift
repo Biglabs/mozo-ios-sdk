@@ -39,9 +39,47 @@ class AirdropInteractor: NSObject {
             self.stopService()
         }
     }
+    
+    func validateAirdropEvent(_ event: AirdropEventDTO) -> String? {
+        let startDate = Date(timeIntervalSince1970: TimeInterval(event.periodFromDate ?? 0))
+        let endDate = Date(timeIntervalSince1970: TimeInterval(event.periodToDate ?? 0))
+        if startDate > Date().addingTimeInterval(60 * 10) {
+            if startDate < endDate {
+                return nil
+            }
+            return "Invalid Airdrop start date - end date."
+        }
+        return "Time of Start date must larger than current time 10 minutes at least."
+    }
+    
+    func processAirdropEvent(_ event: AirdropEventDTO, tokenInfo: TokenInfoDTO) {
+        let perCustomer = (event.mozoAirdropPerCustomerVisit?.doubleValue ?? 0).convertTokenValue(decimal: tokenInfo.decimals ?? 0)
+        let total = (event.totalNumMozoOffchain?.doubleValue ?? 0).convertTokenValue(decimal: tokenInfo.decimals ?? 0)
+        event.mozoAirdropPerCustomerVisit = perCustomer
+        event.totalNumMozoOffchain = total
+        output?.didCalculatePerVisitAndTotal(event: event, tokenInfo: tokenInfo)
+    }
 }
 extension AirdropInteractor: AirdropInteractorInput {
+    func calculatePerVisitAndTotal(_ event: AirdropEventDTO) {
+        if let userObj = SessionStoreManager.loadCurrentUser() {
+            if let address = userObj.profile?.walletInfo?.offchainAddress {
+                print("Address used to load balance: \(address)")
+                _ = apiManager?.getTokenInfoFromAddress(address)
+                    .done { (tokenInfo) in
+                        self.processAirdropEvent(event, tokenInfo: tokenInfo)
+                    }.catch({ (err) in
+                        self.output?.didFailedToLoadTokenInfo()
+                    })
+            }
+        }
+    }
+    
     func sendCreateAirdropEvent(_ event: AirdropEventDTO) {
+        if let errorMsg = validateAirdropEvent(event) {
+            output?.failedToSignAirdropEvent(error: errorMsg)
+            return
+        }
         _ = apiManager?.createAirdropEvent(event: event).done({ (interTxArray) in
             for interTx in interTxArray {
                 if (interTx.errors != nil) && (interTx.errors?.count)! > 0 {

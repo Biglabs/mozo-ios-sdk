@@ -25,6 +25,25 @@ public class MozoBasicViewController : UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func displayMozoAlertSuccess(completion: (() -> Void)?) {
+        let alert = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
+        alert.addAction(.init(title: "OK", style: .default, handler: { (action) in
+            completion?()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func displayMozoAlertConfirm(confirmCompletion: (() -> Void)?, notConfirmCompletion: (() -> Void)?) {
+        let alert = UIAlertController(title: "Confirm", message: "Are you sure?", preferredStyle: .alert)
+        alert.addAction(.init(title: "Yes", style: .default, handler: { (action) in
+            confirmCompletion?()
+        }))
+        alert.addAction(.init(title: "No", style: .default, handler: { (action) in
+            notConfirmCompletion?()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: Spinner
     var mozoSpinnerView : UIView?
     

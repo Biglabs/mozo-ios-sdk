@@ -22,6 +22,9 @@ let ABEditViewControllerIdentifier = "ABEditViewController"
 let TxHistoryViewControllerIdentifier = "TxHistoryViewController"
 let TxHistoryDetailViewControllerIdentifier = "TxHistoryDetailViewController"
 let MyWalletViewControllerIdentifier = "MyWalletViewController"
+let PaymentViewControllerIdentifier = "PaymentViewController"
+let PaymentQRViewControllerIdentifier = "PaymentQRViewController"
+let PaymentSendSuccessViewControllerIdentifier = "PaymentSendSuccessViewController"
 
 class RootWireframe : NSObject {
     let mozoNavigationController = MozoNavigationController()

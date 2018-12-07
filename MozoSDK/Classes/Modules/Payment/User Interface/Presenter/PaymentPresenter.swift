@@ -9,25 +9,33 @@ import Foundation
 class PaymentPresenter: NSObject {
     var viewInterface: PaymentViewInterface?
     var interactor: PaymentInteractorInput?
-    var delegate: PaymentModuleDelegate?
+    
     var wireframe: PaymentWireframe?
+    var qrViewInterface: PaymentQRViewInterface?
+    
+    var isScanningAddress = false
+    var tokenInfo: TokenInfoDTO?
 }
 extension PaymentPresenter: PaymentModuleInterface {
-    func openScanner() {
+    func openScanner(tokenInfo: TokenInfoDTO) {
+        self.tokenInfo = tokenInfo
         wireframe?.presentScannerQRCodeInterface()
     }
     
-    func createPaymentRequest(_ amount: Double) {
-        // TODO: Open QR Payment Request Interface
-        
+    func createPaymentRequest(_ amount: Double, tokenInfo: TokenInfoDTO) {
+        let displayItem = PaymentRequestDisplayItem(date: "", amount: amount, displayNameAddress: "", requestingAddress: tokenInfo.address ?? "")
+        wireframe?.presentPaymentQRInterface(displayItem: displayItem)
     }
     
-    func selectPaymentRequestOnUI(_ item: PaymentRequestDisplayItem) {
-        delegate?.didChoosePaymentRequest(item)
+    func selectPaymentRequestOnUI(_ item: PaymentRequestDisplayItem, tokenInfo: TokenInfoDTO) {
+        self.tokenInfo = tokenInfo
+        interactor?.prepareTransactionFromRequest(item, tokenInfo: tokenInfo)
     }
     
     func updateDisplayData(page: Int) {
-        interactor?.getListPaymentRequest(page: page)
+        let collection = PaymentRequestDisplayCollection(items: [])
+        viewInterface?.showPaymentRequestCollection(collection, forPage: page)
+//        interactor?.getListPaymentRequest(page: page)
     }
     
     func loadTokenInfo() {
@@ -35,8 +43,8 @@ extension PaymentPresenter: PaymentModuleInterface {
     }
 }
 extension PaymentPresenter: PaymentInteractorOutput {
-    func didValidateValueFromScanner() {
-        
+    func didReceiveTransaction(transaction: TransactionDTO, displayName: String?, isFromScannedValue: Bool) {
+        wireframe?.presentTransactionConfirmInterface(transaction: transaction, tokenInfo: tokenInfo!, displayName: displayName)
     }
     
     func errorWhileLoadPaymentRequest(_ error: ConnectionError) {
@@ -57,11 +65,17 @@ extension PaymentPresenter: PaymentInteractorOutput {
     }
     
     func didReceiveError(_ error: String?) {
-        viewInterface?.displayError(error!)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
+            self.viewInterface?.displayError(error!)
+        }
     }
 }
 extension PaymentPresenter: ScannerViewControllerDelegate {
     func didReceiveValueFromScanner(_ value: String) {
-        
+        if let tokenInfo = self.tokenInfo {
+            interactor?.validateValueFromScanner(value, tokenInfo: tokenInfo)
+        } else {
+            viewInterface?.displayError("No token info")
+        }
     }
 }

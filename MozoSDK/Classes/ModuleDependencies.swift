@@ -46,6 +46,8 @@ class ModuleDependencies {
     let abDetailWireframe = ABDetailWireframe()
     let abWireframe = AddressBookWireframe()
     let adWireframe = AirdropWireframe()
+    let paymentWireframe = PaymentWireframe()
+    let paymentQRWireframe = PaymentQRWireframe()
     
     let apiManager = ApiManager()
     let webSocketManager = WebSocketManager()
@@ -74,6 +76,10 @@ class ModuleDependencies {
     
     func displayTransactionHistory() {
         coreWireframe.requestForTxHistory()
+    }
+    
+    func displayPaymentRequest() {
+        coreWireframe.requestForPaymentRequest()
     }
     
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem>{
@@ -135,6 +141,9 @@ class ModuleDependencies {
         // MARK: Address book
         addressBookDependencies()
         addressBookDetailDependencies()
+        // MARK: Payment Request
+        paymentDependencies()
+        paymentQRDependencies()
     }
     
     func coreDependencies() {
@@ -168,6 +177,8 @@ class ModuleDependencies {
         coreWireframe.abDetailWireframe = abDetailWireframe
         coreWireframe.abWireframe = abWireframe
         coreWireframe.rootWireframe = rootWireframe
+        coreWireframe.paymentWireframe = paymentWireframe
+        coreWireframe.paymentQRWireframe = paymentQRWireframe
     }
     
     func addressBookDetailDependencies() {
@@ -305,6 +316,40 @@ class ModuleDependencies {
         adWireframe.walletWireframe = walletWireframe
     }
     
+    func paymentDependencies() {
+        let paymentPresenter = PaymentPresenter()
+        
+        let paymentInteractor = PaymentInteractor(apiManager: apiManager)
+        paymentInteractor.output = paymentPresenter
+        
+        paymentPresenter.interactor = paymentInteractor
+        paymentPresenter.wireframe = paymentWireframe
+        
+        paymentWireframe.presenter = paymentPresenter
+        paymentWireframe.txWireframe = txWireframe
+        paymentWireframe.paymentQRWireframe = paymentQRWireframe
+        paymentWireframe.rootWireframe = rootWireframe
+    }
+    
+    func paymentQRDependencies() {
+        let paymentQRPresenter = PaymentQRPresenter()
+        
+        let paymentQRInteractor = PaymentQRInteractor(apiManager: apiManager)
+        paymentQRInteractor.output = paymentQRPresenter
+        
+        paymentQRPresenter.interactor = paymentQRInteractor
+        paymentQRPresenter.wireframe = paymentQRWireframe
+        paymentQRPresenter.delegate = coreWireframe.corePresenter
+        
+        paymentQRWireframe.presenter = paymentQRPresenter
+        paymentQRWireframe.rootWireframe = rootWireframe
+    }
+    
+    
+    
+    
+    
+    // MARK: TEST
     func testSign() {
         let tosign = "3e7c8671c98af65e4f957d0843a15ce0616a0624cc5fbc3e6f72b7871f118ac1"
         let privatekey = "b7643ad0c07b2f2a1232fc4d276c5554e05fa1c8fddb2aed738c7ae0526f5350"

@@ -16,6 +16,8 @@ class CoreWireframe : MozoWireframe {
     var txDetailWireframe: TxDetailWireframe?
     var abWireframe: AddressBookWireframe?
     var abDetailWireframe: ABDetailWireframe?
+    var paymentWireframe: PaymentWireframe?
+    var paymentQRWireframe: PaymentQRWireframe?
     var corePresenter: CorePresenter?
     
     // MARK: Request
@@ -71,7 +73,7 @@ class CoreWireframe : MozoWireframe {
     }
     
     func prepareForPaymentRequestInterface() {
-        
+        paymentWireframe?.presentPaymentRequestInterface()
     }
     
     func presentPINInterfaceForTransaction() {
@@ -99,12 +101,16 @@ class CoreWireframe : MozoWireframe {
         abDetailWireframe?.dismissAddressBookDetailInterface()
     }
     
-    func presentAddressBookInterfaceForTransaction() {
+    func presentAddressBookInterfaceForSelecting() {
         abWireframe?.presentAddressBookInterface(isDisplayForSelect: true)
     }
     
     func updateAddressBookInterfaceForTransaction(displayItem: AddressBookDisplayItem) {
         txWireframe?.updateInterfaceWithDisplayItem(displayItem)
+    }
+    
+    func updateAddressBookInterfaceForPaymentRequest(displayItem: AddressBookDisplayItem) {
+        paymentQRWireframe?.updateInterfaceWithAddressBook(displayItem)
     }
     
     func dismissAddressBookInterface() {

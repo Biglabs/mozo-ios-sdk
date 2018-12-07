@@ -33,12 +33,8 @@ public class NotiDisplayItemData {
                         subtitle = "\(prefix) \(airdropNoti.storeName ?? "NO NAME")"
                         image = "ic_notif_airdropped"
                     } else {
-                        let list = SafetyDataManager.shared.addressBookList
-                        if let addressBook = AddressBookDTO.addressBookFromAddress(displayAddress ?? "", array: list) {
-                            subtitle = "\(prefix) \(addressBook.name ?? "")"
-                        } else {
-                            subtitle = "\(prefix) \(displayAddress ?? "")"
-                        }
+                        let displayName = DisplayUtils.buildNameFromAddress(address: displayAddress ?? "")
+                        subtitle = "\(prefix) \(displayName)"
                         image = "ic_notif_received"
                     }
                 }

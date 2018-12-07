@@ -29,6 +29,6 @@
     
     @IBAction func touchedUpInside(_ sender: Any) {
         print("Touched Up Inside Button Payment Request")
-        
+        MozoSDK.displayPaymentRequest()
     }
 }

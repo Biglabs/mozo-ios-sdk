@@ -131,4 +131,17 @@ public class DisplayUtils {
         if let window = appDelegate!.window { return window?.visibleViewController }
         return nil
     }
+    
+    public static func buildNameFromAddress(address: String) -> String {
+        var displayName = address
+        if !address.isEmpty {
+            let list = SafetyDataManager.shared.addressBookList
+            if let ab = AddressBookDTO.addressBookFromAddress(address, array: list), let name = ab.name {
+                displayName = name
+            } else {
+                // TODO: Find address in Store Book
+            }
+        }
+        return displayName
+    }
 }

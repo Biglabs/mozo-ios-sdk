@@ -16,21 +16,21 @@ public class AirdropEventDTO {
     public var beaconInfoId: Int?
     public var hourOfDayFrom: Int?
     public var hourOfDayTo: Int?
-    public var id: Int?
-    public var mozoAirdropPerCustomerVisit: Int?
-    public var receivedShopper: Int?
+    public var id: Int64?
+    public var mozoAirdropPerCustomerVisit: NSNumber?
+    public var receivedShopper: Int64?
     public var name: String?
-    public var periodFromDate: Int?
-    public var periodToDate: Int?
+    public var periodFromDate: Int64?
+    public var periodToDate: Int64?
     public var smartAddress: String?
     public var stayIn: Int?
-    public var totalNumMozoOffchain: Int64?
+    public var totalNumMozoOffchain: NSNumber?
     
-    public init?(name: String, address: String, receivedShopper: Int,
-                  mozoAirdropPerCustomerVisit: Int, airdropFreq: Int,
+    public init?(name: String, address: String, receivedShopper: Int64,
+                  mozoAirdropPerCustomerVisit: NSNumber, airdropFreq: Int,
                   hourOfDayFrom: Int, hourOfDayTo: Int,
-                  periodFromDate: Int, periodToDate: Int,
-                  totalNumMozoOffchain: Int64, active: Bool, appliedDateOfWeek: [Int]){
+                  periodFromDate: Int64, periodToDate: Int64,
+                  totalNumMozoOffchain: NSNumber, active: Bool, appliedDateOfWeek: [Int]){
         self.active = active
         self.name = name
         self.address = address

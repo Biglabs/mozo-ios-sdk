@@ -251,6 +251,21 @@ extension Dictionary {
     }
 }
 
+extension URL {
+    public var queryParameters: [String: String]? {
+        guard let components = URLComponents(url: self, resolvingAgainstBaseURL: true), let queryItems = components.queryItems else {
+            return nil
+        }
+        
+        var parameters = [String: String]()
+        for item in queryItems {
+            parameters[item.name] = item.value
+        }
+        
+        return parameters
+    }
+}
+
 extension Notification.Name {
     static let didAuthenticationSuccessWithMozo = Notification.Name("didAuthenticationSuccessWithMozo")
     static let didLogoutFromMozo = Notification.Name("didLogoutFromMozo")
