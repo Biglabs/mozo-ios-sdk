@@ -86,4 +86,12 @@ public class MozoSDK {
     public static func createAirdropEvent(event: AirdropEventDTO, delegate: AirdropEventDelegate) {
         return (moduleDependencies.createAirdropEvent(event: event, delegate: delegate))
     }
+    
+    public static func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
+        return moduleDependencies.getLatestAirdropEvent()
+    }
+    
+    public static func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]> {
+        return moduleDependencies.getAirdropEventList(page: page)
+    }
 }

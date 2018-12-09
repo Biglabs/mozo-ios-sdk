@@ -12,6 +12,7 @@ import SwiftyJSON
 let SHOPPER_AIRDROP_API_PATH = "/shopper/airdrop"
 let SHOPPER_AIRDROP_REPORT_API_PATH = "/shopper-airdrop/report-beacon"
 let RETAILER_AIRDROP_API_PATH = "/air-drops"
+let RETAILER_AIRDROP_RESOURCE_API_PATH = "/retailer/airdrops"
 public extension ApiManager {
     public func getAirdropStoresNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]> {
         return Promise { seal in
@@ -144,6 +145,48 @@ public extension ApiManager {
                 }
                 .catch { error in
                     print("Error when request get tx status: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_RESOURCE_API_PATH
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get Latest Airdrop Event, json response: \(json)")
+                    if let jobj = SwiftyJSON.JSON(json)["array"].array, let event = AirdropEventDTO(json: jobj[0]) {
+                        seal.fulfill(event)
+                    }
+                }
+                .catch { error in
+                    print("Error when request get Latest Airdrop Event: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_RESOURCE_API_PATH
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get Airdrop Event list, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)["array"]
+                    let array = AirdropEventDTO.arrayFromJson(jobj)
+                    seal.fulfill(array)
+                }
+                .catch { error in
+                    print("Error when request get Airdrop Event list: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {

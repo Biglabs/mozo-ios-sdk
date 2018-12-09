@@ -90,4 +90,14 @@ extension CoreInteractor: CoreInteractorService {
             }
         }
     }
+    
+    func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
+        print("😎 Get latest airdrop event.")
+        return apiManager.getLatestAirdropEvent()
+    }
+    
+    func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]> {
+        print("😎 Get airdrop event list by page number \(page).")
+        return apiManager.getAirdropEventList(page: page)
+    }
 }

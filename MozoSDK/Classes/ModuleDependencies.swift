@@ -126,6 +126,14 @@ class ModuleDependencies {
         adWireframe.requestCreateAndSignAirdropEvent(event, delegate: delegate)
     }
     
+    func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getLatestAirdropEvent())!
+    }
+    
+    func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropEventList(page: page))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

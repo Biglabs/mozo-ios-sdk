@@ -44,6 +44,21 @@ public class AirdropEventDTO {
         self.totalNumMozoOffchain = totalNumMozoOffchain
         self.appliedDateOfWeek = appliedDateOfWeek
     }
+    
+    public required init?(json: SwiftyJSON.JSON) {
+        self.active = json["active"].bool
+        self.name = json["name"].string
+        self.address = json["address"].string
+        self.receivedShopper = json["receivedShopper"].int64
+        self.mozoAirdropPerCustomerVisit = json["mozoAirdropPerCustomerVisit"].number
+        self.airdropFreq = json["airdropFreq"].int
+        self.hourOfDayFrom = json["hourOfDayFrom"].int
+        self.hourOfDayTo = json["hourOfDayTo"].int
+        self.periodFromDate = json["periodFromDate"].int64
+        self.periodToDate = json["periodToDate"].int64
+        self.totalNumMozoOffchain = json["totalNumMozoOffchain"].number
+        self.appliedDateOfWeek = json["appliedDateOfWeek"].array?.map ({ $0.int ?? 0 })
+    }
 
     public func toJSON() -> Dictionary<String, Any> {
         var json = Dictionary<String, Any>()
@@ -84,5 +99,10 @@ public class AirdropEventDTO {
             json["appliedDateOfWeek"] = appliedDateOfWeek
         }
         return json
+    }
+    
+    public static func arrayFromJson(_ json: SwiftyJSON.JSON) -> [AirdropEventDTO] {
+        let array = json.array?.map({ AirdropEventDTO(json: $0)! })
+        return array ?? []
     }
 }

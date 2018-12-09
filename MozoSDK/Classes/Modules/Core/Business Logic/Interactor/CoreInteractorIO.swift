@@ -36,4 +36,6 @@ protocol CoreInteractorService {
     func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String: Any]>
     func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]>
     func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection>
+    func getLatestAirdropEvent() -> Promise<AirdropEventDTO>
+    func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]>
 }
