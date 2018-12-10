@@ -245,7 +245,7 @@ extension Dictionary {
     var queryString: String {
         var output: String = ""
         for (key,value) in self {
-            output +=  "\(key)=\(value)&"
+            output += "\(key)=\(value)&"
         }
         return output
     }

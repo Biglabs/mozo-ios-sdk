@@ -57,6 +57,8 @@ class AirdropInteractor: NSObject {
         let total = (event.totalNumMozoOffchain?.doubleValue ?? 0).convertTokenValue(decimal: tokenInfo.decimals ?? 0)
         event.mozoAirdropPerCustomerVisit = perCustomer
         event.totalNumMozoOffchain = total
+        event.symbol = tokenInfo.symbol
+        event.decimals = tokenInfo.decimals
         output?.didCalculatePerVisitAndTotal(event: event, tokenInfo: tokenInfo)
     }
 }

@@ -155,28 +155,22 @@ public extension ApiManager {
     
     public func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_RESOURCE_API_PATH
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get Latest Airdrop Event, json response: \(json)")
-                    if let jobj = SwiftyJSON.JSON(json)["array"].array, let event = AirdropEventDTO(json: jobj[0]) {
-                        seal.fulfill(event)
-                    }
+            _ = getAirdropEventList(page: 0, size: 1).done { array -> Void in
+                print("Finish request to get Latest Airdrop Event, array count: \(array.count)")
+                if array.count > 0 {
+                    let event = array[0]
+                    seal.fulfill(event)
                 }
-                .catch { error in
-                    print("Error when request get Latest Airdrop Event: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }
     }
     
-    public func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]> {
+    public func getAirdropEventList(page: Int, size: Int = 15) -> Promise<[AirdropEventDTO]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_RESOURCE_API_PATH
+            let params = ["size" : size,
+                           "page" : page,
+                           "sort" : "periodFromDate,desc"] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_RESOURCE_API_PATH + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

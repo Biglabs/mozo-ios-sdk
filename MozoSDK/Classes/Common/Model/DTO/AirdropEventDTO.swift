@@ -25,6 +25,9 @@ public class AirdropEventDTO {
     public var smartAddress: String?
     public var stayIn: Int?
     public var totalNumMozoOffchain: NSNumber?
+    public var actualAirdroppedTime: Int?
+    public var symbol: String?
+    public var decimals: Int?
     
     public init?(name: String, address: String, receivedShopper: Int64,
                   mozoAirdropPerCustomerVisit: NSNumber, airdropFreq: Int,
@@ -58,6 +61,9 @@ public class AirdropEventDTO {
         self.periodToDate = json["periodToDate"].int64
         self.totalNumMozoOffchain = json["totalNumMozoOffchain"].number
         self.appliedDateOfWeek = json["appliedDateOfWeek"].array?.map ({ $0.int ?? 0 })
+        self.actualAirdroppedTime = json["actualAirdroppedTime"].int
+        self.symbol = json["symbol"].string
+        self.decimals = json["decimals"].int
     }
 
     public func toJSON() -> Dictionary<String, Any> {
@@ -97,6 +103,15 @@ public class AirdropEventDTO {
         }
         if let appliedDateOfWeek = self.appliedDateOfWeek {
             json["appliedDateOfWeek"] = appliedDateOfWeek
+        }
+        if let actualAirdroppedTime = self.actualAirdroppedTime {
+            json["actualAirdroppedTime"] = actualAirdroppedTime
+        }
+        if let decimals = self.decimals {
+            json["decimals"] = decimals
+        }
+        if let symbol = self.symbol {
+            json["symbol"] = symbol
         }
         return json
     }
