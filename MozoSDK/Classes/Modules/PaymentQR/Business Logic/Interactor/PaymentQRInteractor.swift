@@ -30,6 +30,11 @@ extension PaymentQRInteractor: PaymentQRInteractorInput {
     }
     
     func sendPaymentRequest(toAddress: String, item: PaymentRequestDisplayItem) {
-        output?.didSendPaymentRequestSuccess(toAddress: toAddress, item: item)
+        let paymentRequest = PaymentRequestDTO(content: item.toScheme())
+        _ = apiManager.sendPaymentRequest(address: toAddress, request: paymentRequest).done { (result) in
+            self.output?.didSendPaymentRequestSuccess(toAddress: toAddress, item: item)
+        }.catch({ (error) in
+            self.output?.errorWhileSendPayment(error: error, toAddress: toAddress, item: item)
+        })
     }
 }

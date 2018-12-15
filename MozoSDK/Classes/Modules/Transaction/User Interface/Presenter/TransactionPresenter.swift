@@ -28,9 +28,9 @@ extension TransactionPresenter: TransactionModuleInterface {
         transactionModuleDelegate?.requestAddressBookInterfaceForTransaction()
     }
     
-    func sendConfirmTransaction(_ transaction: TransactionDTO) {
+    func sendConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO) {
         confirmUserInterface?.displaySpinner()
-        txInteractor?.sendUserConfirmTransaction(transaction)
+        txInteractor?.sendUserConfirmTransaction(transaction, tokenInfo: tokenInfo)
     }
     
     func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayName: String?) {

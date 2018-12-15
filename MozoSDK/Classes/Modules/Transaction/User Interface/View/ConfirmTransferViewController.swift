@@ -72,7 +72,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
     }
     
     @IBAction func btnSendTapped(_ sender: Any) {
-        eventHandler?.sendConfirmTransaction(transaction!)
+        eventHandler?.sendConfirmTransaction(transaction!, tokenInfo: self.tokenInfo!)
     }
 }
 extension ConfirmTransferViewController : PopupErrorDelegate {

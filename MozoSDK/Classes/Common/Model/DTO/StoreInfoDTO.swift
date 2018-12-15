@@ -25,8 +25,8 @@ public class StoreInfoDTO : ResponseObjectSerializable {
     public var phoneNum: String?
     public var state: String?
     public var zip: String?
-    public var customerAirdropAmount: Int64?
-    public var totalAirdropAmount: Int64?
+    public var customerAirdropAmount: NSNumber?
+    public var totalAirdropAmount: NSNumber?
     
     public var isFavorite: Bool?
     public var storeImages: [String]?
@@ -51,8 +51,8 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         self.phoneNum = json["phoneNum"].string
         self.state = json["state"].string
         self.zip = json["zip"].string
-        self.customerAirdropAmount = json["customerAirdropAmount"].int64
-        self.totalAirdropAmount = json["totalAirdropAmount"].int64
+        self.customerAirdropAmount = json["customerAirdropAmount"].number
+        self.totalAirdropAmount = json["totalAirdropAmount"].number
         self.isFavorite = json["isFavorite"].bool
         self.storeImages = json["storeImages"].array?.filter({ $0.string != nil }).map({ $0.string! })
     }

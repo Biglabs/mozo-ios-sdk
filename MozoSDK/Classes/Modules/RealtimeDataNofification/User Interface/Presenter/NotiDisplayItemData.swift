@@ -40,7 +40,7 @@ public class NotiDisplayItemData {
                 }
             case NotificationEventType.CustomerCame.rawValue:
                 if let ccNoti = rawNoti as? CustomerComeNotification {
-                    title = (ccNoti.comeIn ?? false) ? "Customer come in" : "Customer has just left"
+                    title = (ccNoti.isComeIn ?? false) ? "Customer come in" : "Customer has just left"
                     image = "ic_notif_user_come"
                     body = ccNoti.phoneNo ?? ""
                 }

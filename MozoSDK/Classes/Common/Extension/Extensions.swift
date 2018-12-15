@@ -208,6 +208,13 @@ internal extension Int {
     }
 }
 
+public extension Int {
+    func addCommas() -> String {
+        let number = NSNumber(value: self)
+        return number.addCommas()
+    }
+}
+
 public extension Double {
     func convertTokenValue(decimal: Int) -> NSNumber{
         let retValue = NSNumber(value: self * Double(truncating: pow(10, decimal) as NSNumber))

@@ -8,12 +8,14 @@
 import Foundation
 
 struct PaymentRequestDisplayItem {
+    let id: Int64
     let date: String
     let amount: Double
-    let displayNameAddress: String
+    var displayNameAddress: String
     let requestingAddress: String
     
-    init(date: String, amount: Double, displayNameAddress: String, requestingAddress: String) {
+    init(id: Int64, date: String, amount: Double, displayNameAddress: String, requestingAddress: String) {
+        self.id = id
         self.date = date
         self.amount = amount
         self.displayNameAddress = displayNameAddress
@@ -29,6 +31,18 @@ struct PaymentRequestDisplayItem {
         self.amount = Double(amnt ?? "0") ?? 0
         self.displayNameAddress = ""
         self.requestingAddress = address
+        self.id = 0
+    }
+    
+    init(scheme: String, date: String, id: Int64){
+        let url = URL(string: scheme)
+        let address = String(scheme.split(separator: "?")[0].split(separator: ":")[1])
+        let amnt = url?.queryParameters?["amount"]
+        self.date = date
+        self.amount = Double(amnt ?? "0") ?? 0
+        self.displayNameAddress = ""
+        self.requestingAddress = address
+        self.id = id
     }
     
     func toScheme() -> String {

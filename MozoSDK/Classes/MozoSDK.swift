@@ -87,11 +87,23 @@ public class MozoSDK {
         return (moduleDependencies.createAirdropEvent(event: event, delegate: delegate))
     }
     
+    public static func addMoreMozoToAirdropEvent(event: AirdropEventDTO, delegate: AirdropAddEventDelegate) {
+        return (moduleDependencies.addMoreMozoToAirdropEvent(event: event, delegate: delegate))
+    }
+    
     public static func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
         return moduleDependencies.getLatestAirdropEvent()
     }
     
     public static func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]> {
         return moduleDependencies.getAirdropEventList(page: page)
+    }
+    
+    public static func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?> {
+        return moduleDependencies.getRetailerAnalyticHome()
+    }
+    
+    public static func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]> {
+        return moduleDependencies.getRetailerAnalyticList()
     }
 }

@@ -11,6 +11,9 @@ class PaymentQRPresenter: NSObject {
     var interactor: PaymentQRInteractorInput?
     var viewInterface: PaymentQRViewInterface?
     var delegate: PaymentQRModuleDelegate?
+    
+    var toAddress: String?
+    var paymentRequestToSend: PaymentRequestDisplayItem?
 }
 extension PaymentQRPresenter: PaymentQRModuleInterface {
     func showAddressBookInterface() {
@@ -22,6 +25,9 @@ extension PaymentQRPresenter: PaymentQRModuleInterface {
     }
     
     func sendPaymentRequest(_ displayItem: PaymentRequestDisplayItem, toAddress: String) {
+        self.toAddress = toAddress
+        self.paymentRequestToSend = displayItem
+        viewInterface?.displaySpinner()
         interactor?.sendPaymentRequest(toAddress: toAddress, item: displayItem)
     }
     
@@ -44,10 +50,33 @@ extension PaymentQRPresenter: PaymentQRInteractorOutput {
     }
     
     func didSendPaymentRequestSuccess(toAddress: String, item: PaymentRequestDisplayItem) {
+        self.toAddress = nil
+        self.paymentRequestToSend = nil
+        viewInterface?.removeSpinner()
         wireframe?.presentSuccessInterface(toAddress: toAddress, item: item)
     }
     
     func didReceiveAddressFromScannedValue(address: String) {
         viewInterface?.updateUserInterfaceWithAddress(address)
+    }
+    
+    func errorWhileSendPayment(error: Any, toAddress: String, item: PaymentRequestDisplayItem) {
+        viewInterface?.removeSpinner()
+        if let errorConnection = error as? ConnectionError {
+            DisplayUtils.displayTryAgainPopup(allowTapToDismiss: true, error: errorConnection, delegate: self)
+        } else {
+            viewInterface?.displayError((error as! Error).localizedDescription)
+        }
+    }
+}
+extension PaymentQRPresenter: PopupErrorDelegate {
+    func didClosePopupWithoutRetry() {
+        self.toAddress = nil
+        self.paymentRequestToSend = nil
+        viewInterface?.removeSpinner()
+    }
+    
+    func didTouchTryAgainButton() {
+        sendPaymentRequest(self.paymentRequestToSend!, toAddress: self.toAddress!)
     }
 }

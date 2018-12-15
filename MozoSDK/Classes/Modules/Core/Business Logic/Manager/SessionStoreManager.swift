@@ -37,4 +37,6 @@ public class SessionStoreManager {
     }
         
     public static var exchangeRateInfo : RateInfoDTO?
+    
+    public static var tokenInfo: TokenInfoDTO?
 }

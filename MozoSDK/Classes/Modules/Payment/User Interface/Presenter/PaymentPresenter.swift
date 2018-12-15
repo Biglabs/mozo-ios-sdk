@@ -15,6 +15,7 @@ class PaymentPresenter: NSObject {
     
     var isScanningAddress = false
     var tokenInfo: TokenInfoDTO?
+    var deleteRequest: PaymentRequestDisplayItem?
 }
 extension PaymentPresenter: PaymentModuleInterface {
     func openScanner(tokenInfo: TokenInfoDTO) {
@@ -23,7 +24,7 @@ extension PaymentPresenter: PaymentModuleInterface {
     }
     
     func createPaymentRequest(_ amount: Double, tokenInfo: TokenInfoDTO) {
-        let displayItem = PaymentRequestDisplayItem(date: "", amount: amount, displayNameAddress: "", requestingAddress: tokenInfo.address ?? "")
+        let displayItem = PaymentRequestDisplayItem(id : 0, date: "", amount: amount, displayNameAddress: "", requestingAddress: tokenInfo.address ?? "")
         wireframe?.presentPaymentQRInterface(displayItem: displayItem)
     }
     
@@ -33,16 +34,47 @@ extension PaymentPresenter: PaymentModuleInterface {
     }
     
     func updateDisplayData(page: Int) {
-        let collection = PaymentRequestDisplayCollection(items: [])
-        viewInterface?.showPaymentRequestCollection(collection, forPage: page)
-//        interactor?.getListPaymentRequest(page: page)
+        interactor?.getListPaymentRequest(page: page)
     }
     
     func loadTokenInfo() {
         interactor?.loadTokenInfo()
     }
+    
+    func deletePaymentRequest(_ request: PaymentRequestDisplayItem) {
+        if deleteRequest == nil {
+            deleteRequest = request
+        }
+        viewInterface?.displaySpinner()
+        interactor?.deletePaymentRequest(request)
+    }
+}
+extension PaymentPresenter: PopupErrorDelegate {
+    func didTouchTryAgainButton() {
+        deletePaymentRequest(deleteRequest!)
+    }
+    
+    func didClosePopupWithoutRetry() {
+        self.deleteRequest = nil
+        viewInterface?.removeSpinner()
+    }
 }
 extension PaymentPresenter: PaymentInteractorOutput {
+    func didDeletePaymentRequestSuccess() {
+        self.deleteRequest = nil
+        viewInterface?.removeSpinner()
+        interactor?.getListPaymentRequest(page: 0)
+    }
+    
+    func errorWhileDeleting(_ error: Any?) {
+        viewInterface?.removeSpinner()
+        if let connectionError = error as? ConnectionError {
+            DisplayUtils.displayTryAgainPopup(allowTapToDismiss: true, error: connectionError, delegate: self)
+        } else {
+            viewInterface?.displayError((error as! Error).localizedDescription)
+        }
+    }
+    
     func didReceiveTransaction(transaction: TransactionDTO, displayName: String?, isFromScannedValue: Bool) {
         wireframe?.presentTransactionConfirmInterface(transaction: transaction, tokenInfo: tokenInfo!, displayName: displayName)
     }
@@ -52,12 +84,12 @@ extension PaymentPresenter: PaymentInteractorOutput {
     }
     
     func finishGetListPaymentRequest(_ list: [PaymentRequestDTO], forPage: Int) {
-        if list.count > 0 {
+//        if list.count > 0 {
             let collection = PaymentRequestDisplayCollection(items: list)
             viewInterface?.showPaymentRequestCollection(collection, forPage: forPage)
-        } else {
-            viewInterface?.showNoContent()
-        }
+//        } else {
+//            viewInterface?.showNoContent()
+//        }
     }
     
     func didLoadTokenInfo(_ tokenInfo: TokenInfoDTO) {
@@ -65,6 +97,7 @@ extension PaymentPresenter: PaymentInteractorOutput {
     }
     
     func didReceiveError(_ error: String?) {
+        viewInterface?.removeSpinner()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
             self.viewInterface?.displayError(error!)
         }

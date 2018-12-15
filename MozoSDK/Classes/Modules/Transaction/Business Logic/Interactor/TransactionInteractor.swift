@@ -53,7 +53,15 @@ extension TransactionInteractor : TransactionInteractorInput {
         }
     }
     
-    func sendUserConfirmTransaction(_ transaction: TransactionDTO) {
+    func sendUserConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO) {
+        if self.tokenInfo == nil {
+            self.tokenInfo = tokenInfo
+        }
+        let spendable = tokenInfo.balance?.convertOutputValue(decimal: tokenInfo.decimals ?? 0) ?? 0
+        if transaction.outputs![0].value?.convertOutputValue(decimal: tokenInfo.decimals ?? 0) ?? 0 > spendable {
+            output?.didReceiveError("Error: Your spendable is not enough.")
+            return
+        }
         _ = apiManager.transferTransaction(transaction).done { (interTx) in
             if (interTx.errors != nil) && (interTx.errors?.count)! > 0 {
                 self.output?.didReceiveError((interTx.errors?.first)!)
@@ -172,7 +180,7 @@ extension TransactionInteractor : TransactionInteractorInput {
     
     func requestToRetryTransfer() {
         if let transaction = originalTransaction {
-            sendUserConfirmTransaction(transaction)
+            sendUserConfirmTransaction(transaction, tokenInfo: self.tokenInfo!)
         }
     }
 }

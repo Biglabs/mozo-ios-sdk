@@ -43,16 +43,20 @@ class AirdropInteractor: NSObject {
     func validateAirdropEvent(_ event: AirdropEventDTO) -> String? {
         let startDate = Date(timeIntervalSince1970: TimeInterval(event.periodFromDate ?? 0))
         let endDate = Date(timeIntervalSince1970: TimeInterval(event.periodToDate ?? 0))
-        if startDate > Date().addingTimeInterval(60 * 10) {
-            if startDate < endDate {
-                return nil
-            }
+        if startDate <= Date().addingTimeInterval(60 * 10) {
+            return "Time of Start date must larger than current time 10 minutes at least."
+        }
+        if startDate >= endDate {
             return "Invalid Airdrop start date - end date."
         }
-        return "Time of Start date must larger than current time 10 minutes at least."
+        return nil
     }
     
     func processAirdropEvent(_ event: AirdropEventDTO, tokenInfo: TokenInfoDTO) {
+        if event.totalNumMozoOffchain?.doubleValue ?? 0 > (tokenInfo.balance ?? 0).convertOutputValue(decimal: tokenInfo.decimals ?? 0) {
+            output?.failedToSignAirdropEvent(error: "Balance is not enough.")
+            return
+        }
         let perCustomer = (event.mozoAirdropPerCustomerVisit?.doubleValue ?? 0).convertTokenValue(decimal: tokenInfo.decimals ?? 0)
         let total = (event.totalNumMozoOffchain?.doubleValue ?? 0).convertTokenValue(decimal: tokenInfo.decimals ?? 0)
         event.mozoAirdropPerCustomerVisit = perCustomer

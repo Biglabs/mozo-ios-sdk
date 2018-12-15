@@ -44,6 +44,37 @@ public class MozoBasicViewController : UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    // MARK: Table - No Content
+    var noContentView: UIView?
+    
+    func displayMozoNoContentView(_ frame: CGRect, message: String) {
+        noContentView = UIView(frame: frame)
+        let image = UIImage(named: "img_no_content", in: BundleManager.mozoBundle(), compatibleWith: nil)
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 156, height: 150))
+        imageView.image = image
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width - 40, height: 18))
+        label.textAlignment = .center
+        label.text = message
+        label.textColor = ThemeManager.shared.disable
+        label.font = UIFont.italicSystemFont(ofSize: 15)
+        
+        noContentView?.addSubview(label)
+        noContentView?.addSubview(imageView)
+        
+        imageView.center = noContentView!.center
+        
+        view.addSubview(noContentView!)
+        
+//        let verticalConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
+//        let topConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.topMargin, relatedBy: NSLayoutConstraint.Relation.equal, toItem: imageView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 20)
+//        label.addConstraints([verticalConstraint, topConstraint])
+    }
+    
+    func removeMozoNoContentView() {
+        self.noContentView?.removeFromSuperview()
+    }
+    
     // MARK: Spinner
     var mozoSpinnerView : UIView?
     

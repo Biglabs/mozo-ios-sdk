@@ -8,7 +8,7 @@
 import Foundation
 import PromiseKit
 import SwiftyJSON
-let PAYMENT_REQUEST_API_PATH = ""
+let PAYMENT_REQUEST_API_PATH = "/payment-request"
 public extension ApiManager {
     /// Call API to get a list payment request from an address.
     ///
@@ -16,9 +16,9 @@ public extension ApiManager {
     ///   - address: the address
     ///   - page: the number of page data
     ///   - size: the number of payment request item
-    public func getListPaymentRequest(address: String, page: Int = 0, size: Int = 15) -> Promise<[PaymentRequestDTO]> {
+    public func getListPaymentRequest(page: Int = 0, size: Int = 15) -> Promise<[PaymentRequestDTO]> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + PAYMENT_REQUEST_API_PATH + "txhistory/\(address)?page=\(page)&size=\(size)"
+            let url = Configuration.BASE_URL + PAYMENT_REQUEST_API_PATH + "?page=\(page)&size=\(size)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

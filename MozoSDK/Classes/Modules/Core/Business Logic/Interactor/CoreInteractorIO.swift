@@ -38,4 +38,6 @@ protocol CoreInteractorService {
     func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection>
     func getLatestAirdropEvent() -> Promise<AirdropEventDTO>
     func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]>
+    func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?>
+    func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]>
 }

@@ -997,8 +997,11 @@
                                 <color key="textColor" red="0.078431372550000003" green="0.1019607843" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udz-01-YMP">
-                                <rect key="frame" x="20" y="438" width="335" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udz-01-YMP">
+                                <rect key="frame" x="37.5" y="438" width="300" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="qD9-qd-3Ek"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1015,10 +1018,8 @@
                             <constraint firstItem="wBV-1x-Tao" firstAttribute="top" secondItem="wLX-YZ-nIt" secondAttribute="top" constant="90" id="PKT-gW-ngF"/>
                             <constraint firstItem="Ltf-8q-ujm" firstAttribute="top" secondItem="N65-dd-r1Q" secondAttribute="bottom" constant="53" id="Q9e-vq-M7i"/>
                             <constraint firstItem="udz-01-YMP" firstAttribute="centerX" secondItem="kUZ-Pc-CVw" secondAttribute="centerX" id="R6o-Uz-1Cp"/>
-                            <constraint firstItem="udz-01-YMP" firstAttribute="leading" secondItem="kUZ-Pc-CVw" secondAttribute="leading" constant="20" id="Wfi-T4-S4O"/>
                             <constraint firstItem="N65-dd-r1Q" firstAttribute="centerX" secondItem="kUZ-Pc-CVw" secondAttribute="centerX" id="XfD-hP-eog"/>
                             <constraint firstItem="GOf-Zy-S6f" firstAttribute="centerY" secondItem="dt6-ly-Qe9" secondAttribute="centerY" id="aIm-Ch-yLb"/>
-                            <constraint firstAttribute="trailing" secondItem="udz-01-YMP" secondAttribute="trailing" constant="20" id="aa1-N7-yd2"/>
                             <constraint firstItem="tgE-7v-v2j" firstAttribute="centerY" secondItem="GOf-Zy-S6f" secondAttribute="centerY" id="kx1-FS-GV5"/>
                             <constraint firstItem="GOf-Zy-S6f" firstAttribute="top" secondItem="Ltf-8q-ujm" secondAttribute="bottom" constant="12" id="m2p-4m-UW3"/>
                             <constraint firstItem="N65-dd-r1Q" firstAttribute="top" secondItem="wBV-1x-Tao" secondAttribute="bottom" constant="30" id="psD-zb-tHR"/>
@@ -1027,6 +1028,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wLX-YZ-nIt"/>
                     </view>
+                    <connections>
+                        <outlet property="lbAddressOrName" destination="udz-01-YMP" id="eGP-3z-1oV"/>
+                        <outlet property="lbAmount" destination="GOf-Zy-S6f" id="LwW-gE-NZt"/>
+                        <outlet property="lbAmountEx" destination="tgE-7v-v2j" id="NtY-Vl-oAX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I5f-Rc-zo2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

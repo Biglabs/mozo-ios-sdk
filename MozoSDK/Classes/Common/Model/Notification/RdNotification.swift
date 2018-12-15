@@ -10,10 +10,8 @@ import SwiftyJSON
 
 public class RdNotification: ResponseObjectSerializable {
     public var event: String?
-    public var time: Int64?
     
     public required init?(json: SwiftyJSON.JSON) {
-        self.time = json["time"].int64
         self.event = json["event"].string
     }
 }

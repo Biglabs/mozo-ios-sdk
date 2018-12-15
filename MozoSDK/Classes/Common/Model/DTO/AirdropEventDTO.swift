@@ -13,7 +13,7 @@ public class AirdropEventDTO {
     public var address: String?
     public var airdropFreq: Int?
     public var appliedDateOfWeek: [Int]?
-    public var beaconInfoId: Int?
+    public var beaconInfoId: Int64?
     public var hourOfDayFrom: Int?
     public var hourOfDayTo: Int?
     public var id: Int64?
@@ -33,10 +33,12 @@ public class AirdropEventDTO {
                   mozoAirdropPerCustomerVisit: NSNumber, airdropFreq: Int,
                   hourOfDayFrom: Int, hourOfDayTo: Int,
                   periodFromDate: Int64, periodToDate: Int64,
-                  totalNumMozoOffchain: NSNumber, active: Bool, appliedDateOfWeek: [Int]){
+                  totalNumMozoOffchain: NSNumber, active: Bool,
+                  beaconInfoId: Int64, appliedDateOfWeek: [Int]){
         self.active = active
         self.name = name
         self.address = address
+        self.beaconInfoId = beaconInfoId
         self.receivedShopper = receivedShopper
         self.mozoAirdropPerCustomerVisit = mozoAirdropPerCustomerVisit
         self.airdropFreq = airdropFreq
@@ -46,6 +48,11 @@ public class AirdropEventDTO {
         self.periodToDate = periodToDate
         self.totalNumMozoOffchain = totalNumMozoOffchain
         self.appliedDateOfWeek = appliedDateOfWeek
+    }
+    
+    public init?(smartAddress: String, totalNumMozoOffchain: NSNumber){
+        self.smartAddress = smartAddress
+        self.totalNumMozoOffchain = totalNumMozoOffchain
     }
     
     public required init?(json: SwiftyJSON.JSON) {
@@ -64,6 +71,8 @@ public class AirdropEventDTO {
         self.actualAirdroppedTime = json["actualAirdroppedTime"].int
         self.symbol = json["symbol"].string
         self.decimals = json["decimals"].int
+        self.beaconInfoId = json["beaconInfoId"].int64
+        self.smartAddress = json["smartAddress"].string
     }
 
     public func toJSON() -> Dictionary<String, Any> {
@@ -112,6 +121,12 @@ public class AirdropEventDTO {
         }
         if let symbol = self.symbol {
             json["symbol"] = symbol
+        }
+        if let beaconInfoId = self.beaconInfoId {
+            json["beaconInfoId"] = beaconInfoId
+        }
+        if let smartAddress = self.smartAddress {
+            json["smartAddress"] = smartAddress
         }
         return json
     }

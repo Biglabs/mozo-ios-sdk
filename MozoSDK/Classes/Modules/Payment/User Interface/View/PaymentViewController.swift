@@ -24,10 +24,14 @@ class PaymentViewController: MozoBasicViewController {
     @IBOutlet weak var btnCreate: UIButton!
     
     var eventHandler: PaymentModuleInterface?
-    var paymentCollection: PaymentRequestDisplayCollection?
+    var paymentCollection: PaymentRequestDisplayCollection? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     var tokenInfo: TokenInfoDTO?
-    var currentPage : Int = 1
-    var loadingPage : Int = 1
+    var currentPage : Int = 0
+    var loadingPage : Int = 0
     private let refreshControl = UIRefreshControl()
     private var isLoadingMore = false
     var currentTab = PaymentTab.List {
@@ -177,6 +181,22 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            if let deleteItem = paymentCollection?.displayItems[indexPath.row] {
+                eventHandler?.deletePaymentRequest(deleteItem)
+            }
+        }
+    }
 }
 extension PaymentViewController: PaymentViewInterface {
     func updateUserInterfaceWithTokenInfo(_ tokenInfo: TokenInfoDTO) {
@@ -192,13 +212,14 @@ extension PaymentViewController: PaymentViewInterface {
                 isLoadingMore = false
             }
         } else {
-            currentPage = 1
+            currentPage = 0
             paymentCollection = collection
         }
     }
     
     func showNoContent() {
         
+//        displayMozoNoContentView(listContainerView.frame, message: "Payment request list is empty")
     }
     
     func displaySpinner() {

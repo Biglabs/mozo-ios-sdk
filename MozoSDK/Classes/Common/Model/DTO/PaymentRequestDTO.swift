@@ -9,19 +9,17 @@ import Foundation
 import SwiftyJSON
 public class PaymentRequestDTO: ResponseObjectSerializable {
     public var id: Int64?
-    public var requestingAddress: String?
-    public var amount: NSNumber?
-    public var decimal: Int64?
-    public var symbol: String?
-    public var date: Int64?
+    public var content: String?
+    public var timeInSec: Int64?
+    
+    public required init(content: String){
+        self.content = content
+    }
     
     public required init?(json: SwiftyJSON.JSON) {
         self.id = json["id"].int64
-        self.requestingAddress = json["requestingAddress"].string
-        self.amount = json["amount"].number
-        self.decimal = json["decimal"].int64
-        self.symbol = json["symbol"].string
-        self.date = json["date"].int64
+        self.content = json["content"].string
+        self.timeInSec = json["timeInSec"].int64
     }
     
     public required init?(){}
@@ -31,23 +29,11 @@ public class PaymentRequestDTO: ResponseObjectSerializable {
         if let id = self.id {
             json["id"] = id
         }
-        if let requestingAddress = self.requestingAddress {
-            json["requestingAddress"] = requestingAddress
+        if let content = self.content {
+            json["content"] = content
         }
-        if let amount = self.amount {
-            json["amount"] = amount
-        }
-        
-        if let decimal = self.decimal {
-            json["decimal"] = NSNumber(value: decimal)
-        }
-        
-        if let symbol = self.symbol {
-            json["symbol"] = symbol
-        }
-        
-        if let date = self.date {
-            json["date"] = NSNumber(value: date)
+        if let timeInSec = self.timeInSec {
+            json["timeInSec"] = timeInSec
         }
 
         return json

@@ -13,6 +13,7 @@ protocol PaymentQRInteractorInput {
 protocol PaymentQRInteractorOutput {
     func didReceiveError(_ error: String?)
     func didSendPaymentRequestSuccess(toAddress: String, item: PaymentRequestDisplayItem)
+    func errorWhileSendPayment(error: Any, toAddress: String, item: PaymentRequestDisplayItem)
     func didReceiveAddressFromScannedValue(address: String)
     func didReceiveAddressBookDisplayItem(_ item: AddressBookDisplayItem)
 }

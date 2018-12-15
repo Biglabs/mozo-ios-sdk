@@ -13,4 +13,6 @@ protocol PaymentModuleInterface {
     
     func openScanner(tokenInfo: TokenInfoDTO)
     func createPaymentRequest(_ amount: Double, tokenInfo: TokenInfoDTO)
+    
+    func deletePaymentRequest(_ request: PaymentRequestDisplayItem)
 }

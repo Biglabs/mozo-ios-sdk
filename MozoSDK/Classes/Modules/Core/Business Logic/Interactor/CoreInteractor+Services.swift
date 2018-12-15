@@ -79,6 +79,7 @@ extension CoreInteractor: CoreInteractorService {
                     print("Address used to load balance: \(address)")
                     _ = apiManager.getTokenInfoFromAddress(address)
                         .done { (tokenInfo) in
+                            SessionStoreManager.tokenInfo = tokenInfo
                             let item = DetailInfoDisplayItem(tokenInfo: tokenInfo)
                             seal.fulfill(item)
                         }.catch({ (err) in
@@ -99,5 +100,15 @@ extension CoreInteractor: CoreInteractorService {
     func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]> {
         print("😎 Get airdrop event list by page number \(page).")
         return apiManager.getAirdropEventList(page: page)
+    }
+    
+    func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?> {
+        print("😎 Get retailer anylytic home.")
+        return apiManager.getRetailerAnalyticHome()
+    }
+    
+    func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]> {
+        print("😎 Get retailer anylytic list in 6 months.")
+        return apiManager.getRetailerAnalyticList()
     }
 }

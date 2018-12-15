@@ -46,6 +46,7 @@ class ModuleDependencies {
     let abDetailWireframe = ABDetailWireframe()
     let abWireframe = AddressBookWireframe()
     let adWireframe = AirdropWireframe()
+    let addWireframe = AirdropAddWireframe()
     let paymentWireframe = PaymentWireframe()
     let paymentQRWireframe = PaymentQRWireframe()
     
@@ -126,12 +127,24 @@ class ModuleDependencies {
         adWireframe.requestCreateAndSignAirdropEvent(event, delegate: delegate)
     }
     
+    func addMoreMozoToAirdropEvent(event: AirdropEventDTO, delegate: AirdropAddEventDelegate) {
+        addWireframe.requestToAddMoreAndSign(event, delegate: delegate)
+    }
+    
     func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getLatestAirdropEvent())!
     }
     
     func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropEventList(page: page))!
+    }
+    
+    func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerAnalyticHome())!
+    }
+    
+    func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerAnalyticList())!
     }
     
     func configureDependencies() {
@@ -273,6 +286,7 @@ class ModuleDependencies {
         txWireframe.rootWireframe = rootWireframe
         
         airdropDependencies(signManager: signManager)
+        airdropAddDependencies(signManager: signManager)
     }
     
     func authDependencies() {
@@ -322,6 +336,21 @@ class ModuleDependencies {
         
         adWireframe.adPresenter = adPresenter
         adWireframe.walletWireframe = walletWireframe
+    }
+    
+    func airdropAddDependencies(signManager: TransactionSignManager) {
+        let addPresenter = AirdropAddPresenter()
+        
+        let addInteractor = AirdropAddInteractor()
+        addInteractor.apiManager = apiManager
+        addInteractor.output = addPresenter
+        addInteractor.signManager = signManager
+        
+        addPresenter.interactor = addInteractor
+        addPresenter.wireframe = addWireframe
+        
+        addWireframe.addPresenter = addPresenter
+        addWireframe.walletWireframe = walletWireframe
     }
     
     func paymentDependencies() {
