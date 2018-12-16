@@ -49,7 +49,7 @@ public class NotiDisplayItemData {
                     title = (ccNoti.isComeIn ?? false) ? "Customer come in" : "Customer has just left"
                     actionText = title
                     image = "ic_notif_user_come"
-                    body = ccNoti.phoneNo ?? ""
+                    body = ccNoti.phoneNo?.censoredMiddle() ?? ""
                     detailText = body
                 }
                 break

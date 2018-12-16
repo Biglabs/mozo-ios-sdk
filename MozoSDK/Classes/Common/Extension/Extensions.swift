@@ -69,9 +69,28 @@ public extension String {
         if !caseSensitive { return hasPrefix(prefix) }
         return self.lowercased().hasPrefix(prefix.lowercased())
     }
+    
+    public func censoredMiddle() -> String {
+        let prefix = self[0..<3]
+        let middle = "********"
+        let end = self[count - 3..<count]
+        return "\(prefix)\(middle)\(end)"
+    }
 }
 
 internal extension String {
+    subscript (bounds: CountableClosedRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start...end])
+    }
+    
+    subscript (bounds: CountableRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start..<end])
+    }
+    
     var hasOnlyNewlineSymbols: Bool {
         return trimmingCharacters(in: CharacterSet.newlines).isEmpty
     }
