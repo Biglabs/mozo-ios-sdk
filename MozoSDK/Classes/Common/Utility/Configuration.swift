@@ -10,7 +10,7 @@ import UIKit
 
 public class Configuration {
     public static let DEBUG = false
-    public static let SUB_DOMAIN_ENUM = ServiceType.DEV
+    public static var SUB_DOMAIN_ENUM = ServiceType.DEV
     public static let SUB_DOMAIN = SUB_DOMAIN_ENUM.rawValue
     public static let GRANT_TYPE = "password"
     public static let MIN_PASSWORD_LENGTH = 6
@@ -31,6 +31,8 @@ public class Configuration {
     public static let USER_INFO = "Mozo@UserInfo"
     // User profile
     public static let USER_PROFILE = "Mozo@UserProfile"
+    // User Notification history
+    public static let USER_NOTI_HISTORY = "Mozo@UserNotiHistory_"
     
     //Wallet
     public static let WALLLET_ID = "WalletId"

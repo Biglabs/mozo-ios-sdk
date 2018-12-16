@@ -87,12 +87,13 @@ extension RDNInteractor {
         if let messageContent = message.content {
             let jobj = SwiftyJSON.JSON(parseJSON: messageContent)
             if let rdNoti = RdNotification(json: jobj) {
+                saveNotification(content: message.toJSON())
                 if rdNoti.event == NotificationEventType.BalanceChanged.rawValue,
                     let balanceNoti = BalanceNotification(json: jobj) {
                     output?.balanceDidChange(balanceNoti: balanceNoti)
                 } else if rdNoti.event == NotificationEventType.AddressBookChanged.rawValue,
-                    let abNoti = AddressBookNotification(json: jobj),
-                    let list = abNoti.data {
+                        let abNoti = AddressBookNotification(json: jobj),
+                        let list = abNoti.data {
                     output?.addressBookDidChange(addressBookList: list)
                 } else if rdNoti.event == NotificationEventType.Airdropped.rawValue,
                     let airdropNoti = AirdropNotification(json: jobj) {
@@ -105,5 +106,15 @@ extension RDNInteractor {
                 }
             }
         }
+    }
+    
+    private func saveNotification(content: Dictionary<String, Any>) {
+        print("Save notification to local user defaults with content: \(content)")
+        // Get current list notification
+        var histories = SessionStoreManager.getNotificationHistory()
+        // Add current content to list
+        histories.append(content)
+        // Save to user default
+        SessionStoreManager.saveNotificationHistory(histories)
     }
 }

@@ -35,7 +35,22 @@ public class SessionStoreManager {
     public static func saveAnonymousUUID(_ UUID: String?) {
         UserDefaults.standard.setValue(UUID, forKey: Configuration.USER_ID_ANONYMOUS)
     }
-        
+    
+    public static func getNotificationHistory() -> [Dictionary<String, Any>]{
+        if let user = SessionStoreManager.loadCurrentUser(), let id = user.id {
+            let defaults = UserDefaults.standard
+            return defaults.array(forKey: "\(Configuration.USER_NOTI_HISTORY)\(id)") as? [[String: AnyObject]] ?? []
+        }
+        return []
+    }
+    
+    public static func saveNotificationHistory(_ histories: [Dictionary<String, Any>]) {
+        if let user = SessionStoreManager.loadCurrentUser(), let id = user.id {
+            let defaults = UserDefaults.standard
+            defaults.set(histories, forKey: "\(Configuration.USER_NOTI_HISTORY)\(id)")
+        }
+    }
+    
     public static var exchangeRateInfo : RateInfoDTO?
     
     public static var tokenInfo: TokenInfoDTO?
