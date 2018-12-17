@@ -14,6 +14,14 @@ public class RdNotification: ResponseObjectSerializable {
     public required init?(json: SwiftyJSON.JSON) {
         self.event = json["event"].string
     }
+    
+    public func toJSON() -> Dictionary<String, Any> {
+        var json = Dictionary<String, Any>()
+        if let event = self.event {
+            json["event"] = event
+        }
+        return json
+    }
 }
 
 public enum NotificationEventType: String {

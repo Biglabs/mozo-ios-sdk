@@ -293,7 +293,6 @@ extension URL {
 }
 public extension Date {
     func timeAgoDisplay() -> String {
-        
         let calendar = Calendar.current
         let minuteAgo = calendar.date(byAdding: .minute, value: -1, to: Date())!
         let hourAgo = calendar.date(byAdding: .hour, value: -1, to: Date())!

@@ -76,18 +76,22 @@ extension RDNInteractor {
                 return
             }
             let jsonMessage = strings[1]
-            let json = SwiftyJSON.JSON(parseJSON: jsonMessage)
-            if let wsMessage = WSMessage(json: json) {
-                processWSMessage(message: wsMessage)
-            }
+            processJsonWS(jsonMessage)
         }
     }
     
-    private func processWSMessage(message: WSMessage) {
+    private func processJsonWS(_ jsonMessage: String) {
+        let json = SwiftyJSON.JSON(parseJSON: jsonMessage)
+        if let wsMessage = WSMessage(json: json) {
+            processWSMessage(message: wsMessage, rawJsonMessage: jsonMessage)
+        }
+    }
+    
+    private func processWSMessage(message: WSMessage, rawJsonMessage: String) {
         if let messageContent = message.content {
             let jobj = SwiftyJSON.JSON(parseJSON: messageContent)
             if let rdNoti = RdNotification(json: jobj) {
-                saveNotification(content: message.toJSON())
+                saveNotification(content: rawJsonMessage)
                 if rdNoti.event == NotificationEventType.BalanceChanged.rawValue,
                     let balanceNoti = BalanceNotification(json: jobj) {
                     output?.balanceDidChange(balanceNoti: balanceNoti)
@@ -108,12 +112,16 @@ extension RDNInteractor {
         }
     }
     
-    private func saveNotification(content: Dictionary<String, Any>) {
+    private func saveNotification(content: String) {
         print("Save notification to local user defaults with content: \(content)")
         // Get current list notification
         var histories = SessionStoreManager.getNotificationHistory()
         // Add current content to list
         histories.append(content)
+        // Check length of list
+        if histories.count > 15 {
+            histories.remove(at: 0)
+        }
         // Save to user default
         SessionStoreManager.saveNotificationHistory(histories)
     }
