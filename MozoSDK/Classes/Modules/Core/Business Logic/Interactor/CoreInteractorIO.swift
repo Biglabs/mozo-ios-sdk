@@ -40,4 +40,5 @@ protocol CoreInteractorService {
     func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]>
     func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?>
     func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]>
+    func getVisitCustomerList(page: Int) -> Promise<[VisitedCustomerDTO]>
 }

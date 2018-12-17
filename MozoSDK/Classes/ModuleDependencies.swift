@@ -147,6 +147,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerAnalyticList())!
     }
     
+    func getVisitCustomerList(page: Int) -> Promise<[VisitedCustomerDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getVisitCustomerList(page: page))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

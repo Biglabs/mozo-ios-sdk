@@ -52,4 +52,27 @@ public extension ApiManager {
             }
         }
     }
+    
+    public func getVisitCustomerList(page: Int = 0, size: Int = 15) -> Promise<[VisitedCustomerDTO]> {
+        return Promise { seal in
+            let params = ["size" : size,
+                          "page" : page] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + RETAILER_ANALYTICS_RESOURCE_API_PATH + "/visited-customers" + "?\(params.queryString)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get visit customers list, json response: \(json)")
+                    let array = SwiftyJSON.JSON(json)["array"]
+                    let result = VisitedCustomerDTO.arrayFromJson(array)
+                    seal.fulfill(result)
+                }
+                .catch { error in
+                    print("Error when request get visit customers list: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
 }

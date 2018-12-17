@@ -111,4 +111,9 @@ extension CoreInteractor: CoreInteractorService {
         print("😎 Get retailer anylytic list in 6 months.")
         return apiManager.getRetailerAnalyticList()
     }
+    
+    func getVisitCustomerList(page: Int) -> Promise<[VisitedCustomerDTO]> {
+        print("😎 Get retailer anylytic home.")
+        return apiManager.getVisitCustomerList(page: page)
+    }
 }

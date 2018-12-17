@@ -108,4 +108,8 @@ public class MozoSDK {
     public static func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]> {
         return moduleDependencies.getRetailerAnalyticList()
     }
+    
+    public static func getVisitCustomerList(page: Int) -> Promise<[VisitedCustomerDTO]> {
+        return moduleDependencies.getVisitCustomerList(page: page)
+    }
 }
