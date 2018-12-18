@@ -1,5 +1,5 @@
 # Mozo SDK for iOS
-[ ![Download](https://api.bintray.com/packages/biglabs-vietnam/MozoSDK/mozo-sdk/images/download.svg) ](https://bintray.com/biglabs-vietnam/MozoSDK/mozo-sdk/_latestVersion)
+[![Badge w/ Version](https://cocoapod-badges.herokuapp.com/v/MozoSDK/badge.png)](https://cocoapods.org/pods/MozoSDK)
 
 This open-source library allows you to integrate Mozo supported features into your iOS app.
 
