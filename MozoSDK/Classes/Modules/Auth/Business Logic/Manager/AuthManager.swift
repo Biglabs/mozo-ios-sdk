@@ -57,8 +57,9 @@ class AuthManager : NSObject {
     
     private func checkAuthorization(){
         print("Check authorization, try request.")
-        apiManager?.getListAddressBook().done({ (array) in
-            print("Store downloaded address book")
+        SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKING
+        apiManager?.checkTokenExpired().done({ (result) in
+            print("Did check token expired success.")
             self.delegate?.didCheckAuthorizationSuccess()
             // TODO: Reload user info in case error with user info at the latest login
             // Remember: Authen flow and wallet flow might be affected by reloading here
@@ -112,7 +113,7 @@ class AuthManager : NSObject {
                     print("Error creating URL for : \(Configuration.AUTH_REDIRECT_URL)")
                     return
                 }
-                
+                let param = [Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE]
                 // builds authentication request
                 let request = OIDAuthorizationRequest(configuration: config,
                                                       clientId: clientId,
@@ -120,7 +121,7 @@ class AuthManager : NSObject {
                                                       scopes: [OIDScopeOpenID, OIDScopeProfile],
                                                       redirectURL: redirectURI,
                                                       responseType: OIDResponseTypeCode,
-                                                      additionalParameters: nil)
+                                                      additionalParameters: param)
                 
                 seal.fulfill(request)
             }

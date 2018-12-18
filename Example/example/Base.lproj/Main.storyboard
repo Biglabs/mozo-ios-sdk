@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cJj-X7-va5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cJj-X7-va5">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--Back-->
         <scene sceneID="OyB-co-k2K">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="PDB-oh-f31" customClass="DemoViewController" customModule="Shopper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="PDB-oh-f31" customClass="DemoViewController" customModule="example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JEu-er-mpW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,18 +32,11 @@
                                                     <constraint firstAttribute="width" constant="165" id="vlX-F6-w7D"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="94p-NE-Aha" customClass="MozoLogoutView" customModule="MozoSDK">
-                                                <rect key="frame" x="228" y="13" width="165" height="45"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="94p-NE-Aha" customClass="MozoLogoutView" customModule="MozoSDK">
+                                                <rect key="frame" x="229" y="10" width="165" height="45"/>
                                                 <color key="backgroundColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="1AX-Cm-O6R"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIM-D7-igZ" customClass="MozoSendView" customModule="MozoSDK">
-                                                <rect key="frame" x="124.66666666666669" y="65" width="165" height="45"/>
-                                                <color key="backgroundColor" red="0.0" green="0.42745098040000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="DGN-X1-teX"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFa-4l-KOI" customClass="MozoTxHistoryView" customModule="MozoSDK">
@@ -113,6 +106,24 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="showOnlyBalanceDetail" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jIM-D7-igZ" customClass="MozoSendView" customModule="MozoSDK">
+                                                <rect key="frame" x="20" y="67" width="165" height="45"/>
+                                                <color key="backgroundColor" red="0.0" green="0.42745098040000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="DGN-X1-teX"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0t-ex-abB">
+                                                <rect key="frame" x="228" y="67" width="165" height="45"/>
+                                                <color key="backgroundColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="User Wallet">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="7oV-sp-nmg" kind="show" id="nwd-3v-EZJ"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -123,17 +134,21 @@
                                             <constraint firstItem="jIM-D7-igZ" firstAttribute="top" secondItem="cNr-Tw-mDS" secondAttribute="bottom" constant="10" id="5jI-fD-4GP"/>
                                             <constraint firstItem="005-mU-edl" firstAttribute="top" secondItem="SFa-4l-KOI" secondAttribute="bottom" constant="8" id="72Z-cO-AWa"/>
                                             <constraint firstItem="005-mU-edl" firstAttribute="width" secondItem="yqI-aP-adH" secondAttribute="width" id="8Nf-eR-Sr0"/>
+                                            <constraint firstItem="h0t-ex-abB" firstAttribute="trailing" secondItem="94p-NE-Aha" secondAttribute="trailing" id="F6v-zf-hvz"/>
                                             <constraint firstItem="eEF-na-Hvj" firstAttribute="top" secondItem="005-mU-edl" secondAttribute="bottom" constant="30" id="IOX-5M-koy"/>
+                                            <constraint firstItem="h0t-ex-abB" firstAttribute="centerY" secondItem="jIM-D7-igZ" secondAttribute="centerY" id="IzY-UC-ZZr"/>
+                                            <constraint firstItem="jIM-D7-igZ" firstAttribute="leading" secondItem="cNr-Tw-mDS" secondAttribute="leading" id="J2L-GI-V19"/>
                                             <constraint firstItem="jIM-D7-igZ" firstAttribute="width" secondItem="cNr-Tw-mDS" secondAttribute="width" id="KaR-06-Fua"/>
+                                            <constraint firstItem="h0t-ex-abB" firstAttribute="height" secondItem="jIM-D7-igZ" secondAttribute="height" id="Lwe-9m-VBT"/>
                                             <constraint firstItem="uH2-nJ-YWl" firstAttribute="top" secondItem="dyz-Eb-aYx" secondAttribute="bottom" constant="30" id="PmU-7K-VwS"/>
                                             <constraint firstItem="SFa-4l-KOI" firstAttribute="top" secondItem="jIM-D7-igZ" secondAttribute="bottom" constant="10" id="QB7-Ed-5RC"/>
+                                            <constraint firstItem="h0t-ex-abB" firstAttribute="width" secondItem="jIM-D7-igZ" secondAttribute="width" id="Qfg-xE-myc"/>
                                             <constraint firstAttribute="trailing" secondItem="94p-NE-Aha" secondAttribute="trailing" constant="20" id="TPf-z6-bQO"/>
                                             <constraint firstItem="005-mU-edl" firstAttribute="centerX" secondItem="Lfc-90-c3H" secondAttribute="centerX" id="U42-hU-hbJ"/>
                                             <constraint firstItem="yqI-aP-adH" firstAttribute="centerX" secondItem="Lfc-90-c3H" secondAttribute="centerX" id="X9v-wI-VsF"/>
                                             <constraint firstItem="eEF-na-Hvj" firstAttribute="centerX" secondItem="Lfc-90-c3H" secondAttribute="centerX" id="e15-Jt-EX6"/>
                                             <constraint firstItem="SFa-4l-KOI" firstAttribute="centerX" secondItem="Lfc-90-c3H" secondAttribute="centerX" id="gle-8L-mQf"/>
                                             <constraint firstItem="94p-NE-Aha" firstAttribute="top" secondItem="Lfc-90-c3H" secondAttribute="top" constant="10" id="iDu-g1-sXM"/>
-                                            <constraint firstItem="jIM-D7-igZ" firstAttribute="centerX" secondItem="Lfc-90-c3H" secondAttribute="centerX" id="j99-PD-ggC"/>
                                             <constraint firstItem="dyz-Eb-aYx" firstAttribute="top" secondItem="yqI-aP-adH" secondAttribute="bottom" constant="30" id="j9K-KH-dMS"/>
                                             <constraint firstItem="dyz-Eb-aYx" firstAttribute="centerX" secondItem="Lfc-90-c3H" secondAttribute="centerX" id="o1i-2h-DEh"/>
                                             <constraint firstItem="cNr-Tw-mDS" firstAttribute="leading" secondItem="Lfc-90-c3H" secondAttribute="leading" constant="20" id="rXK-gI-WLy"/>
@@ -177,10 +192,38 @@
             </objects>
             <point key="canvasLocation" x="-4021.739130434783" y="1332.8804347826087"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="y8t-3x-mwj">
+            <objects>
+                <viewController id="7oV-sp-nmg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a5E-5q-yjw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCt-Z9-Sd9" customClass="MozoUserWalletView" customModule="MozoSDK">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MCt-Z9-Sd9" firstAttribute="width" secondItem="a5E-5q-yjw" secondAttribute="width" id="7Br-Xq-dK0"/>
+                            <constraint firstItem="MCt-Z9-Sd9" firstAttribute="centerX" secondItem="a5E-5q-yjw" secondAttribute="centerX" id="g8G-pa-Ysk"/>
+                            <constraint firstItem="MCt-Z9-Sd9" firstAttribute="centerY" secondItem="a5E-5q-yjw" secondAttribute="centerY" id="nf4-iA-Hiv"/>
+                            <constraint firstItem="MCt-Z9-Sd9" firstAttribute="height" secondItem="a5E-5q-yjw" secondAttribute="height" id="pTb-Nl-Ade"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Z0T-5u-9h2"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="co9-kJ-F0u"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b0C-Td-Z7F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3007" y="1308"/>
+        </scene>
         <!--Test Cryptor-->
         <scene sceneID="zoI-Bh-2C9">
             <objects>
-                <viewController title="Test Cryptor" id="Mld-GH-vcF" customClass="DemoCryptorViewController" customModule="Shopper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Test Cryptor" id="Mld-GH-vcF" customClass="DemoCryptorViewController" customModule="example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k3y-QO-2fN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -208,7 +251,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FQK-Nu-qi0">
-                                <rect key="frame" x="104" y="250" width="300" height="30"/>
+                                <rect key="frame" x="104" y="250.66666666666663" width="300" height="30"/>
                                 <color key="backgroundColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="IFx-3f-Sw7"/>
@@ -285,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5b-nT-gTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3007.2463768115945" y="1143.75"/>
+            <point key="canvasLocation" x="-3007" y="629"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TQZ-XF-ymN">

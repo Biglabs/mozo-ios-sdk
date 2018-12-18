@@ -69,9 +69,28 @@ public extension String {
         if !caseSensitive { return hasPrefix(prefix) }
         return self.lowercased().hasPrefix(prefix.lowercased())
     }
+    
+    public func censoredMiddle() -> String {
+        let prefix = self[0..<3]
+        let middle = "********"
+        let end = self[count - 3..<count]
+        return "\(prefix)\(middle)\(end)"
+    }
 }
 
 internal extension String {
+    subscript (bounds: CountableClosedRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start...end])
+    }
+    
+    subscript (bounds: CountableRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start..<end])
+    }
+    
     var hasOnlyNewlineSymbols: Bool {
         return trimmingCharacters(in: CharacterSet.newlines).isEmpty
     }
@@ -208,6 +227,13 @@ internal extension Int {
     }
 }
 
+public extension Int {
+    func addCommas() -> String {
+        let number = NSNumber(value: self)
+        return number.addCommas()
+    }
+}
+
 public extension Double {
     func convertTokenValue(decimal: Int) -> NSNumber{
         let retValue = NSNumber(value: self * Double(truncating: pow(10, decimal) as NSNumber))
@@ -219,6 +245,12 @@ public extension Double {
         let divisor = pow(10.0, Double(places))
         return (self * divisor).rounded() / divisor
     }
+    
+    func roundAndAddCommas(toPlaces places:Int = 2) -> String {
+        let roundedBalance = self.rounded(toPlaces: 2)
+        let number = NSNumber(value: roundedBalance)
+        return number.addCommas()
+    }
 }
 
 public extension NSNumber {
@@ -226,15 +258,65 @@ public extension NSNumber {
         let retValue = Double(truncating: self) / Double(truncating: pow(10, decimal) as NSNumber)
         return retValue
     }
+    
+    func addCommas() -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        let formattedNumber = numberFormatter.string(from: self)
+        return formattedNumber ?? "0"
+    }
 }
 
 extension Dictionary {
     var queryString: String {
         var output: String = ""
         for (key,value) in self {
-            output +=  "\(key)=\(value)&"
+            output += "\(key)=\(value)&"
         }
         return output
+    }
+}
+
+extension URL {
+    public var queryParameters: [String: String]? {
+        guard let components = URLComponents(url: self, resolvingAgainstBaseURL: true), let queryItems = components.queryItems else {
+            return nil
+        }
+        
+        var parameters = [String: String]()
+        for item in queryItems {
+            parameters[item.name] = item.value
+        }
+        
+        return parameters
+    }
+}
+public extension Date {
+    func timeAgoDisplay() -> String {
+        let calendar = Calendar.current
+        let minuteAgo = calendar.date(byAdding: .minute, value: -1, to: Date())!
+        let hourAgo = calendar.date(byAdding: .hour, value: -1, to: Date())!
+        let dayAgo = calendar.date(byAdding: .day, value: -1, to: Date())!
+        let weekAgo = calendar.date(byAdding: .day, value: -7, to: Date())!
+        
+        if minuteAgo < self {
+            let diff = Calendar.current.dateComponents([.second], from: self, to: Date()).second ?? 0
+            if diff < 30 {
+                return "Just Now"
+            }
+            return "\(diff) sec ago"
+        } else if hourAgo < self {
+            let diff = Calendar.current.dateComponents([.minute], from: self, to: Date()).minute ?? 0
+            return "\(diff) min ago"
+        } else if dayAgo < self {
+            let diff = Calendar.current.dateComponents([.hour], from: self, to: Date()).hour ?? 0
+            return "\(diff) hrs ago"
+        } else if weekAgo < self {
+            let diff = Calendar.current.dateComponents([.day], from: self, to: Date()).day ?? 0
+            return "\(diff) days ago"
+        }
+        let diff = Calendar.current.dateComponents([.weekOfYear], from: self, to: Date()).weekOfYear ?? 0
+        return "\(diff) weeks ago"
     }
 }
 

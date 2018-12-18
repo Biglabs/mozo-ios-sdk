@@ -7,9 +7,9 @@
 
 import UIKit
 
-@IBDesignable class MozoView: UIView {
+@IBDesignable public class MozoView: UIView {
     @IBOutlet var containerView: UIView!
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         loadViewFromNib()
     }
@@ -19,7 +19,7 @@ import UIKit
         loadViewFromNib()
     }
     
-    override func prepareForInterfaceBuilder() {
+    override public func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         loadViewFromNib()
     }

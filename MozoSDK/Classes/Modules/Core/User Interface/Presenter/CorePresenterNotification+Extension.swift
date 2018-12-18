@@ -58,52 +58,34 @@ extension CorePresenter {
     }
     
     func performNotifications(noti: RdNotification) {
-        if noti.event == NotificationEventType.BalanceChanged.rawValue {
-            if let blNoti = noti as? BalanceNotification {
-                if let user = SessionStoreManager.loadCurrentUser(), let address = user.profile?.walletInfo?.offchainAddress {
-                let content = UNMutableNotificationContent()
-                
-                let requestIdentifier = "mozoNotification_\(Date())"
-                
-                content.badge = 1
-                content.title = "MOZO"
-                var prefix = "From"
-                var displayAddress = blNoti.from
-                var action = TransactionType.Received.value
-                if blNoti.from?.lowercased() == address.lowercased() {
-                    action = TransactionType.Sent.value
-                    prefix = "To"
-                    displayAddress = blNoti.to
-                }
-                let amount = blNoti.amount?.convertOutputValue(decimal: blNoti.decimal ?? 0)
-                content.subtitle = "You \(action.lowercased()) \(amount ?? 0.0) Mozo"
-                let list = SafetyDataManager.shared.addressBookList
-                if let addressBook = AddressBookDTO.addressBookFromAddress(displayAddress ?? "", array: list) {
-                    content.body = "\(prefix) @\(addressBook.name ?? "")"
-                } else {
-                    content.body = "\(prefix) Mozo wallet address \(displayAddress ?? "")"
-                }
-                content.categoryIdentifier = "mozoActionCategory"
-                content.sound = UNNotificationSound.default()
-                
-                // If you want to attach any image to show in local notification
-                if let img = UIImage(named: "ic_mozo_offchain", in: BundleManager.mozoBundle(), compatibleWith: nil) {
-                    do {
-                        let attachment = UNNotificationAttachment.create(identifier: requestIdentifier, image: img, options: nil)
-                            //try? UNNotificationAttachment(identifier: requestIdentifier, url: url, options: nil)
-                        content.attachments = [attachment] as! [UNNotificationAttachment]
-                    }
-                }
-                
-                let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: nil)
-                UNUserNotificationCenter.current().add(request) { (error:Error?) in
-                    
-                    if error != nil {
-                        print(error?.localizedDescription as Any)
-                    }
-                    print("Notification Register Success")
+        let displayData = NotiDisplayItemData(rawNoti: noti)
+        if let displayItem = displayData.displayItem {
+            let content = UNMutableNotificationContent()
+            let requestIdentifier = "mozoNotification_\(Date())"
+            
+            content.badge = 1
+            content.title = displayItem.title
+            content.subtitle = displayItem.subTitle
+            content.body = displayItem.body
+            content.categoryIdentifier = "mozoActionCategory"
+            content.sound = UNNotificationSound.default()
+            
+            // If you want to attach any image to show in local notification
+            if let img = UIImage(named: displayItem.image, in: BundleManager.mozoBundle(), compatibleWith: nil) {
+                do {
+                    let attachment = UNNotificationAttachment.create(identifier: requestIdentifier, image: img, options: nil)
+                    //try? UNNotificationAttachment(identifier: requestIdentifier, url: url, options: nil)
+                    content.attachments = [attachment] as! [UNNotificationAttachment]
                 }
             }
+            
+            let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: nil)
+            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                
+                if error != nil {
+                    print(error?.localizedDescription as Any)
+                }
+                print("Notification Register Success")
             }
         }
     }

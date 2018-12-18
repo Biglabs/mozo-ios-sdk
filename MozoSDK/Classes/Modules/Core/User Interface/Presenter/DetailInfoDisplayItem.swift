@@ -8,8 +8,8 @@
 import Foundation
 
 public struct DetailInfoDisplayItem {
-    let balance : Double
-    let address: String
+    public let balance : Double
+    public let address: String
     
     init(balance: Double, address: String) {
         self.balance = balance

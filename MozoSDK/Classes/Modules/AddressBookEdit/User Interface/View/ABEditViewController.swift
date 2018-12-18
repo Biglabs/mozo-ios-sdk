@@ -68,12 +68,9 @@ class ABEditViewController : MozoBasicViewController {
     }
     
     func displayConfirm(_ item: AddressBookDisplayItem) {
-        let alert = UIAlertController(title: "Confirm", message: "Are you sure?", preferredStyle: .alert)
-        alert.addAction(.init(title: "Yes", style: .default, handler: { (action) in
+        displayMozoAlertConfirm(confirmCompletion: {
             self.eventHandler?.requestDeleteAddressBook(item)
-        }))
-        alert.addAction(.init(title: "No", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        }, notConfirmCompletion: nil)
     }
     
     @IBAction func touchedBtnDelete(_ sender: Any) {
@@ -113,11 +110,9 @@ extension ABEditViewController : ABEditViewInterface {
     }
     
     func displaySuccess() {
-        let alert = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
-        alert.addAction(.init(title: "OK", style: .default, handler: { (action) in
+        displayMozoAlertSuccess {
             self.eventHandler?.finishEditAddressBook()
-        }))
-        self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func displayTryAgain(_ error: ConnectionError, forDelete: Bool) {
@@ -127,6 +122,10 @@ extension ABEditViewController : ABEditViewInterface {
     }
 }
 extension ABEditViewController : PopupErrorDelegate {
+    func didClosePopupWithoutRetry() {
+        
+    }
+    
     func didTouchTryAgainButton() {
         removeMozoPopupError()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {

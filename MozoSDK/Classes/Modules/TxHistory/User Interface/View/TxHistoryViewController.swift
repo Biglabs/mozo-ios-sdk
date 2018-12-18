@@ -43,6 +43,7 @@ class TxHistoryViewController: MozoBasicViewController {
         self.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.tableFooterView = UIView()
         
+        tableView.register(UINib(nibName: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER)
         setLayerBorder()
         eventHandler?.loadTokenInfo()
         loadHistoryWithPage(page: currentPage)
@@ -154,7 +155,7 @@ extension TxHistoryViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TxHistoryTableViewCell", for: indexPath) as! TxHistoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, for: indexPath) as! TxHistoryTableViewCell
         let item: TxHistoryDisplayItem
         if isFiltering {
             item = filteredItems[indexPath.row]
@@ -239,6 +240,10 @@ extension TxHistoryViewController: UIScrollViewDelegate {
     }
 }
 extension TxHistoryViewController : PopupErrorDelegate {
+    func didClosePopupWithoutRetry() {
+        
+    }
+    
     func didTouchTryAgainButton() {
         print("User try reload transaction history again.")
         removeMozoPopupError()

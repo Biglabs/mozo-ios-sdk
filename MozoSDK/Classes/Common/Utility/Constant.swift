@@ -55,6 +55,8 @@ public enum Module {
     case Wallet
     case Transaction
     case TxHistory
+    case Airdrop
+    case Payment
     
     public var key : String {
         switch self {
@@ -62,6 +64,8 @@ public enum Module {
             case .Wallet: return "Wallet"
             case .Transaction: return "Transaction"
             case .TxHistory: return "TxHistory"
+            case .Airdrop: return "Airdrop"
+            case .Payment: return "Payment"
         }
     }
     
@@ -71,6 +75,8 @@ public enum Module {
             case .Wallet: return "Wallet"
             case .Transaction: return "Transaction"
             case .TxHistory: return "TxHistory"
+            case .Airdrop: return "Airdrop"
+            case .Payment: return "Payment"
         }
     }
 }
@@ -149,11 +155,13 @@ public enum CurrencyType: String {
 public enum SymbolType {
     case SOLO
     case MOZO
+    case MOZOX
     
     public var value : String {
         switch self {
         case .SOLO: return "SOLO"
         case .MOZO: return "MOZO"
+        case .MOZOX: return "MOZOX"
         }
     }
 }

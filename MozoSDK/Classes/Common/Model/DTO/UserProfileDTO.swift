@@ -12,6 +12,8 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
     public var id: Int?
     public var userId: String?
     public var status: String?
+    public var phoneNumber: String?
+    public var avatarUrl: String?
     
     public var walletInfo: WalletInfoDTO?
     public var exchangeInfo: ExchangeInfoDTO?
@@ -25,6 +27,8 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
         self.id = json["id"].int
         self.userId = json["userId"].string
         self.status = json["status"].string
+        self.phoneNumber = json["phoneNumber"].string
+        self.avatarUrl = json["avatarUrl"].string
         self.walletInfo = WalletInfoDTO(json: json["walletInfo"])
         self.exchangeInfo = ExchangeInfoDTO(json: json["exchangeInfo"])
         self.settings = json["settings"].string

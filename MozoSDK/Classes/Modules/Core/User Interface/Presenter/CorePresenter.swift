@@ -17,6 +17,10 @@ class CorePresenter : NSObject {
     weak var authDelegate: AuthenticationDelegate?
     var callBackModule: Module?
     var reachability : Reachability?
+    
+    var waitingViewInterface: WaitingViewInterface?
+    
+    var requestingABModule: Module?
 
     override init() {
         super.init()
@@ -28,7 +32,7 @@ class CorePresenter : NSObject {
     
     // MARK: Reachability
     func setupReachability() {
-        let hostName = Configuration.BASE_URL
+        let hostName = Configuration.BASE_HOST
         print("Set up Reachability with host name: \(hostName)")
         reachability = Reachability(hostname: hostName)
         reachability?.whenReachable = { reachability in
@@ -104,7 +108,6 @@ private extension CorePresenter {
         startSlientServices()
     }
 }
-
 extension CorePresenter : CoreModuleInterface {
     func requestForAuthentication(module: Module) {
         coreInteractor?.checkForAuthentication(module: module)
@@ -131,23 +134,32 @@ extension CorePresenter : CoreModuleInterface {
             coreWireframe?.prepareForTransferInterface()
         case .TxHistory:
             coreWireframe?.prepareForTxHistoryInterface()
+        case .Payment:
+            coreWireframe?.prepareForPaymentRequestInterface()
         default: coreWireframe?.prepareForWalletInterface()
         }
     }
 }
-
+extension CorePresenter : CoreModuleWaitingInterface {
+    func retryGetUserProfile() {
+        if let module = callBackModule {
+            requestForAuthentication(module: module)
+        }
+    }
+}
 extension CorePresenter : AuthModuleDelegate {
     func didCheckAuthorizationSuccess() {
         print("On Check Authorization Did Success: Download convenience data")
+        SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
         coreInteractor?.downloadConvenienceDataAndStoreAtLocal()
     }
     
     func didCheckAuthorizationFailed() {
         print("On Check Authorization Did Failed - No connection")
-        
     }
     
     func didRemoveTokenAndLogout() {
+        SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
         // Notify for all observing objects
         coreInteractor?.notifyLogoutForAllObservers()
     }
@@ -217,6 +229,13 @@ extension CorePresenter : CoreInteractorOutput {
     func finishedHandleAferAuth() {
         coreWireframe?.prepareForWalletInterface()
     }
+    
+    func failToLoadUserInfo(_ error: ConnectionError, for requestingModule: Module?) {
+        if let requestingModule = requestingModule {
+            callBackModule = requestingModule
+        }
+        waitingViewInterface?.displayTryAgain(error)
+    }
 }
 
 extension CorePresenter: TransactionModuleDelegate {
@@ -237,7 +256,8 @@ extension CorePresenter: TransactionModuleDelegate {
     }
     
     func requestAddressBookInterfaceForTransaction() {
-        coreWireframe?.presentAddressBookInterfaceForTransaction()
+        requestingABModule = Module.Transaction
+        coreWireframe?.presentAddressBookInterfaceForSelecting()
     }
 }
 
@@ -267,7 +287,16 @@ extension CorePresenter: TxDetailModuleDelegate {
 extension CorePresenter: AddressBookModuleDelegate {
     func addressBookModuleDidChooseItemOnUI(addressBook: AddressBookDisplayItem, isDisplayForSelect: Bool) {
         if isDisplayForSelect {
-            coreWireframe?.updateAddressBookInterfaceForTransaction(displayItem: addressBook)
+            if let module = requestingABModule {
+                switch module {
+                case .Transaction:
+                    coreWireframe?.updateAddressBookInterfaceForTransaction(displayItem: addressBook)
+                case .Payment:
+                    coreWireframe?.updateAddressBookInterfaceForPaymentRequest(displayItem: addressBook)
+                default: break
+                }
+                requestingABModule = nil
+            }
             coreWireframe?.dismissAddressBookInterface()
         } else {
             
@@ -295,6 +324,10 @@ extension CorePresenter: TxHistoryModuleDelegate {
 }
 
 extension CorePresenter : RDNInteractorOutput {
+    func didCustomerCame(ccNoti: CustomerComeNotification) {
+        performNotifications(noti: ccNoti)
+    }
+    
     func balanceDidChange(balanceNoti: BalanceNotification) {
         coreInteractor?.notifyBalanceChangesForAllObservers(balanceNoti: balanceNoti)
         performNotifications(noti: balanceNoti)
@@ -303,5 +336,16 @@ extension CorePresenter : RDNInteractorOutput {
     func addressBookDidChange(addressBookList: [AddressBookDTO]) {
         SafetyDataManager.shared.addressBookList = addressBookList
         coreInteractor?.notifyAddressBookChangesForAllObservers()
+    }
+    
+    func didAirdropped(airdropNoti: BalanceNotification) {
+        performNotifications(noti: airdropNoti)
+    }
+}
+
+extension CorePresenter: PaymentQRModuleDelegate {
+    func requestAddressBookInterfaceForPaymentRequest() {
+        requestingABModule = .Payment
+        coreWireframe?.presentAddressBookInterfaceForSelecting()
     }
 }

@@ -14,7 +14,7 @@ public class BalanceNotification : RdNotification {
     public var amount: NSNumber?
     public var symbol: String?
     public var decimal: Int?
-    
+        
     public required init? (json: SwiftyJSON.JSON) {
         self.from = json["from"].string
         self.to = json["to"].string
@@ -22,5 +22,25 @@ public class BalanceNotification : RdNotification {
         self.symbol = json["symbol"].string
         self.decimal = json["decimal"].int
         super.init(json: json)
+    }
+    
+    public override func toJSON() -> Dictionary<String, Any> {
+        var json = super.toJSON()
+        if let from = self.from {
+            json["from"] = from
+        }
+        if let to = self.to {
+            json["to"] = to
+        }
+        if let amount = self.amount {
+            json["amount"] = amount
+        }
+        if let symbol = self.symbol {
+            json["symbol"] = symbol
+        }
+        if let decimal = self.decimal {
+            json["decimal"] = decimal
+        }
+        return json
     }
 }

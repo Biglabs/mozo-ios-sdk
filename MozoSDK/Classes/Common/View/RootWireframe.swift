@@ -21,6 +21,10 @@ let ABDetailViewControllerIdentifier = "ABDetailViewController"
 let ABEditViewControllerIdentifier = "ABEditViewController"
 let TxHistoryViewControllerIdentifier = "TxHistoryViewController"
 let TxHistoryDetailViewControllerIdentifier = "TxHistoryDetailViewController"
+let MyWalletViewControllerIdentifier = "MyWalletViewController"
+let PaymentViewControllerIdentifier = "PaymentViewController"
+let PaymentQRViewControllerIdentifier = "PaymentQRViewController"
+let PaymentSendSuccessViewControllerIdentifier = "PaymentSendSuccessViewController"
 
 class RootWireframe : NSObject {
     let mozoNavigationController = MozoNavigationController()
@@ -48,7 +52,11 @@ class RootWireframe : NSObject {
     }
     
     func dismissTopViewController() {
-        _ = mozoNavigationController.viewControllers.popLast()
+        if mozoNavigationController.viewControllers.count > 1 {
+            _ = mozoNavigationController.viewControllers.popLast()
+        } else {
+            closeAllMozoUIs(completion: {})
+        }
     }
     
     public func getTopViewController() -> UIViewController! {
