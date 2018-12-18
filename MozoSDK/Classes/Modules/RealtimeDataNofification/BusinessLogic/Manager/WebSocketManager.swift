@@ -10,6 +10,7 @@ import Starscream
 
 public class WebSocketManager {
     var socket: WebSocket
+    var appType: AppType = .Shopper
     
     public init() {
         let request = URLRequest(url: URL(string: Configuration.WEB_SOCKET_URL)!)
@@ -17,37 +18,35 @@ public class WebSocketManager {
     }
 
     public func requestWithHeader() -> URLRequest{
-        let uuid = NSUUID().uuidString
-        var url = Configuration.WEB_SOCKET_URL + uuid
-        var headers = ["X-Atmosphere-tracking-id" : "0",
+        let uuid = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
+        var url = Configuration.WEB_SOCKET_URL + uuid + "/\(appType.rawValue)"
+        let headers = ["X-Atmosphere-tracking-id" : "0",
                        "X-Atmosphere-Framework" : "2.3.3-javascript",
                        "X-Atmosphere-Transport" : "websocket",
                        "Content-Type" : "application/json",
                        "X-atmo-protocol" : "true"]
-//        url += "/?\(headers.queryString)"
+        url += "/?\(headers.queryString)"
         
         if let accessToken = AccessTokenManager.getAccessToken() {
-//            url += "Authentication=bearer+\(accessToken)"
-            headers["Authentication"] = "bearer+\(accessToken)"
+            url += "Authorization=bearer+\(accessToken)"
         }
         var request = URLRequest(url: URL(string: url)!)
-        request.allHTTPHeaderFields = headers
         request.timeoutInterval = 5
         return request
     }
     
     func connect() {
-        NSLog("WebSocketManager - [connect].")
+        print("WebSocketManager - [connect].")
         // Build header with current access token
         let request = requestWithHeader()
         socket = WebSocket(request: request)
-        NSLog("WebSocketManager - [connect] with URL \(socket.currentURL)")
+        print("WebSocketManager - [connect] with URL \(socket.currentURL)")
         socket.connect()
     }
     
     func disconnect() {
         if socket.isConnected {
-            NSLog("WebSocketManager - [disconnect].")
+            print("WebSocketManager - [disconnect].")
             socket.disconnect()
         }
     }

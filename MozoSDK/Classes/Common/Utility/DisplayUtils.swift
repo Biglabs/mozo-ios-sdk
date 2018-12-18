@@ -35,15 +35,60 @@ public class DisplayUtils {
             coverView.alpha = 0.5
             parentView.addSubview(coverView)
             
-            let view = MozoQRView(frame: CGRect(x: 0, y: 0, width: 315, height: 401))
+            let view = MozoQRView(frame: CGRect(x: 0, y: 0, width: 254, height: 284))
             let img = generateQRCode(from: address)
             view.qrImage = img
             view.coverView = coverView
             
-            view.roundCorners(borderColor: .white, borderWidth: 1)
+            view.clipsToBounds = false
+            view.dropShadow()
+            view.containerView.roundCorners(borderColor: .white, borderWidth: 1)
             
             view.center = parentView.center
             parentView.addSubview(view)
+        }
+    }
+    
+    public static func displayTryAgainPopup(allowTapToDismiss: Bool = true,
+                                            error: ConnectionError? = nil,
+                                            delegate: PopupErrorDelegate) {
+        if let topViewController = getTopViewController(), let parentView = topViewController.view {
+            let mozoPopupErrorView = MozoPopupErrorView(frame: CGRect(x: 0, y: 0, width: 315, height: 315))
+            mozoPopupErrorView.delegate = delegate
+            if let err = error {
+                mozoPopupErrorView.error = err
+            }
+            
+            mozoPopupErrorView.clipsToBounds = false
+            mozoPopupErrorView.dropShadow()
+            mozoPopupErrorView.containerView.roundCorners(borderColor: .white, borderWidth: 1)
+            
+            mozoPopupErrorView.center = parentView.center
+            
+            // cover view
+            let displayWidth: CGFloat = parentView.frame.width
+            let displayHeight: CGFloat = parentView.frame.height
+            let coverView = UIView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight))
+            coverView.backgroundColor = .black
+            coverView.alpha = 0.5
+            parentView.addSubview(coverView)
+            
+            if allowTapToDismiss {
+                let coverViewTap = UITapGestureRecognizer(target: mozoPopupErrorView, action: #selector(MozoPopupErrorView.dismissView))
+                coverView.addGestureRecognizer(coverViewTap)
+                
+                mozoPopupErrorView.modalCloseHandler = {
+                    mozoPopupErrorView.removeFromSuperview()
+                    coverView.removeFromSuperview()
+                }
+            }
+            
+            mozoPopupErrorView.tapTryHandler = {
+                mozoPopupErrorView.removeFromSuperview()
+                coverView.removeFromSuperview()
+            }
+            
+            parentView.addSubview(mozoPopupErrorView)
         }
     }
     
@@ -85,5 +130,18 @@ public class DisplayUtils {
         let appDelegate = UIApplication.shared.delegate
         if let window = appDelegate!.window { return window?.visibleViewController }
         return nil
+    }
+    
+    public static func buildNameFromAddress(address: String) -> String {
+        var displayName = address
+        if !address.isEmpty {
+            let list = SafetyDataManager.shared.addressBookList
+            if let ab = AddressBookDTO.addressBookFromAddress(address, array: list), let name = ab.name {
+                displayName = name
+            } else {
+                // TODO: Find address in Store Book
+            }
+        }
+        return displayName
     }
 }

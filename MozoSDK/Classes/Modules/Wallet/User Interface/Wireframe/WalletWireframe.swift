@@ -19,18 +19,22 @@ class WalletWireframe: MozoWireframe {
     }
     
     func presentPINInterface(passPharse: String?, requestFrom module: Module = Module.Wallet) {
-        let viewController = PINViewControllerFromStoryboard()
+        let viewController = pinViewControllerFromStoryboard()
         viewController.eventHandler = walletPresenter
         viewController.passPhrase = passPharse
         viewController.moduleRequested = module
         
         pinViewController = viewController
         walletPresenter?.pinUserInterface = viewController
-        rootWireframe?.displayViewController(viewController)
+        if module == .Airdrop {
+            rootWireframe?.showRootViewController(viewController, inWindow: (UIApplication.shared.delegate?.window!)!)
+        } else {
+            rootWireframe?.displayViewController(viewController)
+        }
     }
     
     func presentPassPhraseInterface() {
-        let viewController = PassPhraseViewControllerFromStoryboard()
+        let viewController = passPhraseViewControllerFromStoryboard()
         viewController.eventHandler = walletPresenter
         passPhraseViewController = viewController
         walletPresenter?.passPharseUserInterface = viewController
@@ -41,13 +45,13 @@ class WalletWireframe: MozoWireframe {
         rootWireframe?.dismissTopViewController()
     }
     
-    func PINViewControllerFromStoryboard() -> PINViewController {
+    func pinViewControllerFromStoryboard() -> PINViewController {
         let storyboard = StoryboardManager.mozoStoryboard()
         let viewController = storyboard.instantiateViewController(withIdentifier: PINViewControllerIdentifier) as! PINViewController
         return viewController
     }
     
-    func PassPhraseViewControllerFromStoryboard() -> PassPhraseViewController {
+    func passPhraseViewControllerFromStoryboard() -> PassPhraseViewController {
         let storyboard = StoryboardManager.mozoStoryboard()
         let viewController = storyboard.instantiateViewController(withIdentifier: PassPhraseViewControllerIdentifier) as! PassPhraseViewController
         return viewController

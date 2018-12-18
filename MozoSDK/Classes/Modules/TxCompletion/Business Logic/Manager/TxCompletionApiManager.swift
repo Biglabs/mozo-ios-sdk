@@ -9,7 +9,7 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 
-let TX_ETH_SOLO_API_PATH = "/api/eth/solo"
+let TX_ETH_SOLO_API_PATH = "/eth/solo"
 public extension ApiManager {
     /// Call API to get transaction status from a transaction hash.
     ///

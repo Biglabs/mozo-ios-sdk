@@ -9,7 +9,7 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 
-let ANONYMOUS_API_PATH = "/api/anonymous"
+let ANONYMOUS_API_PATH = "/anonymous"
 extension ApiManager {
     public func anonymousAuthenticate(anonymousUser: AnonymousUserDTO) -> Promise<AnonymousUserDTO?> {
         return Promise { seal in

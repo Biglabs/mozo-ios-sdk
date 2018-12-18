@@ -12,6 +12,8 @@ import PromiseKit
 typealias PostRegistrationCallback = (_ configuration: OIDServiceConfiguration?, _ registrationResponse: OIDRegistrationResponse?) -> Void
 
 class AuthManager : NSObject {
+    var delegate : AuthManagerDelegate?
+    
     private (set) var currentAuthorizationFlow: OIDAuthorizationFlowSession?
     var apiManager : ApiManager? {
         didSet {
@@ -30,6 +32,7 @@ class AuthManager : NSObject {
     }
     
     func clearAll() {
+        print("AuthManager, clear all: token, user info, auth state.")
         AccessTokenManager.clearToken()
         SessionStoreManager.clearCurrentUser()
         setAuthState(nil)
@@ -54,29 +57,24 @@ class AuthManager : NSObject {
     
     private func checkAuthorization(){
         print("Check authorization, try request.")
-        apiManager?.getListAddressBook().done({ (array) in
-            // Store downloaded address book
-            SessionStoreManager.addressBookList = array
-            self.loadNecessaryData()
+        SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKING
+        apiManager?.checkTokenExpired().done({ (result) in
+            print("Did check token expired success.")
+            self.delegate?.didCheckAuthorizationSuccess()
             // TODO: Reload user info in case error with user info at the latest login
             // Remember: Authen flow and wallet flow might be affected by reloading here
+            self.checkRefreshToken()
         }).catch({ (err) in
             let error = err as! ConnectionError
             if error == ConnectionError.authenticationRequired {
+                let expiresAt : Date = (self.authState?.lastTokenResponse?.accessTokenExpirationDate)!
                 print("Token expired, clear token and user info")
+                print("Expires at: \(expiresAt)")
                 self.clearAll()
-                return
+                self.delegate?.didRemoveTokenAndLogout()
+            } else {
+                self.checkRefreshToken()
             }
-        })
-        // There is 2 cases here:
-        // 1. Token is alive
-        // 2. Token is dead but refresh token is still alive
-        self.checkRefreshToken()
-    }
-    
-    private func loadNecessaryData() {
-        _ = apiManager?.getExchangeRateInfo(currencyType: .KRW).done({ (rateInfo) in
-            SessionStoreManager.exchangeRateInfo = rateInfo
         })
     }
     
@@ -115,7 +113,7 @@ class AuthManager : NSObject {
                     print("Error creating URL for : \(Configuration.AUTH_REDIRECT_URL)")
                     return
                 }
-                
+                let param = [Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE]
                 // builds authentication request
                 let request = OIDAuthorizationRequest(configuration: config,
                                                       clientId: clientId,
@@ -123,7 +121,7 @@ class AuthManager : NSObject {
                                                       scopes: [OIDScopeOpenID, OIDScopeProfile],
                                                       redirectURL: redirectURI,
                                                       responseType: OIDResponseTypeCode,
-                                                      additionalParameters: nil)
+                                                      additionalParameters: param)
                 
                 seal.fulfill(request)
             }

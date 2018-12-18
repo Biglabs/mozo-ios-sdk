@@ -25,4 +25,7 @@ protocol AuthInteractorOutput {
     
     func finishBuildLogoutRequest(_ request: OIDAuthorizationRequest)
     func finishLogout()
+    
+    func didCheckAuthorizationSuccess()
+    func didRemoveTokenAndLogout()
 }

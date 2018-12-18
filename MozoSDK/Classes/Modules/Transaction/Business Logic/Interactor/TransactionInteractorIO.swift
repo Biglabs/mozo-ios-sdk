@@ -10,7 +10,7 @@ import Foundation
 protocol TransactionInteractorInput {
     func loadTokenInfo()
     func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayName: String?)
-    func sendUserConfirmTransaction(_ transaction: TransactionDTO)
+    func sendUserConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO)
     func performTransfer(pin: String)
     func requestToRetryTransfer()
     func validateValueFromScanner(_ scanValue: String)
@@ -20,7 +20,7 @@ protocol TransactionInteractorInput {
 protocol TransactionInteractorOutput {
     func didLoadTokenInfo(_ tokenInfo: TokenInfoDTO)
     func didReceiveError(_ error: String?)
-    func performTransferWithError(_ error: ConnectionError)
+    func performTransferWithError(_ error: ConnectionError, isTransferScreen: Bool)
     func requestPinToSignTransaction()
     func didValidateTransferTransaction(_ error: String?, isAddress: Bool)
     func continueWithTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayName: String?)

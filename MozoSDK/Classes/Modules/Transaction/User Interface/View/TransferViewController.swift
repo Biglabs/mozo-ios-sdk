@@ -67,7 +67,7 @@ class TransferViewController: MozoBasicViewController {
         print("Transfer viewcontroller: On Balance Did Update: Update only balance")
         if let data = notification.userInfo as? [String : Any?] {
             let balance = data["balance"] as! Double
-            lbSpendable.text = "\(balance)"
+            lbSpendable.text = balance.roundAndAddCommas()
             tokenInfo?.balance = balance.convertTokenValue(decimal: tokenInfo?.decimals ?? 0)
         }
     }
@@ -219,14 +219,31 @@ class TransferViewController: MozoBasicViewController {
         }
     }
 }
-
+extension TransferViewController : PopupErrorDelegate {
+    func didClosePopupWithoutRetry() {
+        
+    }
+    
+    func didTouchTryAgainButton() {
+        print("User try reload balance on transfer screen again.")
+        removeMozoPopupError()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
+            self.eventHandler?.loadTokenInfo()
+        }
+    }
+}
 extension TransferViewController : TransferViewInterface {
+    func displayTryAgain(_ error: ConnectionError) {
+        displayMozoPopupError()
+        mozoPopupErrorView?.delegate = self
+    }
+    
     func updateUserInterfaceWithTokenInfo(_ tokenInfo: TokenInfoDTO) {
         self.tokenInfo = tokenInfo
         let balance = tokenInfo.balance ?? 0
         let displayBalance = balance.convertOutputValue(decimal: tokenInfo.decimals ?? 0)
         
-        lbSpendable.text = "\(displayBalance)"
+        lbSpendable.text = "\(displayBalance.roundAndAddCommas())"
     }
     
     func updateUserInterfaceWithAddress(_ address: String) {
@@ -266,6 +283,10 @@ extension TransferViewController: UITextFieldDelegate {
         let finalText = (textField.text ?? "") + string
         if (finalText.isValidDecimalFormat() == false){
             showValidate("Error: Please input value in decimal format.", isAddress: false)
+            return false
+        } else if let value = Decimal(string: finalText), value.significantFractionalDecimalDigits > tokenInfo?.decimals ?? 0 {
+            print("Digits: \(value)")
+            showValidate("Error: The length of decimal places must be equal or smaller than \(tokenInfo?.decimals ?? 0).", isAddress: false)
             return false
         }
         hideValidate(isAddress: false)

@@ -9,7 +9,7 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 
-let TX_API_PATH = "/api/solo/contract/solo-token/"
+let TX_API_PATH = "/solo/contract/solo-token/"
 public extension ApiManager {
     public func getTokenInfoFromAddress(_ address: String) -> Promise<TokenInfoDTO> {
         return Promise { seal in
@@ -19,14 +19,16 @@ public extension ApiManager {
                     // JSON info
                     print(json)
                     let jobj = SwiftyJSON.JSON(json)
-                    let userProfile = TokenInfoDTO.init(json: jobj)
-                    seal.fulfill(userProfile!)
+                    let tokenInfo = TokenInfoDTO.init(json: jobj)
+                    seal.fulfill(tokenInfo!)
+                    self.delegate?.didLoadTokenInfoSuccess(tokenInfo!)
                 }
                 .catch { error in
                     //Handle error or give feedback to the user
                     let err = error as! ConnectionError
                     print(err.localizedDescription)
                     seal.reject(err)
+                    self.delegate?.didLoadTokenInfoFailed()
                 }
                 .finally {
                     //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false

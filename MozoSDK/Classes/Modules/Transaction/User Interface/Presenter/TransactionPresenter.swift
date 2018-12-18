@@ -28,17 +28,13 @@ extension TransactionPresenter: TransactionModuleInterface {
         transactionModuleDelegate?.requestAddressBookInterfaceForTransaction()
     }
     
-    func sendConfirmTransaction(_ transaction: TransactionDTO) {
+    func sendConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO) {
         confirmUserInterface?.displaySpinner()
-        txInteractor?.sendUserConfirmTransaction(transaction)
+        txInteractor?.sendUserConfirmTransaction(transaction, tokenInfo: tokenInfo)
     }
     
     func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayName: String?) {
         txInteractor?.validateTransferTransaction(tokenInfo: tokenInfo, toAdress: toAdress, amount: amount, displayName: displayName)
-    }
-    
-    func updateUserInterfaceWithAddress(_ address: String) {
-        txInteractor?.validateValueFromScanner(address)
     }
     
     func showScanQRCodeInterface() {
@@ -47,6 +43,12 @@ extension TransactionPresenter: TransactionModuleInterface {
     
     func loadTokenInfo() {
         txInteractor?.loadTokenInfo()
+    }
+}
+
+extension TransactionPresenter: ScannerViewControllerDelegate {
+    func didReceiveValueFromScanner(_ value: String) {
+        txInteractor?.validateValueFromScanner(value)
     }
 }
 
@@ -59,8 +61,12 @@ extension TransactionPresenter : TransactionInteractorOutput {
         transferUserInterface?.updateUserInterfaceWithAddress(address)
     }
     
-    func performTransferWithError(_ error: ConnectionError) {
-        confirmUserInterface?.displayTryAgain(error)
+    func performTransferWithError(_ error: ConnectionError, isTransferScreen: Bool) {
+        if isTransferScreen {
+            transferUserInterface?.displayTryAgain(error)
+        } else {
+            confirmUserInterface?.displayTryAgain(error)
+        }
     }
     
     func continueWithTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayName: String?) {

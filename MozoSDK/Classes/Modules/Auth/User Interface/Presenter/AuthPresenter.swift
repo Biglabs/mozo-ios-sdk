@@ -25,6 +25,14 @@ extension AuthPresenter : AuthModuleInterface {
 }
 
 extension AuthPresenter : AuthInteractorOutput {
+    func didCheckAuthorizationSuccess() {
+        authModuleDelegate?.didCheckAuthorizationSuccess()
+    }
+    
+    func didRemoveTokenAndLogout() {
+        authModuleDelegate?.didRemoveTokenAndLogout()
+    }
+    
     func finishedBuildAuthRequest(_ request: OIDAuthorizationRequest) {
         let viewController = authWireframe?.getTopViewController()
         // performs authentication request

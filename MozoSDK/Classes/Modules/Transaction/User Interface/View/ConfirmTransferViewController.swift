@@ -18,11 +18,13 @@ class ConfirmTransferViewController: MozoBasicViewController {
     @IBOutlet weak var addressBookView: UIView!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var lbNameAddress: UILabel!
+    @IBOutlet weak var btnConfirm: UIButton!
     @IBOutlet weak var ctrAmount: NSLayoutConstraint!
     
     var transaction : TransactionDTO?
     var tokenInfo: TokenInfoDTO?
     var displayName: String?
+    var isPaymentRequest: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Fix issue: Title is not correct after showing alert
-        self.title = "Confirmation"
+        self.title = isPaymentRequest ? "Payment Request" : "Confirmation"
     }
     
     func setupCircleView() {
@@ -44,7 +46,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
     func updateView() {
         lbAddress.text = transaction?.outputs?.first?.addresses![0]
         let amount = transaction?.outputs?.first?.value?.convertOutputValue(decimal: tokenInfo?.decimals ?? 0) ?? 0.0
-        lbAmountValue.text = "(\(amount))"
+        lbAmountValue.text = amount.roundAndAddCommas()
         
         if let displayName = displayName {
             lbAddress.isHidden = true
@@ -60,18 +62,24 @@ class ConfirmTransferViewController: MozoBasicViewController {
             if let type = CurrencyType(rawValue: rateInfo.currency ?? "") {
                 let rate = rateInfo.rate ?? 0
                 let amountValue = (amount * rate).rounded(toPlaces: type.decimalRound)
-                exAmount = "\(type.unit)\(amountValue)"
+                exAmount = "\(type.unit)\(amountValue.roundAndAddCommas())"
             }
         }
         
         lbAmountValueExchange.text = exAmount
+        
+        btnConfirm.setTitle(isPaymentRequest ? "Pay" : "Send", for: .normal)
     }
     
     @IBAction func btnSendTapped(_ sender: Any) {
-        eventHandler?.sendConfirmTransaction(transaction!)
+        eventHandler?.sendConfirmTransaction(transaction!, tokenInfo: self.tokenInfo!)
     }
 }
 extension ConfirmTransferViewController : PopupErrorDelegate {
+    func didClosePopupWithoutRetry() {
+        
+    }
+    
     func didTouchTryAgainButton() {
         print("User try transfer transaction again.")
         removeMozoPopupError()

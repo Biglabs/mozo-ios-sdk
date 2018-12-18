@@ -34,8 +34,9 @@ class MozoQRView : MozoView {
     }
     
     func setBorders() {
-        imgContainerView.roundCorners(borderColor: ThemeManager.shared.disable, borderWidth: 1.2)
-        btnClose.roundCorners(borderColor: .clear, borderWidth: 1)
+//        imgContainerView.roundCorners(borderColor: ThemeManager.shared.disable, borderWidth: 1.2)
+        btnClose.roundCorners(cornerRadius: 0.5, borderColor: .clear, borderWidth: 0.1)
+        btnClose.transform = btnClose.transform.rotated(by: CGFloat.pi / 4)
     }
     
     @IBAction func touchedCloseBtn(_ sender: Any) {

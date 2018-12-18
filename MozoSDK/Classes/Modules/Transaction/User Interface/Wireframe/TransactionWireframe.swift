@@ -11,7 +11,6 @@ import UIKit
 class TransactionWireframe: MozoWireframe {
     var txPresenter : TransactionPresenter?
     var transferViewController : TransferViewController?
-    var scannerViewController: ScannerViewController?
     var confirmViewController: ConfirmTransferViewController?
     
     func presentTransferInterface() {
@@ -27,12 +26,13 @@ class TransactionWireframe: MozoWireframe {
         txPresenter?.updateInterfaceWithDisplayItem(displayItem)
     }
     
-    func presentConfirmInterface(transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayName: String?) {
+    func presentConfirmInterface(transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayName: String?, isPaymentRequest: Bool = false) {
         let viewController = viewControllerFromStoryBoard(ConfirmTransferViewControllerIdentifier) as! ConfirmTransferViewController
         viewController.eventHandler = txPresenter
         viewController.transaction = transaction
         viewController.tokenInfo = tokenInfo
         viewController.displayName = displayName
+        viewController.isPaymentRequest = isPaymentRequest
         confirmViewController = viewController
         
         txPresenter?.confirmUserInterface = viewController
@@ -41,8 +41,7 @@ class TransactionWireframe: MozoWireframe {
     
     func presentScannerQRCodeInterface() {
         let viewController = ScannerViewController()
-        viewController.eventHandler = txPresenter
-        scannerViewController = viewController
+        viewController.delegate = txPresenter
         rootWireframe?.presentViewController(viewController)
     }
 }

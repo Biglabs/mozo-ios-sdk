@@ -27,6 +27,12 @@ class ModuleDependencies {
         }
     }
     
+    public var appType: AppType = .Shopper {
+        didSet {
+            webSocketManager.appType = appType
+        }
+    }
+    
     let coreDataStore = CoreDataStore()
     let rootWireframe = RootWireframe()
     
@@ -39,8 +45,13 @@ class ModuleDependencies {
     let txDetailWireframe = TxDetailWireframe()
     let abDetailWireframe = ABDetailWireframe()
     let abWireframe = AddressBookWireframe()
+    let adWireframe = AirdropWireframe()
+    let addWireframe = AirdropAddWireframe()
+    let paymentWireframe = PaymentWireframe()
+    let paymentQRWireframe = PaymentQRWireframe()
     
     let apiManager = ApiManager()
+    let webSocketManager = WebSocketManager()
     
     // MARK: Initialization
     init() {
@@ -68,8 +79,76 @@ class ModuleDependencies {
         coreWireframe.requestForTxHistory()
     }
     
+    func displayPaymentRequest() {
+        coreWireframe.requestForPaymentRequest()
+    }
+    
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem>{
         return (coreWireframe.corePresenter?.coreInteractorService?.loadBalanceInfo())!
+    }
+    
+    func registerBeacon(parameters: Any?) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.registerBeacon(parameters:parameters))!
+    }
+    
+    func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.updateBeaconSettings(parameters:parameters))!
+    }
+    
+    func getListBeacons() -> Promise<[String : Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getListBeacons())!
+    }
+    
+    func getRetailerInfo() -> Promise<[String : Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerInfo())!
+    }
+    
+    func addRetailerSalePerson(parameters: Any?) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.addSalePerson(parameters:parameters))!
+    }
+    
+    func getAirdropStoreNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropStoreNearby(params: params))!
+    }
+    
+    func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.sendRangedBeacons(beacons: beacons, status: status))!
+    }
+    
+    func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getRangeColorSettings())!
+    }
+    
+    func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getTxHistoryDisplayCollection())!
+    }
+    
+    func createAirdropEvent(event: AirdropEventDTO, delegate: AirdropEventDelegate) {
+        adWireframe.requestCreateAndSignAirdropEvent(event, delegate: delegate)
+    }
+    
+    func addMoreMozoToAirdropEvent(event: AirdropEventDTO, delegate: AirdropAddEventDelegate) {
+        addWireframe.requestToAddMoreAndSign(event, delegate: delegate)
+    }
+    
+    func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getLatestAirdropEvent())!
+    }
+    
+    func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropEventList(page: page))!
+    }
+    
+    func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerAnalyticHome())!
+    }
+    
+    func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerAnalyticList())!
+    }
+    
+    func getVisitCustomerList(page: Int) -> Promise<[VisitedCustomerDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getVisitCustomerList(page: page))!
     }
     
     func configureDependencies() {
@@ -87,6 +166,9 @@ class ModuleDependencies {
         // MARK: Address book
         addressBookDependencies()
         addressBookDetailDependencies()
+        // MARK: Payment Request
+        paymentDependencies()
+        paymentQRDependencies()
     }
     
     func coreDependencies() {
@@ -100,7 +182,11 @@ class ModuleDependencies {
         let coreInteractor = CoreInteractor(anonManager: anonManager, apiManager: apiManager, userDataManager: userDataManager)
         coreInteractor.output = corePresenter
         
+        let rdnInteractor = RDNInteractor(webSocketManager: webSocketManager)
+        rdnInteractor.output = corePresenter
+        
         corePresenter.coreInteractor = coreInteractor
+        corePresenter.rdnInteractor = rdnInteractor
         corePresenter.coreInteractorService = coreInteractor
         corePresenter.coreWireframe = coreWireframe
         
@@ -116,6 +202,8 @@ class ModuleDependencies {
         coreWireframe.abDetailWireframe = abDetailWireframe
         coreWireframe.abWireframe = abWireframe
         coreWireframe.rootWireframe = rootWireframe
+        coreWireframe.paymentWireframe = paymentWireframe
+        coreWireframe.paymentQRWireframe = paymentQRWireframe
     }
     
     func addressBookDetailDependencies() {
@@ -148,6 +236,11 @@ class ModuleDependencies {
     }
     
     func transactionDetailDependencies() {
+        let txDetailPresenter = TxDetailPresenter()
+        
+        txDetailPresenter.detailModuleDelegate = coreWireframe.corePresenter
+        
+        txDetailWireframe.txDetailPresenter = txDetailPresenter
         txDetailWireframe.rootWireframe = rootWireframe
     }
     
@@ -186,7 +279,8 @@ class ModuleDependencies {
         
         let txDataManager = TransactionDataManager()
         txDataManager.coreDataStore = coreDataStore
-        txInteractor.signManager = TransactionSignManager(dataManager: txDataManager)
+        let signManager = TransactionSignManager(dataManager: txDataManager)
+        txInteractor.signManager = signManager
         
         txPresenter.txInteractor = txInteractor
         txPresenter.txWireframe = txWireframe
@@ -194,6 +288,9 @@ class ModuleDependencies {
         
         txWireframe.txPresenter = txPresenter
         txWireframe.rootWireframe = rootWireframe
+        
+        airdropDependencies(signManager: signManager)
+        airdropAddDependencies(signManager: signManager)
     }
     
     func authDependencies() {
@@ -230,6 +327,70 @@ class ModuleDependencies {
         walletWireframe.rootWireframe = rootWireframe
     }
     
+    func airdropDependencies(signManager: TransactionSignManager) {
+        let adPresenter = AirdropPresenter()
+        
+        let adInteractor = AirdropInteractor()
+        adInteractor.apiManager = apiManager
+        adInteractor.output = adPresenter
+        adInteractor.signManager = signManager
+        
+        adPresenter.interactor = adInteractor
+        adPresenter.wireframe = adWireframe
+        
+        adWireframe.adPresenter = adPresenter
+        adWireframe.walletWireframe = walletWireframe
+    }
+    
+    func airdropAddDependencies(signManager: TransactionSignManager) {
+        let addPresenter = AirdropAddPresenter()
+        
+        let addInteractor = AirdropAddInteractor()
+        addInteractor.apiManager = apiManager
+        addInteractor.output = addPresenter
+        addInteractor.signManager = signManager
+        
+        addPresenter.interactor = addInteractor
+        addPresenter.wireframe = addWireframe
+        
+        addWireframe.addPresenter = addPresenter
+        addWireframe.walletWireframe = walletWireframe
+    }
+    
+    func paymentDependencies() {
+        let paymentPresenter = PaymentPresenter()
+        
+        let paymentInteractor = PaymentInteractor(apiManager: apiManager)
+        paymentInteractor.output = paymentPresenter
+        
+        paymentPresenter.interactor = paymentInteractor
+        paymentPresenter.wireframe = paymentWireframe
+        
+        paymentWireframe.presenter = paymentPresenter
+        paymentWireframe.txWireframe = txWireframe
+        paymentWireframe.paymentQRWireframe = paymentQRWireframe
+        paymentWireframe.rootWireframe = rootWireframe
+    }
+    
+    func paymentQRDependencies() {
+        let paymentQRPresenter = PaymentQRPresenter()
+        
+        let paymentQRInteractor = PaymentQRInteractor(apiManager: apiManager)
+        paymentQRInteractor.output = paymentQRPresenter
+        
+        paymentQRPresenter.interactor = paymentQRInteractor
+        paymentQRPresenter.wireframe = paymentQRWireframe
+        paymentQRPresenter.delegate = coreWireframe.corePresenter
+        
+        paymentQRWireframe.presenter = paymentQRPresenter
+        paymentQRWireframe.rootWireframe = rootWireframe
+    }
+    
+    
+    
+    
+    
+    // MARK: TEST
     func testSign() {
         let tosign = "3e7c8671c98af65e4f957d0843a15ce0616a0624cc5fbc3e6f72b7871f118ac1"
         let privatekey = "b7643ad0c07b2f2a1232fc4d276c5554e05fa1c8fddb2aed738c7ae0526f5350"
@@ -281,5 +442,18 @@ class ModuleDependencies {
     func testEthAddress() {
         let result = "0x011df24265841dCdbf2e60984BB94007b0C1d76A".isEthAddress()
         print(result)
+    }
+    
+    func testAssests() {
+        let img = UIImage(named: "ic_send", in: BundleManager.mozoBundle(), compatibleWith: nil)
+        if img != nil {
+            print("MOZO - TEST ASSESTS - CAN LOAD IMAGE")
+        } else {
+            print("MOZO - TEST ASSESTS - CAN NOT LOAD IMAGE")
+        }
+    }
+    
+    func testLocalization() {
+        print("MozoSDK Localization: \(Locale.current.languageCode ?? "NULL")")
     }
 }

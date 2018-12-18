@@ -9,11 +9,12 @@ import Foundation
 
 protocol TxHistoryInteractorInput {
     func getListTxHistory(page: Int)
-    func getTokenInfoForHistory(_ txHistory: TxHistoryDisplayItem)
+    func getTokenInfoForHistory()
 }
 
 protocol TxHistoryInteractorOutput {
     func finishGetListTxHistory(_ txHistories: [TxHistoryDTO], forPage: Int)
-    func finishGetTokenInfo(_ tokenInfo: TokenInfoDTO, for txHistory: TxHistoryDisplayItem)
+    func finishGetTokenInfo(_ tokenInfo: TokenInfoDTO)
     func errorWhileLoadTokenInfo(error: String)
+    func errorWhileLoadTxHistory(_ error: ConnectionError)
 }

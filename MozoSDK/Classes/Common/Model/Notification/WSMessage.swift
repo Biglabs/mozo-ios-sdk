@@ -9,13 +9,15 @@ import Foundation
 import SwiftyJSON
 
 public class WSMessage: ResponseObjectSerializable {
+    public var content: String?
     public var message: String?
     public var channel: String?
     public var messageType: String?
     public var time: Int64?
     public var uuid: String?
     
-    public required init(message: String, channel: String, messageType: String, time: Int64, uuid: String){
+    public required init(content: String, message: String, channel: String, messageType: String, time: Int64, uuid: String){
+        self.content = content
         self.message = message
         self.channel = channel
         self.messageType = messageType
@@ -24,6 +26,7 @@ public class WSMessage: ResponseObjectSerializable {
     }
     
     public required init?(json: SwiftyJSON.JSON) {
+        self.content = json["content"].string
         self.message = json["message"].string
         self.channel = json["channel"].string
         self.messageType = json["messageType"].string

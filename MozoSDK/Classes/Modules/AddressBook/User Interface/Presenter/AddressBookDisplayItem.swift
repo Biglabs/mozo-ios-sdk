@@ -8,6 +8,7 @@
 import Foundation
 
 struct AddressBookDisplayItem {
+    let id : Int64
     let name : String
     let address : String
 }

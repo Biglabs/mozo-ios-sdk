@@ -11,6 +11,7 @@ import PromiseKit
 protocol CoreInteractorInput {
     func checkForAuthentication(module: Module)
     func handleAferAuth(accessToken: String?)
+    func downloadConvenienceDataAndStoreAtLocal()
     func notifyAuthSuccessForAllObservers()
     func notifyLogoutForAllObservers()
     func notifyBalanceChangesForAllObservers(balanceNoti: BalanceNotification)
@@ -21,8 +22,23 @@ protocol CoreInteractorOutput {
     func finishedCheckAuthentication(keepGoing: Bool, module: Module)
     func continueWithWallet(_ callbackModule: Module)
     func finishedHandleAferAuth()
+    func failToLoadUserInfo(_ error: ConnectionError, for requestingModule: Module?)
 }
 
 protocol CoreInteractorService {
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem>
+    func registerBeacon(parameters: Any?) -> Promise<[String: Any]>
+    func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]>
+    func getListBeacons() -> Promise<[String : Any]>
+    func getRetailerInfo() -> Promise<[String : Any]>
+    func addSalePerson(parameters: Any?) -> Promise<[String: Any]>
+    func getAirdropStoreNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]>
+    func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String: Any]>
+    func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]>
+    func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection>
+    func getLatestAirdropEvent() -> Promise<AirdropEventDTO>
+    func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]>
+    func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?>
+    func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]>
+    func getVisitCustomerList(page: Int) -> Promise<[VisitedCustomerDTO]>
 }

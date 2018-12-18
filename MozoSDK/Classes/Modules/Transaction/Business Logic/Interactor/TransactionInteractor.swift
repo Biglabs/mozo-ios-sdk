@@ -43,9 +43,9 @@ extension TransactionInteractor : TransactionInteractorInput {
         if !scanValue.isEthAddress() {
             output?.didReceiveError("Scanning value is not a valid address. \n\(scanValue)")
         } else {
-            let list = SessionStoreManager.addressBookList
+            let list = SafetyDataManager.shared.addressBookList
             if let addressBook = AddressBookDTO.addressBookFromAddress(scanValue, array: list) {
-                let displayItem = AddressBookDisplayItem(name: addressBook.name!, address: addressBook.soloAddress!)
+                let displayItem = AddressBookDisplayItem(id: addressBook.id!, name: addressBook.name!, address: addressBook.soloAddress!)
                 output?.didReceiveAddressBookDisplayItem(displayItem)
             } else {
                 output?.didReceiveAddressfromScanner(scanValue)
@@ -53,7 +53,15 @@ extension TransactionInteractor : TransactionInteractorInput {
         }
     }
     
-    func sendUserConfirmTransaction(_ transaction: TransactionDTO) {
+    func sendUserConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO) {
+        if self.tokenInfo == nil {
+            self.tokenInfo = tokenInfo
+        }
+        let spendable = tokenInfo.balance?.convertOutputValue(decimal: tokenInfo.decimals ?? 0) ?? 0
+        if transaction.outputs![0].value?.convertOutputValue(decimal: tokenInfo.decimals ?? 0) ?? 0 > spendable {
+            output?.didReceiveError("Error: Your spendable is not enough.")
+            return
+        }
         _ = apiManager.transferTransaction(transaction).done { (interTx) in
             if (interTx.errors != nil) && (interTx.errors?.count)! > 0 {
                 self.output?.didReceiveError((interTx.errors?.first)!)
@@ -71,7 +79,7 @@ extension TransactionInteractor : TransactionInteractorInput {
                 print("Send create transaction failed, show popup to retry.")
                 // Remember original transaction for retrying.
                 self.originalTransaction = transaction
-                self.output?.performTransferWithError(error as! ConnectionError)
+                self.output?.performTransferWithError(error as! ConnectionError, isTransferScreen: false)
             })
     }
     
@@ -148,7 +156,7 @@ extension TransactionInteractor : TransactionInteractorInput {
                 }).catch({ (err) in
                     print("Send signed transaction failed, show popup to retry.")
                     self.pinToRetry = pin
-                    self.output?.performTransferWithError(err as! ConnectionError)
+                    self.output?.performTransferWithError(err as! ConnectionError, isTransferScreen: false)
                 })
             }.catch({ (err) in
                 self.output?.didReceiveError(err.localizedDescription)
@@ -161,15 +169,18 @@ extension TransactionInteractor : TransactionInteractorInput {
                 print("Address used to load balance: \(address)")
                 _ = apiManager.getTokenInfoFromAddress(address)
                     .done { (tokenInfo) in
+                        // TODO: Notify for all observing objects.
                         self.output?.didLoadTokenInfo(tokenInfo)
-                    }
+                    }.catch({ (err) in
+                        self.output?.performTransferWithError(err as! ConnectionError, isTransferScreen: true)
+                    })
             }
         }
     }
     
     func requestToRetryTransfer() {
         if let transaction = originalTransaction {
-            sendUserConfirmTransaction(transaction)
+            sendUserConfirmTransaction(transaction, tokenInfo: self.tokenInfo!)
         }
     }
 }

@@ -36,6 +36,23 @@ public class SessionStoreManager {
         UserDefaults.standard.setValue(UUID, forKey: Configuration.USER_ID_ANONYMOUS)
     }
     
-    public static var addressBookList : [AddressBookDTO] = []
+    public static func getNotificationHistory() -> [String]{
+        if let user = SessionStoreManager.loadCurrentUser(), let id = user.id {
+            let defaults = UserDefaults.standard
+            let array = defaults.stringArray(forKey: "\(Configuration.USER_NOTI_HISTORY)\(id)") ?? []
+            return array
+        }
+        return []
+    }
+    
+    public static func saveNotificationHistory(_ histories: [String]) {
+        if let user = SessionStoreManager.loadCurrentUser(), let id = user.id {
+            let defaults = UserDefaults.standard
+            defaults.set(histories, forKey: "\(Configuration.USER_NOTI_HISTORY)\(id)")
+        }
+    }
+    
     public static var exchangeRateInfo : RateInfoDTO?
+    
+    public static var tokenInfo: TokenInfoDTO?
 }

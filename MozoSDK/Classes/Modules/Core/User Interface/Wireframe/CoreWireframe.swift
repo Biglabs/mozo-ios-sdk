@@ -16,11 +16,13 @@ class CoreWireframe : MozoWireframe {
     var txDetailWireframe: TxDetailWireframe?
     var abWireframe: AddressBookWireframe?
     var abDetailWireframe: ABDetailWireframe?
+    var paymentWireframe: PaymentWireframe?
+    var paymentQRWireframe: PaymentQRWireframe?
     var corePresenter: CorePresenter?
     
     // MARK: Request
     func requestForAuthentication() {
-        presentWaitingInterface()
+        presentWaitingInterface(corePresenter: corePresenter)
         corePresenter?.requestForAuthentication(module: Module.Wallet)
     }
     
@@ -29,13 +31,18 @@ class CoreWireframe : MozoWireframe {
     }
     
     func requestForTransfer() {
-        presentWaitingInterface()
+        presentWaitingInterface(corePresenter: corePresenter)
         corePresenter?.requestForAuthentication(module: Module.Transaction)
     }
     
     func requestForTxHistory() {
-        presentWaitingInterface()
+        presentWaitingInterface(corePresenter: corePresenter)
         corePresenter?.requestForAuthentication(module: Module.TxHistory)
+    }
+    
+    func requestForPaymentRequest() {
+        presentWaitingInterface(corePresenter: corePresenter)
+        corePresenter?.requestForAuthentication(module: Module.Payment)
     }
     
     func requestForCloseAllMozoUIs(completion: (() -> Swift.Void)? = nil) {
@@ -65,6 +72,10 @@ class CoreWireframe : MozoWireframe {
         walletWireframe?.presentInitialWalletInterface()
     }
     
+    func prepareForPaymentRequestInterface() {
+        paymentWireframe?.presentPaymentRequestInterface()
+    }
+    
     func presentPINInterfaceForTransaction() {
         walletWireframe?.walletPresenter?.pinModuleDelegate = txWireframe?.txPresenter
         walletWireframe?.presentPINInterface(passPharse: nil, requestFrom: Module.Transaction)
@@ -90,12 +101,16 @@ class CoreWireframe : MozoWireframe {
         abDetailWireframe?.dismissAddressBookDetailInterface()
     }
     
-    func presentAddressBookInterfaceForTransaction() {
+    func presentAddressBookInterfaceForSelecting() {
         abWireframe?.presentAddressBookInterface(isDisplayForSelect: true)
     }
     
     func updateAddressBookInterfaceForTransaction(displayItem: AddressBookDisplayItem) {
         txWireframe?.updateInterfaceWithDisplayItem(displayItem)
+    }
+    
+    func updateAddressBookInterfaceForPaymentRequest(displayItem: AddressBookDisplayItem) {
+        paymentQRWireframe?.updateInterfaceWithAddressBook(displayItem)
     }
     
     func dismissAddressBookInterface() {

@@ -7,9 +7,9 @@
 
 import UIKit
 
-@IBDesignable class MozoView: UIView {
+@IBDesignable public class MozoView: UIView {
     @IBOutlet var containerView: UIView!
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         loadViewFromNib()
     }
@@ -19,7 +19,7 @@ import UIKit
         loadViewFromNib()
     }
     
-    override func prepareForInterfaceBuilder() {
+    override public func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         loadViewFromNib()
     }
@@ -68,10 +68,28 @@ import UIKit
         NotificationCenter.default.addObserver(self, selector: #selector(onUserDidLoginSuccess(_:)), name: .didLogoutFromMozo, object: nil)
     }
     
+    func addOriginalObserver() {
+        print("Add original observers")
+        NotificationCenter.default.removeObserver(self, name: .didReceiveDetailDisplayItem, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .didReceiveExchangeInfo, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .didLoadTokenInfoFailed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onDetailDisplayDataDidReceive(_:)), name: .didReceiveDetailDisplayItem, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onExchangeRateInfoDidReceive(_:)), name: .didReceiveExchangeInfo, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onLoadTokenInfoFailed(_:)), name: .didLoadTokenInfoFailed, object: nil)
+    }
+    
     func addUniqueBalanceChangeObserver() {
         print("Add unique balance change observer")
         NotificationCenter.default.removeObserver(self, name: .didChangeBalance, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onBalanceDidUpdate(_:)), name: .didChangeBalance, object: nil)
+    }
+    
+    func removeObserverAfterLogout() {
+        print("Remove observer after logout")
+        NotificationCenter.default.removeObserver(self, name: .didChangeBalance, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .didReceiveDetailDisplayItem, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .didReceiveExchangeInfo, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .didLoadTokenInfoFailed, object: nil)
     }
     
     // MARK: Observation actions
@@ -82,6 +100,7 @@ import UIKit
     
     @objc func onUserDidLogout(_ notification: Notification){
         print("On User Did Logout: Update view")
+        removeObserverAfterLogout()
         updateView()
     }
     
@@ -91,6 +110,21 @@ import UIKit
             let balance = data["balance"] as! Double
             updateOnlyBalance(balance)
         }
+    }
+    
+    @objc func onDetailDisplayDataDidReceive(_ notification: Notification){
+        print("On Detail Display Data Did Receive: Update view")
+        updateView()
+    }
+    
+    @objc func onLoadTokenInfoFailed(_ notification: Notification){
+        print("On Load Token Info Failed: Update view")
+        
+    }
+    
+    @objc func onExchangeRateInfoDidReceive(_ notification: Notification){
+        print("On Exchange Rate Info Did Receive: Update view")
+        updateView()
     }
     
     // MARK: Observation - REVOKE

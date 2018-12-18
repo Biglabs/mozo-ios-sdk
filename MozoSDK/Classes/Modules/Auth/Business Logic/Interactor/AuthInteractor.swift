@@ -15,9 +15,19 @@ class AuthInteractor : NSObject {
     
     init(authManager: AuthManager) {
         self.authManager = authManager
+        super.init()
+        self.authManager?.delegate = self
     }
 }
-
+extension AuthInteractor: AuthManagerDelegate {
+    func didCheckAuthorizationSuccess() {
+        output?.didCheckAuthorizationSuccess()
+    }
+    
+    func didRemoveTokenAndLogout() {
+        output?.didRemoveTokenAndLogout()
+    }
+}
 extension AuthInteractor : AuthInteractorInput {
     func handleAuthorizationResponse(_ response: OIDAuthorizationResponse?, error: Error?) {
         if let response = response {

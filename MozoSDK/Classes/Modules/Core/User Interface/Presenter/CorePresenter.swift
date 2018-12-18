@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UserNotifications
+import Reachability
 
 class CorePresenter : NSObject {
     var coreWireframe : CoreWireframe?
@@ -14,55 +16,98 @@ class CorePresenter : NSObject {
     var rdnInteractor : RDNInteractorInput?
     weak var authDelegate: AuthenticationDelegate?
     var callBackModule: Module?
+    var reachability : Reachability?
     
+    var waitingViewInterface: WaitingViewInterface?
+    
+    var requestingABModule: Module?
+
     override init() {
         super.init()
         initSilentServices()
         addAppObservations()
+        initUserNotificationCenter()
+        setupReachability()
+    }
+    
+    // MARK: Reachability
+    func setupReachability() {
+        let hostName = Configuration.BASE_HOST
+        print("Set up Reachability with host name: \(hostName)")
+        reachability = Reachability(hostname: hostName)
+        reachability?.whenReachable = { reachability in
+            print("Reachability when reachable: \(reachability.description) - \(reachability.connection)")
+            self.startSlientServices()
+            self.coreInteractor?.downloadConvenienceDataAndStoreAtLocal()
+        }
+        reachability?.whenUnreachable = { reachability in
+            print("Reachability when unreachable: \(reachability.description) - \(reachability.connection)")
+            self.stopSilentServices()
+        }
+        print("Reachability --- start notifier")
+        do {
+            try reachability?.startNotifier()
+        } catch {
+            
+        }
+    }
+    
+    func stopNotifier() {
+        print("Reachability --- stop notifier")
+        reachability?.stopNotifier()
+        reachability = nil
     }
     
     deinit {
+        stopNotifier()
         NotificationCenter.default.removeObserver(self)
     }
 }
 
 // MARK: Silent services methods
 private extension CorePresenter {
+    private func initUserNotificationCenter() {
+        registerForRichNotifications()
+        // set UNUserNotificationCenter delegate
+        if UNUserNotificationCenter.current().delegate == nil {
+            UNUserNotificationCenter.current().delegate = self
+        }
+    }
+    
     private func initSilentServices() {
-        rdnInteractor = RDNInteractor()
+        
     }
     
     private func addAppObservations() {
-        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
     }
     
     private func startSlientServices() {
         // Check walletInfo from UserProfile to start silent services
         if let userObj = SessionStoreManager.loadCurrentUser(), let profile = userObj.profile, profile.walletInfo?.offchainAddress != nil {
-            NSLog("CorePresenter - Start silent services.")
+            print("CorePresenter - Start silent services.")
             rdnInteractor?.startService()
         }
     }
     
     private func stopSilentServices() {
-        NSLog("CorePresenter - Stop silent services.")
+        print("CorePresenter - Stop silent services.")
         // Stop silent services
         rdnInteractor?.stopService()
     }
     
     @objc func didEnterBackground(_ notification: Notification) {
-        NSLog("App did enter background.")
+        print("App did enter background.")
         stopSilentServices()
     }
     
-    @objc func didBecomeActive(_ notification: Notification) {
-        NSLog("App did become active.")
+    @objc func willEnterForeground(_ notification: Notification) {
+        print("App will enter foreground.")
         // Check walletInfo from UserProfile to start silent services
         startSlientServices()
     }
 }
-
 extension CorePresenter : CoreModuleInterface {
     func requestForAuthentication(module: Module) {
         coreInteractor?.checkForAuthentication(module: module)
@@ -89,14 +134,40 @@ extension CorePresenter : CoreModuleInterface {
             coreWireframe?.prepareForTransferInterface()
         case .TxHistory:
             coreWireframe?.prepareForTxHistoryInterface()
+        case .Payment:
+            coreWireframe?.prepareForPaymentRequestInterface()
         default: coreWireframe?.prepareForWalletInterface()
         }
     }
 }
-
+extension CorePresenter : CoreModuleWaitingInterface {
+    func retryGetUserProfile() {
+        if let module = callBackModule {
+            requestForAuthentication(module: module)
+        }
+    }
+}
 extension CorePresenter : AuthModuleDelegate {
+    func didCheckAuthorizationSuccess() {
+        print("On Check Authorization Did Success: Download convenience data")
+        SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
+        coreInteractor?.downloadConvenienceDataAndStoreAtLocal()
+    }
+    
+    func didCheckAuthorizationFailed() {
+        print("On Check Authorization Did Failed - No connection")
+    }
+    
+    func didRemoveTokenAndLogout() {
+        SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
+        // Notify for all observing objects
+        coreInteractor?.notifyLogoutForAllObservers()
+    }
+    
     func authModuleDidFinishAuthentication(accessToken: String?) {
         coreInteractor?.handleAferAuth(accessToken: accessToken)
+        // Notify for all observing objects
+        self.coreInteractor?.notifyAuthSuccessForAllObservers()
     }
     
     func authModuleDidCancelAuthentication() {
@@ -131,8 +202,7 @@ extension CorePresenter: WalletModuleDelegate {
                 self.authDelegate?.mozoAuthenticationDidFinish()
             })
         }
-        // Notify for all observing objects
-        self.coreInteractor?.notifyAuthSuccessForAllObservers()
+        coreInteractor?.downloadConvenienceDataAndStoreAtLocal()
         startSlientServices()
     }
 }
@@ -159,6 +229,13 @@ extension CorePresenter : CoreInteractorOutput {
     func finishedHandleAferAuth() {
         coreWireframe?.prepareForWalletInterface()
     }
+    
+    func failToLoadUserInfo(_ error: ConnectionError, for requestingModule: Module?) {
+        if let requestingModule = requestingModule {
+            callBackModule = requestingModule
+        }
+        waitingViewInterface?.displayTryAgain(error)
+    }
 }
 
 extension CorePresenter: TransactionModuleDelegate {
@@ -179,14 +256,15 @@ extension CorePresenter: TransactionModuleDelegate {
     }
     
     func requestAddressBookInterfaceForTransaction() {
-        coreWireframe?.presentAddressBookInterfaceForTransaction()
+        requestingABModule = Module.Transaction
+        coreWireframe?.presentAddressBookInterfaceForSelecting()
     }
 }
 
 extension CorePresenter: TxCompletionModuleDelegate {
     func requestAddToAddressBook(_ address: String) {
         // Verify address is existing in address book list or not
-        let list = SessionStoreManager.addressBookList
+        let list = SafetyDataManager.shared.addressBookList
         let contain = AddressBookDTO.arrayContainsItem(address, array: list)
         if contain {
             // TODO: Show message address is existing in address book list
@@ -200,10 +278,29 @@ extension CorePresenter: TxCompletionModuleDelegate {
     }
 }
 
+extension CorePresenter: TxDetailModuleDelegate {
+    func detailModuleRequestAddToAddressBook(_ address: String) {
+        requestAddToAddressBook(address)
+    }
+}
+
 extension CorePresenter: AddressBookModuleDelegate {
-    func addressBookModuleDidChooseItemOnUI(addressBook: AddressBookDisplayItem) {
-        coreWireframe?.updateAddressBookInterfaceForTransaction(displayItem: addressBook)
-        coreWireframe?.dismissAddressBookInterface()
+    func addressBookModuleDidChooseItemOnUI(addressBook: AddressBookDisplayItem, isDisplayForSelect: Bool) {
+        if isDisplayForSelect {
+            if let module = requestingABModule {
+                switch module {
+                case .Transaction:
+                    coreWireframe?.updateAddressBookInterfaceForTransaction(displayItem: addressBook)
+                case .Payment:
+                    coreWireframe?.updateAddressBookInterfaceForPaymentRequest(displayItem: addressBook)
+                default: break
+                }
+                requestingABModule = nil
+            }
+            coreWireframe?.dismissAddressBookInterface()
+        } else {
+            
+        }
     }
 }
 
@@ -227,12 +324,28 @@ extension CorePresenter: TxHistoryModuleDelegate {
 }
 
 extension CorePresenter : RDNInteractorOutput {
+    func didCustomerCame(ccNoti: CustomerComeNotification) {
+        performNotifications(noti: ccNoti)
+    }
+    
     func balanceDidChange(balanceNoti: BalanceNotification) {
         coreInteractor?.notifyBalanceChangesForAllObservers(balanceNoti: balanceNoti)
+        performNotifications(noti: balanceNoti)
     }
     
     func addressBookDidChange(addressBookList: [AddressBookDTO]) {
-        SessionStoreManager.addressBookList = addressBookList
+        SafetyDataManager.shared.addressBookList = addressBookList
         coreInteractor?.notifyAddressBookChangesForAllObservers()
+    }
+    
+    func didAirdropped(airdropNoti: BalanceNotification) {
+        performNotifications(noti: airdropNoti)
+    }
+}
+
+extension CorePresenter: PaymentQRModuleDelegate {
+    func requestAddressBookInterfaceForPaymentRequest() {
+        requestingABModule = .Payment
+        coreWireframe?.presentAddressBookInterfaceForSelecting()
     }
 }

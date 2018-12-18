@@ -9,7 +9,7 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 
-let ADR_BOOK_API_PATH = "/api/contacts"
+let ADR_BOOK_API_PATH = "/contacts"
 public extension ApiManager {
     public func getListAddressBook() -> Promise<[AddressBookDTO]> {
         return Promise { seal in

@@ -19,31 +19,29 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="MozoQRView" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="315" height="401"/>
+            <rect key="frame" x="0.0" y="0.0" width="254" height="284"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mozo Wallet Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKX-Pu-Q3e">
-                    <rect key="frame" x="77" y="27" width="161" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Mozo Wallet Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKX-Pu-Q3e">
+                    <rect key="frame" x="53" y="14" width="148" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1yr-WT-HVi">
-                    <rect key="frame" x="37.5" y="64" width="240" height="240"/>
+                    <rect key="frame" x="15" y="48.5" width="224.5" height="229"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YYp-hE-Iwf">
-                            <rect key="frame" x="15.5" y="5.5" width="209" height="229"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="209" id="JDS-BQ-DTt"/>
-                                <constraint firstAttribute="height" constant="229" id="lPZ-wQ-iI8"/>
-                            </constraints>
+                            <rect key="frame" x="0.0" y="0.0" width="224.5" height="229"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="240" id="4f1-ed-tus"/>
+                        <constraint firstAttribute="width" constant="224.5" id="4f1-ed-tus"/>
+                        <constraint firstItem="YYp-hE-Iwf" firstAttribute="height" secondItem="1yr-WT-HVi" secondAttribute="height" id="7Mo-s8-Vwi"/>
                         <constraint firstItem="YYp-hE-Iwf" firstAttribute="centerY" secondItem="1yr-WT-HVi" secondAttribute="centerY" id="A0p-IN-oSC"/>
-                        <constraint firstAttribute="height" constant="240" id="EDa-rt-wnG"/>
+                        <constraint firstAttribute="height" constant="229" id="EDa-rt-wnG"/>
+                        <constraint firstItem="YYp-hE-Iwf" firstAttribute="width" secondItem="1yr-WT-HVi" secondAttribute="width" id="cdZ-cO-dgD"/>
                         <constraint firstItem="YYp-hE-Iwf" firstAttribute="centerX" secondItem="1yr-WT-HVi" secondAttribute="centerX" id="rbm-ei-nZh"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -58,15 +56,17 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUg-X0-0RX">
-                    <rect key="frame" x="37.5" y="324" width="240" height="45"/>
-                    <color key="backgroundColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUg-X0-0RX">
+                    <rect key="frame" x="221" y="9.5" width="25" height="25"/>
+                    <color key="backgroundColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="65t-yu-Kdu"/>
-                        <constraint firstAttribute="width" constant="240" id="X9y-IE-fdJ"/>
+                        <constraint firstAttribute="height" constant="25" id="65t-yu-Kdu"/>
+                        <constraint firstAttribute="width" constant="25" id="X9y-IE-fdJ"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" title="Close">
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
+                    <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                    <state key="normal" title="+">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -77,15 +77,15 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="1yr-WT-HVi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8qu-j6-fgF"/>
-                <constraint firstItem="pKX-Pu-Q3e" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="27" id="B7X-Ic-4Ze"/>
-                <constraint firstItem="1yr-WT-HVi" firstAttribute="top" secondItem="pKX-Pu-Q3e" secondAttribute="bottom" constant="16" id="KMK-it-QKL"/>
-                <constraint firstItem="uUg-X0-0RX" firstAttribute="centerX" secondItem="YYp-hE-Iwf" secondAttribute="centerX" id="Pqr-nm-jXt"/>
-                <constraint firstItem="uUg-X0-0RX" firstAttribute="top" secondItem="1yr-WT-HVi" secondAttribute="bottom" constant="20" id="gZc-LH-ija"/>
+                <constraint firstItem="pKX-Pu-Q3e" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="14" id="B7X-Ic-4Ze"/>
+                <constraint firstItem="1yr-WT-HVi" firstAttribute="top" secondItem="pKX-Pu-Q3e" secondAttribute="bottom" constant="20" id="KMK-it-QKL"/>
+                <constraint firstItem="uUg-X0-0RX" firstAttribute="centerY" secondItem="pKX-Pu-Q3e" secondAttribute="centerY" id="TSP-fM-6zK"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uUg-X0-0RX" secondAttribute="trailing" constant="8" id="tOM-n4-Nui"/>
                 <constraint firstItem="pKX-Pu-Q3e" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wrp-aN-HTJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-160.5" y="-115.5"/>
+            <point key="canvasLocation" x="-155" y="-160"/>
         </view>
     </objects>
 </document>

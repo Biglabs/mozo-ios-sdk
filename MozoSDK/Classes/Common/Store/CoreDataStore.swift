@@ -38,6 +38,18 @@ class CoreDataStore : NSObject {
         return count
     }
     
+    func countWalletByUserId(_ id: String) -> Promise<Int> {
+        return Promise { seal in
+            if let userEntity = stack.fetchOne(From<ManagedUser>().where(\.id == id)) {
+                let count = userEntity.wallets?.count ?? -1
+                print("Wallets count: [\(count)]")
+                seal.fulfill(count)
+            } else {
+                seal.reject(ConnectionError.unknowError)
+            }
+        }
+    }
+    
     func getUserById(_ id: String) -> Promise<UserModel>{
         return Promise { seal in
             if let userEntity = stack.fetchOne(From<ManagedUser>().where(\.id == id)) {

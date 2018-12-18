@@ -25,7 +25,9 @@ class TxHistoryViewController: MozoBasicViewController {
     var collection : TxHistoryDisplayCollection?
     var filteredItems = [TxHistoryDisplayItem]()
     var currentPage : Int = 1
+    var loadingPage : Int = 1
     var currentFilterType : TransactionType? = nil // All
+    var tokenInfo : TokenInfoDTO?
     
     // MARK: - View Setup
     override func viewDidLoad() {
@@ -41,17 +43,24 @@ class TxHistoryViewController: MozoBasicViewController {
         self.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.tableFooterView = UIView()
         
+        tableView.register(UINib(nibName: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER)
         setLayerBorder()
-        eventHandler?.updateDisplayData(page: currentPage)
+        eventHandler?.loadTokenInfo()
+        loadHistoryWithPage(page: currentPage)
     }
     
     @objc func refresh(_ sender: Any? = nil) {
-        eventHandler?.updateDisplayData(page: 1)
+        loadHistoryWithPage(page: 1)
         if let refreshControl = sender as? UIRefreshControl, refreshControl.isRefreshing {
             refreshControl.endRefreshing()
         }
         updateDisplayButtons()
         filterContentForType()
+    }
+    
+    func loadHistoryWithPage(page: Int) {
+        eventHandler?.updateDisplayData(page: page)
+        loadingPage = page
     }
     
     func setLayerBorder() {
@@ -146,7 +155,7 @@ extension TxHistoryViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TxHistoryTableViewCell", for: indexPath) as! TxHistoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, for: indexPath) as! TxHistoryTableViewCell
         let item: TxHistoryDisplayItem
         if isFiltering {
             item = filteredItems[indexPath.row]
@@ -165,13 +174,17 @@ extension TxHistoryViewController: UITableViewDataSource {
 extension TxHistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let selectedItem = collection?.displayItems[indexPath.row] {
-            eventHandler?.selectTxHistoryOnUI(selectedItem)
+        if let selectedItem = isFiltering ? filteredItems[indexPath.row] : collection?.displayItems[indexPath.row], let tokenInfo = tokenInfo {
+            eventHandler?.selectTxHistoryOnUI(selectedItem, tokenInfo: tokenInfo)
         }
     }
 }
 
 extension TxHistoryViewController : TxHistoryViewInterface {
+    func didReceiveTokenInfo(_ tokenInfo: TokenInfoDTO) {
+        self.tokenInfo = tokenInfo
+    }
+    
     func showTxHistoryDisplayData(_ data: TxHistoryDisplayCollection, forPage: Int) {
         if forPage > currentPage {
             if data.displayItems.count > 1 {
@@ -199,13 +212,18 @@ extension TxHistoryViewController : TxHistoryViewInterface {
     
     func removeSpinner() {
         removeMozoSpinner()
+        navigationItem.hidesBackButton = true
     }
     
     func displayError(_ error: String) {
         displayMozoError(error)
     }
+    
+    func displayTryAgain(_ error: ConnectionError) {
+        displayMozoPopupError()
+        mozoPopupErrorView?.delegate = self
+    }
 }
-
 extension TxHistoryViewController: UIScrollViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         //Bottom Refresh
@@ -215,9 +233,22 @@ extension TxHistoryViewController: UIScrollViewDelegate {
                     let nextPage = currentPage + 1
                     print("Load more transaction histories with next page: \(nextPage)")
                     isLoadingMoreTH = true
-                    eventHandler?.updateDisplayData(page: nextPage)
+                    loadHistoryWithPage(page: nextPage)
                 }
             }
+        }
+    }
+}
+extension TxHistoryViewController : PopupErrorDelegate {
+    func didClosePopupWithoutRetry() {
+        
+    }
+    
+    func didTouchTryAgainButton() {
+        print("User try reload transaction history again.")
+        removeMozoPopupError()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
+            self.loadHistoryWithPage(page: self.loadingPage)
         }
     }
 }

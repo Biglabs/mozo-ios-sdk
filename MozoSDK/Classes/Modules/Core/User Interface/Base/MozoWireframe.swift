@@ -14,14 +14,16 @@ class MozoWireframe: NSObject {
         
     }
     
-    func presentWaitingInterface() {
-        let viewController = WaitingViewControllerFromStoryboard()
+    func presentWaitingInterface(corePresenter: CorePresenter?) {
+        let viewController = waitingViewControllerFromStoryboard()
+        corePresenter?.waitingViewInterface = viewController
+        viewController.eventHandler = corePresenter
         rootWireframe?.showRootViewController(viewController, inWindow: (UIApplication.shared.delegate?.window!)!)
     }
     
-    func WaitingViewControllerFromStoryboard() -> MozoBasicViewController {
+    func waitingViewControllerFromStoryboard() -> WaitingViewController {
         let storyboard = StoryboardManager.mozoStoryboard()
-        let viewController = storyboard.instantiateViewController(withIdentifier: WaitingViewControllerIdentifier) as! MozoBasicViewController
+        let viewController = storyboard.instantiateViewController(withIdentifier: WaitingViewControllerIdentifier) as! WaitingViewController
         return viewController
     }
     

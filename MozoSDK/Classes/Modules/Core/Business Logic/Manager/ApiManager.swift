@@ -8,9 +8,11 @@
 import Foundation
 import Alamofire
 import PromiseKit
+import SwiftyJSON
 
 public class ApiManager {
     private (set) var client: SessionManager
+    var delegate: ApiManagerDelegate?
     var apiKey: String?
     
     public init() {
@@ -156,7 +158,7 @@ public class ApiManager {
                         }
                         seal.fulfill(json)
                     case .failure(let error):
-                        print("Request failed with error: \(error.localizedDescription), url: \(url)")
+                        print("Request failed with error: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))")
                         let connectionError = self.checkResponse(response: response, error: error)
                         seal.reject(connectionError)
                     }
@@ -182,12 +184,23 @@ public class ApiManager {
                         }
                         seal.fulfill(json)
                     case .failure(let error):
-                        print("Request failed with error: \(error.localizedDescription), url: \(url)")
+                        print("Request failed with error: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))")
                         let connectionError = self.checkResponse(response: response, error: error)
                         seal.reject(connectionError)
                     }
             }
         }
+    }
+    
+    func getErrorDetailMessage(responseData: Data?) -> String {
+        var errorMessage = "General error message"
+        
+        if let data = responseData {
+            let responseJSON = JSON(data: data)
+            errorMessage = responseJSON.rawString() ?? ""
+        }
+        
+        return errorMessage
     }
 
     private func execute(_ method: Alamofire.HTTPMethod, url: String, headers: HTTPHeaders, params: [String: Any]?) -> Promise<[String: Any]>{
@@ -207,7 +220,7 @@ public class ApiManager {
                         let result : [String: Any] = ["array": array]
                         seal.fulfill(result)
                     case .failure(let error):
-                        print("Request failed with error: \(error.localizedDescription), url: \(url)")
+                        print("Request failed with error: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))")
                         let connectionError = self.checkResponse(response: response, error: error)
                         seal.reject(connectionError)
                 }

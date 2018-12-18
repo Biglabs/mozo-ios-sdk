@@ -61,4 +61,12 @@ public class AddressBookDTO: ResponseObjectSerializable {
         }
         return array.first { $0.soloAddress?.lowercased() == address.lowercased() }
     }
+    
+    public static func updateAddressBookName(_ updatedItem: AddressBookDTO, array: inout [AddressBookDTO]){
+        array.filter { $0.id == updatedItem.id! }.first?.name = updatedItem.name
+    }
+    
+    public static func removeAddressBook(_ id: Int64, array: inout [AddressBookDTO]) {
+        _ = array.filter {$0.id != id}
+    }
 }

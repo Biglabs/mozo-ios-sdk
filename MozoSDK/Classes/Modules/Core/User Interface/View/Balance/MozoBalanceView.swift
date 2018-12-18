@@ -66,6 +66,7 @@ import Foundation
         super.loadViewFromNib()
         loadDisplayData()
         setupButtonBorder()
+        addOriginalObserver()
         addUniqueAuthObserver()
     }
     
@@ -74,14 +75,16 @@ import Foundation
         clearValueOnUI()
         if !isAnonymous {
             print("\(String(describing: self)) - Load display data.")
-            _ = MozoSDK.loadBalanceInfo().done { (item) in
-                    print("\(String(describing: self)) - Receive display data: \(item)")
-                    self.updateData(displayItem: item)
-                }.catch({ (error) in
-                    print("\(String(describing: self)) - Error: \(error.localizedDescription)")
-                    let itemNoData = DetailInfoDisplayItem(balance: 0.0, address: "")
-                    self.updateData(displayItem: itemNoData)
-                })
+            if let item = SafetyDataManager.shared.detailDisplayData {
+                print("\(String(describing: self)) - Receive display data: \(item)")
+                self.updateData(displayItem: item)
+                hideRefreshState()
+            } else {
+                print("\(String(describing: self)) - No data for displaying")
+                let itemNoData = DetailInfoDisplayItem(balance: 0.0, address: "")
+                self.updateData(displayItem: itemNoData)
+                displayRefreshState()
+            }
         } else {
             switch displayType {
             case .DetailAddress:
@@ -102,16 +105,20 @@ import Foundation
     }
     
     override func updateOnlyBalance(_ balance : Double) {
-        lbBalance.text = "\(balance)"
-        var result = "0.0"
-        if let rateInfo = SessionStoreManager.exchangeRateInfo {
-            let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
-            if let type = type, let rateValue = rateInfo.rate {
-                let value = (balance * rateValue).rounded(toPlaces: type.decimalRound)
-                result = "\(type.unit)\(value)"
+        print("Update balance on Mozo UI Components")
+        if lbBalance != nil {
+            let balanceText = balance.roundAndAddCommas()
+            lbBalance.text = balanceText
+            var result = "0.0"
+            if let rateInfo = SessionStoreManager.exchangeRateInfo {
+                let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
+                if let type = type, let rateValue = rateInfo.rate {
+                    let valueText = (balance * rateValue).roundAndAddCommas(toPlaces: type.decimalRound)
+                    result = "\(type.unit)\(valueText)"
+                }
             }
+            lbBalanceExchange.text = result
         }
-        lbBalanceExchange.text = result
     }
     
     func clearValueOnUI() {
@@ -153,5 +160,35 @@ import Foundation
     @IBAction func touchedLogin(_ sender: Any) {
         print("Touch login button")
         MozoSDK.authenticate()
+    }
+    
+    // MARK: Refresh state
+    var refreshView : MozoRefreshView?
+    
+    func displayRefreshState() {
+        print("Display refresh state")
+        if refreshView == nil {
+            refreshView = MozoRefreshView(frame: containerView.frame)
+            if refreshView != nil {
+                addSubview(refreshView!)
+            }
+        } else {
+            refreshView?.isHidden = false
+            bringSubview(toFront: refreshView!)
+        }
+        refreshView?.isRefreshing = false
+    }
+    
+    func hideRefreshState() {
+        if refreshView != nil {
+            print("Hide refresh state.")
+            refreshView?.isHidden = true
+            refreshView?.isRefreshing = false
+        }
+    }
+    
+    override func onLoadTokenInfoFailed(_ notification: Notification) {
+        print("On Load Token Info Failed: Display refresh state")
+        displayRefreshState()
     }
 }

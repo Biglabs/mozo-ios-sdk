@@ -12,4 +12,6 @@ protocol RDNInteractorInput {
 protocol RDNInteractorOutput {
     func balanceDidChange(balanceNoti: BalanceNotification)
     func addressBookDidChange(addressBookList: [AddressBookDTO])
+    func didAirdropped(airdropNoti: BalanceNotification)
+    func didCustomerCame(ccNoti: CustomerComeNotification)
 }

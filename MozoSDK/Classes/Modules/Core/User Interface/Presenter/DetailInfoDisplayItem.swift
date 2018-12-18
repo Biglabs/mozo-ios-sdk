@@ -8,8 +8,8 @@
 import Foundation
 
 public struct DetailInfoDisplayItem {
-    let balance : Double
-    let address: String
+    public let balance : Double
+    public let address: String
     
     init(balance: Double, address: String) {
         self.balance = balance
@@ -19,5 +19,11 @@ public struct DetailInfoDisplayItem {
     init(tokenInfo: TokenInfoDTO) {
         self.balance = (tokenInfo.balance?.convertOutputValue(decimal: tokenInfo.decimals ?? 0))!
         self.address = tokenInfo.address!
+    }
+}
+
+extension DetailInfoDisplayItem : Equatable {
+    public static func == (leftSide: DetailInfoDisplayItem, rightSide: DetailInfoDisplayItem) -> Bool {
+        return rightSide.balance == leftSide.balance && rightSide.address == rightSide.address
     }
 }
