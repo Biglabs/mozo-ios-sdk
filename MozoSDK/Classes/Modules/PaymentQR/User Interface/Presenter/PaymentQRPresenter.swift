@@ -46,7 +46,9 @@ extension PaymentQRPresenter: PaymentQRInteractorOutput {
     }
     
     func didReceiveError(_ error: String?) {
-        viewInterface?.displayError(error ?? "Error")
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
+            self.viewInterface?.displayError(error ?? "Error")
+        }
     }
     
     func didSendPaymentRequestSuccess(toAddress: String, item: PaymentRequestDisplayItem) {
