@@ -53,31 +53,20 @@ class AirdropInteractor: NSObject {
     }
     
     func processAirdropEvent(_ event: AirdropEventDTO, tokenInfo: TokenInfoDTO) {
-        if event.totalNumMozoOffchain?.doubleValue ?? 0 > (tokenInfo.balance ?? 0).convertOutputValue(decimal: tokenInfo.decimals ?? 0) {
-            output?.failedToSignAirdropEvent(error: "Balance is not enough.")
-            return
-        }
-        let perCustomer = (event.mozoAirdropPerCustomerVisit?.doubleValue ?? 0).convertTokenValue(decimal: tokenInfo.decimals ?? 0)
-        let total = (event.totalNumMozoOffchain?.doubleValue ?? 0).convertTokenValue(decimal: tokenInfo.decimals ?? 0)
-        event.mozoAirdropPerCustomerVisit = perCustomer
-        event.totalNumMozoOffchain = total
-        event.symbol = tokenInfo.symbol
-        event.decimals = tokenInfo.decimals
-        output?.didCalculatePerVisitAndTotal(event: event, tokenInfo: tokenInfo)
-    }
-}
-extension AirdropInteractor: AirdropInteractorInput {
-    func calculatePerVisitAndTotal(_ event: AirdropEventDTO) {
-        if let userObj = SessionStoreManager.loadCurrentUser() {
-            if let address = userObj.profile?.walletInfo?.offchainAddress {
-                print("Address used to load balance: \(address)")
-                _ = apiManager?.getTokenInfoFromAddress(address)
-                    .done { (tokenInfo) in
-                        self.processAirdropEvent(event, tokenInfo: tokenInfo)
-                    }.catch({ (err) in
-                        self.output?.didFailedToLoadTokenInfo()
-                    })
+        if let balance = tokenInfo.balance, let decimals = tokenInfo.decimals {
+            if event.totalNumMozoOffchain?.doubleValue ?? 0 > balance.convertOutputValue(decimal: decimals) {
+                output?.failedToSignAirdropEvent(error: "Balance is not enough.")
+                return
             }
+            let perCustomer = (event.mozoAirdropPerCustomerVisit?.doubleValue ?? 0).convertTokenValue(decimal: decimals)
+            let total = (event.totalNumMozoOffchain?.doubleValue ?? 0).convertTokenValue(decimal: decimals)
+            event.mozoAirdropPerCustomerVisit = perCustomer
+            event.totalNumMozoOffchain = total
+            event.symbol = tokenInfo.symbol
+            event.decimals = tokenInfo.decimals
+            sendCreateAirdropEvent(event)
+        } else {
+            output?.didFailedToLoadTokenInfo()
         }
     }
     
@@ -102,7 +91,22 @@ extension AirdropInteractor: AirdropInteractorInput {
         }).catch({ (error) in
             let cErr = error as! ConnectionError
             self.output?.failedToCreateAirdropEvent(error: cErr.errorDescription)
-        })        
+        })
+    }
+}
+extension AirdropInteractor: AirdropInteractorInput {
+    func validateAndCalculateEvent(_ event: AirdropEventDTO) {
+        if let userObj = SessionStoreManager.loadCurrentUser() {
+            if let address = userObj.profile?.walletInfo?.offchainAddress {
+                print("Address used to load balance: \(address)")
+                _ = apiManager?.getTokenInfoFromAddress(address)
+                    .done { (tokenInfo) in
+                        self.processAirdropEvent(event, tokenInfo: tokenInfo)
+                    }.catch({ (err) in
+                        self.output?.didFailedToLoadTokenInfo()
+                    })
+            }
+        }
     }
     
     func sendSignedAirdropEventTx(pin: String) {
@@ -110,6 +114,8 @@ extension AirdropInteractor: AirdropInteractorInput {
             .done { (signedInterTxArray) in
                 self.apiManager?.sendSignedAirdropEventTx(signedInterTxArray).done({ (smartContractAddress) in
                     print("Send successfully with smart contract address: \(smartContractAddress ?? "NULL")")
+                    // Clear data
+                    self.transactionDataArray = nil
                     // Clear retry PIN
                     self.clearRetryPin()
                     if let scAddress = smartContractAddress {
