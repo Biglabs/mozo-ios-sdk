@@ -93,9 +93,9 @@ public class MozoBasicViewController : UIViewController {
         }
     }
     
-    func removeMozoSpinner() {
+    func removeMozoSpinner(hidesBackButton: Bool = false) {
         DispatchQueue.main.async {
-            self.navigationItem.hidesBackButton = false
+            self.navigationItem.hidesBackButton = hidesBackButton
             self.mozoSpinnerView?.removeFromSuperview()
         }
     }

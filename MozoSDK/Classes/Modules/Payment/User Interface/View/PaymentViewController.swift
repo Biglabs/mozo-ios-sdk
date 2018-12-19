@@ -227,7 +227,7 @@ extension PaymentViewController: PaymentViewInterface {
     }
     
     func removeSpinner() {
-        removeMozoSpinner()
+        removeMozoSpinner(hidesBackButton: true)
     }
     
     func displayError(_ error: String) {

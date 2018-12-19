@@ -110,7 +110,7 @@ extension PINViewController : PINViewInterface {
     }
     
     func removeSpinner() {
-        removeMozoSpinner()
+        removeMozoSpinner(hidesBackButton: true)
     }
     
     func displayTryAgain(_ error: ConnectionError) {
