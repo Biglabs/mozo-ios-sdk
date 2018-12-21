@@ -38,7 +38,7 @@ class CorePresenter : NSObject {
         reachability?.whenReachable = { reachability in
             print("Reachability when reachable: \(reachability.description) - \(reachability.connection)")
             self.startSlientServices()
-            self.coreInteractor?.downloadConvenienceDataAndStoreAtLocal()
+            self.coreInteractor?.downloadAndStoreConvenienceData()
         }
         reachability?.whenUnreachable = { reachability in
             print("Reachability when unreachable: \(reachability.description) - \(reachability.connection)")
@@ -136,6 +136,8 @@ extension CorePresenter : CoreModuleInterface {
             coreWireframe?.prepareForTxHistoryInterface()
         case .Payment:
             coreWireframe?.prepareForPaymentRequestInterface()
+        case .AddressBook:
+            coreWireframe?.presentAddressBookInterface(false)
         default: coreWireframe?.prepareForWalletInterface()
         }
     }
@@ -151,7 +153,7 @@ extension CorePresenter : AuthModuleDelegate {
     func didCheckAuthorizationSuccess() {
         print("On Check Authorization Did Success: Download convenience data")
         SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
-        coreInteractor?.downloadConvenienceDataAndStoreAtLocal()
+        coreInteractor?.downloadAndStoreConvenienceData()
     }
     
     func didCheckAuthorizationFailed() {
@@ -202,7 +204,7 @@ extension CorePresenter: WalletModuleDelegate {
                 self.authDelegate?.mozoAuthenticationDidFinish()
             })
         }
-        coreInteractor?.downloadConvenienceDataAndStoreAtLocal()
+        coreInteractor?.downloadAndStoreConvenienceData()
         startSlientServices()
     }
 }
@@ -257,7 +259,7 @@ extension CorePresenter: TransactionModuleDelegate {
     
     func requestAddressBookInterfaceForTransaction() {
         requestingABModule = Module.Transaction
-        coreWireframe?.presentAddressBookInterfaceForSelecting()
+        coreWireframe?.presentAddressBookInterface()
     }
 }
 
@@ -346,6 +348,6 @@ extension CorePresenter : RDNInteractorOutput {
 extension CorePresenter: PaymentQRModuleDelegate {
     func requestAddressBookInterfaceForPaymentRequest() {
         requestingABModule = .Payment
-        coreWireframe?.presentAddressBookInterfaceForSelecting()
+        coreWireframe?.presentAddressBookInterface()
     }
 }

@@ -14,6 +14,7 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
     public var status: String?
     public var phoneNumber: String?
     public var avatarUrl: String?
+    public var fullName: String?
     
     public var walletInfo: WalletInfoDTO?
     public var exchangeInfo: ExchangeInfoDTO?
@@ -32,6 +33,7 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
         self.walletInfo = WalletInfoDTO(json: json["walletInfo"])
         self.exchangeInfo = ExchangeInfoDTO(json: json["exchangeInfo"])
         self.settings = json["settings"].string
+        self.fullName = json["fullName"].string
     }
     
     public required init?(){}
@@ -55,6 +57,9 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
         }
         if let settings = self.settings {
             json["settings"] = settings
+        }
+        if let fullName = self.fullName {
+            json["fullName"] = fullName
         }
         return json
     }

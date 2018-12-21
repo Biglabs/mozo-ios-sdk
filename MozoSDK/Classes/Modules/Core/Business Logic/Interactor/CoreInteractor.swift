@@ -60,22 +60,6 @@ class CoreInteractor: NSObject {
     }
     
     // MARK: Prepare data
-    func downloadConvenienceDataAndStoreAtLocal() {
-        print("Download convenience data and store at local.")
-        if AccessTokenManager.getAccessToken() != nil {
-            // Check User info here
-            if SessionStoreManager.loadCurrentUser() == nil {
-                _ = getUserProfile().done {
-                    self.downloadData()
-                }.catch({ (error) in
-                    self.output?.failToLoadUserInfo(error as! ConnectionError, for: nil)
-                })
-            } else {
-                downloadData()
-            }
-        }
-    }
-    
     func downloadData() {
         downloadAddressBookAndStoreAtLocal()
         _ = loadBalanceInfo()
@@ -139,6 +123,18 @@ class CoreInteractor: NSObject {
 }
 
 extension CoreInteractor: CoreInteractorInput {
+    func downloadAndStoreConvenienceData() {
+        print("Download convenience data and store at local.")
+        if AccessTokenManager.getAccessToken() != nil {
+            // Check User info here
+            _ = getUserProfile().done {
+                self.downloadData()
+            }.catch({ (error) in
+                self.output?.failToLoadUserInfo(error as! ConnectionError, for: nil)
+            })
+        }
+    }
+    
     @objc func repeatCheckForAuthentication() {
         if SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING {
             print("Continue with checking auth and wallet.")
@@ -158,16 +154,12 @@ extension CoreInteractor: CoreInteractorInput {
         AccessTokenManager.saveToken(accessToken)
         anonManager.linkCoinFromAnonymousToCurrentUser()
         _ = getUserProfile().done({ () in
-            self.handleAfterGetUserProfile()
+            self.downloadData()
             self.output?.finishedHandleAferAuth()
         }).catch({ (err) in
             // Handle case unable to load user profile
             self.output?.failToLoadUserInfo(err as! ConnectionError, for: nil)
         })
-    }
-    
-    func handleAfterGetUserProfile() {
-        downloadConvenienceDataAndStoreAtLocal()
     }
     
     func notifyAuthSuccessForAllObservers() {

@@ -83,6 +83,10 @@ class ModuleDependencies {
         coreWireframe.requestForPaymentRequest()
     }
     
+    func displayAddressBook() {
+        coreWireframe.requestForAddressBook()
+    }
+    
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem>{
         return (coreWireframe.corePresenter?.coreInteractorService?.loadBalanceInfo())!
     }

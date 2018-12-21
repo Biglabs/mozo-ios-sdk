@@ -11,7 +11,7 @@ import PromiseKit
 protocol CoreInteractorInput {
     func checkForAuthentication(module: Module)
     func handleAferAuth(accessToken: String?)
-    func downloadConvenienceDataAndStoreAtLocal()
+    func downloadAndStoreConvenienceData()
     func notifyAuthSuccessForAllObservers()
     func notifyLogoutForAllObservers()
     func notifyBalanceChangesForAllObservers(balanceNoti: BalanceNotification)
