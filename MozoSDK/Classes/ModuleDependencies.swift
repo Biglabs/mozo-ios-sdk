@@ -151,8 +151,12 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerAnalyticList())!
     }
     
-    func getVisitCustomerList(page: Int) -> Promise<[VisitedCustomerDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getVisitCustomerList(page: page))!
+    func getVisitCustomerList(page: Int, size: Int, year: Int, month: Int) -> Promise<[VisitedCustomerDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getVisitCustomerList(page: page, size: size, year: year, month: month))!
+    }
+    
+    func getRunningAirdropEvents(page: Int, size: Int) -> Promise<[AirdropEventDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getRunningAirdropEvents(page: page, size: size))!
     }
     
     func configureDependencies() {

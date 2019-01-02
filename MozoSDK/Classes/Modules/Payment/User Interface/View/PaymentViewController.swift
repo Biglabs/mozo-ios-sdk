@@ -42,6 +42,8 @@ class PaymentViewController: MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: listContainerView.frame.size.height)
+        prepareNoContentView(frame, message: "Payment request list is empty")
         eventHandler?.loadTokenInfo()
         setupTableView()
         setupTarget()
@@ -105,6 +107,7 @@ class PaymentViewController: MozoBasicViewController {
         switch currentTab {
         case .List:
             view.insertSubview(listContainerView, aboveSubview: createContainerView)
+            refresh()
         case .Create:
             view.insertSubview(createContainerView, aboveSubview: listContainerView)
         }
@@ -138,6 +141,14 @@ class PaymentViewController: MozoBasicViewController {
             displayMozoError("No token info")
         }
     }
+    
+    func checkShowNoContent() {
+        if self.paymentCollection?.displayItems.count ?? 0 > 0 {
+            tableView.backgroundView = nil
+        } else {
+            tableView.backgroundView = noContentView
+        }
+    }
 }
 extension PaymentViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -154,6 +165,11 @@ extension PaymentViewController: UITextFieldDelegate {
     }
 }
 extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        checkShowNoContent()
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return paymentCollection?.displayItems.count ?? 0
     }
@@ -215,11 +231,6 @@ extension PaymentViewController: PaymentViewInterface {
             currentPage = 0
             paymentCollection = collection
         }
-    }
-    
-    func showNoContent() {
-        
-//        displayMozoNoContentView(listContainerView.frame, message: "Payment request list is empty")
     }
     
     func displaySpinner() {

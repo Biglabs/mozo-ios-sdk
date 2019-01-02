@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UILabel {
+public extension UILabel {
     
     /**
      This function adding image with text on label.

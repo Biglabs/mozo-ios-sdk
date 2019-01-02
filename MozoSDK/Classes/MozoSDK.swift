@@ -13,8 +13,8 @@ import PromiseKit
 public class MozoSDK {
     private static var moduleDependencies: ModuleDependencies!
     
-    public static func configure(apiKey: String = Configuration.API_KEY_DEFAULT, network: MozoNetwork = .TestNet, appType: AppType = .Shopper, serviceType: ServiceType = .DEV) {
-        Configuration.SUB_DOMAIN_ENUM = serviceType
+    public static func configure(apiKey: String = Configuration.API_KEY_DEFAULT, network: MozoNetwork = .DevNet, appType: AppType = .Shopper) {
+        Configuration.SUB_DOMAIN_ENUM = network.serviceType
         moduleDependencies = ModuleDependencies()
         moduleDependencies.apiKey = apiKey
         moduleDependencies.network = network
@@ -113,7 +113,11 @@ public class MozoSDK {
         return moduleDependencies.getRetailerAnalyticList()
     }
     
-    public static func getVisitCustomerList(page: Int) -> Promise<[VisitedCustomerDTO]> {
-        return moduleDependencies.getVisitCustomerList(page: page)
+    public static func getVisitCustomerList(page: Int, size: Int = 15, year: Int = 0, month: Int = 0) -> Promise<[VisitedCustomerDTO]> {
+        return moduleDependencies.getVisitCustomerList(page: page, size: size, year: year, month: month)
+    }
+    
+    public static func getRunningAirdropEvents(page: Int = 0, size: Int = 5) -> Promise<[AirdropEventDTO]> {
+        return moduleDependencies.getRunningAirdropEvents(page: page, size: size)
     }
 }

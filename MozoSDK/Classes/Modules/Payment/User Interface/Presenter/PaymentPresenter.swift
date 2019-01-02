@@ -84,12 +84,8 @@ extension PaymentPresenter: PaymentInteractorOutput {
     }
     
     func finishGetListPaymentRequest(_ list: [PaymentRequestDTO], forPage: Int) {
-//        if list.count > 0 {
-            let collection = PaymentRequestDisplayCollection(items: list)
-            viewInterface?.showPaymentRequestCollection(collection, forPage: forPage)
-//        } else {
-//            viewInterface?.showNoContent()
-//        }
+        let collection = PaymentRequestDisplayCollection(items: list)
+        viewInterface?.showPaymentRequestCollection(collection, forPage: forPage)
     }
     
     func didLoadTokenInfo(_ tokenInfo: TokenInfoDTO) {

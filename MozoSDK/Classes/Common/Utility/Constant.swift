@@ -125,13 +125,23 @@ public enum TransactionType {
 }
 
 public enum MozoNetwork {
+    case DevNet
     case TestNet
     case MainNet
     
     public var value : String {
         switch self {
+        case .DevNet: return "DevNet"
         case .TestNet: return "TestNet"
         case .MainNet: return "MainNet"
+        }
+    }
+    
+    public var serviceType: ServiceType {
+        switch self {
+        case .DevNet: return .DEV
+        case .TestNet: return .STAGING
+        case .MainNet: return .PRODUCTION
         }
     }
 }
