@@ -30,6 +30,7 @@ public class StoreInfoDTO : ResponseObjectSerializable {
     
     public var isFavorite: Bool?
     public var storeImages: [String]?
+    public var hashTag: [String]?
     
     public required init(id: Int64){
         self.id = id
@@ -54,6 +55,7 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         self.customerAirdropAmount = json["customerAirdropAmount"].number
         self.totalAirdropAmount = json["totalAirdropAmount"].number
         self.isFavorite = json["isFavorite"].bool
+        self.hashTag = json["hashTag"].array?.filter({ $0.string != nil }).map({ $0.string! })
         self.storeImages = json["storeImages"].array?.filter({ $0.string != nil }).map({ $0.string! })
     }
     

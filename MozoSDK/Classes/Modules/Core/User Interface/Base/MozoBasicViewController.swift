@@ -44,6 +44,14 @@ public class MozoBasicViewController : UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func displayMozoAlertInfo(infoMessage: String, completion: (() -> Void)?) {
+        let alert = UIAlertController(title: "Info", message: infoMessage, preferredStyle: .alert)
+        alert.addAction(.init(title: "OK", style: .default, handler: { (action) in
+            completion?()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: Table - No Content
     var noContentView: UIView?
 
