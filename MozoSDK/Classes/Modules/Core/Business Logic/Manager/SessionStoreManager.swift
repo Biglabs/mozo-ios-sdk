@@ -55,4 +55,6 @@ public class SessionStoreManager {
     public static var exchangeRateInfo : RateInfoDTO?
     
     public static var tokenInfo: TokenInfoDTO?
+    
+    public static var countryList: [CountryCodeDTO] = []
 }

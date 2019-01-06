@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MozoSearchFooter: UIView {
+public class MozoSearchFooter: UIView {
     
     let label: UILabel = UILabel()
     
@@ -31,7 +31,7 @@ class MozoSearchFooter: UIView {
         addSubview(label)
     }
     
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         label.frame = bounds
     }
     

@@ -120,4 +120,16 @@ public class MozoSDK {
     public static func getRunningAirdropEvents(page: Int = 0, size: Int = 5) -> Promise<[AirdropEventDTO]> {
         return moduleDependencies.getRunningAirdropEvents(page: page, size: size)
     }
+    
+    public static func getListSalePerson() -> Promise<[SalePersonDTO]> {
+        return moduleDependencies.getListSalePerson()
+    }
+    
+    public static func removeSalePerson(id: Int64) -> Promise<[String: Any]> {
+        return moduleDependencies.removeSalePerson(id: id)
+    }
+    
+    public static func getListCountryCode() -> Promise<[CountryCodeDTO]> {
+        return moduleDependencies.getListCountryCode()
+    }
 }

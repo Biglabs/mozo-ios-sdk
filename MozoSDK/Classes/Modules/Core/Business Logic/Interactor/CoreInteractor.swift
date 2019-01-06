@@ -64,6 +64,7 @@ class CoreInteractor: NSObject {
         downloadAddressBookAndStoreAtLocal()
         _ = loadBalanceInfo()
         downloadExchangeRateInfoAndStoreAtLocal()
+        downloadCountryListAndStoreAtLocal()
     }
     
     func downloadAddressBookAndStoreAtLocal() {
@@ -82,6 +83,15 @@ class CoreInteractor: NSObject {
             self.notifyExchangeRateInfoForAllObservers()
         }).catch({ (error) in
             //TODO: Handle case unable to load exchange rate info
+        })
+    }
+    
+    func downloadCountryListAndStoreAtLocal() {
+        print("😎 Load country code list data.")
+        _ = apiManager.getListCountryCode().done({ (data) in
+            SessionStoreManager.countryList = data
+        }).catch({ (error) in
+            //TODO: Handle case unable to load country list
         })
     }
     

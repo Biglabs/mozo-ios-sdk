@@ -42,4 +42,7 @@ protocol CoreInteractorService {
     func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]>
     func getVisitCustomerList(page: Int, size: Int, year: Int, month: Int) -> Promise<[VisitedCustomerDTO]>
     func getRunningAirdropEvents(page: Int, size: Int) -> Promise<[AirdropEventDTO]>
+    func getListSalePerson() -> Promise<[SalePersonDTO]>
+    func removeSalePerson(id: Int64) -> Promise<[String: Any]>
+    func getListCountryCode() -> Promise<[CountryCodeDTO]>
 }

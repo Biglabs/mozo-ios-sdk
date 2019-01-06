@@ -121,4 +121,16 @@ extension CoreInteractor: CoreInteractorService {
         print("😎 Get running airdrop event list by page number \(page), size \(size).")
         return apiManager.getRunningAirdropEvents(page: page, size: size)
     }
+    
+    func getListSalePerson() -> Promise<[SalePersonDTO]> {
+        return apiManager.getListSalePerson()
+    }
+    
+    func removeSalePerson(id: Int64) -> Promise<[String: Any]> {
+        return apiManager.removeSalePerson(id: id)
+    }
+    
+    func getListCountryCode() -> Promise<[CountryCodeDTO]> {
+        return apiManager.getListCountryCode()
+    }
 }

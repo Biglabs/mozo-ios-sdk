@@ -159,6 +159,18 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRunningAirdropEvents(page: page, size: size))!
     }
     
+    func getListSalePerson() -> Promise<[SalePersonDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getListSalePerson())!
+    }
+    
+    func removeSalePerson(id: Int64) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.removeSalePerson(id: id))!
+    }
+    
+    func getListCountryCode() -> Promise<[CountryCodeDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getListCountryCode())!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()
