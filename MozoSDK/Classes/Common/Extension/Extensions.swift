@@ -76,6 +76,11 @@ public extension String {
         let end = self[count - 3..<count]
         return "\(prefix)\(middle)\(end)"
     }
+    
+    public func toDoubleValue() -> Double {
+        // FIX ISSUE: [MOZO-254] Round Issue in swift
+        return (NumberFormatter().number(from: self)?.doubleValue)!
+    }
 }
 
 internal extension String {

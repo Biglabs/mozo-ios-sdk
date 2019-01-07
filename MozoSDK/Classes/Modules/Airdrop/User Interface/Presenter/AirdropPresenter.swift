@@ -23,11 +23,7 @@ class AirdropPresenter: NSObject {
     
     func createAirdropEvent(_ event: AirdropEventDTO) {
         self.airdropEvent = event
-        if self.tokenInfo == nil {
-            interactor?.calculatePerVisitAndTotal(event)
-        } else {
-            interactor?.sendCreateAirdropEvent(airdropEvent!)
-        }
+        interactor?.validateAndCalculateEvent(event)
     }
 }
 extension AirdropPresenter: PinModuleDelegate {
@@ -37,12 +33,6 @@ extension AirdropPresenter: PinModuleDelegate {
     }
 }
 extension AirdropPresenter: AirdropInteractorOutput {
-    func didCalculatePerVisitAndTotal(event: AirdropEventDTO, tokenInfo: TokenInfoDTO) {
-        self.airdropEvent = event
-        self.tokenInfo = tokenInfo
-        interactor?.sendCreateAirdropEvent(airdropEvent!)
-    }
-    
     func didFailedToLoadTokenInfo() {
         airdropEventDelegate?.createAirdropEventFailure(error: "Unable to load tokenInfo.", isDisplayingTryAgain: true)
     }

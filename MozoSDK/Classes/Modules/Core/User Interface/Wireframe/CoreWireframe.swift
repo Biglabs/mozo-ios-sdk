@@ -45,6 +45,11 @@ class CoreWireframe : MozoWireframe {
         corePresenter?.requestForAuthentication(module: Module.Payment)
     }
     
+    func requestForAddressBook() {
+        presentWaitingInterface(corePresenter: corePresenter)
+        corePresenter?.requestForAuthentication(module: Module.AddressBook)
+    }
+    
     func requestForCloseAllMozoUIs(completion: (() -> Swift.Void)? = nil) {
         rootWireframe?.closeAllMozoUIs(completion: {
             completion!()
@@ -101,8 +106,8 @@ class CoreWireframe : MozoWireframe {
         abDetailWireframe?.dismissAddressBookDetailInterface()
     }
     
-    func presentAddressBookInterfaceForSelecting() {
-        abWireframe?.presentAddressBookInterface(isDisplayForSelect: true)
+    func presentAddressBookInterface(_ forSelecting: Bool = true) {
+        abWireframe?.presentAddressBookInterface(isDisplayForSelect: forSelecting)
     }
     
     func updateAddressBookInterfaceForTransaction(displayItem: AddressBookDisplayItem) {

@@ -26,7 +26,11 @@ class TxHistoryViewController: MozoBasicViewController {
     var filteredItems = [TxHistoryDisplayItem]()
     var currentPage : Int = 1
     var loadingPage : Int = 1
-    var currentFilterType : TransactionType? = nil // All
+    var currentFilterType : TransactionType? = nil {
+        didSet {
+            print("Set current filter type: \(currentFilterType)")
+        }
+    }
     var tokenInfo : TokenInfoDTO?
     
     // MARK: - View Setup
@@ -54,8 +58,8 @@ class TxHistoryViewController: MozoBasicViewController {
         if let refreshControl = sender as? UIRefreshControl, refreshControl.isRefreshing {
             refreshControl.endRefreshing()
         }
-        updateDisplayButtons()
-        filterContentForType()
+//        updateDisplayButtons()
+//        filterContentForType()
     }
     
     func loadHistoryWithPage(page: Int) {

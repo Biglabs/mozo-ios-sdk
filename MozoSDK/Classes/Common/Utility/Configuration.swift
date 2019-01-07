@@ -55,6 +55,9 @@ public class Configuration {
     // STAGING
     public static let AUTH_ISSSUER = "https://\(SUB_DOMAIN)keycloak.mozocoin.io/auth/realms/mozo"
     
+    // IMAGE SERVER
+    public static let DOMAIN_IMAGE = "https://\(SUB_DOMAIN)image.mozocoin.io/api/public/"
+    
     /**
      The OAuth client ID.
      For client configuration instructions, see the [README](https://github.com/openid/AppAuth-iOS/blob/master/Examples/Example-iOS_Swift-Carthage/README.md).

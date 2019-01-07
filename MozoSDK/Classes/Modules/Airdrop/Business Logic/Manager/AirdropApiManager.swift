@@ -165,6 +165,31 @@ public extension ApiManager {
         }
     }
     
+    public func getRunningAirdropEvents(page: Int, size: Int) -> Promise<[AirdropEventDTO]> {
+        return Promise { seal in
+            let params = ["size" : size,
+                          "page" : page,
+                          "isInPeriod" : true,
+                          "sort" : "periodFromDate,desc"] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_RESOURCE_API_PATH + "?\(params.queryString)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get Running Airdrop Event list, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)["array"]
+                    let array = AirdropEventDTO.arrayFromJson(jobj)
+                    seal.fulfill(array)
+                }
+                .catch { error in
+                    print("Error when request get Running Airdrop Event list: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
     public func getAirdropEventList(page: Int, size: Int = 15) -> Promise<[AirdropEventDTO]> {
         return Promise { seal in
             let params = ["size" : size,

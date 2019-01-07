@@ -53,10 +53,16 @@ public extension ApiManager {
         }
     }
     
-    public func getVisitCustomerList(page: Int = 0, size: Int = 15) -> Promise<[VisitedCustomerDTO]> {
+    public func getVisitCustomerList(page: Int = 0, size: Int = 15, year: Int = 0, month: Int = 0) -> Promise<[VisitedCustomerDTO]> {
         return Promise { seal in
-            let params = ["size" : size,
+            var params = ["size" : size,
                           "page" : page] as [String : Any]
+            if year > 0 {
+                params["year"] = year
+            }
+            if month > 0 {
+                params["month"] = month
+            }
             let url = Configuration.BASE_STORE_URL + RETAILER_ANALYTICS_RESOURCE_API_PATH + "/visited-customers" + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in

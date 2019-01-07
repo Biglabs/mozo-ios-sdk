@@ -83,6 +83,10 @@ class ModuleDependencies {
         coreWireframe.requestForPaymentRequest()
     }
     
+    func displayAddressBook() {
+        coreWireframe.requestForAddressBook()
+    }
+    
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem>{
         return (coreWireframe.corePresenter?.coreInteractorService?.loadBalanceInfo())!
     }
@@ -147,8 +151,24 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerAnalyticList())!
     }
     
-    func getVisitCustomerList(page: Int) -> Promise<[VisitedCustomerDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getVisitCustomerList(page: page))!
+    func getVisitCustomerList(page: Int, size: Int, year: Int, month: Int) -> Promise<[VisitedCustomerDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getVisitCustomerList(page: page, size: size, year: year, month: month))!
+    }
+    
+    func getRunningAirdropEvents(page: Int, size: Int) -> Promise<[AirdropEventDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getRunningAirdropEvents(page: page, size: size))!
+    }
+    
+    func getListSalePerson() -> Promise<[SalePersonDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getListSalePerson())!
+    }
+    
+    func removeSalePerson(id: Int64) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.removeSalePerson(id: id))!
+    }
+    
+    func getListCountryCode() -> Promise<[CountryCodeDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getListCountryCode())!
     }
     
     func configureDependencies() {

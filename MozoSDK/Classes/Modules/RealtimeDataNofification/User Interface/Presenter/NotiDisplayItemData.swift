@@ -32,7 +32,7 @@ public class NotiDisplayItemData {
                     }
                     actionText = action
                     let amount = blNoti.amount?.convertOutputValue(decimal: blNoti.decimal ?? 0)
-                    amountText = "\(amount ?? 0.0) Mozo"
+                    amountText = "\((amount ?? 0.0).roundAndAddCommas()) MozoX"
                     title = "\(action) \(amountText)"
                     if let airdropNoti = rawNoti as? AirdropNotification {
                         subtitle = "\(prefix) \(airdropNoti.storeName ?? "NO NAME")"

@@ -11,7 +11,7 @@ import PromiseKit
 protocol CoreInteractorInput {
     func checkForAuthentication(module: Module)
     func handleAferAuth(accessToken: String?)
-    func downloadConvenienceDataAndStoreAtLocal()
+    func downloadAndStoreConvenienceData()
     func notifyAuthSuccessForAllObservers()
     func notifyLogoutForAllObservers()
     func notifyBalanceChangesForAllObservers(balanceNoti: BalanceNotification)
@@ -40,5 +40,9 @@ protocol CoreInteractorService {
     func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]>
     func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?>
     func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]>
-    func getVisitCustomerList(page: Int) -> Promise<[VisitedCustomerDTO]>
+    func getVisitCustomerList(page: Int, size: Int, year: Int, month: Int) -> Promise<[VisitedCustomerDTO]>
+    func getRunningAirdropEvents(page: Int, size: Int) -> Promise<[AirdropEventDTO]>
+    func getListSalePerson() -> Promise<[SalePersonDTO]>
+    func removeSalePerson(id: Int64) -> Promise<[String: Any]>
+    func getListCountryCode() -> Promise<[CountryCodeDTO]>
 }
