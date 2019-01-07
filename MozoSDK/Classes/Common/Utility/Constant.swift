@@ -57,6 +57,7 @@ public enum Module {
     case TxHistory
     case Airdrop
     case Payment
+    case AddressBook
     
     public var key : String {
         switch self {
@@ -66,6 +67,7 @@ public enum Module {
             case .TxHistory: return "TxHistory"
             case .Airdrop: return "Airdrop"
             case .Payment: return "Payment"
+            case .AddressBook: return "AddressBook"
         }
     }
     
@@ -77,6 +79,7 @@ public enum Module {
             case .TxHistory: return "TxHistory"
             case .Airdrop: return "Airdrop"
             case .Payment: return "Payment"
+            case .AddressBook: return "AddressBook"
         }
     }
 }
@@ -122,13 +125,23 @@ public enum TransactionType {
 }
 
 public enum MozoNetwork {
+    case DevNet
     case TestNet
     case MainNet
     
     public var value : String {
         switch self {
+        case .DevNet: return "DevNet"
         case .TestNet: return "TestNet"
         case .MainNet: return "MainNet"
+        }
+    }
+    
+    public var serviceType: ServiceType {
+        switch self {
+        case .DevNet: return .DEV
+        case .TestNet: return .STAGING
+        case .MainNet: return .PRODUCTION
         }
     }
 }

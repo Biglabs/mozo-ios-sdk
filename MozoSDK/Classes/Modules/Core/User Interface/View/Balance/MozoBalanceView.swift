@@ -88,7 +88,7 @@ import Foundation
         } else {
             switch displayType {
             case .DetailAddress:
-                lbTitle.text = "Your Mozo Offchain Wallet Address"
+                lbTitle.text = "Your MozoX Offchain Wallet Address"
             default: break
             }
         }

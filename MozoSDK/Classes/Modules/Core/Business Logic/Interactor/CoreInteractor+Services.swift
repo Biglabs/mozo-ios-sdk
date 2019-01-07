@@ -112,8 +112,25 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getRetailerAnalyticList()
     }
     
-    func getVisitCustomerList(page: Int) -> Promise<[VisitedCustomerDTO]> {
+    func getVisitCustomerList(page: Int, size: Int, year: Int, month: Int) -> Promise<[VisitedCustomerDTO]> {
         print("😎 Get visit customer list.")
-        return apiManager.getVisitCustomerList(page: page)
+        return apiManager.getVisitCustomerList(page: page, size: size, year: year, month: month)
+    }
+    
+    func getRunningAirdropEvents(page: Int, size: Int) -> Promise<[AirdropEventDTO]> {
+        print("😎 Get running airdrop event list by page number \(page), size \(size).")
+        return apiManager.getRunningAirdropEvents(page: page, size: size)
+    }
+    
+    func getListSalePerson() -> Promise<[SalePersonDTO]> {
+        return apiManager.getListSalePerson()
+    }
+    
+    func removeSalePerson(id: Int64) -> Promise<[String: Any]> {
+        return apiManager.removeSalePerson(id: id)
+    }
+    
+    func getListCountryCode() -> Promise<[CountryCodeDTO]> {
+        return apiManager.getListCountryCode()
     }
 }

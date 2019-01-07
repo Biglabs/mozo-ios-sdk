@@ -28,7 +28,7 @@ struct PaymentRequestDisplayItem {
         let address = String(scheme.split(separator: "?")[0].split(separator: ":")[1])
         let amnt = url?.queryParameters?["amount"]
         self.date = ""
-        self.amount = Double(amnt ?? "0") ?? 0
+        self.amount = (amnt ?? "0").toDoubleValue()
         self.displayNameAddress = ""
         self.requestingAddress = address
         self.id = 0
@@ -39,7 +39,7 @@ struct PaymentRequestDisplayItem {
         let address = String(scheme.split(separator: "?")[0].split(separator: ":")[1])
         let amnt = url?.queryParameters?["amount"]
         self.date = date
-        self.amount = Double(amnt ?? "0") ?? 0
+        self.amount = (amnt ?? "0").toDoubleValue()
         self.displayNameAddress = ""
         self.requestingAddress = address
         self.id = id

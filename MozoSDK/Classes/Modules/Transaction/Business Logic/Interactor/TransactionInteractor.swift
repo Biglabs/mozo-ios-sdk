@@ -26,7 +26,7 @@ class TransactionInteractor : NSObject {
         let trimToAddress = toAdress?.trimmingCharacters(in: .whitespacesAndNewlines)
         var value = 0.0
         if amount != nil {
-            value = Double(amount!)!
+            value = amount!.toDoubleValue()
         }
         var txValue = NSNumber(value: 0)
         txValue = value > 0.0 ? value.convertTokenValue(decimal: tokenInfo?.decimals ?? 0) : 0

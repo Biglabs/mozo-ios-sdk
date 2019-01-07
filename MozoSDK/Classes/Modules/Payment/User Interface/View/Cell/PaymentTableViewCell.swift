@@ -31,7 +31,7 @@ public class PaymentTableViewCell: UITableViewCell {
     func bindData(){
         lbDateTime?.text = paymentItem?.date
         let amount = paymentItem?.amount ?? 0
-        let amountText = "\(amount.roundAndAddCommas()) Mozo"
+        let amountText = "\(amount.roundAndAddCommas()) MozoX"
         lbAmount.text = amountText
         lbNameAddress.text = paymentItem?.displayNameAddress
     }

@@ -41,7 +41,9 @@ class AddressBookViewController: MozoBasicViewController {
         // Setup the search footer
         tableView.tableFooterView = searchFooter
         tableView.sectionIndexColor = ThemeManager.shared.disable
-        enableBackBarButton()
+        if isDisplayForSelect {
+            enableBackBarButton()
+        }
         eventHandler?.updateDisplayData()
     }
     
@@ -163,6 +165,7 @@ extension AddressBookViewController: UITableViewDataSource {
 
 extension AddressBookViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
         if let selectedItem = displayData?.sections[indexPath.section].items[indexPath.row] {
             eventHandler?.selectAddressBookOnUI(selectedItem, isDisplayForSelect: isDisplayForSelect)
         }

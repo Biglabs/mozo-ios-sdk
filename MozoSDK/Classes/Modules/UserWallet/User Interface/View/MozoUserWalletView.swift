@@ -22,6 +22,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     @IBOutlet weak var paymentRequestView: MozoPaymentRequestView!
     
     @IBOutlet weak var historyTable: UITableView!
+    private let refreshControl = UIRefreshControl()
     
     var displayItem : DetailInfoDisplayItem?
     var collection : TxHistoryDisplayCollection? {
@@ -60,11 +61,34 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         }
     }
     
+    override func updateView() {
+        // No need to use this method from super class because it will reload all UI components.
+        loadDisplayData()
+    }
+
     func setupTableView() {
         historyTable.register(UINib(nibName: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER)
         historyTable.dataSource = self
         historyTable.delegate = self
         historyTable.tableFooterView = UIView()
+        setupRefreshControl()
+    }
+    
+    func setupRefreshControl() {
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            self.historyTable?.refreshControl = refreshControl
+        } else {
+            self.historyTable?.addSubview(refreshControl)
+        }
+        self.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+    }
+    
+    @objc func refresh(_ sender: Any? = nil) {
+        loadTxHistory()
+        if let refreshControl = sender as? UIRefreshControl, refreshControl.isRefreshing {
+            refreshControl.endRefreshing()
+        }
     }
     
     func setupButtonBorder() {
@@ -115,16 +139,20 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         }
     }
     
+    func loadTxHistory() {
+        print("\(String(describing: self)) - Load display collection item data.")
+        _ = MozoSDK.getTxHistoryDisplayCollection().done { (collectionData) in
+            self.collection = collectionData
+        }.catch({ (error) in
+            
+        })
+    }
+    
     func loadDisplayData() {
         // Clear all data
         clearValueOnUI()
         if !isAnonymous {
-            print("\(String(describing: self)) - Load display collection item data.")
-            _ = MozoSDK.getTxHistoryDisplayCollection().done { (collectionData) in
-                self.collection = collectionData
-            }.catch({ (error) in
-                
-            })
+            loadTxHistory()
             print("\(String(describing: self)) - Load display data.")
             if let item = SafetyDataManager.shared.detailDisplayData {
                 print("\(String(describing: self)) - Receive display data: \(item)")
@@ -218,5 +246,7 @@ extension MozoUserWalletView : UITableViewDataSource {
     }
 }
 extension MozoUserWalletView : UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
 }
