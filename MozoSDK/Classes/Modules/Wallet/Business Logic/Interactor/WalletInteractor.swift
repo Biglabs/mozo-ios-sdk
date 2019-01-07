@@ -41,16 +41,25 @@ class WalletInteractor : NSObject {
                 if profile?.walletInfo?.encryptSeedPhrase == nil || profile?.walletInfo?.offchainAddress == nil {
                     let offchainAddress = wallet.address
                     let walletInfo = WalletInfoDTO(encryptSeedPhrase: user.mnemonic, offchainAddress: offchainAddress)
-                    _ = self.apiManager.updateWalletToUserProfile(walletInfo: walletInfo)
-                        .done { uProfile -> Void in
-                            let userDto = UserDTO(id: uProfile.userId, profile: uProfile)
-                            SessionStoreManager.saveCurrentUser(user: userDto)
-                            print("Update Wallet To User Profile result: [\(uProfile)]")
-                            self.updateWalletForCurrentUser(wallet)
-                            self.output?.updatedWallet()
-                        }.catch({ (error) in
-                            self.output?.errorWhileManageWallet("Network error. Please try again.", connectionError: error as! ConnectionError, showTryAgain: true)
-                        })
+                    // FIX ISSUE:
+                    _ = self.apiManager.getUserProfile().done({ userProfile in
+                        if userProfile.walletInfo?.encryptSeedPhrase == nil || userProfile.walletInfo?.offchainAddress == nil {
+                            _ = self.apiManager.updateWalletToUserProfile(walletInfo: walletInfo)
+                                .done { uProfile -> Void in
+                                    let userDto = UserDTO(id: uProfile.userId, profile: uProfile)
+                                    SessionStoreManager.saveCurrentUser(user: userDto)
+                                    print("Update Wallet To User Profile result: [\(uProfile)]")
+                                    self.updateWalletForCurrentUser(wallet)
+                                    self.output?.updatedWallet()
+                                }.catch({ (error) in
+                                    self.output?.errorWhileManageWallet("Network error. Please try again.", connectionError: error as! ConnectionError, showTryAgain: true)
+                                })
+                        } else {
+                            self.output?.walletIsExistingOnServer()
+                        }
+                    }).catch({ (error) in
+                        self.output?.errorWhileManageWallet("Network error. Please try again.", connectionError: error as! ConnectionError, showTryAgain: true)
+                    })
                 } else {
                     self.updateWalletForCurrentUser(wallet)
                     self.output?.updatedWallet()

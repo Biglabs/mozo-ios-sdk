@@ -62,6 +62,10 @@ extension WalletPresenter: WalletInteractorOutput {
         }
     }
     
+    func walletIsExistingOnServer() {
+        pinUserInterface?.displayWalletIsExistingOnServer()
+    }
+    
     func updatedWallet() {
         // New wallet
         handleEndingWalletFlow()

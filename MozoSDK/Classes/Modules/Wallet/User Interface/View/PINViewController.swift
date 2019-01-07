@@ -79,6 +79,12 @@ extension PINViewController: PinTextFieldDelegate {
 }
 
 extension PINViewController : PINViewInterface {
+    func displayWalletIsExistingOnServer() {
+        displayMozoAlertInfo(infoMessage: "There is a wallet created by another user recently. Please re-login to recover your wallet.") {
+            MozoSDK.logout()
+        }
+    }
+    
     func showCreatingInterface() {
         validationSuccess()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(900)) {
