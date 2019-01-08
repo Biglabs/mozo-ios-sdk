@@ -132,4 +132,20 @@ public class MozoSDK {
     public static func getListCountryCode() -> Promise<[CountryCodeDTO]> {
         return moduleDependencies.getListCountryCode()
     }
+    
+    public static func getNearestStores() -> Promise<[StoreInfoDTO]> {
+        return moduleDependencies.getNearestStores()
+    }
+    
+    public static func searchStoresWithText(_ text: String, page: Int = 0, size: Int = 15) -> Promise<CollectionStoreInfoDTO> {
+        return moduleDependencies.searchStoresWithText(text, page: page, size: size)
+    }
+    
+    public static func getFavoriteStores() -> Promise<[StoreInfoDTO]> {
+        return moduleDependencies.getFavoriteStores()
+    }
+    
+    public static func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
+        return moduleDependencies.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite)
+    }
 }

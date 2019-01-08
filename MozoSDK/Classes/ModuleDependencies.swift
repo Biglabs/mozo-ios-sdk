@@ -171,6 +171,22 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getListCountryCode())!
     }
     
+    func getNearestStores() -> Promise<[StoreInfoDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getNearestStores())!
+    }
+    
+    func searchStoresWithText(_ text: String, page: Int, size: Int) -> Promise<CollectionStoreInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.searchStoresWithText(text, page: page, size: size))!
+    }
+    
+    func getFavoriteStores() -> Promise<[StoreInfoDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getFavoriteStores())!
+    }
+    
+    func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()
