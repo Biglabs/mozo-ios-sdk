@@ -9,33 +9,10 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 
-let SHOPPER_AIRDROP_API_PATH = "/shopper/airdrop"
 let SHOPPER_AIRDROP_REPORT_API_PATH = "/shopper-airdrop/report-beacon"
 let RETAILER_AIRDROP_API_PATH = "/air-drops"
 let RETAILER_AIRDROP_RESOURCE_API_PATH = "/retailer/airdrops"
 public extension ApiManager {
-    public func getAirdropStoresNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]> {
-        return Promise { seal in
-            let query = "?\(params.queryString)"
-            let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_API_PATH + "/nearby" + query
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get airdrop store nearby, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)["array"]
-                    let list = StoreInfoDTO.arrayFromJson(jobj)
-                    seal.fulfill(list)
-                }
-                .catch { error in
-                    print("Error when request get airdrop store nearby: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
     public func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_REPORT_API_PATH
@@ -55,27 +32,6 @@ public extension ApiManager {
                 .finally {
                     //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
-        }
-    }
-    
-    public func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]> {
-        return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_API_PATH + "/color/range-settings"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get range color settings, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)["array"]
-                    let list = AirdropColorRangeDTO.arrayFromJson(jobj)
-                    seal.fulfill(list)
-                }
-                .catch { error in
-                    print("Error when request get range color settings: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                }
         }
     }
     

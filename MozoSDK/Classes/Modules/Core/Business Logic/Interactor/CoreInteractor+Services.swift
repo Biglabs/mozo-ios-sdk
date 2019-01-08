@@ -133,4 +133,20 @@ extension CoreInteractor: CoreInteractorService {
     func getListCountryCode() -> Promise<[CountryCodeDTO]> {
         return apiManager.getListCountryCode()
     }
+    
+    func getNearestStores() -> Promise<[StoreInfoDTO]> {
+        return apiManager.getNearestStores()
+    }
+    
+    func searchStoresWithText(_ text: String, page: Int, size: Int) -> Promise<CollectionStoreInfoDTO> {
+        return apiManager.searchStoresWithText(text, page: page, size: size)
+    }
+    
+    func getFavoriteStores() -> Promise<[StoreInfoDTO]> {
+        return apiManager.getFavoriteStores()
+    }
+    
+    func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
+        return apiManager.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite)
+    }
 }

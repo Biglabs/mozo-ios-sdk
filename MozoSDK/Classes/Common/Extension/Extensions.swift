@@ -333,4 +333,5 @@ extension Notification.Name {
     static let didLoadTokenInfoFailed = Notification.Name("didLoadTokenInfoFailed")
     static let didReceiveExchangeInfo = Notification.Name("didReceiveExchangeInfo")
     static let didChangeAddressBook = Notification.Name("didChangeAddressBook")
+    static let didChangeStoreBook = Notification.Name("didChangeStoreBook")
 }

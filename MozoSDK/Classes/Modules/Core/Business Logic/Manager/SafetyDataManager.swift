@@ -28,6 +28,25 @@ class SafetyDataManager {
             }
         }
     }
+    // MARK: Store book - Serial dispatch queue
+    private let storeBookLockQueue = DispatchQueue(label: "SafetyDataManager.StoreBook.lockQueue")
+    
+    private var _storeBookList : [StoreBookDTO]
+    
+    public var storeBookList : [StoreBookDTO] {
+        get {
+            print("Get store book list")
+            return storeBookLockQueue.sync {
+                return self._storeBookList
+            }
+        }
+        set {
+            print("Set store book list")
+            storeBookLockQueue.sync {
+                self._storeBookList = newValue
+            }
+        }
+    }
     // MARK: Detail display data (Only for Mozo UI components) - Serial dispatch queue
     private let detailDisplayDataLockQueue = DispatchQueue(label: "SafetyDataManager.DisplayData.lockQueue")
     
@@ -49,6 +68,7 @@ class SafetyDataManager {
     // MARK: Initialization
     private init() {
         _addressBookList = []
+        _storeBookList = []
         _checkTokenExpiredStatus = CheckTokenExpiredStatus.IDLE
     }
     

@@ -62,6 +62,7 @@ class CoreInteractor: NSObject {
     // MARK: Prepare data
     func downloadData() {
         downloadAddressBookAndStoreAtLocal()
+        downloadStoreBookAndStoreAtLocal()
         _ = loadBalanceInfo()
         downloadExchangeRateInfoAndStoreAtLocal()
         downloadCountryListAndStoreAtLocal()
@@ -92,6 +93,15 @@ class CoreInteractor: NSObject {
             SessionStoreManager.countryList = data
         }).catch({ (error) in
             //TODO: Handle case unable to load country list
+        })
+    }
+    
+    func downloadStoreBookAndStoreAtLocal() {
+        print("😎 Load store book list.")
+        _ = apiManager.getListStoreBook().done({ (list) in
+            SafetyDataManager.shared.storeBookList = list
+        }).catch({ (error) in
+            //TODO: Handle case unable to load address book list
         })
     }
     
@@ -200,6 +210,10 @@ extension CoreInteractor: CoreInteractorInput {
     
     func notifyAddressBookChangesForAllObservers() {
         NotificationCenter.default.post(name: .didChangeAddressBook, object: nil)
+    }
+    
+    func notifyStoreBookChangesForAllObservers() {
+        NotificationCenter.default.post(name: .didChangeStoreBook, object: nil)
     }
     
     func notifyLoadTokenInfoFailedForAllObservers() {
