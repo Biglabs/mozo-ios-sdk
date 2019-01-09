@@ -156,4 +156,4 @@ To report a specific problem or feature request, open a new issue on Github. For
 
 See the [LICENSE](LICENSE) file.
 
-[1]: https://mozocoin.io/
+[1]: https://mozocoin.io/.
