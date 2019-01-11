@@ -44,7 +44,7 @@ public extension ApiManager {
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to Create airdrop event, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)["array"]
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let txArray = IntermediaryTransactionDTO.arrayFromJson(jobj)
                     seal.fulfill(txArray)
                 }
@@ -132,7 +132,7 @@ public extension ApiManager {
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get Running Airdrop Event list, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)["array"]
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let array = AirdropEventDTO.arrayFromJson(jobj)
                     seal.fulfill(array)
                 }
@@ -156,7 +156,7 @@ public extension ApiManager {
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get Airdrop Event list, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)["array"]
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let array = AirdropEventDTO.arrayFromJson(jobj)
                     seal.fulfill(array)
                 }

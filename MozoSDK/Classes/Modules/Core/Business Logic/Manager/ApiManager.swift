@@ -202,6 +202,9 @@ public class ApiManager {
     
     func handleApiResponseJSON(_ json: [String: Any], url: String) -> Promise<[String: Any]> {
         return Promise { seal in
+            if url.contains(AUTH_CHECK_TOKEN_API_PATH) {
+                return seal.fulfill(json)
+            }
             let jsonObj = JSON(json)
             if let mozoResponse = ResponseDTO(json: jsonObj) {
                 if mozoResponse.success {
@@ -237,19 +240,14 @@ public class ApiManager {
                     switch response.result {
                     case .success(let json):
                         print("Response result value: \(json)")
-                        guard let array = json as? [Any] else {
-                            guard let json = json as? [String: Any] else {
-                                return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil))
-                            }
-                            self.handleApiResponseJSON(json, url: url).done({ (jsonData) in
-                                return seal.fulfill(jsonData)
-                            }).catch({ (error) in
-                                return seal.reject(error)
-                            })
-                            return
+                        guard let json = json as? [String: Any] else {
+                            return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil))
                         }
-                        let result : [String: Any] = ["array": array]
-                        seal.fulfill(result)
+                        self.handleApiResponseJSON(json, url: url).done({ (jsonData) in
+                            seal.fulfill(jsonData)
+                        }).catch({ (error) in
+                            seal.reject(error)
+                        })
                     case .failure(let error):
                         print("Request failed with error: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))")
                         let connectionError = self.checkResponse(response: response, error: error)

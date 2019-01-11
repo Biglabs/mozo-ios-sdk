@@ -39,7 +39,7 @@ public extension ApiManager {
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get retailer analytic list, json response: \(json)")
-                    let array = SwiftyJSON.JSON(json)["array"]
+                    let array = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let result = RetailerCustomerAnalyticDTO.arrayFromJson(array)
                     seal.fulfill(result)
                 }
@@ -68,7 +68,7 @@ public extension ApiManager {
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get visit customers list, json response: \(json)")
-                    let array = SwiftyJSON.JSON(json)["array"]
+                    let array = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let result = VisitedCustomerDTO.arrayFromJson(array)
                     seal.fulfill(result)
                 }

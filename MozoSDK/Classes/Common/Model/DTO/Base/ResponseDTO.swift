@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftyJSON
+public let RESPONSE_TYPE_ARRAY_KEY = "items"
 public class ResponseDTO: ResponseObjectSerializable {
     public var success: Bool
     public var error: String?
@@ -16,6 +17,10 @@ public class ResponseDTO: ResponseObjectSerializable {
         self.success = json["success"].boolValue
         self.error = json["error"].string
         self.data = json["data"].dictionaryValue
+        if let array = json["data"].array {
+            let result : [String: Any] = [RESPONSE_TYPE_ARRAY_KEY: array]
+            self.data = result
+        }
     }
     
     public required init?(){

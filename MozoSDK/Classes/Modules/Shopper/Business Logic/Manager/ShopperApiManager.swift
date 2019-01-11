@@ -22,7 +22,7 @@ public extension ApiManager {
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get airdrop store nearby, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)["array"]
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let list = StoreInfoDTO.arrayFromJson(jobj)
                     seal.fulfill(list)
                 }
@@ -43,7 +43,7 @@ public extension ApiManager {
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get range color settings, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)["array"]
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let list = AirdropColorRangeDTO.arrayFromJson(jobj)
                     seal.fulfill(list)
                 }
@@ -64,7 +64,7 @@ public extension ApiManager {
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get nearest stores, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)["array"]
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let list = StoreInfoDTO.arrayFromJson(jobj)
                     seal.fulfill(list)
                 }
@@ -111,7 +111,7 @@ public extension ApiManager {
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get favorite stores, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)["array"]
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let list = StoreInfoDTO.arrayFromJson(jobj)
                     seal.fulfill(list)
                 }
