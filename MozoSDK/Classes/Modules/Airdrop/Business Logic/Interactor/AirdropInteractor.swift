@@ -55,7 +55,7 @@ class AirdropInteractor: NSObject {
     func processAirdropEvent(_ event: AirdropEventDTO, tokenInfo: TokenInfoDTO) {
         if let balance = tokenInfo.balance, let decimals = tokenInfo.decimals {
             if event.totalNumMozoOffchain?.doubleValue ?? 0 > balance.convertOutputValue(decimal: decimals) {
-                output?.failedToSignAirdropEvent(error: "Balance is not enough.")
+                output?.failedToSignAirdropEventWithErrorString("Balance is not enough.")
                 return
             }
             let perCustomer = (event.mozoAirdropPerCustomerVisit?.doubleValue ?? 0).convertTokenValue(decimal: decimals)
@@ -72,16 +72,10 @@ class AirdropInteractor: NSObject {
     
     func sendCreateAirdropEvent(_ event: AirdropEventDTO) {
         if let errorMsg = validateAirdropEvent(event) {
-            output?.failedToSignAirdropEvent(error: errorMsg)
+            output?.failedToSignAirdropEventWithErrorString(errorMsg)
             return
         }
         _ = apiManager?.createAirdropEvent(event: event).done({ (interTxArray) in
-            for interTx in interTxArray {
-                if (interTx.errors != nil) && (interTx.errors?.count)! > 0 {
-                    self.output?.failedToCreateAirdropEvent(error: interTx.errors?.first)
-                    return
-                }
-            }
             self.transactionDataArray = interTxArray
             if let pin = self.pinToRetry {
                 self.sendSignedAirdropEventTx(pin: pin)
@@ -89,8 +83,8 @@ class AirdropInteractor: NSObject {
                 self.output?.requestPinInterface()
             }
         }).catch({ (error) in
-            let cErr = error as! ConnectionError
-            self.output?.failedToCreateAirdropEvent(error: cErr.errorDescription)
+            let cErr = error as? ConnectionError ?? .systemError
+            self.output?.failedToCreateAirdropEvent(error: cErr)
         })
     }
 }
@@ -127,7 +121,7 @@ extension AirdropInteractor: AirdropInteractorInput {
                     self.output?.didSendSignedAirdropEventFailure(error: err as! ConnectionError)
                 })
             }.catch({ (err) in
-                self.output?.failedToSignAirdropEvent(error: err.localizedDescription)
+                self.output?.failedToSignAirdropEvent(error: ConnectionError.systemError)
             })
     }
     

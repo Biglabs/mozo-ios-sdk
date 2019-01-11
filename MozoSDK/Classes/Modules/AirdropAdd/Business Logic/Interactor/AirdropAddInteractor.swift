@@ -41,15 +41,11 @@ class AirdropAddInteractor: NSObject {
     
     func sendTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO) {
         _ = apiManager?.transferTransaction(transaction).done { (interTx) in
-            if (interTx.errors != nil) && (interTx.errors?.count)! > 0 {
-                self.output?.failedToAddMozoToAirdropEvent(error: interTx.errors?.first)
-            } else {
-                self.transaction = interTx
-                self.output?.requestPinInterface()
-            }
+            self.transaction = interTx
+            self.output?.requestPinInterface()
         }.catch({ (error) in
-            print("Send create transaction failed, show popup to retry.")
-            
+            let cErr = error as? ConnectionError ?? .systemError
+            self.output?.didFailedToCreateTransaction(error: cErr)
         })
     }
     
@@ -99,10 +95,11 @@ extension AirdropAddInteractor: AirdropAddInteractorInput {
                     self.startWaitingStatusService(txHash: receivedTx.tx?.hash ?? "")
                 }).catch({ (err) in
                     print("Send signed transaction failed, show popup to retry.")
-                    self.output?.didSendSignedTransactionFailure(error: err as! ConnectionError)
+                    let cErr = err as? ConnectionError ?? .systemError
+                    self.output?.didSendSignedTransactionFailure(error: cErr)
                 })
             }.catch({ (err) in
-                self.output?.failedToSignTransaction(error: err.localizedDescription)
+                self.output?.failedToSignTransaction(error: ConnectionError.systemError.localizedDescription)
             })
     }
 }

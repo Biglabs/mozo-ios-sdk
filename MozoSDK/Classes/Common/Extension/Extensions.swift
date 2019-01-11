@@ -41,6 +41,11 @@ public extension String {
         return regex?.firstMatch(in: self, options: [], range: NSMakeRange(0, self.count)) != nil
     }
     
+    public func isValidPhoneNumber() -> Bool {
+        let regex = try? NSRegularExpression(pattern: "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$", options: .caseInsensitive)
+        return regex?.firstMatch(in: self, options: [], range: NSMakeRange(0, self.count)) != nil
+    }
+    
     public var toBool: Bool? {
         let trueValues = ["true", "yes", "1"]
         let falseValues = ["false", "no", "0"]

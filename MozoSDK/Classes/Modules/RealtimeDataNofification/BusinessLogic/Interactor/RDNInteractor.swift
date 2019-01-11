@@ -20,7 +20,7 @@ class RDNInteractor: NSObject {
 extension RDNInteractor : RDNInteractorInput {
     func startService() {
         if !manager.isConnected() {
-            print("RDNInteractor - Start services.")
+            NSLog("RDNInteractor - Start services.")
             manager.connect()
             manager.socket.advancedDelegate = self
         }
@@ -28,7 +28,7 @@ extension RDNInteractor : RDNInteractorInput {
     
     func stopService() {
         if manager.isConnected() {
-            print("RDNInteractor - Stop services.")
+            NSLog("RDNInteractor - Stop services.")
             manager.disconnect()
         }
     }
@@ -36,13 +36,13 @@ extension RDNInteractor : RDNInteractorInput {
 // MARK: Websocket Delegate Methods.
 extension RDNInteractor : WebSocketAdvancedDelegate {
     func websocketDidConnect(socket: WebSocket) {
-        print("websocket is connected")
+        NSLog("Websocket is connected")
     }
     func websocketDidDisconnect(socket: WebSocket, error: Error?) {
         if let e = error {
-            print("websocket is disconnected: \(e.localizedDescription)")
+            NSLog("Websocket is disconnected: \(e.localizedDescription)")
         } else {
-            print("websocket disconnected")
+            NSLog("Websocket disconnected")
         }
     }
     func websocketDidReceiveMessage(socket: WebSocket, text: String, response: WebSocket.WSResponse) {
@@ -106,7 +106,7 @@ extension RDNInteractor {
                     let ccNoti = CustomerComeNotification(json: jobj) {
                     output?.didCustomerCame(ccNoti: ccNoti)
                 } else {
-                    print("Can not handle message: \(messageContent)")
+                    NSLog("Can not handle message: \(messageContent)")
                 }
             }
         }

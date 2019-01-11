@@ -29,7 +29,11 @@ extension ABDetailPresenter : ABDetailModuleInterface {
 extension ABDetailPresenter: ABDetailInteractorOutput {
     func errorWhileSaving(_ error: Error) {
         detailUserInterface?.removeSpinner()
-        detailUserInterface?.displayError(error.localizedDescription)
+        var errText = error.localizedDescription
+        if let connError = error as? ConnectionError, connError.isApiError, let apiError = connError.apiError {
+            errText = apiError.description
+        }
+        detailUserInterface?.displayError(errText)
     }
     func finishSaveWithSuccess() {
         detailUserInterface?.removeSpinner()

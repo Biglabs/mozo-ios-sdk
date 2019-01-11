@@ -68,10 +68,17 @@ extension PaymentPresenter: PaymentInteractorOutput {
     
     func errorWhileDeleting(_ error: Any?) {
         viewInterface?.removeSpinner()
-        if let connectionError = error as? ConnectionError {
-            DisplayUtils.displayTryAgainPopup(allowTapToDismiss: true, error: connectionError, delegate: self)
-        } else {
-            viewInterface?.displayError((error as! Error).localizedDescription)
+        if let errorConnection = error as? ConnectionError {
+            if !errorConnection.isApiError {
+                DisplayUtils.displayTryAgainPopup(allowTapToDismiss: true, error: errorConnection, delegate: self)
+            }
+            else {
+                var errText = errorConnection.localizedDescription
+                if let apiError = errorConnection.apiError {
+                    errText = apiError.description
+                }
+                viewInterface?.displayError(errText)
+            }
         }
     }
     
@@ -80,7 +87,11 @@ extension PaymentPresenter: PaymentInteractorOutput {
     }
     
     func errorWhileLoadPaymentRequest(_ error: ConnectionError) {
-        viewInterface?.displayError(error.localizedDescription)
+        var errText = error.localizedDescription
+        if error.isApiError, let apiError = error.apiError {
+            errText = apiError.description
+        }
+        viewInterface?.displayError(errText)
     }
     
     func finishGetListPaymentRequest(_ list: [PaymentRequestDTO], forPage: Int) {
@@ -92,10 +103,22 @@ extension PaymentPresenter: PaymentInteractorOutput {
         viewInterface?.updateUserInterfaceWithTokenInfo(tokenInfo)
     }
     
-    func didReceiveError(_ error: String?) {
+    func didReceiveError(_ error: Error) {
         viewInterface?.removeSpinner()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
-            self.viewInterface?.displayError(error!)
+            let connError = error as? ConnectionError ?? .systemError
+            var errText = connError.localizedDescription
+            if let apiError = connError.apiError {
+                errText = apiError.description
+            }
+            self.viewInterface?.displayError(errText)
+        }
+    }
+    
+    func didReceiveErrorString(_ error: String) {
+        viewInterface?.removeSpinner()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
+            self.viewInterface?.displayError(error)
         }
     }
 }

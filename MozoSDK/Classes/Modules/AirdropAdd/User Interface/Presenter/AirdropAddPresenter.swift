@@ -26,15 +26,15 @@ extension AirdropAddPresenter: PinModuleDelegate {
 }
 extension AirdropAddPresenter: AirdropAddInteractorOutput {
     func failedToAddMozoToAirdropEvent(error: String?) {
-        delegate?.addMozoToAirdropEventFailure(error: error)
+        delegate?.addMozoToAirdropEventFailureWithErrorString(error: error)
     }
     
     func failedToSignTransaction(error: String?) {
-        delegate?.addMozoToAirdropEventFailure(error: error)
+        delegate?.addMozoToAirdropEventFailureWithErrorString(error: error)
     }
     
     func didFailedToLoadTokenInfo() {
-        delegate?.addMozoToAirdropEventFailure(error: "Unable to load tokenInfo.")
+        delegate?.addMozoToAirdropEventFailureWithErrorString(error: "Unable to load tokenInfo.")
     }
     
     func didReceiveTxStatus(_ statusType: TransactionStatusType) {
@@ -42,12 +42,16 @@ extension AirdropAddPresenter: AirdropAddInteractorOutput {
             delegate?.addMozoToAirdropEventSuccess()
             delegate = nil
         } else {
-            delegate?.addMozoToAirdropEventFailure(error: "Add more Mozo to airdrop event is failed to created.")
+            delegate?.addMozoToAirdropEventFailureWithErrorString(error: "Add more Mozo to airdrop event is failed to created.")
         }
     }
     
+    func didFailedToCreateTransaction(error: ConnectionError) {
+        delegate?.addMozoToAirdropEventFailure(error: error)
+    }
+    
     func didSendSignedTransactionFailure(error: ConnectionError) {
-        delegate?.addMozoToAirdropEventFailure(error: error.errorDescription)
+        delegate?.addMozoToAirdropEventFailure(error: error)
     }
     
     func requestPinInterface() {

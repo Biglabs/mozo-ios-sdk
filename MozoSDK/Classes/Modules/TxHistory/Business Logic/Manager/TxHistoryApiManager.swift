@@ -23,7 +23,7 @@ public extension ApiManager {
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get list tx history, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)["array"]
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let list = TxHistoryDTO.arrayFromJson(jobj)
                     seal.fulfill(list)
                 }

@@ -15,7 +15,8 @@ protocol PaymentInteractorInput {
 }
 protocol PaymentInteractorOutput {
     func didLoadTokenInfo(_ tokenInfo: TokenInfoDTO)
-    func didReceiveError(_ error: String?)
+    func didReceiveError(_ error: Error)
+    func didReceiveErrorString(_ error: String)
     func finishGetListPaymentRequest(_ list: [PaymentRequestDTO], forPage: Int)
     func errorWhileLoadPaymentRequest(_ error: ConnectionError)
     

@@ -7,31 +7,35 @@
 
 import Foundation
 import SwiftyJSON
+public let RESPONSE_TYPE_ARRAY_KEY = "items"
 public class ResponseDTO: ResponseObjectSerializable {
-    public var error: Int?
-    public var data: String?
+    public var success: Bool
+    public var error: String?
+    public var data: [String: Any]
     
     public required init?(json: SwiftyJSON.JSON) {
-        self.error = json["error"].int
-        self.data = json["data"].string
+        self.success = json["success"].boolValue
+        self.error = json["error"].string
+        self.data = json["data"].dictionaryValue
+        if let array = json["data"].array {
+            let result : [String: Any] = [RESPONSE_TYPE_ARRAY_KEY: array]
+            self.data = result
+        }
     }
     
-    public required init?(){}
+    public required init?(){
+        self.success = false
+        self.data = [:]
+    }
     
     public func toJSON() -> Dictionary<String, Any> {
         var json = Dictionary<String, Any>()
+        json["success"] = success
         if let error = self.error {
             json["error"] = error
         }
-        if let data = self.data {
-            json["data"] = data
-        }
+        json["data"] = data
         
         return json
-    }
-    
-    public static func arrayFromJson(_ json: SwiftyJSON.JSON) -> [PaymentRequestDTO] {
-        let array = json.array?.map({ PaymentRequestDTO(json: $0)! })
-        return array ?? []
     }
 }

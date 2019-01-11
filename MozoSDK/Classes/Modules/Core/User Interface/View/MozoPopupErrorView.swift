@@ -19,7 +19,7 @@ class MozoPopupErrorView : MozoView {
     var modalCloseHandler: (() -> Void)?
     var tapTryHandler: (() -> Void)?
     
-    var error : ConnectionError = ConnectionError.internalServerError {
+    var error : ConnectionError = ConnectionError.apiError_INTERNAL_ERROR { //System Error
         didSet {
             setImageAndLabel()
         }
@@ -36,9 +36,11 @@ class MozoPopupErrorView : MozoView {
     }
     
     func setImageAndLabel() {
-        if error != ConnectionError.internalServerError {
-           imgError.image = UIImage(named: "ic_no_connection", in: BundleManager.mozoBundle(), compatibleWith: nil)
-           labelError.text = "There is no internet connection!"
+        if error.isApiError {
+            labelError.text = error.apiError?.description ?? "System Error"
+        } else {
+            imgError.image = UIImage(named: "ic_no_connection", in: BundleManager.mozoBundle(), compatibleWith: nil)
+            labelError.text = "There is no internet connection!"
         }
     }
     

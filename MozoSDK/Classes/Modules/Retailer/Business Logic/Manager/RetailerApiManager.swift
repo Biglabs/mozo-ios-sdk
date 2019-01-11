@@ -58,7 +58,7 @@ public extension ApiManager {
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get list sale person, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)["array"]
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let list = SalePersonDTO.arrayFromJson(jobj)
                     seal.fulfill(list)
                 }
@@ -98,7 +98,7 @@ public extension ApiManager {
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get list country code, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)["array"]
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let list = CountryCodeDTO.arrayFromJson(jobj)
                     seal.fulfill(list)
                 }

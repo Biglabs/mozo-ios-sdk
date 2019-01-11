@@ -34,7 +34,7 @@ extension AirdropPresenter: PinModuleDelegate {
 }
 extension AirdropPresenter: AirdropInteractorOutput {
     func didFailedToLoadTokenInfo() {
-        airdropEventDelegate?.createAirdropEventFailure(error: "Unable to load tokenInfo.", isDisplayingTryAgain: true)
+        airdropEventDelegate?.createAirdropEventFailureWithErrorString(error: "Unable to load tokenInfo.", isDisplayingTryAgain: true)
     }
     
     func didReceiveTxStatus(_ statusType: TransactionStatusType) {
@@ -42,25 +42,33 @@ extension AirdropPresenter: AirdropInteractorOutput {
             airdropEventDelegate?.createAirdropEventSuccess()
             airdropEventDelegate = nil
         } else {
-            airdropEventDelegate?.createAirdropEventFailure(error: "Airdrop event is created with failure status.", isDisplayingTryAgain: true)
+            airdropEventDelegate?.createAirdropEventFailureWithErrorString(error: "Airdrop event is created with failure status.", isDisplayingTryAgain: true)
             DisplayUtils.displayTryAgainPopup(delegate: self)
         }
     }
-    
+
     func didSendSignedAirdropEventFailure(error: ConnectionError) {
-        airdropEventDelegate?.createAirdropEventFailure(error: error.errorDescription, isDisplayingTryAgain: true)
-        DisplayUtils.displayTryAgainPopup(delegate: self)
+        airdropEventDelegate?.createAirdropEventFailure(error: error, isDisplayingTryAgain: true)
+        if error.isApiError, let apiError = error.apiError, apiError == ErrorApiResponse.STORE_SALE_PERSON_UNAUTHORIZED_ACCESS_REMOVED {
+            NSLog("User account is not authorized access.")
+        } else {
+            DisplayUtils.displayTryAgainPopup(delegate: self)
+        }
     }
     
     func requestPinInterface() {
         wireframe?.presentPinInterfaceForMultiSign()
     }
     
-    func failedToSignAirdropEvent(error: String?) {
+    func failedToSignAirdropEvent(error: ConnectionError) {
         airdropEventDelegate?.createAirdropEventFailure(error: error, isDisplayingTryAgain: false)
     }
     
-    func failedToCreateAirdropEvent(error: String?) {
+    func failedToSignAirdropEventWithErrorString(_ error: String?) {
+        airdropEventDelegate?.createAirdropEventFailureWithErrorString(error: error, isDisplayingTryAgain: false)
+    }
+    
+    func failedToCreateAirdropEvent(error: ConnectionError) {
         airdropEventDelegate?.createAirdropEventFailure(error: error, isDisplayingTryAgain: false)
     }
 }

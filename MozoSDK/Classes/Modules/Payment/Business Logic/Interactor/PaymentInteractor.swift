@@ -67,12 +67,12 @@ extension PaymentInteractor : PaymentInteractorInput {
         if scanValue.isValidReceiveFormat() {
             let item = PaymentRequestDisplayItem(scheme: scanValue)
             if let errorMsg = validateRequest(item, tokenInfo: tokenInfo) {
-                output?.didReceiveError(errorMsg)
+                output?.didReceiveErrorString(errorMsg)
             } else {
                 performPaymentTransaction(request: item, tokenInfo: tokenInfo, isFromScannedValue: true)
             }
         } else {
-            output?.didReceiveError("Scanned value is invalid.")
+            output?.didReceiveErrorString("Scanned value is invalid.")
         }
     }
     
@@ -84,7 +84,7 @@ extension PaymentInteractor : PaymentInteractorInput {
                     .done { (tokenInfo) in
                         self.output?.didLoadTokenInfo(tokenInfo)
                     }.catch({ (err) in
-                        self.output?.didReceiveError(err.localizedDescription)
+                        self.output?.didReceiveError(err)
                     })
             }
         }
