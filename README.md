@@ -104,7 +104,7 @@ MozoSDK.configure(apiKey: "YOUR API KEY", network: NetworkType.MainNet)
 import MozoSDK
 ```
 4. Request MozoSDK for authentication:
-
+ 
 ```swift
 MozoSDK.authenticate()
 ```
