@@ -18,5 +18,5 @@ protocol PINViewInterface {
     func displayError(_ error: String)
     func displayTryAgain(_ error: ConnectionError)
     
-    func displayWalletIsExistingOnServer()
+    func displayErrorAndLogout(_ error: ErrorApiResponse)
 }

@@ -24,7 +24,7 @@ extension TxHistoryInteractor : TxHistoryInteractorInput {
                 .done { (listTxHistory) in
                     self.output?.finishGetListTxHistory(listTxHistory, forPage: page)
                 }.catch { (error) in
-                    self.output?.errorWhileLoadTxHistory(error as! ConnectionError)
+                    self.output?.errorWhileLoadTxHistory(error as? ConnectionError ?? .systemError)
                 }
         }
     }
@@ -38,7 +38,7 @@ extension TxHistoryInteractor : TxHistoryInteractorInput {
                         // TODO: Notify for all observing objects.
                         self.output?.finishGetTokenInfo(tokenInfo)
                     }.catch { (error) in
-                        self.output?.errorWhileLoadTokenInfo(error: error.localizedDescription)
+                        self.output?.errorWhileLoadTokenInfo(error: error)
                     }
         }
     }

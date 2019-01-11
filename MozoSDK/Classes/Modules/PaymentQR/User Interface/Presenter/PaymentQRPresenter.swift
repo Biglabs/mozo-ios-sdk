@@ -65,9 +65,16 @@ extension PaymentQRPresenter: PaymentQRInteractorOutput {
     func errorWhileSendPayment(error: Any, toAddress: String, item: PaymentRequestDisplayItem) {
         viewInterface?.removeSpinner()
         if let errorConnection = error as? ConnectionError {
-            DisplayUtils.displayTryAgainPopup(allowTapToDismiss: true, error: errorConnection, delegate: self)
-        } else {
-            viewInterface?.displayError((error as! Error).localizedDescription)
+            if !errorConnection.isApiError {
+                DisplayUtils.displayTryAgainPopup(allowTapToDismiss: true, error: errorConnection, delegate: self)
+            }
+            else {
+                var errText = errorConnection.localizedDescription
+                if let apiError = errorConnection.apiError {
+                    errText = apiError.description
+                }
+                viewInterface?.displayError(errText)
+            }
         }
     }
 }

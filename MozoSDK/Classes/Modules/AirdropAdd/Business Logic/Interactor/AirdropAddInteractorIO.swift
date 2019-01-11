@@ -15,6 +15,7 @@ protocol AirdropAddInteractorOutput {
     func failedToAddMozoToAirdropEvent(error: String?)
     func failedToSignTransaction(error: String?)
     
+    func didFailedToCreateTransaction(error: ConnectionError)
     func didSendSignedTransactionFailure(error: ConnectionError)
     func requestPinInterface()
     

@@ -13,6 +13,7 @@ import Foundation
 
 @objc public protocol AirdropEventDelegate {
     func createAirdropEventSuccess()
-    func createAirdropEventFailure(error: String?, isDisplayingTryAgain: Bool)
+    func createAirdropEventFailureWithErrorString(error: String?, isDisplayingTryAgain: Bool)
+    func createAirdropEventFailure(error: Error, isDisplayingTryAgain: Bool)
     func didCancelTryAgain()
 }

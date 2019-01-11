@@ -15,6 +15,6 @@ protocol TxHistoryInteractorInput {
 protocol TxHistoryInteractorOutput {
     func finishGetListTxHistory(_ txHistories: [TxHistoryDTO], forPage: Int)
     func finishGetTokenInfo(_ tokenInfo: TokenInfoDTO)
-    func errorWhileLoadTokenInfo(error: String)
+    func errorWhileLoadTokenInfo(error: Error)
     func errorWhileLoadTxHistory(_ error: ConnectionError)
 }

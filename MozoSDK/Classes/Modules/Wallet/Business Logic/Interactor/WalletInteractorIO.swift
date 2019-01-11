@@ -30,6 +30,5 @@ protocol WalletInteractorOutput {
     
     func updatedWallet()
     
-    func errorWhileManageWallet(_ error: String, connectionError: ConnectionError, showTryAgain: Bool)
-    func walletIsExistingOnServer()
+    func errorWhileManageWallet(connectionError: ConnectionError, showTryAgain: Bool)
 }

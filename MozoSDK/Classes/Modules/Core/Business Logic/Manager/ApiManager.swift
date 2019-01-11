@@ -156,7 +156,11 @@ public class ApiManager {
                         guard let json = json as? [String: Any] else {
                             return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil))
                         }
-                        seal.fulfill(json)
+                        self.handleApiResponseJSON(json, url: url).done({ (jsonData) in
+                            seal.fulfill(jsonData)
+                        }).catch({ (error) in
+                            seal.reject(error)
+                        })
                     case .failure(let error):
                         print("Request failed with error: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))")
                         let connectionError = self.checkResponse(response: response, error: error)
@@ -182,12 +186,34 @@ public class ApiManager {
                         guard let json = json as? [String: Any] else {
                             return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil))
                         }
-                        seal.fulfill(json)
+                        self.handleApiResponseJSON(json, url: url).done({ (jsonData) in
+                            seal.fulfill(jsonData)
+                        }).catch({ (error) in
+                            seal.reject(error)
+                        })
                     case .failure(let error):
                         print("Request failed with error: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))")
                         let connectionError = self.checkResponse(response: response, error: error)
                         seal.reject(connectionError)
                     }
+            }
+        }
+    }
+    
+    func handleApiResponseJSON(_ json: [String: Any], url: String) -> Promise<[String: Any]> {
+        return Promise { seal in
+            let jsonObj = JSON(json)
+            if let mozoResponse = ResponseDTO(json: jsonObj) {
+                if mozoResponse.success {
+                    seal.fulfill(mozoResponse.data)
+                } else {
+                    if let error = mozoResponse.error {
+                        NSLog("ApiManager - Request failed with error \(error), url: \(url)")
+                        if let errorEnum = ErrorApiResponse(rawValue: error) {
+                            seal.reject(errorEnum.connectionError)
+                        }
+                    }
+                }
             }
         }
     }
@@ -215,7 +241,12 @@ public class ApiManager {
                             guard let json = json as? [String: Any] else {
                                 return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil))
                             }
-                            return seal.fulfill(json)
+                            self.handleApiResponseJSON(json, url: url).done({ (jsonData) in
+                                return seal.fulfill(jsonData)
+                            }).catch({ (error) in
+                                return seal.reject(error)
+                            })
+                            return
                         }
                         let result : [String: Any] = ["array": array]
                         seal.fulfill(result)

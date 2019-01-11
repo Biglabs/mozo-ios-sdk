@@ -101,7 +101,7 @@ class CoreInteractor: NSObject {
         _ = apiManager.getListStoreBook().done({ (list) in
             SafetyDataManager.shared.storeBookList = list
         }).catch({ (error) in
-            //TODO: Handle case unable to load address book list
+            //TODO: Handle case unable to load store book list
         })
     }
     

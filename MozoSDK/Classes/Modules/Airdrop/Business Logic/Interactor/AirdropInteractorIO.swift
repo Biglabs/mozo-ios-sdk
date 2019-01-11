@@ -13,10 +13,12 @@ protocol AirdropInteractorInput {
 }
 protocol AirdropInteractorOutput {
     func didFailedToLoadTokenInfo()
-    func failedToCreateAirdropEvent(error: String?)
-    func failedToSignAirdropEvent(error: String?)
+    func failedToCreateAirdropEvent(error: ConnectionError)
+    func failedToSignAirdropEvent(error: ConnectionError)
+    func failedToSignAirdropEventWithErrorString(_ error: String?)
     
     func didSendSignedAirdropEventFailure(error: ConnectionError)
+    
     func requestPinInterface()
     
     func didReceiveTxStatus(_ statusType: TransactionStatusType)

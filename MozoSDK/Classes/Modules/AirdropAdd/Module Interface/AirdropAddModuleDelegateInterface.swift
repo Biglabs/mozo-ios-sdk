@@ -8,5 +8,6 @@
 import Foundation
 @objc public protocol AirdropAddEventDelegate {
     func addMozoToAirdropEventSuccess()
-    func addMozoToAirdropEventFailure(error: String?)
+    func addMozoToAirdropEventFailureWithErrorString(error: String?)
+    func addMozoToAirdropEventFailure(error: Error)
 }

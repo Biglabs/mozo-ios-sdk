@@ -15,6 +15,120 @@ public enum ConnectionError: Error {
     case authenticationRequired
     case internalServerError
     case badRequest
+    
+    case systemError
+    
+    case apiError_INTERNAL_ERROR
+    case apiError_UNAUTHORIZED_ACCESS
+    case apiError_INVALID_USER_TOKEN
+    case apiError_INVALID_REQUEST
+    
+    case apiError_SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS
+    case apiError_SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS
+    
+    case apiError_SOLOMON_USER_PROFILE_WALLET_ADDRESS_IN_USED
+    case apiError_SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET
+    case apiError_SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_MISSING_FIELD
+    
+    case apiError_SOLOMON_SOLO_RESOURCE_FATAL_USER_NO_OFFCHAIN_ADDRESS
+    case apiError_SOLOMON_FATAL_USE_DIFFERENT_OFFCHAIN_ADDRESS
+    case apiError_TRANSACTION_ADDRESS_STATUS_PENDING
+    case apiError_TRANSACTION_ERROR_NONCE_TOO_LOW
+    case apiError_TRANSACTION_ERROR_SEND_TX
+    
+    case apiError_SOLOMON_FATAL_USER_NO_PROFILE
+    
+    case apiError_STORE_RETAILER_UNAUTHORIZED_ACCESS
+    case apiError_STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS
+    case apiError_STORE_SALE_PERSON_UNAUTHORIZED_ACCESS_REMOVED
+    
+    case apiError_STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS
+    case apiError_STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT
+    case apiError_STORE_RETAILER_BEACON_ALREADY_REGISTERED_BEFORE
+    
+    case apiError_STORE_RETAILER_AIR_DROP_INVALID_FROM_PERIOD_IN_THE_PAST
+    case apiError_STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_PERIOD
+    case apiError_STORE_RETAILER_AIR_DROP_INVALID_FROM_HOUR_OF_DAY
+    case apiError_STORE_RETAILER_AIR_DROP_INVALID_TO_HOUR_OF_DAY
+    case apiError_STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_HOUR_OF_DAY
+    case apiError_STORE_RETAILER_AIR_DROP_INVALID_TOTAL_AMOUNT
+    case apiError_STORE_RETAILER_AIR_DROP_INVALID_PER_CUSTOMER_AMOUNT
+    case apiError_STORE_RETAILER_AIR_DROP_INVALID_TOO_LOW_FREQUENCY
+    
+    case apiError_STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT
+    case apiError_STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE
+    
+    public var isApiError: Bool {
+        switch self {
+        case .network,
+             .noInternetConnection,
+             .requestTimedOut,
+             .requestNotFound,
+             .unknowError,
+             .authenticationRequired,
+             .internalServerError,
+             .badRequest,
+             .systemError:
+            return false
+        default:
+            return true
+        }
+    }
+    
+    public var apiError: ErrorApiResponse? {
+        switch self {
+        case .apiError_INTERNAL_ERROR: return .INTERNAL_ERROR
+        case .apiError_UNAUTHORIZED_ACCESS: return .UNAUTHORIZED_ACCESS
+        case .apiError_INVALID_USER_TOKEN: return .INVALID_USER_TOKEN
+        case .apiError_INVALID_REQUEST: return .INVALID_REQUEST
+            
+        case .apiError_SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS:
+            return .SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS
+        case .apiError_SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS: return .SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS
+            
+        case .apiError_SOLOMON_USER_PROFILE_WALLET_ADDRESS_IN_USED:
+            return .SOLOMON_USER_PROFILE_WALLET_ADDRESS_IN_USED
+        case .apiError_SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET:
+            return .SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET
+        case .apiError_SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_MISSING_FIELD:
+            return .SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_MISSING_FIELD
+        
+        case .apiError_SOLOMON_SOLO_RESOURCE_FATAL_USER_NO_OFFCHAIN_ADDRESS:
+            return .SOLOMON_SOLO_RESOURCE_FATAL_USER_NO_OFFCHAIN_ADDRESS
+        case .apiError_SOLOMON_FATAL_USE_DIFFERENT_OFFCHAIN_ADDRESS:
+            return .SOLOMON_FATAL_USE_DIFFERENT_OFFCHAIN_ADDRESS
+        case .apiError_TRANSACTION_ADDRESS_STATUS_PENDING:
+            return .TRANSACTION_ADDRESS_STATUS_PENDING
+        case .apiError_TRANSACTION_ERROR_NONCE_TOO_LOW:
+            return .TRANSACTION_ERROR_NONCE_TOO_LOW
+        case .apiError_TRANSACTION_ERROR_SEND_TX:
+            return .TRANSACTION_ERROR_SEND_TX
+            
+        case .apiError_SOLOMON_FATAL_USER_NO_PROFILE: return .SOLOMON_FATAL_USER_NO_PROFILE
+        
+        case .apiError_STORE_RETAILER_UNAUTHORIZED_ACCESS: return .STORE_RETAILER_UNAUTHORIZED_ACCESS
+        case .apiError_STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS: return .STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS
+        case .apiError_STORE_SALE_PERSON_UNAUTHORIZED_ACCESS_REMOVED: return .STORE_SALE_PERSON_UNAUTHORIZED_ACCESS_REMOVED
+            
+        case .apiError_STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS: return .STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS
+        case .apiError_STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT: return .STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT
+        case .apiError_STORE_RETAILER_BEACON_ALREADY_REGISTERED_BEFORE: return .STORE_RETAILER_BEACON_ALREADY_REGISTERED_BEFORE
+            
+        case .apiError_STORE_RETAILER_AIR_DROP_INVALID_FROM_PERIOD_IN_THE_PAST: return .STORE_RETAILER_AIR_DROP_INVALID_FROM_PERIOD_IN_THE_PAST
+        case .apiError_STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_PERIOD: return .STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_PERIOD
+        case .apiError_STORE_RETAILER_AIR_DROP_INVALID_FROM_HOUR_OF_DAY: return .STORE_RETAILER_AIR_DROP_INVALID_FROM_HOUR_OF_DAY
+        case .apiError_STORE_RETAILER_AIR_DROP_INVALID_TO_HOUR_OF_DAY: return .STORE_RETAILER_AIR_DROP_INVALID_TO_HOUR_OF_DAY
+        case .apiError_STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_HOUR_OF_DAY: return .STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_HOUR_OF_DAY
+        case .apiError_STORE_RETAILER_AIR_DROP_INVALID_TOTAL_AMOUNT: return .STORE_RETAILER_AIR_DROP_INVALID_TOTAL_AMOUNT
+        case .apiError_STORE_RETAILER_AIR_DROP_INVALID_PER_CUSTOMER_AMOUNT: return .STORE_RETAILER_AIR_DROP_INVALID_PER_CUSTOMER_AMOUNT
+        case .apiError_STORE_RETAILER_AIR_DROP_INVALID_TOO_LOW_FREQUENCY: return .STORE_RETAILER_AIR_DROP_INVALID_TOO_LOW_FREQUENCY
+            
+        case .apiError_STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT: return .STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT
+        case .apiError_STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE: return .STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE
+        default:
+            return nil
+        }
+    }
 }
 
 extension ConnectionError: LocalizedError {
@@ -29,13 +143,17 @@ extension ConnectionError: LocalizedError {
         case .requestNotFound:
             return "404 Not Found"
         case .unknowError:
-            return "Unknow error"
+            return "Unknown error"
         case .authenticationRequired:
             return "Authentication Required"
         case .internalServerError:
             return "Internal Server error"
         case .badRequest:
             return "Bad request"
+        case .systemError:
+            return "System error"
+        default:
+            return "Api Error"
         }
     }
 }

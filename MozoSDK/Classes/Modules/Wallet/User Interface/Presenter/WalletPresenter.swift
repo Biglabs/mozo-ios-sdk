@@ -54,16 +54,19 @@ extension WalletPresenter: WalletModuleInterface {
 }
 
 extension WalletPresenter: WalletInteractorOutput {
-    func errorWhileManageWallet(_ error: String, connectionError: ConnectionError, showTryAgain: Bool = false) {
-        if showTryAgain {
-            pinUserInterface?.displayTryAgain(connectionError)
+    func errorWhileManageWallet(connectionError: ConnectionError, showTryAgain: Bool = false) {
+        if connectionError.isApiError, let apiError = connectionError.apiError {
+            switch apiError {
+                case .SOLOMON_USER_PROFILE_WALLET_ADDRESS_IN_USED,
+                     .SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_MISSING_FIELD,
+                     .SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET:
+                    pinUserInterface?.displayErrorAndLogout(apiError)
+                default:
+                    pinUserInterface?.displayError(apiError.description)
+            }
         } else {
-            pinUserInterface?.displayError(error)
+            pinUserInterface?.displayTryAgain(connectionError)
         }
-    }
-    
-    func walletIsExistingOnServer() {
-        pinUserInterface?.displayWalletIsExistingOnServer()
     }
     
     func updatedWallet() {

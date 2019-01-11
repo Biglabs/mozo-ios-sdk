@@ -11,7 +11,7 @@ import SwiftyJSON
 
 public class StoreInfoDTO : ResponseObjectSerializable {
     public var address: String?
-    public var brandInfo: BrandInfoDTO?
+    public var brandInfoId: Int64?
     public var category: String?
     public var city: String?
     public var closeHour: Int?
@@ -32,13 +32,15 @@ public class StoreInfoDTO : ResponseObjectSerializable {
     public var storeImages: [String]?
     public var hashTag: [String]?
     
+    public var disable: Bool?
+    
     public required init(id: Int64){
         self.id = id
     }
     
     public required init?(json: SwiftyJSON.JSON) {
         self.address = json["address"].string
-        self.brandInfo = BrandInfoDTO(json: json["brandInfo"])
+        self.brandInfoId = json["brandInfo"].int64
         self.id = json["id"].int64
         self.category = json["category"].string
         self.latitude = json["latitude"].number
@@ -57,6 +59,7 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         self.isFavorite = json["isFavorite"].bool
         self.hashTag = json["hashTag"].array?.filter({ $0.string != nil }).map({ $0.string! })
         self.storeImages = json["storeImages"].array?.filter({ $0.string != nil }).map({ $0.string! })
+        self.disable = json["disable"].bool
     }
     
     public required init?(){}
@@ -66,8 +69,8 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         if let address = self.address {
             json["address"] = address
         }
-        if let brandInfo = self.brandInfo {
-            json["brandInfo"] = brandInfo.toJSON()
+        if let brandInfoId = self.brandInfoId {
+            json["brandInfoId"] = brandInfoId
         }
         if let id = self.id {
             json["id"] = id
@@ -90,6 +93,9 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         if let totalAirdropAmount = self.totalAirdropAmount {json["totalAirdropAmount"] = totalAirdropAmount}
         if let isFavorite = self.isFavorite {
             json["isFavorite"] = isFavorite
+        }
+        if let disable = self.disable {
+            json["disable"] = disable
         }
         return json
     }

@@ -63,9 +63,6 @@ extension TransactionInteractor : TransactionInteractorInput {
             return
         }
         _ = apiManager.transferTransaction(transaction).done { (interTx) in
-            if (interTx.errors != nil) && (interTx.errors?.count)! > 0 {
-                self.output?.didReceiveError((interTx.errors?.first)!)
-            } else {
                 // Fix issue: Should keep previous value of transaction
                 self.originalTransaction = transaction
                 self.transactionData = interTx
@@ -74,12 +71,11 @@ extension TransactionInteractor : TransactionInteractorInput {
                 } else {
                     self.output?.requestPinToSignTransaction()
                 }
-            }
             }.catch({ (error) in
                 print("Send create transaction failed, show popup to retry.")
                 // Remember original transaction for retrying.
                 self.originalTransaction = transaction
-                self.output?.performTransferWithError(error as! ConnectionError, isTransferScreen: false)
+                self.output?.performTransferWithError(error as? ConnectionError ?? .systemError, isTransferScreen: false)
             })
     }
     
@@ -156,10 +152,10 @@ extension TransactionInteractor : TransactionInteractorInput {
                 }).catch({ (err) in
                     print("Send signed transaction failed, show popup to retry.")
                     self.pinToRetry = pin
-                    self.output?.performTransferWithError(err as! ConnectionError, isTransferScreen: false)
+                    self.output?.performTransferWithError(err as? ConnectionError ?? .systemError, isTransferScreen: false)
                 })
             }.catch({ (err) in
-                self.output?.didReceiveError(err.localizedDescription)
+                self.output?.didReceiveError(ConnectionError.systemError.localizedDescription)
             })
     }
     

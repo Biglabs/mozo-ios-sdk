@@ -62,10 +62,18 @@ extension TransactionPresenter : TransactionInteractorOutput {
     }
     
     func performTransferWithError(_ error: ConnectionError, isTransferScreen: Bool) {
-        if isTransferScreen {
-            transferUserInterface?.displayTryAgain(error)
+        if let apiError = error.apiError, apiError == .SOLOMON_FATAL_USE_DIFFERENT_OFFCHAIN_ADDRESS {
+            if isTransferScreen {
+                transferUserInterface?.displayError(apiError.description)
+            } else {
+                confirmUserInterface?.displayError(apiError.description)
+            }
         } else {
-            confirmUserInterface?.displayTryAgain(error)
+            if isTransferScreen {
+                transferUserInterface?.displayTryAgain(error)
+            } else {
+                confirmUserInterface?.displayTryAgain(error)
+            }
         }
     }
     
