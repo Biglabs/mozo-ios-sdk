@@ -9,5 +9,5 @@ import Foundation
 
 protocol AddressBookModuleInterface {
     func selectAddressBookOnUI(_ addressBook: AddressBookDisplayItem, isDisplayForSelect: Bool)
-    func updateDisplayData()
+    func updateDisplayData(forAddressBook: Bool)
 }

@@ -2186,9 +2186,31 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="atZ-Ao-pE6">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="6J7-ba-4lU">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bOT-jg-MYf">
+                                            <rect key="frame" x="19" y="7" width="337.5" height="31"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="pEU-Ll-TuF"/>
+                                            </constraints>
+                                            <segments>
+                                                <segment title="User Address"/>
+                                                <segment title="Store Address"/>
+                                            </segments>
+                                        </segmentedControl>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="bOT-jg-MYf" firstAttribute="centerY" secondItem="6J7-ba-4lU" secondAttribute="centerY" id="DOn-cK-D0I"/>
+                                        <constraint firstItem="bOT-jg-MYf" firstAttribute="centerX" secondItem="6J7-ba-4lU" secondAttribute="centerX" id="s5V-UO-xxl"/>
+                                        <constraint firstItem="bOT-jg-MYf" firstAttribute="width" secondItem="6J7-ba-4lU" secondAttribute="width" multiplier="0.9" id="vQN-P9-AeY"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="MozoAddressBookCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MozoAddressBookCell" textLabel="DKa-OK-Hj0" detailTextLabel="Lwk-Zp-pRI" style="IBUITableViewCellStyleSubtitle" id="bX2-Kt-xhf">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bX2-Kt-xhf" id="Lr9-Ig-aGX">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -2272,13 +2294,14 @@
                     <connections>
                         <outlet property="noDataView" destination="ENq-X9-dhn" id="8g4-LW-uth"/>
                         <outlet property="searchFooter" destination="s1m-FT-Tgp" id="xWM-RE-ivg"/>
+                        <outlet property="segmentControl" destination="bOT-jg-MYf" id="3nF-Ou-IXM"/>
                         <outlet property="tableView" destination="atZ-Ao-pE6" id="x5D-Vd-iWN"/>
                         <outlet property="view" destination="QkS-pL-CCo" id="Dpt-1s-xiQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7p0-lK-C2Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6340" y="-297"/>
+            <point key="canvasLocation" x="6340" y="-297.30134932533736"/>
         </scene>
         <!--Transaction History-->
         <scene sceneID="JZy-t0-LTt">
@@ -3092,7 +3115,7 @@
         <image name="ic_payment_complete" width="133" height="80"/>
         <image name="ic_pencil" width="52" height="52"/>
         <image name="ic_scan" width="19" height="18"/>
-        <image name="ic_search" width="16" height="16"/>
+        <image name="ic_search" width="181" height="185"/>
         <image name="ic_send" width="13" height="15"/>
         <image name="ic_sent_circle" width="96" height="96"/>
         <image name="ic_sort_down" width="10" height="6"/>

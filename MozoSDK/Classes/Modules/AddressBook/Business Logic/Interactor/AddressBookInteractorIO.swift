@@ -9,8 +9,10 @@ import Foundation
 
 protocol AddressBookInteractorInput {
     func getListAddressBook()
+    func getListStoreBook()
 }
 
 protocol AddressBookInteractorOutput {
     func finishGetListAddressBook(_ addressBook: [AddressBookDTO])
+    func finishGetListStoreBook(_ storeBook: [StoreBookDTO])
 }
