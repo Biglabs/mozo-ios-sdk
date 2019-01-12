@@ -137,8 +137,8 @@ public class MozoSDK {
         return moduleDependencies.getNearestStores()
     }
     
-    public static func searchStoresWithText(_ text: String, page: Int = 0, size: Int = 15) -> Promise<CollectionStoreInfoDTO> {
-        return moduleDependencies.searchStoresWithText(text, page: page, size: size)
+    public static func searchStoresWithText(_ text: String, page: Int = 0, size: Int = 15, long: Double, lat: Double, sort: String = "distance") -> Promise<CollectionStoreInfoDTO> {
+        return moduleDependencies.searchStoresWithText(text, page: page, size: size, long: long, lat: lat, sort: sort)
     }
     
     public static func getFavoriteStores() -> Promise<[StoreInfoDTO]> {
