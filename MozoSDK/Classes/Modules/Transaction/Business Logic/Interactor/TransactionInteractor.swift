@@ -85,7 +85,7 @@ extension TransactionInteractor : TransactionInteractorInput {
             })
     }
     
-    func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayName: String?) {
+    func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?) {
         var hasError = false
         
         var isAddressEmpty = false
@@ -135,7 +135,7 @@ extension TransactionInteractor : TransactionInteractorInput {
         if !hasError {
             let tx = createTransactionToTransfer(tokenInfo: tokenInfo, toAdress: toAdress, amount: amount)
             self.tokenInfo = tokenInfo
-            output?.continueWithTransaction(tx!, tokenInfo: tokenInfo!, displayName: displayName)
+            output?.continueWithTransaction(tx!, tokenInfo: tokenInfo!, displayContactItem: nil)
         }
     }
     

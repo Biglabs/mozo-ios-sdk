@@ -30,7 +30,7 @@ class PaymentWireframe: MozoWireframe {
         paymentQRWireframe?.presentPaymentQRInterface(displayItem: displayItem)
     }
     
-    func presentTransactionConfirmInterface(transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayName: String?) {
-        txWireframe?.presentConfirmInterface(transaction: transaction, tokenInfo: tokenInfo, displayName: displayName, isPaymentRequest: true)
+    func presentTransactionConfirmInterface(transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayContactItem: AddressBookDisplayItem?) {
+        txWireframe?.presentConfirmInterface(transaction: transaction, tokenInfo: tokenInfo, displayContactItem: displayContactItem, isPaymentRequest: true)
     }
 }

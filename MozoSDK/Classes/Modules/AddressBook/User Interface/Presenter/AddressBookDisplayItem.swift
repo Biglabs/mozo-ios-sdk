@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AddressBookDisplayItem {
+public struct AddressBookDisplayItem {
     let id : Int64
     let name : String
     let address : String
@@ -16,7 +16,7 @@ struct AddressBookDisplayItem {
 }
 
 extension AddressBookDisplayItem : Equatable {
-    static func == (leftSide: AddressBookDisplayItem, rightSide: AddressBookDisplayItem) -> Bool {
+    public static func == (leftSide: AddressBookDisplayItem, rightSide: AddressBookDisplayItem) -> Bool {
         return rightSide.name == leftSide.name && rightSide.address == rightSide.address
     }
 }
