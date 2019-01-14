@@ -20,7 +20,7 @@ protocol PaymentInteractorOutput {
     func finishGetListPaymentRequest(_ list: [PaymentRequestDTO], forPage: Int)
     func errorWhileLoadPaymentRequest(_ error: ConnectionError)
     
-    func didReceiveTransaction(transaction: TransactionDTO, displayName: String?, isFromScannedValue: Bool)
+    func didReceiveTransaction(transaction: TransactionDTO, displayContactItem: AddressBookDisplayItem?, isFromScannedValue: Bool)
     
     func didDeletePaymentRequestSuccess()
     func errorWhileDeleting(_ error: Any?)

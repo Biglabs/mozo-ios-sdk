@@ -138,8 +138,8 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getNearestStores()
     }
     
-    func searchStoresWithText(_ text: String, page: Int, size: Int) -> Promise<CollectionStoreInfoDTO> {
-        return apiManager.searchStoresWithText(text, page: page, size: size)
+    func searchStoresWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {
+        return apiManager.searchStoresWithText(text, page: page, size: size, long: long, lat: lat, sort: sort)
     }
     
     func getFavoriteStores() -> Promise<[StoreInfoDTO]> {

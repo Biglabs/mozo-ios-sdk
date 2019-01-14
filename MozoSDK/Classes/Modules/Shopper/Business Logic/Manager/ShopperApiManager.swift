@@ -78,13 +78,16 @@ public extension ApiManager {
         }
     }
     
-    public func searchStoresWithText(_ text: String, page: Int = 0, size: Int = 15) -> Promise<CollectionStoreInfoDTO> {
+    public func searchStoresWithText(_ text: String, page: Int = 0, size: Int = 15, long: Double, lat: Double, sort: String = "distance") -> Promise<CollectionStoreInfoDTO> {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page,
+                          "lon" : long,
+                          "lat" : lat,
+                          "sort" : sort,
                           "text" : text] as [String : Any]
             let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/search/stores" + "?\(params.queryString)"
-            self.execute(.get, url: url, parameters: params)
+            self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to search stores, json response: \(json)")

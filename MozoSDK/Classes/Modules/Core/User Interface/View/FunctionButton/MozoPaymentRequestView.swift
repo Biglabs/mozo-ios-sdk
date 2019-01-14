@@ -25,6 +25,9 @@
     override func loadViewFromNib() {
         super.loadViewFromNib()
         addUniqueAuthObserver()
+        let image = UIImage(named: "ic_receive", in: BundleManager.mozoBundle(), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+        button.setImage(image, for: .normal)
+        button.tintColor = .white
     }
     
     @IBAction func touchedUpInside(_ sender: Any) {

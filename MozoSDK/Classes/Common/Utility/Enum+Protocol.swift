@@ -32,6 +32,19 @@ public enum AppType: String {
     case Retailer = "retailer"
 }
 
+enum TransactionDisplayContactEnum: Int {
+    case NoDetail = 0
+    case AddressBookDetail = 1
+    case StoreBookDetail = 2
+    
+    var icon: String {
+        switch self {
+        case .StoreBookDetail: return "ic_store"
+        default: return "ic_user"
+        }
+    }
+}
+
 public protocol ResponseObjectSerializable: class {
     init?(json: JSON)
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TransactionModuleInterface {
-    func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayName: String?)
+    func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?)
     func sendConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO)
     func showScanQRCodeInterface()
     func loadTokenInfo()

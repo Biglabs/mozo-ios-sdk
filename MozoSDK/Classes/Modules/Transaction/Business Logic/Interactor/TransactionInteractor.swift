@@ -45,10 +45,16 @@ extension TransactionInteractor : TransactionInteractorInput {
         } else {
             let list = SafetyDataManager.shared.addressBookList
             if let addressBook = AddressBookDTO.addressBookFromAddress(scanValue, array: list) {
-                let displayItem = AddressBookDisplayItem(id: addressBook.id!, name: addressBook.name!, address: addressBook.soloAddress!)
+                let displayItem = AddressBookDisplayItem(id: addressBook.id ?? 0, name: addressBook.name ?? "", address: addressBook.soloAddress ?? "", physicalAddress: "", isStoreBook: false)
                 output?.didReceiveAddressBookDisplayItem(displayItem)
             } else {
-                output?.didReceiveAddressfromScanner(scanValue)
+                let storeList = SafetyDataManager.shared.storeBookList
+                if let storeBook = StoreBookDTO.storeBookFromAddress(scanValue, array: storeList) {
+                    let displayItem = AddressBookDisplayItem(id: storeBook.id ?? 0, name: storeBook.name ?? "", address: storeBook.offchainAddress ?? "", physicalAddress: storeBook.offchainAddress ?? "", isStoreBook: true)
+                    output?.didReceiveAddressBookDisplayItem(displayItem)
+                } else {
+                    output?.didReceiveAddressfromScanner(scanValue)
+                }
             }
         }
     }
@@ -79,7 +85,7 @@ extension TransactionInteractor : TransactionInteractorInput {
             })
     }
     
-    func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayName: String?) {
+    func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?) {
         var hasError = false
         
         var isAddressEmpty = false
@@ -129,7 +135,7 @@ extension TransactionInteractor : TransactionInteractorInput {
         if !hasError {
             let tx = createTransactionToTransfer(tokenInfo: tokenInfo, toAdress: toAdress, amount: amount)
             self.tokenInfo = tokenInfo
-            output?.continueWithTransaction(tx!, tokenInfo: tokenInfo!, displayName: displayName)
+            output?.continueWithTransaction(tx!, tokenInfo: tokenInfo!, displayContactItem: nil)
         }
     }
     

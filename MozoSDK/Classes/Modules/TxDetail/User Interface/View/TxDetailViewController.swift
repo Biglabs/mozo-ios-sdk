@@ -33,6 +33,13 @@ class TxDetailViewController: MozoBasicViewController {
     @IBOutlet weak var userImgWidthCstr: NSLayoutConstraint!
     @IBOutlet weak var walletAddressTopCstr: NSLayoutConstraint!
     
+    let defaultHeight : CGFloat = 28
+    let addressBookDetailHeight: CGFloat = 96
+    let storeBookDetailHeight: CGFloat = 117
+    
+    let addressBookImgWidth : CGFloat = 14
+    let storeBookImgWidth : CGFloat = 20
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         enableBackBarButton()
@@ -55,24 +62,44 @@ class TxDetailViewController: MozoBasicViewController {
         lbDateTime.text = displayItem.dateTime
         
         let address = displayItem.action == TransactionType.Sent.value ? displayItem.addressTo : displayItem.addressFrom
-        let list = SafetyDataManager.shared.addressBookList
-        if let addressBook = AddressBookDTO.addressBookFromAddress(address, array: list) {
-            // TODO: Search from <Store Book>
+        
+        var displayEnum = TransactionDisplayContactEnum.NoDetail
+        var name : String?
+        if let addressBook = AddressBookDTO.addressBookFromAddress(address, array: SafetyDataManager.shared.addressBookList) {
+            name = addressBook.name
+            displayEnum = .AddressBookDetail
+        } else if let storeBook = StoreBookDTO.storeBookFromAddress(address, array: SafetyDataManager.shared.storeBookList) {
+            name = storeBook.name
+            lbAddressDetailView.text = storeBook.physicalAddress
+            displayEnum = .StoreBookDetail
+        }
+        
+        if let name = name {
             detailView.isHidden = false
             lbActionDetailView.text = displayItem.action == TransactionType.Sent.value ? "To" : "From"
-            // TODO: Change userImg in case the address coming from <Store Book>, including image width and image
-            lbNameDetailView.text = addressBook.name
-            // TODO: Set hidden false and set physical address in case the address coming from <Store Book>
-            lbAddressDetailView.isHidden = true
+            
+            // Change userImg in case the address coming from <Store Book>, including image width and image
+            userImg.image = UIImage(named: displayEnum.icon, in: BundleManager.mozoBundle(), compatibleWith: nil)
+            userImgWidthCstr.constant = displayEnum == .StoreBookDetail ? storeBookImgWidth : addressBookImgWidth
+            
+            lbNameDetailView.text = name
+            // Set hidden false and set physical address in case the address coming from <Store Book>
+            if displayEnum == .StoreBookDetail {
+                lbAddressDetailView.isHidden = false
+            } else {
+                lbAddressDetailView.isHidden = true
+            }
         } else {
             detailView.isHidden = true
         }
         
-        if detailView.isHidden {
-            walletAddressTopCstr.constant = 28
-        } else {
-            walletAddressTopCstr.constant = 96
-            // TODO: Change constant in case the address coming from <Store Book>, constant will be 117
+        switch displayEnum {
+        case .AddressBookDetail:
+            walletAddressTopCstr.constant = addressBookDetailHeight
+        case .StoreBookDetail:
+            walletAddressTopCstr.constant = storeBookDetailHeight
+        default:
+            walletAddressTopCstr.constant = defaultHeight
         }
         
         lbAddress.text = address
@@ -88,7 +115,7 @@ class TxDetailViewController: MozoBasicViewController {
         }
         lbAmountValueExchange.text = exAmount
         
-        saveView.isHidden = !detailView.isHidden
+        saveView.isHidden = displayEnum != .NoDetail
     }
     
     @IBAction func touchedBtnSave(_ sender: Any) {

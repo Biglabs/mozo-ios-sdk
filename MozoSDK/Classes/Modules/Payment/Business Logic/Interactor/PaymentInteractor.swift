@@ -42,8 +42,8 @@ class PaymentInteractor: NSObject {
     
     func performPaymentTransaction(request: PaymentRequestDisplayItem, tokenInfo: TokenInfoDTO, isFromScannedValue: Bool = false) {
         let tx = createTransaction(tokenInfo: tokenInfo, item: request)
-        let name = DisplayUtils.buildNameFromAddress(address: request.requestingAddress)
-        output?.didReceiveTransaction(transaction: tx, displayName: name == request.requestingAddress ? nil : name, isFromScannedValue: isFromScannedValue)
+        let displayContactItem = DisplayUtils.buildContactDisplayItem(address: request.requestingAddress)
+        output?.didReceiveTransaction(transaction: tx, displayContactItem: displayContactItem, isFromScannedValue: isFromScannedValue)
     }
 }
 extension PaymentInteractor : PaymentInteractorInput {

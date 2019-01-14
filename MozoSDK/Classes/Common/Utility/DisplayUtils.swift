@@ -139,9 +139,25 @@ public class DisplayUtils {
             if let ab = AddressBookDTO.addressBookFromAddress(address, array: list), let name = ab.name {
                 displayName = name
             } else {
-                // TODO: Find address in Store Book
+                if let sb = StoreBookDTO.storeBookFromAddress(address, array: SafetyDataManager.shared.storeBookList), let name = sb.name {
+                    displayName = name
+                }
             }
         }
         return displayName
+    }
+    
+    public static func buildContactDisplayItem(address: String) -> AddressBookDisplayItem? {
+        if !address.isEmpty {
+            if let item = AddressBookDTO.addressBookFromAddress(address, array: SafetyDataManager.shared.addressBookList) {
+                return AddressBookDisplayItem(id: item.id ?? 0, name: item.name ?? "", address: item.soloAddress ?? "", physicalAddress: "", isStoreBook: false)
+            } else {
+                if let item = StoreBookDTO.storeBookFromAddress(address, array: SafetyDataManager.shared.storeBookList) {
+                    return AddressBookDisplayItem(id: item.id ?? 0, name: item.name ?? "", address: item.offchainAddress ?? "", physicalAddress: item.physicalAddress ?? "", isStoreBook: true)
+                }
+            }
+        }
+        
+        return nil
     }
 }

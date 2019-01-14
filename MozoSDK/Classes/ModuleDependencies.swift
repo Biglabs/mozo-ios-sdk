@@ -175,8 +175,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getNearestStores())!
     }
     
-    func searchStoresWithText(_ text: String, page: Int, size: Int) -> Promise<CollectionStoreInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.searchStoresWithText(text, page: page, size: size))!
+    func searchStoresWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.searchStoresWithText(text, page: page, size: size, long: long, lat: lat, sort: sort))!
     }
     
     func getFavoriteStores() -> Promise<[StoreInfoDTO]> {

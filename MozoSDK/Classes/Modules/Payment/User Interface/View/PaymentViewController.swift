@@ -53,7 +53,7 @@ class PaymentViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Payment Request"
+        title = "Request MozoX"
     }
     
     func setupTarget() {

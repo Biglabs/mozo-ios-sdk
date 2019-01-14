@@ -59,8 +59,8 @@ class TxCompletionViewController: MozoBasicViewController {
         if stopWaiting {
             // Check address book
             // Verify address is existing in address book list or not
-            let list = SafetyDataManager.shared.addressBookList
-            let contain = AddressBookDTO.arrayContainsItem(detailItem.addressTo, array: list)
+            let contain = AddressBookDTO.arrayContainsItem(detailItem.addressTo, array: SafetyDataManager.shared.addressBookList) ||
+                StoreBookDTO.arrayContainsItem(detailItem.addressTo, array: SafetyDataManager.shared.storeBookList)
             btnSave.isHidden = contain
             btnDetail.isHidden = false
         } else {

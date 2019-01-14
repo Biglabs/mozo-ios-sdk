@@ -82,8 +82,8 @@ extension PaymentPresenter: PaymentInteractorOutput {
         }
     }
     
-    func didReceiveTransaction(transaction: TransactionDTO, displayName: String?, isFromScannedValue: Bool) {
-        wireframe?.presentTransactionConfirmInterface(transaction: transaction, tokenInfo: tokenInfo!, displayName: displayName)
+    func didReceiveTransaction(transaction: TransactionDTO, displayContactItem: AddressBookDisplayItem?, isFromScannedValue: Bool) {
+        wireframe?.presentTransactionConfirmInterface(transaction: transaction, tokenInfo: tokenInfo!, displayContactItem: displayContactItem)
     }
     
     func errorWhileLoadPaymentRequest(_ error: ConnectionError) {

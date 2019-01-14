@@ -14,4 +14,8 @@ extension AddressBookInteractor : AddressBookInteractorInput {
     func getListAddressBook() {
         output?.finishGetListAddressBook(SafetyDataManager.shared.addressBookList)
     }
+    
+    func getListStoreBook() {
+        output?.finishGetListStoreBook(SafetyDataManager.shared.storeBookList)
+    }
 }

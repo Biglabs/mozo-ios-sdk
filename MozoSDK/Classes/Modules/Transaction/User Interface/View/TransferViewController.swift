@@ -34,6 +34,7 @@ class TransferViewController: MozoBasicViewController {
     
     private let refreshControl = UIRefreshControl()
     var tokenInfo : TokenInfoDTO?
+    var displayContactItem: AddressBookDisplayItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,7 +124,7 @@ class TransferViewController: MozoBasicViewController {
     @IBAction func btnContinueTapped(_ sender: Any) {
         if let tokenInfo = self.tokenInfo {
             let receiverAddress = txtAddress.isHidden ? lbAbAddress.text : txtAddress.text
-            eventHandler?.validateTransferTransaction(tokenInfo: tokenInfo, toAdress: receiverAddress, amount: txtAmount.text, displayName: txtAddress.isHidden ? lbAbName.text : nil)
+            eventHandler?.validateTransferTransaction(tokenInfo: tokenInfo, toAdress: receiverAddress, amount: txtAmount.text, displayContactItem: txtAddress.isHidden ? displayContactItem : nil)
         }
     }
     
@@ -265,6 +266,7 @@ extension TransferViewController : TransferViewInterface {
         addressBookView.isHidden = false
         lbAbName.text = displayItem.name
         lbAbAddress.text = displayItem.address
+        self.displayContactItem = displayItem
     }
     
     func showErrorValidation(_ error: String?, isAddress: Bool) {

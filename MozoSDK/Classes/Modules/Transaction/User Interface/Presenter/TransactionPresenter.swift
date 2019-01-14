@@ -33,8 +33,8 @@ extension TransactionPresenter: TransactionModuleInterface {
         txInteractor?.sendUserConfirmTransaction(transaction, tokenInfo: tokenInfo)
     }
     
-    func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayName: String?) {
-        txInteractor?.validateTransferTransaction(tokenInfo: tokenInfo, toAdress: toAdress, amount: amount, displayName: displayName)
+    func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?) {
+        txInteractor?.validateTransferTransaction(tokenInfo: tokenInfo, toAdress: toAdress, amount: amount, displayContactItem: displayContactItem)
     }
     
     func showScanQRCodeInterface() {
@@ -77,9 +77,9 @@ extension TransactionPresenter : TransactionInteractorOutput {
         }
     }
     
-    func continueWithTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayName: String?) {
+    func continueWithTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayContactItem: AddressBookDisplayItem?) {
         transferUserInterface?.hideErrorValidation()
-        txWireframe?.presentConfirmInterface(transaction: transaction, tokenInfo: tokenInfo, displayName: displayName)
+        txWireframe?.presentConfirmInterface(transaction: transaction, tokenInfo: tokenInfo, displayContactItem: displayContactItem)
     }
     
     func didReceiveError(_ error: String?) {

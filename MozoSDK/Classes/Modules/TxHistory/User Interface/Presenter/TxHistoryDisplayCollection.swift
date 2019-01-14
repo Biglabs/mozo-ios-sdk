@@ -56,7 +56,10 @@ public class TxHistoryDisplayCollection {
             if let ab = AddressBookDTO.addressBookFromAddress(address, array: list), let name = ab.name {
                 displayName = name
             } else {
-                // TODO: Find address in Store Book
+                let storeList = SafetyDataManager.shared.storeBookList
+                if let ab = StoreBookDTO.storeBookFromAddress(address, array: storeList), let name = ab.name {
+                    displayName = name
+                }
             }
         }
         var lStrLabelText: NSMutableAttributedString

@@ -15,16 +15,27 @@ class ConfirmTransferViewController: MozoBasicViewController {
     @IBOutlet weak var lbAddress: UILabel!
     @IBOutlet weak var lbAmountValue: UILabel!
     @IBOutlet weak var lbAmountValueExchange: UILabel!
+    @IBOutlet weak var lbReceiver: UILabel!
     @IBOutlet weak var addressBookView: UIView!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var lbNameAddress: UILabel!
+    
+    @IBOutlet weak var storeBookView: UIView!
+    @IBOutlet weak var lbStoreName: UILabel!
+    @IBOutlet weak var lbStorePhysicalAddress: UILabel!
+    @IBOutlet weak var lbStoreOffchainAddress: UILabel!
+    
     @IBOutlet weak var btnConfirm: UIButton!
     @IBOutlet weak var ctrAmount: NSLayoutConstraint!
     
     var transaction : TransactionDTO?
     var tokenInfo: TokenInfoDTO?
-    var displayName: String?
+    var displayContactItem: AddressBookDisplayItem?
     var isPaymentRequest: Bool = false
+    
+    let defaultHeight : CGFloat = 53
+    let addressBookHeight: CGFloat = 77
+    let storeBookHeight: CGFloat = 134
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +47,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Fix issue: Title is not correct after showing alert
-        self.title = isPaymentRequest ? "Payment Request" : "Confirmation"
+        self.title = isPaymentRequest ? "Payment Request" : "Confi on"
     }
     
     func setupCircleView() {
@@ -44,16 +55,37 @@ class ConfirmTransferViewController: MozoBasicViewController {
     }
     
     func updateView() {
-        lbAddress.text = transaction?.outputs?.first?.addresses![0]
+        let address = transaction?.outputs?.first?.addresses![0] ?? ""
+        lbAddress.text = address
         let amount = transaction?.outputs?.first?.value?.convertOutputValue(decimal: tokenInfo?.decimals ?? 0) ?? 0.0
         lbAmountValue.text = amount.roundAndAddCommas()
         
-        if let displayName = displayName {
+        lbReceiver.text = "Receiver Address"
+        var displayType = TransactionDisplayContactEnum.NoDetail
+        if let displayContactItem = displayContactItem {
             lbAddress.isHidden = true
-            addressBookView.isHidden = false
-            lbName.text = displayName
-            lbNameAddress.text = lbAddress.text
-            ctrAmount.constant += 18
+            if displayContactItem.isStoreBook {
+                lbReceiver.text = "Receiver"
+                storeBookView.isHidden = false
+                lbStoreName.text = displayContactItem.name
+                lbStorePhysicalAddress.text = displayContactItem.physicalAddress
+                lbStoreOffchainAddress.text = displayContactItem.address
+                displayType = .StoreBookDetail
+            } else {
+                addressBookView.isHidden = false
+                lbName.text = displayContactItem.name
+                lbNameAddress.text = lbAddress.text
+                displayType = .AddressBookDetail
+            }
+        }
+        
+        switch displayType {
+        case .AddressBookDetail:
+            ctrAmount.constant = addressBookHeight
+        case .StoreBookDetail:
+            ctrAmount.constant = storeBookHeight
+        default:
+            ctrAmount.constant = defaultHeight
         }
         
         var exAmount = "0.0"
@@ -67,8 +99,6 @@ class ConfirmTransferViewController: MozoBasicViewController {
         }
         
         lbAmountValueExchange.text = exAmount
-        
-        btnConfirm.setTitle(isPaymentRequest ? "Pay" : "Send", for: .normal)
     }
     
     @IBAction func btnSendTapped(_ sender: Any) {
