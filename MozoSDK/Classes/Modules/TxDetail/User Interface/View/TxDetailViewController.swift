@@ -64,17 +64,12 @@ class TxDetailViewController: MozoBasicViewController {
         let address = displayItem.action == TransactionType.Sent.value ? displayItem.addressTo : displayItem.addressFrom
         
         var displayEnum = TransactionDisplayContactEnum.NoDetail
-        var name : String?
-        if let addressBook = AddressBookDTO.addressBookFromAddress(address, array: SafetyDataManager.shared.addressBookList) {
-            name = addressBook.name
-            displayEnum = .AddressBookDetail
-        } else if let storeBook = StoreBookDTO.storeBookFromAddress(address, array: SafetyDataManager.shared.storeBookList) {
-            name = storeBook.name
-            lbAddressDetailView.text = storeBook.physicalAddress
-            displayEnum = .StoreBookDetail
-        }
-        
-        if let name = name {
+        if let contactItem = DisplayUtils.buildContactDisplayItem(address: address) {
+            let name = contactItem.name
+            displayEnum = contactItem.isStoreBook ? .StoreBookDetail : .AddressBookDetail
+            if contactItem.isStoreBook {
+                lbAddressDetailView.text = contactItem.physicalAddress
+            }
             detailView.isHidden = false
             lbActionDetailView.text = displayItem.action == TransactionType.Sent.value ? "To" : "From"
             
@@ -104,12 +99,11 @@ class TxDetailViewController: MozoBasicViewController {
         
         lbAddress.text = address
         let amount = displayItem.amount
-        lbAmountValue.text = "\(amount)"
+        lbAmountValue.text = "\(amount.roundAndAddCommas())"
         var exAmount = "0.0"
         if let rateInfo = SessionStoreManager.exchangeRateInfo {
             if let type = CurrencyType(rawValue: rateInfo.currency ?? "") {
-                let rate = rateInfo.rate ?? 0
-                let amountValue = (displayItem.exAmount * rate).rounded(toPlaces: type.decimalRound)
+                let amountValue = displayItem.exAmount.roundAndAddCommas(toPlaces: type.decimalRound)
                 exAmount = "\(type.unit)\(amountValue)"
             }
         }

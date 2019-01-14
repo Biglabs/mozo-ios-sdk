@@ -25,8 +25,8 @@ class TransactionInteractor : NSObject {
         let input = InputDTO(addresses: [(tokenInfo?.address)!])!
         let trimToAddress = toAdress?.trimmingCharacters(in: .whitespacesAndNewlines)
         var value = 0.0
-        if amount != nil {
-            value = amount!.toDoubleValue()
+        if let amount = amount {
+            value = amount.toDoubleValue()
         }
         var txValue = NSNumber(value: 0)
         txValue = value > 0.0 ? value.convertTokenValue(decimal: tokenInfo?.decimals ?? 0) : 0
@@ -135,7 +135,7 @@ extension TransactionInteractor : TransactionInteractorInput {
         if !hasError {
             let tx = createTransactionToTransfer(tokenInfo: tokenInfo, toAdress: toAdress, amount: amount)
             self.tokenInfo = tokenInfo
-            output?.continueWithTransaction(tx!, tokenInfo: tokenInfo!, displayContactItem: nil)
+            output?.continueWithTransaction(tx!, tokenInfo: tokenInfo!, displayContactItem: displayContactItem)
         }
     }
     

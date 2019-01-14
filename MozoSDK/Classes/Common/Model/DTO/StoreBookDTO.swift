@@ -19,9 +19,9 @@ public class StoreBookDTO: ResponseObjectSerializable {
     public required init?(json: SwiftyJSON.JSON) {
         self.id = json["id"].int64
         self.ownerUid = json["ownerUid"].string
-        self.name = json["name"].string
-        self.offchainAddress = json["offchainAddress"].string
-        self.physicalAddress = json["physicalAddress"].string
+        self.name = json["storeName"].string
+        self.offchainAddress = json["storeOffchainAddress"].string
+        self.physicalAddress = json["storePhysicalAddress"].string
     }
     
     public required init?(){}
@@ -35,13 +35,13 @@ public class StoreBookDTO: ResponseObjectSerializable {
             json["ownerUid"] = ownerUid
         }
         if let name = self.name {
-            json["name"] = name
+            json["storeName"] = name
         }
         if let offchainAddress = self.offchainAddress {
-            json["offchainAddress"] = offchainAddress
+            json["storeOffchainAddress"] = offchainAddress
         }
         if let physicalAddress = self.physicalAddress {
-            json["physicalAddress"] = physicalAddress
+            json["storePhysicalAddress"] = physicalAddress
         }
         return json
     }
