@@ -47,7 +47,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Fix issue: Title is not correct after showing alert
-        self.title = isPaymentRequest ? "Payment Request" : "Confirmation"
+        self.title = isPaymentRequest ? "Payment Request" : "Confi on"
     }
     
     func setupCircleView() {
@@ -99,8 +99,6 @@ class ConfirmTransferViewController: MozoBasicViewController {
         }
         
         lbAmountValueExchange.text = exAmount
-        
-        btnConfirm.setTitle(isPaymentRequest ? "Pay" : "Send", for: .normal)
     }
     
     @IBAction func btnSendTapped(_ sender: Any) {
