@@ -26,7 +26,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
     @IBOutlet weak var lbStoreOffchainAddress: UILabel!
     
     @IBOutlet weak var btnConfirm: UIButton!
-    @IBOutlet weak var ctrAmount: NSLayoutConstraint!
+    @IBOutlet weak var layoutConstraint: NSLayoutConstraint!
     
     var transaction : TransactionDTO?
     var tokenInfo: TokenInfoDTO?
@@ -34,7 +34,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
     var isPaymentRequest: Bool = false
     
     let defaultHeight : CGFloat = 53
-    let addressBookHeight: CGFloat = 77
+    let addressBookHeight: CGFloat = 108
     let storeBookHeight: CGFloat = 134
     
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Fix issue: Title is not correct after showing alert
-        self.title = isPaymentRequest ? "Payment Request" : "Confi on"
+        self.title = isPaymentRequest ? "Request MozoX" : "Send MozoX"
     }
     
     func setupCircleView() {
@@ -72,6 +72,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
                 lbStoreOffchainAddress.text = displayContactItem.address
                 displayType = .StoreBookDetail
             } else {
+                lbReceiver.text = "To"
                 addressBookView.isHidden = false
                 lbName.text = displayContactItem.name
                 lbNameAddress.text = lbAddress.text
@@ -81,11 +82,11 @@ class ConfirmTransferViewController: MozoBasicViewController {
         
         switch displayType {
         case .AddressBookDetail:
-            ctrAmount.constant = addressBookHeight
+            layoutConstraint.constant = addressBookHeight
         case .StoreBookDetail:
-            ctrAmount.constant = storeBookHeight
+            layoutConstraint.constant = storeBookHeight
         default:
-            ctrAmount.constant = defaultHeight
+            layoutConstraint.constant = defaultHeight
         }
         
         var exAmount = "0.0"

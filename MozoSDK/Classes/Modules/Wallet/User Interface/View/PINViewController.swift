@@ -35,10 +35,10 @@ class PINViewController : MozoBasicViewController {
         pinTextField.delegate = self as PinTextFieldDelegate
         pinTextField.keyboardType = .numberPad
         if self.passPhrase == nil {
+            title = "Enter Security PIN"
             if moduleRequested == Module.Transaction {
                 enterPINLabel.text = "ENTER YOUR SECURITY PIN"
                 descriptionLabel.text = "Security PIN must be 6 di-git numbers"
-                title = "Create Security PIN"
             } else {
                 // Enter new pin and confirm new pin
                 enterPINLabel.text = "ENTER YOUR SECURITY PIN TO RESTORE WALLET"
