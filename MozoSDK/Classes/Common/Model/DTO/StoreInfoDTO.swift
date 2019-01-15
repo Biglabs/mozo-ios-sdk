@@ -28,7 +28,7 @@ public class StoreInfoDTO : ResponseObjectSerializable {
     public var customerAirdropAmount: NSNumber?
     public var totalAirdropAmount: NSNumber?
     
-    public var isFavorite: Bool?
+    public var favorite: Bool?
     public var storeImages: [String]?
     public var hashTag: [String]?
     
@@ -56,7 +56,7 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         self.zip = json["zip"].string
         self.customerAirdropAmount = json["customerAirdropAmount"].number
         self.totalAirdropAmount = json["totalAirdropAmount"].number
-        self.isFavorite = json["isFavorite"].bool
+        self.favorite = json["favorite"].bool
         self.hashTag = json["hashTag"].array?.filter({ $0.string != nil }).map({ $0.string! })
         self.storeImages = json["storeImages"].array?.filter({ $0.string != nil }).map({ $0.string! })
         self.disable = json["disable"].bool
@@ -91,8 +91,8 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         if let zip = self.zip {json["zip"] = zip}
         if let customerAirdropAmount = self.customerAirdropAmount {json["customerAirdropAmount"] = customerAirdropAmount}
         if let totalAirdropAmount = self.totalAirdropAmount {json["totalAirdropAmount"] = totalAirdropAmount}
-        if let isFavorite = self.isFavorite {
-            json["isFavorite"] = isFavorite
+        if let favorite = self.favorite {
+            json["favorite"] = favorite
         }
         if let disable = self.disable {
             json["disable"] = disable
