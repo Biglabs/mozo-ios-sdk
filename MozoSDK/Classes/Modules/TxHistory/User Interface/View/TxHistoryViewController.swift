@@ -24,8 +24,8 @@ class TxHistoryViewController: MozoBasicViewController {
     
     var collection : TxHistoryDisplayCollection?
     var filteredItems = [TxHistoryDisplayItem]()
-    var currentPage : Int = 1
-    var loadingPage : Int = 1
+    var currentPage : Int = 0
+    var loadingPage : Int = 0
     var currentFilterType : TransactionType? = nil {
         didSet {
             print("Set current filter type: \(currentFilterType)")
@@ -54,7 +54,7 @@ class TxHistoryViewController: MozoBasicViewController {
     }
     
     @objc func refresh(_ sender: Any? = nil) {
-        loadHistoryWithPage(page: 1)
+        loadHistoryWithPage(page: 0)
         if let refreshControl = sender as? UIRefreshControl, refreshControl.isRefreshing {
             refreshControl.endRefreshing()
         }
