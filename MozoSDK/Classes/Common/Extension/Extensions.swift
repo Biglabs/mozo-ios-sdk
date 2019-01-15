@@ -84,7 +84,7 @@ public extension String {
     
     public func toDoubleValue() -> Double {
         // FIX ISSUE: [MOZO-254] Round Issue in swift
-        return (NumberFormatter().number(from: self)?.doubleValue)!
+        return NSDecimalNumber(string: self).doubleValue + (1 / pow(10, 15))
     }
 }
 
@@ -257,7 +257,7 @@ public extension Double {
     }
     
     func roundAndAddCommas(toPlaces places:Int = 2) -> String {
-        let roundedBalance = self.rounded(toPlaces: 2)
+        let roundedBalance = self.rounded(toPlaces: places)
         let number = NSNumber(value: roundedBalance)
         return number.addCommas()
     }
