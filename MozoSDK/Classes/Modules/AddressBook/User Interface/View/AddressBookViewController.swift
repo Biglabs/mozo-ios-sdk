@@ -212,6 +212,10 @@ extension AddressBookViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         view.tintColor = .white
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return isDisplayingAddressBook ? 56 : 76
+    }
 }
 
 extension AddressBookViewController: UITableViewDelegate {
