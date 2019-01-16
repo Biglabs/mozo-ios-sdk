@@ -25,6 +25,11 @@ class ABEditViewController : MozoBasicViewController {
         hideKeyboardWhenTappedAround()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = "Address Detail".localized
+    }
+    
     func updateView() {
         nameTextView.delegate = self
         addSaveButtonOnKeyboard()
@@ -50,7 +55,7 @@ class ABEditViewController : MozoBasicViewController {
         toolbar.barStyle = UIBarStyle.default
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        saveBtn = UIBarButtonItem(title: "Save changes", style: UIBarButtonItemStyle.done, target: self, action: #selector(saveButtonAction))
+        saveBtn = UIBarButtonItem(title: "Save changes".localized, style: UIBarButtonItemStyle.done, target: self, action: #selector(saveButtonAction))
         
         toolbar.items = [flexSpace, saveBtn!]
         toolbar.sizeToFit()

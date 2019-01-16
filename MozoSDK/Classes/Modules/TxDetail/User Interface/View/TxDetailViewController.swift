@@ -48,6 +48,7 @@ class TxDetailViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        title = "Transaction Detail".localized
         updateView()
     }
     
@@ -58,7 +59,7 @@ class TxDetailViewController: MozoBasicViewController {
     func updateView() {
         let imageName = displayItem.action == TransactionType.Sent.value ? "ic_sent_circle" : "ic_received_circle"
         actionImg.image = UIImage(named: imageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
-        lbTxType.text = displayItem.action
+        lbTxType.text = displayItem.action.localized
         lbDateTime.text = displayItem.dateTime
         
         let address = displayItem.action == TransactionType.Sent.value ? displayItem.addressTo : displayItem.addressFrom
@@ -71,7 +72,7 @@ class TxDetailViewController: MozoBasicViewController {
                 lbAddressDetailView.text = contactItem.physicalAddress
             }
             detailView.isHidden = false
-            lbActionDetailView.text = displayItem.action == TransactionType.Sent.value ? "To" : "From"
+            lbActionDetailView.text = (displayItem.action == TransactionType.Sent.value ? "To" : "From").localized
             
             // Change userImg in case the address coming from <Store Book>, including image width and image
             userImg.image = UIImage(named: displayEnum.icon, in: BundleManager.mozoBundle(), compatibleWith: nil)

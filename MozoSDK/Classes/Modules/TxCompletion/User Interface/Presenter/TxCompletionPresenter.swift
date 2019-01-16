@@ -28,7 +28,7 @@ extension TxCompletionPresenter : TxCompletionModuleInterface {
         let contain = AddressBookDTO.arrayContainsItem(address, array: list)
         if contain {
             // Show message
-            completionUserInterface?.displayError("Address is existing in address book list")
+            completionUserInterface?.displayError("Address is existing in address book list.")
         } else {
             completionModuleDelegate?.requestAddToAddressBook(address)
         }

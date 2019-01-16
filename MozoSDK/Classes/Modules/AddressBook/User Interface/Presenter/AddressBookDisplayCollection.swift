@@ -6,6 +6,7 @@
 //
 
 import Foundation
+let ALPHABET_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 class AddressBookDisplayCollection {
     var displayItems : [AddressBookDisplayItem]
     
@@ -34,7 +35,7 @@ class AddressBookDisplayCollection {
         var displaySections : [AddressBookDisplaySection] = []
         let sortedItems = displayItems.sorted { $0.name < $1.name }
         
-        let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let characters = ALPHABET_CHARACTERS.localized
         for char in characters {
             let prefix = String(char)
             let filteredArr = sortedItems.filter() { $0.name.hasPrefix(prefix, caseSensitive: true) }

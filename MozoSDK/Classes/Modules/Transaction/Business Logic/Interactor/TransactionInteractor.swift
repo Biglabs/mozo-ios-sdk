@@ -41,7 +41,7 @@ class TransactionInteractor : NSObject {
 extension TransactionInteractor : TransactionInteractorInput {
     func validateValueFromScanner(_ scanValue: String) {
         if !scanValue.isEthAddress() {
-            output?.didReceiveError("Scanning value is not a valid address. \n\(scanValue)")
+            output?.didReceiveError("Scanning value is not a valid address.")
         } else {
             let list = SafetyDataManager.shared.addressBookList
             if let addressBook = AddressBookDTO.addressBookFromAddress(scanValue, array: list) {
@@ -65,7 +65,7 @@ extension TransactionInteractor : TransactionInteractorInput {
         }
         let spendable = tokenInfo.balance?.convertOutputValue(decimal: tokenInfo.decimals ?? 0) ?? 0
         if transaction.outputs![0].value?.convertOutputValue(decimal: tokenInfo.decimals ?? 0) ?? 0 > spendable {
-            output?.didReceiveError("Error: Your spendable is not enough.")
+            output?.didReceiveError("Error: Your spendable is not enough for this.")
             return
         }
         _ = apiManager.transferTransaction(transaction).done { (interTx) in
@@ -105,7 +105,7 @@ extension TransactionInteractor : TransactionInteractorInput {
         var isAmountEmpty = false
         let value = amount
         if value == nil || value == "" {
-            error = "Error: Please input amount."
+            error = "Error".localized + ": " + "Please input amount.".localized
             isAmountEmpty = true
             hasError = true
             output?.didValidateTransferTransaction(error, isAddress: false)

@@ -15,38 +15,38 @@ public class MozoBasicViewController : UIViewController {
     }
     
     func enableBackBarButton() {
-        self.navigationController?.navigationBar.backItem?.title = "Back"
+        self.navigationController?.navigationBar.backItem?.title = "Back".localized
         navigationItem.hidesBackButton = false
     }
     
     func displayMozoError(_ error: String) {
-        let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-        alert.addAction(.init(title: "OK", style: .default, handler: nil))
+        let alert = UIAlertController(title: "Error".localized, message: error.localized, preferredStyle: .alert)
+        alert.addAction(.init(title: "OK".localized, style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
     func displayMozoAlertSuccess(completion: (() -> Void)?) {
-        let alert = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
-        alert.addAction(.init(title: "OK", style: .default, handler: { (action) in
+        let alert = UIAlertController(title: "Success".localized, message: "", preferredStyle: .alert)
+        alert.addAction(.init(title: "OK".localized, style: .default, handler: { (action) in
             completion?()
         }))
         self.present(alert, animated: true, completion: nil)
     }
     
     func displayMozoAlertConfirm(confirmCompletion: (() -> Void)?, notConfirmCompletion: (() -> Void)?) {
-        let alert = UIAlertController(title: "Confirm", message: "Are you sure?", preferredStyle: .alert)
-        alert.addAction(.init(title: "Yes", style: .default, handler: { (action) in
+        let alert = UIAlertController(title: "Confirm".localized, message: "Are you sure?".localized, preferredStyle: .alert)
+        alert.addAction(.init(title: "Yes".localized, style: .default, handler: { (action) in
             confirmCompletion?()
         }))
-        alert.addAction(.init(title: "No", style: .default, handler: { (action) in
+        alert.addAction(.init(title: "No".localized, style: .default, handler: { (action) in
             notConfirmCompletion?()
         }))
         self.present(alert, animated: true, completion: nil)
     }
     
     func displayMozoAlertInfo(infoMessage: String, completion: (() -> Void)?) {
-        let alert = UIAlertController(title: "Info", message: infoMessage, preferredStyle: .alert)
-        alert.addAction(.init(title: "OK", style: .default, handler: { (action) in
+        let alert = UIAlertController(title: "Info".localized, message: infoMessage, preferredStyle: .alert)
+        alert.addAction(.init(title: "OK".localized, style: .default, handler: { (action) in
             completion?()
         }))
         self.present(alert, animated: true, completion: nil)
@@ -66,7 +66,7 @@ public class MozoBasicViewController : UIViewController {
         
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width - 40, height: 18))
         label.textAlignment = .center
-        label.text = message
+        label.text = message.localized
         label.textColor = ThemeManager.shared.disable
         label.font = UIFont.italicSystemFont(ofSize: 15)
         

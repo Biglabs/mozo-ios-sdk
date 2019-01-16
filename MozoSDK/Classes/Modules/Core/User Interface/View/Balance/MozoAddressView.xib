@@ -27,6 +27,9 @@
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Your MozoX Offchain Wallet Address"/>
+                    </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJZ-j0-tLx">
                     <rect key="frame" x="16" y="38" width="300" height="15"/>
@@ -45,6 +48,9 @@
                     <state key="normal" title="Show QR Code" image="ic_qr_code">
                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Show QR Code"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="touchedShowQR:" destination="-1" eventType="touchUpInside" id="xIM-kH-KlE"/>
                     </connections>
@@ -60,6 +66,7 @@
                         <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
                             <color key="value" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Copy"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="touchCopy:" destination="-1" eventType="touchUpInside" id="nhd-Xa-7SV"/>

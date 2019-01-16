@@ -26,6 +26,11 @@ class ABDetailViewController : MozoBasicViewController {
         updateView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = "Add New Address".localized
+    }
+    
     func updateView() {
         txtAddress.text = address
         txtName.delegate = self
@@ -54,7 +59,7 @@ class ABDetailViewController : MozoBasicViewController {
         doneToolbar.barStyle = UIBarStyle.default
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.doneButtonAction))
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done".localized, style: UIBarButtonItemStyle.done, target: self, action: #selector(self.doneButtonAction))
         
         doneToolbar.items = [flexSpace, done]
         doneToolbar.sizeToFit()

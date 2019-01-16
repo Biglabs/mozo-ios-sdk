@@ -54,15 +54,21 @@
                             <state key="normal" title="Show QR Code">
                                 <color key="titleColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Show QR Code"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="touchedShowQR:" destination="-1" eventType="touchUpInside" id="GYJ-ld-g1Y"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total MozoX Coin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rml-rD-wOt">
-                            <rect key="frame" x="20" y="48" width="104" height="15"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total MozoX Coins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rml-rD-wOt">
+                            <rect key="frame" x="20" y="48" width="111" height="15"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                             <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Total MozoX Coins"/>
+                            </userDefinedRuntimeAttributes>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mozo_offchain" translatesAutoresizingMaskIntoConstraints="NO" id="ftd-Bg-IRB">
                             <rect key="frame" x="20" y="70" width="30" height="30"/>
@@ -126,16 +132,21 @@
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Transaction History"/>
+                    </userDefinedRuntimeAttributes>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcA-It-ew4">
                     <rect key="frame" x="305" y="313" width="55" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="a45-od-Sjp"/>
-                        <constraint firstAttribute="width" constant="55" id="zBo-np-2wo"/>
                     </constraints>
                     <state key="normal" title="View All">
                         <color key="titleColor" red="0.30588235294117649" green="0.58039215686274503" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="View All"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="touchedViewAllHistory:" destination="-1" eventType="touchUpInside" id="4zw-Bq-M1R"/>
                     </connections>

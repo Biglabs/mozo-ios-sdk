@@ -71,7 +71,7 @@ class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOutputObj
         
         let lbFrame = CGRect(x: imageFrame.size.width + 9, y: 0, width: 36, height: 18)
         let label = UILabel(frame: lbFrame)
-        label.text = "Back"
+        label.text = "Back".localized
         label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = .white
         backView.addSubview(label)
@@ -86,8 +86,8 @@ class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOutputObj
     }
 
     func failed() {
-        let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        let ac = UIAlertController(title: "Scanning not supported".localized, message: "Your device does not support scanning a code from an item.\nPlease use a device with a camera.".localized, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK".localized, style: .default))
         present(ac, animated: true)
         captureSession = nil
     }

@@ -26,6 +26,9 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="ENTER YOUR SECURITY PIN"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security PIN should be 6 di-git numbers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzT-vO-JtQ">
                                 <rect key="frame" x="47.5" y="120" width="280" height="18"/>
@@ -35,6 +38,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Security PIN should be 6 di-git numbers"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOA-dH-2Xf" userLabel="CheckView">
                                 <rect key="frame" x="87.5" y="169" width="200" height="23"/>
@@ -54,6 +60,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.090196078431372548" green="0.72549019607843135" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Create Security PIN successful"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -186,6 +195,9 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="highlightedColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Receiver Address"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="voO-Xv-dpN">
                                         <rect key="frame" x="20" y="45" width="337.5" height="36"/>
@@ -213,6 +225,9 @@
                                                 <rect key="frame" x="307.5" y="14.5" width="30" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <state key="normal" title="Clear"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Clear"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="touchedBtnClear:" destination="ljP-Qq-otX" eventType="touchUpInside" id="7Hx-6c-YPf"/>
                                                 </connections>
@@ -232,7 +247,7 @@
                                             <constraint firstItem="5dH-zE-bar" firstAttribute="top" secondItem="voO-Xv-dpN" secondAttribute="top" id="y29-hi-nuS"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter address or username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPJ-fc-yvr">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please enter address or select from address book." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPJ-fc-yvr">
                                         <rect key="frame" x="20" y="43" width="281" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="69b-pT-onq"/>
@@ -240,6 +255,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Please enter address or select from address book."/>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1s-q6-Ldq">
                                         <rect key="frame" x="301" y="43" width="54" height="18"/>
@@ -256,6 +274,7 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
                                                 <color key="value" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Scan"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="btnScanTapped:" destination="ljP-Qq-otX" eventType="touchUpInside" id="JnC-2w-s8P"/>
@@ -266,6 +285,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.94117647059999998" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Error: The Receiver Address is not valid."/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fni-8e-uNL">
                                         <rect key="frame" x="20" y="145" width="162" height="15"/>
@@ -275,12 +297,18 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="highlightedColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Amount"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter amount to send" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eb8-Io-Hbg">
                                         <rect key="frame" x="20" y="167" width="284" height="17"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Enter amount to send"/>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₩0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cax-bg-RYT">
                                         <rect key="frame" x="324" y="166.5" width="31" height="18"/>
@@ -314,6 +342,9 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.078431372549019607" green="0.10196078431372549" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Spendable:"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brE-a9-qvM">
                                                 <rect key="frame" x="68" y="0.0" width="19.5" height="15"/>
@@ -344,6 +375,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.94117647059999998" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Error: Please input value in decimal format."/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQi-ge-hcb">
                                         <rect key="frame" x="0.0" y="519" width="375" height="65"/>
@@ -355,6 +389,9 @@
                                         <state key="normal" title="Continue">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Continue"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="btnContinueTapped:" destination="ljP-Qq-otX" eventType="touchUpInside" id="XPl-gp-RHX"/>
                                         </connections>
@@ -367,9 +404,12 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                         <inset key="titleEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Select from address Book" image="ic_address_book">
+                                        <state key="normal" title="Select from Address Book" image="ic_address_book">
                                             <color key="titleColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Select from Address Book"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="btnAddressBookTapped:" destination="ljP-Qq-otX" eventType="touchUpInside" id="K7q-8H-JpR"/>
                                         </connections>
@@ -501,9 +541,12 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Create Payment Request">
+                                                <state key="normal" title="Create Request">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Create Request"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="touchedBtnCreate:" destination="Fl0-fz-6Co" eventType="touchUpInside" id="ojN-li-ImV"/>
                                                 </connections>
@@ -518,13 +561,16 @@
                                             <constraint firstItem="cQO-ZS-bCU" firstAttribute="leading" secondItem="jLD-0d-oOl" secondAttribute="leading" constant="20" id="nwZ-qq-Lcb"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can ask another user to send MozoX to your wallet address, just by create Payment Request." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ri9-NX-jWi">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can ask another user to send MozoX to your wallet address by creating a request." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ri9-NX-jWi">
                                         <rect key="frame" x="20" y="38" width="335" height="36"/>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                         <color key="textColor" red="0.94117647058823528" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="You can ask another user to send MozoX to your wallet address by creating a request."/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG9-rz-7sx">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receive Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG9-rz-7sx">
                                         <rect key="frame" x="20" y="109" width="162" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="162" id="Hg6-6f-8hQ"/>
@@ -532,12 +578,18 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Receive Amount"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter amount to pay" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="05s-JH-OKv">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter amount to receive" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="05s-JH-OKv">
                                         <rect key="frame" x="60" y="142" width="244" height="18"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Enter amount to receive"/>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8e0-Sv-6PP">
                                         <rect key="frame" x="20" y="173" width="335" height="1"/>
@@ -612,7 +664,10 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Scan To Pay" image="ic_scan"/>
+                                                <state key="normal" title="Scan To Send MozoX" image="ic_scan"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Scan To Send MozoX"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="touchedBtnScan:" destination="Fl0-fz-6Co" eventType="touchUpInside" id="bfM-Ll-kNv"/>
                                                 </connections>
@@ -697,38 +752,47 @@
                                     <constraint firstItem="cEM-ii-gCG" firstAttribute="centerY" secondItem="wLB-v3-kwV" secondAttribute="centerY" id="wvX-ta-vIP"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan to transfer:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdZ-JH-NwK">
-                                <rect key="frame" x="130.5" y="295" width="114" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan to send:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdZ-JH-NwK">
+                                <rect key="frame" x="141" y="295" width="93.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="97d-ET-6cF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Scan to send:"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7u-kq-RXs">
-                                <rect key="frame" x="20" y="494.5" width="170" height="18"/>
+                                <rect key="frame" x="20" y="497.5" width="170" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="170" id="4Is-bN-7UJ"/>
                                     <constraint firstAttribute="height" constant="18" id="TYa-mO-xke"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                 <inset key="titleEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Select from address Book" image="ic_address_book">
+                                <state key="normal" title="Select from Address Book" image="ic_address_book">
                                     <color key="titleColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Select from Address Book"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="btnAddressBookTapped:" destination="buJ-DR-nBU" eventType="touchUpInside" id="F1O-DG-Urk"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send request to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBg-Zz-7Xc">
-                                <rect key="frame" x="20" y="416" width="162" height="15"/>
+                                <rect key="frame" x="20" y="416" width="162" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="162" id="7ua-Na-16J"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Send request to"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFe-gW-TMk">
                                 <rect key="frame" x="20" y="387" width="335" height="1"/>
@@ -756,15 +820,18 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Send Payment Request">
+                                <state key="normal" title="Send Request">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Send Request"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="btnSendTapped:" destination="buJ-DR-nBU" eventType="touchUpInside" id="Lnp-fI-pKc"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5s0-sf-oRi">
-                                <rect key="frame" x="20" y="446" width="335" height="33"/>
+                                <rect key="frame" x="20" y="449" width="335" height="33"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cji-PD-lZ8">
                                         <rect key="frame" x="281" y="0.0" width="54" height="18"/>
@@ -781,12 +848,13 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
                                                 <color key="value" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Scan"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="btnScanTapped:" destination="buJ-DR-nBU" eventType="touchUpInside" id="ASd-W8-LL7"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter address or username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bEU-cq-v2d">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please enter address or select from address book." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bEU-cq-v2d">
                                         <rect key="frame" x="0.0" y="0.0" width="281" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="esE-8P-0Ny"/>
@@ -794,6 +862,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Please enter address or select from address book."/>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8oh-gf-YvP">
                                         <rect key="frame" x="0.0" y="31" width="335" height="1"/>
@@ -828,7 +899,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dA8-W9-JOM">
-                                <rect key="frame" x="20" y="444.5" width="335" height="36"/>
+                                <rect key="frame" x="20" y="447.5" width="335" height="36"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user" translatesAutoresizingMaskIntoConstraints="NO" id="loS-Oe-dnO">
                                         <rect key="frame" x="0.0" y="0.0" width="10" height="13"/>
@@ -853,6 +924,9 @@
                                         <rect key="frame" x="305" y="14.5" width="30" height="27"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <state key="normal" title="Clear"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Clear"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="touchedBtnClear:" destination="buJ-DR-nBU" eventType="touchUpInside" id="KhZ-AC-z33"/>
                                         </connections>
@@ -996,6 +1070,9 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.078431372550000003" green="0.1019607843" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="To:"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udz-01-YMP">
                                 <rect key="frame" x="37.5" y="438" width="300" height="21"/>
@@ -1054,27 +1131,36 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.3529411764705882" green="0.61176470588235299" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="STORE RECOVERY PHRASE"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please write it down on a paper and keep it in a safe place as you would with paper money" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLl-Dj-c2l">
-                                <rect key="frame" x="40" y="164" width="295" height="54"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please write it down on paper and keep it in a safe place as you would with money." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLl-Dj-c2l">
+                                <rect key="frame" x="40" y="164" width="295" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="295" id="LZr-a7-49b"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.45490196078431372" green="0.45490196078431372" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Please write it down on paper and keep it in a safe place as you would with money."/>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*If you lose your recovery phase, your wallet cannot be recovered." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wW4-fu-mg3">
-                                <rect key="frame" x="40" y="231" width="295" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*If you lose your Recovery Phrase, your wallet cannot be recovered." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wW4-fu-mg3">
+                                <rect key="frame" x="40" y="213" width="295" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="295" id="1HL-55-lvS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                 <color key="textColor" red="0.94117647058823528" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="*If you lose your Recovery Phrase, your wallet cannot be recovered."/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sru-tK-3Au" userLabel="FirstBorderView">
-                                <rect key="frame" x="0.0" y="294" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="276" width="375" height="1"/>
                                 <color key="backgroundColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="FirstBorderView"/>
                                 <constraints>
@@ -1093,7 +1179,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxt-DA-ZgU">
-                                <rect key="frame" x="70" y="318" width="235" height="109"/>
+                                <rect key="frame" x="70" y="300" width="235" height="109"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="235" id="zFV-mc-GIg"/>
                                 </constraints>
@@ -1112,7 +1198,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u6A-qP-7YA" userLabel="SecondBorderView">
-                                <rect key="frame" x="0.0" y="452" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="434" width="375" height="1"/>
                                 <color key="backgroundColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="FirstBorderView"/>
                                 <constraints>
@@ -1141,6 +1227,9 @@
                                 <state key="normal" title="Continue">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Continue"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="continueBtnTapped:" destination="EjY-q1-tUu" eventType="touchUpInside" id="mTk-I0-5Pf"/>
                                 </connections>
@@ -1163,6 +1252,9 @@
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                         <color key="textColor" red="0.75686274509803919" green="0.75686274509803919" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="I have safely stored recovery phrase"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1288,6 +1380,9 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" red="0.30588235294117649" green="0.58039215686274503" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Receiver Address"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9x-1p-WB3">
                                         <rect key="frame" x="20" y="151" width="343.5" height="17"/>
@@ -1319,6 +1414,9 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                 <color key="textColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Wallet Address"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huU-Tm-Llv">
                                                 <rect key="frame" x="0.0" y="65" width="343.5" height="17"/>
@@ -1370,6 +1468,9 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                 <color key="textColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Wallet Address"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P77-Eb-8O0">
                                                 <rect key="frame" x="0.0" y="85.5" width="343.5" height="17"/>
@@ -1420,6 +1521,9 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Amount"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mozo_offchain" translatesAutoresizingMaskIntoConstraints="NO" id="AXT-KT-Rdu">
                                         <rect key="frame" x="20" y="322" width="24" height="24"/>
@@ -1428,14 +1532,14 @@
                                             <constraint firstAttribute="height" constant="24" id="RhX-bi-PWY"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isx-1g-h5d">
-                                        <rect key="frame" x="53" y="319" width="83" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isx-1g-h5d">
+                                        <rect key="frame" x="53" y="319" width="22.5" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(₩80)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJi-7W-A7j">
-                                        <rect key="frame" x="143" y="325" width="40" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(₩0)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJi-7W-A7j">
+                                        <rect key="frame" x="82.5" y="325" width="30" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1450,6 +1554,9 @@
                                         <state key="normal" title="Confirm">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Confirm"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="btnSendTapped:" destination="iKA-3Y-sf4" eventType="touchUpInside" id="zmv-oz-lvV"/>
                                         </connections>
@@ -1459,6 +1566,9 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Send"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1542,79 +1652,20 @@
                                     <constraint firstAttribute="height" constant="100" id="tf8-JC-31x"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your TX has been broadcast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcD-jC-ehP">
-                                <rect key="frame" x="56" y="178" width="263.5" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action Complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcD-jC-ehP">
+                                <rect key="frame" x="109" y="178" width="157.5" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Action Complete"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kja-eZ-KQb">
-                                <rect key="frame" x="20" y="224" width="335" height="55"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You sent 200 MozoX to address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8K-Sq-Bw6">
-                                        <rect key="frame" x="56.5" y="0.0" width="222.5" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="lNa-eJ-aXc"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA18" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYu-pz-fjF">
-                                        <rect key="frame" x="0.0" y="37" width="335" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="iAg-iz-T8I"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="BYu-pz-fjF" firstAttribute="leading" secondItem="Kja-eZ-KQb" secondAttribute="leading" id="9tG-Xs-Uc7"/>
-                                    <constraint firstItem="S8K-Sq-Bw6" firstAttribute="centerX" secondItem="Kja-eZ-KQb" secondAttribute="centerX" id="B3n-35-ioZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="BYu-pz-fjF" secondAttribute="bottom" id="OI0-l1-w36"/>
-                                    <constraint firstAttribute="trailing" secondItem="BYu-pz-fjF" secondAttribute="trailing" id="atI-bY-ZLw"/>
-                                    <constraint firstAttribute="height" constant="55" id="hfm-4c-Rlp"/>
-                                    <constraint firstItem="S8K-Sq-Bw6" firstAttribute="top" secondItem="Kja-eZ-KQb" secondAttribute="top" id="uFP-NP-oiV"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lgW-0b-QBE">
-                                <rect key="frame" x="56" y="224" width="263" height="18"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TX Hash: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAs-1O-XPh">
-                                        <rect key="frame" x="0.0" y="0.0" width="71" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="71" id="OpM-vg-ACk"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8q2-gv-fvX">
-                                        <rect key="frame" x="71" y="0.0" width="192" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="UAs-1O-XPh" firstAttribute="top" secondItem="lgW-0b-QBE" secondAttribute="top" id="4KQ-bX-4pW"/>
-                                    <constraint firstAttribute="height" constant="18" id="6NC-sg-4ar"/>
-                                    <constraint firstAttribute="trailing" secondItem="8q2-gv-fvX" secondAttribute="trailing" id="IP7-wE-jg7"/>
-                                    <constraint firstItem="UAs-1O-XPh" firstAttribute="leading" secondItem="lgW-0b-QBE" secondAttribute="leading" id="kgd-R9-RwQ"/>
-                                    <constraint firstItem="8q2-gv-fvX" firstAttribute="centerY" secondItem="UAs-1O-XPh" secondAttribute="centerY" id="n4Q-CP-hnY"/>
-                                    <constraint firstAttribute="trailing" secondItem="8q2-gv-fvX" secondAttribute="trailing" id="rwH-yx-OnK"/>
-                                    <constraint firstItem="8q2-gv-fvX" firstAttribute="leading" secondItem="UAs-1O-XPh" secondAttribute="trailing" id="sPM-uO-hQg"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvd-aJ-yOC">
-                                <rect key="frame" x="133.5" y="287" width="108" height="30"/>
+                                <rect key="frame" x="112.5" y="254" width="150" height="30"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loading" translatesAutoresizingMaskIntoConstraints="NO" id="X38-sh-EUE">
-                                        <rect key="frame" x="0.0" y="0.0" width="32" height="30"/>
+                                        <rect key="frame" x="4.5" y="0.0" width="32" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="2EM-Hr-BI6"/>
                                             <constraint firstAttribute="width" constant="32" id="ibC-hx-htS"/>
@@ -1627,26 +1678,98 @@
                                             <constraint firstAttribute="height" constant="30" id="RkZ-6c-PXv"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8FM-eL-oR4">
-                                        <rect key="frame" x="40" y="5" width="57" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8FM-eL-oR4">
+                                        <rect key="frame" x="46.5" y="6" width="57" height="18"/>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                         <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Pending"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="X38-sh-EUE" firstAttribute="top" secondItem="fvd-aJ-yOC" secondAttribute="top" id="5M8-zn-x67"/>
-                                    <constraint firstItem="X38-sh-EUE" firstAttribute="leading" secondItem="fvd-aJ-yOC" secondAttribute="leading" id="8Ik-n9-xe8"/>
+                                    <constraint firstItem="8FM-eL-oR4" firstAttribute="centerX" secondItem="fvd-aJ-yOC" secondAttribute="centerX" id="9Ku-Ti-ekh"/>
                                     <constraint firstItem="hox-bn-bn6" firstAttribute="top" secondItem="fvd-aJ-yOC" secondAttribute="top" id="Fj3-CT-lGt"/>
                                     <constraint firstAttribute="height" constant="30" id="JJJ-xR-TN9"/>
                                     <constraint firstItem="hox-bn-bn6" firstAttribute="leading" secondItem="fvd-aJ-yOC" secondAttribute="leading" id="NHM-hO-vCf"/>
-                                    <constraint firstAttribute="width" constant="108" id="rav-EN-koA"/>
+                                    <constraint firstItem="8FM-eL-oR4" firstAttribute="leading" secondItem="X38-sh-EUE" secondAttribute="trailing" constant="10" id="ZXg-jE-477"/>
+                                    <constraint firstItem="8FM-eL-oR4" firstAttribute="centerY" secondItem="fvd-aJ-yOC" secondAttribute="centerY" id="cQ5-Ii-3TE"/>
+                                    <constraint firstAttribute="width" constant="150" id="rav-EN-koA"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kja-eZ-KQb">
+                                <rect key="frame" x="20" y="254" width="335" height="135"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have just sent:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REv-jj-c6g">
+                                        <rect key="frame" x="99" y="0.0" width="137.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="You have just sent:"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mozo_offchain" translatesAutoresizingMaskIntoConstraints="NO" id="na5-fx-2al">
+                                        <rect key="frame" x="84" y="30" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="M2D-Bw-OVg"/>
+                                            <constraint firstAttribute="height" constant="30" id="NPj-bp-Jk5"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQy-pN-MP0">
+                                        <rect key="frame" x="123" y="30" width="89.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(₩80)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0l-uZ-RDH">
+                                        <rect key="frame" x="219.5" y="36" width="40" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA18" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYu-pz-fjF">
+                                        <rect key="frame" x="0.0" y="117" width="335" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="iAg-iz-T8I"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvK-qO-LTE">
+                                        <rect key="frame" x="156" y="89" width="23" height="18"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="To"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="REv-jj-c6g" firstAttribute="centerX" secondItem="Kja-eZ-KQb" secondAttribute="centerX" id="2cc-NQ-dCo"/>
+                                    <constraint firstItem="BYu-pz-fjF" firstAttribute="leading" secondItem="Kja-eZ-KQb" secondAttribute="leading" id="9tG-Xs-Uc7"/>
+                                    <constraint firstItem="dvK-qO-LTE" firstAttribute="centerX" secondItem="Kja-eZ-KQb" secondAttribute="centerX" id="FbP-aP-JBA"/>
+                                    <constraint firstItem="REv-jj-c6g" firstAttribute="top" secondItem="Kja-eZ-KQb" secondAttribute="top" id="O5x-qt-CEF"/>
+                                    <constraint firstAttribute="bottom" secondItem="BYu-pz-fjF" secondAttribute="bottom" id="OI0-l1-w36"/>
+                                    <constraint firstAttribute="trailing" secondItem="BYu-pz-fjF" secondAttribute="trailing" id="atI-bY-ZLw"/>
+                                    <constraint firstItem="dvK-qO-LTE" firstAttribute="top" secondItem="na5-fx-2al" secondAttribute="bottom" constant="29" id="eC3-1T-bNI"/>
+                                    <constraint firstAttribute="height" constant="135" id="hfm-4c-Rlp"/>
+                                    <constraint firstItem="h0l-uZ-RDH" firstAttribute="centerY" secondItem="dQy-pN-MP0" secondAttribute="centerY" id="lAx-6D-Bbm"/>
+                                    <constraint firstItem="dQy-pN-MP0" firstAttribute="top" secondItem="REv-jj-c6g" secondAttribute="bottom" constant="12" id="lXh-UO-YCV"/>
+                                    <constraint firstItem="dQy-pN-MP0" firstAttribute="centerY" secondItem="na5-fx-2al" secondAttribute="centerY" id="qdj-Li-Ber"/>
+                                    <constraint firstItem="dQy-pN-MP0" firstAttribute="leading" secondItem="na5-fx-2al" secondAttribute="trailing" constant="9" id="rUm-D4-RYh"/>
+                                    <constraint firstItem="dQy-pN-MP0" firstAttribute="centerX" secondItem="Kja-eZ-KQb" secondAttribute="centerX" id="uQB-dR-Pcr"/>
+                                    <constraint firstItem="h0l-uZ-RDH" firstAttribute="leading" secondItem="dQy-pN-MP0" secondAttribute="trailing" constant="7" id="wqf-ua-9FL"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kas-ba-Yvj">
-                                <rect key="frame" x="37.5" y="387" width="300" height="45"/>
+                                <rect key="frame" x="37.5" y="444" width="300" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="KWO-FI-j7j"/>
                                 </constraints>
@@ -1659,18 +1782,22 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
                                         <color key="value" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Transaction detail"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="btnDetailTapped:" destination="sIl-JK-ZNw" eventType="touchUpInside" id="wpA-eE-E79"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVU-ca-OfZ">
-                                <rect key="frame" x="37.5" y="447" width="300" height="45"/>
+                                <rect key="frame" x="37.5" y="504" width="300" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="5" maxY="0.0"/>
                                 <state key="normal" title="Save Wallet Address" image="ic_user_add">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Save Wallet Address"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="btnSaveTapped:" destination="sIl-JK-ZNw" eventType="touchUpInside" id="uZo-ld-MQj"/>
                                 </connections>
@@ -1678,37 +1805,34 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="kas-ba-Yvj" firstAttribute="top" secondItem="fvd-aJ-yOC" secondAttribute="bottom" constant="70" id="1Nk-TT-NSU"/>
+                            <constraint firstItem="kas-ba-Yvj" firstAttribute="top" secondItem="Kja-eZ-KQb" secondAttribute="bottom" constant="55" id="1Nk-TT-NSU"/>
                             <constraint firstItem="PcD-jC-ehP" firstAttribute="centerX" secondItem="40n-O0-ho1" secondAttribute="centerX" id="8pS-Q7-hqu"/>
                             <constraint firstItem="Kja-eZ-KQb" firstAttribute="leading" secondItem="jbD-L8-hq5" secondAttribute="leading" constant="20" id="BNf-cH-QXD"/>
-                            <constraint firstItem="lgW-0b-QBE" firstAttribute="top" secondItem="PcD-jC-ehP" secondAttribute="bottom" constant="22" id="CLe-Bp-6P6"/>
                             <constraint firstItem="kas-ba-Yvj" firstAttribute="width" secondItem="wVU-ca-OfZ" secondAttribute="width" id="DDv-8Q-5RD"/>
                             <constraint firstItem="wVU-ca-OfZ" firstAttribute="width" secondItem="40n-O0-ho1" secondAttribute="width" multiplier="0.8" id="N40-sG-nge"/>
                             <constraint firstItem="wVU-ca-OfZ" firstAttribute="top" secondItem="kas-ba-Yvj" secondAttribute="bottom" constant="15" id="aMb-Z3-atK"/>
                             <constraint firstItem="fvd-aJ-yOC" firstAttribute="centerX" secondItem="40n-O0-ho1" secondAttribute="centerX" id="apR-7q-z7H"/>
                             <constraint firstItem="kas-ba-Yvj" firstAttribute="centerX" secondItem="40n-O0-ho1" secondAttribute="centerX" id="baI-Fq-0N0"/>
-                            <constraint firstItem="fvd-aJ-yOC" firstAttribute="top" secondItem="PcD-jC-ehP" secondAttribute="bottom" constant="85" id="fWu-ev-BpB"/>
+                            <constraint firstItem="fvd-aJ-yOC" firstAttribute="top" secondItem="PcD-jC-ehP" secondAttribute="bottom" constant="52" id="fWu-ev-BpB"/>
                             <constraint firstItem="wVU-ca-OfZ" firstAttribute="centerX" secondItem="40n-O0-ho1" secondAttribute="centerX" id="hT8-4D-bSR"/>
                             <constraint firstItem="t5u-76-0Jb" firstAttribute="top" secondItem="jbD-L8-hq5" secondAttribute="top" constant="42" id="oaP-WL-a6a"/>
-                            <constraint firstItem="Kja-eZ-KQb" firstAttribute="top" secondItem="PcD-jC-ehP" secondAttribute="bottom" constant="22" id="qec-vb-rsU"/>
+                            <constraint firstItem="Kja-eZ-KQb" firstAttribute="top" secondItem="PcD-jC-ehP" secondAttribute="bottom" constant="52" id="qec-vb-rsU"/>
                             <constraint firstItem="t5u-76-0Jb" firstAttribute="centerX" secondItem="40n-O0-ho1" secondAttribute="centerX" id="sMH-Kr-JX6"/>
-                            <constraint firstItem="lgW-0b-QBE" firstAttribute="leading" secondItem="jbD-L8-hq5" secondAttribute="leading" constant="56" id="uOy-AX-xQJ"/>
                             <constraint firstItem="PcD-jC-ehP" firstAttribute="top" secondItem="t5u-76-0Jb" secondAttribute="bottom" constant="16" id="ufs-5S-sH8"/>
                             <constraint firstItem="wVU-ca-OfZ" firstAttribute="height" secondItem="kas-ba-Yvj" secondAttribute="height" id="w1F-bW-3Z2"/>
                             <constraint firstItem="jbD-L8-hq5" firstAttribute="trailing" secondItem="Kja-eZ-KQb" secondAttribute="trailing" constant="20" id="x4f-bb-nl9"/>
-                            <constraint firstItem="jbD-L8-hq5" firstAttribute="trailing" secondItem="lgW-0b-QBE" secondAttribute="trailing" constant="56" id="xZE-Pk-EAF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jbD-L8-hq5"/>
                     </view>
                     <connections>
                         <outlet property="btnDetail" destination="kas-ba-Yvj" id="H1q-B8-bwa"/>
                         <outlet property="btnSave" destination="wVU-ca-OfZ" id="6nZ-Gb-dlf"/>
+                        <outlet property="labelActionComplete" destination="PcD-jC-ehP" id="MP4-oD-PwJ"/>
                         <outlet property="lbAddress" destination="BYu-pz-fjF" id="emB-5V-5Sj"/>
+                        <outlet property="lbAmount" destination="dQy-pN-MP0" id="zTR-mK-iKs"/>
+                        <outlet property="lbAmountEx" destination="h0l-uZ-RDH" id="7oP-sw-Twk"/>
                         <outlet property="txCompletionView" destination="Kja-eZ-KQb" id="fvR-S7-y3s"/>
                         <outlet property="txCpAddressLabel" destination="BYu-pz-fjF" id="2PJ-CT-1hx"/>
-                        <outlet property="txCpInfoLabel" destination="S8K-Sq-Bw6" id="H0o-hs-Ued"/>
-                        <outlet property="txHashLabel" destination="8q2-gv-fvX" id="4yu-L4-9u6"/>
-                        <outlet property="txHashView" destination="lgW-0b-QBE" id="irW-mq-dYT"/>
                         <outlet property="txStatusImg" destination="X38-sh-EUE" id="v3i-Hk-y8i"/>
                         <outlet property="txStatusLabel" destination="8FM-eL-oR4" id="5fB-FO-ArV"/>
                         <outlet property="txStatusReplaceImg" destination="hox-bn-bn6" id="3H5-ki-TFM"/>
@@ -1816,6 +1940,9 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Wallet Address"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCi-Mc-sIl">
                                 <rect key="frame" x="20" y="260" width="343.5" height="17"/>
@@ -1850,6 +1977,9 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Amount"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mozo_offchain" translatesAutoresizingMaskIntoConstraints="NO" id="Cqv-Dm-bSL">
                                 <rect key="frame" x="20" y="341" width="30" height="30"/>
@@ -1883,6 +2013,9 @@
                                         <state key="normal" title="Save Wallet Address" image="ic_user_add">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Save Wallet Address"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="touchedBtnSave:" destination="enD-qA-CRJ" eventType="touchUpInside" id="pTY-v3-YBA"/>
                                         </connections>
@@ -1990,12 +2123,18 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Name"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter contact name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ct-aR-6Vp">
                                 <rect key="frame" x="15" y="70" width="345" height="18"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Enter contact name"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="endEditing:" destination="CQv-YH-Bn3" eventType="editingDidEnd" id="e0u-kc-pZC"/>
                                 </connections>
@@ -2029,6 +2168,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Wallet Address"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUm-tI-vd2">
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
@@ -2040,6 +2182,9 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Save"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="save:" destination="CQv-YH-Bn3" eventType="touchUpInside" id="skT-Hu-yoF"/>
                                 </connections>
@@ -2059,6 +2204,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.090196078430000007" green="0.72549019609999998" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Address Saved"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2154,6 +2302,9 @@
                                 <state key="normal" title="Delete this address">
                                     <color key="titleColor" red="0.94117647059999998" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Delete this address"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="touchedBtnDelete:" destination="Q9h-Wt-LE4" eventType="touchUpInside" id="5aZ-K2-kWz"/>
                                 </connections>
@@ -2189,6 +2340,9 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.078431372549019607" green="0.10196078431372549" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Wallet List:"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaI-ov-UTB">
                                 <rect key="frame" x="20" y="327" width="335" height="58"/>
@@ -2335,6 +2489,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Results not found"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2403,6 +2560,9 @@
                                             <state key="normal" title="All">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="All"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="touchedBtnFloatingAll:" destination="jeU-qY-uT5" eventType="touchUpInside" id="8qp-8d-Ebl"/>
                                             </connections>
@@ -2417,6 +2577,9 @@
                                             <state key="normal" title="Received">
                                                 <color key="titleColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Received"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="touchedBtnFloatingReceived:" destination="jeU-qY-uT5" eventType="touchUpInside" id="TUO-bg-L7I"/>
                                             </connections>
@@ -2430,6 +2593,9 @@
                                             <state key="normal" title="Sent">
                                                 <color key="titleColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Sent"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="toucheBtnFloatingSent:" destination="jeU-qY-uT5" eventType="touchUpInside" id="IA4-8f-yYO"/>
                                             </connections>

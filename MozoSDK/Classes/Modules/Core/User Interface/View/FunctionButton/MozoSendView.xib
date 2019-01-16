@@ -28,6 +28,9 @@
                     <state key="normal" title="Send MozoX" image="ic_send">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Send MozoX"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="touchedUpInside:" destination="-1" eventType="touchUpInside" id="3eD-y1-0lO"/>
                     </connections>

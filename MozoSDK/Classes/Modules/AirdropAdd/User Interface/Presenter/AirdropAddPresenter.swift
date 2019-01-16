@@ -34,7 +34,8 @@ extension AirdropAddPresenter: AirdropAddInteractorOutput {
     }
     
     func didFailedToLoadTokenInfo() {
-        delegate?.addMozoToAirdropEventFailureWithErrorString(error: "Unable to load tokenInfo.")
+        NSLog("AirdropAddPresenter - Unable to load token info")
+        delegate?.addMozoToAirdropEventFailureWithErrorString(error: "Sorry, something went wrong. Please try again or restart the app".localized)
     }
     
     func didReceiveTxStatus(_ statusType: TransactionStatusType) {

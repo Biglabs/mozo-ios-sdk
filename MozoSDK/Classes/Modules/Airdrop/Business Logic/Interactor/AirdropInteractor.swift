@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Localize_Swift
 class AirdropInteractor: NSObject {
     var output: AirdropInteractorOutput?
     var signManager : TransactionSignManager?
@@ -44,10 +45,10 @@ class AirdropInteractor: NSObject {
         let startDate = Date(timeIntervalSince1970: TimeInterval(event.periodFromDate ?? 0))
         let endDate = Date(timeIntervalSince1970: TimeInterval(event.periodToDate ?? 0))
         if startDate <= Date().addingTimeInterval(60 * 10) {
-            return "Time of Start date must larger than current time 10 minutes at least."
+            return "Time of Start date must larger than current time %d minutes at least.".localizedFormat(10)
         }
         if startDate >= endDate {
-            return "Invalid Airdrop start date - end date."
+            return "Invalid Airdrop start date - end date.".localized
         }
         return nil
     }
@@ -55,7 +56,7 @@ class AirdropInteractor: NSObject {
     func processAirdropEvent(_ event: AirdropEventDTO, tokenInfo: TokenInfoDTO) {
         if let balance = tokenInfo.balance, let decimals = tokenInfo.decimals {
             if event.totalNumMozoOffchain?.doubleValue ?? 0 > balance.convertOutputValue(decimal: decimals) {
-                output?.failedToSignAirdropEventWithErrorString("Balance is not enough.")
+                output?.failedToSignAirdropEventWithErrorString("Balance is not enough.".localized)
                 return
             }
             let perCustomer = (event.mozoAirdropPerCustomerVisit?.doubleValue ?? 0).convertTokenValue(decimal: decimals)

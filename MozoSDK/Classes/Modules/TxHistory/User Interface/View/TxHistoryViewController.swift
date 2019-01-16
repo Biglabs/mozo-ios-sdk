@@ -75,7 +75,7 @@ class TxHistoryViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Transaction History"
+        self.title = "Transaction History".localized
         // Fix issue: Back button show up after going back from transaction detail controller
         self.navigationItem.hidesBackButton = true
     }

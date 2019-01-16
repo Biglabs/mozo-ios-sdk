@@ -47,7 +47,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Fix issue: Title is not correct after showing alert
-        self.title = isPaymentRequest ? "Request MozoX" : "Send MozoX"
+        self.title = (isPaymentRequest ? "Request MozoX" : "Send MozoX").localized
     }
     
     func setupCircleView() {
@@ -60,25 +60,26 @@ class ConfirmTransferViewController: MozoBasicViewController {
         let amount = transaction?.outputs?.first?.value?.convertOutputValue(decimal: tokenInfo?.decimals ?? 0) ?? 0.0
         lbAmountValue.text = amount.roundAndAddCommas()
         
-        lbReceiver.text = "Receiver Address"
+        var labelText = "Receiver Address"
         var displayType = TransactionDisplayContactEnum.NoDetail
         if let displayContactItem = displayContactItem {
             lbAddress.isHidden = true
             if displayContactItem.isStoreBook {
-                lbReceiver.text = "Receiver"
+                labelText = "Receiver"
                 storeBookView.isHidden = false
                 lbStoreName.text = displayContactItem.name
                 lbStorePhysicalAddress.text = displayContactItem.physicalAddress
                 lbStoreOffchainAddress.text = displayContactItem.address
                 displayType = .StoreBookDetail
             } else {
-                lbReceiver.text = "To"
+                labelText = "To"
                 addressBookView.isHidden = false
                 lbName.text = displayContactItem.name
                 lbNameAddress.text = lbAddress.text
                 displayType = .AddressBookDetail
             }
         }
+        lbReceiver.text = labelText.localized
         
         switch displayType {
         case .AddressBookDetail:

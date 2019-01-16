@@ -19,14 +19,14 @@ class AirdropAddInteractor: NSObject {
         let totalInDouble = event.totalNumMozoOffchain?.doubleValue ?? 0
         
         if totalInDouble > (tokenInfo.balance ?? 0).convertOutputValue(decimal: tokenInfo.decimals ?? 0) {
-            output?.failedToAddMozoToAirdropEvent(error: "Balance is not enough.")
+            output?.failedToAddMozoToAirdropEvent(error: "Balance is not enough.".localized)
             return
         }
         let total = totalInDouble.convertTokenValue(decimal: tokenInfo.decimals ?? 0)
         if let tx = transactionToTransfer(tokenInfo: tokenInfo, toAdress: event.smartAddress ?? "", amount: total) {
             sendTransaction(tx, tokenInfo: tokenInfo)
         } else {
-            output?.failedToAddMozoToAirdropEvent(error: "Unable to create transaction.")
+            output?.failedToAddMozoToAirdropEvent(error: "Unable to create transaction.".localized)
         }
     }
     

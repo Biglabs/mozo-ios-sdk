@@ -44,6 +44,9 @@ public class TxHistoryDisplayCollection {
     }
     
     func formattedDateTime(_ dateTime: Int64) -> String {
+        if dateTime == 0 {
+            return "Just now".localized
+        }
         let format = "HH:mm MMM dd, yyyy"
         return DisplayUtils.convertInt64ToStringWithFormat(dateTime, format: format)
     }
@@ -67,8 +70,8 @@ public class TxHistoryDisplayCollection {
             let finalStr = NSAttributedString(string: date)
             lStrLabelText = NSMutableAttributedString(attributedString: finalStr)
         } else {
-            let prefrix = action == TransactionType.Received.value ? "From" : "To"
-            let fromNameWithDate = "\(prefrix) \(displayName) - \(date)"
+            let prefix = (action == TransactionType.Received.value ? "From" : "To").localized
+            let fromNameWithDate = "\(prefix) \(displayName) - \(date)"
             let finalStr = NSAttributedString(string: fromNameWithDate)
             lStrLabelText = NSMutableAttributedString(attributedString: finalStr)
             let descriptor = UIFont.boldSystemFont(ofSize: 11).fontDescriptor.withSymbolicTraits([.traitBold, .traitItalic])

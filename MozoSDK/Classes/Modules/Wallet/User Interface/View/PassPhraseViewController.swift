@@ -30,6 +30,11 @@ class PassPhraseViewController: MozoBasicViewController {
         eventHandler?.generateMnemonics()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = "Backup Wallet".localized
+    }
+    
     func addBorderForLabel() {
         checkView.roundCorners(borderColor: ThemeManager.shared.disable, borderWidth: 1.1)
     }

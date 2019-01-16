@@ -28,6 +28,9 @@
                     <state key="normal" title="Request MozoX" image="ic_receive">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Request MozoX"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="touchedUpInside:" destination="-1" eventType="touchUpInside" id="rXU-TB-FHI"/>
                     </connections>
