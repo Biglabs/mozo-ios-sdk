@@ -1,0 +1,33 @@
+
+/* Class = "UIButton"; normalTitle = "Decrypt"; ObjectID = "6a8-Rv-a0F"; */
+"6a8-Rv-a0F.normalTitle" = "Decrypt";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."; ObjectID = "9OI-Hm-9Zi"; */
+"9OI-Hm-9Zi.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+
+/* Class = "UILabel"; text = "Message:"; ObjectID = "KaM-NN-sun"; */
+"KaM-NN-sun.text" = "Message:";
+
+/* Class = "UIViewController"; title = "Test Cryptor"; ObjectID = "Mld-GH-vcF"; */
+"Mld-GH-vcF.title" = "Test Cryptor";
+
+/* Class = "UIButton"; normalTitle = "Encrypt"; ObjectID = "MmH-TH-Ha9"; */
+"MmH-TH-Ha9.normalTitle" = "Encrypt";
+
+/* Class = "UIBarButtonItem"; title = "Cryptor"; ObjectID = "P54-4d-WQ6"; */
+"P54-4d-WQ6.title" = "Cryptor";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."; ObjectID = "Rxq-XO-kzf"; */
+"Rxq-XO-kzf.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+
+/* Class = "UILabel"; text = "Password:"; ObjectID = "bdI-DU-NgY"; */
+"bdI-DU-NgY.text" = "Password:";
+
+/* Class = "UIButton"; normalTitle = "User Wallet"; ObjectID = "h0t-ex-abB"; */
+"h0t-ex-abB.normalTitle" = "User Wallet";
+
+/* Class = "UINavigationItem"; title = "Back"; ObjectID = "l4O-cT-E55"; */
+"l4O-cT-E55.title" = "Back";
+
+/* Class = "UILabel"; text = "Result:"; ObjectID = "sSC-Bc-BBf"; */
+"sSC-Bc-BBf.text" = "Result:";

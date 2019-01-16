@@ -99,6 +99,10 @@ extension RDNInteractor {
                         let abNoti = AddressBookNotification(json: jobj),
                         let list = abNoti.data {
                     output?.addressBookDidChange(addressBookList: list)
+                } else if rdNoti.event == NotificationEventType.StoreBookAdded.rawValue,
+                    let sbNoti = StoreBookNotification(json: jobj),
+                    let data = sbNoti.data {
+                    output?.storeBookDidChange(storeBook: data)
                 } else if rdNoti.event == NotificationEventType.Airdropped.rawValue,
                     let airdropNoti = AirdropNotification(json: jobj) {
                     output?.didAirdropped(airdropNoti: airdropNoti)

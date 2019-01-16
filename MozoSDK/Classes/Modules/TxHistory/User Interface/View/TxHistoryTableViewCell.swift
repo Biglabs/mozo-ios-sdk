@@ -27,7 +27,7 @@ public class TxHistoryTableViewCell: UITableViewCell {
     }
     
     func bindData(){
-        lbAction.text = txHistory?.action
+        lbAction.text = txHistory?.action.localized
         lbDateTime?.attributedText = txHistory?.fromNameWithDate
         var imageName = "ic_received_circle"
         let amount = txHistory?.amount ?? 0

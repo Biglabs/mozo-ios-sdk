@@ -20,6 +20,11 @@ class PaymentSendSuccessViewController: MozoBasicViewController {
         bindData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = "Request MozoX".localized
+    }
+    
     func bindData() {
         if let displayItem = self.displayItem {
             lbAmount.text = displayItem.amount.roundAndAddCommas()

@@ -59,7 +59,7 @@ public class MozoNavigationController : UINavigationController {
     }
     
     func addCancelBtn(item: UINavigationItem) {
-        let cancelBtn = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.tapCloseBtn))
+        let cancelBtn = UIBarButtonItem(title: "Cancel".localized, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.tapCloseBtn))
         item.rightBarButtonItem = cancelBtn
     }
     

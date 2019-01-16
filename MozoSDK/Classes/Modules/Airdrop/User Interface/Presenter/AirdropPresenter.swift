@@ -34,7 +34,8 @@ extension AirdropPresenter: PinModuleDelegate {
 }
 extension AirdropPresenter: AirdropInteractorOutput {
     func didFailedToLoadTokenInfo() {
-        airdropEventDelegate?.createAirdropEventFailureWithErrorString(error: "Unable to load tokenInfo.", isDisplayingTryAgain: true)
+        NSLog("AirdropPresenter - Unable load token info")
+        airdropEventDelegate?.createAirdropEventFailureWithErrorString(error: "Sorry, something went wrong. Please try again or restart the app".localized, isDisplayingTryAgain: true)
     }
     
     func didReceiveTxStatus(_ statusType: TransactionStatusType) {
@@ -42,7 +43,7 @@ extension AirdropPresenter: AirdropInteractorOutput {
             airdropEventDelegate?.createAirdropEventSuccess()
             airdropEventDelegate = nil
         } else {
-            airdropEventDelegate?.createAirdropEventFailureWithErrorString(error: "Airdrop event is created with failure status.", isDisplayingTryAgain: true)
+            airdropEventDelegate?.createAirdropEventFailureWithErrorString(error: "Airdrop event transaction is created with failure status.".localized, isDisplayingTryAgain: true)
             DisplayUtils.displayTryAgainPopup(delegate: self)
         }
     }

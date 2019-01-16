@@ -1,9 +1,9 @@
 /*
- MozoLocalizable.strings
+ Localizable.strings
  Mozo SDK
  
  Created by Hoang Nguyen on 9/15/18.
  Copyright © 2018 Hoang Nguyen. All rights reserved.
  */
-"Close" = "Close";
 
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ" = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎABCDEFGHIJKLMNOPQRSTUVWXYZ";

@@ -40,7 +40,7 @@ class PaymentQRViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Payment Request"
+        title = "Request MozoX".localized
     }
     
     func bindData() {

@@ -35,13 +35,13 @@ class PINViewController : MozoBasicViewController {
         pinTextField.delegate = self as PinTextFieldDelegate
         pinTextField.keyboardType = .numberPad
         if self.passPhrase == nil {
+            title = "Enter Security PIN".localized
             if moduleRequested == Module.Transaction {
-                enterPINLabel.text = "ENTER YOUR SECURITY PIN"
-                descriptionLabel.text = "Security PIN must be 6 di-git numbers"
-                title = "Create Security PIN"
+                enterPINLabel.text = "Enter your Security PIN".localized
+                descriptionLabel.text = "Security PIN must be 6 digits".localized
             } else {
                 // Enter new pin and confirm new pin
-                enterPINLabel.text = "ENTER YOUR SECURITY PIN TO RESTORE WALLET"
+                enterPINLabel.text = "Enter your Security PIN to restore wallet".localized
             }
         }
     }
@@ -101,8 +101,8 @@ extension PINViewController : PINViewInterface {
     
     func showConfirmPIN() {
         pinTextField.text = ""
-        enterPINLabel.text = "CONFIRM SECURITY PIN"
-        descriptionLabel.text = "Re-enter your PIN"
+        enterPINLabel.text = "Confirm Security PIN".localized
+        descriptionLabel.text = "Re-enter your PIN".localized
         confirmImg.isHidden = false
         isConfirm = true
     }
@@ -184,9 +184,9 @@ private extension PINViewController {
         confirmImg.isHighlighted = true
         pinTextField.isUserInteractionEnabled = false
         if !isConfirm {
-            statusLabel.text = "You entered a correct PIN"
+            statusLabel.text = "You entered a correct PIN".localized
         } else {
-            statusLabel.text = "Create Security PIN successfully"
+            statusLabel.text = "Create Security PIN successfully".localized
         }
         statusLabel.textColor = ThemeManager.shared.success
     }
@@ -195,7 +195,7 @@ private extension PINViewController {
         print("😞 failure!")
         statusImg.isHidden = true
         statusLabel.isHidden = false
-        statusLabel.text = "You entered an incorrect PIN"
+        statusLabel.text = "You entered an incorrect PIN".localized
         statusLabel.textColor = ThemeManager.shared.error
     }
 }

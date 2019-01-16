@@ -43,7 +43,7 @@ class PaymentViewController: MozoBasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: listContainerView.frame.size.height)
-        prepareNoContentView(frame, message: "Payment request list is empty")
+        prepareNoContentView(frame, message: "Requested list is empty")
         eventHandler?.loadTokenInfo()
         setupTableView()
         setupTarget()
@@ -53,7 +53,7 @@ class PaymentViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Request MozoX"
+        title = "Request MozoX".localized
     }
     
     func setupTarget() {
@@ -158,7 +158,7 @@ extension PaymentViewController: UITextFieldDelegate {
             displayMozoError("Error: Please input value in decimal format.")
             return false
         } else if let value = Decimal(string: finalText), value.significantFractionalDecimalDigits > tokenInfo?.decimals ?? 0 {
-            displayMozoError("Error: The length of decimal places must be equal or smaller than \(tokenInfo?.decimals ?? 0).")
+            displayMozoError("Error".localized + ": " + "The length of decimal places must be equal or smaller than %d".localizedFormat(tokenInfo?.decimals ?? 0))
             return false
         }
         return true

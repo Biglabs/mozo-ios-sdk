@@ -57,7 +57,7 @@ class TransferViewController: MozoBasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Fix issue: Title is not correct after navigation back from child controller
-        self.title = "Send MozoX"
+        self.title = "Send MozoX".localized
     }
     
     deinit {
@@ -79,7 +79,7 @@ class TransferViewController: MozoBasicViewController {
         doneToolbar.barStyle = UIBarStyle.default
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.doneButtonAction))
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done".localized, style: UIBarButtonItemStyle.done, target: self, action: #selector(self.doneButtonAction))
         
         doneToolbar.items = [flexSpace, done]
         doneToolbar.sizeToFit()
@@ -288,7 +288,7 @@ extension TransferViewController: UITextFieldDelegate {
             return false
         } else if let value = Decimal(string: finalText), value.significantFractionalDecimalDigits > tokenInfo?.decimals ?? 0 {
             print("Digits: \(value)")
-            showValidate("Error: The length of decimal places must be equal or smaller than \(tokenInfo?.decimals ?? 0).", isAddress: false)
+            showValidate("Error".localized + ": " + "The length of decimal places must be equal or smaller than %d".localizedFormat(tokenInfo?.decimals ?? 0), isAddress: false)
             return false
         }
         hideValidate(isAddress: false)

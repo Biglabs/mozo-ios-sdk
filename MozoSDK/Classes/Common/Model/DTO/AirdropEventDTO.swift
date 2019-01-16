@@ -29,6 +29,8 @@ public class AirdropEventDTO {
     public var symbol: String?
     public var decimals: Int?
     
+    public var eventStatus: String?
+    
     public init?(name: String, address: String, receivedShopper: Int64,
                   mozoAirdropPerCustomerVisit: NSNumber, airdropFreq: Int,
                   hourOfDayFrom: Int, hourOfDayTo: Int,
@@ -73,6 +75,7 @@ public class AirdropEventDTO {
         self.decimals = json["decimals"].int
         self.beaconInfoId = json["beaconInfoId"].int64
         self.smartAddress = json["smartAddress"].string
+        self.eventStatus = json["eventStatus"].string
     }
 
     public func toJSON() -> Dictionary<String, Any> {
@@ -127,6 +130,9 @@ public class AirdropEventDTO {
         }
         if let smartAddress = self.smartAddress {
             json["smartAddress"] = smartAddress
+        }
+        if let eventStatus = self.eventStatus {
+            json["eventStatus"] = eventStatus
         }
         return json
     }

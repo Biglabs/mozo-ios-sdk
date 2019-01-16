@@ -12,11 +12,10 @@ class TxCompletionViewController: MozoBasicViewController {
     var eventHandler : TxCompletionModuleInterface?
     var detailItem: TxDetailDisplayItem!
     
-    @IBOutlet weak var txHashView: UIView!
-    @IBOutlet weak var txHashLabel: UILabel!
+    @IBOutlet weak var labelActionComplete: UILabel!
     
     @IBOutlet weak var txCompletionView: UIView!
-    @IBOutlet weak var txCpInfoLabel: UILabel!
+    
     @IBOutlet weak var txCpAddressLabel: UILabel!
     
     @IBOutlet weak var txStatusView: UIView!
@@ -25,6 +24,7 @@ class TxCompletionViewController: MozoBasicViewController {
     @IBOutlet weak var txStatusLabel: UILabel!
     
     @IBOutlet weak var lbAmount: UILabel!
+    @IBOutlet weak var lbAmountEx: UILabel!
     @IBOutlet weak var lbAddress: UILabel!
     @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var btnDetail: UIButton!
@@ -41,7 +41,7 @@ class TxCompletionViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = ""
+        self.title = "Send MozoX".localized
         checkAddressBook()
     }
     
@@ -61,6 +61,9 @@ class TxCompletionViewController: MozoBasicViewController {
             // Verify address is existing in address book list or not
             let contain = AddressBookDTO.arrayContainsItem(detailItem.addressTo, array: SafetyDataManager.shared.addressBookList) ||
                 StoreBookDTO.arrayContainsItem(detailItem.addressTo, array: SafetyDataManager.shared.storeBookList)
+            if contain {
+                lbAddress.text = DisplayUtils.buildNameFromAddress(address: detailItem.addressTo)
+            }
             btnSave.isHidden = contain
             btnDetail.isHidden = false
         } else {
@@ -70,7 +73,15 @@ class TxCompletionViewController: MozoBasicViewController {
     }
     
     func updateView() {
-        txHashLabel.text = detailItem.hash
+        lbAmount.text = detailItem.amount.roundAndAddCommas()
+        
+        if let rateInfo = SessionStoreManager.exchangeRateInfo {
+            if let type = CurrencyType(rawValue: rateInfo.currency ?? "") {
+                let exValue = (detailItem.amount * (rateInfo.rate ?? 0)).rounded(toPlaces: type.decimalRound)
+                let exValueStr = "(\(type.unit)\(exValue))"
+                lbAmountEx.text = exValueStr
+            }
+        }
     }
     
     func startSpinnerAnimation() {
@@ -120,11 +131,14 @@ extension TxCompletionViewController : TxCompletionViewInterface {
         switch status {
         case .FAILED:
             txStatusReplaceImg.image = UIImage(named: "ic_failed", in: BundleManager.mozoBundle(), compatibleWith: nil)
+            txStatusLabel.text = status.rawValue.lowercased().capitalizingFirstLetter().localized
         case .SUCCESS:
-            txStatusReplaceImg.image = UIImage(named: "ic_check_success", in: BundleManager.mozoBundle(), compatibleWith: nil)
+            txStatusView.isHidden = true
+            txCompletionView.isHidden = false
+            labelActionComplete.text = "Send Complete".localized
+//            txStatusReplaceImg.image = UIImage(named: "ic_check_success", in: BundleManager.mozoBundle(), compatibleWith: nil)
         default:
             break;
         }
-        txStatusLabel.text = status.rawValue.lowercased().capitalizingFirstLetter()
     }
 }

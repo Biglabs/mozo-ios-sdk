@@ -17,7 +17,7 @@ class PaymentQRInteractor: NSObject {
 extension PaymentQRInteractor: PaymentQRInteractorInput {
     func validateValueFromScanner(_ scanValue: String) {
         if !scanValue.isEthAddress() {
-            output?.didReceiveError("Scanning value is not a valid address. \n\(scanValue)")
+            output?.didReceiveError("Scanning value is not a valid address.")
         } else {
             let list = SafetyDataManager.shared.addressBookList
             if let addressBook = AddressBookDTO.addressBookFromAddress(scanValue, array: list) {

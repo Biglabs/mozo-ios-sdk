@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "MozoSDK"
-  s.version      = "0.0.7"
+  s.version      = "0.0.8"
   s.summary = 'Mozo protocol toolkit for Swift'
   s.description = <<-DESC
                         The Mozo SDK is a Swift implementation of the Mozo protocol. This SDK was originally made by Hoang Nguyen. It allows maintaining authentication/authorization with Mozo Services, receiving Mozo lucky coins via beacons and buying/selling/transferring Mozo. It is also supporting UI components for authentication and buying/selling/transferring Mozo.
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.resource_bundles = {
       'MozoSDK' => ['MozoSDK/Classes/**/*.{storyboard,xib}',
                     'MozoSDK/Assets/*.xcassets',
-                    'MozoSDK/Localization/*.lproj']
+                    'MozoSDK/Localization/*.lproj/*.strings']
   }
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
   
@@ -37,4 +37,5 @@ Pod::Spec.new do |s|
   s.dependency 'AppAuth', '~> 0.92.0'
   s.dependency 'Starscream', '3.0.2'
   s.dependency 'ReachabilitySwift', '~> 4.3.0'
+  s.dependency 'Localize-Swift', '~> 2.0'
 end

@@ -30,12 +30,14 @@ public class NotiDisplayItemData {
                         prefix = "To"
                         displayAddress = blNoti.to
                     }
-                    actionText = action
+                    action = action.localized
+                    prefix = prefix.localized
+                    actionText = action.localized
                     let amount = blNoti.amount?.convertOutputValue(decimal: blNoti.decimal ?? 0)
                     amountText = "\((amount ?? 0.0).roundAndAddCommas()) MozoX"
                     title = "\(action) \(amountText)"
                     if let airdropNoti = rawNoti as? AirdropNotification {
-                        subtitle = "\(prefix) \(airdropNoti.storeName ?? "NO NAME")"
+                        subtitle = "\(prefix) \(airdropNoti.storeName ?? "")"
                         image = "ic_notif_airdropped"
                     } else {
                         let displayName = DisplayUtils.buildNameFromAddress(address: displayAddress ?? "")
@@ -46,7 +48,7 @@ public class NotiDisplayItemData {
                 }
             case NotificationEventType.CustomerCame.rawValue:
                 if let ccNoti = rawNoti as? CustomerComeNotification {
-                    title = (ccNoti.isComeIn ?? false) ? "Customer come in" : "Customer has just left"
+                    title = ((ccNoti.isComeIn ?? false) ? "Customer has entered" : "Customer has left").localized
                     actionText = title
                     image = "ic_notif_user_come"
                     body = ccNoti.phoneNo?.censoredMiddle() ?? ""

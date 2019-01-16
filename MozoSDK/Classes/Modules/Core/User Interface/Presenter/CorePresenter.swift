@@ -340,9 +340,13 @@ extension CorePresenter : RDNInteractorOutput {
         coreInteractor?.notifyAddressBookChangesForAllObservers()
     }
     
-    func storeBookDidChange(storeBookList: [StoreBookDTO]) {
-        SafetyDataManager.shared.storeBookList = storeBookList
-        coreInteractor?.notifyStoreBookChangesForAllObservers()
+    func storeBookDidChange(storeBook: StoreBookDTO) {
+        if let address = storeBook.offchainAddress {
+            if StoreBookDTO.arrayContainsItem(address, array: SafetyDataManager.shared.storeBookList) {
+                SafetyDataManager.shared.storeBookList.append(storeBook)
+                coreInteractor?.notifyStoreBookChangesForAllObservers()
+            }
+        }
     }
     
     func didAirdropped(airdropNoti: BalanceNotification) {

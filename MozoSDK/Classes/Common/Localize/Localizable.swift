@@ -35,3 +35,11 @@ extension UIButton: XIBLocalizable {
         }
     }
 }
+extension UITextField: XIBLocalizable {
+    @IBInspectable public var xibLocKey: String? {
+        get { return nil }
+        set(key) {
+            placeholder = key?.localized
+        }
+    }
+}

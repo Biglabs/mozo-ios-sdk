@@ -24,7 +24,7 @@ extension PaymentPresenter: PaymentModuleInterface {
     }
     
     func createPaymentRequest(_ amount: Double, tokenInfo: TokenInfoDTO) {
-        let displayItem = PaymentRequestDisplayItem(id : 0, date: "", amount: amount, displayNameAddress: "", requestingAddress: tokenInfo.address ?? "")
+        let displayItem = PaymentRequestDisplayItem(id : 0, date: "", amount: amount.rounded(toPlaces: tokenInfo.decimals ?? 0), displayNameAddress: "", requestingAddress: tokenInfo.address ?? "")
         wireframe?.presentPaymentQRInterface(displayItem: displayItem)
     }
     

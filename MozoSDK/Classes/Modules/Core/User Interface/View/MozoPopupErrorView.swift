@@ -37,10 +37,10 @@ class MozoPopupErrorView : MozoView {
     
     func setImageAndLabel() {
         if error.isApiError {
-            labelError.text = error.apiError?.description ?? "System Error"
+            labelError.text = (error.apiError?.description ?? "System Error").localized
         } else {
             imgError.image = UIImage(named: "ic_no_connection", in: BundleManager.mozoBundle(), compatibleWith: nil)
-            labelError.text = "There is no internet connection!"
+            labelError.text = "There is no internet connection!".localized
         }
     }
     

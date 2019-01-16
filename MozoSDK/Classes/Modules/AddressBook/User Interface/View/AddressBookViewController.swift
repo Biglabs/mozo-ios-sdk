@@ -39,9 +39,9 @@ class AddressBookViewController: MozoBasicViewController {
         super.viewWillAppear(animated)
         // TODO: Change title according to requested module.
         if isDisplayForSelect {
-            self.title = "Select Address"
+            self.title = "Select Address".localized
         } else {
-            self.title = "Address Book"
+            self.title = "Address Book".localized
         }
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = false
@@ -58,7 +58,7 @@ class AddressBookViewController: MozoBasicViewController {
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.placeholder = "Search".localized
         
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
@@ -76,6 +76,9 @@ class AddressBookViewController: MozoBasicViewController {
         if isDisplayForSelect {
             enableBackBarButton()
         }
+        
+        segmentControl.setTitle("User Address".localized, forSegmentAt: 0)
+        segmentControl.setTitle("Store Address".localized, forSegmentAt: 1)
     }
     
     func setupTarget() {
@@ -211,6 +214,10 @@ extension AddressBookViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         view.tintColor = .white
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return isDisplayingAddressBook ? 56 : 76
     }
 }
 

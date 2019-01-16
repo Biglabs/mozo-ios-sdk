@@ -22,10 +22,10 @@ extension CorePresenter: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("Notification center: handling tap and user actions")
         switch response.actionIdentifier {
-        case "action1":
-            print("Action First Tapped")
-        case "action2":
-            print("Action Second Tapped")
+        case "actionView":
+            print("Action View Tapped")
+        case "actionClear":
+            print("Action Clear Tapped")
         default:
             break
         }
@@ -48,8 +48,8 @@ extension CorePresenter {
         }
         
         //actions defination
-        let action1 = UNNotificationAction(identifier: "action1", title: "Action First", options: [.foreground])
-        let action2 = UNNotificationAction(identifier: "action2", title: "Action Second", options: [.foreground])
+        let action1 = UNNotificationAction(identifier: "actionView", title: "View".localized, options: [.foreground])
+        let action2 = UNNotificationAction(identifier: "actionClear", title: "Clear".localized, options: [.foreground])
         
         let category = UNNotificationCategory(identifier: "mozoActionCategory", actions: [action1,action2], intentIdentifiers: [], options: [])
         
