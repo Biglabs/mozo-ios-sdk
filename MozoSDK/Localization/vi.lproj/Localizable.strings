@@ -26,10 +26,10 @@
 "Deposit" = "Gửi vào";
 "Sign In to Mozo X" = "Đăng nhập Mozo X";
 "Log Out Mozo X" = "Đăng xuất Mozo X";
-"Send MozoX coins" = "Gửi MozoX";
+"Send MozoX" = "Gửi MozoX";
 "Transaction History" = "Lịch sử giao dịch";
 "Withdraw" = "Rút tiền";
-"Request MozoX coins" = "Yêu cầu nhận MozoX";
+"Request MozoX" = "Yêu cầu nhận MozoX";
 "Confirm" = "Xác nhận";
 "Back" = "Trở lại";
 "Cancel" = "Thoát";
@@ -75,7 +75,7 @@
 "Receive Amount" = "Tổng nhận";
 "Requested List" = "Danh sách được yêu cầu";
 "Create Request" = "Tạo yêu cầu";
-"You can ask another user to send MozoX coins to your wallet address by creating a Request." = "Bạn có thể yêu cầu một người dùng khác gửi MozoX đến ví của mình bằng việc tạo một yêu cầu nhận MozoX";
+"You can ask another user to send MozoX to your wallet address by creating a Request." = "Bạn có thể yêu cầu một người dùng khác gửi MozoX đến ví của mình bằng việc tạo một yêu cầu nhận MozoX";
 "Send Request" = "Gửi yêu cầu";
 "Scan To Send MozoX" = "Quét để gửi MozoX";
 "Scan to send:" = "Quét để gửi";

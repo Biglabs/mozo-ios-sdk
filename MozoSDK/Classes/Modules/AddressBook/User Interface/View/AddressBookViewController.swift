@@ -32,7 +32,13 @@ class AddressBookViewController: MozoBasicViewController {
         prepareNoContentView(frame, message: "Contacts list is empty")
         setupLayout()
         setupTarget()
+        setupSegment()
         eventHandler?.updateDisplayData(forAddressBook: isDisplayingAddressBook)
+    }
+    
+    func setupSegment() {
+        segmentControl.setTitle("User Address".localized, forSegmentAt: 0)
+        segmentControl.setTitle("Store Address".localized, forSegmentAt: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {

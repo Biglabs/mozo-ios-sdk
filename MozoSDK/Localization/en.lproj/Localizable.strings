@@ -26,10 +26,10 @@
 "Deposit" = "Deposit";
 "Sign In to Mozo X" = "Sign In to Mozo X";
 "Log Out Mozo X" = "Log Out Mozo X";
-"Send MozoX coins" = "Send MozoX coins";
+"Send MozoX" = "Send MozoX";
 "Transaction History" = "Transaction History";
 "Withdraw" = "Withdraw";
-"Request MozoX coins" = "Request MozoX coins";
+"Request MozoX" = "Request MozoX";
 "Confirm" = "Confirm";
 "Back" = "Back";
 "Cancel" = "Cancel";
@@ -75,7 +75,7 @@
 "Receive Amount" = "Receive Amount";
 "Requested List" = "Requested List";
 "Create Request" = "Create Request";
-"You can ask another user to send MozoX coins to your wallet address by creating a Request." = "You can ask another user to send MozoX coins to your wallet address by creating a Request.";
+"You can ask another user to send MozoX to your wallet address by creating a Request." = "You can ask another user to send MozoX to your wallet address by creating a Request.";
 "Send Request" = "Send Request";
 "Scan To Send MozoX" = "Scan To Send MozoX";
 "Scan to send:" = "Scan to send:";
