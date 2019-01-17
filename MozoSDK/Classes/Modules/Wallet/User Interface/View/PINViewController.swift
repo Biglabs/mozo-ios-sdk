@@ -37,11 +37,11 @@ class PINViewController : MozoBasicViewController {
         if self.passPhrase == nil {
             title = "Enter Security PIN".localized
             if moduleRequested == Module.Transaction {
-                enterPINLabel.text = "Enter your Security PIN".localized
+                enterPINLabel.text = "Enter your Security PIN\nto send MozoX".localized
                 descriptionLabel.text = "Security PIN must be 6 digits".localized
             } else {
                 // Enter new pin and confirm new pin
-                enterPINLabel.text = "Enter your Security PIN to restore wallet".localized
+                enterPINLabel.text = "Enter your Security PIN\nto restore wallet".localized
             }
         }
     }

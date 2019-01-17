@@ -218,10 +218,10 @@
 "Running Event" = "Chương trình đang chạy";
 "Mail" = "Mail";
 "Call" = "Gọi";
-"Your store is not registered on our website. Please contact MozoX Customer Service for support. (Email/Phone Number)" = "Bạn chưa đăng ký trên Website. Vui lòng liên hệ bộ phận tư vấn để được hỗ trợ.";
-"Saving…" = "Đang lưu...";
-"Scanning…" = "Đang quét...";
-"Beacon detected, connecting…" = "Đã nhận diện Beacon, đang kết nối...";
+"Your store is not registered on our website. Please contact MozoX Customer Service for support. (Email\/Phone Number)" = "Bạn chưa đăng ký trên Website. Vui lòng liên hệ bộ phận tư vấn để được hỗ trợ.";
+"Saving.." = "Đang lưu..";
+"Scanning.." = "Đang quét..";
+"Beacon detected, connecting.." = "Đã nhận diện Beacon, đang kết nối..";
 "Connection failed!" = "Kết nối thất bại!";
 "All" = "Tất cả";
 "My Store" = "Cửa hàng";
@@ -333,7 +333,7 @@
 "In store" = "Đang ở cửa hàng";
 "Last visited: %@" = "Lần đến gần nhất: %@";
 "Invite user" = "Mời người dùng";
-"Receive %@ MozoX for each customer joining Mozo X" = "Nhận ngay %@ MozoX cho mỗi người tham gia";
+"Receive %@ MozoX for each customer joining MozoX App" = "Nhận ngay %@ MozoX cho mỗi người tham gia";
 "FAQ" = "Câu hỏi thường gặp";
 "Notification list is empty" = "Danh sách trống";
 "Beacons list is empty" = "Danh sách trống";
@@ -433,6 +433,7 @@
 "Sat" = "T7";
 "Sun" = "CN";
 
+"Let your staff to work on your behalf" = "Cấp quyền hoạt động cho nhân viên";
 "%d sec(s) ago" = "%d giây trước";
 "%d min(s) ago" = "%d phút trước";
 "%d hour(s) ago" = "%d giờ trước";
@@ -487,7 +488,7 @@
 "Sorted by:" = "Sắp xếp theo:";
 "Total MozoX Coins" = "Tổng MozoX";
 "Fill in to get %@ MozoX" = "Điền để nhận %@ MozoX";
-"Receive %@ MozoX for each join Mozo" = "Nhận %@ MozoX cho mỗi người tham gia";
+"Receive %@ MozoX for each join" = "Nhận %@ MozoX cho mỗi người tham gia";
 "Allow Mozo X to access your location?" = "Cho phép Mozo X truy cập vị trí của bạn?";
 "Mozo X uses this information to provide more relevant and personalized experiences, like helping you to find local events and to provide better suggestions.\n\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "Mozo X dùng thông tin này để cải thiện việc gợi ý và nâng cấp trải nghiệm người dùng, giúp bạn dễ dàng tìm thấy những chương trình Airdrop xung quanh. Để mở chức năng này, chọn App Settings và kích hoạt Location nằm bên dưới Permissions Menu.";
 "Not now" = "Để sau";
@@ -496,7 +497,7 @@
 "Cash" = "Tiền mặt";
 "Today collected coins" = "Coin nhận hôm nay";
 "Fill in to get %@ MozoX" = "Điền để nhận %@ MozoX";
-"Receive %@ MozoX for each join Mozo" = "Nhận %@ MozoX cho mỗi người tham gia";
+"Receive %@ MozoX for each join" = "Nhận %@ MozoX cho mỗi người tham gia";
 "Name" = "Tên";
 "Date of birth" = "Ngày sinh";
 "Email" = "Email";
@@ -634,8 +635,8 @@
 
 "Event start date must be at least 10 minutes later than current time. Please check your input." = "Thời điểm bắt đầu sự kiện phải lớn hơn hiện tại 10 phút. Vui lòng kiểm tra lại thông tin.";
 "Event start date must be earlier than its end date. Please check your input." = "Thời điểm bắt đầu sự kiện phải diễn ra trước ngày kết thúc. Vui lòng kiểm tra lại thông tin.";
-"The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input." = "";
-"\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than %d minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours)." = "\"Tần suất\" là thời gian tối thiểu khách hàng có thể tiếp tục nhận MozoX từ cùng một sự kiện, tính từ lần nhận thành công gần nhất. Tần suất nhận MozoX phải lớn hơn %d phút. Vui lòng kiểm tra lại thông tin.";
+"The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input." = "Giờ bắt đầu phải diễn ra trước giờ kết thúc. Xin kiểm tra lại thông tin.";
+"\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at 24 hours)." = "\"Tần suất\" là thời gian tối thiểu khách hàng có thể tiếp tục nhận MozoX từ cùng một sự kiện, tính từ lần nhận thành công gần nhất. Tần suất nhận MozoX phải lớn hơn 30 phút. Vui lòng kiểm tra lại thông tin.";
 "Incorrect total amount of MozoX tokens to be airdropped. Please check your input." = "Số MozoX Airdrop lớn hơn số dư khả dụng. Xin kiểm tra lại thông tin.";
 "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input." = "Số MozoX Airdrop cho mỗi khách không hợp lệ. Xin kiểm tra lại thông tin.";
 

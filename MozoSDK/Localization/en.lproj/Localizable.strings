@@ -56,8 +56,8 @@
 "Security PIN Confirmation" = "Security PIN Confirmation";
 "Enter your Security PIN" = "Enter your Security PIN";
 "Enter Security PIN" = "Enter Security PIN";
-"Enter your Security PIN to restore wallet" = "Enter your Security PIN to restore wallet";
-"Enter your Security PIN to send MozoX" = "Enter your Security PIN to send MozoX";
+"Enter your Security PIN\nto restore wallet" = "Enter your Security PIN\nto restore wallet";
+"Enter your Security PIN\nto send MozoX" = "Enter your Security PIN\nto send MozoX";
 "Security PIN must be 6 digits" = "Security PIN must be 6 digits";
 "Confirm Security PIN" = "Confirm Security PIN";
 "Re-enter your PIN" = "Re-enter your PIN";
@@ -217,9 +217,9 @@
 "Mail" = "Mail";
 "Call" = "Call";
 "Your store is not registered on our website. Please contact MozoX Customer Service for support. (Email/Phone Number)" = "Your store is not registered on our website. Please contact MozoX Customer Service for support. (Email/Phone Number)";
-"Saving…" = "Saving…";
-"Scanning…" = "Scanning…";
-"Beacon detected, connecting…" = "Beacon detected, connecting…";
+"Saving.." = "Saving..";
+"Scanning.." = "Scanning..";
+"Beacon detected, connecting.." = "Beacon detected, connecting..";
 "Connection failed!" = "Connection failed!";
 "All" = "All";
 "My Store" = "My Store";
@@ -329,7 +329,7 @@
 "In store" = "In store";
 "Last visited: %@" = "Last visited: %@";
 "Invite user" = "Invite user";
-"Receive %@ MozoX for each customer joining Mozo X" = "Receive %@ MozoX for each customer joining Mozo X";
+"Receive %@ MozoX for each customer joining MozoX App" = "Receive %@ MozoX for each customer joining MozoX App";
 "FAQ" = "FAQ";
 "Notification list is empty" = "Notification list is empty";
 "Beacons list is empty" = "Beacons list is empty";
@@ -430,6 +430,7 @@
 "Sat" = "Sat";
 "Sun" = "Sun";
 
+"Let your staff to work on your behalf" = "Let your staff to work on your behalf";
 "%d sec(s) ago" = "%d sec(s) ago";
 "%d min(s) ago" = "%d min(s) ago";
 "%d hour(s) ago" = "%d hour(s) ago";
@@ -484,7 +485,7 @@
 "Sorted by:" = "Sorted by:";
 "Total MozoX Coins" = "Total MozoX Coins";
 "Fill in to get %@ MozoX" = "Fill in to get %@ MozoX";
-"Receive %@ MozoX for each join Mozo" = "Receive %@ MozoX for each join Mozo";
+"Receive %@ MozoX for each join" = "Receive %@ MozoX for each join";
 "Allow Mozo X to access your location?" = "Allow Mozo X to access your location?";
 "Mozo X uses this information to provide more relevant and personalized experiences, like helping you to find local events and to provide better suggestions.\n\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "Mozo X uses this information to provide more relevant and personalized experiences, like helping you to find local events and to provide better suggestions.\n\nTo enable this, tap App Settings below and activate Location under the Permissions menu.";
 "Not now" = "Not now";
@@ -518,7 +519,7 @@
 "New password" = "New password";
 "Enter new password" = "Enter new password";
 "Change password successful!" = "Change password successful!";
-"Have your friends scan this QR code to download Mozo X App and get 25,000 MozoX coins for each friend signed up successfully." = "Have your friends scan this QR code to download Mozo X App and get 25,000 MozoX coins for each friend signed up successfully.";
+"Have your friends scan this QR code to download Mozo X App and get %@ MozoX coins for each friend signed up successfully." = "Have your friends scan this QR code to download Mozo X App and get %@ MozoX coins for each friend signed up successfully.";
 "Or share Mozo X via your network" = "Or share Mozo X via your network";
 "Share Mozo X" = "Share Mozo X";
 "Promotion Details" = "Promotion Details";
@@ -627,10 +628,10 @@
 
 "This beacon has been registered to another store. Please contact us for more information (email + phone)" = "This beacon has been registered to another store. Please contact us for more information (email + phone)";
 
-"Event start date must be at least %d minutes later than current time. Please check your input." = "Event start date must be at least %d minutes later than current time. Please check your input.";
+"Event start date must be at least 10 minutes later than current time. Please check your input." = "Event start date must be at least 10 minutes later than current time. Please check your input.";
 "Event start date must be earlier than its end date. Please check your input." = "Event start date must be earlier than its end date. Please check your input.";
 "The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input." = "The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input.";
-"\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than %d minutes*. Please check your input. (*We recommend setting \"Frequency\" at 24 hours)." = "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than %d minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours).";
+"\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at 24 hours)." = "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours).";
 "Incorrect total amount of MozoX tokens to be airdropped. Please check your input." = "Incorrect total amount of MozoX tokens to be airdropped. Please check your input.";
 "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input." = "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input.";
 
