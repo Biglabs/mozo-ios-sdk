@@ -65,14 +65,14 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4B6-82-54O">
-                    <rect key="frame" x="249" y="85" width="72" height="24"/>
+                    <rect key="frame" x="244" y="85" width="82" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <inset key="titleEdgeInsets" minX="0.0" minY="-10" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="Show QR Code">
+                    <state key="normal" title="Enlarge QR Code">
                         <color key="titleColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Show QR Code"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Enlarge QR Code"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="touchedShowQR:" destination="-1" eventType="touchUpInside" id="VUl-X6-hCi"/>

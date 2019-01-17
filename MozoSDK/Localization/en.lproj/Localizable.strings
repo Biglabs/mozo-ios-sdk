@@ -26,10 +26,10 @@
 "Deposit" = "Deposit";
 "Sign In to Mozo X" = "Sign In to Mozo X";
 "Log Out Mozo X" = "Log Out Mozo X";
-"Send MozoX coins" = "Send MozoX coins";
+"Send MozoX" = "Send MozoX";
 "Transaction History" = "Transaction History";
 "Withdraw" = "Withdraw";
-"Request MozoX coins" = "Request MozoX coins";
+"Request MozoX" = "Request MozoX";
 "Confirm" = "Confirm";
 "Back" = "Back";
 "Cancel" = "Cancel";
@@ -39,7 +39,7 @@
 "Clear" = "Clear";
 "Scan QR Code" = "Scan QR Code";
 "Scan" = "Scan";
-"Enlarge My QR Code" = "Enlarge My QR Code";
+"Enlarge QR Code" = "Enlarge QR Code";
 "Send" = "Send";
 "Save" = "Save";
 "Save Wallet Address" = "Save Wallet Address";
@@ -56,8 +56,8 @@
 "Security PIN Confirmation" = "Security PIN Confirmation";
 "Enter your Security PIN" = "Enter your Security PIN";
 "Enter Security PIN" = "Enter Security PIN";
-"Enter your Security PIN to restore wallet" = "Enter your Security PIN to restore wallet";
-"Enter your Security PIN to send MozoX" = "Enter your Security PIN to send MozoX";
+"Enter your Security PIN\nto restore wallet" = "Enter your Security PIN\nto restore wallet";
+"Enter your Security PIN\nto send MozoX" = "Enter your Security PIN\nto send MozoX";
 "Security PIN must be 6 digits" = "Security PIN must be 6 digits";
 "Confirm Security PIN" = "Confirm Security PIN";
 "Re-enter your PIN" = "Re-enter your PIN";
@@ -75,7 +75,7 @@
 "Receive Amount" = "Receive Amount";
 "Requested List" = "Requested List";
 "Create Request" = "Create Request";
-"You can ask another user to send MozoX coins to your wallet address by creating a Request." = "You can ask another user to send MozoX coins to your wallet address by creating a Request.";
+"You can ask another user to send MozoX to your wallet address by creating a Request." = "You can ask another user to send MozoX to your wallet address by creating a Request.";
 "Send Request" = "Send Request";
 "Scan To Send MozoX" = "Scan To Send MozoX";
 "Scan to send:" = "Scan to send:";
@@ -188,7 +188,7 @@
 "Now stick Beacon where you want to use it (Wall, Counter, Ceiling) to detect Shoppers whenever they visit your store." = "Now stick Beacon where you want to use it (Wall, Counter, Ceiling) to detect Shoppers whenever they visit your store.";
 "Beacon Range Configuration" = "Beacon Range Configuration";
 "Now scan to detect Beacon and configure Beacon range." = "Now scan to detect Beacon and configure Beacon range.";
-"*You need to turn on Bluetooth to detect theBeacon." = "*You need to turn on Bluetooth to detect theBeacon.";
+"*You need to turn on Bluetooth to detect the Beacon." = "*You need to turn on Bluetooth to detect the Beacon.";
 "Bluetooth is On" = "Bluetooth is On";
 "Turn on Bluetooth" = "Turn on Bluetooth";
 "Scan for the Beacon" = "Scan for the Beacon";
@@ -217,9 +217,9 @@
 "Mail" = "Mail";
 "Call" = "Call";
 "Your store is not registered on our website. Please contact MozoX Customer Service for support. (Email/Phone Number)" = "Your store is not registered on our website. Please contact MozoX Customer Service for support. (Email/Phone Number)";
-"Saving…" = "Saving…";
-"Scanning…" = "Scanning…";
-"Beacon detected, connecting…" = "Beacon detected, connecting…";
+"Saving.." = "Saving..";
+"Scanning.." = "Scanning..";
+"Beacon detected, connecting.." = "Beacon detected, connecting..";
 "Connection failed!" = "Connection failed!";
 "All" = "All";
 "My Store" = "My Store";
@@ -230,8 +230,6 @@
 "Add" = "Add";
 "Log Out" = "Log Out";
 "Settings" = "Settings";
-"Privacy Policy" = "Privacy Policy";
-"Privacy Policy" = "Privacy Policy";
 "About" = "About";
 "Add Beacon" = "Add Beacon";
 "Create Event" = "Create Event";
@@ -243,7 +241,7 @@
 "Edit" = "Edit";
 "Store Information" = "Store Information";
 "Map" = "Map";
-"Add Photo" = "Add Photo";
+"Add\nPhoto" = "Add\nPhoto";
 "Photo" = "Photo";
 "Buy MozoX" = "Buy MozoX";
 "Shoppers this month" = "Shoppers this month";
@@ -331,7 +329,7 @@
 "In store" = "In store";
 "Last visited: %@" = "Last visited: %@";
 "Invite user" = "Invite user";
-"Receive 25,000 MozoX for each customer joining Mozo X" = "Receive 25,000 MozoX for each customer joining Mozo X";
+"Receive %@ MozoX for each customer joining MozoX App" = "Receive %@ MozoX for each customer joining MozoX App";
 "FAQ" = "FAQ";
 "Notification list is empty" = "Notification list is empty";
 "Beacons list is empty" = "Beacons list is empty";
@@ -353,6 +351,7 @@
 "You can only add a maximum of %d Hashtags" = "You can only add a maximum of %d Hashtags";
 "OK" = "OK";
 "Repeat" = "Repeat";
+"Repeat:" = "Repeat:";
 "Your Store must have at least one Hashtag." = "Your Store must have at least one Hashtag.";
 "Only letters and numbers are allowed." = "Only letters and numbers are allowed.";
 "MozoX" = "MozoX";
@@ -404,6 +403,43 @@
 "Mozoscan is a Block Explorer and Analytics Platform for Mozo X, a decentralized smart contract platform. Mozoscan 2018 - Running on Mozo X Network. htttps://scan.mozocoin.io" = "Mozoscan is a Block Explorer and Analytics Platform for Mozo X, a decentralized smart contract platform. Mozoscan 2018 - Running on Mozo X Network. htttps://scan.mozocoin.io";
 "4. Desktop Wallet" = "4. Desktop Wallet";
 "5. Web App for Retailer" = "5. Web App for Retailer";
+"Active" = "Đang chạy";
+"Out of MozoX" = "Hết MozoX";
+"End" = "Đã kết thúc";
+"Scheduled" = "Hẹn giờ";
+
+"Receivers:" = "Receivers:";
+"Period:" = "Period:";
+"Repeat:" = "Repeat:";
+
+"Monday" = "Monday";
+"Tuesday" = "Tuesday";
+"Wednesday" = "Wednesday";
+"Thursday" = "Thursday";
+"Friday" = "Friday";
+"Saturday" = "Saturday";
+"Sunday" = "Sunday";
+"Every day" = "Every day";
+"Weekends" = "Weekends";
+"Weekdays" = "Weekdays";
+"Mon" = "Mon";
+"Tue" = "Tue";
+"Wed" = "Wed";
+"Thu" = "Thu";
+"Fri" = "Fri";
+"Sat" = "Sat";
+"Sun" = "Sun";
+
+"Let your staff to work on your behalf" = "Let your staff to work on your behalf";
+"%d sec(s) ago" = "%d sec(s) ago";
+"%d min(s) ago" = "%d min(s) ago";
+"%d hour(s) ago" = "%d hour(s) ago";
+"%d day(s) ago" = "%d day(s) ago";
+"%d week(s) ago" = "%d week(s) ago";
+
+"%d min(s)" = "%d min(s)";
+"%d hour(s)" = "%d hour(s)";
+
 // SHOPPER
 "Mozo X" = "Mozo X";
 "Get Coins" = "Get Coins";
@@ -416,7 +452,7 @@
 "Invite friends" = "Invite friends";
 "Favorite Stores" = "Favorite Stores";
 "Settings" = "Settings";
-"Privacy policy" = "Privacy policy";
+"Privacy & Policy" = "Privacy & Policy";
 "About" = "About";
 "Log Out" = "Log Out";
 "Apply" = "Apply";
@@ -449,7 +485,7 @@
 "Sorted by:" = "Sorted by:";
 "Total MozoX Coins" = "Total MozoX Coins";
 "Fill in to get %@ MozoX" = "Fill in to get %@ MozoX";
-"Receive %@ MozoX for each join Mozo" = "Receive %@ MozoX for each join Mozo";
+"Receive %@ MozoX for each join" = "Receive %@ MozoX for each join";
 "Allow Mozo X to access your location?" = "Allow Mozo X to access your location?";
 "Mozo X uses this information to provide more relevant and personalized experiences, like helping you to find local events and to provide better suggestions.\n\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "Mozo X uses this information to provide more relevant and personalized experiences, like helping you to find local events and to provide better suggestions.\n\nTo enable this, tap App Settings below and activate Location under the Permissions menu.";
 "Not now" = "Not now";
@@ -476,7 +512,6 @@
 "English" = "English";
 "Korea Won (₩)" = "Korea Won (₩)";
 "US Dollar ($)" = "US Dollar ($)";
-"Privacy Policy" = "Privacy Policy";
 "Change Password" = "Change Password";
 "You need to confirm your security PIN to change password" = "You need to confirm your security PIN to change password";
 "Current password" = "Current password";
@@ -484,7 +519,7 @@
 "New password" = "New password";
 "Enter new password" = "Enter new password";
 "Change password successful!" = "Change password successful!";
-"Have your friends scan this QR code to download Mozo X App and get 25,000 MozoX coins for each friend signed up successfully." = "Have your friends scan this QR code to download Mozo X App and get 25,000 MozoX coins for each friend signed up successfully.";
+"Have your friends scan this QR code to download Mozo X App and get %@ MozoX coins for each friend signed up successfully." = "Have your friends scan this QR code to download Mozo X App and get %@ MozoX coins for each friend signed up successfully.";
 "Or share Mozo X via your network" = "Or share Mozo X via your network";
 "Share Mozo X" = "Share Mozo X";
 "Promotion Details" = "Promotion Details";
@@ -593,10 +628,10 @@
 
 "This beacon has been registered to another store. Please contact us for more information (email + phone)" = "This beacon has been registered to another store. Please contact us for more information (email + phone)";
 
-"Event start date must be at least %d minutes later than current time. Please check your input." = "Event start date must be at least %d minutes later than current time. Please check your input.";
+"Event start date must be at least 10 minutes later than current time. Please check your input." = "Event start date must be at least 10 minutes later than current time. Please check your input.";
 "Event start date must be earlier than its end date. Please check your input." = "Event start date must be earlier than its end date. Please check your input.";
 "The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input." = "The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input.";
-"\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than %d minutes*. Please check your input. (*We recommend setting \"Frequency\" at 24 hours)." = "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than %d minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours).";
+"\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at 24 hours)." = "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours).";
 "Incorrect total amount of MozoX tokens to be airdropped. Please check your input." = "Incorrect total amount of MozoX tokens to be airdropped. Please check your input.";
 "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input." = "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input.";
 

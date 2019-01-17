@@ -45,11 +45,11 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="5" maxY="0.0"/>
-                    <state key="normal" title="Show QR Code" image="ic_qr_code">
+                    <state key="normal" title="Enlarge QR Code" image="ic_qr_code">
                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Show QR Code"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Enlarge QR Code"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="touchedShowQR:" destination="-1" eventType="touchUpInside" id="xIM-kH-KlE"/>

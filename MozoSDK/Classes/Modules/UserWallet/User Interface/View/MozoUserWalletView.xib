@@ -45,17 +45,17 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-hq-Utj">
-                            <rect key="frame" x="228" y="131" width="85" height="14"/>
+                            <rect key="frame" x="216" y="131" width="97" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="14" id="rDH-fb-e4U"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <inset key="titleEdgeInsets" minX="0.0" minY="-10" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="Show QR Code">
+                            <state key="normal" title="Enlarge QR Code">
                                 <color key="titleColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Show QR Code"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Enlarge QR Code"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="touchedShowQR:" destination="-1" eventType="touchUpInside" id="GYJ-ld-g1Y"/>

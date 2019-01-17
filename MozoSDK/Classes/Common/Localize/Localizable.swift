@@ -13,6 +13,10 @@ extension String: Localizable {
     public var localized: String {
         return NSLocalizedString(self, tableName: nil, bundle: BundleManager.mozoBundle(), value: "", comment: "")
     }
+    
+    public func localizedFormat(_ arguments: CVarArg...) -> String {
+        return String(format: self.localized, arguments: arguments)
+    }
 }
 
 public protocol XIBLocalizable {
@@ -40,6 +44,14 @@ extension UITextField: XIBLocalizable {
         get { return nil }
         set(key) {
             placeholder = key?.localized
+        }
+    }
+}
+extension UITabBarItem: XIBLocalizable {
+    @IBInspectable public var xibLocKey: String? {
+        get { return nil }
+        set(key) {
+            title = key?.localized
         }
     }
 }

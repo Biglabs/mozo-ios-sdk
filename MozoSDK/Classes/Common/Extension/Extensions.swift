@@ -312,21 +312,21 @@ public extension Date {
         if minuteAgo < self {
             let diff = Calendar.current.dateComponents([.second], from: self, to: Date()).second ?? 0
             if diff < 30 {
-                return "Just Now"
+                return "Just Now".localized
             }
-            return "\(diff) sec ago"
+            return "%d sec(s) ago".localizedFormat(diff)
         } else if hourAgo < self {
             let diff = Calendar.current.dateComponents([.minute], from: self, to: Date()).minute ?? 0
-            return "\(diff) min ago"
+            return "%d min(s) ago".localizedFormat(diff)
         } else if dayAgo < self {
             let diff = Calendar.current.dateComponents([.hour], from: self, to: Date()).hour ?? 0
-            return "\(diff) hrs ago"
+            return "%d hour(s) ago".localizedFormat(diff)
         } else if weekAgo < self {
             let diff = Calendar.current.dateComponents([.day], from: self, to: Date()).day ?? 0
-            return "\(diff) days ago"
+            return "%d day(s) ago".localizedFormat(diff)
         }
         let diff = Calendar.current.dateComponents([.weekOfYear], from: self, to: Date()).weekOfYear ?? 0
-        return "\(diff) weeks ago"
+        return "%d week(s) ago".localizedFormat(diff)
     }
 }
 
