@@ -39,7 +39,7 @@
 "Clear" = "Xóa";
 "Scan QR Code" = "Quét QR Code";
 "Scan" = "Quét";
-"Enlarge My QR Code" = "Phóng to QR Code";
+"Enlarge QR Code" = "Phóng to QR Code";
 "Send" = "Gửi";
 "Save" = "Lưu";
 "Save Wallet Address" = "Lưu địa chỉ ví";
@@ -190,7 +190,7 @@
 "Now stick Beacon where you want to use it (Wall, Counter, Ceiling) to detect Shoppers whenever they visit your store." = "Đặt Beacon ở vị trí bạn muốn định vị khách khi họ đến cửa hàng.";
 "Beacon Range Configuration" = "Thiết lập phạm vi Beacon";
 "Now scan to detect Beacon and configure Beacon range." = "Giờ hãy quét để nhận diện Beacon và thiết lập phạm vi hoạt động.";
-"*You need to turn on Bluetooth to detect the Beacon." = "Bạn cần bật Bluetooth để nhận diện Beacon.";
+"*You need to turn on Bluetooth to detect the Beacon." = "*Bạn cần bật Bluetooth để nhận diện Beacon.";
 "Bluetooth is On" = "Bluetooth đang bật";
 "Turn on Bluetooth" = "Mở Bluetooth";
 "Scan for the Beacon" = "Quét Beacon";
@@ -232,8 +232,8 @@
 "Add" = "Thêm";
 "Log Out" = "Đăng xuất";
 "Settings" = "Thiết lập";
-"Privacy Policy" = "Quyền riêng tư & chính sách";
-"Privacy Policy" = "Quyền riêng tư";
+"Privacy & Policy" = "Quyền riêng tư & chính sách";
+"Privacy" = "Quyền riêng tư";
 "About" = "Thông tin";
 "Add Beacon" = "Thêm Beacon";
 "Create Event" = "Tạo mới";
@@ -245,7 +245,7 @@
 "Edit" = "Sửa";
 "Store Information" = "Thông tin cửa hàng";
 "Map" = "Bản đồ";
-"Add Photo" = "Thêm ảnh";
+"Add\nPhoto" = "Thêm\nảnh";
 "Photo" = "Ảnh";
 "Buy MozoX" = "Mua MozoX";
 "Shoppers this month" = "Khách hàng trong tháng";
@@ -254,7 +254,7 @@
 "View all Events" = "Xem toàn bộ";
 "View all Shoppers" = "Xem toàn bộ";
 "Visiting Shoppers" = "Khách đang trong cửa hàng";
-"Airdrops per Shopper:" = "Mỗi khách nhận";
+"Airdrops per Shopper:" = "Mỗi khách nhận:";
 "Time:" = "Thời gian:";
 "Airdrop Time" = "Thời gian Airdrop";
 "Frequency:" = "Tần suất:";
@@ -354,7 +354,7 @@
 "Hashtag list is empty" = "Danh sách trống";
 "You can only add a maximum of %d Hashtags" = "Có thể thêm tối đa %d Hashtag";
 "OK" = "OK";
-"Repeat" = "Lặp lại";
+"Repeat:" = "Lặp lại:";
 "Your Store must have at least %d Hashtag." = "Cửa hàng cần ít nhất %d Hashtag.";
 "Only letters and numbers are allowed." = "Chỉ được phép nhập số hoặc chữ cái.";
 "MozoX" = "MozoX";
@@ -406,6 +406,42 @@
 "Mozoscan is a Block Explorer and Analytics Platform for Mozo X, a decentralized smart contract platform. Mozoscan 2018 - Running on Mozo X Network. htttps://scan.mozocoin.io" = "MozoScan là Anlytics Platform và là Block Explorer của MozoX. Đồng thời là nền tảng ủy thác Smart Contracts. MozoScan2018 - Chạy trên mạng lưới Mozo X. https://scan.mozocoin.io";
 "4. Desktop Wallet" = "4. Desktop Wallet";
 "5. Web App for Retailer" = "5. Web App cho chủ cửa hàng";
+"Active" = "Đang chạy";
+"Out of MozoX" = "Hết MozoX";
+"End" = "Đã kết thúc";
+"Scheduled" = "Hẹn giờ";
+
+"Receivers:" = "Số người nhận:";
+"Period:" = "Thời hạn:";
+"Repeat:" = "Lặp lại:";
+
+"Monday" = "Thứ hai";
+"Tuesday" = "Thứ ba";
+"Wednesday" = "Thứ tư";
+"Thursday" = "Thứ năm";
+"Friday" = "Thứ sáu";
+"Saturday" = "Thứ bảy";
+"Sunday" = "Chủ nhật";
+"Every day" = "Mỗi ngày";
+"Weekends" = "Mỗi cuối tuần";
+"Weekdays" = "Ngày trong tuần";
+"Mon" = "T2";
+"Tue" = "T3";
+"Wed" = "T4";
+"Thu" = "T5";
+"Fri" = "T6";
+"Sat" = "T7";
+"Sun" = "CN";
+
+"%d sec(s) ago" = "%d giây trước";
+"%d min(s) ago" = "%d phút trước";
+"%d hour(s) ago" = "%d giờ trước";
+"%d day(s) ago" = "%d ngày trước";
+"%d week(s) ago" = "%d tuần trước";
+
+"%d min(s)" = "%d phút";
+"%d hour(s)" = "%d giờ";
+
 /* SHOPPER */
 "Mozo X" = "Mozo X";
 "Get Coins" = "Nhận coin";
@@ -418,7 +454,7 @@
 "Invite friends" = "Mời bạn bè";
 "Favorite Stores" = "Cửa hàng yêu thích";
 "Settings" = "Thiết lập";
-"Privacy policy" = "Quyền riêng tư & chính sách";
+"Privacy & Policy" = "Quyền riêng tư & chính sách";
 "About" = "Thông tin";
 "Log Out" = "Đăng xuất";
 "Apply" = "Lọc";

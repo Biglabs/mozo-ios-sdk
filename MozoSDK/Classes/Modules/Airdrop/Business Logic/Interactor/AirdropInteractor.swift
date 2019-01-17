@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Localize_Swift
 class AirdropInteractor: NSObject {
     var output: AirdropInteractorOutput?
     var signManager : TransactionSignManager?

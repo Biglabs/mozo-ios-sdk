@@ -39,7 +39,7 @@
 "Clear" = "Clear";
 "Scan QR Code" = "Scan QR Code";
 "Scan" = "Scan";
-"Enlarge My QR Code" = "Enlarge My QR Code";
+"Enlarge QR Code" = "Enlarge QR Code";
 "Send" = "Send";
 "Save" = "Save";
 "Save Wallet Address" = "Save Wallet Address";
@@ -188,7 +188,7 @@
 "Now stick Beacon where you want to use it (Wall, Counter, Ceiling) to detect Shoppers whenever they visit your store." = "Now stick Beacon where you want to use it (Wall, Counter, Ceiling) to detect Shoppers whenever they visit your store.";
 "Beacon Range Configuration" = "Beacon Range Configuration";
 "Now scan to detect Beacon and configure Beacon range." = "Now scan to detect Beacon and configure Beacon range.";
-"*You need to turn on Bluetooth to detect theBeacon." = "*You need to turn on Bluetooth to detect theBeacon.";
+"*You need to turn on Bluetooth to detect the Beacon." = "*You need to turn on Bluetooth to detect the Beacon.";
 "Bluetooth is On" = "Bluetooth is On";
 "Turn on Bluetooth" = "Turn on Bluetooth";
 "Scan for the Beacon" = "Scan for the Beacon";
@@ -230,8 +230,6 @@
 "Add" = "Add";
 "Log Out" = "Log Out";
 "Settings" = "Settings";
-"Privacy Policy" = "Privacy Policy";
-"Privacy Policy" = "Privacy Policy";
 "About" = "About";
 "Add Beacon" = "Add Beacon";
 "Create Event" = "Create Event";
@@ -243,7 +241,7 @@
 "Edit" = "Edit";
 "Store Information" = "Store Information";
 "Map" = "Map";
-"Add Photo" = "Add Photo";
+"Add\nPhoto" = "Add\nPhoto";
 "Photo" = "Photo";
 "Buy MozoX" = "Buy MozoX";
 "Shoppers this month" = "Shoppers this month";
@@ -331,7 +329,7 @@
 "In store" = "In store";
 "Last visited: %@" = "Last visited: %@";
 "Invite user" = "Invite user";
-"Receive 25,000 MozoX for each customer joining Mozo X" = "Receive 25,000 MozoX for each customer joining Mozo X";
+"Receive %@ MozoX for each customer joining Mozo X" = "Receive %@ MozoX for each customer joining Mozo X";
 "FAQ" = "FAQ";
 "Notification list is empty" = "Notification list is empty";
 "Beacons list is empty" = "Beacons list is empty";
@@ -353,6 +351,7 @@
 "You can only add a maximum of %d Hashtags" = "You can only add a maximum of %d Hashtags";
 "OK" = "OK";
 "Repeat" = "Repeat";
+"Repeat:" = "Repeat:";
 "Your Store must have at least one Hashtag." = "Your Store must have at least one Hashtag.";
 "Only letters and numbers are allowed." = "Only letters and numbers are allowed.";
 "MozoX" = "MozoX";
@@ -404,6 +403,42 @@
 "Mozoscan is a Block Explorer and Analytics Platform for Mozo X, a decentralized smart contract platform. Mozoscan 2018 - Running on Mozo X Network. htttps://scan.mozocoin.io" = "Mozoscan is a Block Explorer and Analytics Platform for Mozo X, a decentralized smart contract platform. Mozoscan 2018 - Running on Mozo X Network. htttps://scan.mozocoin.io";
 "4. Desktop Wallet" = "4. Desktop Wallet";
 "5. Web App for Retailer" = "5. Web App for Retailer";
+"Active" = "Đang chạy";
+"Out of MozoX" = "Hết MozoX";
+"End" = "Đã kết thúc";
+"Scheduled" = "Hẹn giờ";
+
+"Receivers:" = "Receivers:";
+"Period:" = "Period:";
+"Repeat:" = "Repeat:";
+
+"Monday" = "Monday";
+"Tuesday" = "Tuesday";
+"Wednesday" = "Wednesday";
+"Thursday" = "Thursday";
+"Friday" = "Friday";
+"Saturday" = "Saturday";
+"Sunday" = "Sunday";
+"Every day" = "Every day";
+"Weekends" = "Weekends";
+"Weekdays" = "Weekdays";
+"Mon" = "Mon";
+"Tue" = "Tue";
+"Wed" = "Wed";
+"Thu" = "Thu";
+"Fri" = "Fri";
+"Sat" = "Sat";
+"Sun" = "Sun";
+
+"%d sec(s) ago" = "%d sec(s) ago";
+"%d min(s) ago" = "%d min(s) ago";
+"%d hour(s) ago" = "%d hour(s) ago";
+"%d day(s) ago" = "%d day(s) ago";
+"%d week(s) ago" = "%d week(s) ago";
+
+"%d min(s)" = "%d min(s)";
+"%d hour(s)" = "%d hour(s)";
+
 // SHOPPER
 "Mozo X" = "Mozo X";
 "Get Coins" = "Get Coins";
@@ -416,7 +451,7 @@
 "Invite friends" = "Invite friends";
 "Favorite Stores" = "Favorite Stores";
 "Settings" = "Settings";
-"Privacy policy" = "Privacy policy";
+"Privacy & Policy" = "Privacy & Policy";
 "About" = "About";
 "Log Out" = "Log Out";
 "Apply" = "Apply";
@@ -476,7 +511,6 @@
 "English" = "English";
 "Korea Won (₩)" = "Korea Won (₩)";
 "US Dollar ($)" = "US Dollar ($)";
-"Privacy Policy" = "Privacy Policy";
 "Change Password" = "Change Password";
 "You need to confirm your security PIN to change password" = "You need to confirm your security PIN to change password";
 "Current password" = "Current password";
