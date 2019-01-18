@@ -57,19 +57,42 @@ public extension ApiManager {
         }
     }
     
-    public func getNearestStores() -> Promise<[StoreInfoDTO]> {
+    public func getNearestStores(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_API_PATH + "/nearest/stores"
+            let params = ["storeId" : storeId] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/nearest/stores" + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get nearest stores, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    if let collection = CollectionStoreInfoDTO(json: jobj) {
+                        seal.fulfill(collection.stores ?? [])
+                    }
+                }
+                .catch { error in
+                    print("Error when request get nearest stores: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/store/\(storeId)/air-drops"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get event of store \(storeId), json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let list = StoreInfoDTO.arrayFromJson(jobj)
                     seal.fulfill(list)
                 }
                 .catch { error in
-                    print("Error when request get nearest stores: " + error.localizedDescription)
+                    print("Error when request get event of store \(storeId): " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {
@@ -130,7 +153,8 @@ public extension ApiManager {
     
     public func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_FAVORITE_API_PATH
+            let params = ["storeId" : storeId] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + SHOPPER_FAVORITE_API_PATH + "?\(params.queryString)"
             let method = isMarkFavorite ? HTTPMethod.post : .delete
             self.execute(method, url: url)
                 .done { json -> Void in
