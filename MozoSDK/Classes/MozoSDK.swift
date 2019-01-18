@@ -133,8 +133,12 @@ public class MozoSDK {
         return moduleDependencies.getListCountryCode()
     }
     
-    public static func getNearestStores() -> Promise<[StoreInfoDTO]> {
-        return moduleDependencies.getNearestStores()
+    public static func getNearestStores(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
+        return moduleDependencies.getNearestStores(storeId)
+    }
+    
+    public static func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
+        return moduleDependencies.getListEventAirdropOfStore(storeId)
     }
     
     public static func searchStoresWithText(_ text: String, page: Int = 0, size: Int = 15, long: Double, lat: Double, sort: String = "distance") -> Promise<CollectionStoreInfoDTO> {

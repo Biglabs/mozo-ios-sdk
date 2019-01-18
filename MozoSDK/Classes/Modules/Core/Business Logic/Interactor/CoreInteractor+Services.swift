@@ -134,8 +134,12 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getListCountryCode()
     }
     
-    func getNearestStores() -> Promise<[StoreInfoDTO]> {
-        return apiManager.getNearestStores()
+    func getNearestStores(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
+        return apiManager.getNearestStores(storeId)
+    }
+    
+    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
+        return apiManager.getListEventAirdropOfStore(storeId)
     }
     
     func searchStoresWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {

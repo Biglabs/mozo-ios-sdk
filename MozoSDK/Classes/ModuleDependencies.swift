@@ -171,8 +171,12 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getListCountryCode())!
     }
     
-    func getNearestStores() -> Promise<[StoreInfoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getNearestStores())!
+    func getNearestStores(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getNearestStores(storeId))!
+    }
+    
+    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getListEventAirdropOfStore(storeId))!
     }
     
     func searchStoresWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {
