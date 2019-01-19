@@ -440,6 +440,12 @@
 "%d min(s)" = "%d min(s)";
 "%d hour(s)" = "%d hour(s)";
 
+"Can not apply empty list for days of week." = "Can not apply empty list for days of week.";
+"There is no data to display" = "There is no data to display";
+"Enter store name to search" = "Enter store name to search";
+"User Address" = "User Address";
+"Store Address" = "Store Address";
+
 // SHOPPER
 "Mozo X" = "Mozo X";
 "Get Coins" = "Get Coins";

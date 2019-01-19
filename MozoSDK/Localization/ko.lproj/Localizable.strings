@@ -428,7 +428,7 @@
 "Sat" = "토요일";
 "Sun" = "일요일";
 
-"Let your staff to work on your behalf" = "";
+"Let your staff to work on your behalf" = "직원에게 운영 권한을 부여하십시오";
 "%d sec(s) ago" = "%d 초 전에";
 "%d min(s) ago" = "%d 분 전에";
 "%d hour(s) ago" = "%d 시 전에";

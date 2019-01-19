@@ -443,6 +443,12 @@
 "%d min(s)" = "%d phút";
 "%d hour(s)" = "%d giờ";
 
+"Can not apply empty list for days of week." = "Không thể để trống ngày trong tuần.";
+"There is no data to display" = "Không có dữ liệu để hiển thị";
+"Enter store name to search" = "Nhập tên cửa hàng để tìm kiếm";
+"User Address" = "Địa chỉ ví";
+"Store Address" = "Địa chỉ cửa hàng";
+
 /* SHOPPER */
 "Mozo X" = "Mozo X";
 "Get Coins" = "Nhận coin";

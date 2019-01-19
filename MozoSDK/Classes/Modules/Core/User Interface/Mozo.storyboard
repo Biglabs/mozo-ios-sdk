@@ -1030,7 +1030,7 @@
                                     <constraint firstAttribute="height" constant="80" id="c7i-qg-Id5"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Payment Request Successful" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N65-dd-r1Q">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Request Successful" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N65-dd-r1Q">
                                 <rect key="frame" x="87.5" y="220" width="200" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="hlY-LW-Wec"/>
@@ -1039,12 +1039,18 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.078431372549019607" green="0.10196078431372549" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Send Request Successful"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You sent payment request for:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltf-8q-ujm">
-                                <rect key="frame" x="77" y="321" width="221" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You sent Request MozoX to:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltf-8q-ujm">
+                                <rect key="frame" x="85.5" y="321" width="204" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.078431372550000003" green="0.1019607843" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="You sent Request MozoX to:"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mozo_offchain" translatesAutoresizingMaskIntoConstraints="NO" id="dt6-ly-Qe9">
                                 <rect key="frame" x="104" y="351" width="30" height="30"/>
@@ -3355,7 +3361,7 @@
         <image name="ic_payment_complete" width="133" height="80"/>
         <image name="ic_pencil" width="52" height="52"/>
         <image name="ic_scan" width="19" height="18"/>
-        <image name="ic_search" width="16" height="16"/>
+        <image name="ic_search" width="181" height="185"/>
         <image name="ic_send" width="13" height="15"/>
         <image name="ic_sent_circle" width="96" height="96"/>
         <image name="ic_sort_down" width="10" height="6"/>
