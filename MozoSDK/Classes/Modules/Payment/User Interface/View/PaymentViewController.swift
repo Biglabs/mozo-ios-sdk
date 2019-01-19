@@ -22,6 +22,7 @@ class PaymentViewController: MozoBasicViewController {
     @IBOutlet weak var txtAmount: UITextField!
     @IBOutlet weak var lbExchange: UILabel!
     @IBOutlet weak var btnCreate: UIButton!
+    var lastOffsetY :CGFloat = 0
     
     var eventHandler: PaymentModuleInterface?
     var paymentCollection: PaymentRequestDisplayCollection? {
@@ -45,15 +46,32 @@ class PaymentViewController: MozoBasicViewController {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: listContainerView.frame.size.height)
         prepareNoContentView(frame, message: "Requested list is empty")
         eventHandler?.loadTokenInfo()
+        setupSegment()
         setupTableView()
         setupTarget()
         setupBorder()
+        checkDisableButtonSend()
         loadRequestWithPage(page: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Request MozoX".localized
+    }
+    
+    func checkDisableButtonSend(_ text: String = "") {
+        if !text.isEmpty {
+            btnCreate.isUserInteractionEnabled = true
+            btnCreate.backgroundColor = ThemeManager.shared.main
+        } else {
+            btnCreate.isUserInteractionEnabled = false
+            btnCreate.backgroundColor = ThemeManager.shared.disable
+        }
+    }
+    
+    func setupSegment() {
+        segmentControl.setTitle("Requested List".localized, forSegmentAt: 0)
+        segmentControl.setTitle("Create Request".localized, forSegmentAt: 1)
     }
     
     func setupTarget() {
@@ -91,6 +109,9 @@ class PaymentViewController: MozoBasicViewController {
     }
     
     func setupBorder() {
+        let image = UIImage(named: "ic_scan", in: BundleManager.mozoBundle(), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+        btnScan.setImage(image, for: .normal)
+        btnScan.tintColor = .white
         btnScan.roundCorners(cornerRadius: 0.02, borderColor: .white, borderWidth: 0.1)
         btnCreate.roundCorners(cornerRadius: 0.02, borderColor: .white, borderWidth: 0.1)
     }
@@ -153,14 +174,17 @@ class PaymentViewController: MozoBasicViewController {
 extension PaymentViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Validate decimal format
-        let finalText = (textField.text ?? "") + string
-        if (finalText.isValidDecimalFormat() == false){
-            displayMozoError("Error: Please input value in decimal format.")
-            return false
-        } else if let value = Decimal(string: finalText), value.significantFractionalDecimalDigits > tokenInfo?.decimals ?? 0 {
-            displayMozoError("Error".localized + ": " + "The length of decimal places must be equal or smaller than %d".localizedFormat(tokenInfo?.decimals ?? 0))
-            return false
+        let finalText = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
+        if finalText.isEmpty == false {
+            if (finalText.isValidDecimalFormat() == false){
+                displayMozoError("Error: Please input value in decimal format.")
+                return false
+            } else if let value = Decimal(string: finalText), value.significantFractionalDecimalDigits > tokenInfo?.decimals ?? 0 {
+                displayMozoError("Error".localized + ": " + "The length of decimal places must be equal or smaller than %d".localizedFormat(tokenInfo?.decimals ?? 0))
+                return false
+            }
         }
+        checkDisableButtonSend(finalText)
         return true
     }
 }
@@ -256,5 +280,17 @@ extension PaymentViewController: PopupErrorDelegate {
     
     func didClosePopupWithoutRetry() {
         
+    }
+}
+extension PaymentViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
+        lastOffsetY = scrollView.contentOffset.y
+    }
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView){
+        if let paymentCollection = self.paymentCollection, paymentCollection.displayItems.count > tableView.visibleCells.count {
+            let hide = scrollView.contentOffset.y <= self.lastOffsetY
+            containerButtonView.isHidden = !hide
+        }
     }
 }

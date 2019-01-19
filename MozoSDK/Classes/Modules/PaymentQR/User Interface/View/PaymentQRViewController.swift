@@ -65,6 +65,23 @@ class PaymentQRViewController: MozoBasicViewController {
         imgContainerView.roundCorners(cornerRadius: 0.04, borderColor: ThemeManager.shared.borderInside, borderWidth: 0.8)
         btnSend.roundCorners(cornerRadius: 0.02, borderColor: .white, borderWidth: 0.1)
         txtAddress.doneAccessory = true
+        txtAddress.addTarget(self, action: #selector(textFieldAddressDidChange), for: UIControlEvents.editingChanged)
+        checkDisableButtonSend()
+    }
+    
+    @objc func textFieldAddressDidChange() {
+        print("TextFieldAddressDidChange")
+        checkDisableButtonSend(txtAddress.text ?? "")
+    }
+    
+    func checkDisableButtonSend(_ text: String = "") {
+        if !text.isEmpty || addressContainerView.isHidden {
+            btnSend.isUserInteractionEnabled = true
+            btnSend.backgroundColor = ThemeManager.shared.main
+        } else {
+            btnSend.isUserInteractionEnabled = false
+            btnSend.backgroundColor = ThemeManager.shared.disable
+        }
     }
     
     // MARK: Button tap events
@@ -78,6 +95,7 @@ class PaymentQRViewController: MozoBasicViewController {
     @IBAction func touchedBtnClear(_ sender: Any) {
         clearAndHideAddressBookView()
         txtAddress.text = ""
+        checkDisableButtonSend()
     }
     @IBAction func btnSendTapped(_ sender: Any) {
         if let toAddress = addressContainerView.isHidden ? lbAbAddress.text : txtAddress.text {
@@ -102,6 +120,7 @@ extension PaymentQRViewController: PaymentQRViewInterface {
     func updateUserInterfaceWithAddress(_ address: String) {
         clearAndHideAddressBookView()
         txtAddress.text = address
+        checkDisableButtonSend(address)
     }
     
     func displayError(_ error: String) {
@@ -113,6 +132,7 @@ extension PaymentQRViewController: PaymentQRViewInterface {
         addressContainerView.isHidden = true
         lbAbName.text = displayItem.name
         lbAbAddress.text = displayItem.address
+        checkDisableButtonSend()
     }
     
     func displaySpinner() {
