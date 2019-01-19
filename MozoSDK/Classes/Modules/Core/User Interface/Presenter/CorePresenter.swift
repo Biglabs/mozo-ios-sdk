@@ -233,8 +233,15 @@ extension CorePresenter : CoreInteractorOutput {
     }
     
     func failToLoadUserInfo(_ error: ConnectionError, for requestingModule: Module?) {
+        NSLog("CorePresenter - Failed to load user info")
         if let requestingModule = requestingModule {
             callBackModule = requestingModule
+        }
+        // Check connection error
+        if error == .authenticationRequired {
+            // TODO: Display different error for invalid token
+            waitingViewInterface?.displayTryAgain(ConnectionError.apiError_INVALID_USER_TOKEN)
+            return
         }
         waitingViewInterface?.displayTryAgain(error)
     }
