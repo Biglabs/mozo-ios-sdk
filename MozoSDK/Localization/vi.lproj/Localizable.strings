@@ -56,8 +56,8 @@
 "Security PIN Confirmation" = "Xác nhận mã PIN";
 "Enter your Security PIN" = "Nhập mã PIN";
 "Enter Security PIN" = "Nhập mã PIN";
-"Enter your Security PIN to restore wallet" = "Nhập mã PIN để khôi phục lại ví";
-"Enter your Security PIN to send MozoX" = "Nhập mã PIN để gửi MozoX";
+"Enter your Security PIN\nto restore wallet" = "Nhập mã PIN\nđể khôi phục lại ví";
+"Enter your Security PIN\nto send MozoX" = "Nhập mã PIN\nđể gửi MozoX";
 "Security PIN must be 6 digits" = "Mã PIN phải đủ 6 số";
 "Confirm Security PIN" = "Xác nhận mã PIN";
 "Re-enter your PIN" = "Nhập lại mã PIN";
