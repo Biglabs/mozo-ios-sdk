@@ -561,13 +561,13 @@
                                             <constraint firstItem="cQO-ZS-bCU" firstAttribute="leading" secondItem="jLD-0d-oOl" secondAttribute="leading" constant="20" id="nwZ-qq-Lcb"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can ask another user to send MozoX to your wallet address by creating a request." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ri9-NX-jWi">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can ask another user to send MozoX to your wallet address by creating a Request." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ri9-NX-jWi">
                                         <rect key="frame" x="20" y="38" width="335" height="36"/>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                         <color key="textColor" red="0.94117647058823528" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="You can ask another user to send MozoX to your wallet address by creating a request."/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="You can ask another user to send MozoX to your wallet address by creating a Request."/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receive Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG9-rz-7sx">
@@ -655,7 +655,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQs-fM-qJT">
                                         <rect key="frame" x="0.0" y="484" width="375" height="99"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFe-yP-jWi">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFe-yP-jWi">
                                                 <rect key="frame" x="20" y="24.5" width="335" height="50"/>
                                                 <color key="backgroundColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -664,7 +664,7 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Scan To Send MozoX" image="ic_scan"/>
+                                                <state key="normal" title="Scan To Send MozoX"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Scan To Send MozoX"/>
                                                 </userDefinedRuntimeAttributes>
@@ -3355,7 +3355,7 @@
         <image name="ic_payment_complete" width="133" height="80"/>
         <image name="ic_pencil" width="52" height="52"/>
         <image name="ic_scan" width="19" height="18"/>
-        <image name="ic_search" width="181" height="185"/>
+        <image name="ic_search" width="16" height="16"/>
         <image name="ic_send" width="13" height="15"/>
         <image name="ic_sent_circle" width="96" height="96"/>
         <image name="ic_sort_down" width="10" height="6"/>
