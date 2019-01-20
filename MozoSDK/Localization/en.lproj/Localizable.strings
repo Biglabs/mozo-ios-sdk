@@ -549,7 +549,7 @@
 "Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "Please input \"Receiver\" and number of \"Airdrop per shopper\"";
 "Invalid Airdrop start date - end date." = "Invalid Airdrop start date - end date.";
 "Invalid Airdrop start time - end time." = "Invalid Airdrop start time - end time.";
-"Time of Start date must larger than current time 10 minutes at least." = "Time of Start date must larger than current time 10 minutes at least.";
+"Time of Start date must larger than current time %d minutes at least." = "Time of Start date must larger than current time %d minutes at least.";
 
 "Frequency must be equal or larger than %d minutes" = "Frequency must be equal or larger than %d minutes";
 "Sorry, something went wrong. Please try again or restart the app." = "Sorry, something went wrong. Please try again or restart the app.";

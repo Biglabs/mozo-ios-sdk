@@ -6,8 +6,8 @@
 //
 
 import Foundation
-let AIRDROP_START_DATE_LARGER_THAN_CURRENT : Int = 10
-let AIRDROP_FREQUENCY_LARGER_THAN : Int = 30
+public let AIRDROP_START_DATE_LARGER_THAN_CURRENT : Int = 10
+public let AIRDROP_FREQUENCY_LARGER_THAN : Int = 1800
 class AirdropInteractor: NSObject {
     var output: AirdropInteractorOutput?
     var signManager : TransactionSignManager?
