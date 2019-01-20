@@ -369,7 +369,7 @@
 "Period time \"To\" must be greater than time \"From\"" = "Period time \"To\" must be greater than time \"From\"";
 "The Event can only begin after %d minutes" = "The Event can only begin after %d minutes";
 "Period time \"To\" must be greater than currently" = "Period time \"To\" must be greater than currently";
-"Frequency must be greater than %d" = "Frequency must be greater than %d";
+"Frequency must be greater than %d minutes" = "Frequency must be greater than %d minutes";
 "Can't find Beacon" = "Can't find Beacon";
 "Please input \"Number of Shoppers\" and number of \"Airdrop per Shopper\"" = "Please input \"Number of Shoppers\" and number of \"Airdrop per Shopper\"";
 "Added MozoX Successfully!" = "Added MozoX Successfully!";
@@ -437,8 +437,14 @@
 "%d day(s) ago" = "%d day(s) ago";
 "%d week(s) ago" = "%d week(s) ago";
 
+"Minutes" = "Minutes";
 "%d min(s)" = "%d min(s)";
+"Hours" = "Hours";
 "%d hour(s)" = "%d hour(s)";
+"Days" = "Days";
+"%d day" = "%d day";
+"%d days" = "%d days";
+"%d day(s)" = "%d day(s)";
 
 "Can not apply empty list for days of week." = "Can not apply empty list for days of week.";
 "There is no data to display" = "There is no data to display";

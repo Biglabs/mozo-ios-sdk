@@ -372,7 +372,7 @@
 "Invalid Airdrop start time - end time." = "종료 기간은 시작 기간 이후에 이루어져야합니다.";
 "The Event can only begin after %d minutes" = "이벤트의 시작 기간은  현재 기간보다 최소한 %d 분 이상 커야합니다.";
 "Period time \"To\" must be greater than currently" = "종료 기간은 현재 기간보다 커야합니다.";
-"Frequency must be greater than 0" = "빈도는 0보다 커야합니다.";
+"Frequency must be greater than %d" = "빈도는 %d 보다 커야합니다.";
 "Can't find Beacon" = "Beacon을 찾을 수 없습니다.";
 "Please input \"Number of Shoppers\" and number of \"Airdrop per Shopper\"" = "쇼핑객 별에 '쇼핑객 수 '와 'Airdrop 수 '를 입력하십시오.";
 "Added MozoX Successfully!" = "MozoX를 성공적으로 추가했습니다!";
@@ -435,8 +435,16 @@
 "%d hour(s) ago" = "%d 시 전에";
 "%d day(s) ago" = "%d 일 전에";
 "%d week(s) ago" = "%d 주일 전에";
+
+"Minutes" = "분";
 "%d min(s)" = "%d 분";
+"Hours" = "시";
 "%d hour(s)" = "%d 시";
+"Days" = "일";
+"%d day" = "%d 일";
+"%d days" = "%d 일";
+"%d day(s)" = "%d 일";
+
 "Can not apply empty list for days of week." = "요일을 비워 둘 수 없습니다.";
 "There is no data to display" = "표시 할 데이터가 없습니다.";
 "Enter store name to search" = "검색 할 상점 이름을 입력하십시오.";

@@ -44,7 +44,7 @@ class AirdropInteractor: NSObject {
     
     func validateAirdropEvent(_ event: AirdropEventDTO) -> String? {
         if event.airdropFreq ?? 0 < AIRDROP_FREQUENCY_LARGER_THAN {
-            return "Frequency must be greater than %d".localizedFormat(AIRDROP_FREQUENCY_LARGER_THAN)
+            return "Frequency must be greater than %d minutes".localizedFormat(AIRDROP_FREQUENCY_LARGER_THAN / 60)
         }
         let startDate = Date(timeIntervalSince1970: TimeInterval(event.periodFromDate ?? 0))
         let endDate = Date(timeIntervalSince1970: TimeInterval(event.periodToDate ?? 0))
