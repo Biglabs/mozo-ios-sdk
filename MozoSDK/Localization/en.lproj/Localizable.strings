@@ -403,10 +403,10 @@
 "Mozoscan is a Block Explorer and Analytics Platform for Mozo X, a decentralized smart contract platform. Mozoscan 2018 - Running on Mozo X Network. htttps://scan.mozocoin.io" = "Mozoscan is a Block Explorer and Analytics Platform for Mozo X, a decentralized smart contract platform. Mozoscan 2018 - Running on Mozo X Network. htttps://scan.mozocoin.io";
 "4. Desktop Wallet" = "4. Desktop Wallet";
 "5. Web App for Retailer" = "5. Web App for Retailer";
-"Active" = "Đang chạy";
-"Out of MozoX" = "Hết MozoX";
-"End" = "Đã kết thúc";
-"Scheduled" = "Hẹn giờ";
+"Active" = "Active";
+"Out of MozoX" = "Out of MozoX";
+"End" = "End";
+"Scheduled" = "Scheduled";
 
 "Receivers:" = "Receivers:";
 "Period:" = "Period:";
