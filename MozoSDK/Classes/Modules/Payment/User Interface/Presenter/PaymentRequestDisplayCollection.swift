@@ -52,7 +52,7 @@ public class PaymentRequestDisplayCollection {
     }
     
     func formattedDateTime(_ dateTime: Int64) -> String {
-        let timeFormat = "HH:mm a"
+        let timeFormat = "HH:mm"
         let timeText = DisplayUtils.convertInt64ToStringWithFormat(dateTime, format: timeFormat)
         let dateFormat = "MMM dd, yyyy"
         let dateText = DisplayUtils.convertInt64ToStringWithFormat(dateTime, format: dateFormat)
