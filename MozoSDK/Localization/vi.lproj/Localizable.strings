@@ -354,6 +354,7 @@
 "Hashtag list is empty" = "Danh sách trống";
 "You can only add a maximum of %d Hashtags" = "Có thể thêm tối đa %d Hashtag";
 "OK" = "OK";
+"Repeat" = "Lặp lại";
 "Repeat:" = "Lặp lại:";
 "Your Store must have at least %d Hashtag." = "Cửa hàng cần ít nhất %d Hashtag.";
 "Only letters and numbers are allowed." = "Chỉ được phép nhập số hoặc chữ cái.";

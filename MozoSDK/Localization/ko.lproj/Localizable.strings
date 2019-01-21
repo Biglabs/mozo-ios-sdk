@@ -356,6 +356,7 @@
 "You can only add a maximum of %d Hashtags" = "해시 태그가 최대 %d 개까지 추가 할 수 있습니다.";
 "OK" = "OK";
 "Repeat" = "반복";
+"Repeat:" = "반복";
 "Your Store must have at least %d Hashtag." = "귀하의 상점은 적어도 하나의 해시 태그가 있어야합니다.";
 "Only letters and numbers are allowed." = "숫자 나 문자에만 허용됩니다.";
 "MozoX" = "MozoX";
