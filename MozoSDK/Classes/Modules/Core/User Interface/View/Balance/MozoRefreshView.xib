@@ -21,9 +21,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJS-Rs-1nc">
-                    <rect key="frame" x="65" y="52" width="86" height="18"/>
+                    <rect key="frame" x="58" y="52" width="100" height="18"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="86" id="Dr6-eS-9ed"/>
+                        <constraint firstAttribute="width" constant="100" id="Dr6-eS-9ed"/>
                         <constraint firstAttribute="height" constant="18" id="mK5-Vk-rjI"/>
                     </constraints>
                     <inset key="titleEdgeInsets" minX="7.4000000000000004" minY="0.0" maxX="0.0" maxY="0.0"/>
