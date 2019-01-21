@@ -19,6 +19,7 @@ public enum ErrorApiResponse: String {
 
     case STORE_RETAILER_UNAUTHORIZED_ACCESS = "STORE_RETAILER_UNAUTHORIZED_ACCESS"
     case STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS = "STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS"
+    case STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE = "STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE"
     case STORE_SALE_PERSON_UNAUTHORIZED_ACCESS_REMOVED = "STORE_SALE_PERSON_UNAUTHORIZED_ACCESS_REMOVED"
     
     case STORE_RETAILER_AIR_DROP_INVALID_FROM_PERIOD_IN_THE_PAST = "STORE_RETAILER_AIR_DROP_INVALID_FROM_PERIOD_IN_THE_PAST"
@@ -68,6 +69,7 @@ public enum ErrorApiResponse: String {
 
         case .STORE_RETAILER_UNAUTHORIZED_ACCESS: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE: return "This phone number has already been registered. Please enter another number."
         case .STORE_SALE_PERSON_UNAUTHORIZED_ACCESS_REMOVED: return "Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)"
 
         case .STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
@@ -121,6 +123,8 @@ public enum ErrorApiResponse: String {
         case .STORE_RETAILER_UNAUTHORIZED_ACCESS: return .apiError_STORE_RETAILER_UNAUTHORIZED_ACCESS
         case .STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS:
             return .apiError_STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS
+        case .STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE:
+            return .apiError_STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE
         case .STORE_SALE_PERSON_UNAUTHORIZED_ACCESS_REMOVED:
             return .apiError_STORE_SALE_PERSON_UNAUTHORIZED_ACCESS_REMOVED
             
