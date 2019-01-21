@@ -36,7 +36,7 @@ public class PaymentRequestDisplayCollection {
         let item6 = PaymentRequestDisplayItem(id: 5, date: date, amount: 52421, displayNameAddress: nameAddress6, requestingAddress: "0x06B094DFcBd65F735e0bF0318384697CC0EB82f7")
         let nameAddress7 = DisplayUtils.buildNameFromAddress(address: "0x327b993ce7201a6e8b1df02256910c9ea6bc4865")
         let item7 = PaymentRequestDisplayItem(id: 6, date: date, amount: 52421, displayNameAddress: nameAddress7, requestingAddress: "0x327b993ce7201a6e8b1df02256910c9ea6bc4865")
-        return [item1, item2, item3, item4, item5, item6, item7]
+        return [item1, item2, item3, item4, item5, item6, item7, item1, item2, item3, item4, item5, item6, item7]
     }
     
     func appendCollection(_ collection: PaymentRequestDisplayCollection) {
@@ -52,7 +52,7 @@ public class PaymentRequestDisplayCollection {
     }
     
     func formattedDateTime(_ dateTime: Int64) -> String {
-        let timeFormat = "HH:mm a"
+        let timeFormat = "HH:mm"
         let timeText = DisplayUtils.convertInt64ToStringWithFormat(dateTime, format: timeFormat)
         let dateFormat = "MMM dd, yyyy"
         let dateText = DisplayUtils.convertInt64ToStringWithFormat(dateTime, format: dateFormat)

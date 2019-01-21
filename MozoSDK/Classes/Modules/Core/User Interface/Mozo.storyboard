@@ -561,13 +561,13 @@
                                             <constraint firstItem="cQO-ZS-bCU" firstAttribute="leading" secondItem="jLD-0d-oOl" secondAttribute="leading" constant="20" id="nwZ-qq-Lcb"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can ask another user to send MozoX to your wallet address by creating a request." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ri9-NX-jWi">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can ask another user to send MozoX to your wallet address by creating a Request." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ri9-NX-jWi">
                                         <rect key="frame" x="20" y="38" width="335" height="36"/>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                         <color key="textColor" red="0.94117647058823528" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="You can ask another user to send MozoX to your wallet address by creating a request."/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="You can ask another user to send MozoX to your wallet address by creating a Request."/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receive Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG9-rz-7sx">
@@ -655,7 +655,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQs-fM-qJT">
                                         <rect key="frame" x="0.0" y="484" width="375" height="99"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFe-yP-jWi">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFe-yP-jWi">
                                                 <rect key="frame" x="20" y="24.5" width="335" height="50"/>
                                                 <color key="backgroundColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -664,7 +664,7 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Scan To Send MozoX" image="ic_scan"/>
+                                                <state key="normal" title="Scan To Send MozoX"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Scan To Send MozoX"/>
                                                 </userDefinedRuntimeAttributes>
@@ -1030,7 +1030,7 @@
                                     <constraint firstAttribute="height" constant="80" id="c7i-qg-Id5"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Payment Request Successful" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N65-dd-r1Q">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Request Successful" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N65-dd-r1Q">
                                 <rect key="frame" x="87.5" y="220" width="200" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="hlY-LW-Wec"/>
@@ -1039,12 +1039,18 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.078431372549019607" green="0.10196078431372549" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Send Request Successful"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You sent payment request for:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltf-8q-ujm">
-                                <rect key="frame" x="77" y="321" width="221" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You sent Request MozoX to:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltf-8q-ujm">
+                                <rect key="frame" x="85.5" y="321" width="204" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.078431372550000003" green="0.1019607843" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="You sent Request MozoX to:"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mozo_offchain" translatesAutoresizingMaskIntoConstraints="NO" id="dt6-ly-Qe9">
                                 <rect key="frame" x="104" y="351" width="30" height="30"/>
@@ -1775,14 +1781,14 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="5" maxY="0.0"/>
-                                <state key="normal" title="Transaction detail" image="ic_paper">
+                                <state key="normal" title="Transaction Detail" image="ic_paper">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
                                         <color key="value" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Transaction detail"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Transaction Detail"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="btnDetailTapped:" destination="sIl-JK-ZNw" eventType="touchUpInside" id="wpA-eE-E79"/>

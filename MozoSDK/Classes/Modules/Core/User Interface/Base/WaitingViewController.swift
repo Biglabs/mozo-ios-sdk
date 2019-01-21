@@ -25,6 +25,9 @@ extension WaitingViewController : PopupErrorDelegate {
 extension WaitingViewController: WaitingViewInterface {
     func displayTryAgain(_ error: ConnectionError) {
         displayMozoPopupError()
+        if error == .apiError_INVALID_USER_TOKEN {
+            mozoPopupErrorView?.btnTry.isHidden = true
+        }
         mozoPopupErrorView?.delegate = self
     }
 }

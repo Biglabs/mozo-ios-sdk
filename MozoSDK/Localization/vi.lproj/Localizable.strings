@@ -56,8 +56,8 @@
 "Security PIN Confirmation" = "Xác nhận mã PIN";
 "Enter your Security PIN" = "Nhập mã PIN";
 "Enter Security PIN" = "Nhập mã PIN";
-"Enter your Security PIN to restore wallet" = "Nhập mã PIN để khôi phục lại ví";
-"Enter your Security PIN to send MozoX" = "Nhập mã PIN để gửi MozoX";
+"Enter your Security PIN\nto restore wallet" = "Nhập mã PIN\nđể khôi phục lại ví";
+"Enter your Security PIN\nto send MozoX" = "Nhập mã PIN\nđể gửi MozoX";
 "Security PIN must be 6 digits" = "Mã PIN phải đủ 6 số";
 "Confirm Security PIN" = "Xác nhận mã PIN";
 "Re-enter your PIN" = "Nhập lại mã PIN";
@@ -354,6 +354,7 @@
 "Hashtag list is empty" = "Danh sách trống";
 "You can only add a maximum of %d Hashtags" = "Có thể thêm tối đa %d Hashtag";
 "OK" = "OK";
+"Repeat" = "Lặp lại";
 "Repeat:" = "Lặp lại:";
 "Your Store must have at least %d Hashtag." = "Cửa hàng cần ít nhất %d Hashtag.";
 "Only letters and numbers are allowed." = "Chỉ được phép nhập số hoặc chữ cái.";
@@ -372,7 +373,7 @@
 "Period time \"To\" must be greater than time \"From\"" = "Thời điểm kết thúc phải diễn ra sau thời điểm bắt đầu";
 "The Event can only begin after %d minutes" = "Thời điểm bắt đầu chương trình phải lớn hơn hiện tại ít nhất %d phút";
 "Period time \"To\" must be greater than currently" = "Thời điểm kết thúc phải diễn ra sau hiện tại.";
-"Frequency must be greater than %d" = "Tần suất phải lớn hơn %d phút";
+"Frequency must be greater than %d minutes" = "Tần suất phải lớn hơn %d phút";
 "Can't find Beacon" = "Không thể tìm ra Beacon";
 "Please input \"Number of Shoppers\" and number of \"Airdrop per Shopper\"" = "Nhập số người nhận và số MozoX Airdrop cho mỗi người";
 "Added MozoX Successfully!" = "Đã thêm MozoX thành công";
@@ -440,8 +441,20 @@
 "%d day(s) ago" = "%d ngày trước";
 "%d week(s) ago" = "%d tuần trước";
 
+"Minutes" = "Phút";
 "%d min(s)" = "%d phút";
+"Hours" = "Giờ";
 "%d hour(s)" = "%d giờ";
+"Days" = "Ngày";
+"%d day" = "%d ngày";
+"%d days" = "%d ngày";
+"%d day(s)" = "%d ngày";
+
+"Can not apply empty list for days of week." = "Không thể để trống ngày trong tuần.";
+"There is no data to display" = "Không có dữ liệu để hiển thị";
+"Enter store name to search" = "Nhập tên cửa hàng để tìm kiếm";
+"User Address" = "Địa chỉ ví";
+"Store Address" = "Địa chỉ cửa hàng";
 
 /* SHOPPER */
 "Mozo X" = "Mozo X";
@@ -595,7 +608,7 @@
 "Period time \"To\" must be greater than time \"From\"" = "Thời gian kết thúc chương trình Airdrop phải diễn ra sau thời điểm bắt đầu";
 "The Event can only begin after %d minutes" = "Thời gian bắt đầu Airdrop phải lớn hơn %d phút so với hiện tại";
 "Period time \"To\" must be greater than currently" = "Thời gian kết thúc chương trình Airdrop phải lớn hơn hiện tại";
-"Frequency must be greater than %d" = "Tần suất Airdrop phải lớn hơn %d";
+"Frequency must be greater than %d minutes" = "Tần suất Airdrop phải lớn hơn %d phút";
 "Cannot find any beacon on your store" = "Không thể tìm thấy Beacon";
 "Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "Xin nhập \"Số người nhận\" và \"Số Airdrop cho mỗi người\".";
 "Airdrop event transaction is created with failure status." = "Đã xảy ra lỗi trong quá trình chuyển MozoX vào chương trình Airdrop được tạo mới.";

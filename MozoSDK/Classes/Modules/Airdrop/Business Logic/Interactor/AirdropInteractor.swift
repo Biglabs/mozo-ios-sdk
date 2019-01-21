@@ -6,8 +6,8 @@
 //
 
 import Foundation
-let AIRDROP_START_DATE_LARGER_THAN_CURRENT : Int = 10
-let AIRDROP_FREQUENCY_LARGER_THAN : Int = 30
+public let AIRDROP_START_DATE_LARGER_THAN_CURRENT : Int = 10
+public let AIRDROP_FREQUENCY_LARGER_THAN : Int = 1800
 class AirdropInteractor: NSObject {
     var output: AirdropInteractorOutput?
     var signManager : TransactionSignManager?
@@ -44,7 +44,7 @@ class AirdropInteractor: NSObject {
     
     func validateAirdropEvent(_ event: AirdropEventDTO) -> String? {
         if event.airdropFreq ?? 0 < AIRDROP_FREQUENCY_LARGER_THAN {
-            return "Frequency must be greater than %d".localizedFormat(AIRDROP_FREQUENCY_LARGER_THAN)
+            return "Frequency must be greater than %d minutes".localizedFormat(AIRDROP_FREQUENCY_LARGER_THAN / 60)
         }
         let startDate = Date(timeIntervalSince1970: TimeInterval(event.periodFromDate ?? 0))
         let endDate = Date(timeIntervalSince1970: TimeInterval(event.periodToDate ?? 0))
