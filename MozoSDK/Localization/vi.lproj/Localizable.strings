@@ -168,7 +168,7 @@
 "Your account has been removed" = "Tài khoản của bạn đã bị gỡ bỏ";
 "Log out" = "Đăng xuất";
 "Do you want to log out this Sub-Account ?" = "Bạn có muốn đăng xuất khỏi tài khoản phụ này?";
-"OK" = "OK";
+"OK" = "Đồng ý";
 "Log Out Successful!" = "Đăng xuất thành công";
 "Back to log in" = "Quay lại trang đăng nhập";
 
@@ -267,7 +267,7 @@
 "Can select a maximum of %d images" = "Chọn tối đa %d ảnh";
 "App requires permission to access \"Storage\" to view images." = "Ứng dụng cần quyền truy cập bộ nhớ để lấy hình ảnh.";
 "App requires permission to access \"Storage\" to view images. Tap \"Settings\" and then \"Permissions\" to grant permission." = "Ứng dụng cần quyền truy cập bộ nhớ để lấy hình ảnh. Chọn Settings và đi đến Permissions để cấp quyền.";
-"OK" = "OK";
+"OK" = "Đồng ý";
 "Settings" = "Thiết lập";
 "Package" = "Hộp";
 "Total MozoX coins" = "Tổng số MozoX";
@@ -353,7 +353,7 @@
 "You may like" = "Có thể bạn sẽ thích";
 "Hashtag list is empty" = "Danh sách trống";
 "You can only add a maximum of %d Hashtags" = "Có thể thêm tối đa %d Hashtag";
-"OK" = "OK";
+"OK" = "Đồng ý";
 "Repeat" = "Lặp lại";
 "Repeat:" = "Lặp lại:";
 "Your Store must have at least %d Hashtag." = "Cửa hàng cần ít nhất %d Hashtag.";
@@ -677,8 +677,8 @@
 "Airdrop MozoX to attract more customers to your store" = "Thu hút nhiều khách hàng hơn bằng cách Airdrop MozoX";
 "Collect and analyze customer information to create better customer insights" = "Thu thập và phân tích thông tin người dùng để đưa ra chiến lược tốt hơn";
 "Let customers redeem to buy product in your store by using MozoX" = "Cho phép khách thanh toán bằng MozoX như một hình thức đổi thưởng tại cửa hàng.";
-"Transfer, buy more MozoX and withdraw easily by using MozoX Wallet" = "Chuyển nhận, nạp và rút MozoX dễ dàng với Ví Mozo";
-"Disrupt foot traffic and save more cost with Mozo" = "Tăng lượng khách và giảm thiểu chi phí với MozoX";
+"Transfer, buy more MozoX and withdraw easily by using MozoX Wallet" = "Chuyển nhận, nạp và rút MozoX dễ dàng với Ví MozoX";
+"Disrupt foot traffic and save more cost with MozoX" = "Tăng lượng khách và giảm thiểu chi phí với MozoX";
 "This month airdropped" = "Airdrop trong tháng";
 "Visited Shoppers" = "Danh sách khách hàng";
 "Every (Frequency of Airdrop)" = "Tần suất airdrop";
