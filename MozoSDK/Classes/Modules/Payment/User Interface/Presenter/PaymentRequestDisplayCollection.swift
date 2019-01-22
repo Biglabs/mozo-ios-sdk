@@ -16,7 +16,7 @@ public class PaymentRequestDisplayCollection {
             displayItems.append(displayItem)
         }
         if displayItems.count == 0 {
-//            displayItems = testItems()
+            displayItems = testItems()
         }
     }
     

@@ -22,6 +22,10 @@ class PaymentViewController: MozoBasicViewController {
     @IBOutlet weak var txtAmount: UITextField!
     @IBOutlet weak var lbExchange: UILabel!
     @IBOutlet weak var btnCreate: UIButton!
+    @IBOutlet weak var constraintTableViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var constraintListContainerViewHeight: NSLayoutConstraint!
+    private var gradient: CAGradientLayer!
+    let defaultTableViewBottomConstant : CGFloat = 20
     var lastOffsetY :CGFloat = 0
     
     var eventHandler: PaymentModuleInterface?
@@ -94,6 +98,8 @@ class PaymentViewController: MozoBasicViewController {
             self.tableView?.addSubview(refreshControl)
         }
         self.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        
+        containerButtonView.backgroundColor = UIColor(white: 1, alpha: 0.7)
     }
     
     @objc func refresh(_ sender: Any? = nil) {
@@ -283,14 +289,19 @@ extension PaymentViewController: PopupErrorDelegate {
     }
 }
 extension PaymentViewController: UIScrollViewDelegate {
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
-        lastOffsetY = scrollView.contentOffset.y
-    }
-    
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView){
-        if let paymentCollection = self.paymentCollection, paymentCollection.displayItems.count > tableView.visibleCells.count {
-            let hide = scrollView.contentOffset.y <= self.lastOffsetY
-            containerButtonView.isHidden = !hide
+        if scrollView == tableView {
+            var shouldChange = false
+            if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
+                shouldChange = true
+                if !isLoadingMore, let paymentCollection = self.paymentCollection, paymentCollection.displayItems.count > 0 {
+                    let nextPage = currentPage + 1
+                    print("Load more request with next page: \(nextPage)")
+                    isLoadingMore = true
+                    loadRequestWithPage(page: nextPage)
+                }
+            }
+            constraintTableViewBottom.constant = shouldChange ? constraintListContainerViewHeight.constant : defaultTableViewBottomConstant
         }
     }
 }

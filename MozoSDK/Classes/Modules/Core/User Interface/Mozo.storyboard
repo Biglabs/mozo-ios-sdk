@@ -714,6 +714,8 @@
                     <connections>
                         <outlet property="btnCreate" destination="cQO-ZS-bCU" id="qCb-8c-V3N"/>
                         <outlet property="btnScan" destination="jFe-yP-jWi" id="War-Kf-9Bz"/>
+                        <outlet property="constraintListContainerViewHeight" destination="oP4-Cx-oDf" id="eA0-bO-Tau"/>
+                        <outlet property="constraintTableViewBottom" destination="b4Y-WW-0vi" id="4gc-2a-Rke"/>
                         <outlet property="containerButtonView" destination="HQs-fM-qJT" id="pbt-B7-VYG"/>
                         <outlet property="createContainerView" destination="6Kv-BG-y5A" id="JYt-K0-moH"/>
                         <outlet property="lbExchange" destination="XA0-Ob-vDr" id="XQH-Tz-6Xy"/>
