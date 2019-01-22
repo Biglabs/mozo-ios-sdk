@@ -284,7 +284,9 @@
 "Update Notification" = "Thông báo khi có cập nhật";
 "Daily Analytics" = "Báo cáo ngày";
 "Shoppers Receiving MozoX" = "Khách đã nhận";
+"Shoppers Receiving MozoX:" = "Khách đã nhận:";
 "Total number of MozoX airdropped" = "Tổng MozoX đã Airdrop";
+"Total MozoX airdropped" = "Tổng MozoX đã Airdrop";
 "Create Airdrop Event" = "Tạo chương trình Airdrop";
 "Event Name" = "Tên chương trình";
 "Number of shoppers" = "Số người nhận";
