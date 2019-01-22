@@ -117,6 +117,11 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getVisitCustomerList(page: page, size: size, year: year, month: month)
     }
     
+    func getRetailerAnalyticAmountAirdropList(page: Int, size: Int, year: Int, month: Int) -> Promise<[AirDropReportDTO]> {
+        print("😎 Get amount airdrop list.")
+        return apiManager.getRetailerAnalyticAmountAirdropList(page: page, size: size, year: year, month: month)
+    }
+    
     func getRunningAirdropEvents(page: Int, size: Int) -> Promise<[AirdropEventDTO]> {
         print("😎 Get running airdrop event list by page number \(page), size \(size).")
         return apiManager.getRunningAirdropEvents(page: page, size: size)

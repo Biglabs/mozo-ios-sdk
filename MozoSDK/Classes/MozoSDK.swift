@@ -117,6 +117,10 @@ public class MozoSDK {
         return moduleDependencies.getVisitCustomerList(page: page, size: size, year: year, month: month)
     }
     
+    public static func getRetailerAnalyticAmountAirdropList(page: Int, size: Int = 15, year: Int = 0, month: Int = 0) -> Promise<[AirDropReportDTO]> {
+        return moduleDependencies.getRetailerAnalyticAmountAirdropList(page: page, size: size, year: year, month: month)
+    }
+    
     public static func getRunningAirdropEvents(page: Int = 0, size: Int = 5) -> Promise<[AirdropEventDTO]> {
         return moduleDependencies.getRunningAirdropEvents(page: page, size: size)
     }
