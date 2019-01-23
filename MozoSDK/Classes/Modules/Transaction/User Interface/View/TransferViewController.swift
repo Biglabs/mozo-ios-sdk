@@ -57,7 +57,7 @@ class TransferViewController: MozoBasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Fix issue: Title is not correct after navigation back from child controller
-        self.title = "Send MozoX".localized
+        navigationItem.title = "Send MozoX".localized
     }
     
     deinit {

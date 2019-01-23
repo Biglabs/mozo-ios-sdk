@@ -146,6 +146,8 @@ extension CorePresenter : CoreModuleWaitingInterface {
     func retryGetUserProfile() {
         if let module = callBackModule {
             requestForAuthentication(module: module)
+        } else {
+            // TODO: Get only user profile.
         }
     }
 }

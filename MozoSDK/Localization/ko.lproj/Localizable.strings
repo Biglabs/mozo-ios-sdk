@@ -284,7 +284,9 @@
 "Update Notification" = "업데이트가 발생시 공지 사항";
 "Daily Analytics" = "일일 보고서";
 "Shoppers Receiving MozoX" = "MozoX를 받는 고객";
+"Shoppers Receiving MozoX:" = "MozoX를 받는 고객:";
 "Total number of MozoX airdropped" = "Airdrop 된 총 MozoX 코인";
+"Total MozoX airdropped" = "Airdrop 된 총 MozoX 코인";
 "Create Airdrop Event" = "Airdrop 이벤트 만들기";
 "Event Name" = "이벤트이름";
 "Number of shoppers" = "수령인수";
