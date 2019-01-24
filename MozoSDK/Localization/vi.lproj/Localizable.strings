@@ -47,7 +47,7 @@
 "Refresh" = "Làm mới";
 "Try Again" = "Thử lại";
 "Backup Wallet" = "Sao lưu ví";
-"Stored Recovery Phrase" = "Lưu Recovery Phrase";
+"Store Recovery Phrase" = "Lưu Recovery Phrase";
 "Please write it down on paper and keep it in a safe place as you would with money." = "Ghi lại những từ này và cất ở nơi an toàn.";
 "*If you lose your Recovery Phrase, your wallet cannot be recovered." = "*Nếu mất Recovery Phrase, ví của bạn sẽ không thể khôi phục.";
 "I have safely stored Recovery Phrase" = "Tôi đã lưu trữ Recovery Phrase";
@@ -58,6 +58,7 @@
 "Enter Security PIN" = "Nhập mã PIN";
 "Enter your Security PIN\nto restore wallet" = "Nhập mã PIN\nđể khôi phục lại ví";
 "Enter your Security PIN\nto send MozoX" = "Nhập mã PIN\nđể gửi MozoX";
+"Enter your Security PIN\nto create airdrop event" = "Nhập mã PIN\nđể tạo chương trình";
 "Security PIN must be 6 digits" = "Mã PIN phải đủ 6 số";
 "Confirm Security PIN" = "Xác nhận mã PIN";
 "Re-enter your PIN" = "Nhập lại mã PIN";
@@ -277,7 +278,7 @@
 "Shopper Notification" = "Thông báo từ khách";
 "Display All" = "Hiển thị toàn bộ";
 "Received MozoX" = "MozoX đã nhận";
-"Apply" = "Lọc";
+"Apply" = "Áp dụng";
 "New Shopper has arrived" = "Khách hàng vừa đến";
 "Mozo Sent" = "Đã gửi MozoX";
 "System Notification" = "Thông báo từ hệ thống";

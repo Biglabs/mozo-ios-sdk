@@ -47,7 +47,7 @@
 "Refresh" = "Refresh";
 "Try Again" = "Try Again";
 "Backup Wallet" = "Backup Wallet";
-"Stored Recovery Phrase" = "Stored Recovery Phrase";
+"Store Recovery Phrase" = "Store Recovery Phrase";
 "Please write it down on paper and keep it in a safe place as you would with money." = "Please write this Phrase down and keep it in a safe place.";
 "*If you lose your Recovery Phrase, your wallet cannot be recovered." = "*If you lose your Recovery Phrase, your wallet cannot be recovered.";
 "I have safely stored Recovery Phrase" = "I have safely stored Recovery Phrase";
@@ -58,6 +58,7 @@
 "Enter Security PIN" = "Enter Security PIN";
 "Enter your Security PIN\nto restore wallet" = "Enter your Security PIN\nto restore wallet";
 "Enter your Security PIN\nto send MozoX" = "Enter your Security PIN\nto send MozoX";
+"Enter your Security PIN\nto create airdrop event" = "Enter your Security PIN\nto create airdrop event";
 "Security PIN must be 6 digits" = "Security PIN must be 6 digits";
 "Confirm Security PIN" = "Confirm Security PIN";
 "Re-enter your PIN" = "Re-enter your PIN";

@@ -47,7 +47,7 @@
 "Refresh" = "새로 고침";
 "Try Again" = "다시 시도하십시오.";
 "Backup Wallet" = "월렛 백업 ";
-"Stored Recovery Phrase" = "복구 데이터 프레이즈 저장";
+"Store Recovery Phrase" = "복구 데이터 프레이즈 저장";
 "Please write this Phrase down and keep it in a safe place." = "이 프레이즈를 적어 안전한 장소에 보관하십시오.";
 "*If you lose your Recovery Phrase, your wallet cannot be recovered." = "* 복구 데이터 문구를 분실하면 월렛을 복구 할 수 없습니다.";
 "I have safely stored Recovery Phrase" = "복구 문구를 안전하게 저장했습니다.";
@@ -58,6 +58,7 @@
 "Enter Security PIN" = "PIN 코드 입력";
 "Enter your Security PIN\nto restore wallet" = "월렛을 복구할 PIN 코드를\n입력하십시오.";
 "Enter your Security PIN\nto send MozoX" = "MozoX를 보내도록 보안 PIN을\n입력하십시오.";
+"Enter your Security PIN\nto create airdrop event" = "MozoX를 보내도록 보안 PIN을\n입력하십시오.";
 "Security PIN must be 6 digits" = "PIN은 최소 6 자리 숫자 여야 합니다.";
 "Confirm Security PIN" = "보안 PIN 확인";
 "Re-enter your PIN" = "PIN 코드를 다시 입력하십시오.";
