@@ -40,9 +40,9 @@ extension RDNInteractor : RDNInteractorInput {
         }
     }
     
-    func stopService() {
+    func stopService(shouldReconnect: Bool) {
         stopReconnectToWebSocket()
-        shouldReconnectAfterDisconnected = false
+        shouldReconnectAfterDisconnected = shouldReconnect
         if manager.isConnected() {
             NSLog("RDNInteractor - Stop services.")
             manager.disconnect()
