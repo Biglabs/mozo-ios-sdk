@@ -38,7 +38,7 @@ public enum ErrorApiResponse: String {
     case SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS = "SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS"
     
     case SOLOMON_USER_PROFILE_WALLET_ADDRESS_IN_USED = "SOLOMON_USER_PROFILE_WALLET_ADDRESS_IN_USED"
-    case SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET = "SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET"
+    case SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET_ADDRESS = "SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET_ADDRESS"
     case SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_MISSING_FIELD = "SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_MISSING_FIELD"
         
     case SOLOMON_SOLO_RESOURCE_FATAL_USER_NO_OFFCHAIN_ADDRESS = "SOLOMON_SOLO_RESOURCE_FATAL_USER_NO_OFFCHAIN_ADDRESS"
@@ -58,7 +58,7 @@ public enum ErrorApiResponse: String {
         case .SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS: return "Your wallet was updated but did not sync with your current device. Please restore your wallet first."
         case .SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS: return "The destination wallet was not found. Please recheck the wallet address or try another wallet address"
         case .SOLOMON_USER_PROFILE_WALLET_ADDRESS_IN_USED: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
-        case .SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET_ADDRESS: return "Your wallet was updated but did not sync with your current device. Please restore your wallet first."
         case .SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_MISSING_FIELD: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .SOLOMON_SOLO_RESOURCE_FATAL_USER_NO_OFFCHAIN_ADDRESS: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .SOLOMON_FATAL_USE_DIFFERENT_OFFCHAIN_ADDRESS: return "Your wallet was updated but did not sync with your current device. Please restore your wallet first."
@@ -104,7 +104,7 @@ public enum ErrorApiResponse: String {
             return .apiError_SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS
         case .SOLOMON_USER_PROFILE_WALLET_ADDRESS_IN_USED:
             return .apiError_SOLOMON_USER_PROFILE_WALLET_ADDRESS_IN_USED
-        case .SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET:
+        case .SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET_ADDRESS:
             return .apiError_SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET
         case .SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_MISSING_FIELD:
             return .apiError_SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_MISSING_FIELD
