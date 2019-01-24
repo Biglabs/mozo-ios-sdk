@@ -91,10 +91,10 @@ private extension CorePresenter {
         }
     }
     
-    private func stopSilentServices() {
+    private func stopSilentServices(shouldReconnect: Bool = true) {
         print("CorePresenter - Stop silent services.")
         // Stop silent services
-        rdnInteractor?.stopService()
+        rdnInteractor?.stopService(shouldReconnect: shouldReconnect)
     }
     
     @objc func didEnterBackground(_ notification: Notification) {
@@ -184,7 +184,7 @@ extension CorePresenter : AuthModuleDelegate {
         // Notify for all observing objects
         coreInteractor?.notifyLogoutForAllObservers()
         requestForCloseAllMozoUIs()
-        stopSilentServices()
+        stopSilentServices(shouldReconnect: false)
     }
     
     func authModuleDidCancelLogout() {

@@ -9,13 +9,13 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 
-let SHOPPER_AIRDROP_REPORT_API_PATH = "/shopper-airdrop/report-beacon"
+let SHOPPER_AIRDROP_REPORT_API_PATH = "/shopper-airdrop"
 let RETAILER_AIRDROP_API_PATH = "/air-drops"
 let RETAILER_AIRDROP_RESOURCE_API_PATH = "/retailer/airdrops"
 public extension ApiManager {
     public func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_REPORT_API_PATH
+            let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_REPORT_API_PATH + "/report-beacon"
             let data = ReportBeaconDTO(beaconInfoDTOList: beacons, status: status)
             let param = data.toJSON()
             print("Report ranged beacons params: \(data.rawString() ?? "NULL")")
@@ -27,6 +27,30 @@ public extension ApiManager {
                 }
                 .catch { error in
                     print("Error when request send Ranged Beacons: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber> {
+        return Promise { seal in
+            let params = ["startTime" : startTime,
+                          "endTime" : endTime] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_REPORT_API_PATH + "/get-amount-coin-by-user?\(params.queryString)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get amount of collected coin from time \(startTime) to time \(endTime), json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_RESULT_KEY]
+                    if let number = jobj.number {
+                        seal.fulfill(number)
+                    }
+                }
+                .catch { error in
+                    print("Error when request get amount of collected coin from time \(startTime) to time \(endTime): " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {

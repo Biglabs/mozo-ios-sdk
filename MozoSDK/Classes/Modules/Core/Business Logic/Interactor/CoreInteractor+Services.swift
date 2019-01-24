@@ -158,4 +158,8 @@ extension CoreInteractor: CoreInteractorService {
     func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
         return apiManager.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite)
     }
+    
+    func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber> {
+        return apiManager.getTodayCollectedAmount(startTime: startTime, endTime: endTime)
+    }
 }

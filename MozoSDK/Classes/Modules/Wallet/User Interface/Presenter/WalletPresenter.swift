@@ -59,7 +59,7 @@ extension WalletPresenter: WalletInteractorOutput {
             switch apiError {
                 case .SOLOMON_USER_PROFILE_WALLET_ADDRESS_IN_USED,
                      .SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_MISSING_FIELD,
-                     .SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET:
+                     .SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET_ADDRESS:
                     pinUserInterface?.displayErrorAndLogout(apiError)
                 default:
                     pinUserInterface?.displayError(apiError.description)

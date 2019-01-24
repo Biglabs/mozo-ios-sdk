@@ -8,6 +8,7 @@
 import Foundation
 import SwiftyJSON
 public let RESPONSE_TYPE_ARRAY_KEY = "items"
+public let RESPONSE_TYPE_RESULT_KEY = "result"
 public class ResponseDTO: ResponseObjectSerializable {
     public var success: Bool
     public var error: String?

@@ -6,7 +6,7 @@
 //
 protocol RDNInteractorInput {
     func startService()
-    func stopService()
+    func stopService(shouldReconnect: Bool)
 }
 
 protocol RDNInteractorOutput {

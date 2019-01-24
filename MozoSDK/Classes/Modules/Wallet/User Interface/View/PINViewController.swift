@@ -36,13 +36,19 @@ class PINViewController : MozoBasicViewController {
         pinTextField.keyboardType = .numberPad
         if self.passPhrase == nil {
             title = "Enter Security PIN".localized
-            if moduleRequested == Module.Transaction {
-                enterPINLabel.text = "Enter your Security PIN\nto send MozoX".localized
+            switch moduleRequested {
+            case .Transaction, .Airdrop:
+                var text = "Enter your Security PIN\nto send MozoX"
+                if moduleRequested == .Airdrop {
+                    text = "Enter your Security PIN\nto create airdrop event"
+                }
+                enterPINLabel.text = text.localized
                 descriptionLabel.text = "Security PIN must be 6 digits".localized
-            } else {
+            default:
                 // Enter new pin and confirm new pin
                 enterPINLabel.text = "Enter your Security PIN\nto restore wallet".localized
             }
+            
         }
     }
     

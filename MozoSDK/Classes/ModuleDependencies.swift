@@ -195,6 +195,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite))!
     }
     
+    func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getTodayCollectedAmount(startTime: startTime, endTime: endTime))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

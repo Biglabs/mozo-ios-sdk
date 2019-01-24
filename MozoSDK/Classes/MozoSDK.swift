@@ -156,4 +156,8 @@ public class MozoSDK {
     public static func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
         return moduleDependencies.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite)
     }
+    
+    public static func getTodayCollectedAmount(startTime: Int = 0, endTime: Int = 86400) -> Promise<NSNumber> {
+        return moduleDependencies.getTodayCollectedAmount(startTime: startTime, endTime: endTime)
+    }
 }

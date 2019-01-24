@@ -8,25 +8,41 @@
 import Foundation
 import Starscream
 import SwiftyJSON
-
+let SOCKET_RETRY_DELAY_IN_SECONDS = 5
+let SOCKET_RETRY_MAXIMUM_TIME = 8
 class RDNInteractor: NSObject {
     var output: RDNInteractorOutput?
     let manager : WebSocketManager
+    var shouldReconnectAfterDisconnected = true
+    var retryCount = 0
+    var reconnectTimer: Timer?
     
     init(webSocketManager: WebSocketManager) {
         self.manager = webSocketManager
     }
+    
+    @objc func connectToWebSocketServer() {
+        manager.connect()
+        manager.socket.advancedDelegate = self
+    }
+    
+    func stopReconnectToWebSocket() {
+        reconnectTimer?.invalidate()
+        retryCount = 1
+    }
 }
 extension RDNInteractor : RDNInteractorInput {
     func startService() {
+        stopReconnectToWebSocket()
         if !manager.isConnected() {
             NSLog("RDNInteractor - Start services.")
-            manager.connect()
-            manager.socket.advancedDelegate = self
+            connectToWebSocketServer()
         }
     }
     
-    func stopService() {
+    func stopService(shouldReconnect: Bool) {
+        stopReconnectToWebSocket()
+        shouldReconnectAfterDisconnected = shouldReconnect
         if manager.isConnected() {
             NSLog("RDNInteractor - Stop services.")
             manager.disconnect()
@@ -37,12 +53,24 @@ extension RDNInteractor : RDNInteractorInput {
 extension RDNInteractor : WebSocketAdvancedDelegate {
     func websocketDidConnect(socket: WebSocket) {
         NSLog("Websocket is connected")
+        stopReconnectToWebSocket()
     }
     func websocketDidDisconnect(socket: WebSocket, error: Error?) {
         if let e = error {
             NSLog("Websocket is disconnected: \(e.localizedDescription)")
         } else {
             NSLog("Websocket disconnected")
+        }
+        if shouldReconnectAfterDisconnected {
+            NSLog("RDNInteractor - Reconnect after disconnect")
+            let mutiplier = pow(2.0, Double(retryCount))
+            let timeInterval = Double(SOCKET_RETRY_DELAY_IN_SECONDS) * mutiplier
+            NSLog("RDNInteractor - Reconnect after disconnect - delay time in seconds: \(timeInterval)")
+            reconnectTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(connectToWebSocketServer), userInfo: nil, repeats: false)
+            retryCount += 1
+            if retryCount > SOCKET_RETRY_MAXIMUM_TIME {
+                retryCount = 0
+            }
         }
     }
     func websocketDidReceiveMessage(socket: WebSocket, text: String, response: WebSocket.WSResponse) {
