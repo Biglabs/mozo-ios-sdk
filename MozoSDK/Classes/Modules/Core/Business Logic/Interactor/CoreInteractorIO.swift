@@ -55,4 +55,5 @@ protocol CoreInteractorService {
     func searchStoresWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO>
     func getFavoriteStores() -> Promise<[StoreInfoDTO]>
     func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]>
+    func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber>
 }
