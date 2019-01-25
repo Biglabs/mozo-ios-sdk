@@ -50,6 +50,11 @@ class TransferViewController: MozoBasicViewController {
         txtAmount.addTarget(self, action: #selector(textFieldAmountDidEndEditing), for: UIControlEvents.editingDidEnd)
         txtAmount.delegate = self
         
+        if Locale.current.languageCode == "en" {
+            let attribute = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 10)]
+            txtAddress.placeholder = ""
+            txtAddress.attributedPlaceholder = NSAttributedString(string:"Please enter address or select from address book.".localized, attributes: attribute)
+        }
         // Observer balance changed notification
         NotificationCenter.default.addObserver(self, selector: #selector(onBalanceDidUpdate(_:)), name: .didChangeBalance, object: nil)
     }
@@ -169,7 +174,7 @@ class TransferViewController: MozoBasicViewController {
         print("TextFieldAmountDidChange")
         if let rateInfo = SessionStoreManager.exchangeRateInfo {
             if let type = CurrencyType(rawValue: rateInfo.currency ?? "") {
-                let text = txtAmount.text != nil ? (txtAmount.text != "" ? txtAmount.text : "0") : "0"
+                let text = (txtAmount.text != nil ? (txtAmount.text != "" ? txtAmount.text : "0") : "0")?.replace(",", withString: ".")
                 let value = Double(text ?? "0")!
                 let exValue = (value * (rateInfo.rate ?? 0)).rounded(toPlaces: type.decimalRound)
                 let exValueStr = "\(type.unit)\(exValue )"
@@ -198,7 +203,7 @@ class TransferViewController: MozoBasicViewController {
             lbValidateAddrError.isHidden = false
             constraintTopSpace.constant = topSpace + lbValidateAddrError.frame.size.height
         } else {
-            lbValidateAmountError.text = error
+            lbValidateAmountError.text = (error ?? "").localized
             lbAmount.textColor = ThemeManager.shared.error
             amountBorderView.backgroundColor = ThemeManager.shared.error
             lbValidateAmountError.isHidden = false

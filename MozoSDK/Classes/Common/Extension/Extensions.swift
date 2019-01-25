@@ -23,7 +23,8 @@ public extension String {
     }
     
     public func isValidDecimalFormat() -> Bool{
-        return Float(self) != nil
+        let text = self.replace(",", withString: ".")
+        return Float(text) != nil
     }
     
     public func isValidDecimalMinValue(decimal: Int) -> Bool {

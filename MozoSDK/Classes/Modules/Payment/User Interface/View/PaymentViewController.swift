@@ -64,7 +64,7 @@ class PaymentViewController: MozoBasicViewController {
     }
     
     func checkDisableButtonSend(_ text: String = "") {
-        if !text.isEmpty {
+        if !text.isEmpty, let value = Double(text.replace(",", withString: ".")), value > 0 {
             btnCreate.isUserInteractionEnabled = true
             btnCreate.backgroundColor = ThemeManager.shared.main
         } else {
@@ -144,7 +144,7 @@ class PaymentViewController: MozoBasicViewController {
         print("TextFieldAmountDidChange")
         if let rateInfo = SessionStoreManager.exchangeRateInfo {
             if let type = CurrencyType(rawValue: rateInfo.currency ?? "") {
-                let text = txtAmount.text != nil ? (txtAmount.text != "" ? txtAmount.text : "0") : "0"
+                let text = (txtAmount.text != nil ? (txtAmount.text != "" ? txtAmount.text : "0") : "0")?.replace(",", withString: ".")
                 let value = Double(text ?? "0")!
                 let exValue = (value * (rateInfo.rate ?? 0))
                 let exValueStr = "\(type.unit)\(exValue.roundAndAddCommas(toPlaces: type.decimalRound))"
