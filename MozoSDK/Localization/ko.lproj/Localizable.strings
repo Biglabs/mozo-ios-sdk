@@ -48,7 +48,7 @@
 "Try Again" = "다시 시도하십시오.";
 "Backup Wallet" = "월렛 백업 ";
 "Store Recovery Phrase" = "복구 데이터 프레이즈 저장";
-"Please write this Phrase down and keep it in a safe place." = "이 프레이즈를 적어 안전한 장소에 보관하십시오.";
+"Please write it down on paper and keep it in a safe place as you would with money." = "이 프레이즈를 적어 안전한 장소에 보관하십시오.";
 "*If you lose your Recovery Phrase, your wallet cannot be recovered." = "* 복구 데이터 문구를 분실하면 월렛을 복구 할 수 없습니다.";
 "I have safely stored Recovery Phrase" = "복구 문구를 안전하게 저장했습니다.";
 "Create Security PIN" = "보안 PIN 생성";
@@ -146,7 +146,7 @@
 "Verification code will send to this phone number" = "인증 코드가 이 전화 번호로 전송됩니다.";
 "Create New Password" = "새 비밀번호 만들기";
 "ENTER YOUR SECURITY PIN" = "PIN 코드를 입력하십시오.";
-"Security PIN should be 6 digit numbers" = "보안 PIN 코드는 6 자리 숫자 여야합니다.";
+"Security PIN must be 6 digit numbers" = "보안 PIN 코드는 6 자리 숫자 여야합니다.";
 "CONFIRM SECURITY PIN" = "PIN 코드를 확인하십시오.";
 "Re-enter your PIN" = "PIN 코드를 디사 입력하십시오.";
 "Successful" = "성공";

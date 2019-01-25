@@ -30,7 +30,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="ENTER YOUR SECURITY PIN"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security PIN should be 6 di-git numbers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzT-vO-JtQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security PIN must be 6 digit numbers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzT-vO-JtQ">
                                 <rect key="frame" x="47.5" y="120" width="280" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="hmc-Aq-bWg"/>
@@ -39,7 +39,7 @@
                                 <color key="textColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Security PIN should be 6 di-git numbers"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Security PIN must be 6 digit numbers"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOA-dH-2Xf" userLabel="CheckView">

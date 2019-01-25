@@ -146,7 +146,7 @@
 "Verification code will send to this phone number" = "Verification code will send to this phone number";
 "Create New Password" = "Create New Password";
 "ENTER YOUR SECURITY PIN" = "ENTER YOUR SECURITY PIN";
-"Security PIN should be 6 digit numbers" = "Security PIN should be 6 digit numbers";
+"Security PIN must be 6 digit numbers" = "Security PIN must be 6 digit numbers";
 "CONFIRM SECURITY PIN" = "CONFIRM SECURITY PIN";
 "Re-enter your PIN" = "Re-enter your PIN";
 "Successful" = "Successful";
