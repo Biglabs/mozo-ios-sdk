@@ -83,7 +83,7 @@ class TxDetailDisplayData {
     
     func buildDateString(_ date: Date) -> String {
         let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "MMM dd, yyyy - HH:mm"
+        dateFormatterPrint.dateFormat = "HH:mm MMM d, yyyy".localized
         return dateFormatterPrint.string(from: date)
     }
 }

@@ -34,8 +34,8 @@ public class NotiDisplayItemData {
                     prefix = prefix.localized
                     actionText = action.localized
                     let amount = blNoti.amount?.convertOutputValue(decimal: blNoti.decimal ?? 0)
-                    amountText = "\((amount ?? 0.0).roundAndAddCommas()) MozoX"
-                    title = "\(action) \(amountText)"
+                    amountText = "%@ MozoX".localizedFormat((amount ?? 0.0).roundAndAddCommas())
+                    title = "\(action) %@ MozoX".localizedFormat((amount ?? 0.0).roundAndAddCommas())
                     if let airdropNoti = rawNoti as? AirdropNotification {
                         subtitle = "\(prefix) \(airdropNoti.storeName ?? "")"
                         image = "ic_notif_airdropped"

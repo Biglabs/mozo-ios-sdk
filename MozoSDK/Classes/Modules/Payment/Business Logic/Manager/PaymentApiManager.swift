@@ -18,7 +18,10 @@ public extension ApiManager {
     ///   - size: the number of payment request item
     public func getListPaymentRequest(page: Int = 0, size: Int = 15) -> Promise<[PaymentRequestDTO]> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + PAYMENT_REQUEST_API_PATH + "?page=\(page)&size=\(size)"
+            let params = ["size" : size,
+                          "page" : page,
+                          "sort" : "timeInSec,desc"] as [String : Any]
+            let url = Configuration.BASE_URL + PAYMENT_REQUEST_API_PATH + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

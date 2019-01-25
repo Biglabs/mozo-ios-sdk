@@ -24,8 +24,8 @@
 "An error has occurred." = "오류가 발생했습니다.";
 "Your balance is not insufficient for this transfer amount." = "금액을 이송하도록 밸런스가 부족되어있습니다.";
 "Deposit" = "예금";
-"Sign In to Mozo X" = "Mozo X에 로그인";
-"Log Out Mozo X" = "Mozo X 로그 아웃";
+"Sign In to MozoX" = "MozoX에 로그인";
+"Log Out MozoX" = "MozoX 로그 아웃";
 "Send MozoX coins" = "MozoX 코인 보내기";
 "Transaction History" = "거래 내역";
 "Withdraw" = "철수";
@@ -48,7 +48,7 @@
 "Try Again" = "다시 시도하십시오.";
 "Backup Wallet" = "월렛 백업 ";
 "Store Recovery Phrase" = "복구 데이터 프레이즈 저장";
-"Please write this Phrase down and keep it in a safe place." = "이 프레이즈를 적어 안전한 장소에 보관하십시오.";
+"Please write it down on paper and keep it in a safe place as you would with money." = "이 프레이즈를 적어 안전한 장소에 보관하십시오.";
 "*If you lose your Recovery Phrase, your wallet cannot be recovered." = "* 복구 데이터 문구를 분실하면 월렛을 복구 할 수 없습니다.";
 "I have safely stored Recovery Phrase" = "복구 문구를 안전하게 저장했습니다.";
 "Create Security PIN" = "보안 PIN 생성";
@@ -76,7 +76,7 @@
 "Receive Amount" = "수신 금액";
 "Requested List" = "요청한 리스트";
 "Create Request" = "요청 만들기";
-"You can ask another user to send MozoX coins to your wallet address by creating a Request." = "MozoX를 수신 요청하는 방식으로 다른 사용자에게 Mozo X 를 자신의 월렛으로 보내도록 요청할 수 있습니다.";
+"You can ask another user to send MozoX to your wallet address by creating a Request." = "MozoX를 수신 요청하는 방식으로 다른 사용자에게 MozoX 를 자신의 월렛으로 보내도록 요청할 수 있습니다.";
 "Send Request" = "요청 보내기";
 "Scan To Send MozoX" = "MozoX를 보내도록 스캔하십시오.";
 "Scan to send:" = "보낼 스캔";
@@ -100,6 +100,7 @@
 "Error: Please input value in decimal format." = "오류 :십진수로 값을 입력하십시오.";
 "Spendable:" = "가용 잔액:";
 "Send Complete" = "보내기 완료";
+
 "You have just sent:" = "방금 보낸 내용";
 "Transaction Detail" = "거래 세부 정보";
 "Wallet Address" = "월렛 주소";
@@ -145,7 +146,7 @@
 "Verification code will send to this phone number" = "인증 코드가 이 전화 번호로 전송됩니다.";
 "Create New Password" = "새 비밀번호 만들기";
 "ENTER YOUR SECURITY PIN" = "PIN 코드를 입력하십시오.";
-"Security PIN should be 6 digit numbers" = "보안 PIN 코드는 6 자리 숫자 여야합니다.";
+"Security PIN must be 6 digit numbers" = "보안 PIN 코드는 6 자리 숫자 여야합니다.";
 "CONFIRM SECURITY PIN" = "PIN 코드를 확인하십시오.";
 "Re-enter your PIN" = "PIN 코드를 디사 입력하십시오.";
 "Successful" = "성공";
@@ -158,7 +159,7 @@
 "Call" = "전화하기";
 "Log in with another phone number" = "다른 전화 번호로 로그인하십시오.";
 "Account Verified" = "계정이 확인되었습니다";
-"Welcome" = "Mozo X에 오신 것을 환영합니다";
+"Welcome" = "MozoX에 오신 것을 환영합니다";
 "Address" = "주소";
 "Start" = "시작";
 "Sign Up Succesful" = "성공적인 가입했습니다.";
@@ -170,7 +171,7 @@
 "OK" = "확인";
 "Log Out Successful!" = "성공적인 로그 아웃!";
 "Back to log in" = "로그인으로 돌아 가기";
-"Enter amount to receive " = "받을 MozoX 금액을 입력하십시오.";
+"Enter amount to receive" = "받을 MozoX 금액을 입력하십시오.";
 "Your TX has been broadcast" = "귀하의 TX가 방송되었습니다.";
 "TX hash:" = "TX 해시:";
 "Enter amount to send" = "보낼 MozoX  금액을 입력하십시오.";
@@ -183,9 +184,9 @@
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ" = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 // Retailer
-"Mozo X Retailer" = "Mozo X 소매점";
+"MozoX Retailer" = "MozoX 소매점";
 "Sync Beacon" = "Beacon 동기화";
-"Remove Beacon from its Package. Scan QR Code to sync Beacon with your store." = "Mozo X 박스에서 Beacon을 가져와서  Beacon을 상점과 동기화하기 위하여 QR 코드를 스캔하십시오.";
+"Remove Beacon from its Package. Scan QR Code to sync Beacon with your store." = "MozoX 박스에서 Beacon을 가져와서  Beacon을 상점과 동기화하기 위하여 QR 코드를 스캔하십시오.";
 "Scan QR Code" = "QR 코드 스캔";
 "Beacon Sync Successful!" = "성공적으로 Beacon 동기화";
 "Now stick Beacon where you want to use it (Wall, Counter, Ceiling) to detect Shoppers whenever they visit your store." = "상점을 방문 쇼핑객를 감지할 수 있는 위치(벽, 카운터, 천장)에 Beacon을 놓으십시오.";
@@ -388,26 +389,26 @@
 "You do not have permission to do this action!" = "이 작업을 수행 할 수있는 권한이 없습니다.";
 "Are you sure to logout" = "로그 아웃 하시겠습니까?";
 "Ex: 1st Tony Moly event" = "예 : 1 차 Tony Moly 이벤트";
-"Let your customers scan this QR code to download Mozo X App and get %@ MozoX coins for each customer sign up successful." = "고객에게이 QR 코드를 스캔하여 Mozo X 앱을 다운로드하고 성공적으로 등록 할 때마다 %@ 개의 MozoX 코인을   받으십시오.";
-"Or share Mozo X via your network" = "또는 네트워크를 통해 Mozo X를 공유하십시오";
-"Share Mozo X" = "Mozo X 공유";
+"Let your customers scan this QR code to download MozoX App and get %@ MozoX coins for each customer sign up successful." = "고객에게이 QR 코드를 스캔하여 MozoX 앱을 다운로드하고 성공적으로 등록 할 때마다 %@ 개의 MozoX 코인을   받으십시오.";
+"Or share MozoX via your network" = "또는 네트워크를 통해 MozoX를 공유하십시오";
+"Share MozoX" = "MozoX 공유";
 "Start" = "시작";
 "Currently" = "현재";
-"Share Mozo X" = "Mozo X 공유";
+"Share MozoX" = "MozoX 공유";
 "Invite friends" = "친구 초대";
-"Or share Mozo X via your network" = "또는 네트워크를 통해 Mozo X를 공유하십시오";
+"Or share MozoX via your network" = "또는 네트워크를 통해 MozoX를 공유하십시오";
 "Receive %@ MozoX coins" = "%@ 개의 MozoX 코인 수령";
-"%@ join Mozo X" = "전화 번호 %@ 이 방금 Mozo X에 가입했습니다.";
+"%@ join MozoX" = "전화 번호 %@ 이 방금 MozoX에 가입했습니다.";
 "Just Now" = "지금";
 "Create airdrop event failed. Please try again!" = "Airdrop 이벤트를 만들지 못했습니다. 다시 시도하십시오!";
 "Try again" = "다시 시도하십시오.";
 "Email Us" = " 문의 이메일";
 "General" = "총괄";
 "Airdrop" = "Airdrop";
-"1. Mozo X App for Retailer" = "1. 소매 업체 용 Mozo X 앱";
-"2. Mozo X App for Shopper" = "2. 쇼핑객용 Mozo X 앱";
+"1. MozoX App for Retailer" = "1. 소매 업체 용 MozoX 앱";
+"2. MozoX App for Shopper" = "2. 쇼핑객용 MozoX 앱";
 "3. MozoScan" = "3. MozoScan";
-"Mozoscan is a Block Explorer and Analytics Platform for Mozo X, a decentralized smart contract platform. Mozoscan 2018 - Running on Mozo X Network. htttps://scan.mozocoin.io" = "Mozoscan은 분권화 된 스마트 계약 플랫폼 인 Mozo X의 Block Explorer 와 Anlytics Platform입니다. Mozoscan 2018 - Mozo X Network에서 실행 중입니다.\nhttps://scan.mozocoin.io";
+"Mozoscan is a Block Explorer and Analytics Platform for MozoX, a decentralized smart contract platform. Mozoscan 2018 - Running on MozoX Network. htttps://scan.mozocoin.io" = "Mozoscan은 분권화 된 스마트 계약 플랫폼 인 MozoX의 Block Explorer 와 Anlytics Platform입니다. Mozoscan 2018 - MozoX Network에서 실행 중입니다.\nhttps://scan.mozocoin.io";
 "4. Desktop Wallet" = "4. 데스크탑 월렛";
 "5. Web App for Retailer" = "5. 소매점 용 웹 앱";
 "Active" = "작동중";
@@ -456,7 +457,7 @@
 "Store Address" = "상점 주소";
 
 // SHOPPER
-"Mozo X" = "Mozo X";
+"MozoX" = "MozoX";
 "Get Coins" = "코인 가져 오기";
 "My wallet" = "내 지갑";
 "Profile" = "프로필";
@@ -501,8 +502,8 @@
 "Total MozoX Coins: %@" = "총 MozoX 코인 수";
 "Fill in to get %@ MozoX" = "원하는 MozoX %@ 를 입력하세요.";
 "Receive %@ MozoX for each join Mozo" = "Mozo에 가입 할 때마다 %@ MozoX를 받습니다.";
-"Allow Mozo X to access your location?" = " Mozo X가 귀하의 위치에 접근하도록 허용 하시겠습니까?";
-"Mozo X uses this information to provide more relevant and personalized experiences, like helping you to find local events and to provide better suggestions.\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "Mozo X는이 정보를 사용하여 제안 사항을 개선하고 사용자 환경을 업그레이드함으로써\nAirdrop 이벤트를 쉽게 찾을 수 있도록합니다.\n이 기능을 열려면 응용 '앱 설정'을 선택하고 권한 메뉴 아래에있는 위치를 활성화하십시오.";
+"Allow MozoX to access your location?" = " MozoX가 귀하의 위치에 접근하도록 허용 하시겠습니까?";
+"MozoX uses this information to provide more relevant and personalized experiences, like helping you to find local events and to provide better suggestions.\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "MozoX는이 정보를 사용하여 제안 사항을 개선하고 사용자 환경을 업그레이드함으로써\nAirdrop 이벤트를 쉽게 찾을 수 있도록합니다.\n이 기능을 열려면 응용 '앱 설정'을 선택하고 권한 메뉴 아래에있는 위치를 활성화하십시오.";
 "Not now" = "지금 아님";
 "App Settings" = "설정";
 "Added into favourite store" = "가고싶은 상점으로 추가되었습니다.";
@@ -536,8 +537,8 @@
 "Enter new password" = "새 비밀번호를 입력하십시오.";
 "Change password successful!" = "비밀번호를 성공적으로 변경했습니다.";
 "Have your friends scan this QR code to download MozoX App and get %@ MozoX coins for each friend signed up successfully." = "친구들에게 이 QR 코드를 스캔하여 MozoX App을 다운로드하고  성공적으로 가입 한 친구 당 %@ 개의 MozoX 코인을 얻게 안내하십시오.";
-"Or share Mozo X via your network" = "또는 네트워크를 통해 Mozo X를 공유하십시오.";
-"Share Mozo X" = "Mozo X 공유";
+"Or share MozoX via your network" = "또는 네트워크를 통해 MozoX를 공유하십시오.";
+"Share MozoX" = "MozoX 공유";
 "Promotion Details" = "프로모션 세부 정보";
 "Receive %@ MozoX for transfering MozoX coins to your friends!" = "MozoX를 친구에게 보내서 %@ 개의 MozoX를 받으세요!";
 // LOCAL ERROR MESSAGE
@@ -555,8 +556,8 @@
 "Copied!" = "복사됨!";
 "Scanned value is invalid." = "스캔 한 데이터가 유효하지 않습니다.";
 
-"Allow Mozo X to access your location?\nMozo X uses this to provide more relevant and personalized experiences, like helping you to find local events and get better suggestion.\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "Mozo X에서 귀하의 위치를 사용하도록 허용 하시겠습니까?\nMozo X는이 정보를 사용하여 제안 사항을 개선하고 사용자 환경을 업그레이드함으로써\nAirdrop 이벤트를 쉽게 찾을 수 있도록합니다.\n이 기능을 열려면 응용 '앱 설정'을 선택하고 권한 메뉴 아래에있는 위치를 활성화하십시오.";
-"Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "수신자의 수량과' 각 쇼핑객에게 Airdrop한 Mozo X'의 수량을 입력하십시오.";
+"Allow MozoX to access your location?\nMozoX uses this to provide more relevant and personalized experiences, like helping you to find local events and get better suggestion.\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "MozoX에서 귀하의 위치를 사용하도록 허용 하시겠습니까?\nMozoX는이 정보를 사용하여 제안 사항을 개선하고 사용자 환경을 업그레이드함으로써\nAirdrop 이벤트를 쉽게 찾을 수 있도록합니다.\n이 기능을 열려면 응용 '앱 설정'을 선택하고 권한 메뉴 아래에있는 위치를 활성화하십시오.";
+"Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "수신자의 수량과' 각 쇼핑객에게 Airdrop한 MozoX'의 수량을 입력하십시오.";
 "Invalid Airdrop start date - end date." = " Airdrop 시작일 및 종료일이 유효하지 않습니다.";
 "Invalid Airdrop start time - end time." = " Airdrop 시작 시간 및 종료 시간이 유효하지 않습니다.";
 "Time of Start date must larger than current time %d minutes at least." = "시작 시간은 현재시간 보다 %d 분이상, 이후로 정해야 합니다.";
@@ -590,8 +591,8 @@
 "You can only select less than %d images." = "이미지를 %d 개 미만 선택할 수 있습니다.";
 "Select Photo Album" = "이미지 앨범 선택";
 "Tap to select Images" = "이미지를 선택하기 위하여 누르십시오.";
-"App requires permission to access Storage to view images. Tap Settings and go toPermissions to grant permission." = "Mozo X는 이미지 메모리 접속이 필요합니다. 설정을 선택하고 사용 권한을 부여하기 위하여 사용 권한으로 이동하십시오.";
-"App requires permission to access Storage to view images." = "Mozo X는 이미지 메모리 접속이 필요합니다";
+"App requires permission to access Storage to view images. Tap Settings and go toPermissions to grant permission." = "MozoX는 이미지 메모리 접속이 필요합니다. 설정을 선택하고 사용 권한을 부여하기 위하여 사용 권한으로 이동하십시오.";
+"App requires permission to access Storage to view images." = "MozoX는 이미지 메모리 접속이 필요합니다";
 "Photos are uploading..." = "이미지가 업로드 중입니다.";
 "A maximum of photos is %d" = "최대 이미지 수는 %d 개입니다.";
 "Open hour shouldn't be later than Close hour" = "오픈 시간은 닫는 시간보다 더 크면 안 됩니다.";
@@ -609,7 +610,7 @@
 "Period time \"To\" should be greater than currently" = "Airdrop 이벤트의  종료 기간은 시작 기간보다 커야합니다.";
 "Frequency should be greater than 0" = "Airdrop의 빈도는 0보다 커야합니다.";
 "Cannot find any beacon on your store" = "Beacon을 못 찾았습니다.";
-"Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "수신자의 수량과' 각 쇼핑객에게 Airdrop한 Mozo X'의 수량을 입력하십시오.";
+"Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "수신자의 수량과' 각 쇼핑객에게 Airdrop한 MozoX'의 수량을 입력하십시오.";
 "Airdrop event transaction is created with failure status." = "Airdrop 이벤트 트랜잭션이 실패 상태로 생성됩니다.";
 
 "Add MozoX To Airdrop Event transaction is created with failure status." = "새로 생성 된 Airdrop 이벤트로 MozoX 전송 중에 오류가 발생했습니다.";
@@ -684,3 +685,12 @@
 "Visited Shoppers" = "방문한 쇼핑객 리스트";
 "Every (Frequency of Airdrop)" = "에어 드롭의 빈도";
 "Selected days" = "날짜 선택";
+"Next" = "다음 가기";
+"Skip" = "넘어가기";
+"day" = "일";
+"days" = "며칠";
+"Maximum of image size is %d" = "최대 이미지 크기는 %d 입니다.";
+"MMM d, yyyy" = "yyyy년 M월 d일";
+"MMMM yyyy" = "yyyy년 M월 d일";
+"HH:mm MMM d, yyyy" = "HH:mm yyyy년 M월 d일";
+"Under Construction" = "";

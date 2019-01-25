@@ -16,7 +16,7 @@ public class PaymentRequestDisplayCollection {
             displayItems.append(displayItem)
         }
         if displayItems.count == 0 {
-            displayItems = testItems()
+//            displayItems = testItems()
         }
     }
     
@@ -54,7 +54,7 @@ public class PaymentRequestDisplayCollection {
     func formattedDateTime(_ dateTime: Int64) -> String {
         let timeFormat = "HH:mm"
         let timeText = DisplayUtils.convertInt64ToStringWithFormat(dateTime, format: timeFormat)
-        let dateFormat = "MMM dd, yyyy"
+        let dateFormat = "MMM d, yyyy".localized
         let dateText = DisplayUtils.convertInt64ToStringWithFormat(dateTime, format: dateFormat)
         return "\(timeText) \(dateText)"
     }

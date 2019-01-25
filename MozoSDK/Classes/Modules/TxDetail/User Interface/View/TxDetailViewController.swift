@@ -42,7 +42,9 @@ class TxDetailViewController: MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        enableBackBarButton()
+        if navigationController?.viewControllers.count ?? 0 > 2 {
+            enableBackBarButton()
+        }
         setBtnBorder()
     }
     

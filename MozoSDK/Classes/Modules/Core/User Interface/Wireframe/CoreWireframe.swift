@@ -50,6 +50,11 @@ class CoreWireframe : MozoWireframe {
         corePresenter?.requestForAuthentication(module: Module.AddressBook)
     }
     
+    func requestForTransactionDetail(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
+        presentWaitingInterface(corePresenter: corePresenter)
+        corePresenter?.txHistoryModuleDidChooseItemOnUI(txHistory: txHistory, tokenInfo: tokenInfo)
+    }
+    
     func requestForCloseAllMozoUIs(completion: (() -> Swift.Void)? = nil) {
         rootWireframe?.closeAllMozoUIs(completion: {
             completion!()

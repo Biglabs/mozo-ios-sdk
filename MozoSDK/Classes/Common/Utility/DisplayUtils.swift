@@ -160,4 +160,12 @@ public class DisplayUtils {
         
         return nil
     }
+    
+    public static func displayUnderConstructionPopup() {
+        if let topViewController = getTopViewController() {
+            let alert = UIAlertController(title: "Under construction".localized, message: "Coming soon".localized, preferredStyle: .alert)
+            alert.addAction(.init(title: "OK".localized, style: .default, handler: nil))
+            topViewController.present(alert, animated: true, completion: nil)
+        }
+    }
 }

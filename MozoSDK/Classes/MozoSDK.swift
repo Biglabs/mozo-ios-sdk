@@ -49,6 +49,10 @@ public class MozoSDK {
         moduleDependencies.displayAddressBook()
     }
     
+    public static func displayTransactionDetail(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
+        moduleDependencies.displayTransactionDetail(txHistory: txHistory, tokenInfo: tokenInfo)
+    }
+    
     public static func loadBalanceInfo() -> Promise<DetailInfoDisplayItem> {
         return (moduleDependencies.loadBalanceInfo())
     }
