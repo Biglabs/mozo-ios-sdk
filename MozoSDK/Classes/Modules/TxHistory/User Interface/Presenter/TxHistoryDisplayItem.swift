@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TxHistoryDisplayItem {
+public struct TxHistoryDisplayItem {
     let action : String
     let date : String
     let fromNameWithDate: NSAttributedString

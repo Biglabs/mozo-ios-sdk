@@ -87,6 +87,10 @@ class ModuleDependencies {
         coreWireframe.requestForAddressBook()
     }
     
+    func displayTransactionDetail(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
+        coreWireframe.requestForTransactionDetail(txHistory: txHistory, tokenInfo: tokenInfo)
+    }
+    
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem>{
         return (coreWireframe.corePresenter?.coreInteractorService?.loadBalanceInfo())!
     }
