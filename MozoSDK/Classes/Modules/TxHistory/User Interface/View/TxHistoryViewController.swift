@@ -45,7 +45,7 @@ class TxHistoryViewController: MozoBasicViewController {
             self.tableView?.addSubview(refreshControl)
         }
         self.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-        tableView.tableFooterView = UIView()
+        self.tableView.applyFooterLoadingView()
         
         tableView.register(UINib(nibName: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER)
         setLayerBorder()
@@ -190,6 +190,7 @@ extension TxHistoryViewController : TxHistoryViewInterface {
     }
     
     func showTxHistoryDisplayData(_ data: TxHistoryDisplayCollection, forPage: Int) {
+        tableView.tableFooterView?.isHidden = true
         if forPage > currentPage {
             if data.displayItems.count > 1 {
                 // Append to current collection
@@ -234,6 +235,7 @@ extension TxHistoryViewController: UIScrollViewDelegate {
         if scrollView == tableView {
             if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
                 if !isLoadingMoreTH && collection != nil && (collection?.displayItems.count)! > 0 {
+                    tableView.tableFooterView?.isHidden = false
                     let nextPage = currentPage + 1
                     print("Load more transaction histories with next page: \(nextPage)")
                     isLoadingMoreTH = true
