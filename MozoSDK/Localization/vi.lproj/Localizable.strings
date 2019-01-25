@@ -686,3 +686,12 @@
 "Visited Shoppers" = "Danh sách khách hàng";
 "Every (Frequency of Airdrop)" = "Tần suất airdrop";
 "Selected days" = "Chọn ngày";
+"Next" = "Tiếp tục";
+"Skip" = "Bỏ qua";
+"day" = "ngày";
+"days" = "ngày";
+"Maximum of image size is %d" = "Dung lượng tối đa %d";
+"MMM d, yyyy" = "d/M/yyyy";
+"MMMM yyyy" = "MMMM yyyy";
+"HH:mm MMM d, yyyy" = "HH:mm d/M/yyyy";
+"Under Construction" = "Đang phát triển";

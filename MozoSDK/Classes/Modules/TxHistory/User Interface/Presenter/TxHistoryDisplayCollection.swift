@@ -47,7 +47,7 @@ public class TxHistoryDisplayCollection {
         if dateTime == 0 {
             return "Just now".localized
         }
-        let format = "HH:mm MMM dd, yyyy"
+        let format = "HH:mm MMM d, yyyy".localized
         return DisplayUtils.convertInt64ToStringWithFormat(dateTime, format: format)
     }
     

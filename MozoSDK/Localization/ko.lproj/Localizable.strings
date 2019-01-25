@@ -684,3 +684,12 @@
 "Visited Shoppers" = "방문한 쇼핑객 리스트";
 "Every (Frequency of Airdrop)" = "에어 드롭의 빈도";
 "Selected days" = "날짜 선택";
+"Next" = "다음 가기";
+"Skip" = "넘어가기";
+"day" = "일";
+"days" = "며칠";
+"Maximum of image size is %d" = "최대 이미지 크기는 %d 입니다.";
+"MMM d, yyyy" = "yyyy년 M월 d일";
+"MMMM yyyy" = "yyyy년 M월 d일";
+"HH:mm MMM d, yyyy" = "HH:mm yyyy년 M월 d일";
+"Under Construction" = "";
