@@ -695,3 +695,10 @@
 "MMMM yyyy" = "MMMM yyyy";
 "HH:mm MMM d, yyyy" = "HH:mm d/M/yyyy";
 "Under Construction" = "Đang phát triển";
+"Info" = "Thông báo";
+"Your name" = "Tên";
+"Your phone number" = "Số điện thoại";
+"Coming soon" = "Sắp ra mắt";
+"Under Construction" = "Tính năng đang phát triển";
+"Foot Traffic" = "";
+"%@ Coin" = "%@ Coin";
