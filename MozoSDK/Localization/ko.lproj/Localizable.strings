@@ -76,7 +76,7 @@
 "Receive Amount" = "수신 금액";
 "Requested List" = "요청한 리스트";
 "Create Request" = "요청 만들기";
-"You can ask another user to send MozoX coins to your wallet address by creating a Request." = "MozoX를 수신 요청하는 방식으로 다른 사용자에게 MozoX 를 자신의 월렛으로 보내도록 요청할 수 있습니다.";
+"You can ask another user to send MozoX to your wallet address by creating a Request." = "MozoX를 수신 요청하는 방식으로 다른 사용자에게 MozoX 를 자신의 월렛으로 보내도록 요청할 수 있습니다.";
 "Send Request" = "요청 보내기";
 "Scan To Send MozoX" = "MozoX를 보내도록 스캔하십시오.";
 "Scan to send:" = "보낼 스캔";
@@ -100,6 +100,7 @@
 "Error: Please input value in decimal format." = "오류 :십진수로 값을 입력하십시오.";
 "Spendable:" = "가용 잔액:";
 "Send Complete" = "보내기 완료";
+"Action Complete" = "Thao tác hoàn tất";
 "You have just sent:" = "방금 보낸 내용";
 "Transaction Detail" = "거래 세부 정보";
 "Wallet Address" = "월렛 주소";
@@ -170,7 +171,7 @@
 "OK" = "확인";
 "Log Out Successful!" = "성공적인 로그 아웃!";
 "Back to log in" = "로그인으로 돌아 가기";
-"Enter amount to receive " = "받을 MozoX 금액을 입력하십시오.";
+"Enter amount to receive" = "받을 MozoX 금액을 입력하십시오.";
 "Your TX has been broadcast" = "귀하의 TX가 방송되었습니다.";
 "TX hash:" = "TX 해시:";
 "Enter amount to send" = "보낼 MozoX  금액을 입력하십시오.";
