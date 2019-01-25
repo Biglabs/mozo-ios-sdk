@@ -46,7 +46,7 @@ public class Configuration {
     
     // WEB_SOCKET
     public static let WEB_SOCKET_BASE = SUB_DOMAIN_ENUM.socket
-    public static let WEB_SOCKET_URL = "ws://\(WEB_SOCKET_BASE)/websocket/user/"
+    public static let WEB_SOCKET_URL = "wss://\(WEB_SOCKET_BASE)/websocket/user/"
     
     // MARK: Auth
     /**

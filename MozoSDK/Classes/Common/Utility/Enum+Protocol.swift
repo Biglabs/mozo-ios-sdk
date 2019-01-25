@@ -20,9 +20,9 @@ public enum ServiceType: String {
     
     public var socket: String {
         switch self {
-        case .DEV: return "18.136.38.11:8089"
-        case .STAGING: return "52.76.238.125:8089"
-        case .PRODUCTION: return "54.251.183.246:8089"
+        case .DEV: return "dev.noti.mozocoin.io"
+        case .STAGING: return "staging.noti.mozocoin.io"
+        case .PRODUCTION: return "noti.mozocoin.io"
         }
     }
 }

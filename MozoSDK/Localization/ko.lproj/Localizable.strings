@@ -324,7 +324,7 @@
 "PM" = "오후";
 "Done" = "완료";
 "From" = "부터";
-"To" = "까지";
+"To:" = "까지:";
 "Everyday" = "매일";
 "Today" = "오늘";
 "Earlier" = "그 전에";
@@ -694,3 +694,5 @@
 "MMMM yyyy" = "yyyy년 M월 d일";
 "HH:mm MMM d, yyyy" = "HH:mm yyyy년 M월 d일";
 "Under Construction" = "";
+
+"%@ Coin" = "코인 %@";
