@@ -194,6 +194,11 @@ extension CorePresenter : AuthModuleDelegate {
 
 extension CorePresenter: WalletModuleDelegate {
     func walletModuleDidFinish() {
+        print("CorePresenter - Wallet Module Did Finished, callbackModule: \(callBackModule?.value ?? "NO MODULE")")
+        // FIX ISSUE: Wallet interface re-display after inputting PIN.
+        if callBackModule == .Wallet {
+            callBackModule = nil
+        }
         if callBackModule != nil {
             // Present call back module interface
             requestCloseToLastMozoUIs()
@@ -213,6 +218,7 @@ extension CorePresenter: WalletModuleDelegate {
 
 extension CorePresenter : CoreInteractorOutput {
     func continueWithWallet(_ callbackModule: Module) {
+        print("CorePresenter - Continue with Wallet, callbackModule: \(callbackModule.value)")
         // Should display call back module (if any)
         self.callBackModule = callbackModule
         presentModuleInterface(.Wallet)
