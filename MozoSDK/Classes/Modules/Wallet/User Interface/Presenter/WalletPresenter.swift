@@ -18,12 +18,14 @@ class WalletPresenter : NSObject {
     var pinModuleDelegate: PinModuleDelegate?
     
     func handleEndingWalletFlow() {
+        print("WalletPresenter - Handle ending wallet flow")
         walletModuleDelegate?.walletModuleDidFinish()
     }
 }
 
 extension WalletPresenter: WalletModuleInterface {
     func processInitialWalletInterface() {
+        print("WalletPresenter - Process Initial Wallet Interface")
         walletInteractor?.checkLocalWalletExisting()
     }
     
@@ -70,11 +72,13 @@ extension WalletPresenter: WalletInteractorOutput {
     }
     
     func updatedWallet() {
+        print("WalletPresenter - Updated wallet")
         // New wallet
         handleEndingWalletFlow()
     }
     
     func finishedCheckServer(result: Bool) {
+        print("WalletPresenter - Finished check server wallet, result: \(result)")
         if result {
             walletWireframe?.presentPINInterface(passPharse: nil)
         } else {
@@ -83,6 +87,7 @@ extension WalletPresenter: WalletInteractorOutput {
     }
     
     func finishedCheckLocal(result: Bool) {
+        print("WalletPresenter - Finished check local wallet, result \(result)")
         if result {
             // Existing wallet
             handleEndingWalletFlow()

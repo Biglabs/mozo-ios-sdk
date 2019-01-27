@@ -19,6 +19,7 @@ class WalletWireframe: MozoWireframe {
     }
     
     func presentPINInterface(passPharse: String?, requestFrom module: Module = Module.Wallet) {
+        print("WalletWireframe - Present PIN Interface")
         let viewController = pinViewControllerFromStoryboard()
         viewController.eventHandler = walletPresenter
         viewController.passPhrase = passPharse

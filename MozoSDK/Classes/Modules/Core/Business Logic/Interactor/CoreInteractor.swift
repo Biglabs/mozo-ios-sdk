@@ -158,8 +158,8 @@ extension CoreInteractor: CoreInteractorInput {
     @objc func repeatCheckForAuthentication() {
         if SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING {
             print("Continue with checking auth and wallet.")
-            self.checkAuthAndWallet(module: checkTokenExpiredModule!)
             checkTokenExpiredTimer?.invalidate()
+            self.checkAuthAndWallet(module: checkTokenExpiredModule!)
         }
     }
     
