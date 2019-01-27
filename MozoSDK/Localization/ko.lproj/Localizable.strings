@@ -416,6 +416,9 @@
 "End" = "종료 됨";
 "Scheduled" = "예정된";
 
+"Period:" = "행사기간";
+"Receivers:" = "수령인수:";
+
 "Monday" = "월요일";
 "Tuesday" = "화요일";
 "Wednesday" = "수요일";
