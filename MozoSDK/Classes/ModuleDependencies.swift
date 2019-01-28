@@ -191,8 +191,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.searchStoresWithText(text, page: page, size: size, long: long, lat: lat, sort: sort))!
     }
     
-    func getFavoriteStores() -> Promise<[StoreInfoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getFavoriteStores())!
+    func getFavoriteStores(page: Int, size: Int) -> Promise<[StoreInfoDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getFavoriteStores(page: page, size: size))!
     }
     
     func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
