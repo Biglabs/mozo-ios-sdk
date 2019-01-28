@@ -53,7 +53,10 @@ protocol CoreInteractorService {
     func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[StoreInfoDTO]>
     func getNearestStores(_ storeId: Int64) -> Promise<[StoreInfoDTO]>
     func searchStoresWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO>
-    func getFavoriteStores() -> Promise<[StoreInfoDTO]>
+    func getFavoriteStores(page: Int, size: Int) -> Promise<[StoreInfoDTO]>
     func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]>
     func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber>
+    
+    func getUrlToUploadImage() -> Promise<String>
+    func uploadImage (images: [UIImage], url: String) -> Promise<[String]>
 }

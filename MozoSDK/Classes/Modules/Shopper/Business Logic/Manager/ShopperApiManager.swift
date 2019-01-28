@@ -130,9 +130,11 @@ public extension ApiManager {
     }
     
     // MARK: Favorite
-    public func getFavoriteStores() -> Promise<[StoreInfoDTO]> {
+    public func getFavoriteStores(page: Int, size: Int) -> Promise<[StoreInfoDTO]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_FAVORITE_API_PATH
+            let params = ["size" : size,
+                          "page" : page] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + SHOPPER_FAVORITE_API_PATH + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

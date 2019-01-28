@@ -208,7 +208,7 @@ extension TxHistoryViewController : TxHistoryViewInterface {
     }
     
     func showNoContentMessage() {
-        
+        tableView.tableFooterView?.isHidden = true
     }
     
     func displaySpinner() {

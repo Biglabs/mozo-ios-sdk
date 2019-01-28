@@ -191,8 +191,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.searchStoresWithText(text, page: page, size: size, long: long, lat: lat, sort: sort))!
     }
     
-    func getFavoriteStores() -> Promise<[StoreInfoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getFavoriteStores())!
+    func getFavoriteStores(page: Int, size: Int) -> Promise<[StoreInfoDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getFavoriteStores(page: page, size: size))!
     }
     
     func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
@@ -201,6 +201,14 @@ class ModuleDependencies {
     
     func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getTodayCollectedAmount(startTime: startTime, endTime: endTime))!
+    }
+    
+    func getUrlToUploadImage() -> Promise<String> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getUrlToUploadImage())!
+    }
+    
+    func uploadImage(images: [UIImage], url: String) -> Promise<[String]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.uploadImage(images: images, url: url))!
     }
     
     func configureDependencies() {

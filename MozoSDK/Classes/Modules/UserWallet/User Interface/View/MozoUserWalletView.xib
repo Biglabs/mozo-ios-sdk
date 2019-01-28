@@ -45,7 +45,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-hq-Utj">
-                            <rect key="frame" x="216" y="131" width="97" height="14"/>
+                            <rect key="frame" x="223.5" y="131" width="97" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="14" id="rDH-fb-e4U"/>
                             </constraints>
@@ -110,7 +110,7 @@
                         <constraint firstItem="rml-rD-wOt" firstAttribute="leading" secondItem="FIi-Ns-pBJ" secondAttribute="leading" id="Rgd-l3-29E"/>
                         <constraint firstItem="ktB-1e-Qoz" firstAttribute="leading" secondItem="ftd-Bg-IRB" secondAttribute="trailing" constant="9" id="bsM-8F-pXi"/>
                         <constraint firstItem="FIi-Ns-pBJ" firstAttribute="top" secondItem="e5h-qz-jHv" secondAttribute="top" constant="20" id="csm-mO-LXy"/>
-                        <constraint firstAttribute="trailing" secondItem="JGy-hq-Utj" secondAttribute="trailing" constant="32" id="hGb-IV-a6T"/>
+                        <constraint firstItem="JGy-hq-Utj" firstAttribute="centerX" secondItem="msh-cO-O4e" secondAttribute="centerX" id="r9V-tO-XUI"/>
                         <constraint firstItem="FIi-Ns-pBJ" firstAttribute="leading" secondItem="e5h-qz-jHv" secondAttribute="leading" constant="20" id="tle-bb-Kyc"/>
                         <constraint firstItem="rml-rD-wOt" firstAttribute="top" secondItem="FIi-Ns-pBJ" secondAttribute="bottom" constant="8" id="w8J-9H-o1i"/>
                         <constraint firstItem="U6a-xQ-ndH" firstAttribute="top" secondItem="ftd-Bg-IRB" secondAttribute="bottom" constant="29" id="z5D-u1-2Il"/>

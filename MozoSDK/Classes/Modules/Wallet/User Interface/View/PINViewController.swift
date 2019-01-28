@@ -97,6 +97,7 @@ extension PINViewController : PINViewInterface {
             self.hideAllUIs()
         }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
+            print("PINViewController - Manage wallet after hide UIs")
             self.eventHandler?.manageWallet(passPhrase: self.passPhrase, pin: self.pin!)
         }
     }
@@ -145,6 +146,7 @@ extension PINViewController : PopupErrorDelegate {
 }
 private extension PINViewController {
     func hideAllUIs() {
+        print("PINViewController - Hide all UIs")
         self.view.endEditing(true)
         view.subviews.forEach({ $0.isHidden = true })
         enterPINLabel.isHidden = false

@@ -35,6 +35,7 @@ class WalletInteractor : NSObject {
     }
     
     func updateWalletToUserProfile(wallet: WalletModel) {
+        print("WalletInteractor - Update wallet to user profile")
         if let userObj = SessionStoreManager.loadCurrentUser() {
             _ = dataManager.getUserById(userObj.id!).done { (user) in
                 let profile = userObj.profile
@@ -64,6 +65,7 @@ class WalletInteractor : NSObject {
 
 extension WalletInteractor : WalletInteractorInput {
     func checkLocalWalletExisting() {
+        print("WalletInteractor - Check Local Wallet Existing")
         if let userObj = SessionStoreManager.loadCurrentUser() {
             _ = dataManager.getUserById(userObj.id!).done { (user) in
                 self.output?.finishedCheckLocal(result: (user.wallets?.count)! > 0)
@@ -72,6 +74,7 @@ extension WalletInteractor : WalletInteractorInput {
     }
     
     func checkServerWalletExisting() {
+        print("WalletInteractor - Check Server Wallet Existing")
         if let userObj = SessionStoreManager.loadCurrentUser() {
             // Get UserProfile
             let profile = userObj.profile

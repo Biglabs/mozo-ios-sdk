@@ -153,8 +153,8 @@ public class MozoSDK {
         return moduleDependencies.searchStoresWithText(text, page: page, size: size, long: long, lat: lat, sort: sort)
     }
     
-    public static func getFavoriteStores() -> Promise<[StoreInfoDTO]> {
-        return moduleDependencies.getFavoriteStores()
+    public static func getFavoriteStores(page: Int = 0, size: Int = 15) -> Promise<[StoreInfoDTO]> {
+        return moduleDependencies.getFavoriteStores(page: page, size: size)
     }
     
     public static func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
@@ -163,5 +163,13 @@ public class MozoSDK {
     
     public static func getTodayCollectedAmount(startTime: Int = 0, endTime: Int = 86400) -> Promise<NSNumber> {
         return moduleDependencies.getTodayCollectedAmount(startTime: startTime, endTime: endTime)
+    }
+    
+    public static func getUrlToUploadImage() -> Promise<String> {
+        return moduleDependencies.getUrlToUploadImage()
+    }
+    
+    public static func uploadImage(images: [UIImage], url: String) -> Promise<[String]> {
+        return moduleDependencies.uploadImage(images: images, url: url)
     }
 }

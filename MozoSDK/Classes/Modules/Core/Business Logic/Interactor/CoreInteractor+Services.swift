@@ -151,8 +151,8 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.searchStoresWithText(text, page: page, size: size, long: long, lat: lat, sort: sort)
     }
     
-    func getFavoriteStores() -> Promise<[StoreInfoDTO]> {
-        return apiManager.getFavoriteStores()
+    func getFavoriteStores(page: Int, size: Int) -> Promise<[StoreInfoDTO]> {
+        return apiManager.getFavoriteStores(page: page, size: size)
     }
     
     func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
@@ -161,5 +161,13 @@ extension CoreInteractor: CoreInteractorService {
     
     func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber> {
         return apiManager.getTodayCollectedAmount(startTime: startTime, endTime: endTime)
+    }
+    
+    func getUrlToUploadImage() -> Promise<String> {
+        return apiManager.getUrlToUploadImage()
+    }
+    
+    func uploadImage(images: [UIImage], url: String) -> Promise<[String]> {
+        return apiManager.uploadImage(images: images, url: url)
     }
 }

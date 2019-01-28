@@ -149,11 +149,13 @@ public enum MozoNetwork {
 public enum CurrencyType: String {
     case USD = "USD"
     case KRW = "KRW"
+    case VND = "VND"
     
     public var decimalRound: Int {
         switch self {
         case .USD: return 3
         case .KRW: return 1
+        case .VND: return 0
         }
     }
     
@@ -161,7 +163,15 @@ public enum CurrencyType: String {
         switch self {
         case .USD: return "$"
         case .KRW: return "₩"
+        case .VND: return "VND"
         }
+    }
+    
+    public static func currencyTypeInCurrentLocalize() -> CurrencyType {
+        if Locale.current.languageCode == "ko" {
+            return CurrencyType.KRW
+        }
+        return CurrencyType.USD
     }
 }
 
