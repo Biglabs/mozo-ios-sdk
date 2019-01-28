@@ -696,6 +696,16 @@
 "MMM d, yyyy" = "yyyy년 M월 d일";
 "MMMM yyyy" = "yyyy년 M월 d일";
 "HH:mm MMM d, yyyy" = "HH:mm yyyy년 M월 d일";
-"Under Construction" = "";
-
+"Under Construction" = "개발중";
+"Info" = "정보";
+"Your name" = "이름";
+"Your phone number" = "전화 번호";
+"Action Complete" = "액션 완료";
+"Coming soon" = "출시 예정";
+"Foot Traffic" = "도보 트래픽";
 "%@ Coin" = "코인 %@";
+"To select photo from library." = "라이브러리에서 사진을 선택하기 위하여";
+"Take Photo" = "사진 찍기";
+"Use Photo" = "사진 사용";
+"Remove Photo" = "사진 제거";
+"Removed from favorite store" = "좋아하는 상점에서 삭제되었습니다.";
