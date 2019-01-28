@@ -56,4 +56,7 @@ protocol CoreInteractorService {
     func getFavoriteStores() -> Promise<[StoreInfoDTO]>
     func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]>
     func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber>
+    
+    func getUrlToUploadImage() -> Promise<String>
+    func uploadImage (images: [UIImage], url: String) -> Promise<[String]>
 }

@@ -203,6 +203,14 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getTodayCollectedAmount(startTime: startTime, endTime: endTime))!
     }
     
+    func getUrlToUploadImage() -> Promise<String> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getUrlToUploadImage())!
+    }
+    
+    func uploadImage(images: [UIImage], url: String) -> Promise<[String]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.uploadImage(images: images, url: url))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

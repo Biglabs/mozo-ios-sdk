@@ -164,4 +164,12 @@ public class MozoSDK {
     public static func getTodayCollectedAmount(startTime: Int = 0, endTime: Int = 86400) -> Promise<NSNumber> {
         return moduleDependencies.getTodayCollectedAmount(startTime: startTime, endTime: endTime)
     }
+    
+    public static func getUrlToUploadImage() -> Promise<String> {
+        return moduleDependencies.getUrlToUploadImage()
+    }
+    
+    public static func uploadImage(images: [UIImage], url: String) -> Promise<[String]> {
+        return moduleDependencies.uploadImage(images: images, url: url)
+    }
 }
