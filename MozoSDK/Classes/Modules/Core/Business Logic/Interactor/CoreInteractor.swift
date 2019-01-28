@@ -79,7 +79,7 @@ class CoreInteractor: NSObject {
     
     func downloadExchangeRateInfoAndStoreAtLocal() {
         print("😎 Load exchange rate data.")
-        _ = apiManager.getExchangeRateInfo(currencyType: .KRW).done({ (data) in
+        _ = apiManager.getExchangeRateInfo().done({ (data) in
             SessionStoreManager.exchangeRateInfo = data
             self.notifyExchangeRateInfoForAllObservers()
         }).catch({ (error) in

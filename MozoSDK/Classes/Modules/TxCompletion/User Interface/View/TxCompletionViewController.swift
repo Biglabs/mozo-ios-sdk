@@ -76,9 +76,9 @@ class TxCompletionViewController: MozoBasicViewController {
         lbAmount.text = detailItem.amount.roundAndAddCommas()
         
         if let rateInfo = SessionStoreManager.exchangeRateInfo {
-            if let type = CurrencyType(rawValue: rateInfo.currency ?? "") {
+            if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
                 let exValue = (detailItem.amount * (rateInfo.rate ?? 0)).rounded(toPlaces: type.decimalRound)
-                let exValueStr = "(\(type.unit)\(exValue))"
+                let exValueStr = "(\(curSymbol)\(exValue))"
                 lbAmountEx.text = exValueStr
             }
         }

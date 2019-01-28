@@ -10,11 +10,13 @@ import SwiftyJSON
 
 public class RateInfoDTO: ResponseObjectSerializable {
     public var currency: String?
+    public var currencySymbol: String?
     public var rate: Double?
     public var symbol: String?
     
     public required init?(json: SwiftyJSON.JSON) {
         self.currency = json["currency"].string
+        self.currencySymbol = json["currencySymbol"].string
         self.rate = json["rate"].double
         self.symbol = json["symbol"].string
     }
@@ -25,6 +27,9 @@ public class RateInfoDTO: ResponseObjectSerializable {
         var json = Dictionary<String, Any>()
         if let currency = self.currency {
             json["currency"] = currency
+        }
+        if let currencySymbol = self.currencySymbol {
+            json["currencySymbol"] = currencySymbol
         }
         if let rate = self.rate {
             json["rate"] = rate

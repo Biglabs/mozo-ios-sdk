@@ -112,9 +112,9 @@ import Foundation
             var result = "0.0"
             if let rateInfo = SessionStoreManager.exchangeRateInfo {
                 let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
-                if let type = type, let rateValue = rateInfo.rate {
+                if let type = type, let rateValue = rateInfo.rate, let curSymbol = rateInfo.currencySymbol {
                     let valueText = (balance * rateValue).roundAndAddCommas(toPlaces: type.decimalRound)
-                    result = "\(type.unit)\(valueText)"
+                    result = "\(curSymbol)\(valueText)"
                 }
             }
             lbBalanceExchange.text = result

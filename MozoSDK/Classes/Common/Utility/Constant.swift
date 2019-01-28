@@ -163,15 +163,8 @@ public enum CurrencyType: String {
         switch self {
         case .USD: return "$"
         case .KRW: return "₩"
-        case .VND: return "VND"
+        case .VND: return "đ"
         }
-    }
-    
-    public static func currencyTypeInCurrentLocalize() -> CurrencyType {
-        if Locale.current.languageCode == "ko" {
-            return CurrencyType.KRW
-        }
-        return CurrencyType.USD
     }
 }
 
