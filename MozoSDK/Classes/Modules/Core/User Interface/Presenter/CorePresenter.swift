@@ -357,7 +357,7 @@ extension CorePresenter : RDNInteractorOutput {
     
     func storeBookDidChange(storeBook: StoreBookDTO) {
         if let address = storeBook.offchainAddress {
-            if StoreBookDTO.arrayContainsItem(address, array: SafetyDataManager.shared.storeBookList) {
+            if StoreBookDTO.arrayContainsItem(address, array: SafetyDataManager.shared.storeBookList) == false {
                 SafetyDataManager.shared.storeBookList.append(storeBook)
                 coreInteractor?.notifyStoreBookChangesForAllObservers()
             }

@@ -93,10 +93,10 @@ class ConfirmTransferViewController: MozoBasicViewController {
         var exAmount = "0.0"
         
         if let rateInfo = SessionStoreManager.exchangeRateInfo {
-            if let type = CurrencyType(rawValue: rateInfo.currency ?? "") {
+            if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
                 let rate = rateInfo.rate ?? 0
                 let amountValue = (amount * rate).rounded(toPlaces: type.decimalRound)
-                exAmount = "\(type.unit)\(amountValue.roundAndAddCommas())"
+                exAmount = "\(curSymbol)\(amountValue.roundAndAddCommas())"
             }
         }
         

@@ -211,6 +211,14 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.uploadImage(images: images, url: url))!
     }
     
+    func updateUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.updateUserProfile(userProfile: userProfile))!
+    }
+    
+    func updateAvatarToUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.updateAvatarToUserProfile(userProfile: userProfile))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

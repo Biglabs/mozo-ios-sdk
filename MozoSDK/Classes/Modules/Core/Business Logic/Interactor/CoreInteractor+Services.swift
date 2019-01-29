@@ -170,4 +170,12 @@ extension CoreInteractor: CoreInteractorService {
     func uploadImage(images: [UIImage], url: String) -> Promise<[String]> {
         return apiManager.uploadImage(images: images, url: url)
     }
+    
+    func updateUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
+        return apiManager.updateUserProfile(userProfile: userProfile)
+    }
+    
+    func updateAvatarToUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
+        return apiManager.updateAvatarToUserProfile(userProfile: userProfile)
+    }
 }

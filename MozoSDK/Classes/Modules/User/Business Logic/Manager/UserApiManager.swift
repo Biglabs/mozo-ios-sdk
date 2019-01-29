@@ -33,6 +33,30 @@ public extension ApiManager {
         }
     }
     
+    public func updateAvatarToUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
+        return Promise { seal in
+            let url = Configuration.BASE_URL + USER_API_PATH + "/avatar-url"
+            let param = userProfile.rawData()
+            self.execute(.put, url: url, parameters: param)
+                .done { json -> Void in
+                    // JSON info
+                    print(json)
+                    let jobj = SwiftyJSON.JSON(json)
+                    let userProfile = UserProfileDTO.init(json: jobj)
+                    seal.fulfill(userProfile!)
+                }
+                .catch { error in
+                    //Handle error or give feedback to the user
+                    let err = error as! ConnectionError
+                    print(err.localizedDescription)
+                    seal.reject(err)
+                }
+                .finally {
+                    // UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
     public func updateUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
         return Promise { seal in
             let url = Configuration.BASE_URL + USER_API_PATH

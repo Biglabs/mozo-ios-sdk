@@ -143,11 +143,11 @@ class PaymentViewController: MozoBasicViewController {
     @objc func textFieldAmountDidChange() {
         print("TextFieldAmountDidChange")
         if let rateInfo = SessionStoreManager.exchangeRateInfo {
-            if let type = CurrencyType(rawValue: rateInfo.currency ?? "") {
+            if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
                 let text = (txtAmount.text != nil ? (txtAmount.text != "" ? txtAmount.text : "0") : "0")?.replace(",", withString: ".")
                 let value = Double(text ?? "0")!
                 let exValue = (value * (rateInfo.rate ?? 0))
-                let exValueStr = "\(type.unit)\(exValue.roundAndAddCommas(toPlaces: type.decimalRound))"
+                let exValueStr = "\(curSymbol)\(exValue.roundAndAddCommas(toPlaces: type.decimalRound))"
                 lbExchange.text = exValueStr
             }
         }

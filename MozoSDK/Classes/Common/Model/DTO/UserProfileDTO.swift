@@ -24,6 +24,10 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
         self.walletInfo = walletInfo
     }
     
+    public required init(avatarUrl: String?){
+        self.avatarUrl = avatarUrl
+    }
+    
     public required init?(json: SwiftyJSON.JSON) {
         self.id = json["id"].int
         self.userId = json["userId"].string
@@ -42,6 +46,9 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
         var json = Dictionary<String, Any>()
         if let id = self.id {
             json["id"] = id
+        }
+        if let avatarUrl = self.avatarUrl {
+            json["avatarUrl"] = avatarUrl
         }
         if let userId = self.userId {
             json["userId"] = userId

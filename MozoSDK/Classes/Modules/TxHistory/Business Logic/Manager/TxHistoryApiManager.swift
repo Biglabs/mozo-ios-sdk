@@ -46,11 +46,10 @@ public extension ApiManager {
     
     /// Call API to get exchange rate info.
     ///
-    /// - Parameters:
-    /// - currencyType: The currency type
-    public func getExchangeRateInfo(currencyType: CurrencyType = .USD) -> Promise<RateInfoDTO> {
+    public func getExchangeRateInfo() -> Promise<RateInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + "/exchange/rate?currency=\(currencyType.rawValue)&symbol=\(SymbolType.MOZOX.value)"
+            let locale = Locale.current.languageCode ?? "en"
+            let url = Configuration.BASE_URL + "/exchange/rate?locale=\(locale)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
