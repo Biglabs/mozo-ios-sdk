@@ -103,7 +103,7 @@ extension TransactionInteractor : TransactionInteractorInput {
         }
         
         var isAmountEmpty = false
-        let value = amount
+        let value = amount?.replace(",", withString: ".")
         if value == nil || value == "" {
             error = "Error".localized + ": " + "Please input amount.".localized
             isAmountEmpty = true
@@ -119,13 +119,13 @@ extension TransactionInteractor : TransactionInteractorInput {
                 return
             }
             
-            if Double(amount ?? "0")! > spendable! {
+            if Double(value ?? "0")! > spendable! {
                 error = "Error: Your spendable is not enough for this."
                 output?.didValidateTransferTransaction(error, isAddress: false)
                 return
             }
             
-            if (amount?.isValidDecimalMinValue(decimal: tokenInfo?.decimals ?? 0) == false){
+            if (value?.isValidDecimalMinValue(decimal: tokenInfo?.decimals ?? 0) == false){
                 error = "Error: Amount is too low, please input valid amount."
                 output?.didValidateTransferTransaction(error, isAddress: false)
                 return
@@ -133,7 +133,7 @@ extension TransactionInteractor : TransactionInteractorInput {
         }
 
         if !hasError {
-            let tx = createTransactionToTransfer(tokenInfo: tokenInfo, toAdress: toAdress, amount: amount)
+            let tx = createTransactionToTransfer(tokenInfo: tokenInfo, toAdress: toAdress, amount: value)
             self.tokenInfo = tokenInfo
             output?.continueWithTransaction(tx!, tokenInfo: tokenInfo!, displayContactItem: displayContactItem)
         }
