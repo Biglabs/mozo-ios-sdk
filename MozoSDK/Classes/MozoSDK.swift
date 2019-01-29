@@ -172,4 +172,12 @@ public class MozoSDK {
     public static func uploadImage(images: [UIImage], url: String) -> Promise<[String]> {
         return moduleDependencies.uploadImage(images: images, url: url)
     }
+    
+    public static func updateUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
+        return moduleDependencies.updateUserProfile(userProfile: userProfile)
+    }
+    
+    public static func updateAvatarToUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
+        return moduleDependencies.updateAvatarToUserProfile(userProfile: userProfile)
+    }
 }
