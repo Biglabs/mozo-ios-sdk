@@ -504,7 +504,7 @@
 "Sorted by:" = "정렬 기준 :";
 "Total MozoX Coins: %@" = "총 MozoX 코인 수";
 "Fill in to get %@ MozoX" = "원하는 MozoX %@ 를 입력하세요.";
-"Receive %@ MozoX for each join Mozo" = "Mozo에 가입 할 때마다 %@ MozoX를 받습니다.";
+"Receive %@ MozoX for each join MozoX" = "MozoX에 가입 할 때마다 %@ MozoX를 받습니다.";
 "Allow MozoX to access your location?" = " MozoX가 귀하의 위치에 접근하도록 허용 하시겠습니까?";
 "MozoX uses this information to provide more relevant and personalized experiences, like helping you to find local events and to provide better suggestions.\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "MozoX는이 정보를 사용하여 제안 사항을 개선하고 사용자 환경을 업그레이드함으로써\nAirdrop 이벤트를 쉽게 찾을 수 있도록합니다.\n이 기능을 열려면 응용 '앱 설정'을 선택하고 권한 메뉴 아래에있는 위치를 활성화하십시오.";
 "Not now" = "지금 아님";
@@ -670,15 +670,15 @@
 "Share Interest" = "관심 분야 공유";
 "Token of Discovery" = "발견의 코인";
 "Discover interested store around you and get reward by MozoX" = "주위에 관심있는 상점을 찾고 MozoX 를 받으십시오.";
-"Use rewarded MozoX to redeem in any stores using Mozo" = " 받은 MozoX 코인을 MozoX를 적용하는 상점에서 보상으로 바꿀 수 있습니다.";
+"Use rewarded MozoX to redeem in any stores using MozoX" = " 받은 MozoX 코인을 MozoX를 적용하는 상점에서 보상으로 바꿀 수 있습니다.";
 "Transfer MozoX to your friends easily by using MozoX Wallet" = "MozoX 월렛을  통해 MozoX를 친구에게 쉽게 이전합니다.";
 "Discover more and get more with MozoX" = "MozoX로 더 많이 발견하고 더 많이 얻으십시오.";
 "Let's get started!" = "시작하자!";
-"Disrupt foot traffic" = "고객 트래픽 폭발";
+"Disrupt Foot Traffic" = "고객 트래픽 폭발";
 "Analytics" = "분석 보고";
 "Redeem" = "보상을 바꾸기";
 "Liquidity" = "유동성";
-"Reduce cost" = "비용 절감";
+"Reduce Cost" = "비용 절감";
 "Airdrop MozoX to attract more customers to your store" = "Airdrop MozoX를 통해 상점에 더 많은 고객을  유치합니다.";
 "Collect and analyze customer information to create better customer insights" = "더 좋은 전략을 세우기 위하여고객 정보를 수집하고 분석하십시오.";
 "Let customers redeem to buy product in your store by using MozoX" = "상점에서 고객이 상품을 구매하도록 보상을 바꾸는 방식으로 MozoX로 정산할수 있습니다.";

@@ -509,7 +509,7 @@
 "Cash" = "Cash";
 "Today collected coins" = "Today collected coins";
 "Fill in to get %@ MozoX" = "Fill in to get %@ MozoX";
-"Receive %@ MozoX for each join Mozo" = "Receive %@ MozoX for each join Mozo";
+"Receive %@ MozoX for each join MozoX" = "Receive %@ MozoX for each join MozoX";
 "Name" = "Name";
 "Date of birth" = "Date of birth";
 "Email" = "Email";
@@ -664,15 +664,15 @@
 "Share Interest" = "Share Interest";
 "Token of Discovery" = "Token of Discovery";
 "Discover interested store around you and get reward by MozoX" = "Discover interested store around you and get reward by MozoX";
-"Use rewarded MozoX to redeem in any stores using Mozo" = "Use rewarded MozoX to redeem in any stores using Mozo";
+"Use rewarded MozoX to redeem in any stores using MozoX" = "Use rewarded MozoX to redeem in any stores using MozoX";
 "Transfer MozoX to your friends easily by using MozoX Wallet" = "Transfer MozoX to your friends easily by using MozoX Wallet";
 "Discover more and get more with MozoX" = "Discover more and get more with MozoX";
 "Let's get started!" = "Let's get started!";
-"Disrupt foot traffic" = "Disrupt foot traffic";
+"Disrupt Foot Traffic" = "Disrupt Foot Traffic";
 "Analytics" = "Analytics";
 "Redeem" = "Redeem";
 "Liquidity" = "Liquidity";
-"Reduce cost" = "Reduce cost";
+"Reduce Cost" = "Reduce Cost";
 "Airdrop MozoX to attract more customers to your store" = "Airdrop MozoX to attract more customers to your store";
 "Collect and analyze customer information to create better customer insights" = "Collect and analyze customer information to create better customer insights";
 "Let customers redeem to buy product in your store by using MozoX" = "Let customers redeem to buy product in your store by using MozoX";
