@@ -13,7 +13,7 @@ import PromiseKit
 public class MozoSDK {
     private static var moduleDependencies: ModuleDependencies!
     
-    public static func configure(apiKey: String = Configuration.API_KEY_DEFAULT, network: MozoNetwork = .DevNet, appType: AppType = .Shopper) {
+    public static func configure(apiKey: String = Configuration.API_KEY_DEFAULT, network: MozoNetwork = .TestNet, appType: AppType = .Shopper) {
         Configuration.SUB_DOMAIN_ENUM = network.serviceType
         moduleDependencies = ModuleDependencies()
         moduleDependencies.apiKey = apiKey
