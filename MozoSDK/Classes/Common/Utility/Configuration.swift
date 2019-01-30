@@ -52,8 +52,9 @@ public class Configuration {
     /**
      The OIDC issuer from which the configuration will be discovered.
      */
-    // STAGING
-    public static let AUTH_ISSSUER = "https://\(SUB_DOMAIN)keycloak.mozocoin.io/auth/realms/mozo"
+    // AUTHENTICATION
+    public static let AUTH_BASE = SUB_DOMAIN_ENUM.auth
+    public static let AUTH_ISSSUER = "https://\(AUTH_BASE)mozocoin.io/auth/realms/mozo"
     
     // IMAGE SERVER
     public static let DOMAIN_IMAGE = "https://\(SUB_DOMAIN)image.mozocoin.io/api/public/"
