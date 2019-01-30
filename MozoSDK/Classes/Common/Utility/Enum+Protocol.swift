@@ -25,6 +25,13 @@ public enum ServiceType: String {
         case .PRODUCTION: return "noti.mozocoin.io"
         }
     }
+    
+    public var auth: String {
+        switch self {
+        case .DEV, .STAGING: return "\(rawValue)keycloak."
+        case .PRODUCTION: return "login."
+        }
+    }
 }
 
 public enum AppType: String {
