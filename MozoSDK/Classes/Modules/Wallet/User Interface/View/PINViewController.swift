@@ -195,7 +195,7 @@ private extension PINViewController {
         if !isConfirm {
             statusLabel.text = "Security PIN is correct".localized
         } else {
-            statusLabel.text = "Create Security PIN successfully".localized
+            statusLabel.text = "Create Security PIN successful".localized
         }
         statusLabel.textColor = ThemeManager.shared.success
     }

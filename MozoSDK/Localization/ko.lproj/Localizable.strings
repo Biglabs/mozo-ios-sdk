@@ -597,6 +597,7 @@
 "App requires permission to access Storage to view images. Tap Settings and go toPermissions to grant permission." = "MozoX는 이미지 메모리 접속이 필요합니다. 설정을 선택하고 사용 권한을 부여하기 위하여 사용 권한으로 이동하십시오.";
 "App requires permission to access Storage to view images." = "MozoX는 이미지 메모리 접속이 필요합니다";
 "Photos are uploading..." = "이미지가 업로드 중입니다.";
+"Photo is uploading..." = "이미지가 업로드 중입니다.";
 "A maximum of photos is %d" = "최대 이미지 수는 %d 개입니다.";
 "Open hour shouldn't be later than Close hour" = "오픈 시간은 닫는 시간보다 더 크면 안 됩니다.";
 "Close hour should be later than Open hour" = "닫는 시간은 오픈 시간보다 더 켜야합니다.";

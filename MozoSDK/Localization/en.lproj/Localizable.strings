@@ -592,6 +592,7 @@
 "App requires permission to access Storage to view images. Tap Settings and go toPermissions to grant permission." = "App requires permission to access Storage to view images. Tap Settings and go toPermissions to grant permission.";
 "App requires permission to access Storage to view images." = "App requires permission to access Storage to view images.";
 "Photos are uploading..." = "Photos are uploading...";
+"Photo is uploading..." = "Photo is uploading...";
 "A maximum of photos is %d" = "A maximum of photos is %d";
 "Open hour shouldn't be later than Close hour" = "Open hour shouldn't be later than Close hour";
 "Close hour should be later than Open hour" = "Close hour should be later than Open hour";
