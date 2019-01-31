@@ -37,10 +37,10 @@ public extension ApiManager {
         return Promise { seal in
             Alamofire.upload(multipartFormData: { (multipartFormData) in
                 for image in images {
-                    if let imgData = UIImagePNGRepresentation(image) {
+                    if let imgData = UIImageJPEGRepresentation(image, 1.0) {
                         let imageSize = imgData.count
                         print("Upload image with size in KB: \(Double(imageSize) / 1024.0)")
-                        multipartFormData.append(imgData, withName: "", fileName: "\(Date().timeIntervalSince1970).png", mimeType: "image/*")
+                        multipartFormData.append(imgData, withName: "", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/*")
                     }
                 }
             }, to: url, encodingCompletion: { encodingResult in
