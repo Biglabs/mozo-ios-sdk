@@ -700,3 +700,12 @@
 "Under Construction" = "Under Construction";
 "Foot Traffic" = "Foot Traffic";
 "%@ Coin" = "%@ Coin";
+"To select photo from library." = "To select photo from library.";
+"Take Photo" = "Take Photo";
+"Use Photo" = "Use Photo";
+"Remove Photo" = "Remove Photo";
+"Removed from favorite store" = "Removed from favorite store";
+
+"Favorite list is empty" = "Favorite list is empty";
+"You’re logged in as sub-account of" = "You’re logged in as sub-account of";
+"You’re logged in as sub-account of %@" = "You’re logged in as sub-account of %@";
