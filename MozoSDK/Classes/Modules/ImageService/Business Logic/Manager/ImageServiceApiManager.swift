@@ -46,12 +46,15 @@ public extension ApiManager {
             }, to: url, encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .success(let upload, _, _):
+                    upload.uploadProgress { progress in
+                        print("Progress upload image with url \(url), \(progress.fractionCompleted * 100)%")
+                    }
                     upload.responseJSON { response in
                         switch response.result {
                         case .success(let json):
                             print("Finish request to upload image, json: \(json)")
                             guard let json = json as? [String: Any] else {
-                                return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil))
+                                return seal.reject(ConnectionError.systemError)
                             }
                             self.handleApiResponseJSON(json, url: url).done({ (jsonData) in
                                 let jobj = JSON(jsonData)
