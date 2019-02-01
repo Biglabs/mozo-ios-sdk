@@ -37,21 +37,24 @@ public extension ApiManager {
         return Promise { seal in
             Alamofire.upload(multipartFormData: { (multipartFormData) in
                 for image in images {
-                    if let imgData = UIImagePNGRepresentation(image) {
+                    if let imgData = UIImageJPEGRepresentation(image, 1.0) {
                         let imageSize = imgData.count
                         print("Upload image with size in KB: \(Double(imageSize) / 1024.0)")
-                        multipartFormData.append(imgData, withName: "", fileName: "\(Date().timeIntervalSince1970).png", mimeType: "image/*")
+                        multipartFormData.append(imgData, withName: "", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/*")
                     }
                 }
             }, to: url, encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .success(let upload, _, _):
+                    upload.uploadProgress { progress in
+                        print("Progress upload image with url \(url), \(progress.fractionCompleted * 100)%")
+                    }
                     upload.responseJSON { response in
                         switch response.result {
                         case .success(let json):
                             print("Finish request to upload image, json: \(json)")
                             guard let json = json as? [String: Any] else {
-                                return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil))
+                                return seal.reject(ConnectionError.systemError)
                             }
                             self.handleApiResponseJSON(json, url: url).done({ (jsonData) in
                                 let jobj = JSON(jsonData)

@@ -69,7 +69,7 @@ class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOutputObj
         imageView.image = UIImage(named: "ic_left_arrow_white", in: BundleManager.mozoBundle(), compatibleWith: nil)
         backView.addSubview(imageView)
         
-        let lbFrame = CGRect(x: imageFrame.size.width + 9, y: 0, width: 36, height: 18)
+        let lbFrame = CGRect(x: imageFrame.size.width + 9, y: 0, width: 65, height: 18)
         let label = UILabel(frame: lbFrame)
         label.text = "Back".localized
         label.font = UIFont.systemFont(ofSize: 15)

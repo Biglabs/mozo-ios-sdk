@@ -188,14 +188,13 @@ private extension PINViewController {
     func validationSuccess() {
         print("😍 success!")
         statusImg.isHidden = false
-        statusLabel.textAlignment = .left
         statusLabel.isHidden = false
         confirmImg.isHighlighted = true
         pinTextField.isUserInteractionEnabled = false
         if !isConfirm {
             statusLabel.text = "Security PIN is correct".localized
         } else {
-            statusLabel.text = "Create Security PIN successfully".localized
+            statusLabel.text = "Create Security PIN successful".localized
         }
         statusLabel.textColor = ThemeManager.shared.success
     }
@@ -203,7 +202,6 @@ private extension PINViewController {
     func validationFail() {
         print("😞 failure!")
         statusImg.isHidden = true
-        statusLabel.textAlignment = .center
         statusLabel.isHidden = false
         statusLabel.text = "Incorrect Security PIN".localized
         statusLabel.textColor = ThemeManager.shared.error

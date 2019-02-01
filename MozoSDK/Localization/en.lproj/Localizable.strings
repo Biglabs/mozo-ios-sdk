@@ -592,6 +592,7 @@
 "App requires permission to access Storage to view images. Tap Settings and go toPermissions to grant permission." = "App requires permission to access Storage to view images. Tap Settings and go toPermissions to grant permission.";
 "App requires permission to access Storage to view images." = "App requires permission to access Storage to view images.";
 "Photos are uploading..." = "Photos are uploading...";
+"Photo is uploading..." = "Photo is uploading...";
 "A maximum of photos is %d" = "A maximum of photos is %d";
 "Open hour shouldn't be later than Close hour" = "Open hour shouldn't be later than Close hour";
 "Close hour should be later than Open hour" = "Close hour should be later than Open hour";
@@ -699,3 +700,12 @@
 "Under Construction" = "Under Construction";
 "Foot Traffic" = "Foot Traffic";
 "%@ Coin" = "%@ Coin";
+"To select photo from library." = "To select photo from library.";
+"Take Photo" = "Take Photo";
+"Use Photo" = "Use Photo";
+"Remove Photo" = "Remove Photo";
+"Removed from favorite store" = "Removed from favorite store";
+
+"Favorite list is empty" = "Favorite list is empty";
+"You’re logged in as sub-account of" = "You’re logged in as sub-account of";
+"You’re logged in as sub-account of %@" = "You’re logged in as sub-account of %@";

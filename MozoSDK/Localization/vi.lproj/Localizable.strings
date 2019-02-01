@@ -596,7 +596,8 @@
 "Tap to select Images" = "Chạm để chọn ảnh.";
 "App requires permission to access Storage to view images. Tap Settings and go toPermissions to grant permission." = "MozoX cần quyền truy cập bộ nhớ ảnh. Chọn Setting và đi đến Permissions để cấp quyền.";
 "App requires permission to access Storage to view images." = "MozoX cần truy cập bộ nhớ ảnh.";
-"Photos are uploading..." = "Đang tải ảnh lên";
+"Photos are uploading..." = "Đang tải ảnh lên...";
+"Photo is uploading..." = "Đang tải ảnh lên...";
 "A maximum of photos is %d" = "Số ảnh tối đa là %d";
 "Open hour must not be later than Close hour" = "Giờ mở cửa không được phép lớn hơn giờ đóng cửa";
 "Close hour must be later than Open hour" = "Giờ đóng cửa phải lớn hơn giờ mở cửa";
@@ -710,3 +711,9 @@
 "Use Photo" = "Sử dụng";
 "Remove Photo" = "Gỡ bỏ ảnh";
 "Removed from favorite store" = "Đã gỡ khỏi danh sách cửa hàng ưa thích";
+
+"Favorite list is empty" = "Danh sách trống";
+"Welcome, %@" = "Chào mừng, %@";
+"You’re logged in as sub-account of %@" = "Đã đăng nhập với vai trò tài khoản phụ tại %@";
+"Photo is uploading..." = "Đang tải ảnh lên...";
+"You’re logged in as sub-account of" = "Đã đăng nhập với vai trò tài khoản phụ tại";

@@ -43,20 +43,17 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOA-dH-2Xf" userLabel="CheckView">
-                                <rect key="frame" x="87.5" y="169" width="200" height="23"/>
+                                <rect key="frame" x="47.5" y="169" width="280" height="23"/>
                                 <subviews>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_check_success" translatesAutoresizingMaskIntoConstraints="NO" id="uHY-g1-lDE">
-                                        <rect key="frame" x="0.0" y="0.0" width="23" height="23"/>
+                                        <rect key="frame" x="20.5" y="0.0" width="23" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="NMz-N4-xOY"/>
                                             <constraint firstAttribute="width" constant="23" id="w1k-7C-Pg2"/>
                                         </constraints>
                                     </imageView>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Security PIN successful" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mE-Bn-Hyw">
-                                        <rect key="frame" x="32" y="4.5" width="247" height="14.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="247" id="nHI-pG-ZHE"/>
-                                        </constraints>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Security PIN successful" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mE-Bn-Hyw">
+                                        <rect key="frame" x="52.5" y="4.5" width="175" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.090196078431372548" green="0.72549019607843135" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -69,17 +66,16 @@
                                 <constraints>
                                     <constraint firstItem="5mE-Bn-Hyw" firstAttribute="centerY" secondItem="YOA-dH-2Xf" secondAttribute="centerY" id="7wj-RD-lVw"/>
                                     <constraint firstAttribute="bottom" secondItem="uHY-g1-lDE" secondAttribute="bottom" id="DS2-Kp-Gip"/>
-                                    <constraint firstItem="5mE-Bn-Hyw" firstAttribute="leading" secondItem="uHY-g1-lDE" secondAttribute="trailing" constant="9" id="asF-OB-m9T"/>
-                                    <constraint firstItem="uHY-g1-lDE" firstAttribute="leading" secondItem="YOA-dH-2Xf" secondAttribute="leading" id="byb-Xn-sEG"/>
+                                    <constraint firstItem="5mE-Bn-Hyw" firstAttribute="leading" secondItem="uHY-g1-lDE" secondAttribute="trailing" constant="9" id="QxJ-Y6-ekh"/>
                                     <constraint firstItem="uHY-g1-lDE" firstAttribute="centerY" secondItem="YOA-dH-2Xf" secondAttribute="centerY" id="cPb-h0-B10"/>
+                                    <constraint firstItem="5mE-Bn-Hyw" firstAttribute="centerX" secondItem="YOA-dH-2Xf" secondAttribute="centerX" id="heG-y8-4kq"/>
                                     <constraint firstItem="uHY-g1-lDE" firstAttribute="top" secondItem="YOA-dH-2Xf" secondAttribute="top" id="jUy-2P-Jjb"/>
-                                    <constraint firstAttribute="width" constant="200" id="mi9-63-94w"/>
+                                    <constraint firstAttribute="width" constant="280" id="mi9-63-94w"/>
                                     <constraint firstAttribute="height" constant="23" id="tZ0-ZM-rU8"/>
-                                    <constraint firstItem="uHY-g1-lDE" firstAttribute="leading" secondItem="YOA-dH-2Xf" secondAttribute="leading" id="uCB-h5-ILz"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fKQ-pz-rgq" customClass="PinTextField" customModule="MozoSDK" customModuleProvider="target">
-                                <rect key="frame" x="7.5" y="266" width="240" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKQ-pz-rgq" customClass="PinTextField" customModule="MozoSDK" customModuleProvider="target">
+                                <rect key="frame" x="67.5" y="222" width="240" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="ASB-6M-4GN"/>
@@ -113,8 +109,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_check_disable" highlightedImage="ic_check" translatesAutoresizingMaskIntoConstraints="NO" id="PeV-xF-dP9">
-                                <rect key="frame" x="274" y="280" width="23" height="23"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_check_disable" highlightedImage="ic_check" translatesAutoresizingMaskIntoConstraints="NO" id="PeV-xF-dP9">
+                                <rect key="frame" x="322.5" y="242.5" width="23" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="5bG-nn-mJI"/>
                                     <constraint firstAttribute="width" constant="23" id="rOm-P5-hae"/>
