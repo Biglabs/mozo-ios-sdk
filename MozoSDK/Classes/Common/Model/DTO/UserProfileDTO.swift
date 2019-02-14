@@ -17,7 +17,7 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
     public var fullName: String?
     public var birthDay: Int64?
     public var email: String?
-    public var gender: Int?
+    public var gender: String?
     
     public var walletInfo: WalletInfoDTO?
     public var exchangeInfo: ExchangeInfoDTO?
@@ -31,7 +31,7 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
         self.avatarUrl = avatarUrl
     }
     
-    public required init(fullName: String?, birthDay: Int64?, email: String?, gender: Int?) {
+    public required init(fullName: String?, birthDay: Int64?, email: String?, gender: String?) {
         self.fullName = fullName
         self.birthDay = birthDay
         self.email = email
@@ -50,7 +50,7 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
         self.fullName = json["fullName"].string
         self.birthDay = json["birthDay"].int64
         self.email = json["email"].string
-        self.gender = json["gender"].int
+        self.gender = json["gender"].string
     }
     
     public required init?(){}
