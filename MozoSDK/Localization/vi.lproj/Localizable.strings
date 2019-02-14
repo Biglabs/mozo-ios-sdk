@@ -352,7 +352,7 @@
 "Edit Hashtag" = "Sửa Hashtag";
 "Add new Hashtag" = "Thêm Hashtag";
 "Enter new Hashtag" = "Nhập Hashtag mới";
-"You can add maximum %d Hashtags for your store. The first one will be your main Hashtag." = "Có thể thêm tối đa %d Hashtag, Hashtag đầu tiên sẽ là Hashtag chính.";
+"You can add maximum %d Hashtags for your store.\nThe first one will be your main Hashtag." = "Có thể thêm tối đa %d Hashtag,\nHashtag đầu tiên sẽ là Hashtag chính.";
 "You may like" = "Có thể bạn sẽ thích";
 "Hashtag list is empty" = "Danh sách trống";
 "You can only add a maximum of %d Hashtags" = "Có thể thêm tối đa %d Hashtag";
@@ -708,7 +708,7 @@
 "%@ Coin" = "%@ Coin";
 "To select photo from library." = "Để chọn ảnh trong điện thoại.";
 "Take Photo" = "Chụp ảnh";
-"Use Photo" = "Sử dụng";
+"Use Photo" = "Sử dụng ảnh";
 "Remove Photo" = "Gỡ bỏ ảnh";
 "Removed from favorite store" = "Đã gỡ khỏi danh sách cửa hàng ưa thích";
 

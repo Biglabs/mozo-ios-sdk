@@ -38,6 +38,31 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         self.id = id
     }
     
+    public required init(name: String) {
+        self.name = name
+    }
+    
+    public required init(imageLogo: String?) {
+        self.imageLogo = imageLogo
+    }
+    
+    public required init(address: String) {
+        self.address = address
+    }
+    
+    public required init(openHour: Int) {
+        self.openHour = openHour
+    }
+    
+    public required init(closeHour: Int) {
+        self.closeHour = closeHour
+    }
+    
+    public required init(long: NSNumber, lat: NSNumber) {
+        self.longitude = long
+        self.latitude = lat
+    }
+    
     public required init?(json: SwiftyJSON.JSON) {
         self.address = json["address"].string
         self.brandInfoId = json["brandInfo"].int64
@@ -103,5 +128,10 @@ public class StoreInfoDTO : ResponseObjectSerializable {
     public static func arrayFromJson(_ json: SwiftyJSON.JSON) -> [StoreInfoDTO] {
         let array = json.array?.map({ StoreInfoDTO(json: $0)! })
         return array ?? []
+    }
+    
+    func rawData() -> Data? {
+        let json = JSON(self.toJSON())
+        return try? json.rawData()
     }
 }

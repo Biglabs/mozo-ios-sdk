@@ -348,14 +348,14 @@
 "Edit Hashtag" = "Edit Hashtag";
 "Add new Hashtag" = "Add new Hashtag";
 "Enter new Hashtag" = "Enter new Hashtag";
-"You can add maximum %d Hashtags for your store. The first one will be your main Hashtag." = "You can add maximum %d Hashtags for your store. The first one will be your main Hashtag.";
+"You can add maximum %d Hashtags for your store.\nThe first one will be your main Hashtag." = "You can add maximum %d Hashtags for your store.\nThe first one will be your main Hashtag.";
 "You may like" = "You may like";
 "Hashtag list is empty" = "Hashtag list is empty";
 "You can only add a maximum of %d Hashtags" = "You can only add a maximum of %d Hashtags";
 "OK" = "OK";
 "Repeat" = "Repeat";
 "Repeat:" = "Repeat:";
-"Your Store must have at least one Hashtag." = "Your Store must have at least one Hashtag.";
+"Your Store must have at least %d Hashtag." = "Your Store must have at least %d Hashtag.";
 "Only letters and numbers are allowed." = "Only letters and numbers are allowed.";
 "MozoX" = "MozoX";
 "Cancel" = "Cancel";

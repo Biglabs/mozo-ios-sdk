@@ -33,7 +33,7 @@ public extension ApiManager {
         }
     }
     
-    public func uploadImage(images: [UIImage], url: String) -> Promise<[String]> {
+    public func uploadImage(images: [UIImage], url: String, progressionHandler: @escaping (_ fractionCompleted: Double)-> Void) -> Promise<[String]> {
         return Promise { seal in
             Alamofire.upload(multipartFormData: { (multipartFormData) in
                 for image in images {
@@ -48,6 +48,7 @@ public extension ApiManager {
                 case .success(let upload, _, _):
                     upload.uploadProgress { progress in
                         print("Progress upload image with url \(url), \(progress.fractionCompleted * 100)%")
+                        progressionHandler(progress.fractionCompleted)
                     }
                     upload.responseJSON { response in
                         switch response.result {

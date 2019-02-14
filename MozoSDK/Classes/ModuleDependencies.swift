@@ -207,8 +207,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getUrlToUploadImage())!
     }
     
-    func uploadImage(images: [UIImage], url: String) -> Promise<[String]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.uploadImage(images: images, url: url))!
+    func uploadImage(images: [UIImage], url: String, progressionHandler: @escaping (_ fractionCompleted: Double)-> Void) -> Promise<[String]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.uploadImage(images: images, url: url, progressionHandler: progressionHandler))!
     }
     
     func updateUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
@@ -217,6 +217,26 @@ class ModuleDependencies {
     
     func updateAvatarToUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateAvatarToUserProfile(userProfile: userProfile))!
+    }
+    
+    func getCommonHashtag() -> Promise<[String]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getCommonHashtag())!
+    }
+    
+    func deleteRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.deleteRetailerStoreInfoPhotos(photos: photos))!
+    }
+    
+    func updateRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.updateRetailerStoreInfoPhotos(photos: photos))!
+    }
+    
+    func updateRetailerStoreInfoHashtag(hashTags: [String]) -> Promise<StoreInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.updateRetailerStoreInfoHashtag(hashTags: hashTags))!
+    }
+    
+    func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.updateRetailerStoreInfo(storeInfo: storeInfo))!
     }
     
     func configureDependencies() {

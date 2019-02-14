@@ -354,7 +354,7 @@
 "Edit Hashtag" = "해시 태그 수정";
 "Add new Hashtag" = "해시 태그 추가";
 "Enter new Hashtag" = "새 해시 태그 입력";
-"You can add maximum %d Hashtags for your store. The first one will be your main Hashtag." = "상점에 최대 %d 개의 해시 태그를 추가 할 수 있습니다. 첫 번째 것은 주요 해시 태그입니다.";
+"You can add maximum %d Hashtags for your store.\nThe first one will be your main Hashtag." = "상점에 최대 %d 개의 해시 태그를 추가 할 수 있습니다.\n첫 번째 것은 주요 해시 태그입니다.";
 "You may like" = "당신이 좋아할 까요";
 "Hashtag list is empty" = "해시 태그 리스트가 비어 있습니다.";
 "You can only add a maximum of %d Hashtags" = "해시 태그가 최대 %d 개까지 추가 할 수 있습니다.";
