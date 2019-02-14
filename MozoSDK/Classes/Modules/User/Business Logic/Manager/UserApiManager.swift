@@ -17,12 +17,13 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print(json)
+                    print("Finish request to get user profile, json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)
                     let userProfile = UserProfileDTO.init(json: jobj)
                     seal.fulfill(userProfile!)
                 }
                 .catch { error in
+                    print("Error when request get user profile: " + error.localizedDescription)
                     //Handle error or give feedback to the user
                     let err = error as! ConnectionError
                     seal.reject(err)
@@ -40,7 +41,7 @@ public extension ApiManager {
             self.execute(.put, url: url, parameters: param)
                 .done { json -> Void in
                     // JSON info
-                    print(json)
+                    print("Finish request to update avatar to user profile, json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)
                     let userProfile = UserProfileDTO.init(json: jobj)
                     seal.fulfill(userProfile!)
@@ -48,7 +49,7 @@ public extension ApiManager {
                 .catch { error in
                     //Handle error or give feedback to the user
                     let err = error as! ConnectionError
-                    print(err.localizedDescription)
+                    print("Error when request update avatar to user profile: " + error.localizedDescription)
                     seal.reject(err)
                 }
                 .finally {
@@ -64,7 +65,7 @@ public extension ApiManager {
             self.execute(.put, url: url, parameters: param)
                 .done { json -> Void in
                     // JSON info
-                    print(json)
+                    print("Finish request to update user profile, json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)
                     let userProfile = UserProfileDTO.init(json: jobj)
                     seal.fulfill(userProfile!)
@@ -72,7 +73,7 @@ public extension ApiManager {
                 .catch { error in
                     //Handle error or give feedback to the user
                     let err = error as! ConnectionError
-                    print(err.localizedDescription)
+                    print("Error when request update user profile: " + error.localizedDescription)
                     seal.reject(err)
                 }
                 .finally {
@@ -88,7 +89,7 @@ public extension ApiManager {
             self.execute(.put, url: url, parameters: param)
                 .done { json -> Void in
                     // JSON info
-                    print(json)
+                    print("Finish request to update wallet info to user profile, json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)
                     let userProfile = UserProfileDTO.init(json: jobj)
                     seal.fulfill(userProfile!)
@@ -96,7 +97,7 @@ public extension ApiManager {
                 .catch { error in
                     //Handle error or give feedback to the user
                     let err = error as! ConnectionError
-                    print(err.localizedDescription)
+                    print("Error when request update wallet info to user profile: " + error.localizedDescription)
                     seal.reject(err)
                 }
                 .finally {
