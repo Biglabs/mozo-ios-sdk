@@ -155,8 +155,7 @@ public extension ApiManager {
     
     public func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
-            let params = ["storeId" : storeId] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_FAVORITE_API_PATH + "?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_FAVORITE_API_PATH + "/\(storeId)"
             let method = isMarkFavorite ? HTTPMethod.post : .delete
             self.execute(method, url: url)
                 .done { json -> Void in

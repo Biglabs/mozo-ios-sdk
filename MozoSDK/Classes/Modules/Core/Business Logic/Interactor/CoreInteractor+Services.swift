@@ -167,8 +167,8 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getUrlToUploadImage()
     }
     
-    func uploadImage(images: [UIImage], url: String) -> Promise<[String]> {
-        return apiManager.uploadImage(images: images, url: url)
+    func uploadImage(images: [UIImage], url: String, progressionHandler: @escaping (_ fractionCompleted: Double)-> Void) -> Promise<[String]> {
+        return apiManager.uploadImage(images: images, url: url, progressionHandler: progressionHandler)
     }
     
     func updateUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
@@ -177,5 +177,25 @@ extension CoreInteractor: CoreInteractorService {
     
     func updateAvatarToUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
         return apiManager.updateAvatarToUserProfile(userProfile: userProfile)
+    }
+    
+    func getCommonHashtag() -> Promise<[String]> {
+        return apiManager.getCommonHashtag()
+    }
+
+    func deleteRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
+        return apiManager.deleteRetailerStoreInfoPhotos(photos: photos)
+    }
+    
+    func updateRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
+        return apiManager.updateRetailerStoreInfoPhotos(photos: photos)
+    }
+    
+    func updateRetailerStoreInfoHashtag(hashTags: [String]) -> Promise<StoreInfoDTO> {
+        return apiManager.updateRetailerStoreInfoHashtag(hashTags: hashTags)
+    }
+    
+    func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO> {
+        return apiManager.updateRetailerStoreInfo(storeInfo: storeInfo)
     }
 }

@@ -169,8 +169,8 @@ public class MozoSDK {
         return moduleDependencies.getUrlToUploadImage()
     }
     
-    public static func uploadImage(images: [UIImage], url: String) -> Promise<[String]> {
-        return moduleDependencies.uploadImage(images: images, url: url)
+    public static func uploadImage(images: [UIImage], url: String, progressionHandler: @escaping (_ fractionCompleted: Double)-> Void) -> Promise<[String]> {
+        return moduleDependencies.uploadImage(images: images, url: url, progressionHandler: progressionHandler)
     }
     
     public static func updateUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
@@ -179,5 +179,25 @@ public class MozoSDK {
     
     public static func updateAvatarToUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
         return moduleDependencies.updateAvatarToUserProfile(userProfile: userProfile)
+    }
+    
+    public static func getCommonHashtag() -> Promise<[String]> {
+        return moduleDependencies.getCommonHashtag()
+    }
+    
+    public static func deleteRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
+        return moduleDependencies.deleteRetailerStoreInfoPhotos(photos: photos)
+    }
+    
+    public static func updateRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
+        return moduleDependencies.updateRetailerStoreInfoPhotos(photos: photos)
+    }
+    
+    public static func updateRetailerStoreInfoHashtag(hashTags: [String]) -> Promise<StoreInfoDTO> {
+        return moduleDependencies.updateRetailerStoreInfoHashtag(hashTags: hashTags)
+    }
+    
+    public static func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO> {
+        return moduleDependencies.updateRetailerStoreInfo(storeInfo: storeInfo)
     }
 }

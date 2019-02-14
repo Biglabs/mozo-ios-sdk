@@ -58,8 +58,13 @@ protocol CoreInteractorService {
     func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber>
     
     func getUrlToUploadImage() -> Promise<String>
-    func uploadImage(images: [UIImage], url: String) -> Promise<[String]>
+    func uploadImage(images: [UIImage], url: String, progressionHandler: @escaping (_ fractionCompleted: Double)-> Void) -> Promise<[String]>
     
     func updateUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO>
     func updateAvatarToUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO>
+    func getCommonHashtag() -> Promise<[String]>
+    func deleteRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO>
+    func updateRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO>
+    func updateRetailerStoreInfoHashtag(hashTags: [String]) -> Promise<StoreInfoDTO>
+    func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO>
 }
