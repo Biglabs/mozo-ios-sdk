@@ -15,6 +15,9 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
     public var phoneNumber: String?
     public var avatarUrl: String?
     public var fullName: String?
+    public var birthDay: Int64?
+    public var email: String?
+    public var gender: Int?
     
     public var walletInfo: WalletInfoDTO?
     public var exchangeInfo: ExchangeInfoDTO?
@@ -28,6 +31,13 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
         self.avatarUrl = avatarUrl
     }
     
+    public required init(fullName: String?, birthDay: Int64?, email: String?, gender: Int?) {
+        self.fullName = fullName
+        self.birthDay = birthDay
+        self.email = email
+        self.gender = gender
+    }
+    
     public required init?(json: SwiftyJSON.JSON) {
         self.id = json["id"].int
         self.userId = json["userId"].string
@@ -38,6 +48,9 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
         self.exchangeInfo = ExchangeInfoDTO(json: json["exchangeInfo"])
         self.settings = json["settings"].string
         self.fullName = json["fullName"].string
+        self.birthDay = json["birthDay"].int64
+        self.email = json["email"].string
+        self.gender = json["gender"].int
     }
     
     public required init?(){}
@@ -67,6 +80,15 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
         }
         if let fullName = self.fullName {
             json["fullName"] = fullName
+        }
+        if let birthDay = self.birthDay {
+            json["birthDay"] = birthDay
+        }
+        if let email = self.email {
+            json["email"] = email
+        }
+        if let gender = self.gender {
+            json["gender"] = gender
         }
         return json
     }
