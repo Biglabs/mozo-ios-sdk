@@ -16,9 +16,17 @@ public class WebSocketManager {
         let request = URLRequest(url: URL(string: Configuration.WEB_SOCKET_URL)!)
         socket = WebSocket(request: request)
     }
+    
+    func buildUUID() -> String {
+        let uuid = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
+        let userObj = SessionStoreManager.loadCurrentUser()
+        let userId = userObj?.id ?? ""
+        let result = UUID(uuidString: "\(uuid)-\(userId)-\(appType.rawValue)")?.uuidString ?? UUID().uuidString
+        return result
+    }
 
     public func requestWithHeader() -> URLRequest{
-        let uuid = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
+        let uuid = buildUUID()
         var url = Configuration.WEB_SOCKET_URL + uuid + "/\(appType.rawValue)"
         let headers = ["X-Atmosphere-tracking-id" : "0",
                        "X-Atmosphere-Framework" : "2.3.3-javascript",
