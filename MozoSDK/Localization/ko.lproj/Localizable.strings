@@ -198,7 +198,7 @@
 "Scan for the Beacon" = "Beacon을 스캔하기";
 "Set up range by sliding Distance Bar." = "거리 바 슬라이딩하는 방식으로 활동 범위를 설정하십시오.";
 "Beacon battery will last longer if you set signal range under 50m" = "당신이 50m 아래에있는 Beacon을 범위를 설정 한 경우 비콘 배터리가 더 오래 지속됩니다.";
-"Beacon is Detected!" = "Beacon 감지됨";
+"Beacon %@ is Detected!" = "Beacon %@ 감지됨";
 "Beacon Location Setting" = "Beacon 의 위치 설정";
 "Make sure that your store location is displayed correctly. Shoppers will use this location to find your store." = "상점을 방문 쇼핑객을 감지할 수 있는 위치(벽, 카운터, 천장)에 Beacon을 놓으십시오.";
 "Edit Location" = "위치 수정";
