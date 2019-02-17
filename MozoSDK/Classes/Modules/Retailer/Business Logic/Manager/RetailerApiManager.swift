@@ -188,9 +188,8 @@ public extension ApiManager {
     public func updateRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_STORE_INFO_PHOTO_API_PATH
-            let param = ["photos": photos]
-            print("Request to update store info photo, param: \(param)")
-            self.execute(.put, url: url, parameters: param)
+            print("Request to update store info photo, param: \(photos)")
+            self.execute(.put, url: url, parameters: photos)
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to update store info photo, json response: \(json)")
@@ -212,9 +211,8 @@ public extension ApiManager {
     public func deleteRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_STORE_INFO_PHOTO_API_PATH
-            let param = ["photos": photos]
-            print("Request to delete store info photo, param: \(param)")
-            self.execute(.delete, url: url, parameters: param)
+            print("Request to delete store info photo, param: \(photos)")
+            self.execute(.delete, url: url, parameters: photos)
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to delete store info photo, json response: \(json)")
