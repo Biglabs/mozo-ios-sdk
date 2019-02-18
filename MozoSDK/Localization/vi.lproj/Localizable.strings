@@ -197,7 +197,7 @@
 "Scan for the Beacon" = "Quét Beacon";
 "Set up range by sliding Distance Bar." = "Đặt phạm vi hoạt động bằng cách kéo thanh khoảng cách";
 "Beacon battery will last longer if you set signal range under 50m" = "Pin Beacon sẽ hao hụt lâu hơn nếu bạn thiết lập khoảng cách dưới 50m.";
-"Beacon is Detected!" = "Đã nhận diện Beacon";
+"Beacon %@ is Detected!" = "Đã nhận diện Beacon %@";
 "Beacon Location Setting" = "Thiết lập vị trí Beacon";
 "Make sure that your store location is displayed correctly. Shoppers will use this location to find your store." = "Hãy bảo đảm vị trí cửa hàng hiển thị chính xác. Khách sẽ dựa vào vị trí này để tìm ra cửa hàng của bạn.";
 "Edit Location" = "Chỉnh sửa vị trí";

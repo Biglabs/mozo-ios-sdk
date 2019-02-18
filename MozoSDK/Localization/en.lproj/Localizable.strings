@@ -196,6 +196,7 @@
 "Set up range by sliding Distance Bar." = "Set up range by sliding Distance Bar.";
 "Beacon battery will last longer if you set signal range under 50m" = "Beacon battery will last longer if you set signal range under 50m";
 "Beacon is Detected!" = "Beacon is Detected!";
+"Beacon %@ is Detected!" = "Beacon %@ is Detected!";
 "Beacon Location Setting" = "Beacon Location Setting";
 "Make sure that your store location is displayed correctly. Shoppers will use this location to find your store." = "Make sure that your store location is displayed correctly. Shoppers will use this location to find your store.";
 "Edit Location" = "Edit Location";
