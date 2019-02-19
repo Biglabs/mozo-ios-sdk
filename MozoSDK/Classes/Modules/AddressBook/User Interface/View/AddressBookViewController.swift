@@ -23,6 +23,8 @@ class AddressBookViewController: MozoBasicViewController {
     var isDisplayForSelect = true
     var isDisplayingAddressBook = true
     
+    var isShowStoreBook = false
+    
     let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - View Setup
@@ -82,9 +84,9 @@ class AddressBookViewController: MozoBasicViewController {
         if isDisplayForSelect {
             enableBackBarButton()
         }
-        
-        segmentControl.setTitle("User Address".localized, forSegmentAt: 0)
-        segmentControl.setTitle("Store Address".localized, forSegmentAt: 1)
+        if !isShowStoreBook {
+            tableView.tableHeaderView = nil
+        }
     }
     
     func setupTarget() {
