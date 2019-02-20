@@ -64,7 +64,7 @@ extension CorePresenter {
             let requestIdentifier = "mozoNotification_\(Date())"
             
             // TODO: Display extract badge number on app
-            content.badge = 0
+            content.badge = 1
             // NSNumber(value: UIApplication.shared.applicationIconBadgeNumber + 1)
             content.title = displayItem.title
             content.subtitle = displayItem.subTitle
