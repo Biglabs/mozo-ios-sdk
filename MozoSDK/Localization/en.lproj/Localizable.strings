@@ -506,7 +506,7 @@
 "MozoX uses this information to provide more relevant and personalized experiences, like helping you to find local events and to provide better suggestions.\n\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "MozoX uses this information to provide more relevant and personalized experiences, like helping you to find local events and to provide better suggestions.\n\nTo enable this, tap App Settings below and activate Location under the Permissions menu.";
 "Not now" = "Not now";
 "App Settings" = "App Settings";
-"Added into favourite store" = "Added into favourite store";
+"Added into favorite stores" = "Added into favorite stores";
 "Cash" = "Cash";
 "Today collected coins" = "Today collected coins";
 "Fill in to get %@ MozoX" = "Fill in to get %@ MozoX";
@@ -705,7 +705,7 @@
 "Take Photo" = "Take Photo";
 "Use Photo" = "Use Photo";
 "Remove Photo" = "Remove Photo";
-"Removed from favorite store" = "Removed from favorite store";
+"Removed from favorite stores" = "Removed from favorite stores";
 
 "Favorite list is empty" = "Favorite list is empty";
 "You’re logged in as sub-account of" = "You’re logged in as sub-account of";
