@@ -48,12 +48,12 @@ extension CorePresenter {
         }
         
         //actions defination
-        let action1 = UNNotificationAction(identifier: "actionView", title: "View".localized, options: [.foreground])
-        let action2 = UNNotificationAction(identifier: "actionClear", title: "Clear".localized, options: [.foreground])
-        
-        let category = UNNotificationCategory(identifier: "mozoActionCategory", actions: [action1,action2], intentIdentifiers: [], options: [])
-        
-        UNUserNotificationCenter.current().setNotificationCategories([category])
+//        let action1 = UNNotificationAction(identifier: "actionView", title: "View".localized, options: [.foreground])
+//        let action2 = UNNotificationAction(identifier: "actionClear", title: "Clear".localized, options: [.foreground])
+//
+//        let category = UNNotificationCategory(identifier: "mozoActionCategory", actions: [action1,action2], intentIdentifiers: [], options: [])
+//
+//        UNUserNotificationCenter.current().setNotificationCategories([category])
         
     }
     
