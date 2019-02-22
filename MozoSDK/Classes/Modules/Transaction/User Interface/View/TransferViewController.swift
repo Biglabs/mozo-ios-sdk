@@ -27,7 +27,7 @@ class TransferViewController: MozoBasicViewController {
     @IBOutlet weak var lbSpendable: UILabel!
     @IBOutlet weak var addressBookView: UIView!
     @IBOutlet weak var lbAbName: UILabel!
-    @IBOutlet weak var lbAbAddress: UILabel!
+    @IBOutlet weak var lbAbAddress: CopyableLabel!
     @IBOutlet weak var btnContinue: UIButton!
     @IBOutlet weak var constraintTopSpace: NSLayoutConstraint!
     let topSpace : CGFloat = 14.0

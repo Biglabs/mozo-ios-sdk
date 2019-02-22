@@ -10,7 +10,7 @@ import UIKit
 class PaymentSendSuccessViewController: MozoBasicViewController {
     @IBOutlet weak var lbAmount: UILabel!
     @IBOutlet weak var lbAmountEx: UILabel!
-    @IBOutlet weak var lbAddressOrName: UILabel!
+    @IBOutlet weak var lbAddressOrName: CopyableLabel!
     
     var displayItem: PaymentRequestDisplayItem?
     var toAddress: String?

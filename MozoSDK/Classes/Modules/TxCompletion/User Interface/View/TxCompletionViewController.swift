@@ -25,7 +25,7 @@ class TxCompletionViewController: MozoBasicViewController {
     
     @IBOutlet weak var lbAmount: UILabel!
     @IBOutlet weak var lbAmountEx: UILabel!
-    @IBOutlet weak var lbAddress: UILabel!
+    @IBOutlet weak var lbAddress: CopyableLabel!
     @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var btnDetail: UIButton!
     

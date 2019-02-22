@@ -22,8 +22,8 @@ class TxDetailViewController: MozoBasicViewController {
     @IBOutlet weak var lbActionDetailView: UILabel!
     @IBOutlet weak var userImg: UIImageView!
     @IBOutlet weak var lbNameDetailView: UILabel!
-    @IBOutlet weak var lbAddressDetailView: UILabel!
-    @IBOutlet weak var lbAddress: UILabel!
+    @IBOutlet weak var lbAddressDetailView: CopyableLabel!
+    @IBOutlet weak var lbAddress: CopyableLabel!
     @IBOutlet weak var lbAmountValue: UILabel!
     @IBOutlet weak var lbAmountValueExchange: UILabel!
     @IBOutlet weak var saveView: UIView!

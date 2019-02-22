@@ -12,18 +12,18 @@ class ConfirmTransferViewController: MozoBasicViewController {
     var eventHandler : TransactionModuleInterface?
     
     @IBOutlet weak var circleView: UIView!
-    @IBOutlet weak var lbAddress: UILabel!
+    @IBOutlet weak var lbAddress: CopyableLabel!
     @IBOutlet weak var lbAmountValue: UILabel!
     @IBOutlet weak var lbAmountValueExchange: UILabel!
     @IBOutlet weak var lbReceiver: UILabel!
     @IBOutlet weak var addressBookView: UIView!
     @IBOutlet weak var lbName: UILabel!
-    @IBOutlet weak var lbNameAddress: UILabel!
+    @IBOutlet weak var lbNameAddress: CopyableLabel!
     
     @IBOutlet weak var storeBookView: UIView!
     @IBOutlet weak var lbStoreName: UILabel!
-    @IBOutlet weak var lbStorePhysicalAddress: UILabel!
-    @IBOutlet weak var lbStoreOffchainAddress: UILabel!
+    @IBOutlet weak var lbStorePhysicalAddress: CopyableLabel!
+    @IBOutlet weak var lbStoreOffchainAddress: CopyableLabel!
     
     @IBOutlet weak var btnConfirm: UIButton!
     @IBOutlet weak var layoutConstraint: NSLayoutConstraint!

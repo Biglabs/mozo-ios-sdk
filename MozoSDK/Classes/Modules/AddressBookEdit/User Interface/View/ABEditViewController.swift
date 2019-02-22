@@ -12,7 +12,7 @@ class ABEditViewController : MozoBasicViewController {
     var displayItem: AddressBookDisplayItem?
     
     @IBOutlet weak var nameTextView: UITextView!
-    @IBOutlet weak var lbAddress: UILabel!
+    @IBOutlet weak var lbAddress: CopyableLabel!
     
     var saveBtn : UIBarButtonItem?
     
