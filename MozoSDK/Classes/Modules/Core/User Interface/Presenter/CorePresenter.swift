@@ -166,6 +166,7 @@ extension CorePresenter : AuthModuleDelegate {
         SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
         // Notify for all observing objects
         coreInteractor?.notifyLogoutForAllObservers()
+        stopSilentServices(shouldReconnect: false)
     }
     
     func authModuleDidFinishAuthentication(accessToken: String?) {

@@ -21,7 +21,7 @@ class PaymentQRViewController: MozoBasicViewController {
     
     @IBOutlet weak var nameContainerView: UIView!
     @IBOutlet weak var lbAbName: UILabel!
-    @IBOutlet weak var lbAbAddress: UILabel!
+    @IBOutlet weak var lbAbAddress: CopyableLabel!
     @IBOutlet weak var btnClear: UIButton!
     
     @IBOutlet weak var btnAddressBook: UIButton!

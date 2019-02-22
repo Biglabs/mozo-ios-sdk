@@ -509,7 +509,7 @@
 "MozoX uses this information to provide more relevant and personalized experiences, like helping you to find local events and to provide better suggestions.\n\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "MozoX dùng thông tin này để cải thiện việc gợi ý và nâng cấp trải nghiệm người dùng, giúp bạn dễ dàng tìm thấy những chương trình Airdrop xung quanh. Để mở chức năng này, chọn App Settings và kích hoạt Location nằm bên dưới Permissions Menu.";
 "Not now" = "Để sau";
 "App Settings" = "Thiết lập";
-"Added into favourite store" = "Đã thêm vào cửa hàng yêu thích";
+"Added into favorite stores" = "Đã thêm vào cửa hàng yêu thích";
 "Cash" = "Tiền mặt";
 "Today collected coins" = "Coin nhận hôm nay";
 "Fill in to get %@ MozoX" = "Điền để nhận %@ MozoX";
@@ -710,7 +710,7 @@
 "Take Photo" = "Chụp ảnh";
 "Use Photo" = "Sử dụng ảnh";
 "Remove Photo" = "Gỡ bỏ ảnh";
-"Removed from favorite store" = "Đã gỡ khỏi danh sách cửa hàng ưa thích";
+"Removed from favorite stores" = "Đã gỡ khỏi danh sách cửa hàng ưa thích";
 
 "Favorite list is empty" = "Danh sách trống";
 "Welcome, %@" = "Chào mừng, %@";
