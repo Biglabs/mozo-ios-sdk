@@ -1242,18 +1242,18 @@
                                 <rect key="frame" x="41.5" y="531" width="292" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_check_disable" highlightedImage="ic_check" translatesAutoresizingMaskIntoConstraints="NO" id="ZC4-xe-iX8">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="17" y="5" width="30" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="gNY-cR-BFV"/>
-                                            <constraint firstAttribute="height" constant="40" id="mCi-vF-VJd"/>
+                                            <constraint firstAttribute="width" constant="30" id="gNY-cR-BFV"/>
+                                            <constraint firstAttribute="height" constant="30" id="mCi-vF-VJd"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have safely stored Recovery Phrase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eua-vR-3gy">
-                                        <rect key="frame" x="49" y="0.0" width="247" height="40"/>
+                                        <rect key="frame" x="56" y="0.0" width="220" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="247" id="1Z7-8a-gAE"/>
+                                            <constraint firstAttribute="width" constant="220" id="1Z7-8a-gAE"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                                         <color key="textColor" red="0.75686274509803919" green="0.75686274509803919" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -1263,13 +1263,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="ZC4-xe-iX8" firstAttribute="leading" secondItem="SIW-Xr-hF0" secondAttribute="leading" id="BUi-Sg-1Xf"/>
-                                    <constraint firstItem="ZC4-xe-iX8" firstAttribute="top" secondItem="SIW-Xr-hF0" secondAttribute="top" id="IyV-dP-bxT"/>
                                     <constraint firstAttribute="height" constant="40" id="QSm-qP-lph"/>
                                     <constraint firstItem="eua-vR-3gy" firstAttribute="leading" secondItem="ZC4-xe-iX8" secondAttribute="trailing" constant="9" id="YdT-ep-Als"/>
                                     <constraint firstAttribute="width" constant="292" id="aRj-BN-3XZ"/>
                                     <constraint firstItem="eua-vR-3gy" firstAttribute="centerY" secondItem="SIW-Xr-hF0" secondAttribute="centerY" id="dzO-GO-RDv"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZC4-xe-iX8" secondAttribute="bottom" id="eJs-pN-ugZ"/>
+                                    <constraint firstItem="ZC4-xe-iX8" firstAttribute="centerY" secondItem="eua-vR-3gy" secondAttribute="centerY" id="p4b-hk-v9O"/>
+                                    <constraint firstItem="eua-vR-3gy" firstAttribute="centerX" secondItem="SIW-Xr-hF0" secondAttribute="centerX" constant="20" id="sig-bZ-8dt"/>
                                     <constraint firstItem="eua-vR-3gy" firstAttribute="height" secondItem="SIW-Xr-hF0" secondAttribute="height" id="yWO-jT-yca"/>
                                 </constraints>
                             </view>
