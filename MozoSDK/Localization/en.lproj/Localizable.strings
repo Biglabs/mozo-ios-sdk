@@ -710,3 +710,5 @@
 "Favorite list is empty" = "Favorite list is empty";
 "You’re logged in as sub-account of" = "You’re logged in as sub-account of";
 "You’re logged in as sub-account of %@" = "You’re logged in as sub-account of %@";
+
+"Invalid email address" = "Invalid email address";
