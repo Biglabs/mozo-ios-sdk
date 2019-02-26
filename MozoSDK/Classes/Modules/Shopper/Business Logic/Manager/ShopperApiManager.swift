@@ -11,7 +11,10 @@ import SwiftyJSON
 
 let SHOPPER_API_PATH = "/shopper"
 let SHOPPER_AIRDROP_API_PATH = SHOPPER_API_PATH + "/airdrop"
-let SHOPPER_FAVORITE_API_PATH = SHOPPER_API_PATH + "/favorite/stores"
+let SHOPPER_FAVORITE_API_PATH = "/favorite/stores"
+let SHOPPER_SEARCH_API_PATH = SHOPPER_API_PATH + "/v1/search/stores"
+let SHOPPER_NEAREST_API_PATH = SHOPPER_API_PATH + "/nearest/stores"
+let SHOPPER_RECOMMENDATION_API_PATH = SHOPPER_API_PATH + "/recommendation/stores"
 
 public extension ApiManager {
     public func getAirdropStoresNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]> {
@@ -60,7 +63,7 @@ public extension ApiManager {
     public func getNearestStores(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
         return Promise { seal in
             let params = ["storeId" : storeId] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/nearest/stores" + "?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_NEAREST_API_PATH + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -72,6 +75,36 @@ public extension ApiManager {
                 }
                 .catch { error in
                     print("Error when request get nearest stores: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[StoreInfoDTO]> {
+        return Promise { seal in
+            var params = ["storeId" : storeId,
+                          "top": size] as [String : Any]
+            if let lat = lat, let long = long {
+                params = ["storeId" : storeId,
+                          "top": size,
+                          "lat": lat,
+                          "lon": long] as [String : Any]
+            }
+            let url = Configuration.BASE_STORE_URL + SHOPPER_RECOMMENDATION_API_PATH + "?\(params.queryString)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get recommendation stores, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    if let collection = CollectionStoreInfoDTO(json: jobj) {
+                        seal.fulfill(collection.stores ?? [])
+                    }
+                }
+                .catch { error in
+                    print("Error when request get recommendation stores: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {
@@ -109,7 +142,7 @@ public extension ApiManager {
                           "lat" : lat,
                           "sort" : sort,
                           "text" : text] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/search/stores" + "?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_SEARCH_API_PATH + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -134,7 +167,7 @@ public extension ApiManager {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_FAVORITE_API_PATH + "?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/v1" + SHOPPER_FAVORITE_API_PATH + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -155,7 +188,7 @@ public extension ApiManager {
     
     public func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_FAVORITE_API_PATH + "/\(storeId)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + SHOPPER_FAVORITE_API_PATH + "/\(storeId)"
             let method = isMarkFavorite ? HTTPMethod.post : .delete
             self.execute(method, url: url)
                 .done { json -> Void in
@@ -165,6 +198,28 @@ public extension ApiManager {
                 }
                 .catch { error in
                     print("Error when request \(method.rawValue) favorite stores: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func getStoreDetail(_ storeId: Int64) -> Promise<StoreInfoDTO> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/store/\(storeId)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get store detail with id \(storeId), json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    if let storeInfo = StoreInfoDTO(json: jobj) {
+                        seal.fulfill(storeInfo)
+                    }
+                }
+                .catch { error in
+                    print("Error when request get store detail with id \(storeId): " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {

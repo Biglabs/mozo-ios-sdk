@@ -198,4 +198,12 @@ extension CoreInteractor: CoreInteractorService {
     func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO> {
         return apiManager.updateRetailerStoreInfo(storeInfo: storeInfo)
     }
+    
+    func getStoreDetail(_ storeId: Int64) -> Promise<StoreInfoDTO> {
+        return apiManager.getStoreDetail(storeId)
+    }
+    
+    func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[StoreInfoDTO]> {
+        return apiManager.getRecommendationStores(storeId, size: size, long: long, lat: lat)
+    }
 }

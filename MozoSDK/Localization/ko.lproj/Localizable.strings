@@ -715,3 +715,5 @@
 "You’re logged in as sub-account of" = "의 하위 계정으로 로그인했습니다.";
 "You’re logged in as sub-account of %@" = "%@ 의 하위 계정으로 로그인했습니다.";
 "Photo is uploading..." = "사진을 업로드하는 중 ...";
+
+"Male" = "남성";
