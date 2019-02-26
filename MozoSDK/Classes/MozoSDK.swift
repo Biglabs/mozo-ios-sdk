@@ -200,4 +200,12 @@ public class MozoSDK {
     public static func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO> {
         return moduleDependencies.updateRetailerStoreInfo(storeInfo: storeInfo)
     }
+    
+    public static func getStoreDetail(_ storeId: Int64) -> Promise<StoreInfoDTO> {
+        return moduleDependencies.getStoreDetail(storeId)
+    }
+    
+    public static func getRecommendationStores(_ storeId: Int64, size: Int = 5, long: Double?, lat: Double?) -> Promise<[StoreInfoDTO]> {
+        return moduleDependencies.getRecommendationStores(storeId, size: size, long: long, lat: lat)
+    }
 }

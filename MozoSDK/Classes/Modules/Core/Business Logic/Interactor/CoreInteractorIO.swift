@@ -67,4 +67,7 @@ protocol CoreInteractorService {
     func updateRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO>
     func updateRetailerStoreInfoHashtag(hashTags: [String]) -> Promise<StoreInfoDTO>
     func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO>
+    
+    func getStoreDetail(_ storeId: Int64) -> Promise<StoreInfoDTO>
+    func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[StoreInfoDTO]>
 }
