@@ -180,6 +180,10 @@ class PaymentViewController: MozoBasicViewController {
 }
 extension PaymentViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newLength = (textField.text?.count ?? 0) + string.count - range.length
+        if newLength > MAXIMUM_MOZOX_AMOUNT_TEXT_LENGTH {
+            return false
+        }
         // Validate decimal format
         let finalText = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
         if finalText.isEmpty == false {
