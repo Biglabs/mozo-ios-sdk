@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+let MAXIMUM_MOZOX_AMOUNT_TEXT_LENGTH = 12
 class TransferViewController: MozoBasicViewController {
     var eventHandler : TransactionModuleInterface?
     @IBOutlet weak var lbBalance: UILabel!
@@ -176,7 +176,7 @@ class TransferViewController: MozoBasicViewController {
             if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
                 let text = (txtAmount.text != nil ? (txtAmount.text != "" ? txtAmount.text : "0") : "0")?.replace(",", withString: ".")
                 let value = Double(text ?? "0")!
-                let exValue = (value * (rateInfo.rate ?? 0)).rounded(toPlaces: type.decimalRound)
+                let exValue = (value * (rateInfo.rate ?? 0)).roundAndAddCommas(toPlaces: type.decimalRound)
                 let exValueStr = "\(curSymbol)\(exValue )"
                 lbExchangeAmount.text = exValueStr
             }
@@ -286,9 +286,13 @@ extension TransferViewController : TransferViewInterface {
 
 extension TransferViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newLength = (textField.text?.count ?? 0) + string.count - range.length
+        if newLength > MAXIMUM_MOZOX_AMOUNT_TEXT_LENGTH {
+            return false
+        }
         // Validate decimal format
         let finalText = (textField.text ?? "") + string
-        if (finalText.isValidDecimalFormat() == false){
+        if (finalText.isValidDecimalFormat() == false) {
             showValidate("Error: Please input value in decimal format.", isAddress: false)
             return false
         } else if let value = Decimal(string: finalText), value.significantFractionalDecimalDigits > tokenInfo?.decimals ?? 0 {
