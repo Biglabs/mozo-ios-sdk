@@ -39,6 +39,7 @@
                                 <constraint firstAttribute="width" constant="20" id="Btz-RZ-tFB"/>
                                 <constraint firstAttribute="height" constant="20" id="Yty-7J-uam"/>
                             </constraints>
+                            <color key="tintColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Button" image="ic_curved_arrows"/>
                             <connections>
                                 <action selector="touchedBtnReload:" destination="-1" eventType="touchUpInside" id="fs1-D8-M2X"/>
@@ -77,8 +78,8 @@
                                 <constraint firstAttribute="width" constant="30" id="uLN-rg-5uS"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktB-1e-Qoz">
-                            <rect key="frame" x="59" y="70" width="89.5" height="30"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ktB-1e-Qoz">
+                            <rect key="frame" x="59" y="70" width="138" height="30"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -110,6 +111,7 @@
                         <constraint firstItem="rml-rD-wOt" firstAttribute="leading" secondItem="FIi-Ns-pBJ" secondAttribute="leading" id="Rgd-l3-29E"/>
                         <constraint firstItem="ktB-1e-Qoz" firstAttribute="leading" secondItem="ftd-Bg-IRB" secondAttribute="trailing" constant="9" id="bsM-8F-pXi"/>
                         <constraint firstItem="FIi-Ns-pBJ" firstAttribute="top" secondItem="e5h-qz-jHv" secondAttribute="top" constant="20" id="csm-mO-LXy"/>
+                        <constraint firstItem="ktB-1e-Qoz" firstAttribute="width" secondItem="e5h-qz-jHv" secondAttribute="width" multiplier="0.4" id="igg-Py-RO6"/>
                         <constraint firstItem="JGy-hq-Utj" firstAttribute="centerX" secondItem="msh-cO-O4e" secondAttribute="centerX" id="r9V-tO-XUI"/>
                         <constraint firstItem="FIi-Ns-pBJ" firstAttribute="leading" secondItem="e5h-qz-jHv" secondAttribute="leading" constant="20" id="tle-bb-Kyc"/>
                         <constraint firstItem="rml-rD-wOt" firstAttribute="top" secondItem="FIi-Ns-pBJ" secondAttribute="bottom" constant="8" id="w8J-9H-o1i"/>
