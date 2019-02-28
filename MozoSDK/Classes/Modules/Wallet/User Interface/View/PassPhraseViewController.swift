@@ -37,6 +37,7 @@ class PassPhraseViewController: MozoBasicViewController {
     
     func addBorderForLabel() {
         checkView.roundCorners(borderColor: ThemeManager.shared.disable, borderWidth: 1.1)
+        continueBtn.roundCorners(cornerRadius: 0.02, borderColor: .clear, borderWidth: 0.1)
     }
     
     func addTapForLabel() {
