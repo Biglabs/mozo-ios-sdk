@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 public let AIRDROP_START_DATE_LARGER_THAN_CURRENT : Int = 10
 public let AIRDROP_FREQUENCY_LARGER_THAN : Int = 1800
 class AirdropInteractor: NSObject {
@@ -65,11 +66,17 @@ class AirdropInteractor: NSObject {
             }
             let perCustomer = (event.mozoAirdropPerCustomerVisit?.doubleValue ?? 0).convertTokenValue(decimal: decimals)
             let total = (event.totalNumMozoOffchain?.doubleValue ?? 0).convertTokenValue(decimal: decimals)
-            event.mozoAirdropPerCustomerVisit = perCustomer
-            event.totalNumMozoOffchain = total
-            event.symbol = tokenInfo.symbol
-            event.decimals = tokenInfo.decimals
-            sendCreateAirdropEvent(event)
+            let dict = event.toJSON()
+            let jobj = JSON(dict)
+            if let convertEvent = AirdropEventDTO(json: jobj) {
+                convertEvent.mozoAirdropPerCustomerVisit = perCustomer
+                convertEvent.totalNumMozoOffchain = total
+                convertEvent.symbol = tokenInfo.symbol
+                convertEvent.decimals = tokenInfo.decimals
+                sendCreateAirdropEvent(convertEvent)
+            } else {
+                output?.didFailedToLoadTokenInfo()
+            }
         } else {
             output?.didFailedToLoadTokenInfo()
         }
