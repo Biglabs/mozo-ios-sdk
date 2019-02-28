@@ -48,6 +48,8 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         testAssests()
         setupTableView()
         setupButtonBorder()
+        setupLayout()
+        setupTarget()
         addOriginalObserver()
         addUniqueAuthObserver()
     }
@@ -72,6 +74,18 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         historyTable.delegate = self
         historyTable.tableFooterView = UIView()
         setupRefreshControl()
+    }
+    
+    func setupLayout() {
+        let imgReload = UIImage(named: "ic_curved_arrows", in: BundleManager.mozoBundle(), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+        btnReload.setImage(imgReload, for: .normal)
+        btnReload.tintColor = UIColor(hexString: "d1d7dd")
+    }
+    
+    func setupTarget() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showQRCode))
+        imgQR.isUserInteractionEnabled = true
+        imgQR.addGestureRecognizer(tap)
     }
     
     func setupRefreshControl() {
@@ -175,6 +189,10 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
 
     @IBAction func touchedShowQR(_ sender: Any) {
+        showQRCode()
+    }
+    
+    @objc func showQRCode() {
         print("Touch Show QR code button, address: \(self.displayItem?.address ?? "NULL")")
         if let address = self.displayItem?.address {
             DisplayUtils.displayQRView(address: address)
@@ -186,11 +204,24 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     @IBAction func touchedBtnReload(_ sender: Any) {
         if !isLoading {
             isLoading = true
+            rotateView()
             MozoSDK.loadBalanceInfo().done { (displayItem) in
                 self.updateData(displayItem: displayItem)
                 self.isLoading = false
             }.catch { (error) in
                 self.isLoading = false
+            }
+        }
+    }
+    
+    private func rotateView(duration: Double = 1.0) {
+        UIView.animate(withDuration: duration, delay: 0.0, options: .curveLinear, animations: {
+            self.btnReload.transform = self.btnReload.transform.rotated(by: CGFloat.pi)
+        }) { finished in
+            if self.isLoading {
+                self.rotateView(duration: duration)
+            } else {
+                self.btnReload.transform = .identity
             }
         }
     }
