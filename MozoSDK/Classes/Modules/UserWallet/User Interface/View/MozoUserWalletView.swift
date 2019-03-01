@@ -109,8 +109,8 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
 //        infoView.dropShadow()
 //        infoView.layer.shadowColor = UIColor(hexString: "a8c5ec").cgColor
         infoView.roundCorners(cornerRadius: 0.01, borderColor: ThemeManager.shared.disable, borderWidth: 0.5)
-        sendMozoView.roundCorners(cornerRadius: 0.15 , borderColor: .white, borderWidth: 1)
-        paymentRequestView.roundCorners(cornerRadius: 0.15 , borderColor: .white, borderWidth: 1)
+        sendMozoView.roundCorners(cornerRadius: 0.136, borderColor: .white, borderWidth: 1)
+        paymentRequestView.roundCorners(cornerRadius: 0.136, borderColor: .white, borderWidth: 1)
     }
 
     func clearValueOnUI() {
