@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ic_loading.png",
+      "filename" : "ic_zalo.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ic_loading-1.png",
       "scale" : "2x"
     },
     {
