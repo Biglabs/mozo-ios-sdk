@@ -156,17 +156,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zsR-Bc-dyT">
-                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
-                            </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loading" translatesAutoresizingMaskIntoConstraints="NO" id="ykk-5m-Ppf">
+                                <rect key="frame" x="145.5" y="293.5" width="84" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="I0u-7O-Nz4"/>
+                                    <constraint firstAttribute="width" constant="84" id="aai-jg-mNc"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zsR-Bc-dyT" firstAttribute="centerX" secondItem="oIC-KR-wp0" secondAttribute="centerX" id="Rr9-WY-gEK"/>
-                            <constraint firstItem="zsR-Bc-dyT" firstAttribute="centerY" secondItem="oIC-KR-wp0" secondAttribute="centerY" id="Yw9-Bb-8Qe"/>
+                            <constraint firstItem="ykk-5m-Ppf" firstAttribute="centerX" secondItem="oIC-KR-wp0" secondAttribute="centerX" id="AcW-cP-eEA"/>
+                            <constraint firstItem="ykk-5m-Ppf" firstAttribute="centerY" secondItem="oIC-KR-wp0" secondAttribute="centerY" id="bu5-30-UK8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RHC-y2-U7q"/>
                     </view>
+                    <connections>
+                        <outlet property="imgLoading" destination="ykk-5m-Ppf" id="CDD-2I-c1w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mJA-1y-zw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3368,7 +3375,7 @@
         <image name="ic_check_success" width="76.800003051757812" height="76.800003051757812"/>
         <image name="ic_failed" width="32" height="32"/>
         <image name="ic_info" width="18" height="18"/>
-        <image name="ic_loading" width="38" height="36"/>
+        <image name="ic_loading" width="189" height="180"/>
         <image name="ic_mozo_offchain" width="48" height="48"/>
         <image name="ic_paper" width="12" height="15"/>
         <image name="ic_payment_complete" width="133" height="80"/>
