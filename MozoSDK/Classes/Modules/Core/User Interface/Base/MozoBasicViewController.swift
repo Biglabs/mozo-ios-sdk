@@ -20,6 +20,10 @@ public class MozoBasicViewController : UIViewController {
     }
     
     func displayMozoError(_ error: String) {
+        if error.contains(" (email + phone)") || error.contains(" (phone + email)") || error.contains(" (이메일 + 전화)") || error.contains(" (전화 + 이메일)") {
+            DisplayUtils.displayMozoErrorWithContact(error)
+            return
+        }
         let alert = UIAlertController(title: "Error".localized, message: error.localized, preferredStyle: .alert)
         alert.addAction(.init(title: "OK".localized, style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -123,6 +127,26 @@ public class MozoBasicViewController : UIViewController {
     func removeMozoPopupError() {
         DispatchQueue.main.async {
             self.mozoPopupErrorView?.removeFromSuperview()
+        }
+    }
+    
+    // MARK: Popup Token Expired
+    var mozoPopupTokenExpired: MozoPopupTokenExpired?
+    
+    func displayMozoPopupTokenExpired() {
+        mozoPopupTokenExpired = MozoPopupTokenExpired(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        
+        mozoPopupTokenExpired?.clipsToBounds = false
+        mozoPopupTokenExpired?.dropShadow()
+        mozoPopupTokenExpired?.containerView.roundCorners(borderColor: .white, borderWidth: 1)
+        
+        mozoPopupTokenExpired?.center = view.center
+        self.view.addSubview(self.mozoPopupTokenExpired!)
+    }
+    
+    func removeMozoPopupTokenExpired() {
+        DispatchQueue.main.async {
+            self.mozoPopupTokenExpired?.removeFromSuperview()
         }
     }
 }

@@ -92,6 +92,35 @@ public class DisplayUtils {
         }
     }
     
+    public static func displayMozoErrorWithContact(_ error: String) {
+        if let parentView = UIApplication.shared.keyWindow {
+            let mozoContactView = MozoPopupContact(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+            mozoContactView.clipsToBounds = false
+            mozoContactView.dropShadow()
+            mozoContactView.containerView.roundCorners(borderColor: .white, borderWidth: 1)
+            
+            mozoContactView.center = parentView.center
+            
+            // cover view
+            let displayWidth: CGFloat = parentView.frame.width
+            let displayHeight: CGFloat = parentView.frame.height
+            let coverView = UIView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight))
+            coverView.backgroundColor = .black
+            coverView.alpha = 0.5
+            parentView.addSubview(coverView)
+            
+            let coverViewTap = UITapGestureRecognizer(target: mozoContactView, action: #selector(MozoPopupContact.dismissView))
+            coverView.addGestureRecognizer(coverViewTap)
+            
+            mozoContactView.modalCloseHandler = {
+                mozoContactView.removeFromSuperview()
+                coverView.removeFromSuperview()
+            }
+            
+            parentView.addSubview(mozoContactView)
+        }
+    }
+    
     public static func convertInt64ToStringWithFormat(_ dateInt64: Int64, format: String) -> String{
         let date = Date(timeIntervalSince1970:Double(dateInt64))
         return convertDateToStringWithFormat(date, format: format)
