@@ -8,6 +8,26 @@
 import Foundation
 class WaitingViewController: MozoBasicViewController {
     var eventHandler: CoreModuleWaitingInterface?
+    @IBOutlet weak var imgLoading: UIImageView!
+    
+    let stopRotating = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        rotateView()
+    }
+    
+    private func rotateView(duration: Double = 1.0) {
+        UIView.animate(withDuration: duration, delay: 0.0, options: .curveLinear, animations: {
+            self.imgLoading.transform = self.imgLoading.transform.rotated(by: CGFloat.pi)
+        }) { finished in
+            if !self.stopRotating {
+                self.rotateView(duration: duration)
+            } else {
+                self.imgLoading.transform = .identity
+            }
+        }
+    }
 }
 extension WaitingViewController : PopupErrorDelegate {
     func didClosePopupWithoutRetry() {
@@ -24,10 +44,11 @@ extension WaitingViewController : PopupErrorDelegate {
 }
 extension WaitingViewController: WaitingViewInterface {
     func displayTryAgain(_ error: ConnectionError) {
-        displayMozoPopupError()
         if error == .apiError_INVALID_USER_TOKEN {
-            mozoPopupErrorView?.btnTry.isHidden = true
+            displayMozoPopupTokenExpired()
+        } else {
+            displayMozoPopupError()
+            mozoPopupErrorView?.delegate = self
         }
-        mozoPopupErrorView?.delegate = self
     }
 }

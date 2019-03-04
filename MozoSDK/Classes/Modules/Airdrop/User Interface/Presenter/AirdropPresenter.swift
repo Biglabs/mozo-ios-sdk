@@ -43,8 +43,9 @@ extension AirdropPresenter: AirdropInteractorOutput {
             airdropEventDelegate?.createAirdropEventSuccess()
             airdropEventDelegate = nil
         } else {
-            airdropEventDelegate?.createAirdropEventFailureWithErrorString(error: "Airdrop event transaction is created with failure status.".localized, isDisplayingTryAgain: true)
-            DisplayUtils.displayTryAgainPopup(delegate: self)
+            airdropEventDelegate?.createAirdropEventFailureWithErrorString(error: "Create Airdrop Event failed.\nPlease try again.".localized, isDisplayingTryAgain: false)
+            // Not retry if transaction status is FAILED
+//            DisplayUtils.displayTryAgainPopup(delegate: self)
         }
     }
 
