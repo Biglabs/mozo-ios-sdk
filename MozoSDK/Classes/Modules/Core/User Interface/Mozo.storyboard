@@ -3369,7 +3369,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_address_book" width="19" height="18"/>
+        <image name="ic_address_book" width="38" height="36"/>
         <image name="ic_check" width="24" height="24"/>
         <image name="ic_check_disable" width="60" height="60"/>
         <image name="ic_check_success" width="76.800003051757812" height="76.800003051757812"/>
@@ -3377,7 +3377,7 @@
         <image name="ic_info" width="18" height="18"/>
         <image name="ic_loading" width="189" height="180"/>
         <image name="ic_mozo_offchain" width="48" height="48"/>
-        <image name="ic_paper" width="12" height="15"/>
+        <image name="ic_paper" width="30" height="36"/>
         <image name="ic_payment_complete" width="133" height="80"/>
         <image name="ic_pencil" width="52" height="52"/>
         <image name="ic_scan" width="19" height="18"/>
