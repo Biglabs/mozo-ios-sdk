@@ -111,6 +111,10 @@ public class MozoBasicViewController : UIViewController {
     var mozoPopupErrorView : MozoPopupErrorView?
     
     func displayMozoPopupError(_ error: ConnectionError? = nil) {
+        if let errorText = error?.apiError?.description, errorText.contains(" (email + phone)") || errorText.contains(" (phone + email)") || errorText.contains(" (이메일 + 전화)") || errorText.contains(" (전화 + 이메일)") {
+            DisplayUtils.displayMozoErrorWithContact(errorText)
+            return
+        }
         mozoPopupErrorView = MozoPopupErrorView(frame: CGRect(x: 0, y: 0, width: 315, height: 315))
         if let err = error {
             mozoPopupErrorView?.error = err
@@ -134,13 +138,17 @@ public class MozoBasicViewController : UIViewController {
     var mozoPopupTokenExpired: MozoPopupTokenExpired?
     
     func displayMozoPopupTokenExpired() {
-        mozoPopupTokenExpired = MozoPopupTokenExpired(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        mozoPopupTokenExpired = MozoPopupTokenExpired(frame: CGRect(x: 0, y: 0, width: 222, height: 193))
         
         mozoPopupTokenExpired?.clipsToBounds = false
         mozoPopupTokenExpired?.dropShadow()
         mozoPopupTokenExpired?.containerView.roundCorners(borderColor: .white, borderWidth: 1)
         
         mozoPopupTokenExpired?.center = view.center
+        
+        mozoPopupTokenExpired?.modalCloseHandler = {
+            self.mozoPopupTokenExpired?.removeFromSuperview()
+        }
         self.view.addSubview(self.mozoPopupTokenExpired!)
     }
     
