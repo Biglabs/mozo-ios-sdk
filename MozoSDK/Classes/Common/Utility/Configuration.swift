@@ -66,6 +66,10 @@ public class Configuration {
      */
     public static let AUTH_CLIENT_ID = "native_app"
     
+    public static let AUTH_RETAILER_CLIENT_ID = "retailer_mobile_app"
+    
+    public static let AUTH_SHOPPER_CLIENT_ID = "shopper_mobile_app"
+    
     public static let AUTH_PARAM_KC_LOCALE = "kc_locale"
     
     /**
