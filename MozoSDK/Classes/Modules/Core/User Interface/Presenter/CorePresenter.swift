@@ -68,10 +68,6 @@ class CorePresenter : NSObject {
 private extension CorePresenter {
     private func initUserNotificationCenter() {
         registerForRichNotifications()
-        // set UNUserNotificationCenter delegate
-        if UNUserNotificationCenter.current().delegate == nil {
-            UNUserNotificationCenter.current().delegate = self
-        }
     }
     
     private func initSilentServices() {
@@ -163,6 +159,7 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func didRemoveTokenAndLogout() {
+        print("On Check Authorization Did remove token and logout")
         SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
         // Notify for all observing objects
         coreInteractor?.notifyLogoutForAllObservers()
@@ -342,21 +339,21 @@ extension CorePresenter: TxHistoryModuleDelegate {
 }
 
 extension CorePresenter : RDNInteractorOutput {
-    func didCustomerCame(ccNoti: CustomerComeNotification) {
-        performNotifications(noti: ccNoti)
+    func didCustomerCame(ccNoti: CustomerComeNotification, rawMessage: String) {
+        performNotifications(noti: ccNoti, rawMessage: rawMessage)
     }
     
-    func balanceDidChange(balanceNoti: BalanceNotification) {
+    func balanceDidChange(balanceNoti: BalanceNotification, rawMessage: String) {
         coreInteractor?.notifyBalanceChangesForAllObservers(balanceNoti: balanceNoti)
-        performNotifications(noti: balanceNoti)
+        performNotifications(noti: balanceNoti, rawMessage: rawMessage)
     }
     
-    func addressBookDidChange(addressBookList: [AddressBookDTO]) {
+    func addressBookDidChange(addressBookList: [AddressBookDTO], rawMessage: String) {
         SafetyDataManager.shared.addressBookList = addressBookList
         coreInteractor?.notifyAddressBookChangesForAllObservers()
     }
     
-    func storeBookDidChange(storeBook: StoreBookDTO) {
+    func storeBookDidChange(storeBook: StoreBookDTO, rawMessage: String) {
         if let address = storeBook.offchainAddress {
             if StoreBookDTO.arrayContainsItem(address, array: SafetyDataManager.shared.storeBookList) == false {
                 SafetyDataManager.shared.storeBookList.append(storeBook)
@@ -365,8 +362,8 @@ extension CorePresenter : RDNInteractorOutput {
         }
     }
     
-    func didAirdropped(airdropNoti: BalanceNotification) {
-        performNotifications(noti: airdropNoti)
+    func didAirdropped(airdropNoti: BalanceNotification, rawMessage: String) {
+        performNotifications(noti: airdropNoti, rawMessage: rawMessage)
     }
 }
 

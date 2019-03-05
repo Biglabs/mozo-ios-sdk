@@ -7,31 +7,7 @@
 
 import Foundation
 import UserNotifications
-
-extension CorePresenter: UNUserNotificationCenterDelegate {
-    //for displaying notification when app is in foreground
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        print("Notification center: displaying notification when app is in foreground")
-        //If you don't want to show notification when app is open, do something here else and make a return here.
-        //Even you you don't implement this delegate method, you will not see the notification on the specified controller. So, you have to implement this delegate and make sure the below line execute. i.e. completionHandler.
-        
-        completionHandler([.alert, .badge, .sound])
-    }
-    
-    // For handling tap and user actions
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("Notification center: handling tap and user actions")
-        switch response.actionIdentifier {
-        case "actionView":
-            print("Action View Tapped")
-        case "actionClear":
-            print("Action Clear Tapped")
-        default:
-            break
-        }
-        completionHandler()
-    }
-}
+import SwiftyJSON
 
 extension CorePresenter {
     func registerForRichNotifications() {
@@ -48,24 +24,25 @@ extension CorePresenter {
         }
         
         //actions defination
-//        let action1 = UNNotificationAction(identifier: "actionView", title: "View".localized, options: [.foreground])
-//        let action2 = UNNotificationAction(identifier: "actionClear", title: "Clear".localized, options: [.foreground])
+//        let actionView = UNNotificationAction(identifier: "actionView", title: "View".localized, options: [.foreground])
+//        let actionClear = UNNotificationAction(identifier: "actionClear", title: "Clear".localized, options: [.foreground])
 //
-//        let category = UNNotificationCategory(identifier: "mozoActionCategory", actions: [action1,action2], intentIdentifiers: [], options: [])
+//        let category = UNNotificationCategory(identifier: "mozoActionCategory", actions: [actionView, actionClear], intentIdentifiers: [], options: [])
 //
 //        UNUserNotificationCenter.current().setNotificationCategories([category])
         
     }
     
-    func performNotifications(noti: RdNotification) {
+    func performNotifications(noti: RdNotification, rawMessage: String) {
         let displayData = NotiDisplayItemData(rawNoti: noti)
         if let displayItem = displayData.displayItem {
             let content = UNMutableNotificationContent()
             let requestIdentifier = "mozoNotification_\(Date())"
             
-            // TODO: Display extract badge number on app
-            content.badge = 1
-            // NSNumber(value: UIApplication.shared.applicationIconBadgeNumber + 1)
+            content.userInfo = ["notiContent": rawMessage]
+            // No need to display badge number on app
+            content.badge = 0
+//                NSNumber(value: UIApplication.shared.applicationIconBadgeNumber + 1)
             content.title = displayItem.title
             content.subtitle = displayItem.subTitle
             content.body = displayItem.body
