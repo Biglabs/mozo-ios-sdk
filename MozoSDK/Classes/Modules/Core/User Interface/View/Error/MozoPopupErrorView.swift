@@ -33,6 +33,11 @@ class MozoPopupErrorView : MozoView {
     override func loadViewFromNib() {
         super.loadViewFromNib()
         setImageAndLabel()
+        setupBorder()
+    }
+    
+    func setupBorder() {
+        btnTry.roundCorners(cornerRadius: 0.15, borderColor: .white, borderWidth: 0.1)
     }
     
     func setImageAndLabel() {

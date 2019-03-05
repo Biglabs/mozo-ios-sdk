@@ -30,6 +30,7 @@ class ModuleDependencies {
     public var appType: AppType = .Shopper {
         didSet {
             webSocketManager.appType = appType
+            authWireframe.authPresenter?.authInteractor?.updateClientId(appType)
         }
     }
     

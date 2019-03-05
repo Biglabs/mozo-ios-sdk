@@ -10,9 +10,11 @@ import AppAuth
 import PromiseKit
 
 typealias PostRegistrationCallback = (_ configuration: OIDServiceConfiguration?, _ registrationResponse: OIDRegistrationResponse?) -> Void
-
+let TOKEN_EXPIRE_AFTER_SECONDS = 2 * 24 * 3600
 class AuthManager : NSObject {
     var delegate : AuthManagerDelegate?
+    
+    var clientId = Configuration.AUTH_SHOPPER_CLIENT_ID
     
     private (set) var currentAuthorizationFlow: OIDAuthorizationFlowSession?
     var apiManager : ApiManager? {
@@ -38,19 +40,23 @@ class AuthManager : NSObject {
         setAuthState(nil)
     }
     
-    private func checkRefreshToken() {
+    private func checkRefreshToken(_ completion: @escaping (_ success: Bool) -> Void) {
         let expiresAt : Date = (authState?.lastTokenResponse?.accessTokenExpirationDate)!
         print("Check authorization, expires at: \(expiresAt)")
-        if(expiresAt.timeIntervalSinceNow < 60)
+        if(expiresAt.timeIntervalSinceNow < TimeInterval(TOKEN_EXPIRE_AFTER_SECONDS))
         {
             print("Token expired, refresh token.")
             let additionalParams = [
                 "grant_type" : OIDGrantTypeRefreshToken
             ]
             authState?.performAction(freshTokens: { (accessToken, ic, error) in
-                print("Did refresh token, new access token: \(accessToken ?? "NULL")")
-                AccessTokenManager.saveToken(accessToken)
-                // TODO: Should pre-load some data here
+                if error != nil {
+                    print("Did refresh token, new access token: \(accessToken ?? "NULL")")
+                    AccessTokenManager.saveToken(accessToken)
+                    completion(true)
+                } else {
+                    completion(false)
+                }
             }, additionalRefreshParameters: additionalParams)
         }
     }
@@ -63,7 +69,7 @@ class AuthManager : NSObject {
             self.delegate?.didCheckAuthorizationSuccess()
             // TODO: Reload user info in case error with user info at the latest login
             // Remember: Authen flow and wallet flow might be affected by reloading here
-            self.checkRefreshToken()
+            self.checkRefreshToken {_ in }
         }).catch({ (err) in
             let error = err as! ConnectionError
             if error == ConnectionError.authenticationRequired {
@@ -73,7 +79,14 @@ class AuthManager : NSObject {
                 self.clearAll()
                 self.delegate?.didRemoveTokenAndLogout()
             } else {
-                self.checkRefreshToken()
+                self.checkRefreshToken({ (success) in
+                    if success {
+                        self.delegate?.didCheckAuthorizationSuccess()
+                    } else {
+                        self.clearAll()
+                        self.delegate?.didRemoveTokenAndLogout()
+                    }
+                })
             }
         })
     }
@@ -108,7 +121,6 @@ class AuthManager : NSObject {
                 
                 print("Got configuration: \(config)")
                 
-                let clientId = Configuration.AUTH_CLIENT_ID
                 guard let redirectURI = URL(string: Configuration.AUTH_REDIRECT_URL) else {
                     print("Error creating URL for : \(Configuration.AUTH_REDIRECT_URL)")
                     return
@@ -116,7 +128,7 @@ class AuthManager : NSObject {
                 let param = [Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE]
                 // builds authentication request
                 let request = OIDAuthorizationRequest(configuration: config,
-                                                      clientId: clientId,
+                                                      clientId: self.clientId,
                                                       clientSecret: nil,
                                                       scopes: [OIDScopeOpenID, OIDScopeProfile],
                                                       redirectURL: redirectURI,
@@ -138,7 +150,6 @@ class AuthManager : NSObject {
             
             // discovers endpoints
             OIDAuthorizationService.discoverConfiguration(forIssuer: issuer){ configuration, error in
-                let clientId = Configuration.AUTH_CLIENT_ID
                 guard let redirectURI = URL(string: Configuration.AUTH_REDIRECT_URL) else {
                     print("Error creating URL for : \(Configuration.AUTH_REDIRECT_URL)")
                     return
@@ -149,7 +160,7 @@ class AuthManager : NSObject {
                 let config = OIDServiceConfiguration.init(authorizationEndpoint: endSessionUrl, tokenEndpoint: endSessionUrl)
                 
                 let request = OIDAuthorizationRequest(configuration: config,
-                                                      clientId: clientId,
+                                                      clientId: self.clientId,
                                                       clientSecret: nil,
                                                       scopes: [OIDScopeOpenID, OIDScopeProfile],
                                                       redirectURL: redirectURI,

@@ -9,6 +9,8 @@ import Foundation
 import AppAuth
 
 protocol AuthInteractorInput {
+    func updateClientId(_ appType: AppType)
+    
     func buildAuthRequest()
     func setCurrentAuthorizationFlow(_ authorizationFlow : OIDAuthorizationFlowSession?)
     func handleAuthorizationResponse(_ response: OIDAuthorizationResponse?, error: Error?)

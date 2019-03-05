@@ -122,21 +122,21 @@ extension RDNInteractor {
                 saveNotification(content: rawJsonMessage)
                 if rdNoti.event == NotificationEventType.BalanceChanged.rawValue,
                     let balanceNoti = BalanceNotification(json: jobj) {
-                    output?.balanceDidChange(balanceNoti: balanceNoti)
+                    output?.balanceDidChange(balanceNoti: balanceNoti, rawMessage: rawJsonMessage)
                 } else if rdNoti.event == NotificationEventType.AddressBookChanged.rawValue,
                         let abNoti = AddressBookNotification(json: jobj),
                         let list = abNoti.data {
-                    output?.addressBookDidChange(addressBookList: list)
+                    output?.addressBookDidChange(addressBookList: list, rawMessage: rawJsonMessage)
                 } else if rdNoti.event == NotificationEventType.StoreBookAdded.rawValue,
                     let sbNoti = StoreBookNotification(json: jobj),
                     let data = sbNoti.data {
-                    output?.storeBookDidChange(storeBook: data)
+                    output?.storeBookDidChange(storeBook: data, rawMessage: rawJsonMessage)
                 } else if rdNoti.event == NotificationEventType.Airdropped.rawValue,
                     let airdropNoti = AirdropNotification(json: jobj) {
-                    output?.didAirdropped(airdropNoti: airdropNoti)
+                    output?.didAirdropped(airdropNoti: airdropNoti, rawMessage: rawJsonMessage)
                 } else if rdNoti.event == NotificationEventType.CustomerCame.rawValue,
                     let ccNoti = CustomerComeNotification(json: jobj) {
-                    output?.didCustomerCame(ccNoti: ccNoti)
+                    output?.didCustomerCame(ccNoti: ccNoti, rawMessage: rawJsonMessage)
                 } else {
                     NSLog("Can not handle message: \(messageContent)")
                 }

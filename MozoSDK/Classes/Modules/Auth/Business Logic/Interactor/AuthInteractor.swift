@@ -11,7 +11,7 @@ import AppAuth
 class AuthInteractor : NSObject {
     var output : AuthInteractorOutput?
     
-    private var authManager: AuthManager?
+    var authManager: AuthManager?
     
     init(authManager: AuthManager) {
         self.authManager = authManager
@@ -29,6 +29,10 @@ extension AuthInteractor: AuthManagerDelegate {
     }
 }
 extension AuthInteractor : AuthInteractorInput {
+    func updateClientId(_ appType: AppType) {
+        self.authManager?.clientId = appType == .Retailer ? Configuration.AUTH_RETAILER_CLIENT_ID : Configuration.AUTH_SHOPPER_CLIENT_ID
+    }
+    
     func handleAuthorizationResponse(_ response: OIDAuthorizationResponse?, error: Error?) {
         if let response = response {
             let authState = OIDAuthState(authorizationResponse: response)
