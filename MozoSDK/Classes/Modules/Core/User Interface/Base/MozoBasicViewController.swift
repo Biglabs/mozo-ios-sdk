@@ -111,7 +111,12 @@ public class MozoBasicViewController : UIViewController {
     var mozoPopupErrorView : MozoPopupErrorView?
     
     func displayMozoPopupError(_ error: ConnectionError? = nil) {
-        if let errorText = error?.apiError?.description, errorText.contains(" (email + phone)") || errorText.contains(" (phone + email)") || errorText.contains(" (이메일 + 전화)") || errorText.contains(" (전화 + 이메일)") {
+//        print("Display popup error with error: \(error)")
+        var errorText = error?.apiError?.description
+        if error == nil {
+            errorText = ConnectionError.apiError_INTERNAL_ERROR.apiError?.description
+        }
+        if let errorText = errorText, errorText.contains(" (email + phone)") || errorText.contains(" (phone + email)") || errorText.contains(" (이메일 + 전화)") || errorText.contains(" (전화 + 이메일)") {
             DisplayUtils.displayMozoErrorWithContact(errorText)
             return
         }
