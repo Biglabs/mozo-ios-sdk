@@ -30,4 +30,6 @@ public enum NotificationEventType: String {
     case StoreBookAdded = "store_book_added"
     case Airdropped = "airdropped"
     case CustomerCame = "customer_came"
+    
+    case InvalidToken = "invalid_token"
 }

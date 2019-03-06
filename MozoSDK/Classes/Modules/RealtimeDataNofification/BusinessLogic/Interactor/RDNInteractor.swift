@@ -119,9 +119,10 @@ extension RDNInteractor {
         if let messageContent = message.content {
             let jobj = SwiftyJSON.JSON(parseJSON: messageContent)
             if let rdNoti = RdNotification(json: jobj) {
-                saveNotification(content: rawJsonMessage)
+                var needSave = false
                 if rdNoti.event == NotificationEventType.BalanceChanged.rawValue,
                     let balanceNoti = BalanceNotification(json: jobj) {
+                    needSave = true
                     output?.balanceDidChange(balanceNoti: balanceNoti, rawMessage: rawJsonMessage)
                 } else if rdNoti.event == NotificationEventType.AddressBookChanged.rawValue,
                         let abNoti = AddressBookNotification(json: jobj),
@@ -133,12 +134,20 @@ extension RDNInteractor {
                     output?.storeBookDidChange(storeBook: data, rawMessage: rawJsonMessage)
                 } else if rdNoti.event == NotificationEventType.Airdropped.rawValue,
                     let airdropNoti = AirdropNotification(json: jobj) {
+                    needSave = true
                     output?.didAirdropped(airdropNoti: airdropNoti, rawMessage: rawJsonMessage)
                 } else if rdNoti.event == NotificationEventType.CustomerCame.rawValue,
                     let ccNoti = CustomerComeNotification(json: jobj) {
+                    needSave = true
                     output?.didCustomerCame(ccNoti: ccNoti, rawMessage: rawJsonMessage)
+                } else if rdNoti.event == NotificationEventType.InvalidToken.rawValue,
+                    let tokenNoti = InvalidTokenNotification(json: jobj) {
+                    output?.didInvalidToken(tokenNoti: tokenNoti)
                 } else {
                     NSLog("Can not handle message: \(messageContent)")
+                }
+                if self.manager.appType == .Retailer && needSave {
+                    saveNotification(content: rawJsonMessage)
                 }
             }
         }
