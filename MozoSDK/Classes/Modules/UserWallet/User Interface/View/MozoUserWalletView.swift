@@ -24,6 +24,9 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     @IBOutlet weak var historyTable: UITableView!
     private let refreshControl = UIRefreshControl()
     
+    var infoViewBorder: UIView!
+    var infoShadowLayer: CAShapeLayer!
+    
     var displayItem : DetailInfoDisplayItem?
     var collection : TxHistoryDisplayCollection? {
         didSet {
@@ -52,6 +55,10 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         setupTarget()
         addOriginalObserver()
         addUniqueAuthObserver()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
     }
     
     func testAssests() {
@@ -106,11 +113,21 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
     
     func setupButtonBorder() {
-//        infoView.dropShadow()
-//        infoView.layer.shadowColor = UIColor(hexString: "a8c5ec").cgColor
-        infoView.roundCorners(cornerRadius: 0.01, borderColor: ThemeManager.shared.disable, borderWidth: 0.5)
         sendMozoView.roundCorners(cornerRadius: 0.136, borderColor: .white, borderWidth: 1)
         paymentRequestView.roundCorners(cornerRadius: 0.136, borderColor: .white, borderWidth: 1)
+        
+        if infoViewBorder == nil {
+            infoViewBorder = UIView(frame: CGRect(x: infoView.frame.origin.x - 2, y: infoView.frame.origin.y - 20, width: UIScreen.main.bounds.width - 30 + 4, height: 170))
+            infoViewBorder.backgroundColor = .clear
+            infoView.superview?.insertSubview(infoViewBorder, belowSubview: infoView)
+        }
+        
+        infoViewBorder.dropShadow()
+        infoViewBorder.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+        infoViewBorder.layer.shadowRadius = 2.0
+        infoViewBorder.layer.shadowColor = UIColor(hexString: "a8c5ec").cgColor
+        
+        infoView.roundCorners(cornerRadius: 0.015, borderColor: ThemeManager.shared.disable, borderWidth: 0.5)
     }
 
     func clearValueOnUI() {
