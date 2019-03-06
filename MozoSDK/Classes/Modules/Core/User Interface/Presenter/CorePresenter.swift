@@ -81,7 +81,8 @@ private extension CorePresenter {
     
     private func startSlientServices() {
         // Check walletInfo from UserProfile to start silent services
-        if let userObj = SessionStoreManager.loadCurrentUser(), let profile = userObj.profile, profile.walletInfo?.offchainAddress != nil {
+        if let userObj = SessionStoreManager.loadCurrentUser(), let profile = userObj.profile, profile.walletInfo?.offchainAddress != nil, SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING,
+            AccessTokenManager.getAccessToken() != nil {
             print("CorePresenter - Start silent services.")
             rdnInteractor?.startService()
         }
@@ -152,6 +153,7 @@ extension CorePresenter : AuthModuleDelegate {
         print("On Check Authorization Did Success: Download convenience data")
         SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
         coreInteractor?.downloadAndStoreConvenienceData()
+        startSlientServices()
     }
     
     func didCheckAuthorizationFailed() {
@@ -364,6 +366,10 @@ extension CorePresenter : RDNInteractorOutput {
     
     func didAirdropped(airdropNoti: BalanceNotification, rawMessage: String) {
         performNotifications(noti: airdropNoti, rawMessage: rawMessage)
+    }
+    
+    func didInvalidToken(tokenNoti: InvalidTokenNotification) {
+        
     }
 }
 
