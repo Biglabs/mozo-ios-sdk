@@ -10,6 +10,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
 
 @IBDesignable class MozoUserWalletView: MozoView {
     @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var btnReload: UIButton!
     @IBOutlet weak var lbBalance: UILabel!
@@ -87,6 +88,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         let imgReload = UIImage(named: "ic_curved_arrows", in: BundleManager.mozoBundle(), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
         btnReload.setImage(imgReload, for: .normal)
         btnReload.tintColor = UIColor(hexString: "d1d7dd")
+        segmentControl.addUnderlineForSelectedSegment()
     }
     
     func setupTarget() {
@@ -271,6 +273,10 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     override func onLoadTokenInfoFailed(_ notification: Notification) {
         print("On Load Token Info Failed: Display refresh state")
         displayRefreshState()
+    }
+    
+    @IBAction func segmentedControlDidChange(_ sender: Any) {
+        segmentControl.changeUnderlinePosition()
     }
 }
 extension MozoUserWalletView : UITableViewDataSource {
