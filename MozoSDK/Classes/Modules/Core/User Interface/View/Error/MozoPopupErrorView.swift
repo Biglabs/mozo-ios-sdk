@@ -44,8 +44,13 @@ class MozoPopupErrorView : MozoView {
         if error.isApiError {
             labelError.text = (error.apiError?.description ?? "System Error").localized
         } else {
-            imgError.image = UIImage(named: "ic_no_connection", in: BundleManager.mozoBundle(), compatibleWith: nil)
-            labelError.text = "There is no internet connection!".localized
+            if error == .requestTimedOut {
+                imgError.image = UIImage(named: "ic_sand_clock", in: BundleManager.mozoBundle(), compatibleWith: nil)
+                labelError.text = "Time out, please try again.".localized
+            } else {
+                imgError.image = UIImage(named: "ic_no_connection", in: BundleManager.mozoBundle(), compatibleWith: nil)
+                labelError.text = "There is no internet connection!".localized
+            }
         }
     }
     
