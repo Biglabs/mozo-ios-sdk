@@ -43,21 +43,19 @@ class AuthManager : NSObject {
     private func checkRefreshToken(_ completion: @escaping (_ success: Bool) -> Void) {
         let expiresAt : Date = (authState?.lastTokenResponse?.accessTokenExpirationDate)!
         print("Check authorization, expires at: \(expiresAt)")
-        if(expiresAt.timeIntervalSinceNow < TimeInterval(TOKEN_EXPIRE_AFTER_SECONDS))
-        {
-            print("Token expired, refresh token.")
-            let additionalParams = [
-                "grant_type" : OIDGrantTypeRefreshToken
-            ]
+        if(expiresAt.timeIntervalSinceNow < TimeInterval(TOKEN_EXPIRE_AFTER_SECONDS)) {
+            print("Token expired, refresh token using: \(authState?.lastTokenResponse?.refreshToken ?? "NULL")")
+            authState?.setNeedsTokenRefresh()
             authState?.performAction(freshTokens: { (accessToken, ic, error) in
-                if error != nil {
-                    print("Did refresh token, new access token: \(accessToken ?? "NULL")")
+                if let error = error {
+                    print("Did refresh token, error: \(error), ic: \(ic ?? "NULL")")
+                    completion(false)
+                } else {
+                    print("Did refresh token, access token: \(self.authState?.lastTokenResponse?.accessToken ?? "NULL"), refresh token: \(self.authState?.lastTokenResponse?.refreshToken ?? "NULL")")
                     AccessTokenManager.saveToken(accessToken)
                     completion(true)
-                } else {
-                    completion(false)
                 }
-            }, additionalRefreshParameters: additionalParams)
+            }, additionalRefreshParameters: nil)
         }
     }
     
