@@ -10,4 +10,6 @@ import Foundation
 protocol ApiManagerDelegate {
     func didLoadTokenInfoSuccess(_ tokenInfo: TokenInfoDTO)
     func didLoadTokenInfoFailed()
+    func didLoadETHOnchainTokenSuccess(_ onchainInfo: OnchainInfoDTO)
+    func didLoadETHOnchainTokenFailed()
 }

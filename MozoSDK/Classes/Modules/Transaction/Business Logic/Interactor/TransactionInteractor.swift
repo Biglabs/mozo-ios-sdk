@@ -19,6 +19,8 @@ class TransactionInteractor : NSObject {
     
     init(apiManager: ApiManager) {
         self.apiManager = apiManager
+        super.init()
+        NotificationCenter.default.addObserver(self, selector: #selector(onUserDidCloseAllMozoUI(_:)), name: .didCloseAllMozoUI, object: nil)
     }
     
     func createTransactionToTransfer(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?) -> TransactionDTO? {
@@ -35,6 +37,15 @@ class TransactionInteractor : NSObject {
         let transaction = TransactionDTO(inputs: [input], outputs: [output])
         
         return transaction
+    }
+    
+    @objc func onUserDidCloseAllMozoUI(_ notification: Notification) {
+        print("TransactionInteractor - User close Mozo UI, clear pin cache")
+        pinToRetry = nil
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .didCloseAllMozoUI, object: nil)
     }
 }
 

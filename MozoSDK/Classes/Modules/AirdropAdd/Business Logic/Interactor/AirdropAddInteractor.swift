@@ -15,6 +15,20 @@ class AirdropAddInteractor: NSObject {
     
     var smartContractAddress: String?
     
+    override init() {
+        super.init()
+        NotificationCenter.default.addObserver(self, selector: #selector(onUserDidCloseAllMozoUI(_:)), name: .didCloseAllMozoUI, object: nil)
+    }
+    
+    @objc func onUserDidCloseAllMozoUI(_ notification: Notification) {
+        print("AirdropAddInteractor - User close Mozo UI, clear pin cache")
+        pinToRetry = nil
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .didCloseAllMozoUI, object: nil)
+    }
+    
     func processAirdropEvent(_ event: AirdropEventDTO, tokenInfo: TokenInfoDTO) {
         let totalInDouble = event.totalNumMozoOffchain?.doubleValue ?? 0
         

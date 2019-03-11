@@ -19,6 +19,20 @@ class AirdropInteractor: NSObject {
     var txStatusTimer: Timer?
     var smartContractAddress: String?
     
+    override init() {
+        super.init()
+        NotificationCenter.default.addObserver(self, selector: #selector(onUserDidCloseAllMozoUI(_:)), name: .didCloseAllMozoUI, object: nil)
+    }
+    
+    @objc func onUserDidCloseAllMozoUI(_ notification: Notification) {
+        print("AirdropInteractor - User close Mozo UI, clear pin cache")
+        pinToRetry = nil
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .didCloseAllMozoUI, object: nil)
+    }
+    
     func startWaitingStatusService(smartContractAddress: String) {
         self.smartContractAddress = smartContractAddress
         txStatusTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(loadSmartContractStatus), userInfo: nil, repeats: true)

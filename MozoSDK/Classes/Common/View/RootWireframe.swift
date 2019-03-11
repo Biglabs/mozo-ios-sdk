@@ -25,6 +25,11 @@ let MyWalletViewControllerIdentifier = "MyWalletViewController"
 let PaymentViewControllerIdentifier = "PaymentViewController"
 let PaymentQRViewControllerIdentifier = "PaymentQRViewController"
 let PaymentSendSuccessViewControllerIdentifier = "PaymentSendSuccessViewController"
+let ConvertViewControllerIdentifier = "ConvertViewController"
+let ConfirmConvertViewControllerIdentifier = "ConfirmConvertViewController"
+let TxProcessViewControllerIdentifier = "TxProcessViewController"
+let ConvertCompletionViewControllerIdentifier = "ConvertCompletionViewController"
+let ConvertFailedViewControllerIdentifier = "ConvertFailedViewController"
 
 class RootWireframe : NSObject {
     let mozoNavigationController = MozoNavigationController()

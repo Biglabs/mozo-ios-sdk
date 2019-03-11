@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MBProgressHUD
 let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
 
 @IBDesignable class MozoUserWalletView: MozoView {
@@ -19,6 +20,9 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     @IBOutlet weak var imgQR: UIImageView!
     @IBOutlet weak var btnShowQR: UIButton!
     
+    @IBOutlet weak var btnAddress: UIButton!
+    @IBOutlet weak var btnCopy: UIButton!
+    
     @IBOutlet weak var sendMozoView: MozoSendView!
     @IBOutlet weak var paymentRequestView: MozoPaymentRequestView!
     
@@ -27,6 +31,10 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     
     var infoViewBorder: UIView!
     var infoShadowLayer: CAShapeLayer!
+    
+    var hud: MBProgressHUD?
+    
+    let onchainWalletView = MozoOnchainWalletView.init(frame: CGRect(x: 0, y: 66, width: UIScreen.main.bounds.width, height: 650))
     
     var displayItem : DetailInfoDisplayItem?
     var collection : TxHistoryDisplayCollection? {
@@ -51,9 +59,11 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         loadDisplayData()
         testAssests()
         setupTableView()
+        setupSegment()
         setupButtonBorder()
         setupLayout()
         setupTarget()
+        setupOnchainWalletView()
         addOriginalObserver()
         addUniqueAuthObserver()
     }
@@ -75,6 +85,12 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         // No need to use this method from super class because it will reload all UI components.
         loadDisplayData()
     }
+    
+    func setupOnchainWalletView() {
+        self.addSubview(onchainWalletView)
+        self.bringSubview(toFront: onchainWalletView)
+        self.onchainWalletView.isHidden = true
+    }
 
     func setupTableView() {
         historyTable.register(UINib(nibName: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER)
@@ -84,11 +100,16 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         setupRefreshControl()
     }
     
+    func setupSegment() {
+        segmentControl.setTitle("Offchain Wallet".localized, forSegmentAt: 0)
+        segmentControl.setTitle("Onchain Wallets".localized, forSegmentAt: 1)
+        segmentControl.addUnderLines()
+    }
+    
     func setupLayout() {
         let imgReload = UIImage(named: "ic_curved_arrows", in: BundleManager.mozoBundle(), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
         btnReload.setImage(imgReload, for: .normal)
         btnReload.tintColor = UIColor(hexString: "d1d7dd")
-        segmentControl.addUnderlineForSelectedSegment()
     }
     
     func setupTarget() {
@@ -115,11 +136,13 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
     
     func setupButtonBorder() {
-        sendMozoView.roundCorners(cornerRadius: 0.136, borderColor: .white, borderWidth: 1)
-        paymentRequestView.roundCorners(cornerRadius: 0.136, borderColor: .white, borderWidth: 1)
+        sendMozoView.roundCorners(cornerRadius: 0.149, borderColor: .white, borderWidth: 1)
+        sendMozoView.layer.cornerRadius = 18
+        paymentRequestView.roundCorners(cornerRadius: 0.149, borderColor: .white, borderWidth: 1)
+        paymentRequestView.layer.cornerRadius = 18
         
         if infoViewBorder == nil {
-            infoViewBorder = UIView(frame: CGRect(x: infoView.frame.origin.x - 2, y: infoView.frame.origin.y - 20, width: UIScreen.main.bounds.width - 30 + 4, height: 170))
+            infoViewBorder = UIView(frame: CGRect(x: infoView.frame.origin.x - 2, y: infoView.frame.origin.y - 20, width: UIScreen.main.bounds.width - 30 + 4, height: 200))
             infoViewBorder.backgroundColor = .clear
             infoView.superview?.insertSubview(infoViewBorder, belowSubview: infoView)
         }
@@ -149,6 +172,8 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
             if !displayItem.address.isEmpty {
                 let qrImg = DisplayUtils.generateQRCode(from: displayItem.address)
                 imgQR.image = qrImg
+                
+                btnAddress.setTitle(displayItem.address, for: .normal)
             }
         }
         print("Save display item for later usage.")
@@ -187,7 +212,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         if !isAnonymous {
             loadTxHistory()
             print("\(String(describing: self)) - Load display data.")
-            if let item = SafetyDataManager.shared.detailDisplayData {
+            if let item = SafetyDataManager.shared.offchainDetailDisplayData {
                 print("\(String(describing: self)) - Receive display data: \(item)")
                 self.updateData(displayItem: item)
                 hideRefreshState()
@@ -251,7 +276,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     func displayRefreshState() {
         print("Display refresh state")
         if refreshView == nil {
-            refreshView = MozoRefreshView(frame: containerView.frame)
+            refreshView = MozoRefreshView(frame: UIScreen.main.bounds)
             if refreshView != nil {
                 addSubview(refreshView!)
             }
@@ -275,8 +300,40 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         displayRefreshState()
     }
     
+    func copyAddressAndShowHud() {
+        UIPasteboard.general.string = btnAddress.titleLabel?.text
+        showHud()
+    }
+    
+    func showHud() {
+        hud = MBProgressHUD.showAdded(to: self, animated: true)
+        hud?.mode = .text
+        hud?.label.text = "Copied to clipboard".localized
+        hud?.label.textColor = .white
+        hud?.label.numberOfLines = 2
+        hud?.offset = CGPoint(x: 0, y: -300)
+        hud?.bezelView.color = UIColor(hexString: "e63b4b61")
+        hud?.isUserInteractionEnabled = false
+        hud?.hide(animated: true, afterDelay: 1.5)
+    }
+    
     @IBAction func segmentedControlDidChange(_ sender: Any) {
         segmentControl.changeUnderlinePosition()
+        if segmentControl.selectedSegmentIndex == 0 {
+            onchainWalletView.isHidden = true
+            historyTable.isHidden = false
+        } else {
+            onchainWalletView.isHidden = false
+            historyTable.isHidden = true
+        }
+    }
+    
+    @IBAction func touchAddress(_ sender: Any) {
+        copyAddressAndShowHud()
+    }
+    
+    @IBAction func touchCopyButton(_ sender: Any) {
+        copyAddressAndShowHud()
     }
 }
 extension MozoUserWalletView : UITableViewDataSource {

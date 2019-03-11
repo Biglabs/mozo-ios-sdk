@@ -21,6 +21,28 @@ class WalletPresenter : NSObject {
         print("WalletPresenter - Handle ending wallet flow")
         walletModuleDelegate?.walletModuleDidFinish()
     }
+    
+    func matchServerAndLocalWallet(numberOfLocalWallets: Int) {
+        if let walletInfo = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo {
+            if walletInfo.offchainAddress != nil, walletInfo.onchainAddress != nil {
+                if numberOfLocalWallets == 2 {
+                    handleEndingWalletFlow()
+                } else {
+                    walletWireframe?.presentPINInterface(passPharse: nil)
+                }
+            } else if walletInfo.offchainAddress != nil, walletInfo.onchainAddress == nil {
+                if numberOfLocalWallets == 2 {
+                    // Update onchain wallet from local to server
+                    // This is a very special case
+                    walletInteractor?.updateOnchainAddressToServer(walletsNeedToBeSavedAtLocal: [])
+                } else {
+                    walletWireframe?.presentPINInterface(passPharse: nil)
+                }
+            } else {
+                walletWireframe?.presentPassPhraseInterface()
+            }
+        }
+    }
 }
 
 extension WalletPresenter: WalletModuleInterface {
@@ -86,14 +108,15 @@ extension WalletPresenter: WalletInteractorOutput {
         }
     }
     
-    func finishedCheckLocal(result: Bool) {
-        print("WalletPresenter - Finished check local wallet, result \(result)")
-        if result {
-            // Existing wallet
-            handleEndingWalletFlow()
-        } else {
-            walletInteractor?.checkServerWalletExisting()
-        }
+    func finishedCheckLocal(result: Int) {
+        print("WalletPresenter - Finished check local wallet, number of local wallet \(result)")
+        matchServerAndLocalWallet(numberOfLocalWallets: result)
+//        if result > 0 {
+//            // Existing wallet
+//            handleEndingWalletFlow()
+//        } else {
+//            walletInteractor?.checkServerWalletExisting()
+//        }
     }
     
     func verifiedPIN(_ pin: String, result: Bool, needManagedWallet: Bool) {

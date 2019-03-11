@@ -14,7 +14,6 @@ protocol TransactionInteractorInput {
     func performTransfer(pin: String)
     func requestToRetryTransfer()
     func validateValueFromScanner(_ scanValue: String)
-
 }
 
 protocol TransactionInteractorOutput {

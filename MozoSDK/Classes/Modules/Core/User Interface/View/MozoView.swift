@@ -65,7 +65,7 @@ import UIKit
         NotificationCenter.default.removeObserver(self, name: .didAuthenticationSuccessWithMozo, object: nil)
         NotificationCenter.default.removeObserver(self, name: .didLogoutFromMozo, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onUserDidLoginSuccess(_:)), name: .didAuthenticationSuccessWithMozo, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onUserDidLoginSuccess(_:)), name: .didLogoutFromMozo, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onUserDidLogout(_:)), name: .didLogoutFromMozo, object: nil)
     }
     
     func addOriginalObserver() {

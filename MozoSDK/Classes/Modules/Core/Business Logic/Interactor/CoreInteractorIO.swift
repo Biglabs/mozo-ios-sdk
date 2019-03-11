@@ -17,6 +17,7 @@ protocol CoreInteractorInput {
     func notifyBalanceChangesForAllObservers(balanceNoti: BalanceNotification)
     func notifyAddressBookChangesForAllObservers()
     func notifyStoreBookChangesForAllObservers()
+    func notifyDidCloseAllMozoUIForAllObservers()
 }
 
 protocol CoreInteractorOutput {
@@ -28,6 +29,7 @@ protocol CoreInteractorOutput {
 
 protocol CoreInteractorService {
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem>
+    func loadEthAndOnchainBalanceInfo() -> Promise<OnchainInfoDTO>
     func registerBeacon(parameters: Any?) -> Promise<[String: Any]>
     func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]>
     func getListBeacons() -> Promise<[String : Any]>

@@ -18,10 +18,12 @@ protocol WalletInteractorInput {
     
     func generateMnemonics()
     func verifyConfirmPIN(pin: String, confirmPin: String)
+    
+    func updateOnchainAddressToServer(walletsNeedToBeSavedAtLocal: [WalletModel])
 }
 
 protocol WalletInteractorOutput {
-    func finishedCheckLocal(result: Bool)
+    func finishedCheckLocal(result: Int)
     func finishedCheckServer(result: Bool)
     
     func verifiedPIN(_ pin: String, result: Bool, needManagedWallet: Bool)

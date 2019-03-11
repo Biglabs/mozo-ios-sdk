@@ -50,6 +50,9 @@ class ModuleDependencies {
     let addWireframe = AirdropAddWireframe()
     let paymentWireframe = PaymentWireframe()
     let paymentQRWireframe = PaymentQRWireframe()
+    let convertWireframe = ConvertWireframe()
+    let txProcessWireframe = TxProcessWireframe()
+    let convertCompletionWireframe = ConvertCompletionWireframe()
     
     let apiManager = ApiManager()
     let webSocketManager = WebSocketManager()
@@ -88,12 +91,20 @@ class ModuleDependencies {
         coreWireframe.requestForAddressBook()
     }
     
+    func convertMozoXOnchain() {
+        coreWireframe.requestForConvert()
+    }
+    
     func displayTransactionDetail(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
         coreWireframe.requestForTransactionDetail(txHistory: txHistory, tokenInfo: tokenInfo)
     }
     
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem>{
         return (coreWireframe.corePresenter?.coreInteractorService?.loadBalanceInfo())!
+    }
+    
+    func loadEthAndOnchainBalanceInfo() -> Promise<OnchainInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.loadEthAndOnchainBalanceInfo())!
     }
     
     func registerBeacon(parameters: Any?) -> Promise<[String: Any]> {
@@ -266,6 +277,9 @@ class ModuleDependencies {
         // MARK: Payment Request
         paymentDependencies()
         paymentQRDependencies()
+        // MARK: Transaction Process
+        txProcessDependencies()
+        convertCompletionDependencies()
     }
     
     func coreDependencies() {
@@ -301,6 +315,42 @@ class ModuleDependencies {
         coreWireframe.rootWireframe = rootWireframe
         coreWireframe.paymentWireframe = paymentWireframe
         coreWireframe.paymentQRWireframe = paymentQRWireframe
+        coreWireframe.convertWireframe = convertWireframe
+    }
+    
+    func convertDependencies(signManager: TransactionSignManager) {
+        let cvPresenter = ConvertPresenter()
+        
+        let cvInteractor = ConvertInteractor(apiManager: apiManager, signManager: signManager)
+        cvInteractor.output = cvPresenter
+        
+        cvPresenter.interactor = cvInteractor
+        cvPresenter.wireframe = convertWireframe
+        
+        convertWireframe.presenter = cvPresenter
+        convertWireframe.txProcessWireframe = txProcessWireframe
+        convertWireframe.convertCompletionWireframe = convertCompletionWireframe
+        convertWireframe.walletWireframe = walletWireframe
+        convertWireframe.rootWireframe = rootWireframe
+    }
+    
+    func txProcessDependencies() {
+        let tpPresenter = TxProcessPresenter()
+        
+        let tpInteractor = TxProcessInteractor(apiManager: apiManager)
+        tpInteractor.output = tpPresenter
+        
+        tpPresenter.interactor = tpInteractor
+        
+        txProcessWireframe.presenter = tpPresenter
+        txProcessWireframe.rootWireframe = rootWireframe
+    }
+    
+    func convertCompletionDependencies() {
+        let cvCplPresenter = ConvertCompletionPresenter()
+        
+        convertCompletionWireframe.presenter = cvCplPresenter
+        convertCompletionWireframe.rootWireframe = rootWireframe
     }
     
     func addressBookDetailDependencies() {
@@ -388,6 +438,7 @@ class ModuleDependencies {
         
         airdropDependencies(signManager: signManager)
         airdropAddDependencies(signManager: signManager)
+        convertDependencies(signManager: signManager)
     }
     
     func authDependencies() {
@@ -504,19 +555,6 @@ class ModuleDependencies {
         print("Sign result: \(sr)")
     }
     
-    func testUpdateProfile() {
-        let testStr = "{\"id\":1251,\"userId\":\"bbf400f4-cae1-40fa-88d1-a0faafaf12c9\",\"status\" : \"CONFIRMED\",\"exchangeInfo\" : null,\"walletInfo\" : null,\"settings\" : null}"
-        let json = SwiftyJSON.JSON(testStr)
-        let profile = UserProfileDTO(json: json)
-        let walletInfo = WalletInfoDTO(encryptSeedPhrase: "", offchainAddress: "")
-        profile?.walletInfo = walletInfo
-        
-        _ = apiManager.updateUserProfile(userProfile: profile!)
-            .done { uProfile -> Void in
-                print("Update Wallet To User Profile result: [\(uProfile)]")
-        }
-    }
-    
     func testSeedAndEncryption(manager: WalletManager) {
         for i in stride(from: 1, to: 11, by: 1) {
             print("\(i)-seed:")
@@ -524,11 +562,11 @@ class ModuleDependencies {
             print(mnemonic ?? "")
             print("\(i)-seed encrypted:")
             print(mnemonic?.encrypt(key: "000000") ?? "")
-            let wallet = manager.createNewWallet(mnemonics: mnemonic!)
-            print("\(i)-privateKey:")
-            print(wallet.privateKey)
-            print("\(i)-privateKey encrypted:")
-            print(wallet.privateKey.encrypt(key: "000000"))
+//            let wallet = manager.createNewWallet(mnemonics: mnemonic!)
+//            print("\(i)-privateKey:")
+//            print(wallet.privateKey)
+//            print("\(i)-privateKey encrypted:")
+//            print(wallet.privateKey.encrypt(key: "000000"))
         }
     }
     
