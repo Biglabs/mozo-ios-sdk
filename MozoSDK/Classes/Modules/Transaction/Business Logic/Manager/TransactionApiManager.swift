@@ -17,7 +17,7 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print(json)
+                    print("Finish request to get token info, json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)
                     let tokenInfo = TokenInfoDTO.init(json: jobj)
                     seal.fulfill(tokenInfo!)
@@ -26,7 +26,7 @@ public extension ApiManager {
                 .catch { error in
                     //Handle error or give feedback to the user
                     let err = error as! ConnectionError
-                    print(err.localizedDescription)
+                    print("Error when request get token info: " + error.localizedDescription)
                     seal.reject(err)
                     self.delegate?.didLoadTokenInfoFailed()
                 }
@@ -43,7 +43,7 @@ public extension ApiManager {
             self.execute(.post, url: url, parameters: param)
                 .done { json -> Void in
                     // JSON info
-                    print(json)
+                    print("Finish request to send transfer transaction, json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)
                     let tx = IntermediaryTransactionDTO(json: jobj)
                     seal.fulfill(tx!)
@@ -51,7 +51,7 @@ public extension ApiManager {
                 .catch { error in
                     //Handle error or give feedback to the user
                     let err = error as! ConnectionError
-                    print(err.localizedDescription)
+                    print("Error when request send transfer transaction: " + error.localizedDescription)
                     seal.reject(err)
                 }
                 .finally {
@@ -67,7 +67,7 @@ public extension ApiManager {
             self.execute(.post, url: url, parameters: param)
                 .done { json -> Void in
                     // JSON info
-                    print(json)
+                    print("Finish request to send signed transaction, json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)
                     let tx = IntermediaryTransactionDTO(json: jobj)
                     seal.fulfill(tx!)
@@ -75,7 +75,7 @@ public extension ApiManager {
                 .catch { error in
                     //Handle error or give feedback to the user
                     let err = error as! ConnectionError
-                    print(err.localizedDescription)
+                    print("Error when request send signed transaction: " + error.localizedDescription)
                     seal.reject(err)
                 }
                 .finally {

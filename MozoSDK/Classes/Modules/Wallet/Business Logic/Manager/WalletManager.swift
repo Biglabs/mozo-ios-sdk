@@ -17,13 +17,23 @@ class WalletManager : NSObject {
 //        printTest()
     }
     
-    func createNewWallet(mnemonics: String) -> WalletModel {
-        let path = "m/44'/60'/0'/0"
+    func createNewWallets(mnemonics: String) -> [WalletModel] {
+        let path = HDNode.defaultPathMetamaskPrefix
         let keystore = try! BIP32Keystore(mnemonics: mnemonics, password: "", mnemonicsPassword: "", prefixPath: path)
-        let account = keystore!.addresses![0]
-        let key = try! keystore!.UNSAFE_getPrivateKeyData(password: "", account: account)
-        let wallet = WalletModel.init(address: account.address, privateKey: key.toHexString())
-        return wallet
+        var wallets: [WalletModel] = []
+        
+        let offchainAccount = keystore!.addresses![0]
+        let offchainKey = try! keystore!.UNSAFE_getPrivateKeyData(password: "", account: offchainAccount)
+        let offchainWallet = WalletModel.init(address: offchainAccount.address, privateKey: offchainKey.toHexString())
+        wallets.append(offchainWallet)
+        
+        _ = try! keystore?.createNewChildAccount(password: "")
+        let onchainAccount = keystore!.addresses![1]
+        let onchainKey = try! keystore!.UNSAFE_getPrivateKeyData(password: "", account: onchainAccount)
+        let onchainWallet = WalletModel.init(address: onchainAccount.address, privateKey: onchainKey.toHexString())
+        wallets.append(onchainWallet)
+        
+        return wallets
     }
     
     func printTest() {

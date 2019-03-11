@@ -18,6 +18,7 @@ class CoreWireframe : MozoWireframe {
     var abDetailWireframe: ABDetailWireframe?
     var paymentWireframe: PaymentWireframe?
     var paymentQRWireframe: PaymentQRWireframe?
+    var convertWireframe: ConvertWireframe?
     var corePresenter: CorePresenter?
     
     // MARK: Request
@@ -53,6 +54,11 @@ class CoreWireframe : MozoWireframe {
     func requestForTransactionDetail(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
         presentWaitingInterface(corePresenter: corePresenter)
         corePresenter?.txHistoryModuleDidChooseItemOnUI(txHistory: txHistory, tokenInfo: tokenInfo)
+    }
+    
+    func requestForConvert() {
+        presentWaitingInterface(corePresenter: corePresenter)
+        corePresenter?.requestForAuthentication(module: Module.Convert)
     }
     
     func requestForCloseAllMozoUIs(completion: (() -> Swift.Void)? = nil) {
@@ -113,6 +119,10 @@ class CoreWireframe : MozoWireframe {
     
     func presentAddressBookInterface(_ forSelecting: Bool = true) {
         abWireframe?.presentAddressBookInterface(isDisplayForSelect: forSelecting)
+    }
+    
+    func presentConvertInterface() {
+        convertWireframe?.presentConvertInterface()
     }
     
     func updateAddressBookInterfaceForTransaction(displayItem: AddressBookDisplayItem) {

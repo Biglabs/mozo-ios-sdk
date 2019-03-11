@@ -22,9 +22,11 @@ class WalletInteractor : NSObject {
         self.apiManager = apiManager
     }
     
-    func updateWalletForCurrentUser(_ wallet: WalletModel){
+    func updateWalletsForCurrentUser(_ wallets: [WalletModel]){
         if let userObj = SessionStoreManager.loadCurrentUser() {
-            dataManager.updateWallet(wallet, id: userObj.id!)
+            for wallet in wallets {
+                dataManager.updateWallet(wallet, id: userObj.id!)
+            }
         }
     }
     
@@ -34,41 +36,99 @@ class WalletInteractor : NSObject {
         }
     }
     
-    func updateWalletToUserProfile(wallet: WalletModel) {
+    func updateWalletsToUserProfile(wallets: [WalletModel]) {
         print("WalletInteractor - Update wallet to user profile")
-        if let userObj = SessionStoreManager.loadCurrentUser() {
+        if wallets.count < 2 {
+            self.output?.errorWhileManageWallet(connectionError: .systemError, showTryAgain: false)
+            return
+        }
+        let offchainAddress = wallets[0].address
+        let onchainWallet = wallets[1]
+        let onchainAddress = onchainWallet.address
+        if let userObj = SessionStoreManager.loadCurrentUser(), let serverWalletInfo = userObj.profile?.walletInfo {
             _ = dataManager.getUserById(userObj.id!).done { (user) in
-                let profile = userObj.profile
-                if profile?.walletInfo?.encryptSeedPhrase == nil || profile?.walletInfo?.offchainAddress == nil {
-                    let offchainAddress = wallet.address
-                    let walletInfo = WalletInfoDTO(encryptSeedPhrase: user.mnemonic, offchainAddress: offchainAddress)
-                    _ = self.apiManager.updateWalletToUserProfile(walletInfo: walletInfo)
-                        .done { uProfile -> Void in
+                let numberOfLocalWallets = user.wallets?.count ?? 0
+                if numberOfLocalWallets > 2 {
+                    self.output?.errorWhileManageWallet(connectionError: .systemError, showTryAgain: true)
+                    return
+                }
+                if serverWalletInfo.offchainAddress != nil, serverWalletInfo.onchainAddress != nil {
+                    if numberOfLocalWallets == 2 {
+                        self.output?.updatedWallet()
+                    } else if numberOfLocalWallets == 1 {
+                        self.updateWalletsForCurrentUser([onchainWallet])
+                    } else { // 0
+                        self.updateWalletsForCurrentUser(wallets)
+                    }
+                    self.output?.updatedWallet()
+                } else if serverWalletInfo.offchainAddress != nil, serverWalletInfo.onchainAddress == nil {
+                    if numberOfLocalWallets == 2 {
+                        self.updateOnchainAddressToServer(walletsNeedToBeSavedAtLocal: [])
+                    } else if numberOfLocalWallets == 1 {
+                        _ = self.apiManager.updateOnlyOnchainWallet(onchainAddress: onchainAddress).done({ (uProfile) in
                             let userDto = UserDTO(id: uProfile.userId, profile: uProfile)
                             SessionStoreManager.saveCurrentUser(user: userDto)
                             print("Update Wallet To User Profile result: [\(uProfile)]")
-                            self.updateWalletForCurrentUser(wallet)
+                            self.updateWalletsForCurrentUser([onchainWallet])
                             self.output?.updatedWallet()
-                        }.catch({ (error) in
-                            if let connError = error as? ConnectionError {
-                                self.output?.errorWhileManageWallet(connectionError: connError, showTryAgain: true)
-                            }
+                        }).catch({ (error) in
+                            self.output?.errorWhileManageWallet(connectionError: error as? ConnectionError ?? .systemError, showTryAgain: true)
                         })
+                    } else {
+                        self.updateWalletsForCurrentUser(wallets)
+                        self.output?.updatedWallet()
+                    }
                 } else {
-                    self.updateWalletForCurrentUser(wallet)
-                    self.output?.updatedWallet()
+                    let updatingWalletInfo = WalletInfoDTO(encryptSeedPhrase: user.mnemonic, offchainAddress: offchainAddress, onchainAddress: onchainAddress)
+                    self.updateFullWalletInfo(updatingWalletInfo, wallets: wallets)
                 }
             }
         }
     }
+    
+    func updateFullWalletInfo(_ walletInfo: WalletInfoDTO, wallets: [WalletModel]) {
+        _ = self.apiManager.updateWallets(walletInfo: walletInfo)
+            .done { uProfile -> Void in
+                let userDto = UserDTO(id: uProfile.userId, profile: uProfile)
+                SessionStoreManager.saveCurrentUser(user: userDto)
+                print("Update Wallet To User Profile result: [\(uProfile)]")
+                self.updateWalletsForCurrentUser(wallets)
+                self.output?.updatedWallet()
+            }.catch({ (error) in
+                if let connError = error as? ConnectionError {
+                    self.output?.errorWhileManageWallet(connectionError: connError, showTryAgain: true)
+                }
+            })
+    }
 }
 
 extension WalletInteractor : WalletInteractorInput {
+    func updateOnchainAddressToServer(walletsNeedToBeSavedAtLocal: [WalletModel]) {
+        print("WalletInteractor - Update onchain address to server")
+        if let userObj = SessionStoreManager.loadCurrentUser(), let userId = userObj.id {
+            _ = dataManager.getOnchainAddressByUserId(userId).done { (onchainAddress) in
+                self.apiManager.updateOnlyOnchainWallet(onchainAddress: onchainAddress).done({ (uProfile) in
+                    let userDto = UserDTO(id: uProfile.userId, profile: uProfile)
+                    SessionStoreManager.saveCurrentUser(user: userDto)
+                    print("Update Wallet To User Profile result: [\(uProfile)]")
+                    if walletsNeedToBeSavedAtLocal.count > 0 {
+                        self.updateWalletsForCurrentUser(walletsNeedToBeSavedAtLocal)
+                    }
+                    self.output?.updatedWallet()
+                }).catch({ (error) in
+                    
+                })
+            }.catch { (error) in
+                self.output?.errorWhileManageWallet(connectionError: .systemError, showTryAgain: false)
+            }
+        }
+    }
+    
     func checkLocalWalletExisting() {
         print("WalletInteractor - Check Local Wallet Existing")
         if let userObj = SessionStoreManager.loadCurrentUser() {
             _ = dataManager.getUserById(userObj.id!).done { (user) in
-                self.output?.finishedCheckLocal(result: (user.wallets?.count)! > 0)
+                self.output?.finishedCheckLocal(result: user.wallets?.count ?? 0)
             }
         }
     }
@@ -92,6 +152,18 @@ extension WalletInteractor : WalletInteractorInput {
                 if user.pin?.isEmpty == false {
                     // Compare PIN
                     compareResult = pin.toSHA512() == user.pin
+                    let numberOfLocalWallets = user.wallets?.count ?? 0
+                    if let walletInfo = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo {
+                        if walletInfo.offchainAddress != nil, walletInfo.onchainAddress != nil {
+                            if numberOfLocalWallets < 2 {
+                                needManageWallet = true
+                            }
+                        } else if walletInfo.offchainAddress != nil, walletInfo.onchainAddress == nil {
+                            needManageWallet = true
+                        } else {
+                            needManageWallet = true
+                        }
+                    }
                 } else {
                     needManageWallet = true
                     // Incase: restore wallet from server mnemonics
@@ -124,9 +196,11 @@ extension WalletInteractor : WalletInteractorInput {
             // A new wallet has just been created.
             updateMnemonicAndPinForCurrentUser(mnemonic: (mne?.encrypt(key: pin))!, pin: pin)
         }
-        var wallet = walletManager.createNewWallet(mnemonics: mne!)
-        wallet.privateKey = wallet.privateKey.encrypt(key: pin)
-        updateWalletToUserProfile(wallet: wallet)
+        let wallets = walletManager.createNewWallets(mnemonics: mne!)
+        for var wallet in wallets {
+            wallet.privateKey = wallet.privateKey.encrypt(key: pin)
+        }
+        updateWalletsToUserProfile(wallets: wallets)
     }
     
     func verifyConfirmPIN(pin: String, confirmPin: String) {

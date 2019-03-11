@@ -64,8 +64,19 @@ class CoreInteractor: NSObject {
         downloadAddressBookAndStoreAtLocal()
         downloadStoreBookAndStoreAtLocal()
         _ = loadBalanceInfo()
+        _ = loadEthAndOnchainBalanceInfo()
         downloadExchangeRateInfoAndStoreAtLocal()
         downloadCountryListAndStoreAtLocal()
+        downloadGasPriceAndStoreAtLocal()
+    }
+    
+    func downloadGasPriceAndStoreAtLocal() {
+        print("😎 Load address book list.")
+        _ = apiManager.getGasPrices().done({ (gasPrice) in
+            SessionStoreManager.gasPrice = gasPrice
+        }).catch({ (error) in
+            
+        })
     }
     
     func downloadAddressBookAndStoreAtLocal() {
@@ -79,8 +90,9 @@ class CoreInteractor: NSObject {
     
     func downloadExchangeRateInfoAndStoreAtLocal() {
         print("😎 Load exchange rate data.")
-        _ = apiManager.getExchangeRateInfo().done({ (data) in
-            SessionStoreManager.exchangeRateInfo = data
+        _ = apiManager.getEthAndOnchainExchangeRateInfo().done({ (data) in
+            SessionStoreManager.exchangeRateInfo = data.token
+            SessionStoreManager.ethExchangeRateInfo = data.eth
             self.notifyExchangeRateInfoForAllObservers()
         }).catch({ (error) in
             //TODO: Handle case unable to load exchange rate info
@@ -105,35 +117,45 @@ class CoreInteractor: NSObject {
         })
     }
     
+    func checkWallet(module: Module) {
+        // Check wallet
+        if let wallet = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo, wallet.encryptSeedPhrase != nil, let id = SessionStoreManager.loadCurrentUser()?.id {
+            let serverHaveBothOffChainAndOnChain = wallet.offchainAddress != nil && wallet.onchainAddress != nil
+            
+            // Check local wallet in DB
+            _ = userDataManager.getWalletCountOfUser(id).done({ (value) in
+                if value > 0 {
+                    if value == 2, serverHaveBothOffChainAndOnChain {
+                        self.output?.finishedCheckAuthentication(keepGoing: false, module: module)
+                    } else {
+                        self.output?.continueWithWallet(module)
+                    }
+                } else {
+                    // Re-authenicate, manage wallet
+                    self.output?.continueWithWallet(module)
+                }
+            }).catch({ (err) in
+                // TODO: Handle Database Error here
+                print("Get wallet count of user [\(id)], error: \(err)")
+            })
+        } else {
+            // Re-authenicate, manage wallet
+            output?.continueWithWallet(module)
+        }
+    }
+    
     func checkAuthAndWallet(module: Module) {
         if AccessTokenManager.getAccessToken() != nil {
             if SessionStoreManager.loadCurrentUser() != nil {
-                // Check wallet
-                if let wallet = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo, wallet.encryptSeedPhrase != nil, let id = SessionStoreManager.loadCurrentUser()?.id {
-                    // Check local wallet in DB
-                    _ = userDataManager.getWalletCountOfUser(id).done({ (value) in
-                        if value > 0 {
-                            self.output?.finishedCheckAuthentication(keepGoing: false, module: module)
-                        } else {
-                            // Re-authenicate, manage wallet
-                            self.output?.continueWithWallet(module)
-                        }
-                    }).catch({ (err) in
-                        // TODO: Handle Database Error here
-                        print("Get wallet count of user [\(id)], error: \(err)")
-                    })
-                } else {
-                    // Re-authenicate, manage wallet
-                    output?.continueWithWallet(module)
-                }
+                self.checkWallet(module: module)
                 // TODO: Handle update local user profile data
             } else {
                 print("😎 Load user info.")
                 _ = getUserProfile().done({ () in
-                    self.output?.finishedCheckAuthentication(keepGoing: false, module: module)
+                    self.checkWallet(module: module)
                 }).catch({ (err) in
                     // No user profile, can not continue with any module
-                    self.output?.failToLoadUserInfo(err as! ConnectionError, for: module)
+                    self.output?.failToLoadUserInfo((err as? ConnectionError) ?? .systemError, for: module)
                 })
             }
         } else {
@@ -190,6 +212,10 @@ extension CoreInteractor: CoreInteractorInput {
         NotificationCenter.default.post(name: .didLogoutFromMozo, object: nil)
     }
     
+    func notifyDidCloseAllMozoUIForAllObservers() {
+        NotificationCenter.default.post(name: .didCloseAllMozoUI, object: nil)
+    }
+    
     func notifyBalanceChangesForAllObservers(balanceNoti: BalanceNotification) {
         if let amount = balanceNoti.amount?.convertOutputValue(decimal: balanceNoti.decimal!), amount > 0.00 {
             loadBalanceInfo().done { (displayItem) in
@@ -202,6 +228,14 @@ extension CoreInteractor: CoreInteractorInput {
     
     func notifyDetailDisplayItemForAllObservers() {
         NotificationCenter.default.post(name: .didReceiveDetailDisplayItem, object: nil)
+    }
+    
+    func notifyETHDetailDisplayItemForAllObservers() {
+        NotificationCenter.default.post(name: .didReceiveETHDetailDisplayItem, object: nil)
+    }
+    
+    func notifyOnchainDetailDisplayItemForAllObservers() {
+        NotificationCenter.default.post(name: .didReceiveOnchainDetailDisplayItem, object: nil)
     }
     
     func notifyExchangeRateInfoForAllObservers() {
@@ -219,19 +253,47 @@ extension CoreInteractor: CoreInteractorInput {
     func notifyLoadTokenInfoFailedForAllObservers() {
         NotificationCenter.default.post(name: .didLoadTokenInfoFailed, object: nil)
     }
+    
+    func notifyLoadETHOnchainTokenFailedForAllObservers() {
+        NotificationCenter.default.post(name: .didLoadETHOnchainTokenInfoFailed, object: nil)
+    }
 }
 
 extension CoreInteractor: ApiManagerDelegate {
     func didLoadTokenInfoSuccess(_ tokenInfo: TokenInfoDTO){
         print("Did Load Token Info Success")
         let item = DetailInfoDisplayItem(tokenInfo: tokenInfo)
-        if SafetyDataManager.shared.detailDisplayData == nil || SafetyDataManager.shared.detailDisplayData != item {
-            SafetyDataManager.shared.detailDisplayData = item
+        if SafetyDataManager.shared.offchainDetailDisplayData == nil || SafetyDataManager.shared.offchainDetailDisplayData != item {
+            SafetyDataManager.shared.offchainDetailDisplayData = item
             notifyDetailDisplayItemForAllObservers()
         }
     }
+    
     func didLoadTokenInfoFailed(){
         print("Did Load Token Info Failed")
         notifyLoadTokenInfoFailedForAllObservers()
+    }
+    
+    func didLoadETHOnchainTokenSuccess(_ onchainInfo: OnchainInfoDTO) {
+        print("Did load ETH and Onchain Token success")
+        if let ethItem = onchainInfo.balanceOfETH {
+            let item = DetailInfoDisplayItem(tokenInfo: ethItem)
+            if SafetyDataManager.shared.ethDetailDisplayData == nil || SafetyDataManager.shared.ethDetailDisplayData != item {
+                SafetyDataManager.shared.ethDetailDisplayData = item
+                notifyETHDetailDisplayItemForAllObservers()
+            }
+        }
+        if let onchainItem = onchainInfo.balanceOfToken {
+            let item = DetailInfoDisplayItem(tokenInfo: onchainItem)
+            if SafetyDataManager.shared.onchainDetailDisplayData == nil || SafetyDataManager.shared.onchainDetailDisplayData != item {
+                SafetyDataManager.shared.onchainDetailDisplayData = item
+                notifyOnchainDetailDisplayItemForAllObservers()
+            }
+        }
+    }
+    
+    func didLoadETHOnchainTokenFailed() {
+        print("Did load ETH and Onchain Token Failed")
+        notifyLoadETHOnchainTokenFailedForAllObservers()
     }
 }

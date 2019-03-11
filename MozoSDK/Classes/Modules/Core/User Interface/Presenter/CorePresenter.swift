@@ -117,6 +117,7 @@ extension CorePresenter : CoreModuleInterface {
     func requestForCloseAllMozoUIs() {
         coreWireframe?.requestForCloseAllMozoUIs(completion: {
             self.authDelegate?.mozoUIDidCloseAll()
+            self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers()
         })
     }
     
@@ -135,6 +136,8 @@ extension CorePresenter : CoreModuleInterface {
             coreWireframe?.prepareForPaymentRequestInterface()
         case .AddressBook:
             coreWireframe?.presentAddressBookInterface(false)
+        case .Convert:
+            coreWireframe?.presentConvertInterface()
         default: coreWireframe?.prepareForWalletInterface()
         }
     }
