@@ -334,9 +334,13 @@ public extension Date {
 extension Notification.Name {
     static let didAuthenticationSuccessWithMozo = Notification.Name("didAuthenticationSuccessWithMozo")
     static let didLogoutFromMozo = Notification.Name("didLogoutFromMozo")
+    static let didCloseAllMozoUI = Notification.Name("didCloseAllMozoUI")
     static let didChangeBalance = Notification.Name("didChangeBalance")
     static let didReceiveDetailDisplayItem = Notification.Name("didReceiveDetailDisplayItem")
     static let didLoadTokenInfoFailed = Notification.Name("didLoadTokenInfoFailed")
+    static let didReceiveOnchainDetailDisplayItem = Notification.Name("didReceiveOnchainDetailDisplayItem")
+    static let didReceiveETHDetailDisplayItem = Notification.Name("didReceiveETHDetailDisplayItem")
+    static let didLoadETHOnchainTokenInfoFailed = Notification.Name("didLoadETHOnchainTokenInfoFailed")
     static let didReceiveExchangeInfo = Notification.Name("didReceiveExchangeInfo")
     static let didChangeAddressBook = Notification.Name("didChangeAddressBook")
     static let didChangeStoreBook = Notification.Name("didChangeStoreBook")

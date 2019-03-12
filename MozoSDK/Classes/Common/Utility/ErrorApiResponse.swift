@@ -33,6 +33,13 @@ public enum ErrorApiResponse: String {
     
     case STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT = "STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT"
     case STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE = "STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE"
+    
+    case STORE_ERROR_INPUT_DTO = "STORE_ERROR_INPUT_DTO"
+    case STORE_ADDRESS_STATUS_PENDING = "STORE_ADDRESS_STATUS_PENDING"
+    case STORE_ADDRESS_SIGN_TRANSACTION_STATUS_PENDING = "STORE_ADDRESS_SIGN_TRANSACTION_STATUS_PENDING"
+    case STORE_TXHASH_NOT_EXIST = "STORE_TXHASH_NOT_EXIST"
+    case STORE_PRIVATE_BLOCK_CHAIN_ERROR = "STORE_PRIVATE_BLOCK_CHAIN_ERROR"
+    case SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD = "SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD"
     // SOLOMON
     case SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS = "SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS"
     case SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS = "SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS"
@@ -84,7 +91,13 @@ public enum ErrorApiResponse: String {
         case .STORE_RETAILER_AIR_DROP_INVALID_TOTAL_AMOUNT: return "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event.\n\"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours)."
         case .STORE_RETAILER_AIR_DROP_INVALID_PER_CUSTOMER_AMOUNT: return "Incorrect total amount of MozoX tokens to be airdropped. Please check your input."
         case .STORE_RETAILER_AIR_DROP_INVALID_TOO_LOW_FREQUENCY: return "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input."
-    
+            
+        case .STORE_ERROR_INPUT_DTO: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_ADDRESS_STATUS_PENDING: return "There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later."
+        case .STORE_ADDRESS_SIGN_TRANSACTION_STATUS_PENDING: return "There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later."
+        case .STORE_TXHASH_NOT_EXIST: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_PRIVATE_BLOCK_CHAIN_ERROR: return "We're sorry because something is wrong. We will transfer MozoX Offchain to your wallet later."
+        case .SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
 
         case .STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT: return rawValue
         case .STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE: return rawValue
@@ -143,6 +156,13 @@ public enum ErrorApiResponse: String {
             
         case .STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT: return .apiError_STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT
         case .STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE: return .apiError_STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE
+            
+        case .STORE_ERROR_INPUT_DTO: return .apiError_STORE_ERROR_INPUT_DTO
+        case .STORE_ADDRESS_STATUS_PENDING: return .apiError_STORE_ADDRESS_STATUS_PENDING
+        case .STORE_ADDRESS_SIGN_TRANSACTION_STATUS_PENDING: return .apiError_STORE_ADDRESS_SIGN_TRANSACTION_STATUS_PENDING
+        case .STORE_TXHASH_NOT_EXIST: return .apiError_STORE_TXHASH_NOT_EXIST
+        case .STORE_PRIVATE_BLOCK_CHAIN_ERROR: return .apiError_STORE_PRIVATE_BLOCK_CHAIN_ERROR
+        case .SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD: return .apiError_SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD
         }
     }
 }

@@ -23,13 +23,13 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAe-zs-uvS">
                     <rect key="frame" x="0.0" y="0.0" width="150" height="45"/>
                     <color key="backgroundColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                     <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="Send MozoX" image="ic_send">
+                    <state key="normal" title="Transfer" image="ic_send">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Send MozoX"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Transfer"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="touchedUpInside:" destination="-1" eventType="touchUpInside" id="3eD-y1-0lO"/>

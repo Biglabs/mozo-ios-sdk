@@ -75,7 +75,7 @@ import Foundation
         clearValueOnUI()
         if !isAnonymous {
             print("\(String(describing: self)) - Load display data.")
-            if let item = SafetyDataManager.shared.detailDisplayData {
+            if let item = SafetyDataManager.shared.offchainDetailDisplayData {
                 print("\(String(describing: self)) - Receive display data: \(item)")
                 self.updateData(displayItem: item)
                 hideRefreshState()

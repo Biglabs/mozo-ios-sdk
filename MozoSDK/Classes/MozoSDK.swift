@@ -49,12 +49,20 @@ public class MozoSDK {
         moduleDependencies.displayAddressBook()
     }
     
+    public static func convertMozoXOnchain() {
+        moduleDependencies.convertMozoXOnchain()
+    }
+    
     public static func displayTransactionDetail(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
         moduleDependencies.displayTransactionDetail(txHistory: txHistory, tokenInfo: tokenInfo)
     }
     
     public static func loadBalanceInfo() -> Promise<DetailInfoDisplayItem> {
         return (moduleDependencies.loadBalanceInfo())
+    }
+    
+    public static func loadEthAndOnchainBalanceInfo() -> Promise<OnchainInfoDTO> {
+        return (moduleDependencies.loadEthAndOnchainBalanceInfo())
     }
     
     public static func registerBeacon(parameters: Any?) -> Promise<[String: Any]> {

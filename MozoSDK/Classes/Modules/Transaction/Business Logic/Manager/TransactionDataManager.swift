@@ -28,4 +28,22 @@ class TransactionDataManager : NSObject {
     func getWalletByUserId(_ id : String) -> Promise<WalletModel> {
         return (coreDataStore?.getWalletByUserId(id))!
     }
+    
+    /**
+     Get all wallets: addresses and private keys of an user in localDB.
+     - Author:
+     Hoang Nguyen
+     
+     - parameters:
+     - id: User id. Can not be empty.
+     
+     - Important:
+     This code has gone through QA.
+     
+     - Version:
+     0.1
+     */
+    func getAllWalletsByUserId(_ id : String) -> Promise<[WalletModel]> {
+        return (coreDataStore?.getWalletsByUserId(id))!
+    }
 }

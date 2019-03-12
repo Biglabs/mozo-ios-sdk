@@ -48,23 +48,59 @@ class SafetyDataManager {
         }
     }
     // MARK: Detail display data (Only for Mozo UI components) - Serial dispatch queue
-    private let detailDisplayDataLockQueue = DispatchQueue(label: "SafetyDataManager.DisplayData.lockQueue")
+    // OFFCHAIN
+    private let offchainDetailDisplayDataLockQueue = DispatchQueue(label: "SafetyDataManager.DisplayData.Offchain.lockQueue")
     
-    private var _detailDisplayData : DetailInfoDisplayItem?
+    private var _offchainDetailDisplayData : DetailInfoDisplayItem?
     
-    public var detailDisplayData : DetailInfoDisplayItem? {
+    public var offchainDetailDisplayData : DetailInfoDisplayItem? {
         get {
-            print("Get detail display data")
-            return self._detailDisplayData
+            print("Get detail display data for MozoX offchain")
+            return self._offchainDetailDisplayData
         }
         set {
-            print("Set detail display data")
-            detailDisplayDataLockQueue.sync {
-                self._detailDisplayData = newValue
+            print("Set detail display data for MozoX offchain")
+            offchainDetailDisplayDataLockQueue.sync {
+                self._offchainDetailDisplayData = newValue
             }
         }
     }
     
+    // ONCHAIN
+    private let onchainDetailDisplayDataLockQueue = DispatchQueue(label: "SafetyDataManager.DisplayData.Onchain.lockQueue")
+    
+    private var _onchainDetailDisplayData : DetailInfoDisplayItem?
+    
+    public var onchainDetailDisplayData : DetailInfoDisplayItem? {
+        get {
+            print("Get detail display data for MozoX onchain")
+            return self._onchainDetailDisplayData
+        }
+        set {
+            print("Set detail display data for MozoX onchain")
+            onchainDetailDisplayDataLockQueue.sync {
+                self._onchainDetailDisplayData = newValue
+            }
+        }
+    }
+    
+    // ETH
+    private let ethDetailDisplayDataLockQueue = DispatchQueue(label: "SafetyDataManager.DisplayData.ETH.lockQueue")
+    
+    private var _ethDetailDisplayData : DetailInfoDisplayItem?
+    
+    public var ethDetailDisplayData : DetailInfoDisplayItem? {
+        get {
+            print("Get detail display data for ETH")
+            return self._ethDetailDisplayData
+        }
+        set {
+            print("Set detail display data for ETH")
+            ethDetailDisplayDataLockQueue.sync {
+                self._ethDetailDisplayData = newValue
+            }
+        }
+    }
     // MARK: Initialization
     private init() {
         _addressBookList = []

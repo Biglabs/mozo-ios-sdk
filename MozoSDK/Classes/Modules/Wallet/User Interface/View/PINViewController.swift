@@ -37,10 +37,12 @@ class PINViewController : MozoBasicViewController {
         if self.passPhrase == nil {
             title = "Enter Security PIN".localized
             switch moduleRequested {
-            case .Transaction, .Airdrop:
+            case .Transaction, .Airdrop, .Convert:
                 var text = "Enter your Security PIN\nto send MozoX"
                 if moduleRequested == .Airdrop {
                     text = "Enter your Security PIN\nto create airdrop event"
+                } else if moduleRequested == .Convert {
+                    text = "Enter your Security PIN to convert MozoX from onchain to offchain."
                 }
                 enterPINLabel.text = text.localized
                 descriptionLabel.text = "Security PIN must be 6 digits".localized

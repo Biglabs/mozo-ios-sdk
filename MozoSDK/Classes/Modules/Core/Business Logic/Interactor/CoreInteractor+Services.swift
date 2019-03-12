@@ -92,6 +92,26 @@ extension CoreInteractor: CoreInteractorService {
         }
     }
     
+    func loadEthAndOnchainBalanceInfo() -> Promise<OnchainInfoDTO> {
+        print("😎 Load ETH and onchain balance info.")
+        return Promise { seal in
+            if let userObj = SessionStoreManager.loadCurrentUser() {
+                if let address = userObj.profile?.walletInfo?.onchainAddress {
+                    print("Address used to load  ETH and onchain balance: \(address)")
+                    _ = apiManager.getEthAndOnchainTokenInfoFromAddress(address)
+                        .done { (onchainInfo) in
+                            SessionStoreManager.onchainInfo = onchainInfo
+                            seal.fulfill(onchainInfo)
+                        }.catch({ (err) in
+                            seal.reject(err)
+                        })
+                }
+            } else {
+                seal.reject(SystemError.noAuthen)
+            }
+        }
+    }
+    
     func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
         print("😎 Get latest airdrop event.")
         return apiManager.getLatestAirdropEvent()
