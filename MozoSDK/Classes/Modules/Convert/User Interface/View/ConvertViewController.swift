@@ -83,11 +83,7 @@ class ConvertViewController: MozoBasicViewController {
         if let gasPrice = self.gasPrice {
             sliderGasPrice.minimumValue = gasPrice.low?.floatValue ?? 2
             sliderGasPrice.maximumValue = gasPrice.fast?.floatValue ?? 5
-<<<<<<< HEAD
             if gasPrice.low == gasPrice.average || gasPrice.average == gasPrice.fast {
-=======
-            if gasPrice.low == gasPrice.average {
->>>>>>> SDK_Version_1.3
                 lbNormal.isHidden = true
             }
             lbGasLimit.text = gasPrice.gasLimit?.intValue.addCommas()

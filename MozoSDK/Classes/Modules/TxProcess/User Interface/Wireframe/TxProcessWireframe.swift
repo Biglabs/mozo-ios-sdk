@@ -12,11 +12,7 @@ class TxProcessWireframe: MozoWireframe {
     func presentTxProcessInterface(transaction: IntermediaryTransactionDTO) {
         let viewController = viewControllerFromStoryBoard(TxProcessViewControllerIdentifier) as! TxProcessViewController
         viewController.eventHandler = presenter
-<<<<<<< HEAD
         rootWireframe?.displayViewController(viewController)
-=======
-        rootWireframe?.presentViewController(viewController)
->>>>>>> SDK_Version_1.3
         presenter?.startWaitingTxStatus(transaction: transaction)
     }
 }

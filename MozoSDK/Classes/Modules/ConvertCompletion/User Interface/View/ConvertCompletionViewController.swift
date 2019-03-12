@@ -25,10 +25,7 @@ class ConvertCompletionViewController: MozoBasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "Convert To Offchain".localized
-<<<<<<< HEAD
         navigationItem.rightBarButtonItem = nil
-=======
->>>>>>> SDK_Version_1.3
     }
     
     func setupLayout() {

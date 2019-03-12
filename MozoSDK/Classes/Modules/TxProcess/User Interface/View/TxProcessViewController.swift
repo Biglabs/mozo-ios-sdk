@@ -18,11 +18,8 @@ class TxProcessViewController: MozoBasicViewController {
     
     var stopLoading = false
     
-<<<<<<< HEAD
     var moduleRequest = Module.Convert
     
-=======
->>>>>>> SDK_Version_1.3
     override func viewDidLoad() {
         super.viewDidLoad()
         lbStepTitle.text = currentStep.title
@@ -32,14 +29,10 @@ class TxProcessViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-<<<<<<< HEAD
         if moduleRequest == .Convert {
             self.title = "Convert To Offchain".localized
         }
         navigationItem.rightBarButtonItem = nil
-=======
-        navigationController?.isNavigationBarHidden = true
->>>>>>> SDK_Version_1.3
     }
     
     func updateLayout() {
@@ -78,10 +71,6 @@ class TxProcessViewController: MozoBasicViewController {
     }
     
     @IBAction func touchBtnHide(_ sender: Any) {
-<<<<<<< HEAD
         handleHideAction()
-=======
-        eventHandler?.hideProcess()
->>>>>>> SDK_Version_1.3
     }
 }

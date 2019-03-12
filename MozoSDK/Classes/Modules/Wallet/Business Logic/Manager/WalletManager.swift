@@ -28,16 +28,10 @@ class WalletManager : NSObject {
         wallets.append(offchainWallet)
         
         _ = try! keystore?.createNewChildAccount(password: "")
-<<<<<<< HEAD
         // Paths are stored as an dictionary so we must check the address for sure.
         let onchainAccount = keystore!.addresses?.first(where: { $0.address != offchainAccount.address })
         let onchainKey = try! keystore!.UNSAFE_getPrivateKeyData(password: "", account: onchainAccount!)
         let onchainWallet = WalletModel.init(address: onchainAccount!.address, privateKey: onchainKey.toHexString())
-=======
-        let onchainAccount = keystore!.addresses![1]
-        let onchainKey = try! keystore!.UNSAFE_getPrivateKeyData(password: "", account: onchainAccount)
-        let onchainWallet = WalletModel.init(address: onchainAccount.address, privateKey: onchainKey.toHexString())
->>>>>>> SDK_Version_1.3
         wallets.append(onchainWallet)
         
         return wallets

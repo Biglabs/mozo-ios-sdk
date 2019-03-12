@@ -15,14 +15,11 @@ class ConvertCompletionWireframe: MozoWireframe {
             viewController.transaction = transaction
             viewController.eventHandler = presenter
             rootWireframe?.displayViewController(viewController)
-<<<<<<< HEAD
         } else {
             let viewController = viewControllerFromStoryBoard(ConvertFailedViewControllerIdentifier) as! ConvertFailedViewController
             viewController.transaction = transaction
             viewController.eventHandler = presenter
             rootWireframe?.displayViewController(viewController)
-=======
->>>>>>> SDK_Version_1.3
         }
     }
 }

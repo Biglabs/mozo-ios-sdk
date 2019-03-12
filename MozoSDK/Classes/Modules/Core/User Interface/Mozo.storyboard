@@ -1411,11 +1411,7 @@
         <!--Convert Completion View Controller-->
         <scene sceneID="vmm-cA-QFW">
             <objects>
-<<<<<<< HEAD
                 <viewController storyboardIdentifier="ConvertCompletionViewController" id="ufC-mF-mWf" customClass="ConvertCompletionViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
-=======
-                <viewController id="ufC-mF-mWf" customClass="ConvertCompletionViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
->>>>>>> SDK_Version_1.3
                     <view key="view" contentMode="scaleToFill" id="FRS-mg-edJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1442,11 +1438,7 @@
                                 <color key="textColor" red="0.078431372549019607" green="0.10196078431372549" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
-<<<<<<< HEAD
                                     <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="You have just converted MozoX from Onchain to Offchain:"/>
-=======
-                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="You have just sent:"/>
->>>>>>> SDK_Version_1.3
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mozo_offchain" translatesAutoresizingMaskIntoConstraints="NO" id="LPq-be-suW">
@@ -1542,7 +1534,6 @@
             </objects>
             <point key="canvasLocation" x="4716" y="1204.9475262368817"/>
         </scene>
-<<<<<<< HEAD
         <!--Convert Failed View Controller-->
         <scene sceneID="DJR-zy-Ns6">
             <objects>
@@ -1631,8 +1622,6 @@
             </objects>
             <point key="canvasLocation" x="5486" y="1205"/>
         </scene>
-=======
->>>>>>> SDK_Version_1.3
         <!--PaymentQR View Controller-->
         <scene sceneID="1fF-DJ-VHK">
             <objects>
@@ -4275,10 +4264,7 @@
         <image name="ic_check_disable" width="60" height="60"/>
         <image name="ic_check_success" width="76.800003051757812" height="76.800003051757812"/>
         <image name="ic_convert" width="17" height="18"/>
-<<<<<<< HEAD
         <image name="ic_exclaim" width="128" height="128"/>
-=======
->>>>>>> SDK_Version_1.3
         <image name="ic_failed" width="32" height="32"/>
         <image name="ic_info" width="46" height="46"/>
         <image name="ic_loading" width="189" height="180"/>
