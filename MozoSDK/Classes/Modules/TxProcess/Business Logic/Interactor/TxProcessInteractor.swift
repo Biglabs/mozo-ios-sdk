@@ -19,7 +19,11 @@ class TxProcessInteractor: NSObject {
     
     @objc func loadTxStatus() {
         if let txHash = self.txHash {
+<<<<<<< HEAD
             _ = apiManager.getOnchainTxStatus(hash: txHash).done({ (type) in
+=======
+            _ = apiManager.getTxStatus(hash: txHash).done({ (type) in
+>>>>>>> SDK_Version_1.3
                 self.handleTxCompleted(statusType: type)
             })
         }

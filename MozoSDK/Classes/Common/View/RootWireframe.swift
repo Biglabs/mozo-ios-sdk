@@ -29,7 +29,10 @@ let ConvertViewControllerIdentifier = "ConvertViewController"
 let ConfirmConvertViewControllerIdentifier = "ConfirmConvertViewController"
 let TxProcessViewControllerIdentifier = "TxProcessViewController"
 let ConvertCompletionViewControllerIdentifier = "ConvertCompletionViewController"
+<<<<<<< HEAD
 let ConvertFailedViewControllerIdentifier = "ConvertFailedViewController"
+=======
+>>>>>>> SDK_Version_1.3
 
 class RootWireframe : NSObject {
     let mozoNavigationController = MozoNavigationController()

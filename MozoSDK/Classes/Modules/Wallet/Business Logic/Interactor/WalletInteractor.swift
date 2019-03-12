@@ -196,9 +196,15 @@ extension WalletInteractor : WalletInteractorInput {
             // A new wallet has just been created.
             updateMnemonicAndPinForCurrentUser(mnemonic: (mne?.encrypt(key: pin))!, pin: pin)
         }
+<<<<<<< HEAD
         var wallets = walletManager.createNewWallets(mnemonics: mne!)
         for i in 0..<wallets.count {
             wallets[i].privateKey = wallets[i].privateKey.encrypt(key: pin)
+=======
+        let wallets = walletManager.createNewWallets(mnemonics: mne!)
+        for var wallet in wallets {
+            wallet.privateKey = wallet.privateKey.encrypt(key: pin)
+>>>>>>> SDK_Version_1.3
         }
         updateWalletsToUserProfile(wallets: wallets)
     }

@@ -30,7 +30,10 @@ class TxProcessPresenter: NSObject {
     var transaction: IntermediaryTransactionDTO?
     
     func startWaitingTxStatus(transaction: IntermediaryTransactionDTO) {
+<<<<<<< HEAD
         self.transaction = transaction
+=======
+>>>>>>> SDK_Version_1.3
         interactor?.startWaitingTxStatus(transaction.tx?.hash ?? "")
     }
 }
