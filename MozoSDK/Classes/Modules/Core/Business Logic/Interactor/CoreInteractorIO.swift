@@ -18,6 +18,7 @@ protocol CoreInteractorInput {
     func notifyAddressBookChangesForAllObservers()
     func notifyStoreBookChangesForAllObservers()
     func notifyDidCloseAllMozoUIForAllObservers()
+    func notifyConvertSuccessOnchainToOffchain(balanceNoti: BalanceNotification)
 }
 
 protocol CoreInteractorOutput {

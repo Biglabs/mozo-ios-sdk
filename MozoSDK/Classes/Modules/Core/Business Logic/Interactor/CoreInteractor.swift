@@ -226,6 +226,10 @@ extension CoreInteractor: CoreInteractorInput {
         }
     }
     
+    func notifyConvertSuccessOnchainToOffchain(balanceNoti: BalanceNotification) {
+        NotificationCenter.default.post(name: .didConvertSuccessOnchainToOffchain, object: nil, userInfo: nil)
+    }
+    
     func notifyDetailDisplayItemForAllObservers() {
         NotificationCenter.default.post(name: .didReceiveDetailDisplayItem, object: nil)
     }
