@@ -17,4 +17,5 @@ protocol RDNInteractorOutput {
     func didCustomerCame(ccNoti: CustomerComeNotification, rawMessage: String)
     
     func didInvalidToken(tokenNoti: InvalidTokenNotification)
+    func didConvertOnchainToOffchainSuccess(balanceNoti: BalanceNotification, rawMessage: String)
 }

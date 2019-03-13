@@ -336,6 +336,7 @@ extension Notification.Name {
     static let didLogoutFromMozo = Notification.Name("didLogoutFromMozo")
     static let didCloseAllMozoUI = Notification.Name("didCloseAllMozoUI")
     static let didChangeBalance = Notification.Name("didChangeBalance")
+    static let didConvertSuccessOnchainToOffchain = Notification.Name("didConvertSuccessOnchainToOffchain")
     static let didReceiveDetailDisplayItem = Notification.Name("didReceiveDetailDisplayItem")
     static let didLoadTokenInfoFailed = Notification.Name("didLoadTokenInfoFailed")
     static let didReceiveOnchainDetailDisplayItem = Notification.Name("didReceiveOnchainDetailDisplayItem")

@@ -124,6 +124,9 @@ extension RDNInteractor {
                     let balanceNoti = BalanceNotification(json: jobj) {
                     needSave = true
                     output?.balanceDidChange(balanceNoti: balanceNoti, rawMessage: rawJsonMessage)
+                } else if rdNoti.event == NotificationEventType.ConvertOnchainToOffchain.rawValue,
+                    let balanceNoti = BalanceNotification(json: jobj) {
+                    output?.didConvertOnchainToOffchainSuccess(balanceNoti: balanceNoti, rawMessage: rawJsonMessage)
                 } else if rdNoti.event == NotificationEventType.AddressBookChanged.rawValue,
                         let abNoti = AddressBookNotification(json: jobj),
                         let list = abNoti.data {

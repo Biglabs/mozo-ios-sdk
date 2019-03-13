@@ -353,6 +353,10 @@ extension CorePresenter : RDNInteractorOutput {
         performNotifications(noti: balanceNoti, rawMessage: rawMessage)
     }
     
+    func didConvertOnchainToOffchainSuccess(balanceNoti: BalanceNotification, rawMessage: String) {
+        coreInteractor?.notifyConvertSuccessOnchainToOffchain(balanceNoti: balanceNoti)
+    }
+    
     func addressBookDidChange(addressBookList: [AddressBookDTO], rawMessage: String) {
         SafetyDataManager.shared.addressBookList = addressBookList
         coreInteractor?.notifyAddressBookChangesForAllObservers()
