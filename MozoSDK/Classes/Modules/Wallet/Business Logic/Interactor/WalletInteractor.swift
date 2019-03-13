@@ -75,8 +75,15 @@ class WalletInteractor : NSObject {
                             self.output?.errorWhileManageWallet(connectionError: error as? ConnectionError ?? .systemError, showTryAgain: true)
                         })
                     } else {
-                        self.updateWalletsForCurrentUser(wallets)
-                        self.output?.updatedWallet()
+                        _ = self.apiManager.updateOnlyOnchainWallet(onchainAddress: onchainAddress).done({ (uProfile) in
+                            let userDto = UserDTO(id: uProfile.userId, profile: uProfile)
+                            SessionStoreManager.saveCurrentUser(user: userDto)
+                            print("Update Wallet To User Profile result: [\(uProfile)]")
+                            self.updateWalletsForCurrentUser(wallets)
+                            self.output?.updatedWallet()
+                        }).catch({ (error) in
+                            self.output?.errorWhileManageWallet(connectionError: error as? ConnectionError ?? .systemError, showTryAgain: true)
+                        })
                     }
                 } else {
                     let updatingWalletInfo = WalletInfoDTO(encryptSeedPhrase: user.mnemonic, offchainAddress: offchainAddress, onchainAddress: onchainAddress)
