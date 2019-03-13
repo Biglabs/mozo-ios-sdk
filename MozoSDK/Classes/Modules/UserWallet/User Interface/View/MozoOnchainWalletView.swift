@@ -95,9 +95,9 @@ class MozoOnchainWalletView: MozoView {
         if !isLoading {
             isLoading = true
             _ = MozoSDK.loadEthAndOnchainBalanceInfo().done({ (onchainInfo) in
-                
+                self.checkDisableButtonConvert(isPending: !(onchainInfo.convertToMozoXOnchain ?? false))
             }).catch({ (error) in
-                
+                self.checkDisableButtonConvert(isPending: true)
             }).finally {
                 self.isLoading = false
             }
@@ -287,6 +287,16 @@ class MozoOnchainWalletView: MozoView {
         }
     }
     
+    func checkDisableButtonConvert(isPending: Bool) {
+        if !isPending {
+            btnConvert.isUserInteractionEnabled = true
+            btnConvert.backgroundColor = ThemeManager.shared.main
+        } else {
+            btnConvert.isUserInteractionEnabled = false
+            btnConvert.backgroundColor = ThemeManager.shared.disable
+        }
+    }
+    
     @IBAction func touchAddress(_ sender: Any) {
         copyAddressAndShowHud()
     }
@@ -320,11 +330,16 @@ class MozoOnchainWalletView: MozoView {
         loadDisplayData()
     }
     
+    @objc func onDidCloseAllMozoUI(_ notification: Notification) {
+        loadEthOnchainBalanceInfo()
+    }
+    
     func removeAllObservers() {
         NotificationCenter.default.removeObserver(self, name: .didLogoutFromMozo, object: nil)
         NotificationCenter.default.removeObserver(self, name: .didReceiveOnchainDetailDisplayItem, object: nil)
         NotificationCenter.default.removeObserver(self, name: .didReceiveETHDetailDisplayItem, object: nil)
         NotificationCenter.default.removeObserver(self, name: .didLoadETHOnchainTokenInfoFailed, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .didCloseAllMozoUI, object: nil)
     }
     
     func addEthAndOnchainObserver() {
@@ -334,6 +349,7 @@ class MozoOnchainWalletView: MozoView {
         NotificationCenter.default.addObserver(self, selector: #selector(onOnchainDetailDisplayDataDidReceive(_:)), name: .didReceiveOnchainDetailDisplayItem, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onEthDetailDisplayDataDidReceive(_:)), name: .didReceiveETHDetailDisplayItem, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onLoadTokenInfoFailed(_:)), name: .didLoadETHOnchainTokenInfoFailed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidCloseAllMozoUI(_:)), name: .didCloseAllMozoUI, object: nil)
     }
     
     override func removeObserverAfterLogout() {
