@@ -101,6 +101,8 @@ public class DisplayUtils {
             
             mozoContactView.center = parentView.center
             
+            mozoContactView.errorMessage = error
+            
             // cover view
             let displayWidth: CGFloat = parentView.frame.width
             let displayHeight: CGFloat = parentView.frame.height
