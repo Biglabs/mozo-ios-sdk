@@ -33,6 +33,10 @@ extension AuthInteractor : AuthInteractorInput {
         self.authManager?.clientId = appType == .Retailer ? Configuration.AUTH_RETAILER_CLIENT_ID : Configuration.AUTH_SHOPPER_CLIENT_ID
     }
     
+    func updateNetwork(_ network: MozoNetwork) {
+        self.authManager?.network = network
+    }
+    
     func handleAuthorizationResponse(_ response: OIDAuthorizationResponse?, error: Error?) {
         if let response = response {
             let authState = OIDAuthState(authorizationResponse: response)

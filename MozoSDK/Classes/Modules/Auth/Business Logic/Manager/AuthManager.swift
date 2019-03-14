@@ -10,11 +10,14 @@ import AppAuth
 import PromiseKit
 
 typealias PostRegistrationCallback = (_ configuration: OIDServiceConfiguration?, _ registrationResponse: OIDRegistrationResponse?) -> Void
-let TOKEN_EXPIRE_AFTER_SECONDS = 2 * 24 * 3600
+let TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD = 2 * 24 * 3600
+let TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV = 5 * 60
 class AuthManager : NSObject {
     var delegate : AuthManagerDelegate?
     
     var clientId = Configuration.AUTH_SHOPPER_CLIENT_ID
+    
+    var network = MozoNetwork.TestNet
     
     private (set) var currentAuthorizationFlow: OIDAuthorizationFlowSession?
     var apiManager : ApiManager? {
@@ -43,7 +46,8 @@ class AuthManager : NSObject {
     private func checkRefreshToken(_ completion: @escaping (_ success: Bool) -> Void) {
         let expiresAt : Date = (authState?.lastTokenResponse?.accessTokenExpirationDate)!
         print("Check authorization, expires at: \(expiresAt)")
-        if(expiresAt.timeIntervalSinceNow < TimeInterval(TOKEN_EXPIRE_AFTER_SECONDS)) {
+        let tokenExpiredAfterSeconds = network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV
+        if(expiresAt.timeIntervalSinceNow < TimeInterval(tokenExpiredAfterSeconds)) {
             print("Token expired, refresh token using: \(authState?.lastTokenResponse?.refreshToken ?? "NULL")")
             authState?.setNeedsTokenRefresh()
             authState?.performAction(freshTokens: { (accessToken, ic, error) in

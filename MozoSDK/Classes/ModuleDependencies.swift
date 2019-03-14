@@ -23,7 +23,7 @@ class ModuleDependencies {
     
     public var network: MozoNetwork = .TestNet {
         didSet {
-           
+           authWireframe.authPresenter?.authInteractor?.updateNetwork(network)
         }
     }
     
