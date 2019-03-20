@@ -53,7 +53,7 @@ class ConvertViewController: MozoBasicViewController {
     func setupLayout() {
         btnContinue.roundCorners(cornerRadius: 0.015, borderColor: .white, borderWidth: 0.1)
         
-        let string = "Gas Price is the amount you pay per unit of gas. TX fee = gas price * gas limit & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is 41 GWEI.".localized as NSString
+        let string = "Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is 41 GWEI.".localized as NSString
         
         let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13.0)])
         

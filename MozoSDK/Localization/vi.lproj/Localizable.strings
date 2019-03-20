@@ -721,3 +721,105 @@
 "Male" = "Nam";
 
 "Address:" = "Địa chỉ:";
+
+"Invalid phone number" = "Số điện thoại không hợp lệ";
+"Verification code cannot be sent to this phone number" = "Mã xác nhận không thể gửi đến số điện thoại này";
+"A strong password contains a mix of numbers, letters, and symbols. It is hard to guess, does not resemble a real word, and is only used for this account." = "Mật khẩu mạnh bao gồm số, kí tự và kí hiệu. Để khó đoán, mật khẩu không nên liên quan đến đời thực của bạn và chỉ dùng cho tài khoản này.";
+"Update Password" = "Cập nhật mật khẩu";
+"Passwords don't match." = "Mật khẩu không khớp";
+"You took too long to login.  Login process starting from beginning." = "Quá hạn đăng nhập. Phiên đăng nhập sẽ được làm mới lại từ đầu.";
+"You need to change your password to activate your account." = "Bạn cần tạo mật khẩu để kích hoạt tài khoản của bạn.";
+"Left 60 (s)" = "Còn lại ";
+"Call me instead" = "Gọi tôi";
+"Verification code has been send through SMS or Voice Message. Click this button to resend 60 seconds later." = "Mã xác minh đã được gửi qua SMS hoặc tin nhắn thoại. Nhấn vào nút này để gửi lại 60 giây sau.";
+"We're sorry..." = "Chúng tôi xin lỗi...";
+"Unexpected error when handling authentication request to identity provider." = "Đã có lỗi không mong muốn xảy ra khi xử lý yêu cầu xách thực";
+"Page has expired" = "Trang đã hết hạn";
+"To restart the login process" = "Để khởi động lại quá trình đăng nhập";
+"To continue the login process" = "Để tiếp tục quá trình đăng nhập";
+"Click here" = "Bấm vào đây";
+"The verification service is temporarily unavailable. Please try again after 30 seconds." = "Dịch vụ xác minh tạm thời không khả dụng. Vui lòng thử lại sau 30 giây.";
+"An internal server error has occurred" = "Đã xảy ra lỗi máy chủ nội bộ";
+
+"Your store is not register on website for MozoX Retailer Website yet. Please contact MozoX Customer Service for support:" = "Cửa hàng của bạn chưa được đăng ký tại Website MozoX dành cho chủ cửa hàng. Xin liên hệ đội tư vấn để được hỗ trợ:";
+
+"Welcome, %@" = "Chào mừng, %@";
+"You’re logged in as sub-account of %@" = "Đã đăng nhập với vai trò tài khoản phụ tại %@";
+"Photo is uploading..." = "Đang tải ảnh lên...";
+"Creating Airdrop Event, it may take some minutes." = "Đang tạo sự kiện Airdrop, nó có thể mất vài phút.";
+"Back to Event List" = "Quay lại danh sách sự kiện";
+"Beacon %@ is Detected" = "Đã phát hiện Beacon %@";
+"Set up signal range by sliding Distance Bar" = "Thiết lập phạm vi tín hiệu bằng thanh trượt Khoảng cách";
+"Beacon battery will last longer if you set distance under 50m" = "Pin của Beacon sẽ tồn tại lâu hơn nếu bạn chọn khoảng cách dưới 50m";
+"No images available" = "Không có hình ảnh";
+"Camera is not available" = "Máy ảnh không khả dụng";
+"Please, allow the application to access to your photo library." = "Vui lòng, cho phép ứng dụng truy cập vào thư viện ảnh của bạn.";
+"%@ is added %@" = "%@ được thêm %@";
+"%@ is removed %@" = "%@ bị xóa %@";
+"Added Hashtags %@" = "Đã thêm Hashtags %@";
+"Beacon Range" = "Phạm vi Beacon";
+"App requires permission to access \"Location Services\" to update beacon. Tap \"Settings\", \"Privacy\" and then \"Location Services\" to grant permission." = "Ứng dụng yêu cầu quyền truy cập \"Dịch vụ vị trí\" để cập nhật Beacon. Nhấn \"Cài đặt\", \"Quyền riêng tư\" và sau đó \"Dịch vụ vị trí\" để cấp quyền.";
+"Please choose Beacon location!" = "Vui lòng chọn vị trí Beacon!";
+"Beacon location accuracy problem." = "Có vấn đề về  tính chính của vị trí Beacon.";
+"MozoX uses this information to provide more relevant and personalized experiences. We'll never access your GPS location without your knowledge." = "MozoX sử dụng thông tin này để cung cấp những trải nghiệm phù hợp và cá nhân hóa hơn. Chúng tôi sẽ không bao giờ truy cập vị trí GPS của bạn mà bạn không biết.";
+"Location Settings" = "Cài đặt vị trí";
+
+"Invalid email address" = "Địa chỉ email không hợp lệ";
+
+"Uploading photos progress will be continuing after you leave this screen. Do you want to go back?" = "Quá trình tải ảnh lên sẽ được tiếp tục sau khi bạn rời khỏi màn hình này. Bạn có muốn quay lại không?";
+"Create Airdrop Event failed.\nPlease try again." = "Tạo chương trình Airdrop thất bại\nXin thử lại.";
+
+"App requires permission to access Camera to capture image. Tap \'Settings\' and go to \'Permissions\' to grant permission." = "Ứng dụng cần quyền truy cập Camera để chụp ảnh. Chọn \'Setting' và chọn 'Permission' để cấp quyền truy cập.";
+"Scanning beacon timeout. Please try again." = "Thời gian quét Beacon quá hạn. Xin thử lại.";
+"Connecting beacon timeout. Please try again." = "Thời gian kết nối Beacon quá hạn. Xin thử lại";
+"Time out, please try again." = "Quá hạn, xin thử lại.";
+"Onchain Wallets" = "Ví Onchain";
+"Offchain Wallet" = "Ví Offchain";
+"Request" = "Yêu cầu";
+"Transfer" = "Gửi";
+"Copied to clipboard" = "Đã sao chép";
+"Go to Etherscan.io" = "Đi đến Etherscan.io";
+"Token List:" = "Danh sách Token:";
+"Convert to MozoX Offchain" = "Chuyển đổi thành MozoX Offchain";
+"Pending transaction..." = "Đang xử lý giao dịch...";
+"How to add MozoX Onchain?" = "Hướng dẫn thêm MozoX Onchain";
+"Enter amount to convert MozoX Offchain" = "Nhập số lượng đổi thành MozoX Offchain";
+"Convert To Offchain" = "Đổi thành MozoX Offchain";
+"Slow" = "Chậm";
+"Average" = "Trung Bình";
+"Fast" = "Nhanh";
+"Normal" = "Bình thường";
+"Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is 41 GWEI." = "Gas Price là chi phí được tính bằng đơn vị GWEI dùng để thực hiện một giao dịch trong Ethereum. Tổng chi phí (TX fee) được tính = Số Gas thực dùng * Gas Price, phí này được dùng trả cho “thợ đào” (Miner) để họ đưa giao dịch vào một khối (Block). Gas Price cao đồng nghĩa với giao dịch diễn ra nhanh hơn (nhưng tốn kém hơn). Giá mặc định là 41 GWEI.";
+"Read more" = "Chi tiết";
+"Onchain balance is not enough." = "Không đủ MozoX Onchain";
+"ETH balance is not enough." = "Không đủ ETH";
+"From Onchain" = "Từ Onchain";
+"To Offchain" = "Thành Offchain";
+"Enter your Security PIN to convert MozoX from onchain to offchain." = "Nhập mã PIN để chuyển đổi MozoX từ Onchain thành Offchain.";
+"Broadcasting transaction..." = "Đang gửi thông tin giao dịch...";
+"It’s might take about 3 minutes to complete" = "Sẽ mất khoảng 3 phút để hoàn tất";
+"Hide transaction" = "Ẩn màn hình";
+"When you hide this screen, you will receive notify when transaction complete or fail." = "Khi ẩn màn hình này, bạn vẫn sẽ nhận được thông báo khi việc chuyển đổi hoàn tất hoặc thất bại.";
+"Broadcast completed" = "Đã xử lý xong";
+"Waiting for transaction status..." = "Đang chờ kết quả...";
+"Convert Successful" = "Chuyển đổi thành công";
+"You have just converted MozoX from Onchain to Offchain:" = "Bạn vừa đổi thành công MozoX từ Onchain thành Offchain:";
+"Back to Onchain Wallet" = "Trở về ví Onchain";
+"Convert Failed" = "Chuyển đổi thất bại";
+"Cannot complete convert MozoX from Onchain to Offchain. Please try again after some time." = "Không thể hoàn tất việc chuyển đổi. Xin đợi một lúc và thử lại.";
+"There is no Airdrop Events around you" = "Không có chương trình Airdrop gần bạn";
+"Discover" = "Khám phá";
+"On Going Events" = "Chương trình sắp Airdrop";
+"Top Airdrop Events" = "Airdrop nhiều nhất";
+"Nearest Events" = "Airdrop gần nhất";
+"Discover more Airdrop Events to get MozoX" = "Khám phá thêm chương trình Airdrop để nhận MozoX";
+
+"There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later. " = "Đang có một giao dịch ở trạng thái chờ. Không thể thực hiện giao dịch khác. Vui lòng đợi khoảng 3 phút và thực hiện lại giao dịch.";
+"Can not send transaction to Ethereum network or sent but failed. Please check your data and try again." = "Không thể gởi giao dịch đến hệ thống Ethereum hoặc đã gới nhưng xẩy ra lỗi. Xin vui lòng kiểm tra thông tin và thực hiện lại giao dịch";
+"We're sorry because something is wrong. We will transfer MozoX Offchain to your wallet later." = "Có lỗi bất thường xảy ra. Chúng tôi sẽ tìm hiểu và chuyển MozoX Offchain đến tài khoản của bạn.";
+
+"Convert Failed" = "Chuyển đổi thất bại";
+"Cannot complete convert MozoX from Onchain to Offchain." = "Không thể hoàn tất việc đổi MozoX từ Onchain thành Offchain.";
+"Please try again after some time." = "Xin đợi một lúc và thử lại.";
+"No routes found" = "Không tìm thấy đường đi";
+"Discover more Airdrop Events to get MozoX 👌" = "Khám phá thêm chương trình Airdrop để nhận MozoX 👌";

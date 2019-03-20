@@ -198,7 +198,7 @@
 "Scan for the Beacon" = "Beacon을 스캔하기";
 "Set up range by sliding Distance Bar." = "거리 바 슬라이딩하는 방식으로 활동 범위를 설정하십시오.";
 "Beacon battery will last longer if you set signal range under 50m" = "당신이 50m 아래에있는 Beacon을 범위를 설정 한 경우 비콘 배터리가 더 오래 지속됩니다.";
-"Beacon %@ is Detected!" = "Beacon %@ 감지됨";
+"Beacon %@ is Detected" = "Beacon %@ 감지됨";
 "Beacon Location Setting" = "Beacon 의 위치 설정";
 "Make sure that your store location is displayed correctly. Shoppers will use this location to find your store." = "상점을 방문 쇼핑객을 감지할 수 있는 위치(벽, 카운터, 천장)에 Beacon을 놓으십시오.";
 "Edit Location" = "위치 수정";
@@ -719,3 +719,105 @@
 "Male" = "남성";
 
 "Address:" = "주소:";
+
+"Invalid phone number" = "유효하지 않은 전화 번호입니다.";
+"Verification code cannot be sent to this phone number" = "이 전화 번호로 인증 코드를 보낼 수 없습니다.";
+"A strong password contains a mix of numbers, letters, and symbols. It is hard to guess, does not resemble a real word, and is only used for this account." = "강력한 비밀번호에는 숫자, 문자 및 기호가 혼합되어 있습니다. 추측하기 어렵기 위하여 실제 생활과 관련이 없어야하며 이 계정에만 사용해야합니다.";
+"Update Password" = "비밀번호 업데이트";
+"Passwords don't match." = "비밀번호가 일치하지 않습니다.";
+"You took too long to login.  Login process starting from beginning." = "로그인하는 데 너무 오래 걸렸습니다. 로그인 프로세스는 처음부터 시작됩니다.";
+"You need to change your password to activate your account." = "계정을 활성화하려면 비밀번호를 만들어야합니다.";
+"Left 60 (s)" = "60 초 남아 있습니다.";
+"Call me instead" = "저에게 전화 해주세요.";
+"Verification code has been send through SMS or Voice Message. Click this button to resend 60 seconds later." = "인증코드가 SMS 또는 음성 메시지를 통해 전송되었습니다. 60 초후에  다시 전송하려면 이 버튼을 클릭하십시오.";
+"We're sorry..." = "죄송합니다...";
+"Unexpected error when handling authentication request to identity provider." = "ID 공급자에 대한 인증 요청을 처리 할 때 예기치 않은 오류가 발생했습니다.";
+"Page has expired" = "페이지가 만료되었습니다.";
+"To restart the login process" = "로그인 프로세스를 다시 시작하기 위하여";
+"To continue the login process" = "로그인 프로세스를 계속하기 위하여";
+"Click here" = "여기를 클릭하십시오.";
+"The verification service is temporarily unavailable. Please try again after 30 seconds." = "인증 서비스를 일시적으로 사용할 수 없습니다. 30 초 후에 다시 시도하십시오.";
+"An internal server error has occurred" = "내부 서버 오류가 발생했습니다.";
+
+"Your store is not register on website for MozoX Retailer Website yet. Please contact MozoX Customer Service for support:" = "귀하의 상점은 MozoX 소매점 웹 사이트의 웹 사이트에 아직 등록되어 있지 않습니다. MozoX 고객 서비스에 지원을 요청하십시오.";
+
+"Welcome, %@" = "%@ 이라는 전화번호를  환영합니다. ";
+"You’re logged in as sub-account of %@" = "%@ 의 하위 계정으로 로그인했습니다.";
+"Photo is uploading..." = "사진을 업로드하는 중 ...";
+"Creating Airdrop Event, it may take some minutes." = "Airdrop 이벤트 만들기중, 몇 분이 걸릴 수 있습니다.";
+"Back to Event List" = "이벤트 목록으로 돌아 가기";
+"Beacon E3:C9:40:4B:75:94 is Detected" = "Beacon E3 : C9 : 40 : 4B : 75 : 94이 검출되었습니다";
+"Set up signal range by sliding Distance Bar" = "거리 바 슬라이딩으로 신호 범위를 설정하십시오";
+"Beacon battery will last longer if you set distance under 50m" = "Beacon 배터리는 거리를 50m 미만으로 설정하면 오래 지속됩니다.";
+"No images available" = "사용할 수있는 이미지가 없습니다.";
+"Camera is not available" = "카메라를 사용할 수 없습니다.";
+"Please, allow the application to access to your photo library." = "응용 프로그램에서 사진 라이브러리에 액세스하도록 허용하시기를 바랍니다.";
+"%@ is added %@" = "% s이 (가) % s 을 (를) 추가되었습니다.";
+"%@ is removed %@" = "% s이 (가) % s 을 (를) 삭제되었습니다.";
+"Added Hashtags %@" = "추가 된 해시 태그는  % s입니다.";
+"Beacon Range" = "Beacon 범위";
+"App requires permission to access \"Location Services\" to update beacon. Tap \"Settings\", \"Privacy\" and then \"Location Services\" to grant permission." = "Beacon을 업데이트하기 위하여 '위치 서비스'에 액세스 할 수있는 권한을 요청합니다. 권한을 부여하기 위하여 '설정', '개인 정보', 그리고  '위치 서비스'를 누르십시오.";
+"Please choose Beacon location!" = "Beacon 위치를 선택하세요!";
+"Beacon location accuracy problem." = "Beacon 위치 정확도에 대한 문제가 있습니다.";
+"MozoX uses this information to provide more relevant and personalized experiences. We'll never access your GPS location without your knowledge." = "MozoX는 더 적절하고 개인화 된 경험을 제공하기 위하여 이 정보를 사용합니다. 우리는 당신이 모르는 사이에 결코 당신의 GPS 위치에 접근하지 않을 것입니다.";
+"Location Settings" = "위치 설정";
+
+"Invalid email address" = "이메일 주소가 잘못되었습니다.";
+
+"Uploading photos progress will be continuing after you leave this screen. Do you want to go back?" = "이 화면을 종료하면 사진 업로드 진행 상태가 계속됩니다. 당신이 돌아가시겠습니까?";
+"Create Airdrop Event failed.\nPlease try again." = "에어 드롭 이벤트 만들기가 실패했습니다.\n다시 시도하십시오.";
+
+"App requires permission to access Camera to capture image. Tap \'Settings\' and go to \'Permissions\' to grant permission." = "앱에서 이미지를 캡처하려면 카메라에 액세스 할 수있는 권한이 필요합니다. \ '설정 \'을 선택하고  \ '권한 \'으로 이동하여 권한을 부여하십시오.";
+"Scanning beacon timeout. Please try again." = "과도한 Beacon  스캔 시간입니다. 다시 시도하시기를 바랍니다.";
+"Connecting beacon timeout. Please try again." = "과도한 Beacon  연결 시간입니다. 다시 시도하시기를 바랍니다.";
+"Time out, please try again." = "타임 아웃, 다시 시도하시기를 바랍니다.";
+"Onchain Wallets" = "Onchain 지갑";
+"Offchain Wallet" = "Offchain 지갑";
+"Request" = "요청";
+"Transfer" = "전송하기";
+"Copied to clipboard" = "클립 보드에 복사 됩니다.";
+"Go to Etherscan.io" = "Etherscan.io로 이동합니다.";
+"Token List:" = "Token 리스트";
+"Convert to MozoX Offchain" = "MozoX Offchain으로 변환하기";
+"Pending transaction..." = "보류중인 거래 ...";
+"How to add MozoX Onchain?" = "MozoX Onchain을 추가하는 방법은 무엇입니까?";
+"Enter amount to convert MozoX Offchain" = "MozoX Offchain을 변환 할 금액을 입력하십시오.";
+"Convert To Offchain" = "Offchain으로 변환하기";
+"Slow" = "느리다";
+"Average" = "평균";
+"Fast" = "빠르다";
+"Normal" = "정상";
+"Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is 41 GWEI." = "가스 가격은 가스 단위당(GWEI) 지불하는 금액입니다. TX fee = Txn에서 사용하는 가스 * Gas Price 이며  TX fee는 한 블록 내에 TX를 포함시키기 위하여 광부에게 지급됩니다. 가스 가격이 높을수록 거래는 빠르지 만 가격은 더 비쌉니다. 기본값은 41 GWEI입니다.";
+"Read more" = "자세히 보기";
+"Onchain balance is not enough." = "Onchain 밸런스가 충분하지 않습니다.";
+"ETH balance is not enough." = "ETH 밸런스가 충분하지 않습니다.";
+"From Onchain" = "Onchain에서";
+"To Offchain" = "Offchain으로";
+"Enter your Security PIN to convert MozoX from onchain to offchain." = "비밀 번호를 입력하여 MozoX를 onchain에서 offchain으로 변환하십시오.";
+"Broadcasting transaction..." = "거래 전송중...";
+"It’s might take about 3 minutes to complete" = "거래를 완료하기 위하여 약 3 분 정도 걸릴 수 있습니다.";
+"Hide transaction" = "거래 숨기기";
+"When you hide this screen, you will receive notify when transaction complete or fail." = "이 화면을 숨기면 거래가 완료되거나 실패 할 때 알림을 받게됩니다.";
+"Broadcast completed" = "전송 완료";
+"Waiting for transaction status..." = "거래 상태를 기다리는 중 ...";
+"Convert Successful" = "성공적으로 변환";
+"You have just converted MozoX from Onchain to Offchain:" = "당신은 MozoX를 Onchain에서 Offchain으로 변환했습니다.";
+"Back to Onchain Wallet" = "Onchain 지갑으로 돌아 가기";
+"Convert Failed" = "변환 실패";
+"Cannot complete convert MozoX from Onchain to Offchain.\nPlease try again after some time." = "Onchain에서 Offchain으로 MozoX 변환을 완료 할 수 없습니다.\n잠시 후 다시 시도하십시오.";
+"There is no Airdrop Events around you" = "주변에 Airdrop 이벤트가 없습니다.";
+"Discover" = "발견하기";
+"On Going Events" = "Airdrop 다가오는 이벤트";
+"Top Airdrop Events" = "가장 많은 Airdrop 이벤트";
+"Nearest Events" = "가장 가까운 Airdrop 이벤트";
+"Discover more Airdrop Events to get MozoX" = "MozoX를 얻기 위하여 더 많은 Airdrop 이벤트를 발견하십시오.";
+
+"There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later. " = "보류중인 거래가 있습니다. 다른 거래를 보낼 수 없습니다. 약 3 분 정도 기다렸다가 나중에 다시 시도하십시오.";
+"Can not send transaction to Ethereum network or sent but failed. Please check your data and try again." = "에테 리움 네트워크로 거래를 보낼 수 없거나 전송되었지만 실패했습니다. 데이터를 확인하고 다시 시도하십시오.";
+"We're sorry because something is wrong. We will transfer MozoX Offchain to your wallet later." = "뭔가 잘못되어 죄송합니다. 나중에 MozoX Offchain을 지갑으로 전송하겠습니다.";
+
+"Convert Failed" = "변환 실패";
+"Cannot complete convert MozoX from Onchain to Offchain." = "Onchain에서 Offchain으로 MozoX 변환을 완료 할 수 없습니다.";
+"Please try again after some time." = "잠시 후 다시 시도하십시오. ";
+"No routes found" = "경로를 찾을 수 없습니다.";
+"Discover more Airdrop Events to get MozoX 👌" = "MozoX를 얻기 위하여 더 많은 Airdrop 이벤트를 발견하시기를 바랍니다 👌";

@@ -715,3 +715,105 @@
 "Male" = "Male";
 
 "Address:" = "Address:";
+
+"Invalid phone number" = "Invalid phone number";
+"Verification code cannot be sent to this phone number" = "Verification code cannot be sent to this phone number";
+"A strong password contains a mix of numbers, letters, and symbols. It is hard to guess, does not resemble a real word, and is only used for this account." = "A strong password contains a mix of numbers, letters, and symbols. It is hard to guess, does not resemble a real word, and is only used for this account.";
+"Update Password" = "Update Password";
+"Passwords don't match." = "Passwords don't match.";
+"You took too long to login.  Login process starting from beginning." = "You took too long to login.  Login process starting from beginning.";
+"You need to change your password to activate your account." = "You need to create your password to activate your account.";
+"Left 60 (s)" = "Left 60 (s)";
+"Call me instead" = "Call me instead";
+"Verification code has been send through SMS or Voice Message. Click this button to resend 60 seconds later." = "Verification code has been send through SMS or Voice Message. Click this button to resend 60 seconds later.";
+"We're sorry..." = "We're sorry...";
+"Unexpected error when handling authentication request to identity provider." = "Unexpected error when handling authentication request to identity provider.";
+"Page has expired" = "Page has expired";
+"To restart the login process" = "To restart the login process";
+"To continue the login process" = "To continue the login process";
+"Click here" = "Click here";
+"The verification service is temporarily unavailable. Please try again after 30 seconds." = "The verification service is temporarily unavailable. Please try again after 30 seconds.";
+"An internal server error has occurred" = "An internal server error has occurred";
+
+"Your store is not register on website for MozoX Retailer Website yet. Please contact MozoX Customer Service for support:" = "Your store is not register on website for MozoX Retailer Website yet. Please contact MozoX Customer Service for support:";
+
+"Welcome, %@" = "Welcome, %@";
+"You’re logged in as sub-account of %@" = "You’re logged in as sub-account of %@";
+"Photo is uploading..." = "Photo is uploading...";
+"Creating Airdrop Event, it may take some minutes." = "Creating Airdrop Event, it may take some minutes.";
+"Back to Event List" = "Back to Event List";
+"Beacon %@ is Detected" = "Beacon %@ is Detected";
+"Set up signal range by sliding Distance Bar" = "Set up signal range by sliding Distance Bar";
+"Beacon battery will last longer if you set distance under 50m" = "Beacon battery will last longer if you set distance under 50m";
+"No images available" = "No images available";
+"Camera is not available" = "Camera is not available";
+"Please, allow the application to access to your photo library." = "Please, allow the application to access to your photo library.";
+"%@ is added %@" = "%@ is added %@";
+"%@ is removed %@" = "%@ is removed %@";
+"Added Hashtags %@" = "Added Hashtags %@";
+"Beacon Range" = "Beacon Range";
+"App requires permission to access \"Location Services\" to update beacon. Tap \"Settings\", \"Privacy\" and then \"Location Services\" to grant permission." = "App requires permission to access \"Location Services\" to update beacon. Tap \"Settings\", \"Privacy\" and then \"Location Services\" to grant permission.";
+"Please choose Beacon location!" = "Please choose Beacon location!";
+"Beacon location accuracy problem." = "Beacon location accuracy problem.";
+"MozoX uses this information to provide more relevant and personalized experiences. We'll never access your GPS location without your knowledge." = "MozoX uses this information to provide more relevant and personalized experiences. We'll never access your GPS location without your knowledge.";
+"Location Settings" = "Location Settings";
+
+"Invalid email address" = "Invalid email address";
+
+"Uploading photos progress will be continuing after you leave this screen. Do you want to go back?" = "Uploading photos progress will be continuing after you leave this screen. Do you want to go back?";
+"Create Airdrop Event failed.\nPlease try again." = "Create Airdrop Event failed.\nPlease try again.";
+
+"App requires permission to access Camera to capture image. Tap \'Settings\' and go to \'Permissions\' to grant permission." = "App requires permission to access Camera to capture image. Tap \'Settings\' and go to \'Permissions\' to grant permission.";
+"Scanning beacon timeout. Please try again." = "Scanning beacon timeout. Please try again.";
+"Connecting beacon timeout. Please try again." = "Connecting beacon timeout. Please try again.";
+"Time out, please try again." = "Time out, please try again.";
+"Onchain Wallets" = "Onchain Wallets";
+"Offchain Wallet" = "Offchain Wallet";
+"Request" = "Request";
+"Transfer" = "Transfer";
+"Copied to clipboard" = "Copied to clipboard";
+"Go to Etherscan.io" = "Go to Etherscan.io";
+"Token List:" = "Token List:";
+"Convert to MozoX Offchain" = "Convert to MozoX Offchain";
+"Pending transaction..." = "Pending transaction...";
+"How to add MozoX Onchain?" = "How to add MozoX Onchain?";
+"Enter amount to convert MozoX Offchain" = "Enter amount to convert MozoX Offchain";
+"Convert To Offchain" = "Convert To Offchain";
+"Slow" = "Slow";
+"Average" = "Average";
+"Fast" = "Fast";
+"Normal" = "Normal";
+"Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is 41 GWEI." = "";
+"Read more" = "Read more";
+"Onchain balance is not enough." = "Onchain balance is not enough.";
+"ETH balance is not enough." = "ETH balance is not enough.";
+"From Onchain" = "From Onchain";
+"To Offchain" = "To Offchain";
+"Enter your Security PIN to convert MozoX from onchain to offchain." = "Enter your Security PIN to convert MozoX from onchain to offchain.";
+"Broadcasting transaction..." = "Broadcasting transaction...";
+"It’s might take about 3 minutes to complete" = "It’s might take about 3 minutes to complete";
+"Hide transaction" = "Hide transaction";
+"When you hide this screen, you will receive notify when transaction complete or fail." = "When you hide this screen, you will receive notify when transaction complete or fail.";
+"Broadcast completed" = "Broadcast completed";
+"Waiting for transaction status..." = "Waiting for transaction status...";
+"Convert Successful" = "Convert Successful";
+"You have just converted MozoX from Onchain to Offchain:" = "You have just converted MozoX from Onchain to Offchain:";
+"Back to Onchain Wallet" = "Back to Onchain Wallet";
+"Convert Failed" = "Convert Failed";
+"Cannot complete convert MozoX from Onchain to Offchain.\nPlease try again after some time." = "Cannot complete convert MozoX from Onchain to Offchain.\nPlease try again after some time.";
+"There is no Airdrop Events around you" = "There is no Airdrop Events around you";
+"Discover" = "Discover";
+"On Going Events" = "On Going Events";
+"Top Airdrop Events" = "Top Airdrop Events";
+"Nearest Events" = "Nearest Events";
+"Discover more Airdrop Events to get MozoX" = "Discover more Airdrop Events to get MozoX";
+
+"There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later. " = "There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later. ";
+"Can not send transaction to Ethereum network or sent but failed. Please check your data and try again." = "Can not send transaction to Ethereum network or sent but failed. Please check your data and try again.";
+"We're sorry because something is wrong. We will transfer MozoX Offchain to your wallet later." = "We're sorry because something is wrong. We will transfer MozoX Offchain to your wallet later.";
+
+"Convert Failed" = "Convert Failed";
+"Cannot complete convert MozoX from Onchain to Offchain." = "Cannot complete convert MozoX from Onchain to Offchain.";
+"Please try again after some time." = "Please try again after some time.";
+"No routes found" = "No routes found";
+"Discover more Airdrop Events to get MozoX 👌" = "Discover more Airdrop Events to get MozoX 👌";
