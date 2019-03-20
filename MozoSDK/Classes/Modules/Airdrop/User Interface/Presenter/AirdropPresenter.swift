@@ -51,7 +51,7 @@ extension AirdropPresenter: AirdropInteractorOutput {
 
     func didSendSignedAirdropEventFailure(error: ConnectionError) {
         airdropEventDelegate?.createAirdropEventFailure(error: error, isDisplayingTryAgain: true)
-        if error.isApiError, let apiError = error.apiError, apiError == ErrorApiResponse.STORE_SALE_PERSON_UNAUTHORIZED_ACCESS_REMOVED {
+        if error.isApiError, let apiError = error.apiError, apiError == ErrorApiResponse.USER_DEACTIVATED {
             NSLog("User account is not authorized access.")
         } else {
             DisplayUtils.displayTryAgainPopup(delegate: self)

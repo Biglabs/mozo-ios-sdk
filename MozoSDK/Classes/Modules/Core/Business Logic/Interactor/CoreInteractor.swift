@@ -167,7 +167,7 @@ class CoreInteractor: NSObject {
 extension CoreInteractor: CoreInteractorInput {
     func downloadAndStoreConvenienceData() {
         print("Download convenience data and store at local.")
-        if AccessTokenManager.getAccessToken() != nil {
+        if AccessTokenManager.getAccessToken() != nil, SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING {
             // Check User info here
             _ = getUserProfile().done {
                 self.downloadData()

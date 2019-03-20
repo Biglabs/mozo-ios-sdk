@@ -116,7 +116,7 @@ extension RDNInteractor {
     }
     
     private func processWSMessage(message: WSMessage, rawJsonMessage: String) {
-        if let messageContent = message.content {
+        if !SessionStoreManager.isAccessDenied, let messageContent = message.content {
             let jobj = SwiftyJSON.JSON(parseJSON: messageContent)
             if let rdNoti = RdNotification(json: jobj) {
                 var needSave = false

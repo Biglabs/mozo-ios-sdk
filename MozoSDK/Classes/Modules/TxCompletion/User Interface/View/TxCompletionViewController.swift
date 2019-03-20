@@ -63,6 +63,8 @@ class TxCompletionViewController: MozoBasicViewController {
                 StoreBookDTO.arrayContainsItem(detailItem.addressTo, array: SafetyDataManager.shared.storeBookList)
             if contain {
                 lbAddress.text = DisplayUtils.buildNameFromAddress(address: detailItem.addressTo)
+            } else {
+                lbAddress.text = detailItem.addressTo
             }
             btnSave.isHidden = contain
             btnDetail.isHidden = false

@@ -23,7 +23,7 @@ class ModuleDependencies {
     
     public var network: MozoNetwork = .TestNet {
         didSet {
-           
+           authWireframe.authPresenter?.authInteractor?.updateNetwork(network)
         }
     }
     
@@ -257,6 +257,10 @@ class ModuleDependencies {
     
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[StoreInfoDTO]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRecommendationStores(storeId, size: size, long: long, lat: lat))!
+    }
+    
+    func handleAccessRemove() {
+        coreWireframe.corePresenter?.handleAccessRemoved()
     }
     
     func configureDependencies() {

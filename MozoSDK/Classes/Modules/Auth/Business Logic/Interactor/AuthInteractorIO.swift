@@ -10,6 +10,7 @@ import AppAuth
 
 protocol AuthInteractorInput {
     func updateClientId(_ appType: AppType)
+    func updateNetwork(_ network: MozoNetwork)
     
     func buildAuthRequest()
     func setCurrentAuthorizationFlow(_ authorizationFlow : OIDAuthorizationFlowSession?)
