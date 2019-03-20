@@ -73,4 +73,8 @@ protocol CoreInteractorService {
     
     func getStoreDetail(_ storeId: Int64) -> Promise<StoreInfoDTO>
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[StoreInfoDTO]>
+    
+    func getDiscoverNearestAirdrops(page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]>
+    func getDiscoverTopAirdrops(page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]>
+    func getDiscoverUpcomingAirdrops(page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]>
 }

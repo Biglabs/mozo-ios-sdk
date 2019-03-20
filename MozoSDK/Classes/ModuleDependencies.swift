@@ -48,6 +48,7 @@ class ModuleDependencies {
     let abWireframe = AddressBookWireframe()
     let adWireframe = AirdropWireframe()
     let addWireframe = AirdropAddWireframe()
+    let withdrawWireframe = WithdrawWireframe()
     let paymentWireframe = PaymentWireframe()
     let paymentQRWireframe = PaymentQRWireframe()
     let convertWireframe = ConvertWireframe()
@@ -149,6 +150,10 @@ class ModuleDependencies {
     
     func addMoreMozoToAirdropEvent(event: AirdropEventDTO, delegate: AirdropAddEventDelegate) {
         addWireframe.requestToAddMoreAndSign(event, delegate: delegate)
+    }
+    
+    func withdrawMozoFromAirdropEventId(_ eventId: Int64, delegate: WithdrawAirdropEventDelegate) {
+        withdrawWireframe.requestToWithdrawAndSign(eventId, delegate: delegate)
     }
     
     func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
@@ -261,6 +266,18 @@ class ModuleDependencies {
     
     func handleAccessRemove() {
         coreWireframe.corePresenter?.handleAccessRemoved()
+    }
+    
+    func getDiscoverNearestAirdrops(page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getDiscoverNearestAirdrops(page: page, size: size, long: long, lat: lat))!
+    }
+    
+    func getDiscoverTopAirdrops(page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getDiscoverTopAirdrops(page: page, size: size, long: long, lat: lat))!
+    }
+    
+    func getDiscoverUpcomingAirdrops(page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getDiscoverUpcomingAirdrops(page: page, size: size, long: long, lat: lat))!
     }
     
     func configureDependencies() {
@@ -442,6 +459,7 @@ class ModuleDependencies {
         
         airdropDependencies(signManager: signManager)
         airdropAddDependencies(signManager: signManager)
+        airdropWithdrawDependencies(signManager: signManager)
         convertDependencies(signManager: signManager)
     }
     
@@ -507,6 +525,21 @@ class ModuleDependencies {
         
         addWireframe.addPresenter = addPresenter
         addWireframe.walletWireframe = walletWireframe
+    }
+    
+    func airdropWithdrawDependencies(signManager: TransactionSignManager) {
+        let withdrawPresenter = WithdrawPresenter()
+        
+        let withdrawInteractor = WithdrawInteractor()
+        withdrawInteractor.apiManager = apiManager
+        withdrawInteractor.output = withdrawPresenter
+        withdrawInteractor.signManager = signManager
+        
+        withdrawPresenter.interactor = withdrawInteractor
+        withdrawPresenter.wireframe = withdrawWireframe
+        
+        withdrawWireframe.withdrawPresenter = withdrawPresenter
+        withdrawWireframe.walletWireframe = walletWireframe
     }
     
     func paymentDependencies() {

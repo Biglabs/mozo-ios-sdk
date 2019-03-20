@@ -40,6 +40,15 @@ public enum ErrorApiResponse: String {
     case STORE_ADDRESS_SIGN_TRANSACTION_STATUS_PENDING = "STORE_ADDRESS_SIGN_TRANSACTION_STATUS_PENDING"
     case STORE_TXHASH_NOT_EXIST = "STORE_TXHASH_NOT_EXIST"
     case STORE_PRIVATE_BLOCK_CHAIN_ERROR = "STORE_PRIVATE_BLOCK_CHAIN_ERROR"
+    
+    case STORE_RETAILER_AIR_DROP_NOT_EXIST_ERROR = "STORE_RETAILER_AIR_DROP_NOT_EXIST_ERROR"
+    case STORE_RETAILER_NOT_USER_CREATE_EVENT_ERROR = "STORE_RETAILER_NOT_USER_CREATE_EVENT_ERROR"
+    case STORE_RETAILER_EVENT_STATUS_NOT_WITH_DRAW_ERROR = "STORE_RETAILER_EVENT_STATUS_NOT_WITH_DRAW_ERROR"
+    case STORE_RETAILER_EVENT_TOTAL_NOT_MOZO_ERROR = "STORE_RETAILER_EVENT_TOTAL_NOT_MOZO_ERROR"
+    case STORE_GET_NONCE_ERROR = "STORE_GET_NONCE_ERROR"
+    case STORE_CALL_TRANSACTION_SERVICE_ERROR = "STORE_CALL_TRANSACTION_SERVICE_ERROR"
+    case STORE_SIGN_TRANSACTION_ERROR = "STORE_SIGN_TRANSACTION_ERROR"
+    
     case SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD = "SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD"
     // SOLOMON
     case SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS = "SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS"
@@ -91,8 +100,8 @@ public enum ErrorApiResponse: String {
         case .STORE_RETAILER_AIR_DROP_INVALID_TO_HOUR_OF_DAY: return "Invalid Airdrop start time - end time."
         case .STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_HOUR_OF_DAY: return "The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input."
         case .STORE_RETAILER_AIR_DROP_INVALID_TOTAL_AMOUNT: return "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event.\n\"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours)."
-        case .STORE_RETAILER_AIR_DROP_INVALID_PER_CUSTOMER_AMOUNT: return "Incorrect total amount of MozoX tokens to be airdropped. Please check your input."
-        case .STORE_RETAILER_AIR_DROP_INVALID_TOO_LOW_FREQUENCY: return "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input."
+        case .STORE_RETAILER_AIR_DROP_INVALID_PER_CUSTOMER_AMOUNT: return "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input."
+        case .STORE_RETAILER_AIR_DROP_INVALID_TOO_LOW_FREQUENCY: return "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event.\n\"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours)."
             
         case .STORE_ERROR_INPUT_DTO: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_ADDRESS_STATUS_PENDING: return "There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later."
@@ -101,6 +110,14 @@ public enum ErrorApiResponse: String {
         case .STORE_PRIVATE_BLOCK_CHAIN_ERROR: return "We're sorry because something is wrong. We will transfer MozoX Offchain to your wallet later."
         case .SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
 
+        case .STORE_RETAILER_AIR_DROP_NOT_EXIST_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_RETAILER_NOT_USER_CREATE_EVENT_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_RETAILER_EVENT_STATUS_NOT_WITH_DRAW_ERROR: return "This airdrop program has not ended yet. You can not withdraw MozoX. Please try again later."
+        case .STORE_RETAILER_EVENT_TOTAL_NOT_MOZO_ERROR: return "There is no MozoX in this airdrop program. You do not need to do any thing."
+        case .STORE_GET_NONCE_ERROR: return "Something is wrong with your account status. Please try again."
+        case .STORE_CALL_TRANSACTION_SERVICE_ERROR: return "Something is wrong with your account status. Please try again."
+        case .STORE_SIGN_TRANSACTION_ERROR: return "Something is wrong with your account status. Please try again."
+            
         case .STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT: return rawValue
         case .STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE: return rawValue
         }
@@ -165,6 +182,15 @@ public enum ErrorApiResponse: String {
         case .STORE_ADDRESS_SIGN_TRANSACTION_STATUS_PENDING: return .apiError_STORE_ADDRESS_SIGN_TRANSACTION_STATUS_PENDING
         case .STORE_TXHASH_NOT_EXIST: return .apiError_STORE_TXHASH_NOT_EXIST
         case .STORE_PRIVATE_BLOCK_CHAIN_ERROR: return .apiError_STORE_PRIVATE_BLOCK_CHAIN_ERROR
+        
+        case .STORE_RETAILER_AIR_DROP_NOT_EXIST_ERROR: return .apiError_STORE_RETAILER_AIR_DROP_NOT_EXIST_ERROR
+        case .STORE_RETAILER_NOT_USER_CREATE_EVENT_ERROR: return .apiError_STORE_RETAILER_NOT_USER_CREATE_EVENT_ERROR
+        case .STORE_RETAILER_EVENT_STATUS_NOT_WITH_DRAW_ERROR: return .apiError_STORE_RETAILER_EVENT_STATUS_NOT_WITH_DRAW_ERROR
+        case .STORE_RETAILER_EVENT_TOTAL_NOT_MOZO_ERROR: return .apiError_STORE_RETAILER_EVENT_TOTAL_NOT_MOZO_ERROR
+        case .STORE_GET_NONCE_ERROR: return .apiError_STORE_GET_NONCE_ERROR
+        case .STORE_CALL_TRANSACTION_SERVICE_ERROR: return .apiError_STORE_CALL_TRANSACTION_SERVICE_ERROR
+        case .STORE_SIGN_TRANSACTION_ERROR: return .apiError_STORE_SIGN_TRANSACTION_ERROR
+            
         case .SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD: return .apiError_SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD
         }
     }

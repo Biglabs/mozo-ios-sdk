@@ -56,6 +56,7 @@ public enum Module {
     case Transaction
     case TxHistory
     case Airdrop
+    case Withdraw
     case Payment
     case AddressBook
     case Convert
@@ -67,6 +68,7 @@ public enum Module {
             case .Transaction: return "Transaction"
             case .TxHistory: return "TxHistory"
             case .Airdrop: return "Airdrop"
+            case .Withdraw: return "Withdraw"
             case .Payment: return "Payment"
             case .AddressBook: return "AddressBook"
             case .Convert: return "Convert"
@@ -80,6 +82,7 @@ public enum Module {
             case .Transaction: return "Transaction"
             case .TxHistory: return "TxHistory"
             case .Airdrop: return "Airdrop"
+            case .Withdraw: return "Withdraw"
             case .Payment: return "Payment"
             case .AddressBook: return "AddressBook"
             case .Convert: return "Convert"

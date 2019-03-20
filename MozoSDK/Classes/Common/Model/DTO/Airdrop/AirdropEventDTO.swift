@@ -66,6 +66,7 @@ public class AirdropEventDTO {
         self.airdropFreq = json["airdropFreq"].int
         self.hourOfDayFrom = json["hourOfDayFrom"].int
         self.hourOfDayTo = json["hourOfDayTo"].int
+        self.id = json["id"].int64
         self.periodFromDate = json["periodFromDate"].int64
         self.periodToDate = json["periodToDate"].int64
         self.totalNumMozoOffchain = json["totalNumMozoOffchain"].number
@@ -75,11 +76,15 @@ public class AirdropEventDTO {
         self.decimals = json["decimals"].int
         self.beaconInfoId = json["beaconInfoId"].int64
         self.smartAddress = json["smartAddress"].string
+        self.stayIn = json["stayIn"].int
         self.eventStatus = json["eventStatus"].string
     }
 
     public func toJSON() -> Dictionary<String, Any> {
         var json = Dictionary<String, Any>()
+        if let id = self.id {
+            json["id"] = id
+        }
         if let active = self.active {
             json["active"] = active
         }

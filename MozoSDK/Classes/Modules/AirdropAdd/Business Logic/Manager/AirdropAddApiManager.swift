@@ -17,7 +17,7 @@ public extension ApiManager {
             self.execute(.post, url: url, parameters: param)
                 .done { json -> Void in
                     // JSON info
-                    print(json)
+                    print("Finish request to sign add more mozo airdrop event, json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)
                     let tx = IntermediaryTransactionDTO(json: jobj)
                     seal.fulfill(tx!)
@@ -25,7 +25,7 @@ public extension ApiManager {
                 .catch { error in
                     //Handle error or give feedback to the user
                     let err = error as! ConnectionError
-                    print(err.localizedDescription)
+                    print("Error when request to sign add more mozo airdrop event: " + error.localizedDescription)
                     seal.reject(err)
                 }
                 .finally {

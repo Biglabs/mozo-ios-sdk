@@ -27,7 +27,7 @@ class WalletWireframe: MozoWireframe {
         
         pinViewController = viewController
         walletPresenter?.pinUserInterface = viewController
-        if module == .Airdrop {
+        if module == .Airdrop || module == .Withdraw {
             rootWireframe?.showRootViewController(viewController, inWindow: (UIApplication.shared.delegate?.window!)!)
         } else {
             rootWireframe?.displayViewController(viewController)
