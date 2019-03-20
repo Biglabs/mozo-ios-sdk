@@ -216,4 +216,8 @@ public class MozoSDK {
     public static func getRecommendationStores(_ storeId: Int64, size: Int = 5, long: Double?, lat: Double?) -> Promise<[StoreInfoDTO]> {
         return moduleDependencies.getRecommendationStores(storeId, size: size, long: long, lat: lat)
     }
+    
+    public static func handleAccessRemove() {
+        return moduleDependencies.handleAccessRemove()
+    }
 }

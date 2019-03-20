@@ -58,6 +58,11 @@ class CorePresenter : NSObject {
         reachability = nil
     }
     
+    func handleAccessRemoved() {
+        print("CorePresenter - Handle processed after account's access removed")
+        SessionStoreManager.isAccessDenied = true
+    }
+    
     deinit {
         stopNotifier()
         NotificationCenter.default.removeObserver(self)

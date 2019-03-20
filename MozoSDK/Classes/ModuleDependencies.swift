@@ -259,6 +259,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRecommendationStores(storeId, size: size, long: long, lat: lat))!
     }
     
+    func handleAccessRemove() {
+        coreWireframe.corePresenter?.handleAccessRemoved()
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

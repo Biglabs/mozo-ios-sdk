@@ -63,4 +63,6 @@ public class SessionStoreManager {
     public static var onchainInfo: OnchainInfoDTO?
     
     public static var countryList: [CountryCodeDTO] = []
+    
+    public static var isAccessDenied = false
 }
