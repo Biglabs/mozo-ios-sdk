@@ -13,6 +13,7 @@ public enum ErrorApiResponse: String {
     case INVALID_USER_TOKEN = "INVALID_USER_TOKEN"
     case INVALID_REQUEST = "INVALID_REQUEST"
     // STORE
+    case STORE_UNREGISTERED = "STORE_UNREGISTERED"
     case STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS = "STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS"
     case STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT = "STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT"
     case STORE_RETAILER_BEACON_ALREADY_REGISTERED_BEFORE = "STORE_RETAILER_BEACON_ALREADY_REGISTERED_BEFORE"
@@ -20,7 +21,7 @@ public enum ErrorApiResponse: String {
     case STORE_RETAILER_UNAUTHORIZED_ACCESS = "STORE_RETAILER_UNAUTHORIZED_ACCESS"
     case STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS = "STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS"
     case STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE = "STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE"
-    case STORE_SALE_PERSON_UNAUTHORIZED_ACCESS_REMOVED = "STORE_SALE_PERSON_UNAUTHORIZED_ACCESS_REMOVED"
+    case USER_DEACTIVATED = "USER_DEACTIVATED"
     
     case STORE_RETAILER_AIR_DROP_INVALID_FROM_PERIOD_IN_THE_PAST = "STORE_RETAILER_AIR_DROP_INVALID_FROM_PERIOD_IN_THE_PAST"
     case STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_PERIOD = "STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_PERIOD"
@@ -74,10 +75,11 @@ public enum ErrorApiResponse: String {
         case .TRANSACTION_ERROR_SEND_TX: return "Something is wrong with your account status. Please try again."
         case .SOLOMON_FATAL_USER_NO_PROFILE: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
 
+        case .STORE_UNREGISTERED: return "Your store have not been registered on our website yet. Please contact MozoX Customer Service for support. (Zalo - Kakao - Telegram)"
         case .STORE_RETAILER_UNAUTHORIZED_ACCESS: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE: return "This phone number has already been registered. Please enter another number."
-        case .STORE_SALE_PERSON_UNAUTHORIZED_ACCESS_REMOVED: return "Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)"
+        case .USER_DEACTIVATED: return "Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)"
 
         case .STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
@@ -133,13 +135,14 @@ public enum ErrorApiResponse: String {
             return .apiError_TRANSACTION_ERROR_SEND_TX
         case .SOLOMON_FATAL_USER_NO_PROFILE: return .apiError_SOLOMON_FATAL_USER_NO_PROFILE
         
+        case .STORE_UNREGISTERED: return .apiError_STORE_UNREGISTERED
         case .STORE_RETAILER_UNAUTHORIZED_ACCESS: return .apiError_STORE_RETAILER_UNAUTHORIZED_ACCESS
         case .STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS:
             return .apiError_STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS
         case .STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE:
             return .apiError_STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE
-        case .STORE_SALE_PERSON_UNAUTHORIZED_ACCESS_REMOVED:
-            return .apiError_STORE_SALE_PERSON_UNAUTHORIZED_ACCESS_REMOVED
+        case .USER_DEACTIVATED:
+            return .apiError_USER_DEACTIVATED
             
         case .STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS: return .apiError_STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS
         case .STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT: return .apiError_STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT
