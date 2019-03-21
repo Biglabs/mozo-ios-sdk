@@ -10,6 +10,8 @@ import SwiftyJSON
 
 public class AirdropEventDiscoverDTO {
     public var eventId: Int64?
+    public var eventDisable: Bool?
+    public var eventName: String?
     public var customerAirdropAmount: NSNumber?
     public var eventLatitude: Double?
     public var eventLongitude: Double?
@@ -19,6 +21,8 @@ public class AirdropEventDiscoverDTO {
     
     public required init?(json: SwiftyJSON.JSON) {
         self.eventId = json["eventId"].int64
+        self.eventDisable = json["eventDisable"].bool
+        self.eventName = json["eventName"].string
         self.customerAirdropAmount = json["customerAirdropAmount"].number
         self.eventLatitude = json["eventLatitude"].double
         self.eventLongitude = json["eventLongitude"].double
@@ -31,6 +35,12 @@ public class AirdropEventDiscoverDTO {
         var json = Dictionary<String, Any>()
         if let eventId = self.eventId {
             json["eventId"] = eventId
+        }
+        if let eventDisable = self.eventDisable {
+            json["eventDisable"] = eventDisable
+        }
+        if let eventName = self.eventName {
+            json["eventName"] = eventName
         }
         if let customerAirdropAmount = self.customerAirdropAmount {
             json["customerAirdropAmount"] = customerAirdropAmount

@@ -227,15 +227,7 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getRecommendationStores(storeId, size: size, long: long, lat: lat)
     }
     
-    func getDiscoverNearestAirdrops(page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]> {
-        return apiManager.getDiscoverNearestAirdrops(page: page, size: size, long: long, lat: lat)
-    }
-    
-    func getDiscoverTopAirdrops(page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]> {
-        return apiManager.getDiscoverTopAirdrops(page: page, size: size, long: long, lat: lat)
-    }
-    
-    func getDiscoverUpcomingAirdrops(page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]> {
-        return apiManager.getDiscoverUpcomingAirdrops(page: page, size: size, long: long, lat: lat)
+    func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]> {
+        return apiManager.getDiscoverAirdrops(type: type, page: page, size: size, long: long, lat: lat)
     }
 }

@@ -193,3 +193,9 @@ public enum TransactionStatusType: String {
     case FAILED = "FAILED"
     case PENDING = "PENDING"
 }
+
+public enum AirdropEventDiscoverType: String {
+    case NEAREST = "nearest"
+    case TOP = "top"
+    case UPCOMING = "upcoming"
+}

@@ -30,6 +30,7 @@ public class AirdropEventDTO {
     public var decimals: Int?
     
     public var eventStatus: String?
+    public var ownerCreateEvent: Bool?
     
     public init?(name: String, address: String, receivedShopper: Int64,
                   mozoAirdropPerCustomerVisit: NSNumber, airdropFreq: Int,
@@ -78,6 +79,7 @@ public class AirdropEventDTO {
         self.smartAddress = json["smartAddress"].string
         self.stayIn = json["stayIn"].int
         self.eventStatus = json["eventStatus"].string
+        self.ownerCreateEvent = json["ownerCreateEvent"].bool
     }
 
     public func toJSON() -> Dictionary<String, Any> {

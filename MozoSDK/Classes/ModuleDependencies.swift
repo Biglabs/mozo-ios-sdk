@@ -268,16 +268,8 @@ class ModuleDependencies {
         coreWireframe.corePresenter?.handleAccessRemoved()
     }
     
-    func getDiscoverNearestAirdrops(page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getDiscoverNearestAirdrops(page: page, size: size, long: long, lat: lat))!
-    }
-    
-    func getDiscoverTopAirdrops(page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getDiscoverTopAirdrops(page: page, size: size, long: long, lat: lat))!
-    }
-    
-    func getDiscoverUpcomingAirdrops(page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getDiscoverUpcomingAirdrops(page: page, size: size, long: long, lat: lat))!
+    func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getDiscoverAirdrops(type: type, page: page, size: size, long: long, lat: lat))!
     }
     
     func configureDependencies() {
