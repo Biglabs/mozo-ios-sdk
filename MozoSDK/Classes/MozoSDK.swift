@@ -109,6 +109,10 @@ public class MozoSDK {
         return (moduleDependencies.addMoreMozoToAirdropEvent(event: event, delegate: delegate))
     }
     
+    public static func withdrawMozoFromAirdropEventId(_ eventId: Int64, delegate: WithdrawAirdropEventDelegate) {
+        return (moduleDependencies.withdrawMozoFromAirdropEventId(eventId, delegate: delegate))
+    }
+    
     public static func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
         return moduleDependencies.getLatestAirdropEvent()
     }
@@ -219,5 +223,9 @@ public class MozoSDK {
     
     public static func handleAccessRemove() {
         return moduleDependencies.handleAccessRemove()
+    }
+    
+    public static func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]> {
+        return moduleDependencies.getDiscoverAirdrops(type: type, page: page, size: size, long: long, lat: lat)
     }
 }
