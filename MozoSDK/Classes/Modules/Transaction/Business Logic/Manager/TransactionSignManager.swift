@@ -50,20 +50,20 @@ public class TransactionSignManager {
     public func signMultiTransaction(_ interTxArray: [IntermediaryTransactionDTO], pin: String) -> Promise<[IntermediaryTransactionDTO]> {
         return Promise { seal in
             if let userObj = SessionStoreManager.loadCurrentUser(), let profile = userObj.profile, let userId = profile.userId {
-                _ = dataManager.getWalletByUserId(userId).done({ (wallet) in
-                    if !wallet.privateKey.isEmpty {
+                _ = dataManager.getAllWalletsByUserId(userId).done({ (wallets) in
                         var interTxResult : [IntermediaryTransactionDTO] = []
                         for interTx in interTxArray {
-                            let signature = Signature(tosigns: interTx.tosign ?? [])
-                            let signedResult = self.sign(wallet.privateKey, pin: pin, signature: signature)
-                            
-                            interTx.signatures = signedResult.signatures
-                            interTx.pubkeys = signedResult.publicKeys
-                            
-                            interTxResult.append(interTx)
+                            if let privateKey = self.findPrivateKey(interTx, wallets: wallets), !privateKey.isEmpty {
+                                let signature = Signature(tosigns: interTx.tosign ?? [])
+                                let signedResult = self.sign(privateKey, pin: pin, signature: signature)
+                                
+                                interTx.signatures = signedResult.signatures
+                                interTx.pubkeys = signedResult.publicKeys
+                                
+                                interTxResult.append(interTx)
+                            }
                         }
                         seal.fulfill(interTxResult)
-                    }
                 })
             }
         }
