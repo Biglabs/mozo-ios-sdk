@@ -227,7 +227,7 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getRecommendationStores(storeId, size: size, long: long, lat: lat)
     }
     
-    func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]> {
+    func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[String: Any]> {
         return apiManager.getDiscoverAirdrops(type: type, page: page, size: size, long: long, lat: lat)
     }
 }

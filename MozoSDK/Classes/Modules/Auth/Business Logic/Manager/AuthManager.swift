@@ -40,6 +40,9 @@ class AuthManager : NSObject {
         print("AuthManager, clear all: token, user info, auth state.")
         AccessTokenManager.clearToken()
         SessionStoreManager.clearCurrentUser()
+        SafetyDataManager.shared.offchainDetailDisplayData = nil
+        SafetyDataManager.shared.ethDetailDisplayData = nil
+        SafetyDataManager.shared.onchainDetailDisplayData = nil
         setAuthState(nil)
     }
     
