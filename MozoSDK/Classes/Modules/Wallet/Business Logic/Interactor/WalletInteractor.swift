@@ -112,8 +112,8 @@ class WalletInteractor : NSObject {
 extension WalletInteractor : WalletInteractorInput {
     func updateOnchainAddressToServer(walletsNeedToBeSavedAtLocal: [WalletModel]) {
         print("WalletInteractor - Update onchain address to server")
-        if let userObj = SessionStoreManager.loadCurrentUser(), let userId = userObj.id {
-            _ = dataManager.getOnchainAddressByUserId(userId).done { (onchainAddress) in
+        if let userObj = SessionStoreManager.loadCurrentUser(), let userId = userObj.id, let offchainAddress = userObj.profile?.walletInfo?.offchainAddress {
+            _ = dataManager.getOnchainAddressByUserId(userId, offchainAddress: offchainAddress).done { (onchainAddress) in
                 self.apiManager.updateOnlyOnchainWallet(onchainAddress: onchainAddress).done({ (uProfile) in
                     let userDto = UserDTO(id: uProfile.userId, profile: uProfile)
                     SessionStoreManager.saveCurrentUser(user: userDto)
@@ -128,6 +128,8 @@ extension WalletInteractor : WalletInteractorInput {
             }.catch { (error) in
                 self.output?.errorWhileManageWallet(connectionError: .systemError, showTryAgain: false)
             }
+        } else {
+            self.output?.errorWhileManageWallet(connectionError: .systemError, showTryAgain: false)
         }
     }
     

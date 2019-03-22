@@ -73,15 +73,19 @@ class WalletDataManager : NSObject {
         return (coreDataStore?.getUserById(id))!
     }
     
-    func getOnchainAddressByUserId(_ id: String) -> Promise<String> {
+    func getOnchainAddressByUserId(_ id: String, offchainAddress: String) -> Promise<String> {
         return Promise { seal in
             _ = coreDataStore?.getUserById(id).done({ (user) in
                 let wallets : [WalletModel]? = user.wallets?.allObjects as? [WalletModel]
-                if wallets?.count ?? 0 > 1 {
-                    seal.fulfill(wallets?[1].address ?? "")
-                } else {
-                    seal.reject(ConnectionError.systemError)
+                if let wallets = wallets {
+                    for wallet in wallets {
+                        if wallet.address.lowercased() != offchainAddress.lowercased() {
+                            seal.fulfill(wallet.address)
+                            return
+                        }
+                    }
                 }
+                seal.reject(ConnectionError.systemError)
             }).catch({ (error) in
                 seal.reject(ConnectionError.systemError)
             })
