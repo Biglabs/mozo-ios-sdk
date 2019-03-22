@@ -225,7 +225,7 @@ public class MozoSDK {
         return moduleDependencies.handleAccessRemove()
     }
     
-    public static func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]> {
+    public static func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[String: Any]> {
         return moduleDependencies.getDiscoverAirdrops(type: type, page: page, size: size, long: long, lat: lat)
     }
 }

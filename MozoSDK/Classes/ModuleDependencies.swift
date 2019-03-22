@@ -268,7 +268,7 @@ class ModuleDependencies {
         coreWireframe.corePresenter?.handleAccessRemoved()
     }
     
-    func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[AirdropEventDiscoverDTO]> {
+    func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getDiscoverAirdrops(type: type, page: page, size: size, long: long, lat: lat))!
     }
     
