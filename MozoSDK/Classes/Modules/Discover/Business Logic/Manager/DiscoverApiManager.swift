@@ -14,8 +14,8 @@ extension ApiManager {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page,
-                          "lat": lat,
-                          "lon": long] as [String : Any]
+                          "userLat": lat,
+                          "userLng": long] as [String : Any]
             let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + DISCOVER_AIRDROP_EVENT_PATH + "/\(type.rawValue)?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
