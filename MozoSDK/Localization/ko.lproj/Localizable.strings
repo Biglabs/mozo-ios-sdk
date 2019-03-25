@@ -810,7 +810,6 @@
 "On Going Events" = "Airdrop 다가오는 이벤트";
 "Top Airdrop Events" = "가장 많은 Airdrop 이벤트";
 "Nearest Events" = "가장 가까운 Airdrop 이벤트";
-"Discover more Airdrop Events to get MozoX" = "MozoX를 얻기 위하여 더 많은 Airdrop 이벤트를 발견하십시오.";
 
 "There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later. " = "보류중인 거래가 있습니다. 다른 거래를 보낼 수 없습니다. 약 3 분 정도 기다렸다가 나중에 다시 시도하십시오.";
 "Can not send transaction to Ethereum network or sent but failed. Please check your data and try again." = "에테 리움 네트워크로 거래를 보낼 수 없거나 전송되었지만 실패했습니다. 데이터를 확인하고 다시 시도하십시오.";
