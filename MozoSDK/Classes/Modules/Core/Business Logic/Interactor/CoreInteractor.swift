@@ -186,7 +186,6 @@ extension CoreInteractor: CoreInteractorInput {
     }
     
     func checkForAuthentication(module: Module) {
-        // FIX ISSUE: Request for authentication must wait for checking token expired DONE.
         print("CoreInteractor - Check for authentication. Waiting for check token expired.")
         checkTokenExpiredModule = module
         checkTokenExpiredTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.repeatCheckForAuthentication), userInfo: nil, repeats: true)
