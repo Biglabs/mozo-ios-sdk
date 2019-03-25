@@ -783,7 +783,7 @@
 "Average" = "Average";
 "Fast" = "Fast";
 "Normal" = "Normal";
-"Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is 41 GWEI." = "";
+"Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is 41 GWEI." = "Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is 41 GWEI.";
 "Read more" = "Read more";
 "Onchain balance is not enough." = "Onchain balance is not enough.";
 "ETH balance is not enough." = "ETH balance is not enough.";
