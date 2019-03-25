@@ -753,9 +753,9 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter amount to convert MozoX Offchain" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oWl-H5-bqM">
-                                <rect key="frame" x="46" y="71.5" width="314" height="17"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="46" y="71" width="314" height="18"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Enter amount to convert MozoX Offchain"/>
@@ -858,10 +858,15 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="Kyr-Ur-F68"/>
                                 </constraints>
-                                <string key="text">Gas Price is the amount you pay per unit of gas. TX fee = gas price * gas limit &amp; is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is 41 GWEI.</string>
+                                <string key="text">Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price &amp; is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is 41 GWEI.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey">
+                                        <string key="value">Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price &amp; is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is 41 GWEI.</string>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLx-rt-Ymn">
                                 <rect key="frame" x="15" y="455" width="61" height="14"/>

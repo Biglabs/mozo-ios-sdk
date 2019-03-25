@@ -61,7 +61,9 @@ class ConvertViewController: MozoBasicViewController {
         
         // Part of string to be bold
         attributedString.addAttributes(boldFontAttribute, range: string.range(of: "TX fee = gas price * gas limit"))
-        attributedString.addAttributes(boldFontAttribute, range: string.range(of: "41 GWEI."))
+        attributedString.addAttributes(boldFontAttribute, range: string.range(of: "TX fee = Txn에서 사용하는 가스 * Gas Price 이며"))
+        attributedString.addAttributes(boldFontAttribute, range: string.range(of: "Tổng chi phí (TX fee) được tính = Số Gas thực dùng * Gas Price"))
+        attributedString.addAttributes(boldFontAttribute, range: string.range(of: "41 GWEI"))
         
         lbExplain.attributedText = attributedString
     }
