@@ -19,6 +19,8 @@ class AuthManager : NSObject {
     
     var network = MozoNetwork.TestNet
     
+    var refreshTokenTimer: Timer?
+    
     private (set) var currentAuthorizationFlow: OIDAuthorizationFlowSession?
     var apiManager : ApiManager? {
         didSet {
@@ -36,6 +38,41 @@ class AuthManager : NSObject {
         super.init()
     }
     
+    func setupRefreshTokenTimer() {
+        print("Setup refresh token timer.")
+        if let authState = self.authState {
+            let expiresAt : Date = (authState.lastTokenResponse?.accessTokenExpirationDate)!
+            let tokenExpiredAfterSeconds = network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV
+            let fireAt = expiresAt.addingTimeInterval(TimeInterval(-tokenExpiredAfterSeconds))
+            print("Timer refresh token will be fire at: \(fireAt)")
+            if fireAt > Date() {
+                print("Setup refresh token timer, add to main run loop.")
+                refreshTokenTimer = Timer(fireAt: fireAt, interval: 0, target: self, selector: #selector(fireRefreshToken), userInfo: nil, repeats: false)
+                RunLoop.main.add(refreshTokenTimer!, forMode: .commonModes)
+            } else {
+                print("Refresh token timer directly.")
+                fireRefreshToken()
+            }
+        }
+    }
+    
+    @objc func fireRefreshToken() {
+        print("Fire refresh token.")
+        revokeRefreshTokenTimer()
+        checkRefreshToken { (success) in
+            if success {
+                self.setupRefreshTokenTimer()
+            } else {
+                
+            }
+        }
+    }
+    
+    func revokeRefreshTokenTimer() {
+        refreshTokenTimer?.invalidate()
+        refreshTokenTimer = nil
+    }
+    
     func clearAll() {
         print("AuthManager, clear all: token, user info, auth state.")
         AccessTokenManager.clearToken()
@@ -44,11 +81,12 @@ class AuthManager : NSObject {
         SafetyDataManager.shared.ethDetailDisplayData = nil
         SafetyDataManager.shared.onchainDetailDisplayData = nil
         setAuthState(nil)
+        revokeRefreshTokenTimer()
     }
     
     private func checkRefreshToken(_ completion: @escaping (_ success: Bool) -> Void) {
         let expiresAt : Date = (authState?.lastTokenResponse?.accessTokenExpirationDate)!
-        print("Check authorization, expires at: \(expiresAt)")
+        print("Check authorization, access token: \(authState?.lastTokenResponse?.accessToken ?? "NULL"), expires at: \(expiresAt), expires at time interval since now: \(expiresAt.timeIntervalSinceNow)")
         let tokenExpiredAfterSeconds = network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV
         if(expiresAt.timeIntervalSinceNow < TimeInterval(tokenExpiredAfterSeconds)) {
             print("Token expired, refresh token using: \(authState?.lastTokenResponse?.refreshToken ?? "NULL")")
@@ -58,11 +96,14 @@ class AuthManager : NSObject {
                     print("Did refresh token, error: \(error), ic: \(ic ?? "NULL")")
                     completion(false)
                 } else {
-                    print("Did refresh token, access token: \(self.authState?.lastTokenResponse?.accessToken ?? "NULL"), refresh token: \(self.authState?.lastTokenResponse?.refreshToken ?? "NULL")")
-                    AccessTokenManager.saveToken(accessToken)
+                    print("Did refresh token, access token: \(self.authState?.lastTokenResponse?.accessToken ?? "NULL"), refresh token: \(self.authState?.lastTokenResponse?.refreshToken ?? "NULL"), expires at: \(self.authState?.lastTokenResponse?.accessTokenExpirationDate)")
+                    AccessTokenManager.saveToken(self.authState?.lastTokenResponse?.accessToken)
+                    AuthDataManager.saveAuthState(self.authState)
                     completion(true)
                 }
             }, additionalRefreshParameters: nil)
+        } else {
+            completion(true)
         }
     }
     
@@ -74,7 +115,13 @@ class AuthManager : NSObject {
             self.delegate?.didCheckAuthorizationSuccess()
             // TODO: Reload user info in case error with user info at the latest login
             // Remember: Authen flow and wallet flow might be affected by reloading here
-            self.checkRefreshToken {_ in }
+            self.checkRefreshToken { (success) in
+                if success {
+                    self.setupRefreshTokenTimer()
+                } else {
+                    
+                }
+            }
         }).catch({ (err) in
             let error = err as! ConnectionError
             if error == ConnectionError.authenticationRequired {
@@ -87,6 +134,7 @@ class AuthManager : NSObject {
                 self.checkRefreshToken({ (success) in
                     if success {
                         self.delegate?.didCheckAuthorizationSuccess()
+                        self.setupRefreshTokenTimer()
                     } else {
                         self.clearAll()
                         self.delegate?.didRemoveTokenAndLogout()
