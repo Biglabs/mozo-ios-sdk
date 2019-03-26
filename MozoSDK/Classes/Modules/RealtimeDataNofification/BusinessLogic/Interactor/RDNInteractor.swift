@@ -54,6 +54,7 @@ extension RDNInteractor : WebSocketAdvancedDelegate {
     func websocketDidConnect(socket: WebSocket) {
         NSLog("Websocket is connected")
         stopReconnectToWebSocket()
+        shouldReconnectAfterDisconnected = true
     }
     func websocketDidDisconnect(socket: WebSocket, error: Error?) {
         if let e = error {
@@ -145,6 +146,7 @@ extension RDNInteractor {
                     output?.didCustomerCame(ccNoti: ccNoti, rawMessage: rawJsonMessage)
                 } else if rdNoti.event == NotificationEventType.InvalidToken.rawValue,
                     let tokenNoti = InvalidTokenNotification(json: jobj) {
+                    shouldReconnectAfterDisconnected = false
                     output?.didInvalidToken(tokenNoti: tokenNoti)
                 } else {
                     NSLog("Can not handle message: \(messageContent)")
