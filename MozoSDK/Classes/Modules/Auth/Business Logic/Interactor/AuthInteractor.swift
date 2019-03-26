@@ -41,10 +41,10 @@ extension AuthInteractor : AuthInteractorInput {
         if let response = response {
             let authState = OIDAuthState(authorizationResponse: response)
             authManager?.setAuthState(authState)
-            authManager?.setupRefreshTokenTimer()
             print("Authorization response with code: \(response.authorizationCode ?? "DEFAULT_CODE")")
             _ = authManager?.codeExchange().done({ (accessToken) in
                 self.output?.finishedAuthenticate(accessToken: accessToken)
+                self.authManager?.setupRefreshTokenTimer()
             })
         } else {
             print("Authorization error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")

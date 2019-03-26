@@ -40,19 +40,22 @@ class AuthManager : NSObject {
     
     func setupRefreshTokenTimer() {
         print("Setup refresh token timer.")
-        if let authState = self.authState {
-            let expiresAt : Date = (authState.lastTokenResponse?.accessTokenExpirationDate)!
-            let tokenExpiredAfterSeconds = network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV
-            let fireAt = expiresAt.addingTimeInterval(TimeInterval(-tokenExpiredAfterSeconds))
-            print("Timer refresh token will be fire at: \(fireAt)")
-            if fireAt > Date() {
-                print("Setup refresh token timer, add to main run loop.")
-                refreshTokenTimer = Timer(fireAt: fireAt, interval: 0, target: self, selector: #selector(fireRefreshToken), userInfo: nil, repeats: false)
-                RunLoop.main.add(refreshTokenTimer!, forMode: .commonModes)
-            } else {
-                print("Refresh token timer directly.")
-                fireRefreshToken()
-            }
+        let tokenExpiredAfterSeconds = network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV
+        var fireAt = Date().addingTimeInterval(TimeInterval(tokenExpiredAfterSeconds))
+        if let accessTokenExpirationDate = self.authState?.lastTokenResponse?.accessTokenExpirationDate {
+            let expiresAt : Date = accessTokenExpirationDate
+            fireAt = expiresAt.addingTimeInterval(TimeInterval(-tokenExpiredAfterSeconds))
+        } else {
+            print("Setup refresh token timer with out access token expiration date.")
+        }
+        print("Timer refresh token will be fire at: \(fireAt)")
+        if fireAt > Date() {
+            print("Setup refresh token timer, add to main run loop.")
+            refreshTokenTimer = Timer(fireAt: fireAt, interval: 0, target: self, selector: #selector(fireRefreshToken), userInfo: nil, repeats: false)
+            RunLoop.main.add(refreshTokenTimer!, forMode: .commonModes)
+        } else {
+            print("Refresh token timer directly.")
+            fireRefreshToken()
         }
     }
     
