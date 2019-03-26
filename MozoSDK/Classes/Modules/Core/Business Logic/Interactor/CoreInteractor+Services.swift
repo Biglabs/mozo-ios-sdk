@@ -39,6 +39,10 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.registerBeacon(parameters: parameters, isCreateNew: false)
     }
     
+    func deleteBeacon(beaconId: Int64) -> Promise<Bool> {
+        return apiManager.deleteBeacon(beaconId: beaconId)
+    }
+    
     func getListBeacons() -> Promise<[String : Any]> {
         return apiManager.getListBeacons()
     }

@@ -66,11 +66,15 @@ public class MozoSDK {
     }
     
     public static func registerBeacon(parameters: Any?) -> Promise<[String: Any]> {
-        return (moduleDependencies.registerBeacon(parameters:parameters))
+        return (moduleDependencies.registerBeacon(parameters: parameters))
     }
     
     public static func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]> {
-        return (moduleDependencies.updateBeaconSettings(parameters:parameters))
+        return (moduleDependencies.updateBeaconSettings(parameters: parameters))
+    }
+    
+    public static func deleteBeacon(beaconId: Int64) -> Promise<Bool> {
+        return (moduleDependencies.deleteBeacon(beaconId: beaconId))
     }
     
     public static func getListBeacons() -> Promise<[String : Any]> {

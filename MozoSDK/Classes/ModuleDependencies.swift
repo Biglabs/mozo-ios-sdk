@@ -109,11 +109,15 @@ class ModuleDependencies {
     }
     
     func registerBeacon(parameters: Any?) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.registerBeacon(parameters:parameters))!
+        return (coreWireframe.corePresenter?.coreInteractorService?.registerBeacon(parameters: parameters))!
     }
     
     func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateBeaconSettings(parameters:parameters))!
+        return (coreWireframe.corePresenter?.coreInteractorService?.updateBeaconSettings(parameters: parameters))!
+    }
+    
+    func deleteBeacon(beaconId: Int64) -> Promise<Bool> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.deleteBeacon(beaconId: beaconId))!
     }
     
     func getListBeacons() -> Promise<[String : Any]> {

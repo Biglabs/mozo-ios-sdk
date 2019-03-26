@@ -31,6 +31,25 @@ public extension ApiManager {
         }
     }
     
+    public func deleteBeacon(beaconId: Int64) -> Promise<Bool> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + RETAILER_BEACON_API_PATH + "/\(beaconId)"
+            self.execute(.delete, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to delete beacon, json response: \(json)")
+                    seal.fulfill(true)
+                }
+                .catch { error in
+                    print("Error when request delete beacon: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
     public func getListBeacons() -> Promise<[String: Any]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_BEACON_API_PATH
