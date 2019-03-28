@@ -200,7 +200,7 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidCancelAuthentication() {
-        isAuthenticating =  
+        isAuthenticating = false
         requestForCloseAllMozoUIs()
     }
     

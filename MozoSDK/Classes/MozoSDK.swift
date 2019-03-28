@@ -232,4 +232,8 @@ public class MozoSDK {
     public static func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[String: Any]> {
         return moduleDependencies.getDiscoverAirdrops(type: type, page: page, size: size, long: long, lat: lat)
     }
+    
+    public static func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
+        return moduleDependencies.requestSupportBeacon(info: info)
+    }
 }

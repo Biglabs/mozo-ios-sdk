@@ -16,6 +16,7 @@ let TAGS_API_PATH = "/tags"
 let RETAILER_STORE_INFO_API_PATH = "/retailer/storeInfo"
 let RETAILER_STORE_INFO_HASHTAG_API_PATH = "/retailer/storeInfo/hashtag"
 let RETAILER_STORE_INFO_PHOTO_API_PATH = "/retailer/storeInfo/photo"
+let RETAILER_SUPPORT_BEACON_API_PATH = "/retailer/support/beacon"
 public extension ApiManager {
     public func getRetailerInfo() -> Promise<[String: Any]> {
         return Promise { seal in
@@ -223,6 +224,27 @@ public extension ApiManager {
                 }
                 .catch { error in
                     print("Error when request delete store info photo: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + RETAILER_SUPPORT_BEACON_API_PATH
+            let param = info.toJSON()
+            print("Request to support beacon, param: \(param)")
+            self.execute(.post, url: url, parameters: param)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to support beacon, json response: \(json)")
+                    seal.fulfill(json)
+                }
+                .catch { error in
+                    print("Error when request support beacon: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {

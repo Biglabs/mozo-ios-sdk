@@ -276,6 +276,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getDiscoverAirdrops(type: type, page: page, size: size, long: long, lat: lat))!
     }
     
+    func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.requestSupportBeacon(info: info))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()
