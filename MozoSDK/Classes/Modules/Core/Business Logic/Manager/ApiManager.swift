@@ -164,7 +164,11 @@ public class ApiManager {
                     case .failure(let error):
                         print("Request failed with error: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))")
                         let connectionError = self.checkResponse(response: response, error: error)
-                        seal.reject(connectionError)
+                        if connectionError == .authenticationRequired, let viewController = DisplayUtils.getTopViewController(), !viewController.isKind(of: WaitingViewController.self) {
+                            self.delegate?.didReceiveAuthorizationRequired()
+                        } else {
+                            seal.reject(connectionError)
+                        }
                     }
             }
         }
@@ -194,7 +198,11 @@ public class ApiManager {
                     case .failure(let error):
                         print("Request failed with error: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))")
                         let connectionError = self.checkResponse(response: response, error: error)
-                        seal.reject(connectionError)
+                        if connectionError == .authenticationRequired, let viewController = DisplayUtils.getTopViewController(), !viewController.isKind(of: WaitingViewController.self) {
+                            self.delegate?.didReceiveAuthorizationRequired()
+                        } else {
+                            seal.reject(connectionError)
+                        }
                     }
             }
         }
@@ -213,7 +221,11 @@ public class ApiManager {
                     if let error = mozoResponse.error {
                         NSLog("ApiManager - Request failed with error \(error), url: \(url)")
                         if let errorEnum = ErrorApiResponse(rawValue: error) {
-                            seal.reject(errorEnum.connectionError)
+                            if errorEnum == .INVALID_USER_TOKEN {
+                                delegate?.didReceiveInvalidToken()
+                            } else {
+                                seal.reject(errorEnum.connectionError)
+                            }
                         }
                     }
                 }
@@ -251,7 +263,11 @@ public class ApiManager {
                     case .failure(let error):
                         print("Request failed with error: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))")
                         let connectionError = self.checkResponse(response: response, error: error)
-                        seal.reject(connectionError)
+                        if connectionError == .authenticationRequired, let viewController = DisplayUtils.getTopViewController(), !viewController.isKind(of: WaitingViewController.self) {
+                            self.delegate?.didReceiveAuthorizationRequired()
+                        } else {
+                            seal.reject(connectionError)
+                        }
                 }
             }
         }

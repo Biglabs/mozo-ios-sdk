@@ -18,6 +18,14 @@ class AuthWireframe: MozoWireframe {
         authPresenter?.performLogout()
     }
     
+    func startRefreshTokenTimer() {
+        authPresenter?.startRefreshTokenTimer()
+    }
+    
+    func clearAllSessionData() {
+        authPresenter?.clearAllSessionData()
+    }
+    
     func dismissAuthInterface(){
     }
 }

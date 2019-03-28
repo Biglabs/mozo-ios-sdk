@@ -39,7 +39,11 @@ class AuthManager : NSObject {
     }
     
     func setupRefreshTokenTimer() {
-        print("Setup refresh token timer.")
+        if let refreshTokenTimer = refreshTokenTimer, refreshTokenTimer.isValid {
+            print("AuthManager - Refresh token timer is existing.")
+            return
+        }
+        print("AuthManager - Setup refresh token timer.")
         let tokenExpiredAfterSeconds = network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV
         var fireAt = Date().addingTimeInterval(TimeInterval(tokenExpiredAfterSeconds))
         if let accessTokenExpirationDate = self.authState?.lastTokenResponse?.accessTokenExpirationDate {
@@ -118,13 +122,7 @@ class AuthManager : NSObject {
             self.delegate?.didCheckAuthorizationSuccess()
             // TODO: Reload user info in case error with user info at the latest login
             // Remember: Authen flow and wallet flow might be affected by reloading here
-            self.checkRefreshToken { (success) in
-                if success {
-                    self.setupRefreshTokenTimer()
-                } else {
-                    
-                }
-            }
+            self.checkRefreshToken {_ in }
         }).catch({ (err) in
             let error = err as! ConnectionError
             if error == ConnectionError.authenticationRequired {
@@ -137,7 +135,6 @@ class AuthManager : NSObject {
                 self.checkRefreshToken({ (success) in
                     if success {
                         self.delegate?.didCheckAuthorizationSuccess()
-                        self.setupRefreshTokenTimer()
                     } else {
                         self.clearAll()
                         self.delegate?.didRemoveTokenAndLogout()

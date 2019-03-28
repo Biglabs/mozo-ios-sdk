@@ -299,4 +299,14 @@ extension CoreInteractor: ApiManagerDelegate {
         print("Did load ETH and Onchain Token Failed")
         notifyLoadETHOnchainTokenFailedForAllObservers()
     }
+    
+    func didReceiveInvalidToken() {
+        print("CoreInteractor - Did receive invalid user token")
+        output?.didReceiveInvalidToken()
+    }
+    
+    func didReceiveAuthorizationRequired() {
+        print("CoreInteractor - Did receive authorization required")
+        output?.didReceiveAuthorizationRequired()
+    }
 }

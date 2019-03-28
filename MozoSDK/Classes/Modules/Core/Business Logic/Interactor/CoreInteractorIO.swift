@@ -26,6 +26,9 @@ protocol CoreInteractorOutput {
     func continueWithWallet(_ callbackModule: Module)
     func finishedHandleAferAuth()
     func failToLoadUserInfo(_ error: ConnectionError, for requestingModule: Module?)
+    
+    func didReceiveInvalidToken()
+    func didReceiveAuthorizationRequired()
 }
 
 protocol CoreInteractorService {

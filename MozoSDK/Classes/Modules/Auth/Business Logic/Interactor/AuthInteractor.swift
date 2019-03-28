@@ -29,6 +29,10 @@ extension AuthInteractor: AuthManagerDelegate {
     }
 }
 extension AuthInteractor : AuthInteractorInput {
+    func startRefreshTokenTimer() {
+        authManager?.setupRefreshTokenTimer()
+    }
+    
     func updateClientId(_ appType: AppType) {
         self.authManager?.clientId = appType == .Retailer ? Configuration.AUTH_RETAILER_CLIENT_ID : Configuration.AUTH_SHOPPER_CLIENT_ID
     }

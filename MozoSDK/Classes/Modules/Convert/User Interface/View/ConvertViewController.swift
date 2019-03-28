@@ -51,6 +51,7 @@ class ConvertViewController: MozoBasicViewController {
     }
     
     func setupLayout() {
+        btnReadMore.isHidden = true
         btnContinue.roundCorners(cornerRadius: 0.015, borderColor: .white, borderWidth: 0.1)
         
         let string = "Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is 41 GWEI.".localized as NSString
