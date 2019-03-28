@@ -26,6 +26,9 @@ protocol CoreInteractorOutput {
     func continueWithWallet(_ callbackModule: Module)
     func finishedHandleAferAuth()
     func failToLoadUserInfo(_ error: ConnectionError, for requestingModule: Module?)
+    
+    func didReceiveInvalidToken()
+    func didReceiveAuthorizationRequired()
 }
 
 protocol CoreInteractorService {
@@ -33,6 +36,7 @@ protocol CoreInteractorService {
     func loadEthAndOnchainBalanceInfo() -> Promise<OnchainInfoDTO>
     func registerBeacon(parameters: Any?) -> Promise<[String: Any]>
     func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]>
+    func deleteBeacon(beaconId: Int64) -> Promise<Bool>
     func getListBeacons() -> Promise<[String : Any]>
     func getRetailerInfo() -> Promise<[String : Any]>
     func addSalePerson(parameters: Any?) -> Promise<[String: Any]>
@@ -75,4 +79,6 @@ protocol CoreInteractorService {
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[StoreInfoDTO]>
     
     func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[String: Any]>
+    
+    func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]>
 }

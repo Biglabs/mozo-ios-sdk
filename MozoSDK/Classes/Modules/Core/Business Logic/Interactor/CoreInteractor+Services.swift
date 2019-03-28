@@ -39,6 +39,10 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.registerBeacon(parameters: parameters, isCreateNew: false)
     }
     
+    func deleteBeacon(beaconId: Int64) -> Promise<Bool> {
+        return apiManager.deleteBeacon(beaconId: beaconId)
+    }
+    
     func getListBeacons() -> Promise<[String : Any]> {
         return apiManager.getListBeacons()
     }
@@ -229,5 +233,9 @@ extension CoreInteractor: CoreInteractorService {
     
     func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[String: Any]> {
         return apiManager.getDiscoverAirdrops(type: type, page: page, size: size, long: long, lat: lat)
+    }
+    
+    func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
+        return apiManager.requestSupportBeacon(info: info)
     }
 }

@@ -21,6 +21,8 @@ class CorePresenter : NSObject {
     var waitingViewInterface: WaitingViewInterface?
     
     var requestingABModule: Module?
+    
+    var isAuthenticating = false
 
     override init() {
         super.init()
@@ -63,6 +65,18 @@ class CorePresenter : NSObject {
         SessionStoreManager.isAccessDenied = true
     }
     
+    func handleInvalidTokenApiResponse() {
+        print("CorePresenter - Handle invalid token from api response")
+        if !isAuthenticating {
+            isAuthenticating = true
+            coreWireframe?.authWireframe?.clearAllSessionData()
+            coreWireframe?.requestForAuthentication()
+            //        coreWireframe?.authWireframe?.presentLogoutInterface()
+        } else {
+            // Ignore
+        }
+    }
+    
     deinit {
         stopNotifier()
         NotificationCenter.default.removeObserver(self)
@@ -88,8 +102,10 @@ private extension CorePresenter {
         // Check walletInfo from UserProfile to start silent services
         if let userObj = SessionStoreManager.loadCurrentUser(), let profile = userObj.profile, profile.walletInfo?.offchainAddress != nil, SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING,
             AccessTokenManager.getAccessToken() != nil {
-            print("CorePresenter - Start silent services.")
+            print("CorePresenter - Start silent services, socket service.")
             rdnInteractor?.startService()
+            print("CorePresenter - Start silent services, refresh token service.")
+            coreWireframe?.authWireframe?.startRefreshTokenTimer()
         }
     }
     
@@ -177,12 +193,14 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidFinishAuthentication(accessToken: String?) {
+        isAuthenticating = false
         coreInteractor?.handleAferAuth(accessToken: accessToken)
         // Notify for all observing objects
         self.coreInteractor?.notifyAuthSuccessForAllObservers()
     }
     
     func authModuleDidCancelAuthentication() {
+        isAuthenticating = false
         requestForCloseAllMozoUIs()
     }
     
@@ -260,6 +278,20 @@ extension CorePresenter : CoreInteractorOutput {
             return
         }
         waitingViewInterface?.displayTryAgain(error)
+    }
+    
+    func didReceiveInvalidToken() {
+        print("CorePresenter - Did receive invalid user token")
+        handleInvalidTokenApiResponse()
+    }
+    
+    func didReceiveAuthorizationRequired() {
+        print("CorePresenter - Did receive authorization required")
+        if let viewController = DisplayUtils.getTopViewController(), !viewController.isKind(of: WaitingViewController.self) {
+            handleInvalidTokenApiResponse()
+        } else {
+            // Ignore
+        }
     }
 }
 

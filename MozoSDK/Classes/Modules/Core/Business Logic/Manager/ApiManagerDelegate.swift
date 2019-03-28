@@ -12,4 +12,7 @@ protocol ApiManagerDelegate {
     func didLoadTokenInfoFailed()
     func didLoadETHOnchainTokenSuccess(_ onchainInfo: OnchainInfoDTO)
     func didLoadETHOnchainTokenFailed()
+    
+    func didReceiveInvalidToken()
+    func didReceiveAuthorizationRequired()
 }
