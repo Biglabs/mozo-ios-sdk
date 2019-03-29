@@ -126,9 +126,10 @@ class AuthManager : NSObject {
         }).catch({ (err) in
             let error = err as! ConnectionError
             if error == ConnectionError.authenticationRequired {
-                let expiresAt : Date = (self.authState?.lastTokenResponse?.accessTokenExpirationDate)!
                 print("Token expired, clear token and user info")
-                print("Expires at: \(expiresAt)")
+                if let expiresAt = self.authState?.lastTokenResponse?.accessTokenExpirationDate {
+                    print("Expires at: \(expiresAt)")
+                }
                 self.clearAll()
                 self.delegate?.didRemoveTokenAndLogout()
             } else {
