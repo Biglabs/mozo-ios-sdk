@@ -62,11 +62,28 @@ class PaymentQRViewController: MozoBasicViewController {
     }
     
     func commonSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
         imgContainerView.roundCorners(cornerRadius: 0.04, borderColor: ThemeManager.shared.borderInside, borderWidth: 0.8)
         btnSend.roundCorners(cornerRadius: 0.02, borderColor: .white, borderWidth: 0.1)
         txtAddress.doneAccessory = true
         txtAddress.addTarget(self, action: #selector(textFieldAddressDidChange), for: UIControlEvents.editingChanged)
         checkDisableButtonSend()
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     @objc func textFieldAddressDidChange() {
