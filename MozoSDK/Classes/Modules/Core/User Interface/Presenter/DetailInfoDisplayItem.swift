@@ -17,8 +17,8 @@ public struct DetailInfoDisplayItem {
     }
     
     init(tokenInfo: TokenInfoDTO) {
-        self.balance = (tokenInfo.balance?.convertOutputValue(decimal: tokenInfo.decimals ?? 0))!
-        self.address = tokenInfo.address!
+        self.balance = tokenInfo.balance?.convertOutputValue(decimal: tokenInfo.decimals ?? 0) ?? 0
+        self.address = tokenInfo.address ?? ""
     }
 }
 
