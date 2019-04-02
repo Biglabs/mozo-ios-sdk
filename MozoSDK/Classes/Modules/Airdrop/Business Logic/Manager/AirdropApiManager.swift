@@ -150,7 +150,7 @@ public extension ApiManager {
             let params = ["size" : size,
                           "page" : page,
                           "isInPeriod" : true,
-                          "sort" : "periodFromDate,desc"] as [String : Any]
+                          "sort" : "createdOn,desc"] as [String : Any]
             let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_RESOURCE_API_PATH + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
@@ -174,7 +174,7 @@ public extension ApiManager {
         return Promise { seal in
             let params = ["size" : size,
                            "page" : page,
-                           "sort" : "periodFromDate,desc"] as [String : Any]
+                           "sort" : "createdOn,desc"] as [String : Any]
             let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_RESOURCE_API_PATH + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
