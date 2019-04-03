@@ -67,6 +67,7 @@ class CorePresenter : NSObject {
     
     func handleInvalidTokenApiResponse() {
         print("CorePresenter - Handle invalid token from api response")
+        // TODO: Must check current view controller is kind of UIAlertViewController
         if !isAuthenticating {
             isAuthenticating = true
             coreWireframe?.authWireframe?.clearAllSessionData()
@@ -413,7 +414,8 @@ extension CorePresenter : RDNInteractorOutput {
     }
     
     func didInvalidToken(tokenNoti: InvalidTokenNotification) {
-        
+        print("CorePresenter - Did receive invalid token from Notification Module")
+        handleInvalidTokenApiResponse()
     }
 }
 
