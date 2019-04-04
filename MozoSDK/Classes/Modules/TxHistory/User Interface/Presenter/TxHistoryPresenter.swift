@@ -41,12 +41,8 @@ extension TxHistoryPresenter: TxHistoryInteractorOutput {
     }
     
     func finishGetListTxHistory(_ txHistories: [TxHistoryDTO], forPage: Int) {
-        if txHistories.count > 0 {
-            let collection = TxHistoryDisplayCollection(items: txHistories)
-            txhUserInterface?.showTxHistoryDisplayData(collection, forPage: forPage)
-        } else {
-            txhUserInterface?.showNoContentMessage()
-        }
+        let collection = TxHistoryDisplayCollection(items: txHistories)
+        txhUserInterface?.showTxHistoryDisplayData(collection, forPage: forPage)
     }
     
     func errorWhileLoadTxHistory(_ error: ConnectionError) {
