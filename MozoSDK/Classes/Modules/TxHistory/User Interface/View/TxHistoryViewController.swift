@@ -192,14 +192,14 @@ extension TxHistoryViewController : TxHistoryViewInterface {
     func showTxHistoryDisplayData(_ data: TxHistoryDisplayCollection, forPage: Int) {
         tableView.tableFooterView?.isHidden = true
         if forPage > currentPage {
-            if data.displayItems.count > 1 {
+            isLoadingMoreTH = false
+            if data.displayItems.count > 0 {
                 // Append to current collection
                 collection?.appendCollection(data)
                 currentPage = forPage
-                isLoadingMoreTH = false
             }
         } else {
-            currentPage = 1
+            currentPage = 0
             isFiltering = false
             collection = data
         }
@@ -208,7 +208,7 @@ extension TxHistoryViewController : TxHistoryViewInterface {
     }
     
     func showNoContentMessage() {
-        tableView.tableFooterView?.isHidden = true
+        
     }
     
     func displaySpinner() {
