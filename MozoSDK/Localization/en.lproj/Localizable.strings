@@ -194,7 +194,7 @@
 "Turn on Bluetooth" = "Turn on Bluetooth";
 "Scan for the Beacon" = "Scan for the Beacon";
 "Set up range by sliding Distance Bar." = "Set up range by sliding Distance Bar.";
-"Beacon battery will last longer if you set signal range under 50m" = "Beacon battery will last longer if you set signal range under 50m";
+"Beacon battery will last longer if you set signal range under %@m" = "Beacon battery will last longer if you set signal range under %@m";
 "Beacon is Detected!" = "Beacon is Detected!";
 "Beacon %@ is Detected!" = "Beacon %@ is Detected!";
 "Beacon Location Setting" = "Beacon Location Setting";
@@ -745,7 +745,7 @@
 "Back to Event List" = "Back to Event List";
 "Beacon %@ is Detected" = "Beacon %@ is Detected";
 "Set up signal range by sliding Distance Bar" = "Set up signal range by sliding Distance Bar";
-"Beacon battery will last longer if you set distance under 50m" = "Beacon battery will last longer if you set distance under 50m";
+"Beacon battery will last longer if you set distance under %@m" = "Beacon battery will last longer if you set distance under %@m";
 "No images available" = "No images available";
 "Camera is not available" = "Camera is not available";
 "Please, allow the application to access to your photo library." = "Please, allow the application to access to your photo library.";

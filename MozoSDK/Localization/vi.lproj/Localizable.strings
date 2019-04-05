@@ -196,7 +196,7 @@
 "Turn on Bluetooth" = "Mở Bluetooth";
 "Scan for the Beacon" = "Quét Beacon";
 "Set up range by sliding Distance Bar." = "Đặt phạm vi hoạt động bằng cách kéo thanh khoảng cách";
-"Beacon battery will last longer if you set signal range under 50m" = "Pin Beacon sẽ hao hụt lâu hơn nếu bạn thiết lập khoảng cách dưới 50m.";
+"Beacon battery will last longer if you set signal range under %@m" = "Pin Beacon sẽ hao hụt lâu hơn nếu bạn thiết lập khoảng cách dưới %@m.";
 "Beacon %@ is Detected!" = "Đã nhận diện Beacon %@";
 "Beacon Location Setting" = "Thiết lập vị trí Beacon";
 "Make sure that your store location is displayed correctly. Shoppers will use this location to find your store." = "Hãy bảo đảm vị trí cửa hàng hiển thị chính xác. Khách sẽ dựa vào vị trí này để tìm ra cửa hàng của bạn.";
@@ -751,7 +751,7 @@
 "Back to Event List" = "Quay lại danh sách sự kiện";
 "Beacon %@ is Detected" = "Đã phát hiện Beacon %@";
 "Set up signal range by sliding Distance Bar" = "Thiết lập phạm vi tín hiệu bằng thanh trượt Khoảng cách";
-"Beacon battery will last longer if you set distance under 50m" = "Pin của Beacon sẽ tồn tại lâu hơn nếu bạn chọn khoảng cách dưới 50m";
+"Beacon battery will last longer if you set distance under %@m" = "Pin của Beacon sẽ tồn tại lâu hơn nếu bạn chọn khoảng cách dưới %@m";
 "No images available" = "Không có hình ảnh";
 "Camera is not available" = "Máy ảnh không khả dụng";
 "Please, allow the application to access to your photo library." = "Vui lòng, cho phép ứng dụng truy cập vào thư viện ảnh của bạn.";
