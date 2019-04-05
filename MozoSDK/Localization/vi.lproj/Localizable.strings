@@ -503,6 +503,7 @@
 "%d Result(s) for" = "%d Kết quả cho";
 "Sorted by:" = "Sắp xếp theo:";
 "Total MozoX Coins" = "Tổng MozoX";
+"Total MozoX Coins:" = "Tổng MozoX:";
 "Fill in to get %@ MozoX" = "Điền để nhận %@ MozoX";
 "Receive %@ MozoX for each join" = "Nhận %@ MozoX cho mỗi người tham gia";
 "Allow MozoX to access your location?" = "Cho phép MozoX truy cập vị trí của bạn?";
