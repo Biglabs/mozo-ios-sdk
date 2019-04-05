@@ -9,17 +9,17 @@ import Foundation
 import UIKit
 @IBDesignable public class MozoSigninView: MozoView {
     @IBOutlet weak var button: UIButton!
-    
+        
     override func identifier() -> String {
         return "MozoSigninView"
     }
     
     override func checkDisable() {
         if AccessTokenManager.getAccessToken() != nil {
-            isUserInteractionEnabled = false
+//            isUserInteractionEnabled = false
             button.backgroundColor = ThemeManager.shared.disable
         } else {
-            isUserInteractionEnabled = true
+//            isUserInteractionEnabled = true
             button.backgroundColor = ThemeManager.shared.main
         }
     }
@@ -31,6 +31,10 @@ import UIKit
     
     @IBAction func tapped(_ sender: Any) {
         print("Tapped Mozo Button Login")
-        MozoSDK.authenticate()
+        if AccessTokenManager.getAccessToken() != nil {
+            MozoSDK.logout()
+        } else {
+            MozoSDK.authenticate()
+        }
     }
 }
