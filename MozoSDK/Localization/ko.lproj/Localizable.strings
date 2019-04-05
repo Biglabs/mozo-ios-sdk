@@ -197,7 +197,7 @@
 "Turn on Bluetooth" = "블루투스 열기";
 "Scan for the Beacon" = "Beacon을 스캔하기";
 "Set up range by sliding Distance Bar." = "거리 바 슬라이딩하는 방식으로 활동 범위를 설정하십시오.";
-"Beacon battery will last longer if you set signal range under 50m" = "당신이 50m 아래에있는 Beacon을 범위를 설정 한 경우 비콘 배터리가 더 오래 지속됩니다.";
+"Beacon battery will last longer if you set signal range under %@m" = "당신이 %@m 아래에있는 Beacon을 범위를 설정 한 경우 비콘 배터리가 더 오래 지속됩니다.";
 "Beacon %@ is Detected" = "Beacon %@ 감지됨";
 "Beacon Location Setting" = "Beacon 의 위치 설정";
 "Make sure that your store location is displayed correctly. Shoppers will use this location to find your store." = "상점을 방문 쇼핑객을 감지할 수 있는 위치(벽, 카운터, 천장)에 Beacon을 놓으십시오.";
@@ -749,7 +749,7 @@
 "Back to Event List" = "이벤트 목록으로 돌아 가기";
 "Beacon E3:C9:40:4B:75:94 is Detected" = "Beacon E3 : C9 : 40 : 4B : 75 : 94이 검출되었습니다";
 "Set up signal range by sliding Distance Bar" = "거리 바 슬라이딩으로 신호 범위를 설정하십시오";
-"Beacon battery will last longer if you set distance under 50m" = "Beacon 배터리는 거리를 50m 미만으로 설정하면 오래 지속됩니다.";
+"Beacon battery will last longer if you set distance under %@m" = "Beacon 배터리는 거리를 %@m 미만으로 설정하면 오래 지속됩니다.";
 "No images available" = "사용할 수있는 이미지가 없습니다.";
 "Camera is not available" = "카메라를 사용할 수 없습니다.";
 "Please, allow the application to access to your photo library." = "응용 프로그램에서 사진 라이브러리에 액세스하도록 허용하시기를 바랍니다.";
