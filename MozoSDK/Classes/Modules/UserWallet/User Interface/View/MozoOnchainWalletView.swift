@@ -195,11 +195,11 @@ class MozoOnchainWalletView: MozoView {
     
     func clearValueOnUI() {
         if lbEthBalance != nil {
-            lbEthBalance.text = "0.0"
-            lbEthBalanceExchange.text = "0.0"
+            lbEthBalance.text = "Loading...".localized
+            lbEthBalanceExchange.text = "Loading...".localized
             
-            lbOnchainBalance.text = "0.0"
-            lbOnchainBalanceExchange.text = "0.0"
+            lbOnchainBalance.text = "Loading...".localized
+            lbOnchainBalanceExchange.text = "Loading...".localized
         }
     }
     
@@ -212,27 +212,31 @@ class MozoOnchainWalletView: MozoView {
                 btnAddress.setTitle(displayItem.address, for: .normal)
             }
             let balance = displayItem.balance
-            
-            let number = NSNumber(value: balance)
-            let numberFormatter = NumberFormatter()
-            numberFormatter.numberStyle = NumberFormatter.Style.decimal
-            numberFormatter.multiplier = 1
-            numberFormatter.minimumFractionDigits = 1
-            numberFormatter.maximumFractionDigits = 5
-            numberFormatter.roundingMode = .down
-            let formattedNumber = numberFormatter.string(from: number)
-            
-            lbEthBalance.text = formattedNumber
-            
-            var result = "0.0"
-            if let rateInfo = SessionStoreManager.ethExchangeRateInfo {
-                let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
-                if let type = type, let rateValue = rateInfo.rate, let curSymbol = rateInfo.currencySymbol {
-                    let valueText = (balance * rateValue).roundAndAddCommas(toPlaces: type.decimalRound)
-                    result = "\(curSymbol)\(valueText)"
+            if balance >= 0 {
+                let number = NSNumber(value: balance)
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = NumberFormatter.Style.decimal
+                numberFormatter.multiplier = 1
+                numberFormatter.minimumFractionDigits = 1
+                numberFormatter.maximumFractionDigits = 5
+                numberFormatter.roundingMode = .down
+                let formattedNumber = numberFormatter.string(from: number)
+                
+                lbEthBalance.text = formattedNumber
+                
+                var result = "0.0"
+                if let rateInfo = SessionStoreManager.ethExchangeRateInfo {
+                    let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
+                    if let type = type, let rateValue = rateInfo.rate, let curSymbol = rateInfo.currencySymbol {
+                        let valueText = (balance * rateValue).roundAndAddCommas(toPlaces: type.decimalRound)
+                        result = "\(curSymbol)\(valueText)"
+                    }
                 }
+                lbEthBalanceExchange.text = result
+            } else {
+                lbEthBalance.text = "Loading...".localized
+                lbEthBalanceExchange.text = "Loading...".localized
             }
-            lbEthBalanceExchange.text = result
         }
         print("Save display item for later usage.")
         self.ethDisplayItem = displayItem
@@ -241,17 +245,22 @@ class MozoOnchainWalletView: MozoView {
     func updateOnchainData(displayItem: DetailInfoDisplayItem) {
         if lbOnchainBalanceExchange != nil {
             let balance = displayItem.balance
-            let balanceText = balance.roundAndAddCommas()
-            lbOnchainBalance.text = balanceText
-            var result = "0.0"
-            if let rateInfo = SessionStoreManager.exchangeRateInfo {
-                let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
-                if let type = type, let rateValue = rateInfo.rate, let curSymbol = rateInfo.currencySymbol {
-                    let valueText = (balance * rateValue).roundAndAddCommas(toPlaces: type.decimalRound)
-                    result = "\(curSymbol)\(valueText)"
+            if balance >= 0 {
+                let balanceText = balance.roundAndAddCommas()
+                lbOnchainBalance.text = balanceText
+                var result = "0.0"
+                if let rateInfo = SessionStoreManager.exchangeRateInfo {
+                    let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
+                    if let type = type, let rateValue = rateInfo.rate, let curSymbol = rateInfo.currencySymbol {
+                        let valueText = (balance * rateValue).roundAndAddCommas(toPlaces: type.decimalRound)
+                        result = "\(curSymbol)\(valueText)"
+                    }
                 }
+                lbOnchainBalanceExchange.text = result
+            } else {
+                lbOnchainBalance.text = "Loading...".localized
+                lbOnchainBalanceExchange.text = "Loading...".localized
             }
-            lbOnchainBalanceExchange.text = result
         }
         self.ethDisplayItem = displayItem
     }
@@ -260,13 +269,17 @@ class MozoOnchainWalletView: MozoView {
         // Clear all data
         clearValueOnUI()
         print("\(String(describing: self)) - Load display data.")
-        if let ethItem = SafetyDataManager.shared.ethDetailDisplayData {
+        if let ethItem = SafetyDataManager.shared.ethDetailDisplayData, ethItem.balance >= 0 {
             print("\(String(describing: self)) - Receive ETH display data: \(ethItem)")
             self.updateEthData(displayItem: ethItem)
+        } else {
+            clearValueOnUI()
         }
-        if let onchainItem = SafetyDataManager.shared.onchainDetailDisplayData {
+        if let onchainItem = SafetyDataManager.shared.onchainDetailDisplayData, onchainItem.balance >= 0 {
             print("\(String(describing: self)) - Receive onchain display data: \(onchainItem)")
             self.updateOnchainData(displayItem: onchainItem)
+        } else {
+            clearValueOnUI()
         }
     }
     
@@ -323,7 +336,7 @@ class MozoOnchainWalletView: MozoView {
     
     // MARK: NOTIFICATION - OBSERVATION
     @objc func onLoadETHOnchainTokenInfoFailed(_ notification: Notification) {
-        
+        clearValueOnUI()
     }
     
     @objc func onEthDetailDisplayDataDidReceive(_ notification: Notification) {
@@ -335,6 +348,7 @@ class MozoOnchainWalletView: MozoView {
     }
     
     @objc func onDidCloseAllMozoUI(_ notification: Notification) {
+        // Reload onchain info when view appear
         loadEthOnchainBalanceInfo()
     }
     

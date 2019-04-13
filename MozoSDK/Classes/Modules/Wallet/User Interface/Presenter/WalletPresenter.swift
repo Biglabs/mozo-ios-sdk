@@ -25,6 +25,7 @@ class WalletPresenter : NSObject {
     func matchServerAndLocalWallet(numberOfLocalWallets: Int) {
         if let walletInfo = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo {
             if walletInfo.offchainAddress != nil, walletInfo.onchainAddress != nil {
+                // TODO: Figure out why we have more than 2 wallets here
                 if numberOfLocalWallets == 2 {
                     handleEndingWalletFlow()
                 } else {
