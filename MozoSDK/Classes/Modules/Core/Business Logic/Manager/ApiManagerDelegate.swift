@@ -15,4 +15,9 @@ protocol ApiManagerDelegate {
     
     func didReceiveInvalidToken()
     func didReceiveAuthorizationRequired()
+    
+    func didLoadOffchainInfoSuccess(_ offchainInfo: OffchainInfoDTO)
+    func didLoadOffchainInfoFailed()
+    func didLoadETHSuccess(_ tokenInfo: TokenInfoDTO)
+    func didLoadETHFailed()
 }

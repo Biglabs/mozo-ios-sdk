@@ -92,8 +92,8 @@ class ModuleDependencies {
         coreWireframe.requestForAddressBook()
     }
     
-    func convertMozoXOnchain() {
-        coreWireframe.requestForConvert()
+    func convertMozoXOnchain(isConvertOffchainToOffchain: Bool) {
+        coreWireframe.requestForConvert(isConvertOffchainToOffchain: isConvertOffchainToOffchain)
     }
     
     func displayTransactionDetail(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
@@ -278,6 +278,10 @@ class ModuleDependencies {
     
     func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.requestSupportBeacon(info: info))!
+    }
+    
+    func getOffchainTokenInfo() -> Promise<OffchainInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getOffchainTokenInfo())!
     }
     
     func configureDependencies() {

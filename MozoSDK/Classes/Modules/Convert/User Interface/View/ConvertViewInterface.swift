@@ -11,4 +11,10 @@ protocol ConvertViewInterface {
     func didReceiceGasPrice(_ gasPrice: GasPriceDTO)
     
     func displayError(_ error: String)
+    
+    func updateEthInfo(_ ethInfo: EthAndTransferFeeDTO)
+    func updateLoadingStateForEthAndTransferFee()
+    
+    func updateEthAndOffchainInfo(_ offchainInfo: OffchainInfoDTO)
+    func updateLoadingStateForEthAndOffchainInfo()
 }

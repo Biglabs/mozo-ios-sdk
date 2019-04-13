@@ -12,19 +12,23 @@ class ConvertWireframe: MozoWireframe {
     var convertCompletionWireframe: ConvertCompletionWireframe?
     var presenter: ConvertPresenter?
     
+    var isConvertOffchainToOffchain: Bool = false
+    
     func presentConvertInterface() {
         let viewController = viewControllerFromStoryBoard(ConvertViewControllerIdentifier) as! ConvertViewController
         viewController.eventHandler = presenter
+        viewController.isConvertOffchainToOffchain = isConvertOffchainToOffchain
+        presenter?.isConvertOffchainToOffchain = isConvertOffchainToOffchain
         presenter?.isDisplayingConfirm = false
         presenter?.convertViewInterface = viewController
         rootWireframe?.displayViewController(viewController)
     }
     
-    func presentConfirmInterface(_ transaction: ConvertTransactionDTO, onchainInfo: OnchainInfoDTO, gasLimit: NSNumber, gasPrice: NSNumber) {
+    func presentConfirmInterface(_ transaction: ConvertTransactionDTO, tokenInfoFromConverting: TokenInfoDTO, gasLimit: NSNumber, gasPrice: NSNumber) {
         let viewController = viewControllerFromStoryBoard(ConfirmConvertViewControllerIdentifier) as! ConfirmConvertViewController
         viewController.eventHandler = presenter
         viewController.transaction = transaction
-        viewController.onchainInfo = onchainInfo
+        viewController.tokenInfoFromConverting = tokenInfoFromConverting
         viewController.gasLimit = gasLimit
         viewController.gasPrice = gasPrice
         presenter?.confirmConvertViewInterface = viewController

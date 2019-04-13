@@ -62,4 +62,59 @@ extension ApiManager {
             }
         }
     }
+    
+    public func getOffchainTokenInfo(_ address: String) -> Promise<OffchainInfoDTO> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + ONCHAIN_PATH + "/getBalanceTokenOnchainOffchain/\(address)"
+            self.execute(.get , url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get offchain info, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    if let offchainInfo = OffchainInfoDTO.init(json: jobj) {
+                        seal.fulfill(offchainInfo)
+                        self.delegate?.didLoadOffchainInfoSuccess(offchainInfo)
+                    } else {
+                        
+                    }
+                }
+                .catch { error in
+                    //Handle error or give feedback to the user
+                    let err = error as! ConnectionError
+                    print("Error when request get offchain info: " + error.localizedDescription)
+                    seal.reject(err)
+                    self.delegate?.didLoadOffchainInfoFailed()
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func getETHAndTransferFee(_ address: String) -> Promise<EthAndTransferFeeDTO> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + ONCHAIN_PATH + "/getBalanceETHAndFeeTransferERC20/\(address)"
+            self.execute(.get , url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get ETH and transfer fee from address \(address), json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    if let info = EthAndTransferFeeDTO.init(json: jobj) {
+                        seal.fulfill(info)
+                    } else {
+                        seal.reject(ConnectionError.systemError)
+                    }
+                }
+                .catch { error in
+                    //Handle error or give feedback to the user
+                    let err = error as! ConnectionError
+                    print("Error when request get ETH and transfer fee from address \(address): " + error.localizedDescription)
+                    seal.reject(err)
+                    self.delegate?.didLoadETHFailed()
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
 }
