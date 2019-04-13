@@ -12,6 +12,7 @@ import PromiseKit
 typealias PostRegistrationCallback = (_ configuration: OIDServiceConfiguration?, _ registrationResponse: OIDRegistrationResponse?) -> Void
 let TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD = 2 * 24 * 3600
 let TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV = 5 * 60
+let TOKEN_EXPIRE_AFTER_SECONDS_FOR_STAG = 1 * 60
 class AuthManager : NSObject {
     var delegate : AuthManagerDelegate?
     
@@ -44,7 +45,7 @@ class AuthManager : NSObject {
             return
         }
         print("AuthManager - Setup refresh token timer.")
-        let tokenExpiredAfterSeconds = network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV
+        let tokenExpiredAfterSeconds = network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : network == .DevNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV : TOKEN_EXPIRE_AFTER_SECONDS_FOR_STAG
         var fireAt = Date().addingTimeInterval(TimeInterval(tokenExpiredAfterSeconds))
         if let accessTokenExpirationDate = self.authState?.lastTokenResponse?.accessTokenExpirationDate {
             let expiresAt : Date = accessTokenExpirationDate
@@ -58,8 +59,9 @@ class AuthManager : NSObject {
             refreshTokenTimer = Timer(fireAt: fireAt, interval: 0, target: self, selector: #selector(fireRefreshToken), userInfo: nil, repeats: false)
             RunLoop.main.add(refreshTokenTimer!, forMode: .commonModes)
         } else {
-            print("Refresh token timer directly.")
-            fireRefreshToken()
+            print("Timer refresh token won't be fire at: \(fireAt), current date: \(Date())")
+//            print("Refresh token timer directly.")
+//            fireRefreshToken()
         }
     }
     
