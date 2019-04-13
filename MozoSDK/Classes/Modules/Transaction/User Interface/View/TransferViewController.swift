@@ -232,7 +232,6 @@ extension TransferViewController : PopupErrorDelegate {
     
     func didTouchTryAgainButton() {
         print("User try reload balance on transfer screen again.")
-        removeMozoPopupError()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
             self.eventHandler?.loadTokenInfo()
         }
@@ -240,8 +239,7 @@ extension TransferViewController : PopupErrorDelegate {
 }
 extension TransferViewController : TransferViewInterface {
     func displayTryAgain(_ error: ConnectionError) {
-        displayMozoPopupError()
-        mozoPopupErrorView?.delegate = self
+        DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
     }
     
     func updateUserInterfaceWithTokenInfo(_ tokenInfo: TokenInfoDTO) {

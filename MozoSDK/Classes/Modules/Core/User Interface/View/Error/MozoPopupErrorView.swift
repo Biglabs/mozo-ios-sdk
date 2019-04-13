@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Reachability
 public protocol PopupErrorDelegate {
     func didTouchTryAgainButton()
     func didClosePopupWithoutRetry()
@@ -25,6 +26,56 @@ class MozoPopupErrorView : MozoView {
         }
     }
     var delegate: PopupErrorDelegate?
+    
+    var reachability : Reachability?
+    
+    override init(frame: CGRect) {
+        print("MozoPopupErrorView - Init with frame")
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        print("MozoPopupErrorView - Init with coder")
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    func commonInit() {
+        setupReachability()
+    }
+    
+    // MARK: Reachability
+    func setupReachability() {
+        let hostName = Configuration.BASE_HOST
+        print("MozoPopupErrorView - Set up Reachability with host name: \(hostName)")
+        reachability = Reachability(hostname: hostName)
+        reachability?.whenReachable = { reachability in
+            print("MozoPopupErrorView - Reachability when reachable: \(reachability.description) - \(reachability.connection)")
+            self.stopNotifier()
+            self.tryAgain()
+        }
+        reachability?.whenUnreachable = { reachability in
+            print("MozoPopupErrorView - Reachability when unreachable: \(reachability.description) - \(reachability.connection)")
+            
+        }
+        print("MozoPopupErrorView - Reachability --- start notifier")
+        do {
+            try reachability?.startNotifier()
+        } catch {
+            
+        }
+    }
+    
+    func stopNotifier() {
+        print("MozoPopupErrorView - Reachability --- stop notifier")
+        reachability?.stopNotifier()
+        reachability = nil
+    }
+    
+    deinit {
+        stopNotifier()
+    }
     
     override func identifier() -> String {
         return "MozoPopupErrorView"
@@ -60,8 +111,12 @@ class MozoPopupErrorView : MozoView {
         delegate?.didClosePopupWithoutRetry()
     }
     
-    @IBAction func touchedTryBtn(_ sender: Any) {
+    func tryAgain() {
         delegate?.didTouchTryAgainButton()
         tapTryHandler?()
+    }
+    
+    @IBAction func touchedTryBtn(_ sender: Any) {
+        tryAgain()
     }
 }

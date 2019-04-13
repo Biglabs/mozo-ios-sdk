@@ -129,8 +129,7 @@ extension PINViewController : PINViewInterface {
     }
     
     func displayTryAgain(_ error: ConnectionError) {
-        displayMozoPopupError(error)
-        mozoPopupErrorView?.delegate = self
+        DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
     }
 }
 extension PINViewController : PopupErrorDelegate {
@@ -140,7 +139,6 @@ extension PINViewController : PopupErrorDelegate {
     
     func didTouchTryAgainButton() {
         print("User try manage wallet again.")
-        removeMozoPopupError()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
             self.eventHandler?.manageWallet(passPhrase: self.passPhrase, pin: self.pin!)
         }

@@ -122,8 +122,7 @@ extension ABEditViewController : ABEditViewInterface {
     
     func displayTryAgain(_ error: ConnectionError, forDelete: Bool) {
         retryForDelete = forDelete
-        displayMozoPopupError(error)
-        mozoPopupErrorView?.delegate = self
+        DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
     }
 }
 extension ABEditViewController : PopupErrorDelegate {
@@ -132,7 +131,6 @@ extension ABEditViewController : PopupErrorDelegate {
     }
     
     func didTouchTryAgainButton() {
-        removeMozoPopupError()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
             if self.retryForDelete == true {
                 print("User try delete address book again.")
