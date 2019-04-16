@@ -262,6 +262,11 @@ public extension Double {
         let number = NSNumber(value: roundedBalance)
         return number.addCommas()
     }
+    
+    func addCommas() -> String {
+        let number = NSNumber(value: self)
+        return number.addCommas()
+    }
 }
 
 public extension NSNumber {
@@ -341,6 +346,7 @@ extension Notification.Name {
     static let didLoadTokenInfoFailed = Notification.Name("didLoadTokenInfoFailed")
     static let didReceiveOnchainDetailDisplayItem = Notification.Name("didReceiveOnchainDetailDisplayItem")
     static let didReceiveETHDetailDisplayItem = Notification.Name("didReceiveETHDetailDisplayItem")
+    static let didReceiveETHOffchainDetailDisplayItem = Notification.Name("didReceiveETHOffchainDetailDisplayItem")
     static let didLoadETHOnchainTokenInfoFailed = Notification.Name("didLoadETHOnchainTokenInfoFailed")
     static let didReceiveExchangeInfo = Notification.Name("didReceiveExchangeInfo")
     static let didChangeAddressBook = Notification.Name("didChangeAddressBook")

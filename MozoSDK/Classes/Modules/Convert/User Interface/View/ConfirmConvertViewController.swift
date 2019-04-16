@@ -26,7 +26,7 @@ class ConfirmConvertViewController: MozoBasicViewController {
     var eventHandler: ConvertModuleInterface?
     
     var transaction: ConvertTransactionDTO?
-    var onchainInfo: OnchainInfoDTO?
+    var tokenInfoFromConverting: TokenInfoDTO?
     var gasLimit: NSNumber?
     var gasPrice: NSNumber?
     
@@ -74,7 +74,7 @@ class ConfirmConvertViewController: MozoBasicViewController {
     }
     
     func updateData() {
-        if let tx = transaction, let onchainInfo = onchainInfo, let tokenInfo = onchainInfo.balanceOfToken {
+        if let tx = transaction, let tokenInfo = tokenInfoFromConverting {
             let amount = tx.value?.convertOutputValue(decimal: tokenInfo.decimals ?? 0) ?? 0
             lbOnchainAmount.text = amount.roundAndAddCommas()
             lbOffchainAmount.text = lbOnchainAmount.text
@@ -110,8 +110,8 @@ class ConfirmConvertViewController: MozoBasicViewController {
     }
     
     @IBAction func touchBtnConfirm(_ sender: Any) {
-        if let tx = transaction, let onchainInfo = onchainInfo {
-            eventHandler?.sendConfirmConvertTx(tx, onchainInfo: onchainInfo)
+        if let tx = transaction {
+            eventHandler?.sendConfirmConvertTx(tx)
         }
     }
 }

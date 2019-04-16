@@ -790,7 +790,7 @@
 "Average" = "Trung Bình";
 "Fast" = "Nhanh";
 "Normal" = "Bình thường";
-"Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is 41 GWEI." = "Gas Price là chi phí được tính bằng đơn vị GWEI dùng để thực hiện một giao dịch trong Ethereum. Tổng chi phí (TX fee) được tính = Số Gas thực dùng * Gas Price, phí này được dùng trả cho “thợ đào” (Miner) để họ đưa giao dịch vào một khối (Block). Gas Price cao đồng nghĩa với giao dịch diễn ra nhanh hơn (nhưng tốn kém hơn). Giá mặc định là 41 GWEI.";
+"Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive." = "Gas Price là chi phí được tính bằng đơn vị GWEI dùng để thực hiện một giao dịch trong Ethereum. Tổng chi phí (TX fee) được tính = Số Gas thực dùng * Gas Price, phí này được dùng trả cho “thợ đào” (Miner) để họ đưa giao dịch vào một khối (Block). Gas Price cao đồng nghĩa với giao dịch diễn ra nhanh hơn (nhưng tốn kém hơn).";
 "Read more" = "Chi tiết";
 "Onchain balance is not enough." = "Không đủ MozoX Onchain";
 "ETH balance is not enough." = "Không đủ ETH";

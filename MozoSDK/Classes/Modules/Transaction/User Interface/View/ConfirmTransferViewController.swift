@@ -114,7 +114,6 @@ extension ConfirmTransferViewController : PopupErrorDelegate {
     
     func didTouchTryAgainButton() {
         print("User try transfer transaction again.")
-        removeMozoPopupError()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
             self.eventHandler?.requestToRetryTransfer()
         }
@@ -122,8 +121,7 @@ extension ConfirmTransferViewController : PopupErrorDelegate {
 }
 extension ConfirmTransferViewController : ConfirmTransferViewInterface {
     func displayTryAgain(_ error: ConnectionError) {
-        displayMozoPopupError(error)
-        mozoPopupErrorView?.delegate = self
+        DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
     }
     
     func displaySpinner() {

@@ -56,7 +56,8 @@ class CoreWireframe : MozoWireframe {
         corePresenter?.txHistoryModuleDidChooseItemOnUI(txHistory: txHistory, tokenInfo: tokenInfo)
     }
     
-    func requestForConvert() {
+    func requestForConvert(isConvertOffchainToOffchain: Bool) {
+        convertWireframe?.isConvertOffchainToOffchain = isConvertOffchainToOffchain
         presentWaitingInterface(corePresenter: corePresenter)
         corePresenter?.requestForAuthentication(module: Module.Convert)
     }

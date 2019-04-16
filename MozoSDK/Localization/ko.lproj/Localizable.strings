@@ -788,7 +788,7 @@
 "Average" = "평균";
 "Fast" = "빠르다";
 "Normal" = "정상";
-"Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is 41 GWEI." = "가스 가격은 가스 단위당(GWEI) 지불하는 금액입니다. TX fee = Txn에서 사용하는 가스 * Gas Price 이며  TX fee는 한 블록 내에 TX를 포함시키기 위하여 광부에게 지급됩니다. 가스 가격이 높을수록 거래는 빠르지 만 가격은 더 비쌉니다. 기본값은 41 GWEI입니다.";
+"Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive." = "가스 가격은 가스 단위당(GWEI) 지불하는 금액입니다. TX fee = Txn에서 사용하는 가스 * Gas Price 이며  TX fee는 한 블록 내에 TX를 포함시키기 위하여 광부에게 지급됩니다. 가스 가격이 높을수록 거래는 빠르지 만 가격은 더 비쌉니다.";
 "Read more" = "자세히 보기";
 "Onchain balance is not enough." = "Onchain 밸런스가 충분하지 않습니다.";
 "ETH balance is not enough." = "ETH 밸런스가 충분하지 않습니다.";

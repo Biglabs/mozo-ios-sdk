@@ -49,8 +49,8 @@ public class MozoSDK {
         moduleDependencies.displayAddressBook()
     }
     
-    public static func convertMozoXOnchain() {
-        moduleDependencies.convertMozoXOnchain()
+    public static func convertMozoXOnchain(isConvertOffchainToOffchain: Bool = false) {
+        moduleDependencies.convertMozoXOnchain(isConvertOffchainToOffchain: isConvertOffchainToOffchain)
     }
     
     public static func displayTransactionDetail(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
@@ -235,5 +235,9 @@ public class MozoSDK {
     
     public static func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
         return moduleDependencies.requestSupportBeacon(info: info)
+    }
+    
+    public static func getOffchainTokenInfo() -> Promise<OffchainInfoDTO> {
+        return moduleDependencies.getOffchainTokenInfo()
     }
 }

@@ -238,4 +238,17 @@ extension CoreInteractor: CoreInteractorService {
     func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
         return apiManager.requestSupportBeacon(info: info)
     }
+    
+    func getOffchainTokenInfo() -> Promise<OffchainInfoDTO> {
+        return Promise { seal in
+            if let userObj = SessionStoreManager.loadCurrentUser(), let address = userObj.profile?.walletInfo?.offchainAddress {
+                print("Address used to load offchain and onchain balance: \(address)")
+                _ = apiManager.getOffchainTokenInfo(address).done({ (offchainInfo) in
+                    seal.fulfill(offchainInfo)
+                }).catch({ (error) in
+                    seal.reject(error)
+                })
+            }
+        }
+    }
 }

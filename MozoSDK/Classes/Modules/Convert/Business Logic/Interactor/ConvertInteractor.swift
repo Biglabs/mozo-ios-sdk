@@ -13,7 +13,7 @@ class ConvertInteractor: NSObject {
     
     var originalTransaction: ConvertTransactionDTO?
     var transactionData : IntermediaryTransactionDTO?
-    var onchainInfo: OnchainInfoDTO?
+    var tokenInfo: TokenInfoDTO?
     var pinToRetry: String?
     
     init(apiManager: ApiManager, signManager: TransactionSignManager) {
@@ -45,6 +45,26 @@ class ConvertInteractor: NSObject {
     }
 }
 extension ConvertInteractor: ConvertInteractorInput {
+    func loadEthAndOffchainInfo() {
+        if let user = SessionStoreManager.loadCurrentUser(), let profile = user.profile, let wallet = profile.walletInfo, let address = wallet.offchainAddress {
+            _ = apiManager.getOffchainTokenInfo(address).done { (info) in
+                self.output?.didReceiveEthAndOffchainInfo(info)
+            }.catch({ (error) in
+                self.output?.didReceiveErrorWhileLoadingEthAndOffchainInfo(error as? ConnectionError ?? .systemError)
+            })
+        }
+    }
+    
+    func loadEthAndTranferFee() {
+        if let user = SessionStoreManager.loadCurrentUser(), let profile = user.profile, let wallet = profile.walletInfo, let address = wallet.offchainAddress {
+            _ = apiManager.getETHAndTransferFee(address).done({ (info) in
+                self.output?.didReceiveEthAndTransferFee(info)
+            }).catch({ (error) in
+                self.output?.didReceiveErrorWhileLoadingEthAndTransferFee(error as? ConnectionError ?? .systemError)
+            })
+        }
+    }
+    
     func loadEthAndOnchainInfo() {
         if let user = SessionStoreManager.loadCurrentUser(), let profile = user.profile, let wallet = profile.walletInfo, let onchainAddress = wallet.onchainAddress {
             _ = apiManager.getEthAndOnchainTokenInfoFromAddress(onchainAddress).done({ (onchainInfo) in
@@ -82,8 +102,8 @@ extension ConvertInteractor: ConvertInteractorInput {
                 let weiGasPrice = convertGasPriceToWEI(gasPrice)
                 if let convertTransactionDTO = ConvertTransactionDTO(fromAddress: fromAddress, gasLimit: gasLimit, gasPrice: weiGasPrice, toAddress: offchainAddress, value: txValue) {
                     self.originalTransaction = convertTransactionDTO
-                    self.onchainInfo = onchainInfo
-                    output?.continueWithTransaction(convertTransactionDTO, onchainInfo: onchainInfo, gasPrice: gasPrice, gasLimit: gasLimit)
+                    self.tokenInfo = tokenInfo
+                    output?.continueWithTransaction(convertTransactionDTO, tokenInfoFromConverting: tokenInfo, gasPrice: gasPrice, gasLimit: gasLimit)
                     return
                 }
             }
@@ -91,7 +111,27 @@ extension ConvertInteractor: ConvertInteractorInput {
         output?.errorOccurred()
     }
     
-    func sendConfirmConvertTx(_ tx: ConvertTransactionDTO, onchainInfo: OnchainInfoDTO) {
+    func validateTxConvert(ethInfo: EthAndTransferFeeDTO, offchainInfo: OffchainInfoDTO, gasPrice: NSNumber, gasLimit: NSNumber) {
+        if let ethBalance = ethInfo.balanceOfETH?.balance, let tokenInfo = offchainInfo.balanceOfTokenOffchain, let amount = offchainInfo.balanceOfTokenOnchain?.balance {
+            let txFee = calculateEthTxFee(gasLimit: gasLimit, gasPrice: gasPrice)
+            if txFee.compare(ethBalance) == .orderedDescending {
+                output?.didValidateConvertTx("ETH balance is not enough.")
+                return
+            }
+            if let fromAddress = ethInfo.balanceOfETH?.address, let user = SessionStoreManager.loadCurrentUser(), let profile = user.profile, let wallet = profile.walletInfo, let offchainAddress = wallet.offchainAddress {
+                let weiGasPrice = convertGasPriceToWEI(gasPrice)
+                if let convertTransactionDTO = ConvertTransactionDTO(fromAddress: fromAddress, gasLimit: gasLimit, gasPrice: weiGasPrice, toAddress: offchainAddress, value: amount) {
+                    self.originalTransaction = convertTransactionDTO
+                    self.tokenInfo = tokenInfo
+                    output?.continueWithTransaction(convertTransactionDTO, tokenInfoFromConverting: tokenInfo, gasPrice: gasPrice, gasLimit: gasLimit)
+                    return
+                }
+            }
+        }
+        output?.errorOccurred()
+    }
+    
+    func sendConfirmConvertTx(_ tx: ConvertTransactionDTO) {
         _ = apiManager.sendPrepareConvertTransaction(tx).done { (interTx) in
                 self.originalTransaction = tx
                 self.transactionData = interTx
@@ -123,7 +163,7 @@ extension ConvertInteractor: ConvertInteractorInput {
                     self.originalTransaction = nil
                     print("Original output value: \(receivedTx.tx?.outputs![0].value ?? 0)")
                     // TODO: Avoid depending on received transaction data
-                    self.output?.didSendConvertTransactionSuccess(receivedTx, onchainInfo: self.onchainInfo!)
+                    self.output?.didSendConvertTransactionSuccess(receivedTx)
                 }).catch({ (err) in
                     print("Send signed transaction failed, show popup to retry.")
                     self.pinToRetry = pin
@@ -135,8 +175,8 @@ extension ConvertInteractor: ConvertInteractorInput {
     }
     
     func requestToRetryTransfer() {
-        if let transaction = originalTransaction, let onchainInfo = self.onchainInfo {
-            sendConfirmConvertTx(transaction, onchainInfo: onchainInfo)
+        if let transaction = originalTransaction {
+            sendConfirmConvertTx(transaction)
         }
     }
 }

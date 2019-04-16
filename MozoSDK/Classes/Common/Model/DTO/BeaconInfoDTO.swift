@@ -1,6 +1,6 @@
 //
 //  BeaconInfoDTO.swift
-//  MozoRetailer
+//  MozoSDK
 //
 //  Created by Hoang Nguyen on 11/6/18.
 //  Copyright © 2018 Hoang Nguyen. All rights reserved.
@@ -27,8 +27,21 @@ public class BeaconInfoDTO : ResponseObjectSerializable {
     public var uuId: String?
     public var zoneId: String?
     
+    public var name: String?
+    
     public required init(macAddress: String){
         self.macAddress = macAddress
+    }
+    
+    public required init?(name: String, distance: NSNumber, major: Int64, minor: Int64, rssi: Int, uuid: String, macAddress: String, measuredPower: Int8) {
+        self.name = name
+        self.distance = distance
+        self.major = major
+        self.minor = minor
+        self.rssi = rssi
+        self.uuId = uuid
+        self.macAddress = macAddress
+        self.measuredPower = measuredPower
     }
     
     public required init?(distance: NSNumber, major: Int64, minor: Int64, rssi: Int, uuid: String, macAddress: String, measuredPower: Int8) {
@@ -42,6 +55,7 @@ public class BeaconInfoDTO : ResponseObjectSerializable {
     }
     
     public required init?(json: SwiftyJSON.JSON) {
+        self.name = json["name"].string
         self.broadcastingPower = json["broadcastingPower"].int8
         self.distance = json["distance"].number
         self.id = json["id"].int64
@@ -64,6 +78,9 @@ public class BeaconInfoDTO : ResponseObjectSerializable {
     
     public func toJSON() -> Dictionary<String, Any> {
         var json = Dictionary<String, Any>()
+        if let name = self.name {
+            json["name"] = name
+        }
         if let broadcastingPower = self.broadcastingPower {
             json["broadcastingPower"] = broadcastingPower
         }

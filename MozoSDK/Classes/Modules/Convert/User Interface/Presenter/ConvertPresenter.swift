@@ -15,6 +15,7 @@ class ConvertPresenter: NSObject {
     var delegate: ConvertModuleDelegate?
         
     var isDisplayingConfirm = false
+    var isConvertOffchainToOffchain: Bool = false
     
     func handleError(_ error: ConnectionError) {
         if isDisplayingConfirm {
@@ -32,6 +33,14 @@ class ConvertPresenter: NSObject {
     }
 }
 extension ConvertPresenter: ConvertModuleInterface {
+    func loadEthAndOffchainInfo() {
+        interactor?.loadEthAndOffchainInfo()
+    }
+    
+    func loadEthAndFeeTransfer() {
+        interactor?.loadEthAndTranferFee()
+    }
+    
     func loadEthAndOnchainInfo() {
         interactor?.loadEthAndOnchainInfo()
     }
@@ -48,12 +57,34 @@ extension ConvertPresenter: ConvertModuleInterface {
         interactor?.validateTxConvert(onchainInfo: onchainInfo, amount: amount, gasPrice: gasPrice, gasLimit: gasLimit)
     }
     
-    func sendConfirmConvertTx(_ tx: ConvertTransactionDTO, onchainInfo: OnchainInfoDTO) {
+    func validateTxConvert(ethInfo: EthAndTransferFeeDTO, offchainInfo: OffchainInfoDTO, gasPrice: NSNumber, gasLimit: NSNumber) {
+        interactor?.validateTxConvert(ethInfo: ethInfo, offchainInfo: offchainInfo, gasPrice: gasPrice, gasLimit: gasLimit)
+    }
+    
+    func sendConfirmConvertTx(_ tx: ConvertTransactionDTO) {
         confirmConvertViewInterface?.displaySpinner()
-        interactor?.sendConfirmConvertTx(tx, onchainInfo: onchainInfo)
+        interactor?.sendConfirmConvertTx(tx)
     }
 }
 extension ConvertPresenter: ConvertInteractorOutput {
+    func didReceiveEthAndOffchainInfo(_ offchainInfo: OffchainInfoDTO) {
+        convertViewInterface?.updateEthAndOffchainInfo(offchainInfo)
+    }
+    
+    func didReceiveErrorWhileLoadingEthAndOffchainInfo(_ error: ConnectionError) {
+        convertViewInterface?.updateLoadingStateForEthAndOffchainInfo()
+        handleError(error)
+    }
+    
+    func didReceiveEthAndTransferFee(_ ethInfo: EthAndTransferFeeDTO) {
+        convertViewInterface?.updateEthInfo(ethInfo)
+    }
+    
+    func didReceiveErrorWhileLoadingEthAndTransferFee(_ error: ConnectionError) {
+        convertViewInterface?.updateLoadingStateForEthAndTransferFee()
+        handleError(error)
+    }
+    
     func errorOccurred() {
         handleError(.systemError)
     }
@@ -78,9 +109,9 @@ extension ConvertPresenter: ConvertInteractorOutput {
         handleError(error)
     }
     
-    func continueWithTransaction(_ transaction: ConvertTransactionDTO, onchainInfo: OnchainInfoDTO, gasPrice: NSNumber, gasLimit: NSNumber) {
+    func continueWithTransaction(_ transaction: ConvertTransactionDTO, tokenInfoFromConverting: TokenInfoDTO, gasPrice: NSNumber, gasLimit: NSNumber) {
         isDisplayingConfirm = true
-        wireframe?.presentConfirmInterface(transaction, onchainInfo: onchainInfo, gasLimit: gasLimit, gasPrice: gasPrice)
+        wireframe?.presentConfirmInterface(transaction, tokenInfoFromConverting: tokenInfoFromConverting, gasLimit: gasLimit, gasPrice: gasPrice)
     }
     
     func requestPinToSignTransaction() {
@@ -91,7 +122,7 @@ extension ConvertPresenter: ConvertInteractorOutput {
         handleError(error)
     }
     
-    func didSendConvertTransactionSuccess(_ transaction: IntermediaryTransactionDTO, onchainInfo: OnchainInfoDTO) {
+    func didSendConvertTransactionSuccess(_ transaction: IntermediaryTransactionDTO) {
         wireframe?.presentTrasactionProcess(transaction)
     }
 }
@@ -101,7 +132,12 @@ extension ConvertPresenter: PopupErrorDelegate {
             confirmConvertViewInterface?.displaySpinner()
             interactor?.requestToRetryTransfer()
         } else {
-            loadEthAndOnchainInfo()
+            if isConvertOffchainToOffchain {
+                loadEthAndFeeTransfer()
+                loadEthAndOffchainInfo()
+            } else {
+                loadEthAndOnchainInfo()
+            }
             loadGasPrice()
         }
     }

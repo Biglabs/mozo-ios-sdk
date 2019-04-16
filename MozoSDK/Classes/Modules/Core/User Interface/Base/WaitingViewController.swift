@@ -36,7 +36,6 @@ extension WaitingViewController : PopupErrorDelegate {
     
     func didTouchTryAgainButton() {
         print("User try reload user profile on waiting screen again.")
-        removeMozoPopupError()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
             self.eventHandler?.retryGetUserProfile()
         }
@@ -47,8 +46,7 @@ extension WaitingViewController: WaitingViewInterface {
         if error == .apiError_INVALID_USER_TOKEN {
             displayMozoPopupTokenExpired()
         } else {
-            displayMozoPopupError()
-            mozoPopupErrorView?.delegate = self
+            DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
         }
     }
 }

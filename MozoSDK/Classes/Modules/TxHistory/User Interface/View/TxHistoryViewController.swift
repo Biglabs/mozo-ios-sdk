@@ -225,8 +225,7 @@ extension TxHistoryViewController : TxHistoryViewInterface {
     }
     
     func displayTryAgain(_ error: ConnectionError) {
-        displayMozoPopupError()
-        mozoPopupErrorView?.delegate = self
+        DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
     }
 }
 extension TxHistoryViewController: UIScrollViewDelegate {
@@ -252,7 +251,6 @@ extension TxHistoryViewController : PopupErrorDelegate {
     
     func didTouchTryAgainButton() {
         print("User try reload transaction history again.")
-        removeMozoPopupError()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
             self.loadHistoryWithPage(page: self.loadingPage)
         }

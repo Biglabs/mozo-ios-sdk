@@ -118,6 +118,7 @@ class CoreInteractor: NSObject {
     }
     
     func checkWallet(module: Module) {
+        print("CoreInteractor - Check wallet")
         // Check wallet
         if let wallet = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo, wallet.encryptSeedPhrase != nil, let id = SessionStoreManager.loadCurrentUser()?.id {
             let serverHaveBothOffChainAndOnChain = wallet.offchainAddress != nil && wallet.onchainAddress != nil
@@ -237,6 +238,10 @@ extension CoreInteractor: CoreInteractorInput {
         NotificationCenter.default.post(name: .didReceiveETHDetailDisplayItem, object: nil)
     }
     
+    func notifyETHOffchainDetailDisplayItemForAllObservers() {
+        NotificationCenter.default.post(name: .didReceiveETHOffchainDetailDisplayItem, object: nil)
+    }
+    
     func notifyOnchainDetailDisplayItemForAllObservers() {
         NotificationCenter.default.post(name: .didReceiveOnchainDetailDisplayItem, object: nil)
     }
@@ -264,7 +269,7 @@ extension CoreInteractor: CoreInteractorInput {
 
 extension CoreInteractor: ApiManagerDelegate {
     func didLoadTokenInfoSuccess(_ tokenInfo: TokenInfoDTO){
-        print("Did Load Token Info Success")
+        print("CoreInteractor - Did Load Token Info Success")
         let item = DetailInfoDisplayItem(tokenInfo: tokenInfo)
         if SafetyDataManager.shared.offchainDetailDisplayData == nil || SafetyDataManager.shared.offchainDetailDisplayData != item {
             SafetyDataManager.shared.offchainDetailDisplayData = item
@@ -273,12 +278,12 @@ extension CoreInteractor: ApiManagerDelegate {
     }
     
     func didLoadTokenInfoFailed(){
-        print("Did Load Token Info Failed")
+        print("CoreInteractor - Did Load Token Info Failed")
         notifyLoadTokenInfoFailedForAllObservers()
     }
     
     func didLoadETHOnchainTokenSuccess(_ onchainInfo: OnchainInfoDTO) {
-        print("Did load ETH and Onchain Token success")
+        print("CoreInteractor - Did load ETH and Onchain Token success")
         if let ethItem = onchainInfo.balanceOfETH {
             let item = DetailInfoDisplayItem(tokenInfo: ethItem)
             if SafetyDataManager.shared.ethDetailDisplayData == nil || SafetyDataManager.shared.ethDetailDisplayData != item {
@@ -295,8 +300,57 @@ extension CoreInteractor: ApiManagerDelegate {
         }
     }
     
+    func didLoadOffchainInfoSuccess(_ offchainInfo: OffchainInfoDTO) {
+        print("CoreInteractor - Did load offchain info success")
+        if let offchainItem = offchainInfo.balanceOfTokenOffchain {
+            let item = DetailInfoDisplayItem(tokenInfo: offchainItem)
+            if SafetyDataManager.shared.offchainDetailDisplayData == nil || SafetyDataManager.shared.offchainDetailDisplayData != item {
+                SafetyDataManager.shared.offchainDetailDisplayData = item
+                notifyDetailDisplayItemForAllObservers()
+            }
+        }
+        if let onchainItem = offchainInfo.balanceOfTokenOnchain {
+            let item = DetailInfoDisplayItem(tokenInfo: onchainItem)
+            if SafetyDataManager.shared.onchainDetailDisplayData == nil || SafetyDataManager.shared.onchainDetailDisplayData != item {
+                SafetyDataManager.shared.onchainDetailDisplayData = item
+                notifyOnchainDetailDisplayItemForAllObservers()
+            }
+        }
+    }
+    
+    func didLoadOffchainInfoFailed() {
+        print("CoreInteractor - Did load offchain info failed")
+        notifyLoadTokenInfoFailedForAllObservers()
+    }
+    
+    func didLoadETHSuccess(_ tokenInfo: TokenInfoDTO) {
+        print("CoreInteractor - Did load ETH info success")
+        if let user = SessionStoreManager.loadCurrentUser(), let walletInfo = user.profile?.walletInfo {
+            if walletInfo.offchainAddress?.lowercased() == tokenInfo.address?.lowercased() {
+                let item = DetailInfoDisplayItem(tokenInfo: tokenInfo)
+                if SafetyDataManager.shared.ethDetailDisplayData == nil || SafetyDataManager.shared.ethDetailDisplayData != item {
+                    SafetyDataManager.shared.ethDetailDisplayData = item
+                    notifyETHOffchainDetailDisplayItemForAllObservers()
+                }
+                return
+            }
+            if walletInfo.onchainAddress?.lowercased() == tokenInfo.address?.lowercased() {
+                let item = DetailInfoDisplayItem(tokenInfo: tokenInfo)
+                if SafetyDataManager.shared.ethDetailDisplayData == nil || SafetyDataManager.shared.ethDetailDisplayData != item {
+                    SafetyDataManager.shared.ethDetailDisplayData = item
+                    notifyETHDetailDisplayItemForAllObservers()
+                }
+            }
+        }
+    }
+    
+    func didLoadETHFailed() {
+        print("CoreInteractor - Did load ETH info failed")
+        
+    }
+    
     func didLoadETHOnchainTokenFailed() {
-        print("Did load ETH and Onchain Token Failed")
+        print("CoreInteractor - Did load ETH and Onchain Token Failed")
         notifyLoadETHOnchainTokenFailedForAllObservers()
     }
     
