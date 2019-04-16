@@ -175,6 +175,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     @objc func refresh(_ sender: Any? = nil) {
         loadTxHistory()
         loadOffchainInfo()
+        loadTokenInfo()
         if let refreshControl = sender as? UIRefreshControl, refreshControl.isRefreshing {
             refreshControl.endRefreshing()
         }
@@ -284,6 +285,15 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         }.catch { (error) in
             self.topConstraint.constant = CGFloat(self.topConstraintDefault)
         }
+    }
+    
+    func loadTokenInfo() {
+        _ = MozoSDK.loadBalanceInfo().done({ (displayItem) in
+            self.updateData(displayItem: displayItem)
+            self.hideRefreshState()
+        }).catch({ (error) in
+            self.clearValueOnUI()
+        })
     }
     
     func loadDisplayData() {
