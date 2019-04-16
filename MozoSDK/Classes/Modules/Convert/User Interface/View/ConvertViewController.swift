@@ -190,7 +190,8 @@ class ConvertViewController: MozoBasicViewController {
     
     func updateLayoutWithEthInfoAndTransferFee() {
         if let info = self.ethInfo {
-            let ethBalanceText = String(format: "%.8f", (info.balanceOfETH?.balance ?? 0).convertOutputValue(decimal: info.balanceOfETH?.decimals ?? 18))
+            let ethBalanceInDouble = (info.balanceOfETH?.balance ?? 0).convertOutputValue(decimal: info.balanceOfETH?.decimals ?? 18)
+            let ethBalanceText = ethBalanceInDouble.removeZerosFromEnd(maximumFractionDigits: 8)
             
             // balance < transfer fee
             if (info.balanceOfETH?.balance ?? 0).compare(info.feeTransferERC20 ?? 0) == .orderedAscending {
@@ -199,8 +200,9 @@ class ConvertViewController: MozoBasicViewController {
                 let feeDecimalNumber = NSDecimalNumber(decimal: (info.feeTransferERC20 ?? 0).decimalValue)
                 let ethBalanceDecimalNumber = NSDecimalNumber(decimal: (info.balanceOfETH?.balance ?? 0).decimalValue)
                 let result = feeDecimalNumber.subtracting(ethBalanceDecimalNumber)
+                let resultInDoule = result.convertOutputValue(decimal: info.balanceOfETH?.decimals ?? 18)
+                let resultText = resultInDoule.removeZerosFromEnd(maximumFractionDigits: 8)
                 
-                let resultText = String(format: "%.8f", result.convertOutputValue(decimal: info.balanceOfETH?.decimals ?? 18))
                 let string = "You need to transfer %@ ETH into this MozoX Offchain Wallet address to pay TX Fee".localizedFormat(resultText) as NSString
                 let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13.0)])
                 
