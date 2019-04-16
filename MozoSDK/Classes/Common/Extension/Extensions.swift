@@ -267,6 +267,15 @@ public extension Double {
         let number = NSNumber(value: self)
         return number.addCommas()
     }
+    
+    func removeZerosFromEnd(maximumFractionDigits: Int = 16) -> String {
+        let formatter = NumberFormatter()
+        let number = NSNumber(value: self)
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = maximumFractionDigits //maximum digits in Double after dot (maximum precision)
+        return String(formatter.string(from: number) ?? " ")
+    }
 }
 
 public extension NSNumber {
