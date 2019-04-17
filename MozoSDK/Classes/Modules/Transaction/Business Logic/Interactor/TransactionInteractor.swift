@@ -52,7 +52,7 @@ class TransactionInteractor : NSObject {
 extension TransactionInteractor : TransactionInteractorInput {
     func validateValueFromScanner(_ scanValue: String) {
         if !scanValue.isEthAddress() {
-            output?.didReceiveError("Scanning value is not a valid address.")
+            output?.didValidateTransferTransaction("Error".localized + ": " + "Scanning value is not a valid address.".localized, isAddress: true)
         } else {
             let list = SafetyDataManager.shared.addressBookList
             if let addressBook = AddressBookDTO.addressBookFromAddress(scanValue, array: list) {
