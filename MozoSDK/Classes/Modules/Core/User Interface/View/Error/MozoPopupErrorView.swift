@@ -42,7 +42,9 @@ class MozoPopupErrorView : MozoView {
     }
     
     func commonInit() {
-        setupReachability()
+        if error == .noInternetConnection {
+            setupReachability()
+        }
     }
     
     // MARK: Reachability
@@ -74,7 +76,9 @@ class MozoPopupErrorView : MozoView {
     }
     
     deinit {
-        stopNotifier()
+        if error == .noInternetConnection {
+            stopNotifier()
+        }
     }
     
     override func identifier() -> String {
