@@ -109,7 +109,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
 }
 extension ConfirmTransferViewController : PopupErrorDelegate {
     func didClosePopupWithoutRetry() {
-        
+        removeSpinner()
     }
     
     func didTouchTryAgainButton() {
