@@ -33,4 +33,5 @@ public enum NotificationEventType: String {
     
     case InvalidToken = "invalid_token"
     case ConvertOnchainToOffchain = "convert_onchain_to_offchain"
+    case AirdropInvite = "airdrop_invite"
 }

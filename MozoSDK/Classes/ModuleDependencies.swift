@@ -284,6 +284,18 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getOffchainTokenInfo())!
     }
     
+    func getInviteLink(locale: String) -> Promise<InviteLinkDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getInviteLink(locale: locale))!
+    }
+    
+    func getListLanguageInfo() -> Promise<[InviteLanguageDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getListLanguageInfo())!
+    }
+    
+    func updateCodeLinkInstallApp(codeString: String) -> Promise<InviteLinkDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.updateCodeLinkInstallApp(codeString: codeString))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

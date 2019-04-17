@@ -147,6 +147,8 @@ class CoreInteractor: NSObject {
     
     func checkAuthAndWallet(module: Module) {
         if AccessTokenManager.getAccessToken() != nil {
+            // Process invitation if any.
+            processInvitation()
             if SessionStoreManager.loadCurrentUser() != nil {
                 self.checkWallet(module: module)
                 // TODO: Handle update local user profile data
@@ -187,7 +189,7 @@ extension CoreInteractor: CoreInteractorInput {
     }
     
     func checkForAuthentication(module: Module) {
-        print("CoreInteractor - Check for authentication. Waiting for check token expired.")
+        print("CoreInteractor - Check for authentication. Waiting for check token expired from Auth Module.")
         checkTokenExpiredModule = module
         checkTokenExpiredTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.repeatCheckForAuthentication), userInfo: nil, repeats: true)
     }
@@ -195,6 +197,7 @@ extension CoreInteractor: CoreInteractorInput {
     func handleAferAuth(accessToken: String?) {
         AccessTokenManager.saveToken(accessToken)
         anonManager.linkCoinFromAnonymousToCurrentUser()
+        processInvitation()
         _ = getUserProfile().done({ () in
             self.downloadData()
             self.output?.finishedHandleAferAuth()
@@ -264,6 +267,18 @@ extension CoreInteractor: CoreInteractorInput {
     
     func notifyLoadETHOnchainTokenFailedForAllObservers() {
         NotificationCenter.default.post(name: .didLoadETHOnchainTokenInfoFailed, object: nil)
+    }
+    
+    func processInvitation() {
+        print("CoreInteractor - Process invitation")
+        if let code = SessionStoreManager.getDynamicLink(), !code.isEmpty {
+            _ = apiManager.updateCodeLinkInstallApp(codeString: code).done { (inviteInfo) in
+                print("Core interactor - Process invitation successfully, clear invitation code.")
+                SessionStoreManager.setDynamicLink("")
+            }.catch({ (error) in
+                
+            })
+        }
     }
 }
 

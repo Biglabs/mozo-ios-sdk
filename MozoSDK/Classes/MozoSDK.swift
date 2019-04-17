@@ -240,4 +240,16 @@ public class MozoSDK {
     public static func getOffchainTokenInfo() -> Promise<OffchainInfoDTO> {
         return moduleDependencies.getOffchainTokenInfo()
     }
+    
+    public static func getInviteLink(locale: String) -> Promise<InviteLinkDTO> {
+        return moduleDependencies.getInviteLink(locale: locale)
+    }
+    
+    public static func getListLanguageInfo() -> Promise<[InviteLanguageDTO]> {
+        return moduleDependencies.getListLanguageInfo()
+    }
+    
+    public static func updateCodeLinkInstallApp(codeString: String) -> Promise<InviteLinkDTO> {
+        return moduleDependencies.updateCodeLinkInstallApp(codeString: codeString)
+    }
 }
