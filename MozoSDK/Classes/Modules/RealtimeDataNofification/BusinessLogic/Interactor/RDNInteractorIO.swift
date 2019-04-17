@@ -15,6 +15,7 @@ protocol RDNInteractorOutput {
     func storeBookDidChange(storeBook: StoreBookDTO, rawMessage: String)
     func didAirdropped(airdropNoti: BalanceNotification, rawMessage: String)
     func didCustomerCame(ccNoti: CustomerComeNotification, rawMessage: String)
+    func didInvitedSuccess(inviteNoti: InviteNotification, rawMessage: String)
     
     func didInvalidToken(tokenNoti: InvalidTokenNotification)
     func didConvertOnchainToOffchainSuccess(balanceNoti: BalanceNotification, rawMessage: String)

@@ -39,12 +39,14 @@ public class NotiDisplayItemData {
                     if let airdropNoti = rawNoti as? AirdropNotification {
                         subtitle = "\(prefix) \(airdropNoti.storeName ?? "")"
                         image = "ic_notif_airdropped"
+                    } else if let inviteNoti = rawNoti as? InviteNotification {
+                        subtitle = inviteNoti.phoneNumSignUp != nil ? "%@ joined MozoX".localizedFormat(inviteNoti.phoneNumSignUp ?? "") : "Your friend joined MozoX".localized
+                        image = "ic_notif_invite"
                     } else {
                         let displayName = DisplayUtils.buildNameFromAddress(address: displayAddress ?? "")
                         subtitle = "\(prefix) \(displayName)"
                         image = "ic_notif_received"
                     }
-                    
                 }
             case NotificationEventType.CustomerCame.rawValue:
                 if let ccNoti = rawNoti as? CustomerComeNotification {

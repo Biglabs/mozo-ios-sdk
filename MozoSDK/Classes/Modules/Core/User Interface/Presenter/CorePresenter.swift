@@ -32,6 +32,11 @@ class CorePresenter : NSObject {
         setupReachability()
     }
     
+    func readyForGoingLive() {
+        coreInteractor?.downloadAndStoreConvenienceData()
+        startSlientServices()
+    }
+    
     // MARK: Reachability
     func setupReachability() {
         let hostName = Configuration.BASE_HOST
@@ -39,8 +44,7 @@ class CorePresenter : NSObject {
         reachability = Reachability(hostname: hostName)
         reachability?.whenReachable = { reachability in
             print("Reachability when reachable: \(reachability.description) - \(reachability.connection)")
-            self.startSlientServices()
-            self.coreInteractor?.downloadAndStoreConvenienceData()
+            self.readyForGoingLive()
         }
         reachability?.whenUnreachable = { reachability in
             print("Reachability when unreachable: \(reachability.description) - \(reachability.connection)")
@@ -177,8 +181,7 @@ extension CorePresenter : AuthModuleDelegate {
     func didCheckAuthorizationSuccess() {
         print("On Check Authorization Did Success: Download convenience data")
         SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
-        coreInteractor?.downloadAndStoreConvenienceData()
-        startSlientServices()
+        readyForGoingLive()
     }
     
     func didCheckAuthorizationFailed() {
@@ -238,8 +241,7 @@ extension CorePresenter: WalletModuleDelegate {
                 self.authDelegate?.mozoAuthenticationDidFinish()
             })
         }
-        coreInteractor?.downloadAndStoreConvenienceData()
-        startSlientServices()
+        readyForGoingLive()
     }
 }
 
@@ -416,6 +418,10 @@ extension CorePresenter : RDNInteractorOutput {
     func didInvalidToken(tokenNoti: InvalidTokenNotification) {
         print("CorePresenter - Did receive invalid token from Notification Module")
         handleInvalidTokenApiResponse()
+    }
+    
+    func didInvitedSuccess(inviteNoti: InviteNotification, rawMessage: String) {
+        performNotifications(noti: inviteNoti, rawMessage: rawMessage)
     }
 }
 

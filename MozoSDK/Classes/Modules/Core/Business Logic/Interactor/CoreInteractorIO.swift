@@ -19,6 +19,8 @@ protocol CoreInteractorInput {
     func notifyStoreBookChangesForAllObservers()
     func notifyDidCloseAllMozoUIForAllObservers()
     func notifyConvertSuccessOnchainToOffchain(balanceNoti: BalanceNotification)
+    
+    func processInvitation()
 }
 
 protocol CoreInteractorOutput {
@@ -83,4 +85,10 @@ protocol CoreInteractorService {
     func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]>
     
     func getOffchainTokenInfo() -> Promise<OffchainInfoDTO>
+    
+    func getInviteLink(locale: String) -> Promise<InviteLinkDTO>
+    
+    func getListLanguageInfo() -> Promise<[InviteLanguageDTO]>
+    
+    func updateCodeLinkInstallApp(codeString: String) -> Promise<InviteLinkDTO>
 }

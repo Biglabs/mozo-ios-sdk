@@ -144,6 +144,9 @@ extension RDNInteractor {
                     let ccNoti = CustomerComeNotification(json: jobj) {
                     needSave = true
                     output?.didCustomerCame(ccNoti: ccNoti, rawMessage: rawJsonMessage)
+                } else if rdNoti.event == NotificationEventType.AirdropInvite.rawValue,
+                    let inviteNoti = InviteNotification(json: jobj) {
+                    output?.didInvitedSuccess(inviteNoti: inviteNoti, rawMessage: rawJsonMessage)
                 } else if rdNoti.event == NotificationEventType.InvalidToken.rawValue,
                     let tokenNoti = InvalidTokenNotification(json: jobj) {
                     shouldReconnectAfterDisconnected = false
