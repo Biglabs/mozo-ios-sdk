@@ -64,5 +64,7 @@ public class SessionStoreManager {
     
     public static var countryList: [CountryCodeDTO] = []
     
+    public static var inviteLink: InviteLinkDTO?
+    
     public static var isAccessDenied = false
 }

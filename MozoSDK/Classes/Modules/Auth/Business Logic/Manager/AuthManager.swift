@@ -87,6 +87,7 @@ class AuthManager : NSObject {
         AccessTokenManager.clearToken()
         SessionStoreManager.clearCurrentUser()
         SafetyDataManager.shared.offchainDetailDisplayData = nil
+        SafetyDataManager.shared.onchainFromOffchainDetailDisplayData = nil
         SafetyDataManager.shared.ethDetailDisplayData = nil
         SafetyDataManager.shared.onchainDetailDisplayData = nil
         setAuthState(nil)
