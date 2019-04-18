@@ -20,7 +20,7 @@ public class NotiDisplayItemData {
             var amountText = ""
             var detailText = ""
             switch rawNoti.event {
-            case NotificationEventType.BalanceChanged.rawValue, NotificationEventType.Airdropped.rawValue:
+            case NotificationEventType.BalanceChanged.rawValue, NotificationEventType.Airdropped.rawValue, NotificationEventType.AirdropInvite.rawValue:
                 if let blNoti = rawNoti as? BalanceNotification {
                     var prefix = "From"
                     var displayAddress = blNoti.from
