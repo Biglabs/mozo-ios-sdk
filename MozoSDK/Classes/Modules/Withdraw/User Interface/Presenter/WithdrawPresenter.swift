@@ -43,7 +43,7 @@ extension WithdrawPresenter: WithdrawInteractorOutput {
             delegate?.withdrawMozoFromAirdropEventSuccess()
             delegate = nil
         } else {
-            delegate?.withdrawMozoFromAirdropEventFailureWithErrorString(error: "Withdraw Mozo from airdrop event is failed to created.")
+            delegate?.withdrawMozoFromAirdropEventFailureWithErrorString(error: "Withdraw MozoX from airdrop event is failed.")
         }
     }
     
