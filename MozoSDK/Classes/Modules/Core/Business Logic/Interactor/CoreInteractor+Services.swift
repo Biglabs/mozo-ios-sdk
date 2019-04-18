@@ -101,7 +101,7 @@ extension CoreInteractor: CoreInteractorService {
         return Promise { seal in
             if let userObj = SessionStoreManager.loadCurrentUser() {
                 if let address = userObj.profile?.walletInfo?.onchainAddress {
-                    print("Address used to load  ETH and onchain balance: \(address)")
+                    print("Address used to load ETH and onchain balance: \(address)")
                     _ = apiManager.getEthAndOnchainTokenInfoFromAddress(address)
                         .done { (onchainInfo) in
                             SessionStoreManager.onchainInfo = onchainInfo

@@ -68,6 +68,7 @@ class CoreInteractor: NSObject {
         downloadExchangeRateInfoAndStoreAtLocal()
         downloadCountryListAndStoreAtLocal()
         downloadGasPriceAndStoreAtLocal()
+        downloadInviteLink()
     }
     
     func downloadGasPriceAndStoreAtLocal() {
@@ -114,6 +115,15 @@ class CoreInteractor: NSObject {
             SafetyDataManager.shared.storeBookList = list
         }).catch({ (error) in
             //TODO: Handle case unable to load store book list
+        })
+    }
+    
+    func downloadInviteLink() {
+        print("😎 Load invitation link.")
+        _ = apiManager.getInviteLink(locale: Configuration.LOCALE).done({ (inviteLink) in
+            SessionStoreManager.inviteLink = inviteLink
+        }).catch({ (error) in
+            //TODO: Handle case unable to load invitation link
         })
     }
     
@@ -326,8 +336,8 @@ extension CoreInteractor: ApiManagerDelegate {
         }
         if let onchainItem = offchainInfo.balanceOfTokenOnchain {
             let item = DetailInfoDisplayItem(tokenInfo: onchainItem)
-            if SafetyDataManager.shared.onchainDetailDisplayData == nil || SafetyDataManager.shared.onchainDetailDisplayData != item {
-                SafetyDataManager.shared.onchainDetailDisplayData = item
+            if SafetyDataManager.shared.onchainFromOffchainDetailDisplayData == nil || SafetyDataManager.shared.onchainFromOffchainDetailDisplayData != item {
+                SafetyDataManager.shared.onchainFromOffchainDetailDisplayData = item
                 notifyOnchainDetailDisplayItemForAllObservers()
             }
         }

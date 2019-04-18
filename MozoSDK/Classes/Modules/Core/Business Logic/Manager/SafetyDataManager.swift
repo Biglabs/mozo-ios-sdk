@@ -66,6 +66,23 @@ class SafetyDataManager {
         }
     }
     
+    private let onchainFromOffchainDetailDisplayDataLockQueue = DispatchQueue(label: "SafetyDataManager.DisplayData.OnchainFromOffchain.lockQueue")
+    
+    private var _onchainFromOffchainDetailDisplayData : DetailInfoDisplayItem?
+    
+    public var onchainFromOffchainDetailDisplayData : DetailInfoDisplayItem? {
+        get {
+            print("Get detail display data of onchain for MozoX offchain")
+            return self._onchainFromOffchainDetailDisplayData
+        }
+        set {
+            print("Set detail display data of onchain for MozoX offchain")
+            onchainFromOffchainDetailDisplayDataLockQueue.sync {
+                self._onchainFromOffchainDetailDisplayData = newValue
+            }
+        }
+    }
+    
     // ONCHAIN
     private let onchainDetailDisplayDataLockQueue = DispatchQueue(label: "SafetyDataManager.DisplayData.Onchain.lockQueue")
     
