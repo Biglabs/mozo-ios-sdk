@@ -200,6 +200,8 @@ class TransferViewController: MozoBasicViewController {
         if isAddress {
             lbReceiverAddress.textColor = ThemeManager.shared.error
             addressBorderView.backgroundColor = ThemeManager.shared.error
+            let errorText = error ?? "Error: The Receiver Address is not valid.".localized
+            lbValidateAddrError.text = errorText
             lbValidateAddrError.isHidden = false
             constraintTopSpace.constant = topSpace + lbValidateAddrError.frame.size.height
         } else {
