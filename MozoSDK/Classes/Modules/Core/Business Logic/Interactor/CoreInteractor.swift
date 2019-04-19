@@ -120,7 +120,7 @@ class CoreInteractor: NSObject {
     
     func downloadInviteLink() {
         print("😎 Load invitation link.")
-        _ = apiManager.getInviteLink(locale: Configuration.LOCALE).done({ (inviteLink) in
+        _ = apiManager.getInviteLink(locale: Configuration.LOCALE, inviteAppType: .Shopper).done({ (inviteLink) in
             SessionStoreManager.inviteLink = inviteLink
         }).catch({ (error) in
             //TODO: Handle case unable to load invitation link
@@ -281,13 +281,16 @@ extension CoreInteractor: CoreInteractorInput {
     
     func processInvitation() {
         print("CoreInteractor - Process invitation")
-        if let code = SessionStoreManager.getDynamicLink(), !code.isEmpty {
+        if AccessTokenManager.getAccessToken() != nil, let code = SessionStoreManager.getDynamicLink(), !code.isEmpty {
+            print("CoreInteractor - Process invitation with code: \(code)")
             _ = apiManager.updateCodeLinkInstallApp(codeString: code).done { (inviteInfo) in
                 print("Core interactor - Process invitation successfully, clear invitation code.")
                 SessionStoreManager.setDynamicLink("")
             }.catch({ (error) in
                 
             })
+        } else {
+            print("CoreInteractor - Not enough conditions to process invitation")
         }
     }
 }

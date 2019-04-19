@@ -30,6 +30,7 @@ class ModuleDependencies {
     public var appType: AppType = .Shopper {
         didSet {
             webSocketManager.appType = appType
+            apiManager.appType = appType
             authWireframe.authPresenter?.authInteractor?.updateClientId(appType)
         }
     }
@@ -284,8 +285,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getOffchainTokenInfo())!
     }
     
-    func getInviteLink(locale: String) -> Promise<InviteLinkDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getInviteLink(locale: locale))!
+    func getInviteLink(locale: String, inviteAppType: AppType) -> Promise<InviteLinkDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getInviteLink(locale: locale, inviteAppType: inviteAppType))!
     }
     
     func getListLanguageInfo() -> Promise<[InviteLanguageDTO]> {
@@ -294,6 +295,10 @@ class ModuleDependencies {
     
     func updateCodeLinkInstallApp(codeString: String) -> Promise<InviteLinkDTO> {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateCodeLinkInstallApp(codeString: codeString))!
+    }
+    
+    func processInvitation() {
+        return (coreWireframe.corePresenter?.coreInteractor?.processInvitation())!
     }
     
     func configureDependencies() {

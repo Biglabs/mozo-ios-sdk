@@ -86,7 +86,7 @@ protocol CoreInteractorService {
     
     func getOffchainTokenInfo() -> Promise<OffchainInfoDTO>
     
-    func getInviteLink(locale: String) -> Promise<InviteLinkDTO>
+    func getInviteLink(locale: String, inviteAppType: AppType) -> Promise<InviteLinkDTO>
     
     func getListLanguageInfo() -> Promise<[InviteLanguageDTO]>
     

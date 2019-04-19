@@ -14,6 +14,10 @@ extension SessionStoreManager {
     }
     
     public static func setDynamicLink(_ dynamicLink: String) {
+        // Handle case: Receive Dynamic Link when app is running.
+        if !dynamicLink.isEmpty {
+            MozoSDK.processInvitation()
+        }
         let defaults = UserDefaults.standard
         defaults.set(dynamicLink, forKey: KEY_DYNAMIC_LINK)
     }
