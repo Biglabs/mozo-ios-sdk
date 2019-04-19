@@ -32,6 +32,7 @@
                 <outlet property="onchainDetectedViewHeightConstraint" destination="Eu0-ep-2U9" id="QWt-cb-95k"/>
                 <outlet property="paymentRequestView" destination="B1n-Lm-BiE" id="3mV-tb-kWN"/>
                 <outlet property="segmentControl" destination="Uyj-nT-dTx" id="ZdI-D1-6tf"/>
+                <outlet property="segmentControlHeightConstraint" destination="AM5-AX-pG4" id="sTe-Kp-VIl"/>
                 <outlet property="sendMozoView" destination="4a2-EJ-NDC" id="5er-0C-m5d"/>
                 <outlet property="topConstraint" destination="cJw-pY-4yZ" id="wY1-0c-ibU"/>
             </connections>
@@ -41,11 +42,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Uyj-nT-dTx">
-                    <rect key="frame" x="0.0" y="20" width="375" height="65"/>
+                <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Uyj-nT-dTx">
+                    <rect key="frame" x="0.0" y="20" width="375" height="1"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="64" id="AM5-AX-pG4"/>
+                        <constraint firstAttribute="height" id="AM5-AX-pG4"/>
                     </constraints>
                     <segments>
                         <segment title="Offchain Wallet"/>
@@ -57,14 +58,14 @@
                     </connections>
                 </segmentedControl>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zv3-gQ-9bm">
-                    <rect key="frame" x="13" y="197" width="349" height="200"/>
+                    <rect key="frame" x="13" y="133" width="349" height="200"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="349" id="93P-2a-1pd"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5h-qz-jHv">
-                    <rect key="frame" x="15" y="197" width="345" height="200"/>
+                    <rect key="frame" x="15" y="133" width="345" height="200"/>
                     <subviews>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIi-Ns-pBJ">
                             <rect key="frame" x="20" y="20" width="20" height="20"/>
@@ -210,7 +211,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLO-Yp-iJH">
-                    <rect key="frame" x="15" y="412" width="145" height="18"/>
+                    <rect key="frame" x="15" y="348" width="145" height="18"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -219,7 +220,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcA-It-ew4">
-                    <rect key="frame" x="305" y="412" width="55" height="18"/>
+                    <rect key="frame" x="305" y="348" width="55" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="a45-od-Sjp"/>
                     </constraints>
@@ -234,11 +235,11 @@
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7bB-cU-eCA">
-                    <rect key="frame" x="5" y="440" width="360" height="227"/>
+                    <rect key="frame" x="5" y="376" width="360" height="291"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-9F-Tch">
-                    <rect key="frame" x="15" y="103" width="345" height="74"/>
+                    <rect key="frame" x="15" y="39" width="345" height="74"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKn-jB-Q20">
                             <rect key="frame" x="15" y="12" width="29" height="16"/>

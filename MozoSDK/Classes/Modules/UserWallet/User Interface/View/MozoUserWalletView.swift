@@ -12,6 +12,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
 @IBDesignable class MozoUserWalletView: MozoView {
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var segmentControlHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var infoViewBorder: UIView!
     @IBOutlet weak var btnReload: UIButton!
