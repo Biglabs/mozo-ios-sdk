@@ -10,9 +10,11 @@ import PromiseKit
 import SwiftyJSON
 let INVITE_API_PATH = "/invite"
 extension ApiManager {
-    public func getInviteLink(locale: String) -> Promise<InviteLinkDTO> {
+    public func getInviteLink(locale: String, inviteAppType: AppType) -> Promise<InviteLinkDTO> {
         return Promise { seal in
-            let params = ["locale" : locale] as [String : Any]
+            let appShopper = self.appType == .Shopper
+            let inviteShopper = inviteAppType == .Shopper
+            let params = ["locale" : locale, "appShopper": appShopper, "inviteShopper" : inviteShopper] as [String : Any]
             let url = Configuration.BASE_STORE_URL + INVITE_API_PATH + "/getInviteLink"
             self.execute(.post, url: url, parameters: params)
                 .done { json -> Void in
@@ -59,8 +61,10 @@ extension ApiManager {
     
     public func updateCodeLinkInstallApp(codeString: String) -> Promise<InviteLinkDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + INVITE_API_PATH + "/updateCodeLinkInstallApp"
-            self.execute(.post, url: url)
+            let appShopper = self.appType == .Shopper
+            let params = ["codeLink" : codeString, "appShopper": appShopper] as [String : Any]
+            let url = Configuration.BASE_URL + INVITE_API_PATH + "/updateCodeLinkInstallApp"
+            self.execute(.post, url: url, parameters: params)
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to update code link install app, json response: \(json)")

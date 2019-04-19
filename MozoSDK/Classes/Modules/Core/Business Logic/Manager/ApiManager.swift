@@ -14,6 +14,7 @@ public class ApiManager {
     private (set) var client: SessionManager
     var delegate: ApiManagerDelegate?
     var apiKey: String?
+    var appType: AppType = .Shopper
     
     public init() {
         // Create a shared URL cache

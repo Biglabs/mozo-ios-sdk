@@ -252,8 +252,8 @@ extension CoreInteractor: CoreInteractorService {
         }
     }
     
-    func getInviteLink(locale: String) -> Promise<InviteLinkDTO> {
-        return apiManager.getInviteLink(locale: locale)
+    func getInviteLink(locale: String, inviteAppType: AppType) -> Promise<InviteLinkDTO> {
+        return apiManager.getInviteLink(locale: locale, inviteAppType: inviteAppType)
     }
     
     func getListLanguageInfo() -> Promise<[InviteLanguageDTO]> {
