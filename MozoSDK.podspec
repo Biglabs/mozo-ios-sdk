@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
 
   s.name         = "MozoSDK"
-  s.version      = "1.4.6"
+  s.version      = "1.4.7"
   s.summary = 'Mozo protocol toolkit for Swift'
   s.description = <<-DESC
-                        The Mozo SDK is a Swift implementation of the Mozo protocol. This SDK was originally made by Hoang Nguyen. It allows maintaining authentication/authorization with Mozo Services, receiving Mozo lucky coins via beacons and buying/selling/transferring Mozo. It is also supporting UI components for authentication and buying/selling/transferring Mozo.
+                        The Mozo SDK is a Swift implementation of the Mozo protocol. This SDK was originally made by Hoang Nguyen. It allows maintaining authentication/authorization with MozoX Services, receiving MozoX lucky coins via beacons and buying/selling/transferring MozoX. It is also supporting UI components for authentication and buying/selling/transferring MozoX.
                         ```
                     DESC
 
@@ -33,6 +33,7 @@ Pod::Spec.new do |s|
   s.dependency 'secp256k1_ios', '~> 0.1'
   s.dependency 'RNCryptor', '~> 5.0.3'
   s.dependency 'PromiseKit/Alamofire', '~> 6.0'
+  s.dependency 'AlamofireImage', '~> 3.5.0'
   s.dependency 'CoreStore', '5.1.1'
   s.dependency 'AppAuth', '~> 0.92.0'
   s.dependency 'Starscream', '3.0.2'
