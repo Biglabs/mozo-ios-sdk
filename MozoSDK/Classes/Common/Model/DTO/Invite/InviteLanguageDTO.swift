@@ -15,7 +15,7 @@ public class InviteLanguageDTO : ResponseObjectSerializable {
     public required init?(json: SwiftyJSON.JSON) {
         self.locale = json["locale"].string
         self.name = json["name"].string
-        self.imageUrl = json["urlImage"].string
+        self.imageUrl = json["imageUrl"].string
     }
     
     public required init?(){}
