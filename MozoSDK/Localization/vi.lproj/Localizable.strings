@@ -336,7 +336,7 @@
 "In store" = "Đang ở cửa hàng";
 "Last visited: %@" = "Lần đến gần nhất: %@";
 "Invite user" = "Mời người dùng";
-"Receive %@ MozoX for each customer joining MozoX App" = "Nhận ngay %@ MozoX cho mỗi người tham gia";
+"Receive %@ MozoX for each customer joining MozoX" = "Nhận ngay %@ MozoX cho mỗi người tham gia";
 "FAQ" = "Câu hỏi thường gặp";
 "Notification list is empty" = "Danh sách trống";
 "Beacons list is empty" = "Danh sách trống";
@@ -514,7 +514,7 @@
 "Cash" = "Tiền mặt";
 "Today collected coins" = "Coin nhận hôm nay";
 "Fill in to get %@ MozoX" = "Điền để nhận %@ MozoX";
-"Receive %@ MozoX for each join" = "Nhận %@ MozoX cho mỗi người tham gia";
+"Receive %@ MozoX for each join MozoX" = "Nhận %@ MozoX cho mỗi người tham gia";
 "Name" = "Tên";
 "Date of birth" = "Ngày sinh";
 "Email" = "Email";
