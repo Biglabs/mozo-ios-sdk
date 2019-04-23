@@ -264,7 +264,7 @@
 "Edit Location" = "Sửa vị trí";
 "Select Photo Album" = "Chọn Album ảnh";
 "Tap to select Images" = "Chạm để chọn ảnh";
-"%d selected" = "Đã chọn % ảnh";
+"%d selected" = "Đã chọn %d ảnh";
 "Can select a maximum of %d images" = "Chọn tối đa %d ảnh";
 "App requires permission to access \"Storage\" to view images." = "Ứng dụng cần quyền truy cập bộ nhớ để lấy hình ảnh.";
 "App requires permission to access \"Storage\" to view images. Tap \"Settings\" and then \"Permissions\" to grant permission." = "Ứng dụng cần quyền truy cập bộ nhớ để lấy hình ảnh. Chọn Settings và đi đến Permissions để cấp quyền.";
@@ -623,7 +623,7 @@
 "Invalid country code." = "Mã vùng không hợp lệ.";
 
 "Amount is too low, please input valid amount." = "Số dư không hợp lệ, xin kiểm tra lại thông tin.";
-"No token info" = "Thông tin Coin trống";
+"No token info" = "Thiếu dữ liệu để tiếp tục";
 "Amount is empty." = "Số lượng bị trống.";
 "Please input value in decimal format." = "Xin nhập số thập phân.";
 "The length of decimal places must be equal or smaller than %d" = "Độ dài số thập phân nhập vào phải nhỏ hơn hoặc bằng %d";
@@ -667,11 +667,11 @@
 "Collectible" = "Dễ dàng thu thập";
 "Global Ultility" = "Khả dụng trên toàn cầu";
 "Share Interest" = "Chia sẻ nhanh chóng";
-"Token of Discovery" = "Đồng coin của sự khám phá";
+"Token of Discovery" = "Điểm thưởng cho sự khám phá";
 "Discover interested store around you and get reward by MozoX" = "Khám phá những cửa hàng xung quanh và nhận MozoX";
 "Use rewarded MozoX to redeem in any stores using MozoX" = "MozoX đã nhận có thể dùng đổi thưởng tại các cửa hàng áp dụng MozoX";
 "Transfer MozoX to your friends easily by using MozoX Wallet" = "Dễ dàng chuyển nhận MozoX với bạn bè với ví MozoX";
-"Discover more and get more with MozoX" = "Khám phá và nhận coin với MozoX";
+"Discover more and get more with MozoX" = "Khám phá và nhận thưởng với MozoX";
 "Let's get started!" = "Bắt đầu";
 "Disrupt Foot Traffic" = "Đẩy mạnh lưu lượng khách";
 "Analytics" = "Báo cáo";
@@ -823,3 +823,84 @@
 "Please try again after some time." = "Xin đợi một lúc và thử lại.";
 "No routes found" = "Không tìm thấy đường đi";
 "Discover more Airdrop Events to get MozoX 👌" = "Khám phá thêm chương trình Airdrop để nhận MozoX 👌";
+"Your store have not been registered on our website yet. Please contact MozoX Customer Service for support. (Zalo - Kakao - Telegram)" = "Cửa hàng của bạn chưa được đăng ký trên hệ thống website MozoX. Xin liên hệ dịch vụ chăm sóc khách hàng để được hỗ trợ. (Zalo - Kakao - Telegram)";
+"Withdraw MozoX from airdrop event is failed" = "Rút MozoX từ chương trình Airdrop thất bại.";
+"This airdrop event has not ended yet. You can not withdraw MozoX. Please try again later." = "Bạn không thể rút MozoX từ chương trình Airdrop chưa kết thúc. Xin thử lại sau.";
+"There is no MozoX in this airdrop event." = "Chương trình Airdrop không còn MozoX. Không thể thao tác.";
+"You are not the owner of this event." = "Bạn không phải chủ chương trình Airdrop này.";
+
+"Create Airdrop Event to attract more customer by Airdrop MozoX." = "Tạo chương trình Airdrop MozoX để thu hút nhiều khách hàng hơn. ";
+"At least six characters" = "Cần ít nhất 6 ký tự";
+
+"There is no Airdrop Events around" = "Không có chương trình Airdrop quanh đây";
+
+// Convert "coin" to "token"
+
+"Airdrop MozoX tokens to Shoppers who use MozoX Shopper App when they visit to your store." = "Tặng MozoX cho khách đã cài ứng dụng MozoX khi họ đến cửa hàng.";
+"MozoX tokens" = "Điểm MozoX";
+"Let your customers scan this QR code to download MozoX App and get %@ MozoX tokens for each customer sign up successful." = "Cho khách quét mã QR này để tải ứng dụng MozoX, bạn sẽ nhận %@ điểm MozoX cho mỗi khách đăng ký thành công.";
+
+"%@ Token" = "%@ Điểm";
+"Get Tokens" = "Lấy Điểm";
+"Token" = "Điểm";
+"Today collected tokens" = "MozoX nhận hôm nay";
+"Have your friends scan this QR code to download MozoX App and get %@ MozoX tokens for each friend signed up successfully." = "Mời bạn bè quét QR này để tải ứng dụng MozoX, bạn sẽ nhận được %@ MozoX cho mỗi người bạn đăng ký thành công.";
+"Receive %@ MozoX for transfering MozoX tokens to your friends!" = "Nhận ngay %@ MozoX khi gửi MozoX cho bạn bè!";
+"Total MozoX tokens" = "Tổng MozoX";
+"Walk to earn tokens" = "Đi để nhận MozoX";
+"Token" = "Điểm";
+"Receive %@ MozoX tokens" = "Đã nhận %@ MozoX";
+"Total MozoX tokens:" = "Tổng MozoX:";
+"Total MozoX tokens: %@" = "Tổng MozoX: %@";
+
+// Discover + Beacon Error + About Content + Group Stores
+"Try search to discover more MozoX Airdrop Events" = "Thử tìm kiếm để khám phá thêm các sự kiện MozoX Airdrop";
+"Please try search to discover more MozoX Airdrop Events" = "Vui lòng tìm kiếm để khám phá thêm các sự kiện MozoX Airdrop";
+"%.1fkm away" = "Cách %.1fkm";
+"Version" = "Phiên bản";
+"Website" = "Trang Web";
+"MozoX Token’s primary application is to serve as the foundation for Mozo’s rewards-based solution for retail venues to increase and control foot traffic. MozoX Tokens can be used as rewards and then redeemed at any participating retailer in the MozoX network. Beyond this purpose, MozoX Tokens can also be exchanged as gifts or bought and sold through selected exchange platform." = "Ứng dụng chính của điểm MozoX là phục vụ cho giải pháp phần thưởng Mozo, cho các địa điểm bán lẻ để tăng và kiểm soát lưu lượng khách đến cửa hàng. Điểm MozoX có thể được sử dụng làm phần thưởng và sau đó được đổi tại bất kỳ cửa hàng bán lẻ nào tham gia vào trong mạng MozoX. Ngoài mục đích này, điểm MozoX còn có thể được trao đổi làm quà tặng hoặc mua và bán thông qua các sàn giao dịch được chỉ định";
+
+
+"Beacon Error" = "Beacon lỗi";
+"Did you make sure to:" = "Bạn có chắc chắn:";
+"Have the Beacon facing your front of the phone." = "Để Beacon đối diện với điện thoại của bạn.";
+"Have the Beacon and your phone in a well-lit area." = "Để Beacon và điện thoại của bạn ở nơi có ánh sáng tốt.";
+"Have your phone close to the Beacon." = "Để điện thoại của bạn gần với Beacon.";
+"Use another Beacon" = "Sử dụng Beacon khác";
+"Or you can" = "Hoặc bạn có thể";
+"Contact us for support" = "Liên hệ với chúng tôi để được hỗ trợ";
+"Contact for support" = "Liên hệ để được hỗ trợ";
+"Contact phone number" = "Số điện thoại liên hệ";
+"Enter your name" = "Nhập tên của bạn";
+"Enter your phone number" = "Nhập số điện thoại của bạn";
+"Enter your email address" = "Nhập email của bạn";
+"Message" = "Tin nhắn";
+"My Beacon is not working, I need another one from MozoX team." = "Beacon của tôi không hoạt động, tôi cần một cái khác";
+"Thank you" = "Cảm ơn";
+"We will get back to you shortly" = "Chúng tôi sẽ sớm liên lạc lại với bạn ";
+
+"Group Events" = "Nhóm các sự kiện";
+"Group %d Events" = "Nhóm %d các sự kiện";
+"View Event List" = "Xem danh sách sự kiện";
+
+"Select language to share" = "Chọn ngôn ngữ để chia sẻ";
+"MozoX App" = "Ứng dụng MozoX";
+"MozoX Retailer App" = "Ứng dụng MozoX Retailer";
+"Reward %@ MozoX" = "Được thưởng %@ MozoX";
+"Let your friends scan this QR codes or invite them to join MozoX. You will get rewards for each friend signed up successful." = "Hãy mời bạn bè của bạn quét mã QR này hoặc mời họ tham gia MozoX. Bạn sẽ nhận được thưởng cho mỗi người bạn đăng ký thành công.";
+
+"Once per day" = "Một lần một ngày";
+"Loading..." = "Đang tải...";
+
+// Detect Onchain inside Offchain
+"Detected %@ MozoX Onchain" = "Phát hiện %@ MozoX Onchain";
+"Do you want to convert these MozoX Onchain in this wallet into MozoX Offchain?" = "Bạn có muốn chuyển MozoX Onchain trong ví thành MozoX Offchain?";
+"Your ETH balance is: %@" = "Số dư ETH: %@";
+"You need to transfer %@ ETH into this MozoX Offchain Wallet address to pay TX Fee" = "Bạn cần chuyển %@ ETH vào ví MozoX Offchain này để trả phí giao dịch";
+"Converting MozoX Offchain..." = "Đang chuyển đổi MozoX Offchain...";
+
+"This wallet address does not exist. We only support registered MozoX wallet addresses." = "Địa chỉ ví không tồn tại. Hệ thống chỉ cho phép thực hiện giao dịch với những địa chỉ ví MozoX đã được đăng ký.";
+
+"Your friend joined MozoX" = "Bạn bè của bạn đã tham gia MozoX";
+"%@ joined MozoX" = "%@ đã tham gia MozoX";

@@ -385,7 +385,7 @@
 "You do not have permission to do this action!" = "You do not have permission to do this action!";
 "Are you sure to logout" = "Are you sure to logout";
 "Ex: 1st Tony Moly event" = "Ex: 1st Tony Moly event";
-"Let your customers scan this QR code to download MozoX App and get 25,000 MozoX coins for each customer sign up successful." = "Let your customers scan this QR code to download MozoX App and get 25,000 MozoX coins for each customer sign up successful.";
+"Let your customers scan this QR code to download MozoX App and get %@ MozoX coins for each customer sign up successful." = "Let your customers scan this QR code to download MozoX App and get %@ MozoX coins for each customer sign up successful.";
 "Or share MozoX via your network" = "Or share MozoX via your network";
 "Share MozoX" = "Share MozoX";
 "Start" = "Start";
@@ -817,3 +817,84 @@
 "Please try again after some time." = "Please try again after some time.";
 "No routes found" = "No routes found";
 "Discover more Airdrop Events to get MozoX 👌" = "Discover more Airdrop Events to get MozoX 👌";
+"Your store have not been registered on our website yet. Please contact MozoX Customer Service for support. (Zalo - Kakao - Telegram)" = "Your store have not been registered on our website yet. Please contact MozoX Customer Service for support. (Zalo - Kakao - Telegram)";
+"Withdraw MozoX from airdrop event is failed" = "Withdraw MozoX from airdrop event is failed";
+"This airdrop event has not ended yet. You can not withdraw MozoX. Please try again later." = "This airdrop event has not ended yet. You can not withdraw MozoX. Please try again later.";
+"There is no MozoX in this airdrop event." = "There is no MozoX in this airdrop event.";
+"You are not the owner of this event." = "You are not the owner of this event.";
+
+"Create Airdrop Event to attract more customer by Airdrop MozoX." = "Create Airdrop Event to attract more customer by Airdrop MozoX.";
+"At least six characters" = "At least six characters";
+
+"There is no Airdrop Events around" = "There is no Airdrop Events around";
+
+// Convert "coin" to "token"
+
+"Airdrop MozoX tokens to Shoppers who use MozoX Shopper App when they visit to your store." = "Airdrop MozoX tokens to Shoppers who use MozoX Shopper App when they visit to your store.";
+"MozoX tokens" = "MozoX tokens";
+"Let your customers scan this QR code to download MozoX App and get %@ MozoX tokens for each customer sign up successful." = "Let your customers scan this QR code to download MozoX App and get %@ MozoX tokens for each customer sign up successful.";
+
+"%@ Token" = "%@ Token";
+"Get Tokens" = "Get Tokens";
+"Token" = "Token";
+"Today collected tokens" = "Today collected tokens";
+"Have your friends scan this QR code to download MozoX App and get %@ MozoX tokens for each friend signed up successfully." = "Have your friends scan this QR code to download MozoX App and get %@ MozoX tokens for each friend signed up successfully.";
+"Receive %@ MozoX for transfering MozoX tokens to your friends!" = "Receive %@ MozoX for transfering MozoX tokens to your friends!";
+"Total MozoX tokens" = "Total MozoX tokens";
+"Walk to earn tokens" = "Walk to earn tokens";
+"Token" = "Token";
+"Receive %@ MozoX tokens" = "Receive %@ MozoX tokens";
+"Total MozoX tokens:" = "Total MozoX tokens:";
+"Total MozoX tokens: %@" = "Total MozoX tokens: %@";
+
+// Discover + Beacon Error + About Content + Group Stores
+"Try search to discover more MozoX Airdrop Events" = "Try search to discover more MozoX Airdrop Events";
+"Please try search to discover more MozoX Airdrop Events" = "Please try search to discover more MozoX Airdrop Events";
+"%.1fkm away" = "%.1fkm away";
+"Version" = "Version";
+"Website" = "Website";
+"MozoX Token’s primary application is to serve as the foundation for Mozo’s rewards-based solution for retail venues to increase and control foot traffic. MozoX Tokens can be used as rewards and then redeemed at any participating retailer in the MozoX network. Beyond this purpose, MozoX Tokens can also be exchanged as gifts or bought and sold through selected exchange platform." = "MozoX Token’s primary application is to serve as the foundation for Mozo’s rewards-based solution for retail venues to increase and control foot traffic. MozoX Tokens can be used as rewards and then redeemed at any participating retailer in the MozoX network. Beyond this purpose, MozoX Tokens can also be exchanged as gifts or bought and sold through selected exchange platform.";
+
+
+"Beacon Error" = "Beacon Error";
+"Did you make sure to:" = "Did you make sure to:";
+"Have the Beacon facing your front of the phone." = "Have the Beacon facing your front of the phone.";
+"Have the Beacon and your phone in a well-lit area." = "Have the Beacon and your phone in a well-lit area.";
+"Have your phone close to the Beacon." = "Have your phone close to the Beacon.";
+"Use another Beacon" = "Use another Beacon";
+"Or you can" = "Or you can";
+"Contact us for support" = "Contact us for support";
+"Contact for support" = "Contact for support";
+"Contact phone number" = "Contact phone number";
+"Enter your name" = "Enter your name";
+"Enter your phone number" = "Enter your phone number";
+"Enter your email address" = "Enter your email address";
+"Message" = "Message";
+"My Beacon is not working, I need another one from MozoX team." = "My Beacon is not working, I need another one from MozoX team.";
+"Thank you" = "Thank you";
+"We will get back to you shortly" = "We will get back to you shortly";
+
+"Group Events" = "Group Events";
+"Group %d Events" = "Group %d Events";
+"View Event List" = "View Event List";
+
+"Select language to share" = "Select language to share";
+"MozoX App" = "MozoX App";
+"MozoX Retailer App" = "MozoX Retailer App";
+"Reward %@ MozoX" = "Reward %@ MozoX";
+"Let your friends scan this QR codes or invite them to join MozoX. You will get rewards for each friend signed up successful." = "Let your friends scan this QR codes or invite them to join MozoX. You will get rewards for each friend signed up successful.";
+
+"Once per day" = "Once per day";
+"Loading..." = "Loading...";
+
+// Detect Onchain inside Offchain
+"Detected %@ MozoX Onchain" = "Detected %@ MozoX Onchain";
+"Do you want to convert these MozoX Onchain in this wallet into MozoX Offchain?" = "Do you want to convert these MozoX Onchain in this wallet into MozoX Offchain?";
+"Your ETH balance is: %@" = "Your ETH balance is: %@";
+"You need to transfer %@ ETH into this MozoX Offchain Wallet address to pay TX Fee" = "You need to transfer %@ ETH into this MozoX Offchain Wallet address to pay TX Fee";
+"Converting MozoX Offchain..." = "Converting MozoX Offchain...";
+
+"This wallet address does not exist. We only support registered MozoX wallet addresses." = "This wallet address does not exist. We only support registered MozoX wallet addresses.";
+
+"Your friend joined MozoX" = "Your friend joined MozoX";
+"%@ joined MozoX" = "%@ joined MozoX";
