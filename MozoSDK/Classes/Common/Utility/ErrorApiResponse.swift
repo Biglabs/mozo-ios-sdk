@@ -116,7 +116,7 @@ public enum ErrorApiResponse: String {
         case .STORE_RETAILER_AIR_DROP_NOT_EXIST_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_RETAILER_NOT_USER_CREATE_EVENT_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_RETAILER_EVENT_STATUS_NOT_WITH_DRAW_ERROR: return "This airdrop event has not ended yet. You can not withdraw MozoX. Please try again later."
-        case .STORE_RETAILER_EVENT_TOTAL_NOT_MOZO_ERROR: return "There is no MozoX in this airdrop event. You do not need to do any thing."
+        case .STORE_RETAILER_EVENT_TOTAL_NOT_MOZO_ERROR: return "There is no MozoX in this airdrop event."
         case .STORE_GET_NONCE_ERROR: return "Something is wrong with your account status. Please try again."
         case .STORE_CALL_TRANSACTION_SERVICE_ERROR: return "Something is wrong with your account status. Please try again."
         case .STORE_SIGN_TRANSACTION_ERROR: return "Something is wrong with your account status. Please try again."

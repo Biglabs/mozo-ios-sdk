@@ -136,27 +136,6 @@ public class DisplayUtils {
         return dateString
     }
     
-//    public static func showError(_ connectionError: Error) {
-//        switch connectionError {
-//        case ConnectionError.noInternetConnection:
-//            JDStatusBarNotification.show(withStatus: ConnectionError.noInternetConnection.localizedDescription, dismissAfter: notificationDismissAfter, styleName: JDStatusBarStyleDark)
-//        case ConnectionError.requestTimedOut:
-//            JDStatusBarNotification.show(withStatus: ConnectionError.requestNotFound.localizedDescription, dismissAfter: notificationDismissAfter, styleName: JDStatusBarStyleDark)
-//        case ConnectionError.requestNotFound:
-//            JDStatusBarNotification.show(withStatus: ConnectionError.requestNotFound.localizedDescription, dismissAfter: notificationDismissAfter, styleName: JDStatusBarStyleError)
-//        case ConnectionError.authenticationRequired:
-//            JDStatusBarNotification.show(withStatus: ConnectionError.authenticationRequired.localizedDescription, dismissAfter: notificationDismissAfter, styleName: JDStatusBarStyleError)
-//        case ConnectionError.badRequest:
-//            JDStatusBarNotification.show(withStatus: ConnectionError.badRequest.localizedDescription, dismissAfter: notificationDismissAfter, styleName: JDStatusBarStyleError)
-//        case ConnectionError.internalServerError:
-//            JDStatusBarNotification.show(withStatus: ConnectionError.internalServerError.localizedDescription, dismissAfter: notificationDismissAfter, styleName: JDStatusBarStyleError)
-//        case ConnectionError.network(let error):
-//            print("Error: \(error)")
-//        default:
-//            JDStatusBarNotification.show(withStatus: "Network Error.", dismissAfter: notificationDismissAfter, styleName: JDStatusBarStyleError)
-//        }
-//    }
-    
     public static func getTopViewController() -> UIViewController! {
         let appDelegate = UIApplication.shared.delegate
         if let window = appDelegate!.window { return window?.visibleViewController }
