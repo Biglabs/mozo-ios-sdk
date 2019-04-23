@@ -622,7 +622,7 @@
 "Invalid country code." = "국가 코드가 잘못되었습니다.";
 
 "Amount is too low, please input valid amount." = "금액이 너무 적으니까 유효 금액을 입력하십시오.";
-"No token info" = "코인 정보가 비어 있습니다.";
+"No token info" = "코인 정보 없음";
 "Amount is empty." = "수량이 비어 있습니다.";
 "Please input value in decimal format." = "십진수 형식으로 값을 입력하십시오.";
 "The length of decimal places must be equal or smaller than %d" = "소수 자릿수는 %d 보다 작거나 같아야합니다.";
@@ -669,7 +669,7 @@
 "Collectible" = "소장품";
 "Global Ultility" = "전 세계적으로 사용 가능";
 "Share Interest" = "관심 분야 공유";
-"Token of Discovery" = "발견의 코인";
+"Token of Discovery" = "발견된 코인";
 "Discover interested store around you and get reward by MozoX" = "주위에 관심있는 상점을 찾고 MozoX 를 받으십시오.";
 "Use rewarded MozoX to redeem in any stores using MozoX" = " 받은 MozoX 코인을 MozoX를 적용하는 상점에서 보상으로 바꿀 수 있습니다.";
 "Transfer MozoX to your friends easily by using MozoX Wallet" = "MozoX 월렛을  통해 MozoX를 친구에게 쉽게 이전합니다.";
@@ -753,9 +753,9 @@
 "No images available" = "사용할 수있는 이미지가 없습니다.";
 "Camera is not available" = "카메라를 사용할 수 없습니다.";
 "Please, allow the application to access to your photo library." = "응용 프로그램에서 사진 라이브러리에 액세스하도록 허용하시기를 바랍니다.";
-"%@ is added %@" = "% s이 (가) % s 을 (를) 추가되었습니다.";
-"%@ is removed %@" = "% s이 (가) % s 을 (를) 삭제되었습니다.";
-"Added Hashtags %@" = "추가 된 해시 태그는  % s입니다.";
+"%@ is added %@" = "%@ 이 (가) %@ 을 (를) 추가되었습니다.";
+"%@ is removed %@" = "%@ 이 (가) %@ 을 (를) 삭제되었습니다.";
+"Added Hashtags %@" = "추가 된 해시 태그는  %@ 입니다.";
 "Beacon Range" = "Beacon 범위";
 "App requires permission to access \"Location Services\" to update beacon. Tap \"Settings\", \"Privacy\" and then \"Location Services\" to grant permission." = "Beacon을 업데이트하기 위하여 '위치 서비스'에 액세스 할 수있는 권한을 요청합니다. 권한을 부여하기 위하여 '설정', '개인 정보', 그리고  '위치 서비스'를 누르십시오.";
 "Please choose Beacon location!" = "Beacon 위치를 선택하세요!";
@@ -821,3 +821,83 @@
 "Please try again after some time." = "잠시 후 다시 시도하십시오. ";
 "No routes found" = "경로를 찾을 수 없습니다.";
 "Discover more Airdrop Events to get MozoX 👌" = "MozoX를 얻기 위하여 더 많은 Airdrop 이벤트를 발견하시기를 바랍니다 👌";
+"Your store have not been registered on our website yet. Please contact MozoX Customer Service for support. (Zalo - Kakao - Telegram)" = "귀하의 상점은 저희 웹 사이트에 아직 등록되지 않았습니다. MozoX 고객 서비스에 지원을 요청하십시오. (Zalo - Kakao - Telegram)";
+"Withdraw MozoX from airdrop event is failed" = "실패된 Airdrop 이벤트에서 MozoX를 철회합니다.";
+"This airdrop event has not ended yet. You can not withdraw MozoX. Please try again later." = "Airdrop 이벤트는 아직 끝나지 않았습니다. MozoX는 철회 할 수 없습니다. 나중에 다시 시도하십시오.";
+"There is no MozoX in this airdrop event." = "Airdrop 이벤트에는 MozoX가 없습니다.  아무것도 일을 할 필요가 없습니다.";
+"You are not the owner of this event." = "이 이벤트의 소유자가 아닙니다.";
+
+"Create Airdrop Event to attract more customer by Airdrop MozoX." = "Airdrop MozoX 으로 더 많은 고객을 유치하기 위하여 Airdrop 이벤트를 만듭니다.";
+"At least six characters" = "6 자 이상 필요합니다.";
+
+"There is no Airdrop Events around" = "주변에는 Airdrop 이벤트가 없습니다.";
+
+// Convert "coin" to "token"
+"Airdrop MozoX tokens to Shoppers who use MozoX Shopper App when they visit to your store." = "귀하의 상점을 방문 할 때 MozoX Shopper App을 사용하는 쇼핑객에게 Airdrop MozoX 를 주겠습니다.";
+"MozoX tokens" = "MozoX 코인";
+"Let your customers scan this QR code to download MozoX App and get %@ MozoX tokens for each customer sign up successful." = "고객들이 QR 코드를 스캔하여 MozoX App을 다운로드하도록 초대하면 각 고객이 성공적으로 등록 할 때마다 귀하가 %@ 개의 MozoX 코인을 받게 됩니다.";
+
+"%@ Token" = "%@ 코인";
+"Get Tokens" = "코인가져 오기";
+"Token" = "코인";
+"Today collected tokens" = "오늘 수집한 코인";
+"Have your friends scan this QR code to download MozoX App and get %s MozoX tokens for each friend signed up successfully." = "친구들이 QR 코드를 스캔하여 MozoX App을 다운로드하도록 초대하면 각 고객이 성공적으로 등록 할 때마다 귀하가 %s 개의 MozoX 코인을 받게 됩니다.";
+"Receive %@ MozoX for transfering MozoX tokens to your friends!" = "MozoX 코인을 친구들에게 전송시 %@ MozoX를 받습니다!";
+"Total MozoX tokens" = "총 MozoX 코인";
+"Walk to earn tokens" = "코인을 얻기 위하여 걸으십시오.";
+"Token" = "코인";
+"Receive %@ MozoX tokens" = "%@ MozoX 코인 받습니다.";
+"Total MozoX tokens:" = "총 MozoX 코인:";
+"Total MozoX tokens: %@" = "총 MozoX 코인 : %@ 입니다.";
+
+// Discover + Beacon Error + About Content + Group Stores
+"Try search to discover more MozoX Airdrop Events" = "MozoX Airdrop 이벤트를  더 검색해보세요.";
+"Please try search to discover more MozoX Airdrop Events" = "MozoX Airdrop 이벤트를  더 검색해보시기를 바랍니다.";
+"%.1fkm away" = "%.1fkm 거리에 있습니다.";
+"Version" = "버전";
+"Website" = "웹 사이트";
+"MozoX Token’s primary application is to serve as the foundation for Mozo’s rewards-based solution for retail venues to increase and control foot traffic. MozoX Tokens can be used as rewards and then redeemed at any participating retailer in the MozoX network. Beyond this purpose, MozoX Tokens can also be exchanged as gifts or bought and sold through selected exchange platform." = "MozoX Token의 기본 응용 프로그램은 소매점에 방문자 트래픽을 늘리고 제어하는 Mozo의 보상 기반 솔루션을위한 기반으로 사용하는 것입니다. MozoX Tokens은 보상으로 사용 되고 그 다음에 MozoX 네트워크의 참여하는 소매점에서 사용할 수 있습니다. 이 목적 외에도 MozoX Tokens은 선물로 교환하거나 선택한 교환 플랫폼을 통해 판매 및 판매 할 수 있습니다.";
+
+
+"Beacon Error" = "Beacon 오류";
+"Did you make sure to:" = "당신이 확신 했습니까?";
+"Have the Beacon facing your front of the phone." = "전화기의 건너편에 Beacon을 두십시오.";
+"Have the Beacon and your phone in a well-lit area." = "Beacon과 전화기를 조명이 밝은 곳에 두십시오.";
+"Have your phone close to the Beacon." = "Beacon과 전화기를 가까이에 두십시오.";
+"Use another Beacon" = "다른 Beacon 사용";
+"Or you can" = "또는 할 수 있는 것은...";
+"Contact us for support" = "지원 문의";
+"Contact for support" = "지원 연락처";
+"Contact phone number" = "연락 전화 번호";
+"Enter your name" = "이름을 입력하십시오.";
+"Enter your phone number" = "전화 번호를 입력하십시오.";
+"Enter your email address" = "이메일 주소를 입력하십시오.";
+"Message" = "메시지";
+"My Beacon is not working, I need another one from MozoX team." = "내 Beacon이 작동하지 않습니다, MozoX 팀에서 다른 하나가 필요합니다.";
+"Thank you" = "감사합니다.";
+"We will get back to you shortly" = "곧 다시 연락 드리겠습니다.";
+
+"Group Events" = "그룹 이벤트";
+"Group %d Events" = "그룹 %d 이벤트";
+"View Event List" = "이벤트 리스트보기";
+
+"Select language to share" = "공유 할 언어 선택";
+"MozoX App" = "MozoX 앱";
+"MozoX Retailer App" = "MozoX 소매 앱";
+"Reward %@ MozoX" = " %@ 의 MozoX 보상을 받게 됩니다.";
+"Let your friends scan this QR codes or invite them to join MozoX. You will get rewards for each friend signed up successful." = "친구가 이 QR 코드를 스캔하거나 MozoX에 가입하도록 초대하십시오. 성공적으로 등록 된 각 친구에 대한 보상을 받게 됩니다.";
+
+"Once per day" = "하루에 한 번";
+"Loading..." = "로드 중 ...";
+
+// Detect Onchain inside Offchain
+"Detected %@ MozoX Onchain" = "%@ MozoX Onchain이 감지 됩니다.";
+"Do you want to convert these MozoX Onchain in this wallet into MozoX Offchain?" = "이 지갑에 있는 MozoX Onchain을 MozoX Offchain으로 변환 하시겠습니까?";
+"Your ETH balance is: %@" = "ETH 잔액은 %@ 입니다.";
+"You need to transfer %@ ETH into this MozoX Offchain Wallet address to pay TX Fee" = "TX 요금을 지불하기 위하여 이 MozoX Offchain 지갑 주소로 %@ ETH를 전송해야합니다.";
+"Converting MozoX Offchain..." = "MozoX Offchain으로 변환 중 ...";
+
+"This wallet address does not exist. We only support registered MozoX wallet addresses." = "이 지갑 주소는 존재하지 않습니다. 등록 된 MozoX 지갑 주소만 지원합니다.";
+
+"Your friend joined MozoX" = "당신의 친구가 MozoX에 가입했습니다.";
+"%@ joined MozoX" = "%@ 는 MozoX에 가입했습니다.";
