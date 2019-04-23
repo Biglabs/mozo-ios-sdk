@@ -14,6 +14,7 @@ extension SessionStoreManager {
     }
     
     public static func setDynamicLink(_ dynamicLink: String) {
+        NSLog("SessionStoreManager - Set dynamic link: \(dynamicLink)")
         // Handle case: Receive Dynamic Link when app is running.
         if !dynamicLink.isEmpty {
             MozoSDK.processInvitation()

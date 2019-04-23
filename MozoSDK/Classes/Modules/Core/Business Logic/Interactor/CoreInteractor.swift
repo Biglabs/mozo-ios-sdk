@@ -280,17 +280,17 @@ extension CoreInteractor: CoreInteractorInput {
     }
     
     func processInvitation() {
-        print("CoreInteractor - Process invitation")
+        NSLog("CoreInteractor - Process invitation")
         if AccessTokenManager.getAccessToken() != nil, let code = SessionStoreManager.getDynamicLink(), !code.isEmpty {
-            print("CoreInteractor - Process invitation with code: \(code)")
+            NSLog("CoreInteractor - Process invitation with code: \(code)")
             _ = apiManager.updateCodeLinkInstallApp(codeString: code).done { (inviteInfo) in
-                print("Core interactor - Process invitation successfully, clear invitation code.")
+                NSLog("Core interactor - Process invitation successfully, clear invitation code.")
                 SessionStoreManager.setDynamicLink("")
             }.catch({ (error) in
-                
+                NSLog("Core interactor - Process invitation failed, keep invitation code.")
             })
         } else {
-            print("CoreInteractor - Not enough conditions to process invitation")
+            NSLog("CoreInteractor - Not enough conditions to process invitation")
         }
     }
 }
