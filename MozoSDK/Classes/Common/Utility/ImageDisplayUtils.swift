@@ -7,7 +7,7 @@
 
 import Foundation
 public class ImageDisplayUtils {
-    public static func displayExpandImageView(url: String) {
+    public static func displayExpandImageView(names: [String], selectedIndex: Int = 0) {
         if let parentView = UIApplication.shared.keyWindow {
             let screenWidth = parentView.bounds.width
             let screenHeight = parentView.bounds.height
@@ -24,9 +24,20 @@ public class ImageDisplayUtils {
             let viewFrame = CGRect(x: 0, y: 0 - topPadding, width: displayWidth, height: displayHeight)
             
             let view = ExpandImageView(frame: viewFrame)
-            view.url = url
+            view.names = names
+            view.selectedIndex = selectedIndex
             
             parentView.addSubview(view)
         }
+    }
+    
+    public static func reArrangeStringArray(strings: [String], index: Int) -> [String]{
+        if index == 0 {
+            return strings
+        }
+        let range = strings[index...]
+        var result : [String] = Array(range)
+        result.append(contentsOf: Array(strings[..<index]))
+        return result
     }
 }
