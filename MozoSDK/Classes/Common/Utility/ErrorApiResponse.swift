@@ -67,6 +67,8 @@ public enum ErrorApiResponse: String {
     
     case SOLOMON_FATAL_USER_NO_PROFILE = "SOLOMON_FATAL_USER_NO_PROFILE"
     
+    case STORE_USER_ALREADY_INSTALL_APP_ERROR = "STORE_USER_ALREADY_INSTALL_APP_ERROR"
+    
     public var description: String {
         switch self {
         case .INTERNAL_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
@@ -123,6 +125,8 @@ public enum ErrorApiResponse: String {
             
         case .STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT: return rawValue
         case .STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE: return rawValue
+            
+        case .STORE_USER_ALREADY_INSTALL_APP_ERROR: return rawValue
         }
     }
     
@@ -198,6 +202,9 @@ public enum ErrorApiResponse: String {
         case .STORE_SIGN_TRANSACTION_ERROR: return .apiError_STORE_SIGN_TRANSACTION_ERROR
             
         case .SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD: return .apiError_SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD
+        
+        case .STORE_USER_ALREADY_INSTALL_APP_ERROR:
+            return .apiError_STORE_USER_ALREADY_INSTALL_APP_ERROR
         }
     }
 }

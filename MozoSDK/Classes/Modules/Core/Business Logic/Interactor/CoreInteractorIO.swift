@@ -91,4 +91,8 @@ protocol CoreInteractorService {
     func getListLanguageInfo() -> Promise<[InviteLanguageDTO]>
     
     func updateCodeLinkInstallApp(codeString: String) -> Promise<InviteLinkDTO>
+    
+    func getListNotification(page: Int, size: Int) -> Promise<[WSMessage]>
+    
+    func getSuggestKeySearch(lat: Double, lon: Double) -> Promise<[String]>
 }

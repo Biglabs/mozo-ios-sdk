@@ -43,6 +43,7 @@ public class Configuration {
     public static let BASE_HOST = "https://\(DOMAIN)"
     public static let BASE_URL = "\(BASE_HOST)/solomon\(API_APP_PATH)"
     public static let BASE_STORE_URL = "\(BASE_HOST)/store\(API_APP_PATH)"
+    public static let BASE_NOTIFICATION_URL = "\(BASE_HOST)/notification\(API_APP_PATH)"
     
     // WEB_SOCKET
     public static let WEB_SOCKET_BASE = SUB_DOMAIN_ENUM.socket

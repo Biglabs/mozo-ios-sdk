@@ -256,4 +256,12 @@ public class MozoSDK {
     public static func processInvitation() {
         return moduleDependencies.processInvitation()
     }
+    
+    public static func getListNotification(page: Int = 0, size: Int = 15) -> Promise<[WSMessage]> {
+        return moduleDependencies.getListNotification(page: page, size: size)
+    }
+    
+    public static func getSuggestKeySearch(lat: Double = 0, lon: Double = 0) -> Promise<[String]> {
+        return moduleDependencies.getSuggestKeySearch(lat: lat, lon: lon)
+    }
 }

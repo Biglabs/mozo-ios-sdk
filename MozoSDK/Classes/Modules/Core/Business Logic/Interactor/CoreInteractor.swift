@@ -287,6 +287,10 @@ extension CoreInteractor: CoreInteractorInput {
                 NSLog("Core interactor - Process invitation successfully, clear invitation code.")
                 SessionStoreManager.setDynamicLink("")
             }.catch({ (error) in
+                if let connError = error as? ConnectionError, connError == .apiError_STORE_USER_ALREADY_INSTALL_APP_ERROR {
+                    NSLog("Core interactor - Process invitation failed, clear invitation code.")
+                    SessionStoreManager.setDynamicLink("")
+                }
                 NSLog("Core interactor - Process invitation failed, keep invitation code.")
             })
         } else {

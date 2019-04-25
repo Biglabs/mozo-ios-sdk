@@ -77,6 +77,8 @@ public enum ConnectionError: Error {
     
     case apiError_SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD
     
+    case apiError_STORE_USER_ALREADY_INSTALL_APP_ERROR
+    
     public var isApiError: Bool {
         switch self {
         case .network,
@@ -164,6 +166,9 @@ public enum ConnectionError: Error {
         case .apiError_STORE_SIGN_TRANSACTION_ERROR: return .STORE_SIGN_TRANSACTION_ERROR
         
         case .apiError_SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD: return .SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD
+        
+        case .apiError_STORE_USER_ALREADY_INSTALL_APP_ERROR:
+            return .STORE_USER_ALREADY_INSTALL_APP_ERROR
         default:
             return nil
         }

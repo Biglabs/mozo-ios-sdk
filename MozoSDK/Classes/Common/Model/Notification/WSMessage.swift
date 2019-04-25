@@ -16,6 +16,8 @@ public class WSMessage: ResponseObjectSerializable {
     public var time: Int64?
     public var uuid: String?
     
+    public var appType: String?
+    
     public required init(content: String, message: String, channel: String, messageType: String, time: Int64, uuid: String){
         self.content = content
         self.message = message
@@ -32,6 +34,7 @@ public class WSMessage: ResponseObjectSerializable {
         self.messageType = json["messageType"].string
         self.time = json["time"].int64
         self.uuid = json["uuid"].string
+        self.appType = json["appType"].string
     }
     
     public required init?(){}
@@ -53,6 +56,14 @@ public class WSMessage: ResponseObjectSerializable {
         if let uuid = self.uuid {
             json["uuid"] = uuid
         }
+        if let appType = self.appType {
+            json["appType"] = appType
+        }
         return json
+    }
+    
+    public static func arrayFromJson(_ json: SwiftyJSON.JSON) -> [WSMessage] {
+        let array = json.array?.map({ WSMessage(json: $0)! })
+        return array ?? []
     }
 }

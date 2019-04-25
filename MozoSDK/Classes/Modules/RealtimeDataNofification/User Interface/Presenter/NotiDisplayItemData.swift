@@ -41,6 +41,7 @@ public class NotiDisplayItemData {
                         image = "ic_notif_airdropped"
                     } else if let inviteNoti = rawNoti as? InviteNotification {
                         subtitle = inviteNoti.phoneNumSignUp != nil ? "%@ joined MozoX".localizedFormat(inviteNoti.phoneNumSignUp ?? "") : "Your friend joined MozoX".localized
+                        detailText = subtitle
                         image = "ic_notif_invite"
                     } else {
                         let displayName = DisplayUtils.buildNameFromAddress(address: displayAddress ?? "")
