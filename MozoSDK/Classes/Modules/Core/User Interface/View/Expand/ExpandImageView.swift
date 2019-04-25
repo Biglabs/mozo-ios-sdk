@@ -35,19 +35,15 @@ class ExpandImageView: UIView {
                 print("Set name - collection view is existing")
                 collectionView.reloadData()
                 collectionView.performBatchUpdates(nil) { (result) in
-                    if self.selectedIndex > 0 {
-                        let indexPath = IndexPath(row: self.selectedIndex, section: 0)
-                        self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-                    }
+                    let indexPath = IndexPath(row: self.selectedIndex, section: 0)
+                    self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
                 }
             } else {
                 print("Set name - collection view is not existing")
             }
         }
     }
-    
-    var layout = ExpandInfiniteLayout()
-    
+        
     func loadView(identifier: String) -> UIView {
         let bundle = BundleManager.mozoBundle()
         let nib = UINib(nibName: identifier, bundle: bundle)
@@ -83,10 +79,11 @@ class ExpandImageView: UIView {
         collectionView.delegate = self
         collectionView.register(UINib(nibName: EXPAND_IMAGE_COLLECTION_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellWithReuseIdentifier: EXPAND_IMAGE_COLLECTION_VIEW_CELL_IDENTIFIER)
         collectionView.showsHorizontalScrollIndicator = false
+        let layout = CarouselFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: collectionView.frame.size.height)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
+        layout.sideItemScale = 1.0
+        layout.spacingMode = .fixed(spacing: 0)
+        layout.itemSize = CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
         collectionView.collectionViewLayout = layout
         collectionView.alwaysBounceHorizontal = false
     }
@@ -106,8 +103,11 @@ extension ExpandImageView: UICollectionViewDataSource, UICollectionViewDelegate 
         cell.imageName = names[indexPath.row]
         return cell
     }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.layout.loopCollectionViewIfNeeded()
+}
+extension ExpandImageView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        //For entire screen size
+        let screenSize = UIScreen.main.bounds.size
+        return screenSize
     }
 }
