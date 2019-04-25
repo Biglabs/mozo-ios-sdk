@@ -301,6 +301,14 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractor?.processInvitation())!
     }
     
+    func getListNotification(page: Int, size: Int) -> Promise<[WSMessage]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getListNotification(page: page, size: size))!
+    }
+    
+    func getSuggestKeySearch(lat: Double, lon: Double) -> Promise<[String]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getSuggestKeySearch(lat: lat, lon: lon))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

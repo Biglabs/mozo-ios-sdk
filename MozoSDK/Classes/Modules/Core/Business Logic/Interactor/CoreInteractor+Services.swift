@@ -263,4 +263,12 @@ extension CoreInteractor: CoreInteractorService {
     func updateCodeLinkInstallApp(codeString: String) -> Promise<InviteLinkDTO> {
         return apiManager.updateCodeLinkInstallApp(codeString: codeString)
     }
+    
+    func getListNotification(page: Int, size: Int) -> Promise<[WSMessage]> {
+        return apiManager.getListNotification(page: page, size: size)
+    }
+    
+    func getSuggestKeySearch(lat: Double, lon: Double) -> Promise<[String]> {
+        return apiManager.getSuggestKeySearch(lat: lat, lon: lon)
+    }
 }

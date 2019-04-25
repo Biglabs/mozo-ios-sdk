@@ -21,8 +21,9 @@ class CustomImageView: UIImageView {
         if !defaultImageName.isEmpty {
             image = isDefaultImageFromMozo ? UIImage(named: defaultImageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
                 : UIImage(named: defaultImageName)
+        } else {
+            self.image = nil
         }
-        
         if let imageFromCache = imageCache.object(forKey: urlString as NSString) as? UIImage {
             print("Use saved cache image.")
             self.image = imageFromCache
@@ -33,9 +34,9 @@ class CustomImageView: UIImageView {
             loadingView.color = loadingColor
             loadingView.frame = self.frame
             loadingView.center = self.center
-            if isUseScreenCenter, let superview = self.superview {
+            if isUseScreenCenter {
                 //                loadingView.frame = UIScreen.main.bounds
-                loadingView.center = CGPoint(x: UIScreen.main.bounds.size.width * 0.5, y: superview.bounds.height * 0.5)
+                loadingView.center = CGPoint(x: UIScreen.main.bounds.size.width * 0.5, y: UIScreen.main.bounds.height * 0.5)
             }
             loadingView.startAnimating()
             self.addSubview(loadingView)
