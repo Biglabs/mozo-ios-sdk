@@ -157,15 +157,18 @@ class CoreInteractor: NSObject {
     
     func checkAuthAndWallet(module: Module) {
         if AccessTokenManager.getAccessToken() != nil {
-            // Process invitation if any.
-            processInvitation()
             if SessionStoreManager.loadCurrentUser() != nil {
                 self.checkWallet(module: module)
                 // TODO: Handle update local user profile data
+                
+                // Process invitation if any.
+                self.processInvitation()
             } else {
                 print("😎 Load user info.")
                 _ = getUserProfile().done({ () in
                     self.checkWallet(module: module)
+                    // Process invitation if any.
+                    self.processInvitation()
                 }).catch({ (err) in
                     // No user profile, can not continue with any module
                     self.output?.failToLoadUserInfo((err as? ConnectionError) ?? .systemError, for: module)
@@ -207,10 +210,10 @@ extension CoreInteractor: CoreInteractorInput {
     func handleAferAuth(accessToken: String?) {
         AccessTokenManager.saveToken(accessToken)
         anonManager.linkCoinFromAnonymousToCurrentUser()
-        processInvitation()
         _ = getUserProfile().done({ () in
             self.downloadData()
             self.output?.finishedHandleAferAuth()
+            self.processInvitation()
         }).catch({ (err) in
             // Handle case unable to load user profile
             self.output?.failToLoadUserInfo(err as! ConnectionError, for: nil)
@@ -287,9 +290,13 @@ extension CoreInteractor: CoreInteractorInput {
                 NSLog("Core interactor - Process invitation successfully, clear invitation code.")
                 SessionStoreManager.setDynamicLink("")
             }.catch({ (error) in
-                if let connError = error as? ConnectionError, connError == .apiError_STORE_USER_ALREADY_INSTALL_APP_ERROR {
-                    NSLog("Core interactor - Process invitation failed, clear invitation code.")
-                    SessionStoreManager.setDynamicLink("")
+                if let connError = error as? ConnectionError {
+                    if connError.isApiError {
+                        // Status: 200
+                        NSLog("Core interactor - Process invitation failed, clear invitation code.")
+                        SessionStoreManager.setDynamicLink("")
+                        return
+                    }
                 }
                 NSLog("Core interactor - Process invitation failed, keep invitation code.")
             })
