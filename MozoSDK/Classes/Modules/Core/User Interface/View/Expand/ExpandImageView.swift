@@ -10,8 +10,9 @@ import Foundation
 class ExpandImageView: UIView {
     var containerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var gradientView: GradientView!
     @IBOutlet weak var imgCloseView: UIImageView!
-    
+        
     override public init(frame: CGRect) {
         super.init(frame: frame)
         loadViewFromNib()
