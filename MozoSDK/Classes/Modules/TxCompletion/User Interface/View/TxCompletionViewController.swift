@@ -41,7 +41,7 @@ class TxCompletionViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Send MozoX".localized
+        navigationItem.title = "Send MozoX".localized
         checkAddressBook()
     }
     

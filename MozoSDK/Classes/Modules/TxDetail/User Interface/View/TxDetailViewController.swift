@@ -50,7 +50,7 @@ class TxDetailViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Transaction Detail".localized
+        navigationItem.title = "Transaction Detail".localized
         updateView()
     }
     

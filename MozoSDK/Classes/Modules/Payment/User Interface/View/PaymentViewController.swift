@@ -60,7 +60,7 @@ class PaymentViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Request MozoX".localized
+        navigationItem.title = "Request MozoX".localized
     }
     
     func checkDisableButtonSend(_ text: String = "") {
