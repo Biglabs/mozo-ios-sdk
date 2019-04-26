@@ -47,9 +47,9 @@ class AddressBookViewController: MozoBasicViewController {
         super.viewWillAppear(animated)
         // TODO: Change title according to requested module.
         if isDisplayForSelect {
-            self.title = "Select Address".localized
+            navigationItem.title = "Select Address".localized
         } else {
-            self.title = "Address Book".localized
+            navigationItem.title = "Address Book".localized
         }
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = false

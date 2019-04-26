@@ -159,6 +159,7 @@ extension TransactionInteractor : TransactionInteractorInput {
                     self.pinToRetry = nil
                     // Fix issue: Should keep previous value of transaction
                     if let output = self.originalTransaction?.outputs![0] {
+                        
                         receivedTx.tx?.outputs![0] = output
                     }
                     // Clear original transaction
