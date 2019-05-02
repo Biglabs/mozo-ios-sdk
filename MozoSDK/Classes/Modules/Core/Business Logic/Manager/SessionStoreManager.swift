@@ -66,5 +66,7 @@ public class SessionStoreManager {
     
     public static var inviteLink: InviteLinkDTO?
     
+    public static var inviteLinkRetailer: InviteLinkDTO?
+    
     public static var isAccessDenied = false
 }
