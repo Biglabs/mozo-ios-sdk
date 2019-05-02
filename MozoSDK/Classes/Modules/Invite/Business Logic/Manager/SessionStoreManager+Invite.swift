@@ -17,7 +17,7 @@ extension SessionStoreManager {
         NSLog("SessionStoreManager - Set dynamic link: \(dynamicLink)")
         // Handle case: Receive Dynamic Link when app is running.
         if !dynamicLink.isEmpty {
-            MozoSDK.processInvitation()
+            MozoSDK.processInvitationCode()
         }
         let defaults = UserDefaults.standard
         defaults.set(dynamicLink, forKey: KEY_DYNAMIC_LINK)

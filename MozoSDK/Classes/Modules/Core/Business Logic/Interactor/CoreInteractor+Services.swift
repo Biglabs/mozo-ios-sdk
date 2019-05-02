@@ -260,6 +260,10 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getListLanguageInfo()
     }
     
+    func processInvitationCode() {
+        self.processInvitation()
+    }
+    
     func updateCodeLinkInstallApp(codeString: String) -> Promise<InviteLinkDTO> {
         return apiManager.updateCodeLinkInstallApp(codeString: codeString)
     }
