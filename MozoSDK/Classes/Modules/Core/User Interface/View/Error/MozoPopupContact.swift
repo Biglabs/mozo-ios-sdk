@@ -16,6 +16,8 @@ class MozoPopupContact: MozoView {
     
     var modalCloseHandler: (() -> Void)?
     
+    var appType = AppType.Shopper
+    
     let removeTexts = [" (email + phone)", " (phone + email)", " (이메일 + 전화)", " (전화 + 이메일)"]
     
     var errorMessage = "Can not connect to MozoX servers. Contact your agency for more infomation.".localized {
@@ -73,7 +75,7 @@ class MozoPopupContact: MozoView {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
         var urlString = "https://open.kakao.com/o/g6tvra5"
         if tappedImage == imgTelegram {
-            urlString = "https://t.me/MozoXApp"
+            urlString = appType == .Shopper ? "https://t.me/MozoXApp" : "https://t.me/MozoXRetailerApp"
         } else if tappedImage == imgZalo {
             urlString = "https://zalo.me/428563224447178063"
         }

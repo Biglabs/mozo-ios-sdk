@@ -7,6 +7,8 @@
 
 import Foundation
 public class DisplayUtils {
+    public static var appType = AppType.Shopper
+    
     public static func generateQRCode(from string: String) -> UIImage? {
         let data = string.data(using: String.Encoding.ascii)
         
@@ -95,6 +97,7 @@ public class DisplayUtils {
     public static func displayMozoErrorWithContact(_ error: String) {
         if let parentView = UIApplication.shared.keyWindow {
             let mozoContactView = MozoPopupContact(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+            mozoContactView.appType = self.appType
             mozoContactView.clipsToBounds = false
             mozoContactView.dropShadow()
             mozoContactView.containerView.roundCorners(borderColor: .white, borderWidth: 1)
