@@ -253,8 +253,8 @@ public class MozoSDK {
         return moduleDependencies.updateCodeLinkInstallApp(codeString: codeString)
     }
     
-    public static func processInvitation() {
-        return moduleDependencies.processInvitation()
+    public static func processInvitationCode() {
+        return moduleDependencies.processInvitationCode()
     }
     
     public static func getListNotification(page: Int = 0, size: Int = 15) -> Promise<[WSMessage]> {

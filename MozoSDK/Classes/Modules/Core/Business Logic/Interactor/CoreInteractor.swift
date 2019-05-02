@@ -68,7 +68,7 @@ class CoreInteractor: NSObject {
         downloadExchangeRateInfoAndStoreAtLocal()
         downloadCountryListAndStoreAtLocal()
         downloadGasPriceAndStoreAtLocal()
-        downloadInviteLink()
+        downloadInviteLinks()
     }
     
     func downloadGasPriceAndStoreAtLocal() {
@@ -118,10 +118,16 @@ class CoreInteractor: NSObject {
         })
     }
     
-    func downloadInviteLink() {
-        print("😎 Load invitation link.")
+    func downloadInviteLinks() {
+        print("😎 Load invitation link for shopper.")
         _ = apiManager.getInviteLink(locale: Configuration.LOCALE, inviteAppType: .Shopper).done({ (inviteLink) in
             SessionStoreManager.inviteLink = inviteLink
+        }).catch({ (error) in
+            //TODO: Handle case unable to load invitation link
+        })
+        print("😎 Load invitation link for retailer.")
+        _ = apiManager.getInviteLink(locale: Configuration.LOCALE, inviteAppType: .Retailer).done({ (inviteLink) in
+            SessionStoreManager.inviteLinkRetailer = inviteLink
         }).catch({ (error) in
             //TODO: Handle case unable to load invitation link
         })
@@ -282,26 +288,35 @@ extension CoreInteractor: CoreInteractorInput {
         NotificationCenter.default.post(name: .didLoadETHOnchainTokenInfoFailed, object: nil)
     }
     
-    func processInvitation() {
-        NSLog("CoreInteractor - Process invitation")
+    func processInvitation(numberOfTimes: Int = 3) {
+        NSLog("CoreInteractor - Process invitation, number of times: \(numberOfTimes)")
         if AccessTokenManager.getAccessToken() != nil, let code = SessionStoreManager.getDynamicLink(), !code.isEmpty {
             NSLog("CoreInteractor - Process invitation with code: \(code)")
+            SafetyDataManager.shared.checkProcessingInvitation = true
             _ = apiManager.updateCodeLinkInstallApp(codeString: code).done { (inviteInfo) in
                 NSLog("Core interactor - Process invitation successfully, clear invitation code.")
                 SessionStoreManager.setDynamicLink("")
+                SafetyDataManager.shared.checkProcessingInvitation = false
             }.catch({ (error) in
                 if let connError = error as? ConnectionError {
                     if connError.isApiError {
                         // Status: 200
                         NSLog("Core interactor - Process invitation failed, clear invitation code.")
                         SessionStoreManager.setDynamicLink("")
+                        SafetyDataManager.shared.checkProcessingInvitation = false
                         return
                     }
                 }
                 NSLog("Core interactor - Process invitation failed, keep invitation code.")
+                if numberOfTimes > 1 {
+                    self.processInvitation(numberOfTimes: numberOfTimes - 1)
+                } else {
+                    SafetyDataManager.shared.checkProcessingInvitation = false
+                }
             })
         } else {
             NSLog("CoreInteractor - Not enough conditions to process invitation")
+            SafetyDataManager.shared.checkProcessingInvitation = false
         }
     }
 }

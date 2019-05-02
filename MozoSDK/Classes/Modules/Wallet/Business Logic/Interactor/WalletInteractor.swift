@@ -15,6 +15,12 @@ class WalletInteractor : NSObject {
     let walletManager : WalletManager
     let dataManager : WalletDataManager
     let apiManager : ApiManager
+    
+    // Update fully wallet
+    var checkProcessingInvitationTimer: Timer?
+    var tempWalletInfo: WalletInfoDTO?
+    var tempWallets: [WalletModel] = []
+    var startDateWaitingForCheckingProcessingInvitation = Date()
         
     init(walletManager: WalletManager, dataManager: WalletDataManager, apiManager: ApiManager) {
         self.walletManager = walletManager
@@ -87,7 +93,12 @@ class WalletInteractor : NSObject {
                     }
                 } else {
                     let updatingWalletInfo = WalletInfoDTO(encryptSeedPhrase: user.mnemonic, offchainAddress: offchainAddress, onchainAddress: onchainAddress)
-                    self.updateFullWalletInfo(updatingWalletInfo, wallets: wallets)
+                    // Must waiting for processing invitation
+                    if SafetyDataManager.shared.checkProcessingInvitation == false {
+                        self.updateFullWalletInfo(updatingWalletInfo, wallets: wallets)
+                    } else {
+                        self.setupTimerWaitingInvitation(updatingWalletInfo: updatingWalletInfo, wallets: wallets)
+                    }
                 }
             }
         }

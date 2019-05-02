@@ -123,6 +123,7 @@ class SafetyDataManager {
         _addressBookList = []
         _storeBookList = []
         _checkTokenExpiredStatus = CheckTokenExpiredStatus.IDLE
+        _checkProcessingInvitation = false
     }
     
     // MARK: CheckTokenExpiredStatus - Serial dispatch queue
@@ -141,6 +142,26 @@ class SafetyDataManager {
             print("Set check Token Expired Status")
             checkTokenExpiredStatusQueue.sync {
                 self._checkTokenExpiredStatus = newValue
+            }
+        }
+    }
+    
+    // MARK: CheckProcessingInvitation - Serial dispatch queue
+    private let checkProcessingInvitationQueue = DispatchQueue(label: "SafetyDataManager.checkProcessingInvitation.lockQueue")
+    
+    private var _checkProcessingInvitation : Bool
+    
+    public var checkProcessingInvitation : Bool {
+        get {
+            print("Get check Processing Invitation")
+            return checkProcessingInvitationQueue.sync {
+                return self._checkProcessingInvitation
+            }
+        }
+        set {
+            print("Set check Processing Invitation")
+            checkProcessingInvitationQueue.sync {
+                self._checkProcessingInvitation = newValue
             }
         }
     }

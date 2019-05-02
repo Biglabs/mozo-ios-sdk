@@ -29,6 +29,7 @@ class ModuleDependencies {
     
     public var appType: AppType = .Shopper {
         didSet {
+            DisplayUtils.appType = appType
             webSocketManager.appType = appType
             apiManager.appType = appType
             authWireframe.authPresenter?.authInteractor?.updateClientId(appType)
@@ -297,8 +298,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateCodeLinkInstallApp(codeString: codeString))!
     }
     
-    func processInvitation() {
-        return (coreWireframe.corePresenter?.coreInteractor?.processInvitation())!
+    func processInvitationCode() {
+        return (coreWireframe.corePresenter?.coreInteractorService?.processInvitationCode())!
     }
     
     func getListNotification(page: Int, size: Int) -> Promise<[WSMessage]> {

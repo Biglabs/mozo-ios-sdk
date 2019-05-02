@@ -26,12 +26,11 @@ class TransactionInteractor : NSObject {
     func createTransactionToTransfer(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?) -> TransactionDTO? {
         let input = InputDTO(addresses: [(tokenInfo?.address)!])!
         let trimToAddress = toAdress?.trimmingCharacters(in: .whitespacesAndNewlines)
-        var value = 0.0
-        if let amount = amount {
-            value = amount.toDoubleValue()
-        }
         var txValue = NSNumber(value: 0)
-        txValue = value > 0.0 ? value.convertTokenValue(decimal: tokenInfo?.decimals ?? 0) : 0
+        if let amount = amount {
+            // Fix issue: Convert Double value from String incorrectly
+            txValue = NSDecimalNumber(string: amount).doubleValue.convertTokenValue(decimal: tokenInfo?.decimals ?? 0)
+        }
         
         let output = OutputDTO(addresses: [trimToAddress!], value: txValue)!
         let transaction = TransactionDTO(inputs: [input], outputs: [output])
