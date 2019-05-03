@@ -26,7 +26,7 @@ struct AddressBookDisplayData {
     }
     
     public func selectIndexTitles() -> [String]{
-        let sectionTitles = Array(ALPHABET_CHARACTERS.localized).map { String($0) }
+        let sectionTitles = Array(ALPHABET_CHARACTERS.localized + "#").map { String($0) }
         return sectionTitles
     }
 }

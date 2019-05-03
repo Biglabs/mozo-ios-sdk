@@ -45,6 +45,17 @@ class AddressBookDisplayCollection {
             }
         }
         
+        let nonPopularArray = sortedItems.filter { (item) -> Bool in
+            if let character = item.name.first {
+                return !characters.contains(character)
+            }
+            return false
+        }
+        if nonPopularArray.count > 0 {
+            let section = AddressBookDisplaySection(sectionName: "#", items: nonPopularArray)
+            displaySections.append(section)
+        }
+        
         return displaySections
     }
 }

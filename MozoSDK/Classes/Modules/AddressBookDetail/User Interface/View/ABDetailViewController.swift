@@ -79,7 +79,7 @@ class ABDetailViewController : MozoBasicViewController {
                 displayMozoError("Name can not be empty")
                 return
             }
-            eventHandler?.saveAddressBookWithName(text, address: address!)
+            eventHandler?.saveAddressBookWithName(trim, address: address!)
         } else {
             displayMozoError("Name can not be empty")
         }
