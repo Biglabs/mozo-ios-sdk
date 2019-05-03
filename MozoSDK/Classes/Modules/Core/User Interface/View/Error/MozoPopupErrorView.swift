@@ -22,6 +22,7 @@ class MozoPopupErrorView : MozoView {
     
     var error : ConnectionError = ConnectionError.apiError_INTERNAL_ERROR { //System Error
         didSet {
+            commonInit()
             setImageAndLabel()
         }
     }
@@ -42,7 +43,7 @@ class MozoPopupErrorView : MozoView {
     }
     
     func commonInit() {
-        if error == .noInternetConnection {
+        if error == .noInternetConnection, reachability == nil {
             setupReachability()
         }
     }
