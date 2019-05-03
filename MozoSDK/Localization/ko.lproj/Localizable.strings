@@ -901,3 +901,11 @@
 
 "Your friend joined MozoX" = "당신의 친구가 MozoX에 가입했습니다.";
 "%@ joined MozoX" = "%@ 는 MozoX에 가입했습니다.";
+
+// Invitation
+"Share via your network" = "네트워크를 통해 공유";
+"Let your friends scan this QR code to invite them to join MozoX, or message them by clicking on the “Share via your network” button. You will get rewards for each friend who sign up." = "친구가 이 QR 코드를 스캔하여 MozoX에 가입하도록 초대하거나 “네트워크를 통해 공유“버튼을 클릭하여 메시지를 보내도록하십시오. 가입 한 각 친구에 대한 보상을 받게됩니다.";
+
+"View Photo" = "사진보기";
+"Select language for MozoX invitation" = "MozoX 초대 언어 선택";
+"Share Retailer App Instead" = "소매점 앱 공유";

@@ -904,3 +904,11 @@
 
 "Your friend joined MozoX" = "Bạn bè của bạn đã tham gia MozoX";
 "%@ joined MozoX" = "%@ đã tham gia MozoX";
+
+// Invitation
+"Share via your network" = "Chia sẻ qua mạng xã hội";
+"Let your friends scan this QR code to invite them to join MozoX, or message them by clicking on the “Share via your network” button. You will get rewards for each friend who sign up." = "Cho bạn bè quét mã QR này để mời họ tham gia MozoX, hoặc ấn chọn “Chia sẻ qua mạng xã hội“ để đăng tải thông điệp.";
+
+"View Photo" = "Xem ảnh";
+"Select language for MozoX invitation" = "Chọn ngôn ngữ cho lời mời tham gia MozoX";
+"Share Retailer App Instead" = "Hoặc chia sẻ ứng dụng MozoX Retailer";
