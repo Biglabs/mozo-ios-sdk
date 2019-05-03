@@ -84,7 +84,7 @@ extension PaymentInteractor : PaymentInteractorInput {
                     .done { (tokenInfo) in
                         self.output?.didLoadTokenInfo(tokenInfo)
                     }.catch({ (err) in
-                        self.output?.didReceiveError(err)
+                        self.output?.errorWhileLoadingTokenInfo(err as? ConnectionError ?? .systemError)
                     })
             }
         }
