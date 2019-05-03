@@ -46,7 +46,7 @@ class AddressBookDisplayCollection {
         }
         
         let nonPopularArray = sortedItems.filter { (item) -> Bool in
-            if let character = item.name.first {
+            if let character = item.name.uppercased().first {
                 return !characters.contains(character)
             }
             return false
