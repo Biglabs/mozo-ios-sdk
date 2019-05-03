@@ -6,6 +6,11 @@
 //
 
 import Foundation
+enum PaymentModuleRetryAction {
+    case TokenInfo
+    case PaymentList
+    case DeletePayment
+}
 class PaymentPresenter: NSObject {
     var viewInterface: PaymentViewInterface?
     var interactor: PaymentInteractorInput?
@@ -16,6 +21,22 @@ class PaymentPresenter: NSObject {
     var isScanningAddress = false
     var tokenInfo: TokenInfoDTO?
     var deleteRequest: PaymentRequestDisplayItem?
+    
+    var retryAction: PaymentModuleRetryAction?
+    
+    func handleError(error: ConnectionError, retryAction: PaymentModuleRetryAction) {
+        if !error.isApiError {
+            self.retryAction = retryAction
+            DisplayUtils.displayTryAgainPopup(allowTapToDismiss: false, error: error, delegate: self)
+        }
+        else {
+            var errText = error.localizedDescription
+            if let apiError = error.apiError {
+                errText = apiError.description
+            }
+            viewInterface?.displayError(errText)
+        }
+    }
 }
 extension PaymentPresenter: PaymentModuleInterface {
     func openScanner(tokenInfo: TokenInfoDTO) {
@@ -51,7 +72,19 @@ extension PaymentPresenter: PaymentModuleInterface {
 }
 extension PaymentPresenter: PopupErrorDelegate {
     func didTouchTryAgainButton() {
-        deletePaymentRequest(deleteRequest!)
+        if let action = retryAction {
+            switch action {
+            case .TokenInfo, .PaymentList:
+                interactor?.loadTokenInfo()
+                interactor?.getListPaymentRequest(page: 0)
+                break
+            default:
+                if let deleteRequest = deleteRequest {
+                    deletePaymentRequest(deleteRequest)
+                }
+                break
+            }
+        }
     }
     
     func didClosePopupWithoutRetry() {
@@ -68,18 +101,7 @@ extension PaymentPresenter: PaymentInteractorOutput {
     
     func errorWhileDeleting(_ error: Any?) {
         viewInterface?.removeSpinner()
-        if let errorConnection = error as? ConnectionError {
-            if !errorConnection.isApiError {
-                DisplayUtils.displayTryAgainPopup(allowTapToDismiss: true, error: errorConnection, delegate: self)
-            }
-            else {
-                var errText = errorConnection.localizedDescription
-                if let apiError = errorConnection.apiError {
-                    errText = apiError.description
-                }
-                viewInterface?.displayError(errText)
-            }
-        }
+        handleError(error: error as? ConnectionError ?? .systemError, retryAction: .DeletePayment)
     }
     
     func didReceiveTransaction(transaction: TransactionDTO, displayContactItem: AddressBookDisplayItem?, isFromScannedValue: Bool) {
@@ -87,11 +109,7 @@ extension PaymentPresenter: PaymentInteractorOutput {
     }
     
     func errorWhileLoadPaymentRequest(_ error: ConnectionError) {
-        var errText = error.localizedDescription
-        if error.isApiError, let apiError = error.apiError {
-            errText = apiError.description
-        }
-        viewInterface?.displayError(errText)
+        handleError(error: error, retryAction: .PaymentList)
     }
     
     func finishGetListPaymentRequest(_ list: [PaymentRequestDTO], forPage: Int) {
@@ -101,6 +119,10 @@ extension PaymentPresenter: PaymentInteractorOutput {
     
     func didLoadTokenInfo(_ tokenInfo: TokenInfoDTO) {
         viewInterface?.updateUserInterfaceWithTokenInfo(tokenInfo)
+    }
+    
+    func errorWhileLoadingTokenInfo(_ error: ConnectionError) {
+        handleError(error: error, retryAction: .TokenInfo)
     }
     
     func didReceiveError(_ error: Error) {
