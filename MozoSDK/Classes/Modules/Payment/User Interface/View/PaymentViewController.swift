@@ -155,8 +155,12 @@ class PaymentViewController: MozoBasicViewController {
     
     @IBAction func touchedBtnCreate(_ sender: Any) {
         if let text = txtAmount.text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            let valueText = text.replace(",", withString: ".")
-            eventHandler?.createPaymentRequest(valueText.toDoubleValue(), tokenInfo: self.tokenInfo!)
+            if let tokenInfo = self.tokenInfo {
+                let valueText = text.replace(",", withString: ".")
+                eventHandler?.createPaymentRequest(valueText.toDoubleValue(), tokenInfo: tokenInfo)
+            } else {
+                displayMozoError("No token info")
+            }
         } else {
             displayMozoError("Amount is empty.")
         }
