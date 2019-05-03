@@ -17,8 +17,8 @@ public extension ApiManager {
             let params = ["size" : size,
                           "page" : page,
                           "appType" : appTypeText] as [String : Any]
-            let url = Configuration.BASE_NOTIFICATION_URL + "/notify/client/getListNotify"
-            self.execute(.post, url: url, parameters: params)
+            let url = Configuration.BASE_NOTIFICATION_URL + "/notify/client/getListNotify?\(params.queryString)"
+            self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get list notification, json response: \(json)")

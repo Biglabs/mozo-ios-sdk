@@ -901,8 +901,10 @@
 
 // Invitation
 "Share via your network" = "Share via your network";
+"Let your friends scan this QR code to invite them to join MozoX, or mesage them by clicking on the “Share via your network” button." = "Let your friends scan this QR code to invite them to join MozoX, or mesage them by clicking on the “Share via your network” button.";
 "Let your friends scan this QR code to invite them to join MozoX, or message them by clicking on the “Share via your network” button. You will get rewards for each friend who sign up." = "Let your friends scan this QR code to invite them to join MozoX, or message them by clicking on the “Share via your network” button. You will get rewards for each friend who sign up.";
 
 "View Photo" = "View Photo";
 "Select language for MozoX invitation" = "Select language for MozoX invitation";
 "Share Retailer App Instead" = "Share Retailer App Instead";
+
