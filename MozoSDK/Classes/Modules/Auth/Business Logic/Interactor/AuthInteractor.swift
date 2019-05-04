@@ -65,6 +65,9 @@ extension AuthInteractor : AuthInteractorInput {
             if let rq = request {
                 self.output?.finishedBuildAuthRequest(rq)
             }
+        }).catch({ (error) in
+            let connectionError = error as? ConnectionError ?? .systemError
+            self.output?.buildAuthRequestFailed(error: connectionError)
         })
     }
     

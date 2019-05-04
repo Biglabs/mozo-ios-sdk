@@ -25,6 +25,7 @@ protocol AuthInteractorInput {
 
 protocol AuthInteractorOutput {
     func finishedBuildAuthRequest(_ request: OIDAuthorizationRequest)
+    func buildAuthRequestFailed(error: ConnectionError)
     func finishedAuthenticate(accessToken: String?)
     func cancelledAuthenticateByUser()
     

@@ -9,6 +9,7 @@ import Foundation
 
 protocol AuthModuleDelegate {
     func authModuleDidFinishAuthentication(accessToken: String?)
+    func authModuleDidFailedToMakeAuthentication(error: ConnectionError)
     func authModuleDidCancelAuthentication()
     func authModuleDidFinishLogout()
     func authModuleDidCancelLogout()

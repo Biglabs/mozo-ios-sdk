@@ -6,11 +6,17 @@
 //
 
 import Foundation
+enum WaitingRetryAction {
+    case LoadUserProfile
+    case BuildAuth
+}
 class WaitingViewController: MozoBasicViewController {
     var eventHandler: CoreModuleWaitingInterface?
     @IBOutlet weak var imgLoading: UIImageView!
     
     let stopRotating = false
+    
+    var retryAction: WaitingRetryAction?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,14 +41,25 @@ extension WaitingViewController : PopupErrorDelegate {
     }
     
     func didTouchTryAgainButton() {
-        print("User try reload user profile on waiting screen again.")
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
-            self.eventHandler?.retryGetUserProfile()
+        if let retryAction = self.retryAction {
+            print("User try reload user profile on waiting screen again.")
+            switch retryAction {
+            case .LoadUserProfile:
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
+                    self.eventHandler?.retryGetUserProfile()
+                }
+                break
+            case .BuildAuth:
+                self.eventHandler?.retryAuth()
+                break
+            }
+            
         }
     }
 }
 extension WaitingViewController: WaitingViewInterface {
-    func displayTryAgain(_ error: ConnectionError) {
+    func displayTryAgain(_ error: ConnectionError, forAction: WaitingRetryAction?) {
+        self.retryAction = forAction
         if error == .apiError_INVALID_USER_TOKEN {
             displayMozoPopupTokenExpired()
         } else {

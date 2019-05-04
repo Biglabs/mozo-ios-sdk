@@ -14,4 +14,5 @@ protocol CoreModuleInterface {
 }
 protocol CoreModuleWaitingInterface {
     func retryGetUserProfile()
+    func retryAuth()
 }

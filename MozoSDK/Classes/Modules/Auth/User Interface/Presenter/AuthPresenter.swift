@@ -51,6 +51,10 @@ extension AuthPresenter : AuthInteractorOutput {
         authInteractor?.setCurrentAuthorizationFlow(currentAuthorizationFlow)
     }
     
+    func buildAuthRequestFailed(error: ConnectionError) {
+        authModuleDelegate?.authModuleDidFailedToMakeAuthentication(error: error)
+    }
+    
     func finishedAuthenticate(accessToken: String?) {
         authModuleDelegate?.authModuleDidFinishAuthentication(accessToken: accessToken)
     }
