@@ -176,6 +176,10 @@ extension CorePresenter : CoreModuleWaitingInterface {
             // TODO: Get only user profile.
         }
     }
+    
+    func retryAuth() {
+        coreWireframe?.authWireframe?.presentInitialAuthInterface()
+    }
 }
 extension CorePresenter : AuthModuleDelegate {
     func didCheckAuthorizationSuccess() {
@@ -201,6 +205,10 @@ extension CorePresenter : AuthModuleDelegate {
         coreInteractor?.handleAferAuth(accessToken: accessToken)
         // Notify for all observing objects
         self.coreInteractor?.notifyAuthSuccessForAllObservers()
+    }
+
+    func authModuleDidFailedToMakeAuthentication(error: ConnectionError) {
+        waitingViewInterface?.displayTryAgain(error, forAction: .BuildAuth)
     }
     
     func authModuleDidCancelAuthentication() {
@@ -277,10 +285,10 @@ extension CorePresenter : CoreInteractorOutput {
         // Check connection error
         if error == .authenticationRequired {
             // TODO: Display different error for invalid token
-            waitingViewInterface?.displayTryAgain(ConnectionError.apiError_INVALID_USER_TOKEN)
+            waitingViewInterface?.displayTryAgain(ConnectionError.apiError_INVALID_USER_TOKEN, forAction: nil)
             return
         }
-        waitingViewInterface?.displayTryAgain(error)
+        waitingViewInterface?.displayTryAgain(error, forAction: .LoadUserProfile)
     }
     
     func didReceiveInvalidToken() {

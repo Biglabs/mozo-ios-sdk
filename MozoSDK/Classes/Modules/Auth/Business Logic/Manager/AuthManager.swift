@@ -173,7 +173,15 @@ class AuthManager : NSObject {
                 guard let config = configuration else {
                     print("😞 Error retrieving discovery document: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
                     self.setAuthState(nil)
-                    return
+                    var connectionError = ConnectionError.systemError
+                    if let error = error, let errorInfo = (error as NSError).userInfo["NSUnderlyingError"] as? NSError, errorInfo.domain == NSURLErrorDomain {
+                        if errorInfo.code == NSURLErrorNotConnectedToInternet {
+                            connectionError = ConnectionError.noInternetConnection
+                        } else if errorInfo.code == NSURLErrorTimedOut {
+                            connectionError = ConnectionError.requestTimedOut
+                        }
+                    }
+                    return seal.reject(connectionError)
                 }
                 
                 print("Got configuration: \(config)")
