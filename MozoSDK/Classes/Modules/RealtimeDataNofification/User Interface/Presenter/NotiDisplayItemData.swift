@@ -19,6 +19,7 @@ public class NotiDisplayItemData {
             var actionText = ""
             var amountText = ""
             var detailText = ""
+            var summaryArgumentCount = 0
             switch rawNoti.event {
             case NotificationEventType.BalanceChanged.rawValue, NotificationEventType.Airdropped.rawValue, NotificationEventType.AirdropInvite.rawValue:
                 if let blNoti = rawNoti as? BalanceNotification {
@@ -48,7 +49,9 @@ public class NotiDisplayItemData {
                         subtitle = "\(prefix) \(displayName)"
                         image = "ic_notif_received"
                     }
+                    summaryArgumentCount = Int(amount ?? 0)
                 }
+    
             case NotificationEventType.CustomerCame.rawValue:
                 if let ccNoti = rawNoti as? CustomerComeNotification {
                     title = ((ccNoti.isComeIn ?? false) ? "Customer has entered" : "Customer has left").localized
@@ -56,12 +59,13 @@ public class NotiDisplayItemData {
                     image = "ic_notif_user_come"
                     body = ccNoti.phoneNo?.censoredMiddle() ?? ""
                     detailText = body
+                    summaryArgumentCount = ccNoti.isComeIn ?? false
                 }
                 break
             default:
                 break
             }
-            displayItem = NotiDisplayItem(event: NotificationEventType(rawValue: rawNoti.event!)!, title: title, subTitle: subtitle, body: body, image: image, actionText: actionText, amountText: amountText, detailText: detailText)
+            displayItem = NotiDisplayItem(event: NotificationEventType(rawValue: rawNoti.event!)!, title: title, subTitle: subtitle, body: body, image: image, actionText: actionText, amountText: amountText, detailText: detailText, summaryArgumentCount: summaryArgumentCount)
         }
     }
 }
