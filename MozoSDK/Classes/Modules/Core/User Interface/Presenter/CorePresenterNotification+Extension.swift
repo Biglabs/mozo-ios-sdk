@@ -8,7 +8,6 @@
 import Foundation
 import UserNotifications
 import SwiftyJSON
-
 extension CorePresenter {
     func registerForRichNotifications() {
         
@@ -26,11 +25,17 @@ extension CorePresenter {
         //actions defination
 //        let actionView = UNNotificationAction(identifier: "actionView", title: "View".localized, options: [.foreground])
 //        let actionClear = UNNotificationAction(identifier: "actionClear", title: "Clear".localized, options: [.foreground])
-//
-//        let category = UNNotificationCategory(identifier: "mozoActionCategory", actions: [actionView, actionClear], intentIdentifiers: [], options: [])
-//
-//        UNUserNotificationCenter.current().setNotificationCategories([category])
         
+//        let eventTypes : [NotificationEventType] = [.BalanceChanged, .Airdropped, .AirdropInvite, .CustomerCame]
+//        var categories = [UNNotificationCategory]()
+//        for type in eventTypes {
+//            let summaryFormat = type.summaryFormat.localized
+//            let identifier = "mozoActionCategory_\(type.rawValue)"
+//            let category = UNNotificationCategory(identifier: identifier, actions: [], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: nil, categorySummaryFormat: summaryFormat, options: [])
+//            categories.append(category)
+//        }
+//
+//        UNUserNotificationCenter.current().setNotificationCategories(Set(categories))
     }
     
     func performNotifications(noti: RdNotification, rawMessage: String) {
@@ -48,6 +53,16 @@ extension CorePresenter {
             content.body = displayItem.body
             content.categoryIdentifier = "mozoActionCategory"
             content.sound = UNNotificationSound.default()
+            
+            // Group notification
+//            if let event = noti.event,
+//               let notiType = NotificationEventType(rawValue: event),
+//               [NotificationEventType.BalanceChanged, .Airdropped, .AirdropInvite, .CustomerCame].contains(notiType) {
+//                
+//                content.categoryIdentifier = "mozoActionCategory_\(event)"
+//                content.threadIdentifier = event.lowercased()
+//                content.summaryArgumentCount = displayItem.summaryArgumentCount
+//            }
             
             // If you want to attach any image to show in local notification
             if let img = UIImage(named: displayItem.image, in: BundleManager.mozoBundle(), compatibleWith: nil) {

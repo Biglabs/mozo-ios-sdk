@@ -34,4 +34,17 @@ public enum NotificationEventType: String {
     case InvalidToken = "invalid_token"
     case ConvertOnchainToOffchain = "convert_onchain_to_offchain"
     case AirdropInvite = "airdrop_invite"
+    
+    case ProfileChanged = "profile_changed"
+    
+    public var summaryFormat: String {
+        switch self {
+        case .BalanceChanged: return ""
+        case .Airdropped: return ""
+        case .AirdropInvite: return ""
+        case .CustomerCame: return ""
+        default:
+            return ""
+        }
+    }
 }

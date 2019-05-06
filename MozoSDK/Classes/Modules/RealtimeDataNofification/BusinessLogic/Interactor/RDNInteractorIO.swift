@@ -19,4 +19,6 @@ protocol RDNInteractorOutput {
     
     func didInvalidToken(tokenNoti: InvalidTokenNotification)
     func didConvertOnchainToOffchainSuccess(balanceNoti: BalanceNotification, rawMessage: String)
+    
+    func profileDidChange()
 }

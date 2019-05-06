@@ -16,4 +16,6 @@ public struct NotiDisplayItem {
     public let actionText: String
     public let amountText: String
     public let detailText: String
+    
+    public let summaryArgumentCount: Int
 }

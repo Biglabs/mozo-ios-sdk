@@ -360,4 +360,5 @@ extension Notification.Name {
     static let didReceiveExchangeInfo = Notification.Name("didReceiveExchangeInfo")
     static let didChangeAddressBook = Notification.Name("didChangeAddressBook")
     static let didChangeStoreBook = Notification.Name("didChangeStoreBook")
+    static let didChangeProfile = Notification.Name("didChangeProfile")
 }

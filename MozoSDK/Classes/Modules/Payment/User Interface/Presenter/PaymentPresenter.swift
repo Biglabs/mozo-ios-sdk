@@ -122,7 +122,7 @@ extension PaymentPresenter: PaymentInteractorOutput {
     }
     
     func errorWhileLoadingTokenInfo(_ error: ConnectionError) {
-        handleError(error: error, retryAction: .TokenInfo)
+        // No need to handle error here
     }
     
     func didReceiveError(_ error: Error) {
