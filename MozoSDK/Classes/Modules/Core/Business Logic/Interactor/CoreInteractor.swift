@@ -319,6 +319,10 @@ extension CoreInteractor: CoreInteractorInput {
             SafetyDataManager.shared.checkProcessingInvitation = false
         }
     }
+    
+    func notifyProfileChangesForAllObserver() {
+        NotificationCenter.default.post(name: .didChangeProfile, object: nil)
+    }
 }
 
 extension CoreInteractor: ApiManagerDelegate {

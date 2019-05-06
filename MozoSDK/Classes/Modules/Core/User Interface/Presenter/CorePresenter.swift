@@ -431,6 +431,10 @@ extension CorePresenter : RDNInteractorOutput {
     func didInvitedSuccess(inviteNoti: InviteNotification, rawMessage: String) {
         performNotifications(noti: inviteNoti, rawMessage: rawMessage)
     }
+    
+    func profileDidChange() {
+        coreInteractor?.notifyProfileChangesForAllObserver()
+    }
 }
 
 extension CorePresenter: PaymentQRModuleDelegate {
