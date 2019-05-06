@@ -59,7 +59,7 @@ public class NotiDisplayItemData {
                     image = "ic_notif_user_come"
                     body = ccNoti.phoneNo?.censoredMiddle() ?? ""
                     detailText = body
-                    summaryArgumentCount = ccNoti.isComeIn ?? false
+                    summaryArgumentCount = (ccNoti.isComeIn ?? false) ? 1 : 0
                 }
                 break
             default:

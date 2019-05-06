@@ -151,7 +151,7 @@ extension RDNInteractor {
                     let tokenNoti = InvalidTokenNotification(json: jobj) {
                     shouldReconnectAfterDisconnected = false
                     output?.didInvalidToken(tokenNoti: tokenNoti)
-                } else if rdNoti.event = NotificationEventType.ProfileChanged.rawValue {
+                } else if rdNoti.event == NotificationEventType.ProfileChanged.rawValue {
                     output?.profileDidChange()
                 } else {
                     NSLog("Can not handle message: \(messageContent)")
