@@ -32,12 +32,7 @@ extension TxHistoryPresenter: TxHistoryInteractorOutput {
     }
     
     func errorWhileLoadTokenInfo(error: Error) {
-        let connError = error as? ConnectionError ?? .systemError
-        var errText = connError.localizedDescription
-        if connError.isApiError, let apiError = connError.apiError {
-            errText = apiError.description
-        }
-        txhUserInterface?.displayError(errText)
+        
     }
     
     func finishGetListTxHistory(_ txHistories: [TxHistoryDTO], forPage: Int) {
