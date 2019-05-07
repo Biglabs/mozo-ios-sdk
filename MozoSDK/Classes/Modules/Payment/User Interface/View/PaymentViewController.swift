@@ -24,6 +24,9 @@ class PaymentViewController: MozoBasicViewController {
     @IBOutlet weak var btnCreate: UIButton!
     @IBOutlet weak var constraintTableViewBottom: NSLayoutConstraint!
     @IBOutlet weak var constraintListContainerViewHeight: NSLayoutConstraint!
+    
+    var noticeEmptyView: UIView!
+    
     private var gradient: CAGradientLayer!
     let defaultTableViewBottomConstant : CGFloat = 20
     var lastOffsetY :CGFloat = 0
@@ -47,8 +50,7 @@ class PaymentViewController: MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: listContainerView.frame.size.height)
-        prepareNoContentView(frame, message: "Requested list is empty")
+        setupNoticeEmptyView()
         eventHandler?.loadTokenInfo()
         setupSegment()
         setupTableView()
@@ -174,11 +176,55 @@ class PaymentViewController: MozoBasicViewController {
         }
     }
     
+    // MARK: Empty View
+    
+    func setupNoticeEmptyView() {
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: listContainerView.frame.size.height)
+        noticeEmptyView = UIView(frame: frame)
+        
+        let image = UIImage(named: "img_no_request", in: BundleManager.mozoBundle(), compatibleWith: nil)
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 145, width: 160, height: 160))
+        imageView.image = image
+        imageView.roundCorners(cornerRadius: 0.5, borderColor: .clear, borderWidth: 0.1)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width - 40, height: 20))
+        label.textAlignment = .center
+        label.text = "Requested list is empty".localized
+        label.textColor = ThemeManager.shared.disable
+        label.font = UIFont.italicSystemFont(ofSize: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        let description = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width - 92, height: 30))
+        description.textAlignment = .center
+        description.text = "When your friends send a request MozoX to you, it will display here.".localized
+        description.textColor = ThemeManager.shared.disable
+        description.font = UIFont.italicSystemFont(ofSize: 13)
+        description.numberOfLines = 4
+        description.translatesAutoresizingMaskIntoConstraints = false
+        
+        noticeEmptyView.addSubview(imageView)
+        noticeEmptyView.addSubview(label)
+        noticeEmptyView.addSubview(description)
+        
+        noticeEmptyView.addConstraints([
+            NSLayoutConstraint(item: imageView, attribute: .centerX, relatedBy: .equal, toItem: self.noticeEmptyView, attribute: .centerX, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: imageView, attribute: .top, relatedBy: .equal, toItem: self.noticeEmptyView, attribute: .top, multiplier: 1.0, constant: 145),
+            NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: 160),
+            NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 160),
+            NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: self.noticeEmptyView, attribute: .centerX, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: imageView, attribute: .bottom, multiplier: 1.0, constant: 16),
+            NSLayoutConstraint(item: description, attribute: .centerX, relatedBy: .equal, toItem: label, attribute: .centerX, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: description, attribute: .top, relatedBy: .equal, toItem: label, attribute: .bottom, multiplier: 1.0, constant: 24),
+            NSLayoutConstraint(item: description, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: frame.width - 92)
+            ])
+    }
+    
     func checkShowNoContent() {
         if self.paymentCollection?.displayItems.count ?? 0 > 0 {
             tableView.backgroundView = nil
         } else {
-            tableView.backgroundView = noContentView
+            tableView.backgroundView = noticeEmptyView
         }
     }
 }

@@ -122,6 +122,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         historyTable.delegate = self
         historyTable.tableFooterView = UIView()
         setupRefreshControl()
+        setupNoContentView()
     }
     
     func setupSegment() {
@@ -409,6 +410,27 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         hud?.hide(animated: true, afterDelay: 1.5)
     }
     
+    // MARK: Empty view
+    var noContentView: UIView!
+    
+    func setupNoContentView() {
+        if noContentView != nil {
+            return
+        }
+        let frame = CGRect(x: 0, y: historyTable.frame.origin.y, width: UIScreen.main.bounds.width, height: historyTable.frame.height)
+        noContentView = DisplayUtils.defaultNoContentView(frame, message: "Transaction history list is empty".localized)
+    }
+    
+    func checkShowNoContent() {
+        if self.collection?.displayItems.count ?? 0 > 0 {
+            historyTable.backgroundView = nil
+        } else {
+            historyTable.backgroundView = noContentView
+        }
+    }
+    
+    // MARK: Actions
+    
     @IBAction func segmentedControlDidChange(_ sender: Any) {
         segmentControl.changeUnderlinePosition()
         if segmentControl.selectedSegmentIndex == 0 {
@@ -464,6 +486,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
 }
 extension MozoUserWalletView : UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
+        checkShowNoContent()
         return collection != nil ? 1 : 0
     }
     

@@ -3608,6 +3608,7 @@
                         <outlet property="btnFloatingReceived" destination="A7h-38-egp" id="Nej-Ok-QAj"/>
                         <outlet property="btnFloatingSent" destination="oFe-8z-CCM" id="Xct-6N-XCu"/>
                         <outlet property="floatingView" destination="3d2-0D-6YH" id="wid-lZ-wlp"/>
+                        <outlet property="floatingViewHeightConstraint" destination="SbS-8y-ZgI" id="LeA-wL-G6c"/>
                         <outlet property="tableView" destination="Hue-4H-CZq" id="xxy-E2-127"/>
                     </connections>
                 </viewController>
