@@ -332,6 +332,7 @@ extension TxHistoryViewController : PopupErrorDelegate {
     func didTouchTryAgainButton() {
         print("User try reload transaction history again.")
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
+            self.eventHandler?.loadTokenInfo()
             self.loadHistoryWithPage(page: self.loadingPage)
         }
     }
