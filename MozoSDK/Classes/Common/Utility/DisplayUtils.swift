@@ -181,4 +181,26 @@ public class DisplayUtils {
             topViewController.present(alert, animated: true, completion: nil)
         }
     }
+    
+    public static func defaultNoContentView(_ frame: CGRect, message: String, imageName: String = "img_no_content") -> UIView {
+        let noContentView = UIView(frame: frame)
+        let image = UIImage(named: imageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 156, height: 150))
+        imageView.image = image
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width - 40, height: 18))
+        label.textAlignment = .center
+        label.text = message.localized
+        label.textColor = ThemeManager.shared.disable
+        label.font = UIFont.italicSystemFont(ofSize: 15)
+        
+        imageView.center = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        let lbFrameCenter = CGPoint(x: imageView.center.x, y: imageView.center.y + (imageView.frame.size.height / 2) + 15)
+        label.center = lbFrameCenter
+        
+        noContentView.addSubview(label)
+        noContentView.addSubview(imageView)
+        
+        return noContentView
+    }
 }
