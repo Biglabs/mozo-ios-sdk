@@ -15,6 +15,7 @@ public protocol PopupErrorDelegate {
 class MozoPopupErrorView : MozoView {
     @IBOutlet weak var imgError: UIImageView!
     @IBOutlet weak var labelError: UILabel!
+    @IBOutlet weak var lbDesc: UILabel!
     @IBOutlet weak var btnTry: UIButton!
     
     var modalCloseHandler: (() -> Void)?
@@ -99,13 +100,16 @@ class MozoPopupErrorView : MozoView {
     func setImageAndLabel() {
         if error.isApiError {
             labelError.text = (error.apiError?.description ?? "System Error").localized
+            lbDesc.text = ""
         } else {
             if error == .requestTimedOut {
                 imgError.image = UIImage(named: "ic_sand_clock", in: BundleManager.mozoBundle(), compatibleWith: nil)
                 labelError.text = "Time out, please try again.".localized
+                lbDesc.text = ""
             } else {
                 imgError.image = UIImage(named: "ic_no_connection", in: BundleManager.mozoBundle(), compatibleWith: nil)
                 labelError.text = "There is no internet connection!".localized
+                lbDesc.text = "Once you have a stronger internet connection, we’ll automatically process your request.".localized
             }
         }
     }
