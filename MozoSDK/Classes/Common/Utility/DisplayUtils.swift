@@ -55,7 +55,9 @@ public class DisplayUtils {
                                             error: ConnectionError? = nil,
                                             delegate: PopupErrorDelegate) {
         if let topViewController = getTopViewController(), let parentView = topViewController.view {
-            let mozoPopupErrorView = MozoPopupErrorView(frame: CGRect(x: 0, y: 0, width: 315, height: 315))
+            let popupWidth = 315
+            let popupHeight = error == .noInternetConnection ? 345 : popupWidth
+            let mozoPopupErrorView = MozoPopupErrorView(frame: CGRect(x: 0, y: 0, width: popupWidth, height: popupHeight))
             mozoPopupErrorView.delegate = delegate
             if let err = error {
                 mozoPopupErrorView.error = err

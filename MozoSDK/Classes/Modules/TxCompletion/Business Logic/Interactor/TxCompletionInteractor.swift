@@ -21,6 +21,9 @@ class TxCompletionInteractor: NSObject {
         if let txHash = self.txHash {
             _ = apiManager.getTxStatus(hash: txHash).done({ (type) in
                 self.handleTxCompleted(statusType: type)
+            }).catch({ (error) in
+                self.stopService()
+                self.output?.didReceiveError(error: error as? ConnectionError ?? .systemError)
             })
         }
     }

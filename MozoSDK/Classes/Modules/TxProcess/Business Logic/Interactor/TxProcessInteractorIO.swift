@@ -12,4 +12,5 @@ protocol TxProcessInteractorInput {
 }
 protocol TxProcessInteractorOutput {
     func didReceiveTxStatus(_ status: TransactionStatusType)
+    func didReceiveError(error: ConnectionError)
 }

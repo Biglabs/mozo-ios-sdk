@@ -21,6 +21,9 @@ class TxProcessInteractor: NSObject {
         if let txHash = self.txHash {
             _ = apiManager.getOnchainTxStatus(hash: txHash).done({ (type) in
                 self.handleTxCompleted(statusType: type)
+            }).catch({ (error) in
+                self.stopService()
+                self.output?.didReceiveError(error: error as? ConnectionError ?? .systemError)
             })
         }
     }

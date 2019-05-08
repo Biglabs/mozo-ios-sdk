@@ -70,6 +70,13 @@ class ModuleDependencies {
         coreWireframe.corePresenter?.authDelegate = delegate
     }
     
+    func isNetworkReachable() -> Bool {
+        if let reachability = coreWireframe.corePresenter?.reachability {
+            return reachability.connection != .none
+        }
+        return false
+    }
+    
     func authenticate() {
         coreWireframe.requestForAuthentication()
     }
