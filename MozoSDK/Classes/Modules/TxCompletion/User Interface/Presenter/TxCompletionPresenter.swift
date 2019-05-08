@@ -11,10 +11,13 @@ class TxCompletionPresenter : NSObject {
     var completionModuleDelegate: TxCompletionModuleDelegate?
     var completionUserInterface : TxCompletionViewInterface?
     var completionInteractor: TxCompletionInteractorInput?
+    
+    var transactionHash: String?
 }
 
 extension TxCompletionPresenter : TxCompletionModuleInterface {
     func requestWaitingForTxStatus(hash: String) {
+        self.transactionHash = hash
         completionInteractor?.startWaitingStatusService(hash: hash)
     }
     
@@ -42,5 +45,21 @@ extension TxCompletionPresenter : TxCompletionModuleInterface {
 extension TxCompletionPresenter : TxCompletionInteractorOutput {
     func didReceiveTxStatus(_ status: TransactionStatusType) {
         completionUserInterface?.updateView(status: status)
+    }
+    
+    func didReceiveError(error: ConnectionError) {
+        DisplayUtils.displayTryAgainPopup(allowTapToDismiss: false, error: error, delegate: self)
+    }
+}
+
+extension TxCompletionPresenter : PopupErrorDelegate {
+    func didTouchTryAgainButton() {
+        if let hash = self.transactionHash {
+            requestWaitingForTxStatus(hash: hash)
+        }
+    }
+    
+    func didClosePopupWithoutRetry() {
+        
     }
 }

@@ -14,4 +14,5 @@ protocol TxCompletionInteractorInput {
 
 protocol TxCompletionInteractorOutput {
     func didReceiveTxStatus(_ status: TransactionStatusType)
+    func didReceiveError(error: ConnectionError)
 }

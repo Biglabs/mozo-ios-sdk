@@ -47,4 +47,20 @@ extension TxProcessPresenter: TxProcessInteractorOutput {
             delegate?.didReceiveTxStatus(status, transaction: transaction)
         }
     }
+    
+    func didReceiveError(error: ConnectionError) {
+        DisplayUtils.displayTryAgainPopup(allowTapToDismiss: false, error: error, delegate: self)
+    }
+}
+
+extension TxProcessPresenter : PopupErrorDelegate {
+    func didTouchTryAgainButton() {
+        if let hash = self.transaction?.tx?.hash {
+            interactor?.startWaitingTxStatus(hash)
+        }
+    }
+    
+    func didClosePopupWithoutRetry() {
+        
+    }
 }
