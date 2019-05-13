@@ -41,6 +41,7 @@ class ModuleDependencies {
     
     let coreWireframe = CoreWireframe()
     let walletWireframe = WalletWireframe()
+    let resetPINWireframe = ResetPINWireframe()
     let authWireframe = AuthWireframe()
     let txWireframe = TransactionWireframe()
     let txhWireframe = TxHistoryWireframe()
@@ -532,6 +533,25 @@ class ModuleDependencies {
         
         walletWireframe.walletPresenter = walletPresenter
         walletWireframe.rootWireframe = rootWireframe
+        walletWireframe.resetPINWireframe = resetPINWireframe
+        
+        resetPINDependencies(walletManager: walletManager, dataManager: walletDataManager)
+    }
+    
+    func resetPINDependencies(walletManager: WalletManager, dataManager: WalletDataManager) {
+        let resetPINPresenter = ResetPINPresenter()
+        
+        let resetPINInteractor = ResetPINInteractor(walletManager: walletManager, dataManager: dataManager, apiManager: apiManager)
+        resetPINInteractor.output = resetPINPresenter
+        
+        resetPINPresenter.interactor = resetPINInteractor
+        resetPINPresenter.wireframe = resetPINWireframe
+        
+        resetPINWireframe.presenter = resetPINPresenter
+        resetPINWireframe.walletWireframe = walletWireframe
+        resetPINWireframe.rootWireframe = rootWireframe
+        
+        walletWireframe.walletPresenter?.resetPinModuleDelegate = resetPINPresenter
     }
     
     func airdropDependencies(signManager: TransactionSignManager) {

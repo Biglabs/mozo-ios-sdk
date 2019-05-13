@@ -8,6 +8,7 @@
 
 import Foundation
 import web3swift
+import PromiseKit
 
 class WalletInteractor : NSObject {
     var output : WalletInteractorOutput?
@@ -36,19 +37,21 @@ class WalletInteractor : NSObject {
         }
     }
     
-    func updateMnemonicAndPinForCurrentUser(mnemonic: String, pin: String) {
+    func updateMnemonicAndPinForCurrentUser(mnemonic: String, pin: String) -> Promise<Bool> {
         if let userObj = SessionStoreManager.loadCurrentUser() {
-            dataManager.updateMnemonic(mnemonic, id: userObj.id!, pin: pin)
+            return dataManager.updateMnemonic(mnemonic, id: userObj.id!, pin: pin)
         }
+        return Promise { seal in seal.reject(ConnectionError.systemError) }
     }
     
-    func updateWalletsToUserProfile(wallets: [WalletModel]) {
+    func updateWalletsToUserProfile(wallets: [WalletModel], mustUpdateLocalPrivateKeys: Bool = false) {
         print("WalletInteractor - Update wallet to user profile")
         if wallets.count < 2 {
             self.output?.errorWhileManageWallet(connectionError: .systemError, showTryAgain: false)
             return
         }
-        let offchainAddress = wallets[0].address
+        let offchainWallet = wallets[0]
+        let offchainAddress = offchainWallet.address
         let onchainWallet = wallets[1]
         let onchainAddress = onchainWallet.address
         if let userObj = SessionStoreManager.loadCurrentUser(), let serverWalletInfo = userObj.profile?.walletInfo {
@@ -58,9 +61,25 @@ class WalletInteractor : NSObject {
                     self.output?.errorWhileManageWallet(connectionError: .systemError, showTryAgain: true)
                     return
                 }
+                if mustUpdateLocalPrivateKeys {
+                    switch numberOfLocalWallets {
+                    case 2:
+                        print("WalletInteractor - Update wallet to user profile, update local private keys for offchain and onchain")
+                        _ = self.dataManager.updatePrivateKeys(offchainWallet)
+                        _ = self.dataManager.updatePrivateKeys(onchainWallet)
+                        break
+                    case 1:
+                        print("WalletInteractor - Update wallet to user profile, update local private keys for offchain only")
+                        _ = self.dataManager.updatePrivateKeys(offchainWallet)
+                        break
+                    default:
+                        print("WalletInteractor - Update wallet to user profile, update local private keys for no wallet")
+                        break
+                    }
+                }
                 if serverWalletInfo.offchainAddress != nil, serverWalletInfo.onchainAddress != nil {
                     if numberOfLocalWallets == 2 {
-                        self.output?.updatedWallet()
+                        
                     } else if numberOfLocalWallets == 1 {
                         self.updateWalletsForCurrentUser([onchainWallet])
                     } else { // 0
@@ -148,7 +167,16 @@ extension WalletInteractor : WalletInteractorInput {
         print("WalletInteractor - Check Local Wallet Existing")
         if let userObj = SessionStoreManager.loadCurrentUser() {
             _ = dataManager.getUserById(userObj.id!).done { (user) in
-                self.output?.finishedCheckLocal(result: user.wallets?.count ?? 0)
+                let localWalletCounts = user.wallets?.count ?? 0
+                if let encryptSeedPhrase = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo?.encryptSeedPhrase,
+                    !encryptSeedPhrase.isEmpty,
+                    !(user.mnemonic ?? "").isEmpty,
+                    encryptSeedPhrase != user.mnemonic {
+                    print("WalletInteractor - New encrypted seed phrase is detected.")
+                    self.output?.didDetectDifferentEncryptedSeedPharse()
+                    return
+                }
+                self.output?.finishedCheckLocal(result: localWalletCounts)
             }
         }
     }
@@ -193,12 +221,52 @@ extension WalletInteractor : WalletInteractorInput {
                         print("😞 Invalid mnemonics")
                         compareResult = false
                     } else {
-                        self.updateMnemonicAndPinForCurrentUser(mnemonic: (userObj.profile?.walletInfo?.encryptSeedPhrase)!, pin: pin)
+                        _ = self.updateMnemonicAndPinForCurrentUser(mnemonic: (userObj.profile?.walletInfo?.encryptSeedPhrase)!, pin: pin)
                         compareResult = true
                     }
                 }
                 self.output?.verifiedPIN(pin, result: compareResult, needManagedWallet: needManageWallet)
             }
+        } else {
+            // TODO: Handle case no user data
+        }
+    }
+    
+    func verifyPINToRecoverFromServerEncryptedPhrase(pin: String) {
+        // Get User from UserDefaults
+        if let userObj = SessionStoreManager.loadCurrentUser() {
+            let mnemonic = userObj.profile?.walletInfo?.encryptSeedPhrase?.decrypt(key: pin)
+            if BIP39.mnemonicsToEntropy(mnemonic!) == nil {
+                print("😞 Invalid mnemonics")
+                self.output?.verifiedPIN(pin, result: false, needManagedWallet: false)
+            } else {
+                self.output?.verifiedPIN(pin, result: true, needManagedWallet: true)
+            }
+        } else {
+            // TODO: Handle case no user data
+            self.output?.errorWhileManageWallet(connectionError: .systemError, showTryAgain: false)
+        }
+    }
+    
+    func manageWalletToRecoverFromServerEncryptedPhrase(pin: String) {
+        // Get User from UserDefaults
+        if let userObj = SessionStoreManager.loadCurrentUser(), let serverEncryptedSeedPhrase = userObj.profile?.walletInfo?.encryptSeedPhrase {
+            let mnemonic = serverEncryptedSeedPhrase.decrypt(key: pin)
+            _ = updateMnemonicAndPinForCurrentUser(mnemonic: serverEncryptedSeedPhrase, pin: pin).done { (result) in
+                if result {
+                    var wallets = self.walletManager.createNewWallets(mnemonics: mnemonic)
+                    for i in 0..<wallets.count {
+                        wallets[i].privateKey = wallets[i].privateKey.encrypt(key: pin)
+                    }
+                    self.updateWalletsToUserProfile(wallets: wallets, mustUpdateLocalPrivateKeys: true)
+                } else {
+                    self.output?.errorWhileManageWallet(connectionError: .systemError, showTryAgain: false)
+                }
+            }.catch({ (error) in
+                self.output?.errorWhileManageWallet(connectionError: .systemError, showTryAgain: false)
+            })
+        } else {
+            self.output?.errorWhileManageWallet(connectionError: .systemError, showTryAgain: false)
         }
     }
     
@@ -214,7 +282,7 @@ extension WalletInteractor : WalletInteractorInput {
             }
         } else {
             // A new wallet has just been created.
-            updateMnemonicAndPinForCurrentUser(mnemonic: (mne?.encrypt(key: pin))!, pin: pin)
+            _ = updateMnemonicAndPinForCurrentUser(mnemonic: (mne?.encrypt(key: pin))!, pin: pin)
         }
         var wallets = walletManager.createNewWallets(mnemonics: mne!)
         for i in 0..<wallets.count {

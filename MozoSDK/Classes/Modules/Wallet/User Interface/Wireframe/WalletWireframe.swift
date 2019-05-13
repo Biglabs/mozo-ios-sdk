@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class WalletWireframe: MozoWireframe {
+    var resetPINWireframe: ResetPINWireframe?
     var walletPresenter : WalletPresenter?
     var pinViewController : PINViewController?
     var passPhraseViewController: PassPhraseViewController?
@@ -18,12 +19,13 @@ class WalletWireframe: MozoWireframe {
         walletPresenter?.processInitialWalletInterface()
     }
     
-    func presentPINInterface(passPharse: String?, requestFrom module: Module = Module.Wallet) {
+    func presentPINInterface(passPharse: String?, requestFrom module: Module = Module.Wallet, recoverFromServerEncryptedPhrase : Bool = false) {
         print("WalletWireframe - Present PIN Interface")
         let viewController = pinViewControllerFromStoryboard()
         viewController.eventHandler = walletPresenter
         viewController.passPhrase = passPharse
         viewController.moduleRequested = module
+        viewController.recoverFromServerEncryptedPhrase = recoverFromServerEncryptedPhrase
         
         pinViewController = viewController
         walletPresenter?.pinUserInterface = viewController
@@ -40,6 +42,10 @@ class WalletWireframe: MozoWireframe {
         passPhraseViewController = viewController
         walletPresenter?.passPharseUserInterface = viewController
         rootWireframe?.displayViewController(viewController)
+    }
+    
+    func presentResetPINInterface(requestFrom module: Module = Module.Wallet) {
+        resetPINWireframe?.presentResetPINInterface(requestFrom: module)
     }
     
     func dismissWalletInterface() {

@@ -16,6 +16,7 @@ class WalletPresenter : NSObject {
     var passPharseUserInterface : PassPhraseViewInterface?
     var walletModuleDelegate : WalletModuleDelegate?
     var pinModuleDelegate: PinModuleDelegate?
+    var resetPinModuleDelegate: ResetPINModuleDelegate?
     
     func handleEndingWalletFlow() {
         print("WalletPresenter - Handle ending wallet flow")
@@ -61,8 +62,22 @@ extension WalletPresenter: WalletModuleInterface {
         walletInteractor?.verifyPIN(pin: pin)
     }
     
+    func verifyPINToRecoverFromServerEncryptedPhrase(pin: String) {
+        pinUserInterface?.displaySpinner()
+        walletInteractor?.verifyPINToRecoverFromServerEncryptedPhrase(pin: pin)
+    }
+    
     func manageWallet(passPhrase: String?, pin: String) {
         walletInteractor?.manageWallet(passPhrase, pin: pin)
+    }
+    
+    func manageWalletToRecoverFromServerEncryptedPhrase(pin: String) {
+        walletInteractor?.manageWalletToRecoverFromServerEncryptedPhrase(pin: pin)
+    }
+    
+    func manageWalletForResetPIN(passPhrase: String?, pin: String) {
+        resetPinModuleDelegate?.manageWalletWithMnemonics(mnemonics: passPhrase!, pin: pin)
+        walletWireframe?.dismissWalletInterface()
     }
     
     func verifyConfirmPIN(pin: String, confirmPin: String) {
@@ -75,6 +90,10 @@ extension WalletPresenter: WalletModuleInterface {
     
     func skipShowPassPharse(passPharse: String) {
         walletWireframe?.presentPINInterface(passPharse: passPharse)
+    }
+    
+    func displayResetPINInterface(requestFrom module: Module) {
+        walletWireframe?.presentResetPINInterface(requestFrom: module)
     }
 }
 
@@ -118,6 +137,11 @@ extension WalletPresenter: WalletInteractorOutput {
 //        } else {
 //            walletInteractor?.checkServerWalletExisting()
 //        }
+    }
+    
+    func didDetectDifferentEncryptedSeedPharse() {
+        print("WalletPresenter - Finished check local wallet, detected encrypted seed pharse different.")
+        walletWireframe?.presentPINInterface(passPharse: nil, recoverFromServerEncryptedPhrase: true)
     }
     
     func verifiedPIN(_ pin: String, result: Bool, needManagedWallet: Bool) {

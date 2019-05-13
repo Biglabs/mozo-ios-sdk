@@ -52,29 +52,35 @@ public class DisplayUtils {
     }
     
     public static func displayTryAgainPopup(allowTapToDismiss: Bool = true,
+                                            isEmbedded: Bool = false,
                                             error: ConnectionError? = nil,
                                             delegate: PopupErrorDelegate) {
         if let topViewController = getTopViewController(), let parentView = topViewController.view {
             let popupWidth = 315
-            let popupHeight = error == .noInternetConnection ? 345 : popupWidth
+            let popupHeight = error == .noInternetConnection ? 385 : popupWidth
             let mozoPopupErrorView = MozoPopupErrorView(frame: CGRect(x: 0, y: 0, width: popupWidth, height: popupHeight))
             mozoPopupErrorView.delegate = delegate
             if let err = error {
                 mozoPopupErrorView.error = err
             }
             
-            mozoPopupErrorView.clipsToBounds = false
-            mozoPopupErrorView.dropShadow()
-            mozoPopupErrorView.containerView.roundCorners(borderColor: .white, borderWidth: 1)
-            
+            if !isEmbedded {
+                mozoPopupErrorView.clipsToBounds = false
+                mozoPopupErrorView.dropShadow()
+                mozoPopupErrorView.containerView.roundCorners(borderColor: .white, borderWidth: 1)
+            }
             mozoPopupErrorView.center = parentView.center
             
             // cover view
             let displayWidth: CGFloat = parentView.frame.width
             let displayHeight: CGFloat = parentView.frame.height
             let coverView = UIView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight))
-            coverView.backgroundColor = .black
-            coverView.alpha = 0.5
+            if !isEmbedded {
+                coverView.backgroundColor = .black
+                coverView.alpha = 0.5
+            } else {
+                coverView.backgroundColor = .white
+            }
             parentView.addSubview(coverView)
             
             if allowTapToDismiss {

@@ -58,15 +58,25 @@ class WalletDataManager : NSObject {
      - Version:
      0.1
      */
-    func updateMnemonic(_ mnemonic: String, id: String, pin: String) {
-        let count = coreDataStore?.countById(id)
-        if count != nil && count! > 0 {
-            let userModel = UserModel(id: id,
-                                      mnemonic: mnemonic,
-                                      pin: pin.toSHA512(),
-                                      wallets: nil)
-            _ = coreDataStore?.updateUser(userModel)
+    func updateMnemonic(_ mnemonic: String, id: String, pin: String) -> Promise<Bool>{
+        return Promise { seal in
+            let count = coreDataStore?.countById(id)
+            if count != nil && count! > 0 {
+                let userModel = UserModel(id: id,
+                                          mnemonic: mnemonic,
+                                          pin: pin.toSHA512(),
+                                          wallets: nil)
+                _ = coreDataStore?.updateUser(userModel).done({ (result) in
+                    seal.fulfill(true)
+                }).catch({ (error) in
+                    seal.reject(error)
+                })
+            }
         }
+    }
+    
+    func updatePrivateKeys(_ wallet: WalletModel) -> Promise<Bool> {
+        return (coreDataStore?.updatePrivateKeysOfWallet(wallet))!
     }
     
     func getUserById(_ id: String) -> Promise<UserModel> {

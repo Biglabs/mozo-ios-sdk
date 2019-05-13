@@ -30,6 +30,8 @@ let ConfirmConvertViewControllerIdentifier = "ConfirmConvertViewController"
 let TxProcessViewControllerIdentifier = "TxProcessViewController"
 let ConvertCompletionViewControllerIdentifier = "ConvertCompletionViewController"
 let ConvertFailedViewControllerIdentifier = "ConvertFailedViewController"
+let ResetPINViewControllerIdentifier = "ResetPINViewController"
+let ResetPINSuccessViewControllerIdentifier = "ResetPINSuccessViewController"
 
 class RootWireframe : NSObject {
     let mozoNavigationController = MozoNavigationController()
