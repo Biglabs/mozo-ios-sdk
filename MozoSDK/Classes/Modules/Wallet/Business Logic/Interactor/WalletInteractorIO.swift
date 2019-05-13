@@ -13,8 +13,10 @@ protocol WalletInteractorInput {
     func checkServerWalletExisting()
     
     func verifyPIN(pin: String)
+    func verifyPINToRecoverFromServerEncryptedPhrase(pin: String)
     
     func manageWallet(_ mnemonics: String?, pin: String)
+    func manageWalletToRecoverFromServerEncryptedPhrase(pin: String)
     
     func generateMnemonics()
     func verifyConfirmPIN(pin: String, confirmPin: String)
@@ -24,6 +26,7 @@ protocol WalletInteractorInput {
 
 protocol WalletInteractorOutput {
     func finishedCheckLocal(result: Int)
+    func didDetectDifferentEncryptedSeedPharse()
     func finishedCheckServer(result: Bool)
     
     func verifiedPIN(_ pin: String, result: Bool, needManagedWallet: Bool)

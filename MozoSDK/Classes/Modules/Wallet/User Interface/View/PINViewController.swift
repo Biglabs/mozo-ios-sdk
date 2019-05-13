@@ -16,10 +16,12 @@ class PINViewController : MozoBasicViewController {
     @IBOutlet weak var statusImg: UIImageView!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var confirmImg: UIImageView!
+    @IBOutlet weak var forgotContainerView: UIView!
     
     var eventHandler : WalletModuleInterface?
     var passPhrase : String?
     var moduleRequested: Module = .Wallet
+    var recoverFromServerEncryptedPhrase = false
     
     private var pin : String?
     private var isConfirm = false
@@ -30,12 +32,25 @@ class PINViewController : MozoBasicViewController {
         configureView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.passPhrase == nil {
+            navigationItem.title = "Enter Security PIN".localized
+        } else {
+            if moduleRequested == .ResetPIN {
+                navigationItem.title = "Reset PIN".localized
+            } else {
+                navigationItem.title = "Create Security PIN".localized
+            }
+        }
+    }
+    
     func configureView() {
         pinTextField.becomeFirstResponder()
         pinTextField.delegate = self as PinTextFieldDelegate
         pinTextField.keyboardType = .numberPad
         if self.passPhrase == nil {
-            title = "Enter Security PIN".localized
+            navigationItem.title = "Enter Security PIN".localized
             switch moduleRequested {
             case .Transaction, .Airdrop, .Convert:
                 var text = "Enter your Security PIN\nto send MozoX"
@@ -50,8 +65,8 @@ class PINViewController : MozoBasicViewController {
                 // Enter new pin and confirm new pin
                 enterPINLabel.text = "Enter your Security PIN\nto restore wallet".localized
             }
-            
         }
+        forgotContainerView.isHidden = passPhrase != nil
     }
     
     override public var prefersStatusBarHidden: Bool {
@@ -60,6 +75,22 @@ class PINViewController : MozoBasicViewController {
     
     override public var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
+    }
+    
+    func manageWallet() {
+        if self.moduleRequested != .ResetPIN {
+            if recoverFromServerEncryptedPhrase {
+                self.eventHandler?.manageWalletToRecoverFromServerEncryptedPhrase(pin: self.pin!)
+            } else {
+                self.eventHandler?.manageWallet(passPhrase: self.passPhrase, pin: self.pin!)
+            }
+        } else {
+            self.eventHandler?.manageWalletForResetPIN(passPhrase: self.passPhrase, pin: self.pin!)
+        }
+    }
+    
+    @IBAction func touchBtnForgot(_ sender: Any) {
+        eventHandler?.displayResetPINInterface(requestFrom: moduleRequested)
     }
 }
 
@@ -100,7 +131,7 @@ extension PINViewController : PINViewInterface {
         }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
             print("PINViewController - Manage wallet after hide UIs")
-            self.eventHandler?.manageWallet(passPhrase: self.passPhrase, pin: self.pin!)
+            self.manageWallet()
         }
     }
     
@@ -140,7 +171,7 @@ extension PINViewController : PopupErrorDelegate {
     func didTouchTryAgainButton() {
         print("User try manage wallet again.")
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
-            self.eventHandler?.manageWallet(passPhrase: self.passPhrase, pin: self.pin!)
+            self.manageWallet()
         }
     }
 }
@@ -178,7 +209,11 @@ private extension PINViewController {
                 eventHandler?.enterPIN(pin: input)
             } else {
                 // TODO: Should handle freeze UI here
-                eventHandler?.verifyPIN(pin: input)
+                if recoverFromServerEncryptedPhrase {
+                    eventHandler?.verifyPINToRecoverFromServerEncryptedPhrase(pin: input)
+                } else {
+                    eventHandler?.verifyPIN(pin: input)
+                }
             }
         } else {
             eventHandler?.verifyConfirmPIN(pin: pin!, confirmPin: input)

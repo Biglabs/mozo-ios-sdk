@@ -14,7 +14,8 @@ class WaitingViewController: MozoBasicViewController {
     var eventHandler: CoreModuleWaitingInterface?
     @IBOutlet weak var imgLoading: UIImageView!
     
-    let stopRotating = false
+    var stopRotating = false
+    // TODO: Rotate never stop
     
     var retryAction: WaitingRetryAction?
     

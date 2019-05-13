@@ -145,6 +145,8 @@ extension CorePresenter : CoreModuleInterface {
             self.authDelegate?.mozoUIDidCloseAll()
             self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers()
         })
+    
+        removePINDelegate()
     }
     
     func requestCloseToLastMozoUIs() {

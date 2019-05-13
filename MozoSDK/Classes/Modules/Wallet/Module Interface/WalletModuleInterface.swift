@@ -16,6 +16,12 @@ protocol WalletModuleInterface {
     
     func enterPIN(pin: String)
     func verifyPIN(pin: String)
+    func verifyPINToRecoverFromServerEncryptedPhrase(pin: String)
     func manageWallet(passPhrase: String?, pin: String)
+    func manageWalletToRecoverFromServerEncryptedPhrase(pin: String)
     func verifyConfirmPIN(pin: String, confirmPin: String)
+    
+    func displayResetPINInterface(requestFrom module: Module)
+    
+    func manageWalletForResetPIN(passPhrase: String?, pin: String)
 }

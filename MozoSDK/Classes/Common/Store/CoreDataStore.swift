@@ -147,6 +147,28 @@ class CoreDataStore : NSObject {
         }
     }
     
+    func updatePrivateKeysOfWallet(_ walletModel: WalletModel) -> Promise<Bool>{
+        return Promise { seal in
+            stack.perform(asynchronous: { (transaction) -> ManagedWallet in
+                let walletEntity = transaction.fetchOne(
+                    From<ManagedWallet>()
+                        .where(\.address == walletModel.address)
+                )
+                print("Update private key \(walletEntity?.privateKey ?? "") with private key \(walletModel.privateKey)")
+                walletEntity?.privateKey = walletModel.privateKey
+                
+                return walletEntity!
+            }, success: { (transaction) in
+                let wallet = self.stack.fetchExisting(transaction)!
+                print("😁 Success to update private key of wallet, new private key: \(wallet.privateKey)")
+                seal.fulfill(true)
+            }, failure: { (csError) in
+                print("😞 Failed to update private key of wallet, error: [\(csError)]")
+                seal.reject(csError)
+            })
+        }
+    }
+    
     func getWalletByUserId(_ id: String) -> Promise<WalletModel>{
         return Promise { seal in
             if let userEntity = stack.fetchOne(From<ManagedUser>().where(\.id == id)) {
