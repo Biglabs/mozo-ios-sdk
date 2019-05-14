@@ -37,11 +37,11 @@ public enum NotificationCategoryType: String {
     public var summaryFormat: String {
         switch self {
         case .Balance_Changed_Received: return "%u MozoX total received"
-        case .Balance_Changed_Sent: return "%u MozoX total received"
+        case .Balance_Changed_Sent: return "%u MozoX total sent"
         case .Airdropped: return "%u MozoX total received from Airdrop Events"
         case .AirdropInvite: return "%u friends joined MozoX"
         case .Customer_Came_In: return "%u customer arrived"
-        case .Customer_Came_Out: return "%u customer left"
+        case .Customer_Came_Out: return "%u customer departed"
         case .Default: return rawValue
         }
     }
