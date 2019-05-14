@@ -50,7 +50,6 @@ class PINViewController : MozoBasicViewController {
         pinTextField.delegate = self as PinTextFieldDelegate
         pinTextField.keyboardType = .numberPad
         if self.passPhrase == nil {
-            navigationItem.title = "Enter Security PIN".localized
             switch moduleRequested {
             case .Transaction, .Airdrop, .Convert:
                 var text = "Enter your Security PIN\nto send MozoX"
@@ -60,10 +59,24 @@ class PINViewController : MozoBasicViewController {
                     text = "Enter your Security PIN to convert MozoX from onchain to offchain."
                 }
                 enterPINLabel.text = text.localized
-                descriptionLabel.text = "Security PIN must be 6 digits".localized
+                descriptionLabel.text = "Security PIN must be 6 digit numbers".localized
+                break
+            case .ResetPIN:
+                // Enter new pin and confirm new pin to reset PIN
+                enterPINLabel.text = "ENTER NEW SECURITY PIN".localized
+                descriptionLabel.text = "Security PIN must be 6 digit numbers".localized
+                break
             default:
-                // Enter new pin and confirm new pin
+                // Enter new pin and confirm new pin to restore wallet
+                enterPINLabel.text = "ENTER YOUR SECURITY PIN".localized
                 enterPINLabel.text = "Enter your Security PIN\nto restore wallet".localized
+                break
+            }
+        } else {
+            if moduleRequested == .ResetPIN {
+                // Enter new pin and confirm new pin to reset PIN
+                enterPINLabel.text = "ENTER NEW SECURITY PIN".localized
+                descriptionLabel.text = "Security PIN must be 6 digit numbers".localized
             }
         }
         forgotContainerView.isHidden = passPhrase != nil
