@@ -12,6 +12,7 @@ public enum ErrorApiResponse: String {
     case UNAUTHORIZED_ACCESS = "UNAUTHORIZED_ACCESS"
     case INVALID_USER_TOKEN = "INVALID_USER_TOKEN"
     case INVALID_REQUEST = "INVALID_REQUEST"
+    case MAINTAINING = "MAINTAINING"
     // STORE
     case STORE_UNREGISTERED = "STORE_UNREGISTERED"
     case STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS = "STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS"
@@ -75,6 +76,8 @@ public enum ErrorApiResponse: String {
         case .UNAUTHORIZED_ACCESS: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .INVALID_USER_TOKEN: return "Your session has expired. Please login again"
         case .INVALID_REQUEST: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .MAINTAINING: return rawValue
+            
         case .SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS: return "Your wallet was updated but did not sync with your current device. Please restore your wallet first."
         case .SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS: return "The destination wallet was not found. Please recheck the wallet address or try another wallet address"
         case .SOLOMON_USER_PROFILE_WALLET_ADDRESS_IN_USED: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
@@ -137,6 +140,8 @@ public enum ErrorApiResponse: String {
         case .UNAUTHORIZED_ACCESS: return .apiError_UNAUTHORIZED_ACCESS
         case .INVALID_USER_TOKEN: return .apiError_INVALID_USER_TOKEN
         case .INVALID_REQUEST: return .apiError_INVALID_REQUEST
+        case .MAINTAINING: return .apiError_MAINTAINING
+            
         case .SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS:
             return .apiError_SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS
         case .SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS:

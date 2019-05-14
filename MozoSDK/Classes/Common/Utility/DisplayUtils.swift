@@ -55,6 +55,10 @@ public class DisplayUtils {
                                             isEmbedded: Bool = false,
                                             error: ConnectionError? = nil,
                                             delegate: PopupErrorDelegate) {
+        if error == ConnectionError.apiError_MAINTAINING {
+            displayMaintenanceViewController()
+            return
+        }
         if let topViewController = getTopViewController(), let parentView = topViewController.view {
             let popupWidth = 315
             let popupHeight = error == .noInternetConnection ? 385 : popupWidth

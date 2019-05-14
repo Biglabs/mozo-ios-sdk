@@ -20,4 +20,6 @@ protocol ApiManagerDelegate {
     func didLoadOffchainInfoFailed()
     func didLoadETHSuccess(_ tokenInfo: TokenInfoDTO)
     func didLoadETHFailed()
+    
+    func didReceiveMaintenance()
 }

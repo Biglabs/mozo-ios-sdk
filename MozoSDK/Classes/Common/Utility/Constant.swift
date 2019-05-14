@@ -197,6 +197,12 @@ public enum TransactionStatusType: String {
     case PENDING = "PENDING"
 }
 
+
+public enum MaintenanceStatusType: String {
+    case MAINTAINED = "MAINTAINED"
+    case HEALTHY = "HEALTHY"
+}
+
 public enum AirdropEventDiscoverType: String {
     case NEAREST = "nearest"
     case TOP = "top"

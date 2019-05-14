@@ -225,6 +225,9 @@ public class ApiManager {
                             if errorEnum == .INVALID_USER_TOKEN {
                                 delegate?.didReceiveInvalidToken()
                             } else {
+                                if errorEnum == .MAINTAINING {
+                                    self.delegate?.didReceiveMaintenance()
+                                }
                                 seal.reject(errorEnum.connectionError)
                             }
                         }

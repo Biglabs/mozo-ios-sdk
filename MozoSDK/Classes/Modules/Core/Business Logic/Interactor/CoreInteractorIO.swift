@@ -20,6 +20,7 @@ protocol CoreInteractorInput {
     func notifyDidCloseAllMozoUIForAllObservers()
     func notifyConvertSuccessOnchainToOffchain(balanceNoti: BalanceNotification)
     func notifyProfileChangesForAllObserver()
+    func notifyMaintenance(isComplete: Bool)
 }
 
 protocol CoreInteractorOutput {
@@ -30,6 +31,8 @@ protocol CoreInteractorOutput {
     
     func didReceiveInvalidToken()
     func didReceiveAuthorizationRequired()
+    
+    func didReceiveMaintenance()
 }
 
 protocol CoreInteractorService {
