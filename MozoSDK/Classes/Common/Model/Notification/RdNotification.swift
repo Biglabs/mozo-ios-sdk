@@ -24,6 +24,29 @@ public class RdNotification: ResponseObjectSerializable {
     }
 }
 
+public enum NotificationCategoryType: String {
+    case Balance_Changed_Received = "balance_changed_received"
+    case Balance_Changed_Sent = "balance_changed_sent"
+    case Airdropped = "airdropped"
+    case AirdropInvite = "airdrop_invite"
+    case Customer_Came_In = "customer_came_in"
+    case Customer_Came_Out = "customer_came_out"
+    
+    case Default = ""
+    
+    public var summaryFormat: String {
+        switch self {
+        case .Balance_Changed_Received: return "%u MozoX total received"
+        case .Balance_Changed_Sent: return "%u MozoX total received"
+        case .Airdropped: return "%u MozoX total received from Airdrop Events"
+        case .AirdropInvite: return "%u friends joined MozoX"
+        case .Customer_Came_In: return "%u customer arrived"
+        case .Customer_Came_Out: return "%u customer left"
+        case .Default: return rawValue
+        }
+    }
+}
+
 public enum NotificationEventType: String {
     case BalanceChanged = "balance_changed"
     case AddressBookChanged = "address_book_changed"
@@ -36,15 +59,4 @@ public enum NotificationEventType: String {
     case AirdropInvite = "airdrop_invite"
     
     case ProfileChanged = "profile_changed"
-    
-    public var summaryFormat: String {
-        switch self {
-        case .BalanceChanged: return ""
-        case .Airdropped: return ""
-        case .AirdropInvite: return ""
-        case .CustomerCame: return ""
-        default:
-            return ""
-        }
-    }
 }

@@ -18,4 +18,5 @@ public struct NotiDisplayItem {
     public let detailText: String
     
     public let summaryArgumentCount: Int
+    public let categoryType: NotificationCategoryType
 }
