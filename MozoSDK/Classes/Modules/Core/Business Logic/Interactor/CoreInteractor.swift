@@ -323,6 +323,14 @@ extension CoreInteractor: CoreInteractorInput {
     func notifyProfileChangesForAllObserver() {
         NotificationCenter.default.post(name: .didChangeProfile, object: nil)
     }
+    
+    func notifyMaintenance(isComplete: Bool) {
+        if isComplete {
+            NotificationCenter.default.post(name: .didMaintenanceComplete, object: nil)
+        } else {
+            NotificationCenter.default.post(name: .didMeetMaintenance, object: nil)
+        }
+    }
 }
 
 extension CoreInteractor: ApiManagerDelegate {
@@ -420,5 +428,10 @@ extension CoreInteractor: ApiManagerDelegate {
     func didReceiveAuthorizationRequired() {
         print("CoreInteractor - Did receive authorization required")
         output?.didReceiveAuthorizationRequired()
+    }
+    
+    func didReceiveMaintenance() {
+        print("CoreInteractor - Did receive maintenance")
+        output?.didReceiveMaintenance()
     }
 }

@@ -22,6 +22,7 @@ public enum ConnectionError: Error {
     case apiError_UNAUTHORIZED_ACCESS
     case apiError_INVALID_USER_TOKEN
     case apiError_INVALID_REQUEST
+    case apiError_MAINTAINING
     
     case apiError_SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS
     case apiError_SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS
@@ -102,6 +103,7 @@ public enum ConnectionError: Error {
         case .apiError_UNAUTHORIZED_ACCESS: return .UNAUTHORIZED_ACCESS
         case .apiError_INVALID_USER_TOKEN: return .INVALID_USER_TOKEN
         case .apiError_INVALID_REQUEST: return .INVALID_REQUEST
+        case .apiError_MAINTAINING: return .MAINTAINING
             
         case .apiError_SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS:
             return .SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS

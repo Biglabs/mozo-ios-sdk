@@ -306,6 +306,10 @@ extension CorePresenter : CoreInteractorOutput {
             // Ignore
         }
     }
+    
+    func didReceiveMaintenance() {
+        coreInteractor?.notifyMaintenance(isComplete: false)
+    }
 }
 
 extension CorePresenter: TransactionModuleDelegate {

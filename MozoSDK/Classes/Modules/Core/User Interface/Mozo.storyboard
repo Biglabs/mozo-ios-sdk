@@ -129,16 +129,16 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fk0-hl-TaI">
-                                        <rect key="frame" x="88" y="30" width="199" height="15"/>
+                                        <rect key="frame" x="76.5" y="30" width="222" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="q6K-GY-xuf"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <state key="normal" title="Reset PIN by using seed phrases">
+                                        <state key="normal" title="Reset PIN by using recovery phrases">
                                             <color key="titleColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Reset PIN by using seed phrases"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Reset PIN by using recovery phrases"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="touchBtnForgot:" destination="kIe-cV-lG0" eventType="touchUpInside" id="4lL-7x-DTo"/>
