@@ -26,16 +26,21 @@ extension CorePresenter {
 //        let actionView = UNNotificationAction(identifier: "actionView", title: "View".localized, options: [.foreground])
 //        let actionClear = UNNotificationAction(identifier: "actionClear", title: "Clear".localized, options: [.foreground])
         
-//        let eventTypes : [NotificationEventType] = [.BalanceChanged, .Airdropped, .AirdropInvite, .CustomerCame]
-//        var categories = [UNNotificationCategory]()
-//        for type in eventTypes {
-//            let summaryFormat = type.summaryFormat.localized
-//            let identifier = "mozoActionCategory_\(type.rawValue)"
-//            let category = UNNotificationCategory(identifier: identifier, actions: [], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: nil, categorySummaryFormat: summaryFormat, options: [])
-//            categories.append(category)
-//        }
-//
-//        UNUserNotificationCenter.current().setNotificationCategories(Set(categories))
+        let categoryTypes : [NotificationCategoryType] = [.Balance_Changed_Received, .Balance_Changed_Sent, .Airdropped, .AirdropInvite, .Customer_Came_In, .Customer_Came_Out]
+        var categories = [UNNotificationCategory]()
+        for type in categoryTypes {
+            let identifier = "mozoActionCategory_\(type.rawValue)"
+            if #available(iOS 12.0, *) {
+                let summaryFormat = type.summaryFormat.localized
+                let category = UNNotificationCategory(identifier: identifier, actions: [], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: nil, categorySummaryFormat: summaryFormat, options: [])
+                categories.append(category)
+            } else {
+                let category = UNNotificationCategory(identifier: identifier, actions: [], intentIdentifiers: [], options: [])
+                categories.append(category)
+            }
+        }
+
+        UNUserNotificationCenter.current().setNotificationCategories(Set(categories))
     }
     
     func performNotifications(noti: RdNotification, rawMessage: String) {
@@ -55,14 +60,14 @@ extension CorePresenter {
             content.sound = UNNotificationSound.default()
             
             // Group notification
-//            if let event = noti.event,
-//               let notiType = NotificationEventType(rawValue: event),
-//               [NotificationEventType.BalanceChanged, .Airdropped, .AirdropInvite, .CustomerCame].contains(notiType) {
-//                
-//                content.categoryIdentifier = "mozoActionCategory_\(event)"
-//                content.threadIdentifier = event.lowercased()
-//                content.summaryArgumentCount = displayItem.summaryArgumentCount
-//            }
+            if displayItem.categoryType != .Default {
+                content.categoryIdentifier = "mozoActionCategory_\(displayItem.categoryType.rawValue)"
+                content.threadIdentifier = displayItem.categoryType.rawValue.lowercased()
+                if #available(iOS 12.0, *),
+                    displayItem.categoryType == .Balance_Changed_Received || displayItem.categoryType == .Balance_Changed_Sent || displayItem.categoryType == .Airdropped {
+                    content.summaryArgumentCount = displayItem.summaryArgumentCount
+                }
+            }
             
             // If you want to attach any image to show in local notification
             if let img = UIImage(named: displayItem.image, in: BundleManager.mozoBundle(), compatibleWith: nil) {
