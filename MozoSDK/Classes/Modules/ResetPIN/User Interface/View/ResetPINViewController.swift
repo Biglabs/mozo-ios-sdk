@@ -107,14 +107,17 @@ class ResetPINViewController: MozoBasicViewController {
     }
     
     func updateScrollViewInsets() {
-        print("Update scroll view insets")
+        print("Update scroll view insets, keyboard height: \(keyboardHeight)")
+        let bottomInset : CGFloat = keyboardHeight > 0 ? 258 : 0
         var insets = self.scrollView.contentInset
         if #available(iOS 11.0, *) {
             insets = self.scrollView.adjustedContentInset
         }
         insets.bottom = keyboardHeight
         if #available(iOS 11.0, *) {
-            insets.bottom -= self.view.safeAreaInsets.bottom
+            print("Update scroll view insets, safeAreaInsets bottom: \(self.view.safeAreaInsets.bottom)")
+//            insets.bottom -= self.view.safeAreaInsets.bottom
+            insets.bottom = bottomInset
         }
         insets.top = 0.0
         print("Insets, top [\(insets.top)], bottom [\(insets.bottom)]")
@@ -123,7 +126,8 @@ class ResetPINViewController: MozoBasicViewController {
         var indicatorInset = self.scrollView.scrollIndicatorInsets
         indicatorInset.bottom = keyboardHeight
         if #available(iOS 11.0, *) {
-            indicatorInset.bottom -= self.view.safeAreaInsets.bottom
+//            indicatorInset.bottom -= self.view.safeAreaInsets.bottom
+            indicatorInset.bottom = bottomInset
         }
         print("Indicator Insets, top [\(indicatorInset.top)], bottom [\(indicatorInset.bottom)]")
         self.scrollView.scrollIndicatorInsets = indicatorInset
