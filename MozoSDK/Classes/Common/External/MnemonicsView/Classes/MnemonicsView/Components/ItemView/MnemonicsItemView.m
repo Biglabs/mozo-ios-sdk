@@ -67,6 +67,9 @@ static CGFloat const kMnemonicsItemViewPlaceholderHeight                        
     [self addSubview:underline];
     
     MnemonicsTextField *textField = [[MnemonicsTextField alloc] init];
+    if (!self.last) {
+        textField.returnKeyType = UIReturnKeyNext;
+    }
     [textField addTarget:self action:@selector(textFieldDidChanged:) forControlEvents:UIControlEventEditingChanged];
     textField.markedTextStyle = @{NSBackgroundColorAttributeName: [UIColor colorWithRed:229.0/255.0 green:237.0/255.0 blue:251.0/255.0 alpha:1.0]};
     textField.delegate = self;
@@ -343,7 +346,11 @@ static CGFloat const kMnemonicsItemViewPlaceholderHeight                        
     } else {
         self.underline.backgroundColor = UIColorFromHEX(0xd3d3d3);
     }
-    self.textField.returnKeyType = UIReturnKeyDone;
+      if (!self.last) {
+          self.textField.returnKeyType = UIReturnKeyNext;
+      } else {
+          self.textField.returnKeyType = UIReturnKeyDone;
+      }
   }
   if (correct) {
     [textField markAsCorrect];
@@ -363,7 +370,11 @@ static CGFloat const kMnemonicsItemViewPlaceholderHeight                        
       } else {
           self.underline.backgroundColor = UIColorFromHEX(0xd3d3d3);
       }
-    self.textField.returnKeyType = UIReturnKeyDone;
+      if (!self.last) {
+          self.textField.returnKeyType = UIReturnKeyNext;
+      } else {
+          self.textField.returnKeyType = UIReturnKeyDone;
+      }
   }
   if (completed) {
     textField.showInputAccessoryView = NO;
@@ -374,7 +385,11 @@ static CGFloat const kMnemonicsItemViewPlaceholderHeight                        
       self.textField.returnKeyType = UIReturnKeyDone;
     }
   } else {
-    self.textField.returnKeyType = UIReturnKeyDone;
+      if (!self.last) {
+          self.textField.returnKeyType = UIReturnKeyNext;
+      } else {
+          self.textField.returnKeyType = UIReturnKeyDone;
+      }
   }
   if (reloadInputs) {
     [self.textField reloadInputViews];

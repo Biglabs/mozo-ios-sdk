@@ -18,6 +18,9 @@ class ResetPINViewController: MozoBasicViewController {
     
     var waitingView: MozoWaitingView!
     
+    var keyboardHeight: CGFloat = 0
+    var keyboardWasShown = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         enableBackBarButton()
@@ -28,6 +31,57 @@ class ResetPINViewController: MozoBasicViewController {
         super.viewWillAppear(animated)
         navigationItem.title = "Reset PIN".localized
         addSubmitBtn()
+        setupKeyboardEvents()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
+            self.mnemonicsView.becomeFirstResponder()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewSafeAreaInsetsDidChange() {
+        print("viewSafeAreaInsetsDidChange")
+        if #available(iOS 11.0, *) {
+            super.viewSafeAreaInsetsDidChange()
+        }
+        updateScrollViewInsets()
+    }
+    
+    func setupKeyboardEvents() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangeFrame(_:)), name: .UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        print("Keyboard will show")
+        keyboardWasShown = true
+        let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect ?? CGRect.zero).size
+        keyboardHeight = keyboardSize.height
+        updateScrollViewInsets()
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        print("Keyboard will hide")
+        if keyboardWasShown {
+            let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect ?? CGRect.zero).size;
+            keyboardHeight = keyboardSize.height
+            updateScrollViewInsets()
+        }
+    }
+    
+    @objc func keyboardWillChangeFrame(_ notification: Notification) {
+        print("Keyboard will change frame")
+        keyboardWasShown = false
+        keyboardHeight = 0.0
+        updateScrollViewInsets()
     }
     
     func addSubmitBtn() {
@@ -50,6 +104,33 @@ class ResetPINViewController: MozoBasicViewController {
     
     func enableSubmitButton(_ enable: Bool = true) {
         self.submitButton.isEnabled = enable
+    }
+    
+    func updateScrollViewInsets() {
+        print("Update scroll view insets, keyboard height: \(keyboardHeight)")
+        let bottomInset : CGFloat = keyboardHeight > 0 ? 258 : 0
+        var insets = self.scrollView.contentInset
+        if #available(iOS 11.0, *) {
+            insets = self.scrollView.adjustedContentInset
+        }
+        insets.bottom = keyboardHeight
+        if #available(iOS 11.0, *) {
+            print("Update scroll view insets, safeAreaInsets bottom: \(self.view.safeAreaInsets.bottom)")
+//            insets.bottom -= self.view.safeAreaInsets.bottom
+            insets.bottom = bottomInset
+        }
+        insets.top = 0.0
+        print("Insets, top [\(insets.top)], bottom [\(insets.bottom)]")
+        self.scrollView.contentInset = insets
+        
+        var indicatorInset = self.scrollView.scrollIndicatorInsets
+        indicatorInset.bottom = keyboardHeight
+        if #available(iOS 11.0, *) {
+//            indicatorInset.bottom -= self.view.safeAreaInsets.bottom
+            indicatorInset.bottom = bottomInset
+        }
+        print("Indicator Insets, top [\(indicatorInset.top)], bottom [\(indicatorInset.bottom)]")
+        self.scrollView.scrollIndicatorInsets = indicatorInset
     }
     
     @IBAction func mnemonicChange(_ sender: Any) {

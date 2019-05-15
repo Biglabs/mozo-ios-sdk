@@ -163,6 +163,7 @@ class CoreInteractor: NSObject {
     
     func checkAuthAndWallet(module: Module) {
         if AccessTokenManager.getAccessToken() != nil {
+            // TODO: Must load user info here, not use local user
             if SessionStoreManager.loadCurrentUser() != nil {
                 self.checkWallet(module: module)
                 // TODO: Handle update local user profile data

@@ -179,12 +179,17 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="confirmImg" destination="PeV-xF-dP9" id="yL3-KR-M9r"/>
+                        <outlet property="confirmTopConstraint" destination="vOQ-Jo-Ebx" id="8wH-ux-wGs"/>
                         <outlet property="descriptionLabel" destination="DzT-vO-JtQ" id="h1f-k1-UhY"/>
+                        <outlet property="descriptionLabelTopConstraint" destination="GnM-Wk-Aiw" id="1WS-H7-WQh"/>
                         <outlet property="enterPINLabel" destination="Zyt-PW-ZpL" id="x3n-o7-5Qp"/>
+                        <outlet property="enterPINLabelTopConstraint" destination="FE7-6S-6qL" id="Ydf-5A-Tci"/>
                         <outlet property="forgotContainerView" destination="ZBt-nP-Yks" id="dJD-i7-J27"/>
+                        <outlet property="forgotContainerViewTopConstraint" destination="wYC-4w-QuB" id="tpE-zq-UZw"/>
                         <outlet property="pinTextField" destination="fKQ-pz-rgq" id="g3b-TK-CEP"/>
                         <outlet property="statusImg" destination="uHY-g1-lDE" id="J0U-1h-Ggd"/>
                         <outlet property="statusLabel" destination="5mE-Bn-Hyw" id="uGN-vU-cgX"/>
+                        <outlet property="statusTopConstraint" destination="rk6-VN-xVW" id="x3y-Y3-1mh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDm-fU-gJy" userLabel="First Responder" sceneMemberID="firstResponder"/>

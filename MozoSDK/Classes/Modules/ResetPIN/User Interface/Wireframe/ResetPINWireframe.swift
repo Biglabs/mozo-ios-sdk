@@ -32,11 +32,11 @@ class ResetPINWireframe: MozoWireframe {
     }
     
     func dismissResetPINInterface() {
-        if moduleRequested == .Wallet {
-            walletWireframe?.walletPresenter?.handleEndingWalletFlow()
-        } else {
+//        if moduleRequested == .Wallet {
+//            walletWireframe?.walletPresenter?.handleEndingWalletFlow()
+//        } else {
             // Pop ResetPINSuccessViewController
             rootWireframe?.dismissTopViewController()
-        }
+//        }
     }
 }

@@ -12,11 +12,16 @@ import UIKit
 class PINViewController : MozoBasicViewController {
     @IBOutlet weak var pinTextField: PinTextField!
     @IBOutlet weak var enterPINLabel: UILabel!
+    @IBOutlet weak var enterPINLabelTopConstraint: NSLayoutConstraint! // Default 39
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabelTopConstraint: NSLayoutConstraint! // Default 43
     @IBOutlet weak var statusImg: UIImageView!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusTopConstraint: NSLayoutConstraint! // Default 31
     @IBOutlet weak var confirmImg: UIImageView!
+    @IBOutlet weak var confirmTopConstraint: NSLayoutConstraint! // Default 30
     @IBOutlet weak var forgotContainerView: UIView!
+    @IBOutlet weak var forgotContainerViewTopConstraint: NSLayoutConstraint! // Default 45
     
     var eventHandler : WalletModuleInterface?
     var passPhrase : String?
@@ -80,6 +85,14 @@ class PINViewController : MozoBasicViewController {
             }
         }
         forgotContainerView.isHidden = passPhrase != nil
+        if UIScreen.main.nativeBounds.height <= 1136 {
+            print("PINViewController - Configure View on iPhone 5 or 5S or 5C")
+            enterPINLabelTopConstraint.constant = 39 - 16
+            descriptionLabelTopConstraint.constant = 43 - 16
+            statusTopConstraint.constant = 31 - 16
+            confirmTopConstraint.constant = 30 - 16
+            forgotContainerViewTopConstraint.constant = 45 - 16
+        }
     }
     
     override public var prefersStatusBarHidden: Bool {

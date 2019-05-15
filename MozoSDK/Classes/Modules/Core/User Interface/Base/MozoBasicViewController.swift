@@ -120,7 +120,7 @@ public class MozoBasicViewController : UIViewController {
             DisplayUtils.displayMozoErrorWithContact(errorText)
             return
         }
-        mozoPopupErrorView = MozoPopupErrorView(frame: CGRect(x: 0, y: 0, width: 315, height: 385))
+        mozoPopupErrorView = MozoPopupErrorView(frame: CGRect(x: 0, y: 0, width: 315, height: 384))
         if let err = error {
             mozoPopupErrorView?.error = err
         }
