@@ -45,11 +45,17 @@
       [cell updateWithWord:word];
     }
   } else {
-    if (self.last) {
-      [cell updateWithWord:NSLocalizedString(@"DONE", nil)];
-    } else {
-      [cell updateWithWord:NSLocalizedString(@"NEXT WORD", nil)];
-    }
+      NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+      if (self.last) {
+          [cell updateWithWord:NSLocalizedStringFromTableInBundle(@"Done", nil, bundle,nil)];
+      } else {
+          [cell updateWithWord:NSLocalizedStringFromTableInBundle(@"Next", nil, bundle,nil)];
+      }
+//    if (self.last) {
+//      [cell updateWithWord:NSLocalizedString(@"DONE", nil)];
+//    } else {
+//      [cell updateWithWord:NSLocalizedString(@"NEXT WORD", nil)];
+//    }
   }
   return cell;
 }
