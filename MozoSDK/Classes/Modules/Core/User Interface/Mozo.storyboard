@@ -4356,6 +4356,46 @@
             </objects>
             <point key="canvasLocation" x="6273" y="-1008"/>
         </scene>
+        <!--Maintenance View Controller-->
+        <scene sceneID="U0v-xS-g4e">
+            <objects>
+                <viewController storyboardIdentifier="MaintenanceViewController" id="RCT-Ia-EEQ" customClass="MaintenanceViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zud-uc-ctb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_maintenance" translatesAutoresizingMaskIntoConstraints="NO" id="MDj-vF-HGr">
+                                <rect key="frame" x="109" y="84" width="157" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="157" id="1Bj-ql-2qM"/>
+                                    <constraint firstAttribute="height" constant="160" id="2g2-zs-56c"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, we're down for maintenance. We'll be back shortly." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEp-zJ-u0r">
+                                <rect key="frame" x="26" y="268" width="323" height="38.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Sorry, we're down for maintenance. We'll be back shortly."/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dEp-zJ-u0r" secondAttribute="trailing" constant="26" id="6OF-Bf-wVV"/>
+                            <constraint firstItem="MDj-vF-HGr" firstAttribute="top" secondItem="toq-Ej-Zuc" secondAttribute="top" constant="64" id="QUX-9k-08J"/>
+                            <constraint firstItem="MDj-vF-HGr" firstAttribute="centerX" secondItem="zud-uc-ctb" secondAttribute="centerX" id="VG6-CX-0tE"/>
+                            <constraint firstItem="dEp-zJ-u0r" firstAttribute="leading" secondItem="toq-Ej-Zuc" secondAttribute="leading" constant="26" id="heS-r7-P3h"/>
+                            <constraint firstItem="dEp-zJ-u0r" firstAttribute="top" secondItem="MDj-vF-HGr" secondAttribute="bottom" constant="24" id="z1x-hA-Od8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="toq-Ej-Zuc"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jxu-or-Kbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7986" y="-297"/>
+        </scene>
         <!--Transaction History-->
         <scene sceneID="x75-Nf-Gbz">
             <objects>
@@ -4543,5 +4583,6 @@
         <image name="ic_user" width="14" height="18"/>
         <image name="ic_user_add" width="19" height="16"/>
         <image name="ic_user_profile" width="402" height="402"/>
+        <image name="img_maintenance" width="628" height="640"/>
     </resources>
 </document>

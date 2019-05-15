@@ -7,12 +7,17 @@
 
 import Foundation
 import UIKit
-let MaintenanceViewControllerIdentifier = "MaintenanceViewControllers"
+let MaintenanceViewControllerIdentifier = "MaintenanceViewController"
 class MaintenanceViewController: UIViewController {
+    let eventHandler = MaintenancePresenter()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
 }
 extension MaintenanceViewController {
-    public static func passPhraseViewControllerFromStoryboard() -> MaintenanceViewController {
+    public static func viewControllerFromStoryboard() -> MaintenanceViewController {
         let storyboard = StoryboardManager.mozoStoryboard()
         let viewController = storyboard.instantiateViewController(withIdentifier: MaintenanceViewControllerIdentifier) as! MaintenanceViewController
         return viewController
