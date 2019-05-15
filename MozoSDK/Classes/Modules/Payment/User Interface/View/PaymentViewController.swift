@@ -190,16 +190,17 @@ class PaymentViewController: MozoBasicViewController {
         
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width - 40, height: 20))
         label.textAlignment = .center
-        label.text = "Requested list is empty".localized
-        label.textColor = ThemeManager.shared.disable
-        label.font = UIFont.italicSystemFont(ofSize: 16)
+        label.text = "Requested List is empty or your connection is too slow".localized
+        label.textColor = ThemeManager.shared.textSection
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         
         let description = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width - 92, height: 30))
         description.textAlignment = .center
-        description.text = "When your friends send a request MozoX to you, it will display here.".localized
-        description.textColor = ThemeManager.shared.disable
-        description.font = UIFont.italicSystemFont(ofSize: 13)
+        description.text = "Any MozoX Request from your friends will be displayed here.".localized
+        description.textColor = ThemeManager.shared.textSection
+        description.font = UIFont.systemFont(ofSize: 13)
         description.numberOfLines = 4
         description.translatesAutoresizingMaskIntoConstraints = false
         
