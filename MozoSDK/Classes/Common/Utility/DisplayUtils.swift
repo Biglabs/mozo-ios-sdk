@@ -56,7 +56,7 @@ public class DisplayUtils {
                                             error: ConnectionError? = nil,
                                             delegate: PopupErrorDelegate) {
         if error == ConnectionError.apiError_MAINTAINING {
-            displayMaintenanceViewController()
+            displayMaintenanceScreen()
             return
         }
         if let topViewController = getTopViewController(), let parentView = topViewController.view {
