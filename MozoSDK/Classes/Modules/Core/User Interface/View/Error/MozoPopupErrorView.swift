@@ -16,6 +16,7 @@ class MozoPopupErrorView : MozoView {
     @IBOutlet weak var imgError: UIImageView!
     @IBOutlet weak var labelError: UILabel!
     @IBOutlet weak var lbDesc: UILabel!
+    @IBOutlet weak var lbDescHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var btnTry: UIButton!
     
     var modalCloseHandler: (() -> Void)?
@@ -106,10 +107,12 @@ class MozoPopupErrorView : MozoView {
                 imgError.image = UIImage(named: "ic_sand_clock", in: BundleManager.mozoBundle(), compatibleWith: nil)
                 labelError.text = "Time out, please try again.".localized
                 lbDesc.text = ""
+                lbDescHeightConstraint.constant = 0
             } else {
                 imgError.image = UIImage(named: "ic_no_connection", in: BundleManager.mozoBundle(), compatibleWith: nil)
                 labelError.text = "There is no internet connection!".localized
                 lbDesc.text = "Once you have a stronger internet connection, we’ll automatically process your request.".localized
+                lbDescHeightConstraint.constant = 72.0
             }
         }
     }
