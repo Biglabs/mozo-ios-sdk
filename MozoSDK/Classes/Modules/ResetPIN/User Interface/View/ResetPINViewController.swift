@@ -178,7 +178,7 @@ extension ResetPINViewController: ResetPINViewInterface {
         waitingView.stopRotating = true
         
         if clearData {
-            // TODO: Clear data after maintenance mode
+            print("Clear data after maintenance mode")
             self.mnemonicsView.clearAllTextFields()
         }
     }
