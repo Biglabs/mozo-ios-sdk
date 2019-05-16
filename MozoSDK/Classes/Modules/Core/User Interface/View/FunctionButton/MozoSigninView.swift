@@ -17,11 +17,20 @@ import UIKit
     override func checkDisable() {
         if AccessTokenManager.getAccessToken() != nil {
 //            isUserInteractionEnabled = false
-            button.backgroundColor = ThemeManager.shared.disable
+//            button.backgroundColor = ThemeManager.shared.disable
+            let image = UIImage(named: "ic_logout", in: BundleManager.mozoBundle(), compatibleWith: nil)
+            button.setImage(image, for: .normal)
+            button.setTitle("Log Out MozoX", for: .normal)
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
         } else {
 //            isUserInteractionEnabled = true
-            button.backgroundColor = ThemeManager.shared.main
+//            button.backgroundColor = ThemeManager.shared.main
+            let image = UIImage(named: "ic_user_white", in: BundleManager.mozoBundle(), compatibleWith: nil)
+            button.setImage(image, for: .normal)
+            button.setTitle("Sign In to MozoX", for: .normal)
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 0)
         }
+        button.backgroundColor = ThemeManager.shared.main
     }
     
     override func loadViewFromNib() {
