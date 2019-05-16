@@ -47,7 +47,7 @@ extension CorePresenter {
         let displayData = NotiDisplayItemData(rawNoti: noti)
         if let displayItem = displayData.displayItem {
             let content = UNMutableNotificationContent()
-            let requestIdentifier = "mozoNotification_\(Date())"
+            let requestIdentifier = "mozoNotification_\(UUID().uuidString)"
             
             content.userInfo = ["notiContent": rawMessage]
             // No need to display badge number on app
