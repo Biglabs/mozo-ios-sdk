@@ -19,9 +19,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER YOUR SECURITY PIN" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zyt-PW-ZpL">
-                                <rect key="frame" x="77.5" y="59" width="220" height="18"/>
+                                <rect key="frame" x="37.5" y="59" width="300" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="zBk-sI-qmB"/>
+                                    <constraint firstAttribute="width" constant="300" id="zBk-sI-qmB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4385,21 +4385,114 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Sorry, we're down for maintenance. We'll be back shortly."/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ead-Je-BAV">
+                                <rect key="frame" x="24" y="354.5" width="327" height="268.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_question_mark" translatesAutoresizingMaskIntoConstraints="NO" id="YqM-kB-KDA">
+                                        <rect key="frame" x="24" y="25" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="aTb-bU-snH"/>
+                                            <constraint firstAttribute="height" constant="24" id="kky-Vu-4R6"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did you know?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxp-b2-YGX">
+                                        <rect key="frame" x="55" y="27" width="106" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Did you know?"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How do MozoX Tokens work as a rewards program?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-bs-kvZ">
+                                        <rect key="frame" x="24" y="70" width="279" height="38.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjF-Xj-QzZ">
+                                        <rect key="frame" x="24" y="117.5" width="279" height="95.5"/>
+                                        <string key="text">Beginning is as easy as downloading our app and purchasing the number of MozoX Tokens you’d like to buy. Soon after your purchase, MozoX Tokens will be transferred directly…</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzt-mc-o7h">
+                                        <rect key="frame" x="24" y="229.5" width="83" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="Cd9-UX-oKe"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <state key="normal" title="Read more">
+                                            <color key="titleColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Read more"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="touchBtnReadMore:" destination="RCT-Ia-EEQ" eventType="touchUpInside" id="eav-17-NbK"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3d2-Gm-wd5">
+                                        <rect key="frame" x="115" y="234" width="13" height="10"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="13" id="5V8-xg-IIN"/>
+                                            <constraint firstAttribute="height" constant="10" id="727-aw-hBl"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="YqM-kB-KDA" firstAttribute="top" secondItem="ead-Je-BAV" secondAttribute="top" constant="25" id="2cX-uW-1cP"/>
+                                    <constraint firstItem="kjF-Xj-QzZ" firstAttribute="trailing" secondItem="XgO-bs-kvZ" secondAttribute="trailing" id="4Zj-QM-Zo7"/>
+                                    <constraint firstItem="jzt-mc-o7h" firstAttribute="leading" secondItem="XgO-bs-kvZ" secondAttribute="leading" id="4Zk-JI-6tm"/>
+                                    <constraint firstItem="XgO-bs-kvZ" firstAttribute="leading" secondItem="ead-Je-BAV" secondAttribute="leading" constant="24" id="55V-k6-l2u"/>
+                                    <constraint firstItem="XgO-bs-kvZ" firstAttribute="top" secondItem="YqM-kB-KDA" secondAttribute="bottom" constant="21" id="8g6-Vp-GQh"/>
+                                    <constraint firstAttribute="trailing" secondItem="XgO-bs-kvZ" secondAttribute="trailing" constant="24" id="CSc-00-UW4"/>
+                                    <constraint firstItem="YqM-kB-KDA" firstAttribute="leading" secondItem="ead-Je-BAV" secondAttribute="leading" constant="24" id="GtI-0D-EUa"/>
+                                    <constraint firstItem="Wxp-b2-YGX" firstAttribute="centerY" secondItem="YqM-kB-KDA" secondAttribute="centerY" id="JFG-hO-Eii"/>
+                                    <constraint firstItem="kjF-Xj-QzZ" firstAttribute="top" secondItem="XgO-bs-kvZ" secondAttribute="bottom" constant="9" id="LjQ-tJ-LcZ"/>
+                                    <constraint firstItem="Wxp-b2-YGX" firstAttribute="leading" secondItem="YqM-kB-KDA" secondAttribute="trailing" constant="7" id="Q20-LK-3rG"/>
+                                    <constraint firstAttribute="bottom" secondItem="kjF-Xj-QzZ" secondAttribute="bottom" priority="250" constant="55.5" id="TGl-ay-KJ8"/>
+                                    <constraint firstAttribute="bottom" secondItem="jzt-mc-o7h" secondAttribute="bottom" constant="20" id="a8U-Tn-xAv"/>
+                                    <constraint firstItem="kjF-Xj-QzZ" firstAttribute="leading" secondItem="XgO-bs-kvZ" secondAttribute="leading" id="fUd-mj-dI3"/>
+                                    <constraint firstItem="3d2-Gm-wd5" firstAttribute="centerY" secondItem="jzt-mc-o7h" secondAttribute="centerY" id="ufq-YX-C81"/>
+                                    <constraint firstItem="3d2-Gm-wd5" firstAttribute="leading" secondItem="jzt-mc-o7h" secondAttribute="trailing" constant="8" id="xyQ-FS-WVC"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="dEp-zJ-u0r" secondAttribute="trailing" constant="26" id="6OF-Bf-wVV"/>
+                            <constraint firstItem="ead-Je-BAV" firstAttribute="top" secondItem="dEp-zJ-u0r" secondAttribute="bottom" constant="48" id="7d9-La-EuH"/>
+                            <constraint firstItem="ead-Je-BAV" firstAttribute="leading" secondItem="toq-Ej-Zuc" secondAttribute="leading" constant="24" id="PeI-3D-ynj"/>
                             <constraint firstItem="MDj-vF-HGr" firstAttribute="top" secondItem="toq-Ej-Zuc" secondAttribute="top" constant="64" id="QUX-9k-08J"/>
                             <constraint firstItem="MDj-vF-HGr" firstAttribute="centerX" secondItem="zud-uc-ctb" secondAttribute="centerX" id="VG6-CX-0tE"/>
                             <constraint firstItem="dEp-zJ-u0r" firstAttribute="leading" secondItem="toq-Ej-Zuc" secondAttribute="leading" constant="26" id="heS-r7-P3h"/>
+                            <constraint firstItem="toq-Ej-Zuc" firstAttribute="trailing" secondItem="ead-Je-BAV" secondAttribute="trailing" constant="24" id="hqi-gd-oTG"/>
+                            <constraint firstItem="toq-Ej-Zuc" firstAttribute="bottom" secondItem="ead-Je-BAV" secondAttribute="bottom" constant="44" id="mPL-Is-Kjr"/>
                             <constraint firstItem="dEp-zJ-u0r" firstAttribute="top" secondItem="MDj-vF-HGr" secondAttribute="bottom" constant="24" id="z1x-hA-Od8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="toq-Ej-Zuc"/>
                     </view>
+                    <connections>
+                        <outlet property="btnReadMore" destination="jzt-mc-o7h" id="sfo-SV-zOm"/>
+                        <outlet property="containerView" destination="ead-Je-BAV" id="Guu-Do-qvE"/>
+                        <outlet property="containerViewBottomConstraint" destination="mPL-Is-Kjr" id="qMH-qR-xJw"/>
+                        <outlet property="containerViewTopConstraint" destination="7d9-La-EuH" id="pQj-pE-nIC"/>
+                        <outlet property="imgArrow" destination="3d2-Gm-wd5" id="oNj-Bb-phS"/>
+                        <outlet property="imgQuestion" destination="YqM-kB-KDA" id="quv-Ls-Rse"/>
+                        <outlet property="imgViewMaintenance" destination="MDj-vF-HGr" id="fvc-Zf-dVu"/>
+                        <outlet property="imgViewMaintenanceHeightConstraint" destination="2g2-zs-56c" id="bMT-g6-57w"/>
+                        <outlet property="imgViewMaintenanceTopConstraint" destination="QUX-9k-08J" id="rbY-Iu-fFN"/>
+                        <outlet property="imgViewMaintenanceWidthConstraint" destination="1Bj-ql-2qM" id="TTr-QE-GxJ"/>
+                        <outlet property="lbAnswer" destination="kjF-Xj-QzZ" id="2vl-iV-11c"/>
+                        <outlet property="lbQuestionTitle" destination="XgO-bs-kvZ" id="IV1-Tr-TG2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jxu-or-Kbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7986" y="-297"/>
+            <point key="canvasLocation" x="7984.8000000000002" y="-297.30134932533736"/>
         </scene>
         <!--Transaction History-->
         <scene sceneID="x75-Nf-Gbz">
@@ -4578,6 +4671,7 @@
         <image name="ic_paper" width="30" height="36"/>
         <image name="ic_payment_complete" width="133" height="80"/>
         <image name="ic_pencil" width="52" height="52"/>
+        <image name="ic_question_mark" width="36" height="36"/>
         <image name="ic_scan" width="38" height="36"/>
         <image name="ic_search" width="181" height="185"/>
         <image name="ic_send" width="13" height="15"/>

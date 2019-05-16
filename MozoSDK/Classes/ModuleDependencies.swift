@@ -318,6 +318,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getSuggestKeySearch(lat: lat, lon: lon))!
     }
     
+    func loadUserProfile() -> Promise<UserProfileDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.loadUserProfile())!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

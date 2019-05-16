@@ -99,4 +99,6 @@ protocol CoreInteractorService {
     func getListNotification(page: Int, size: Int) -> Promise<[WSMessage]>
     
     func getSuggestKeySearch(lat: Double, lon: Double) -> Promise<[String]>
+    
+    func loadUserProfile() -> Promise<UserProfileDTO>
 }

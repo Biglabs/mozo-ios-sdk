@@ -150,9 +150,16 @@ extension WalletPresenter: WalletInteractorOutput {
                 // New wallet
                 pinUserInterface?.showCreatingInterface()
             } else {
-                walletWireframe?.dismissWalletInterface()
-                // Delegate
-                pinModuleDelegate?.verifiedPINSuccess(pin)
+                let currentMozoScreenCount = walletWireframe?.rootWireframe?.mozoNavigationController.viewControllers.count ?? 0
+                print("WalletPresenter - Check current Mozo screen, count [\(currentMozoScreenCount)]")
+                if currentMozoScreenCount != 2 {
+                    walletWireframe?.dismissWalletInterface()
+                    // Delegate
+                    pinModuleDelegate?.verifiedPINSuccess(pin)
+                } else {
+                    pinModuleDelegate = nil
+                    handleEndingWalletFlow()
+                }
             }
         } else {
             pinUserInterface?.removeSpinner()

@@ -275,4 +275,16 @@ extension CoreInteractor: CoreInteractorService {
     func getSuggestKeySearch(lat: Double, lon: Double) -> Promise<[String]> {
         return apiManager.getSuggestKeySearch(lat: lat, lon: lon)
     }
+    
+    func loadUserProfile() -> Promise<UserProfileDTO> {
+        return Promise { seal in
+            _ = apiManager.getUserProfile().done { (userProfile) in
+                let user = UserDTO(id: userProfile.userId, profile: userProfile)
+                SessionStoreManager.saveCurrentUser(user: user)
+                seal.fulfill(userProfile)
+            }.catch({ (err) in
+                seal.reject(err)
+            })
+        }
+    }
 }

@@ -26,14 +26,14 @@ extension ApiManager {
                         let jsonObj = JSON(json)
                         if let mozoResponse = ResponseDTO(json: jsonObj),
                             mozoResponse.success,
-                            let stringStatus = mozoResponse.data["status"] as? String,
+                            let stringStatus = SwiftyJSON.JSON(mozoResponse.data)["status"].string,
                             let status = MaintenanceStatusType(rawValue: stringStatus) {
                             seal.fulfill(status)
                             return
                         }
                         seal.fulfill(.MAINTAINED)
                     case .failure(let error):
-                        print("Request failed with error: \(error.localizedDescription), url: \(url))")
+                        print("Request check maintenance failed with error: \(error.localizedDescription), url: \(url))")
                         seal.reject(error)
                     }
             }

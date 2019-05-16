@@ -61,9 +61,13 @@ class PINViewController : MozoBasicViewController {
                 if moduleRequested == .Airdrop {
                     text = "Enter your Security PIN\nto create airdrop event"
                 } else if moduleRequested == .Convert {
-                    text = "Enter your Security PIN to convert MozoX from onchain to offchain."
+                    text = "Enter your Security PIN\nto convert MozoX from onchain to offchain."
                 }
-                enterPINLabel.text = text.localized
+                if Locale.current.languageCode != "ko" {
+                    enterPINLabel.text = text.localized.uppercased()
+                } else {
+                    enterPINLabel.text = text.localized
+                }
                 descriptionLabel.text = "Security PIN must be 6 digit numbers".localized
                 break
             case .ResetPIN:

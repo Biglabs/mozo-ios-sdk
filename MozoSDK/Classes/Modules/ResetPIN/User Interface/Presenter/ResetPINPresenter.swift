@@ -57,6 +57,9 @@ extension ResetPINPresenter: ResetPINInteractorOutput {
     }
     
     func manageResetFailedWithError(_ error: ConnectionError) {
+        if error == .apiError_MAINTAINING {
+            viewInterface?.closeWaiting(clearData: true)
+        }
         DisplayUtils.displayTryAgainPopup(allowTapToDismiss: false, isEmbedded: true, error: error, delegate: self)
     }
 }

@@ -73,7 +73,11 @@ static NSUInteger const MnemonicsViewDefaultCount     = 24;
 }
 
 - (void) clearAllTextFields {
-    
+    NSArray <MnemonicsItemView *> *items = [self.items allObjects];
+    for (NSInteger itemIdx = 0; itemIdx < [items count]; ++itemIdx) {
+        MnemonicsItemView *item = items[itemIdx];
+        [item updateText:@""];
+    }
 }
 
 #pragma mark - Private
