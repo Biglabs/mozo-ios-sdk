@@ -790,7 +790,7 @@
 "ETH balance is not enough." = "ETH balance is not enough.";
 "From Onchain" = "From Onchain";
 "To Offchain" = "To Offchain";
-"Enter your Security PIN to convert MozoX from onchain to offchain." = "Enter your Security PIN to convert MozoX from onchain to offchain.";
+"Enter your Security PIN\nto convert MozoX from onchain to offchain." = "Enter your Security PIN\nto convert MozoX from onchain to offchain.";
 "Broadcasting transaction..." = "Broadcasting transaction...";
 "It’s might take about 3 minutes to complete" = "It’s might take about 3 minutes to complete";
 "Hide transaction" = "Hide transaction";
@@ -802,7 +802,7 @@
 "Back to Onchain Wallet" = "Back to Onchain Wallet";
 "Convert Failed" = "Convert Failed";
 "Cannot complete convert MozoX from Onchain to Offchain.\nPlease try again after some time." = "Cannot complete convert MozoX from Onchain to Offchain.\nPlease try again after some time.";
-"There is no Airdrop Events around you" = "There is no Airdrop Events around you";
+"There are no Airdrop Events around you" = "There are no Airdrop Events around you";
 "Discover" = "Discover";
 "On Going Events" = "On Going Events";
 "Top Airdrop Events" = "Top Airdrop Events";
@@ -826,7 +826,7 @@
 "Create Airdrop Event to attract more customer by Airdrop MozoX." = "Create Airdrop Event to attract more customer by Airdrop MozoX.";
 "At least six characters" = "At least six characters";
 
-"There is no Airdrop Events around" = "There is no Airdrop Events around";
+"There are no Airdrop Events around" = "There are no Airdrop Events around";
 
 // Convert "coin" to "token"
 

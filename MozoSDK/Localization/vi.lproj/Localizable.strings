@@ -796,7 +796,7 @@
 "ETH balance is not enough." = "Không đủ ETH";
 "From Onchain" = "Từ Onchain";
 "To Offchain" = "Thành Offchain";
-"Enter your Security PIN to convert MozoX from onchain to offchain." = "Nhập mã PIN để chuyển đổi MozoX từ Onchain thành Offchain.";
+"Enter your Security PIN\nto convert MozoX from onchain to offchain." = "Nhập mã PIN để chuyển đổi MozoX từ Onchain thành Offchain.";
 "Broadcasting transaction..." = "Đang gửi thông tin giao dịch...";
 "It’s might take about 3 minutes to complete" = "Sẽ mất khoảng 3 phút để hoàn tất";
 "Hide transaction" = "Ẩn màn hình";
@@ -808,7 +808,7 @@
 "Back to Onchain Wallet" = "Trở về ví Onchain";
 "Convert Failed" = "Chuyển đổi thất bại";
 "Cannot complete convert MozoX from Onchain to Offchain. Please try again after some time." = "Không thể hoàn tất việc chuyển đổi. Xin đợi một lúc và thử lại.";
-"There is no Airdrop Events around you" = "Không có chương trình Airdrop gần bạn";
+"There are no Airdrop Events around you" = "Không có chương trình Airdrop gần bạn";
 "Discover" = "Khám phá";
 "On Going Events" = "Chương trình sắp Airdrop";
 "Top Airdrop Events" = "Airdrop nhiều nhất";
@@ -832,7 +832,7 @@
 "Create Airdrop Event to attract more customer by Airdrop MozoX." = "Tạo chương trình Airdrop MozoX để thu hút nhiều khách hàng hơn. ";
 "At least six characters" = "Cần ít nhất 6 ký tự";
 
-"There is no Airdrop Events around" = "Không có chương trình Airdrop quanh đây";
+"There are no Airdrop Events around" = "Không có chương trình Airdrop quanh đây";
 
 // Convert "coin" to "token"
 

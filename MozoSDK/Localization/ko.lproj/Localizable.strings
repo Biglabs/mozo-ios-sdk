@@ -794,7 +794,7 @@
 "ETH balance is not enough." = "ETH 밸런스가 충분하지 않습니다.";
 "From Onchain" = "Onchain에서";
 "To Offchain" = "Offchain으로";
-"Enter your Security PIN to convert MozoX from onchain to offchain." = "비밀 번호를 입력하여 MozoX를 onchain에서 offchain으로 변환하십시오.";
+"Enter your Security PIN\nto convert MozoX from onchain to offchain." = "비밀 번호를 입력하여 MozoX를 onchain에서 offchain으로 변환하십시오.";
 "Broadcasting transaction..." = "거래 전송중...";
 "It’s might take about 3 minutes to complete" = "거래를 완료하기 위하여 약 3 분 정도 걸릴 수 있습니다.";
 "Hide transaction" = "거래 숨기기";
@@ -806,7 +806,7 @@
 "Back to Onchain Wallet" = "Onchain 지갑으로 돌아 가기";
 "Convert Failed" = "변환 실패";
 "Cannot complete convert MozoX from Onchain to Offchain.\nPlease try again after some time." = "Onchain에서 Offchain으로 MozoX 변환을 완료 할 수 없습니다.\n잠시 후 다시 시도하십시오.";
-"There is no Airdrop Events around you" = "주변에 Airdrop 이벤트가 없습니다.";
+"There are no Airdrop Events around you" = "주변에 Airdrop 이벤트가 없습니다.";
 "Discover" = "발견하기";
 "On Going Events" = "Airdrop 다가오는 이벤트";
 "Top Airdrop Events" = "가장 많은 Airdrop 이벤트";
@@ -830,7 +830,7 @@
 "Create Airdrop Event to attract more customer by Airdrop MozoX." = "Airdrop MozoX 으로 더 많은 고객을 유치하기 위하여 Airdrop 이벤트를 만듭니다.";
 "At least six characters" = "6 자 이상 필요합니다.";
 
-"There is no Airdrop Events around" = "주변에는 Airdrop 이벤트가 없습니다.";
+"There are no Airdrop Events around" = "주변에는 Airdrop 이벤트가 없습니다.";
 
 // Convert "coin" to "token"
 "Airdrop MozoX tokens to Shoppers who use MozoX Shopper App when they visit to your store." = "귀하의 상점을 방문 할 때 MozoX Shopper App을 사용하는 쇼핑객에게 Airdrop MozoX 를 주겠습니다.";
