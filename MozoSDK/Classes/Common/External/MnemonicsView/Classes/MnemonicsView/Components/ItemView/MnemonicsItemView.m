@@ -36,8 +36,9 @@ static CGFloat const kMnemonicsItemViewPlaceholderHeight                        
     label.translatesAutoresizingMaskIntoConstraints = NO;
     [label setContentHuggingPriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
     [label setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
-    [self addSubview:label];
-    
+
+    label.backgroundColor = UIColor.whiteColor;
+      
     label.textColor = UIColorFromHEX(0xd1d7dd);
     label.text = [NSString stringWithFormat:@"%zd.", index + 1];
     
@@ -83,6 +84,8 @@ static CGFloat const kMnemonicsItemViewPlaceholderHeight                        
     self.textField.inputAccessoryView = nil;
     [self.textField.inputAccessoryView reloadInputViews];
     
+    [self addSubview:label];
+      
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self addGestureRecognizer:tap];
     
@@ -100,7 +103,8 @@ static CGFloat const kMnemonicsItemViewPlaceholderHeight                        
        // arc4random_uniform(29) + 11.0
        [textField.topAnchor constraintEqualToAnchor:self.topAnchor],
        [textField.bottomAnchor constraintEqualToAnchor:self.bottomAnchor],
-       [textField.leadingAnchor constraintEqualToAnchor:label.trailingAnchor constant:5.0],
+       [textField.leadingAnchor constraintEqualToAnchor:label.leadingAnchor constant:0.0],
+//       [textField.leadingAnchor constraintEqualToAnchor:label.trailingAnchor constant:5.0],
        [self.trailingAnchor constraintEqualToAnchor:textField.trailingAnchor constant:11.0],
        [label.widthAnchor constraintEqualToConstant:maxLabelSize.width],
        [label.centerYAnchor constraintEqualToAnchor:textField.centerYAnchor constant:1.0],
