@@ -345,7 +345,7 @@ public extension Date {
     }
 }
 
-extension Notification.Name {
+public extension Notification.Name {
     static let didAuthenticationSuccessWithMozo = Notification.Name("didAuthenticationSuccessWithMozo")
     static let didLogoutFromMozo = Notification.Name("didLogoutFromMozo")
     static let didCloseAllMozoUI = Notification.Name("didCloseAllMozoUI")

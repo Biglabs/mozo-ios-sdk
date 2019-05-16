@@ -268,4 +268,8 @@ public class MozoSDK {
     public static func getSuggestKeySearch(lat: Double = 0, lon: Double = 0) -> Promise<[String]> {
         return moduleDependencies.getSuggestKeySearch(lat: lat, lon: lon)
     }
+    
+    public static func loadUserProfile() -> Promise<UserProfileDTO> {
+        return moduleDependencies.loadUserProfile()
+    }
 }
