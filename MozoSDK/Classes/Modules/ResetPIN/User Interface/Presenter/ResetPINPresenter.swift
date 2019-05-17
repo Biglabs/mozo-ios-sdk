@@ -38,12 +38,12 @@ extension ResetPINPresenter: ResetPINInteractorOutput {
     }
     
     func validateFailedForRestore() {
-        viewInterface?.closeWaiting(clearData: false)
+        viewInterface?.closeWaiting(clearData: false, displayTryAgain: false)
         viewInterface?.disallowGoNext()
     }
     
     func mnemonicsNotBelongToUserWallet() {
-        viewInterface?.closeWaiting(clearData: false)
+        viewInterface?.closeWaiting(clearData: false, displayTryAgain: false)
         viewInterface?.mnemonicsNotBelongToUserWallet()
     }
     
@@ -57,9 +57,11 @@ extension ResetPINPresenter: ResetPINInteractorOutput {
     }
     
     func manageResetFailedWithError(_ error: ConnectionError) {
+        var displayTryAgain = true
         if error == .apiError_MAINTAINING {
-            viewInterface?.closeWaiting(clearData: true)
+            displayTryAgain = false
         }
+        viewInterface?.closeWaiting(clearData: true, displayTryAgain: displayTryAgain)
         DisplayUtils.displayTryAgainPopup(allowTapToDismiss: false, isEmbedded: true, error: error, delegate: self)
     }
 }
@@ -76,7 +78,7 @@ extension ResetPINPresenter: PopupErrorDelegate {
             interactor?.manageResetPINForWallet(mnemonics, pin: pin)
         } else {
             print("ResetPINPresenter - Unable to retry")
-            viewInterface?.closeWaiting(clearData: false)
+            viewInterface?.closeWaiting(clearData: false, displayTryAgain: false)
         }
     }
     

@@ -12,5 +12,5 @@ protocol ResetPINViewInterface {
     func mnemonicsNotBelongToUserWallet()
     
     func displayWaiting(isChecking: Bool)
-    func closeWaiting(clearData: Bool)
+    func closeWaiting(clearData: Bool, displayTryAgain: Bool)
 }
