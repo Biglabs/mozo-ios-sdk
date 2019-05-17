@@ -59,7 +59,7 @@ public class NotiDisplayItemData {
     
             case NotificationEventType.CustomerCame.rawValue:
                 if let ccNoti = rawNoti as? CustomerComeNotification {
-                    title = ((ccNoti.isComeIn ?? false) ? "Customer has entered" : "Customer has left").localized
+                    title = ((ccNoti.isComeIn ?? false) ? "Customer arrived" : "Customer departed").localized
                     category = ((ccNoti.isComeIn ?? false) ? .Customer_Came_In : .Customer_Came_Out)
                     actionText = title
                     image = "ic_notif_user_come"
