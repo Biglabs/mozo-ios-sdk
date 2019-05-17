@@ -15,15 +15,32 @@ class ResetPINViewController: MozoBasicViewController {
     var eventHandler: ResetPINModuleInterface?
     
     var submitButton: UIBarButtonItem!
+    var cancelButton: UIBarButtonItem!
     
     var waitingView: MozoWaitingView!
     
     var keyboardHeight: CGFloat = 0
     var keyboardWasShown = false
     
+    var isWaiting = false
+    var isDisplayingTryAgain = false {
+        didSet {
+            if submitButton != nil {
+                if isDisplayingTryAgain {
+                    navigationItem.hidesBackButton = true
+                    self.navigationItem.rightBarButtonItem = cancelButton
+                } else {
+                    navigationItem.hidesBackButton = false
+                    self.navigationItem.rightBarButtonItem = submitButton
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         enableBackBarButton()
+        setupCancelBtn()
         setupWaitingView()
     }
     
@@ -91,15 +108,43 @@ class ResetPINViewController: MozoBasicViewController {
         self.navigationItem.rightBarButtonItem = submitButton
     }
     
+    func setupCancelBtn() {
+        print("ResetPINViewController - Add cancel bar button.")
+        cancelButton = UIBarButtonItem(title: "Cancel".localized, style: .plain, target: self, action: #selector(self.touchCancelBarButton))
+        cancelButton.isEnabled = true
+    }
+    
     func setupWaitingView() {
         waitingView = MozoWaitingView(frame: self.view.frame)
         self.view.addSubview(waitingView)
         waitingView.isHidden = true
     }
     
+    func removePopupTryAgain() {
+        if let errorPopup = view.subviews.last as? MozoPopupErrorView {
+            errorPopup.delegate = nil
+        }
+    }
+    
+    func requestCancel() {
+        removePopupTryAgain()
+        if let navigationController = self.navigationController as? MozoNavigationController, let coreEventHandler = navigationController.coreEventHandler {
+            coreEventHandler.requestForCloseAllMozoUIs()
+        }
+    }
+    
+    @objc func touchCancelBarButton() {
+        print("ResetPINViewController - touchCancelBarButton")
+        requestCancel()
+    }
+    
     @objc func touchSubmitBarButton() {
-        print("ResetPINViewController - touchNextBarButton")
-        eventHandler?.resetPINWithMnemonics(self.mnemonicsView.mnemonics)
+        print("ResetPINViewController - touchBarButton")
+        if isDisplayingTryAgain {
+            requestCancel()
+        } else {
+            eventHandler?.resetPINWithMnemonics(self.mnemonicsView.mnemonics)
+        }
     }
     
     func enableSubmitButton(_ enable: Bool = true) {
@@ -126,8 +171,7 @@ class ResetPINViewController: MozoBasicViewController {
         var indicatorInset = self.scrollView.scrollIndicatorInsets
         indicatorInset.bottom = keyboardHeight
         if #available(iOS 11.0, *) {
-//            indicatorInset.bottom -= self.view.safeAreaInsets.bottom
-            indicatorInset.bottom = bottomInset
+             indicatorInset.bottom = bottomInset
         }
         print("Indicator Insets, top [\(indicatorInset.top)], bottom [\(indicatorInset.bottom)]")
         self.scrollView.scrollIndicatorInsets = indicatorInset
@@ -160,6 +204,8 @@ extension ResetPINViewController: ResetPINViewInterface {
     }
     
     func displayWaiting(isChecking: Bool) {
+        isDisplayingTryAgain = false
+        
         waitingView.isHidden = false
         enableSubmitButton(false)
         if isChecking {
@@ -173,7 +219,12 @@ extension ResetPINViewController: ResetPINViewInterface {
         waitingView.rotateView()
     }
     
-    func closeWaiting(clearData: Bool) {
+    func closeWaiting(clearData: Bool, displayTryAgain: Bool) {
+        isDisplayingTryAgain = displayTryAgain
+        if displayTryAgain {
+            self.view.endEditing(true)
+        }
+        
         waitingView.isHidden = true
         waitingView.stopRotating = true
         
