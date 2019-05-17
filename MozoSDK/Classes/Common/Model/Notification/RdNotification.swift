@@ -40,8 +40,8 @@ public enum NotificationCategoryType: String {
         case .Balance_Changed_Sent: return "%u MozoX total sent"
         case .Airdropped: return "%u MozoX total received from Airdrop Events"
         case .AirdropInvite: return "%u friends joined MozoX"
-        case .Customer_Came_In: return "%u customer arrived"
-        case .Customer_Came_Out: return "%u customer departed"
+        case .Customer_Came_In: return "%u customers arrived"
+        case .Customer_Came_Out: return "%u customers departed"
         case .Default: return rawValue
         }
     }
