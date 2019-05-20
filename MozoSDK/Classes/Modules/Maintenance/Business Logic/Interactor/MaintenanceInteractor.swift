@@ -11,6 +11,7 @@ class MaintenanceInteractor: NSObject {
     var txStatusTimer: Timer?
     
     @objc func loadMaintenanceStatus() {
+        NSLog("MaintenanceInteractor - Load Maintenance Status")
         ApiManager.checkMaintenence().done({ (type) in
             self.handleWaitingCompleted(statusType: type)
         }).catch({ (error) in
@@ -32,6 +33,7 @@ extension MaintenanceInteractor: MaintenanceInteractorInput {
     }
     
     func stopService() {
+        NSLog("MaintenanceInteractor - Stop service")
         txStatusTimer?.invalidate()
     }
 }
