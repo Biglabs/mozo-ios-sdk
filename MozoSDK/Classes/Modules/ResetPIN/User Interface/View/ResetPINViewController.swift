@@ -53,9 +53,9 @@ class ResetPINViewController: MozoBasicViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
-            self.mnemonicsView.becomeFirstResponder()
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
+//            self.mnemonicsView.becomeFirstResponder()
+//        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
