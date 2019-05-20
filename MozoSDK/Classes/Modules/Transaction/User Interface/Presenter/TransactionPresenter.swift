@@ -66,12 +66,14 @@ extension TransactionPresenter : TransactionInteractorOutput {
             if isTransferScreen {
                 transferUserInterface?.displayError(apiError.description)
             } else {
+                confirmUserInterface?.removeSpinner()
                 confirmUserInterface?.displayError(apiError.description)
             }
         } else {
             if isTransferScreen {
                 transferUserInterface?.displayTryAgain(error)
             } else {
+                confirmUserInterface?.removeSpinner()
                 confirmUserInterface?.displayTryAgain(error)
             }
         }
