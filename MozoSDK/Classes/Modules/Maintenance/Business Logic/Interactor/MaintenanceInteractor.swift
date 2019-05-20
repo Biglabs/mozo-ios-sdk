@@ -15,12 +15,13 @@ class MaintenanceInteractor: NSObject {
         ApiManager.checkMaintenence().done({ (type) in
             self.handleWaitingCompleted(statusType: type)
         }).catch({ (error) in
-            self.stopService()
+//            self.stopService()
             self.output?.didReceiveError(error: error as? ConnectionError ?? .systemError)
         })
     }
     
     func handleWaitingCompleted(statusType: MaintenanceStatusType) {
+        NSLog("MaintenanceInteractor - Handle waiting maintenance completed")
         if statusType != .MAINTAINED {
             self.output?.didReceiveMaintenanceStatus(statusType)
             self.stopService()
@@ -29,6 +30,7 @@ class MaintenanceInteractor: NSObject {
 }
 extension MaintenanceInteractor: MaintenanceInteractorInput {
     func startWaitingMaintenanceStatus() {
+        NSLog("MaintenanceInteractor - Start waiting maintenance service")
         txStatusTimer = Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(loadMaintenanceStatus), userInfo: nil, repeats: true)
     }
     

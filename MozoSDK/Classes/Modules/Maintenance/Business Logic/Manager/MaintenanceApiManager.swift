@@ -13,7 +13,7 @@ extension ApiManager {
     public static func checkMaintenence() -> Promise<MaintenanceStatusType> {
         return Promise { seal in
             let url = Configuration.BASE_HOST + "/system-status"
-            NSLog("Request heck maintenance with url: \(url)")
+            NSLog("Request check maintenance with url: \(url)")
             Alamofire.request(url, method: .get)
                 .validate()
                 .responseJSON { response in

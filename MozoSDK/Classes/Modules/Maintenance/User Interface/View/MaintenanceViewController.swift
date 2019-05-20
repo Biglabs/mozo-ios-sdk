@@ -29,7 +29,7 @@ class MaintenanceViewController: UIViewController {
     var displayItem: FAQDisplayItem!
     
     override func viewDidLoad() {
-        print("View did load")
+        print("MaintenanceViewController - View did load")
         super.viewDidLoad()
         eventHandler.viewInterface = self
         eventHandler.startWaiting()
@@ -37,7 +37,7 @@ class MaintenanceViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        print("View did layout subviews")
+        print("MaintenanceViewController - View did layout subviews")
         super.viewDidLayoutSubviews()
         
         let rectShadow = CGRect(x: 0, y: 0, width: mainViewBorder.bounds.width, height: mainViewBorder.bounds.height)
