@@ -25,17 +25,8 @@ class PaymentPresenter: NSObject {
     var retryAction: PaymentModuleRetryAction?
     
     func handleError(error: ConnectionError, retryAction: PaymentModuleRetryAction) {
-        if !error.isApiError {
-            self.retryAction = retryAction
-            DisplayUtils.displayTryAgainPopup(allowTapToDismiss: false, error: error, delegate: self)
-        }
-        else {
-            var errText = error.localizedDescription
-            if let apiError = error.apiError {
-                errText = apiError.description
-            }
-            viewInterface?.displayError(errText)
-        }
+        self.retryAction = retryAction
+        DisplayUtils.displayTryAgainPopup(allowTapToDismiss: false, error: error, delegate: self)
     }
 }
 extension PaymentPresenter: PaymentModuleInterface {
@@ -126,15 +117,7 @@ extension PaymentPresenter: PaymentInteractorOutput {
     }
     
     func didReceiveError(_ error: Error) {
-        viewInterface?.removeSpinner()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
-            let connError = error as? ConnectionError ?? .systemError
-            var errText = connError.localizedDescription
-            if let apiError = connError.apiError {
-                errText = apiError.description
-            }
-            self.viewInterface?.displayError(errText)
-        }
+        
     }
     
     func didReceiveErrorString(_ error: String) {
