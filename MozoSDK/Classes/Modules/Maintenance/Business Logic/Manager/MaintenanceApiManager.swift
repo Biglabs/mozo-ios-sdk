@@ -13,10 +13,11 @@ extension ApiManager {
     public static func checkMaintenence() -> Promise<MaintenanceStatusType> {
         return Promise { seal in
             let url = Configuration.BASE_HOST + "/system-status"
+            NSLog("Request heck maintenance with url: \(url)")
             Alamofire.request(url, method: .get)
                 .validate()
                 .responseJSON { response in
-                    print("Response from check maintenance: \(response)")
+                    NSLog("Response from check maintenance: \(response)")
                     switch response.result {
                     case .success(let json):
                         print("Finish check maintenance with json: \(json)")
@@ -33,7 +34,7 @@ extension ApiManager {
                         }
                         seal.fulfill(.MAINTAINED)
                     case .failure(let error):
-                        print("Request check maintenance failed with error: \(error.localizedDescription), url: \(url))")
+                        NSLog("Request check maintenance failed with error: \(error.localizedDescription), url: \(url))")
                         seal.reject(error)
                     }
             }
