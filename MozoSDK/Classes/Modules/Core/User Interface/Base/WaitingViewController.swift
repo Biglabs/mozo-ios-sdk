@@ -63,6 +63,9 @@ extension WaitingViewController: WaitingViewInterface {
         self.retryAction = forAction
         if error == .apiError_INVALID_USER_TOKEN {
             displayMozoPopupTokenExpired()
+        } else if error == .apiError_MAINTAINING {
+            let viewController = MaintenanceViewController.viewControllerFromStoryboard()
+            self.present(viewController, animated: false)
         } else {
             DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
         }
