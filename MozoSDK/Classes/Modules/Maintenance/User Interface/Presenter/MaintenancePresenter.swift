@@ -23,6 +23,7 @@ class MaintenancePresenter: NSObject {
     }
     
     func startWaiting() {
+        NSLog("MaintenancePresenter - Start waiting")
         interactor?.startWaitingMaintenanceStatus()
     }
 }
