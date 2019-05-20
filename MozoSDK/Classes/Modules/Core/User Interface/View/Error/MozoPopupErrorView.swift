@@ -110,7 +110,7 @@ class MozoPopupErrorView : MozoView {
                 lbDescHeightConstraint.constant = 0
             } else {
                 imgError.image = UIImage(named: "ic_no_connection", in: BundleManager.mozoBundle(), compatibleWith: nil)
-                labelError.text = "There is no internet connection!".localized
+                labelError.text = "No Internet Connection".localized
                 lbDesc.text = "Once you have a stronger internet connection, we’ll automatically process your request.".localized
                 lbDescHeightConstraint.constant = 72.0
             }

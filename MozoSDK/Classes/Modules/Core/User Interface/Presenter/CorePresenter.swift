@@ -115,6 +115,7 @@ private extension CorePresenter {
     private func addAppObservations() {
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveMaintenanceHealthy), name: .didMaintenanceComplete, object: nil)
     }
     
     private func startSlientServices() {
@@ -143,6 +144,13 @@ private extension CorePresenter {
         print("App will enter foreground.")
         // Check walletInfo from UserProfile to start silent services
         startSlientServices()
+    }
+    
+    @objc func didReceiveMaintenanceHealthy(_ notification: Notification) {
+        print("CorePresenter - Did receive maintenance healthy")
+        if let topViewController = DisplayUtils.getTopViewController(), topViewController is WaitingViewController {
+            retryGetUserProfile()
+        }
     }
 }
 extension CorePresenter : CoreModuleInterface {
@@ -189,7 +197,7 @@ extension CorePresenter : CoreModuleWaitingInterface {
         if let module = callBackModule {
             requestForAuthentication(module: module)
         } else {
-            // TODO: Get only user profile.
+            coreInteractor?.handleUserProfileAfterAuth()
         }
     }
     

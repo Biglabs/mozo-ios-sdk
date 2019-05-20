@@ -217,6 +217,10 @@ extension CoreInteractor: CoreInteractorInput {
     func handleAferAuth(accessToken: String?) {
         AccessTokenManager.saveToken(accessToken)
         anonManager.linkCoinFromAnonymousToCurrentUser()
+        handleUserProfileAfterAuth()
+    }
+    
+    func handleUserProfileAfterAuth() {
         _ = getUserProfile().done({ () in
             self.downloadData()
             self.output?.finishedHandleAferAuth()
