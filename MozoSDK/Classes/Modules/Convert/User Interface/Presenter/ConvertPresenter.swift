@@ -21,6 +21,10 @@ class ConvertPresenter: NSObject {
         if isDisplayingConfirm {
             confirmConvertViewInterface?.removeSpinner()
         }
+        if error == .apiError_MAINTAINING {
+            DisplayUtils.displayMaintenanceScreen()
+            return
+        }
         if error == .requestTimedOut || error == .noInternetConnection {
             DisplayUtils.displayTryAgainPopup(allowTapToDismiss: false, error: error, delegate: self)
         } else {
