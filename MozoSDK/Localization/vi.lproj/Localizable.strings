@@ -913,30 +913,18 @@
 "Share Retailer App Instead" = "Hoặc chia sẻ ứng dụng MozoX Retailer";
 
 // Reset PIN - Notification Group - Suggestion Search - Empty state with CTA - Maintenance Mode - Profile Update Notification - Error Popup
-"%u MozoX total received" = "%u MozoX đã được nhận";
-"%u MozoX total sent" = "%u MozoX đã được gửi đi";
-"%u MozoX total received from Airdrop Events" = "%u MozoX đã nhận được từ các chương trình Airdrop";
-"%u friends joined MozoX" = "%u người bạn đã tham gia MozoX";
-
+"%u more MozoX received" = "%u MozoX nữa đã được nhận";
+"%u more MozoX sent" = "%u MozoX nữa đã được gửi đi";
+"%u more MozoX received from Airdrop Events " = "%u MozoX nữa đã nhận được từ chương trình Airdrop ";
+"Your friends have joined MozoX" = "Bạn bè của bạn đã tham gia MozoX";
+"%u more friends joined MozoX" = "%u người bạn nữa đã tham gia MozoX";
 "Customers arrived" = "Khách vừa đến";
-
-
-"%u customers arrived" = "%u khách vừa đến";
-
+"%u more customers arrived" = "%u khách vừa đến";
 "Customers departed" = "Khách đã rời khỏi";
-
-
-"%u customers departed" = "%u khách đã rời khỏi";
-
+"%u more customers departed" = "%u khách khác đã rời khỏi";
 "Trending" = "Từ khoá nổi bật ";
-
-
 "Enter Store name or Hashtag to search" = "Nhập tên cửa hàng hoặc từ khóa để tìm kiếm";
-
 "Security PIN" = "Mã PIN";
-
-
-
 "Forgot your PIN?" = "Quên mã PIN?";
 "Reset PIN by using recovery phrases" = "Đặt lại mã PIN bằng cách sử dụng cụm từ khôi phục";
 "Reset PIN" = "Tạo lại mã PIN";
@@ -946,58 +934,30 @@
 "Checking recovery phrases" = "Đang kiểm tra cụm từ khôi phục";
 "Wallet Recovery Phrase is invalid" = "Cụm từ khôi phục không chính xác";
 "ENTER NEW SECURITY PIN" = "NHẬP MÃ PIN MỚI";
-
-
-
 "Reset PIN is processing" = "Đang tạo lại mã PIN";
 "There is an error occurred." = "Có lỗi xảy ra";
-
 "PIN Reset Successful" = "Tạo lại mã PIN thành công";
-
-
-
 "No internet connection!" = "Không có kết nối mạng";
 "Once you have a stronger internet connection, we’ll automatically process your request." = "Khi kết nối internet mạnh hơn, hệ thống sẽ tự động xử lý yêu cầu của bạn.";
-
-
 "Sorry, we're down for maintenance. We'll be back shortly." = "Rất tiếc, hệ thống đang bảo trì. Chúng tôi sẽ sớm quay lại.";
 "Did you know?" = "Bạn có biết?";
-
-
-
 "Search Result" = "Kết quả tìm kiếm";
-
-
 "Try one of these instead:" = "Bạn có thể thử một trong những lựa chọn bên dưới:";
-
-
-
-
 "Requested List is empty or your connection is too slow" = "Danh sách yêu cầu trống hoặc mạng quá chậm";
 "Any MozoX Request from your friends will be displayed here." = "Bất kỳ yêu cầu MozoX nào từ bạn bè sẽ được hiển thị tại đây.";
-
-
-
 "Favorite Stores is empty or your connection is too slow" = "Cửa hàng yêu thích trống hoặc mạng quá chậm";
 "Seems you didn't add any Favourite Stores, we love sharing some interesting stores for you." = "Có vẻ bạn chưa thêm bất kỳ Cửa hàng yêu thích nào, chúng tôi rất muốn chia sẻ một số cửa hàng thú vị cho bạn.";
 "Discover more stores" = "Khám phá thêm các cửa hàng";
-
-
 "Transaction History is emtpy or your connection is too slow" = "Lịch sử giao dịch trống hoặc mạng quá chậm";
 "Transfer MozoX to your friends or request them to send you MozoX." = "Chuyển MozoX cho bạn bè hoặc yêu cầu họ gửi MozoX cho bạn.";
 "Go to Wallet" = "Chuyển đến Ví";
-
 "Airdrop Event List" = "Danh sách chương trình Airdrop";
 "Airdrop Event List is empty or your connection is too slow" = "Danh sách chương trình Airdrop trống hoặc mạng quá chậm";
 "Airdrop MozoX tokens for Shoppers when they visit your store" = "Airdrop MozoX cho khách đến cửa hàng của bạn.";
-
-
-
 "Foot Traffic is empty or your connection is too slow" = "Lưu lượng khách đến trống hoặc mạng quá chậm.";
 "Create Airdrop Event to attract more customers by Airdropping MozoX." = "Tạo chương trình Airdrop để thu hút nhiều khách hàng hơn bằng cách Airdropping MozoX.";
 "Go to Airdrop Events list" = "Chuyển đến danh sách chương trình Airdrop";
 "Go to Promotions list" = "Chuyển đến danh sách Khuyến mãi";
-
 "What are MozoX Tokens? What are MozoX Tokens used for?" = "Đồng MozoX là gì? Nó được dùng để làm gì?";
 "MozoX Tokens are digital utility tokens that can be used by merchants to reward customers for visiting their venues. Customers can collect MozoX Tokens and redeem them for discounts on products and services as determined by each merchant." = "MozoX là điểm thưởng dùng công nghệ blockchain mà người bán hàng có thể lì xì cho khách hàng khi họ đến cửa hàng. Người nhận được lì xì có thể dùng nó để được hưởng khuyến mãi do người bán hàng tạo ra.";
 
