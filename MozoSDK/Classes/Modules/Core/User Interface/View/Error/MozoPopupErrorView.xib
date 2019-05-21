@@ -14,6 +14,8 @@
             <connections>
                 <outlet property="btnTry" destination="Yai-pI-ITO" id="SbB-8D-ygY"/>
                 <outlet property="imgError" destination="b1J-GA-qdX" id="Wm7-FS-i8v"/>
+                <outlet property="imgErrorHeightConstraint" destination="giq-c3-72V" id="5XN-H8-8tX"/>
+                <outlet property="imgErrorWidthConstraint" destination="3kk-Hw-RCY" id="Bqz-F0-Xgb"/>
                 <outlet property="labelError" destination="pbY-oY-A1H" id="J6G-SU-3c1"/>
                 <outlet property="lbDesc" destination="wBs-It-td7" id="tbI-E9-sto"/>
                 <outlet property="lbDescHeightConstraint" destination="jhh-wB-hHr" id="kDe-DF-2iA"/>
