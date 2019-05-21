@@ -14,6 +14,8 @@ public protocol PopupErrorDelegate {
 
 class MozoPopupErrorView : MozoView {
     @IBOutlet weak var imgError: UIImageView!
+    @IBOutlet weak var imgErrorWidthConstraint: NSLayoutConstraint! // Default: 102
+    @IBOutlet weak var imgErrorHeightConstraint: NSLayoutConstraint! // Default: 102
     @IBOutlet weak var labelError: UILabel!
     @IBOutlet weak var lbDesc: UILabel!
     @IBOutlet weak var lbDescHeightConstraint: NSLayoutConstraint!
@@ -24,6 +26,9 @@ class MozoPopupErrorView : MozoView {
     
     var shouldTrackNetwork = false
     var isEmbedded = false
+    
+    let defaultImgErrorSize = CGSize(width: 102, height: 102)
+    let networkImgErrorSize = CGSize(width: 95, height: 67)
     
     var error : ConnectionError = ConnectionError.apiError_INTERNAL_ERROR { //System Error
         didSet {
@@ -102,6 +107,8 @@ class MozoPopupErrorView : MozoView {
     }
     
     func setImageAndLabel() {
+        imgErrorWidthConstraint.constant = defaultImgErrorSize.width
+        imgErrorHeightConstraint.constant = defaultImgErrorSize.height
         if error.isApiError {
             labelError.text = "There is an error occurred.".localized
             lbDesc.text = (error.apiError?.description ?? "System Error").localized
@@ -116,6 +123,8 @@ class MozoPopupErrorView : MozoView {
                 labelError.text = "No Internet Connection".localized
                 lbDesc.text = "Once you have a stronger internet connection, we’ll automatically process your request.".localized
                 lbDescHeightConstraint.constant = 72.0
+                imgErrorWidthConstraint.constant = networkImgErrorSize.width
+                imgErrorHeightConstraint.constant = networkImgErrorSize.height
             }
         }
         if isEmbedded {
