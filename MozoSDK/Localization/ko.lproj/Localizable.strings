@@ -910,24 +910,18 @@
 "Share Retailer App Instead" = "소매점 앱 공유";
 
 // Reset PIN - Notification Group - Suggestion Search - Empty state with CTA - Maintenance Mode - Profile Update Notification - Error Popup
-"%u MozoX total received" = "%u 모조X 수신됩니다.";
-"%u MozoX total sent" = "%u 모조X 전송 됩니다.";
-"%u MozoX total received from Airdrop Events" = "%u 총 모조X를 Airdrop 이벤트에서  받았습니다.";
-"%u friends joined MozoX" = "%u 친구들이 모조X에 가입했습니다.";
+"%u more MozoX received" = "% u 모조X 더 수신됩니다.";
+"%u more MozoX sent" = "%u 모조X 더 전송 됩니다.";
+"%u more MozoX received from Airdrop Events " = " %u 총 모조X를 Airdrop 이벤트에서  더 받았습니다.";
+"Your friends have joined MozoX" = "친구들이 모조X에 가입했습니다.";
+"%u more friends joined MozoX" = "% u 친구들이 모조X에 더 가입했습니다.";
 "Customers arrived" = "고객이 도착했습니다.";
-"%u customers arrived" = "%u 고객이 도착했습니다.";
+"%u more customers arrived" = "%u 고객이 더 도착했습니다.";
 "Customers departed" = "고객이 떠났습니다.";
-"%u customers departed" = "%u 고객이 떠났습니다.";
-
+"%u more customers departed" = "%u고객이 더 떠났습니다.";
 "Trending" = "주요 키워드";
-
-
 "Enter Store name or Hashtag to search" = "검색 할 상점 이름 또는 해시 태그 입력하십시오.";
-
 "Security PIN" = "보안 PIN";
-
-
-
 "Forgot your PIN?" = "PIN을 잊어 버리셨습니까?";
 "Reset PIN by using recovery phrases" = "복구 문구를 사용하여 PIN 재설정하십시오.";
 "Reset PIN" = "PIN 재설정";

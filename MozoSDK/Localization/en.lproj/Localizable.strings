@@ -907,14 +907,15 @@
 "Share Retailer App Instead" = "Share Retailer App Instead";
 
 // Reset PIN - Notification Group - Suggestion Search - Empty state with CTA - Maintenance Mode - Profile Update Notification - Error Popup
-"%u MozoX total received" = "%u MozoX total received";
-"%u MozoX total sent" = "%u MozoX total sent";
-"%u MozoX total received from Airdrop Events" = "%u MozoX total received from Airdrop Events";
-"%u friends joined MozoX" = "%u friends joined MozoX";
+"%u more MozoX received" = "%u more MozoX received";
+"%u more MozoX sent" = "%u more MozoX sent";
+"%u more MozoX received from Airdrop Events " = "%u more MozoX received from Airdrop Events ";
+"Your friends have joined MozoX" = "Your friends have joined MozoX";
+"%u more friends joined MozoX" = "%u more friends joined MozoX";
 "Customers arrived" = "Customers arrived";
-"%u customers arrived" = "%u customers arrived";
+"%u more customers arrived" = "%u more customers arrived";
 "Customers departed" = "Customers departed";
-"%u customers departed" = "%u customers departed";
+"%u more customers departed" = "%u more customers departed";
 "Trending" = "Trending";
 "Enter Store name or Hashtag to search" = "Enter Store name or Hashtag to search";
 "Security PIN" = "Security PIN";
