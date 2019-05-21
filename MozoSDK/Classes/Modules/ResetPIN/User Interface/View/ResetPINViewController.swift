@@ -199,7 +199,7 @@ extension ResetPINViewController: ResetPINViewInterface {
     
     func mnemonicsNotBelongToUserWallet() {
         enableSubmitButton()
-        lbExplain.text = "Recovery phrase is not belong to your wallet.".localized
+        lbExplain.text = "Wallet Recovery Phrase is invalid".localized
         lbExplain.textColor = UIColor(hexString: "f05454")
     }
     
