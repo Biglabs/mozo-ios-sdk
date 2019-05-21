@@ -22,6 +22,9 @@ class MozoPopupErrorView : MozoView {
     var modalCloseHandler: (() -> Void)?
     var tapTryHandler: (() -> Void)?
     
+    var shouldTrackNetwork = false
+    var isEmbedded = false
+    
     var error : ConnectionError = ConnectionError.apiError_INTERNAL_ERROR { //System Error
         didSet {
             commonInit()
@@ -45,7 +48,7 @@ class MozoPopupErrorView : MozoView {
     }
     
     func commonInit() {
-        if error == .noInternetConnection, reachability == nil {
+        if error == .noInternetConnection, reachability == nil, shouldTrackNetwork {
             setupReachability()
         }
     }
@@ -100,8 +103,8 @@ class MozoPopupErrorView : MozoView {
     
     func setImageAndLabel() {
         if error.isApiError {
-            labelError.text = (error.apiError?.description ?? "System Error").localized
-            lbDesc.text = ""
+            labelError.text = "There is an error occurred.".localized
+            lbDesc.text = (error.apiError?.description ?? "System Error").localized
         } else {
             if error == .requestTimedOut {
                 imgError.image = UIImage(named: "ic_sand_clock", in: BundleManager.mozoBundle(), compatibleWith: nil)
@@ -114,6 +117,10 @@ class MozoPopupErrorView : MozoView {
                 lbDesc.text = "Once you have a stronger internet connection, we’ll automatically process your request.".localized
                 lbDescHeightConstraint.constant = 72.0
             }
+        }
+        if isEmbedded {
+            lbDesc.text = ""
+            lbDescHeightConstraint.constant = 0.0
         }
     }
     
