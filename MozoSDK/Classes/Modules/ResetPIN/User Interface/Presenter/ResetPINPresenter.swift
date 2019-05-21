@@ -67,19 +67,19 @@ extension ResetPINPresenter: ResetPINInteractorOutput {
 }
 extension ResetPINPresenter: ResetPINModuleDelegate {
     func manageWalletWithMnemonics(mnemonics: String, pin: String) {
-        retryOnMnemonics = mnemonics
-        retryOnPin = pin
+//        retryOnMnemonics = mnemonics
+//        retryOnPin = pin
         interactor?.manageResetPINForWallet(mnemonics, pin: pin)
     }
 }
 extension ResetPINPresenter: PopupErrorDelegate {
     func didTouchTryAgainButton() {
-        if let mnemonics = self.retryOnMnemonics, let pin = self.retryOnPin {
-            interactor?.manageResetPINForWallet(mnemonics, pin: pin)
-        } else {
-            print("ResetPINPresenter - Unable to retry")
-            viewInterface?.closeWaiting(clearData: false, displayTryAgain: false)
-        }
+//        if let mnemonics = self.retryOnMnemonics, let pin = self.retryOnPin {
+//            interactor?.manageResetPINForWallet(mnemonics, pin: pin)
+//        } else {
+            print("ResetPINPresenter - Retry with clear data")
+            viewInterface?.closeWaiting(clearData: true, displayTryAgain: false)
+//        }
     }
     
     func didClosePopupWithoutRetry() {
