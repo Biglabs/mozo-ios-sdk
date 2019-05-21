@@ -2,9 +2,7 @@
  MozoLocalizable.strings
  Mozo SDK
  
- Created by Hoang Nguyen on 9/15/18.
- Copyright © 2018 Hoang Nguyen. All rights reserved.
- */
+ Created by Hoang Nguyen on 9/15/18.\n Copyright © 2018 Hoang Nguyen. All rights reserved.\n */
 /* MozoSDK */
 "Address Book" = "Danh bạ";
 "Select Address" = "Chọn địa chỉ";
@@ -913,3 +911,116 @@
 "View Photo" = "Xem ảnh";
 "Select language for MozoX invitation" = "Chọn ngôn ngữ cho lời mời tham gia MozoX";
 "Share Retailer App Instead" = "Hoặc chia sẻ ứng dụng MozoX Retailer";
+
+// Reset PIN - Notification Group - Suggestion Search - Empty state with CTA - Maintenance Mode - Profile Update Notification - Error Popup
+"%u MozoX total received" = "%u MozoX đã được nhận";
+"%u MozoX total sent" = "%u MozoX đã được gửi đi";
+"%u MozoX total received from Airdrop Events" = "%u MozoX đã nhận được từ các chương trình Airdrop";
+"%u friends joined MozoX" = "%u người bạn đã tham gia MozoX";
+
+"Customers arrived" = "Khách vừa đến";
+
+
+"%u customers arrived" = "%u khách vừa đến";
+
+"Customers departed" = "Khách đã rời khỏi";
+
+
+"%u customers departed" = "%u khách đã rời khỏi";
+
+"Trending" = "Từ khoá nổi bật ";
+
+
+"Enter Store name or Hashtag to search" = "Nhập tên cửa hàng hoặc từ khóa để tìm kiếm";
+
+"Security PIN" = "Mã PIN";
+
+
+
+"Forgot your PIN?" = "Quên mã PIN?";
+"Reset PIN by using recovery phrases" = "Đặt lại mã PIN bằng cách sử dụng cụm từ khôi phục";
+"Reset PIN" = "Tạo lại mã PIN";
+"Submit" = "Gửi";
+"Type your 12 recover phrases" = "Nhập 12 cụm từ khôi phục";
+"Recovery phrase contains unrecognized words." = "Cụm từ khôi phục chứa ký tự không hợp lệ";
+"Checking recovery phrases" = "Đang kiểm tra cụm từ khôi phục";
+"Wallet Recovery Phrase is invalid" = "Cụm từ khôi phục không chính xác";
+"ENTER NEW SECURITY PIN" = "NHẬP MÃ PIN MỚI";
+
+
+
+"Reset PIN is processing" = "Đang tạo lại mã PIN";
+"There is an error occurred." = "Có lỗi xảy ra";
+
+"PIN Reset Successful" = "Tạo lại mã PIN thành công";
+
+
+
+"No internet connection!" = "Không có kết nối mạng";
+"Once you have a stronger internet connection, we’ll automatically process your request." = "Khi kết nối internet mạnh hơn, hệ thống sẽ tự động xử lý yêu cầu của bạn.";
+
+
+"Sorry, we're down for maintenance. We'll be back shortly." = "Rất tiếc, hệ thống đang bảo trì. Chúng tôi sẽ sớm quay lại.";
+"Did you know?" = "Bạn có biết?";
+
+
+
+"Search Result" = "Kết quả tìm kiếm";
+
+
+"Try one of these instead:" = "Bạn có thể thử một trong những lựa chọn bên dưới:";
+
+
+
+
+"Requested List is empty or your connection is too slow" = "Danh sách yêu cầu trống hoặc mạng quá chậm";
+"Any MozoX Request from your friends will be displayed here." = "Bất kỳ yêu cầu MozoX nào từ bạn bè sẽ được hiển thị tại đây.";
+
+
+
+"Favorite Stores is empty or your connection is too slow" = "Cửa hàng yêu thích trống hoặc mạng quá chậm";
+"Seems you didn't add any Favourite Stores, we love sharing some interesting stores for you." = "Có vẻ bạn chưa thêm bất kỳ Cửa hàng yêu thích nào, chúng tôi rất muốn chia sẻ một số cửa hàng thú vị cho bạn.";
+"Discover more stores" = "Khám phá thêm các cửa hàng";
+
+
+"Transaction History is emtpy or your connection is too slow" = "Lịch sử giao dịch trống hoặc mạng quá chậm";
+"Transfer MozoX to your friends or request them to send you MozoX." = "Chuyển MozoX cho bạn bè hoặc yêu cầu họ gửi MozoX cho bạn.";
+"Go to Wallet" = "Chuyển đến Ví";
+
+"Airdrop Event List" = "Danh sách chương trình Airdrop";
+"Airdrop Event List is empty or your connection is too slow" = "Danh sách chương trình Airdrop trống hoặc mạng quá chậm";
+"Airdrop MozoX tokens for Shoppers when they visit your store" = "Airdrop MozoX cho khách đến cửa hàng của bạn.";
+
+
+
+"Foot Traffic is empty or your connection is too slow" = "Lưu lượng khách đến trống hoặc mạng quá chậm.";
+"Create Airdrop Event to attract more customers by Airdropping MozoX." = "Tạo chương trình Airdrop để thu hút nhiều khách hàng hơn bằng cách Airdropping MozoX.";
+"Go to Airdrop Events list" = "Chuyển đến danh sách chương trình Airdrop";
+"Go to Promotions list" = "Chuyển đến danh sách Khuyến mãi";
+
+"What are MozoX Tokens? What are MozoX Tokens used for?" = "Đồng MozoX là gì? Nó được dùng để làm gì?";
+"MozoX Tokens are digital utility tokens that can be used by merchants to reward customers for visiting their venues. Customers can collect MozoX Tokens and redeem them for discounts on products and services as determined by each merchant." = "MozoX là điểm thưởng dùng công nghệ blockchain mà người bán hàng có thể lì xì cho khách hàng khi họ đến cửa hàng. Người nhận được lì xì có thể dùng nó để được hưởng khuyến mãi do người bán hàng tạo ra.";
+
+"How can I attract customers with MozoX?" = "Làm thế nào để thu hút khách hàng bằng MozoX?";
+"By offering MozoX Tokens for visiting your venue, customers will have an incentive to come there and, by offering discounts through a redemption program, you are ensured that customers will want to keep collecting MozoX Tokens." = "Khách hàng sẽ dùng điểm thưởng đổi khuyến mãi do người bán hàng tạo ra nên có động lực đi đến cửa hàng để thu thập điểm thưởng.";
+"What is the difference between MozoX and other types of advertising?" = "Sự khác biệt giữa MozoX và các biện pháp truyền thông quảng cáo khác?";
+"With MozoX, you only reward customers when they physically enter your venue, so there is a 1:1 correlation between advertising monies spent and customers at your venue. Other advertising channels do not offer any guarantees that their clicks or banners will result in customers in your venue." = "Với MozoX, bạn chỉ lì xì cho khách hàng thực sự đến cửa hàng của bạn nên tỉ lệ chuyển đổi là 1:1 trong mối tương quan giữa số tiền bỏ ra và lượt khách đến cửa hàng của bạn. Các kênh quảng cáo truyền thống chỉ bảo đảm người dùng bấm xem thông tin trực tuyến của bạn chứ không chắc chắn người dùng sẽ đến cửa hàng.";
+"How do MozoX Tokens work as a rewards program using blockchain technology?" = "MozoX hoạt động ra sao để được xem là hệ thống điểm thưởng dùng công nghệ blockchain?";
+"Customers will accumulate enough reward tokens aka MozoX to redeem them for deals, discounts and promotions in the rewards program. So these customers now have an incentive to go to where retailers and venue operators are set up airdrop events. By applying blockchain technology, MozoX is more secure and convenient than any traditional loyalty applications. Furthermore, by incorporating with location based service technology, MozoX ensures that user really physically enter the venue.\nRetailers and venue operators use MozoX Retailer App to set up airdrop events through the use of a beacon, a specific location detector, that requires the users must be in range of the beacon inorder to receive MozoX. This will help Retailers and venue operators control their foot traffic. Additionally, using MozoX Retailer App, Retailers and venue operators can set up their deals, discounts and promotions.\nCustomers use MozoX App to browse, search, discover airdrop events, deals, discounts and promotions offered by both Retailer and venu operator.\nMozoX App(s) also help Retailers/venue operators and customers consummates the deals, discounts and promotions in effective and efficient way." = "Khách hàng sẽ phải tích lũy đủ điểm thưởng MozoX để có thể quy đổi các chương trình hậu mãi, giảm giá và khuyến mãi trong các chương trình dành riêng cho khách hàng thân thiết. Do đó họ có động lực để đi đến những nơi đã được thiết lập chương trình lì xì bởi người bán hàng và nhà điều hành dịch vụ. Ứng dụng công nghệ mới blockchain, MozoX bảo bảo tính an toàn hơn hẳn tất cả các ứng dụng cổ điển trong lĩnh vực này. Ngoài ra, kết hợp với công nghệ định vị, MozoX bảo đảm lượt khách đến đúng vị trí mong muốn.\nNgười bán hàng và nhà điều hành dịch vụ sẽ dùng MozoX Retailer App để thiết lập các chương trình lì xì gắn với beacon, loại thiết bị định vị bảo đảm khách hàng phải đến nơi cần đến. Công cụ này giúp họ có thể làm chủ được cách bố trí lượt khách. Hơn nữa, họ có thể thiết lập các chương trình hậu mãi, giảm giá và khuyến mãi với MozoX Retailer App.\nKhách hàng sẽ dùng MozoX App để duyệt, tìm kiếm và khám phá tất cả các chương trình lì xì, hậu mãi, giảm giá và khuyến mãi được thiết lập bởi người bán hàng và nhà điều hành dịch vụ.\nCác MozoX App còn hỗ trợ việc thực hiện các giao dịch hậu mãi, giảm giá và khuyến mãi một cách hiệu quả.";
+"What are hashtags? Why do I need to choose them?" = "Hashtag là gì? Tại sao phải chọn hashtag khi thiết lập thông tin cửa hàng?";
+"Hashtags are a words or phrases preceded by a hash sign (#). On MozoX, hashtags are used to help identify your venue according to the description you want customers to discover you by." = "Hashtag là một cụm từ bắt đầu bằng dấu #. Người dùng MozoX sẽ khám phá cửa hàng của bạn bằng những từ khóa là hashtag mà bạn đã thiết lập.";
+"Can I get back MozoX Tokens after setting up an airdrop event?" = "Tôi có thể thu hồi lại MozoX sau khi đã thiết lập sự kiện airdrop không?";
+"One you have finalized and saved an airdrop event, you cannot retrieve the MozoX Tokens set aside for the event. If the airdrop event status is \"Scheduled\" or \"Active\" you are obligated to use the MozoX tokens for the duration of the event. Once the event status is \"Ended\", you can retrieve any MozoX Tokens that have not been airdropped to customers." = "Bạn không thể lấy lại MozoX khi trạng thái của sự kiện Airdrop là \"Hẹn giờ\", \"Đang chạy\" hoặc \"Hết MozoX\" . Nhưng bạn có thể rút MozoX khi trạng thái của sự kiện Airdrop là \"kết thúc\" và sự kiện airdrop không sử dụng hết MozoX";
+"Can I share Administrator rights with another manager at my store?" = "Làm thế nào để chia sẻ quyền quản lý cho những người quản lý khác tại cửa hàng của tôi?";
+"We do not recommend sharing Administrator rights with your employees. MozoX Retailer App allows for sub-accounts which grant permissions similar to the Administrator, except that they are not able to edit store information, beacon or sub-accounts. Please note that the sub-account wallet is set to zero when the sub-account is created. The Administrator will need to transfer MozoX Tokens to a sub-account in order for the sub-account holder to create airdrop events.." = "Bạn có thể chia sẻ quyền quản lý bằng cách thêm họ như tài khoản phụ. Tài khoản phụ sẽ có quyền tương tự như tài khoản chính, ngoại trừ việc không thể chỉnh sửa thông tin store, beacon và tài khoản phụ. Lưu ý rằng ví của tài khoản phụ khi mới tạo ra là 0 MozoX. Để ví của tài khoản phụ có tiền, bạn có thể chuyển MozoX cho họ";
+"When will MozoX tokens airdrop to my customers?" = "Khi nào thì MozoX được airdrop cho khách hàng của tôi?";
+"If customers walk into beacon range of your store during the time the airdrop event is happening, they will receive MozoX tokens." = "Nếu họ bước vào vùng phát sóng của beacon trong cửa hàng khi sự kiện đang diễn ra thì họ sẽ nhận được airdrop";
+
+"How can I earn MozoX ?" = "Làm sao để nhận được MozoX?";
+"MozoX App provides functions so that allow you to discover airdrop events using a map view or a list view, search... Check the airdrop date and time and then go to store during those dates and times to receive MozoX. DO NOT forget to turn on bluetooth when you enter the store" = "MozoX App cung cấp khá nhiều công cụ để bạn khám phá những địa điểm có lì xì như bản đồ, danh sách, tìm kiếm... Chọn thời gian thích hợp và đi đến cửa hàng. Nhớ bật bluetooth để nhận MozoX.";
+"How can I send MozoX as a gift to my friends?" = "Làm thế nào để tặng MozoX cho bạn bè của tôi ?";
+"On the wallet screen, using the feature \"Send MozoX\" to send MozoX to your friend's wallet.\nBest practise:\n- If your friend is with you, you can simply scan QR code address on his wallet screen. Remember to save your friend 's address to your MozoX address book for later use." = "Sử dụng tính năng \"Gởi\" trên màn hình \"Ví\" của bạn và gởi MozoX tới địa chỉ ví người bạn muốn gởi.\nMẹo:\n- Nếu bạn của bạn ở bên cạnh, quét mã QR trên màn hình \"Ví\" của họ để chuyển. Nhớ lưu vào danh bạ để sau này sử dụng.";
+"How long I have to wait to get the next airdrop from the same event of a store?" = "Cách bao lâu tôi có thể nhận tiếp MozoX từ cùng một cửa hàng khi tôi đến?";
+"The store sets \"Airdrop Frequency\" for each event that they create. As you visit the store after that time, you will get the next airdrop. Its frequency is typically 1 day." = "Mỗi cửa hàng sẽ thiết lập \"Tần suất Airdrop\" cho mỗi sự kiện Airdrop mà họ tạo. Chỉ cần bạn đến sau khoảng thời gian này, bạn có thể nhận MozoX lần nữa. Thông thường sẽ là mỗi lần một ngày.";
+"Why do I need to turn on Bluetooth to get MozoX from airdrop events?" = "Tại sao tôi phải bật Bluetooth để nhận MozoX từ sự kiện Airdrop";
+"Each store in MozoX system has one or more beacons. When the users visit the store and turns on Bluetooth, the beacon will interact with MozoX application via Bluetooth, so you can get airdrop automatically from the system." = "Mỗi cửa hàng đều gắn một thiết bị cảm biến beacon. Khi bạn đến cửa hàng và bật Bluetooth, thiết bị này sẽ nhận dạng và hệ thống sẽ tự động Airdrop MozoX cho bạn.";

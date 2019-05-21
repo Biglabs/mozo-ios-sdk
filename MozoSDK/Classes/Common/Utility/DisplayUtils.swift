@@ -64,6 +64,8 @@ public class DisplayUtils {
             let popupHeight = error == .noInternetConnection ? 384 : popupWidth
             let mozoPopupErrorView = MozoPopupErrorView(frame: CGRect(x: 0, y: 0, width: popupWidth, height: popupHeight))
             mozoPopupErrorView.delegate = delegate
+            mozoPopupErrorView.shouldTrackNetwork = !isEmbedded
+            mozoPopupErrorView.isEmbedded = isEmbedded
             if let err = error {
                 mozoPopupErrorView.error = err
             }

@@ -2,9 +2,7 @@
  MozoLocalizable.strings
  Mozo SDK
  
- Created by Hoang Nguyen on 9/15/18.
- Copyright © 2018 Hoang Nguyen. All rights reserved.
- */
+ Created by Hoang Nguyen on 9/15/18.\n Copyright © 2018 Hoang Nguyen. All rights reserved.\n */
 // MozoSDK
 "Address Book" = "Address Book";
 "Select Address" = "Select Address";
@@ -908,3 +906,75 @@
 "Select language for MozoX invitation" = "Select language for MozoX invitation";
 "Share Retailer App Instead" = "Share Retailer App Instead";
 
+// Reset PIN - Notification Group - Suggestion Search - Empty state with CTA - Maintenance Mode - Profile Update Notification - Error Popup
+"%u MozoX total received" = "%u MozoX total received";
+"%u MozoX total sent" = "%u MozoX total sent";
+"%u MozoX total received from Airdrop Events" = "%u MozoX total received from Airdrop Events";
+"%u friends joined MozoX" = "%u friends joined MozoX";
+"Customers arrived" = "Customers arrived";
+"%u customers arrived" = "%u customers arrived";
+"Customers departed" = "Customers departed";
+"%u customers departed" = "%u customers departed";
+"Trending" = "Trending";
+"Enter Store name or Hashtag to search" = "Enter Store name or Hashtag to search";
+"Security PIN" = "Security PIN";
+"Forgot your PIN?" = "Forgot your PIN?";
+"Reset PIN by using recovery phrases" = "Reset PIN by using recovery phrases";
+"Reset PIN" = "Reset PIN";
+"Submit" = "Submit";
+"Type your 12 recover phrases" = "Type your 12 recover phrases";
+"Recovery phrase contains unrecognized words." = "Recovery phrase contains unrecognized words.";
+"Checking recovery phrases" = "Checking recovery phrases";
+"Wallet Recovery Phrase is invalid" = "Wallet Recovery Phrase is invalid";
+"ENTER NEW SECURITY PIN" = "ENTER NEW SECURITY PIN";
+"Reset PIN is processing" = "Reset PIN is processing";
+"There is an error occurred." = "There is an error occurred.";
+"PIN Reset Successful" = "PIN Reset Successful";
+"No internet connection!" = "No internet connection!";
+"Once you have a stronger internet connection, we’ll automatically process your request." = "Once you have a stronger internet connection, we’ll automatically process your request.";
+"Sorry, we're down for maintenance. We'll be back shortly." = "Sorry, we're down for maintenance. We'll be back shortly.";
+"Did you know?" = "Did you know?";
+"Search Result" = "Search Result";
+"Try one of these instead:" = "Try one of these instead:";
+"Requested List is empty or your connection is too slow" = "Requested List is empty or your connection is too slow";
+"Any MozoX Request from your friends will be displayed here." = "Any MozoX Request from your friends will be displayed here.";
+"Favorite Stores is empty or your connection is too slow" = "Favorite Stores is empty or your connection is too slow";
+"Seems you didn't add any Favourite Stores, we love sharing some interesting stores for you." = "Seems you didn't add any Favourite Stores, we love sharing some interesting stores for you.";
+"Discover more stores" = "Discover more stores";
+"Transaction History is emtpy or your connection is too slow" = "Transaction History is emtpy or your connection is too slow";
+"Transfer MozoX to your friends or request them to send you MozoX." = "Transfer MozoX to your friends or request them to send you MozoX.";
+"Go to Wallet" = "Go to Wallet";
+"Airdrop Event List" = "Airdrop Event List";
+"Airdrop Event List is empty or your connection is too slow" = "Airdrop Event List is empty or your connection is too slow";
+"Airdrop MozoX tokens for Shoppers when they visit your store" = "Airdrop MozoX tokens for Shoppers when they visit your store";
+"Foot Traffic is empty or your connection is too slow" = "Foot Traffic is empty or your connection is too slow";
+"Create Airdrop Event to attract more customers by Airdropping MozoX." = "Create Airdrop Event to attract more customers by Airdropping MozoX.";
+"Go to Airdrop Events list" = "Go to Airdrop Events list";
+"Go to Promotions list" = "Go to Promotions list";
+
+"What are MozoX Tokens? What are MozoX Tokens used for?" = "What are MozoX Tokens? What are MozoX Tokens used for?";
+"MozoX Tokens are digital utility tokens that can be used by merchants to reward customers for visiting their venues. Customers can collect MozoX Tokens and redeem them for discounts on products and services as determined by each merchant." = "MozoX Tokens are digital utility tokens that can be used by merchants to reward customers for visiting their venues. Customers can collect MozoX Tokens and redeem them for discounts on products and services as determined by each merchant.";
+
+"How can I attract customers with MozoX?" = "How can I attract customers with MozoX?";
+"By offering MozoX Tokens for visiting your venue, customers will have an incentive to come there and, by offering discounts through a redemption program, you are ensured that customers will want to keep collecting MozoX Tokens." = "By offering MozoX Tokens for visiting your venue, customers will have an incentive to come there and, by offering discounts through a redemption program, you are ensured that customers will want to keep collecting MozoX Tokens.";
+"What is the difference between MozoX and other types of advertising?" = "What is the difference between MozoX and other types of advertising?";
+"With MozoX, you only reward customers when they physically enter your venue, so there is a 1:1 correlation between advertising monies spent and customers at your venue. Other advertising channels do not offer any guarantees that their clicks or banners will result in customers in your venue." = "With MozoX, you only reward customers when they physically enter your venue, so there is a 1:1 correlation between advertising monies spent and customers at your venue. Other advertising channels do not offer any guarantees that their clicks or banners will result in customers in your venue.";
+"How do MozoX Tokens work as a rewards program using blockchain technology?" = "How do MozoX Tokens work as a rewards program using blockchain technology?";
+"Customers will accumulate enough reward tokens aka MozoX to redeem them for deals, discounts and promotions in the rewards program. So these customers now have an incentive to go to where retailers and venue operators are set up airdrop events. By applying blockchain technology, MozoX is more secure and convenient than any traditional loyalty applications. Furthermore, by incorporating with location based service technology, MozoX ensures that user really physically enter the venue.\nRetailers and venue operators use MozoX Retailer App to set up airdrop events through the use of a beacon, a specific location detector, that requires the users must be in range of the beacon inorder to receive MozoX. This will help Retailers and venue operators control their foot traffic. Additionally, using MozoX Retailer App, Retailers and venue operators can set up their deals, discounts and promotions.\nCustomers use MozoX App to browse, search, discover airdrop events, deals, discounts and promotions offered by both Retailer and venu operator.\nMozoX App(s) also help Retailers/venue operators and customers consummates the deals, discounts and promotions in effective and efficient way." = "Customers will accumulate enough reward tokens aka MozoX to redeem them for deals, discounts and promotions in the rewards program. So these customers now have an incentive to go to where retailers and venue operators are set up airdrop events. By applying blockchain technology, MozoX is more secure and convenient than any traditional loyalty applications. Furthermore, by incorporating with location based service technology, MozoX ensures that user really physically enter the venue.\nRetailers and venue operators use MozoX Retailer App to set up airdrop events through the use of a beacon, a specific location detector, that requires the users must be in range of the beacon inorder to receive MozoX. This will help Retailers and venue operators control their foot traffic. Additionally, using MozoX Retailer App, Retailers and venue operators can set up their deals, discounts and promotions.\nCustomers use MozoX App to browse, search, discover airdrop events, deals, discounts and promotions offered by both Retailer and venu operator.\nMozoX App(s) also help Retailers/venue operators and customers consummates the deals, discounts and promotions in effective and efficient way.";
+"What are hashtags? Why do I need to choose them?" = "What are hashtags? Why do I need to choose them?";
+"Hashtags are a words or phrases preceded by a hash sign (#). On MozoX, hashtags are used to help identify your venue according to the description you want customers to discover you by." = "Hashtags are a words or phrases preceded by a hash sign (#). On MozoX, hashtags are used to help identify your venue according to the description you want customers to discover you by.";
+"Can I get back MozoX Tokens after setting up an airdrop event?" = "Can I get back MozoX Tokens after setting up an airdrop event?";
+"One you have finalized and saved an airdrop event, you cannot retrieve the MozoX Tokens set aside for the event. If the airdrop event status is \"Scheduled\" or \"Active\" you are obligated to use the MozoX tokens for the duration of the event. Once the event status is \"Ended\", you can retrieve any MozoX Tokens that have not been airdropped to customers." = "One you have finalized and saved an airdrop event, you cannot retrieve the MozoX Tokens set aside for the event. If the airdrop event status is \"Scheduled\" or \"Active\" you are obligated to use the MozoX tokens for the duration of the event. Once the event status is \"Ended\", you can retrieve any MozoX Tokens that have not been airdropped to customers.";
+"Can I share Administrator rights with another manager at my store?" = "Can I share Administrator rights with another manager at my store?";
+"We do not recommend sharing Administrator rights with your employees. MozoX Retailer App allows for sub-accounts which grant permissions similar to the Administrator, except that they are not able to edit store information, beacon or sub-accounts. Please note that the sub-account wallet is set to zero when the sub-account is created. The Administrator will need to transfer MozoX Tokens to a sub-account in order for the sub-account holder to create airdrop events.." = "We do not recommend sharing Administrator rights with your employees. MozoX Retailer App allows for sub-accounts which grant permissions similar to the Administrator, except that they are not able to edit store information, beacon or sub-accounts. Please note that the sub-account wallet is set to zero when the sub-account is created. The Administrator will need to transfer MozoX Tokens to a sub-account in order for the sub-account holder to create airdrop events..";
+"When will MozoX tokens airdrop to my customers?" = "When will MozoX tokens airdrop to my customers?";
+"If customers walk into beacon range of your store during the time the airdrop event is happening, they will receive MozoX tokens." = "If customers walk into beacon range of your store during the time the airdrop event is happening, they will receive MozoX tokens.";
+
+"How can I earn MozoX ?" = "How can I earn MozoX ?";
+"MozoX App provides functions so that allow you to discover airdrop events using a map view or a list view, search... Check the airdrop date and time and then go to store during those dates and times to receive MozoX. DO NOT forget to turn on bluetooth when you enter the store" = "MozoX App provides functions so that allow you to discover airdrop events using a map view or a list view, search... Check the airdrop date and time and then go to store during those dates and times to receive MozoX. DO NOT forget to turn on bluetooth when you enter the store";
+"How can I send MozoX as a gift to my friends?" = "How can I send MozoX as a gift to my friends?";
+"On the wallet screen, using the feature \"Send MozoX\" to send MozoX to your friend's wallet.\nBest practise:\n- If your friend is with you, you can simply scan QR code address on his wallet screen. Remember to save your friend 's address to your MozoX address book for later use." = "On the wallet screen, using the feature \"Send MozoX\" to send MozoX to your friend's wallet.\nBest practise:\n- If your friend is with you, you can simply scan QR code address on his wallet screen. Remember to save your friend 's address to your MozoX address book for later use.";
+"How long I have to wait to get the next airdrop from the same event of a store?" = "How long I have to wait to get the next airdrop from the same event of a store?";
+"The store sets \"Airdrop Frequency\" for each event that they create. As you visit the store after that time, you will get the next airdrop. Its frequency is typically 1 day." = "The store sets \"Airdrop Frequency\" for each event that they create. As you visit the store after that time, you will get the next airdrop. Its frequency is typically 1 day.";
+"Why do I need to turn on Bluetooth to get MozoX from airdrop events?" = "Why do I need to turn on Bluetooth to get MozoX from airdrop events?";
+"Each store in MozoX system has one or more beacons. When the users visit the store and turns on Bluetooth, the beacon will interact with MozoX application via Bluetooth, so you can get airdrop automatically from the system." = "Each store in MozoX system has one or more beacons. When the users visit the store and turns on Bluetooth, the beacon will interact with MozoX application via Bluetooth, so you can get airdrop automatically from the system.";
