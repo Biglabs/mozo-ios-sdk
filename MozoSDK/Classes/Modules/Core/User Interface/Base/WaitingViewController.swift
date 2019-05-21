@@ -67,7 +67,9 @@ extension WaitingViewController: WaitingViewInterface {
             let viewController = MaintenanceViewController.viewControllerFromStoryboard()
             self.present(viewController, animated: false)
         } else {
-            DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
+            if let topViewController = DisplayUtils.getTopViewController(), topViewController is WaitingViewController {
+                DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
+            }
         }
     }
 }
