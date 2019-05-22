@@ -915,7 +915,7 @@
 // Reset PIN - Notification Group - Suggestion Search - Empty state with CTA - Maintenance Mode - Profile Update Notification - Error Popup
 "%u more MozoX received" = "%u MozoX nữa đã được nhận";
 "%u more MozoX sent" = "%u MozoX nữa đã được gửi đi";
-"%u more MozoX received from Airdrop Events " = "%u MozoX nữa đã nhận được từ chương trình Airdrop ";
+"%u more MozoX received from Airdrop Events" = "%u MozoX nữa đã nhận được từ chương trình Airdrop";
 "Your friends have joined MozoX" = "Bạn bè của bạn đã tham gia MozoX";
 "%u more friends joined MozoX" = "%u người bạn nữa đã tham gia MozoX";
 "Customers arrived" = "Khách vừa đến";
