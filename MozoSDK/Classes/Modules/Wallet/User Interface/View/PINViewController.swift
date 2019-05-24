@@ -15,6 +15,7 @@ class PINViewController : MozoBasicViewController {
     @IBOutlet weak var enterPINLabelTopConstraint: NSLayoutConstraint! // Default 39
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var descriptionLabelTopConstraint: NSLayoutConstraint! // Default 43
+    @IBOutlet weak var statusContainerView: UIView!
     @IBOutlet weak var statusImg: UIImageView!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var statusTopConstraint: NSLayoutConstraint! // Default 31
@@ -253,6 +254,8 @@ private extension PINViewController {
     func validationSuccess() {
         print("😍 success!")
         statusImg.isHidden = false
+        // Make sure status container view is not hidden
+        statusContainerView.isHidden = false
         statusLabel.isHidden = false
         confirmImg.isHighlighted = true
         pinTextField.isUserInteractionEnabled = false
@@ -266,6 +269,8 @@ private extension PINViewController {
     
     func validationFail() {
         print("😞 failure!")
+        // Make sure status container view is not hidden
+        statusContainerView.isHidden = false
         statusImg.isHidden = true
         statusLabel.isHidden = false
         statusLabel.text = "Incorrect Security PIN".localized

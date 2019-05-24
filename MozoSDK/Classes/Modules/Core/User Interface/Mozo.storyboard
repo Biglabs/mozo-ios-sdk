@@ -42,7 +42,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Security PIN must be 6 digit numbers"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOA-dH-2Xf" userLabel="CheckView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOA-dH-2Xf">
                                 <rect key="frame" x="47.5" y="169" width="280" height="23"/>
                                 <subviews>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_check_success" translatesAutoresizingMaskIntoConstraints="NO" id="uHY-g1-lDE">
@@ -187,6 +187,7 @@
                         <outlet property="forgotContainerView" destination="ZBt-nP-Yks" id="dJD-i7-J27"/>
                         <outlet property="forgotContainerViewTopConstraint" destination="wYC-4w-QuB" id="tpE-zq-UZw"/>
                         <outlet property="pinTextField" destination="fKQ-pz-rgq" id="g3b-TK-CEP"/>
+                        <outlet property="statusContainerView" destination="YOA-dH-2Xf" id="ha3-or-vqq"/>
                         <outlet property="statusImg" destination="uHY-g1-lDE" id="J0U-1h-Ggd"/>
                         <outlet property="statusLabel" destination="5mE-Bn-Hyw" id="uGN-vU-cgX"/>
                         <outlet property="statusTopConstraint" destination="rk6-VN-xVW" id="x3y-Y3-1mh"/>
