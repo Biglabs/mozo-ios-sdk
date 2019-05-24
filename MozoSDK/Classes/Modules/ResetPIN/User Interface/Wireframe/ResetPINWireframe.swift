@@ -38,5 +38,8 @@ class ResetPINWireframe: MozoWireframe {
             // Pop ResetPINSuccessViewController
             rootWireframe?.dismissTopViewController()
 //        }
+        if let topViewController = rootWireframe?.mozoNavigationController.viewControllers.last, topViewController is PINViewController {
+            walletWireframe?.updatePINInterfaceAfterResetPIN()
+        }
     }
 }

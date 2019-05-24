@@ -36,6 +36,13 @@ class WalletWireframe: MozoWireframe {
         }
     }
     
+    func updatePINInterfaceAfterResetPIN() {
+        if let topViewController = rootWireframe?.mozoNavigationController.viewControllers.last as? PINViewController {
+            pinViewController = topViewController
+            walletPresenter?.pinUserInterface = topViewController
+        }
+    }
+    
     func presentPassPhraseInterface() {
         let viewController = passPhraseViewControllerFromStoryboard()
         viewController.eventHandler = walletPresenter
