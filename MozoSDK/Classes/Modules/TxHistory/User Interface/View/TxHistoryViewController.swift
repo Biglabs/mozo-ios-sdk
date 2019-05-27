@@ -150,6 +150,7 @@ class TxHistoryViewController: MozoBasicViewController {
             NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 160),
             NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: self.noticeEmptyView, attribute: .centerX, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: imageView, attribute: .bottom, multiplier: 1.0, constant: 16),
+            NSLayoutConstraint(item: label, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: frame.width - 40),
             NSLayoutConstraint(item: description, attribute: .centerX, relatedBy: .equal, toItem: label, attribute: .centerX, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: description, attribute: .top, relatedBy: .equal, toItem: label, attribute: .bottom, multiplier: 1.0, constant: 24),
             NSLayoutConstraint(item: description, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: frame.width - 92),
