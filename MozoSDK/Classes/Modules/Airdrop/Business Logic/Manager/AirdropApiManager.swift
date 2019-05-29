@@ -193,4 +193,28 @@ public extension ApiManager {
             }
         }
     }
+    
+    public func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + "/retailer/getCreateAirdropEventSettings"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get Airdrop Event Setting, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    if let setting = AirdropEventSettingDTO(json: jobj) {
+                        seal.fulfill(setting)
+                    } else {
+                        seal.reject(ConnectionError.systemError)
+                    }
+                }
+                .catch { error in
+                    print("Error when request get Airdrop Event Setting: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
 }

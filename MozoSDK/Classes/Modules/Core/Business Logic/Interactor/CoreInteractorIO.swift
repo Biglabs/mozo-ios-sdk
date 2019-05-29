@@ -103,4 +103,6 @@ protocol CoreInteractorService {
     func getSuggestKeySearch(lat: Double, lon: Double) -> Promise<[String]>
     
     func loadUserProfile() -> Promise<UserProfileDTO>
+    
+    func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO>
 }

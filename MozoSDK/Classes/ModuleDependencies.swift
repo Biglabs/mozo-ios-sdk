@@ -322,6 +322,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.loadUserProfile())!
     }
     
+    func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getCreateAirdropEventSettings())!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

@@ -287,4 +287,8 @@ extension CoreInteractor: CoreInteractorService {
             })
         }
     }
+    
+    func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO> {
+        return apiManager.getCreateAirdropEventSettings()
+    }
 }
