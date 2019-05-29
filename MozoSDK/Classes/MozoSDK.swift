@@ -272,4 +272,8 @@ public class MozoSDK {
     public static func loadUserProfile() -> Promise<UserProfileDTO> {
         return moduleDependencies.loadUserProfile()
     }
+    
+    public static func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO> {
+        return moduleDependencies.getCreateAirdropEventSettings()
+    }
 }
