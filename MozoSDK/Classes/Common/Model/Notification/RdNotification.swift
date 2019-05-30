@@ -59,4 +59,8 @@ public enum NotificationEventType: String {
     case AirdropInvite = "airdrop_invite"
     
     case ProfileChanged = "profile_changed"
+    
+    case AirdropFounder = "airdrop_founder"
+    case AirdropSignup = "airdrop_signup"
+    case AirdropTopRetailer = "airdrop_top_retailer"
 }

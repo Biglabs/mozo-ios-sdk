@@ -153,6 +153,15 @@ extension RDNInteractor {
                     output?.didInvalidToken(tokenNoti: tokenNoti)
                 } else if rdNoti.event == NotificationEventType.ProfileChanged.rawValue {
                     output?.profileDidChange()
+                } else if rdNoti.event == NotificationEventType.AirdropFounder.rawValue,
+                    let balanceNoti = BalanceNotification(json: jobj)  {
+                    output?.didReceivedAirdrop(eventType: NotificationEventType(rawValue: rdNoti.event!)!, balanceNoti: balanceNoti, rawMessage: rawJsonMessage)
+                } else if rdNoti.event == NotificationEventType.AirdropSignup.rawValue,
+                    let balanceNoti = BalanceNotification(json: jobj)  {
+                    output?.didReceivedAirdrop(eventType: NotificationEventType(rawValue: rdNoti.event!)!, balanceNoti: balanceNoti, rawMessage: rawJsonMessage)
+                } else if rdNoti.event == NotificationEventType.AirdropTopRetailer.rawValue,
+                    let balanceNoti = BalanceNotification(json: jobj)  {
+                    output?.didReceivedAirdrop(eventType: NotificationEventType(rawValue: rdNoti.event!)!, balanceNoti: balanceNoti, rawMessage: rawJsonMessage)
                 } else {
                     NSLog("Can not handle message: \(messageContent)")
                 }
