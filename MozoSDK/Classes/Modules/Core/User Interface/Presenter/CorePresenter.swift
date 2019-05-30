@@ -463,6 +463,10 @@ extension CorePresenter : RDNInteractorOutput {
     func profileDidChange() {
         coreInteractor?.notifyProfileChangesForAllObserver()
     }
+    
+    func didReceivedAirdrop(eventType: NotificationEventType, balanceNoti: BalanceNotification, rawMessage: String) {
+        performNotifications(noti: balanceNoti, rawMessage: rawMessage)
+    }
 }
 
 extension CorePresenter: PaymentQRModuleDelegate {

@@ -21,4 +21,6 @@ protocol RDNInteractorOutput {
     func didConvertOnchainToOffchainSuccess(balanceNoti: BalanceNotification, rawMessage: String)
     
     func profileDidChange()
+    
+    func didReceivedAirdrop(eventType: NotificationEventType, balanceNoti: BalanceNotification, rawMessage: String)
 }
