@@ -39,6 +39,7 @@ class WalletWireframe: MozoWireframe {
     func updatePINInterfaceAfterResetPIN() {
         if let topViewController = rootWireframe?.mozoNavigationController.viewControllers.last as? PINViewController {
             pinViewController = topViewController
+            pinViewController?.refreshUIsAfterResettingPIN()
             walletPresenter?.pinUserInterface = topViewController
         }
     }

@@ -120,6 +120,12 @@ class PINViewController : MozoBasicViewController {
         }
     }
     
+    func refreshUIsAfterResettingPIN() {
+        print("Refresh UIs after resetting PIN")
+        statusLabel.isHidden = true
+        pinTextField.text = ""
+    }
+    
     @IBAction func touchBtnForgot(_ sender: Any) {
         eventHandler?.displayResetPINInterface(requestFrom: moduleRequested)
     }
