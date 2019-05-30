@@ -594,8 +594,8 @@
 "Photos are uploading..." = "Photos are uploading...";
 "Photo is uploading..." = "Photo is uploading...";
 "A maximum of photos is %d" = "A maximum of photos is %d";
-"Open hour shouldn't be later than Close hour" = "Open hour shouldn't be later than Close hour";
-"Close hour should be later than Open hour" = "Close hour should be later than Open hour";
+"Open hour must not be later than Close hour" = "Open hour must not be later than Close hour";
+"Close hour must be later than Open hour" = "Close hour must be later than Open hour";
 "You do not have permission to do this action!" = "You do not have permission to do this action!";
 "Are you sure to logout" = "Are you sure to logout";
 
@@ -603,11 +603,11 @@
 "You can only add a maximum of %d hashtags" = "You can only add a maximum of %d hashtags";
 "Your Store has least %d Hashtag." = "Your Store has least %d Hashtag.";
 
-"Airdrop time \"To\" should be greater than time \"From\"" = "Airdrop time \"To\" should be greater than time \"From\"";
-"Period time \"To\" should be greater than time \"From\"" = "Period time \"To\" should be greater than time \"From\"";
+"Airdrop time \"To\" must be greater than time \"From\"" = "Airdrop time \"To\" must be greater than time \"From\"";
+"Period time \"To\" must be greater than time \"From\"" = "Period time \"To\" must be greater than time \"From\"";
 "The Event can only begin after %d minutes" = "The Event can only begin after %d minutes";
-"Period time \"To\" should be greater than currently" = "Period time \"To\" should be greater than currently";
-"Frequency should be greater than %d" = "Frequency should be greater than %d";
+"Period time \"To\" must be greater than currently" = "Period time \"To\" must be greater than currently";
+"Frequency must be greater than %d" = "Frequency must be greater than %d";
 "Cannot find any beacon on your store" = "Cannot find any beacon on your store";
 "Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "Please input \"Receiver\" and number of \"Airdrop per shopper\"";
 "Airdrop event transaction is created with failure status." = "Airdrop event transaction is created with failure status.";
