@@ -255,6 +255,7 @@
 "Airdrop Time" = "Airdrop Time";
 "Frequency:" = "Frequency:";
 "Duration:" = "Duration:";
+"Duration" = "Duration";
 "Store Location On MozoX Map" = "Store Location On MozoX Map";
 "Edit Location" = "Edit Location";
 "Select Photo Album" = "Select Photo Album";
@@ -979,3 +980,30 @@
 "The store sets \"Airdrop Frequency\" for each event that they create. As you visit the store after that time, you will get the next airdrop. Its frequency is typically 1 day." = "The store sets \"Airdrop Frequency\" for each event that they create. As you visit the store after that time, you will get the next airdrop. Its frequency is typically 1 day.";
 "Why do I need to turn on Bluetooth to get MozoX from airdrop events?" = "Why do I need to turn on Bluetooth to get MozoX from airdrop events?";
 "Each store in MozoX system has one or more beacons. When the users visit the store and turns on Bluetooth, the beacon will interact with MozoX application via Bluetooth, so you can get airdrop automatically from the system." = "Each store in MozoX system has one or more beacons. When the users visit the store and turns on Bluetooth, the beacon will interact with MozoX application via Bluetooth, so you can get airdrop automatically from the system.";
+
+// Bonus Notification + Unregistered Store + Simplyfy Create Airdrop Event
+"You got %@ Bonus MozoX" = "You got %@ Bonus MozoX";
+"For signing up with us" = "For signing up with us";
+"For being verified store" = "For being verified store";
+"For being a 1st 1,000 MozoX Retailers" = "For being a 1st 1,000 MozoX Retailers";
+
+"Unregistered Store" = "Unregistered Store";
+"If you have not registered yet, please register." = "If you have not registered yet, please register.";
+"If your store has not approved yet, please feel free to contact MozoX Team for support:" = "If your store has not approved yet, please feel free to contact MozoX Team for support:";
+"Register Now" = "Register Now";
+
+"Basic Info" = "Basic Info";
+"Enter Airdrop Event name" = "Enter Airdrop Event name";
+"Number of MozoX Airdrop per Shopper" = "Number of MozoX Airdrop per Shopper";
+"Airdrop Event Time Setting" = "Airdrop Event Time Setting";
+"Start from now" = "Start from now";
+"Now" = "Now";
+"Shopper will see event name when they use MozoX app to get tokens." = "Shopper will see event name when they use MozoX app to get tokens.";
+"The number of Shoppers who will receive MozoX tokens from this Airdrop Event." = "The number of Shoppers who will receive MozoX tokens from this Airdrop Event.";
+"The number of MozoX tokens each Shopper will receive via Airdrop everytime they visit to your Store." = "The number of MozoX tokens each Shopper will receive via Airdrop everytime they visit to your Store.";
+"Please review the information below, because once an Airdrop Event has been created, the information cannot be changed." = "Please review the information below, because once an Airdrop Event has been created, the information cannot be changed.";
+"Duration" = "Duration";
+"Not available" = "Not available";
+"Selected days of the week" = "Selected days of the week";
+
+"Total MozoX you need to Airdrop" = "Total MozoX you need to Airdrop";
