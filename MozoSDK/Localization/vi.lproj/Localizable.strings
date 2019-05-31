@@ -258,6 +258,7 @@
 "Airdrop Time" = "Thời gian Airdrop";
 "Frequency:" = "Tần suất:";
 "Duration:" = "Thời hạn:";
+"Duration" = "Thời hạn";
 "Store Location On MozoX Map" = "Vị trí cửa hàng trên bản đồ";
 "Edit Location" = "Sửa vị trí";
 "Select Photo Album" = "Chọn Album ảnh";
@@ -984,3 +985,30 @@
 "The store sets \"Airdrop Frequency\" for each event that they create. As you visit the store after that time, you will get the next airdrop. Its frequency is typically 1 day." = "Mỗi cửa hàng sẽ thiết lập \"Tần suất Airdrop\" cho mỗi sự kiện Airdrop mà họ tạo. Chỉ cần bạn đến sau khoảng thời gian này, bạn có thể nhận MozoX lần nữa. Thông thường sẽ là mỗi lần một ngày.";
 "Why do I need to turn on Bluetooth to get MozoX from airdrop events?" = "Tại sao tôi phải bật Bluetooth để nhận MozoX từ sự kiện Airdrop";
 "Each store in MozoX system has one or more beacons. When the users visit the store and turns on Bluetooth, the beacon will interact with MozoX application via Bluetooth, so you can get airdrop automatically from the system." = "Mỗi cửa hàng đều gắn một thiết bị cảm biến beacon. Khi bạn đến cửa hàng và bật Bluetooth, thiết bị này sẽ nhận dạng và hệ thống sẽ tự động Airdrop MozoX cho bạn.";
+
+// Bonus Notification + Unregistered Store + Simplyfy Create Airdrop Event
+"You got %@ Bonus MozoX" = "Bạn được thưởng %@ MozoX";
+"For signing up with us" = "Khi đăng nhập thành công";
+"For being verified store" = "Khi cửa hàng của bạn gia nhập MozoX thành công";
+"For being a 1st 1,000 MozoX Retailers" = "Trở thành một trong 1,000 nhà bán lẻ MozoX đầu tiên";
+
+"Unregistered Store" = "Cửa hàng của bạn chưa đăng kí";
+"If you have not registered yet, please register." = "Nếu bạn chưa đăng kí, xin vui lòng đăng kí.";
+"If your store has not approved yet, please feel free to contact MozoX Team for support:" = "Nếu cửa hàng của bạn chưa được duyệt, xin vui lòng liên hệ MozoX để được trợ giúp:";
+"Register Now" = "Đăng kí ngay";
+
+"Basic Info" = "Thông tin cơ bản";
+"Enter Airdrop Event name" = "Nhập tên sự kiện";
+"Number of MozoX Airdrop per Shopper" = "Số MozoX thưởng cho mỗi người dùng";
+"Airdrop Event Time Setting" = "Thiết lập thời gian";
+"Start from now" = "Bắt đầu ngay bây giờ";
+"Now" = "Bây giờ";
+"Shopper will see event name when they use MozoX app to get tokens." = "Người dùng sẽ tìm thấy tên sự kiện này trên MozoX App";
+"The number of Shoppers who will receive MozoX tokens from this Airdrop Event." = "Số người dùng sẽ được nhận thưởng từ sụ kiện này";
+"The number of MozoX tokens each Shopper will receive via Airdrop everytime they visit to your Store." = "Số MozoX thưởng cho người dùng mỗi khi họ ghé thăm cửa hàng bạn";
+"Please review the information below, because once an Airdrop Event has been created, the information cannot be changed." = "Xin vui lòng kiểm tra kỹ thông tin vì bạn không thể thay đổi nội dung sự kiện một khi đã được tạo";
+"Duration" = "Thời gian";
+"Not available" = "Không tính được";
+"Selected days of the week" = "Chọn thứ trong tuần";
+
+"Total MozoX you need to Airdrop" = "Tống số MozoX";
