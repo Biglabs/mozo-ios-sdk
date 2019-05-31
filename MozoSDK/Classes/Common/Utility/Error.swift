@@ -175,6 +175,17 @@ public enum ConnectionError: Error {
             return nil
         }
     }
+    
+    public var needShowPopup: Bool {
+        switch self {
+        case .noInternetConnection,
+             .requestTimedOut,
+             .apiError_MAINTAINING:
+            return true
+        default:
+            return false
+        }
+    }
 }
 
 extension ConnectionError: LocalizedError {

@@ -597,8 +597,8 @@
 "App requires permission to access Storage to view images." = "MozoX는 이미지 메모리 접속이 필요합니다";
 "Photos are uploading..." = "이미지가 업로드 중입니다.";
 "A maximum of photos is %d" = "최대 이미지 수는 %d 개입니다.";
-"Open hour shouldn't be later than Close hour" = "오픈 시간은 닫는 시간보다 더 크면 안 됩니다.";
-"Close hour should be later than Open hour" = "닫는 시간은 오픈 시간보다 더 켜야합니다.";
+"Open hour must not be later than Close hour" = "오픈 시간은 닫는 시간보다 더 크면 안 됩니다.";
+"Close hour must be later than Open hour" = "닫는 시간은 오픈 시간보다 더 켜야합니다.";
 "You do not have permission to do this action!" = "이 작업을 수행 할 수있는 권한이 없습니다.";
 "Are you sure to logout" = "로그 아웃 하시겠습니까?";
 
@@ -606,11 +606,11 @@
 "You can only add a maximum of %d hashtags" = "최대 해시 태그 %d 개만 추가 할 수 있습니다.";
 "Your Store has least one Hashtag." = "귀하의 상점에는 최소한 하나의 해시 태그가 있어야 합니다.";
 
-"Airdrop time \"To\" should be greater than time \"From\"" = "Airdrop 이벤트의  종료 시간은 시작 시간 후에 수행되어야합니다.";
-"Period time \"To\" should be greater than time \"From\"" = "Airdrop 이벤트의  종료 기간은 시작 기간 후에 수행되어야합니다.";
+"Airdrop time \"To\" must be greater than time \"From\"" = "Airdrop 이벤트의  종료 시간은 시작 시간 후에 수행되어야합니다.";
+"Period time \"To\" must be greater than time \"From\"" = "Airdrop 이벤트의  종료 기간은 시작 기간 후에 수행되어야합니다.";
 "The Event can only begin after %d minutes" = "이벤트는 %d 분 후에만 시작될 수 있습니다.";
-"Period time \"To\" should be greater than currently" = "Airdrop 이벤트의  종료 기간은 시작 기간보다 커야합니다.";
-"Frequency should be greater than 0" = "Airdrop의 빈도는 0보다 커야합니다.";
+"Period time \"To\" must be greater than currently" = "Airdrop 이벤트의  종료 기간은 시작 기간보다 커야합니다.";
+"Frequency must be greater than 0" = "Airdrop의 빈도는 0보다 커야합니다.";
 "Cannot find any beacon on your store" = "Beacon을 못 찾았습니다.";
 "Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "수신자의 수량과' 각 쇼핑객에게 Airdrop한 MozoX'의 수량을 입력하십시오.";
 "Airdrop event transaction is created with failure status." = "Airdrop 이벤트 트랜잭션이 실패 상태로 생성됩니다.";
