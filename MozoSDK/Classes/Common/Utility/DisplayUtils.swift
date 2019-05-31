@@ -94,12 +94,14 @@ public class DisplayUtils {
                 coverView.addGestureRecognizer(coverViewTap)
                 
                 mozoPopupErrorView.modalCloseHandler = {
+                    mozoPopupErrorView.forceDisable()
                     mozoPopupErrorView.removeFromSuperview()
                     coverView.removeFromSuperview()
                 }
             }
             
             mozoPopupErrorView.tapTryHandler = {
+                mozoPopupErrorView.forceDisable()
                 mozoPopupErrorView.removeFromSuperview()
                 coverView.removeFromSuperview()
             }
