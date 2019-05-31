@@ -12,7 +12,7 @@ public protocol PopupErrorDelegate {
     func didClosePopupWithoutRetry()
 }
 
-class MozoPopupErrorView : MozoView {
+public class MozoPopupErrorView : MozoView {
     @IBOutlet weak var imgError: UIImageView!
     @IBOutlet weak var imgErrorWidthConstraint: NSLayoutConstraint! // Default: 102
     @IBOutlet weak var imgErrorHeightConstraint: NSLayoutConstraint! // Default: 102
@@ -78,6 +78,11 @@ class MozoPopupErrorView : MozoView {
         } catch {
             
         }
+    }
+    
+    public func forceDisable() {
+        print("MozoPopupErrorView - Force disable")
+        stopNotifier()
     }
     
     func stopNotifier() {
