@@ -257,6 +257,7 @@
 "Time:" = "Thời gian:";
 "Airdrop Time" = "Thời gian Airdrop";
 "Frequency:" = "Tần suất:";
+"Frequency" = "Tần suất";
 "Duration:" = "Thời hạn:";
 "Duration" = "Thời hạn";
 "Store Location On MozoX Map" = "Vị trí cửa hàng trên bản đồ";
@@ -1004,11 +1005,11 @@
 "Start from now" = "Bắt đầu ngay bây giờ";
 "Now" = "Bây giờ";
 "Shopper will see event name when they use MozoX app to get tokens." = "Người dùng sẽ tìm thấy tên sự kiện này trên MozoX App";
-"The number of Shoppers who will receive MozoX tokens from this Airdrop Event." = "Số người dùng sẽ được nhận thưởng từ sụ kiện này";
+"The number of Shoppers who will receive MozoX tokens from this Airdrop Event." = "Số người dùng sẽ được nhận thưởng từ sự kiện này";
 "The number of MozoX tokens each Shopper will receive via Airdrop everytime they visit to your Store." = "Số MozoX thưởng cho người dùng mỗi khi họ ghé thăm cửa hàng bạn";
 "Please review the information below, because once an Airdrop Event has been created, the information cannot be changed." = "Xin vui lòng kiểm tra kỹ thông tin vì bạn không thể thay đổi nội dung sự kiện một khi đã được tạo";
 "Duration" = "Thời gian";
 "Not available" = "Không tính được";
 "Selected days of the week" = "Chọn thứ trong tuần";
 
-"Total MozoX you need to Airdrop" = "Tống số MozoX";
+"Total MozoX you need to Airdrop" = "Tổng số MozoX";
