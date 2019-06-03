@@ -18,6 +18,16 @@ public class SupportRequestDTO: ResponseObjectSerializable {
     public var macAddress: String?
     public var images: [String]?
     
+    public required init(name: String?, phone: String?, email: String?, message: String?, deviceInfo: String?, appVersion: String?, macAddress: String?) {
+        self.name = name
+        self.phone = phone
+        self.email = email
+        self.message = message
+        self.deviceInfo = deviceInfo
+        self.appVersion = appVersion
+        self.macAddress = macAddress
+    }
+    
     public required init(name: String?, phone: String?, email: String?, message: String?, deviceInfo: String?, appVersion: String?, macAddress: String?, images: [String]?) {
         self.name = name
         self.phone = phone
