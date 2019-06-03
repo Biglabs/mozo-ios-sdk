@@ -16,8 +16,9 @@ public class SupportRequestDTO: ResponseObjectSerializable {
     public var deviceInfo: String?
     public var appVersion: String?
     public var macAddress: String?
+    public var images: [String]?
     
-    public required init(name: String?, phone: String?, email: String?, message: String?, deviceInfo: String?, appVersion: String?, macAddress: String?) {
+    public required init(name: String?, phone: String?, email: String?, message: String?, deviceInfo: String?, appVersion: String?, macAddress: String?, images: [String]?) {
         self.name = name
         self.phone = phone
         self.email = email
@@ -25,6 +26,7 @@ public class SupportRequestDTO: ResponseObjectSerializable {
         self.deviceInfo = deviceInfo
         self.appVersion = appVersion
         self.macAddress = macAddress
+        self.images = images
     }
     
     public required init?(json: SwiftyJSON.JSON) {
@@ -35,6 +37,7 @@ public class SupportRequestDTO: ResponseObjectSerializable {
         self.deviceInfo = json["deviceInfo"].string
         self.appVersion = json["appVersion"].string
         self.macAddress = json["macAddress"].string
+        self.images = json["images"].array?.filter({ $0.string != nil }).map({ $0.string! })
     }
     
     public required init?(){}
@@ -61,6 +64,9 @@ public class SupportRequestDTO: ResponseObjectSerializable {
         }
         if let macAddress = self.macAddress {
             json["macAddress"] = macAddress
+        }
+        if let images = self.images {
+            json["images"] = images
         }
         return json
     }
