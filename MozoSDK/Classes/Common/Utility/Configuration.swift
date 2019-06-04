@@ -60,6 +60,11 @@ public class Configuration {
     // IMAGE SERVER
     public static let DOMAIN_IMAGE = "https://\(SUB_DOMAIN)image.mozocoin.io/api/public/"
     
+    public static let END_SESSION_URL_PATH = "/protocol/openid-connect/logout"
+    
+    // LOGOUT WITH REDIRECT
+    public static let LOGOUT_URL_WITH_REDIRECT_URI = "\(AUTH_ISSSUER)\(END_SESSION_URL_PATH)?redirect_uri="
+    
     /**
      The OAuth client ID.
      For client configuration instructions, see the [README](https://github.com/openid/AppAuth-iOS/blob/master/Examples/Example-iOS_Swift-Carthage/README.md).

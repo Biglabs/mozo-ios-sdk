@@ -220,7 +220,7 @@ class AuthManager : NSObject {
                     return
                 }
                 // https://dev.keycloak.mozocoin.io/auth/realms/mozo/protocol/openid-connect/logout
-                let endSessionUrl = issuer.appendingPathComponent("/protocol/openid-connect/logout")
+                let endSessionUrl = issuer.appendingPathComponent(Configuration.END_SESSION_URL_PATH)
                 
                 let config = OIDServiceConfiguration.init(authorizationEndpoint: endSessionUrl, tokenEndpoint: endSessionUrl)
                 
