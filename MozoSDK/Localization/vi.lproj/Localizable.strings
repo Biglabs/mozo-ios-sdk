@@ -840,15 +840,15 @@
 "MozoX tokens" = "Điểm MozoX";
 "Let your customers scan this QR code to download MozoX App and get %@ MozoX tokens for each customer sign up successful." = "Cho khách quét mã QR này để tải ứng dụng MozoX, bạn sẽ nhận %@ điểm MozoX cho mỗi khách đăng ký thành công.";
 
-"%@ Token" = "%@ Điểm";
-"Get Tokens" = "Lấy Điểm";
-"Token" = "Điểm";
+"%@ Token" = "%@ MozoX";
+"Get Tokens" = "Săn MozoX";
+"Token" = "MozoX";
+"Tokens" = "MozoX";
 "Today collected tokens" = "MozoX nhận hôm nay";
 "Have your friends scan this QR code to download MozoX App and get %@ MozoX tokens for each friend signed up successfully." = "Mời bạn bè quét QR này để tải ứng dụng MozoX, bạn sẽ nhận được %@ MozoX cho mỗi người bạn đăng ký thành công.";
 "Receive %@ MozoX for transfering MozoX tokens to your friends!" = "Nhận ngay %@ MozoX khi gửi MozoX cho bạn bè!";
 "Total MozoX tokens" = "Tổng MozoX";
 "Walk to earn tokens" = "Đi để nhận MozoX";
-"Token" = "Điểm";
 "Receive %@ MozoX tokens" = "Đã nhận %@ MozoX";
 "Total MozoX tokens:" = "Tổng MozoX:";
 "Total MozoX tokens: %@" = "Tổng MozoX: %@";
@@ -857,6 +857,7 @@
 "Try search to discover more MozoX Airdrop Events" = "Thử tìm kiếm để khám phá thêm các sự kiện MozoX Airdrop";
 "Please try search to discover more MozoX Airdrop Events" = "Vui lòng tìm kiếm để khám phá thêm các sự kiện MozoX Airdrop";
 "%.1fkm away" = "Cách %.1fkm";
+"%.1fm away" = "Cách %.1fm";
 "Version" = "Phiên bản";
 "Website" = "Trang Web";
 "MozoX Token’s primary application is to serve as the foundation for Mozo’s rewards-based solution for retail venues to increase and control foot traffic. MozoX Tokens can be used as rewards and then redeemed at any participating retailer in the MozoX network. Beyond this purpose, MozoX Tokens can also be exchanged as gifts or bought and sold through selected exchange platform." = "Ứng dụng chính của điểm MozoX là phục vụ cho giải pháp phần thưởng Mozo, cho các địa điểm bán lẻ để tăng và kiểm soát lưu lượng khách đến cửa hàng. Điểm MozoX có thể được sử dụng làm phần thưởng và sau đó được đổi tại bất kỳ cửa hàng bán lẻ nào tham gia vào trong mạng MozoX. Ngoài mục đích này, điểm MozoX còn có thể được trao đổi làm quà tặng hoặc mua và bán thông qua các sàn giao dịch được chỉ định";

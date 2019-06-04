@@ -840,6 +840,7 @@
 "%@ Token" = "%@ 코인";
 "Get Tokens" = "코인가져 오기";
 "Token" = "코인";
+"Tokens" = "코인";
 "Today collected tokens" = "오늘 수집한 코인";
 "Have your friends scan this QR code to download MozoX App and get %s MozoX tokens for each friend signed up successfully." = "친구들이 QR 코드를 스캔하여 MozoX App을 다운로드하도록 초대하면 각 고객이 성공적으로 등록 할 때마다 귀하가 %s 개의 MozoX 코인을 받게 됩니다.";
 "Receive %@ MozoX for transfering MozoX tokens to your friends!" = "MozoX 코인을 친구들에게 전송시 %@ MozoX를 받습니다!";
@@ -854,6 +855,7 @@
 "Try search to discover more MozoX Airdrop Events" = "MozoX Airdrop 이벤트를  더 검색해보세요.";
 "Please try search to discover more MozoX Airdrop Events" = "MozoX Airdrop 이벤트를  더 검색해보시기를 바랍니다.";
 "%.1fkm away" = "%.1fkm 거리에 있습니다.";
+"%.1fm away" = "%.1fm 거리에 있습니다.";
 "Version" = "버전";
 "Website" = "웹 사이트";
 "MozoX Token’s primary application is to serve as the foundation for Mozo’s rewards-based solution for retail venues to increase and control foot traffic. MozoX Tokens can be used as rewards and then redeemed at any participating retailer in the MozoX network. Beyond this purpose, MozoX Tokens can also be exchanged as gifts or bought and sold through selected exchange platform." = "MozoX Token의 기본 응용 프로그램은 소매점에 방문자 트래픽을 늘리고 제어하는 Mozo의 보상 기반 솔루션을위한 기반으로 사용하는 것입니다. MozoX Tokens은 보상으로 사용 되고 그 다음에 MozoX 네트워크의 참여하는 소매점에서 사용할 수 있습니다. 이 목적 외에도 MozoX Tokens은 선물로 교환하거나 선택한 교환 플랫폼을 통해 판매 및 판매 할 수 있습니다.";

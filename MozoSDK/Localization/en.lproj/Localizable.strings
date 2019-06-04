@@ -837,6 +837,7 @@
 "%@ Token" = "%@ Token";
 "Get Tokens" = "Get Tokens";
 "Token" = "Token";
+"Tokens" = "Tokens";
 "Today collected tokens" = "Today collected tokens";
 "Have your friends scan this QR code to download MozoX App and get %@ MozoX tokens for each friend signed up successfully." = "Have your friends scan this QR code to download MozoX App and get %@ MozoX tokens for each friend signed up successfully.";
 "Receive %@ MozoX for transfering MozoX tokens to your friends!" = "Receive %@ MozoX for transfering MozoX tokens to your friends!";
@@ -851,6 +852,7 @@
 "Try search to discover more MozoX Airdrop Events" = "Try search to discover more MozoX Airdrop Events";
 "Please try search to discover more MozoX Airdrop Events" = "Please try search to discover more MozoX Airdrop Events";
 "%.1fkm away" = "%.1fkm away";
+"%.1fm away" = "%.1fm away";
 "Version" = "Version";
 "Website" = "Website";
 "MozoX Token’s primary application is to serve as the foundation for Mozo’s rewards-based solution for retail venues to increase and control foot traffic. MozoX Tokens can be used as rewards and then redeemed at any participating retailer in the MozoX network. Beyond this purpose, MozoX Tokens can also be exchanged as gifts or bought and sold through selected exchange platform." = "MozoX Token’s primary application is to serve as the foundation for Mozo’s rewards-based solution for retail venues to increase and control foot traffic. MozoX Tokens can be used as rewards and then redeemed at any participating retailer in the MozoX network. Beyond this purpose, MozoX Tokens can also be exchanged as gifts or bought and sold through selected exchange platform.";
