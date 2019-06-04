@@ -66,7 +66,7 @@ class AddressBookViewController: MozoBasicViewController {
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search".localized
+        searchController.searchBar.placeholder = "Search Address".localized
         
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
