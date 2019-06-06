@@ -257,7 +257,10 @@ extension CorePresenter : AuthModuleDelegate {
 extension CorePresenter: WalletModuleDelegate {
     func walletModuleDidFinish() {
         print("CorePresenter - Wallet Module Did Finished, callbackModule: \(callBackModule?.value ?? "NO MODULE")")
-        // FIX ISSUE: Wallet interface re-display after inputting PIN.
+        if let topViewController = DisplayUtils.getTopViewController(), topViewController is MaintenanceViewController {
+            print("CorePresenter - Wallet Module Did Finished but top view controller is MaintenanceViewController - Must wait until maintenance mode back to healthy mode")
+            return
+        }
         if callBackModule == .Wallet {
             callBackModule = nil
         }
