@@ -64,8 +64,7 @@ extension WaitingViewController: WaitingViewInterface {
         if error == .apiError_INVALID_USER_TOKEN {
             displayMozoPopupTokenExpired()
         } else if error == .apiError_MAINTAINING {
-            let viewController = MaintenanceViewController.viewControllerFromStoryboard()
-            self.present(viewController, animated: false)
+            DisplayUtils.displayMaintenanceScreen()
         } else {
             if let topViewController = DisplayUtils.getTopViewController(), topViewController is WaitingViewController {
                 DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
