@@ -23,7 +23,7 @@ class MozoPopupContact: MozoView {
     var errorMessage = "Can not connect to MozoX servers. Contact your agency for more infomation.".localized {
         didSet {
             if lbError != nil {
-                var finalText = errorMessage
+                var finalText = errorMessage.localized
                 for item in removeTexts {
                     finalText = finalText.replace(item, withString: "")
                 }
