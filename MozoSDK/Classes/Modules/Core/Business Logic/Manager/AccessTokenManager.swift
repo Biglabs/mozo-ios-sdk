@@ -27,6 +27,18 @@ public class AccessTokenManager {
         UserDefaults.standard.removeObject(forKey: Configuration.ACCESS_TOKEN)
     }
     
+    public static func getPinSecret() -> String? {
+        return UserDefaults.standard.string(forKey: Configuration.PIN_SECRET)
+    }
+    
+    public static func savePinSecret(_ pinSecrect: String?) {
+        UserDefaults.standard.set(pinSecrect, forKey: Configuration.PIN_SECRET)
+    }
+    
+    public static func clearPinSecret() {
+        UserDefaults.standard.removeObject(forKey: Configuration.PIN_SECRET)
+    }
+    
     public static func saveAnonymousToken(_ token: String?) {
         UserDefaults.standard.set(token, forKey: Configuration.ACCESS_TOKEN_ANONYMOUS)
     }

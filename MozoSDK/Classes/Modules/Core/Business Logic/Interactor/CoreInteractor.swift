@@ -7,6 +7,7 @@
 
 import Foundation
 import PromiseKit
+import JWTDecode
 
 enum CheckTokenExpiredStatus : String {
     case IDLE = "IDLE"
@@ -192,6 +193,14 @@ class CoreInteractor: NSObject {
             output?.finishedCheckAuthentication(keepGoing: true, module: module)
         }
     }
+    
+    func saveDataFromToken(_ accessToken: String?) {
+        if let accessToken = accessToken {
+            let jwt = try! decode(jwt: accessToken)
+            let pin_secret = jwt.claim(name: Configuration.JWT_TOKEN_CLAIM_PIN_SECRET).string
+            AccessTokenManager.savePinSecret(pin_secret)
+        }
+    }
 }
 
 extension CoreInteractor: CoreInteractorInput {
@@ -222,8 +231,8 @@ extension CoreInteractor: CoreInteractorInput {
     }
     
     func handleAferAuth(accessToken: String?) {
-        // TODO: Handle User Info Inside Token
         AccessTokenManager.saveToken(accessToken)
+        saveDataFromToken(accessToken)
         anonManager.linkCoinFromAnonymousToCurrentUser()
         handleUserProfileAfterAuth()
     }
