@@ -48,7 +48,9 @@
 "Store Recovery Phrase" = "복구 데이터 프레이즈 저장";
 "Please write it down on paper and keep it in a safe place as you would with money." = "이 프레이즈를 적어 안전한 장소에 보관하십시오.";
 "*If you lose your Recovery Phrase, your wallet cannot be recovered." = "* 복구 데이터 문구를 분실하면 월렛을 복구 할 수 없습니다.";
+"If you lose your recovery phrase, your wallet cannot be recovered." = "복구 데이터 문구를 분실하면 월렛을 복구 할 수 없습니다.";
 "I have safely stored Recovery Phrase" = "복구 문구를 안전하게 저장했습니다.";
+"I have safely stored recovery phrase" = "복구 문구를 안전하게 저장했습니다.";
 "Create Security PIN" = "보안 PIN 생성";
 "Restore Wallet" = "월렛 복구";
 "Security PIN Confirmation" = "PIN 코드 확인";
