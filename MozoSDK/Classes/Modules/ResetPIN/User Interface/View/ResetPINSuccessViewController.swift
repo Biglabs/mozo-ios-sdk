@@ -11,6 +11,8 @@ class ResetPINSuccessViewController: MozoBasicViewController {
     @IBOutlet weak var btnDone: UIButton!
     var eventHandler: ResetPINModuleInterface?
     
+    var isChangePin = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         btnDone.roundCorners(cornerRadius: 0.15, borderColor: .white, borderWidth: 0.1)
@@ -18,7 +20,7 @@ class ResetPINSuccessViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "Reset PIN".localized
+        navigationItem.title = (isChangePin ? "Change Security PIN" : "Reset PIN").localized
         self.navigationItem.rightBarButtonItem = nil
     }
     

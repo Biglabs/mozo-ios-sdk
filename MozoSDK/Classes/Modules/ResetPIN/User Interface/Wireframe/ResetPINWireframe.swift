@@ -15,6 +15,7 @@ class ResetPINWireframe: MozoWireframe {
         self.moduleRequested = module
         let viewController = viewControllerFromStoryBoard(ResetPINViewControllerIdentifier) as! ResetPINViewController
         viewController.eventHandler = presenter
+        viewController.isChangePin = moduleRequested == .Settings
         presenter?.viewInterface = viewController
         rootWireframe?.displayViewController(viewController)
     }
@@ -27,11 +28,17 @@ class ResetPINWireframe: MozoWireframe {
         // Pop ResetPINViewController
         rootWireframe?.dismissTopViewController()
         let viewController = viewControllerFromStoryBoard(ResetPINSuccessViewControllerIdentifier) as! ResetPINSuccessViewController
+        viewController.isChangePin = moduleRequested == .Settings
         viewController.eventHandler = presenter
         rootWireframe?.displayViewController(viewController)
     }
     
     func dismissResetPINInterface() {
+        if moduleRequested == .Settings {
+            let coreEventHandler = rootWireframe?.mozoNavigationController.coreEventHandler
+            coreEventHandler?.requestForCloseAllMozoUIs()
+            return
+        }
 //        if moduleRequested == .Wallet {
 //            walletWireframe?.walletPresenter?.handleEndingWalletFlow()
 //        } else {
