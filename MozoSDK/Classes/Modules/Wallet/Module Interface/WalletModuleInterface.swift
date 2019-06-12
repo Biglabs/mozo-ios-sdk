@@ -24,4 +24,7 @@ protocol WalletModuleInterface {
     func displayResetPINInterface(requestFrom module: Module)
     
     func manageWalletForResetPIN(passPhrase: String?, pin: String)
+    
+    func verifyCurrentPINToChangePIN(pin: String)
+    func verifyConfirmPINToChangePIN(pin: String, confirmPin: String)
 }

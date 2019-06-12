@@ -7,5 +7,5 @@
 
 import Foundation
 protocol BackupWalletViewInterface {
-    
+    func displayVerifyFailed()
 }

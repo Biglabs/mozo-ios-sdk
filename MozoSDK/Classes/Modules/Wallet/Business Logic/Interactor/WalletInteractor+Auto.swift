@@ -17,19 +17,14 @@ extension WalletInteractor {
             let onchainAddress = onchainWallet.address
             
             let encryptedSeedPhrase = mnemonics.encrypt(key: rawPin)
-            if let accessToken = AccessTokenManager.getAccessToken() {
-                let jwt = try! decode(jwt: accessToken)
-                if let pin_secret = jwt.claim(name: "pin_secret").string {
-                    let encryptedPin = rawPin.encrypt(key: pin_secret)
-                    let updatingWalletInfo = WalletInfoDTO(encryptSeedPhrase: encryptedSeedPhrase, offchainAddress: offchainAddress, onchainAddress: onchainAddress, encryptedPin: encryptedPin)
-                    // Must waiting for processing invitation
-                    if SafetyDataManager.shared.checkProcessingInvitation == false {
-                        self.updateFullWalletInfoInAutoMode(updatingWalletInfo, wallets: wallets)
-                    } else {
-                        self.setupTimerWaitingInvitation(updatingWalletInfo: updatingWalletInfo, wallets: wallets)
-                    }
+            if let pin_secret = AccessTokenManager.getPinSecret() {
+                let encryptedPin = rawPin.encrypt(key: pin_secret)
+                let updatingWalletInfo = WalletInfoDTO(encryptSeedPhrase: encryptedSeedPhrase, offchainAddress: offchainAddress, onchainAddress: onchainAddress, encryptedPin: encryptedPin)
+                // Must waiting for processing invitation
+                if SafetyDataManager.shared.checkProcessingInvitation == false {
+                    self.updateFullWalletInfoInAutoMode(updatingWalletInfo, wallets: wallets)
                 } else {
-                    self.autoOutput?.errorWhileManageWalletAutomatically(connectionError: .systemError, showTryAgain: false)
+                    self.setupTimerWaitingInvitation(updatingWalletInfo: updatingWalletInfo, wallets: wallets)
                 }
             } else {
                 self.autoOutput?.errorWhileManageWalletAutomatically(connectionError: .systemError, showTryAgain: false)
@@ -81,8 +76,9 @@ extension WalletInteractor: WalletInteractorAutoInput {
     func recoverWalletsAutomatically() {
         if let wallet = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo,
             let encryptedSeedPhrase = wallet.encryptSeedPhrase,
-            let encryptedPin = wallet.encryptedPin {
-                let decryptPin = encryptedPin.decrypt(key: "")
+            let encryptedPin = wallet.encryptedPin,
+            let pin_secret = AccessTokenManager.getPinSecret(){
+                let decryptPin = encryptedPin.decrypt(key: pin_secret)
                 let mnemonics = encryptedSeedPhrase.decrypt(key: decryptPin)
                 manageWalletInAutoMode(isCreateNew: false, mnemonics: mnemonics, rawPin: decryptPin)
         } else {

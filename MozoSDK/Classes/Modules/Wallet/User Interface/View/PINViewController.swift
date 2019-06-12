@@ -32,6 +32,8 @@ class PINViewController : MozoBasicViewController {
     private var pin : String?
     private var isConfirm = false
     
+    var enterNewPINToChangePIN = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,15 +42,27 @@ class PINViewController : MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        var title = "Enter Security PIN"
         if self.passPhrase == nil {
-            navigationItem.title = "Enter Security PIN".localized
+            title = "Enter Security PIN"
         } else {
-            if moduleRequested == .ResetPIN {
-                navigationItem.title = "Reset PIN".localized
-            } else {
-                navigationItem.title = "Create Security PIN".localized
+            switch moduleRequested {
+            case .ResetPIN :
+                title = "Reset PIN"
+                break
+            case .ChangePIN:
+                if enterNewPINToChangePIN {
+                    title = "Create Security PIN"
+                } else {
+                    title = "Change Security PIN"
+                }
+                break
+            default:
+                title = "Create Security PIN"
+                break
             }
         }
+        navigationItem.title = title.localized
     }
     
     func configureView() {
@@ -76,10 +90,21 @@ class PINViewController : MozoBasicViewController {
                 enterPINLabel.text = "ENTER NEW SECURITY PIN".localized
                 descriptionLabel.text = "Security PIN must be 6 digit numbers".localized
                 break
+            case .ChangePIN:
+                // Enter current pin or enter and confirm new pin to change PIN
+                enterPINLabel.text = "ENTER YOUR CURRENT SECURITY PIN".localized
+                descriptionLabel.text = "Security PIN must be 6 digit numbers".localized
+                if enterNewPINToChangePIN {
+                    
+                }
+                break
             default:
                 // Enter new pin and confirm new pin to restore wallet
                 enterPINLabel.text = "ENTER YOUR SECURITY PIN".localized
                 enterPINLabel.text = "Enter your Security PIN\nto restore wallet".localized
+                if Locale.current.languageCode != "ko" {
+                    enterPINLabel.text = "Enter your Security PIN\nto restore wallet".localized.uppercased()
+                }
                 break
             }
         } else {
@@ -89,7 +114,7 @@ class PINViewController : MozoBasicViewController {
                 descriptionLabel.text = "Security PIN must be 6 digit numbers".localized
             }
         }
-        forgotContainerView.isHidden = passPhrase != nil
+        forgotContainerView.isHidden = passPhrase != nil || moduleRequested == .ChangePIN
         if UIScreen.main.nativeBounds.height <= 1136 {
             print("PINViewController - Configure View on iPhone 5 or 5S or 5C")
             enterPINLabelTopConstraint.constant = 39 - 16
@@ -109,14 +134,19 @@ class PINViewController : MozoBasicViewController {
     }
     
     func manageWallet() {
-        if self.moduleRequested != .ResetPIN {
+        switch moduleRequested {
+        case .ResetPIN:
+            self.eventHandler?.manageWalletForResetPIN(passPhrase: self.passPhrase, pin: self.pin!)
+            break
+        case .ChangePIN:
+            break
+        default:
             if recoverFromServerEncryptedPhrase {
                 self.eventHandler?.manageWalletToRecoverFromServerEncryptedPhrase(pin: self.pin!)
             } else {
                 self.eventHandler?.manageWallet(passPhrase: self.passPhrase, pin: self.pin!)
             }
-        } else {
-            self.eventHandler?.manageWalletForResetPIN(passPhrase: self.passPhrase, pin: self.pin!)
+            break
         }
     }
     
@@ -249,11 +279,23 @@ private extension PINViewController {
                 if recoverFromServerEncryptedPhrase {
                     eventHandler?.verifyPINToRecoverFromServerEncryptedPhrase(pin: input)
                 } else {
-                    eventHandler?.verifyPIN(pin: input)
+                    if moduleRequested == .ChangePIN {
+                        if enterNewPINToChangePIN {
+                            eventHandler?.enterPIN(pin: input)
+                        } else {
+                            eventHandler?.verifyCurrentPINToChangePIN(pin: input)
+                        }
+                    } else {
+                        eventHandler?.verifyPIN(pin: input)
+                    }
                 }
             }
         } else {
-            eventHandler?.verifyConfirmPIN(pin: pin!, confirmPin: input)
+            if moduleRequested == .ChangePIN {
+                eventHandler?.verifyConfirmPINToChangePIN(pin: pin!, confirmPin: input)
+            } else {
+                eventHandler?.verifyConfirmPIN(pin: pin!, confirmPin: input)
+            }
         }
     }
     

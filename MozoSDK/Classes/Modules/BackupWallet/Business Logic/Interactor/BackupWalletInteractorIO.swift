@@ -6,3 +6,10 @@
 //
 
 import Foundation
+protocol BackupWalletInteractorInput {
+    func verifyPassPhrases(_ passPhrases: String, indexs: [Int], originalPassPhrases: String)
+}
+protocol BackupWalletInteractorOutput {
+    func verifyFailed()
+    func verifySuccess(passPhrase: String)
+}

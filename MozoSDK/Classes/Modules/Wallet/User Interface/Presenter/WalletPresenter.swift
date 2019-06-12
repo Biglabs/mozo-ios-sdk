@@ -19,6 +19,7 @@ class WalletPresenter : NSObject {
     var walletModuleDelegate : WalletModuleDelegate?
     var pinModuleDelegate: PinModuleDelegate?
     var resetPinModuleDelegate: ResetPINModuleDelegate?
+    var changePINModuleDelegate: ChangePINModuleDelegate?
     
     func handleEndingWalletFlow() {
         print("WalletPresenter - Handle ending wallet flow")
@@ -99,11 +100,22 @@ extension WalletPresenter: WalletModuleInterface {
     }
     
     func skipShowPassPharse(passPharse: String) {
-        walletWireframe?.presentPINInterface(passPharse: passPharse)
+        walletWireframe?.presentBackupWalletInterface(mnemonics: passPharse)
+//        walletWireframe?.presentPINInterface(passPharse: passPharse)
     }
     
     func displayResetPINInterface(requestFrom module: Module) {
         walletWireframe?.presentResetPINInterface(requestFrom: module)
+    }
+    
+    func verifyCurrentPINToChangePIN(pin: String) {
+        pinUserInterface?.displaySpinner()
+        walletInteractor?.verifyCurrentPINToChangePIN(pin: pin)
+    }
+    
+    func verifyConfirmPINToChangePIN(pin: String, confirmPin: String) {
+        pinUserInterface?.displaySpinner()
+        walletInteractor?.verifyConfirmPINToChangePIN(pin: pin, confirmPin: confirmPin)
     }
 }
 
@@ -180,5 +192,27 @@ extension WalletPresenter: WalletInteractorOutput {
     
     func generatedMnemonics(mnemonic: String) {
         passPharseUserInterface?.showPassPhrase(passPharse: mnemonic)
+    }
+    
+    func verifiedCurrentPINToChangePIN(pin: String, result: Bool) {
+        if result {
+            changePINModuleDelegate?.verifiedCurrentPINSuccess(pin)
+            walletWireframe?.dismissWalletInterface()
+        } else {
+            pinUserInterface?.removeSpinner()
+            // Input PIN is NOT correct
+            pinUserInterface?.showVerificationFailed()
+        }
+    }
+    
+    func verifiedConfirmPINToChangePIN(pin: String, result: Bool) {
+        if result {
+            changePINModuleDelegate?.inputNewPINSuccess(pin)
+            walletWireframe?.dismissWalletInterface()
+        } else {
+            pinUserInterface?.removeSpinner()
+            // Input PIN is NOT correct
+            pinUserInterface?.showVerificationFailed()
+        }
     }
 }

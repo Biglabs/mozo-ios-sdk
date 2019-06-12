@@ -6,3 +6,6 @@
 //
 
 import Foundation
+protocol BackupWalletModuleDelegate {
+    func didFinishCheckPassPhrase(_ passPhrase: String)
+}

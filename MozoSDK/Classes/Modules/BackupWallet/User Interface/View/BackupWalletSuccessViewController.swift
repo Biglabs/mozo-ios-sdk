@@ -28,6 +28,6 @@ class BackupWalletSuccessViewController: MozoBasicViewController {
     }
     
     @IBAction func touchBtnGotIt(_ sender: Any) {
-        
+        eventHandler?.completeBackupWallet()
     }
 }

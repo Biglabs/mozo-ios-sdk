@@ -11,6 +11,7 @@ import UIKit
 
 class WalletWireframe: MozoWireframe {
     var resetPINWireframe: ResetPINWireframe?
+    var backupWalletWireframe: BackupWalletWireframe?
     var walletPresenter : WalletPresenter?
     var pinViewController : PINViewController?
     var passPhraseViewController: PassPhraseViewController?
@@ -19,12 +20,15 @@ class WalletWireframe: MozoWireframe {
         walletPresenter?.processInitialWalletInterface()
     }
     
-    func presentPINInterface(passPharse: String?, requestFrom module: Module = Module.Wallet, recoverFromServerEncryptedPhrase : Bool = false) {
+    func presentPINInterface(passPharse: String?, requestFrom module: Module = Module.Wallet,
+                             recoverFromServerEncryptedPhrase : Bool = false,
+                             enterNewPINToChangePIN: Bool = false) {
         print("WalletWireframe - Present PIN Interface")
         let viewController = viewControllerFromStoryBoard(PINViewControllerIdentifier) as! PINViewController
         viewController.eventHandler = walletPresenter
         viewController.passPhrase = passPharse
         viewController.moduleRequested = module
+        viewController.enterNewPINToChangePIN = enterNewPINToChangePIN
         viewController.recoverFromServerEncryptedPhrase = recoverFromServerEncryptedPhrase
         
         pinViewController = viewController

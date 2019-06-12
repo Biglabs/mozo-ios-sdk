@@ -27,8 +27,10 @@ class PassPhraseViewController: MozoBasicViewController {
         super.viewDidLoad()
         addBorderForLabel()
         addTapForLabel()
-        // Generate mnemonic
-        eventHandler?.generateMnemonics()
+        if passPharse == nil {
+            // Generate mnemonic
+            eventHandler?.generateMnemonics()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

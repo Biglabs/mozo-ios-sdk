@@ -11,6 +11,8 @@ class BackupWalletViewController: MozoBasicViewController {
     @IBOutlet weak var btnFinish: UIButton!
     var eventHandler: BackupWalletModuleInterface?
     
+    var mnemonics: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         enableBackBarButton()
@@ -40,9 +42,15 @@ class BackupWalletViewController: MozoBasicViewController {
     }
     
     @IBAction func touchBtnFinish(_ sender: Any) {
-        
+        if let mnemonics = self.mnemonics, let randomIndexs = self.mnemonicsView.randomIndexs as? [Int] {
+            eventHandler?.verifyPassPhrases(self.mnemonicsView.mnemonics, indexs: randomIndexs, originalPassPhrases: mnemonics)
+        } else {
+            displayVerifyFailed()
+        }
     }
 }
 extension BackupWalletViewController: BackupWalletViewInterface {
-    
+    func displayVerifyFailed() {
+        displayMozoError("Invalid Recovery Phrase")
+    }
 }
