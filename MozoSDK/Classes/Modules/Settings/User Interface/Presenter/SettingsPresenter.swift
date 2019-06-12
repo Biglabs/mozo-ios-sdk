@@ -16,7 +16,7 @@ extension SettingsPresenter: SettingsModuleInterface {
             DisplayUtils.displayUnderConstructionPopup()
             break
         case .Pin:
-            MozoSDK.requestForResetPin()
+            MozoSDK.requestForChangePin()
             break
         case .Backup:
             MozoSDK.requestForBackUpWallet()

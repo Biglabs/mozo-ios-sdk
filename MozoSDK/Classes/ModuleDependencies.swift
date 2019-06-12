@@ -59,6 +59,7 @@ class ModuleDependencies {
     let convertCompletionWireframe = ConvertCompletionWireframe()
     let speedSelectionWireframe = SpeedSelectionWireframe()
     let backupWalletWireframe = BackupWalletWireframe()
+    let changePINWireframe = ChangePINWireframe()
     
     let apiManager = ApiManager()
     let webSocketManager = WebSocketManager()
@@ -328,8 +329,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getCreateAirdropEventSettings())!
     }
     
-    func requestForResetPin() {
-        coreWireframe.requestForResetPin()
+    func requestForChangePin() {
+        coreWireframe.requestForChangePin()
     }
     
     func requestForBackUpWallet() {
@@ -400,10 +401,33 @@ class ModuleDependencies {
         coreWireframe.speedSelectionWireframe = speedSelectionWireframe
         coreWireframe.resetPinWireframe = resetPINWireframe
         coreWireframe.backupWalletWireframe = backupWalletWireframe
+        coreWireframe.changePINWireframe = changePINWireframe
+    }
+    
+    func changePINDependencies(walletManager: WalletManager, dataManager: WalletDataManager) {
+        let changePINPresenter = ChangePINPresenter()
+        
+        let changePINInteractor = ChangePINInteractor(walletManager: walletManager, dataManager: dataManager, apiManager: apiManager)
+        changePINInteractor.output = changePINPresenter
+        
+        changePINPresenter.wireframe = changePINWireframe
+        
+        changePINWireframe.presenter = changePINPresenter
+        changePINWireframe.walletWireframe = walletWireframe
+        changePINWireframe.rootWireframe = rootWireframe
     }
     
     func backupWalletDependencies() {
         let backupWalletPresenter = BackupWalletPresenter()
+        
+        let backupWalletInteractor = BackupWalletInteractor()
+        backupWalletInteractor.output = backupWalletPresenter
+        
+        backupWalletPresenter.interactor = backupWalletInteractor
+        
+        backupWalletPresenter.wireframe = backupWalletWireframe
+        backupWalletPresenter.delegate = walletWireframe.walletPresenter
+        
         backupWalletWireframe.presenter = backupWalletPresenter
         backupWalletWireframe.rootWireframe = rootWireframe
     }
@@ -574,8 +598,11 @@ class ModuleDependencies {
         walletWireframe.walletPresenter = walletPresenter
         walletWireframe.rootWireframe = rootWireframe
         walletWireframe.resetPINWireframe = resetPINWireframe
+        walletWireframe.backupWalletWireframe = backupWalletWireframe
         
         resetPINDependencies(walletManager: walletManager, dataManager: walletDataManager)
+        // MARK: Change PIN
+        changePINDependencies(walletManager: walletManager, dataManager: walletDataManager)
     }
     
     func resetPINDependencies(walletManager: WalletManager, dataManager: WalletDataManager) {

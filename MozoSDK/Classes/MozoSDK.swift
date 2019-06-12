@@ -277,8 +277,8 @@ public class MozoSDK {
         return moduleDependencies.getCreateAirdropEventSettings()
     }
     
-    public static func requestForResetPin() {
-        return moduleDependencies.requestForResetPin()
+    public static func requestForChangePin() {
+        return moduleDependencies.requestForChangePin()
     }
     
     public static func requestForBackUpWallet() {
