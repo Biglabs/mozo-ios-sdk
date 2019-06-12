@@ -61,12 +61,22 @@ class WithdrawInteractor: NSObject {
             })
         }
     }
+    
+    func requestForPin() {
+        if let encryptedPin = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo?.encryptedPin,
+            let pinSecret = AccessTokenManager.getPinSecret() {
+            let decryptPin = encryptedPin.decrypt(key: pinSecret)
+            self.sendSignedTx(pin: decryptPin)
+        } else {
+            self.output?.requestPinInterface()
+        }
+    }
 }
 extension WithdrawInteractor: WithdrawInteractorInput {
     func withdrawMozoFromEventId(_ eventId: Int64) {
         _ = apiManager?.withdrawAirdropEvent(eventId: eventId).done { (interTx) in
             self.transaction = interTx
-            self.output?.requestPinInterface()
+            self.requestForPin()
         }.catch({ (error) in
             let cErr = error as? ConnectionError ?? .systemError
             self.output?.didFailedToCreateTransaction(error: cErr)

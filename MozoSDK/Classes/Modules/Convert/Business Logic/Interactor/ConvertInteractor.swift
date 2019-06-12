@@ -43,6 +43,17 @@ class ConvertInteractor: NSObject {
         let gasPriceDecimal = NSDecimalNumber(decimal: gasPrice.decimalValue)
         return gasPriceDecimal.multiplying(byPowerOf10: 9)
     }
+    
+    func requestForPin() {
+        if let encryptedPin = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo?.encryptedPin,
+            let pinSecret = AccessTokenManager.getPinSecret() {
+            let decryptPin = encryptedPin.decrypt(key: pinSecret)
+            pinToRetry = decryptPin
+            self.performTransfer(pin: decryptPin)
+        } else {
+            self.output?.requestPinToSignTransaction()
+        }
+    }
 }
 extension ConvertInteractor: ConvertInteractorInput {
     func loadEthAndOffchainInfo() {
@@ -138,7 +149,7 @@ extension ConvertInteractor: ConvertInteractorInput {
                 if let pin = self.pinToRetry {
                     self.performTransfer(pin: pin)
                 } else {
-                    self.output?.requestPinToSignTransaction()
+                    self.requestForPin()
                 }
             }.catch({ (error) in
                 print("Send create transaction failed, show popup to retry.")
