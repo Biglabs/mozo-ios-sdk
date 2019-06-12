@@ -36,6 +36,8 @@ let SpeedSelectionViewControllerIdentifier = "SpeedSelectionViewController"
 let WalletProcessingViewControllerIdentifier = "WalletProcessingViewController"
 let BackupWalletViewControllerIdentifier = "BackupWalletViewController"
 let BackupWalletSuccessViewControllerIdentifier = "BackupWalletSuccessViewController"
+let ChangePINProcessViewControllerIdentifier = "ChangePINProcessViewController"
+let ChangePINSuccessViewControllerIdentifier = "ChangePINSuccessViewController"
 
 class RootWireframe : NSObject {
     let mozoNavigationController = MozoNavigationController()
