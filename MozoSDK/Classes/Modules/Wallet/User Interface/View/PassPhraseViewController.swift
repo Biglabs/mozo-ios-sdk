@@ -16,6 +16,7 @@ class PassPhraseViewController: MozoBasicViewController {
         super.init(coder: aDecoder)
     }
     
+    @IBOutlet weak var passPhraseContainerView: UIView!
     @IBOutlet fileprivate var passPhraseTextView:UITextView?
     @IBOutlet weak var checkView: UIView!
     @IBOutlet weak var checkImg: UIImageView!
@@ -32,11 +33,12 @@ class PassPhraseViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Backup Wallet".localized
+        navigationItem.title = "Backup Wallet".localized
     }
     
     func addBorderForLabel() {
-        checkView.roundCorners(borderColor: ThemeManager.shared.disable, borderWidth: 1.1)
+        checkImg.roundCorners(cornerRadius: 0.5, borderColor: ThemeManager.shared.main, borderWidth: 2)
+        checkView.roundCorners(borderColor: ThemeManager.shared.main, borderWidth: 2)
         continueBtn.roundCorners(cornerRadius: 0.02, borderColor: .clear, borderWidth: 0.1)
     }
     
@@ -71,11 +73,24 @@ class PassPhraseViewController: MozoBasicViewController {
     func addWordSpace(str: String) -> String {
         return str.replace(" ", withString: "  ")
     }
+    
+    func showPassPhraseOnContainerView() {
+        if let array = self.passPharse?.components(separatedBy: " ") {
+            let wordViews = self.passPhraseContainerView.subviews.filter({ $0.tag != 99 })
+            for (index, element) in array.enumerated() {
+                let view = wordViews.first{ $0.tag == index }
+                if let label = view as? UILabel {
+                    label.text = element
+                }
+            }
+        }
+    }
 }
 
 extension PassPhraseViewController: PassPhraseViewInterface {
     func showPassPhrase(passPharse: String) {
         self.passPharse = passPharse
-        self.passPhraseTextView?.text = addWordSpace(str: passPharse)
+        self.showPassPhraseOnContainerView()
+//        self.passPhraseTextView?.text = addWordSpace(str: passPharse)
     }
 }

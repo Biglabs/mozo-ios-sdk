@@ -21,7 +21,7 @@ class WalletWireframe: MozoWireframe {
     
     func presentPINInterface(passPharse: String?, requestFrom module: Module = Module.Wallet, recoverFromServerEncryptedPhrase : Bool = false) {
         print("WalletWireframe - Present PIN Interface")
-        let viewController = pinViewControllerFromStoryboard()
+        let viewController = viewControllerFromStoryBoard(PINViewControllerIdentifier) as! PINViewController
         viewController.eventHandler = walletPresenter
         viewController.passPhrase = passPharse
         viewController.moduleRequested = module
@@ -45,7 +45,7 @@ class WalletWireframe: MozoWireframe {
     }
     
     func presentPassPhraseInterface() {
-        let viewController = passPhraseViewControllerFromStoryboard()
+        let viewController = viewControllerFromStoryBoard(PassPhraseViewControllerIdentifier) as! PassPhraseViewController
         viewController.eventHandler = walletPresenter
         passPhraseViewController = viewController
         walletPresenter?.passPharseUserInterface = viewController
@@ -58,17 +58,5 @@ class WalletWireframe: MozoWireframe {
     
     func dismissWalletInterface() {
         rootWireframe?.dismissTopViewController()
-    }
-    
-    func pinViewControllerFromStoryboard() -> PINViewController {
-        let storyboard = StoryboardManager.mozoStoryboard()
-        let viewController = storyboard.instantiateViewController(withIdentifier: PINViewControllerIdentifier) as! PINViewController
-        return viewController
-    }
-    
-    func passPhraseViewControllerFromStoryboard() -> PassPhraseViewController {
-        let storyboard = StoryboardManager.mozoStoryboard()
-        let viewController = storyboard.instantiateViewController(withIdentifier: PassPhraseViewControllerIdentifier) as! PassPhraseViewController
-        return viewController
     }
 }

@@ -12,6 +12,7 @@ import PromiseKit
 
 class WalletInteractor : NSObject {
     var output : WalletInteractorOutput?
+    var autoOutput: WalletInteractorAutoOutput?
     
     let walletManager : WalletManager
     let dataManager : WalletDataManager
@@ -128,7 +129,7 @@ class WalletInteractor : NSObject {
             .done { uProfile -> Void in
                 let userDto = UserDTO(id: uProfile.userId, profile: uProfile)
                 SessionStoreManager.saveCurrentUser(user: userDto)
-                print("Update Wallet To User Profile result: [\(uProfile)]")
+                print("WalletInteractor - Update Wallet To User Profile result: [\(uProfile)]")
                 self.updateWalletsForCurrentUser(wallets)
                 self.output?.updatedWallet()
             }.catch({ (error) in

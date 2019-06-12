@@ -35,7 +35,7 @@ extension ApiManager {
     
     public func updateWallets(walletInfo: WalletInfoDTO) -> Promise<UserProfileDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + USER_API_PATH + "/walletAll"
+            let url = Configuration.BASE_URL + USER_API_PATH + "/v1/walletAll"
             let param = walletInfo.rawData()
             self.execute(.put, url: url, parameters: param)
                 .done { json -> Void in

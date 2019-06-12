@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Wallet Processing View Controller-->
+        <scene sceneID="AOG-mE-vRt">
+            <objects>
+                <viewController storyboardIdentifier="WalletProcessingViewController" id="gOk-tu-asg" customClass="WalletProcessingViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b7u-7U-Ufg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loading" translatesAutoresizingMaskIntoConstraints="NO" id="z3C-fU-o6q">
+                                <rect key="frame" x="159" y="246.5" width="57" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="57" id="X2G-f1-NlI"/>
+                                    <constraint firstAttribute="height" constant="54" id="scR-CT-hYN"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creating your MozoX wallet.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fti-Ln-d6H">
+                                <rect key="frame" x="5" y="330.5" width="365" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Creating your MozoX wallet.."/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fti-Ln-d6H" firstAttribute="top" secondItem="z3C-fU-o6q" secondAttribute="bottom" constant="30" id="CYH-a0-gol"/>
+                            <constraint firstItem="KyG-dT-t5X" firstAttribute="trailing" secondItem="fti-Ln-d6H" secondAttribute="trailing" constant="5" id="HLI-2g-mgD"/>
+                            <constraint firstItem="fti-Ln-d6H" firstAttribute="leading" secondItem="KyG-dT-t5X" secondAttribute="leading" constant="5" id="Idt-Z3-VWO"/>
+                            <constraint firstItem="z3C-fU-o6q" firstAttribute="centerX" secondItem="b7u-7U-Ufg" secondAttribute="centerX" id="QaI-xD-INP"/>
+                            <constraint firstItem="z3C-fU-o6q" firstAttribute="centerY" secondItem="b7u-7U-Ufg" secondAttribute="centerY" constant="-60" id="rYf-65-Aly"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KyG-dT-t5X"/>
+                    </view>
+                    <connections>
+                        <outlet property="imgViewLoading" destination="z3C-fU-o6q" id="9gT-Ka-JZs"/>
+                        <outlet property="lbExplainWaiting" destination="fti-Ln-d6H" id="3Fd-DN-zsE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OZW-Ys-Nfy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-73" y="151"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_loading" width="189" height="180"/>
+    </resources>
+</document>

@@ -11,8 +11,10 @@ import UIKit
 
 class WalletPresenter : NSObject {
     var walletInteractor : WalletInteractorInput?
+    var walletInteractorAuto: WalletInteractorAutoInput?
     var walletWireframe : WalletWireframe?
     var pinUserInterface : PINViewInterface?
+    var processingViewInterface: WalletProcessingViewInterface?
     var passPharseUserInterface : PassPhraseViewInterface?
     var walletModuleDelegate : WalletModuleDelegate?
     var pinModuleDelegate: PinModuleDelegate?
@@ -41,7 +43,15 @@ class WalletPresenter : NSObject {
                     walletWireframe?.presentPINInterface(passPharse: nil)
                 }
             } else {
-                walletWireframe?.presentPassPhraseInterface()
+                // Check use rememberred PIN
+                if walletInfo.encryptedPin != nil {
+                    // Create wallet with encrypted seed phrase and pin from server
+                    walletWireframe?.presentWalletProcessingInterface(isCreateNew: false)
+                    processInitialWalletInterfaceAutomatically(isCreateNew: false)
+                } else {
+                    // Create wallet
+                    walletWireframe?.presentPassPhraseInterface()
+                }
             }
         }
     }
