@@ -22,6 +22,7 @@ class CoreWireframe : MozoWireframe {
     var speedSelectionWireframe: SpeedSelectionWireframe?
     var resetPinWireframe: ResetPINWireframe?
     var backupWalletWireframe: BackupWalletWireframe?
+    var changePINWireframe: ChangePINWireframe?
     var corePresenter: CorePresenter?
     
     // MARK: Request
@@ -65,9 +66,9 @@ class CoreWireframe : MozoWireframe {
         corePresenter?.requestForAuthentication(module: Module.Convert)
     }
     
-    func requestForResetPin() {
+    func requestForChangePin() {
         presentWaitingInterface(corePresenter: corePresenter)
-        corePresenter?.requestForAuthentication(module: Module.ResetPIN)
+        corePresenter?.requestForAuthentication(module: Module.ChangePIN)
     }
     
     func requestForBackUpWallet() {
@@ -155,15 +156,19 @@ class CoreWireframe : MozoWireframe {
         speedSelectionWireframe?.presentSpeedSelectionInterface()
     }
     
-    func processWalletAuto() {
-        walletWireframe?.processInitialWallet()
+    func processWalletAuto(isCreateNew: Bool = false) {
+        walletWireframe?.processInitialWallet(isCreateNew: isCreateNew)
     }
     
     func presentResetPinInterface() {
         resetPinWireframe?.presentResetPINInterface(requestFrom: .Settings)
     }
     
+    func presentChangePINInterface() {
+        changePINWireframe?.processChangePIN()
+    }
+    
     func presentBackupWalletInterface() {
-        backupWalletWireframe?.presentBackupWalletInterface()
+        backupWalletWireframe?.processBackup()
     }
 }

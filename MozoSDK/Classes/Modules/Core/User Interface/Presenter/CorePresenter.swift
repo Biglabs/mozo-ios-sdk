@@ -190,8 +190,8 @@ extension CorePresenter : CoreModuleInterface {
             coreWireframe?.presentConvertInterface()
         case .SpeedSelection:
             coreWireframe?.presentSpeedSelectionInterface()
-        case .ResetPIN:
-            coreWireframe?.presentResetPinInterface()
+        case .ChangePIN:
+            coreWireframe?.presentChangePINInterface()
         case .BackupWallet:
             coreWireframe?.presentBackupWalletInterface()
         default: coreWireframe?.prepareForWalletInterface()

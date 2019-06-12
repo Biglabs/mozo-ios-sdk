@@ -8,7 +8,7 @@
 import Foundation
 extension CorePresenter: SpeedSelectionModuleDelegate {
     func didSelectAutoWay() {
-        coreWireframe?.processWalletAuto()
+        coreWireframe?.processWalletAuto(isCreateNew: true)
     }
     
     func didSelectManualWay() {
