@@ -11,7 +11,8 @@ class MozoWireframe: NSObject {
     var rootWireframe : RootWireframe?
     
     func dismissModuleInterface(){
-        
+        let coreEventHandler = rootWireframe?.mozoNavigationController.coreEventHandler
+        coreEventHandler?.requestForCloseAllMozoUIs()
     }
     
     func presentWaitingInterface(corePresenter: CorePresenter?) {
