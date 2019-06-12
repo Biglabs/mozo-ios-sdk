@@ -57,6 +57,8 @@ class ModuleDependencies {
     let convertWireframe = ConvertWireframe()
     let txProcessWireframe = TxProcessWireframe()
     let convertCompletionWireframe = ConvertCompletionWireframe()
+    let speedSelectionWireframe = SpeedSelectionWireframe()
+    let backupWalletWireframe = BackupWalletWireframe()
     
     let apiManager = ApiManager()
     let webSocketManager = WebSocketManager()
@@ -326,9 +328,19 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getCreateAirdropEventSettings())!
     }
     
+    func requestForResetPin() {
+        coreWireframe.requestForResetPin()
+    }
+    
+    func requestForBackUpWallet() {
+        coreWireframe.requestForBackUpWallet()
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()
+        // MARK: Speed Selection
+        speedSelectionDependencies()
         // MARK: Auth
         authDependencies()
         // MARK: Wallet
@@ -347,6 +359,8 @@ class ModuleDependencies {
         // MARK: Transaction Process
         txProcessDependencies()
         convertCompletionDependencies()
+        // MARK: Backup Wallet
+        backupWalletDependencies()
     }
     
     func coreDependencies() {
@@ -383,6 +397,22 @@ class ModuleDependencies {
         coreWireframe.paymentWireframe = paymentWireframe
         coreWireframe.paymentQRWireframe = paymentQRWireframe
         coreWireframe.convertWireframe = convertWireframe
+        coreWireframe.speedSelectionWireframe = speedSelectionWireframe
+        coreWireframe.resetPinWireframe = resetPINWireframe
+        coreWireframe.backupWalletWireframe = backupWalletWireframe
+    }
+    
+    func backupWalletDependencies() {
+        let backupWalletPresenter = BackupWalletPresenter()
+        backupWalletWireframe.presenter = backupWalletPresenter
+        backupWalletWireframe.rootWireframe = rootWireframe
+    }
+    
+    func speedSelectionDependencies() {
+        let speedSelectionPresenter = SpeedSelectionPresenter()
+        speedSelectionPresenter.delegate = coreWireframe.corePresenter
+        speedSelectionWireframe.presenter = speedSelectionPresenter
+        speedSelectionWireframe.rootWireframe = rootWireframe
     }
     
     func convertDependencies(signManager: TransactionSignManager) {
@@ -534,8 +564,10 @@ class ModuleDependencies {
         
         let walletInteractor = WalletInteractor(walletManager: walletManager, dataManager: walletDataManager, apiManager: apiManager)
         walletInteractor.output = walletPresenter
+        walletInteractor.autoOutput = walletPresenter
         
         walletPresenter.walletInteractor = walletInteractor
+        walletPresenter.walletInteractorAuto = walletInteractor
         walletPresenter.walletWireframe = walletWireframe
         walletPresenter.walletModuleDelegate = coreWireframe.corePresenter
         

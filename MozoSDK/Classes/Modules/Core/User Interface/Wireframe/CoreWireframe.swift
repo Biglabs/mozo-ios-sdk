@@ -19,6 +19,9 @@ class CoreWireframe : MozoWireframe {
     var paymentWireframe: PaymentWireframe?
     var paymentQRWireframe: PaymentQRWireframe?
     var convertWireframe: ConvertWireframe?
+    var speedSelectionWireframe: SpeedSelectionWireframe?
+    var resetPinWireframe: ResetPINWireframe?
+    var backupWalletWireframe: BackupWalletWireframe?
     var corePresenter: CorePresenter?
     
     // MARK: Request
@@ -60,6 +63,16 @@ class CoreWireframe : MozoWireframe {
         convertWireframe?.isConvertOffchainToOffchain = isConvertOffchainToOffchain
         presentWaitingInterface(corePresenter: corePresenter)
         corePresenter?.requestForAuthentication(module: Module.Convert)
+    }
+    
+    func requestForResetPin() {
+        presentWaitingInterface(corePresenter: corePresenter)
+        corePresenter?.requestForAuthentication(module: Module.ResetPIN)
+    }
+    
+    func requestForBackUpWallet() {
+        presentWaitingInterface(corePresenter: corePresenter)
+        corePresenter?.requestForAuthentication(module: Module.BackupWallet)
     }
     
     func requestForCloseAllMozoUIs(completion: (() -> Swift.Void)? = nil) {
@@ -136,5 +149,21 @@ class CoreWireframe : MozoWireframe {
     
     func dismissAddressBookInterface() {
         abWireframe?.dismissAddressBookInterface()
+    }
+    
+    func presentSpeedSelectionInterface() {
+        speedSelectionWireframe?.presentSpeedSelectionInterface()
+    }
+    
+    func processWalletAuto() {
+        walletWireframe?.processInitialWallet()
+    }
+    
+    func presentResetPinInterface() {
+        resetPinWireframe?.presentResetPINInterface(requestFrom: .Settings)
+    }
+    
+    func presentBackupWalletInterface() {
+        backupWalletWireframe?.presentBackupWalletInterface()
     }
 }

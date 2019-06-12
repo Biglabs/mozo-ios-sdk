@@ -32,6 +32,10 @@ let ConvertCompletionViewControllerIdentifier = "ConvertCompletionViewController
 let ConvertFailedViewControllerIdentifier = "ConvertFailedViewController"
 let ResetPINViewControllerIdentifier = "ResetPINViewController"
 let ResetPINSuccessViewControllerIdentifier = "ResetPINSuccessViewController"
+let SpeedSelectionViewControllerIdentifier = "SpeedSelectionViewController"
+let WalletProcessingViewControllerIdentifier = "WalletProcessingViewController"
+let BackupWalletViewControllerIdentifier = "BackupWalletViewController"
+let BackupWalletSuccessViewControllerIdentifier = "BackupWalletSuccessViewController"
 
 class RootWireframe : NSObject {
     let mozoNavigationController = MozoNavigationController()

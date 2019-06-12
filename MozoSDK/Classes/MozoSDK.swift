@@ -276,4 +276,12 @@ public class MozoSDK {
     public static func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO> {
         return moduleDependencies.getCreateAirdropEventSettings()
     }
+    
+    public static func requestForResetPin() {
+        return moduleDependencies.requestForResetPin()
+    }
+    
+    public static func requestForBackUpWallet() {
+        return moduleDependencies.requestForBackUpWallet()
+    }
 }
