@@ -6,3 +6,21 @@
 //
 
 import Foundation
+class SettingsPresenter: NSObject {
+    
+}
+extension SettingsPresenter: SettingsModuleInterface {
+    func selectSettingsTab(_ tab: SettingsTypeEnum) {
+        switch tab {
+        case .Currencies, .Password:
+            DisplayUtils.displayUnderConstructionPopup()
+            break
+        case .Pin:
+            MozoSDK.requestForResetPin()
+            break
+        case .Backup:
+            MozoSDK.requestForBackUpWallet()
+            break
+        }
+    }
+}

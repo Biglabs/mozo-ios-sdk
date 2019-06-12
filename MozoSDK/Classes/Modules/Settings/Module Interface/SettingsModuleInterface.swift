@@ -6,3 +6,6 @@
 //
 
 import Foundation
+protocol SettingsModuleInterface {
+    func selectSettingsTab(_ tab: SettingsTypeEnum)
+}
