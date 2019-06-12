@@ -188,6 +188,12 @@ extension CorePresenter : CoreModuleInterface {
             coreWireframe?.presentAddressBookInterface(false)
         case .Convert:
             coreWireframe?.presentConvertInterface()
+        case .SpeedSelection:
+            coreWireframe?.presentSpeedSelectionInterface()
+        case .ResetPIN:
+            coreWireframe?.presentResetPinInterface()
+        case .BackupWallet:
+            coreWireframe?.presentBackupWalletInterface()
         default: coreWireframe?.prepareForWalletInterface()
         }
     }
@@ -281,6 +287,20 @@ extension CorePresenter: WalletModuleDelegate {
 }
 
 extension CorePresenter : CoreInteractorOutput {
+    func continueWithSpeedSelection(_ callbackModule: Module) {
+        print("CorePresenter - Continue with Speed Selection, callbackModule: \(callbackModule.value)")
+        // Should display call back module (if any)
+        self.callBackModule = callbackModule
+        presentModuleInterface(.SpeedSelection)
+    }
+    
+    func continueWithWalletAuto(_ callbackModule: Module) {
+        print("CorePresenter - Continue with Wallet Auto, callbackModule: \(callbackModule.value)")
+        // Should display call back module (if any)
+        self.callBackModule = callbackModule
+        coreWireframe?.processWalletAuto()
+    }
+    
     func continueWithWallet(_ callbackModule: Module) {
         print("CorePresenter - Continue with Wallet, callbackModule: \(callbackModule.value)")
         // Should display call back module (if any)

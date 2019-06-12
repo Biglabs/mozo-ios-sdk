@@ -145,19 +145,26 @@ class CoreInteractor: NSObject {
                     if value == 2, serverHaveBothOffChainAndOnChain {
                         self.output?.finishedCheckAuthentication(keepGoing: false, module: module)
                     } else {
+                        // Manage wallet with encrypted seed phrase from server: Add missing local wallets
                         self.output?.continueWithWallet(module)
                     }
                 } else {
-                    // Re-authenicate, manage wallet
-                    self.output?.continueWithWallet(module)
+                    // Restore wallet with encrypted seed phrase from server
+                    if wallet.encryptedPin != nil {
+                        // Restore wallet with encrypted seed phrase and pin from server
+                        self.output?.continueWithWalletAuto(module)
+                    } else {
+                        self.output?.continueWithWallet(module)
+                    }
                 }
             }).catch({ (err) in
                 // TODO: Handle Database Error here
                 print("Get wallet count of user [\(id)], error: \(err)")
             })
         } else {
-            // Re-authenicate, manage wallet
-            output?.continueWithWallet(module)
+            // Continue with Speed Selection
+            output?.continueWithSpeedSelection(module)
+//            self.output?.continueWithWallet(module)
         }
     }
     
@@ -215,6 +222,7 @@ extension CoreInteractor: CoreInteractorInput {
     }
     
     func handleAferAuth(accessToken: String?) {
+        // TODO: Handle User Info Inside Token
         AccessTokenManager.saveToken(accessToken)
         anonManager.linkCoinFromAnonymousToCurrentUser()
         handleUserProfileAfterAuth()
