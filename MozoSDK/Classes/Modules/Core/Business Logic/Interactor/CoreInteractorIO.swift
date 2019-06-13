@@ -37,6 +37,8 @@ protocol CoreInteractorOutput {
     func didReceiveAuthorizationRequired()
     
     func didReceiveMaintenance()
+    
+    func didDetectWalletInAutoMode(module: Module)
 }
 
 protocol CoreInteractorService {

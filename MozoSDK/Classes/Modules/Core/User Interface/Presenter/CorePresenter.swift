@@ -320,6 +320,10 @@ extension CorePresenter : CoreInteractorOutput {
         }
     }
     
+    func didDetectWalletInAutoMode(module: Module) {
+        walletModuleDidFinish()
+    }
+    
     func finishedHandleAferAuth() {
         coreWireframe?.prepareForWalletInterface()
     }

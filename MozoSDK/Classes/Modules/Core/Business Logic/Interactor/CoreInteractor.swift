@@ -144,7 +144,12 @@ class CoreInteractor: NSObject {
             _ = userDataManager.getWalletCountOfUser(id).done({ (value) in
                 if value > 0 {
                     if value == 2, serverHaveBothOffChainAndOnChain {
-                        self.output?.finishedCheckAuthentication(keepGoing: false, module: module)
+                        if wallet.encryptedPin != nil {
+                            // No need to do anything
+                            self.output?.didDetectWalletInAutoMode(module: module)
+                        } else {
+                            self.output?.finishedCheckAuthentication(keepGoing: false, module: module)
+                        }
                     } else {
                         // Manage wallet with encrypted seed phrase from server: Add missing local wallets
                         self.output?.continueWithWallet(module)
@@ -240,8 +245,9 @@ extension CoreInteractor: CoreInteractorInput {
     func handleUserProfileAfterAuth() {
         _ = getUserProfile().done({ () in
             self.downloadData()
-            self.output?.finishedHandleAferAuth()
-            self.processInvitation()
+            self.checkAuthAndWallet(module: .Wallet)
+//            self.output?.finishedHandleAferAuth()
+//            self.processInvitation()
         }).catch({ (err) in
             // Handle case unable to load user profile
             self.output?.failToLoadUserInfo(err as! ConnectionError, for: nil)
