@@ -11,7 +11,8 @@ class ChangePINWireframe: MozoWireframe {
     var presenter: ChangePINPresenter?
     
     func processChangePIN() {
-        presenter?.processChangePIN()
+        presentChangePINProcessInterface()
+        presenter?.checkRememberPIN()
     }
     
     func presentChangePINSuccessInterface() {
@@ -25,5 +26,9 @@ class ChangePINWireframe: MozoWireframe {
         let viewController = viewControllerFromStoryBoard(ChangePINProcessViewControllerIdentifier, storyboardName: Module.ChangePIN.value) as! ChangePINProcessViewController
         viewController.eventHandler = presenter
         rootWireframe?.displayViewController(viewController)
+    }
+    
+    func presentPINInterface(enterNewPINToChangePIN: Bool = false) {
+        walletWireframe?.presentPINInterface(passPharse: nil, requestFrom: .ChangePIN, enterNewPINToChangePIN: enterNewPINToChangePIN)
     }
 }
