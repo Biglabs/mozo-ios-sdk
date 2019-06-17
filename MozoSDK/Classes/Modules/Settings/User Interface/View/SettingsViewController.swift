@@ -23,9 +23,26 @@ class SettingsViewController: MozoBasicViewController {
     }
     
     func setupTableView() {
-        tableView = UITableView(frame: view.frame)
+        view.backgroundColor = .white
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width - 20, height: view.frame.height)
+        tableView = UITableView(frame: frame)
         tableView.backgroundColor = .white
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(tableView)
+        if #available(iOS 11.0, *) {
+            let guide = self.view.safeAreaLayoutGuide
+            tableView.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -20).isActive = true
+            tableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor).isActive = true
+            tableView.topAnchor.constraint(equalTo: guide.topAnchor, constant: 30).isActive = true
+            tableView.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
+            
+        } else {
+            NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 30).isActive = true
+            NSLayoutConstraint(item: tableView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0).isActive = true
+            NSLayoutConstraint(item: tableView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: -20).isActive = true
+            NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
+        }
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
