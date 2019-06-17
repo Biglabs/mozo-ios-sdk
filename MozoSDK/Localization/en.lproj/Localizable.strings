@@ -59,6 +59,7 @@
 "Enter your Security PIN\nto create airdrop event" = "Enter your Security PIN\nto create airdrop event";
 "Security PIN must be 6 digits" = "Security PIN must be 6 digits";
 "Confirm Security PIN" = "Confirm Security PIN";
+"CONFIRM SERCURITY PIN" = "CONFIRM SECURITY PIN";
 "Re-enter your PIN" = "Re-enter your PIN";
 "Create Security PIN successful" = "Create Security PIN successful";
 "Security PIN is correct" = "Security PIN is correct";
@@ -1011,3 +1012,53 @@
 "Selected days of the week" = "Selected days of the week";
 
 "Total MozoX you need to Airdrop" = "Total MozoX you need to Airdrop";
+
+// Beacon Settings, Beacon Failure contact, Map Route, Speed Selection, Auto Create Wallet, Backup Wallet, Change PIN, Auto PIN
+"Writing data to Beacon..." = "Writing data to Beacon...";
+"Sending Beacon information to server..." = "Sending Beacon information to server...";
+
+
+"Can’t count calories burned" = "Can’t count calories burned";
+
+"Request for Support" = "Request for Support";
+"Attach Photo" = "Attach Photo";
+"This field is required." = "This field is required.";
+"Invalid phone number" = "Invalid phone number";
+"Invalid email address" = "Invalid email address";
+"Your attachment either has failed to upload or it still uploading. Send this message anyway?" = "Your attachment either has failed to upload or it still uploading. Send this message anyway?";
+
+"Create Wallet Automatically" = "Create Wallet Automatically";
+"Your Recovery Phrase* and security PIN will be auto generated and remembered by our system." = "Your Recovery Phrase* and security PIN will be auto generated and remembered by our system.";
+"Create Wallet Manually" = "Create Wallet Manually";
+"You will need to back up your Recovery Phrase and security PIN created by you." = "You will need to back up your Recovery Phrase and security PIN created by you.";
+"*What are Recovery Phrase?" = "*What are Recovery Phrase?";
+"Recovery Phrase are random set of words used to secure your digital wallet. You should write down these words in order so that in the event you lose your digital wallet or forget your PIN, you can recover your wallet and/or reset your PIN." = "Recovery Phrase are random set of words used to secure your digital wallet. You should write down these words in order so that in the event you lose your digital wallet or forget your PIN, you can recover your wallet and/or reset your PIN.";
+
+"Create MozoX Wallet" = "Create MozoX Wallet";
+"Creating your MozoX wallet..." = "Creating your MozoX wallet...";
+"Recovering your MozoX wallet..." = "Recovering your MozoX wallet...";
+
+"Backup Wallet" = "Backup Wallet";
+"This is your recovery phrase" = "This is your recovery phrase";
+"Please write it down on paper and keep it in a safe place as you would with money" = "Please write it down on paper and keep it in a safe place as you would with money";
+"If you lose your recovery phrase, your wallet cannot be recovered." = "If you lose your recovery phrase, your wallet cannot be recovered.";
+"I have safely stored recovery phrase" = "I have safely stored recovery phrase";
+
+"Verify" = "Verify";
+"VERIFY" = "VERIFY";
+"Using the completed Recovery Phrase as a reference, please enter the following words from your Recovery Phrase to complete the back up process." = "Using the completed Recovery Phrase as a reference, please enter the following words from your Recovery Phrase to complete the back up process.";
+"Finish" = "Finish";
+
+"Your Wallet is Backed Up" = "Your Wallet is Backed Up";
+"Be sure to store your recovery phrase in a secure place. If this app is deleted, your wallet cannot be recovered without it." = "Be sure to store your recovery phrase in a secure place. If this app is deleted, your wallet cannot be recovered without it.";
+"Got It" = "Got It";
+
+"Change Security PIN" = "Change Security PIN";
+"ENTER YOUR CURRENT SECURITY PIN" = "ENTER YOUR CURRENT SECURITY PIN";
+"ENTER NEW SECURITY PIN" = "ENTER NEW SECURITY PIN";
+"CONFIRM NEW SECURITY PIN" = "CONFIRM NEW SECURITY PIN";
+"Re-enter your new PIN" = "Re-enter your new PIN";
+"Change PIN is processing.." = "Change PIN is processing..";
+"Change Security PIN Successful" = "Change Security PIN Successful";
+
+"System is using automatically generated PIN to sign your transaction and send it to network..." = "System is using automatically generated PIN to sign your transaction and send it to network...";
