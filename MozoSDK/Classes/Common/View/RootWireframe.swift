@@ -59,6 +59,10 @@ class RootWireframe : NSObject {
         mozoNavigationController.setViewControllers(viewControllers, animated: false)
     }
     
+    func changeRootViewController(_ newRootViewController: UIViewController) {
+        mozoNavigationController.setViewControllers([newRootViewController], animated: false)
+    }
+    
     func presentViewController(_ viewController: UIViewController) {
         let top = getTopViewController()
         top?.present(viewController, animated: true, completion: nil)
