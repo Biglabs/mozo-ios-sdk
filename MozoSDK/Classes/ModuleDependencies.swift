@@ -410,11 +410,14 @@ class ModuleDependencies {
         let changePINInteractor = ChangePINInteractor(walletManager: walletManager, dataManager: dataManager, apiManager: apiManager)
         changePINInteractor.output = changePINPresenter
         
+        changePINPresenter.interactor = changePINInteractor
         changePINPresenter.wireframe = changePINWireframe
         
         changePINWireframe.presenter = changePINPresenter
         changePINWireframe.walletWireframe = walletWireframe
         changePINWireframe.rootWireframe = rootWireframe
+        
+        walletWireframe.walletPresenter?.changePINModuleDelegate = changePINPresenter 
     }
     
     func backupWalletDependencies() {
@@ -428,6 +431,7 @@ class ModuleDependencies {
         backupWalletPresenter.wireframe = backupWalletWireframe
         backupWalletPresenter.delegate = walletWireframe.walletPresenter
         
+        backupWalletWireframe.walletWireframe = walletWireframe
         backupWalletWireframe.presenter = backupWalletPresenter
         backupWalletWireframe.rootWireframe = rootWireframe
     }
