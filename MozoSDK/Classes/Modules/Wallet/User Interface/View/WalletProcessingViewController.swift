@@ -21,7 +21,7 @@ class WalletProcessingViewController: MozoBasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         rotateView()
-        let explainText = isCreateNew ? "Creating your MozoX wallet.." : "Recovering your MozoX wallet.."
+        let explainText = isCreateNew ? "Creating your MozoX wallet..." : "Recovering your MozoX wallet..."
         lbExplainWaiting.text = explainText.localized
     }
     

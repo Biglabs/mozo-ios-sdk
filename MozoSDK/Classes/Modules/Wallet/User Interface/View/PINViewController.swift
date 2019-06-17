@@ -208,8 +208,13 @@ extension PINViewController : PINViewInterface {
     
     func showConfirmPIN() {
         pinTextField.text = ""
-        enterPINLabel.text = "Confirm Security PIN".localized
-        descriptionLabel.text = "Re-enter your PIN".localized
+        if moduleRequested == .ChangePIN {
+            enterPINLabel.text = "CONFIRM NEW SECURITY PIN".localized
+            descriptionLabel.text = "Re-enter your new PIN".localized
+        } else {
+            enterPINLabel.text = "CONFIRM SECURITY PIN".localized
+            descriptionLabel.text = "Re-enter your PIN".localized
+        }
         confirmImg.isHidden = false
         isConfirm = true
     }
