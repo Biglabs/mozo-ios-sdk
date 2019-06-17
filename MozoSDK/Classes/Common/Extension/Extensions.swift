@@ -194,7 +194,13 @@ public extension UIWindow {
     
     public static func getVisibleViewControllerFrom(_ vc: UIViewController?) -> UIViewController? {
         if let nc = vc as? UINavigationController {
-            return UIWindow.getVisibleViewControllerFrom(nc.visibleViewController)
+            if let visibleViewController = nc.visibleViewController {
+                return UIWindow.getVisibleViewControllerFrom(visibleViewController)
+            }
+            if let lastViewController = nc.viewControllers.last {
+                return UIWindow.getVisibleViewControllerFrom(lastViewController)
+            }
+            return vc
         } else if let tc = vc as? UITabBarController {
             return UIWindow.getVisibleViewControllerFrom(tc.selectedViewController)
         } else {
