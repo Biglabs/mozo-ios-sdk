@@ -20,7 +20,7 @@ class ChangePINPresenter: NSObject {
             if let encryptedPin = wallet.encryptedPin, let pinSecret = AccessTokenManager.getPinSecret() {
                 let decryptPin = encryptedPin.decrypt(key: pinSecret)
                 self.currentPinToChange = decryptPin
-                wireframe?.presentPINInterface(enterNewPINToChangePIN: true)
+                self.wireframe?.presentPINInterface(enterNewPINToChangePIN: true)
             } else {
                 wireframe?.presentPINInterface()
             }
@@ -44,24 +44,28 @@ extension ChangePINPresenter: ChangePINModuleInterface {
 }
 extension ChangePINPresenter: ChangePINInteractorOutput {
     func changePINFailedWithError(_ error: ConnectionError) {
-        if error == .noInternetConnection || error == .requestTimedOut || error == .apiError_MAINTAINING {
+//        if error == .noInternetConnection || error == .requestTimedOut || error == .apiError_MAINTAINING {
             DisplayUtils.displayTryAgainPopup(allowTapToDismiss: false, isEmbedded: true, error: error, delegate: self)
-        } else {
-            processInterface?.displayError(error.apiError?.description ?? error.localizedDescription)
-        }
+//        } else {
+//            processInterface?.displayError(error.apiError?.description ?? error.localizedDescription)
+//        }
     }
     
     func changePINSuccess() {
         wireframe?.presentChangePINSuccessInterface()
+        currentPinToChange = nil
+        newPin = nil
     }
 }
 extension ChangePINPresenter: ChangePINModuleDelegate {
     func verifiedCurrentPINSuccess(_ pin: String) {
         self.currentPinToChange = pin
+        self.wireframe?.presentPINInterface(enterNewPINToChangePIN: true)
     }
     
     func inputNewPINSuccess(_ pin: String) {
         self.newPin = pin
+        processChangePIN()
     }
 }
 extension ChangePINPresenter: PopupErrorDelegate {

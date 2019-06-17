@@ -22,7 +22,7 @@ class ChangePINInteractor: NSObject {
     func updateMnemonicAndPinForCurrentUser(wallets: [WalletModel], mnemonic: String, pin: String) {
         if let userObj = SessionStoreManager.loadCurrentUser() {
             _ = dataManager.updateMnemonic(mnemonic, id: userObj.id!, pin: pin).done { (result) in
-                self.updateWalletsForCurrentUser(wallets)
+                self.updatePrivateKeys(wallets)
                 self.output?.changePINSuccess()
             }.catch { (error) in
                 self.output?.changePINFailedWithError(.systemError)
@@ -32,12 +32,11 @@ class ChangePINInteractor: NSObject {
         }
     }
     
-    func updateWalletsForCurrentUser(_ wallets: [WalletModel]){
-        if let userObj = SessionStoreManager.loadCurrentUser() {
-            for wallet in wallets {
-                dataManager.updateWallet(wallet, id: userObj.id!)
-            }
-        }
+    func updatePrivateKeys(_ wallets: [WalletModel]){
+        let offchainWallet = wallets[0]
+        let onchainWallet = wallets[1]
+        _ = self.dataManager.updatePrivateKeys(offchainWallet)
+        _ = self.dataManager.updatePrivateKeys(onchainWallet)
     }
     
     func manageChangePINForWallet(_ mnemonics: String, pin: String) {

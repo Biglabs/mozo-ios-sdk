@@ -25,6 +25,7 @@ class ChangePINWireframe: MozoWireframe {
     func presentChangePINProcessInterface() {
         let viewController = viewControllerFromStoryBoard(ChangePINProcessViewControllerIdentifier, storyboardName: Module.ChangePIN.value) as! ChangePINProcessViewController
         viewController.eventHandler = presenter
+        presenter?.processInterface = viewController
         rootWireframe?.displayViewController(viewController)
     }
     
