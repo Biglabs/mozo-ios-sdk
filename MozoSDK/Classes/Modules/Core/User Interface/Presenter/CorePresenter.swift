@@ -100,6 +100,29 @@ class CorePresenter : NSObject {
         stopNotifier()
         NotificationCenter.default.removeObserver(self)
     }
+    
+    func presentModuleInterface(_ module: Module) {
+        // Should continue with any module
+        switch module {
+        case .Transaction:
+            coreWireframe?.prepareForTransferInterface()
+        case .TxHistory:
+            coreWireframe?.prepareForTxHistoryInterface()
+        case .Payment:
+            coreWireframe?.prepareForPaymentRequestInterface()
+        case .AddressBook:
+            coreWireframe?.presentAddressBookInterface(false)
+        case .Convert:
+            coreWireframe?.presentConvertInterface()
+        case .SpeedSelection:
+            coreWireframe?.presentSpeedSelectionInterface()
+        case .ChangePIN:
+            coreWireframe?.presentChangePINInterface()
+        case .BackupWallet:
+            coreWireframe?.presentBackupWalletInterface()
+        default: coreWireframe?.prepareForWalletInterface()
+        }
+    }
 }
 
 // MARK: Silent services methods
@@ -173,29 +196,6 @@ extension CorePresenter : CoreModuleInterface {
     
     func requestCloseToLastMozoUIs() {
         coreWireframe?.requestCloseToLastMozoUIs()
-    }
-    
-    func presentModuleInterface(_ module: Module) {
-        // Should continue with any module
-        switch module {
-        case .Transaction:
-            coreWireframe?.prepareForTransferInterface()
-        case .TxHistory:
-            coreWireframe?.prepareForTxHistoryInterface()
-        case .Payment:
-            coreWireframe?.prepareForPaymentRequestInterface()
-        case .AddressBook:
-            coreWireframe?.presentAddressBookInterface(false)
-        case .Convert:
-            coreWireframe?.presentConvertInterface()
-        case .SpeedSelection:
-            coreWireframe?.presentSpeedSelectionInterface()
-        case .ChangePIN:
-            coreWireframe?.presentChangePINInterface()
-        case .BackupWallet:
-            coreWireframe?.presentBackupWalletInterface()
-        default: coreWireframe?.prepareForWalletInterface()
-        }
     }
 }
 extension CorePresenter : CoreModuleWaitingInterface {
