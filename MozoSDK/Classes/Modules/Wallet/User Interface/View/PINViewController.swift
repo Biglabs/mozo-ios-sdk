@@ -45,17 +45,17 @@ class PINViewController : MozoBasicViewController {
         var title = "Enter Security PIN"
         if self.passPhrase == nil {
             title = "Enter Security PIN"
-        } else {
-            switch moduleRequested {
-            case .ResetPIN :
-                title = "Reset PIN"
-                break
-            case .ChangePIN:
+            if moduleRequested == .ChangePIN {
                 if enterNewPINToChangePIN {
                     title = "Create Security PIN"
                 } else {
                     title = "Change Security PIN"
                 }
+            }
+        } else {
+            switch moduleRequested {
+            case .ResetPIN :
+                title = "Reset PIN"
                 break
             default:
                 title = "Create Security PIN"
@@ -95,7 +95,7 @@ class PINViewController : MozoBasicViewController {
                 enterPINLabel.text = "ENTER YOUR CURRENT SECURITY PIN".localized
                 descriptionLabel.text = "Security PIN must be 6 digit numbers".localized
                 if enterNewPINToChangePIN {
-                    
+                    enterPINLabel.text = "ENTER NEW SECURITY PIN".localized
                 }
                 break
             default:
@@ -285,6 +285,8 @@ private extension PINViewController {
                         } else {
                             eventHandler?.verifyCurrentPINToChangePIN(pin: input)
                         }
+                    } else if moduleRequested == .BackupWallet {
+                        eventHandler?.verifyCurrentPINToBackup(pin: input)
                     } else {
                         eventHandler?.verifyPIN(pin: input)
                     }

@@ -99,8 +99,9 @@ extension WalletPresenter: WalletModuleInterface {
         walletInteractor?.generateMnemonics()
     }
     
-    func skipShowPassPharse(passPharse: String) {
-        walletWireframe?.presentBackupWalletInterface(mnemonics: passPharse)
+    func skipShowPassPharse(passPharse: String, requestedModule: Module) {
+        print("WalletPresenter - Skip show pass phrase")
+        walletWireframe?.presentBackupWalletInterface(mnemonics: passPharse, requestedModule: requestedModule)
 //        walletWireframe?.presentPINInterface(passPharse: passPharse)
     }
     
@@ -116,6 +117,11 @@ extension WalletPresenter: WalletModuleInterface {
     func verifyConfirmPINToChangePIN(pin: String, confirmPin: String) {
         pinUserInterface?.displaySpinner()
         walletInteractor?.verifyConfirmPINToChangePIN(pin: pin, confirmPin: confirmPin)
+    }
+    
+    func verifyCurrentPINToBackup(pin: String) {
+        pinUserInterface?.displaySpinner()
+        walletInteractor?.verifyCurrentPINToBackup(pin: pin)
     }
 }
 
@@ -195,22 +201,22 @@ extension WalletPresenter: WalletInteractorOutput {
     }
     
     func verifiedCurrentPINToChangePIN(pin: String, result: Bool) {
+        pinUserInterface?.removeSpinner()
         if result {
-            changePINModuleDelegate?.verifiedCurrentPINSuccess(pin)
             walletWireframe?.dismissWalletInterface()
+            changePINModuleDelegate?.verifiedCurrentPINSuccess(pin)
         } else {
-            pinUserInterface?.removeSpinner()
             // Input PIN is NOT correct
             pinUserInterface?.showVerificationFailed()
         }
     }
     
     func verifiedConfirmPINToChangePIN(pin: String, result: Bool) {
+        pinUserInterface?.removeSpinner()
         if result {
-            changePINModuleDelegate?.inputNewPINSuccess(pin)
             walletWireframe?.dismissWalletInterface()
+            changePINModuleDelegate?.inputNewPINSuccess(pin)
         } else {
-            pinUserInterface?.removeSpinner()
             // Input PIN is NOT correct
             pinUserInterface?.showVerificationFailed()
         }

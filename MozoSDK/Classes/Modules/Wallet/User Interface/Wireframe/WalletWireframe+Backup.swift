@@ -7,7 +7,7 @@
 
 import Foundation
 extension WalletWireframe {    
-    func presentBackupWalletInterface(mnemonics: String) {
-        backupWalletWireframe?.presentBackupWalletInterface(mnemonics: mnemonics)
+    func presentBackupWalletInterface(mnemonics: String, requestedModule: Module = .Wallet) {
+        backupWalletWireframe?.presentBackupWalletInterface(mnemonics: mnemonics, requestedModule: requestedModule)
     }
 }

@@ -23,19 +23,64 @@ class PassPhraseViewController: MozoBasicViewController {
     @IBOutlet weak var checkLabel: UILabel!
     @IBOutlet weak var continueBtn: UIButton!
     
+    var requestedModule = Module.Wallet
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBar()
         addBorderForLabel()
         addTapForLabel()
         if passPharse == nil {
             // Generate mnemonic
             eventHandler?.generateMnemonics()
+        } else {
+            self.showPassPhraseOnContainerView()
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = "Backup Wallet".localized
+        if requestedModule == .BackupWallet {
+            navigationItem.rightBarButtonItem = nil
+        }
+    }
+    
+    func setNavigationBar() {
+        //your custom view for back image with custom size
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 85, height: 40))
+        let imageView = UIImageView(frame: CGRect(x: -10, y: 10, width: 20, height: 20))
+
+        if let imgBackArrow = UIImage(named: "ic_left_arrow", in: BundleManager.mozoBundle(), compatibleWith: nil) {
+            imageView.image = imgBackArrow.withRenderingMode(.alwaysTemplate)
+            imageView.tintColor = ThemeManager.shared.main
+        }
+        view.addSubview(imageView)
+
+        let label = UILabel(frame: CGRect(x: 10, y: 10, width: 60, height: 18))
+        label.text = "Back".localized
+        label.textColor = ThemeManager.shared.main
+
+        view.addSubview(label)
+
+        let backTap = UITapGestureRecognizer(target: self, action: #selector(tapBackBtn))
+        view.addGestureRecognizer(backTap)
+
+        let leftBarButtonItem = UIBarButtonItem(customView: view)
+        self.navigationItem.leftBarButtonItem = leftBarButtonItem
+    }
+
+    @objc func tapBackBtn() {
+        if requestedModule == .BackupWallet {
+            if let mozoNavigationController = navigationController as? MozoNavigationController,
+                let coreEventHandler = mozoNavigationController.coreEventHandler {
+                coreEventHandler.requestForCloseAllMozoUIs()
+            }
+        } else {
+            if let mozoNavigationController = navigationController as? MozoNavigationController {
+                mozoNavigationController.popViewController(animated: false)
+            }
+        }
     }
     
     func addBorderForLabel() {
@@ -68,7 +113,7 @@ class PassPhraseViewController: MozoBasicViewController {
     
     @IBAction fileprivate func continueBtnTapped(_ sender:AnyObject) {
         if let passPhrase = self.passPharse {
-            eventHandler?.skipShowPassPharse(passPharse: passPhrase)
+            eventHandler?.skipShowPassPharse(passPharse: passPhrase, requestedModule: requestedModule)
         }
     }
     

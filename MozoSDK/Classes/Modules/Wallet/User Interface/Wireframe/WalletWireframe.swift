@@ -35,6 +35,8 @@ class WalletWireframe: MozoWireframe {
         walletPresenter?.pinUserInterface = viewController
         if module == .Airdrop || module == .Withdraw {
             rootWireframe?.showRootViewController(viewController, inWindow: (UIApplication.shared.delegate?.window!)!)
+        } else if module == .BackupWallet {
+            rootWireframe?.changeRootViewController(viewController)
         } else {
             rootWireframe?.displayViewController(viewController)
         }
@@ -48,9 +50,11 @@ class WalletWireframe: MozoWireframe {
         }
     }
     
-    func presentPassPhraseInterface() {
+    func presentPassPhraseInterface(mnemonics: String? = nil, requestedModule: Module = .Wallet) {
         let viewController = viewControllerFromStoryBoard(PassPhraseViewControllerIdentifier) as! PassPhraseViewController
         viewController.eventHandler = walletPresenter
+        viewController.passPharse = mnemonics
+        viewController.requestedModule = requestedModule
         passPhraseViewController = viewController
         walletPresenter?.passPharseUserInterface = viewController
         rootWireframe?.displayViewController(viewController)
