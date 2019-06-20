@@ -53,10 +53,23 @@ class AirdropAddInteractor: NSObject {
         return transaction
     }
     
+    func requestForPin() {
+        if let encryptedPin = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo?.encryptedPin,
+            let pinSecret = AccessTokenManager.getPinSecret() {
+            let decryptPin = encryptedPin.decrypt(key: pinSecret)
+            self.output?.requestAutoPINInterface()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Configuration.TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS) + .milliseconds(1)) {
+                self.sendSignedTx(pin: decryptPin)
+            }
+        } else {
+            self.output?.requestPinInterface()
+        }
+    }
+    
     func sendTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO) {
         _ = apiManager?.transferTransaction(transaction).done { (interTx) in
             self.transaction = interTx
-            self.output?.requestPinInterface()
+            self.requestForPin()
         }.catch({ (error) in
             let cErr = error as? ConnectionError ?? .systemError
             self.output?.didFailedToCreateTransaction(error: cErr)

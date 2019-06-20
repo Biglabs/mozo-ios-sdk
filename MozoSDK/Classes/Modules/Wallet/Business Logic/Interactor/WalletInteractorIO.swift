@@ -22,6 +22,11 @@ protocol WalletInteractorInput {
     func verifyConfirmPIN(pin: String, confirmPin: String)
     
     func updateOnchainAddressToServer(walletsNeedToBeSavedAtLocal: [WalletModel])
+    
+    func verifyCurrentPINToChangePIN(pin: String)
+    func verifyConfirmPINToChangePIN(pin: String, confirmPin: String)
+    
+    func verifyCurrentPINToBackup(pin: String)
 }
 
 protocol WalletInteractorOutput {
@@ -36,4 +41,9 @@ protocol WalletInteractorOutput {
     func updatedWallet()
     
     func errorWhileManageWallet(connectionError: ConnectionError, showTryAgain: Bool)
+    
+    func verifiedCurrentPINToChangePIN(pin: String, result: Bool)
+    func verifiedConfirmPINToChangePIN(pin: String, result: Bool)
+    
+    func verifiedCurrentPINToBackup(pin: String, result: Bool)
 }

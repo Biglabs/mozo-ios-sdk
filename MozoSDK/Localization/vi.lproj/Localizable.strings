@@ -48,7 +48,9 @@
 "Store Recovery Phrase" = "Kí tự dùng khôi phục ví";
 "Please write it down on paper and keep it in a safe place as you would with money." = "Ghi lại những từ này và cất giữ ở nơi an toàn để khôi phục lại ví khi cần thiết.";
 "*If you lose your Recovery Phrase, your wallet cannot be recovered." = "*Nếu mất bản ghi này, ví của bạn sẽ không thể khôi phục.";
+"If you lose your recovery phrase, your wallet cannot be recovered." = "Nếu mất bản ghi này, ví của bạn sẽ không thể khôi phục.";
 "I have safely stored Recovery Phrase" = "Tôi đã ghi lại xong";
+"I have safely stored recovery phrase" = "Tôi đã ghi lại xong";
 "Create Security PIN" = "Tạo mã PIN";
 "Restore Wallet" = "Khôi phục lại ví";
 "Security PIN Confirmation" = "Xác nhận mã PIN";

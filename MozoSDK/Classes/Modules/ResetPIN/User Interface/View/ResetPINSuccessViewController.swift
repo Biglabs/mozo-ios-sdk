@@ -10,7 +10,7 @@ import UIKit
 class ResetPINSuccessViewController: MozoBasicViewController {
     @IBOutlet weak var btnDone: UIButton!
     var eventHandler: ResetPINModuleInterface?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         btnDone.roundCorners(cornerRadius: 0.15, borderColor: .white, borderWidth: 0.1)

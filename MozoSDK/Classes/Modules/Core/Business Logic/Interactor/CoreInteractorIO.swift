@@ -28,6 +28,8 @@ protocol CoreInteractorInput {
 protocol CoreInteractorOutput {
     func finishedCheckAuthentication(keepGoing: Bool, module: Module)
     func continueWithWallet(_ callbackModule: Module)
+    func continueWithSpeedSelection(_ callbackModule: Module)
+    func continueWithWalletAuto(_ callbackModule: Module)
     func finishedHandleAferAuth()
     func failToLoadUserInfo(_ error: ConnectionError, for requestingModule: Module?)
     
@@ -35,6 +37,8 @@ protocol CoreInteractorOutput {
     func didReceiveAuthorizationRequired()
     
     func didReceiveMaintenance()
+    
+    func didDetectWalletInAutoMode(module: Module)
 }
 
 protocol CoreInteractorService {

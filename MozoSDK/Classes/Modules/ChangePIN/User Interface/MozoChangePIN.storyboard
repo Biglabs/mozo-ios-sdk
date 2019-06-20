@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ChangePIN Success View Controller-->
+        <scene sceneID="h5K-Yx-FIJ">
+            <objects>
+                <viewController storyboardIdentifier="ChangePINSuccessViewController" id="YFB-zs-S17" customClass="ChangePINSuccessViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xh5-TU-xhw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_check_success" translatesAutoresizingMaskIntoConstraints="NO" id="mfW-f8-l6S">
+                                <rect key="frame" x="147.5" y="165" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Eql-Yp-C98"/>
+                                    <constraint firstAttribute="height" constant="80" id="Fqx-wa-azc"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Security PIN Successful" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ5-15-ALF">
+                                <rect key="frame" x="70" y="275" width="235.5" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="mAk-cg-Y7X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.078431372550000003" green="0.1019607843" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Change Security PIN Successful"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtm-vo-OzF">
+                                <rect key="frame" x="116" y="326" width="143" height="45"/>
+                                <color key="backgroundColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="143" id="hXe-Mj-rvK"/>
+                                    <constraint firstAttribute="height" constant="45" id="qS5-zV-bfv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Done"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="touchBtnDone:" destination="YFB-zs-S17" eventType="touchUpInside" id="9oU-Ys-Idp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kQ5-15-ALF" firstAttribute="top" secondItem="mfW-f8-l6S" secondAttribute="bottom" constant="30" id="Ih7-E0-rPb"/>
+                            <constraint firstItem="dtm-vo-OzF" firstAttribute="top" secondItem="kQ5-15-ALF" secondAttribute="bottom" constant="27" id="SZW-gx-1it"/>
+                            <constraint firstItem="mfW-f8-l6S" firstAttribute="top" secondItem="Fgg-D7-ybh" secondAttribute="top" constant="145" id="Yiv-NG-RqM"/>
+                            <constraint firstItem="dtm-vo-OzF" firstAttribute="centerX" secondItem="kQ5-15-ALF" secondAttribute="centerX" id="crA-20-6ic"/>
+                            <constraint firstItem="kQ5-15-ALF" firstAttribute="centerX" secondItem="mfW-f8-l6S" secondAttribute="centerX" id="pmg-Oc-eJh"/>
+                            <constraint firstItem="mfW-f8-l6S" firstAttribute="centerX" secondItem="Xh5-TU-xhw" secondAttribute="centerX" id="yef-YP-UhQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Fgg-D7-ybh"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnDone" destination="dtm-vo-OzF" id="MI5-Xm-sXo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ESa-0Z-iJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="818" y="504"/>
+        </scene>
+        <!--ChangePIN Process View Controller-->
+        <scene sceneID="BDc-Zu-9Ea">
+            <objects>
+                <viewController storyboardIdentifier="ChangePINProcessViewController" id="IWI-Jn-SUa" customClass="ChangePINProcessViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wtp-tz-KMt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loading" translatesAutoresizingMaskIntoConstraints="NO" id="QdY-lh-r37">
+                                <rect key="frame" x="159" y="246.5" width="57" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="57" id="PeB-nz-S8v"/>
+                                    <constraint firstAttribute="height" constant="54" id="ztW-do-vrV"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change PIN is processing.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkc-F5-3ZM">
+                                <rect key="frame" x="5" y="330.5" width="365" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Change PIN is processing.."/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xkc-F5-3ZM" firstAttribute="top" secondItem="QdY-lh-r37" secondAttribute="bottom" constant="30" id="7Jx-SN-vfu"/>
+                            <constraint firstItem="aBI-8q-EPY" firstAttribute="trailing" secondItem="xkc-F5-3ZM" secondAttribute="trailing" constant="5" id="8kc-xz-6ob"/>
+                            <constraint firstItem="QdY-lh-r37" firstAttribute="centerX" secondItem="wtp-tz-KMt" secondAttribute="centerX" id="Uel-Km-ZDm"/>
+                            <constraint firstItem="xkc-F5-3ZM" firstAttribute="leading" secondItem="aBI-8q-EPY" secondAttribute="leading" constant="5" id="mBK-On-fzh"/>
+                            <constraint firstItem="QdY-lh-r37" firstAttribute="centerY" secondItem="wtp-tz-KMt" secondAttribute="centerY" constant="-60" id="qUT-fk-H62"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aBI-8q-EPY"/>
+                    </view>
+                    <connections>
+                        <outlet property="imgViewLoading" destination="QdY-lh-r37" id="e3P-VH-I2h"/>
+                        <outlet property="lbExplainWaiting" destination="xkc-F5-3ZM" id="U4p-J9-6ky"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qo1-XB-0Te" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121" y="503"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_check_success" width="76.800003051757812" height="76.800003051757812"/>
+        <image name="ic_loading" width="189" height="180"/>
+    </resources>
+</document>

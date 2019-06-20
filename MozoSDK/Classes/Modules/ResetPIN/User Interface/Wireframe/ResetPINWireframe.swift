@@ -32,6 +32,10 @@ class ResetPINWireframe: MozoWireframe {
     }
     
     func dismissResetPINInterface() {
+        if moduleRequested == .Settings {
+            dismissModuleInterface()
+            return
+        }
 //        if moduleRequested == .Wallet {
 //            walletWireframe?.walletPresenter?.handleEndingWalletFlow()
 //        } else {

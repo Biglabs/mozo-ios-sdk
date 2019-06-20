@@ -7,6 +7,7 @@
 
 import Foundation
 import PromiseKit
+import JWTDecode
 
 enum CheckTokenExpiredStatus : String {
     case IDLE = "IDLE"
@@ -143,21 +144,33 @@ class CoreInteractor: NSObject {
             _ = userDataManager.getWalletCountOfUser(id).done({ (value) in
                 if value > 0 {
                     if value == 2, serverHaveBothOffChainAndOnChain {
-                        self.output?.finishedCheckAuthentication(keepGoing: false, module: module)
+                        if wallet.encryptedPin != nil {
+                            // No need to do anything
+                            self.output?.didDetectWalletInAutoMode(module: module)
+                        } else {
+                            self.output?.finishedCheckAuthentication(keepGoing: false, module: module)
+                        }
                     } else {
+                        // Manage wallet with encrypted seed phrase from server: Add missing local wallets
                         self.output?.continueWithWallet(module)
                     }
                 } else {
-                    // Re-authenicate, manage wallet
-                    self.output?.continueWithWallet(module)
+                    // Restore wallet with encrypted seed phrase from server
+                    if wallet.encryptedPin != nil {
+                        // Restore wallet with encrypted seed phrase and pin from server
+                        self.output?.continueWithWalletAuto(module)
+                    } else {
+                        self.output?.continueWithWallet(module)
+                    }
                 }
             }).catch({ (err) in
                 // TODO: Handle Database Error here
                 print("Get wallet count of user [\(id)], error: \(err)")
             })
         } else {
-            // Re-authenicate, manage wallet
-            output?.continueWithWallet(module)
+            // Continue with Speed Selection
+            output?.continueWithSpeedSelection(module)
+//            self.output?.continueWithWallet(module)
         }
     }
     
@@ -183,6 +196,14 @@ class CoreInteractor: NSObject {
             }
         } else {
             output?.finishedCheckAuthentication(keepGoing: true, module: module)
+        }
+    }
+    
+    func saveDataFromToken(_ accessToken: String?) {
+        if let accessToken = accessToken {
+            let jwt = try! decode(jwt: accessToken)
+            let pin_secret = jwt.claim(name: Configuration.JWT_TOKEN_CLAIM_PIN_SECRET).string
+            AccessTokenManager.savePinSecret(pin_secret)
         }
     }
 }
@@ -216,6 +237,7 @@ extension CoreInteractor: CoreInteractorInput {
     
     func handleAferAuth(accessToken: String?) {
         AccessTokenManager.saveToken(accessToken)
+        saveDataFromToken(accessToken)
         anonManager.linkCoinFromAnonymousToCurrentUser()
         handleUserProfileAfterAuth()
     }
@@ -223,8 +245,9 @@ extension CoreInteractor: CoreInteractorInput {
     func handleUserProfileAfterAuth() {
         _ = getUserProfile().done({ () in
             self.downloadData()
-            self.output?.finishedHandleAferAuth()
-            self.processInvitation()
+            self.checkAuthAndWallet(module: .Wallet)
+//            self.output?.finishedHandleAferAuth()
+//            self.processInvitation()
         }).catch({ (err) in
             // Handle case unable to load user profile
             self.output?.failToLoadUserInfo(err as! ConnectionError, for: nil)

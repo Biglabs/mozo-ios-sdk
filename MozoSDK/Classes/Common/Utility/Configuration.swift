@@ -27,6 +27,9 @@ public class Configuration {
     public static let ACCESS_TOKEN_ANONYMOUS = "Mozo@AccessToken@Anonymous"
     // Access token
     public static let ACCESS_TOKEN = "Mozo@AccessToken"
+    // Pin Secrect
+    public static let PIN_SECRET = "Mozo@PinSecret"
+    public static let JWT_TOKEN_CLAIM_PIN_SECRET = "pin_secret"
     // User info
     public static let USER_INFO = "Mozo@UserInfo"
     // User profile
@@ -88,4 +91,6 @@ public class Configuration {
      NSCoding key for the authState property.
      */
     public static let AUTH_STATE = "Mozo@AuthState"
+    
+    public static let TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS = 10
 }

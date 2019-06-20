@@ -32,6 +32,12 @@ let ConvertCompletionViewControllerIdentifier = "ConvertCompletionViewController
 let ConvertFailedViewControllerIdentifier = "ConvertFailedViewController"
 let ResetPINViewControllerIdentifier = "ResetPINViewController"
 let ResetPINSuccessViewControllerIdentifier = "ResetPINSuccessViewController"
+let SpeedSelectionViewControllerIdentifier = "SpeedSelectionViewController"
+let WalletProcessingViewControllerIdentifier = "WalletProcessingViewController"
+let BackupWalletViewControllerIdentifier = "BackupWalletViewController"
+let BackupWalletSuccessViewControllerIdentifier = "BackupWalletSuccessViewController"
+let ChangePINProcessViewControllerIdentifier = "ChangePINProcessViewController"
+let ChangePINSuccessViewControllerIdentifier = "ChangePINSuccessViewController"
 
 class RootWireframe : NSObject {
     let mozoNavigationController = MozoNavigationController()
@@ -51,6 +57,10 @@ class RootWireframe : NSObject {
         var viewControllers : [UIViewController] = mozoNavigationController.viewControllers
         viewControllers.append(viewController)
         mozoNavigationController.setViewControllers(viewControllers, animated: false)
+    }
+    
+    func changeRootViewController(_ newRootViewController: UIViewController) {
+        mozoNavigationController.setViewControllers([newRootViewController], animated: false)
     }
     
     func presentViewController(_ viewController: UIViewController) {

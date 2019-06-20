@@ -192,6 +192,8 @@ extension ResetPINInteractor: ResetPINInteractorInput {
             
             let updatingWalletInfo = WalletInfoDTO(encryptSeedPhrase: encryptedMnemonics, offchainAddress: offchainAddress, onchainAddress: onchainAddress)
             _ = apiManager.resetPINOfUserWallet(walletInfo: updatingWalletInfo).done { (userProfile) in
+                let userDto = UserDTO(id: userProfile.userId, profile: userProfile)
+                SessionStoreManager.saveCurrentUser(user: userDto)
                 self.updateMnemonicAndPinForCurrentUser(wallets: wallets, mnemonic: encryptedMnemonics, pin: pin)
             }.catch { (error) in
                 self.output?.manageResetFailedWithError(error as? ConnectionError ?? .systemError)

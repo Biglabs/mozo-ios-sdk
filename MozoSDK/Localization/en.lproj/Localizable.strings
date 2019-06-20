@@ -48,7 +48,9 @@
 "Store Recovery Phrase" = "Store Recovery Phrase";
 "Please write it down on paper and keep it in a safe place as you would with money." = "Please write this Phrase down and keep it in a safe place.";
 "*If you lose your Recovery Phrase, your wallet cannot be recovered." = "*If you lose your Recovery Phrase, your wallet cannot be recovered.";
+"If you lose your recovery phrase, your wallet cannot be recovered." = "If you lose your recovery phrase, your wallet cannot be recovered.";
 "I have safely stored Recovery Phrase" = "I have safely stored Recovery Phrase";
+"I have safely stored recovery phrase" = "I have safely stored recovery phrase";
 "Create Security PIN" = "Create Security PIN";
 "Restore Wallet" = "Restore Wallet";
 "Security PIN Confirmation" = "Security PIN Confirmation";

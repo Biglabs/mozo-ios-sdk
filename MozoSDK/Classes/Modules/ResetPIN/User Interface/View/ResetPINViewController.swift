@@ -21,7 +21,7 @@ class ResetPINViewController: MozoBasicViewController {
     
     var keyboardHeight: CGFloat = 0
     var keyboardWasShown = false
-    
+        
     var isWaiting = false
     var isDisplayingTryAgain = false {
         didSet {
@@ -57,6 +57,43 @@ class ResetPINViewController: MozoBasicViewController {
 //            self.mnemonicsView.becomeFirstResponder()
 //        }
     }
+    
+//    func setNavigationBar() {
+//        //your custom view for back image with custom size
+//        let view = UIView(frame: CGRect(x: 0, y: 0, width: 85, height: 40))
+//        let imageView = UIImageView(frame: CGRect(x: -10, y: 10, width: 20, height: 20))
+//
+//        if let imgBackArrow = UIImage(named: "ic_left_arrow", in: BundleManager.mozoBundle(), compatibleWith: nil) {
+//            imageView.image = imgBackArrow.withRenderingMode(.alwaysTemplate)
+//            imageView.tintColor = ThemeManager.shared.main
+//        }
+//        view.addSubview(imageView)
+//
+//        let label = UILabel(frame: CGRect(x: 10, y: 10, width: 60, height: 18))
+//        label.text = "Back".localized
+//        label.textColor = ThemeManager.shared.main
+//
+//        view.addSubview(label)
+//
+//        let backTap = UITapGestureRecognizer(target: self, action: #selector(tapBackBtn))
+//        view.addGestureRecognizer(backTap)
+//
+//        let leftBarButtonItem = UIBarButtonItem(customView: view)
+//        self.navigationItem.leftBarButtonItem = leftBarButtonItem
+//    }
+//
+//    @objc func tapBackBtn() {
+//        if isChangePin {
+//            if let mozoNavigationController = navigationController as? MozoNavigationController,
+//                let coreEventHandler = mozoNavigationController.coreEventHandler {
+//                coreEventHandler.requestForCloseAllMozoUIs()
+//            }
+//        } else {
+//            if let mozoNavigationController = navigationController as? MozoNavigationController {
+//                mozoNavigationController.popViewController(animated: false)
+//            }
+//        }
+//    }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)

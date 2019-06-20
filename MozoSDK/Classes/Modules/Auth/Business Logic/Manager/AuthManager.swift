@@ -83,8 +83,9 @@ class AuthManager : NSObject {
     }
     
     func clearAll() {
-        print("AuthManager, clear all: token, user info, auth state.")
+        print("AuthManager - clear all: token, pin secret, user info, auth state.")
         AccessTokenManager.clearToken()
+        AccessTokenManager.clearPinSecret()
         SessionStoreManager.clearCurrentUser()
         SafetyDataManager.shared.offchainDetailDisplayData = nil
         SafetyDataManager.shared.onchainFromOffchainDetailDisplayData = nil

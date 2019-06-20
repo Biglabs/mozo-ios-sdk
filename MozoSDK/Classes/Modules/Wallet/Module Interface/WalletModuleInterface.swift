@@ -12,7 +12,7 @@ protocol WalletModuleInterface {
     func processInitialWalletInterface()
     
     func generateMnemonics()
-    func skipShowPassPharse(passPharse : String)
+    func skipShowPassPharse(passPharse : String, requestedModule: Module)
     
     func enterPIN(pin: String)
     func verifyPIN(pin: String)
@@ -24,4 +24,9 @@ protocol WalletModuleInterface {
     func displayResetPINInterface(requestFrom module: Module)
     
     func manageWalletForResetPIN(passPhrase: String?, pin: String)
+    
+    func verifyCurrentPINToChangePIN(pin: String)
+    func verifyConfirmPINToChangePIN(pin: String, confirmPin: String)
+    
+    func verifyCurrentPINToBackup(pin: String)
 }

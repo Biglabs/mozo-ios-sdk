@@ -12,6 +12,7 @@ import PromiseKit
 
 class WalletInteractor : NSObject {
     var output : WalletInteractorOutput?
+    var autoOutput: WalletInteractorAutoOutput?
     
     let walletManager : WalletManager
     let dataManager : WalletDataManager
@@ -128,7 +129,7 @@ class WalletInteractor : NSObject {
             .done { uProfile -> Void in
                 let userDto = UserDTO(id: uProfile.userId, profile: uProfile)
                 SessionStoreManager.saveCurrentUser(user: userDto)
-                print("Update Wallet To User Profile result: [\(uProfile)]")
+                print("WalletInteractor - Update Wallet To User Profile result: [\(uProfile)]")
                 self.updateWalletsForCurrentUser(wallets)
                 self.output?.updatedWallet()
             }.catch({ (error) in
@@ -299,5 +300,66 @@ extension WalletInteractor : WalletInteractorInput {
     func generateMnemonics(){
         let mnemonics = walletManager.generateMnemonics()
         output?.generatedMnemonics(mnemonic: mnemonics!)
+    }
+    
+    func verifyCurrentPINToChangePIN(pin: String) {
+        // Get User from UserDefaults
+        if let userObj = SessionStoreManager.loadCurrentUser() {
+            // Get ManagedUser from User.id
+            _ = dataManager.getUserById(userObj.id!).done { (user) in
+                var compareResult = false
+                if user.pin?.isEmpty == false {
+                    // Compare PIN
+                    compareResult = pin.toSHA512() == user.pin
+                } else {
+                    // Incase: restore wallet from server mnemonics
+                    let mnemonic = userObj.profile?.walletInfo?.encryptSeedPhrase?.decrypt(key: pin)
+                    // TODO: Handle mnemonic nil here
+                    if BIP39.mnemonicsToEntropy(mnemonic!) == nil {
+                        print("😞 Invalid mnemonics")
+                        compareResult = false
+                    } else {
+                        _ = self.updateMnemonicAndPinForCurrentUser(mnemonic: (userObj.profile?.walletInfo?.encryptSeedPhrase)!, pin: pin)
+                        compareResult = true
+                    }
+                }
+                self.output?.verifiedCurrentPINToChangePIN(pin: pin, result: compareResult)
+            }
+        } else {
+            // TODO: Handle case no user data
+        }
+    }
+    
+    func verifyConfirmPINToChangePIN(pin: String, confirmPin: String) {
+        let compareResult = (pin == confirmPin)
+        self.output?.verifiedConfirmPINToChangePIN(pin: pin, result: compareResult)
+    }
+    
+    func verifyCurrentPINToBackup(pin: String) {
+        // Get User from UserDefaults
+        if let userObj = SessionStoreManager.loadCurrentUser() {
+            // Get ManagedUser from User.id
+            _ = dataManager.getUserById(userObj.id!).done { (user) in
+                var compareResult = false
+                if user.pin?.isEmpty == false {
+                    // Compare PIN
+                    compareResult = pin.toSHA512() == user.pin
+                } else {
+                    // Incase: restore wallet from server mnemonics
+                    let mnemonic = userObj.profile?.walletInfo?.encryptSeedPhrase?.decrypt(key: pin)
+                    // TODO: Handle mnemonic nil here
+                    if BIP39.mnemonicsToEntropy(mnemonic!) == nil {
+                        print("😞 Invalid mnemonics")
+                        compareResult = false
+                    } else {
+                        _ = self.updateMnemonicAndPinForCurrentUser(mnemonic: (userObj.profile?.walletInfo?.encryptSeedPhrase)!, pin: pin)
+                        compareResult = true
+                    }
+                }
+                self.output?.verifiedCurrentPINToBackup(pin: pin, result: compareResult)
+            }
+        } else {
+            // TODO: Handle case no user data
+        }
     }
 }

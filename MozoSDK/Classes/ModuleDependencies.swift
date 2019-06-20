@@ -57,6 +57,9 @@ class ModuleDependencies {
     let convertWireframe = ConvertWireframe()
     let txProcessWireframe = TxProcessWireframe()
     let convertCompletionWireframe = ConvertCompletionWireframe()
+    let speedSelectionWireframe = SpeedSelectionWireframe()
+    let backupWalletWireframe = BackupWalletWireframe()
+    let changePINWireframe = ChangePINWireframe()
     
     let apiManager = ApiManager()
     let webSocketManager = WebSocketManager()
@@ -326,9 +329,19 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getCreateAirdropEventSettings())!
     }
     
+    func requestForChangePin() {
+        coreWireframe.requestForChangePin()
+    }
+    
+    func requestForBackUpWallet() {
+        coreWireframe.requestForBackUpWallet()
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()
+        // MARK: Speed Selection
+        speedSelectionDependencies()
         // MARK: Auth
         authDependencies()
         // MARK: Wallet
@@ -347,6 +360,8 @@ class ModuleDependencies {
         // MARK: Transaction Process
         txProcessDependencies()
         convertCompletionDependencies()
+        // MARK: Backup Wallet
+        backupWalletDependencies()
     }
     
     func coreDependencies() {
@@ -383,6 +398,49 @@ class ModuleDependencies {
         coreWireframe.paymentWireframe = paymentWireframe
         coreWireframe.paymentQRWireframe = paymentQRWireframe
         coreWireframe.convertWireframe = convertWireframe
+        coreWireframe.speedSelectionWireframe = speedSelectionWireframe
+        coreWireframe.resetPinWireframe = resetPINWireframe
+        coreWireframe.backupWalletWireframe = backupWalletWireframe
+        coreWireframe.changePINWireframe = changePINWireframe
+    }
+    
+    func changePINDependencies(walletManager: WalletManager, dataManager: WalletDataManager) {
+        let changePINPresenter = ChangePINPresenter()
+        
+        let changePINInteractor = ChangePINInteractor(walletManager: walletManager, dataManager: dataManager, apiManager: apiManager)
+        changePINInteractor.output = changePINPresenter
+        
+        changePINPresenter.interactor = changePINInteractor
+        changePINPresenter.wireframe = changePINWireframe
+        
+        changePINWireframe.presenter = changePINPresenter
+        changePINWireframe.walletWireframe = walletWireframe
+        changePINWireframe.rootWireframe = rootWireframe
+        
+        walletWireframe.walletPresenter?.changePINModuleDelegate = changePINPresenter 
+    }
+    
+    func backupWalletDependencies() {
+        let backupWalletPresenter = BackupWalletPresenter()
+        
+        let backupWalletInteractor = BackupWalletInteractor()
+        backupWalletInteractor.output = backupWalletPresenter
+        
+        backupWalletPresenter.interactor = backupWalletInteractor
+        
+        backupWalletPresenter.wireframe = backupWalletWireframe
+        backupWalletPresenter.delegate = walletWireframe.walletPresenter
+        
+        backupWalletWireframe.walletWireframe = walletWireframe
+        backupWalletWireframe.presenter = backupWalletPresenter
+        backupWalletWireframe.rootWireframe = rootWireframe
+    }
+    
+    func speedSelectionDependencies() {
+        let speedSelectionPresenter = SpeedSelectionPresenter()
+        speedSelectionPresenter.delegate = coreWireframe.corePresenter
+        speedSelectionWireframe.presenter = speedSelectionPresenter
+        speedSelectionWireframe.rootWireframe = rootWireframe
     }
     
     func convertDependencies(signManager: TransactionSignManager) {
@@ -534,16 +592,21 @@ class ModuleDependencies {
         
         let walletInteractor = WalletInteractor(walletManager: walletManager, dataManager: walletDataManager, apiManager: apiManager)
         walletInteractor.output = walletPresenter
+        walletInteractor.autoOutput = walletPresenter
         
         walletPresenter.walletInteractor = walletInteractor
+        walletPresenter.walletInteractorAuto = walletInteractor
         walletPresenter.walletWireframe = walletWireframe
         walletPresenter.walletModuleDelegate = coreWireframe.corePresenter
         
         walletWireframe.walletPresenter = walletPresenter
         walletWireframe.rootWireframe = rootWireframe
         walletWireframe.resetPINWireframe = resetPINWireframe
+        walletWireframe.backupWalletWireframe = backupWalletWireframe
         
         resetPINDependencies(walletManager: walletManager, dataManager: walletDataManager)
+        // MARK: Change PIN
+        changePINDependencies(walletManager: walletManager, dataManager: walletDataManager)
     }
     
     func resetPINDependencies(walletManager: WalletManager, dataManager: WalletDataManager) {
@@ -575,6 +638,7 @@ class ModuleDependencies {
         
         adWireframe.adPresenter = adPresenter
         adWireframe.walletWireframe = walletWireframe
+        adWireframe.rootWireframe = rootWireframe
     }
     
     func airdropAddDependencies(signManager: TransactionSignManager) {
@@ -590,6 +654,7 @@ class ModuleDependencies {
         
         addWireframe.addPresenter = addPresenter
         addWireframe.walletWireframe = walletWireframe
+        addWireframe.rootWireframe = rootWireframe
     }
     
     func airdropWithdrawDependencies(signManager: TransactionSignManager) {
@@ -605,6 +670,7 @@ class ModuleDependencies {
         
         withdrawWireframe.withdrawPresenter = withdrawPresenter
         withdrawWireframe.walletWireframe = walletWireframe
+        withdrawWireframe.rootWireframe = rootWireframe
     }
     
     func paymentDependencies() {

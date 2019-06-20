@@ -13,6 +13,7 @@ public class WalletInfoDTO: Codable, ResponseObjectSerializable {
     public var encryptSeedPhrase: String?
     public var offchainAddress: String?
     public var onchainAddress: String?
+    public var encryptedPin: String?
     
     public required init(encryptSeedPhrase: String?, offchainAddress: String?){
         self.encryptSeedPhrase = encryptSeedPhrase
@@ -25,6 +26,13 @@ public class WalletInfoDTO: Codable, ResponseObjectSerializable {
         self.onchainAddress = onchainAddress
     }
     
+    public required init(encryptSeedPhrase: String?, offchainAddress: String?, onchainAddress: String?, encryptedPin: String?) {
+        self.encryptSeedPhrase = encryptSeedPhrase
+        self.offchainAddress = offchainAddress
+        self.onchainAddress = onchainAddress
+        self.encryptedPin = encryptedPin
+    }
+    
     public required init(onchainAddress: String?) {
         self.onchainAddress = onchainAddress
     }
@@ -33,6 +41,7 @@ public class WalletInfoDTO: Codable, ResponseObjectSerializable {
         self.encryptSeedPhrase = json["encryptSeedPhrase"].string
         self.offchainAddress = json["offchainAddress"].string
         self.onchainAddress = json["onchainAddress"].string
+        self.encryptedPin = json["encryptedPin"].string
     }
     
     public required init?(){}
@@ -47,6 +56,9 @@ public class WalletInfoDTO: Codable, ResponseObjectSerializable {
         }
         if let onchainAddress = self.onchainAddress {
             json["onchainAddress"] = onchainAddress
+        }
+        if let encryptedPin = self.encryptedPin {
+            json["encryptedPin"] = encryptedPin
         }
         return json
     }

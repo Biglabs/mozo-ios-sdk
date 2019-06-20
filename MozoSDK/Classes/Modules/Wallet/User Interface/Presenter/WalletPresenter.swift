@@ -11,12 +11,15 @@ import UIKit
 
 class WalletPresenter : NSObject {
     var walletInteractor : WalletInteractorInput?
+    var walletInteractorAuto: WalletInteractorAutoInput?
     var walletWireframe : WalletWireframe?
     var pinUserInterface : PINViewInterface?
+    var processingViewInterface: WalletProcessingViewInterface?
     var passPharseUserInterface : PassPhraseViewInterface?
     var walletModuleDelegate : WalletModuleDelegate?
     var pinModuleDelegate: PinModuleDelegate?
     var resetPinModuleDelegate: ResetPINModuleDelegate?
+    var changePINModuleDelegate: ChangePINModuleDelegate?
     
     func handleEndingWalletFlow() {
         print("WalletPresenter - Handle ending wallet flow")
@@ -41,7 +44,15 @@ class WalletPresenter : NSObject {
                     walletWireframe?.presentPINInterface(passPharse: nil)
                 }
             } else {
-                walletWireframe?.presentPassPhraseInterface()
+                // Check use rememberred PIN
+                if walletInfo.encryptedPin != nil {
+                    // Create wallet with encrypted seed phrase and pin from server
+                    walletWireframe?.presentWalletProcessingInterface(isCreateNew: false)
+                    processInitialWalletInterfaceAutomatically(isCreateNew: false)
+                } else {
+                    // Create wallet
+                    walletWireframe?.presentPassPhraseInterface()
+                }
             }
         }
     }
@@ -88,12 +99,29 @@ extension WalletPresenter: WalletModuleInterface {
         walletInteractor?.generateMnemonics()
     }
     
-    func skipShowPassPharse(passPharse: String) {
-        walletWireframe?.presentPINInterface(passPharse: passPharse)
+    func skipShowPassPharse(passPharse: String, requestedModule: Module) {
+        print("WalletPresenter - Skip show pass phrase")
+        walletWireframe?.presentBackupWalletInterface(mnemonics: passPharse, requestedModule: requestedModule)
+//        walletWireframe?.presentPINInterface(passPharse: passPharse)
     }
     
     func displayResetPINInterface(requestFrom module: Module) {
         walletWireframe?.presentResetPINInterface(requestFrom: module)
+    }
+    
+    func verifyCurrentPINToChangePIN(pin: String) {
+        pinUserInterface?.displaySpinner()
+        walletInteractor?.verifyCurrentPINToChangePIN(pin: pin)
+    }
+    
+    func verifyConfirmPINToChangePIN(pin: String, confirmPin: String) {
+        pinUserInterface?.displaySpinner()
+        walletInteractor?.verifyConfirmPINToChangePIN(pin: pin, confirmPin: confirmPin)
+    }
+    
+    func verifyCurrentPINToBackup(pin: String) {
+        pinUserInterface?.displaySpinner()
+        walletInteractor?.verifyCurrentPINToBackup(pin: pin)
     }
 }
 
@@ -170,5 +198,27 @@ extension WalletPresenter: WalletInteractorOutput {
     
     func generatedMnemonics(mnemonic: String) {
         passPharseUserInterface?.showPassPhrase(passPharse: mnemonic)
+    }
+    
+    func verifiedCurrentPINToChangePIN(pin: String, result: Bool) {
+        pinUserInterface?.removeSpinner()
+        if result {
+            walletWireframe?.dismissWalletInterface()
+            changePINModuleDelegate?.verifiedCurrentPINSuccess(pin)
+        } else {
+            // Input PIN is NOT correct
+            pinUserInterface?.showVerificationFailed()
+        }
+    }
+    
+    func verifiedConfirmPINToChangePIN(pin: String, result: Bool) {
+        pinUserInterface?.removeSpinner()
+        if result {
+            walletWireframe?.dismissWalletInterface()
+            changePINModuleDelegate?.inputNewPINSuccess(pin)
+        } else {
+            // Input PIN is NOT correct
+            pinUserInterface?.showVerificationFailed()
+        }
     }
 }

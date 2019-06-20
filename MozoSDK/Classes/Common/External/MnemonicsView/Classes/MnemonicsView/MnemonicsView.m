@@ -147,9 +147,20 @@ static NSUInteger const MnemonicsViewDefaultCount     = 24;
       [item.label.widthAnchor constraintEqualToAnchor:label.widthAnchor].active = YES;
     }
     label = item.label;
+    if (_isIndexRandomly) {
+       int startIndexRandom = startIndex == 0 ? startIndex : 2;
+        NSNumber *value = _randomIndexs[startIndexRandom + i];
+       item.label.text = [NSString stringWithFormat:@"%zd.", [value longValue]];
+    }
     [self.items addPointer:(__bridge void *)item];
   }
   return stackView;
+}
+
+- (void) setIndexRandomly:(BOOL)indexRandomly randomIndexs:(NSArray*) randomIndexs{
+    _isIndexRandomly = indexRandomly;
+    _randomIndexs = randomIndexs;
+    [self _prepareColumns];
 }
 
 #pragma mark - Override

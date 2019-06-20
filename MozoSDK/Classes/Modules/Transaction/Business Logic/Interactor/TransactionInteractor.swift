@@ -43,6 +43,20 @@ class TransactionInteractor : NSObject {
         pinToRetry = nil
     }
     
+    func requestForPin() {
+        if let encryptedPin = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo?.encryptedPin,
+            let pinSecret = AccessTokenManager.getPinSecret() {
+            let decryptPin = encryptedPin.decrypt(key: pinSecret)
+            pinToRetry = decryptPin
+            self.output?.requestAutoPINInterface()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Configuration.TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS) + .milliseconds(1)) {
+                self.performTransfer(pin: decryptPin)
+            }
+        } else {
+            self.output?.requestPinToSignTransaction()
+        }
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self, name: .didCloseAllMozoUI, object: nil)
     }
@@ -85,7 +99,7 @@ extension TransactionInteractor : TransactionInteractorInput {
                 if let pin = self.pinToRetry {
                     self.performTransfer(pin: pin)
                 } else {
-                    self.output?.requestPinToSignTransaction()
+                    self.requestForPin()
                 }
             }.catch({ (error) in
                 print("Send create transaction failed, show popup to retry.")

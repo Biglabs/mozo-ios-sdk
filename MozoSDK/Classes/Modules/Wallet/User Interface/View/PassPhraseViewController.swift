@@ -16,27 +16,76 @@ class PassPhraseViewController: MozoBasicViewController {
         super.init(coder: aDecoder)
     }
     
+    @IBOutlet weak var passPhraseContainerView: UIView!
     @IBOutlet fileprivate var passPhraseTextView:UITextView?
     @IBOutlet weak var checkView: UIView!
     @IBOutlet weak var checkImg: UIImageView!
     @IBOutlet weak var checkLabel: UILabel!
     @IBOutlet weak var continueBtn: UIButton!
     
+    var requestedModule = Module.Wallet
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBar()
         addBorderForLabel()
         addTapForLabel()
-        // Generate mnemonic
-        eventHandler?.generateMnemonics()
+        if passPharse == nil {
+            // Generate mnemonic
+            eventHandler?.generateMnemonics()
+        } else {
+            self.showPassPhraseOnContainerView()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Backup Wallet".localized
+        navigationItem.title = "Backup Wallet".localized
+        if requestedModule == .BackupWallet {
+            navigationItem.rightBarButtonItem = nil
+        }
+    }
+    
+    func setNavigationBar() {
+        //your custom view for back image with custom size
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 85, height: 40))
+        let imageView = UIImageView(frame: CGRect(x: -10, y: 10, width: 20, height: 20))
+
+        if let imgBackArrow = UIImage(named: "ic_left_arrow", in: BundleManager.mozoBundle(), compatibleWith: nil) {
+            imageView.image = imgBackArrow.withRenderingMode(.alwaysTemplate)
+            imageView.tintColor = ThemeManager.shared.main
+        }
+        view.addSubview(imageView)
+
+        let label = UILabel(frame: CGRect(x: 10, y: 10, width: 60, height: 18))
+        label.text = "Back".localized
+        label.textColor = ThemeManager.shared.main
+
+        view.addSubview(label)
+
+        let backTap = UITapGestureRecognizer(target: self, action: #selector(tapBackBtn))
+        view.addGestureRecognizer(backTap)
+
+        let leftBarButtonItem = UIBarButtonItem(customView: view)
+        self.navigationItem.leftBarButtonItem = leftBarButtonItem
+    }
+
+    @objc func tapBackBtn() {
+        if requestedModule == .BackupWallet {
+            if let mozoNavigationController = navigationController as? MozoNavigationController,
+                let coreEventHandler = mozoNavigationController.coreEventHandler {
+                coreEventHandler.requestForCloseAllMozoUIs()
+            }
+        } else {
+            if let mozoNavigationController = navigationController as? MozoNavigationController {
+                mozoNavigationController.popViewController(animated: false)
+            }
+        }
     }
     
     func addBorderForLabel() {
-        checkView.roundCorners(borderColor: ThemeManager.shared.disable, borderWidth: 1.1)
+        checkImg.roundCorners(cornerRadius: 0.5, borderColor: ThemeManager.shared.main, borderWidth: 2)
+        checkView.roundCorners(borderColor: ThemeManager.shared.main, borderWidth: 2)
         continueBtn.roundCorners(cornerRadius: 0.02, borderColor: .clear, borderWidth: 0.1)
     }
     
@@ -64,18 +113,31 @@ class PassPhraseViewController: MozoBasicViewController {
     
     @IBAction fileprivate func continueBtnTapped(_ sender:AnyObject) {
         if let passPhrase = self.passPharse {
-            eventHandler?.skipShowPassPharse(passPharse: passPhrase)
+            eventHandler?.skipShowPassPharse(passPharse: passPhrase, requestedModule: requestedModule)
         }
     }
     
     func addWordSpace(str: String) -> String {
         return str.replace(" ", withString: "  ")
     }
+    
+    func showPassPhraseOnContainerView() {
+        if let array = self.passPharse?.components(separatedBy: " ") {
+            let wordViews = self.passPhraseContainerView.subviews.filter({ $0.tag != 99 })
+            for (index, element) in array.enumerated() {
+                let view = wordViews.first{ $0.tag == index }
+                if let label = view as? UILabel {
+                    label.text = element
+                }
+            }
+        }
+    }
 }
 
 extension PassPhraseViewController: PassPhraseViewInterface {
     func showPassPhrase(passPharse: String) {
         self.passPharse = passPharse
-        self.passPhraseTextView?.text = addWordSpace(str: passPharse)
+        self.showPassPhraseOnContainerView()
+//        self.passPhraseTextView?.text = addWordSpace(str: passPharse)
     }
 }

@@ -53,6 +53,13 @@ extension TransactionPresenter: ScannerViewControllerDelegate {
 }
 
 extension TransactionPresenter : TransactionInteractorOutput {
+    func requestAutoPINInterface() {
+        txWireframe?.presentAutoPINInterface()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Configuration.TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS)) {
+            self.txWireframe?.rootWireframe?.dismissTopViewController()
+        }
+    }
+    
     func didReceiveAddressBookDisplayItem(_ item: AddressBookDisplayItem) {
         transferUserInterface?.updateInterfaceWithDisplayItem(item)
     }

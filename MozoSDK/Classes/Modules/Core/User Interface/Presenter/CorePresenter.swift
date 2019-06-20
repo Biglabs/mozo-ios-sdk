@@ -100,6 +100,29 @@ class CorePresenter : NSObject {
         stopNotifier()
         NotificationCenter.default.removeObserver(self)
     }
+    
+    func presentModuleInterface(_ module: Module) {
+        // Should continue with any module
+        switch module {
+        case .Transaction:
+            coreWireframe?.prepareForTransferInterface()
+        case .TxHistory:
+            coreWireframe?.prepareForTxHistoryInterface()
+        case .Payment:
+            coreWireframe?.prepareForPaymentRequestInterface()
+        case .AddressBook:
+            coreWireframe?.presentAddressBookInterface(false)
+        case .Convert:
+            coreWireframe?.presentConvertInterface()
+        case .SpeedSelection:
+            coreWireframe?.presentSpeedSelectionInterface()
+        case .ChangePIN:
+            coreWireframe?.presentChangePINInterface()
+        case .BackupWallet:
+            coreWireframe?.presentBackupWalletInterface()
+        default: coreWireframe?.prepareForWalletInterface()
+        }
+    }
 }
 
 // MARK: Silent services methods
@@ -173,23 +196,6 @@ extension CorePresenter : CoreModuleInterface {
     
     func requestCloseToLastMozoUIs() {
         coreWireframe?.requestCloseToLastMozoUIs()
-    }
-    
-    func presentModuleInterface(_ module: Module) {
-        // Should continue with any module
-        switch module {
-        case .Transaction:
-            coreWireframe?.prepareForTransferInterface()
-        case .TxHistory:
-            coreWireframe?.prepareForTxHistoryInterface()
-        case .Payment:
-            coreWireframe?.prepareForPaymentRequestInterface()
-        case .AddressBook:
-            coreWireframe?.presentAddressBookInterface(false)
-        case .Convert:
-            coreWireframe?.presentConvertInterface()
-        default: coreWireframe?.prepareForWalletInterface()
-        }
     }
 }
 extension CorePresenter : CoreModuleWaitingInterface {
@@ -281,6 +287,20 @@ extension CorePresenter: WalletModuleDelegate {
 }
 
 extension CorePresenter : CoreInteractorOutput {
+    func continueWithSpeedSelection(_ callbackModule: Module) {
+        print("CorePresenter - Continue with Speed Selection, callbackModule: \(callbackModule.value)")
+        // Should display call back module (if any)
+        self.callBackModule = callbackModule
+        presentModuleInterface(.SpeedSelection)
+    }
+    
+    func continueWithWalletAuto(_ callbackModule: Module) {
+        print("CorePresenter - Continue with Wallet Auto, callbackModule: \(callbackModule.value)")
+        // Should display call back module (if any)
+        self.callBackModule = callbackModule
+        coreWireframe?.processWalletAuto()
+    }
+    
     func continueWithWallet(_ callbackModule: Module) {
         print("CorePresenter - Continue with Wallet, callbackModule: \(callbackModule.value)")
         // Should display call back module (if any)
@@ -298,6 +318,11 @@ extension CorePresenter : CoreInteractorOutput {
         } else {
             presentModuleInterface(module)
         }
+    }
+    
+    func didDetectWalletInAutoMode(module: Module) {
+        callBackModule = module
+        walletModuleDidFinish()
     }
     
     func finishedHandleAferAuth() {

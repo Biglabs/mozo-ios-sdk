@@ -9,9 +9,9 @@
 import UIKit
 
 public class StoryboardManager {
-    public static func mozoStoryboard() -> UIStoryboard{
+    public static func mozoStoryboard(name: String = "") -> UIStoryboard{
         let mozoBundle = BundleManager.mozoBundle()
-        let storyboard = UIStoryboard(name: "Mozo", bundle: mozoBundle)
+        let storyboard = UIStoryboard(name: "Mozo\(name)", bundle: mozoBundle)
         
         return storyboard
     }
