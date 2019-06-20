@@ -638,6 +638,7 @@ class ModuleDependencies {
         
         adWireframe.adPresenter = adPresenter
         adWireframe.walletWireframe = walletWireframe
+        adWireframe.rootWireframe = rootWireframe
     }
     
     func airdropAddDependencies(signManager: TransactionSignManager) {
@@ -653,6 +654,7 @@ class ModuleDependencies {
         
         addWireframe.addPresenter = addPresenter
         addWireframe.walletWireframe = walletWireframe
+        addWireframe.rootWireframe = rootWireframe
     }
     
     func airdropWithdrawDependencies(signManager: TransactionSignManager) {
@@ -668,6 +670,7 @@ class ModuleDependencies {
         
         withdrawWireframe.withdrawPresenter = withdrawPresenter
         withdrawWireframe.walletWireframe = walletWireframe
+        withdrawWireframe.rootWireframe = rootWireframe
     }
     
     func paymentDependencies() {
