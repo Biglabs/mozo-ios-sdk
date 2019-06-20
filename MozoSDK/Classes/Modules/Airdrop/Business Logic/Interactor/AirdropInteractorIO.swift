@@ -22,4 +22,6 @@ protocol AirdropInteractorOutput {
     func requestPinInterface()
     
     func didReceiveTxStatus(_ statusType: TransactionStatusType)
+    
+    func requestAutoPINInterface()
 }

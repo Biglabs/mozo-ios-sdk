@@ -26,4 +26,6 @@ protocol TransactionInteractorOutput {
     func didSendTransactionSuccess(_ transaction: IntermediaryTransactionDTO, tokenInfo: TokenInfoDTO)
     func didReceiveAddressBookDisplayItem(_ item: AddressBookDisplayItem)
     func didReceiveAddressfromScanner(_ address: String)
+    
+    func requestAutoPINInterface()
 }

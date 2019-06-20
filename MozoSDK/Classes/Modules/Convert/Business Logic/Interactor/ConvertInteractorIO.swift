@@ -41,4 +41,6 @@ protocol ConvertInteractorOutput {
     func performTransferWithError(_ error: ConnectionError)
     
     func didSendConvertTransactionSuccess(_ transaction: IntermediaryTransactionDTO)
+    
+    func requestAutoPINInterface()
 }

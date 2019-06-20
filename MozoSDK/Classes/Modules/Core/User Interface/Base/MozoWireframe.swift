@@ -22,6 +22,15 @@ class MozoWireframe: NSObject {
         rootWireframe?.showRootViewController(viewController, inWindow: (UIApplication.shared.delegate?.window!)!)
     }
     
+    func presentAutoPINInterface(needShowRoot: Bool = false) {
+        let viewController = AutoPINViewController()
+        if needShowRoot {
+            rootWireframe?.showRootViewController(viewController, inWindow: (UIApplication.shared.delegate?.window!)!)
+        } else {
+            rootWireframe?.displayViewController(viewController)
+        }
+    }
+    
     public func getTopViewController() -> UIViewController! {
         return rootWireframe?.getTopViewController()
     }

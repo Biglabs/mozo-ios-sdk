@@ -21,4 +21,6 @@ protocol WithdrawInteractorOutput {
     func requestPinInterface()
     
     func didReceiveTxStatus(_ statusType: TransactionStatusType)
+    
+    func requestAutoPINInterface()
 }

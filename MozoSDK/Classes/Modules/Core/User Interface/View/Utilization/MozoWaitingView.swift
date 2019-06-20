@@ -39,7 +39,7 @@ class MozoWaitingView: UIView {
         addSubview(imgLoading)
         
         lbExplain = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: 20))
-        lbExplain.numberOfLines = 2
+        lbExplain.numberOfLines = 10
         lbExplain.textAlignment = .center
         lbExplain.translatesAutoresizingMaskIntoConstraints = false
 //        lbExplain.center = CGPoint(x: center.x, y: 223 + 10)
@@ -52,6 +52,7 @@ class MozoWaitingView: UIView {
             NSLayoutConstraint(item: imgLoading, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 54),
             NSLayoutConstraint(item: lbExplain, attribute: .centerX, relatedBy: .equal, toItem: imgLoading, attribute: .centerX, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: lbExplain, attribute: .top, relatedBy: .equal, toItem: imgLoading, attribute: .bottom, multiplier: 1.0, constant: 16),
+            NSLayoutConstraint(item: lbExplain, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1.0, constant: -90)
             ])
     }
     

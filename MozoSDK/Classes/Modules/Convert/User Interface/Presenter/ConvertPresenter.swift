@@ -71,6 +71,13 @@ extension ConvertPresenter: ConvertModuleInterface {
     }
 }
 extension ConvertPresenter: ConvertInteractorOutput {
+    func requestAutoPINInterface() {
+        wireframe?.presentAutoPINInterface()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Configuration.TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS)) {
+            self.wireframe?.rootWireframe?.dismissTopViewController()
+        }
+    }
+    
     func didReceiveEthAndOffchainInfo(_ offchainInfo: OffchainInfoDTO) {
         convertViewInterface?.updateEthAndOffchainInfo(offchainInfo)
     }

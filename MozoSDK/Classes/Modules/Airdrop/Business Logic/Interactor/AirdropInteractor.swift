@@ -106,12 +106,26 @@ class AirdropInteractor: NSObject {
             if let pin = self.pinToRetry {
                 self.sendSignedAirdropEventTx(pin: pin)
             } else {
-                self.output?.requestPinInterface()
+                self.requestForPin()
             }
         }).catch({ (error) in
             let cErr = error as? ConnectionError ?? .systemError
             self.output?.failedToCreateAirdropEvent(error: cErr)
         })
+    }
+    
+    func requestForPin() {
+        if let encryptedPin = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo?.encryptedPin,
+            let pinSecret = AccessTokenManager.getPinSecret() {
+            let decryptPin = encryptedPin.decrypt(key: pinSecret)
+            pinToRetry = decryptPin
+            self.output?.requestAutoPINInterface()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Configuration.TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS) + .milliseconds(1)) {
+                self.sendSignedAirdropEventTx(pin: decryptPin)
+            }
+        } else {
+            self.output?.requestPinInterface()
+        }
     }
 }
 extension AirdropInteractor: AirdropInteractorInput {

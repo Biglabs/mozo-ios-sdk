@@ -91,4 +91,6 @@ public class Configuration {
      NSCoding key for the authState property.
      */
     public static let AUTH_STATE = "Mozo@AuthState"
+    
+    public static let TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS = 10
 }

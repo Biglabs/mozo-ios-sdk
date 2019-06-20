@@ -25,6 +25,13 @@ extension AirdropAddPresenter: PinModuleDelegate {
     }
 }
 extension AirdropAddPresenter: AirdropAddInteractorOutput {
+    func requestAutoPINInterface() {
+        wireframe?.presentAutoPINInterface(needShowRoot: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Configuration.TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS)) {
+            self.wireframe?.rootWireframe?.dismissTopViewController()
+        }
+    }
+    
     func failedToAddMozoToAirdropEvent(error: String?) {
         delegate?.addMozoToAirdropEventFailureWithErrorString(error: error)
     }
