@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
   s.dependency 'web3swift', '~> 1.1.1'
   s.dependency 'secp256k1_ios', '~> 0.1'
   s.dependency 'RNCryptor', '~> 5.0.3'
-  s.dependency 'PromiseKit/Alamofire', '~> 6.0'
+  s.dependency 'PromiseKit/Alamofire', '6.8.4'
   s.dependency 'AlamofireImage', '~> 3.5.0'
   s.dependency 'CoreStore', '5.1.1'
   s.dependency 'AppAuth', '~> 0.92.0'

@@ -61,6 +61,7 @@
 "Enter your Security PIN\nto create airdrop event" = "MozoX를 보내도록 보안 PIN을\n입력하십시오.";
 "Security PIN must be 6 digits" = "PIN은 최소 6 자리 숫자 여야 합니다.";
 "Confirm Security PIN" = "보안 PIN 확인";
+"CONFIRM SERCURITY PIN" = "보안 PIN 확인";
 "Re-enter your PIN" = "PIN 코드를 다시 입력하십시오.";
 "Create Security PIN successful" = "보안 PIN을 성공적으로  생성합니다.";
 "Security PIN is correct" = "정확한 PIN 코드입니다.";
@@ -1026,3 +1027,53 @@
 "Selected days of the week" = "일주일의 선택한 요일";
 
 "Total MozoX you need to Airdrop" = "에어 드롭에 필요한 총 모조X 수";
+
+// Beacon Settings, Beacon Failure contact, Map Route, Speed Selection, Auto Create Wallet, Backup Wallet, Change PIN, Auto PIN
+"Writing data to Beacon..." = "비콘에 데이터 입력중...";
+"Sending Beacon information to server..." = "서버로 비콘 정보를 보내는 중...";
+
+
+"Can’t count calories burned" = "연소된 칼로리는 계산 안됩니다.";
+
+"Request for Support" = "지원 요청";
+"Attach Photo" = "사진 첨부";
+"This field is required." = "이 필드는 필수입니다";
+"Invalid phone number" = "유효하지 않은 전화 번호";
+"Invalid email address" = "유효하지 않은 이메일 주소";
+"Your attachment either has failed to upload or it still uploading. Send this message anyway?" = "첨부 파일을 실패하거나 업로드 중입니다. 이 메시지를 계속 보내시겠습니까?";
+
+"Create Wallet Automatically" = "지갑 자동 만들기";
+"Your Recovery Phrase* and security PIN will be auto generated and remembered by our system." = "당신의 복구 문구* 및 보안 PIN을 자동적으로 생성되어 시스템에 저장됩니다.";
+"Create Wallet Manually" = "지갑 직접 만들기";
+"You will need to back up your Recovery Phrase and security PIN created by you." = "당신이 만든 복구 문구 및 보안 PIN을 백업해야 합니다.";
+"*What are Recovery Phrase?" = "*복구 문구는 무엇입니까?";
+"Recovery Phrase are random set of words used to secure your digital wallet. You should write down these words in order so that in the event you lose your digital wallet or forget your PIN, you can recover your wallet and/or reset your PIN." = "복구 문구는 전자 지갑 보안을 위한 임의 글자 세트입니다. 전자 지갑 분실이나 PIN을 잊어버릴 경우, 자기 전자 지갑을 복구하거나 PIN을 재설정하기 위해 이 글자들을 꼭 써 놓아야 합니다.";
+
+"Create MozoX Wallet" = "모조X 지갑 만들기";
+"Creating your MozoX wallet..." = "당신의 모조X 지갑 만드는 중...";
+
+
+"Backup Wallet" = "지갑 백업하기";
+"This is your recovery phrase" = "당신의 복구 문구입니다.";
+"Please write it down on paper and keep it in a safe place as you would with money" = "종이에 써 놓고 자산 관리 만큼 안전한 곳에 보관하세요.";
+"If you lose your recovery phrase, your wallet cannot be recovered." = "복구 문구 없으면 당신의 지갑을 복구할 수 없습니다.";
+"I have safely stored recovery phrase" = "나는 복구 문구를 안전하게 보관했습니다.";
+
+"Verify" = "인증";
+"VEFIRY" = "인증";
+"Using the completed Recovery Phrase as a reference, please enter the following words from your Recovery Phrase to complete the back up process." = "완성된 복구 문구 사용 참고를 삼아, 복구 문구에 있는 이 글자들을 입력해서 백업 과정 마무리하세요.";
+"Finish" = "완료";
+
+"Your Wallet is Backed Up" = "당신의 지갑은 백업되었습니다.";
+"Be sure to store your recovery phrase in a secure place. If this app is deleted, your wallet cannot be recovered without it." = "복구 문구를 안전한 곳에서 보관했다는 것을 확인하세요. 이 앱은 삭제되면 복구 문구 없이 지갑 복구를 못합니다.";
+"Got It" = "알겠습니다.";
+
+"Change Security PIN" = "보안 PIN 변경";
+"ENTER YOUR CURRENT SECURITY PIN" = "기존 보안 PIN 입력";
+"ENTER NEW SECURITY PIN" = "새로운 보안 PIN 입력";
+"CONFIRM NEW SECURITY PIN" = "새로운 보안 PIN 확인";
+"Re-enter your new PIN" = "새로운 PIN 제입력";
+"Change PIN is processing.." = "PIN 변경 중";
+"Change Security PIN Successful" = "PIN 변경 성공";
+
+"System is using automatically generated PIN to sign your transaction and send it to network..." = "시스템은 자동 생성된 PIN을 사용해 거래 결재하고 네트워크로 보내는 중";

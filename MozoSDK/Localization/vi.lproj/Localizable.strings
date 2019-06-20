@@ -61,6 +61,7 @@
 "Enter your Security PIN\nto create airdrop event" = "Nhập mã PIN\nđể tạo chương trình";
 "Security PIN must be 6 digits" = "Mã PIN phải đủ 6 số";
 "Confirm Security PIN" = "Xác nhận mã PIN";
+"CONFIRM SERCURITY PIN" = "XÁC NHẬN MÃ PIN";
 "Re-enter your PIN" = "Nhập lại mã PIN";
 "Create Security PIN successful" = "Tạo mã PIN thành công";
 "Security PIN is correct" = "Mã PIN chính xác";
@@ -1017,3 +1018,53 @@
 "Selected days of the week" = "Chọn thứ trong tuần";
 
 "Total MozoX you need to Airdrop" = "Tổng số MozoX";
+
+// Beacon Settings, Beacon Failure contact, Map Route, Speed Selection, Auto Create Wallet, Backup Wallet, Change PIN, Auto PIN
+"Writing data to Beacon..." = "Đang thiết lập dữ liệu cho beacon...";
+"Sending Beacon information to server..." = "Đang đồng bộ thông tin beacon với máy chủ...";
+
+
+"Can’t count calories burned" = "Không thể tính được lượng calories sẽ tiêu thụ";
+
+"Request for Support" = "Yêu cầu trợ giúp";
+"Attach Photo" = "Gởi hình ảnh kèm theo";
+"This field is required." = "Trường này là bắt buộc";
+"Invalid phone number" = "Số điện thoại không hợp lệ";
+"Invalid email address" = "Địa chỉ email không hợp lệ";
+"Your attachment either has failed to upload or it still uploading. Send this message anyway?" = "Hình ảnh kèm theo có thể không được tải lên máy chủ do đang trong quá trình tải. Gởi yêu cầu mà không cần quan tâm đến điều này?";
+
+"Create Wallet Automatically" = "Tạo ví tự động";
+"Your Recovery Phrase* and security PIN will be auto generated and remembered by our system." = "Cụm từ khôi phục* và mã PIN được tự động tạo và ghi nhớ bởi hệ thống.";
+"Create Wallet Manually" = "Tạo ví do bạn điều khiển";
+"You will need to back up your Recovery Phrase and security PIN created by you." = "Bạn cần phải ghi lại cụm từ khôi phục và tự tạo mã PIN của riêng mình.";
+"*What are Recovery Phrase?" = "*Cụm từ khôi phục là gì?";
+"Recovery Phrase are random set of words used to secure your digital wallet. You should write down these words in order so that in the event you lose your digital wallet or forget your PIN, you can recover your wallet and/or reset your PIN." = "Cụm từ khôi phục là một tập các từ được phát sinh ngẫu nhiên bởi thuật toán. Bạn phải ghi lại những từ này phòng trường hợp mất thiết bị hoặc quên mã PIN, bạn có thể dùng nó để phục hồi ví hoặc tạo PIN mới.";
+
+"Create MozoX Wallet" = "Tạo ví MozoX";
+"Creating your MozoX wallet..." = "Đang tạo ví MozoX...";
+"Recovering your MozoX wallet..." = "Đang khôi phục thông tin của ví MozoX...";
+
+"Backup Wallet" = "Sao lưu ví";
+"This is your recovery phrase" = "Cụm từ khôi phục";
+"Please write it down on paper and keep it in a safe place as you would with money" = "Xin vui lòng ghi cụm từ khôi phục vào giấy và giữ nó ở một nơi bí mật.";
+"If you lose your recovery phrase, your wallet cannot be recovered." = "Nếu bạn mất cụm từ khôi phục, ví của bạn sẽ không thể khôi phục được.";
+"I have safely stored recovery phrase" = "Tôi đã sao lưu cụm từ khôi phục.";
+
+"Verify" = "Soát lại";
+"VERIFY" = "SOÁT LẠI";
+"Using the completed Recovery Phrase as a reference, please enter the following words from your Recovery Phrase to complete the back up process." = "Xin vui lòng nhập những từ theo đúng thứ tự trong cụm từ khôi phục mà bạn đã sao lưu để hoàn tất quá trình sao lưu ví.";
+"Finish" = "Hoàn tất";
+
+"Your Wallet is Backed Up" = "Ví của bạn đã sao lưu xong.";
+"Be sure to store your recovery phrase in a secure place. If this app is deleted, your wallet cannot be recovered without it." = "Nhớ cất giữ cụm từ khôi phục vào nơi bí mật một cách an toàn. Bạn bắt buộc phải có nó để khôi phục lại ví trong trường hợp mất thiết bị.";
+"Got It" = "Tôi đã hiểu";
+
+"Change Security PIN" = "Thay đổi mã PIN";
+"ENTER YOUR CURRENT SECURITY PIN" = "Nhập mã PIN hiện tại";
+"ENTER NEW SECURITY PIN" = "Nhập mã PIN mới";
+"CONFIRM NEW SECURITY PIN" = "Xác nhận mã PIN";
+"Re-enter your new PIN" = "Nhập lại mã PIN mới";
+"Change PIN is processing.." = "Đang xử lý thay đổi mã PIN...";
+"Change Security PIN Successful" = "Thay đổi mã PIN thành công";
+
+"System is using automatically generated PIN to sign your transaction and send it to network..." = "Đang dùng mã PIN được tự động tạo bởi hệ thống để ký giao dịch và gởi đến máy chủ...";
