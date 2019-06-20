@@ -321,6 +321,7 @@ extension CorePresenter : CoreInteractorOutput {
     }
     
     func didDetectWalletInAutoMode(module: Module) {
+        callBackModule = module
         walletModuleDidFinish()
     }
     
