@@ -53,10 +53,14 @@ class RootWireframe : NSObject {
     }
     
     func displayViewController(_ viewController: UIViewController) {
-        // Need to call override function to push view controller
-        var viewControllers : [UIViewController] = mozoNavigationController.viewControllers
-        viewControllers.append(viewController)
-        mozoNavigationController.setViewControllers(viewControllers, animated: false)
+        if mozoNavigationController.viewControllers.count > 0 || DisplayUtils.getTopViewController() is MozoNavigationController {
+            // Need to call override function to push view controller
+            var viewControllers : [UIViewController] = mozoNavigationController.viewControllers
+            viewControllers.append(viewController)
+            mozoNavigationController.setViewControllers(viewControllers, animated: false)
+        } else {
+            showRootViewController(viewController, inWindow: (UIApplication.shared.delegate?.window!)!)
+        }
     }
     
     func changeRootViewController(_ newRootViewController: UIViewController) {

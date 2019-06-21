@@ -33,6 +33,10 @@ public class MozoSDK {
         moduleDependencies.authenticate()
     }
     
+    public static func processAuthorizationCallBackUrl(_ url: URL) {
+        moduleDependencies.processAuthorizationCallBackUrl(url)
+    }
+    
     public static func logout() {
         moduleDependencies.logout()
     }

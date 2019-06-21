@@ -63,6 +63,8 @@ public class Configuration {
     // IMAGE SERVER
     public static let DOMAIN_IMAGE = "https://\(SUB_DOMAIN)image.mozocoin.io/api/public/"
     
+    public static let BEGIN_SESSION_URL_PATH = "/protocol/openid-connect/auth"
+    
     public static let END_SESSION_URL_PATH = "/protocol/openid-connect/logout"
     
     // LOGOUT WITH REDIRECT
@@ -85,7 +87,11 @@ public class Configuration {
      The OAuth redirect URI for the client @c kClientID.
      For client configuration instructions, see the [README](https://github.com/openid/AppAuth-iOS/blob/master/Examples/Example-iOS_Swift-Carthage/README.md).
      */
-    public static let AUTH_REDIRECT_URL = "com.biglabs.mozosdk:/oauth2redirect/mozo-provider"
+//    public static let AUTH_REDIRECT_URL = "com.biglabs.mozosdk:/oauth2redirect/mozo-provider"
+    
+    public static let AUTH_REDIRECT_CALLBACK_PATH = "oauth2redirect/mozo-provider"
+    
+    public static let AUTH_REDIRECT_URL = "\((Bundle.main.bundleIdentifier ?? "").lowercased())://\(AUTH_REDIRECT_CALLBACK_PATH)"
     
     /**
      NSCoding key for the authState property.

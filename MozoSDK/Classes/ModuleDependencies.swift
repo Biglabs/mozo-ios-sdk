@@ -85,6 +85,10 @@ class ModuleDependencies {
         coreWireframe.requestForAuthentication()
     }
     
+    func processAuthorizationCallBackUrl(_ url: URL) {
+        authWireframe.processAuthorizationCallBackUrl(url)
+    }
+    
     func logout() {
         coreWireframe.requestForLogout()
     }

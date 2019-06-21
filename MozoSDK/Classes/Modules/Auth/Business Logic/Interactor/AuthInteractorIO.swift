@@ -13,7 +13,7 @@ protocol AuthInteractorInput {
     func updateNetwork(_ network: MozoNetwork)
     
     func buildAuthRequest()
-    func setCurrentAuthorizationFlow(_ authorizationFlow : OIDAuthorizationFlowSession?)
+    func setCurrentAuthorizationFlow(_ authorizationFlow : OIDExternalUserAgentSession?)
     func handleAuthorizationResponse(_ response: OIDAuthorizationResponse?, error: Error?)
     
     func buildLogoutRequest()
@@ -21,6 +21,8 @@ protocol AuthInteractorInput {
     func clearAllAuthSession()
     
     func startRefreshTokenTimer()
+    
+    func processAuthorizationCallBackUrl(_ url: URL)
 }
 
 protocol AuthInteractorOutput {
