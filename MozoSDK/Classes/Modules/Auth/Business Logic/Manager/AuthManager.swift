@@ -191,7 +191,8 @@ class AuthManager : NSObject {
                     print("Error creating URL for : \(Configuration.AUTH_REDIRECT_URL)")
                     return
                 }
-                let param = [Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE]
+                let param = [Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE,
+                             Configuration.AUTH_PARAM_APPLICATION_TYPE : Configuration.AUTH_PARAM_APPLICATION_TYPE_VALUE]
                 // builds authentication request
                 let request = OIDAuthorizationRequest(configuration: config,
                                                       clientId: self.clientId,
@@ -239,7 +240,7 @@ class AuthManager : NSObject {
                                                           codeVerifier: authRequest?.codeVerifier,
                                                           codeChallenge: authRequest?.codeChallenge,
                                                           codeChallengeMethod: authRequest?.codeChallengeMethod,
-                                                          additionalParameters: nil)
+                                                          additionalParameters: authRequest?.additionalParameters)
                     
                     seal.fulfill(request)
                 }).catch({ (error) in
@@ -344,7 +345,7 @@ extension AuthManager {
     func codeExchange() -> Promise<String> {
         return Promise { seal in
             guard let tokenExchangeRequest = self.authState?.lastAuthorizationResponse.tokenExchangeRequest() else {
-                print("Error creating authorization code exchange request")
+                NSLog("Error creating authorization code exchange request")
                 return seal.reject(SystemError.incorrectCodeExchangeRequest)
             }
             if tokenExchangeRequest.redirectURL?.absoluteString.contains(Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH) ?? false {
@@ -357,27 +358,28 @@ extension AuthManager {
                 urlString = String(urlString[urlString.startIndex..<clientIdIndex])
                 let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
                 let newRequest = OIDTokenRequest(configuration: tokenExchangeRequest.configuration, grantType: tokenExchangeRequest.grantType, authorizationCode: tokenExchangeRequest.authorizationCode, redirectURL: url!, clientID: tokenExchangeRequest.clientID, clientSecret: tokenExchangeRequest.clientSecret, scope: tokenExchangeRequest.scope, refreshToken: tokenExchangeRequest.refreshToken, codeVerifier: tokenExchangeRequest.codeVerifier, additionalParameters: tokenExchangeRequest.additionalParameters)
-                print("Performing authorization code exchange with request: [\(newRequest)]")
+                NSLog("Performing authorization code exchange with request: [\(newRequest)]")
                 OIDAuthorizationService.perform(newRequest){ response, error in
                     if let tokenResponse = response {
-                        print("Received token response with accessToken: \(tokenResponse.accessToken ?? "DEFAULT_TOKEN")")
+                        NSLog("Received token response with accessToken: \(tokenResponse.accessToken ?? "DEFAULT_TOKEN")")
                         seal.fulfill(tokenResponse.accessToken ?? "")
                     } else {
-                        print("Token exchange error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
+                        NSLog("Token exchange error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
                         seal.reject(error!)
                     }
                     self.authState?.update(with: response, error: error)
                 }
                 return
             }
-            print("Performing authorization code exchange with request: [\(tokenExchangeRequest)]")
+            NSLog("Performing authorization code exchange with request: [\(tokenExchangeRequest)]")
             OIDAuthorizationService.perform(tokenExchangeRequest){ response, error in
                 if let tokenResponse = response {
-                    print("Received token response with accessToken: \(tokenResponse.accessToken ?? "DEFAULT_TOKEN")")
+                    NSLog("Received token response with accessToken: \(tokenResponse.accessToken ?? "DEFAULT_TOKEN")")
                     seal.fulfill(tokenResponse.accessToken ?? "")
                 } else {
-                    print("Token exchange error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
-                    seal.reject(error!)
+                    NSLog("Token exchange error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
+                    let networkError = error != nil ? ConnectionError.network(error: error!) : .systemError
+                    seal.reject(networkError)
                 }
                 self.authState?.update(with: response, error: error)
             }

@@ -64,13 +64,15 @@ extension AuthInteractor : AuthInteractorInput {
         if let response = response {
             let authState = OIDAuthState(authorizationResponse: response)
             authManager?.setAuthState(authState)
-            print("Authorization response with code: \(response.authorizationCode ?? "DEFAULT_CODE")")
+            NSLog("AuthInteractor - Authorization response with code: \(response.authorizationCode ?? "DEFAULT_CODE")")
             _ = authManager?.codeExchange().done({ (accessToken) in
                 self.output?.finishedAuthenticate(accessToken: accessToken)
                 self.authManager?.setupRefreshTokenTimer()
+            }).catch({ (error) in
+                self.output?.errorWhileExchangeCode(error: error as? ConnectionError ?? .systemError, response: response)
             })
         } else {
-            print("Authorization error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
+            NSLog("AuthInteractor - Authorization error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
             output?.cancelledAuthenticateByUser()
         }
     }

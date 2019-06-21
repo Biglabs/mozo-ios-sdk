@@ -85,6 +85,10 @@ public class Configuration {
     
     public static let AUTH_PARAM_KC_LOCALE = "kc_locale"
     
+    public static let AUTH_PARAM_APPLICATION_TYPE = "application_type"
+    
+    public static let AUTH_PARAM_APPLICATION_TYPE_VALUE = "native"
+    
     /**
      The OAuth redirect URI for the client @c kClientID.
      For client configuration instructions, see the [README](https://github.com/openid/AppAuth-iOS/blob/master/Examples/Example-iOS_Swift-Carthage/README.md).

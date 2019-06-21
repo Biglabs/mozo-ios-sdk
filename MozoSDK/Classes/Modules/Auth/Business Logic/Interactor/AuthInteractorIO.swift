@@ -36,4 +36,6 @@ protocol AuthInteractorOutput {
     
     func didCheckAuthorizationSuccess()
     func didRemoveTokenAndLogout()
+    
+    func errorWhileExchangeCode(error: ConnectionError, response: OIDAuthorizationResponse?)
 }
