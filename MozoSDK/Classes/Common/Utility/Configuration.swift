@@ -36,6 +36,8 @@ public class Configuration {
     public static let USER_PROFILE = "Mozo@UserProfile"
     // User Notification history
     public static let USER_NOTI_HISTORY = "Mozo@UserNotiHistory_"
+    // User Need to show Auto PIN screen
+    public static let USER_NOT_SHOW_AUTO_PIN_SCREEN = "Mozo@UserNotShowAutoPINScreen_"
     
     //Wallet
     public static let WALLLET_ID = "WalletId"
