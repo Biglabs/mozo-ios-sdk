@@ -13,6 +13,8 @@ class AuthPresenter : NSObject {
     var authWireframe : AuthWireframe?
     var authModuleDelegate : AuthModuleDelegate?
     
+    var retryOnResponse: OIDAuthorizationResponse?
+    
     func startRefreshTokenTimer() {
         authInteractor?.startRefreshTokenTimer()
     }
@@ -43,6 +45,11 @@ extension AuthPresenter : AuthModuleInterface {
 }
 
 extension AuthPresenter : AuthInteractorOutput {
+    func errorWhileExchangeCode(error: ConnectionError, response: OIDAuthorizationResponse?) {
+        retryOnResponse = response
+        DisplayUtils.displayTryAgainPopup(allowTapToDismiss: false, isEmbedded: false, error: error, delegate: self)
+    }
+    
     func didCheckAuthorizationSuccess() {
         authModuleDelegate?.didCheckAuthorizationSuccess()
     }
@@ -66,6 +73,7 @@ extension AuthPresenter : AuthInteractorOutput {
     }
     
     func finishedAuthenticate(accessToken: String?) {
+        retryOnResponse = nil
         authModuleDelegate?.authModuleDidFinishAuthentication(accessToken: accessToken)
     }
     
@@ -87,5 +95,16 @@ extension AuthPresenter : AuthInteractorOutput {
     
     func finishLogout() {
         
+    }
+}
+extension AuthPresenter: PopupErrorDelegate {
+    func didTouchTryAgainButton() {
+        if let response = self.retryOnResponse {
+            self.authInteractor?.handleAuthorizationResponse(response, error: nil)
+        }
+    }
+    
+    func didClosePopupWithoutRetry() {
+        retryOnResponse = nil
     }
 }
