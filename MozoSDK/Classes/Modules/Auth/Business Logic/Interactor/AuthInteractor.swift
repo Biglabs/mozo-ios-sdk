@@ -18,6 +18,10 @@ class AuthInteractor : NSObject {
         super.init()
         self.authManager?.delegate = self
     }
+    
+    func extractHeaderFromLogoutRequest() {
+        
+    }
 }
 extension AuthInteractor: AuthManagerDelegate {
     func didCheckAuthorizationSuccess() {
@@ -29,6 +33,21 @@ extension AuthInteractor: AuthManagerDelegate {
     }
 }
 extension AuthInteractor : AuthInteractorInput {
+    func processAuthorizationCallBackUrl(_ url: URL) {
+        NSLog("AuthInteractor - Process authorization callback url: \(url)")
+        if authManager?.currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: url) ?? false {
+            authManager?.setCurrentAuthorizationFlow(nil)
+        } else {
+            var urlString = Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH + "?redirect_uri=" + url.absoluteString
+            urlString = urlString.replace("?state=", withString: "&state=")
+            let newURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
+            NSLog("AuthInteractor - Reprocess authorization callback url: \(newURL)")
+            if authManager?.currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: newURL) ?? false {
+                authManager?.setCurrentAuthorizationFlow(nil)
+            }
+        }
+    }
+    
     func startRefreshTokenTimer() {
         authManager?.setupRefreshTokenTimer()
     }
@@ -71,7 +90,7 @@ extension AuthInteractor : AuthInteractorInput {
         })
     }
     
-    func setCurrentAuthorizationFlow(_ authorizationFlow : OIDAuthorizationFlowSession?) {
+    func setCurrentAuthorizationFlow(_ authorizationFlow : OIDExternalUserAgentSession?) {
         authManager?.setCurrentAuthorizationFlow(authorizationFlow)
     }
     

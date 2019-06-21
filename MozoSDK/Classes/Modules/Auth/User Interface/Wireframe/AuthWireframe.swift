@@ -26,6 +26,7 @@ class AuthWireframe: MozoWireframe {
         authPresenter?.clearAllSessionData()
     }
     
-    func dismissAuthInterface(){
+    func processAuthorizationCallBackUrl(_ url: URL) {
+        authPresenter?.processAuthorizationCallBackUrl(url)
     }
 }
