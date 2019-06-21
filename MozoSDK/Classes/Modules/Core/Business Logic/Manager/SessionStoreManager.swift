@@ -52,6 +52,21 @@ public class SessionStoreManager {
         }
     }
     
+    public static func getNotShowAutoPINScreen() -> Bool {
+        if let user = SessionStoreManager.loadCurrentUser(), let id = user.id {
+            let defaults = UserDefaults.standard
+            return defaults.bool(forKey: "\(Configuration.USER_NOT_SHOW_AUTO_PIN_SCREEN)\(id)")
+        }
+        return true
+    }
+    
+    public static func saveNotShowAutoPINScreen(_ notShow: Bool) {
+        if let user = SessionStoreManager.loadCurrentUser(), let id = user.id {
+            let defaults = UserDefaults.standard
+            defaults.set(notShow, forKey: "\(Configuration.USER_NOT_SHOW_AUTO_PIN_SCREEN)\(id)")
+        }
+    }
+    
     public static var gasPrice : GasPriceDTO?
     
     public static var exchangeRateInfo : RateInfoDTO?
