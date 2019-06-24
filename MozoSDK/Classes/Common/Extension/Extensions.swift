@@ -23,7 +23,7 @@ public extension String {
     }
     
     public func isValidDecimalFormat() -> Bool{
-        let text = self.replace(",", withString: ".")
+        let text = self.toTextNumberWithoutGrouping()
         return Float(text) != nil
     }
     
@@ -86,6 +86,12 @@ public extension String {
     public func toDoubleValue() -> Double {
         // FIX ISSUE: [MOZO-254] Round Issue in swift
         return NSDecimalNumber(string: self).doubleValue + (1 / pow(10, 15))
+    }
+    
+    public func toTextNumberWithoutGrouping() -> String {
+        let decimalSeparator = NSLocale.current.decimalSeparator ?? "."
+        let groupingSeparator = NSLocale.current.groupingSeparator ?? ","
+        return self.replace(groupingSeparator, withString: "").replace(decimalSeparator, withString: ".")
     }
 }
 

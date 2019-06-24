@@ -66,7 +66,7 @@ class PaymentViewController: MozoBasicViewController {
     }
     
     func checkDisableButtonSend(_ text: String = "") {
-        if !text.isEmpty, let value = Double(text.replace(",", withString: ".")), value > 0 {
+        if !text.isEmpty, let value = Double(text.toTextNumberWithoutGrouping()), value > 0 {
             btnCreate.isUserInteractionEnabled = true
             btnCreate.backgroundColor = ThemeManager.shared.main
         } else {
@@ -146,8 +146,18 @@ class PaymentViewController: MozoBasicViewController {
         print("TextFieldAmountDidChange")
         if let rateInfo = SessionStoreManager.exchangeRateInfo {
             if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
-                let text = (txtAmount.text != nil ? (txtAmount.text != "" ? txtAmount.text : "0") : "0")?.replace(",", withString: ".")
-                let value = Double(text ?? "0")!
+                let originalText = txtAmount.text ?? "0"
+                let text = originalText.toTextNumberWithoutGrouping()
+                
+                let amountNumber = text.isEmpty ? 0 : NSDecimalNumber(string: text)
+                txtAmount.text = amountNumber.addCommas()
+                if originalText.hasSuffix(NSLocale.current.decimalSeparator ?? ".") {
+                    txtAmount.text = amountNumber.addCommas() + String(originalText.last!)
+                } else if originalText.hasSuffix("\(NSLocale.current.decimalSeparator ?? ".")0") {
+                    txtAmount.text = amountNumber.addCommas() + String(originalText.suffix(2))
+                }
+                let value = amountNumber.doubleValue
+                
                 let exValue = (value * (rateInfo.rate ?? 0))
                 let exValueStr = "\(curSymbol)\(exValue.roundAndAddCommas(toPlaces: type.decimalRound))"
                 lbExchange.text = exValueStr
@@ -158,7 +168,7 @@ class PaymentViewController: MozoBasicViewController {
     @IBAction func touchedBtnCreate(_ sender: Any) {
         if let text = txtAmount.text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             if let tokenInfo = self.tokenInfo {
-                let valueText = text.replace(",", withString: ".")
+                let valueText = text.toTextNumberWithoutGrouping()
                 eventHandler?.createPaymentRequest(valueText.toDoubleValue(), tokenInfo: tokenInfo)
             } else {
                 displayMozoError("No token info")
@@ -242,7 +252,7 @@ extension PaymentViewController: UITextFieldDelegate {
             if (finalText.isValidDecimalFormat() == false){
                 displayMozoError("Error: Please input value in decimal format.")
                 return false
-            } else if let value = Decimal(string: finalText), value.significantFractionalDecimalDigits > tokenInfo?.decimals ?? 0 {
+            } else if let value = Decimal(string: finalText.toTextNumberWithoutGrouping()), value.significantFractionalDecimalDigits > tokenInfo?.decimals ?? 0 {
                 displayMozoError("Error".localized + ": " + "The length of decimal places must be equal or smaller than %d".localizedFormat(tokenInfo?.decimals ?? 0))
                 return false
             }
