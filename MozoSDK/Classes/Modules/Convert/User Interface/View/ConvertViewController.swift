@@ -339,7 +339,7 @@ class ConvertViewController: MozoBasicViewController {
     }
     
     func checkDisableButtonContinue(_ text: String = "") {
-        if !text.isEmpty, let value = Double(text.replace(",", withString: ".")), value > 0 {
+        if !text.isEmpty, let value = Double(text.toTextNumberWithoutGrouping()), value > 0 {
             setEnableButtonContinue()
         } else {
             setEnableButtonContinue(false)
@@ -396,7 +396,7 @@ extension ConvertViewController: UITextFieldDelegate {
             if (finalText.isValidDecimalFormat() == false) {
                 showAmountValidate(errorText: "Error: Please input value in decimal format.".localized)
                 return false
-            } else if let value = Decimal(string: finalText), value.significantFractionalDecimalDigits > onchainInfo?.balanceOfToken?.decimals ?? 0 {
+            } else if let value = Decimal(string: finalText.toTextNumberWithoutGrouping()), value.significantFractionalDecimalDigits > onchainInfo?.balanceOfToken?.decimals ?? 0 {
                 print("Digits: \(value)")
                 showAmountValidate(errorText: "Error".localized + ": " + "The length of decimal places must be equal or smaller than %d".localizedFormat(onchainInfo?.balanceOfToken?.decimals ?? 0))
                 return false

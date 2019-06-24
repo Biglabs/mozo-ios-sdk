@@ -378,7 +378,12 @@ extension AuthManager {
                     seal.fulfill(tokenResponse.accessToken ?? "")
                 } else {
                     NSLog("Token exchange error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
-                    let networkError = error != nil ? ConnectionError.network(error: error!) : .systemError
+                    var networkError = error != nil ? ConnectionError.network(error: error!) : .systemError
+                    if let error = error {
+                        if error.localizedDescription.contains("PKCE") || error.localizedDescription.contains("invalid") {
+                            networkError = .authenticationRequired
+                        }
+                    }
                     seal.reject(networkError)
                 }
                 self.authState?.update(with: response, error: error)

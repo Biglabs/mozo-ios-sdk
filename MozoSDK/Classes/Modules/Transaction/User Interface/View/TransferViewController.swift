@@ -129,7 +129,8 @@ class TransferViewController: MozoBasicViewController {
     @IBAction func btnContinueTapped(_ sender: Any) {
         if let tokenInfo = self.tokenInfo {
             let receiverAddress = txtAddress.isHidden ? lbAbAddress.text : txtAddress.text
-            eventHandler?.validateTransferTransaction(tokenInfo: tokenInfo, toAdress: receiverAddress, amount: txtAmount.text, displayContactItem: txtAddress.isHidden ? displayContactItem : nil)
+            let clearAmountText = txtAmount.text?.toTextNumberWithoutGrouping()
+            eventHandler?.validateTransferTransaction(tokenInfo: tokenInfo, toAdress: receiverAddress, amount: clearAmountText, displayContactItem: txtAddress.isHidden ? displayContactItem : nil)
         }
     }
     
@@ -174,10 +175,20 @@ class TransferViewController: MozoBasicViewController {
         print("TextFieldAmountDidChange")
         if let rateInfo = SessionStoreManager.exchangeRateInfo {
             if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
-                let text = (txtAmount.text != nil ? (txtAmount.text != "" ? txtAmount.text : "0") : "0")?.replace(",", withString: ".")
-                let value = Double(text ?? "0")!
+                let originalText = txtAmount.text ?? "0"
+                let text = originalText.toTextNumberWithoutGrouping()
+                
+                let sendAmount = text.isEmpty ? 0 : NSDecimalNumber(string: text)
+                txtAmount.text = sendAmount.addCommas()
+                if originalText.hasSuffix(NSLocale.current.decimalSeparator ?? ".") {
+                    txtAmount.text = sendAmount.addCommas() + String(originalText.last!)
+                } else if originalText.hasSuffix("\(NSLocale.current.decimalSeparator ?? ".")0") {
+                    txtAmount.text = sendAmount.addCommas() + String(originalText.suffix(2))
+                }
+                
+                let value = sendAmount.doubleValue
                 let exValue = (value * (rateInfo.rate ?? 0)).roundAndAddCommas(toPlaces: type.decimalRound)
-                let exValueStr = "\(curSymbol)\(exValue )"
+                let exValueStr = "\(curSymbol)\(exValue)"
                 lbExchangeAmount.text = exValueStr
             }
         } else {
@@ -295,7 +306,7 @@ extension TransferViewController: UITextFieldDelegate {
         if (finalText.isValidDecimalFormat() == false) {
             showValidate("Error: Please input value in decimal format.".localized, isAddress: false)
             return false
-        } else if let value = Decimal(string: finalText), value.significantFractionalDecimalDigits > tokenInfo?.decimals ?? 0 {
+        } else if let value = Decimal(string: finalText.toTextNumberWithoutGrouping()), value.significantFractionalDecimalDigits > tokenInfo?.decimals ?? 0 {
             print("Digits: \(value)")
             showValidate("Error".localized + ": " + "The length of decimal places must be equal or smaller than %d".localizedFormat(tokenInfo?.decimals ?? 0), isAddress: false)
             return false

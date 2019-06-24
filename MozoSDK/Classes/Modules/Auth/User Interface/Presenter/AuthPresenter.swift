@@ -46,6 +46,9 @@ extension AuthPresenter : AuthModuleInterface {
 
 extension AuthPresenter : AuthInteractorOutput {
     func errorWhileExchangeCode(error: ConnectionError, response: OIDAuthorizationResponse?) {
+        if error == .authenticationRequired {
+            NSLog("AuthPresenter - Error related to authentication while exchange code, need re-authenicate.")
+        }
         retryOnResponse = response
         DisplayUtils.displayTryAgainPopup(allowTapToDismiss: false, isEmbedded: false, error: error, delegate: self)
     }

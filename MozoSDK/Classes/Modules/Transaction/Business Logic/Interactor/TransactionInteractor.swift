@@ -131,7 +131,7 @@ extension TransactionInteractor : TransactionInteractorInput {
         }
         
         var isAmountEmpty = false
-        let value = amount?.replace(",", withString: ".")
+        let value = amount?.toTextNumberWithoutGrouping()
         if value == nil || value == "" {
             error = "Error".localized + ": " + "Please input amount.".localized
             isAmountEmpty = true
