@@ -217,6 +217,38 @@ class AuthManager : NSObject {
             
             // discovers endpoints
             OIDAuthorizationService.discoverConfiguration(forIssuer: issuer){ configuration, error in
+                guard let redirectURI = URL(string: Configuration.AUTH_REDIRECT_URL) else {
+                    print("Error creating URL for : \(Configuration.AUTH_REDIRECT_URL)")
+                    return
+                }
+                // https://dev.keycloak.mozocoin.io/auth/realms/mozo/protocol/openid-connect/logout
+                let endSessionUrl = issuer.appendingPathComponent(Configuration.END_SESSION_URL_PATH)
+                
+                let config = OIDServiceConfiguration.init(authorizationEndpoint: endSessionUrl, tokenEndpoint: endSessionUrl)
+                
+                let request = OIDAuthorizationRequest(configuration: config,
+                                                      clientId: self.clientId,
+                                                      clientSecret: nil,
+                                                      scopes: [OIDScopeOpenID, OIDScopeProfile],
+                                                      redirectURL: redirectURI,
+                                                      responseType: OIDResponseTypeCode,
+                                                      additionalParameters: nil)
+                
+                seal.fulfill(request)
+            }
+        }
+    }
+    
+    func buildLogoutRequestWithLoginRedirect()-> Promise<OIDAuthorizationRequest?> {
+        return Promise { seal in
+            guard let issuer = URL(string: Configuration.AUTH_ISSSUER) else {
+                print("😞 Error creating URL for : \(Configuration.AUTH_ISSSUER)")
+                return seal.reject(SystemError.incorrectURL)
+            }
+            print("Fetching configuration for issuer: \(issuer)")
+            
+            // discovers endpoints
+            OIDAuthorizationService.discoverConfiguration(forIssuer: issuer){ configuration, error in
                 //https://dev.keycloak.mozocoin.io/auth/realms/mozo/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Fdev.keycloak.mozocoin.io%2Fauth%2Frealms%2Fmozo%2Fprotocol%2Fopenid-connect%2Fauth%3Fredirect_uri%3Dcom.biglabs.mozosdk.com.biglabs.mozo.example.shopper%253A%252Foauth2redirect%252Fmozo-provider%26client_id%3Dshopper_mobile_app%26response_type%3Dcode%26prompt%3Dconsent%26state%3Dam2co_gSzvHnI9og18k6TA%26nonce%3DWVxtbsRYwqJJU-mv9tZrUQ%26scope%3Dopenid%2520profile%2520phone%26code_challenge%3DGVORdp4PooXIWvUcDzBi9mrE1fm3sU3TkBBnKUVevTg%26code_challenge_method%3DS256%26kc_locale%3Dvi%26application_type%3Dnative&client_id=shopper_mobile_app&response_type=code&prompt=consent&state=am2co_gSzvHnI9og18k6TA&nonce=WVxtbsRYwqJJU-mv9tZrUQ&scope=openid%20profile%20phone&code_challenge=GVORdp4PooXIWvUcDzBi9mrE1fm3sU3TkBBnKUVevTg&code_challenge_method=S256&kc_locale=vi&application_type=native
                 self.buildAuthRequest().done({ (authRequest) in
                     let authUrl = authRequest?.authorizationRequestURL()
@@ -348,29 +380,30 @@ extension AuthManager {
                 NSLog("Error creating authorization code exchange request")
                 return seal.reject(SystemError.incorrectCodeExchangeRequest)
             }
-            if tokenExchangeRequest.redirectURL?.absoluteString.contains(Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH) ?? false {
-                var urlString = tokenExchangeRequest.redirectURL?.absoluteString ?? ""
-                let startRange = urlString.range(of: Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH)!.lowerBound
-                let endRange = urlString.range(of: Configuration.AUTH_REDIRECT_URL)!.lowerBound
-                let removeString = String(urlString[startRange..<endRange])
-                urlString = urlString.replace(removeString, withString: "")
-                let clientIdIndex = urlString.range(of: "&client_id=")!.lowerBound
-                urlString = String(urlString[urlString.startIndex..<clientIdIndex])
-                let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
-                let newRequest = OIDTokenRequest(configuration: tokenExchangeRequest.configuration, grantType: tokenExchangeRequest.grantType, authorizationCode: tokenExchangeRequest.authorizationCode, redirectURL: url!, clientID: tokenExchangeRequest.clientID, clientSecret: tokenExchangeRequest.clientSecret, scope: tokenExchangeRequest.scope, refreshToken: tokenExchangeRequest.refreshToken, codeVerifier: tokenExchangeRequest.codeVerifier, additionalParameters: tokenExchangeRequest.additionalParameters)
-                NSLog("Performing authorization code exchange with request: [\(newRequest)]")
-                OIDAuthorizationService.perform(newRequest){ response, error in
-                    if let tokenResponse = response {
-                        NSLog("Received token response with accessToken: \(tokenResponse.accessToken ?? "DEFAULT_TOKEN")")
-                        seal.fulfill(tokenResponse.accessToken ?? "")
-                    } else {
-                        NSLog("Token exchange error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
-                        seal.reject(error!)
-                    }
-                    self.authState?.update(with: response, error: error)
-                }
-                return
-            }
+            // SSO: Not support
+//            if tokenExchangeRequest.redirectURL?.absoluteString.contains(Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH) ?? false {
+//                var urlString = tokenExchangeRequest.redirectURL?.absoluteString ?? ""
+//                let startRange = urlString.range(of: Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH)!.lowerBound
+//                let endRange = urlString.range(of: Configuration.AUTH_REDIRECT_URL)!.lowerBound
+//                let removeString = String(urlString[startRange..<endRange])
+//                urlString = urlString.replace(removeString, withString: "")
+//                let clientIdIndex = urlString.range(of: "&client_id=")!.lowerBound
+//                urlString = String(urlString[urlString.startIndex..<clientIdIndex])
+//                let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
+//                let newRequest = OIDTokenRequest(configuration: tokenExchangeRequest.configuration, grantType: tokenExchangeRequest.grantType, authorizationCode: tokenExchangeRequest.authorizationCode, redirectURL: url!, clientID: tokenExchangeRequest.clientID, clientSecret: tokenExchangeRequest.clientSecret, scope: tokenExchangeRequest.scope, refreshToken: tokenExchangeRequest.refreshToken, codeVerifier: tokenExchangeRequest.codeVerifier, additionalParameters: tokenExchangeRequest.additionalParameters)
+//                NSLog("Performing authorization code exchange with request: [\(newRequest)]")
+//                OIDAuthorizationService.perform(newRequest){ response, error in
+//                    if let tokenResponse = response {
+//                        NSLog("Received token response with accessToken: \(tokenResponse.accessToken ?? "DEFAULT_TOKEN")")
+//                        seal.fulfill(tokenResponse.accessToken ?? "")
+//                    } else {
+//                        NSLog("Token exchange error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
+//                        seal.reject(error!)
+//                    }
+//                    self.authState?.update(with: response, error: error)
+//                }
+//                return
+//            }
             NSLog("Performing authorization code exchange with request: [\(tokenExchangeRequest)]")
             OIDAuthorizationService.perform(tokenExchangeRequest){ response, error in
                 if let tokenResponse = response {

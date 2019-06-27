@@ -74,23 +74,22 @@ class CorePresenter : NSObject {
         // TODO: Must check current view controller is kind of UIAlertViewController
         if !isAuthenticating {
             isAuthenticating = true
-//            coreWireframe?.authWireframe?.clearAllSessionData()
+            coreWireframe?.authWireframe?.clearAllSessionData()
             // MozoX Screens could be contained here.
             if (coreWireframe?.rootWireframe?.mozoNavigationController.viewControllers.count ?? 0) > 0 {
                 print("CorePresenter - Handle invalid token from api response when MozoX Screens is displaying.")
-//                coreWireframe?.requestForCloseAllMozoUIs(completion: {
-//                    self.authDelegate?.mozoUIDidCloseAll()
-//                    self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers()
-//                    self.coreWireframe?.requestForAuthentication()
-//                })
-//
-//                removePINDelegate()
+                coreWireframe?.requestForCloseAllMozoUIs(completion: {
+                    self.authDelegate?.mozoUIDidCloseAll()
+                    self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers()
+                    self.coreWireframe?.requestForAuthentication()
+                })
+                
+                removePINDelegate()
             } else {
                 print("CorePresenter - Handle invalid token from api response when No MozoX Screens is displaying.")
-//                coreWireframe?.requestForAuthentication()
+                coreWireframe?.requestForAuthentication()
             }
-            coreWireframe?.requestForLogout()
-            //        coreWireframe?.authWireframe?.presentLogoutInterface()
+//            coreWireframe?.authWireframe?.presentLogoutInterface()
         } else {
             // Ignore
             print("CorePresenter - Ignore handle invalid token from api response")
