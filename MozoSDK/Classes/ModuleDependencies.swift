@@ -86,7 +86,8 @@ class ModuleDependencies {
     }
     
     func processAuthorizationCallBackUrl(_ url: URL) {
-        authWireframe.processAuthorizationCallBackUrl(url)
+        // SSO: not support
+//        authWireframe.processAuthorizationCallBackUrl(url)
     }
     
     func logout() {

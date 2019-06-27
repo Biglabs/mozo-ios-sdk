@@ -59,6 +59,7 @@ class RootWireframe : NSObject {
             viewControllers.append(viewController)
             mozoNavigationController.setViewControllers(viewControllers, animated: false)
         } else {
+            // Handle case: one of our mozo view controllers need to be displayed while MozoNavigationController is dismissed
             showRootViewController(viewController, inWindow: (UIApplication.shared.delegate?.window!)!)
         }
     }
