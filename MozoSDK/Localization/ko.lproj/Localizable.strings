@@ -1055,6 +1055,7 @@
 
 "Backup Wallet" = "지갑 백업하기";
 "This is your recovery phrase" = "당신의 복구 문구입니다.";
+"THIS IS YOUR RECOVERY PHRASE" = "당신의 복구 문구입니다.";
 "Please write it down on paper and keep it in a safe place as you would with money" = "종이에 써 놓고 자산 관리 만큼 안전한 곳에 보관하세요.";
 "If you lose your recovery phrase, your wallet cannot be recovered." = "복구 문구 없으면 당신의 지갑을 복구할 수 없습니다.";
 "I have safely stored recovery phrase" = "나는 복구 문구를 안전하게 보관했습니다.";
@@ -1065,6 +1066,8 @@
 "Finish" = "완료";
 
 "Your Wallet is Backed Up" = "당신의 지갑은 백업되었습니다.";
+"YOUR WALLET IS BACKED UP" = "당신의 지갑은 백업되었습니다.";
+
 "Be sure to store your recovery phrase in a secure place. If this app is deleted, your wallet cannot be recovered without it." = "복구 문구를 안전한 곳에서 보관했다는 것을 확인하세요. 이 앱은 삭제되면 복구 문구 없이 지갑 복구를 못합니다.";
 "Got It" = "알겠습니다.";
 

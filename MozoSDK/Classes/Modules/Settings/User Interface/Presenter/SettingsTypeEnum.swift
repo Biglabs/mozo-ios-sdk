@@ -15,9 +15,9 @@ enum SettingsTypeEnum: Int {
     public var name: String {
         switch self {
         case .Currencies: return "Currencies"
-        case .Password: return "Change password"
+        case .Password: return "Change Password"
         case .Pin: return "Change Security PIN"
-        case .Backup: return "Back up Wallet"
+        case .Backup: return "Backup Wallet"
         }
     }
     

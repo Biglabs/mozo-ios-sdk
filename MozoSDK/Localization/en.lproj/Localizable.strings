@@ -1042,6 +1042,7 @@
 
 "Backup Wallet" = "Backup Wallet";
 "This is your recovery phrase" = "This is your recovery phrase";
+"THIS IS YOUR RECOVERY PHRASE" = "THIS IS YOUR RECOVERY PHRASE";
 "Please write it down on paper and keep it in a safe place as you would with money" = "Please write it down on paper and keep it in a safe place as you would with money";
 "If you lose your recovery phrase, your wallet cannot be recovered." = "If you lose your recovery phrase, your wallet cannot be recovered.";
 "I have safely stored recovery phrase" = "I have safely stored recovery phrase";
@@ -1052,6 +1053,8 @@
 "Finish" = "Finish";
 
 "Your Wallet is Backed Up" = "Your Wallet is Backed Up";
+"YOUR WALLET IS BACKED UP" = "YOUR WALLET IS BACKED UP";
+
 "Be sure to store your recovery phrase in a secure place. If this app is deleted, your wallet cannot be recovered without it." = "Be sure to store your recovery phrase in a secure place. If this app is deleted, your wallet cannot be recovered without it.";
 "Got It" = "Got It";
 

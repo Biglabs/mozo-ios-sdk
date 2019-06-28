@@ -1046,6 +1046,7 @@
 
 "Backup Wallet" = "Sao lưu ví";
 "This is your recovery phrase" = "Cụm từ khôi phục";
+"THIS IS YOUR RECOVERY PHRASE" = "CỤM TỪ KHÔI PHỤC";
 "Please write it down on paper and keep it in a safe place as you would with money" = "Xin vui lòng ghi cụm từ khôi phục vào giấy và giữ nó ở một nơi bí mật.";
 "If you lose your recovery phrase, your wallet cannot be recovered." = "Nếu bạn mất cụm từ khôi phục, ví của bạn sẽ không thể khôi phục được.";
 "I have safely stored recovery phrase" = "Tôi đã sao lưu cụm từ khôi phục.";
@@ -1056,6 +1057,8 @@
 "Finish" = "Hoàn tất";
 
 "Your Wallet is Backed Up" = "Ví của bạn đã sao lưu xong.";
+"YOUR WALLET IS BACKED UP" = "VÍ CỦA BẠN ĐÃ SAO LƯU XONG.";
+
 "Be sure to store your recovery phrase in a secure place. If this app is deleted, your wallet cannot be recovered without it." = "Nhớ cất giữ cụm từ khôi phục vào nơi bí mật một cách an toàn. Bạn bắt buộc phải có nó để khôi phục lại ví trong trường hợp mất thiết bị.";
 "Got It" = "Tôi đã hiểu";
 
