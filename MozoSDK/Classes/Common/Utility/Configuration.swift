@@ -97,7 +97,9 @@ public class Configuration {
     
     public static let AUTH_REDIRECT_CALLBACK_PATH = "oauth2redirect/mozo-provider"
     
-    public static let AUTH_REDIRECT_URL = "\((Bundle.main.bundleIdentifier ?? "").lowercased())://\(AUTH_REDIRECT_CALLBACK_PATH)"
+//    public static let AUTH_REDIRECT_URL = "\((Bundle.main.bundleIdentifier ?? "").lowercased())://\(AUTH_REDIRECT_CALLBACK_PATH)"
+    
+    public static let AUTH_REDIRECT_URL = "com.biglabs.mozosdk://\(AUTH_REDIRECT_CALLBACK_PATH)"
     
     /**
      NSCoding key for the authState property.
