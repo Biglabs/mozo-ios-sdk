@@ -2308,7 +2308,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you lose your recovery phrase, your wallet cannot be recovered." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wW4-fu-mg3">
-                                <rect key="frame" x="40" y="181" width="295" height="86"/>
+                                <rect key="frame" x="51" y="181" width="295" height="86"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="295" id="1HL-55-lvS"/>
                                 </constraints>
@@ -2729,10 +2729,10 @@
                             <constraint firstItem="d8H-r3-fs8" firstAttribute="bottom" secondItem="8ey-JI-Pbd" secondAttribute="bottom" constant="30" id="2me-5g-zZy"/>
                             <constraint firstItem="763-HC-WoC" firstAttribute="top" secondItem="d8H-r3-fs8" secondAttribute="top" constant="39" id="7oN-eX-cez"/>
                             <constraint firstItem="cLl-Dj-c2l" firstAttribute="top" secondItem="763-HC-WoC" secondAttribute="bottom" constant="11" id="8Ts-UH-PPt"/>
-                            <constraint firstItem="wW4-fu-mg3" firstAttribute="leading" secondItem="sGh-GI-Zez" secondAttribute="trailing" constant="-11" id="9dN-2a-HtY"/>
+                            <constraint firstItem="wW4-fu-mg3" firstAttribute="leading" secondItem="sGh-GI-Zez" secondAttribute="trailing" id="9dN-2a-HtY"/>
                             <constraint firstItem="uVT-Ri-n17" firstAttribute="top" secondItem="wW4-fu-mg3" secondAttribute="bottom" constant="30" id="Bxq-55-XQn"/>
                             <constraint firstItem="uVT-Ri-n17" firstAttribute="leading" secondItem="d8H-r3-fs8" secondAttribute="leading" constant="40" id="Cjj-UD-Yto"/>
-                            <constraint firstItem="wW4-fu-mg3" firstAttribute="centerX" secondItem="xxD-l6-d40" secondAttribute="centerX" id="ECr-jm-z49"/>
+                            <constraint firstItem="wW4-fu-mg3" firstAttribute="centerX" secondItem="xxD-l6-d40" secondAttribute="centerX" constant="11" id="ECr-jm-z49"/>
                             <constraint firstItem="Sru-tK-3Au" firstAttribute="leading" secondItem="xxD-l6-d40" secondAttribute="leading" id="Ek6-dx-sXN"/>
                             <constraint firstItem="763-HC-WoC" firstAttribute="leading" secondItem="d8H-r3-fs8" secondAttribute="leading" constant="5" id="I3S-NR-R6N"/>
                             <constraint firstAttribute="trailing" secondItem="Sru-tK-3Au" secondAttribute="trailing" id="Jpv-5S-qzU"/>
