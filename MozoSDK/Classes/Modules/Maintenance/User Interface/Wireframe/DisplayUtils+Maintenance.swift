@@ -17,6 +17,9 @@ extension DisplayUtils {
             }
             if topViewController.isKind(of: NSClassFromString("SFAuthenticationViewController")!) {
                 print("DisplayUtils - Authentication screen is being displayed.")
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.displayMaintenanceScreen()
+                }
                 return
             }
             print("DisplayUtils - topViewController - presentingViewController: \(String(describing: topViewController.presentingViewController))")
