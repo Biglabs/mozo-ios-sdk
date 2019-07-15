@@ -83,4 +83,32 @@ public extension UILabel {
         self.attributedText = nil
         self.text = text
     }
+    
+    /**
+     This function adding image before adding text on label.
+     
+     - parameter text: The text to add
+     - parameter image: The image to add
+     */
+    func addImageBeforeText(text: NSMutableAttributedString, image: UIImage, imageSize: CGSize = CGSize(width: 18, height: 16), imageTintColor: UIColor? = nil) {
+        let lAttachment = NSTextAttachment()
+        lAttachment.image = image
+        
+        lAttachment.bounds = CGRect(x: 0, y: -3, width: imageSize.width, height: imageSize.height)
+        
+        let lAttachmentString = NSAttributedString(attachment: lAttachment)
+        
+        let lStrLabelText = NSMutableAttributedString(attributedString: lAttachmentString)
+        lStrLabelText.append(NSMutableAttributedString(string: " "))
+        lStrLabelText.append(text)
+        
+        if let color = imageTintColor {
+            lStrLabelText.addAttribute(
+                NSAttributedString.Key.foregroundColor,
+                value: color,
+                range: NSMakeRange(0, lAttachmentString.length))
+        }
+        
+        self.attributedText = lStrLabelText
+    }
 }

@@ -109,4 +109,25 @@ protocol CoreInteractorService {
     func loadUserProfile() -> Promise<UserProfileDTO>
     
     func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO>
+    
+    func getPromoCreateSetting() -> Promise<PromotionSettingDTO>
+    
+    func createPromotion(_ promotion: PromotionDTO) -> Promise<[String: Any]>
+    
+    func getRetailerPromotionList(page: Int, size: Int, statusRequest: PromotionStatusRequestEnum) -> Promise<[PromotionDTO]>
+    
+    func processPromotionCode(code: String) -> Promise<PromotionCodeInfoDTO>
+    
+    func usePromotionCode(code: String) -> Promise<[String: Any]>
+    func cancelPromotionCode(code: String) -> Promise<[String: Any]>
+    
+    func getShopperPromotionListWithType(page: Int, size: Int, long: Double, lat: Double, type: PromotionListTypeEnum) -> Promise<[PromotionStoreDTO]>
+    
+    func getPromotionRedeemInfo(promotionId: Int64) -> Promise<PromotionRedeemInfoDTO>
+    
+    func getPromotionPaidDetail(promotionId: Int64) -> Promise<PromotionPaidDTO>
+    
+    func getPromotionPaidDetailByCode(_ promotionCode: String) -> Promise<PromotionPaidDTO>
+    
+    func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]>
 }

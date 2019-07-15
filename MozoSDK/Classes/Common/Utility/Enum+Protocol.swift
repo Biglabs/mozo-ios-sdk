@@ -37,6 +37,10 @@ public enum ServiceType: String {
 public enum AppType: String {
     case Shopper = "shopper"
     case Retailer = "retailer"
+    
+    public var scheme: String {
+        return "mozox.\(rawValue)"
+    }
 }
 
 enum TransactionDisplayContactEnum: Int {

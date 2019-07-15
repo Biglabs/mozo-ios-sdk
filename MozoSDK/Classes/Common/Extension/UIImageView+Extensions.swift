@@ -12,8 +12,8 @@ import Alamofire
 import AlamofireImage
 
 let imageCache = NSCache<NSString, AnyObject>()
-extension UIImageView {
-    func loadImageWithUrlString(_ urlString: String, defaultImageName: String = "img_store_no_img", loadingColor: UIColor = ThemeManager.shared.main,
+public extension UIImageView {
+    public func loadImageWithUrlString(_ urlString: String, defaultImageName: String = "img_store_no_img", loadingColor: UIColor = ThemeManager.shared.main,
                                 isDefaultImageFromMozo: Bool = false, isShowLoading: Bool = false,
                                 isUseScreenCenter: Bool = false) {
         print("Download image with url: \(urlString)")

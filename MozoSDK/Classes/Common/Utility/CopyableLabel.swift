@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CopyableLabel: UILabel {
+public class CopyableLabel: UILabel {
     override public var canBecomeFirstResponder: Bool {
         get {
             return true
@@ -33,7 +33,7 @@ class CopyableLabel: UILabel {
         ))
     }
     
-    override func copy(_ sender: Any?) {
+    override public func copy(_ sender: Any?) {
         UIPasteboard.general.string = text
         UIMenuController.shared.setMenuVisible(false, animated: true)
     }
@@ -48,7 +48,7 @@ class CopyableLabel: UILabel {
         }
     }
     
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+    override public func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         return (action == #selector(copy(_:)))
     }
 }

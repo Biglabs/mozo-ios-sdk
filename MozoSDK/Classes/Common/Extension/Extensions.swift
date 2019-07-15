@@ -93,6 +93,10 @@ public extension String {
         let groupingSeparator = NSLocale.current.groupingSeparator ?? ","
         return self.replace(groupingSeparator, withString: "").replace(decimalSeparator, withString: ".")
     }
+    
+    public func hasValidSchemeForQRCode() -> Bool {
+        return hasPrefix(AppType.Retailer.scheme) || hasPrefix(AppType.Shopper.scheme)
+    }
 }
 
 internal extension String {
@@ -181,6 +185,14 @@ extension UIView {
         layer.shadowPath = UIBezierPath(rect: bounds).cgPath
         layer.shouldRasterize = true
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+    }
+    
+    public func addGradientLayer(colors: [CGColor], locations: [NSNumber]? = nil, frame: CGRect) {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = frame
+        gradient.colors = colors
+        gradient.locations = locations
+        layer.insertSublayer(gradient, at: 0)
     }
 }
 
