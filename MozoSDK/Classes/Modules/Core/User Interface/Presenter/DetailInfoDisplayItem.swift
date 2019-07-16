@@ -11,12 +11,17 @@ public struct DetailInfoDisplayItem {
     public let balance : Double
     public let address: String
     
-    init(balance: Double, address: String) {
+    public init() {
+        self.balance = 0
+        self.address = ""
+    }
+    
+    public init(balance: Double, address: String) {
         self.balance = balance
         self.address = address
     }
     
-    init(tokenInfo: TokenInfoDTO) {
+    public init(tokenInfo: TokenInfoDTO) {
         self.balance = tokenInfo.balance?.convertOutputValue(decimal: tokenInfo.decimals ?? 0) ?? -1
         self.address = tokenInfo.address ?? ""
     }

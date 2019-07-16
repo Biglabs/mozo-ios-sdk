@@ -60,6 +60,7 @@ class ModuleDependencies {
     let speedSelectionWireframe = SpeedSelectionWireframe()
     let backupWalletWireframe = BackupWalletWireframe()
     let changePINWireframe = ChangePINWireframe()
+    let redeemWireframe = RedeemWireframe()
     
     let apiManager = ApiManager()
     let webSocketManager = WebSocketManager()
@@ -342,6 +343,54 @@ class ModuleDependencies {
         coreWireframe.requestForBackUpWallet()
     }
     
+    func getPromoCreateSetting() -> Promise<PromotionSettingDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getPromoCreateSetting())!
+    }
+    
+    func createPromotion(_ promotion: PromotionDTO) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.createPromotion(promotion))!
+    }
+    
+    func getRetailerPromotionList(page: Int, size: Int, statusRequest: PromotionStatusRequestEnum) -> Promise<[PromotionDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerPromotionList(page: page, size: size, statusRequest: statusRequest))!
+    }
+    
+    func processPromotionCode(code: String) -> Promise<PromotionCodeInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.processPromotionCode(code: code))!
+    }
+    
+    func usePromotionCode(code: String) -> Promise<PromotionCodeInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.usePromotionCode(code: code))!
+    }
+    
+    func cancelPromotionCode(code: String) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.cancelPromotionCode(code: code))!
+    }
+    
+    func getShopperPromotionListWithType(page: Int, size: Int, long: Double, lat: Double, type: PromotionListTypeEnum) -> Promise<[PromotionStoreDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionListWithType(page: page, size: size, long: long, lat: lat, type: type))!
+    }
+    
+    func getPromotionRedeemInfo(promotionId: Int64) -> Promise<PromotionRedeemInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionRedeemInfo(promotionId: promotionId))!
+    }
+    
+    func redeemPromotion(_ promotionId: Int64, delegate: RedeemPromotionDelegate) {
+        redeemWireframe.requestToRedeemAndSign(promotionId, delegate: delegate)
+    }
+    
+    func getPromotionPaidDetail(promotionId: Int64) -> Promise<PromotionPaidDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionPaidDetail(promotionId: promotionId))!
+    }
+    
+    func getPromotionPaidDetailByCode(_ promotionCode: String) -> Promise<PromotionPaidDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionPaidDetailByCode(promotionCode))!
+    }
+    
+    func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.updateFavoritePromotion(promotionId, isFavorite: isFavorite))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()
@@ -570,6 +619,7 @@ class ModuleDependencies {
         airdropAddDependencies(signManager: signManager)
         airdropWithdrawDependencies(signManager: signManager)
         convertDependencies(signManager: signManager)
+        redeemDependencies(signManager: signManager)
     }
     
     func authDependencies() {
@@ -707,7 +757,21 @@ class ModuleDependencies {
         paymentQRWireframe.rootWireframe = rootWireframe
     }
     
-    
+    func redeemDependencies(signManager: TransactionSignManager) {
+        let redeemPresenter = RedeemPresenter()
+        
+        let redeemInteractor = RedeemInteractor()
+        redeemInteractor.apiManager = apiManager
+        redeemInteractor.output = redeemPresenter
+        redeemInteractor.signManager = signManager
+        
+        redeemPresenter.interactor = redeemInteractor
+        redeemPresenter.wireframe = redeemWireframe
+        
+        redeemWireframe.redeemPresenter = redeemPresenter
+        redeemWireframe.walletWireframe = walletWireframe
+        redeemWireframe.rootWireframe = rootWireframe
+    }
     
     
     

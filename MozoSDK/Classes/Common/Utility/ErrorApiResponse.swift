@@ -50,6 +50,23 @@ public enum ErrorApiResponse: String {
     case STORE_CALL_TRANSACTION_SERVICE_ERROR = "STORE_CALL_TRANSACTION_SERVICE_ERROR"
     case STORE_SIGN_TRANSACTION_ERROR = "STORE_SIGN_TRANSACTION_ERROR"
     
+    // PROMOTION
+    case STORE_PROMO_PERIOD_TIME_ERROR = "STORE_PROMO_PERIOD_TIME_ERROR"
+    case STORE_PROMO_SECRET_CODE_ERROR = "STORE_PROMO_SECRET_CODE_ERROR"
+    case STORE_PROMO_NOT_EXIST_ERROR = "STORE_PROMO_NOT_EXIST_ERROR"
+    case STORE_PROMO_DETAIL_NOT_EXIST_ERROR = "STORE_PROMO_DETAIL_NOT_EXIST_ERROR"
+    case STORE_PROMO_UPDATE_SAVED_ERROR = "STORE_PROMO_UPDATE_SAVED_ERROR"
+    case STORE_PROMO_BALANCE_NOT_ENOUGH_ERROR = "STORE_PROMO_BALANCE_NOT_ENOUGH_ERROR"
+    case STORE_PROMO_PREPARE_RAW_TX_NOT_EXIST_ERROR = "STORE_PROMO_PREPARE_RAW_TX_NOT_EXIST_ERROR"
+    case STORE_PROMO_INCREASE_USER_BUY_ERROR = "STORE_PROMO_INCREASE_USER_BUY_ERROR"
+    case STORE_PROMO_TXHASH_NOT_EXIST_ERROR = "STORE_PROMO_TXHASH_NOT_EXIST_ERROR"
+    case STORE_PROMO_TXHASH_IS_OTHER_USER_ERROR = "STORE_PROMO_TXHASH_IS_OTHER_USER_ERROR"
+    case STORE_PROMO_USER_BUY_TXHASH_ID_NOT_EXIST_ERROR = "STORE_PROMO_USER_BUY_TXHASH_ID_NOT_EXIST_ERROR"
+    case STORE_PROMO_ID_PAID_NOT_EXIST_ERROR = "STORE_PROMO_ID_PAID_NOT_EXIST_ERROR"
+    case STORE_PROMO_ID_PAID_NOT_USED_ERROR = "STORE_PROMO_ID_PAID_NOT_USED_ERROR"
+    case STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR = "STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR"
+    case STORE_PROMO_USER_NO_PAID_ERROR = "STORE_PROMO_USER_NO_PAID_ERROR"
+    
     case SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD = "SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD"
     // SOLOMON
     case SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS = "SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS"
@@ -130,6 +147,22 @@ public enum ErrorApiResponse: String {
         case .STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE: return rawValue
             
         case .STORE_USER_ALREADY_INSTALL_APP_ERROR: return rawValue
+            
+        case .STORE_PROMO_PERIOD_TIME_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_PROMO_SECRET_CODE_ERROR: return "Invalid QR Code"
+        case .STORE_PROMO_NOT_EXIST_ERROR: return rawValue
+        case .STORE_PROMO_DETAIL_NOT_EXIST_ERROR: return rawValue
+        case .STORE_PROMO_UPDATE_SAVED_ERROR: return rawValue
+        case .STORE_PROMO_BALANCE_NOT_ENOUGH_ERROR: return "Your spendable is not enough for this."
+        case .STORE_PROMO_PREPARE_RAW_TX_NOT_EXIST_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_PROMO_INCREASE_USER_BUY_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_PROMO_TXHASH_NOT_EXIST_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_PROMO_TXHASH_IS_OTHER_USER_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_PROMO_USER_BUY_TXHASH_ID_NOT_EXIST_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_PROMO_ID_PAID_NOT_EXIST_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_PROMO_ID_PAID_NOT_USED_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_PROMO_USER_NO_PAID_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         }
     }
     
@@ -210,6 +243,22 @@ public enum ErrorApiResponse: String {
         
         case .STORE_USER_ALREADY_INSTALL_APP_ERROR:
             return .apiError_STORE_USER_ALREADY_INSTALL_APP_ERROR
+            
+        case .STORE_PROMO_PERIOD_TIME_ERROR: return .apiError_STORE_PROMO_PERIOD_TIME_ERROR
+        case .STORE_PROMO_SECRET_CODE_ERROR: return .apiError_STORE_PROMO_SECRET_CODE_ERROR
+        case .STORE_PROMO_NOT_EXIST_ERROR: return .apiError_STORE_PROMO_NOT_EXIST_ERROR
+        case .STORE_PROMO_DETAIL_NOT_EXIST_ERROR: return .apiError_STORE_PROMO_DETAIL_NOT_EXIST_ERROR
+        case .STORE_PROMO_UPDATE_SAVED_ERROR: return .apiError_STORE_PROMO_UPDATE_SAVED_ERROR
+        case .STORE_PROMO_BALANCE_NOT_ENOUGH_ERROR: return .apiError_STORE_PROMO_BALANCE_NOT_ENOUGH_ERROR
+        case .STORE_PROMO_PREPARE_RAW_TX_NOT_EXIST_ERROR: return .apiError_STORE_PROMO_PREPARE_RAW_TX_NOT_EXIST_ERROR
+        case .STORE_PROMO_INCREASE_USER_BUY_ERROR: return .apiError_STORE_PROMO_INCREASE_USER_BUY_ERROR
+        case .STORE_PROMO_TXHASH_NOT_EXIST_ERROR: return .apiError_STORE_PROMO_TXHASH_NOT_EXIST_ERROR
+        case .STORE_PROMO_TXHASH_IS_OTHER_USER_ERROR: return .apiError_STORE_PROMO_TXHASH_IS_OTHER_USER_ERROR
+        case .STORE_PROMO_USER_BUY_TXHASH_ID_NOT_EXIST_ERROR: return .apiError_STORE_PROMO_USER_BUY_TXHASH_ID_NOT_EXIST_ERROR
+        case .STORE_PROMO_ID_PAID_NOT_EXIST_ERROR: return .apiError_STORE_PROMO_ID_PAID_NOT_EXIST_ERROR
+        case .STORE_PROMO_ID_PAID_NOT_USED_ERROR: return .apiError_STORE_PROMO_ID_PAID_NOT_USED_ERROR
+        case .STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR: return .apiError_STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR
+        case .STORE_PROMO_USER_NO_PAID_ERROR: return .apiError_STORE_PROMO_USER_NO_PAID_ERROR
         }
     }
 }

@@ -34,6 +34,10 @@ public class StoreInfoDTO : ResponseObjectSerializable {
     
     public var disable: Bool?
     
+    public var offchainAddress: String?
+    
+    public var distance: Double?
+    
     public required init(id: Int64){
         self.id = id
     }
@@ -85,6 +89,8 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         self.hashTag = json["hashTag"].array?.filter({ $0.string != nil }).map({ $0.string! })
         self.storeImages = json["storeImages"].array?.filter({ $0.string != nil }).map({ $0.string! })
         self.disable = json["disable"].bool
+        self.offchainAddress = json["offchainAddress"].string
+        self.distance = json["distance"].double
     }
     
     public required init?(){}

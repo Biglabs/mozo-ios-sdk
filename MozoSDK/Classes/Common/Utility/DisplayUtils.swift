@@ -9,6 +9,17 @@ import Foundation
 public class DisplayUtils {
     public static var appType = AppType.Shopper
     
+    public static func getExchangeTextFromAmount(_ amount: Double) -> String {
+        if let rateInfo = SessionStoreManager.exchangeRateInfo {
+            if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
+                let exValue = (amount * (rateInfo.rate ?? 0)).roundAndAddCommas(toPlaces: type.decimalRound)
+                let exValueStr = "\(curSymbol)\(exValue)"
+                return exValueStr
+            }
+        }
+        return ""
+    }
+    
     public static func generateQRCode(from string: String) -> UIImage? {
         let data = string.data(using: String.Encoding.ascii)
         

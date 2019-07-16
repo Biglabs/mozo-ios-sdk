@@ -288,4 +288,52 @@ public class MozoSDK {
     public static func requestForBackUpWallet() {
         return moduleDependencies.requestForBackUpWallet()
     }
+    
+    public static func getPromoCreateSetting() -> Promise<PromotionSettingDTO> {
+        return moduleDependencies.getPromoCreateSetting()
+    }
+    
+    public static func createPromotion(_ promotion: PromotionDTO) -> Promise<[String: Any]> {
+        return moduleDependencies.createPromotion(promotion)
+    }
+    
+    public static func getRetailerPromotionList(page: Int = 0, size: Int = 15, statusRequest: PromotionStatusRequestEnum = .RUNNING) -> Promise<[PromotionDTO]> {
+        return moduleDependencies.getRetailerPromotionList(page: page, size: size, statusRequest: statusRequest)
+    }
+    
+    public static func processPromotionCode(code: String) -> Promise<PromotionCodeInfoDTO> {
+        return moduleDependencies.processPromotionCode(code: code)
+    }
+    
+    public static func usePromotionCode(code: String) -> Promise<PromotionCodeInfoDTO> {
+        return moduleDependencies.usePromotionCode(code: code)
+    }
+    
+    public static func cancelPromotionCode(code: String) -> Promise<[String: Any]> {
+        return moduleDependencies.cancelPromotionCode(code: code)
+    }
+    
+    public static func getShopperPromotionListWithType(page: Int = 0, size: Int = 15, long: Double = 0, lat: Double = 0, type: PromotionListTypeEnum = .TOP) -> Promise<[PromotionStoreDTO]> {
+        return moduleDependencies.getShopperPromotionListWithType(page: page, size: size, long: long, lat: lat, type: type)
+    }
+    
+    public static func getPromotionRedeemInfo(promotionId: Int64) -> Promise<PromotionRedeemInfoDTO> {
+        return moduleDependencies.getPromotionRedeemInfo(promotionId: promotionId)
+    }
+    
+    public static func redeemPromotion(_ promotionId: Int64, delegate: RedeemPromotionDelegate) {
+        return moduleDependencies.redeemPromotion(promotionId, delegate: delegate)
+    }
+    
+    public static func getPromotionPaidDetail(promotionId: Int64) -> Promise<PromotionPaidDTO> {
+        return moduleDependencies.getPromotionPaidDetail(promotionId: promotionId)
+    }
+    
+    public static func getPromotionPaidDetailByCode(_ promotionCode: String) -> Promise<PromotionPaidDTO> {
+        return moduleDependencies.getPromotionPaidDetailByCode(promotionCode)
+    }
+    
+    public static func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
+        return moduleDependencies.updateFavoritePromotion(promotionId, isFavorite: isFavorite)
+    }
 }
