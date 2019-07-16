@@ -47,12 +47,7 @@ public enum NotificationEventType: String {
     case AirdropSignup = "airdrop_signup"
     case AirdropTopRetailer = "airdrop_top_retailer"
     
-    case PromotionEnded = "PromotionEnded"
-    case PromotionWillEnd = "PromotionWillEnd"
-    case PromotionExpired = "PromotionExpired"
-    case PromotionWillExpire = "PromotionWillExpire"
-    case PromotionUsed = "PromotionUsed"
-    case PromotionPurchased = "PromotionPurchased"
-    case PromotionStarted = "PromotionStarted"
+    case PromotionUsed = "promotion_used"
+    case PromotionPurchased = "promotion_purchased"
 }
 

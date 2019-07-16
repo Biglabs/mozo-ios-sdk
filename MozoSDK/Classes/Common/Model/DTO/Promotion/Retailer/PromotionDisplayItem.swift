@@ -21,6 +21,7 @@ public class PromotionDisplayItem {
     public var receivedMozoX: NSNumber
     public var value: NSNumber
     public var timeLeftInSecs: Int
+    public var code: String
     
     public init() {
         self.countActivated = 0
@@ -37,6 +38,7 @@ public class PromotionDisplayItem {
         self.receivedMozoX = NSNumber(value: 0)
         self.value = NSNumber(value: 0)
         self.timeLeftInSecs = 0
+        self.code = ""
     }
     
     public init(promotionDTO: PromotionDTO) {
@@ -54,6 +56,7 @@ public class PromotionDisplayItem {
         self.receivedMozoX = promotionDTO.receivedMozoX ?? NSNumber(value: 0)
         self.value = promotionDTO.value ?? NSNumber(value: 0)
         self.timeLeftInSecs = promotionDTO.timeLeftInSecs ?? 0
+        self.code = promotionDTO.code ?? ""
     }
     
     public var dateFromTo: String {

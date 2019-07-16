@@ -105,14 +105,19 @@ public extension ApiManager {
         }
     }
     
-    public func usePromotionCode(code: String) -> Promise<[String: Any]> {
+    public func usePromotionCode(code: String) -> Promise<PromotionCodeInfoDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/usePromoCode?code=\(code)"
             self.execute(.put, url: url)
             .done { json -> Void in
                 // JSON info
                 print("Finish request to use promotion code, json response: \(json)")
-                seal.fulfill(json)
+                let jobj = SwiftyJSON.JSON(json)
+                if let codeInfo = PromotionCodeInfoDTO(json: jobj) {
+                    seal.fulfill(codeInfo)
+                } else {
+                    seal.reject(ConnectionError.systemError)
+                }
             }
             .catch { error in
                 print("Error when request use promotion code: " + error.localizedDescription)

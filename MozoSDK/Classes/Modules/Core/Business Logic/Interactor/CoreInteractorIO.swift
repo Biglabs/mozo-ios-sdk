@@ -118,7 +118,7 @@ protocol CoreInteractorService {
     
     func processPromotionCode(code: String) -> Promise<PromotionCodeInfoDTO>
     
-    func usePromotionCode(code: String) -> Promise<[String: Any]>
+    func usePromotionCode(code: String) -> Promise<PromotionCodeInfoDTO>
     func cancelPromotionCode(code: String) -> Promise<[String: Any]>
     
     func getShopperPromotionListWithType(page: Int, size: Int, long: Double, lat: Double, type: PromotionListTypeEnum) -> Promise<[PromotionStoreDTO]>

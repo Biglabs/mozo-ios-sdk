@@ -24,7 +24,7 @@ extension CoreInteractor {
         return apiManager.processPromotionCode(code: code)
     }
     
-    func usePromotionCode(code: String) -> Promise<[String: Any]> {
+    func usePromotionCode(code: String) -> Promise<PromotionCodeInfoDTO> {
         return apiManager.usePromotionCode(code: code)
     }
     

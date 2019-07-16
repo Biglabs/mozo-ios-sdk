@@ -22,6 +22,7 @@ public class PromotionDTO {
     public var receivedMozoX: NSNumber?
     public var value: NSNumber?
     public var timeLeftInSecs: Int?
+    public var code: String?
     
     public init(discountPercent: Int, imageName: String, name: String, periodFromDate: Int64, periodToDate: Int64, value: NSNumber) {
         self.discountPercent = discountPercent
@@ -47,6 +48,7 @@ public class PromotionDTO {
         self.receivedMozoX = json["receivedMozoX"].number
         self.value = json["value"].number
         self.timeLeftInSecs = json["timeLeftInSecs"].int
+        self.code = json["code"].string
     }
     
     public func toJSON() -> Dictionary<String, Any> {
