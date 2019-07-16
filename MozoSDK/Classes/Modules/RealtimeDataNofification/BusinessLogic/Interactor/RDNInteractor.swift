@@ -162,6 +162,12 @@ extension RDNInteractor {
                 } else if rdNoti.event == NotificationEventType.AirdropTopRetailer.rawValue,
                     let balanceNoti = BalanceNotification(json: jobj)  {
                     output?.didReceivedAirdrop(eventType: NotificationEventType(rawValue: rdNoti.event!)!, balanceNoti: balanceNoti, rawMessage: rawJsonMessage)
+                } else if rdNoti.event == NotificationEventType.PromotionUsed.rawValue,
+                    let noti = PromotionUsedNotification(json: jobj)  {
+                    output?.didReceivedPromotionUsed(eventType: NotificationEventType(rawValue: rdNoti.event!)!, usedNoti: noti, rawMessage: rawJsonMessage)
+                } else if rdNoti.event == NotificationEventType.PromotionPurchased.rawValue,
+                    let noti = PromotionPurchasedNotification(json: jobj)  {
+                    output?.didReceivedPromotionPurchased(eventType: NotificationEventType(rawValue: rdNoti.event!)!, purchasedNoti: noti, rawMessage: rawJsonMessage)
                 } else {
                     NSLog("Can not handle message: \(messageContent)")
                 }

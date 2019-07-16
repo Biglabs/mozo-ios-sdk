@@ -500,6 +500,14 @@ extension CorePresenter : RDNInteractorOutput {
     func didReceivedAirdrop(eventType: NotificationEventType, balanceNoti: BalanceNotification, rawMessage: String) {
         performNotifications(noti: balanceNoti, rawMessage: rawMessage)
     }
+    
+    func didReceivedPromotionUsed(eventType: NotificationEventType, usedNoti: PromotionUsedNotification, rawMessage: String) {
+        performNotifications(noti: usedNoti, rawMessage: rawMessage)
+    }
+    
+    func didReceivedPromotionPurchased(eventType: NotificationEventType, purchasedNoti: PromotionPurchasedNotification, rawMessage: String) {
+        performNotifications(noti: purchasedNoti, rawMessage: rawMessage)
+    }
 }
 
 extension CorePresenter: PaymentQRModuleDelegate {

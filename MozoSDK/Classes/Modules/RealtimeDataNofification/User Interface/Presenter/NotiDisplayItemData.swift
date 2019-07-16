@@ -92,6 +92,24 @@ public class NotiDisplayItemData {
                     detailText = subtitle
                 }
                 break
+            case NotificationEventType.PromotionUsed.rawValue:
+                if let noti = rawNoti as? PromotionUsedNotification {
+                    title = "Promotion used".localized
+                    subtitle = noti.storeName ?? ""
+                }
+                image = "ic_notif_promotion_used"
+                detailText = subtitle
+                actionText = title // To display on Retailer App - Notification List
+                break
+            case NotificationEventType.PromotionPurchased.rawValue:
+                if let noti = rawNoti as? PromotionPurchasedNotification {
+                    title = "Shopper purchased promotion".localized
+                    subtitle = noti.promoName ?? ""
+                }
+                image = "ic_notif_user_come"
+                detailText = subtitle
+                actionText = title // To display on Retailer App - Notification List
+                break
             default:
                 break
             }
