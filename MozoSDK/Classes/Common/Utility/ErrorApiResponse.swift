@@ -66,6 +66,7 @@ public enum ErrorApiResponse: String {
     case STORE_PROMO_ID_PAID_NOT_USED_ERROR = "STORE_PROMO_ID_PAID_NOT_USED_ERROR"
     case STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR = "STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR"
     case STORE_PROMO_USER_NO_PAID_ERROR = "STORE_PROMO_USER_NO_PAID_ERROR"
+    case STORE_PROMO_STATUS_NOT_SCANNED_ERROR = "STORE_PROMO_STATUS_NOT_SCANNED_ERROR"
     
     case SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD = "SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD"
     // SOLOMON
@@ -163,6 +164,7 @@ public enum ErrorApiResponse: String {
         case .STORE_PROMO_ID_PAID_NOT_USED_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_PROMO_USER_NO_PAID_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_PROMO_STATUS_NOT_SCANNED_ERROR: return rawValue
         }
     }
     
@@ -259,6 +261,7 @@ public enum ErrorApiResponse: String {
         case .STORE_PROMO_ID_PAID_NOT_USED_ERROR: return .apiError_STORE_PROMO_ID_PAID_NOT_USED_ERROR
         case .STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR: return .apiError_STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR
         case .STORE_PROMO_USER_NO_PAID_ERROR: return .apiError_STORE_PROMO_USER_NO_PAID_ERROR
+        case .STORE_PROMO_STATUS_NOT_SCANNED_ERROR: return .apiError_STORE_PROMO_STATUS_NOT_SCANNED_ERROR
         }
     }
 }

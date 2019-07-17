@@ -91,6 +91,7 @@ public enum ConnectionError: Error {
     case apiError_STORE_PROMO_ID_PAID_NOT_USED_ERROR
     case apiError_STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR
     case apiError_STORE_PROMO_USER_NO_PAID_ERROR
+    case apiError_STORE_PROMO_STATUS_NOT_SCANNED_ERROR
     
     case apiError_SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD
     
@@ -203,6 +204,7 @@ public enum ConnectionError: Error {
         case .apiError_STORE_PROMO_ID_PAID_NOT_USED_ERROR: return .STORE_PROMO_ID_PAID_NOT_USED_ERROR
         case .apiError_STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR: return .STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR
         case .apiError_STORE_PROMO_USER_NO_PAID_ERROR: return .STORE_PROMO_USER_NO_PAID_ERROR
+        case .apiError_STORE_PROMO_STATUS_NOT_SCANNED_ERROR: return .STORE_PROMO_STATUS_NOT_SCANNED_ERROR
         default:
             return nil
         }
