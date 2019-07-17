@@ -100,6 +100,12 @@ class ConvertViewController: MozoBasicViewController {
         navigationItem.title = "Convert To Offchain".localized
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let height = CGFloat(700)
+        scrollView.contentSize = CGSize(width: view.frame.width, height: height)
+    }
+    
     func loadInitialData() {
         if isConvertOffchainToOffchain {
             eventHandler?.loadEthAndFeeTransfer()
@@ -110,9 +116,7 @@ class ConvertViewController: MozoBasicViewController {
         eventHandler?.loadGasPrice()
     }
     
-    func setupLayout() {
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 700)
-        
+    func setupLayout() {        
         if isConvertOffchainToOffchain {
             infoEthViewBorder = UIView(frame: CGRect(x: ethContainerView.frame.origin.x - 2, y: ethContainerView.frame.origin.y, width: UIScreen.main.bounds.width - 30 + 4, height: CGFloat(ethContainerHeightDefault)))
             infoEthViewBorder.backgroundColor = .clear
