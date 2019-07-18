@@ -81,6 +81,10 @@ public class PromotionDisplayItem {
         return "(\("%d days left".localizedFormat(self.dayLeftFromNow)))"
     }
     
+    public var startInNextDaysFromNowText: String {
+        return "(\("Start in next %d days".localizedFormat(self.startInNextDaysFromNow)))"
+    }
+    
     public func dayLeftFromNowTextWithFormat(_ format: String = "%d days left") -> String {
         return "(\(format.localizedFormat(self.dayLeftFromNow)))"
     }
@@ -98,6 +102,15 @@ public class PromotionDisplayItem {
         let fromDate = Date()
         
         let toDate = Date(timeIntervalSince1970: TimeInterval(periodToDate))
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: fromDate, to: toDate)
+        return abs(components.day ?? 0) + 1
+    }
+    
+    public var startInNextDaysFromNow: Int {
+        let fromDate = Date()
+        
+        let toDate = Date(timeIntervalSince1970: TimeInterval(periodFromDate))
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: fromDate, to: toDate)
         return abs(components.day ?? 0) + 1
