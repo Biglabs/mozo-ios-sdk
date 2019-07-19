@@ -74,15 +74,18 @@ public class PromotionDisplayItem {
     }
     
     public var dayLeftText: String {
-        return "(\("%d days left".localizedFormat(self.dayLeft)))"
+        let dayText = self.dayLeft > 1 ? "days" : "day"
+        return "(\("%d \(dayText) left".localizedFormat(self.dayLeft)))"
     }
     
     public var dayLeftFromNowText: String {
-        return "(\("%d days left".localizedFormat(self.dayLeftFromNow)))"
+        let dayText = self.dayLeftFromNow > 1 ? "days" : "day"
+        return "(\("%d \(dayText) left".localizedFormat(self.dayLeftFromNow)))"
     }
     
     public var startInNextDaysFromNowText: String {
-        return "(\("Start in next %d days".localizedFormat(self.startInNextDaysFromNow)))"
+        let dayText = self.startInNextDaysFromNow > 1 ? "days" : "day"
+        return "(\("Start in next %d \(dayText)".localizedFormat(self.startInNextDaysFromNow)))"
     }
     
     public func dayLeftFromNowTextWithFormat(_ format: String = "%d days left") -> String {
