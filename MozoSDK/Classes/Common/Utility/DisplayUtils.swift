@@ -72,7 +72,7 @@ public class DisplayUtils {
         }
         if let topViewController = getTopViewController(), let parentView = topViewController.view {
             let popupWidth = 315
-            let popupHeight = error == .noInternetConnection ? 384 : popupWidth
+            let popupHeight = error == .requestTimedOut ? popupWidth : 384
             let mozoPopupErrorView = MozoPopupErrorView(frame: CGRect(x: 0, y: 0, width: popupWidth, height: popupHeight))
             mozoPopupErrorView.delegate = delegate
             mozoPopupErrorView.shouldTrackNetwork = !isEmbedded
