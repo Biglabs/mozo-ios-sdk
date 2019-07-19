@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 extension UISegmentedControl{
-    func removeBorder(){
+    func removeBorder(normalAttributes: [NSAttributedString.Key : Any], highlightedAttributes: [NSAttributedString.Key : Any], selectedAttributes: [NSAttributedString.Key : Any]){
 //        let backgroundImage = UIImage.getColoredRectImageWith(color: UIColor.white.cgColor, andSize: self.bounds.size)
 //        self.setBackgroundImage(backgroundImage, for: .normal, barMetrics: .default)
 //        self.setBackgroundImage(backgroundImage, for: .selected, barMetrics: .default)
@@ -17,33 +17,40 @@ extension UISegmentedControl{
 //        let deviderImage = UIImage.getColoredRectImageWith(color: UIColor.white.cgColor, andSize: CGSize(width: 1.0, height: self.bounds.size.height))
         self.setDividerImage(nil, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
         
-        self.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor(hexString: "333333"),
-                                     NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)], for: .normal)
-        self.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor(hexString: "333333"),
-                                     NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)], for: .highlighted)
-        self.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor(hexString: "4e94f3"),
-                                     NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 15)], for: .selected)
+        self.setTitleTextAttributes(normalAttributes, for: .normal)
+        self.setTitleTextAttributes(highlightedAttributes, for: .highlighted)
+        self.setTitleTextAttributes(selectedAttributes, for: .selected)
     }
     
-    func addUnderLines() {
-        removeBorder()
-        addUnderlineForSelectedSegment()
-        addUnderlineForUnselectSegments()
+    public func addUnderLines(normalAttributes: [NSAttributedString.Key : Any] = [NSAttributedStringKey.foregroundColor: ThemeManager.shared.textSection,
+                                                                                  NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)],
+                              highlightedAttributes: [NSAttributedString.Key : Any] = [NSAttributedStringKey.foregroundColor: ThemeManager.shared.textSection,
+                                                                                       NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)],
+                              selectedAttributes: [NSAttributedString.Key : Any] = [NSAttributedStringKey.foregroundColor: UIColor(hexString: "333333"),
+                                                                                    NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)],
+                              underLineColor: UIColor = ThemeManager.shared.primary,
+                              underLineBorderColor: UIColor = UIColor(hexString: "f2f6fb"),
+                              underLineBorderWidth: CGFloat = 1.0,
+                              unselectUnderLineColor: UIColor = .white) {
+        removeBorder(normalAttributes: normalAttributes, highlightedAttributes: highlightedAttributes, selectedAttributes: selectedAttributes)
+        addUnderlineForSelectedSegment(underLineColor: underLineColor, underLineBorderColor: underLineBorderColor, underLineBorderWidth: underLineBorderWidth)
+        addUnderlineForUnselectSegments(unselectUnderLineColor: unselectUnderLineColor)
     }
     
-    func addUnderlineForSelectedSegment(){
+    func addUnderlineForSelectedSegment(underLineColor: UIColor, underLineBorderColor: UIColor, underLineBorderWidth: CGFloat){
         let underlineWidth: CGFloat = UIScreen.main.bounds.width / CGFloat(self.numberOfSegments)
         let underlineHeight: CGFloat = 4.0
         let underlineXPosition = CGFloat(selectedSegmentIndex * Int(underlineWidth))
         let underLineYPosition = self.bounds.size.height - 4.0
         let underlineFrame = CGRect(x: underlineXPosition, y: underLineYPosition, width: underlineWidth, height: underlineHeight)
         let underline = UIView(frame: underlineFrame)
-        underline.backgroundColor = UIColor(hexString: "4e94f3")
+        underline.roundCorners(cornerRadius: 0, borderColor: underLineBorderColor, borderWidth: underLineBorderWidth)
+        underline.backgroundColor = underLineColor
         underline.tag = 1
         self.addSubview(underline)
     }
     
-    func addUnderlineForUnselectSegments() {
+    func addUnderlineForUnselectSegments(unselectUnderLineColor: UIColor) {
         let underlineWidth: CGFloat = UIScreen.main.bounds.width / CGFloat(self.numberOfSegments)
         let underlineHeight: CGFloat = 2.0
         let underLineYPosition = self.bounds.size.height - 2.0
@@ -55,14 +62,14 @@ extension UISegmentedControl{
             let underlineXPosition = CGFloat(i * Int(underlineWidth))
             let underlineFrame = CGRect(x: underlineXPosition, y: underLineYPosition, width: underlineWidth, height: underlineHeight)
             let underline = UIView(frame: underlineFrame)
-            underline.backgroundColor = UIColor(hexString: "98afcf")
+            underline.backgroundColor = unselectUnderLineColor
             underline.tag = index
             index += 1
             self.addSubview(underline)
         }
     }
     
-    func changeUnderlinePosition(){
+    public func changeUnderlinePosition(){
         changeSelectedPosition()
         changeUnselectPositions()
     }

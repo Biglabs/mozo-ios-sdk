@@ -148,7 +148,7 @@ public extension UIViewController {
 }
 
 extension UIColor {
-    convenience init(hexString: String) {
+    public convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()
         Scanner(string: hex).scanHexInt32(&int)
