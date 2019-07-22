@@ -58,6 +58,28 @@ public extension ApiManager {
     }
     
     public func getRetailerPromotionList(page: Int, size: Int, statusRequest: PromotionStatusRequestEnum) -> Promise<[PromotionDTO]> {
+        if statusRequest == .SCHEDULE {
+            return Promise { seal in
+                let params = ["size" : size,
+                              "page" : page] as [String : Any]
+                let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/getListPromoScheduled?\(params.queryString)"
+                self.execute(.get, url: url)
+                    .done { json -> Void in
+                        // JSON info
+                        print("Finish request to get Promotion list with type \(statusRequest), json response: \(json)")
+                        let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
+                        let array = PromotionDTO.arrayFromJson(jobj)
+                        seal.fulfill(array)
+                    }
+                    .catch { error in
+                        print("Error when request get Promotion list with type \(statusRequest): " + error.localizedDescription)
+                        seal.reject(error)
+                    }
+                    .finally {
+                        //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                }
+            }
+        }
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page,
@@ -66,13 +88,13 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get Promotion list, json response: \(json)")
+                    print("Finish request to get Promotion list with type \(statusRequest), json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let array = PromotionDTO.arrayFromJson(jobj)
                     seal.fulfill(array)
                 }
                 .catch { error in
-                    print("Error when request get Promotion list: " + error.localizedDescription)
+                    print("Error when request get Promotion list with type \(statusRequest): " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {
