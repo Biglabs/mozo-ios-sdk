@@ -54,6 +54,7 @@ public enum ErrorApiResponse: String {
     case STORE_PROMO_PERIOD_TIME_ERROR = "STORE_PROMO_PERIOD_TIME_ERROR"
     case STORE_PROMO_SECRET_CODE_ERROR = "STORE_PROMO_SECRET_CODE_ERROR"
     case STORE_PROMO_NOT_EXIST_ERROR = "STORE_PROMO_NOT_EXIST_ERROR"
+    case STORE_PROMO_NOT_ACTIVE_ERROR = "STORE_PROMO_NOT_ACTIVE_ERROR"
     case STORE_PROMO_DETAIL_NOT_EXIST_ERROR = "STORE_PROMO_DETAIL_NOT_EXIST_ERROR"
     case STORE_PROMO_UPDATE_SAVED_ERROR = "STORE_PROMO_UPDATE_SAVED_ERROR"
     case STORE_PROMO_BALANCE_NOT_ENOUGH_ERROR = "STORE_PROMO_BALANCE_NOT_ENOUGH_ERROR"
@@ -152,6 +153,7 @@ public enum ErrorApiResponse: String {
         case .STORE_PROMO_PERIOD_TIME_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_PROMO_SECRET_CODE_ERROR: return "Invalid QR Code"
         case .STORE_PROMO_NOT_EXIST_ERROR: return rawValue
+        case .STORE_PROMO_NOT_ACTIVE_ERROR: return rawValue
         case .STORE_PROMO_DETAIL_NOT_EXIST_ERROR: return rawValue
         case .STORE_PROMO_UPDATE_SAVED_ERROR: return rawValue
         case .STORE_PROMO_BALANCE_NOT_ENOUGH_ERROR: return "Your spendable is not enough for this."
@@ -249,6 +251,7 @@ public enum ErrorApiResponse: String {
         case .STORE_PROMO_PERIOD_TIME_ERROR: return .apiError_STORE_PROMO_PERIOD_TIME_ERROR
         case .STORE_PROMO_SECRET_CODE_ERROR: return .apiError_STORE_PROMO_SECRET_CODE_ERROR
         case .STORE_PROMO_NOT_EXIST_ERROR: return .apiError_STORE_PROMO_NOT_EXIST_ERROR
+        case .STORE_PROMO_NOT_ACTIVE_ERROR: return .apiError_STORE_PROMO_NOT_ACTIVE_ERROR
         case .STORE_PROMO_DETAIL_NOT_EXIST_ERROR: return .apiError_STORE_PROMO_DETAIL_NOT_EXIST_ERROR
         case .STORE_PROMO_UPDATE_SAVED_ERROR: return .apiError_STORE_PROMO_UPDATE_SAVED_ERROR
         case .STORE_PROMO_BALANCE_NOT_ENOUGH_ERROR: return .apiError_STORE_PROMO_BALANCE_NOT_ENOUGH_ERROR
