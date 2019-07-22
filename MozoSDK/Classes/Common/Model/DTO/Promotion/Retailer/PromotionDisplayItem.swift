@@ -88,6 +88,11 @@ public class PromotionDisplayItem {
         return "(\("Start in next %d \(dayText)".localizedFormat(self.startInNextDaysFromNow)))"
     }
     
+    public func startInNextDaysFromNowTextWithFormat(_ format: String = "Start in next %d") -> String {
+        let dayText = self.startInNextDaysFromNow > 1 ? "days" : "day"
+        return "(\("\(format) \(dayText)".localizedFormat(self.startInNextDaysFromNow)))"
+    }
+    
     public func dayLeftFromNowTextWithFormat(_ format: String = "%d days left") -> String {
         return "(\(format.localizedFormat(self.dayLeftFromNow)))"
     }
@@ -134,5 +139,36 @@ public class PromotionDisplayItem {
     
     public var mozoXRequireExchangeText: String {
         return DisplayUtils.getExchangeTextFromAmount(self.mozoXRequireDouble)
+    }
+    
+    public var mozoXTotalReceived: Double {
+        let decimals = SessionStoreManager.tokenInfo?.decimals ?? 2
+        return self.receivedMozoX.convertOutputValue(decimal: decimals)
+    }
+    
+    public var mozoXTotalReceivedText: String {
+        return self.mozoXTotalReceived.addCommas()
+    }
+    
+    public var fromDateText: String {
+        let dateFormat = "HH:mm MMM d, yyyy".localized
+        let formatter = DateFormatter()
+        formatter.dateFormat = dateFormat
+        
+        let date = Date(timeIntervalSince1970: TimeInterval(periodFromDate))
+        let dateText = formatter.string(from: date)
+        
+        return dateText
+    }
+    
+    public var toDateText: String {
+        let dateFormat = "HH:mm MMM d, yyyy".localized
+        let formatter = DateFormatter()
+        formatter.dateFormat = dateFormat
+        
+        let date = Date(timeIntervalSince1970: TimeInterval(periodToDate))
+        let dateText = formatter.string(from: date)
+        
+        return dateText
     }
 }
