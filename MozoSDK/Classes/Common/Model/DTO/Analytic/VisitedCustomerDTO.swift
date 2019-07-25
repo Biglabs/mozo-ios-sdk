@@ -12,12 +12,14 @@ public class VisitedCustomerDTO: ResponseObjectSerializable {
     public var inStore: Bool?
     public var lastVisitedTimeInSec: Int64?
     public var phoneNum: String?
+    public var duration: Int64?
     
     public required init?(json: SwiftyJSON.JSON) {
         self.visitType = json["visitType"].int
         self.inStore = json["inStore"].bool
         self.lastVisitedTimeInSec = json["lastVisitedTimeInSec"].int64
         self.phoneNum = json["phoneNum"].string
+        self.duration = json["duration"].int64
     }
     
     public required init?(){}
@@ -35,6 +37,9 @@ public class VisitedCustomerDTO: ResponseObjectSerializable {
         }
         if let phoneNum = self.phoneNum {
             json["phoneNum"] = phoneNum
+        }
+        if let duration = self.duration {
+            json["duration"] = duration
         }
         return json
     }
