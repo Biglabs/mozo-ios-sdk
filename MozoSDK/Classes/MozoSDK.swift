@@ -305,8 +305,8 @@ public class MozoSDK {
         return moduleDependencies.processPromotionCode(code: code)
     }
     
-    public static func usePromotionCode(code: String) -> Promise<PromotionCodeInfoDTO> {
-        return moduleDependencies.usePromotionCode(code: code)
+    public static func usePromotionCode(code: String, billInfo: String?) -> Promise<PromotionCodeInfoDTO> {
+        return moduleDependencies.usePromotionCode(code: code, billInfo: billInfo)
     }
     
     public static func cancelPromotionCode(code: String) -> Promise<[String: Any]> {

@@ -359,8 +359,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.processPromotionCode(code: code))!
     }
     
-    func usePromotionCode(code: String) -> Promise<PromotionCodeInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.usePromotionCode(code: code))!
+    func usePromotionCode(code: String, billInfo: String?) -> Promise<PromotionCodeInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.usePromotionCode(code: code, billInfo: billInfo))!
     }
     
     func cancelPromotionCode(code: String) -> Promise<[String: Any]> {

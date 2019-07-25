@@ -127,10 +127,14 @@ public extension ApiManager {
         }
     }
     
-    public func usePromotionCode(code: String) -> Promise<PromotionCodeInfoDTO> {
+    public func usePromotionCode(code: String, billInfo: String?) -> Promise<PromotionCodeInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/usePromoCode?code=\(code)"
-            self.execute(.put, url: url)
+            var params = ["code" : code] as [String : Any]
+            if let billInfo = billInfo {
+                params["billId"] = billInfo
+            }
+            let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/usePromoCode"
+            self.execute(.put, url: url, parameters: params)
             .done { json -> Void in
                 // JSON info
                 print("Finish request to use promotion code, json response: \(json)")
