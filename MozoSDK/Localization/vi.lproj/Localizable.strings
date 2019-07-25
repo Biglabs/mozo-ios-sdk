@@ -817,7 +817,7 @@
 "Top Airdrop Events" = "Airdrop nhiều nhất";
 "Nearest Events" = "Airdrop gần nhất";
 
-"There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later. " = "Đang có một giao dịch ở trạng thái chờ. Không thể thực hiện giao dịch khác. Vui lòng đợi khoảng 3 phút và thực hiện lại giao dịch.";
+"There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later." = "Đang có một giao dịch ở trạng thái chờ. Không thể thực hiện giao dịch khác. Vui lòng đợi khoảng 3 phút và thực hiện lại giao dịch.";
 "Can not send transaction to Ethereum network or sent but failed. Please check your data and try again." = "Không thể gởi giao dịch đến hệ thống Ethereum hoặc đã gới nhưng xẩy ra lỗi. Xin vui lòng kiểm tra thông tin và thực hiện lại giao dịch";
 "We're sorry because something is wrong. We will transfer MozoX Offchain to your wallet later." = "Có lỗi bất thường xảy ra. Chúng tôi sẽ tìm hiểu và chuyển MozoX Offchain đến tài khoản của bạn.";
 
@@ -845,6 +845,7 @@
 
 "%@ Token" = "%@ MozoX";
 "Get Tokens" = "Săn MozoX";
+"GET TOKENS" = "SĂN MOZOX";
 "Token" = "MozoX";
 "Tokens" = "MozoX";
 "Today collected tokens" = "MozoX nhận hôm nay";
@@ -1071,3 +1072,87 @@
 "Change Security PIN Successful" = "Thay đổi mã PIN thành công";
 
 "System is using automatically generated PIN to sign your transaction and send it to network..." = "Đang dùng mã PIN được tự động tạo bởi hệ thống để ký giao dịch và gởi đến máy chủ...";
+
+// Promotion
+"Redeem Tokens" = "Dùng điểm thưởng";
+"Top Promotions" = "Khuyến mãi đỉnh";
+"%d days left" = "Còn %d ngày";
+"%d day left" = "Còn %d ngày";
+"REDEEM" = "MUA";
+"%d% OFF" = "Giảm %d%";
+"%d%% OFF" = "Giảm %d%%";
+"Trendy Hashtags" = "Khuynh hướng";
+"Others" = "Khác";
+"Purchased" = "Đã thanh toán";
+"USE" = "DÙNG";
+"(%d) USE" = "(%d) DÙNG";
+"Discover stores around you to get more MozoX tokens now." = "Khám phá cửa hàng xung quanh để lấy thêm MozoX.";
+"Show me" = "Xem";
+"Receive more MozoX by tapping" = "Nhấn để nhận thêm MozoX";
+"Paid Promotion" = "Khuyến mãi đã thanh toán";
+"Purchased:" = "Đã thanh toán:";
+"Purchased Date & Time:" = "Ngày giờ thanh toán:";
+"Valid Until:" = "Có hiệu lực đến:";
+"%@ is activating your promotion code..." = "%@ đang kích hoạt mã khuyến mãi...";
+"Promotion Used" = "Khuyến mãi đã sử dụng";
+"Activation Date & Time:" = "Ngày giờ kích hoạt:";
+"Running Promotions Now" = "Những khuyến mãi đang xảy ra";
+"My Promotions" = "Danh sách khuyến mãi";
+"Activated" = "Đã kích hoạt";
+"Activate Date & Time:" = "Ngày giờ kích hoạt:";
+"DETAIL" = "CHI TIẾT";
+"Paid" = "Đã thanh toán";
+"Active Promotions" = "Khuyến mãi đang hoạt động";
+"Show QR Code" = "Hiển thị mã QR";
+"Scan QR Code" = "Quét mã QR";
+"Create a Promotion to attract more Shoppers by offering MozoX and discounts" = "Tạo khuyến mãi để thu hút khách hàng bằng cách thu MozoX và giảm giá";
+"Create Promotion" = "Tạo khuyến mãi";
+"Optional" = "Không bắt buộc";
+"Running" = "Đang hoạt động";
+"RUNNING" = "ĐANG HOẠT ĐỘNG";
+"Ended" = "Đã kết thúc";
+"ENDED" = "ĐÃ KẾT THÚC";
+"Scheduled" = "Sắp diễn ra";
+"SCHEDULED" = "SẮP DIỄN RA";
+"Time to Expiration:" = "Hết hiệu lực:";
+
+"What is MozoX Promotion?" = "Khuyến mãi trong hệ thống MozoX là gì?";
+"Enter discount %" = "Nhập % giảm giá";
+"MozoX required for discount" = "Số MozoX cần thiết để giảm giá";
+"Enter MozoX number" = "Nhập số MozoX";
+"Promotion Display Image (Optional)" = "Hình ảnh hiển thị của khuyến mãi (Không bắt buộc)";
+"Promotion Display Image" = "Hình ảnh hiển thị của khuyến mãi";
+"Take photo or upload from your gallery" = "Chụp ảnh hoặc tải hình từ gallery";
+"The percentage discount a Shopper will receive when they redeem MozoX to take advantage of your promotion offer. Ex: Shoppers will receive a 50% discount on the purchase of a bottle of Coca Cola when they redeem 15,000 MozoX." = "Số phần trăm giảm giá cho khách hàng nếu họ trả MozoX. Ví dụ: Khách hàng sẽ được giảm giá 50% khi mua một chai Coca cola khi họ trả 15.000 MozoX.";
+"This is the number of MozoX tokens a Shopper must redeem in order to receive the Promotion discount." = "Đây là số MozoX khách hàng phải trả để được giảm giá";
+"Describe what discount Shopper will receive if they redeem MozoX for this Promotion" = "Mô tả khuyến mãi khách hàng sẽ nhận được nếu họ trả MozoX cho bạn";
+"Discount percentage" = "Phần trăm giảm";
+"Preview Promotion" = "Xem thử khuyến mãi";
+"Your Promotion will display on Shopper’s App as follows:" = "Khuyến mãi của bạn sẽ được hiển thị như thế này trên màn hình khách hàng:";
+"Create Promotion successfully" = "Tạo khuyến mãi thành công";
+"Store QR Code" = "Mã QR của cửa hàng";
+"Let Shopper scan this QR Code to access your active Promotion list." = "Hãy để khách hàng quét mã QR này để xem tất cả các khuyến mãi của bạn.";
+"Loading promotion data..." = "Đang tải thông tin khuyến mãi...";
+"Promotion Expired" = "Khuyến mãi đã hết hạn";
+"Promotion belong to other store" = "Khuyến mãi này của cửa hàng khác";
+"+ Create New" = "+ Tạo mới";
+"Activating Shopper promotion..." = "Đang kích hoạt khuyến mãi của khách...";
+"Promotion Period:" = "Thời gian khuyến mãi:";
+"Activate successfully" = "Kích hoạt thành công";
+"Start in next %d days" = "Sẽ chạy trong %d ngày nữa";
+"Start in next %d day" = "Sẽ chạy trong %d ngày nữa";
+"Invalid discount percent" = "Phần trăm không hợp lệ";
+"Invalid QR Code" = "Mã QR không hợp lệ";
+"Invalid promotion code" = "Mã khuyến mãi không hợp lệ";
+"Added into favorite promotions" = "Đã thêm vào trong danh sách yêu thích";
+"Removed from favorite promotions" = "Đã bỏ ra khỏi danh sách yêu thích";
+"Process time out. Please re-scan QR Code." = "Hết thời gian xử lý. Xin vui lòng quét lại mã QR.";
+"Airdrop Event is a MozoX feature let your store attract more Shoppers by creating Airdrop Events to airdrop MozoX for each Shopper visit your store." = "Sự kiện Airdrop là tính năng của MozoX giúp cửa hàng thu hút khách hàng bằng cách tạo ra sự kiện để thưởng MozoX cho khách hàng khi họ đến cửa hàng của bạn.";
+"Promotion is a MozoX feature let your store attract more Shoppers by allowing them to redeem MozoX and get discount on receipt." = "Khuyến mãi là tính năng của MozoX giúp cửa hàng thu hút khách hàng bằng cách cho phép họ trả MozoX và được hưởng ưu đãi giảm giá.";
+"Ex: Shopper can redeem 1,000 MozoX to get 50% discount on receipt." = "Ví dụ: Khách hàng có thể trả 1.000 MozoX để được giảm giá 50%.";
+"Don’t miss out other Promotions 🤩" = "Khám phá các khuyến mãi khác 🤩";
+"Next %d days" = "%d ngày nữa";
+"Next %d day" = "%d ngày nữa";
+"Promotion is being processed" = "Khuyến mãi này đang được xử lý";
+"Promotions attract shoppers by allowing them to redeem their MozoX for discounts of your products and services. (e.g., Redeem 1000 MozoX in exchange for a 20% discount on selected items.)" = "Khuyến mãi thu hút khách hàng bằng cách cho phép khách hàng trả MozoX để được hưởng giảm giá từ sản phẩm và dịch vụ của bạn. (Ví dụ: Trả 1.000 MozoX để được giảm giá 20% trên một sản phẩm bạn lựa chọn)";
+"Airdrop Events attract more shoppers by rewarding them for visiting your store or venue. Shoppers can receive MozoX via \"airdrop\" into the digital wallets inside their MozoX Shopper App each time they enter your premises." = "Sự kiện Airdrop thu hút khách hàng bằng cách thưởng cho khách hàng đến cửa hàng của bạn. Khách hàng sẽ được nhận MozoX vào ví điện tử trong ứng dụng MozoX mỗi khi họ ghé thăm cửa hàng của bạn.";
