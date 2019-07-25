@@ -111,7 +111,7 @@
 "Transaction history list is empty" = "거래 내역 리스트가 비어 있습니다.";
 "MozoX Offchain Balance" = "MozoX Offchain 밸런스";
 "Your MozoX Offchain Wallet Address" = "귀하의 MozoX Offchain 월렛 주소";
-"To" = " %@까지";
+"To" = "까지";
 "From" = "에서";
 "You must" = "이 기능을 사용하려면";
 "Login" = "로그인";
@@ -156,7 +156,7 @@
 "Your store is not registered on our website yet, please contact Mozo Operation team for support." = "귀하의 상점은 저희 웹 사이트에 아직 등록되어 있지 않습니다.\nMozo 운영 팀에 지원을 요청하십시오.";
 "Email" = "이메일";
 "Mail" = "메일";
-"Phone " = "전화 번호";
+"Phone" = "전화 번호";
 "Call" = "전화하기";
 "Log in with another phone number" = "다른 전화 번호로 로그인하십시오.";
 "Account Verified" = "계정이 확인되었습니다";
@@ -254,7 +254,7 @@
 "Shoppers this month" = "월중 쇼핑객";
 "Airdropped MozoX" = "MozoX에는 에어 드롭됐습니다.";
 "Active Events" = "이벤트가 실행 중입니다.";
-"View all Events" = " 이벤트 전체보기";
+"View all Events" = "이벤트 전체보기";
 "View all Shoppers" = "쇼핑객 전체보기";
 "Visiting Shoppers" = "쇼핑객이 상점에 있습니다";
 "Airdrops per Shopper:" = "쇼핑객 당 Airdrops 수신";
@@ -406,7 +406,7 @@
 "Just Now" = "지금";
 "Create airdrop event failed. Please try again!" = "Airdrop 이벤트를 만들지 못했습니다. 다시 시도하십시오!";
 "Try again" = "다시 시도하십시오.";
-"Email Us" = " 문의 이메일";
+"Email Us" = "문의 이메일";
 "General" = "총괄";
 "Airdrop" = "Airdrop";
 "1. MozoX App for Retailer" = "1. 소매 업체 용 MozoX 앱";
@@ -509,7 +509,7 @@
 "Total MozoX Coins: %@" = "총 MozoX 코인 수";
 "Fill in to get %@ MozoX" = "원하는 MozoX %@ 를 입력하세요.";
 "Receive %@ MozoX for each join MozoX" = "MozoX에 가입 할 때마다 %@ MozoX를 받습니다.";
-"Allow MozoX to access your location?" = " MozoX가 귀하의 위치에 접근하도록 허용 하시겠습니까?";
+"Allow MozoX to access your location?" = "MozoX가 귀하의 위치에 접근하도록 허용 하시겠습니까?";
 "MozoX uses this information to provide more relevant and personalized experiences, like helping you to find local events and to provide better suggestions.\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "MozoX는이 정보를 사용하여 제안 사항을 개선하고 사용자 환경을 업그레이드함으로써\nAirdrop 이벤트를 쉽게 찾을 수 있도록합니다.\n이 기능을 열려면 응용 '앱 설정'을 선택하고 권한 메뉴 아래에있는 위치를 활성화하십시오.";
 "Not now" = "지금 아님";
 "App Settings" = "설정";
@@ -565,8 +565,8 @@
 
 "Allow MozoX to access your location?\nMozoX uses this to provide more relevant and personalized experiences, like helping you to find local events and get better suggestion.\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "MozoX에서 귀하의 위치를 사용하도록 허용 하시겠습니까?\nMozoX는이 정보를 사용하여 제안 사항을 개선하고 사용자 환경을 업그레이드함으로써\nAirdrop 이벤트를 쉽게 찾을 수 있도록합니다.\n이 기능을 열려면 응용 '앱 설정'을 선택하고 권한 메뉴 아래에있는 위치를 활성화하십시오.";
 "Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "수신자의 수량과' 각 쇼핑객에게 Airdrop한 MozoX'의 수량을 입력하십시오.";
-"Invalid Airdrop start date - end date." = " Airdrop 시작일 및 종료일이 유효하지 않습니다.";
-"Invalid Airdrop start time - end time." = " Airdrop 시작 시간 및 종료 시간이 유효하지 않습니다.";
+"Invalid Airdrop start date - end date." = "Airdrop 시작일 및 종료일이 유효하지 않습니다.";
+"Invalid Airdrop start time - end time." = "Airdrop 시작 시간 및 종료 시간이 유효하지 않습니다.";
 "Time of Start date must larger than current time %d minutes at least." = "시작 시간은 현재시간 보다 %d 분이상, 이후로 정해야 합니다.";
 
 "Frequency must be equal or larger than %d minutes" = "Airdrop 빈도는  최소한 %d 분입니다.";
@@ -674,7 +674,7 @@
 "Share Interest" = "관심 분야 공유";
 "Token of Discovery" = "발견된 코인";
 "Discover interested store around you and get reward by MozoX" = "주위에 관심있는 상점을 찾고 MozoX 를 받으십시오.";
-"Use rewarded MozoX to redeem in any stores using MozoX" = " 받은 MozoX 코인을 MozoX를 적용하는 상점에서 보상으로 바꿀 수 있습니다.";
+"Use rewarded MozoX to redeem in any stores using MozoX" = "받은 MozoX 코인을 MozoX를 적용하는 상점에서 보상으로 바꿀 수 있습니다.";
 "Transfer MozoX to your friends easily by using MozoX Wallet" = "MozoX 월렛을  통해 MozoX를 친구에게 쉽게 이전합니다.";
 "Discover more and get more with MozoX" = "MozoX로 더 많이 발견하고 더 많이 얻으십시오.";
 "Let's get started!" = "시작하자!";
@@ -815,7 +815,7 @@
 "Top Airdrop Events" = "가장 많은 Airdrop 이벤트";
 "Nearest Events" = "가장 가까운 Airdrop 이벤트";
 
-"There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later. " = "보류중인 거래가 있습니다. 다른 거래를 보낼 수 없습니다. 약 3 분 정도 기다렸다가 나중에 다시 시도하십시오.";
+"There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later." = "보류중인 거래가 있습니다. 다른 거래를 보낼 수 없습니다. 약 3 분 정도 기다렸다가 나중에 다시 시도하십시오.";
 "Can not send transaction to Ethereum network or sent but failed. Please check your data and try again." = "에테 리움 네트워크로 거래를 보낼 수 없거나 전송되었지만 실패했습니다. 데이터를 확인하고 다시 시도하십시오.";
 "We're sorry because something is wrong. We will transfer MozoX Offchain to your wallet later." = "뭔가 잘못되어 죄송합니다. 나중에 MozoX Offchain을 지갑으로 전송하겠습니다.";
 
@@ -842,6 +842,7 @@
 
 "%@ Token" = "%@ 코인";
 "Get Tokens" = "코인가져 오기";
+"GET TOKENS" = "코인가져 오기";
 "Token" = "코인";
 "Tokens" = "코인";
 "Today collected tokens" = "오늘 수집한 코인";
@@ -890,7 +891,7 @@
 "Select language to share" = "공유 할 언어 선택";
 "MozoX App" = "MozoX 앱";
 "MozoX Retailer App" = "MozoX 소매 앱";
-"Reward %@ MozoX" = " %@ 의 MozoX 보상을 받게 됩니다.";
+"Reward %@ MozoX" = "%@ 의 MozoX 보상을 받게 됩니다.";
 "Let your friends scan this QR codes or invite them to join MozoX. You will get rewards for each friend signed up successful." = "친구가 이 QR 코드를 스캔하거나 MozoX에 가입하도록 초대하십시오. 성공적으로 등록 된 각 친구에 대한 보상을 받게 됩니다.";
 
 "Once per day" = "하루에 한 번";
@@ -920,7 +921,7 @@
 // Reset PIN - Notification Group - Suggestion Search - Empty state with CTA - Maintenance Mode - Profile Update Notification - Error Popup
 "%u more MozoX received" = "%u 모조X 더 수신됩니다.";
 "%u more MozoX sent" = "%u 모조X 더 전송 됩니다.";
-"%u more MozoX received from Airdrop Events" = " %u 총 모조X를 Airdrop 이벤트에서  더 받았습니다.";
+"%u more MozoX received from Airdrop Events" = "%u 총 모조X를 Airdrop 이벤트에서  더 받았습니다.";
 "Your friends have joined MozoX" = "친구들이 모조X에 가입했습니다.";
 "%u more friends joined MozoX" = "%u 친구들이 모조X에 더 가입했습니다.";
 "Customers arrived" = "고객이 도착했습니다.";
@@ -1080,3 +1081,87 @@
 "Change Security PIN Successful" = "PIN 변경 성공";
 
 "System is using automatically generated PIN to sign your transaction and send it to network..." = "시스템은 자동 생성된 PIN을 사용해 거래 결재하고 네트워크로 보내는 중";
+
+// Promotion
+"Redeem Tokens" = "토큰 사용";
+"Top Promotions" = "최고 프로모션";
+"%d days left" = "%d일 남았다";
+"%d day left" = "%d일 남았다";
+"REDEEM" = "보상";
+"%d% OFF" = "%d% 할인";
+"%d%% OFF" = "%d%% 할인";
+"Trendy Hashtags" = "트랜드 해쉬태그";
+"Others" = "기타";
+"Purchased" = "결제완료";
+"USE" = "사용";
+"(%d) USE" = "(%d) 사용";
+"Discover stores around you to get more MozoX tokens now." = "주변 스토어를 살펴봐 모조X를 더 받트세요";
+"Show me" = "나에게 보여줘";
+"Receive more MozoX by tapping" = "탭해서 모조X를 더 받으세요";
+"Paid Promotion" = "결제된 프로모션";
+"Purchased:" = "결제완료:";
+"Purchased Date & Time:" = "결제 날짜 및 시간:";
+"Valid Until:" = "유효기간:";
+"%@ is activating your promotion code..." = "%@가 프로모션 코드를 활성화 중...";
+"Promotion Used" = "사용한 프로모션";
+"Activation Date & Time:" = "활성화 날짜 및 시간:";
+"Running Promotions Now" = "현재 진행 중인 프로모션";
+"My Promotions" = "나의 프로모션";
+"Activated" = "활성화 되었습니다";
+"Activate Date & Time:" = "활성화 될 날짜 및 시간:";
+"DETAIL" = "세부 사항";
+"Paid" = "결제되었습니다";
+"Active Promotions" = "활성화 중인 프로모션";
+"Show QR Code" = "QR 코드 표시";
+"Scan QR Code" = "QR 코드 스캔";
+"Create a Promotion to attract more Shoppers by offering MozoX and discounts" = "모조X 증정 또는 할인을 통해 구매자의 관심을 끌리기 위해 프로모션을 만드세요";
+"Create Promotion" = "프로모션 만들기";
+"Optional" = "옵션";
+"Running" = "활동 중";
+"RUNNING" = "활동 중";
+"Ended" = "종료";
+"ENDED" = "종료";
+"Scheduled" = "진행 예정";
+"SCHEDULED" = "진행 예정";
+"Time to Expiration:" = "마감날짜:";
+"Promotion List is empty or your connection is too slow" = "프로모션 리스트는 없거나 당신의 인터넷 속도가 너무 느리다.";
+"What is MozoX Promotion?" = "모조X 프모모션이라?";
+"Enter discount %" = "할인% 입력";
+"MozoX required for discount" = "할인을 위해 필요할 모조X의 수";
+"Enter MozoX number" = "모조X 넘버 입력";
+"Promotion Display Image (Optional)" = "프로모션 사진 (옵션)";
+"Promotion Display Image" = "프로모션 사진";
+"Take photo or upload from your gallery" = "사진첩에 가져오거나 새로운 사진 촬영하기";
+"The percentage discount a Shopper will receive when they redeem MozoX to take advantage of your promotion offer. Ex: Shoppers will receive a 50% discount on the purchase of a bottle of Coca Cola when they redeem 15,000 MozoX." = "구매자가 모조X를 결제해 받을 할인 퍼센트. 예: 구매자가 코카콜라을 구매할 때 15,000모조X를 결제하면 50%할인을 받을 수 있다. ";
+"This is the number of MozoX tokens a Shopper must redeem in order to receive the Promotion discount." = "프로모션 할인을 받기 위해 필요할 모조X";
+"Describe what discount Shopper will receive if they redeem MozoX for this Promotion" = "구매자가 모조X를 지불할 때 받을 수 있을 혜택을 묘사하세요";
+"Discount percentage" = "할인 퍼센트";
+"Preview Promotion" = "프로모션 보기";
+"Your Promotion will display on Shopper’s App as follows:" = "당신의 프로모션은 구매자의 앱에 다음과 같이 표시됩니다:";
+"Create Promotion successfully" = "프로모션 성공적으로 만들었습니다";
+"Store QR Code" = "스토어 QR 코드";
+"Let Shopper scan this QR Code to access your active Promotion list." = "당신의 모든 프로모션을 볼 수 있게 이 QR 크드를 구매자에게 스캔하게 하세요.";
+"Loading promotion data..." = "프로모션 데이타 로딩 중...";
+"Promotion Expired" = "종료된 프로모션";
+"Promotion belong to other store" = "다른 스토어의 프로모션입니다";
+"+ Create New" = "+ 새로 만들기";
+"Activating Shopper promotion..." = "구매자의 프로모션을 활성화 중...";
+"Promotion Period:" = "프로모션 기간:";
+"Activate successfully" = "성공적으로 활성화 되었습니다";
+"Start in next %d days" = "%d일 이후 진행 예정";
+"Start in next %d day" = "%d일 이후 진행 예정";
+"Invalid discount percent" = "잘못된 할인 퍼센트";
+"Invalid QR Code" = "잘못된 QR코드";
+"Invalid promotion code" = "잘못된 프로모션 코드";
+"Added into favorite promotions" = "즐겨보는 프로모션 리스트에 추가하였습니다";
+"Removed from favorite promotions" = "즐겨보는 프로모션 리스트에 삭제하였습니다";
+"Process time out. Please re-scan QR Code." = "처리 시간 초과. QR코드를 다시 스캔하세요.";
+"Airdrop Event is a MozoX feature let your store attract more Shoppers by creating Airdrop Events to airdrop MozoX for each Shopper visit your store." = "에어드롭 이베트는 모조X 기능이며 구매자가 당신의 스토어에 방문할 때 모조X 증정 이벤트를 만들기를 통해 구매자의 관심을 끌리기 위해 기능이다.";
+"Promotion is a MozoX feature let your store attract more Shoppers by allowing them to redeem MozoX and get discount on receipt." = "프로모션은 모조X 기능이며 구매자가 모조X로 결제해 할인 혜택을 받게끔 할 기능이며 스토어에 대한 관심을 끌리기 위한 기능이다.";
+"Ex: Shopper can redeem 1,000 MozoX to get 50% discount on receipt." = "예: 구매자가 1,000 모조X를 지불해 50% 할인 혜택을 받을 수 있다.";
+"Don’t miss out other Promotions 🤩" = "다른 프로모션을 놓치지마세요 🤩";
+"Next %d days" = "다음 %d일";
+"Next %d day" = "다음 %d일";
+"Promotion is being processed" = "처리 중인 프로모션";
+"Promotions attract shoppers by allowing them to redeem their MozoX for discounts of your products and services. (e.g., Redeem 1000 MozoX in exchange for a 20% discount on selected items.)" = "프로모션은 모조X 결제 허락해 구매자에게 당신의 상품이나 서비스 할인을 제공함으로써  구매자를 끌린다. (예: 구매자가 1,000 모조X 결제해 당신이 선택한 상품에 대해 20% 할인을 받을 것이다) ";
+"Airdrop Events attract more shoppers by rewarding them for visiting your store or venue. Shoppers can receive MozoX via \"airdrop\" into the digital wallets inside their MozoX Shopper App each time they enter your premises." = "에어드롭 이벤트는 당신의 스토어나 장소에 방문에 대한 보상 제공으로 구매자를 끌린다. 구매자는 당신의 스토어 구내에 방문 시 MozoX Shopper App에 있는 전자지갑으로 \"에어드롭\"을 통해 모조X를 받을 수 있다.";
