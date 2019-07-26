@@ -95,7 +95,7 @@ public class NotiDisplayItemData {
             case NotificationEventType.PromotionUsed.rawValue:
                 if let noti = rawNoti as? PromotionUsedNotification {
                     title = "Promotion used".localized
-                    subtitle = noti.storeName ?? ""
+                    subtitle = "At %@".localizedFormat(noti.storeName ?? "")
                 }
                 image = "ic_notif_promotion_used"
                 detailText = subtitle
