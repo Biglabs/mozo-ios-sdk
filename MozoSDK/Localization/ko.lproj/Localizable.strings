@@ -1149,6 +1149,7 @@
 "Promotion Expired" = "종료된 프로모션";
 "Promotion belong to other store" = "다른 스토어의 프로모션입니다";
 "+ Create New" = "+ 새로 만들기";
+"Create New" = "새로 만들기";
 "Activating Shopper promotion..." = "구매자의 프로모션을 활성화 중...";
 "Promotion Period:" = "프로모션 기간:";
 "Activate successfully" = "성공적으로 활성화 되었습니다";
