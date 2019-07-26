@@ -1093,6 +1093,7 @@
 "Trendy Hashtags" = "트랜드 해쉬태그";
 "Others" = "기타";
 "Purchased" = "결제완료";
+"Use" = "사용";
 "USE" = "사용";
 "(%d) USE" = "(%d) 사용";
 "Discover stores around you to get more MozoX tokens now." = "주변 스토어를 살펴봐 모조X를 더 받트세요";
@@ -1112,11 +1113,13 @@
 "DETAIL" = "세부 사항";
 "Paid" = "결제되었습니다";
 "Active Promotions" = "활성화 중인 프로모션";
+"Active Promotion" = "활성화 중인 프로모션";
 "Show QR Code" = "QR 코드 표시";
 "Scan QR Code" = "QR 코드 스캔";
 "Create a Promotion to attract more Shoppers by offering MozoX and discounts" = "모조X 증정 또는 할인을 통해 구매자의 관심을 끌리기 위해 프로모션을 만드세요";
 "Create Promotion" = "프로모션 만들기";
 "Optional" = "옵션";
+"(Optional)" = "(옵션)";
 "Running" = "활동 중";
 "RUNNING" = "활동 중";
 "Ended" = "종료";
@@ -1132,10 +1135,11 @@
 "Promotion Display Image (Optional)" = "프로모션 사진 (옵션)";
 "Promotion Display Image" = "프로모션 사진";
 "Take photo or upload from your gallery" = "사진첩에 가져오거나 새로운 사진 촬영하기";
-"The percentage discount a Shopper will receive when they redeem MozoX to take advantage of your promotion offer. Ex: Shoppers will receive a 50% discount on the purchase of a bottle of Coca Cola when they redeem 15,000 MozoX." = "구매자가 모조X를 결제해 받을 할인 퍼센트. 예: 구매자가 코카콜라을 구매할 때 15,000모조X를 결제하면 50%할인을 받을 수 있다. ";
+"The percentage discount a Shopper will receive when they redeem MozoX to take advantage of your promotion offer.\n\nEx: Shoppers will receive a 50% discount on the purchase of a bottle of Coca Cola when they redeem 15,000 MozoX." = "구매자가 모조X를 결제해 받을 할인 퍼센트.\n\n예: 구매자가 코카콜라을 구매할 때 15,000모조X를 결제하면 50%할인을 받을 수 있다. ";
 "This is the number of MozoX tokens a Shopper must redeem in order to receive the Promotion discount." = "프로모션 할인을 받기 위해 필요할 모조X";
 "Describe what discount Shopper will receive if they redeem MozoX for this Promotion" = "구매자가 모조X를 지불할 때 받을 수 있을 혜택을 묘사하세요";
 "Discount percentage" = "할인 퍼센트";
+"Discount Percentage" = "할인 퍼센트";
 "Preview Promotion" = "프로모션 보기";
 "Your Promotion will display on Shopper’s App as follows:" = "당신의 프로모션은 구매자의 앱에 다음과 같이 표시됩니다:";
 "Create Promotion successfully" = "프로모션 성공적으로 만들었습니다";
@@ -1176,6 +1180,7 @@
 "MozoX Collected Today" = "오늘 받으신 모조X";
 "Activating..." = "활성화 중...";
 "Running Promotions (%d)" = "진행 중인 프로모션 (%d)";
+"Running Promotions" = "진행 중인 프로모션";
 "%d h" = "%d 시간";
 "%d h %d min(s)" = "%d 시간  %d 분";
 "Shopper purchased promotion" = "프로모션을 구매한 구매자";
@@ -1190,3 +1195,4 @@
 "Promotion" = "프로모션";
 "This QR code is invalid." = "잘못된 QR코드";
 "At %@" = "%@에";
+"Description" = "설명";
