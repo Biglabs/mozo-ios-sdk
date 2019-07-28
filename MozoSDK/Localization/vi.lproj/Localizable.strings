@@ -1096,6 +1096,7 @@
 "Valid Until:" = "Có hiệu lực đến:";
 "%@ is activating your promotion code..." = "%@ đang kích hoạt mã khuyến mãi...";
 "Promotion Used" = "Khuyến mãi đã sử dụng";
+"Promotion used" = "Khuyến mãi đã sử dụng";
 "Activation Date & Time:" = "Ngày giờ kích hoạt:";
 "Running Promotions Now" = "Những khuyến mãi đang xảy ra";
 "My Promotions" = "Danh sách khuyến mãi";

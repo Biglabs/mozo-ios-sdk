@@ -1105,6 +1105,7 @@
 "Valid Until:" = "유효기간:";
 "%@ is activating your promotion code..." = "%@가 프로모션 코드를 활성화 중...";
 "Promotion Used" = "사용한 프로모션";
+"Promotion used" = "사용한 프로모션";
 "Activation Date & Time:" = "활성화 날짜 및 시간:";
 "Running Promotions Now" = "현재 진행 중인 프로모션";
 "My Promotions" = "나의 프로모션";
