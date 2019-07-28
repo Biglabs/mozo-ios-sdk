@@ -20,7 +20,7 @@ class ExpandImageCollectionViewCell: UICollectionViewCell {
     func bindData() {
         if let imageName = self.imageName, !imageName.isEmpty {
             let url = "\(Configuration.DOMAIN_IMAGE)\(imageName)"
-            let paramUrlString = "\(url)?width=\(Int(self.frame.width * UIScreen.main.scale * 2))&height=\(Int(self.frame.height * UIScreen.main.scale * 2))"
+            let paramUrlString = "\(url)?width=\(Int(imageView.frame.width * UIScreen.main.scale * 2))&height=\(Int(imageView.frame.height * UIScreen.main.scale * 2))"
             imageView.imageUrlString = paramUrlString
             imageView.loadImageUsingUrlString(paramUrlString, defaultImageName: "", isShowLoading: true, isUseScreenCenter: true)
         } else {

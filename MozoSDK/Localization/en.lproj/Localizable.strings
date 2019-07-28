@@ -1080,6 +1080,7 @@
 "Trendy Hashtags" = "Trendy Hashtags";
 "Others" = "Others";
 "Purchased" = "Purchased";
+"Use" = "Use";
 "USE" = "USE";
 "(%d) USE" = "(%d) USE";
 "Discover stores around you to get more MozoX tokens now." = "Discover stores around you to get more MozoX tokens now.";
@@ -1091,6 +1092,7 @@
 "Valid Until:" = "Valid Until:";
 "%@ is activating your promotion code..." = "%@ is activating your promotion code...";
 "Promotion Used" = "Promotion Used";
+"Promotion used" = "Promotion used";
 "Activation Date & Time:" = "Activation Date & Time:";
 "Running Promotions Now" = "Running Promotions Now";
 "My Promotions" = "My Promotions";
@@ -1099,11 +1101,13 @@
 "DETAIL" = "DETAIL";
 "Paid" = "Paid";
 "Active Promotions" = "Active Promotions";
+"Active Promotion" = "Active Promotion";
 "Show QR Code" = "Show QR Code";
 "Scan QR Code" = "Scan QR Code";
 "Create a Promotion to attract more Shoppers by offering MozoX and discounts" = "Create a Promotion to attract more Shoppers by offering MozoX and discounts";
 "Create Promotion" = "Create Promotion";
 "Optional" = "Optional";
+"(Optional)" = "(Optional)";
 "Running" = "Running";
 "RUNNING" = "RUNNING";
 "Ended" = "Ended";
@@ -1119,10 +1123,11 @@
 "Promotion Display Image (Optional)" = "Promotion Display Image (Optional)";
 "Promotion Display Image" = "Promotion Display Image";
 "Take photo or upload from your gallery" = "Take photo or upload from your gallery";
-"The percentage discount a Shopper will receive when they redeem MozoX to take advantage of your promotion offer. Ex: Shoppers will receive a 50% discount on the purchase of a bottle of Coca Cola when they redeem 15,000 MozoX." = "The percentage discount a Shopper will receive when they redeem MozoX to take advantage of your promotion offer. Ex: Shoppers will receive a 50% discount on the purchase of a bottle of Coca Cola when they redeem 15,000 MozoX.";
+"The percentage discount a Shopper will receive when they redeem MozoX to take advantage of your promotion offer.\n\nEx: Shoppers will receive a 50% discount on the purchase of a bottle of Coca Cola when they redeem 15,000 MozoX." = "The percentage discount a Shopper will receive when they redeem MozoX to take advantage of your promotion offer.\n\nEx: Shoppers will receive a 50% discount on the purchase of a bottle of Coca Cola when they redeem 15,000 MozoX.";
 "This is the number of MozoX tokens a Shopper must redeem in order to receive the Promotion discount." = "This is the number of MozoX tokens a Shopper must redeem in order to receive the Promotion discount.";
 "Describe what discount Shopper will receive if they redeem MozoX for this Promotion" = "Describe what discount Shopper will receive if they redeem MozoX for this Promotion";
 "Discount percentage" = "Discount percentage";
+"Discount Percentage" = "Discount Percentage";
 "Preview Promotion" = "Preview Promotion";
 "Your Promotion will display on Shopper’s App as follows:" = "Your Promotion will display on Shopper’s App as follows:";
 "Create Promotion successfully" = "Create Promotion successfully";
@@ -1132,6 +1137,7 @@
 "Promotion Expired" = "Promotion Expired";
 "Promotion belong to other store" = "Promotion belong to other store";
 "+ Create New" = "+ Create New";
+"Create New" = "Create New";
 "Activating Shopper promotion..." = "Activating Shopper promotion...";
 "Promotion Period:" = "Promotion Period:";
 "Activate successfully" = "Activate successfully";
@@ -1163,6 +1169,7 @@
 "MozoX Collected Today" = "MozoX Collected Today";
 "Activating..." = "Activating...";
 "Running Promotions (%d)" = "Running Promotions (%d)";
+"Running Promotions" = "Running Promotions";
 "%d h" = "%d h";
 "%d h %d min(s)" = "%d h %d min(s)";
 "Shopper purchased promotion" = "Shopper purchased promotion";
@@ -1177,3 +1184,4 @@
 "Promotion" = "Promotion";
 "This QR code is invalid." = "This QR code is invalid.";
 "At %@" = "At %@";
+"Description" = "Description";

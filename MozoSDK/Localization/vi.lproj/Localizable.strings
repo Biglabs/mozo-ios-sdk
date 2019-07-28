@@ -1084,6 +1084,7 @@
 "Trendy Hashtags" = "Khuynh hướng";
 "Others" = "Khác";
 "Purchased" = "Đã thanh toán";
+"Use" = "Dùng";
 "USE" = "DÙNG";
 "(%d) USE" = "(%d) DÙNG";
 "Discover stores around you to get more MozoX tokens now." = "Khám phá cửa hàng xung quanh để lấy thêm MozoX.";
@@ -1095,6 +1096,7 @@
 "Valid Until:" = "Có hiệu lực đến:";
 "%@ is activating your promotion code..." = "%@ đang kích hoạt mã khuyến mãi...";
 "Promotion Used" = "Khuyến mãi đã sử dụng";
+"Promotion used" = "Khuyến mãi đã sử dụng";
 "Activation Date & Time:" = "Ngày giờ kích hoạt:";
 "Running Promotions Now" = "Những khuyến mãi đang xảy ra";
 "My Promotions" = "Danh sách khuyến mãi";
@@ -1103,11 +1105,13 @@
 "DETAIL" = "CHI TIẾT";
 "Paid" = "Đã thanh toán";
 "Active Promotions" = "Khuyến mãi đang hoạt động";
+"Active Promotion" = "Khuyến mãi đang hoạt động";
 "Show QR Code" = "Hiển thị mã QR";
 "Scan QR Code" = "Quét mã QR";
 "Create a Promotion to attract more Shoppers by offering MozoX and discounts" = "Tạo khuyến mãi để thu hút khách hàng bằng cách thu MozoX và giảm giá";
 "Create Promotion" = "Tạo khuyến mãi";
 "Optional" = "Không bắt buộc";
+"(Optional)" = "(Không bắt buộc)";
 "Running" = "Đang hoạt động";
 "RUNNING" = "ĐANG HOẠT ĐỘNG";
 "Ended" = "Đã kết thúc";
@@ -1123,10 +1127,11 @@
 "Promotion Display Image (Optional)" = "Hình ảnh hiển thị của khuyến mãi (Không bắt buộc)";
 "Promotion Display Image" = "Hình ảnh hiển thị của khuyến mãi";
 "Take photo or upload from your gallery" = "Chụp ảnh hoặc tải hình từ gallery";
-"The percentage discount a Shopper will receive when they redeem MozoX to take advantage of your promotion offer. Ex: Shoppers will receive a 50% discount on the purchase of a bottle of Coca Cola when they redeem 15,000 MozoX." = "Số phần trăm giảm giá cho khách hàng nếu họ trả MozoX. Ví dụ: Khách hàng sẽ được giảm giá 50% khi mua một chai Coca cola khi họ trả 15.000 MozoX.";
+"The percentage discount a Shopper will receive when they redeem MozoX to take advantage of your promotion offer.\n\nEx: Shoppers will receive a 50% discount on the purchase of a bottle of Coca Cola when they redeem 15,000 MozoX." = "Số phần trăm giảm giá cho khách hàng nếu họ trả MozoX.\n\nVí dụ: Khách hàng sẽ được giảm giá 50% khi mua một chai Coca cola khi họ trả 15.000 MozoX.";
 "This is the number of MozoX tokens a Shopper must redeem in order to receive the Promotion discount." = "Đây là số MozoX khách hàng phải trả để được giảm giá";
 "Describe what discount Shopper will receive if they redeem MozoX for this Promotion" = "Mô tả khuyến mãi khách hàng sẽ nhận được nếu họ trả MozoX cho bạn";
 "Discount percentage" = "Phần trăm giảm";
+"Discount Percentage" = "Phần trăm giảm";
 "Preview Promotion" = "Xem thử khuyến mãi";
 "Your Promotion will display on Shopper’s App as follows:" = "Khuyến mãi của bạn sẽ được hiển thị như thế này trên màn hình khách hàng:";
 "Create Promotion successfully" = "Tạo khuyến mãi thành công";
@@ -1136,6 +1141,7 @@
 "Promotion Expired" = "Khuyến mãi đã hết hạn";
 "Promotion belong to other store" = "Khuyến mãi này của cửa hàng khác";
 "+ Create New" = "+ Tạo mới";
+"Create New" = "Tạo mới";
 "Activating Shopper promotion..." = "Đang kích hoạt khuyến mãi của khách...";
 "Promotion Period:" = "Thời gian khuyến mãi:";
 "Activate successfully" = "Kích hoạt thành công";
@@ -1167,6 +1173,7 @@
 "MozoX Collected Today" = "MozoX đã nhận trong ngày";
 "Activating..." = "Đang kích hoạt...";
 "Running Promotions (%d)" = "Khuyến mãi hiện có (%d)";
+"Running Promotions" = "Khuyến mãi hiện có";
 "%d h" = "%d giờ";
 "%d h %d min(s)" = "%d giờ % phút";
 "Shopper purchased promotion" = "Khách hàng đã mua khuyến mãi";
@@ -1181,3 +1188,4 @@
 "Promotion" = "Khuyến mãi";
 "This QR code is invalid." = "Mã QR không hợp lệ";
 "At %@" = "Tại %@";
+"Description" = "Mô tả";
