@@ -47,7 +47,7 @@ class AutoPINViewController: MozoBasicViewController {
         checkImg.translatesAutoresizingMaskIntoConstraints = false
         
         checkLabel = UILabel(frame: CGRect(x: 0, y: 0, width: checkView.frame.width, height: 50))
-        checkLabel.text = "Don't show again".localized
+        checkLabel.text = "Don’t show again".localized
         checkLabel.textColor = ThemeManager.shared.main
         checkLabel.font = UIFont.systemFont(ofSize: 13)
         checkLabel.translatesAutoresizingMaskIntoConstraints = false
