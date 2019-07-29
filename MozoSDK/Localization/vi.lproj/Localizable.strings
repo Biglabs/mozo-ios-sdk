@@ -678,7 +678,7 @@
 "Let's get started!" = "Bắt đầu";
 "Disrupt Foot Traffic" = "Đẩy mạnh lưu lượng khách";
 "Analytics" = "Báo cáo";
-"Redeem" = "Đổi thưởng";
+"Redeem" = "Mua";
 "Liquidity" = "Linh hoạt";
 "Reduce Cost" = "Giảm thiểu chi phí";
 "Airdrop MozoX to attract more customers to your store" = "Thu hút nhiều khách hàng hơn bằng cách Airdrop MozoX";
@@ -1189,3 +1189,4 @@
 "This QR code is invalid." = "Mã QR không hợp lệ";
 "At %@" = "Tại %@";
 "Description" = "Mô tả";
+"Purchase" = "Thanh toán";
