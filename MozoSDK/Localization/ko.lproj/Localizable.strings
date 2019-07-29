@@ -680,7 +680,7 @@
 "Let's get started!" = "시작하자!";
 "Disrupt Foot Traffic" = "고객 트래픽 폭발";
 "Analytics" = "분석 보고";
-"Redeem" = "보상을 바꾸기";
+"Redeem" = "보상";
 "Liquidity" = "유동성";
 "Reduce Cost" = "비용 절감";
 "Airdrop MozoX to attract more customers to your store" = "Airdrop MozoX를 통해 상점에 더 많은 고객을  유치합니다.";
@@ -1198,3 +1198,4 @@
 "This QR code is invalid." = "잘못된 QR코드";
 "At %@" = "%@에";
 "Description" = "설명";
+"Purchase" = "매수";
