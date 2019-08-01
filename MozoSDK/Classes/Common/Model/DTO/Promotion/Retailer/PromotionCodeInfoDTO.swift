@@ -17,4 +17,9 @@ public class PromotionCodeInfoDTO {
         self.promo = PromotionDTO(json: json["promo"])
         self.userInfo = UserProfileDTO(json: json["userInfo"])
     }
+    
+    public static func arrayFrom(_ json: SwiftyJSON.JSON) -> [PromotionCodeInfoDTO] {
+        let array = json.array?.map({ PromotionCodeInfoDTO(json: $0)! })
+        return array ?? []
+    }
 }

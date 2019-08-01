@@ -153,4 +153,28 @@ extension ApiManager {
             }
         }
     }
+    
+    public func getPromotionPaidHistoryDetail(_ id: Int64) -> Promise<PromotionPaidDTO> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getPromoPaidHistoryDetail?idPaidPromoDetail=\(id)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get promotion paid history detail, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    if let result = PromotionPaidDTO(json: jobj) {
+                        seal.fulfill(result)
+                    } else {
+                        seal.reject(ConnectionError.systemError)
+                    }
+                }
+                .catch { error in
+                    print("Error when request get promotion paid history detail: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
 }

@@ -220,4 +220,125 @@ public extension ApiManager {
             }
         }
     }
+    
+    public func getRetailerPromotionScannedList(page: Int, size: Int) -> Promise<[PromotionCodeInfoDTO]> {
+        return Promise { seal in
+            let params = ["size" : size,
+                          "page" : page] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/getListPromoScanned?\(params.queryString)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get Scanned Promotion list, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
+                    let array = PromotionCodeInfoDTO.arrayFrom(jobj)
+                    seal.fulfill(array)
+                }
+                .catch { error in
+                    print("Error when request get scanned Promotion list: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func getShopperPromotionHistory(page: Int, size: Int) -> Promise<[PromotionStoreDTO]> {
+        return Promise { seal in
+            let params = ["size" : size,
+                          "page" : page] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoHistoryInBag?\(params.queryString)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get Shopper promotion history, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
+                    let array = PromotionStoreDTO.arrayFrom(jobj)
+                    seal.fulfill(array)
+                }
+                .catch { error in
+                    print("Error when request get Shopper promotion history: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func getShopperPromotionPurchased(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
+        return Promise { seal in
+            let params = ["size" : size,
+                          "page" : page,
+                          "lat": lat,
+                          "lon": long] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoPurchasedInBag?\(params.queryString)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get Shopper promotion purchased, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
+                    let array = PromotionStoreDTO.arrayFrom(jobj)
+                    seal.fulfill(array)
+                }
+                .catch { error in
+                    print("Error when request get Shopper promotion purchased: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func getShopperPromotionRunning(page: Int, size: Int, long: Double, lat: Double, storeId: Int64) -> Promise<JSON> {
+        return Promise { seal in
+            let params = ["size" : size,
+                          "page" : page,
+                          "lat": lat,
+                          "lon": long,
+                          "storeId": storeId] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoRunningInStore?\(params.queryString)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get Shopper promotion running, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    seal.fulfill(jobj)
+                }
+                .catch { error in
+                    print("Error when request get Shopper promotion running: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func getShopperPromotionSaved(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
+        return Promise { seal in
+            let params = ["size" : size,
+                          "page" : page,
+                          "lat": lat,
+                          "lon": long] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoSavedInBag?\(params.queryString)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get Shopper promotion saved, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
+                    let array = PromotionStoreDTO.arrayFrom(jobj)
+                    seal.fulfill(array)
+                }
+                .catch { error in
+                    print("Error when request get Shopper promotion saved: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
 }

@@ -391,6 +391,30 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateFavoritePromotion(promotionId, isFavorite: isFavorite))!
     }
     
+    func getPromotionPaidHistoryDetail(_ id: Int64) -> Promise<PromotionPaidDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionPaidHistoryDetail(id))!
+    }
+    
+    func getShopperPromotionSaved(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionSaved(page: page, size: size, long: long, lat: lat))!
+    }
+    
+    func getShopperPromotionRunning(page: Int, size: Int, long: Double, lat: Double, storeId: Int64) -> Promise<JSON> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionRunning(page: page, size: size, long: long, lat: lat, storeId: storeId))!
+    }
+    
+    func getShopperPromotionPurchased(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionPurchased(page: page, size: size, long: long, lat: lat))!
+    }
+    
+    func getShopperPromotionHistory(page: Int, size: Int) -> Promise<[PromotionStoreDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionHistory(page: page, size: size))!
+    }
+    
+    func getRetailerPromotionScannedList(page: Int, size: Int) -> Promise<[PromotionCodeInfoDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerPromotionScannedList(page: page, size: size))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

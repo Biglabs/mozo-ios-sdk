@@ -7,7 +7,7 @@
 
 import Foundation
 import PromiseKit
-
+import SwiftyJSON
 protocol CoreInteractorInput {
     func checkForAuthentication(module: Module)
     func handleAferAuth(accessToken: String?)
@@ -130,4 +130,16 @@ protocol CoreInteractorService {
     func getPromotionPaidDetailByCode(_ promotionCode: String) -> Promise<PromotionPaidDTO>
     
     func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]>
+    
+    func getPromotionPaidHistoryDetail(_ id: Int64) -> Promise<PromotionPaidDTO>
+    
+    func getShopperPromotionSaved(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]>
+    
+    func getShopperPromotionRunning(page: Int, size: Int, long: Double, lat: Double, storeId: Int64) -> Promise<JSON>
+    
+    func getShopperPromotionPurchased(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]>
+    
+    func getShopperPromotionHistory(page: Int, size: Int) -> Promise<[PromotionStoreDTO]>
+    
+    func getRetailerPromotionScannedList(page: Int, size: Int) -> Promise<[PromotionCodeInfoDTO]>
 }
