@@ -1190,4 +1190,7 @@
 "Running Promotions is empty or your connection is too slow" = "Running Promotions is empty or your connection is too slow";
 "No data to display or your connection is too slow" = "No data to display or your connection is too slow";
 "This Promotion is going to expire in next %dh %dmins. Are you sure you want to continue?" = "This Promotion is going to expire in next %dh %dmins. Are you sure you want to continue?";
+"This Promotion is going to expire in next %dh %dmin. Are you sure you want to continue?" = "This Promotion is going to expire in next %dh %dmin. Are you sure you want to continue?";
+"This Promotion is going to expire in next %dmins. Are you sure you want to continue?" = "This Promotion is going to expire in next %dmins. Are you sure you want to continue?";
+"This Promotion is going to expire in next %dmin. Are you sure you want to continue?" = "This Promotion is going to expire in next %dmin. Are you sure you want to continue?";
 "EXPIRED" = "EXPIRED";
