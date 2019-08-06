@@ -1112,7 +1112,7 @@
 "Activated" = "활성화 되었습니다";
 "Activate Date & Time:" = "활성화 될 날짜 및 시간:";
 "DETAIL" = "세부 사항";
-"Paid" = "결제되었습니다";
+"Paid:" = "결제되었습니다:";
 "Active Promotions" = "활성화 중인 프로모션";
 "Active Promotion" = "활성화 중인 프로모션";
 "Show QR Code" = "QR 코드 표시";
@@ -1202,4 +1202,5 @@
 "Start in next %d min(s)" = "[%d] 분 이후 시작 예정";
 "Running Promotions is empty or your connection is too slow" = "진행 중 인 프로모션 없거나 연결 속도 너무 느립니다";
 "No data to display or your connection is too slow" = "데이터 없거나 연결 속도 너무 느립니다";
-"This Promotion is going to expire in next %dh%dmins. Are you sure you want to continue?" = "이 프로모션은 %d시간 %d분 이후 종료됩니다. 계속하시겠습니까?";
+"This Promotion is going to expire in next %dh %dmins. Are you sure you want to continue?" = "이 프로모션은 %d시간 %d분 이후 종료됩니다. 계속하시겠습니까?";
+"EXPIRED" = "만료";

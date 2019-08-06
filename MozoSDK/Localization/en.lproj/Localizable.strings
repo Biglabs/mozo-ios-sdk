@@ -1099,7 +1099,7 @@
 "Activated" = "Activated";
 "Activate Date & Time:" = "Activate Date & Time:";
 "DETAIL" = "DETAIL";
-"Paid" = "Paid";
+"Paid:" = "Paid:";
 "Active Promotions" = "Active Promotions";
 "Active Promotion" = "Active Promotion";
 "Show QR Code" = "Show QR Code";
@@ -1189,4 +1189,5 @@
 "Start in next %d min(s)" = "Start in next %d min(s)";
 "Running Promotions is empty or your connection is too slow" = "Running Promotions is empty or your connection is too slow";
 "No data to display or your connection is too slow" = "No data to display or your connection is too slow";
-"This Promotion is going to expire in next %dh%dmins. Are you sure you want to continue?" = "This Promotion is going to expire in next %dh%dmins. Are you sure you want to continue?";
+"This Promotion is going to expire in next %dh %dmins. Are you sure you want to continue?" = "This Promotion is going to expire in next %dh %dmins. Are you sure you want to continue?";
+"EXPIRED" = "EXPIRED";

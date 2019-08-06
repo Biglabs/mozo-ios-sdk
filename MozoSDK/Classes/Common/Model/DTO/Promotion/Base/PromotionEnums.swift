@@ -52,7 +52,7 @@ public enum PromotionListTypeEnum: String {
     public var loadMoreDisplayText: String {
         switch self {
         case .TOP: return "There are a lot of Top Promotion Events"
-        case .COMINGSOON: return "There are a lot of Comming Soon Promotion Events"
+        case .COMINGSOON: return "There are a lot of Coming Soon Promotion Events"
         case .HASHTAG: return "There are a lot of Hashtag Promotion Events"
         case .RECOMMEND: return "There are a lot of Recommend Promotion Events"
         }
