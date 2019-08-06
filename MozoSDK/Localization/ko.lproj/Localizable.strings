@@ -1203,4 +1203,7 @@
 "Running Promotions is empty or your connection is too slow" = "진행 중 인 프로모션 없거나 연결 속도 너무 느립니다";
 "No data to display or your connection is too slow" = "데이터 없거나 연결 속도 너무 느립니다";
 "This Promotion is going to expire in next %dh %dmins. Are you sure you want to continue?" = "이 프로모션은 %d시간 %d분 이후 종료됩니다. 계속하시겠습니까?";
+"This Promotion is going to expire in next %dh %dmin. Are you sure you want to continue?" = "이 프로모션은 %d시간 %d분 이후 종료됩니다. 계속하시겠습니까?";
+"This Promotion is going to expire in next %dmins. Are you sure you want to continue?" = "이 프로모션은 %d분 이후 종료됩니다. 계속하시겠습니까?";
+"This Promotion is going to expire in next %dmin. Are you sure you want to continue?" = "이 프로모션은 %d분 이후 종료됩니다. 계속하시겠습니까?";
 "EXPIRED" = "만료";
