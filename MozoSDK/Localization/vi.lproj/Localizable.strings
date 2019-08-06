@@ -1193,4 +1193,5 @@
 "Start in next %d min(s)" = "Sẽ chạy trong vòng [%d] phút nữa";
 "Running Promotions is empty or your connection is too slow" = "Không có khuyến mãi nào hoặc kết nối internet của bạn quá yếu.";
 "No data to display or your connection is too slow" = "Không tìm thấy thông tin hoặc kết nối internet của bạn quá yếu.";
-"This Promotion is going to expire in next %dh%dmins. Are you sure you want to continue?" = "Khuyến mãi này sẽ hết hạn trong vòng %d giờ %d phút nữa. Bạn có thật sự muốn mua không?";
+"This Promotion is going to expire in next %dh %dmins. Are you sure you want to continue?" = "Khuyến mãi này sẽ hết hạn trong vòng %d giờ %d phút nữa. Bạn có thật sự muốn mua không?";
+"EXPIRED" = "ĐÃ HẾT HẠN";
