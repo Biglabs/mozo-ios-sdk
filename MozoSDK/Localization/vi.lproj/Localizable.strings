@@ -85,7 +85,7 @@
 "Send Request Successful" = "Gửi yêu cầu thành công";
 "You sent Request MozoX to:" = "Đã gửi yêu cầu nhận:";
 "Requested list is empty" = "Danh sách trống";
-"From:" = "Từ";
+"From:" = "Từ:";
 "Request:" = "Yêu cầu:";
 "%@ MozoX" = "%@ MozoX";
 "Send MozoX" = "Gửi MozoX";
@@ -574,7 +574,7 @@
 "Back" = "Trở lại";
 "Error" = "Lỗi";
 "Cancel" = "Thoát";
-"To" = "Đến";
+"To:" = "Đến:";
 "From" = "Từ";
 "Coin" = "Coin";
 "Confirm" = "Xác nhận";
@@ -1198,3 +1198,5 @@
 "This Promotion is going to expire in next %dmins. Are you sure you want to continue?" = "Khuyến mãi này sẽ hết hạn trong vòng %d phút nữa. Bạn có thật sự muốn mua không?";
 "This Promotion is going to expire in next %dmin. Are you sure you want to continue?" = "Khuyến mãi này sẽ hết hạn trong vòng %d phút nữa. Bạn có thật sự muốn mua không?";
 "EXPIRED" = "ĐÃ HẾT HẠN";
+"Cancel processing promotion successfully" = "Mã khuyến mãi đã được khôi phục.";
+"Processing Promotions" = "Mã khuyến mãi đang xử lý";

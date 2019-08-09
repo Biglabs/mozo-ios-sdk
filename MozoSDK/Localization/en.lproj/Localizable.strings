@@ -570,7 +570,7 @@
 "Back" = "Back";
 "Error" = "Error";
 "Cancel" = "Cancel";
-"To" = "To";
+"To:" = "To:";
 "From" = "From";
 "Coin" = "Coin";
 "Confirm" = "Confirm";
@@ -1194,3 +1194,5 @@
 "This Promotion is going to expire in next %dmins. Are you sure you want to continue?" = "This Promotion is going to expire in next %dmins. Are you sure you want to continue?";
 "This Promotion is going to expire in next %dmin. Are you sure you want to continue?" = "This Promotion is going to expire in next %dmin. Are you sure you want to continue?";
 "EXPIRED" = "EXPIRED";
+"Cancel processing promotion successfully" = "Cancel processing promotion successfully";
+"Processing Promotions" = "Processing Promotions";
