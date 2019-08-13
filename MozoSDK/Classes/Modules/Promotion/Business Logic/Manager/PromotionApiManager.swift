@@ -341,4 +341,25 @@ public extension ApiManager {
             }
         }
     }
+    
+    public func getRetailerCountPromotion() -> Promise<Int> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/getCountPromotion"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get Retailer count promotion, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_TOTAL_KEY]
+                    let count = jobj.intValue
+                    seal.fulfill(count)
+                }
+                .catch { error in
+                    print("Error when request get Retailer count promotion: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
 }

@@ -415,6 +415,14 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerPromotionScannedList(page: page, size: size))!
     }
     
+    func getRetailerCountPromotion() -> Promise<Int> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerCountPromotion())!
+    }
+    
+    func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperTodoList(blueToothOff: blueToothOff, long: long, lat: lat))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

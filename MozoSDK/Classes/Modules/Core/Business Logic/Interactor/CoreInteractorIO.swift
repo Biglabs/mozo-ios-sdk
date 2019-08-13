@@ -142,4 +142,8 @@ protocol CoreInteractorService {
     func getShopperPromotionHistory(page: Int, size: Int) -> Promise<[PromotionStoreDTO]>
     
     func getRetailerPromotionScannedList(page: Int, size: Int) -> Promise<[PromotionCodeInfoDTO]>
+    
+    func getRetailerCountPromotion() -> Promise<Int>
+    
+    func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]>
 }
