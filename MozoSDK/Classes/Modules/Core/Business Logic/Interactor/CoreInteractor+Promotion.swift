@@ -76,4 +76,8 @@ extension CoreInteractor {
     func getRetailerPromotionScannedList(page: Int, size: Int) -> Promise<[PromotionCodeInfoDTO]> {
         return apiManager.getRetailerPromotionScannedList(page: page, size: size)
     }
+    
+    func getRetailerCountPromotion() -> Promise<Int> {
+        return apiManager.getRetailerCountPromotion()
+    }
 }

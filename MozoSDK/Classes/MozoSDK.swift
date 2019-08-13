@@ -361,4 +361,12 @@ public class MozoSDK {
     public static func getRetailerPromotionScannedList(page: Int = 0, size: Int = 15) -> Promise<[PromotionCodeInfoDTO]> {
         return moduleDependencies.getRetailerPromotionScannedList(page: page, size: size)
     }
+    
+    public static func getRetailerCountPromotion() -> Promise<Int> {
+        return moduleDependencies.getRetailerCountPromotion()
+    }
+    
+    public static func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]> {
+        return moduleDependencies.getShopperTodoList(blueToothOff: blueToothOff, long: long, lat: lat)
+    }
 }
