@@ -32,4 +32,28 @@ extension ApiManager {
             }
         }
     }
+    
+    public func getTodoListSetting() -> Promise<TodoSettingDTO> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/getTodoListSetting"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get Todo List Setting, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    if let todo = TodoSettingDTO(json: jobj) {
+                        seal.fulfill(todo)
+                    } else {
+                        seal.reject(ConnectionError.systemError)
+                    }
+                }
+                .catch { error in
+                    print("Error when request get Todo List Setting: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
 }

@@ -369,4 +369,8 @@ public class MozoSDK {
     public static func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]> {
         return moduleDependencies.getShopperTodoList(blueToothOff: blueToothOff, long: long, lat: lat)
     }
+    
+    public static func getTodoListSetting() -> Promise<TodoSettingDTO> {
+        return moduleDependencies.getTodoListSetting()
+    }
 }

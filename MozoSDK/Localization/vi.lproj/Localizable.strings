@@ -1119,7 +1119,7 @@
 "Scheduled" = "Sắp diễn ra";
 "SCHEDULED" = "SẮP DIỄN RA";
 "Time to Expiration:" = "Hết hiệu lực:";
-
+"Promotion List is empty or your connection is too slow" = "Không tìm thấy khuyến mãi nào hoặc internet của bạn có vấn đề.";
 "What is MozoX Promotion?" = "Khuyến mãi trong hệ thống MozoX là gì?";
 "Enter discount %" = "Nhập % giảm giá";
 "MozoX required for discount" = "Số MozoX cần thiết để giảm giá";
@@ -1175,7 +1175,7 @@
 "Running Promotions (%d)" = "Khuyến mãi hiện có (%d)";
 "Running Promotions" = "Khuyến mãi hiện có";
 "%d h" = "%d giờ";
-"%d h %d min(s)" = "%d giờ % phút";
+"%d h %d min(s)" = "%d giờ %d phút";
 "Shopper purchased promotion" = "Khách hàng đã mua khuyến mãi";
 "Don’t show again" = "Không hiện lại";
 "Invalid Recovery Phrase" = "Chuỗi ký tự phục hồi không hợp lệ";

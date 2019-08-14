@@ -423,6 +423,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getShopperTodoList(blueToothOff: blueToothOff, long: long, lat: lat))!
     }
     
+    func getTodoListSetting() -> Promise<TodoSettingDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getTodoListSetting())!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()
