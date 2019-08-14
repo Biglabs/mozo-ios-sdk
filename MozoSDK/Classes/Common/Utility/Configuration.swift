@@ -19,6 +19,7 @@ public class Configuration {
     public static let DEVICE_TOKEN = "DEVICE_TOKEN"
     public static let API_KEY_DEFAULT = "API_KEY_DEFAULT"
     public static let LOCALE = Locale.current.languageCode ?? "en"
+    public static let PARAM_LANGUAGE = "?language=\(LOCALE)"
     
     // User id for anonymous user
     public static let USER_ID_ANONYMOUS = "Mozo@UserId@Anonymous"

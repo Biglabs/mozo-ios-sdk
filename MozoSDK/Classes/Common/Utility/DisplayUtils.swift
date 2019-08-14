@@ -232,6 +232,6 @@ public class DisplayUtils {
     }
     
     public static func getHelpCenterPath() -> String {
-        return "/help-center?language=\(Configuration.LOCALE)"
+        return "/help-center\(Configuration.PARAM_LANGUAGE)"
     }
 }
