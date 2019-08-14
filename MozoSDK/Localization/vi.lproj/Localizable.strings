@@ -1175,7 +1175,7 @@
 "Running Promotions (%d)" = "Khuyến mãi hiện có (%d)";
 "Running Promotions" = "Khuyến mãi hiện có";
 "%d h" = "%d giờ";
-"%d h %d min(s)" = "%d giờ %d phút";
+"%d h %d min(s)" = "%d giờ %d phút";
 "Shopper purchased promotion" = "Khách hàng đã mua khuyến mãi";
 "Don’t show again" = "Không hiện lại";
 "Invalid Recovery Phrase" = "Chuỗi ký tự phục hồi không hợp lệ";

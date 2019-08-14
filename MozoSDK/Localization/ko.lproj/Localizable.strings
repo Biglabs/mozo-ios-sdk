@@ -1184,7 +1184,7 @@
 "Running Promotions (%d)" = "진행 중인 프로모션 (%d)";
 "Running Promotions" = "진행 중인 프로모션";
 "%d h" = "%d 시간";
-"%d h %d min(s)" = "%d 시간  %d 분";
+"%d h %d min(s)" = "%d 시간 %d 분";
 "Shopper purchased promotion" = "프로모션을 구매한 구매자";
 "Don’t show again" = "다시 보지 않습니다.";
 "Invalid Recovery Phrase" = "잘못된 복구 문구";
