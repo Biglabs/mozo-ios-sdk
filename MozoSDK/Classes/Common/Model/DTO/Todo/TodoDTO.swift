@@ -9,12 +9,12 @@ import Foundation
 import SwiftyJSON
 
 public class TodoDTO: ResponseObjectSerializable {
-    public var keyReminder: String?
+    public var id: String?
     public var serverity: String?
     public var priority: Int?
     
     public required init?(json: SwiftyJSON.JSON) {
-        self.keyReminder = json["keyReminder"].string
+        self.id = json["id"].string
         self.priority = json["priority"].int
         self.serverity = json["serverity"].string
     }
@@ -26,7 +26,7 @@ public class TodoDTO: ResponseObjectSerializable {
         if let priority = self.priority {
             json["priority"] = priority
         }
-        if let keyReminder = self.keyReminder {
+        if let keyReminder = self.id {
             json["keyReminder"] = keyReminder
         }
         if let serverity = self.serverity {

@@ -146,4 +146,6 @@ protocol CoreInteractorService {
     func getRetailerCountPromotion() -> Promise<Int>
     
     func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]>
+    
+    func getTodoListSetting() -> Promise<TodoSettingDTO>
 }
