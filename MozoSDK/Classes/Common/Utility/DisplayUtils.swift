@@ -230,4 +230,8 @@ public class DisplayUtils {
         
         return noContentView
     }
+    
+    public static func getHelpCenterPath() -> String {
+        return "/help-center?language=\(Configuration.LOCALE)"
+    }
 }
