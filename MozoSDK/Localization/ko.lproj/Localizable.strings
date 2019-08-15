@@ -1052,7 +1052,7 @@
 
 "Create MozoX Wallet" = "모조X 지갑 만들기";
 "Creating your MozoX wallet..." = "당신의 모조X 지갑 만드는 중...";
-
+"Recovering your MozoX wallet..." = "모조X 전자지갑 정보 복구 중...";
 
 "Backup Wallet" = "지갑 백업하기";
 "This is your recovery phrase" = "당신의 복구 문구입니다.";
