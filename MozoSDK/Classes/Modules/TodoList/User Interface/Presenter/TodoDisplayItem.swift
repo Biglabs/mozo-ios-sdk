@@ -7,16 +7,16 @@
 
 import Foundation
 public class TodoDisplayItem {
-    public var serverityEnum: TodoServerityEnum
+    public var severityEnum: TodoSeverityEnum
     public var todoEnum: TodoEnum
     
     public init() {
         todoEnum = .LOCATION_SERVICE_OFF
-        serverityEnum = .HIGH
+        severityEnum = .HIGH
     }
     
     public init(dto: TodoDTO) {
         todoEnum = TodoEnum(rawValue: dto.id ?? "") ?? .LOCATION_SERVICE_OFF
-        serverityEnum = TodoServerityEnum(rawValue: dto.serverity ?? "") ?? .HIGH
+        severityEnum = TodoSeverityEnum(rawValue: dto.severity ?? "") ?? .HIGH
     }
 }
