@@ -60,7 +60,7 @@ public enum TodoEnum: String {
         }
     }
 }
-public enum TodoServerityEnum: String {
+public enum TodoSeverityEnum: String {
     case HIGH = "HIGH"
     case NORMAL = "NORMAL"
     case LOW = "LOW"

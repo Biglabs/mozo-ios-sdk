@@ -10,13 +10,13 @@ import SwiftyJSON
 
 public class TodoDTO: ResponseObjectSerializable {
     public var id: String?
-    public var serverity: String?
+    public var severity: String?
     public var priority: Int?
     
     public required init?(json: SwiftyJSON.JSON) {
         self.id = json["id"].string
         self.priority = json["priority"].int
-        self.serverity = json["serverity"].string
+        self.severity = json["severity"].string
     }
     
     public required init?(){}
@@ -29,8 +29,8 @@ public class TodoDTO: ResponseObjectSerializable {
         if let keyReminder = self.id {
             json["keyReminder"] = keyReminder
         }
-        if let serverity = self.serverity {
-            json["serverity"] = serverity
+        if let serverity = self.severity {
+            json["severity"] = serverity
         }
         return json
     }
