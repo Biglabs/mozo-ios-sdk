@@ -15,7 +15,7 @@ public class TodoSettingDTO: ResponseObjectSerializable {
         self.colors = json["colors"]
     }
     
-    public func colorFromServerity(_ todoServerity: TodoSeverityEnum) -> String {
+    public func colorFromSeverity(_ todoServerity: TodoSeverityEnum) -> String {
         if let colors = self.colors {
             return colors[todoServerity.rawValue].string?.replace("#", withString: "") ?? "000000"
         }
