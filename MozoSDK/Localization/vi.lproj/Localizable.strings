@@ -1207,11 +1207,11 @@
 "Go to Settings →" = "Thiết lập →";
 "Location service is off 🗺" = "Định vị bị tắt  🗺";
 "Bluetooth is tuned off 😔..." = "Bluetooth bị tắt 😔...";
-"Get MozoX from nearby airdrop events 🎁" = "Kết nối internet có vấn đề 😔";
+"Get MozoX from nearby airdrop events 🎁" = "Nhận MozoX từ những airdrop gần đây  🎁";
 "Interesting promotions nearby 🤩" = "Khuyến mãi hấp dẫn ở gần đây 🤩";
 "Purchased promotions nearby 🤣" = "Khuyến mãi bạn đã mua ở gần đây 🤣";
 "Purchased promotions expiring soon 😣" = "Khuyến mãi bạn đã mua sắp hết hạn 😣";
-"Airdrop events that will expire soon ⏳" = "Sự kiện airdrop sắp kết thúc  ⏳";
+"Airdrop events that will expire soon ⏳" = "Sự kiện airdrop sắp kết thúc ⏳";
 "Your wallet is almost out of MozoX 😞" = "Ví của bạn sắp hết MozoX 😞";
 "Your wallet is almost out of MozoX 😞" = "Ví của bạn sắp hết MozoX 😞";
 "Promotions that will expire soon 👌" = "Khuyến mãi sắp kết thúc  👌";
@@ -1224,7 +1224,6 @@
 "Discover stores offering MozoX →" = "Khám phá khuyến mãi yêu thích của bạn →";
 "Discover your bookmarked promotions →" = "Sử dụng khuyến mãi đã mua →";
 "Discover your purchased promotions →" = "Sử dụng khuyến mãi đã mua →";
-"Discover your purchased promotions →" = "Xem những cửa hàng gần nhất có MozoX →";
 "Review and create a new airdrop event →" = "Xem và tạo sự kiện mới →";
 "Buy more MozoX →" = "Mua thêm MozoX →";
 "Discover stores offering MozoX →" = "Xem những cửa hàng gần nhất để kiếm MozoX →";
