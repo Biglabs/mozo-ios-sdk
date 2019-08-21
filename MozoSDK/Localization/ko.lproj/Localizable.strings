@@ -1244,3 +1244,5 @@
 "Unsolve (%d)" = "(%d) 처리되지 않았습니다";
 "Complete these actions to make sure there are no problems happen while using MozoX app:" = "모조X 앱을 문제 없이 사용하기 위해 아래에 나열된 것을 완료하세요.";
 "To Do List" = "해야 할 일";
+"Redemption" = "토큰 사용";
+"MozoX Offchain" = "MozoX Offchain";
