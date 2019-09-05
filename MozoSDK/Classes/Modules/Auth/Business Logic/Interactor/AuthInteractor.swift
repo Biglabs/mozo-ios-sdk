@@ -49,6 +49,7 @@ extension AuthInteractor : AuthInteractorInput {
     }
     
     func startRefreshTokenTimer() {
+        print("AuthInteractor - Start Refresh token timer")
         authManager?.setupRefreshTokenTimer()
     }
     

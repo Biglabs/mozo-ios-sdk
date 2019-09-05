@@ -61,6 +61,7 @@ class ModuleDependencies {
     let backupWalletWireframe = BackupWalletWireframe()
     let changePINWireframe = ChangePINWireframe()
     let redeemWireframe = RedeemWireframe()
+    let abImportWireframe = ABImportWireframe()
     
     let apiManager = ApiManager()
     let webSocketManager = WebSocketManager()
@@ -427,6 +428,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getTodoListSetting())!
     }
     
+    func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getGPSBeacons(userLat: userLat, userLong: userLong))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()
@@ -452,6 +457,8 @@ class ModuleDependencies {
         convertCompletionDependencies()
         // MARK: Backup Wallet
         backupWalletDependencies()
+        // MARK: Address Book Import
+        abImportDependencies()
     }
     
     func coreDependencies() {
@@ -809,7 +816,23 @@ class ModuleDependencies {
         redeemWireframe.rootWireframe = rootWireframe
     }
     
-    
+    func abImportDependencies() {
+        let presenter = ABImportPresenter()
+        
+        let interactor = ABImportInteractor()
+        interactor.apiManager = apiManager
+        interactor.output = presenter
+        
+        presenter.interactor = interactor
+        presenter.wireframe = abImportWireframe
+        
+        abImportWireframe.presenter = presenter
+        abImportWireframe.rootWireframe = rootWireframe
+        
+        abWireframe.abImportWireframe = abImportWireframe
+        
+        presenter.delegate = abWireframe.abPresenter
+    }
     
     // MARK: TEST
     func testSign() {

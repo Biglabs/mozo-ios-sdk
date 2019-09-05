@@ -39,6 +39,30 @@ public extension ApiManager {
         }
     }
     
+    public func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]> {
+        return Promise { seal in
+            let params = ["userLat" : userLat,
+                          "userLong": userLong] as [String : Any]
+            let query = "?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/beacon/gps" + query
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get GPS beacons, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
+                    let list = (jobj.array ?? []).filter({ $0.string != nil }).map({ $0.string! })
+                    seal.fulfill(list)
+                }
+                .catch { error in
+                    print("Error when request get GPS beacons: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
     public func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_API_PATH + "/color/range-settings"

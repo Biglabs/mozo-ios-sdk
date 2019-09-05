@@ -373,4 +373,8 @@ public class MozoSDK {
     public static func getTodoListSetting() -> Promise<TodoSettingDTO> {
         return moduleDependencies.getTodoListSetting()
     }
+    
+    public static func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]> {
+        return moduleDependencies.getGPSBeacons(userLat: userLat, userLong: userLong)
+    }
 }

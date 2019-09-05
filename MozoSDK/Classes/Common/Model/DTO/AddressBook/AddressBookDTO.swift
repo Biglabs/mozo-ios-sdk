@@ -14,10 +14,12 @@ public class AddressBookDTO: ResponseObjectSerializable {
     public var ownerUid: String?
     public var name: String?
     public var soloAddress: String?
+    public var phoneNo: String?
     
-    public required init(name: String, address: String){
+    public required init(name: String, address: String, phoneNo: String? = nil){
         self.name = name
         self.soloAddress = address
+        self.phoneNo = phoneNo
     }
     
     public required init?(json: SwiftyJSON.JSON) {
@@ -25,6 +27,7 @@ public class AddressBookDTO: ResponseObjectSerializable {
         self.ownerUid = json["ownerUid"].string
         self.name = json["name"].string
         self.soloAddress = json["soloAddress"].string
+        self.phoneNo = json["phoneNo"].string
     }
     
     public required init?(){}
@@ -42,6 +45,9 @@ public class AddressBookDTO: ResponseObjectSerializable {
         }
         if let soloAddress = self.soloAddress {
             json["soloAddress"] = soloAddress
+        }
+        if let phoneNo = self.phoneNo {
+            json["phoneNo"] = phoneNo
         }
         return json
     }

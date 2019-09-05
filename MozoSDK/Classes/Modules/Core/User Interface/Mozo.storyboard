@@ -3862,142 +3862,6 @@
             </objects>
             <point key="canvasLocation" x="5485.6000000000004" y="-298.2008995502249"/>
         </scene>
-        <!--Address Book-->
-        <scene sceneID="gKz-aM-SUF">
-            <objects>
-                <viewController storyboardIdentifier="AddressBookViewController" title="Address Book" id="eWV-d2-l3p" customClass="AddressBookViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dlw-Pg-alP"/>
-                        <viewControllerLayoutGuide type="bottom" id="eBy-2q-h4l"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QkS-pL-CCo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="atZ-Ao-pE6">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="6J7-ba-4lU">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bOT-jg-MYf">
-                                            <rect key="frame" x="16" y="7" width="288" height="31"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="pEU-Ll-TuF"/>
-                                            </constraints>
-                                            <segments>
-                                                <segment title="User Address"/>
-                                                <segment title="Store Address"/>
-                                            </segments>
-                                            <color key="tintColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        </segmentedControl>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstItem="bOT-jg-MYf" firstAttribute="centerY" secondItem="6J7-ba-4lU" secondAttribute="centerY" id="DOn-cK-D0I"/>
-                                        <constraint firstItem="bOT-jg-MYf" firstAttribute="centerX" secondItem="6J7-ba-4lU" secondAttribute="centerX" id="s5V-UO-xxl"/>
-                                        <constraint firstItem="bOT-jg-MYf" firstAttribute="width" secondItem="6J7-ba-4lU" secondAttribute="width" multiplier="0.9" id="vQN-P9-AeY"/>
-                                    </constraints>
-                                </view>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="MozoAddressBookCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MozoAddressBookCell" textLabel="DKa-OK-Hj0" detailTextLabel="Lwk-Zp-pRI" style="IBUITableViewCellStyleSubtitle" id="bX2-Kt-xhf">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bX2-Kt-xhf" id="Lr9-Ig-aGX">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DKa-OK-Hj0">
-                                                    <rect key="frame" x="15" y="7" width="41" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                                    <color key="textColor" red="0.078431372549019607" green="0.10196078431372549" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lwk-Zp-pRI">
-                                                    <rect key="frame" x="15" y="25" width="39.5" height="12"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="eWV-d2-l3p" id="hXF-zH-9GB"/>
-                                    <outlet property="delegate" destination="eWV-d2-l3p" id="dc6-v3-XI0"/>
-                                </connections>
-                            </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1m-FT-Tgp" customClass="MozoSearchFooter" customModule="MozoSDK" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="mLh-le-ScY"/>
-                                </constraints>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" restorationIdentifier="MozoFoundNoDataView" translatesAutoresizingMaskIntoConstraints="NO" id="ENq-X9-dhn">
-                                <rect key="frame" x="97" y="223" width="181" height="221"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_search" translatesAutoresizingMaskIntoConstraints="NO" id="xxU-Nm-zFa">
-                                        <rect key="frame" x="0.0" y="0.0" width="181" height="185"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="181" id="3RA-dX-P2R"/>
-                                            <constraint firstAttribute="height" constant="185" id="3j4-CZ-DD6"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results not found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fm1-Be-5mw">
-                                        <rect key="frame" x="23.5" y="200" width="134" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Results not found"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="xxU-Nm-zFa" firstAttribute="leading" secondItem="MxD-KR-A6c" secondAttribute="leading" id="SY2-03-nIB"/>
-                                    <constraint firstAttribute="height" constant="221" id="UJk-Bn-qub"/>
-                                    <constraint firstItem="MxD-KR-A6c" firstAttribute="trailing" secondItem="xxU-Nm-zFa" secondAttribute="trailing" id="a8O-t9-azo"/>
-                                    <constraint firstItem="Fm1-Be-5mw" firstAttribute="centerX" secondItem="ENq-X9-dhn" secondAttribute="centerX" id="cd2-UQ-TIL"/>
-                                    <constraint firstItem="Fm1-Be-5mw" firstAttribute="top" secondItem="xxU-Nm-zFa" secondAttribute="bottom" constant="15" id="fpe-Mx-cXx"/>
-                                    <constraint firstAttribute="width" constant="181" id="sHe-IX-YZl"/>
-                                    <constraint firstItem="xxU-Nm-zFa" firstAttribute="top" secondItem="MxD-KR-A6c" secondAttribute="top" id="vPy-M4-LvF"/>
-                                </constraints>
-                                <viewLayoutGuide key="safeArea" id="MxD-KR-A6c"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="eBy-2q-h4l" firstAttribute="top" secondItem="s1m-FT-Tgp" secondAttribute="bottom" id="7Qw-da-8NM"/>
-                            <constraint firstItem="ENq-X9-dhn" firstAttribute="centerY" secondItem="QkS-pL-CCo" secondAttribute="centerY" id="Ht0-tg-3Fq"/>
-                            <constraint firstItem="atZ-Ao-pE6" firstAttribute="top" secondItem="QkS-pL-CCo" secondAttribute="top" id="LCH-oP-fPX"/>
-                            <constraint firstItem="ENq-X9-dhn" firstAttribute="centerX" secondItem="QkS-pL-CCo" secondAttribute="centerX" id="Qwg-tN-HiD"/>
-                            <constraint firstItem="s1m-FT-Tgp" firstAttribute="leading" secondItem="QkS-pL-CCo" secondAttribute="leading" id="S6W-Ny-GOC"/>
-                            <constraint firstItem="atZ-Ao-pE6" firstAttribute="leading" secondItem="QkS-pL-CCo" secondAttribute="leading" id="bc1-La-3cB"/>
-                            <constraint firstItem="eBy-2q-h4l" firstAttribute="top" secondItem="atZ-Ao-pE6" secondAttribute="bottom" id="q8r-JI-EHY"/>
-                            <constraint firstAttribute="trailing" secondItem="s1m-FT-Tgp" secondAttribute="trailing" id="sBi-MI-5cs"/>
-                            <constraint firstAttribute="trailing" secondItem="atZ-Ao-pE6" secondAttribute="trailing" id="z9I-wj-jLK"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="3tR-P6-cwc"/>
-                    </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <connections>
-                        <outlet property="noDataView" destination="ENq-X9-dhn" id="8g4-LW-uth"/>
-                        <outlet property="searchFooter" destination="s1m-FT-Tgp" id="xWM-RE-ivg"/>
-                        <outlet property="segmentControl" destination="bOT-jg-MYf" id="3nF-Ou-IXM"/>
-                        <outlet property="tableView" destination="atZ-Ao-pE6" id="x5D-Vd-iWN"/>
-                        <outlet property="view" destination="QkS-pL-CCo" id="Dpt-1s-xiQ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7p0-lK-C2Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6340" y="-297.30134932533736"/>
-        </scene>
         <!--Transaction History-->
         <scene sceneID="JZy-t0-LTt">
             <objects>
@@ -4827,7 +4691,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UB8-i4-vWT">
-                                                    <rect key="frame" x="286" y="16" width="24" height="16"/>
+                                                    <rect key="frame" x="341" y="16" width="24" height="16"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -4839,7 +4703,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9T-fi-WzU">
-                                                    <rect key="frame" x="310" y="43" width="0.0" height="0.0"/>
+                                                    <rect key="frame" x="365" y="43" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -4974,7 +4838,6 @@
         <image name="ic_pencil" width="52" height="52"/>
         <image name="ic_question_mark" width="36" height="36"/>
         <image name="ic_scan" width="38" height="36"/>
-        <image name="ic_search" width="181" height="185"/>
         <image name="ic_send" width="13" height="15"/>
         <image name="ic_sent_circle" width="96" height="96"/>
         <image name="ic_sort_down" width="10" height="6"/>

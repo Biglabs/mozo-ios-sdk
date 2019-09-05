@@ -1233,3 +1233,8 @@
 "To Do List" = "To Do List";
 "Redemption" = "Redemption";
 "MozoX Offchain" = "MozoX Offchain";
+
+// Ticket
+"Welcome to %@" = "Welcome to %@";
+"FREE PARKING" = "FREE PARKING";
+"Disappear after %d:%d" = "Disappear after %d:%d";

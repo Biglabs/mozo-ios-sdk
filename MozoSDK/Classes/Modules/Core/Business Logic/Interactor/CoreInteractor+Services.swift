@@ -299,4 +299,8 @@ extension CoreInteractor: CoreInteractorService {
     func getTodoListSetting() -> Promise<TodoSettingDTO> {
         return apiManager.getTodoListSetting()
     }
+    
+    func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]> {
+        return apiManager.getGPSBeacons(userLat: userLat, userLong: userLong)
+    }
 }

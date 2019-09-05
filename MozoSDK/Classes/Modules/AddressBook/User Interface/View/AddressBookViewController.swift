@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import MBProgressHUD
 class AddressBookViewController: MozoBasicViewController {
     var eventHandler: AddressBookModuleInterface?
     
@@ -15,7 +15,7 @@ class AddressBookViewController: MozoBasicViewController {
     // MARK: - Properties
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchFooter: MozoSearchFooter!
-    @IBOutlet weak var noDataView: UIView!
+    @IBOutlet weak var btnUpdateContacts: UIButton!
     
     var displayData : AddressBookDisplayData?
     var addrBooks = [AddressBookDisplayItem]()
@@ -30,8 +30,6 @@ class AddressBookViewController: MozoBasicViewController {
     // MARK: - View Setup
     override func viewDidLoad() {
         super.viewDidLoad()
-        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: tableView.frame.size.height)
-        prepareNoContentView(frame, message: "Contacts list is empty")
         setupLayout()
         setupTarget()
         setupSegment()
@@ -77,8 +75,12 @@ class AddressBookViewController: MozoBasicViewController {
         definesPresentationContext = true
         
         // Setup the search footer
-        tableView.tableFooterView = searchFooter
+//        tableView.tableFooterView = searchFooter
+        let identifier = String(describing: AddressBookTableViewCell.self)
+        tableView.register(UINib(nibName: identifier, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: identifier)
         tableView.register(UINib(nibName: STORE_BOOK_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: STORE_BOOK_TABLE_VIEW_CELL_IDENTIFIER)
+        let eIdentifier = String(describing: ABEmptyStateTableViewCell.self)
+        tableView.register(UINib(nibName: eIdentifier, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: eIdentifier)
         
         tableView.sectionIndexColor = ThemeManager.shared.disable
         if isDisplayForSelect {
@@ -87,6 +89,8 @@ class AddressBookViewController: MozoBasicViewController {
         if !isShowStoreBook {
             tableView.tableHeaderView = nil
         }
+        btnUpdateContacts.roundCorners(borderColor: .white, borderWidth: 0.1)
+        btnUpdateContacts.layer.cornerRadius = 5
     }
     
     func setupTarget() {
@@ -121,19 +125,23 @@ class AddressBookViewController: MozoBasicViewController {
         tableView.reloadData()
     }
     
-    func loadFoundNoDataView() -> UIView {
-        let bundle = BundleManager.mozoBundle()
-        let nib = UINib(nibName: "MozoFoundNoDataView", bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        return view
+    var hud: MBProgressHUD?
+    func showHud() {
+        if let navView = navigationController?.view {
+            hud = MBProgressHUD.showAdded(to: navView, animated: true)
+            hud?.mode = .text
+            hud?.label.text = "Import contact successful".localized
+            hud?.label.textColor = .white
+            hud?.label.numberOfLines = 2
+            hud?.offset = CGPoint(x: 0, y: -300)
+            hud?.bezelView.color = UIColor(hexString: "e63b4b61")
+            hud?.isUserInteractionEnabled = false
+            hud?.hide(animated: true, afterDelay: 1.5)
+        }
     }
     
-    func checkShowNoContent() {
-        if self.displayData?.sections.count ?? 0 > 0 {
-            tableView.backgroundView = nil
-        } else {
-            tableView.backgroundView = noContentView
-        }
+    @IBAction func touchBtnUpdateContacts(_ sender: Any) {
+        eventHandler?.openImportContact()
     }
 }
 // MARK: - Table View
@@ -141,64 +149,65 @@ extension AddressBookViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         if isFiltering() {
             if filteredSections!.count == 0 {
-                noDataView.isHidden = false
-            } else {
-                noDataView.isHidden = true
+                return 1
             }
             return filteredSections!.count
         }
-        checkShowNoContent()
-        noDataView.isHidden = true
-        return displayData?.sections.count ?? 0
+        return displayData?.sections.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
+            if filteredSections!.count == 0 {
+                return 1
+            }
             searchFooter.setIsFilteringToShow(filteredItemCount: filteredSections!.count, of: addrBooks.count)
             return filteredSections![section].items.count
         }
-        return displayData?.sections[section].items.count ?? 0
+        return displayData?.sections[section].items.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if displayData == nil {
             return ""
         }
+        if (isFiltering() && filteredSections!.count == 0) || displayData?.sections.count ?? 0 == 0 {
+            return nil
+        }
         let name = displayData?.sections[section].sectionName
         return name
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = isDisplayingAddressBook ? tableView.dequeueReusableCell(withIdentifier: "MozoAddressBookCell", for: indexPath) : tableView.dequeueReusableCell(withIdentifier: STORE_BOOK_TABLE_VIEW_CELL_IDENTIFIER, for: indexPath) as! StoreBookTableViewCell
-//        let itemCount = (displayData?.sections[indexPath.section].items.count)!
-//        if itemCount > 0 {
-            let item: AddressBookDisplayItem
-            if isFiltering() {
-                item = filteredSections![indexPath.section].items[indexPath.row]
-            } else {
-                item = (displayData?.sections[indexPath.section].items[indexPath.row])!
-            }
-            if isDisplayingAddressBook {
-                cell.textLabel!.text = item.name
-                cell.detailTextLabel!.text = item.address
-            } else {
-                (cell as! StoreBookTableViewCell).displayItem = item
-            }
-            // MARK: Border
-            let border = CALayer()
-            border.backgroundColor = ThemeManager.shared.disable.cgColor
-            let width : CGFloat = 1.0
-            border.frame = CGRect(x: 20, y: cell.frame.size.height - width, width: cell.frame.size.width - 40, height: width)
-            cell.layer.addSublayer(border)
-//        }
+        if (isFiltering() && filteredSections!.count == 0) || displayData?.sections.count ?? 0 == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ABEmptyStateTableViewCell.self), for: indexPath) as! ABEmptyStateTableViewCell
+            return cell
+        }
+        
+        let item: AddressBookDisplayItem
+        if isFiltering() {
+            item = filteredSections![indexPath.section].items[indexPath.row]
+        } else {
+            item = (displayData?.sections[indexPath.section].items[indexPath.row])!
+        }
+        if isDisplayingAddressBook {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddressBookTableViewCell.self), for: indexPath) as! AddressBookTableViewCell
+            cell.addressBook = item
+            return cell
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: STORE_BOOK_TABLE_VIEW_CELL_IDENTIFIER, for: indexPath) as! StoreBookTableViewCell
+        cell.displayItem = item
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if (isFiltering() && filteredSections!.count == 0) || displayData?.sections.count ?? 0 == 0 {
+            return nil
+        }
         let headerView = UIView()
         
         let headerLabel = UILabel(frame: CGRect(x: 15, y: 10, width:
-            tableView.bounds.size.width, height: tableView.bounds.size.height))
+            tableView.bounds.size.width, height: 29))
         headerLabel.textColor = ThemeManager.shared.disable
         headerLabel.font = UIFont.boldSystemFont(ofSize: 25)
         headerLabel.text = self.tableView(self.tableView, titleForHeaderInSection: section)
@@ -213,7 +222,7 @@ extension AddressBookViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 29
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -225,13 +234,19 @@ extension AddressBookViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return isDisplayingAddressBook ? 56 : 76
+        if (isFiltering() && filteredSections!.count == 0) || displayData?.sections.count ?? 0 == 0 {
+            return 240
+        }
+        return isDisplayingAddressBook ? 70 : 76
     }
 }
 
 extension AddressBookViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        if (isFiltering() && filteredSections!.count == 0) || displayData?.sections.count ?? 0 == 0 {
+            return
+        }
         if let selectedItem = isFiltering() ?
             filteredSections![indexPath.section].items[indexPath.row] :
             displayData?.sections[indexPath.section].items[indexPath.row] {
@@ -282,5 +297,9 @@ extension AddressBookViewController : AddressBookViewInterface {
             tableView.reloadData()
         }
         tableView.reloadData()
+    }
+    
+    func showImportSuccess() {
+        showHud()
     }
 }

@@ -10,9 +10,43 @@ import Foundation
 import UIKit
 import Alamofire
 import AlamofireImage
+import Kingfisher
 
 let imageCache = NSCache<NSString, AnyObject>()
 public extension UIImageView {
+    public func loadImage(_ urlString: String, defaultImageName: String = "img_store_no_img",
+                   isDefaultImageFromMozo: Bool = false, isShowLoading: Bool = false) {
+        let placeHolderImage = isDefaultImageFromMozo ? UIImage(named: defaultImageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
+            : UIImage(named: defaultImageName)
+        print("Download image with url: \(urlString)")
+        let paramUrlString = "\(urlString)?width=\(Int(self.frame.width * UIScreen.main.scale * 2))&height=\(Int(self.frame.height * UIScreen.main.scale * 2))"
+        print("Download image with url param: \(paramUrlString)")
+        let url = URL(string: paramUrlString)!
+        let processor = DownsamplingImageProcessor(size: self.frame.size)
+        var kf = self.kf
+        if isShowLoading {
+            kf.indicatorType = IndicatorType.activity
+        }
+        kf.setImage(
+            with: url,
+            placeholder: placeHolderImage,
+            options: [
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale * 2),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ])
+        {
+            result in
+            switch result {
+            case .success(let value):
+                print("Download image success: \(value.source.url?.absoluteString ?? "")")
+            case .failure(let error):
+                print("Download image failure with error: \(error)")
+            }
+        }
+    }
+    
     public func loadImageWithUrlString(_ urlString: String, defaultImageName: String = "img_store_no_img", loadingColor: UIColor = ThemeManager.shared.main,
                                 isDefaultImageFromMozo: Bool = false, isShowLoading: Bool = false,
                                 isUseScreenCenter: Bool = false) {
