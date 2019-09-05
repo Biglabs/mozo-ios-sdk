@@ -11,10 +11,10 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-class CustomImageView: UIImageView {
-    var imageUrlString: String?
+public class CustomImageView: UIImageView {
+    public var imageUrlString: String?
     
-    func loadImageUsingUrlString(_ urlString: String, defaultImageName: String = "img_store_no_img", loadingColor: UIColor = ThemeManager.shared.main,
+    public func loadImageUsingUrlString(_ urlString: String, defaultImageName: String = "img_store_no_img", loadingColor: UIColor = ThemeManager.shared.main,
                                  isDefaultImageFromMozo: Bool = false, isShowLoading: Bool = false,
                                  isUseScreenCenter: Bool = false) {
         print("Download image with url: \(urlString)")
