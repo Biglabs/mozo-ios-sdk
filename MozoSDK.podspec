@@ -33,6 +33,7 @@ Pod::Spec.new do |s|
   s.dependency 'secp256k1_ios', '~> 0.1'
   s.dependency 'RNCryptor', '~> 5.0.3'
   s.dependency 'PromiseKit/Alamofire', '6.8.4'
+  s.dependency 'Alamofire', '4.8.2'
   s.dependency 'AlamofireImage', '3.5.2'
   s.dependency 'CoreStore', '5.1.1'
   s.dependency 'AppAuth', '~> 1.0.0'
