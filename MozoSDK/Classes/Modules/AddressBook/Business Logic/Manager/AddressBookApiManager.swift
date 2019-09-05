@@ -14,7 +14,7 @@ let STORE_BOOK_API_PATH = "/store-books"
 public extension ApiManager {
     public func getListAddressBook() -> Promise<[AddressBookDTO]> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + ADR_BOOK_API_PATH
+            let url = Configuration.BASE_URL + "/v2" + ADR_BOOK_API_PATH
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

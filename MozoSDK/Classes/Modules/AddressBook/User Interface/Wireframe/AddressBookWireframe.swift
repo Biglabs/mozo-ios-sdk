@@ -9,10 +9,11 @@ import Foundation
 
 class AddressBookWireframe : MozoWireframe {
     var abPresenter : AddressBookPresenter?
+    var abImportWireframe: ABImportWireframe?
     var addressBookViewController : AddressBookViewController?
     
     func presentAddressBookInterface(isDisplayForSelect: Bool) {
-        let viewController = viewControllerFromStoryBoard(AddressBookViewControllerIdentifier) as! AddressBookViewController
+        let viewController = viewControllerFromStoryBoard(AddressBookViewControllerIdentifier, storyboardName: Module.AddressBook.value) as! AddressBookViewController
         viewController.eventHandler = abPresenter
         addressBookViewController = viewController
         addressBookViewController?.isDisplayForSelect = isDisplayForSelect
@@ -22,5 +23,9 @@ class AddressBookWireframe : MozoWireframe {
     
     func dismissAddressBookInterface() {
         rootWireframe?.dismissTopViewController()
+    }
+    
+    func presentABImportInterface() {
+        abImportWireframe?.presentAddressBookImportInterface()
     }
 }

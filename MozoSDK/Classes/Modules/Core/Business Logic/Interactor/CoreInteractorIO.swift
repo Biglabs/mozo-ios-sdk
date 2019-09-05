@@ -148,4 +148,6 @@ protocol CoreInteractorService {
     func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]>
     
     func getTodoListSetting() -> Promise<TodoSettingDTO>
+    
+    func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]>
 }

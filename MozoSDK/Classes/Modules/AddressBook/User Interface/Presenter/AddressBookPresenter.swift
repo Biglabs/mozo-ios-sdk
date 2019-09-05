@@ -16,12 +16,17 @@ extension AddressBookPresenter : AddressBookModuleInterface {
     func selectAddressBookOnUI(_ addressBook: AddressBookDisplayItem, isDisplayForSelect: Bool) {
         abModuleDelegate?.addressBookModuleDidChooseItemOnUI(addressBook: addressBook, isDisplayForSelect: isDisplayForSelect)
     }
+    
     func updateDisplayData(forAddressBook: Bool) {
         if forAddressBook {
             abInteractor?.getListAddressBook()
         } else {
             abInteractor?.getListStoreBook()
         }
+    }
+    
+    func openImportContact() {
+        abWireframe?.presentABImportInterface()
     }
 }
 extension AddressBookPresenter: AddressBookInteractorOutput {
@@ -43,5 +48,12 @@ extension AddressBookPresenter: AddressBookInteractorOutput {
         } else {
             abUserInterface?.showNoContentMessage()
         }
+    }
+}
+extension AddressBookPresenter: ABImportModuleDelegate {
+    func didFinishImport() {
+        abWireframe?.rootWireframe?.dismissTopViewController()
+        abUserInterface?.showImportSuccess()
+        updateDisplayData(forAddressBook: true)
     }
 }

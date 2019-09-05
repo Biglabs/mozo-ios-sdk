@@ -190,10 +190,10 @@ public class DisplayUtils {
     public static func buildContactDisplayItem(address: String) -> AddressBookDisplayItem? {
         if !address.isEmpty {
             if let item = AddressBookDTO.addressBookFromAddress(address, array: SafetyDataManager.shared.addressBookList) {
-                return AddressBookDisplayItem(id: item.id ?? 0, name: item.name ?? "", address: item.soloAddress ?? "", physicalAddress: "", isStoreBook: false)
+                return AddressBookDisplayItem(id: item.id ?? 0, name: item.name ?? "", address: item.soloAddress ?? "", physicalAddress: "", isStoreBook: false, phoneNo: item.phoneNo ?? "")
             } else {
                 if let item = StoreBookDTO.storeBookFromAddress(address, array: SafetyDataManager.shared.storeBookList) {
-                    return AddressBookDisplayItem(id: item.id ?? 0, name: item.name ?? "", address: item.offchainAddress ?? "", physicalAddress: item.physicalAddress ?? "", isStoreBook: true)
+                    return AddressBookDisplayItem(id: item.id ?? 0, name: item.name ?? "", address: item.offchainAddress ?? "", physicalAddress: item.physicalAddress ?? "", isStoreBook: true, phoneNo: item.phoneNo ?? "")
                 }
             }
         }

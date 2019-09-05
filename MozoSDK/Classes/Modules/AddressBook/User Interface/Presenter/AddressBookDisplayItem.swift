@@ -13,6 +13,7 @@ public struct AddressBookDisplayItem {
     let address : String
     let physicalAddress: String
     let isStoreBook: Bool
+    let phoneNo: String
 }
 
 extension AddressBookDisplayItem : Equatable {

@@ -13,7 +13,7 @@ class AddressBookDisplayCollection {
     init(items: [AddressBookDTO]) {
         displayItems = []
         for item in items {
-            let displayItem = AddressBookDisplayItem(id: item.id ?? 0, name: item.name ?? "", address: item.soloAddress ?? "", physicalAddress: "", isStoreBook: false)
+            let displayItem = AddressBookDisplayItem(id: item.id ?? 0, name: item.name ?? "", address: item.soloAddress ?? "", physicalAddress: "", isStoreBook: false, phoneNo: item.phoneNo ?? "")
             displayItems.append(displayItem)
         }
     }
@@ -21,7 +21,7 @@ class AddressBookDisplayCollection {
     init(items: [StoreBookDTO]) {
         displayItems = []
         for item in items {
-            let displayItem = AddressBookDisplayItem(id: item.id ?? 0, name: item.name ?? "", address: item.offchainAddress ?? "", physicalAddress: item.physicalAddress ?? "", isStoreBook: true)
+            let displayItem = AddressBookDisplayItem(id: item.id ?? 0, name: item.name ?? "", address: item.offchainAddress ?? "", physicalAddress: item.physicalAddress ?? "", isStoreBook: true, phoneNo: item.phoneNo ?? "")
             displayItems.append(displayItem)
         }
     }

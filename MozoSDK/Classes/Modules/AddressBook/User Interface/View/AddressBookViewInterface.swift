@@ -10,4 +10,6 @@ import Foundation
 protocol AddressBookViewInterface {
     func showAddressBookDisplayData(_ data: AddressBookDisplayData, allItems: [AddressBookDisplayItem])
     func showNoContentMessage()
+    
+    func showImportSuccess()
 }

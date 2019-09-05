@@ -15,6 +15,7 @@ public class StoreBookDTO: ResponseObjectSerializable {
     public var name: String?
     public var physicalAddress: String?
     public var offchainAddress: String?
+    public var phoneNo: String?
 
     public required init?(json: SwiftyJSON.JSON) {
         self.id = json["id"].int64
@@ -22,6 +23,7 @@ public class StoreBookDTO: ResponseObjectSerializable {
         self.name = json["storeName"].string
         self.offchainAddress = json["storeOffchainAddress"].string
         self.physicalAddress = json["storePhysicalAddress"].string
+        self.phoneNo = json["phoneNo"].string
     }
     
     public required init?(){}
@@ -42,6 +44,9 @@ public class StoreBookDTO: ResponseObjectSerializable {
         }
         if let physicalAddress = self.physicalAddress {
             json["storePhysicalAddress"] = physicalAddress
+        }
+        if let phoneNo = self.phoneNo {
+            json["phoneNo"] = phoneNo
         }
         return json
     }

@@ -1237,3 +1237,8 @@
 "To Do List" = "Những việc cần làm";
 "Redemption" = "Đổi thưởng";
 "MozoX Offchain" = "MozoX";
+
+// Ticket
+"Welcome to %@" = "Chào mừng đến với %@";
+"FREE PARKING" = "MIỄN PHÍ GIỮ XE";
+"Disappear after %d:%d" = "Sẽ tự động tắt sau %d:%d";

@@ -73,12 +73,12 @@ extension TransactionInteractor : TransactionInteractorInput {
         } else {
             let list = SafetyDataManager.shared.addressBookList
             if let addressBook = AddressBookDTO.addressBookFromAddress(scanValue, array: list) {
-                let displayItem = AddressBookDisplayItem(id: addressBook.id ?? 0, name: addressBook.name ?? "", address: addressBook.soloAddress ?? "", physicalAddress: "", isStoreBook: false)
+                let displayItem = AddressBookDisplayItem(id: addressBook.id ?? 0, name: addressBook.name ?? "", address: addressBook.soloAddress ?? "", physicalAddress: "", isStoreBook: false, phoneNo: addressBook.phoneNo ?? "")
                 output?.didReceiveAddressBookDisplayItem(displayItem)
             } else {
                 let storeList = SafetyDataManager.shared.storeBookList
                 if let storeBook = StoreBookDTO.storeBookFromAddress(scanValue, array: storeList) {
-                    let displayItem = AddressBookDisplayItem(id: storeBook.id ?? 0, name: storeBook.name ?? "", address: storeBook.offchainAddress ?? "", physicalAddress: storeBook.offchainAddress ?? "", isStoreBook: true)
+                    let displayItem = AddressBookDisplayItem(id: storeBook.id ?? 0, name: storeBook.name ?? "", address: storeBook.offchainAddress ?? "", physicalAddress: storeBook.offchainAddress ?? "", isStoreBook: true, phoneNo: storeBook.phoneNo ?? "")
                     output?.didReceiveAddressBookDisplayItem(displayItem)
                 } else {
                     output?.didReceiveAddressfromScanner(scanValue)

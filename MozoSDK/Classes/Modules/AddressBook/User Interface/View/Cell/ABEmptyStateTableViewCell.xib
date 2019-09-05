@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ABEmptyStateTableViewCell" rowHeight="240" id="qiP-j1-zCV" customClass="ABEmptyStateTableViewCell" customModule="MozoSDK" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qiP-j1-zCV" id="6If-9E-faA">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="239.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" restorationIdentifier="MozoFoundNoDataView" translatesAutoresizingMaskIntoConstraints="NO" id="6Ht-Tp-NtC">
+                        <rect key="frame" x="16" y="11" width="343" height="218"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_no_content" translatesAutoresizingMaskIntoConstraints="NO" id="ivY-rI-yHv">
+                                <rect key="frame" x="81" y="0.0" width="181" height="185"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="181" id="4wB-Qe-BE9"/>
+                                    <constraint firstAttribute="height" constant="185" id="bs4-FU-T7r"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts list is empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Km8-io-iJr">
+                                <rect key="frame" x="89" y="200" width="165" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Contacts list is empty"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Km8-io-iJr" firstAttribute="top" secondItem="ivY-rI-yHv" secondAttribute="bottom" constant="15" id="7Ds-2O-YU3"/>
+                            <constraint firstItem="ivY-rI-yHv" firstAttribute="top" secondItem="NIa-PF-4mX" secondAttribute="top" id="ABX-Yk-7zA"/>
+                            <constraint firstItem="Km8-io-iJr" firstAttribute="centerX" secondItem="6Ht-Tp-NtC" secondAttribute="centerX" id="o42-YF-ba9"/>
+                            <constraint firstItem="ivY-rI-yHv" firstAttribute="centerX" secondItem="6Ht-Tp-NtC" secondAttribute="centerX" id="obR-pu-o2S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NIa-PF-4mX"/>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="6Ht-Tp-NtC" secondAttribute="bottom" id="3aZ-da-q9t"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="6Ht-Tp-NtC" secondAttribute="trailing" id="XwY-Ti-HeJ"/>
+                    <constraint firstItem="6Ht-Tp-NtC" firstAttribute="top" secondItem="6If-9E-faA" secondAttribute="topMargin" id="h2i-Hq-mih"/>
+                    <constraint firstItem="6Ht-Tp-NtC" firstAttribute="leading" secondItem="6If-9E-faA" secondAttribute="leadingMargin" id="ocf-DA-sqj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="39.200000000000003" y="46.776611694152926"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="img_no_content" width="157" height="150"/>
+    </resources>
+</document>
