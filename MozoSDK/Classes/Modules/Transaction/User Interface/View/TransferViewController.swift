@@ -7,17 +7,19 @@
 
 import Foundation
 import UIKit
+import libPhoneNumber_iOS
 let MAXIMUM_MOZOX_AMOUNT_TEXT_LENGTH = 12
 class TransferViewController: MozoBasicViewController {
     var eventHandler : TransactionModuleInterface?
     @IBOutlet weak var lbBalance: UILabel!
     @IBOutlet weak var lbExchange: UILabel!
     @IBOutlet weak var lbReceiverAddress: UILabel!
-    @IBOutlet weak var txtAddress: UITextField!
+    @IBOutlet weak var txtAddressOrPhoneNo: UITextField!
     @IBOutlet weak var lbValidateAddrError: UILabel!
     @IBOutlet weak var btnAddressBook: UIButton!
     @IBOutlet weak var btnScan: UIButton!
-    @IBOutlet weak var addressBorderView: UIView!
+    @IBOutlet weak var addressLine: UIView!
+    @IBOutlet weak var abEmptyDropDownView: ABEmptyDropDownView!
     @IBOutlet weak var lbAmount: UILabel!
     @IBOutlet weak var txtAmount: UITextField!
     @IBOutlet weak var lbValidateAmountError: UILabel!
@@ -25,36 +27,39 @@ class TransferViewController: MozoBasicViewController {
     @IBOutlet weak var amountBorderView: UIView!
     @IBOutlet weak var spendableView: UIView!
     @IBOutlet weak var lbSpendable: UILabel!
-    @IBOutlet weak var addressBookView: UIView!
-    @IBOutlet weak var lbAbName: UILabel!
-    @IBOutlet weak var lbAbAddress: CopyableLabel!
+    @IBOutlet weak var addressBookView: AddressBookView!
     @IBOutlet weak var btnContinue: UIButton!
     @IBOutlet weak var constraintTopSpace: NSLayoutConstraint!
     let topSpace : CGFloat = 14.0
+    let topSpaceWithAB: CGFloat = 38
     
     private let refreshControl = UIRefreshControl()
     var tokenInfo : TokenInfoDTO?
-    var displayContactItem: AddressBookDisplayItem?
+    var displayContactItem: AddressBookDisplayItem? {
+        didSet {
+            updateAddressBookOnUI()
+        }
+    }
+    
+    var dropdown = DropDown()
+    var filteredCollection = AddressBookDisplayCollection(items: [AddressBookDTO]())
+    var countryData = CountryDisplayData(collection: CountryDisplayCollection(items: SessionStoreManager.countryList))
+    
+    let nbPhoneNumberUtil = NBPhoneNumberUtil()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         eventHandler?.loadTokenInfo()
         addDoneButtonOnKeyboard()
+        setupTarget()
+        setupDropdown()
+        setupAddressBook()
         
-        // Add a "textFieldDidChange" notification method to the text field control.
-        txtAddress.addTarget(self, action: #selector(textFieldAddressDidChange), for: UIControlEvents.editingChanged)
-        txtAddress.addTarget(self, action: #selector(textFieldAddressDidBeginEditing), for: UIControlEvents.editingDidBegin)
-        txtAddress.addTarget(self, action: #selector(textFieldAddressDidEndEditing), for: UIControlEvents.editingDidEnd)
-        txtAmount.addTarget(self, action: #selector(textFieldAmountDidChange), for: UIControlEvents.editingChanged)
-        txtAmount.addTarget(self, action: #selector(textFieldAmountDidBeginEditing), for: UIControlEvents.editingDidBegin)
-        txtAmount.addTarget(self, action: #selector(textFieldAmountDidEndEditing), for: UIControlEvents.editingDidEnd)
-        txtAmount.delegate = self
-        
-        if Locale.current.languageCode == "en" {
-            let attribute = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 10)]
-            txtAddress.placeholder = ""
-            txtAddress.attributedPlaceholder = NSAttributedString(string:"Please enter address or select from address book.".localized, attributes: attribute)
-        }
+//        if Locale.current.languageCode == "en" {
+//            let attribute = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 10)]
+//            txtAddress.placeholder = ""
+//            txtAddress.attributedPlaceholder = NSAttributedString(string:"Enter MozoX address or phone number".localized, attributes: attribute)
+//        }
         // Observer balance changed notification
         NotificationCenter.default.addObserver(self, selector: #selector(onBalanceDidUpdate(_:)), name: .didChangeBalance, object: nil)
     }
@@ -69,8 +74,19 @@ class TransferViewController: MozoBasicViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    func setupTarget() {
+        // Add a "textFieldDidChange" notification method to the text field control.
+        txtAddressOrPhoneNo.addTarget(self, action: #selector(textFieldAddressDidChange), for: UIControlEvents.editingChanged)
+        txtAddressOrPhoneNo.addTarget(self, action: #selector(textFieldAddressDidBeginEditing), for: UIControlEvents.editingDidBegin)
+        txtAddressOrPhoneNo.addTarget(self, action: #selector(textFieldAddressDidEndEditing), for: UIControlEvents.editingDidEnd)
+        txtAmount.addTarget(self, action: #selector(textFieldAmountDidChange), for: UIControlEvents.editingChanged)
+        txtAmount.addTarget(self, action: #selector(textFieldAmountDidBeginEditing), for: UIControlEvents.editingDidBegin)
+        txtAmount.addTarget(self, action: #selector(textFieldAmountDidEndEditing), for: UIControlEvents.editingDidEnd)
+        txtAmount.delegate = self
+    }
+    
     @objc func onBalanceDidUpdate(_ notification: Notification){
-        print("Transfer viewcontroller: On Balance Did Update: Update only balance")
+        print("TransferViewController - Transfer viewcontroller: On Balance Did Update: Update only balance")
         if let data = notification.userInfo as? [String : Any?] {
             let balance = data["balance"] as! Double
             lbSpendable.text = balance.roundAndAddCommas()
@@ -78,24 +94,28 @@ class TransferViewController: MozoBasicViewController {
         }
     }
     
-    func addDoneButtonOnKeyboard()
-    {
+    func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
         doneToolbar.barStyle = UIBarStyle.default
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Done".localized, style: UIBarButtonItemStyle.done, target: self, action: #selector(self.doneButtonAction))
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done".localized, style: UIBarButtonItemStyle.done, target: self, action: #selector(self.doneButtonActionForAddressOrPhone))
         
         doneToolbar.items = [flexSpace, done]
         doneToolbar.sizeToFit()
         
         self.txtAmount.inputAccessoryView = doneToolbar
-        self.txtAddress.inputAccessoryView = doneToolbar
+        self.txtAddressOrPhoneNo.doneAccessory = true
     }
     
-    @objc func doneButtonAction()
-    {
-        txtAddress.resignFirstResponder()
+    @objc func doneButtonActionForAddressOrPhone() {
+        txtAddressOrPhoneNo.resignFirstResponder()
+        
+        // Auto check input. If input is phone number, auto find contact in MozoX
+        validatePhoneNoAfterFinding()
+    }
+    
+    @objc func doneButtonActionForAmount() {
         txtAmount.resignFirstResponder()
     }
     
@@ -120,33 +140,20 @@ class TransferViewController: MozoBasicViewController {
     @IBAction func btnScanTapped(_ sender: Any) {
         eventHandler?.showScanQRCodeInterface()
     }
-    @IBAction func touchedBtnClear(_ sender: Any) {
-        clearAndHideAddressBookView()
-        txtAddress.text = ""
-        hideErrorValidation()
-    }
     
     @IBAction func btnContinueTapped(_ sender: Any) {
+        abEmptyDropDownView.isHidden = true
+        dropdown.hide()
         if let tokenInfo = self.tokenInfo {
-            let receiverAddress = txtAddress.isHidden ? lbAbAddress.text : txtAddress.text
+            let receiverAddress = displayContactItem?.address ?? txtAddressOrPhoneNo.text
             let clearAmountText = txtAmount.text?.toTextNumberWithoutGrouping()
-            eventHandler?.validateTransferTransaction(tokenInfo: tokenInfo, toAdress: receiverAddress, amount: clearAmountText, displayContactItem: txtAddress.isHidden ? displayContactItem : nil)
+            eventHandler?.validateTransferTransaction(tokenInfo: tokenInfo, toAdress: receiverAddress, amount: clearAmountText, displayContactItem: txtAddressOrPhoneNo.isHidden ? displayContactItem : nil)
         }
-    }
-    
-    func clearAndHideAddressBookView() {
-        txtAddress.isHidden = false
-        btnScan.isHidden = false
-        addressBorderView.isHidden = false
-        addressBorderView.backgroundColor = txtAddress.isEditing ? ThemeManager.shared.main : ThemeManager.shared.disable
-        addressBookView.isHidden = true
-        lbAbName.text = ""
-        lbAbAddress.text = ""
     }
     
     func setHighlightAddressTextField(isHighlighted: Bool) {
         lbReceiverAddress.isHighlighted = isHighlighted
-        addressBorderView.backgroundColor = isHighlighted ? ThemeManager.shared.main : ThemeManager.shared.disable
+        addressLine.backgroundColor = isHighlighted ? ThemeManager.shared.main : ThemeManager.shared.disable
     }
     
     func setHighlightAmountTextField(isHighlighted: Bool) {
@@ -157,22 +164,27 @@ class TransferViewController: MozoBasicViewController {
     // MARK: Validation
     
     @objc func textFieldAddressDidChange() {
-        print("TextFieldAddressDidChange")
+        print("TransferViewController - TextFieldAddressDidChange")
         hideValidate(isAddress: true)
+        updateDropDownDataSource()
     }
     
     @objc func textFieldAddressDidEndEditing() {
-        print("TextFieldAddressDidEndEditing")
+        print("TransferViewController - TextFieldAddressDidEndEditing")
         setHighlightAddressTextField(isHighlighted: false)
+        // Hide dropdown and abDropDownEmptyView (if any)
+        abEmptyDropDownView.isHidden = true
+        dropdown.hide()
     }
     
     @objc func textFieldAddressDidBeginEditing() {
-        print("TextFieldAddressDidBeginEditing")
+        print("TransferViewController - TextFieldAddressDidBeginEditing")
         setHighlightAddressTextField(isHighlighted: true)
+        updateDropDownDataSource()
     }
     
     @objc func textFieldAmountDidChange() {
-        print("TextFieldAmountDidChange")
+        print("TransferViewController - TextFieldAmountDidChange")
         if let rateInfo = SessionStoreManager.exchangeRateInfo {
             if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
                 let originalText = txtAmount.text ?? "0"
@@ -197,20 +209,20 @@ class TransferViewController: MozoBasicViewController {
     }
     
     @objc func textFieldAmountDidEndEditing() {
-        print("TextFieldAddressDidEndEditing")
+        print("TransferViewController - TextFieldAddressDidEndEditing")
         setHighlightAmountTextField(isHighlighted: false)
     }
     
     @objc func textFieldAmountDidBeginEditing() {
-        print("TextFieldAddressDidBeginEditing")
+        print("TransferViewController - TextFieldAddressDidBeginEditing")
         setHighlightAmountTextField(isHighlighted: true)
     }
     
     func showValidate(_ error: String?, isAddress: Bool) {
-        print("Show validate error, isAddress: \(isAddress)")
+        print("TransferViewController - Show validate error, isAddress: \(isAddress)")
         if isAddress {
             lbReceiverAddress.textColor = ThemeManager.shared.error
-            addressBorderView.backgroundColor = ThemeManager.shared.error
+            addressLine.backgroundColor = ThemeManager.shared.error
             let errorText = (error ?? "Error: The Receiver Address is not valid.").localized
             lbValidateAddrError.text = errorText
             lbValidateAddrError.isHidden = false
@@ -229,7 +241,7 @@ class TransferViewController: MozoBasicViewController {
             lbReceiverAddress.textColor = ThemeManager.shared.textContent
             amountBorderView.backgroundColor = ThemeManager.shared.disable
             lbValidateAddrError.isHidden = true
-            constraintTopSpace.constant = topSpace
+            constraintTopSpace.constant = addressBookView.isHidden ? topSpace : topSpaceWithAB
         } else {
             lbAmount.textColor = ThemeManager.shared.textContent
             amountBorderView.backgroundColor = ThemeManager.shared.disable
@@ -244,7 +256,7 @@ extension TransferViewController : PopupErrorDelegate {
     }
     
     func didTouchTryAgainButton() {
-        print("User try reload balance on transfer screen again.")
+        print("TransferViewController - User try reload balance on transfer screen again.")
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
             self.eventHandler?.loadTokenInfo()
         }
@@ -264,10 +276,9 @@ extension TransferViewController : TransferViewInterface {
     }
     
     func updateUserInterfaceWithAddress(_ address: String) {
-        
-        clearAndHideAddressBookView()
-        txtAddress.text = address
+        txtAddressOrPhoneNo.text = address
         hideValidate(isAddress: true)
+        displayContactItem = nil
     }
     
     func displayError(_ error: String) {
@@ -275,14 +286,10 @@ extension TransferViewController : TransferViewInterface {
     }
     
     func updateInterfaceWithDisplayItem(_ displayItem: AddressBookDisplayItem) {
-        hideValidate(isAddress: true)
-        txtAddress.isHidden = true
-        btnScan.isHidden = true
-        addressBorderView.isHidden = true
-        addressBookView.isHidden = false
-        lbAbName.text = displayItem.name
-        lbAbAddress.text = displayItem.address
         self.displayContactItem = displayItem
+        if abEmptyDropDownView.isHidden == false {
+            abEmptyDropDownView.isHidden = true
+        }
     }
     
     func showErrorValidation(_ error: String?, isAddress: Bool) {
@@ -307,7 +314,7 @@ extension TransferViewController: UITextFieldDelegate {
             showValidate("Error: Please input value in decimal format.".localized, isAddress: false)
             return false
         } else if let value = Decimal(string: finalText.toTextNumberWithoutGrouping()), value.significantFractionalDecimalDigits > tokenInfo?.decimals ?? 0 {
-            print("Digits: \(value)")
+            print("TransferViewController - Digits: \(value)")
             showValidate("Error".localized + ": " + "The length of decimal places must be equal or smaller than %d".localizedFormat(tokenInfo?.decimals ?? 0), isAddress: false)
             return false
         }

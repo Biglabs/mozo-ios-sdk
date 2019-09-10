@@ -49,6 +49,7 @@ class PaymentViewController: MozoBasicViewController {
     }
     
     override func viewDidLoad() {
+        print("PaymentViewController - View did load")
         super.viewDidLoad()
         setupNoticeEmptyView()
         eventHandler?.loadTokenInfo()

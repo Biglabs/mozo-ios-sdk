@@ -15,4 +15,6 @@ protocol TransactionModuleInterface {
     func requestToRetryTransfer()
     
     func showAddressBookInterface()
+    
+    func findContact(_ phoneNo: String)
 }

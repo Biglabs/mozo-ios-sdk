@@ -15,8 +15,10 @@ class TxCompletionViewController: MozoBasicViewController {
     @IBOutlet weak var labelActionComplete: UILabel!
     
     @IBOutlet weak var txCompletionView: UIView!
+    @IBOutlet weak var txCompletionViewHeightConstraint: NSLayoutConstraint! // Default: 135, with address book: 181
     
     @IBOutlet weak var txCpAddressLabel: UILabel!
+    @IBOutlet weak var addressBookView: AddressBookView!
     
     @IBOutlet weak var txStatusView: UIView!
     @IBOutlet weak var txStatusImg: UIImageView!
@@ -62,9 +64,19 @@ class TxCompletionViewController: MozoBasicViewController {
             let contain = AddressBookDTO.arrayContainsItem(detailItem.addressTo, array: SafetyDataManager.shared.addressBookList) ||
                 StoreBookDTO.arrayContainsItem(detailItem.addressTo, array: SafetyDataManager.shared.storeBookList)
             if contain {
-                lbAddress.text = DisplayUtils.buildNameFromAddress(address: detailItem.addressTo)
+//                lbAddress.text = DisplayUtils.buildNameFromAddress(address: detailItem.addressTo)
+                if let addressBook = DisplayUtils.buildContactDisplayItem(address: detailItem.addressTo) {
+                    addressBookView.isHidden = false
+                    lbAddress.isHidden = true
+                    addressBookView.addressBook = addressBook
+                    addressBookView.btnClear.isHidden = true
+                    txCompletionViewHeightConstraint.constant = 181
+                }
             } else {
+                addressBookView.isHidden = true
+                lbAddress.isHidden = false
                 lbAddress.text = detailItem.addressTo
+                txCompletionViewHeightConstraint.constant = 135
             }
             btnSave.isHidden = contain
             btnDetail.isHidden = false

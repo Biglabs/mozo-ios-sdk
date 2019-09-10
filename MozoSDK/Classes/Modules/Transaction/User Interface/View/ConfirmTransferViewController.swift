@@ -16,9 +16,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
     @IBOutlet weak var lbAmountValue: UILabel!
     @IBOutlet weak var lbAmountValueExchange: UILabel!
     @IBOutlet weak var lbReceiver: UILabel!
-    @IBOutlet weak var addressBookView: UIView!
-    @IBOutlet weak var lbName: UILabel!
-    @IBOutlet weak var lbNameAddress: CopyableLabel!
+    @IBOutlet weak var addressBookView: AddressBookView!
     
     @IBOutlet weak var storeBookView: UIView!
     @IBOutlet weak var lbStoreName: UILabel!
@@ -60,22 +58,22 @@ class ConfirmTransferViewController: MozoBasicViewController {
         let amount = transaction?.outputs?.first?.value?.convertOutputValue(decimal: tokenInfo?.decimals ?? 0) ?? 0.0
         lbAmountValue.text = amount.roundAndAddCommas()
         
-        var labelText = "Receiver Address"
+        let labelText = "Receiver Address"
         var displayType = TransactionDisplayContactEnum.NoDetail
         if let displayContactItem = displayContactItem {
             lbAddress.isHidden = true
             if displayContactItem.isStoreBook {
-                labelText = "Receiver"
+//                labelText = "Receiver"
                 storeBookView.isHidden = false
                 lbStoreName.text = displayContactItem.name
                 lbStorePhysicalAddress.text = displayContactItem.physicalAddress
                 lbStoreOffchainAddress.text = displayContactItem.address
                 displayType = .StoreBookDetail
             } else {
-                labelText = "To"
+//                labelText = "To"
                 addressBookView.isHidden = false
-                lbName.text = displayContactItem.name
-                lbNameAddress.text = lbAddress.text
+                addressBookView.btnClear.isHidden = true
+                addressBookView.addressBook = displayContactItem
                 displayType = .AddressBookDetail
             }
         }

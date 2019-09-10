@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -394,55 +394,14 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Receiver Address"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="voO-Xv-dpN">
-                                        <rect key="frame" x="20" y="45" width="337.5" height="36"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user" translatesAutoresizingMaskIntoConstraints="NO" id="5dH-zE-bar">
-                                                <rect key="frame" x="0.0" y="0.0" width="10" height="13"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="13" id="Jva-vw-eIQ"/>
-                                                    <constraint firstAttribute="width" constant="10" id="R27-lo-lAp"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJ4-Pp-RiS">
-                                                <rect key="frame" x="17" y="0.0" width="35" height="15"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBm-ek-KAl" customClass="CopyableLabel" customModule="MozoSDK" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="20" width="284.5" height="15"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AhV-ES-kKw">
-                                                <rect key="frame" x="307.5" y="14.5" width="30" height="27"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <state key="normal" title="Clear"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Clear"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchedBtnClear:" destination="ljP-Qq-otX" eventType="touchUpInside" id="7Hx-6c-YPf"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="voO-Xv-dpN" customClass="AddressBookView" customModule="MozoSDK" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="45" width="337.5" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="bBm-ek-KAl" firstAttribute="leading" secondItem="voO-Xv-dpN" secondAttribute="leading" id="AQA-gv-hii"/>
-                                            <constraint firstAttribute="height" constant="36" id="GNe-aJ-YS6"/>
-                                            <constraint firstItem="5dH-zE-bar" firstAttribute="leading" secondItem="voO-Xv-dpN" secondAttribute="leading" id="P84-BZ-Dig"/>
-                                            <constraint firstItem="qJ4-Pp-RiS" firstAttribute="top" secondItem="voO-Xv-dpN" secondAttribute="top" id="R69-NI-R3X"/>
-                                            <constraint firstItem="AhV-ES-kKw" firstAttribute="baseline" secondItem="bBm-ek-KAl" secondAttribute="baseline" id="XDl-gf-kBY"/>
-                                            <constraint firstItem="AhV-ES-kKw" firstAttribute="leading" secondItem="bBm-ek-KAl" secondAttribute="trailing" constant="23" id="YfF-nn-RMh"/>
-                                            <constraint firstAttribute="trailing" secondItem="AhV-ES-kKw" secondAttribute="trailing" id="bwt-JX-Oxz"/>
-                                            <constraint firstItem="qJ4-Pp-RiS" firstAttribute="leading" secondItem="5dH-zE-bar" secondAttribute="trailing" constant="7" id="meT-G6-VnR"/>
-                                            <constraint firstItem="bBm-ek-KAl" firstAttribute="top" secondItem="5dH-zE-bar" secondAttribute="bottom" constant="7" id="moO-dE-P2b"/>
-                                            <constraint firstItem="5dH-zE-bar" firstAttribute="top" secondItem="voO-Xv-dpN" secondAttribute="top" id="y29-hi-nuS"/>
+                                            <constraint firstAttribute="height" constant="60" id="GNe-aJ-YS6"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please enter address or select from address book." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPJ-fc-yvr">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter MozoX address or phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPJ-fc-yvr">
                                         <rect key="frame" x="20" y="43" width="281" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="69b-pT-onq"/>
@@ -451,7 +410,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Please enter address or select from address book."/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Enter MozoX address or phone number"/>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1s-q6-Ldq">
@@ -475,6 +434,24 @@
                                             <action selector="btnScanTapped:" destination="ljP-Qq-otX" eventType="touchUpInside" id="JnC-2w-s8P"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oxH-yK-tVU">
+                                        <rect key="frame" x="20" y="74" width="335" height="1"/>
+                                        <color key="backgroundColor" red="0.81960784313725488" green="0.84313725490196079" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="d3P-rw-ekS"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                <color key="value" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error: The Receiver Address is not valid." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amM-W3-lUP">
                                         <rect key="frame" x="20" y="77.5" width="210" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -484,6 +461,24 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Error: The Receiver Address is not valid."/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2y3-D2-1Hn">
+                                        <rect key="frame" x="20" y="89" width="170" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="BAU-5v-Z6x"/>
+                                            <constraint firstAttribute="width" constant="170" id="K3T-S7-V7K"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                        <inset key="titleEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Select from Address Book" image="ic_address_book">
+                                            <color key="titleColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Select from Address Book"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="btnAddressBookTapped:" destination="ljP-Qq-otX" eventType="touchUpInside" id="K7q-8H-JpR"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fni-8e-uNL">
                                         <rect key="frame" x="20" y="145" width="162" height="15"/>
                                         <constraints>
@@ -529,6 +524,15 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error: Please input value in decimal format." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQo-Vs-NRk">
+                                        <rect key="frame" x="20" y="190" width="225" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" red="0.94117647059999998" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Error: Please input value in decimal format."/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LoO-n6-V1E">
                                         <rect key="frame" x="20" y="196.5" width="335" height="15"/>
                                         <subviews>
@@ -565,15 +569,13 @@
                                             <constraint firstItem="SpS-KG-5Az" firstAttribute="top" secondItem="LoO-n6-V1E" secondAttribute="top" id="vbX-uR-hDe"/>
                                         </constraints>
                                     </view>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error: Please input value in decimal format." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQo-Vs-NRk">
-                                        <rect key="frame" x="20" y="190" width="225" height="14"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" red="0.94117647059999998" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Error: Please input value in decimal format."/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FGo-2i-Od6" customClass="ABEmptyDropDownView" customModule="MozoSDK" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="81" width="335" height="120"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="lFd-gr-QJ5"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQi-ge-hcb">
                                         <rect key="frame" x="0.0" y="519" width="375" height="65"/>
                                         <color key="backgroundColor" red="0.3529411764705882" green="0.61176470588235299" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -591,42 +593,6 @@
                                             <action selector="btnContinueTapped:" destination="ljP-Qq-otX" eventType="touchUpInside" id="XPl-gp-RHX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2y3-D2-1Hn">
-                                        <rect key="frame" x="20" y="89" width="170" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="BAU-5v-Z6x"/>
-                                            <constraint firstAttribute="width" constant="170" id="K3T-S7-V7K"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                        <inset key="titleEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Select from Address Book" image="ic_address_book">
-                                            <color key="titleColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Select from Address Book"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="btnAddressBookTapped:" destination="ljP-Qq-otX" eventType="touchUpInside" id="K7q-8H-JpR"/>
-                                        </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oxH-yK-tVU">
-                                        <rect key="frame" x="20" y="74" width="335" height="1"/>
-                                        <color key="backgroundColor" red="0.81960784313725488" green="0.84313725490196079" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="d3P-rw-ekS"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                <integer key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                                <color key="value" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -637,12 +603,15 @@
                                     <constraint firstAttribute="trailing" secondItem="cax-bg-RYT" secondAttribute="trailing" constant="20" id="DXp-A8-jEL"/>
                                     <constraint firstItem="amM-W3-lUP" firstAttribute="leading" secondItem="cPJ-fc-yvr" secondAttribute="leading" id="Dv8-2p-dtD"/>
                                     <constraint firstItem="cax-bg-RYT" firstAttribute="centerY" secondItem="Eb8-Io-Hbg" secondAttribute="centerY" id="G0G-6a-aRj"/>
+                                    <constraint firstItem="FGo-2i-Od6" firstAttribute="top" secondItem="oxH-yK-tVU" secondAttribute="bottom" constant="6" id="GRD-jF-ZjR"/>
                                     <constraint firstItem="LoO-n6-V1E" firstAttribute="leading" secondItem="j4v-2e-FHz" secondAttribute="leading" id="Hyx-tQ-2Nn"/>
+                                    <constraint firstItem="FGo-2i-Od6" firstAttribute="trailing" secondItem="oxH-yK-tVU" secondAttribute="trailing" id="KEc-lP-qi3"/>
                                     <constraint firstItem="Cn9-Fy-FwF" firstAttribute="leading" secondItem="okW-gp-dTr" secondAttribute="leading" constant="20" id="Kwp-PC-Ci1"/>
                                     <constraint firstItem="Eb8-Io-Hbg" firstAttribute="leading" secondItem="okW-gp-dTr" secondAttribute="leading" constant="20" id="MWb-3S-9UH"/>
                                     <constraint firstItem="LoO-n6-V1E" firstAttribute="trailing" secondItem="j4v-2e-FHz" secondAttribute="trailing" id="OxM-ja-9YP"/>
                                     <constraint firstItem="oxH-yK-tVU" firstAttribute="top" secondItem="cPJ-fc-yvr" secondAttribute="bottom" constant="13" id="Pcf-cg-hcD"/>
                                     <constraint firstAttribute="trailing" secondItem="F1s-q6-Ldq" secondAttribute="trailing" constant="20" id="SYJ-4L-iLp"/>
+                                    <constraint firstItem="FGo-2i-Od6" firstAttribute="leading" secondItem="oxH-yK-tVU" secondAttribute="leading" id="Tzt-5P-dJk"/>
                                     <constraint firstAttribute="trailing" secondItem="UQi-ge-hcb" secondAttribute="trailing" id="U3H-D8-hpi"/>
                                     <constraint firstItem="F1s-q6-Ldq" firstAttribute="centerY" secondItem="cPJ-fc-yvr" secondAttribute="centerY" id="bA8-AE-uPk"/>
                                     <constraint firstItem="cPJ-fc-yvr" firstAttribute="top" secondItem="Cn9-Fy-FwF" secondAttribute="bottom" constant="8" id="dR9-fA-638"/>
@@ -678,15 +647,14 @@
                         <viewLayoutGuide key="safeArea" id="hva-tw-Mgm"/>
                     </view>
                     <connections>
-                        <outlet property="addressBookView" destination="voO-Xv-dpN" id="wzH-5p-O2r"/>
-                        <outlet property="addressBorderView" destination="oxH-yK-tVU" id="HVR-GU-kaW"/>
+                        <outlet property="abEmptyDropDownView" destination="FGo-2i-Od6" id="MDA-mo-jof"/>
+                        <outlet property="addressBookView" destination="voO-Xv-dpN" id="IIL-Ld-t8O"/>
+                        <outlet property="addressLine" destination="oxH-yK-tVU" id="HVR-GU-kaW"/>
                         <outlet property="amountBorderView" destination="j4v-2e-FHz" id="Xhb-xJ-HCe"/>
                         <outlet property="btnAddressBook" destination="2y3-D2-1Hn" id="inn-NL-a29"/>
                         <outlet property="btnContinue" destination="UQi-ge-hcb" id="hip-lV-Yub"/>
                         <outlet property="btnScan" destination="F1s-q6-Ldq" id="kfg-bm-HFF"/>
                         <outlet property="constraintTopSpace" destination="4Mw-kg-N4s" id="OER-pC-wPC"/>
-                        <outlet property="lbAbAddress" destination="bBm-ek-KAl" id="E15-7s-hqK"/>
-                        <outlet property="lbAbName" destination="qJ4-Pp-RiS" id="HEQ-fy-lVs"/>
                         <outlet property="lbAmount" destination="fni-8e-uNL" id="qJg-5V-LZM"/>
                         <outlet property="lbExchangeAmount" destination="cax-bg-RYT" id="kz4-a9-JQe"/>
                         <outlet property="lbReceiverAddress" destination="Cn9-Fy-FwF" id="EP8-SE-liJ"/>
@@ -694,7 +662,7 @@
                         <outlet property="lbValidateAddrError" destination="amM-W3-lUP" id="Hg0-5Q-pLe"/>
                         <outlet property="lbValidateAmountError" destination="cQo-Vs-NRk" id="dkh-xE-NWD"/>
                         <outlet property="spendableView" destination="LoO-n6-V1E" id="BHP-TW-H56"/>
-                        <outlet property="txtAddress" destination="cPJ-fc-yvr" id="qef-h9-ptr"/>
+                        <outlet property="txtAddressOrPhoneNo" destination="cPJ-fc-yvr" id="qef-h9-ptr"/>
                         <outlet property="txtAmount" destination="Eb8-Io-Hbg" id="z5S-MJ-uzJ"/>
                     </connections>
                 </viewController>
@@ -1914,8 +1882,8 @@
                                     <constraint firstItem="cEM-ii-gCG" firstAttribute="centerY" secondItem="wLB-v3-kwV" secondAttribute="centerY" id="wvX-ta-vIP"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan to send:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdZ-JH-NwK">
-                                <rect key="frame" x="141" y="295" width="93.5" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan my QR to send:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdZ-JH-NwK">
+                                <rect key="frame" x="116" y="295" width="143" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="97d-ET-6cF"/>
                                 </constraints>
@@ -1923,41 +1891,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Scan to send:"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Scan my QR to send:"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7u-kq-RXs">
-                                <rect key="frame" x="20" y="497.5" width="170" height="18"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mozo_offchain" translatesAutoresizingMaskIntoConstraints="NO" id="YhZ-Ow-XBa">
+                                <rect key="frame" x="104" y="325" width="30" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="170" id="4Is-bN-7UJ"/>
-                                    <constraint firstAttribute="height" constant="18" id="TYa-mO-xke"/>
+                                    <constraint firstAttribute="width" constant="30" id="IjX-3Y-4Zv"/>
+                                    <constraint firstAttribute="height" constant="30" id="Suq-u5-vg0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <inset key="titleEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Select from Address Book" image="ic_address_book">
-                                    <color key="titleColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Select from Address Book"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="btnAddressBookTapped:" destination="buJ-DR-nBU" eventType="touchUpInside" id="F1O-DG-Urk"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send request to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBg-Zz-7Xc">
-                                <rect key="frame" x="20" y="416" width="162" height="18"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="162" id="7ua-Na-16J"/>
-                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeT-dd-Lm8">
+                                <rect key="frame" x="143" y="325" width="89.5" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIC-7k-faw">
+                                <rect key="frame" x="239.5" y="340" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="highlightedColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Send request to"/>
-                                </userDefinedRuntimeAttributes>
+                                <color key="textColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFe-gW-TMk">
-                                <rect key="frame" x="20" y="387" width="335" height="1"/>
+                                <rect key="frame" x="20" y="376" width="335" height="1"/>
                                 <color key="backgroundColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="56h-iE-Paj"/>
@@ -1974,27 +1931,33 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Pe-yZ-WwZ">
-                                <rect key="frame" x="20" y="589" width="335" height="50"/>
-                                <color key="backgroundColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send request to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBg-Zz-7Xc">
+                                <rect key="frame" x="20" y="395" width="162" height="14.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="BS0-fX-J8K"/>
+                                    <constraint firstAttribute="width" constant="162" id="7ua-Na-16J"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Send Request">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Send Request"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Send request to"/>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="btnSendTapped:" destination="buJ-DR-nBU" eventType="touchUpInside" id="Lnp-fI-pKc"/>
-                                </connections>
-                            </button>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5s0-sf-oRi">
-                                <rect key="frame" x="20" y="449" width="335" height="33"/>
+                                <rect key="frame" x="20" y="424.5" width="335" height="33"/>
                                 <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter MozoX address or phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bEU-cq-v2d">
+                                        <rect key="frame" x="0.0" y="0.0" width="281" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="esE-8P-0Ny"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Enter MozoX address or phone number"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cji-PD-lZ8">
                                         <rect key="frame" x="281" y="0.0" width="54" height="18"/>
                                         <constraints>
@@ -2016,18 +1979,6 @@
                                             <action selector="btnScanTapped:" destination="buJ-DR-nBU" eventType="touchUpInside" id="ASd-W8-LL7"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please enter address or select from address book." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bEU-cq-v2d">
-                                        <rect key="frame" x="0.0" y="0.0" width="281" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="esE-8P-0Ny"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Please enter address or select from address book."/>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8oh-gf-YvP">
                                         <rect key="frame" x="0.0" y="31" width="335" height="1"/>
                                         <color key="backgroundColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -2060,94 +2011,80 @@
                                     <constraint firstItem="8oh-gf-YvP" firstAttribute="top" secondItem="Cji-PD-lZ8" secondAttribute="bottom" constant="13" id="yQe-CD-NYH"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dA8-W9-JOM">
-                                <rect key="frame" x="20" y="447.5" width="335" height="36"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user" translatesAutoresizingMaskIntoConstraints="NO" id="loS-Oe-dnO">
-                                        <rect key="frame" x="0.0" y="0.0" width="10" height="13"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="8te-z1-oR6"/>
-                                            <constraint firstAttribute="height" constant="13" id="JbS-qN-b4x"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2k-8K-ACm">
-                                        <rect key="frame" x="17" y="0.0" width="35" height="15"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0s-2g-Scb" customClass="CopyableLabel" customModule="MozoSDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="20" width="282" height="15"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hds-7F-bY2">
-                                        <rect key="frame" x="305" y="14.5" width="30" height="27"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <state key="normal" title="Clear"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Clear"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="touchedBtnClear:" destination="buJ-DR-nBU" eventType="touchUpInside" id="KhZ-AC-z33"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dA8-W9-JOM" customClass="AddressBookView" customModule="MozoSDK" customModuleProvider="target">
+                                <rect key="frame" x="20" y="413.5" width="335" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="L2k-8K-ACm" firstAttribute="top" secondItem="dA8-W9-JOM" secondAttribute="top" id="6xl-8m-QyQ"/>
-                                    <constraint firstItem="loS-Oe-dnO" firstAttribute="leading" secondItem="dA8-W9-JOM" secondAttribute="leading" id="J5k-wP-UYy"/>
-                                    <constraint firstAttribute="trailing" secondItem="Hds-7F-bY2" secondAttribute="trailing" id="Vti-3f-bxS"/>
-                                    <constraint firstItem="C0s-2g-Scb" firstAttribute="top" secondItem="loS-Oe-dnO" secondAttribute="bottom" constant="7" id="XlL-Zy-Y3i"/>
-                                    <constraint firstItem="Hds-7F-bY2" firstAttribute="baseline" secondItem="C0s-2g-Scb" secondAttribute="baseline" id="ZWM-Ej-ZdV"/>
-                                    <constraint firstItem="L2k-8K-ACm" firstAttribute="leading" secondItem="loS-Oe-dnO" secondAttribute="trailing" constant="7" id="a0T-ju-24i"/>
-                                    <constraint firstItem="C0s-2g-Scb" firstAttribute="leading" secondItem="dA8-W9-JOM" secondAttribute="leading" id="cIa-Nu-4wf"/>
-                                    <constraint firstItem="Hds-7F-bY2" firstAttribute="leading" secondItem="C0s-2g-Scb" secondAttribute="trailing" constant="23" id="cil-Us-ZPS"/>
-                                    <constraint firstItem="loS-Oe-dnO" firstAttribute="top" secondItem="dA8-W9-JOM" secondAttribute="top" id="iaI-yL-4BD"/>
-                                    <constraint firstAttribute="height" constant="36" id="xTN-RF-X2T"/>
+                                    <constraint firstAttribute="height" constant="80" id="xTN-RF-X2T"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mozo_offchain" translatesAutoresizingMaskIntoConstraints="NO" id="YhZ-Ow-XBa">
-                                <rect key="frame" x="104" y="325" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7u-kq-RXs">
+                                <rect key="frame" x="20" y="498.5" width="170" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="IjX-3Y-4Zv"/>
-                                    <constraint firstAttribute="height" constant="30" id="Suq-u5-vg0"/>
+                                    <constraint firstAttribute="width" constant="170" id="4Is-bN-7UJ"/>
+                                    <constraint firstAttribute="height" constant="18" id="TYa-mO-xke"/>
                                 </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeT-dd-Lm8">
-                                <rect key="frame" x="143" y="325" width="89.5" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIC-7k-faw">
-                                <rect key="frame" x="239.5" y="340" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                <inset key="titleEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Select from Address Book" image="ic_address_book">
+                                    <color key="titleColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Select from Address Book"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnAddressBookTapped:" destination="buJ-DR-nBU" eventType="touchUpInside" id="F1O-DG-Urk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Pe-yZ-WwZ">
+                                <rect key="frame" x="20" y="589" width="335" height="50"/>
+                                <color key="backgroundColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="BS0-fX-J8K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Send Request">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Send Request"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnSendTapped:" destination="buJ-DR-nBU" eventType="touchUpInside" id="Lnp-fI-pKc"/>
+                                </connections>
+                            </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTZ-lh-p04" customClass="ABEmptyDropDownView" customModule="MozoSDK" customModuleProvider="target">
+                                <rect key="frame" x="20" y="463.5" width="335" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="zWg-VU-43n"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="OZ2-q4-hH4" firstAttribute="trailing" secondItem="5s0-sf-oRi" secondAttribute="trailing" constant="20" id="0ER-vX-uCB"/>
                             <constraint firstItem="sFe-gW-TMk" firstAttribute="leading" secondItem="TBg-Zz-7Xc" secondAttribute="leading" id="4jg-nV-3ge"/>
+                            <constraint firstItem="VTZ-lh-p04" firstAttribute="top" secondItem="5s0-sf-oRi" secondAttribute="bottom" constant="6" id="4sD-p7-g4N"/>
+                            <constraint firstItem="dA8-W9-JOM" firstAttribute="top" secondItem="TBg-Zz-7Xc" secondAttribute="bottom" constant="4" id="4yG-ns-7b4"/>
                             <constraint firstItem="HeT-dd-Lm8" firstAttribute="leading" secondItem="YhZ-Ow-XBa" secondAttribute="trailing" constant="9" id="5ny-df-t95"/>
-                            <constraint firstItem="TBg-Zz-7Xc" firstAttribute="top" secondItem="sFe-gW-TMk" secondAttribute="bottom" constant="28" id="6Na-yY-C0s"/>
+                            <constraint firstItem="TBg-Zz-7Xc" firstAttribute="top" secondItem="sFe-gW-TMk" secondAttribute="bottom" constant="18" id="6Na-yY-C0s"/>
                             <constraint firstItem="OZ2-q4-hH4" firstAttribute="bottom" secondItem="4Pe-yZ-WwZ" secondAttribute="bottom" constant="28" id="CHP-UE-Omd"/>
-                            <constraint firstItem="dA8-W9-JOM" firstAttribute="centerX" secondItem="5s0-sf-oRi" secondAttribute="centerX" id="Chx-El-EPU"/>
                             <constraint firstItem="wLB-v3-kwV" firstAttribute="top" secondItem="OZ2-q4-hH4" secondAttribute="top" constant="40" id="H27-Ae-1pb"/>
                             <constraint firstItem="wLB-v3-kwV" firstAttribute="centerX" secondItem="c60-mb-tK6" secondAttribute="centerX" id="HNM-O7-42L"/>
                             <constraint firstItem="QIC-7k-faw" firstAttribute="centerY" secondItem="HeT-dd-Lm8" secondAttribute="centerY" id="ICf-G3-V2n"/>
                             <constraint firstItem="5s0-sf-oRi" firstAttribute="top" secondItem="TBg-Zz-7Xc" secondAttribute="bottom" constant="15" id="IcC-ao-j3y"/>
-                            <constraint firstItem="U7u-kq-RXs" firstAttribute="top" secondItem="dA8-W9-JOM" secondAttribute="bottom" constant="14" id="LW8-sg-vkR"/>
+                            <constraint firstItem="U7u-kq-RXs" firstAttribute="top" secondItem="TBg-Zz-7Xc" secondAttribute="bottom" constant="89" id="LW8-sg-vkR"/>
                             <constraint firstItem="FdZ-JH-NwK" firstAttribute="centerX" secondItem="cEM-ii-gCG" secondAttribute="centerX" id="MbU-wi-HZ8"/>
-                            <constraint firstItem="dA8-W9-JOM" firstAttribute="centerY" secondItem="5s0-sf-oRi" secondAttribute="centerY" id="TPQ-Rt-57D"/>
+                            <constraint firstItem="dA8-W9-JOM" firstAttribute="leading" secondItem="sFe-gW-TMk" secondAttribute="leading" id="RHL-w7-kGF"/>
                             <constraint firstItem="HeT-dd-Lm8" firstAttribute="centerY" secondItem="YhZ-Ow-XBa" secondAttribute="centerY" id="TbD-Zs-lhA"/>
                             <constraint firstItem="YhZ-Ow-XBa" firstAttribute="top" secondItem="FdZ-JH-NwK" secondAttribute="bottom" constant="12" id="Tdb-cP-EEx"/>
                             <constraint firstItem="OZ2-q4-hH4" firstAttribute="trailing" secondItem="4Pe-yZ-WwZ" secondAttribute="trailing" constant="20" id="UE4-ha-e7O"/>
+                            <constraint firstItem="VTZ-lh-p04" firstAttribute="trailing" secondItem="5s0-sf-oRi" secondAttribute="trailing" id="Xha-KU-ehY"/>
                             <constraint firstItem="FdZ-JH-NwK" firstAttribute="top" secondItem="wLB-v3-kwV" secondAttribute="bottom" constant="12" id="ZlH-Ov-65W"/>
                             <constraint firstItem="TBg-Zz-7Xc" firstAttribute="leading" secondItem="OZ2-q4-hH4" secondAttribute="leading" constant="20" id="brn-NV-Usq"/>
+                            <constraint firstItem="VTZ-lh-p04" firstAttribute="leading" secondItem="5s0-sf-oRi" secondAttribute="leading" id="cIU-Va-F0h"/>
                             <constraint firstItem="dA8-W9-JOM" firstAttribute="width" secondItem="5s0-sf-oRi" secondAttribute="width" id="lfA-rI-Ngy"/>
                             <constraint firstItem="5s0-sf-oRi" firstAttribute="leading" secondItem="TBg-Zz-7Xc" secondAttribute="leading" id="n1M-tI-veI"/>
                             <constraint firstItem="HeT-dd-Lm8" firstAttribute="centerX" secondItem="cEM-ii-gCG" secondAttribute="centerX" id="qML-O9-Fvt"/>
@@ -2155,22 +2092,24 @@
                             <constraint firstItem="QIC-7k-faw" firstAttribute="leading" secondItem="HeT-dd-Lm8" secondAttribute="trailing" constant="7" id="vlN-D3-hdk"/>
                             <constraint firstItem="sFe-gW-TMk" firstAttribute="trailing" secondItem="dA8-W9-JOM" secondAttribute="trailing" id="x6C-Jm-qM4"/>
                             <constraint firstItem="4Pe-yZ-WwZ" firstAttribute="leading" secondItem="OZ2-q4-hH4" secondAttribute="leading" constant="20" id="yY9-5R-RZ2"/>
-                            <constraint firstItem="sFe-gW-TMk" firstAttribute="top" secondItem="HeT-dd-Lm8" secondAttribute="bottom" constant="32" id="yxo-y1-UMZ"/>
+                            <constraint firstItem="sFe-gW-TMk" firstAttribute="top" secondItem="HeT-dd-Lm8" secondAttribute="bottom" constant="21" id="yxo-y1-UMZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OZ2-q4-hH4"/>
                     </view>
                     <connections>
+                        <outlet property="abEmptyDropDownView" destination="VTZ-lh-p04" id="i8e-DO-shR"/>
+                        <outlet property="addressBookView" destination="dA8-W9-JOM" id="2Aa-SV-i70"/>
                         <outlet property="addressContainerView" destination="5s0-sf-oRi" id="ZRK-vu-56i"/>
+                        <outlet property="addressLine" destination="8oh-gf-YvP" id="WMs-Qa-NDE"/>
                         <outlet property="btnAddressBook" destination="U7u-kq-RXs" id="vjk-4a-DMI"/>
+                        <outlet property="btnAddressBookTopConstraint" destination="LW8-sg-vkR" id="xJB-lR-Tgj"/>
+                        <outlet property="btnScan" destination="Cji-PD-lZ8" id="sOI-CV-AjI"/>
                         <outlet property="btnSend" destination="4Pe-yZ-WwZ" id="H0S-1g-ftQ"/>
                         <outlet property="imgContainerView" destination="wLB-v3-kwV" id="XzG-ul-wlS"/>
-                        <outlet property="lbAbAddress" destination="C0s-2g-Scb" id="2ln-7V-IsA"/>
-                        <outlet property="lbAbName" destination="L2k-8K-ACm" id="RT6-8n-c9Z"/>
                         <outlet property="lbAmountEx" destination="QIC-7k-faw" id="Rhg-IU-WA4"/>
                         <outlet property="lbAmountToSend" destination="HeT-dd-Lm8" id="ao5-Fk-YPY"/>
-                        <outlet property="nameContainerView" destination="dA8-W9-JOM" id="4M8-38-fjg"/>
                         <outlet property="qrImg" destination="cEM-ii-gCG" id="dQH-WZ-Xm8"/>
-                        <outlet property="txtAddress" destination="bEU-cq-v2d" id="TMu-Y0-JYM"/>
+                        <outlet property="txtAddressOrPhoneNo" destination="bEU-cq-v2d" id="TMu-Y0-JYM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hop-3e-73t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2193,9 +2132,8 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Request Successful" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N65-dd-r1Q">
-                                <rect key="frame" x="87.5" y="220" width="200" height="48"/>
+                                <rect key="frame" x="18" y="220" width="339" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="hlY-LW-Wec"/>
                                     <constraint firstAttribute="height" constant="48" id="lWm-Hq-PBw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -2205,36 +2143,36 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Send Request Successful"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You sent Request MozoX to:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltf-8q-ujm">
-                                <rect key="frame" x="85.5" y="321" width="204" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have just request for:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltf-8q-ujm">
+                                <rect key="frame" x="94.5" y="300" width="186.5" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.078431372550000003" green="0.1019607843" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="You sent Request MozoX to:"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="You have just request for:"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mozo_offchain" translatesAutoresizingMaskIntoConstraints="NO" id="dt6-ly-Qe9">
-                                <rect key="frame" x="104" y="351" width="30" height="30"/>
+                                <rect key="frame" x="104" y="330" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="LC0-nv-qdd"/>
                                     <constraint firstAttribute="width" constant="30" id="hMn-UU-Hkd"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50,000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOf-Zy-S6f">
-                                <rect key="frame" x="143" y="351" width="89.5" height="30"/>
+                                <rect key="frame" x="143" y="330" width="89.5" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgE-7v-v2j">
-                                <rect key="frame" x="239.5" y="366" width="0.0" height="0.0"/>
+                                <rect key="frame" x="239.5" y="345" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TI2-bH-WAx">
-                                <rect key="frame" x="176.5" y="410" width="22.5" height="18"/>
+                                <rect key="frame" x="176.5" y="389" width="22.5" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.078431372550000003" green="0.1019607843" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2243,7 +2181,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udz-01-YMP" customClass="CopyableLabel" customModule="MozoSDK" customModuleProvider="target">
-                                <rect key="frame" x="37.5" y="438" width="300" height="21"/>
+                                <rect key="frame" x="37.5" y="417" width="300" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="qD9-qd-3Ek"/>
                                 </constraints>
@@ -2251,6 +2189,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cc1-Tx-t5E" customClass="AddressBookView" customModule="MozoSDK" customModuleProvider="target">
+                                <rect key="frame" x="59.5" y="419" width="256" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="256" id="A6x-XN-qpV"/>
+                                    <constraint firstAttribute="height" constant="80" id="VzR-Oh-jdZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -2261,19 +2207,24 @@
                             <constraint firstItem="udz-01-YMP" firstAttribute="top" secondItem="TI2-bH-WAx" secondAttribute="bottom" constant="10" id="IEs-xw-qfd"/>
                             <constraint firstItem="GOf-Zy-S6f" firstAttribute="leading" secondItem="dt6-ly-Qe9" secondAttribute="trailing" constant="9" id="JTl-fg-DCC"/>
                             <constraint firstItem="wBV-1x-Tao" firstAttribute="top" secondItem="wLX-YZ-nIt" secondAttribute="top" constant="90" id="PKT-gW-ngF"/>
-                            <constraint firstItem="Ltf-8q-ujm" firstAttribute="top" secondItem="N65-dd-r1Q" secondAttribute="bottom" constant="53" id="Q9e-vq-M7i"/>
+                            <constraint firstItem="Ltf-8q-ujm" firstAttribute="top" secondItem="N65-dd-r1Q" secondAttribute="bottom" constant="32" id="Q9e-vq-M7i"/>
                             <constraint firstItem="udz-01-YMP" firstAttribute="centerX" secondItem="kUZ-Pc-CVw" secondAttribute="centerX" id="R6o-Uz-1Cp"/>
+                            <constraint firstItem="Cc1-Tx-t5E" firstAttribute="top" secondItem="TI2-bH-WAx" secondAttribute="bottom" constant="12" id="XLQ-vP-hKm"/>
                             <constraint firstItem="N65-dd-r1Q" firstAttribute="centerX" secondItem="kUZ-Pc-CVw" secondAttribute="centerX" id="XfD-hP-eog"/>
                             <constraint firstItem="GOf-Zy-S6f" firstAttribute="centerY" secondItem="dt6-ly-Qe9" secondAttribute="centerY" id="aIm-Ch-yLb"/>
+                            <constraint firstItem="wLX-YZ-nIt" firstAttribute="trailing" secondItem="N65-dd-r1Q" secondAttribute="trailing" constant="18" id="fYA-zw-f9B"/>
                             <constraint firstItem="tgE-7v-v2j" firstAttribute="centerY" secondItem="GOf-Zy-S6f" secondAttribute="centerY" id="kx1-FS-GV5"/>
                             <constraint firstItem="GOf-Zy-S6f" firstAttribute="top" secondItem="Ltf-8q-ujm" secondAttribute="bottom" constant="12" id="m2p-4m-UW3"/>
                             <constraint firstItem="N65-dd-r1Q" firstAttribute="top" secondItem="wBV-1x-Tao" secondAttribute="bottom" constant="30" id="psD-zb-tHR"/>
                             <constraint firstItem="tgE-7v-v2j" firstAttribute="leading" secondItem="GOf-Zy-S6f" secondAttribute="trailing" constant="7" id="qG8-fU-8up"/>
                             <constraint firstItem="TI2-bH-WAx" firstAttribute="top" secondItem="GOf-Zy-S6f" secondAttribute="bottom" constant="29" id="rDQ-gY-JNF"/>
+                            <constraint firstItem="N65-dd-r1Q" firstAttribute="leading" secondItem="wLX-YZ-nIt" secondAttribute="leading" constant="18" id="sbp-41-MmJ"/>
+                            <constraint firstItem="Cc1-Tx-t5E" firstAttribute="centerX" secondItem="kUZ-Pc-CVw" secondAttribute="centerX" id="w8u-mH-yA3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wLX-YZ-nIt"/>
                     </view>
                     <connections>
+                        <outlet property="addressBookView" destination="Cc1-Tx-t5E" id="8MA-Sy-nrf"/>
                         <outlet property="lbAddressOrName" destination="udz-01-YMP" id="eGP-3z-1oV"/>
                         <outlet property="lbAmount" destination="GOf-Zy-S6f" id="LwW-gE-NZt"/>
                         <outlet property="lbAmountEx" destination="tgE-7v-v2j" id="NtY-Vl-oAX"/>
@@ -2854,52 +2805,11 @@
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfH-9A-rzv">
-                                        <rect key="frame" x="20" y="151" width="337.5" height="108"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user" translatesAutoresizingMaskIntoConstraints="NO" id="aWg-bO-upj">
-                                                <rect key="frame" x="0.0" y="0.0" width="14" height="18"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="14" id="kyK-vW-Seg"/>
-                                                    <constraint firstAttribute="height" constant="18" id="ob5-L3-TpG"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNJ-8D-lTh">
-                                                <rect key="frame" x="21" y="0.0" width="42.5" height="18"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="586-UF-N34">
-                                                <rect key="frame" x="0.0" y="46" width="162" height="15"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="162" id="1Tn-HO-FQT"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                                <color key="textColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Wallet Address"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huU-Tm-Llv" customClass="CopyableLabel" customModule="MozoSDK" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="65" width="343.5" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfH-9A-rzv" customClass="AddressBookView" customModule="MozoSDK" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="151" width="337.5" height="80"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="108" id="3fm-OP-eI6"/>
-                                            <constraint firstItem="586-UF-N34" firstAttribute="leading" secondItem="PfH-9A-rzv" secondAttribute="leading" id="5is-zw-McY"/>
-                                            <constraint firstItem="LNJ-8D-lTh" firstAttribute="leading" secondItem="aWg-bO-upj" secondAttribute="trailing" constant="7" id="9Y8-qh-hhG"/>
-                                            <constraint firstItem="huU-Tm-Llv" firstAttribute="leading" secondItem="PfH-9A-rzv" secondAttribute="leading" id="Fzi-2r-2UI"/>
-                                            <constraint firstItem="aWg-bO-upj" firstAttribute="leading" secondItem="PfH-9A-rzv" secondAttribute="leading" id="L03-F4-rFC"/>
-                                            <constraint firstItem="huU-Tm-Llv" firstAttribute="top" secondItem="586-UF-N34" secondAttribute="bottom" constant="4" id="ZCZ-3O-iYC"/>
-                                            <constraint firstItem="586-UF-N34" firstAttribute="top" secondItem="aWg-bO-upj" secondAttribute="bottom" constant="28" id="iAL-Ar-a7w"/>
-                                            <constraint firstItem="LNJ-8D-lTh" firstAttribute="top" secondItem="PfH-9A-rzv" secondAttribute="top" id="qHC-DG-K1x"/>
-                                            <constraint firstItem="aWg-bO-upj" firstAttribute="top" secondItem="PfH-9A-rzv" secondAttribute="top" id="zwe-wo-oMD"/>
+                                            <constraint firstAttribute="height" constant="80" id="3fm-OP-eI6"/>
                                         </constraints>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vGZ-gf-QqK">
@@ -3081,15 +2991,13 @@
                         <viewLayoutGuide key="safeArea" id="vgy-Sm-C7u"/>
                     </view>
                     <connections>
-                        <outlet property="addressBookView" destination="PfH-9A-rzv" id="VjA-b1-T9X"/>
+                        <outlet property="addressBookView" destination="PfH-9A-rzv" id="Hme-ZO-v03"/>
                         <outlet property="btnConfirm" destination="aye-tj-l8N" id="Pkf-vi-yzG"/>
                         <outlet property="circleView" destination="RlI-2S-D6B" id="LGU-li-vFI"/>
                         <outlet property="layoutConstraint" destination="ivp-Di-3h6" id="xql-HJ-5RZ"/>
                         <outlet property="lbAddress" destination="r9x-1p-WB3" id="fuX-eo-mMg"/>
                         <outlet property="lbAmountValue" destination="isx-1g-h5d" id="hAb-ro-NqD"/>
                         <outlet property="lbAmountValueExchange" destination="QJi-7W-A7j" id="gkA-aV-p4m"/>
-                        <outlet property="lbName" destination="LNJ-8D-lTh" id="jpH-t7-5J4"/>
-                        <outlet property="lbNameAddress" destination="huU-Tm-Llv" id="4Hu-nd-ZDo"/>
                         <outlet property="lbReceiver" destination="wwr-6W-hAu" id="EeS-67-9N2"/>
                         <outlet property="lbStoreName" destination="iNX-nv-QYW" id="JO4-KR-Zfn"/>
                         <outlet property="lbStoreOffchainAddress" destination="P77-Eb-8O0" id="kID-2g-Nef"/>
@@ -3165,7 +3073,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kja-eZ-KQb">
-                                <rect key="frame" x="20" y="254" width="335" height="135"/>
+                                <rect key="frame" x="20" y="254" width="335" height="186"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have just sent:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REv-jj-c6g">
                                         <rect key="frame" x="99" y="0.0" width="137.5" height="18"/>
@@ -3195,17 +3103,8 @@
                                         <color key="textColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA18" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYu-pz-fjF" customClass="CopyableLabel" customModule="MozoSDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="117" width="335" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="iAg-iz-T8I"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvK-qO-LTE">
-                                        <rect key="frame" x="156" y="89" width="23" height="18"/>
+                                        <rect key="frame" x="156" y="76" width="23" height="18"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -3213,19 +3112,38 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="To"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA18" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYu-pz-fjF" customClass="CopyableLabel" customModule="MozoSDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="110" width="335" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="iAg-iz-T8I"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZPb-fM-d1F" customClass="AddressBookView" customModule="MozoSDK" customModuleProvider="target">
+                                        <rect key="frame" x="39.5" y="106" width="256" height="80"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="256" id="a1C-hK-Z21"/>
+                                            <constraint firstAttribute="height" constant="80" id="dDS-rh-bXx"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="ZPb-fM-d1F" firstAttribute="top" secondItem="dvK-qO-LTE" secondAttribute="bottom" constant="12" id="11d-ho-4Ak"/>
                                     <constraint firstItem="REv-jj-c6g" firstAttribute="centerX" secondItem="Kja-eZ-KQb" secondAttribute="centerX" id="2cc-NQ-dCo"/>
                                     <constraint firstItem="BYu-pz-fjF" firstAttribute="leading" secondItem="Kja-eZ-KQb" secondAttribute="leading" id="9tG-Xs-Uc7"/>
                                     <constraint firstItem="dvK-qO-LTE" firstAttribute="centerX" secondItem="Kja-eZ-KQb" secondAttribute="centerX" id="FbP-aP-JBA"/>
                                     <constraint firstItem="REv-jj-c6g" firstAttribute="top" secondItem="Kja-eZ-KQb" secondAttribute="top" id="O5x-qt-CEF"/>
-                                    <constraint firstAttribute="bottom" secondItem="BYu-pz-fjF" secondAttribute="bottom" id="OI0-l1-w36"/>
                                     <constraint firstAttribute="trailing" secondItem="BYu-pz-fjF" secondAttribute="trailing" id="atI-bY-ZLw"/>
-                                    <constraint firstItem="dvK-qO-LTE" firstAttribute="top" secondItem="na5-fx-2al" secondAttribute="bottom" constant="29" id="eC3-1T-bNI"/>
-                                    <constraint firstAttribute="height" constant="135" id="hfm-4c-Rlp"/>
+                                    <constraint firstItem="ZPb-fM-d1F" firstAttribute="centerX" secondItem="Kja-eZ-KQb" secondAttribute="centerX" id="bOF-2K-yhk"/>
+                                    <constraint firstItem="dvK-qO-LTE" firstAttribute="top" secondItem="na5-fx-2al" secondAttribute="bottom" constant="16" id="eC3-1T-bNI"/>
+                                    <constraint firstAttribute="height" constant="186" id="hfm-4c-Rlp"/>
                                     <constraint firstItem="h0l-uZ-RDH" firstAttribute="centerY" secondItem="dQy-pN-MP0" secondAttribute="centerY" id="lAx-6D-Bbm"/>
                                     <constraint firstItem="dQy-pN-MP0" firstAttribute="top" secondItem="REv-jj-c6g" secondAttribute="bottom" constant="12" id="lXh-UO-YCV"/>
+                                    <constraint firstItem="BYu-pz-fjF" firstAttribute="top" secondItem="dvK-qO-LTE" secondAttribute="bottom" constant="16" id="ntn-0p-NN2"/>
                                     <constraint firstItem="dQy-pN-MP0" firstAttribute="centerY" secondItem="na5-fx-2al" secondAttribute="centerY" id="qdj-Li-Ber"/>
                                     <constraint firstItem="dQy-pN-MP0" firstAttribute="leading" secondItem="na5-fx-2al" secondAttribute="trailing" constant="9" id="rUm-D4-RYh"/>
                                     <constraint firstItem="dQy-pN-MP0" firstAttribute="centerX" secondItem="Kja-eZ-KQb" secondAttribute="centerX" id="uQB-dR-Pcr"/>
@@ -3233,7 +3151,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kas-ba-Yvj">
-                                <rect key="frame" x="37.5" y="444" width="300" height="45"/>
+                                <rect key="frame" x="37.5" y="495" width="300" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="KWO-FI-j7j"/>
                                 </constraints>
@@ -3253,7 +3171,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVU-ca-OfZ">
-                                <rect key="frame" x="37.5" y="504" width="300" height="45"/>
+                                <rect key="frame" x="37.5" y="555" width="300" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="5" maxY="0.0"/>
                                 <state key="normal" title="Save Wallet Address" image="ic_user_add">
@@ -3289,6 +3207,7 @@
                         <viewLayoutGuide key="safeArea" id="jbD-L8-hq5"/>
                     </view>
                     <connections>
+                        <outlet property="addressBookView" destination="ZPb-fM-d1F" id="YmA-OF-ypy"/>
                         <outlet property="btnDetail" destination="kas-ba-Yvj" id="H1q-B8-bwa"/>
                         <outlet property="btnSave" destination="wVU-ca-OfZ" id="6nZ-Gb-dlf"/>
                         <outlet property="labelActionComplete" destination="PcD-jC-ehP" id="MP4-oD-PwJ"/>
@@ -3296,6 +3215,7 @@
                         <outlet property="lbAmount" destination="dQy-pN-MP0" id="zTR-mK-iKs"/>
                         <outlet property="lbAmountEx" destination="h0l-uZ-RDH" id="7oP-sw-Twk"/>
                         <outlet property="txCompletionView" destination="Kja-eZ-KQb" id="fvR-S7-y3s"/>
+                        <outlet property="txCompletionViewHeightConstraint" destination="hfm-4c-Rlp" id="yKz-Zf-VkU"/>
                         <outlet property="txCpAddressLabel" destination="BYu-pz-fjF" id="2PJ-CT-1hx"/>
                         <outlet property="txStatusImg" destination="X38-sh-EUE" id="v3i-Hk-y8i"/>
                         <outlet property="txStatusLabel" destination="8FM-eL-oR4" id="5fB-FO-ArV"/>
@@ -3353,69 +3273,27 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grb-DX-vYY">
-                                <rect key="frame" x="20" y="146" width="335" height="65"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6IW-EP-FH0">
-                                        <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <color key="textColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user" translatesAutoresizingMaskIntoConstraints="NO" id="bXG-BB-nvE">
-                                        <rect key="frame" x="0.0" y="23" width="14" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="ELk-wm-EIv"/>
-                                            <constraint firstAttribute="width" constant="14" id="VdB-rx-ff4"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fur-D1-zJK">
-                                        <rect key="frame" x="24" y="23" width="42.5" height="18"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="04564 253, Jangchungdan-ro, Jung-gu, Seoul, Korea." textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4c-Ug-yEw" customClass="CopyableLabel" customModule="MozoSDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="335" height="15"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="6IW-EP-FH0" firstAttribute="top" secondItem="grb-DX-vYY" secondAttribute="top" id="Ba7-cM-dPN"/>
-                                    <constraint firstItem="bXG-BB-nvE" firstAttribute="top" secondItem="6IW-EP-FH0" secondAttribute="bottom" constant="8" id="KRk-k1-EdH"/>
-                                    <constraint firstItem="bXG-BB-nvE" firstAttribute="leading" secondItem="6IW-EP-FH0" secondAttribute="leading" id="Svo-ht-lkb"/>
-                                    <constraint firstItem="fur-D1-zJK" firstAttribute="leading" secondItem="bXG-BB-nvE" secondAttribute="trailing" constant="10" id="Y2g-3o-NS0"/>
-                                    <constraint firstAttribute="bottom" secondItem="o4c-Ug-yEw" secondAttribute="bottom" id="nCb-mb-ve8"/>
-                                    <constraint firstItem="o4c-Ug-yEw" firstAttribute="top" secondItem="bXG-BB-nvE" secondAttribute="bottom" constant="9" id="nyq-WR-UQU"/>
-                                    <constraint firstItem="fur-D1-zJK" firstAttribute="centerY" secondItem="bXG-BB-nvE" secondAttribute="centerY" id="t8e-ix-jRv"/>
-                                    <constraint firstItem="o4c-Ug-yEw" firstAttribute="width" secondItem="grb-DX-vYY" secondAttribute="width" id="thg-xp-lZv"/>
-                                    <constraint firstItem="6IW-EP-FH0" firstAttribute="leading" secondItem="grb-DX-vYY" secondAttribute="leading" id="tnm-eF-YNU"/>
-                                    <constraint firstItem="o4c-Ug-yEw" firstAttribute="leading" secondItem="bXG-BB-nvE" secondAttribute="leading" id="xwT-cc-tRS"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hg-Hg-41t">
-                                <rect key="frame" x="20" y="235" width="162" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="162" id="lut-dP-RyG"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6IW-EP-FH0">
+                                <rect key="frame" x="20" y="146" width="15" height="15"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Wallet Address"/>
-                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCi-Mc-sIl" customClass="CopyableLabel" customModule="MozoSDK" customModuleProvider="target">
-                                <rect key="frame" x="20" y="260" width="343.5" height="17"/>
+                                <rect key="frame" x="20" y="176" width="343.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IC8-Yd-3eg" userLabel="FirstBorderView">
-                                <rect key="frame" x="20" y="303" width="335" height="1"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grb-DX-vYY" customClass="AddressBookView" customModule="MozoSDK" customModuleProvider="target">
+                                <rect key="frame" x="20" y="165" width="335" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="nJM-xi-67z"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IC8-Yd-3eg" userLabel="SecondBorderView">
+                                <rect key="frame" x="20" y="260" width="335" height="1"/>
                                 <color key="backgroundColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="FirstBorderView"/>
                                 <constraints>
@@ -3434,7 +3312,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewA-xS-vgb">
-                                <rect key="frame" x="20" y="322" width="162" height="15"/>
+                                <rect key="frame" x="20" y="279" width="162" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="162" id="giw-lL-QhF"/>
                                 </constraints>
@@ -3446,26 +3324,26 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mozo_offchain" translatesAutoresizingMaskIntoConstraints="NO" id="Cqv-Dm-bSL">
-                                <rect key="frame" x="20" y="341" width="30" height="30"/>
+                                <rect key="frame" x="20" y="298" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="h3b-vx-R7X"/>
                                     <constraint firstAttribute="width" constant="30" id="lkt-qv-PPx"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQc-Ka-ghz">
-                                <rect key="frame" x="59" y="341" width="89.5" height="30"/>
+                                <rect key="frame" x="59" y="298" width="89.5" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1M-1Z-KYY">
-                                <rect key="frame" x="155.5" y="356" width="0.0" height="0.0"/>
+                                <rect key="frame" x="155.5" y="313" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYn-p9-97h">
-                                <rect key="frame" x="20" y="399" width="335" height="76"/>
+                                <rect key="frame" x="20" y="356" width="335" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJb-AK-dPV">
                                         <rect key="frame" x="33.5" y="31" width="268" height="45"/>
@@ -3520,31 +3398,31 @@
                         <constraints>
                             <constraint firstItem="Cqv-Dm-bSL" firstAttribute="top" secondItem="ewA-xS-vgb" secondAttribute="bottom" constant="4" id="03f-fp-P1q"/>
                             <constraint firstItem="grb-DX-vYY" firstAttribute="leading" secondItem="un4-tG-6cH" secondAttribute="leading" id="0iZ-W3-Kr4"/>
-                            <constraint firstItem="IC8-Yd-3eg" firstAttribute="top" secondItem="vCi-Mc-sIl" secondAttribute="bottom" constant="26" id="146-nc-l6l"/>
                             <constraint firstItem="c1M-1Z-KYY" firstAttribute="centerY" secondItem="hQc-Ka-ghz" secondAttribute="centerY" id="2GQ-9k-h2C"/>
                             <constraint firstItem="ehH-1c-kS7" firstAttribute="top" secondItem="ETx-lu-KB9" secondAttribute="top" constant="21.800000000000001" id="2Gk-FG-jsk"/>
                             <constraint firstItem="lYn-p9-97h" firstAttribute="trailing" secondItem="IC8-Yd-3eg" secondAttribute="trailing" id="4Yo-9e-MWb"/>
                             <constraint firstItem="vCi-Mc-sIl" firstAttribute="leading" secondItem="ETx-lu-KB9" secondAttribute="leading" constant="20" id="6tU-S8-5HQ"/>
                             <constraint firstItem="un4-tG-6cH" firstAttribute="top" secondItem="ehH-1c-kS7" secondAttribute="bottom" constant="30" id="95N-fR-Txl"/>
                             <constraint firstItem="Cqv-Dm-bSL" firstAttribute="leading" secondItem="ETx-lu-KB9" secondAttribute="leading" constant="20" id="ANF-F6-Hri"/>
+                            <constraint firstItem="grb-DX-vYY" firstAttribute="top" secondItem="6IW-EP-FH0" secondAttribute="bottom" constant="4" id="CV4-cX-1mc"/>
                             <constraint firstItem="hQc-Ka-ghz" firstAttribute="centerY" secondItem="Cqv-Dm-bSL" secondAttribute="centerY" id="DKN-Gc-Y0h"/>
                             <constraint firstItem="PrE-MI-bOv" firstAttribute="leading" secondItem="72Y-P6-jET" secondAttribute="leading" id="IEI-Mz-cmv"/>
                             <constraint firstItem="lYn-p9-97h" firstAttribute="leading" secondItem="IC8-Yd-3eg" secondAttribute="leading" id="LZI-EP-vws"/>
                             <constraint firstItem="IC8-Yd-3eg" firstAttribute="leading" secondItem="ETx-lu-KB9" secondAttribute="leading" constant="20" id="Lj7-cJ-Nab"/>
                             <constraint firstItem="PrE-MI-bOv" firstAttribute="top" secondItem="72Y-P6-jET" secondAttribute="bottom" constant="4" id="MwL-Kh-Veq"/>
                             <constraint firstItem="ehH-1c-kS7" firstAttribute="leading" secondItem="ETx-lu-KB9" secondAttribute="leading" constant="20" id="Nup-NZ-v6q"/>
-                            <constraint firstItem="vCi-Mc-sIl" firstAttribute="top" secondItem="5hg-Hg-41t" secondAttribute="bottom" constant="10" id="c5u-6l-DCf"/>
+                            <constraint firstItem="vCi-Mc-sIl" firstAttribute="top" secondItem="6IW-EP-FH0" secondAttribute="bottom" constant="15" id="T3s-oB-hBi"/>
+                            <constraint firstItem="6IW-EP-FH0" firstAttribute="leading" secondItem="un4-tG-6cH" secondAttribute="leading" id="T7y-rS-leW"/>
+                            <constraint firstItem="IC8-Yd-3eg" firstAttribute="top" secondItem="6IW-EP-FH0" secondAttribute="bottom" constant="99" id="VM6-Ap-hOK"/>
                             <constraint firstItem="ewA-xS-vgb" firstAttribute="top" secondItem="IC8-Yd-3eg" secondAttribute="bottom" constant="18" id="cfS-Xa-4jR"/>
-                            <constraint firstItem="5hg-Hg-41t" firstAttribute="top" secondItem="un4-tG-6cH" secondAttribute="bottom" constant="117" id="cnj-HN-qI8"/>
-                            <constraint firstItem="grb-DX-vYY" firstAttribute="top" secondItem="un4-tG-6cH" secondAttribute="bottom" constant="28" id="dVy-2b-iZP"/>
                             <constraint firstItem="ewA-xS-vgb" firstAttribute="leading" secondItem="ETx-lu-KB9" secondAttribute="leading" constant="20" id="eW4-WG-obQ"/>
-                            <constraint firstItem="5hg-Hg-41t" firstAttribute="leading" secondItem="ETx-lu-KB9" secondAttribute="leading" constant="20" id="fiU-2g-uVH"/>
                             <constraint firstItem="Cqv-Dm-bSL" firstAttribute="top" secondItem="ewA-xS-vgb" secondAttribute="bottom" constant="4" id="fq6-09-ZUu"/>
                             <constraint firstItem="72Y-P6-jET" firstAttribute="top" secondItem="ETx-lu-KB9" secondAttribute="top" constant="26.800000000000001" id="gja-jl-lHK"/>
                             <constraint firstItem="c1M-1Z-KYY" firstAttribute="leading" secondItem="hQc-Ka-ghz" secondAttribute="trailing" constant="7" id="h4h-3f-Ct8"/>
                             <constraint firstItem="un4-tG-6cH" firstAttribute="leading" secondItem="MbR-VZ-A4y" secondAttribute="leading" constant="20" id="jUI-pg-CYd"/>
                             <constraint firstItem="ETx-lu-KB9" firstAttribute="trailing" secondItem="IC8-Yd-3eg" secondAttribute="trailing" constant="20" id="l2J-SX-1LF"/>
                             <constraint firstItem="72Y-P6-jET" firstAttribute="leading" secondItem="ehH-1c-kS7" secondAttribute="trailing" constant="10" id="m75-qR-whI"/>
+                            <constraint firstItem="6IW-EP-FH0" firstAttribute="top" secondItem="un4-tG-6cH" secondAttribute="bottom" constant="28" id="mVf-j8-ZeV"/>
                             <constraint firstItem="hQc-Ka-ghz" firstAttribute="leading" secondItem="Cqv-Dm-bSL" secondAttribute="trailing" constant="9" id="nEb-Ja-8uW"/>
                             <constraint firstItem="grb-DX-vYY" firstAttribute="trailing" secondItem="un4-tG-6cH" secondAttribute="trailing" id="oFk-oK-xUL"/>
                             <constraint firstAttribute="trailing" secondItem="un4-tG-6cH" secondAttribute="trailing" constant="20" id="rud-Ng-kmR"/>
@@ -3554,20 +3432,16 @@
                     </view>
                     <connections>
                         <outlet property="actionImg" destination="ehH-1c-kS7" id="mdl-cW-Ubs"/>
-                        <outlet property="detailView" destination="grb-DX-vYY" id="zzL-cu-1it"/>
-                        <outlet property="lbActionDetailView" destination="6IW-EP-FH0" id="6aL-rS-Vff"/>
+                        <outlet property="addressBookView" destination="grb-DX-vYY" id="KDA-mc-2F1"/>
+                        <outlet property="lbActionType" destination="6IW-EP-FH0" id="6aL-rS-Vff"/>
                         <outlet property="lbAddress" destination="vCi-Mc-sIl" id="9nV-XU-GFr"/>
-                        <outlet property="lbAddressDetailView" destination="o4c-Ug-yEw" id="iFZ-59-H9S"/>
                         <outlet property="lbAmountValue" destination="hQc-Ka-ghz" id="DFi-A6-3iv"/>
                         <outlet property="lbAmountValueExchange" destination="c1M-1Z-KYY" id="mKy-fX-SJW"/>
                         <outlet property="lbDateTime" destination="PrE-MI-bOv" id="3VS-Ff-7Il"/>
-                        <outlet property="lbNameDetailView" destination="fur-D1-zJK" id="ifC-aP-ghm"/>
                         <outlet property="lbTxType" destination="72Y-P6-jET" id="HNB-Wy-YGb"/>
                         <outlet property="saveBtn" destination="RJb-AK-dPV" id="mFK-PU-439"/>
                         <outlet property="saveView" destination="lYn-p9-97h" id="bQT-At-FCk"/>
-                        <outlet property="userImg" destination="bXG-BB-nvE" id="RNn-Vc-hqW"/>
-                        <outlet property="userImgWidthCstr" destination="VdB-rx-ff4" id="cWh-Hs-Pm5"/>
-                        <outlet property="walletAddressTopCstr" destination="cnj-HN-qI8" id="FqX-si-dXY"/>
+                        <outlet property="secondLineTopConstraint" destination="VM6-Ap-hOK" id="M3t-3Z-yk8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L8B-ZV-VC6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4299,7 +4173,7 @@
                         <outlet property="lbValidateAddrError" destination="poq-XA-YJd" id="a9u-RW-vuo"/>
                         <outlet property="lbValidateAmountError" destination="S0q-HQ-ntV" id="az6-zX-M9T"/>
                         <outlet property="spendableView" destination="tE8-P5-Vfz" id="iBJ-TJ-7TV"/>
-                        <outlet property="txtAddress" destination="u5n-5H-mz6" id="cmb-ms-pEi"/>
+                        <outlet property="txtAddressOrPhoneNo" destination="u5n-5H-mz6" id="cmb-ms-pEi"/>
                         <outlet property="txtAmount" destination="ZMT-G6-8MR" id="0Dr-wN-uUk"/>
                     </connections>
                 </viewController>
@@ -4821,31 +4695,31 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_address_book" width="38" height="36"/>
+        <image name="ic_address_book" width="19" height="18"/>
         <image name="ic_alert_fill" width="37.5" height="34.5"/>
         <image name="ic_check" width="24" height="24"/>
         <image name="ic_check_disable" width="60" height="60"/>
-        <image name="ic_check_success" width="76.800003051757812" height="76.800003051757812"/>
+        <image name="ic_check_success" width="160" height="160"/>
         <image name="ic_convert" width="17" height="18"/>
         <image name="ic_exclaim" width="128" height="128"/>
         <image name="ic_failed" width="32" height="32"/>
-        <image name="ic_info" width="46" height="46"/>
-        <image name="ic_loading" width="189" height="180"/>
-        <image name="ic_mozo_offchain" width="48" height="48"/>
+        <image name="ic_info" width="23" height="23"/>
+        <image name="ic_loading" width="94.5" height="90"/>
+        <image name="ic_mozo_offchain" width="24" height="24"/>
         <image name="ic_mozo_onchain" width="30" height="30"/>
-        <image name="ic_paper" width="30" height="36"/>
+        <image name="ic_paper" width="15" height="18"/>
         <image name="ic_payment_complete" width="133" height="80"/>
-        <image name="ic_pencil" width="52" height="52"/>
+        <image name="ic_pencil" width="26" height="26"/>
         <image name="ic_question_mark" width="36" height="36"/>
-        <image name="ic_scan" width="38" height="36"/>
+        <image name="ic_scan" width="19" height="18"/>
         <image name="ic_send" width="13" height="15"/>
-        <image name="ic_sent_circle" width="96" height="96"/>
+        <image name="ic_sent_circle" width="48" height="48"/>
         <image name="ic_sort_down" width="10" height="6"/>
-        <image name="ic_store" width="80" height="72"/>
+        <image name="ic_store" width="40" height="36"/>
         <image name="ic_tx_complete" width="165" height="100"/>
         <image name="ic_user" width="14" height="18"/>
         <image name="ic_user_add" width="19" height="16"/>
-        <image name="ic_user_profile" width="402" height="402"/>
+        <image name="ic_user_profile" width="201" height="201"/>
         <image name="img_maintenance" width="628" height="640"/>
     </resources>
 </document>

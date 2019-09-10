@@ -14,4 +14,6 @@ protocol PaymentQRViewInterface {
     func displaySpinner()
     func removeSpinner()
     func displaySuccess()
+    
+    func notFoundContact(_ phoneNo: String)
 }
