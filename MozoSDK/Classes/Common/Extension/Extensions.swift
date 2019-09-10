@@ -168,19 +168,19 @@ extension UIColor {
 }
 
 extension UIView {
-    func roundCorners(cornerRadius: CGFloat = 0.02, borderColor: UIColor, borderWidth: CGFloat) {
+    public func roundCorners(cornerRadius: CGFloat = 0.02, borderColor: UIColor, borderWidth: CGFloat) {
         layer.cornerRadius = cornerRadius * bounds.size.width
         layer.borderWidth = borderWidth
         layer.borderColor = borderColor.cgColor
         clipsToBounds = true
     }
     
-    func dropShadow(scale: Bool = true) {
+    public func dropShadow(scale: Bool = true, color: UIColor = UIColor.black, isOnlyBottom: Bool = false) {
         layer.masksToBounds = false
-        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowColor = color.cgColor
         layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize.zero
-        layer.shadowRadius = 3
+        layer.shadowOffset = isOnlyBottom ? CGSize(width: 0.0, height: 3.0) : CGSize.zero
+        layer.shadowRadius = isOnlyBottom ? 1.5 : 3
         
         layer.shadowPath = UIBezierPath(rect: bounds).cgPath
         layer.shouldRasterize = true
