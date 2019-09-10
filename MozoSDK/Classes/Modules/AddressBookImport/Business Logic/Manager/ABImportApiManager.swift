@@ -57,7 +57,7 @@ extension ApiManager {
     
     public func getAddressBookByPhoneNo(_ phoneNo: String) -> Promise<AddressBookDTO?> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + ADR_BOOK_API_PATH + "/user-address/\(phoneNo)"
+            let url = Configuration.BASE_URL + ADR_BOOK_API_PATH + "/findContact/\(phoneNo)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

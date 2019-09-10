@@ -53,7 +53,7 @@ import UIKit
     }
     
     func identifier() -> String {
-        return ""
+        return String(describing: self.classForCoder.self)
     }
     
     func updateOnlyBalance(_ balance : Double) {

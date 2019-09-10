@@ -8,13 +8,12 @@
 import Foundation
 class PaymentQRWireframe: MozoWireframe {
     var presenter: PaymentQRPresenter?
-    var paymentQRViewController: PaymentQRViewController?
     
     func presentPaymentQRInterface(displayItem: PaymentRequestDisplayItem) {
+        print("PaymentQRWireframe - Present payment QR interface")
         let viewController = viewControllerFromStoryBoard(PaymentQRViewControllerIdentifier) as! PaymentQRViewController
         viewController.eventHandler = presenter
         viewController.displayItem = displayItem
-        paymentQRViewController = viewController
         presenter?.viewInterface = viewController
         rootWireframe?.displayViewController(viewController)
     }

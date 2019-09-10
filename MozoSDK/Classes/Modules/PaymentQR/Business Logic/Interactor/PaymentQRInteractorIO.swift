@@ -6,11 +6,11 @@
 //
 
 import Foundation
-protocol PaymentQRInteractorInput {
+protocol PaymentQRInteractorInput: ABSupportInteractorInput {
     func validateValueFromScanner(_ scanValue: String)
     func sendPaymentRequest(toAddress: String, item: PaymentRequestDisplayItem)
 }
-protocol PaymentQRInteractorOutput {
+protocol PaymentQRInteractorOutput: ABSupportInteractorOutput {
     func didReceiveError(_ error: String?)
     func didSendPaymentRequestSuccess(toAddress: String, item: PaymentRequestDisplayItem)
     func errorWhileSendPayment(error: Any, toAddress: String, item: PaymentRequestDisplayItem)

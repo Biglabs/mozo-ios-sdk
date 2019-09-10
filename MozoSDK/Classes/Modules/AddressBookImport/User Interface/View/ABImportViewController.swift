@@ -116,4 +116,8 @@ extension ABImportViewController: ABImportViewInterface {
     func updateInterfaceWithProcessStatus(_ processStatus: AddressBookImportProcessDTO) {
         updateLayoutWithProcessStatus(processStatus)
     }
+    
+    func showContactEmptyAlert() {
+        self.displayMozoError("Your contact book is empty, please try again later.")
+    }
 }

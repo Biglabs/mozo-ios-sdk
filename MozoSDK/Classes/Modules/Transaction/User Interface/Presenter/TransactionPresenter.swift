@@ -14,6 +14,8 @@ class TransactionPresenter : NSObject {
     var confirmUserInterface : ConfirmTransferViewInterface?
     var transactionModuleDelegate: TransactionModuleDelegate?
     
+    var searchPhoneNo: String?
+    
     func updateInterfaceWithDisplayItem(_ displayItem: AddressBookDisplayItem) {
         transferUserInterface?.updateInterfaceWithDisplayItem(displayItem)
     }

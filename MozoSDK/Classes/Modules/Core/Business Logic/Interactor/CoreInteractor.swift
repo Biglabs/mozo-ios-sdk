@@ -47,6 +47,8 @@ class CoreInteractor: NSObject {
     private func getUserProfile() -> Promise<Void> {
         return Promise { seal in
             _ = apiManager.getUserProfile().done { (userProfile) in
+                // Fix issue: User id of profile can be NULL
+                if userProfile.id != nil {
                     let user = UserDTO(id: userProfile.userId, profile: userProfile)
                     SessionStoreManager.saveCurrentUser(user: user)
                 
@@ -54,9 +56,12 @@ class CoreInteractor: NSObject {
                     if self.userDataManager.addNewUser(userModel) == true {
                         seal.resolve(nil)
                     }
-                }.catch({ (err) in
-                    seal.reject(err)
-                })
+                } else {
+                    seal.reject(ConnectionError.systemError)
+                }
+            }.catch({ (err) in
+                seal.reject(err)
+            })
         }
     }
     

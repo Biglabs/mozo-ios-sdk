@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressBookView" customModule="MozoSDK" customModuleProvider="target">
+            <connections>
+                <outlet property="btnClear" destination="ovg-yK-xvV" id="7gC-33-XBH"/>
+                <outlet property="containView" destination="SfD-fA-2SA" id="3wN-wn-0nw"/>
+                <outlet property="lbAddress" destination="j6p-vE-yKv" id="HOc-Wo-Hub"/>
+                <outlet property="lbName" destination="BMa-fQ-BZl" id="N8l-EF-SiH"/>
+                <outlet property="lbPhone" destination="TVf-0m-dM1" id="qEZ-4v-k1E"/>
+                <outlet property="stackView" destination="FHI-BG-EeY" id="gYL-Rq-rcP"/>
+                <outlet property="stackViewHeightConstraint" destination="wl8-jt-DF4" id="a2b-MA-OHh"/>
+                <outlet property="userImageView" destination="ask-Wh-H4A" id="I8J-1s-dsO"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SfD-fA-2SA">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user_profile" translatesAutoresizingMaskIntoConstraints="NO" id="ask-Wh-H4A">
+                            <rect key="frame" x="0.0" y="2" width="56" height="56"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="56" id="V0n-tv-CRB"/>
+                                <constraint firstAttribute="width" constant="56" id="YRi-RN-J5e"/>
+                            </constraints>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FHI-BG-EeY">
+                            <rect key="frame" x="69" y="0.0" width="272" height="60"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMa-fQ-BZl">
+                                    <rect key="frame" x="0.0" y="0.0" width="272" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                    <color key="textColor" red="0.078431372550000003" green="0.1019607843" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Phone No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVf-0m-dM1">
+                                    <rect key="frame" x="0.0" y="19.5" width="272" height="24.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offchain Address" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6p-vE-yKv">
+                                    <rect key="frame" x="0.0" y="44" width="272" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="BMa-fQ-BZl" firstAttribute="leading" secondItem="FHI-BG-EeY" secondAttribute="leading" id="HEW-Em-bvp"/>
+                                <constraint firstItem="TVf-0m-dM1" firstAttribute="leading" secondItem="FHI-BG-EeY" secondAttribute="leading" id="h6D-iM-1be"/>
+                                <constraint firstItem="j6p-vE-yKv" firstAttribute="leading" secondItem="FHI-BG-EeY" secondAttribute="leading" id="qAM-Bt-13U"/>
+                                <constraint firstAttribute="height" constant="60" id="wl8-jt-DF4"/>
+                            </constraints>
+                        </stackView>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovg-yK-xvV">
+                            <rect key="frame" x="341" y="8.5" width="30" height="27"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="kBD-2C-idZ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="Clear">
+                                <color key="titleColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Clear"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="touchBtnClear:" destination="-1" eventType="touchUpInside" id="E0t-aj-KJS"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="ovg-yK-xvV" firstAttribute="centerY" secondItem="SfD-fA-2SA" secondAttribute="centerY" constant="-8" id="0xU-Wp-fqI"/>
+                        <constraint firstItem="ovg-yK-xvV" firstAttribute="leading" secondItem="FHI-BG-EeY" secondAttribute="trailing" id="FPi-PG-55c"/>
+                        <constraint firstItem="FHI-BG-EeY" firstAttribute="leading" secondItem="ask-Wh-H4A" secondAttribute="trailing" constant="13" id="PaG-jx-cd2"/>
+                        <constraint firstItem="FHI-BG-EeY" firstAttribute="centerY" secondItem="SfD-fA-2SA" secondAttribute="centerY" id="YJM-Ds-OP0"/>
+                        <constraint firstItem="ask-Wh-H4A" firstAttribute="centerY" secondItem="SfD-fA-2SA" secondAttribute="centerY" id="aHV-aN-oNc"/>
+                        <constraint firstItem="ask-Wh-H4A" firstAttribute="leading" secondItem="SfD-fA-2SA" secondAttribute="leading" id="gj9-X9-nxB"/>
+                        <constraint firstAttribute="trailing" secondItem="ovg-yK-xvV" secondAttribute="trailing" constant="4" id="muT-YL-Pih"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="SfD-fA-2SA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="13g-Fv-KJg"/>
+                <constraint firstItem="SfD-fA-2SA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="P1i-So-Aog"/>
+                <constraint firstAttribute="bottom" secondItem="SfD-fA-2SA" secondAttribute="bottom" id="gt2-Rz-gUv"/>
+                <constraint firstAttribute="trailing" secondItem="SfD-fA-2SA" secondAttribute="trailing" id="qGO-wP-7f4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_user_profile" width="201" height="201"/>
+    </resources>
+</document>

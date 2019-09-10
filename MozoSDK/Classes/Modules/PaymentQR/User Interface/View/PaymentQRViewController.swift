@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import libPhoneNumber_iOS
 class PaymentQRViewController: MozoBasicViewController {
     @IBOutlet weak var imgContainerView: UIView!
     @IBOutlet weak var qrImg: UIImageView!
@@ -15,23 +16,37 @@ class PaymentQRViewController: MozoBasicViewController {
     @IBOutlet weak var lbAmountEx: UILabel!
     
     @IBOutlet weak var addressContainerView: UIView!
-    @IBOutlet weak var txtAddress: UITextField!
-    @IBOutlet weak var lineAddress: UIView!
+    @IBOutlet weak var txtAddressOrPhoneNo: UITextField!
+    @IBOutlet weak var addressLine: UIView!
     @IBOutlet weak var btnScan: UIButton!
     
-    @IBOutlet weak var nameContainerView: UIView!
-    @IBOutlet weak var lbAbName: UILabel!
-    @IBOutlet weak var lbAbAddress: CopyableLabel!
-    @IBOutlet weak var btnClear: UIButton!
+    @IBOutlet weak var addressBookView: AddressBookView!
+    @IBOutlet weak var abEmptyDropDownView: ABEmptyDropDownView!
     
     @IBOutlet weak var btnAddressBook: UIButton!
+    @IBOutlet weak var btnAddressBookTopConstraint: NSLayoutConstraint!
+    let topSpace : CGFloat = 51.0
+    let topSpaceWithAB: CGFloat = 89
     
     @IBOutlet weak var btnSend: UIButton!
+    
+    var dropdown = DropDown()
+    var filteredCollection = AddressBookDisplayCollection(items: [AddressBookDTO]())
+    var countryData = CountryDisplayData(collection: CountryDisplayCollection(items: SessionStoreManager.countryList))
+    
+    let nbPhoneNumberUtil = NBPhoneNumberUtil()
+    
+    var displayContactItem: AddressBookDisplayItem? {
+        didSet {
+            updateAddressBookOnUI()
+        }
+    }
     
     var eventHandler: PaymentQRModuleInterface?
     var displayItem: PaymentRequestDisplayItem?
     
     override func viewDidLoad() {
+        print("PaymentQRViewController - View did load")
         super.viewDidLoad()
         enableBackBarButton()
         commonSetup()
@@ -67,9 +82,35 @@ class PaymentQRViewController: MozoBasicViewController {
         
         imgContainerView.roundCorners(cornerRadius: 0.04, borderColor: ThemeManager.shared.borderInside, borderWidth: 0.8)
         btnSend.roundCorners(cornerRadius: 0.02, borderColor: .white, borderWidth: 0.1)
-        txtAddress.doneAccessory = true
-        txtAddress.addTarget(self, action: #selector(textFieldAddressDidChange), for: UIControlEvents.editingChanged)
+        
+        txtAddressOrPhoneNo.addDoneButtonOnKeyboard()
+        txtAddressOrPhoneNo.addTarget(self, action: #selector(textFieldAddressDidChange), for: .editingChanged)
+        txtAddressOrPhoneNo.addTarget(self, action: #selector(textFieldAddressDidBeginEditing), for: .editingDidBegin)
+        txtAddressOrPhoneNo.addTarget(self, action: #selector(textFieldAddressDidEndEditing), for: .editingDidEnd)
+        
         checkDisableButtonSend()
+        setupDropdown()
+        setupAddressBook()
+    }
+    
+    func addDoneButtonOnKeyboard() {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        doneToolbar.barStyle = UIBarStyle.default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done".localized, style: UIBarButtonItemStyle.done, target: self, action: #selector(self.doneButtonActionForAddressOrPhone))
+        
+        doneToolbar.items = [flexSpace, done]
+        doneToolbar.sizeToFit()
+        
+        self.txtAddressOrPhoneNo.doneAccessory = true
+    }
+    
+    @objc func doneButtonActionForAddressOrPhone() {
+        txtAddressOrPhoneNo.resignFirstResponder()
+        
+        // Auto check input. If input is phone number, auto find contact in MozoX
+        validatePhoneNoAfterFinding()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -87,12 +128,25 @@ class PaymentQRViewController: MozoBasicViewController {
     }
     
     @objc func textFieldAddressDidChange() {
-        print("TextFieldAddressDidChange")
-        checkDisableButtonSend(txtAddress.text ?? "")
+        print("PaymentQRViewController - TextFieldAddressDidChange")
+        checkDisableButtonSend(txtAddressOrPhoneNo.text ?? "")
+        updateDropDownDataSource()
+    }
+    
+    @objc func textFieldAddressDidEndEditing() {
+        print("PaymentQRViewController - TextFieldAddressDidEndEditing")
+        // Hide dropdown and abDropDownEmptyView (if any)
+        abEmptyDropDownView.isHidden = true
+        dropdown.hide()
+    }
+    
+    @objc func textFieldAddressDidBeginEditing() {
+        print("PaymentQRViewController - TextFieldAddressDidBeginEditing")
+        updateDropDownDataSource()
     }
     
     func checkDisableButtonSend(_ text: String = "") {
-        if !text.isEmpty || addressContainerView.isHidden {
+        if !text.isEmpty || displayContactItem != nil {
             btnSend.isUserInteractionEnabled = true
             btnSend.backgroundColor = ThemeManager.shared.main
         } else {
@@ -109,35 +163,29 @@ class PaymentQRViewController: MozoBasicViewController {
     @IBAction func btnScanTapped(_ sender: Any) {
         eventHandler?.showScanQRCodeInterface()
     }
-    @IBAction func touchedBtnClear(_ sender: Any) {
-        clearAndHideAddressBookView()
-        txtAddress.text = ""
-        checkDisableButtonSend()
-    }
+    
     @IBAction func btnSendTapped(_ sender: Any) {
-        if let toAddress = addressContainerView.isHidden ? lbAbAddress.text : txtAddress.text {
+        abEmptyDropDownView.isHidden = true
+        dropdown.hide()
+        if let toAddress = displayContactItem?.address ?? txtAddressOrPhoneNo.text {
             if toAddress.isEthAddress() {
                 eventHandler?.sendPaymentRequest(self.displayItem!, toAddress: toAddress)
             } else {
-                displayMozoError("Invalid address.")
+                displayMozoError("The Receiver Address is not valid.")
             }
         } else {
             displayMozoError("Please enter address or select from address book.")
         }
     }
-    
-    func clearAndHideAddressBookView() {
-        addressContainerView.isHidden = false
-        nameContainerView.isHidden = true
-        lbAbName.text = ""
-        lbAbAddress.text = ""
-    }
 }
 extension PaymentQRViewController: PaymentQRViewInterface {
     func updateUserInterfaceWithAddress(_ address: String) {
-        clearAndHideAddressBookView()
-        txtAddress.text = address
-        checkDisableButtonSend(address)
+        addressContainerView.isHidden = false
+        addressBookView.isHidden = true
+        abEmptyDropDownView.isHidden = true
+        txtAddressOrPhoneNo.text = address
+        
+        displayContactItem = nil
     }
     
     func displayError(_ error: String) {
@@ -145,11 +193,10 @@ extension PaymentQRViewController: PaymentQRViewInterface {
     }
     
     func updateInterfaceWithDisplayItem(_ displayItem: AddressBookDisplayItem) {
-        nameContainerView.isHidden = false
-        addressContainerView.isHidden = true
-        lbAbName.text = displayItem.name
-        lbAbAddress.text = displayItem.address
-        checkDisableButtonSend()
+        self.displayContactItem = displayItem
+        if abEmptyDropDownView.isHidden == false {
+            abEmptyDropDownView.isHidden = true
+        }
     }
     
     func displaySpinner() {

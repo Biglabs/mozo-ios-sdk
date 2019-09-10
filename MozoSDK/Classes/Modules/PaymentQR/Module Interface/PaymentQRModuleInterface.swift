@@ -11,4 +11,6 @@ protocol PaymentQRModuleInterface {
     func showScanQRCodeInterface()
     func sendPaymentRequest(_ displayItem: PaymentRequestDisplayItem, toAddress: String)
     func close()
+    
+    func findContact(_ phoneNo: String)
 }

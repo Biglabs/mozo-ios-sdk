@@ -11,6 +11,7 @@ class PaymentSendSuccessViewController: MozoBasicViewController {
     @IBOutlet weak var lbAmount: UILabel!
     @IBOutlet weak var lbAmountEx: UILabel!
     @IBOutlet weak var lbAddressOrName: CopyableLabel!
+    @IBOutlet weak var addressBookView: AddressBookView!
     
     var displayItem: PaymentRequestDisplayItem?
     var toAddress: String?
@@ -37,7 +38,16 @@ class PaymentSendSuccessViewController: MozoBasicViewController {
                 }
             }
             
-            lbAddressOrName.text = DisplayUtils.buildNameFromAddress(address: toAddress ?? "")
+            if let toAddress = toAddress, let addressBook = DisplayUtils.buildContactDisplayItem(address: toAddress) {
+                addressBookView.isHidden = false
+                lbAddressOrName.isHidden = true
+                addressBookView.addressBook = addressBook
+                addressBookView.btnClear.isHidden = true
+            } else {
+                addressBookView.isHidden = true
+                lbAddressOrName.isHidden = false
+                lbAddressOrName.text = toAddress
+            }
         }
     }
 }

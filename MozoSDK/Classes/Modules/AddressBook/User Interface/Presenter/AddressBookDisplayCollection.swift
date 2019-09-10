@@ -58,4 +58,13 @@ class AddressBookDisplayCollection {
         
         return displaySections
     }
+    
+    func addressBookItemFromId(_ id: Int64) -> AddressBookDisplayItem? {
+        let item = displayItems.filter({ $0.id == id }).first
+        return item
+    }
+    
+    func sortByName() {
+        displayItems = displayItems.sorted { $0.name < $1.name }
+    }
 }

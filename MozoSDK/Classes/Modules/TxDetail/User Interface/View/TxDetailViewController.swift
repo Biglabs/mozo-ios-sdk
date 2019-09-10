@@ -16,29 +16,14 @@ class TxDetailViewController: MozoBasicViewController {
     @IBOutlet weak var actionImg: UIImageView!
     @IBOutlet weak var lbTxType: UILabel!
     @IBOutlet weak var lbDateTime: UILabel!
-    @IBOutlet weak var lbBalance: UILabel!
-    @IBOutlet weak var lbBalanceExchange: UILabel!
-    @IBOutlet weak var detailView: UIView!
-    @IBOutlet weak var lbActionDetailView: UILabel!
-    @IBOutlet weak var userImg: UIImageView!
-    @IBOutlet weak var lbNameDetailView: UILabel!
-    @IBOutlet weak var lbAddressDetailView: CopyableLabel!
+    @IBOutlet weak var lbActionType: UILabel!
+    @IBOutlet weak var addressBookView: AddressBookView!
     @IBOutlet weak var lbAddress: CopyableLabel!
+    @IBOutlet weak var secondLineTopConstraint: NSLayoutConstraint! // Default: 57, with address book: 99
     @IBOutlet weak var lbAmountValue: UILabel!
     @IBOutlet weak var lbAmountValueExchange: UILabel!
     @IBOutlet weak var saveView: UIView!
     @IBOutlet weak var saveBtn: UIButton!
-    
-    //Constraints
-    @IBOutlet weak var userImgWidthCstr: NSLayoutConstraint!
-    @IBOutlet weak var walletAddressTopCstr: NSLayoutConstraint!
-    
-    let defaultHeight : CGFloat = 28
-    let addressBookDetailHeight: CGFloat = 96
-    let storeBookDetailHeight: CGFloat = 117
-    
-    let addressBookImgWidth : CGFloat = 14
-    let storeBookImgWidth : CGFloat = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,40 +49,24 @@ class TxDetailViewController: MozoBasicViewController {
         lbTxType.text = displayItem.action.localized
         lbDateTime.text = displayItem.dateTime
         
+        lbActionType.text = (displayItem.action == TransactionType.Sent.value ? "To" : "From").localized
+        
         let address = displayItem.action == TransactionType.Sent.value ? displayItem.addressTo : displayItem.addressFrom
         
         var displayEnum = TransactionDisplayContactEnum.NoDetail
-        if let contactItem = DisplayUtils.buildContactDisplayItem(address: address) {
-            let name = contactItem.name
-            displayEnum = contactItem.isStoreBook ? .StoreBookDetail : .AddressBookDetail
-            if contactItem.isStoreBook {
-                lbAddressDetailView.text = contactItem.physicalAddress
-            }
-            detailView.isHidden = false
-            lbActionDetailView.text = (displayItem.action == TransactionType.Sent.value ? "To" : "From").localized
-            
-            // Change userImg in case the address coming from <Store Book>, including image width and image
-            userImg.image = UIImage(named: displayEnum.icon, in: BundleManager.mozoBundle(), compatibleWith: nil)
-            userImgWidthCstr.constant = displayEnum == .StoreBookDetail ? storeBookImgWidth : addressBookImgWidth
-            
-            lbNameDetailView.text = name
-            // Set hidden false and set physical address in case the address coming from <Store Book>
-            if displayEnum == .StoreBookDetail {
-                lbAddressDetailView.isHidden = false
-            } else {
-                lbAddressDetailView.isHidden = true
-            }
-        } else {
-            detailView.isHidden = true
-        }
         
-        switch displayEnum {
-        case .AddressBookDetail:
-            walletAddressTopCstr.constant = addressBookDetailHeight
-        case .StoreBookDetail:
-            walletAddressTopCstr.constant = storeBookDetailHeight
-        default:
-            walletAddressTopCstr.constant = defaultHeight
+        if let addressBook = DisplayUtils.buildContactDisplayItem(address: address) {
+            addressBookView.isHidden = false
+            lbAddress.isHidden = true
+            addressBookView.addressBook = addressBook
+            addressBookView.btnClear.isHidden = true
+            displayEnum = addressBook.isStoreBook ? .StoreBookDetail : .AddressBookDetail
+            secondLineTopConstraint.constant = 99
+        } else {
+            addressBookView.isHidden = true
+            lbAddress.isHidden = false
+            lbAddress.text = address
+            secondLineTopConstraint.constant = 57
         }
         
         lbAddress.text = address

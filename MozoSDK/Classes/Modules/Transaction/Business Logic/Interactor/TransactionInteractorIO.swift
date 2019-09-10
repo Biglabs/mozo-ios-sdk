@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TransactionInteractorInput {
+protocol TransactionInteractorInput: ABSupportInteractorInput {
     func loadTokenInfo()
     func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?)
     func sendUserConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO)
@@ -16,7 +16,7 @@ protocol TransactionInteractorInput {
     func validateValueFromScanner(_ scanValue: String)
 }
 
-protocol TransactionInteractorOutput {
+protocol TransactionInteractorOutput: ABSupportInteractorOutput {
     func didLoadTokenInfo(_ tokenInfo: TokenInfoDTO)
     func didReceiveError(_ error: String?)
     func performTransferWithError(_ error: ConnectionError, isTransferScreen: Bool)

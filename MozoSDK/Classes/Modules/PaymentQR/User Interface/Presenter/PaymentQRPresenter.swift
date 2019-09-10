@@ -6,6 +6,10 @@
 //
 
 import Foundation
+enum PaymentQRActionEnum {
+    case FindContact
+    case SendRequest
+}
 class PaymentQRPresenter: NSObject {
     var wireframe: PaymentQRWireframe?
     var interactor: PaymentQRInteractorInput?
@@ -14,6 +18,10 @@ class PaymentQRPresenter: NSObject {
     
     var toAddress: String?
     var paymentRequestToSend: PaymentRequestDisplayItem?
+    
+    var retryAction: PaymentQRActionEnum?
+    
+    var searchPhoneNo: String?
 }
 extension PaymentQRPresenter: PaymentQRModuleInterface {
     func showAddressBookInterface() {
@@ -66,6 +74,7 @@ extension PaymentQRPresenter: PaymentQRInteractorOutput {
         viewInterface?.removeSpinner()
         if let errorConnection = error as? ConnectionError {
             if !errorConnection.isApiError {
+                retryAction = .SendRequest
                 DisplayUtils.displayTryAgainPopup(allowTapToDismiss: true, error: errorConnection, delegate: self)
             }
             else {
@@ -82,10 +91,21 @@ extension PaymentQRPresenter: PopupErrorDelegate {
     func didClosePopupWithoutRetry() {
         self.toAddress = nil
         self.paymentRequestToSend = nil
+        self.searchPhoneNo = nil
+        retryAction = nil
         viewInterface?.removeSpinner()
     }
     
     func didTouchTryAgainButton() {
-        sendPaymentRequest(self.paymentRequestToSend!, toAddress: self.toAddress!)
+        if let action = self.retryAction {
+            switch action {
+            case .SendRequest:
+                sendPaymentRequest(self.paymentRequestToSend!, toAddress: self.toAddress!)
+            case .FindContact:
+                if let phoneNo = searchPhoneNo {
+                    self.findContact(phoneNo)
+                }
+            }
+        }
     }
 }
