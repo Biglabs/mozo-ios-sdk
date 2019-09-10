@@ -377,4 +377,12 @@ public class MozoSDK {
     public static func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]> {
         return moduleDependencies.getGPSBeacons(userLat: userLat, userLong: userLong)
     }
+    
+    public static func searchPromotionsWithText(_ text: String, page: Int = 0, size: Int = 15, long: Double = 0, lat: Double = 0) -> Promise<[PromotionStoreDTO]> {
+        return moduleDependencies.searchPromotionsWithText(text, page: page, size: size, long: long, lat: lat)
+    }
+    
+    public static func getSuggestKeySearchForPromotion(lat: Double = 0, lon: Double = 0) -> Promise<[String]> {
+        return moduleDependencies.getSuggestKeySearchForPromotion(lat: lat, lon: lon)
+    }
 }

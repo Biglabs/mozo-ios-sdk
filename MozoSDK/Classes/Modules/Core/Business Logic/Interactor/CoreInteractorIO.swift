@@ -150,4 +150,8 @@ protocol CoreInteractorService {
     func getTodoListSetting() -> Promise<TodoSettingDTO>
     
     func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]>
+    
+    func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]>
+    
+    func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]>
 }
