@@ -12,4 +12,6 @@ protocol ABImportViewInterface {
     func showSettingPermissionAlert()
     
     func updateInterfaceWithProcessStatus(_ processStatus: AddressBookImportProcessDTO)
+    
+    func showContactEmptyAlert()
 }

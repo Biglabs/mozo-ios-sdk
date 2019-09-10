@@ -44,7 +44,7 @@ class ABImportPresenter: NSObject {
                     contacts.append(contact)
                 }
             } catch {
-                print(error)
+                print("ABImportPresenter - Request fetch contact error: \(error)")
             }
                         
             let formatter = CNContactFormatter()
@@ -60,6 +60,8 @@ class ABImportPresenter: NSObject {
             if contactInfoArray.count > 0 {
                 self.viewInterface?.displaySpinner()
                 self.interactor?.requestImportWithContacts(contactInfoArray)
+            } else {
+                self.viewInterface?.showContactEmptyAlert()
             }
         }
     }
