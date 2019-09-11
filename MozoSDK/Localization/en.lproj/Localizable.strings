@@ -1238,3 +1238,20 @@
 "Welcome to %@" = "Welcome to %@";
 "FREE PARKING" = "FREE PARKING";
 "Disappear after %d:%d" = "Disappear after %d:%d";
+
+// Import Address Book
+"Enter MozoX address or phone number" = "Enter MozoX address or phone number";
+"Can't find this contact in your MozoX address book" = "Can't find this contact in your MozoX address book";
+"Find in MozoX system →" = "Find in MozoX system →";
+"This phone number is not belong to any MozoX Wallet Address" = "This phone number is not belong to any MozoX Wallet Address";
+"We only support to search with phone number." = "We only support to search with phone number.";
+
+"Import Contacts" = "Import Contacts";
+"Import contact successful" = "Import contact successful";
+"Quickly add friends to MozoX Address Book from the phone book" = "Quickly add friends to MozoX Address Book from the phone book";
+"Update Contacts" = "Update Contacts";
+"Updating..." = "Updating...";
+"Friends in your contact list will automatically be added to MozoX address book." = "Friends in your contact list will automatically be added to MozoX address book.";
+"Last updated:" = "Last updated:";
+
+"You sent Request MozoX:" = "You sent Request MozoX:";

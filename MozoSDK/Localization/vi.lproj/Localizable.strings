@@ -1242,3 +1242,20 @@
 "Welcome to %@" = "Chào mừng đến với %@";
 "FREE PARKING" = "MIỄN PHÍ GIỮ XE";
 "Disappear after %d:%d" = "Sẽ tự động tắt sau %d:%d";
+
+// Import Address Book
+"Enter MozoX address or phone number" = "Nhập địa chỉ ví MozoX hoặc số điện thoại";
+"Can't find this contact in your MozoX address book" = "Không tìm thấy trong hệ thống MozoX";
+"Find in MozoX system →" = "Tìm trong hệ thống MozoX →";
+"This phone number is not belong to any MozoX Wallet Address" = "Số điện thoại này chưa có ví MozoX.";
+"We only support to search with phone number." = "Hệ thống hiện chỉ hỗ trợ tìm với số điện thoại.";
+
+"Import Contacts" = "Nhập từ danh bạ";
+"Import contact successful" = "Nhập từ danh bạ thành công";
+"Quickly add friends to MozoX Address Book from the phone book" = "Thêm bạn bè vào danh bạ MozoX từ danh bạ điện thoại nhanh chóng";
+"Update Contacts" = "Cập nhật danh bạ";
+"Updating..." = "Đang cập nhật...";
+"Friends in your contact list will automatically be added to MozoX address book." = "Bạn bè trong danh bạ điện thoại sẽ tự động được thêm vào danh bạ MozoX.";
+"Last updated:" = "Cập nhật gần nhất:";
+
+"You sent Request MozoX:" = "Đã gửi yêu cầu nhận MozoX:";
