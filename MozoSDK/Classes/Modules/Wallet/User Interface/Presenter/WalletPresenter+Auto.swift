@@ -20,6 +20,21 @@ extension WalletPresenter {
             processingViewInterface?.displayError(ConnectionError.systemError.errorDescription!)
         }
     }
+    
+    func registerMaintenanceNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveMaintenanceHealthy(_:)), name: .didMaintenanceComplete, object: nil)
+    }
+    
+    @objc func onDidReceiveMaintenanceHealthy(_ notification: Notification) {
+        print("WalletPresenter - On did maintenance back to healthy")
+        if let topViewController = DisplayUtils.getTopViewController() {
+            if topViewController is WalletProcessingViewController {
+                didTouchTryAgainButton()
+            } else if topViewController is SpeedSelectionViewController {
+                // Do nothing
+            }
+        }
+    }
 }
 extension WalletPresenter: WalletInteractorAutoOutput {
     func manageWalletAutoSuccessfully() {
@@ -29,6 +44,10 @@ extension WalletPresenter: WalletInteractorAutoOutput {
     }
     
     func errorWhileManageWalletAutomatically(connectionError: ConnectionError, showTryAgain: Bool) {
+        if connectionError == .apiError_MAINTAINING {
+            DisplayUtils.displayMaintenanceScreen()
+            return
+        }
         if connectionError.isApiError, let apiError = connectionError.apiError {
             switch apiError {
             case .SOLOMON_USER_PROFILE_WALLET_ADDRESS_IN_USED,

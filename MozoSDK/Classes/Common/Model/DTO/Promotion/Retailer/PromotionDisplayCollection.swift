@@ -8,6 +8,8 @@
 import Foundation
 public class PromotionDisplayCollection {
     public var displayItems : [PromotionDisplayItem] = []
+    public var searchText: String?
+    public var total: Int64?
     
     public init(items: [PromotionDTO]) {
         displayItems = items.map { PromotionDisplayItem(promotionDTO: $0) }

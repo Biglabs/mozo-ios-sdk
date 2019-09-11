@@ -81,7 +81,7 @@ extension CoreInteractor {
         return apiManager.getRetailerCountPromotion()
     }
     
-    func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
+    func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO> {
         return apiManager.searchPromotionsWithText(text, page: page, size: size, long: long, lat: lat)
     }
     
