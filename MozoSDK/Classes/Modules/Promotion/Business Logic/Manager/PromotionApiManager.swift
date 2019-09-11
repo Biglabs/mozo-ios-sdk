@@ -12,7 +12,7 @@ import SwiftyJSON
 let SHOPPER_PROMOTION_RESOURCE_API_PATH = "/shopperPromo"
 let RETAILER_PROMOTION_RESOURCE_API_PATH = "/retailer"
 public extension ApiManager {
-    public func getPromoCreateSetting() -> Promise<PromotionSettingDTO> {
+    func getPromoCreateSetting() -> Promise<PromotionSettingDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/getPromoCreateSetting"
             self.execute(.get, url: url)
@@ -36,7 +36,7 @@ public extension ApiManager {
         }
     }
     
-    public func createPromotion(_ promotion: PromotionDTO) -> Promise<[String: Any]> {
+    func createPromotion(_ promotion: PromotionDTO) -> Promise<[String: Any]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/createPromo"
             let param = promotion.toJSON()
@@ -57,7 +57,7 @@ public extension ApiManager {
         }
     }
     
-    public func getRetailerPromotionList(page: Int, size: Int, statusRequest: PromotionStatusRequestEnum) -> Promise<[PromotionDTO]> {
+    func getRetailerPromotionList(page: Int, size: Int, statusRequest: PromotionStatusRequestEnum) -> Promise<[PromotionDTO]> {
         if statusRequest == .SCHEDULE {
             return Promise { seal in
                 let params = ["size" : size,
@@ -103,7 +103,7 @@ public extension ApiManager {
         }
     }
     
-    public func processPromotionCode(code: String) -> Promise<PromotionCodeInfoDTO> {
+    func processPromotionCode(code: String) -> Promise<PromotionCodeInfoDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/processPromoCode?code=\(code)"
             self.execute(.put, url: url)
@@ -127,7 +127,7 @@ public extension ApiManager {
         }
     }
     
-    public func usePromotionCode(code: String, billInfo: String?) -> Promise<PromotionCodeInfoDTO> {
+    func usePromotionCode(code: String, billInfo: String?) -> Promise<PromotionCodeInfoDTO> {
         return Promise { seal in
             var params = ["code" : code] as [String : Any]
             if let billInfo = billInfo {
@@ -155,7 +155,7 @@ public extension ApiManager {
         }
     }
     
-    public func cancelPromotionCode(code: String) -> Promise<[String: Any]> {
+    func cancelPromotionCode(code: String) -> Promise<[String: Any]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/cancelPromoCode?code=\(code)"
             self.execute(.put, url: url)
@@ -174,7 +174,7 @@ public extension ApiManager {
         }
     }
     
-    public func getShopperPromotionListWithType(page: Int, size: Int, long: Double, lat: Double, type: PromotionListTypeEnum) -> Promise<[PromotionStoreDTO]> {
+    func getShopperPromotionListWithType(page: Int, size: Int, long: Double, lat: Double, type: PromotionListTypeEnum) -> Promise<[PromotionStoreDTO]> {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page,
@@ -200,7 +200,7 @@ public extension ApiManager {
         }
     }
     
-    public func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
+    func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
             let params = ["promoId" : promotionId,
                           "saved" : isFavorite] as [String : Any]
@@ -221,7 +221,7 @@ public extension ApiManager {
         }
     }
     
-    public func getRetailerPromotionScannedList(page: Int, size: Int) -> Promise<[PromotionCodeInfoDTO]> {
+    func getRetailerPromotionScannedList(page: Int, size: Int) -> Promise<[PromotionCodeInfoDTO]> {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page] as [String : Any]
@@ -244,7 +244,7 @@ public extension ApiManager {
         }
     }
     
-    public func getShopperPromotionHistory(page: Int, size: Int) -> Promise<[PromotionStoreDTO]> {
+    func getShopperPromotionHistory(page: Int, size: Int) -> Promise<[PromotionStoreDTO]> {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page] as [String : Any]
@@ -267,7 +267,7 @@ public extension ApiManager {
         }
     }
     
-    public func getShopperPromotionPurchased(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
+    func getShopperPromotionPurchased(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page,
@@ -292,7 +292,7 @@ public extension ApiManager {
         }
     }
     
-    public func getShopperPromotionRunning(page: Int, size: Int, long: Double, lat: Double, storeId: Int64) -> Promise<JSON> {
+    func getShopperPromotionRunning(page: Int, size: Int, long: Double, lat: Double, storeId: Int64) -> Promise<JSON> {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page,
@@ -317,7 +317,7 @@ public extension ApiManager {
         }
     }
     
-    public func getShopperPromotionSaved(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
+    func getShopperPromotionSaved(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page,
@@ -342,7 +342,7 @@ public extension ApiManager {
         }
     }
     
-    public func getRetailerCountPromotion() -> Promise<Int> {
+    func getRetailerCountPromotion() -> Promise<Int> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/getCountPromotion"
             self.execute(.get, url: url)
@@ -363,21 +363,24 @@ public extension ApiManager {
         }
     }
     
-    public func searchPromotionsWithText(_ text: String, page: Int = 0, size: Int = 15, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
+    func searchPromotionsWithText(_ text: String, page: Int = 0, size: Int = 15, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO> {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page,
                           "lon" : long,
                           "lat" : lat,
                           "text" : text] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/searchPromo?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/searchPromo?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to search promotions, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let array = PromotionStoreDTO.arrayFrom(jobj)
-                    seal.fulfill(array)
+                    let jobj = SwiftyJSON.JSON(json)
+                    if let result = CollectionPromotionInfoDTO(json: jobj) {
+                        seal.fulfill(result)
+                    } else {
+                        seal.reject(ConnectionError.systemError)
+                    }
                 }
                 .catch { error in
                     print("Error when request search promotions: " + error.localizedDescription)
@@ -389,11 +392,11 @@ public extension ApiManager {
         }
     }
     
-    public func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]> {
+    func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]> {
         return Promise { seal in
             let params = ["lat" : lat,
                           "lon" : lon] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/getSuggestPromoHashtags" + "?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getSuggestPromoHashtags" + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

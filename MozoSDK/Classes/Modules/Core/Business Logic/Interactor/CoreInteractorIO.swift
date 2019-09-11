@@ -151,7 +151,7 @@ protocol CoreInteractorService {
     
     func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]>
     
-    func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]>
+    func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO>
     
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]>
 }

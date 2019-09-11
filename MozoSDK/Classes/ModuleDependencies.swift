@@ -432,7 +432,7 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getGPSBeacons(userLat: userLat, userLong: userLong))!
     }
     
-    func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
+    func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO> {
         return (coreWireframe.corePresenter?.coreInteractorService?.searchPromotionsWithText(text, page: page, size: size, long: long, lat: lat))!
     }
     
