@@ -150,6 +150,8 @@ extension TransferViewController: AddressBookViewDelegate {
     func didTouchClear() {
         displayContactItem = nil
         txtAddressOrPhoneNo.text = ""
+        // Fix issue: Button Select Address Book Top Constraint is incorrect
+        hideErrorValidation()
     }
 }
 extension TransferViewController {

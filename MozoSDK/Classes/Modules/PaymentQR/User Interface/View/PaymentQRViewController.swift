@@ -186,6 +186,8 @@ extension PaymentQRViewController: PaymentQRViewInterface {
         txtAddressOrPhoneNo.text = address
         
         displayContactItem = nil
+        // Fix issue: Enable button Send after filling in address text field
+        checkDisableButtonSend(address)
     }
     
     func displayError(_ error: String) {
