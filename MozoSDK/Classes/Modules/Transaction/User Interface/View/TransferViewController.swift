@@ -104,8 +104,8 @@ class TransferViewController: MozoBasicViewController {
         doneToolbar.items = [flexSpace, done]
         doneToolbar.sizeToFit()
         
-        self.txtAmount.inputAccessoryView = doneToolbar
-        self.txtAddressOrPhoneNo.doneAccessory = true
+        self.txtAddressOrPhoneNo.inputAccessoryView = doneToolbar
+        self.txtAmount.doneAccessory = true
     }
     
     @objc func doneButtonActionForAddressOrPhone() {
@@ -113,10 +113,6 @@ class TransferViewController: MozoBasicViewController {
         
         // Auto check input. If input is phone number, auto find contact in MozoX
         validatePhoneNoAfterFinding()
-    }
-    
-    @objc func doneButtonActionForAmount() {
-        txtAmount.resignFirstResponder()
     }
     
     // MARK: Refresh Control
