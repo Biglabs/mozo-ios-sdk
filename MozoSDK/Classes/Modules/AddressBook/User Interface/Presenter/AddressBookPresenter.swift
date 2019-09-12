@@ -11,6 +11,19 @@ class AddressBookPresenter : NSObject {
     var abWireframe : AddressBookWireframe?
     var abModuleDelegate : AddressBookModuleDelegate?
     var abUserInterface: AddressBookViewInterface?
+    
+    override init() {
+        super.init()
+        registerAddressBookChangedNotification()
+    }
+    
+    func registerAddressBookChangedNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onAddressBookChanged(_:)), name: .didChangeAddressBook, object: nil)
+    }
+    
+    @objc func onAddressBookChanged(_ notification: NSNotification) {
+        abInteractor?.getListAddressBook()
+    }
 }
 extension AddressBookPresenter : AddressBookModuleInterface {
     func selectAddressBookOnUI(_ addressBook: AddressBookDisplayItem, isDisplayForSelect: Bool) {
