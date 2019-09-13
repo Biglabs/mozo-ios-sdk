@@ -468,6 +468,7 @@ extension CorePresenter : RDNInteractorOutput {
     
     func addressBookDidChange(addressBookList: [AddressBookDTO], rawMessage: String) {
         SafetyDataManager.shared.addressBookList = addressBookList
+        // TODO: Should download address book here
         coreInteractor?.notifyAddressBookChangesForAllObservers()
     }
     

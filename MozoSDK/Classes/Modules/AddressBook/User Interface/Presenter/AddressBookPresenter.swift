@@ -22,6 +22,7 @@ class AddressBookPresenter : NSObject {
     }
     
     @objc func onAddressBookChanged(_ notification: NSNotification) {
+        print("AddressBookPresenter - On address book changed")
         abInteractor?.getListAddressBook()
     }
 }

@@ -144,7 +144,7 @@ extension PaymentQRViewController {
 }
 extension PaymentQRViewController: ABEmptyDropDownViewDelegate {
     func didTouchFindInMozoXSystem() {
-        txtAddressOrPhoneNo.resignFirstResponder()
+        doneButtonActionForAddressOrPhone()
     }
 }
 extension PaymentQRViewController: AddressBookViewDelegate {
