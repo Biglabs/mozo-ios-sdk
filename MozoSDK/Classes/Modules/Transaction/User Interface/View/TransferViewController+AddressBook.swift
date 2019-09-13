@@ -143,7 +143,7 @@ extension TransferViewController {
 }
 extension TransferViewController: ABEmptyDropDownViewDelegate {
     func didTouchFindInMozoXSystem() {
-        txtAddressOrPhoneNo.resignFirstResponder()
+        doneButtonActionForAddressOrPhone()
     }
 }
 extension TransferViewController: AddressBookViewDelegate {
