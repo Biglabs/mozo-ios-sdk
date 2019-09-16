@@ -17,7 +17,7 @@ class MaintenancePresenter: NSObject {
     }
     
     func openReadMore(item: FAQDisplayItem) {
-        guard let url = URL(string: "https://\(Configuration.SUB_DOMAIN)mozocoin.io\(item.link)") else { return }
+        guard let url = URL(string: "\(Configuration.LANDING_PAGE_URL)\(item.link)") else { return }
         print("MaintenancePresenter - OpenReadMore with url [\(url)]")
         UIApplication.shared.open(url)
     }
