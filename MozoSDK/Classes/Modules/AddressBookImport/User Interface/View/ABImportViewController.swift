@@ -29,7 +29,7 @@ class ABImportViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "Import Contacts".localized
+        navigationItem.title = "Synchronize Contacts".localized
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,7 +61,7 @@ class ABImportViewController: MozoBasicViewController {
         if !isCompleted {
             rotateView()
         } else {
-            var dateText = ""
+            var dateText = "Not yet synchronized".localized
             if let updateAt = processStatus.updatedAt {
                 formatter.dateFormat = dateFormat
                 let date = Date(timeIntervalSince1970: Double(updateAt))
@@ -103,7 +103,7 @@ extension ABImportViewController: ABImportViewInterface {
     }
     
     func showSettingPermissionAlert() {
-        let alert = UIAlertController(title: "Cannot access your contact book".localized, message: "You must give the app permission to access the contact first".localized, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Cannot access your Contact Book".localized, message: "You must give the app permission to access the Contact Book first".localized, preferredStyle: .alert)
         alert.addAction(.init(title: "Change Settings".localized, style: .default, handler: { (action) in
             self.openSettings()
         }))
@@ -118,6 +118,6 @@ extension ABImportViewController: ABImportViewInterface {
     }
     
     func showContactEmptyAlert() {
-        self.displayMozoError("Your contact book is empty, please try again later.")
+        self.displayMozoError("Cannot synchronize, your Contact Book is empty.")
     }
 }

@@ -1241,17 +1241,27 @@
 
 // Import Address Book
 "Enter MozoX address or phone number" = "Enter MozoX address or phone number";
-"Can't find this contact in your MozoX address book" = "Can't find this contact in your MozoX address book";
-"Find in MozoX system →" = "Find in MozoX system →";
-"This phone number is not belong to any MozoX Wallet Address" = "This phone number is not belong to any MozoX Wallet Address";
-"We only support to search with phone number." = "We only support to search with phone number.";
+"Can't find this contact in your MozoX Address Book" = "Can't find this contact in your MozoX Address Book";
+"Find in MozoX System →" = "Find in MozoX System →";
+"This phone number does not belong to any MozoX Wallet Address" = "This phone number does not belong to any MozoX Wallet Address";
+"We only support search with phone number." = "We only support search with phone number.";
 
 "Import Contacts" = "Import Contacts";
-"Import contact successful" = "Import contact successful";
+"Import Contacts successful!" = "Import contact successful!";
 "Quickly add friends to MozoX Address Book from the phone book" = "Quickly add friends to MozoX Address Book from the phone book";
 "Update Contacts" = "Update Contacts";
 "Updating..." = "Updating...";
-"Friends in your contact list will automatically be added to MozoX address book." = "Friends in your contact list will automatically be added to MozoX address book.";
+"Friends in your contact list will automatically be added to MozoX Address Book." = "Friends in your contact list will automatically be added to MozoX Address Book.";
 "Last updated:" = "Last updated:";
 
 "You sent Request MozoX:" = "You sent Request MozoX:";
+
+"Synchronize Contacts" = "Synchronize Contacts";
+"Synchronize Contacts successful!" = "Synchronize Contacts successful!";
+"Your MozoX Request was sent" = "Your MozoX Request was sent";
+"Update" = "Update";
+"Change Settings" = "Change Settings";
+"Cannot access your Contact Book" = "Cannot access your Contact Book";
+"You must give MozoX permission to access the Contact Book first" = "You must give MozoX permission to access the Contact Book first";
+"Not yet synchronized" = "Not yet synchronized";
+"Cannot synchronize, your Contact Book is empty." = "Cannot synchronize, your Contact Book is empty.";
