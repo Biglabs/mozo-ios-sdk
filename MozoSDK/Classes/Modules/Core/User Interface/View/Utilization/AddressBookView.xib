@@ -38,22 +38,22 @@
                             </constraints>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FHI-BG-EeY">
-                            <rect key="frame" x="69" y="0.0" width="272" height="60"/>
+                            <rect key="frame" x="69" y="0.0" width="267" height="60"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMa-fQ-BZl">
-                                    <rect key="frame" x="0.0" y="0.0" width="272" height="19.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="267" height="19.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                     <color key="textColor" red="0.078431372550000003" green="0.1019607843" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Phone No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVf-0m-dM1">
-                                    <rect key="frame" x="0.0" y="19.5" width="272" height="24.5"/>
+                                    <rect key="frame" x="0.0" y="19.5" width="267" height="24.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offchain Address" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6p-vE-yKv">
-                                    <rect key="frame" x="0.0" y="44" width="272" height="16"/>
+                                    <rect key="frame" x="0.0" y="44" width="267" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -67,9 +67,9 @@
                             </constraints>
                         </stackView>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovg-yK-xvV">
-                            <rect key="frame" x="341" y="8.5" width="30" height="27"/>
+                            <rect key="frame" x="336" y="8.5" width="35" height="27"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="kBD-2C-idZ"/>
+                                <constraint firstAttribute="width" constant="35" id="kBD-2C-idZ"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Clear">
