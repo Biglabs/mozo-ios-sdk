@@ -4434,7 +4434,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did you know?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxp-b2-YGX">
-                                        <rect key="frame" x="55" y="27" width="106" height="20"/>
+                                        <rect key="frame" x="55" y="27.5" width="105.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -4442,60 +4442,71 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Did you know?"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How do MozoX Tokens work as a rewards program?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-bs-kvZ">
-                                        <rect key="frame" x="24" y="70" width="279" height="38.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjF-Xj-QzZ">
-                                        <rect key="frame" x="24" y="117.5" width="279" height="95.5"/>
-                                        <string key="text">Beginning is as easy as downloading our app and purchasing the number of MozoX Tokens you’d like to buy. Soon after your purchase, MozoX Tokens will be transferred directly…</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzt-mc-o7h">
-                                        <rect key="frame" x="24" y="229.5" width="83" height="19"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qcV-IU-AQL">
+                                        <rect key="frame" x="24" y="70" width="279" height="190.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How do MozoX Tokens work as a rewards program?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-bs-kvZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="279" height="38.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjF-Xj-QzZ">
+                                                <rect key="frame" x="0.0" y="46.5" width="279" height="97"/>
+                                                <string key="text">Customers will accumulate enough reward tokens aka MozoX to redeem them for deals, discounts and promotions in the rewards program. Customers will accumulate enough reward tokens aka MozoX to redeem them for deals, discounts and promotions in the rewards program.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lTW-QZ-Xrl">
+                                                <rect key="frame" x="0.0" y="151.5" width="279" height="39"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzt-mc-o7h">
+                                                        <rect key="frame" x="0.0" y="0.0" width="83" height="32"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <state key="normal" title="Read more">
+                                                            <color key="titleColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Read more"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="touchBtnReadMore:" destination="RCT-Ia-EEQ" eventType="touchUpInside" id="eav-17-NbK"/>
+                                                        </connections>
+                                                    </button>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3d2-Gm-wd5">
+                                                        <rect key="frame" x="91" y="11" width="13" height="10"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="13" id="5V8-xg-IIN"/>
+                                                            <constraint firstAttribute="height" constant="10" id="727-aw-hBl"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="3d2-Gm-wd5" firstAttribute="centerY" secondItem="jzt-mc-o7h" secondAttribute="centerY" id="Bw8-Jr-cWW"/>
+                                                    <constraint firstItem="jzt-mc-o7h" firstAttribute="leading" secondItem="lTW-QZ-Xrl" secondAttribute="leading" id="Qr0-oV-z7z"/>
+                                                    <constraint firstAttribute="height" constant="39" id="Rdd-W3-HUp"/>
+                                                    <constraint firstItem="3d2-Gm-wd5" firstAttribute="leading" secondItem="jzt-mc-o7h" secondAttribute="trailing" constant="8" id="dZg-5f-3NZ"/>
+                                                    <constraint firstItem="jzt-mc-o7h" firstAttribute="top" secondItem="lTW-QZ-Xrl" secondAttribute="top" id="ocR-N5-hlU"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="19" id="Cd9-UX-oKe"/>
+                                            <constraint firstItem="kjF-Xj-QzZ" firstAttribute="top" secondItem="XgO-bs-kvZ" secondAttribute="bottom" constant="8" id="XrA-7l-Ocx"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <state key="normal" title="Read more">
-                                            <color key="titleColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Read more"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="touchBtnReadMore:" destination="RCT-Ia-EEQ" eventType="touchUpInside" id="eav-17-NbK"/>
-                                        </connections>
-                                    </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3d2-Gm-wd5">
-                                        <rect key="frame" x="115" y="234" width="13" height="10"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="13" id="5V8-xg-IIN"/>
-                                            <constraint firstAttribute="height" constant="10" id="727-aw-hBl"/>
-                                        </constraints>
-                                    </imageView>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="YqM-kB-KDA" firstAttribute="top" secondItem="ead-Je-BAV" secondAttribute="top" constant="25" id="2cX-uW-1cP"/>
-                                    <constraint firstItem="kjF-Xj-QzZ" firstAttribute="trailing" secondItem="XgO-bs-kvZ" secondAttribute="trailing" id="4Zj-QM-Zo7"/>
-                                    <constraint firstItem="jzt-mc-o7h" firstAttribute="leading" secondItem="XgO-bs-kvZ" secondAttribute="leading" id="4Zk-JI-6tm"/>
-                                    <constraint firstItem="XgO-bs-kvZ" firstAttribute="leading" secondItem="ead-Je-BAV" secondAttribute="leading" constant="24" id="55V-k6-l2u"/>
-                                    <constraint firstItem="XgO-bs-kvZ" firstAttribute="top" secondItem="YqM-kB-KDA" secondAttribute="bottom" constant="21" id="8g6-Vp-GQh"/>
-                                    <constraint firstAttribute="trailing" secondItem="XgO-bs-kvZ" secondAttribute="trailing" constant="24" id="CSc-00-UW4"/>
                                     <constraint firstItem="YqM-kB-KDA" firstAttribute="leading" secondItem="ead-Je-BAV" secondAttribute="leading" constant="24" id="GtI-0D-EUa"/>
                                     <constraint firstItem="Wxp-b2-YGX" firstAttribute="centerY" secondItem="YqM-kB-KDA" secondAttribute="centerY" id="JFG-hO-Eii"/>
-                                    <constraint firstItem="kjF-Xj-QzZ" firstAttribute="top" secondItem="XgO-bs-kvZ" secondAttribute="bottom" constant="9" id="LjQ-tJ-LcZ"/>
                                     <constraint firstItem="Wxp-b2-YGX" firstAttribute="leading" secondItem="YqM-kB-KDA" secondAttribute="trailing" constant="7" id="Q20-LK-3rG"/>
-                                    <constraint firstAttribute="bottom" secondItem="kjF-Xj-QzZ" secondAttribute="bottom" priority="250" constant="55.5" id="TGl-ay-KJ8"/>
-                                    <constraint firstAttribute="bottom" secondItem="jzt-mc-o7h" secondAttribute="bottom" constant="20" id="a8U-Tn-xAv"/>
-                                    <constraint firstItem="kjF-Xj-QzZ" firstAttribute="leading" secondItem="XgO-bs-kvZ" secondAttribute="leading" id="fUd-mj-dI3"/>
-                                    <constraint firstItem="3d2-Gm-wd5" firstAttribute="centerY" secondItem="jzt-mc-o7h" secondAttribute="centerY" id="ufq-YX-C81"/>
-                                    <constraint firstItem="3d2-Gm-wd5" firstAttribute="leading" secondItem="jzt-mc-o7h" secondAttribute="trailing" constant="8" id="xyQ-FS-WVC"/>
+                                    <constraint firstAttribute="bottom" secondItem="qcV-IU-AQL" secondAttribute="bottom" constant="8" id="auA-OH-aPy"/>
+                                    <constraint firstAttribute="trailing" secondItem="qcV-IU-AQL" secondAttribute="trailing" constant="24" id="gwn-lx-EHR"/>
+                                    <constraint firstItem="qcV-IU-AQL" firstAttribute="leading" secondItem="YqM-kB-KDA" secondAttribute="leading" id="kmH-gL-o7P"/>
+                                    <constraint firstItem="qcV-IU-AQL" firstAttribute="top" secondItem="YqM-kB-KDA" secondAttribute="bottom" constant="21" id="zVK-gP-P4U"/>
                                 </constraints>
                             </view>
                         </subviews>
