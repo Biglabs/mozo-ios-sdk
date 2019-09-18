@@ -1254,17 +1254,27 @@
 
 // Import Address Book
 "Enter MozoX address or phone number" = "모조X 주소 또는 연락처 입력";
-"Can't find this contact in your MozoX address book" = "모조X 시스템에 검색 결과 없습니다";
-"Find in MozoX system →" = "모조X 시스템에 검색하기 →";
+"Can't find this contact in your MozoX Address Book" = "모조X 시스템에 검색 결과 없습니다";
+"Find in MozoX System →" = "모조X 시스템에 검색하기 →";
 "This phone number is not belong to any MozoX Wallet Address" = "이 폰 번호와 연동된 모조X 지갑 없습니다.";
 "We only support to search with phone number." = "폰 번호만 검색 가능";
 
 "Import Contacts" = "연락처에서 가져오기";
-"Import contact successful" = "연락처 가져오기 성공";
+"Import Contacts successful!" = "연락처 가져오기 성공";
 "Quickly add friends to MozoX Address Book from the phone book" = "연락처집에서 모조X로 빠르게 가져오기";
 "Update Contacts" = "연락처 업테이트";
 "Updating..." = "업데이트 중...";
-"Friends in your contact list will automatically be added to MozoX address book." = "핸드폰에 있는 연락처를 자동적으로 모조X 연락처로 가져옵니다";
+"Friends in your contact list will automatically be added to MozoX Address Book." = "핸드폰에 있는 연락처를 자동적으로 모조X 연락처로 가져옵니다";
 "Last updated:" = "최근 업데이트:";
 
 "You sent Request MozoX:" = "에게 MozoX를 보내달라고 요청을 보냈습니다:";
+
+"Synchronize Contacts" = "연락처 동기화";
+"Synchronize Contacts successful!" = "연락처 동기화 성공";
+"Your MozoX Request was sent" = "에게 MozoX를 보내달라고 요청을 보냈습니다:";
+"Update" = "업데이트";
+"Change Settings" = "설정 수정";
+"Cannot access your Contact Book" = "연락처 집 접근 불가";
+"You must give MozoX permission to access the Contact Book first" = "연락처 집 접근 권한 허용하세요";
+"Not yet synchronized" = "동기화하지 않음";
+"Cannot synchronize, your Contact Book is empty." = "연락처 집 정보 없음. 동기화 불가";

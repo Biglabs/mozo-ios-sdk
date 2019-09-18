@@ -130,7 +130,7 @@ class AddressBookViewController: MozoBasicViewController {
         if let navView = navigationController?.view {
             hud = MBProgressHUD.showAdded(to: navView, animated: true)
             hud?.mode = .text
-            hud?.label.text = "Import contact successful".localized
+            hud?.label.text = "Synchronize Contacts successful!".localized
             hud?.label.textColor = .white
             hud?.label.numberOfLines = 2
             hud?.offset = CGPoint(x: 0, y: -300)

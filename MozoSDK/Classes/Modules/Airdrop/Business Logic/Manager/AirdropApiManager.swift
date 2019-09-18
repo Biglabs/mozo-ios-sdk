@@ -13,7 +13,7 @@ let SHOPPER_AIRDROP_REPORT_API_PATH = "/shopper-airdrop"
 let RETAILER_AIRDROP_API_PATH = "/air-drops"
 let RETAILER_AIRDROP_RESOURCE_API_PATH = "/retailer/airdrops"
 public extension ApiManager {
-    public func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String: Any]> {
+    func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_REPORT_API_PATH + "/report-beacon/v2"
             let data = ReportBeaconDTO(beaconInfoDTOList: beacons, status: status)
@@ -35,7 +35,7 @@ public extension ApiManager {
         }
     }
     
-    public func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber> {
+    func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber> {
         return Promise { seal in
             let params = ["startTime" : startTime,
                           "endTime" : endTime] as [String : Any]
@@ -59,7 +59,7 @@ public extension ApiManager {
         }
     }
     
-    public func createAirdropEvent(event: AirdropEventDTO) -> Promise<[IntermediaryTransactionDTO]> {
+    func createAirdropEvent(event: AirdropEventDTO) -> Promise<[IntermediaryTransactionDTO]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_API_PATH + "/prepare-event"
             let param = event.toJSON()
@@ -82,7 +82,7 @@ public extension ApiManager {
         }
     }
     
-    public func sendSignedAirdropEventTx(_ transactionArray: [IntermediaryTransactionDTO]) -> Promise<String?> {
+    func sendSignedAirdropEventTx(_ transactionArray: [IntermediaryTransactionDTO]) -> Promise<String?> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_API_PATH + "/sign"
             let param = IntermediaryTransactionDTO.arrayToJsonString(transactionArray)
@@ -110,7 +110,7 @@ public extension ApiManager {
     ///
     /// - Parameters:
     ///   - address: the smart contract address
-    public func getSmartContractStatus(address: String) -> Promise<TransactionStatusType> {
+    func getSmartContractStatus(address: String) -> Promise<TransactionStatusType> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_API_PATH + "/check/\(address)"
             self.execute(.get, url: url)
@@ -133,7 +133,7 @@ public extension ApiManager {
         }
     }
     
-    public func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
+    func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
         return Promise { seal in
             _ = getAirdropEventList(page: 0, size: 1).done { array -> Void in
                 print("Finish request to get Latest Airdrop Event, array count: \(array.count)")
@@ -145,7 +145,7 @@ public extension ApiManager {
         }
     }
     
-    public func getRunningAirdropEvents(page: Int, size: Int) -> Promise<[AirdropEventDTO]> {
+    func getRunningAirdropEvents(page: Int, size: Int) -> Promise<[AirdropEventDTO]> {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page,
@@ -170,7 +170,7 @@ public extension ApiManager {
         }
     }
     
-    public func getAirdropEventList(page: Int, size: Int = 15) -> Promise<[AirdropEventDTO]> {
+    func getAirdropEventList(page: Int, size: Int = 15) -> Promise<[AirdropEventDTO]> {
         return Promise { seal in
             let params = ["size" : size,
                            "page" : page,
@@ -194,7 +194,7 @@ public extension ApiManager {
         }
     }
     
-    public func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO> {
+    func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + "/retailer/getCreateAirdropEventSettings"
             self.execute(.get, url: url)
