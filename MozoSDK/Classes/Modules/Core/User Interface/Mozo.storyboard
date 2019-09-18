@@ -395,7 +395,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="voO-Xv-dpN" customClass="AddressBookView" customModule="MozoSDK" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="45" width="337.5" height="60"/>
+                                        <rect key="frame" x="20" y="45" width="335" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="GNe-aJ-YS6"/>
@@ -614,8 +614,8 @@
                                     <constraint firstItem="FGo-2i-Od6" firstAttribute="leading" secondItem="oxH-yK-tVU" secondAttribute="leading" id="Tzt-5P-dJk"/>
                                     <constraint firstAttribute="trailing" secondItem="UQi-ge-hcb" secondAttribute="trailing" id="U3H-D8-hpi"/>
                                     <constraint firstItem="F1s-q6-Ldq" firstAttribute="centerY" secondItem="cPJ-fc-yvr" secondAttribute="centerY" id="bA8-AE-uPk"/>
+                                    <constraint firstItem="voO-Xv-dpN" firstAttribute="trailing" secondItem="oxH-yK-tVU" secondAttribute="trailing" id="cZz-o6-DPi"/>
                                     <constraint firstItem="cPJ-fc-yvr" firstAttribute="top" secondItem="Cn9-Fy-FwF" secondAttribute="bottom" constant="8" id="dR9-fA-638"/>
-                                    <constraint firstItem="voO-Xv-dpN" firstAttribute="width" secondItem="okW-gp-dTr" secondAttribute="width" multiplier="0.9" id="egp-us-c3s"/>
                                     <constraint firstItem="F1s-q6-Ldq" firstAttribute="leading" secondItem="cPJ-fc-yvr" secondAttribute="trailing" id="enb-6m-hOO"/>
                                     <constraint firstItem="LoO-n6-V1E" firstAttribute="top" secondItem="j4v-2e-FHz" secondAttribute="bottom" constant="9" id="fos-W0-sXf"/>
                                     <constraint firstItem="j4v-2e-FHz" firstAttribute="top" secondItem="cax-bg-RYT" secondAttribute="bottom" constant="11" id="gDi-w8-A6h"/>
@@ -2019,7 +2019,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7u-kq-RXs">
-                                <rect key="frame" x="20" y="498.5" width="170" height="18"/>
+                                <rect key="frame" x="20" y="460.5" width="170" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="170" id="4Is-bN-7UJ"/>
                                     <constraint firstAttribute="height" constant="18" id="TYa-mO-xke"/>
@@ -2075,7 +2075,7 @@
                             <constraint firstItem="wLB-v3-kwV" firstAttribute="centerX" secondItem="c60-mb-tK6" secondAttribute="centerX" id="HNM-O7-42L"/>
                             <constraint firstItem="QIC-7k-faw" firstAttribute="centerY" secondItem="HeT-dd-Lm8" secondAttribute="centerY" id="ICf-G3-V2n"/>
                             <constraint firstItem="5s0-sf-oRi" firstAttribute="top" secondItem="TBg-Zz-7Xc" secondAttribute="bottom" constant="15" id="IcC-ao-j3y"/>
-                            <constraint firstItem="U7u-kq-RXs" firstAttribute="top" secondItem="TBg-Zz-7Xc" secondAttribute="bottom" constant="89" id="LW8-sg-vkR"/>
+                            <constraint firstItem="U7u-kq-RXs" firstAttribute="top" secondItem="TBg-Zz-7Xc" secondAttribute="bottom" constant="51" id="LW8-sg-vkR"/>
                             <constraint firstItem="FdZ-JH-NwK" firstAttribute="centerX" secondItem="cEM-ii-gCG" secondAttribute="centerX" id="MbU-wi-HZ8"/>
                             <constraint firstItem="dA8-W9-JOM" firstAttribute="leading" secondItem="sFe-gW-TMk" secondAttribute="leading" id="RHL-w7-kGF"/>
                             <constraint firstItem="HeT-dd-Lm8" firstAttribute="centerY" secondItem="YhZ-Ow-XBa" secondAttribute="centerY" id="TbD-Zs-lhA"/>
