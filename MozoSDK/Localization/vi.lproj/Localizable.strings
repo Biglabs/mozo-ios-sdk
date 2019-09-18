@@ -1245,7 +1245,7 @@
 
 // Import Address Book
 "Enter MozoX address or phone number" = "Nhập địa chỉ ví MozoX hoặc số điện thoại";
-"Can't find this contact in your MozoX Address Book" = "Không tìm thấy trong hệ thống MozoX";
+"Can't find this contact in your MozoX Address Book" = "Không tìm thấy trong danh bạ MozoX của bạn";
 "Find in MozoX System →" = "Tìm trong hệ thống MozoX →";
 "This phone number is not belong to any MozoX Wallet Address" = "Số điện thoại này chưa có ví MozoX.";
 "We only support to search with phone number." = "Hệ thống hiện chỉ hỗ trợ tìm với số điện thoại.";
