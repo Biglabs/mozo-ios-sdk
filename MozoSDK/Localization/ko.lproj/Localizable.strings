@@ -1254,7 +1254,7 @@
 
 // Import Address Book
 "Enter MozoX address or phone number" = "모조X 주소 또는 연락처 입력";
-"Can't find this contact in your MozoX Address Book" = "모조X 시스템에 검색 결과 없습니다";
+"Can't find this contact in your MozoX Address Book" = "모조X 연락처 집에서 검색한 결과 없습니다";
 "Find in MozoX System →" = "모조X 시스템에 검색하기 →";
 "This phone number is not belong to any MozoX Wallet Address" = "이 폰 번호와 연동된 모조X 지갑 없습니다.";
 "We only support to search with phone number." = "폰 번호만 검색 가능";
