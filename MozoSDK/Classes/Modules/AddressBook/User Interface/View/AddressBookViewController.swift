@@ -149,22 +149,22 @@ extension AddressBookViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         if isFiltering() {
             if filteredSections!.count == 0 {
-                return 1
+                return 0
             }
             return filteredSections!.count
         }
-        return displayData?.sections.count ?? 1
+        return displayData?.sections.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
             if filteredSections!.count == 0 {
-                return 1
+                return 0
             }
             searchFooter.setIsFilteringToShow(filteredItemCount: filteredSections!.count, of: addrBooks.count)
             return filteredSections![section].items.count
         }
-        return displayData?.sections[section].items.count ?? 1
+        return displayData?.sections[section].items.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
