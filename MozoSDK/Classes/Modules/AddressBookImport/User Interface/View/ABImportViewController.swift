@@ -53,7 +53,7 @@ class ABImportViewController: MozoBasicViewController {
         let isCompleted = processStatus.currentStatus == .COMPLETED
         let enable = isCompleted
         let hidden = isCompleted
-        let text = (isCompleted ? "Update" : "Updating...").localized
+        let text = (isCompleted ? "Synchronize" : "Synchronizing...").localized
         btnUpdate.isEnabled = enable
         lbUpdate.text = text
         loadingImageView.isHidden = hidden

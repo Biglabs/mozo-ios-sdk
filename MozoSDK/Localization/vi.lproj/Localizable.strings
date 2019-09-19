@@ -1269,3 +1269,6 @@
 "You must give MozoX permission to access the Contact Book first" = "Trước hết bạn cần cấp quyền truy cập danh bạ";
 "Not yet synchronized" = "Chưa được đồng bộ";
 "Cannot synchronize, your Contact Book is empty." = "Danh bạ trống, không thể tiến hành đồng bộ.";
+
+"Synchronize" = "Đồng bộ";
+"Synchronizing..." = "Đang đồng bộ...";
