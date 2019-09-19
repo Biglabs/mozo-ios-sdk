@@ -17,7 +17,7 @@ class AddressBookViewController: MozoBasicViewController {
     @IBOutlet var searchFooter: MozoSearchFooter!
     @IBOutlet weak var btnUpdateContacts: UIButton!
     
-    var displayData : AddressBookDisplayData?
+    var displayData = AddressBookDisplayData(sections: [])
     var addrBooks = [AddressBookDisplayItem]()
     var filteredSections : [AddressBookDisplaySection]?
     var isDisplayForSelect = true
@@ -105,10 +105,10 @@ class AddressBookViewController: MozoBasicViewController {
     }
     
     func filterContentForSearchText(_ searchText: String) {
-        if addrBooks.count == 0 {
-            return
-        }
-        filteredSections = displayData?.filterByText(searchText)
+//        if addrBooks.count == 0 {
+//            return
+//        }
+        filteredSections = displayData.filterByText(searchText)
         tableView.reloadData()
     }
     
@@ -147,39 +147,38 @@ class AddressBookViewController: MozoBasicViewController {
 // MARK: - Table View
 extension AddressBookViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        if isFiltering() {
+        let filtering = isFiltering()
+        tableView.tableFooterView?.isHidden = filtering
+        if filtering {
             if filteredSections!.count == 0 {
-                return 0
+                return 1
             }
             return filteredSections!.count
         }
-        return displayData?.sections.count ?? 0
+        return displayData.sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
             if filteredSections!.count == 0 {
-                return 0
+                return 1
             }
-            searchFooter.setIsFilteringToShow(filteredItemCount: filteredSections!.count, of: addrBooks.count)
+//            searchFooter.setIsFilteringToShow(filteredItemCount: filteredSections!.count, of: addrBooks.count)
             return filteredSections![section].items.count
         }
-        return displayData?.sections[section].items.count ?? 0
+        return displayData.sections[section].items.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if displayData == nil {
-            return ""
-        }
-        if (isFiltering() && filteredSections!.count == 0) || displayData?.sections.count ?? 0 == 0 {
+        if (isFiltering() && filteredSections!.count == 0) || displayData.sections.count == 0 {
             return nil
         }
-        let name = displayData?.sections[section].sectionName
+        let name = displayData.sections[section].sectionName
         return name
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (isFiltering() && filteredSections!.count == 0) || displayData?.sections.count ?? 0 == 0 {
+        if (isFiltering() && filteredSections!.count == 0) || displayData.sections.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ABEmptyStateTableViewCell.self), for: indexPath) as! ABEmptyStateTableViewCell
             return cell
         }
@@ -188,7 +187,7 @@ extension AddressBookViewController: UITableViewDataSource {
         if isFiltering() {
             item = filteredSections![indexPath.section].items[indexPath.row]
         } else {
-            item = (displayData?.sections[indexPath.section].items[indexPath.row])!
+            item = (displayData.sections[indexPath.section].items[indexPath.row])
         }
         if isDisplayingAddressBook {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddressBookTableViewCell.self), for: indexPath) as! AddressBookTableViewCell
@@ -201,7 +200,7 @@ extension AddressBookViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if (isFiltering() && filteredSections!.count == 0) || displayData?.sections.count ?? 0 == 0 {
+        if (isFiltering() && filteredSections!.count == 0) || displayData.sections.count == 0 {
             return nil
         }
         let headerView = UIView()
@@ -218,7 +217,7 @@ extension AddressBookViewController: UITableViewDataSource {
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return displayData != nil ? displayData?.selectIndexTitles() : []
+        return displayData.sections.count > 0 ? displayData.selectIndexTitles() : []
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -234,7 +233,7 @@ extension AddressBookViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (isFiltering() && filteredSections!.count == 0) || displayData?.sections.count ?? 0 == 0 {
+        if (isFiltering() && filteredSections!.count == 0) || displayData.sections.count == 0 {
             return 240
         }
         return isDisplayingAddressBook ? 70 : 76
@@ -244,14 +243,13 @@ extension AddressBookViewController: UITableViewDataSource {
 extension AddressBookViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        if (isFiltering() && filteredSections!.count == 0) || displayData?.sections.count ?? 0 == 0 {
+        if (isFiltering() && filteredSections!.count == 0) || displayData.sections.count == 0 {
             return
         }
-        if let selectedItem = isFiltering() ?
+        let selectedItem = isFiltering() ?
             filteredSections![indexPath.section].items[indexPath.row] :
-            displayData?.sections[indexPath.section].items[indexPath.row] {
-            eventHandler?.selectAddressBookOnUI(selectedItem, isDisplayForSelect: isDisplayForSelect)
-        }
+            displayData.sections[indexPath.section].items[indexPath.row]
+        eventHandler?.selectAddressBookOnUI(selectedItem, isDisplayForSelect: isDisplayForSelect)
     }
 }
 
@@ -289,7 +287,7 @@ extension AddressBookViewController : AddressBookViewInterface {
     }
     
     func showNoContentMessage() {
-        displayData = nil
+        displayData = AddressBookDisplayData(sections: [])
         addrBooks = []
         if isFiltering() {
             clearFilter()

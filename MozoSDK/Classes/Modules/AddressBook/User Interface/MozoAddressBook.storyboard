@@ -68,11 +68,11 @@
                                                 <constraint firstAttribute="height" constant="50" id="Yvz-r6-ilH"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="Update Contacts">
+                                            <state key="normal" title="Synchronize Contacts">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Update Contacts"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Synchronize Contacts"/>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="touchBtnUpdateContacts:" destination="Tqc-TO-q5d" eventType="touchUpInside" id="wI6-ZU-tRm"/>
