@@ -1265,3 +1265,6 @@
 "You must give MozoX permission to access the Contact Book first" = "You must give MozoX permission to access the Contact Book first";
 "Not yet synchronized" = "Not yet synchronized";
 "Cannot synchronize, your Contact Book is empty." = "Cannot synchronize, your Contact Book is empty.";
+
+"Synchronize" = "Synchronize";
+"Synchronizing..." = "Synchronizing...";

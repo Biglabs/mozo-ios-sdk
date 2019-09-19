@@ -1278,3 +1278,6 @@
 "You must give MozoX permission to access the Contact Book first" = "연락처 집 접근 권한 허용하세요";
 "Not yet synchronized" = "동기화하지 않음";
 "Cannot synchronize, your Contact Book is empty." = "연락처 집 정보 없음. 동기화 불가";
+
+"Synchronize" = "동기화";
+"Synchronizing..." = "동기화 중...";
