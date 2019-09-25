@@ -220,6 +220,7 @@ public enum MaintenanceStatusType: String {
 
 public enum AirdropEventDiscoverType: String {
     case NEAREST = "nearest"
+    case TOP_LOCAL = "topLocal"
     case TOP = "top"
     case UPCOMING = "upcoming"
 }
