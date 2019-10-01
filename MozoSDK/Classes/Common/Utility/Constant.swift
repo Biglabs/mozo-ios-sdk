@@ -212,7 +212,6 @@ public enum TransactionStatusType: String {
     case PENDING = "PENDING"
 }
 
-
 public enum MaintenanceStatusType: String {
     case MAINTAINED = "MAINTAINED"
     case HEALTHY = "HEALTHY"
@@ -223,4 +222,9 @@ public enum AirdropEventDiscoverType: String {
     case TOP_LOCAL = "topLocal"
     case TOP = "top"
     case UPCOMING = "upcoming"
+}
+
+public enum ParkingTicketStatusType: String {
+    case SUCCESS = "SUCCESS"
+    case NONE = "NONE"
 }

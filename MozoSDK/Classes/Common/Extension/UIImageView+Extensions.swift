@@ -14,7 +14,7 @@ import Kingfisher
 
 let imageCache = NSCache<NSString, AnyObject>()
 public extension UIImageView {
-    public func loadImage(_ urlString: String, defaultImageName: String = "img_store_no_img",
+    func loadImage(_ urlString: String, defaultImageName: String = "img_store_no_img",
                    isDefaultImageFromMozo: Bool = false, isShowLoading: Bool = false) {
         let placeHolderImage = isDefaultImageFromMozo ? UIImage(named: defaultImageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
             : UIImage(named: defaultImageName)
@@ -47,7 +47,7 @@ public extension UIImageView {
         }
     }
     
-    public func loadImageWithUrlString(_ urlString: String, defaultImageName: String = "img_store_no_img", loadingColor: UIColor = ThemeManager.shared.main,
+    func loadImageWithUrlString(_ urlString: String, defaultImageName: String = "img_store_no_img", loadingColor: UIColor = ThemeManager.shared.main,
                                 isDefaultImageFromMozo: Bool = false, isShowLoading: Bool = false,
                                 isUseScreenCenter: Bool = false) {
         print("Download image with url: \(urlString)")

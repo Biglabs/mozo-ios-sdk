@@ -10,44 +10,44 @@ import Foundation
 import UIKit
 
 public extension Bool {
-    public var toString: String {
+    var toString: String {
         let value = self
         return "\(value)"
     }
 }
 
 public extension String {
-    public func isValidReceiveFormat() -> Bool{
+    func isValidReceiveFormat() -> Bool{
         let regex = try? NSRegularExpression(pattern: "^[a-zA-Z]+:[a-zA-Z0-9]+\\?[a-zA-Z]+=[0-9.]*$", options: .caseInsensitive)
         return regex?.firstMatch(in: self, options: [], range: NSMakeRange(0, self.count)) != nil
     }
     
-    public func isValidDecimalFormat() -> Bool{
+    func isValidDecimalFormat() -> Bool{
         let text = self.toTextNumberWithoutGrouping()
         return Float(text) != nil
     }
     
-    public func isValidDecimalMinValue(decimal: Int) -> Bool {
+    func isValidDecimalMinValue(decimal: Int) -> Bool {
         let divisor = pow(10.0, Double(decimal))
         return Float(self)! >= Float(1 / divisor)
     }
     
-    public func isValidName() -> Bool {
+    func isValidName() -> Bool {
         let regex = try? NSRegularExpression(pattern: "^[a-zA-Z0-9_-]*$", options: .caseInsensitive)
         return regex?.firstMatch(in: self, options: [], range: NSMakeRange(0, self.count)) != nil
     }
     
-    public func isValidEmail() -> Bool {
+    func isValidEmail() -> Bool {
         let regex = try? NSRegularExpression(pattern: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}", options: .caseInsensitive)
         return regex?.firstMatch(in: self, options: [], range: NSMakeRange(0, self.count)) != nil
     }
     
-    public func isValidPhoneNumber() -> Bool {
+    func isValidPhoneNumber() -> Bool {
         let regex = try? NSRegularExpression(pattern: "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$", options: .caseInsensitive)
         return regex?.firstMatch(in: self, options: [], range: NSMakeRange(0, self.count)) != nil
     }
     
-    public var toBool: Bool? {
+    var toBool: Bool? {
         let trueValues = ["true", "yes", "1"]
         let falseValues = ["false", "no", "0"]
         
@@ -62,39 +62,39 @@ public extension String {
         }
     }
     
-    public func replace(_ originalString:String, withString newString:String) -> String {
+    func replace(_ originalString:String, withString newString:String) -> String {
         let replaced =  self.replacingOccurrences(of: originalString, with: newString)
         return replaced
     }
     
-    public func capitalizingFirstLetter() -> String {
+    func capitalizingFirstLetter() -> String {
         return prefix(1).uppercased() + dropFirst()
     }
     
-    public func hasPrefix(_ prefix: String, caseSensitive: Bool) -> Bool {
+    func hasPrefix(_ prefix: String, caseSensitive: Bool) -> Bool {
         if !caseSensitive { return hasPrefix(prefix) }
         return self.lowercased().hasPrefix(prefix.lowercased())
     }
     
-    public func censoredMiddle() -> String {
+    func censoredMiddle() -> String {
         let prefix = self[0..<3]
         let middle = "********"
         let end = self[count - 3..<count]
         return "\(prefix)\(middle)\(end)"
     }
     
-    public func toDoubleValue() -> Double {
+    func toDoubleValue() -> Double {
         // FIX ISSUE: [MOZO-254] Round Issue in swift
         return NSDecimalNumber(string: self).doubleValue + (1 / pow(10, 15))
     }
     
-    public func toTextNumberWithoutGrouping() -> String {
+    func toTextNumberWithoutGrouping() -> String {
         let decimalSeparator = NSLocale.current.decimalSeparator ?? "."
         let groupingSeparator = NSLocale.current.groupingSeparator ?? ","
         return self.replace(groupingSeparator, withString: "").replace(decimalSeparator, withString: ".")
     }
     
-    public func hasValidSchemeForQRCode() -> Bool {
+    func hasValidSchemeForQRCode() -> Bool {
         return hasPrefix(AppType.Retailer.scheme) || hasPrefix(AppType.Shopper.scheme)
     }
 }
@@ -118,13 +118,13 @@ internal extension String {
 }
 
 public extension Data {
-    public var deviceToken: String {
+    var deviceToken: String {
         return self.reduce("", {$0 + String(format: "%02X", $1)})
     }
 }
 
 public extension UIViewController {
-    public func isModal() -> Bool {
+    func isModal() -> Bool {
         if let navigationController = self.navigationController{
             if navigationController.viewControllers.first != self{
                 return false
@@ -147,7 +147,7 @@ public extension UIViewController {
     }
 }
 
-extension UIColor {
+public extension UIColor {
     public convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()
@@ -167,15 +167,15 @@ extension UIColor {
     }
 }
 
-extension UIView {
-    public func roundCorners(cornerRadius: CGFloat = 0.02, borderColor: UIColor, borderWidth: CGFloat) {
+public extension UIView {
+    func roundCorners(cornerRadius: CGFloat = 0.02, borderColor: UIColor, borderWidth: CGFloat) {
         layer.cornerRadius = cornerRadius * bounds.size.width
         layer.borderWidth = borderWidth
         layer.borderColor = borderColor.cgColor
         clipsToBounds = true
     }
     
-    public func dropShadow(scale: Bool = true, color: UIColor = UIColor.black, isOnlyBottom: Bool = false) {
+    func dropShadow(scale: Bool = true, color: UIColor = UIColor.black, isOnlyBottom: Bool = false) {
         layer.masksToBounds = false
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = 0.5
@@ -187,7 +187,7 @@ extension UIView {
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
     
-    public func addGradientLayer(colors: [CGColor], locations: [NSNumber]? = nil, frame: CGRect) {
+    func addGradientLayer(colors: [CGColor], locations: [NSNumber]? = nil, frame: CGRect) {
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = frame
         gradient.colors = colors
@@ -196,7 +196,7 @@ extension UIView {
     }
 }
 
-extension Decimal {
+public extension Decimal {
     var toDouble:Double {
         return NSDecimalNumber(decimal:self).doubleValue
     }
@@ -206,11 +206,11 @@ extension Decimal {
 }
 
 public extension UIWindow {
-    public var visibleViewController: UIViewController? {
+    var visibleViewController: UIViewController? {
         return UIWindow.getVisibleViewControllerFrom(self.rootViewController)
     }
     
-    public static func getVisibleViewControllerFrom(_ vc: UIViewController?) -> UIViewController? {
+    static func getVisibleViewControllerFrom(_ vc: UIViewController?) -> UIViewController? {
         if let nc = vc as? UINavigationController {
             if let visibleViewController = nc.visibleViewController {
                 return UIWindow.getVisibleViewControllerFrom(visibleViewController)
@@ -231,15 +231,15 @@ public extension UIWindow {
     }
 }
 
-extension UINavigationController {
-    public var rootViewController : UIViewController? {
+public extension UINavigationController {
+    var rootViewController : UIViewController? {
         return self.viewControllers.first
     }
 }
 
 public extension Array {
     //MARK: - using this method to avoid out of index
-    public func getElement(_ index: Int) -> Element? {
+    func getElement(_ index: Int) -> Element? {
         return (0 <= index && index < self.count ? self[index] : nil)
     }
 }
@@ -323,7 +323,7 @@ public extension NSNumber {
     }
 }
 
-extension Dictionary {
+public extension Dictionary {
     var queryString: String {
         var output: String = ""
         for (key,value) in self {
@@ -333,8 +333,8 @@ extension Dictionary {
     }
 }
 
-extension URL {
-    public var queryParameters: [String: String]? {
+public extension URL {
+    var queryParameters: [String: String]? {
         guard let components = URLComponents(url: self, resolvingAgainstBaseURL: true), let queryItems = components.queryItems else {
             return nil
         }

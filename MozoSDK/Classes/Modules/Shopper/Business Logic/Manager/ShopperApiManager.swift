@@ -17,7 +17,7 @@ let SHOPPER_NEAREST_API_PATH = SHOPPER_API_PATH + "/nearest/stores"
 let SHOPPER_RECOMMENDATION_API_PATH = SHOPPER_API_PATH + "/recommendation/stores"
 
 public extension ApiManager {
-    public func getAirdropStoresNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]> {
+    func getAirdropStoresNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]> {
         return Promise { seal in
             let query = "?\(params.queryString)"
             let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_API_PATH + "/nearby" + query
@@ -39,7 +39,7 @@ public extension ApiManager {
         }
     }
     
-    public func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]> {
+    func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]> {
         return Promise { seal in
             let params = ["userLat" : userLat,
                           "userLong": userLong] as [String : Any]
@@ -63,7 +63,7 @@ public extension ApiManager {
         }
     }
     
-    public func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]> {
+    func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_API_PATH + "/color/range-settings"
             self.execute(.get, url: url)
@@ -84,7 +84,7 @@ public extension ApiManager {
         }
     }
     
-    public func getNearestStores(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
+    func getNearestStores(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
         return Promise { seal in
             let params = ["storeId" : storeId] as [String : Any]
             let url = Configuration.BASE_STORE_URL + SHOPPER_NEAREST_API_PATH + "?\(params.queryString)"
@@ -107,7 +107,7 @@ public extension ApiManager {
         }
     }
     
-    public func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[StoreInfoDTO]> {
+    func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[StoreInfoDTO]> {
         return Promise { seal in
             var params = ["storeId" : storeId,
                           "top": size] as [String : Any]
@@ -137,7 +137,7 @@ public extension ApiManager {
         }
     }
     
-    public func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
+    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/store/\(storeId)/air-drops"
             self.execute(.get, url: url)
@@ -158,7 +158,7 @@ public extension ApiManager {
         }
     }
     
-    public func searchStoresWithText(_ text: String, page: Int = 0, size: Int = 15, long: Double, lat: Double, sort: String = "distance") -> Promise<CollectionStoreInfoDTO> {
+    func searchStoresWithText(_ text: String, page: Int = 0, size: Int = 15, long: Double, lat: Double, sort: String = "distance") -> Promise<CollectionStoreInfoDTO> {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page,
@@ -187,7 +187,7 @@ public extension ApiManager {
     }
     
     // MARK: Favorite
-    public func getFavoriteStores(page: Int, size: Int) -> Promise<[StoreInfoDTO]> {
+    func getFavoriteStores(page: Int, size: Int) -> Promise<[StoreInfoDTO]> {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page] as [String : Any]
@@ -210,7 +210,7 @@ public extension ApiManager {
         }
     }
     
-    public func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
+    func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + SHOPPER_FAVORITE_API_PATH + "/\(storeId)"
             let method = isMarkFavorite ? HTTPMethod.post : .delete
@@ -230,7 +230,7 @@ public extension ApiManager {
         }
     }
     
-    public func getStoreDetail(_ storeId: Int64) -> Promise<StoreInfoDTO> {
+    func getStoreDetail(_ storeId: Int64) -> Promise<StoreInfoDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/store/\(storeId)"
             self.execute(.get, url: url)
@@ -252,7 +252,7 @@ public extension ApiManager {
         }
     }
     
-    public func getSuggestKeySearch(lat: Double, lon: Double) -> Promise<[String]> {
+    func getSuggestKeySearch(lat: Double, lon: Double) -> Promise<[String]> {
         return Promise { seal in
             let params = ["lat" : lat,
                           "lon" : lon] as [String : Any]

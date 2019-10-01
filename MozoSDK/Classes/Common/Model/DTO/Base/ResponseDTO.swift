@@ -11,6 +11,7 @@ public let RESPONSE_TYPE_ARRAY_KEY = "items"
 public let RESPONSE_TYPE_TOTAL_KEY = "totalItems"
 public let RESPONSE_TYPE_RESULT_KEY = "result"
 public let RESPONSE_TYPE_VALUE_KEY = "value"
+public let RESPONSE_TYPE_STATUS_KEY = "status"
 public class ResponseDTO: ResponseObjectSerializable {
     public var success: Bool
     public var error: String?
