@@ -15,14 +15,14 @@ public extension ApiManager {
     ///
     /// - Parameters:
     ///   - hash: the transaction hash
-    public func getTxStatus(hash: String) -> Promise<TransactionStatusType> {
+    func getTxStatus(hash: String) -> Promise<TransactionStatusType> {
         return Promise { seal in
             let url = Configuration.BASE_URL + TX_ETH_SOLO_API_PATH + "/txs/\(hash)/status"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get tx status, json response: \(json)")
-                    if let jobj = SwiftyJSON.JSON(json)["status"].string {
+                    if let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_STATUS_KEY].string {
                         if let status = TransactionStatusType(rawValue: jobj) {
                             seal.fulfill(status)
                         }

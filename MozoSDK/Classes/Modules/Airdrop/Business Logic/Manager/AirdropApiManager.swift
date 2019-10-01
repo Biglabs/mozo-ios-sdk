@@ -117,7 +117,7 @@ public extension ApiManager {
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get Smart Contract Status, json response: \(json)")
-                    if let jobj = SwiftyJSON.JSON(json)["status"].string {
+                    if let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_STATUS_KEY].string {
                         if let status = TransactionStatusType(rawValue: jobj) {
                             seal.fulfill(status)
                         }
