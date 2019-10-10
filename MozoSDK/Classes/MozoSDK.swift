@@ -385,4 +385,12 @@ public class MozoSDK {
     public static func getSuggestKeySearchForPromotion(lat: Double = 0, lon: Double = 0) -> Promise<[String]> {
         return moduleDependencies.getSuggestKeySearchForPromotion(lat: lat, lon: lon)
     }
+    
+    public static func getParkingTicketStatus(id: Int64, isIn: Bool) -> Promise<ParkingTicketStatusType> {
+        return moduleDependencies.getParkingTicketStatus(id: id, isIn: isIn)
+    }
+    
+    public static func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO> {
+        return moduleDependencies.getParkingTicketByStoreId(storeId: storeId, isIn: isIn)
+    }
 }

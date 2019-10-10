@@ -303,4 +303,12 @@ extension CoreInteractor: CoreInteractorService {
     func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]> {
         return apiManager.getGPSBeacons(userLat: userLat, userLong: userLong)
     }
+    
+    func getParkingTicketStatus(id: Int64, isIn: Bool) -> Promise<ParkingTicketStatusType> {
+        return apiManager.getParkingTicketStatus(id: id, isIn: isIn)
+    }
+    
+    func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO> {
+        return apiManager.getParkingTicketByStoreId(storeId: storeId, isIn: isIn)
+    }
 }
