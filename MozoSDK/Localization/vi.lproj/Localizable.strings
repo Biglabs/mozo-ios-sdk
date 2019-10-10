@@ -1275,3 +1275,14 @@
 
 "Top Local Airdrop Events" = "Những sự kiện airdrop đỉnh tại địa phương";
 "Top International Airdrop Events" = "Những sự kiện airdrop đỉnh trên thế giới";
+
+// Ticket
+"Check in" = "Vé vào";
+"Check out" = "Vé ra";
+"FREE PARKING" = "MIỄN PHÍ GIỮ XE";
+"Check in successfully" = "Kiểm vé vào thành công";
+"Check out successfully" = "Kiểm vé ra thành công";
+"Auto close in %02ds" = "Sẽ đóng trong vòng %02d giây";
+"Valid in %02d:%02d" = "Có giá trị trong %02d:%02d";
+"Show parking lot attendants this QR to check in" = "Đưa QR cho nhân viên giữ xe để vào";
+"Show parking lot attendants this QR to check out" = "Đưa QR cho nhân viên giữ xe để ra";

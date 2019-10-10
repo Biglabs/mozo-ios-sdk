@@ -1271,3 +1271,14 @@
 
 "Top Local Airdrop Events" = "Top Local Airdrop Events";
 "Top International Airdrop Events" = "Top International Airdrop Events";
+
+// Ticket
+"Check in" = "Check in";
+"Check out" = "Check out";
+"FREE PARKING" = "FREE PARKING";
+"Check in successfully" = "Check in successfully";
+"Check out successfully" = "Check out successfully";
+"Auto close in %02ds" = "Auto close in %02ds";
+"Valid in %02d:%02d" = "Valid in %02d:%02d";
+"Show parking lot attendants this QR to check in" = "Show parking lot attendants this QR to check in";
+"Show parking lot attendants this QR to check out" = "Show parking lot attendants this QR to check out";
