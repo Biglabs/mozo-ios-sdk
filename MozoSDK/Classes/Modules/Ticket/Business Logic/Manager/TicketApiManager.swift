@@ -12,9 +12,9 @@ import SwiftyJSON
 let SHOPPER_PARKING_TICKET_API_PATH = SHOPPER_API_PATH + "/parking-ticket"
 
 public extension ApiManager {
-    func getParkingTicketStatus(id: Int64) -> Promise<ParkingTicketStatusType> {
+    func getParkingTicketStatus(id: Int64, isIn: Bool) -> Promise<ParkingTicketStatusType> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getParkingTicketStatus?id=\(id)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getParkingTicketStatus?id=\(id)&in=\(isIn)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

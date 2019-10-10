@@ -18,7 +18,7 @@ let RETAILER_STORE_INFO_HASHTAG_API_PATH = "/retailer/storeInfo/hashtag"
 let RETAILER_STORE_INFO_PHOTO_API_PATH = "/retailer/storeInfo/photo"
 let RETAILER_SUPPORT_BEACON_API_PATH = "/retailer/support/beacon"
 public extension ApiManager {
-    public func getRetailerInfo() -> Promise<[String: Any]> {
+    func getRetailerInfo() -> Promise<[String: Any]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_INFO_API_PATH
             self.execute(.get, url: url)
@@ -37,7 +37,7 @@ public extension ApiManager {
         }
     }
     
-    public func addSalePerson(parameters: Any?) -> Promise<[String: Any]> {
+    func addSalePerson(parameters: Any?) -> Promise<[String: Any]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_SALE_PERSON_API_PATH
             self.execute(.post, url: url, parameters: parameters)
@@ -56,7 +56,7 @@ public extension ApiManager {
         }
     }
     
-    public func getListSalePerson() -> Promise<[SalePersonDTO]> {
+    func getListSalePerson() -> Promise<[SalePersonDTO]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_SALE_PERSON_API_PATH
             self.execute(.get, url: url)
@@ -77,7 +77,7 @@ public extension ApiManager {
         }
     }
     
-    public func removeSalePerson(id: Int64) -> Promise<[String: Any]> {
+    func removeSalePerson(id: Int64) -> Promise<[String: Any]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_SALE_PERSON_API_PATH + "/\(id)"
             self.execute(.delete, url: url)
@@ -96,7 +96,7 @@ public extension ApiManager {
         }
     }
     
-    public func getListCountryCode() -> Promise<[CountryCodeDTO]> {
+    func getListCountryCode() -> Promise<[CountryCodeDTO]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + COMMON_COUNTRY_CODE_API_PATH
             self.execute(.get, url: url)
@@ -117,7 +117,7 @@ public extension ApiManager {
         }
     }
     
-    public func getCommonHashtag() -> Promise<[String]> {
+    func getCommonHashtag() -> Promise<[String]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + TAGS_API_PATH
             self.execute(.get, url: url)
@@ -139,7 +139,7 @@ public extension ApiManager {
         }
     }
     
-    public func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO> {
+    func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_STORE_INFO_API_PATH
             let param = storeInfo.rawData()
@@ -163,7 +163,7 @@ public extension ApiManager {
         }
     }
     
-    public func updateRetailerStoreInfoHashtag(hashTags: [String]) -> Promise<StoreInfoDTO> {
+    func updateRetailerStoreInfoHashtag(hashTags: [String]) -> Promise<StoreInfoDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_STORE_INFO_HASHTAG_API_PATH
             print("Request to update store info hashtag, param: \(hashTags)")
@@ -186,7 +186,7 @@ public extension ApiManager {
         }
     }
     
-    public func updateRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
+    func updateRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_STORE_INFO_PHOTO_API_PATH
             print("Request to update store info photo, param: \(photos)")
@@ -209,7 +209,7 @@ public extension ApiManager {
         }
     }
     
-    public func deleteRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
+    func deleteRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_STORE_INFO_PHOTO_API_PATH
             print("Request to delete store info photo, param: \(photos)")
@@ -232,7 +232,7 @@ public extension ApiManager {
         }
     }
     
-    public func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
+    func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_SUPPORT_BEACON_API_PATH
             let param = info.toJSON()

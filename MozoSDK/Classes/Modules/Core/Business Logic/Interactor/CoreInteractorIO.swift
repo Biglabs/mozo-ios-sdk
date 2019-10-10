@@ -154,4 +154,8 @@ protocol CoreInteractorService {
     func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO>
     
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]>
+    
+    func getParkingTicketStatus(id: Int64, isIn: Bool) -> Promise<ParkingTicketStatusType>
+    
+    func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO>
 }

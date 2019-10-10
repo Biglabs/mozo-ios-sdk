@@ -440,6 +440,14 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getSuggestKeySearchForPromotion(lat: lat, lon: lon))!
     }
     
+    func getParkingTicketStatus(id: Int64, isIn: Bool) -> Promise<ParkingTicketStatusType> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getParkingTicketStatus(id: id, isIn: isIn))!
+    }
+    
+    func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getParkingTicketByStoreId(storeId: storeId, isIn: isIn))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()
