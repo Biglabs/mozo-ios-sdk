@@ -35,6 +35,15 @@ class WaitingViewController: MozoBasicViewController {
             }
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("WaitingViewController - View will disappear")
+        if self.isMovingFromParentViewController {
+            print("WaitingViewController - View will disappear - isMovingFromParentViewController")
+            stopRotating = true
+        }
+    }
 }
 extension WaitingViewController : PopupErrorDelegate {
     func didClosePopupWithoutRetry() {
@@ -70,5 +79,9 @@ extension WaitingViewController: WaitingViewInterface {
                 DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
             }
         }
+    }
+    
+    func stopRotate() {
+        stopRotating = true
     }
 }
