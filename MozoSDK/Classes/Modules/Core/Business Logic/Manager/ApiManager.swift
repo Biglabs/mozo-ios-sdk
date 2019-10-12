@@ -241,8 +241,12 @@ public class ApiManager {
         var errorMessage = "General error message"
         
         if let data = responseData {
-            let responseJSON = JSON(data: data)
-            errorMessage = responseJSON.rawString() ?? ""
+            do {
+                let responseJSON = try JSON(data: data)
+                errorMessage = responseJSON.rawString() ?? ""
+            } catch {
+                print("ApiManager - getErrorDetailMessage catch error while parsing JSON: \(error)")
+            }
         }
         
         return errorMessage

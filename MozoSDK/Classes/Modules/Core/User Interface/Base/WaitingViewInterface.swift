@@ -8,4 +8,5 @@
 import Foundation
 protocol WaitingViewInterface {
     func displayTryAgain(_ error: ConnectionError, forAction: WaitingRetryAction?)
+    func stopRotate()
 }
