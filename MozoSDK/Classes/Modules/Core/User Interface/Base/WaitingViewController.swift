@@ -21,7 +21,13 @@ class WaitingViewController: MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        rotateView()
+//        rotateView()
+        setupSpinningView()
+    }
+    
+    func setupSpinningView() {
+        let advTimeGif = UIImage.gifImageWithName("spinner")
+        self.imgLoading.image = advTimeGif
     }
     
     private func rotateView(duration: Double = 1.0) {
