@@ -40,10 +40,11 @@ extension AuthInteractor : AuthInteractorInput {
         } else {
             var urlString = Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH + "?redirect_uri=" + url.absoluteString
             urlString = urlString.replace("?state=", withString: "&state=")
-            let newURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
-            NSLog("AuthInteractor - Reprocess authorization callback url: \(newURL)")
-            if authManager?.currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: newURL) ?? false {
-                authManager?.setCurrentAuthorizationFlow(nil)
+            if let newURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!) {
+                NSLog("AuthInteractor - Reprocess authorization callback url: \(newURL)")
+                if authManager?.currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: newURL) ?? false {
+                    authManager?.setCurrentAuthorizationFlow(nil)
+                }
             }
         }
     }
