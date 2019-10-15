@@ -17,9 +17,15 @@ public class TicketDTO: ResponseObjectSerializable {
     public var partyName: String?
     public var coverImage: String?
     public var amount: NSNumber?
-    public var vehicleType: String?
+    
     public var specialTicket: Bool?
     public var timeCreateOtp: Int64?
+    public var storeInfo: StoreInfoDTO?
+    public var extraMozo: NSNumber?
+    public var extraCash: Double?
+    public var unitCurrency: String?
+    public var useCash: Bool?
+    public var vehicle: VehicleInfoDTO?
     
     public required init(partyName: String, coverImage: String) {
         self.partyName = partyName
@@ -35,9 +41,15 @@ public class TicketDTO: ResponseObjectSerializable {
         self.partyName = json["partyName"].string
         self.coverImage = json["coverImage"].string
         self.amount = json["amount"].number
-        self.vehicleType = json["vehicleType"].string
+        
         self.specialTicket = json["specialTicket"].bool
         self.timeCreateOtp = json["timeCreateOtp"].int64
+        self.storeInfo = StoreInfoDTO(json: json["storeInfo"])
+        self.extraMozo = json["extraMozo"].number
+        self.extraCash = json["extraCash"].double
+        self.unitCurrency = json["unitCurrency"].string
+        self.useCash = json["useCash"].bool
+        self.vehicle = VehicleInfoDTO(json: json["vehicle"])
     }
 }
 
