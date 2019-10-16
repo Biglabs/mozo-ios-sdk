@@ -68,6 +68,12 @@ extension AuthPresenter : AuthInteractorOutput {
         // performs authentication request
         NSLog("AuthPresenter - Initiating authorization request with scope: \(request.scope ?? "DEFAULT_SCOPE")")
         let viewController = authWireframe?.getTopViewController()
+        if let authViewController = viewController,
+            authViewController.isKind(of: NSClassFromString("SFAuthenticationViewController")!) {
+            print("AuthPresenter - Authentication screen is being displayed.")
+            return
+        }
+        NSLog("AuthPresenter - Top view controller [\(String(describing: viewController.self))] will be used to perform authentication request.")
         // performs authentication request
         let currentAuthorizationFlow = OIDAuthorizationService.present(request, presenting: viewController!) { (response, error) in
             self.authInteractor?.handleAuthorizationResponse(response, error: error)
