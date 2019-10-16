@@ -79,6 +79,13 @@ class PaymentViewController: MozoBasicViewController {
     func setupSegment() {
         segmentControl.setTitle("Requested List".localized, forSegmentAt: 0)
         segmentControl.setTitle("Create Request".localized, forSegmentAt: 1)
+        
+        if #available(iOS 13.0, *) {
+            self.segmentControl.selectedSegmentTintColor = ThemeManager.shared.primary
+        }
+        segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: ThemeManager.shared.primary], for: .normal)
+        segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+        segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .highlighted)
     }
     
     func setupTarget() {
