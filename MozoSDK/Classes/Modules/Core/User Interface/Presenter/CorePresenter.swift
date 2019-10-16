@@ -87,7 +87,9 @@ class CorePresenter : NSObject {
                 removePINDelegate()
             } else {
                 print("CorePresenter - Handle invalid token from api response when No MozoX Screens is displaying.")
-                coreWireframe?.requestForAuthentication()
+                // FIX ME: Crash "Application tried to present modally an active controller <SFAuthenticationViewController>"
+//                self.coreWireframe?.requestForAuthentication()
+                coreWireframe?.authWireframe?.presentLogoutInterface()
             }
 //            coreWireframe?.authWireframe?.presentLogoutInterface()
         } else {
