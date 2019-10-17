@@ -15,17 +15,18 @@ public extension ApiManager {
     func getParkingTicketStatus(id: Int64, isIn: Bool) -> Promise<ParkingTicketStatusType> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getParkingTicketStatus?id=\(id)&in=\(isIn)"
+            NSLog("ApiManager - Get parking ticket status with url: \(url)")
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get parking ticket status, json response: \(json)")
+                    NSLog("Finish request to get parking ticket status, json response: \(json)")
                     if let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_STATUS_KEY].string,
                         let status = ParkingTicketStatusType(rawValue: jobj){
                         seal.fulfill(status)
                     }
                 }
                 .catch { error in
-                    print("Error when request get parking ticket status: " + error.localizedDescription)
+                    NSLog("Error when request get parking ticket status: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {
