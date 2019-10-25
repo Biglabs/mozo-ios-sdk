@@ -412,9 +412,14 @@ extension AuthManager {
                 } else {
                     NSLog("Token exchange error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
                     var networkError = error != nil ? ConnectionError.network(error: error!) : .systemError
-                    if let error = error {
-                        if error.localizedDescription.contains("PKCE") || error.localizedDescription.contains("invalid") {
-                            networkError = .authenticationRequired
+                    // ID Token expired
+                    if let nsError = error as NSError?, nsError.code == -15 {
+                        networkError = .incorrectSystemDateTime
+                    } else {
+                        if let error = error {
+                            if error.localizedDescription.contains("PKCE") || error.localizedDescription.contains("invalid") {
+                                networkError = .authenticationRequired
+                            }
                         }
                     }
                     seal.reject(networkError)

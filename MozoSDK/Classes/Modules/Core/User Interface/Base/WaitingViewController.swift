@@ -50,6 +50,11 @@ class WaitingViewController: MozoBasicViewController {
             stopRotating = true
         }
     }
+    
+    func openSettings() {
+        guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
+        UIApplication.shared.open(url)
+    }
 }
 extension WaitingViewController : PopupErrorDelegate {
     func didClosePopupWithoutRetry() {
@@ -89,5 +94,15 @@ extension WaitingViewController: WaitingViewInterface {
     
     func stopRotate() {
         stopRotating = true
+    }
+    
+    func displayAlertIncorrectSystemDateTime() {
+        let alert = UIAlertController(title: "The time on your device is incorrect.".localized,
+                                      message: "Please update the date and time, then try again.".localized,
+                                      preferredStyle: .alert)
+        alert.addAction(.init(title: "Settings".localized, style: .default, handler: { (action) in
+            self.openSettings()
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }

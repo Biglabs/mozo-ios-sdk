@@ -52,6 +52,11 @@ extension AuthPresenter : AuthInteractorOutput {
             viewController?.displayMozoError("Error related to authentication while exchange code.\nPlease re-authenticate.")
             return
         }
+        if error == .incorrectSystemDateTime {
+            NSLog("AuthPresenter - Incorrect system date time while exchanging code. Go to Settings.")
+            authModuleDelegate?.didReceiveErrorWhileExchangingCode()
+            return
+        }
         retryOnResponse = response
         DisplayUtils.displayTryAgainPopup(allowTapToDismiss: false, isEmbedded: false, error: error, delegate: self)
     }
@@ -65,11 +70,14 @@ extension AuthPresenter : AuthInteractorOutput {
     }
     
     func finishedBuildAuthRequest(_ request: OIDAuthorizationRequest) {
+        // FIX ME: Figure why we crash here
         // performs authentication request
         NSLog("AuthPresenter - Initiating authorization request with scope: \(request.scope ?? "DEFAULT_SCOPE")")
-        let viewController = authWireframe?.getTopViewController()
+        let viewController = DisplayUtils.getTopViewController()
+        
         if let authViewController = viewController,
-            authViewController.isKind(of: NSClassFromString("SFAuthenticationViewController")!) {
+            let klass = DisplayUtils.getAuthenticationClass(),
+            authViewController.isKind(of: klass) {
             print("AuthPresenter - Authentication screen is being displayed.")
             return
         }
@@ -97,7 +105,7 @@ extension AuthPresenter : AuthInteractorOutput {
     func finishBuildLogoutRequest(_ request: OIDAuthorizationRequest) {
         // performs logout request
         NSLog("AuthPresenter - Initiating logout request with scope: \(request.scope ?? "DEFAULT_SCOPE")")
-        let viewController = authWireframe?.getTopViewController()
+        let viewController = DisplayUtils.getTopViewController()
         // performs logout request
         let currentAuthorizationFlow = OIDAuthorizationService.present(request, presenting: viewController!) { (response, error) in
             print("AuthPresenter - Finish present logout, error: [\(String(describing: error))]")
