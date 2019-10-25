@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,74 +15,90 @@
             <objects>
                 <viewController storyboardIdentifier="SpeedSelectionViewController" id="ydB-hX-WIu" customClass="SpeedSelectionViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N7n-Bj-fIl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MF0-Qr-CUO">
-                                <rect key="frame" x="15" y="40" width="345" height="124"/>
+                                <rect key="frame" x="15" y="70" width="290" height="110"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlightedImage="ic_check" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L4o-Bd-z12">
+                                        <rect key="frame" x="17" y="43" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="BLB-Mr-jA8"/>
+                                            <constraint firstAttribute="width" constant="24" id="tN5-ca-bJe"/>
+                                        </constraints>
+                                    </imageView>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Wallet Automatically" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Qb-TT-JUE">
-                                        <rect key="frame" x="20" y="17" width="224" height="24"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="61" y="19" width="229" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Create Wallet Automatically"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_rocket" translatesAutoresizingMaskIntoConstraints="NO" id="HPg-cP-7PI">
-                                        <rect key="frame" x="244" y="11" width="101" height="113"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="101" id="Bws-xX-bq6"/>
-                                            <constraint firstAttribute="height" constant="113" id="SnW-Iq-mF5"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Recovery Phrase* and security PIN will be auto generated and remembered by our system." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Q0O-w6-LUs">
-                                        <rect key="frame" x="20" y="49" width="224" height="54"/>
+                                        <rect key="frame" x="61" y="45.5" width="209" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="EW0-B5-ADD"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Your Recovery Phrase* and security PIN will be auto generated and remembered by our system."/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cP5-TG-XyE">
-                                        <rect key="frame" x="0.0" y="0.0" width="345" height="124"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="110"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <action selector="touchBtnAuto:" destination="ydB-hX-WIu" eventType="touchUpInside" id="VjT-9V-MmX"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Q0O-w6-LUs" firstAttribute="leading" secondItem="2Qb-TT-JUE" secondAttribute="leading" id="5RX-gi-3Ax"/>
-                                    <constraint firstAttribute="height" constant="124" id="5nx-ep-JfD"/>
-                                    <constraint firstAttribute="trailing" secondItem="HPg-cP-7PI" secondAttribute="trailing" id="AJD-x2-JSg"/>
-                                    <constraint firstItem="HPg-cP-7PI" firstAttribute="leading" secondItem="Q0O-w6-LUs" secondAttribute="trailing" id="G2P-rX-Ai8"/>
+                                    <constraint firstAttribute="height" constant="110" id="5nx-ep-JfD"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q0O-w6-LUs" secondAttribute="trailing" constant="20" id="GAG-aV-Fxb"/>
                                     <constraint firstAttribute="trailing" secondItem="cP5-TG-XyE" secondAttribute="trailing" id="KHh-iD-z2M"/>
-                                    <constraint firstItem="2Qb-TT-JUE" firstAttribute="top" secondItem="MF0-Qr-CUO" secondAttribute="top" constant="17" id="TEL-nN-C62"/>
+                                    <constraint firstItem="L4o-Bd-z12" firstAttribute="centerY" secondItem="MF0-Qr-CUO" secondAttribute="centerY" id="Q9J-Np-1GL"/>
+                                    <constraint firstItem="2Qb-TT-JUE" firstAttribute="top" secondItem="MF0-Qr-CUO" secondAttribute="top" constant="19" id="TEL-nN-C62"/>
                                     <constraint firstItem="cP5-TG-XyE" firstAttribute="top" secondItem="MF0-Qr-CUO" secondAttribute="top" id="Yjt-u2-gHI"/>
-                                    <constraint firstItem="HPg-cP-7PI" firstAttribute="leading" secondItem="2Qb-TT-JUE" secondAttribute="trailing" id="axJ-oG-5sH"/>
+                                    <constraint firstAttribute="trailing" secondItem="2Qb-TT-JUE" secondAttribute="trailing" id="ZlN-qH-Ncc"/>
                                     <constraint firstItem="cP5-TG-XyE" firstAttribute="leading" secondItem="MF0-Qr-CUO" secondAttribute="leading" id="azc-JU-ldQ"/>
-                                    <constraint firstItem="2Qb-TT-JUE" firstAttribute="leading" secondItem="MF0-Qr-CUO" secondAttribute="leading" constant="20" id="f03-To-Mfx"/>
-                                    <constraint firstItem="Q0O-w6-LUs" firstAttribute="top" secondItem="2Qb-TT-JUE" secondAttribute="bottom" constant="8" id="rlR-q3-5wV"/>
-                                    <constraint firstAttribute="bottom" secondItem="HPg-cP-7PI" secondAttribute="bottom" id="sby-nl-X0m"/>
+                                    <constraint firstItem="2Qb-TT-JUE" firstAttribute="leading" secondItem="MF0-Qr-CUO" secondAttribute="leading" constant="61" id="f03-To-Mfx"/>
+                                    <constraint firstItem="L4o-Bd-z12" firstAttribute="leading" secondItem="MF0-Qr-CUO" secondAttribute="leading" constant="17" id="liL-eq-qCj"/>
+                                    <constraint firstItem="Q0O-w6-LUs" firstAttribute="top" secondItem="2Qb-TT-JUE" secondAttribute="bottom" constant="7" id="rlR-q3-5wV"/>
                                     <constraint firstAttribute="bottom" secondItem="cP5-TG-XyE" secondAttribute="bottom" id="zzy-AP-P61"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Voy-7y-pxZ">
-                                <rect key="frame" x="15" y="184" width="345" height="124"/>
+                                <rect key="frame" x="15" y="200" width="290" height="110"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlightedImage="ic_check" translatesAutoresizingMaskIntoConstraints="NO" id="YYt-BH-tzY">
+                                        <rect key="frame" x="17" y="43" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="aqy-sN-v95"/>
+                                            <constraint firstAttribute="height" constant="24" id="fJY-tp-hqh"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Wallet Manually" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ekh-Ag-CRh">
+                                        <rect key="frame" x="61" y="19" width="229" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Create Wallet Manually"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will need to back up your Recovery Phrase and security PIN created by you." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="hAL-xc-qmR">
-                                        <rect key="frame" x="20" y="50" width="305" height="54"/>
+                                        <rect key="frame" x="61" y="45.5" width="209" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="Bns-BK-ymJ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -90,38 +106,32 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylT-Td-wh5">
-                                        <rect key="frame" x="0.0" y="0.0" width="345" height="124"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="110"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <action selector="touchBtnManual:" destination="ydB-hX-WIu" eventType="touchUpInside" id="Bjs-Ru-4yJ"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Wallet Manually" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ekh-Ag-CRh">
-                                        <rect key="frame" x="20" y="17" width="217" height="24"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Create Wallet Manually"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Ekh-Ag-CRh" firstAttribute="leading" secondItem="Voy-7y-pxZ" secondAttribute="leading" constant="20" id="6ok-1o-pLe"/>
+                                    <constraint firstItem="Ekh-Ag-CRh" firstAttribute="leading" secondItem="Voy-7y-pxZ" secondAttribute="leading" constant="61" id="6ok-1o-pLe"/>
                                     <constraint firstItem="ylT-Td-wh5" firstAttribute="leading" secondItem="Voy-7y-pxZ" secondAttribute="leading" id="89d-XH-MmS"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ekh-Ag-CRh" secondAttribute="trailing" id="9gE-qL-cSM"/>
                                     <constraint firstAttribute="trailing" secondItem="hAL-xc-qmR" secondAttribute="trailing" constant="20" id="9ji-B2-32J"/>
+                                    <constraint firstItem="YYt-BH-tzY" firstAttribute="leading" secondItem="Voy-7y-pxZ" secondAttribute="leading" constant="17" id="B7c-ae-hcN"/>
                                     <constraint firstAttribute="bottom" secondItem="ylT-Td-wh5" secondAttribute="bottom" id="Fcc-cf-aTs"/>
                                     <constraint firstItem="hAL-xc-qmR" firstAttribute="leading" secondItem="Ekh-Ag-CRh" secondAttribute="leading" id="Gvd-fw-jxF"/>
-                                    <constraint firstItem="hAL-xc-qmR" firstAttribute="top" secondItem="Ekh-Ag-CRh" secondAttribute="bottom" constant="9" id="MVc-wP-133"/>
+                                    <constraint firstItem="hAL-xc-qmR" firstAttribute="top" secondItem="Ekh-Ag-CRh" secondAttribute="bottom" constant="7" id="MVc-wP-133"/>
                                     <constraint firstItem="ylT-Td-wh5" firstAttribute="top" secondItem="Voy-7y-pxZ" secondAttribute="top" id="gAv-dC-QJC"/>
+                                    <constraint firstItem="YYt-BH-tzY" firstAttribute="centerY" secondItem="Voy-7y-pxZ" secondAttribute="centerY" id="gng-L5-TGF"/>
                                     <constraint firstAttribute="trailing" secondItem="ylT-Td-wh5" secondAttribute="trailing" id="mqm-MT-K42"/>
-                                    <constraint firstItem="Ekh-Ag-CRh" firstAttribute="top" secondItem="Voy-7y-pxZ" secondAttribute="top" constant="17" id="rgL-i0-C5m"/>
+                                    <constraint firstItem="Ekh-Ag-CRh" firstAttribute="top" secondItem="Voy-7y-pxZ" secondAttribute="top" constant="19" id="rgL-i0-C5m"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*What are Recovery Phrase?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bii-MV-lOf">
-                                <rect key="frame" x="35" y="498.5" width="208" height="18"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <rect key="frame" x="35" y="338" width="195" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -129,9 +139,9 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jhr-eT-Sak">
-                                <rect key="frame" x="35" y="529.5" width="305" height="107.5"/>
+                                <rect key="frame" x="35" y="363" width="250" height="109"/>
                                 <string key="text">Recovery Phrase are random set of words used to secure your digital wallet. You should write down these words in order so that in the event you lose your digital wallet or forget your PIN, you can recover your wallet and/or reset your PIN.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -140,28 +150,100 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMf-Bm-lVA">
+                                <rect key="frame" x="0.0" y="452" width="320" height="116"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAI-Jc-ztm">
+                                        <rect key="frame" x="15" y="0.0" width="290" height="50"/>
+                                        <color key="backgroundColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Qhd-rJ-80R"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Continue">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Continue"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="touchBtnContinue:" destination="ydB-hX-WIu" eventType="touchUpInside" id="DIK-zX-VXM"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have another MozoX account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BF4-RO-LBQ">
+                                        <rect key="frame" x="12" y="76" width="232.5" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Already have another MozoX account?"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8x4-UK-q9c">
+                                        <rect key="frame" x="248.5" y="70" width="51" height="28"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <state key="normal" title="Log Out">
+                                            <color key="titleColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Log Out"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="touchBtnLogout:" destination="ydB-hX-WIu" eventType="touchUpInside" id="zOT-kp-d6U"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="sAI-Jc-ztm" firstAttribute="top" secondItem="UMf-Bm-lVA" secondAttribute="top" id="8wi-ef-nGH"/>
+                                    <constraint firstAttribute="trailing" secondItem="sAI-Jc-ztm" secondAttribute="trailing" constant="15" id="Zb9-sg-ERz"/>
+                                    <constraint firstItem="sAI-Jc-ztm" firstAttribute="leading" secondItem="UMf-Bm-lVA" secondAttribute="leading" constant="15" id="anw-ie-rwx"/>
+                                    <constraint firstItem="8x4-UK-q9c" firstAttribute="leading" secondItem="BF4-RO-LBQ" secondAttribute="trailing" constant="4" id="eQv-89-qVJ"/>
+                                    <constraint firstItem="8x4-UK-q9c" firstAttribute="centerY" secondItem="BF4-RO-LBQ" secondAttribute="centerY" id="eYs-Xu-dWL"/>
+                                    <constraint firstAttribute="bottom" secondItem="BF4-RO-LBQ" secondAttribute="bottom" constant="24" id="eqk-0Q-Je5"/>
+                                    <constraint firstAttribute="height" constant="116" id="m1k-zx-G4C"/>
+                                    <constraint firstItem="BF4-RO-LBQ" firstAttribute="centerX" secondItem="UMf-Bm-lVA" secondAttribute="centerX" constant="-32" id="xd1-V7-4ay"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You want:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hR-HG-OdX">
+                                <rect key="frame" x="15" y="39" width="77" height="20"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="You want:"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Bii-MV-lOf" firstAttribute="top" secondItem="Voy-7y-pxZ" secondAttribute="bottom" constant="28" id="0Uq-MP-YFd"/>
                             <constraint firstItem="MkF-IJ-GeL" firstAttribute="trailing" secondItem="MF0-Qr-CUO" secondAttribute="trailing" constant="15" id="1jn-QJ-e0N"/>
+                            <constraint firstItem="UMf-Bm-lVA" firstAttribute="leading" secondItem="MkF-IJ-GeL" secondAttribute="leading" id="6HT-Mn-Nvy"/>
+                            <constraint firstItem="MkF-IJ-GeL" firstAttribute="trailing" secondItem="UMf-Bm-lVA" secondAttribute="trailing" id="9cq-NQ-F3p"/>
                             <constraint firstItem="Voy-7y-pxZ" firstAttribute="trailing" secondItem="MF0-Qr-CUO" secondAttribute="trailing" id="B7b-uw-z4f"/>
                             <constraint firstItem="Voy-7y-pxZ" firstAttribute="leading" secondItem="MF0-Qr-CUO" secondAttribute="leading" id="Cgf-EO-97O"/>
                             <constraint firstItem="Voy-7y-pxZ" firstAttribute="height" secondItem="MF0-Qr-CUO" secondAttribute="height" id="GIp-bP-syq"/>
                             <constraint firstItem="Bii-MV-lOf" firstAttribute="leading" secondItem="Jhr-eT-Sak" secondAttribute="leading" id="I7X-YB-EbA"/>
-                            <constraint firstItem="MkF-IJ-GeL" firstAttribute="bottom" secondItem="Jhr-eT-Sak" secondAttribute="bottom" constant="30" id="J8S-Xy-0ck"/>
                             <constraint firstItem="Voy-7y-pxZ" firstAttribute="top" secondItem="MF0-Qr-CUO" secondAttribute="bottom" constant="20" id="LhH-z5-vVl"/>
+                            <constraint firstItem="UMf-Bm-lVA" firstAttribute="bottom" secondItem="MkF-IJ-GeL" secondAttribute="bottom" id="QYb-ME-5Y8"/>
                             <constraint firstItem="MF0-Qr-CUO" firstAttribute="leading" secondItem="MkF-IJ-GeL" secondAttribute="leading" constant="15" id="VBM-yT-omE"/>
-                            <constraint firstItem="Jhr-eT-Sak" firstAttribute="top" secondItem="Bii-MV-lOf" secondAttribute="bottom" constant="13" id="Xss-bn-Ped"/>
+                            <constraint firstItem="0hR-HG-OdX" firstAttribute="top" secondItem="MkF-IJ-GeL" secondAttribute="top" constant="19" id="X1X-XU-jpb"/>
+                            <constraint firstItem="Jhr-eT-Sak" firstAttribute="top" secondItem="Bii-MV-lOf" secondAttribute="bottom" constant="7" id="Xss-bn-Ped"/>
                             <constraint firstItem="MkF-IJ-GeL" firstAttribute="trailing" secondItem="Jhr-eT-Sak" secondAttribute="trailing" constant="35" id="fS3-Hp-m60"/>
                             <constraint firstItem="Jhr-eT-Sak" firstAttribute="leading" secondItem="MkF-IJ-GeL" secondAttribute="leading" constant="35" id="ir1-ga-cMP"/>
-                            <constraint firstItem="MF0-Qr-CUO" firstAttribute="top" secondItem="MkF-IJ-GeL" secondAttribute="top" constant="20" id="wIr-9c-Wkg"/>
+                            <constraint firstItem="MF0-Qr-CUO" firstAttribute="top" secondItem="MkF-IJ-GeL" secondAttribute="top" constant="50" id="wIr-9c-Wkg"/>
+                            <constraint firstItem="0hR-HG-OdX" firstAttribute="leading" secondItem="MkF-IJ-GeL" secondAttribute="leading" constant="15" id="xSF-U3-OUM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MkF-IJ-GeL"/>
                     </view>
                     <connections>
+                        <outlet property="autoImgCheck" destination="L4o-Bd-z12" id="xSR-af-vj3"/>
                         <outlet property="containerViewAuto" destination="MF0-Qr-CUO" id="bNL-Hh-ug2"/>
                         <outlet property="containerViewManual" destination="Voy-7y-pxZ" id="tcS-6S-FDF"/>
-                        <outlet property="rocketImg" destination="HPg-cP-7PI" id="uiQ-Jd-HXK"/>
+                        <outlet property="footerContainerView" destination="UMf-Bm-lVA" id="FRO-hj-BRP"/>
+                        <outlet property="lbExplainRecoveryPhrase" destination="Jhr-eT-Sak" id="chU-4I-7c8"/>
+                        <outlet property="manuImgCheck" destination="YYt-BH-tzY" id="N9P-hV-b0U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t1R-Xk-ogb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -170,6 +252,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="img_rocket" width="151.5" height="168"/>
+        <image name="ic_check" width="24" height="24"/>
     </resources>
 </document>

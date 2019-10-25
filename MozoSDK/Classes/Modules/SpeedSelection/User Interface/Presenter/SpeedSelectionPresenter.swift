@@ -17,4 +17,8 @@ extension SpeedSelectionPresenter: SpeedSelectionModuleInterface {
     func decideManualWay() {
         delegate?.didSelectManualWay()
     }
+    
+    func requestLogout() {
+        delegate?.didRequestLogoutInternally()
+    }
 }

@@ -9,4 +9,5 @@ import Foundation
 protocol SpeedSelectionModuleInterface {
     func decideAutoWay()
     func decideManualWay()
+    func requestLogout()
 }

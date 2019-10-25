@@ -9,4 +9,5 @@ import Foundation
 protocol SpeedSelectionModuleDelegate {
     func didSelectAutoWay()
     func didSelectManualWay()
+    func didRequestLogoutInternally()
 }
