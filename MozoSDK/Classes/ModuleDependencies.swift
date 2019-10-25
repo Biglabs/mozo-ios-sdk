@@ -89,7 +89,9 @@ class ModuleDependencies {
     
     func processAuthorizationCallBackUrl(_ url: URL) {
         // SSO: not support
-//        authWireframe.processAuthorizationCallBackUrl(url)
+//        if #available(iOS 10, *) {
+            authWireframe.processAuthorizationCallBackUrl(url)
+//        }
     }
     
     func logout() {
