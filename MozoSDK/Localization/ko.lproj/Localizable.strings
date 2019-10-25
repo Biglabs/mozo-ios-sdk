@@ -1284,3 +1284,10 @@
 
 "Top Local Airdrop Events" = "로컬 탑 에어드롭 이벤트";
 "Top International Airdrop Events" = "글로벌 탑 에어드롭 이벤트";
+
+// Speed Selection + Login Incorrect Time
+"You want:" = "당신이 원하는 것은:";
+"Already have another MozoX account? Log Out" = "다른 모조X 계정을 가지고 계신거에요? 로그아웃";
+"Already have another MozoX account?" = "다른 모조X 계정을 가지고 계신거에요?";
+"The time on your device is incorrect." = "시간이 정확하지 않습니다";
+"Please update the date and time, then try again." = "시간 업데이트 하시고 다시 시도해보세요.";
