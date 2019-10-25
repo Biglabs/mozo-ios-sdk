@@ -15,7 +15,8 @@ extension DisplayUtils {
                 print("DisplayUtils - Maintenence screen is being displayed.")
                 return
             }
-            if topViewController.isKind(of: NSClassFromString("SFAuthenticationViewController")!) {
+            if let klass = DisplayUtils.getAuthenticationClass(),
+                topViewController.isKind(of: klass) {
                 print("DisplayUtils - Authentication screen is being displayed.")
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
                     self.displayMaintenanceScreen()
@@ -26,6 +27,7 @@ extension DisplayUtils {
             print("DisplayUtils - topViewController - presentedViewController: \(String(describing: topViewController.presentedViewController))")
             print("DisplayUtils - Display maintenance screen with top view controller: \(topViewController)")
             let viewController = MaintenanceViewController.viewControllerFromStoryboard()
+            viewController.modalPresentationStyle = .fullScreen
             topViewController.present(viewController, animated: false)
         } else {
             print("DisplayUtils - Can not display maintenance screen - no top view controller")

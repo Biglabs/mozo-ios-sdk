@@ -14,4 +14,9 @@ extension CorePresenter: SpeedSelectionModuleDelegate {
     func didSelectManualWay() {
         coreWireframe?.prepareForWalletInterface()
     }
+    
+    func didRequestLogoutInternally() {
+        print("CorePresenter - Handle logout internally")
+        coreWireframe?.requestForLogout()
+    }
 }

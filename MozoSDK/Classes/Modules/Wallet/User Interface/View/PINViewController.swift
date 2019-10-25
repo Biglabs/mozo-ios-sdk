@@ -71,7 +71,7 @@ class PINViewController : MozoBasicViewController {
         pinTextField.keyboardType = .numberPad
         if self.passPhrase == nil {
             switch moduleRequested {
-            case .Transaction, .Airdrop, .Convert:
+            case .Transaction, .Airdrop, .Convert, .Redeem:
                 var text = "Enter your Security PIN\nto send MozoX"
                 if moduleRequested == .Airdrop {
                     text = "Enter your Security PIN\nto create airdrop event"
@@ -100,7 +100,7 @@ class PINViewController : MozoBasicViewController {
                 break
             default:
                 // Enter new pin and confirm new pin to restore wallet
-                enterPINLabel.text = "ENTER YOUR SECURITY PIN".localized
+//                enterPINLabel.text = "ENTER YOUR SECURITY PIN".localized
                 enterPINLabel.text = "Enter your Security PIN\nto restore wallet".localized
                 if Locale.current.languageCode != "ko" {
                     enterPINLabel.text = "Enter your Security PIN\nto restore wallet".localized.uppercased()

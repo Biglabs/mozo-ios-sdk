@@ -154,7 +154,7 @@ private extension CorePresenter {
         }
     }
     
-    private func stopSilentServices(shouldReconnect: Bool = true) {
+    public func stopSilentServices(shouldReconnect: Bool = true) {
         print("CorePresenter - Stop silent services.")
         // Stop silent services
         rdnInteractor?.stopService(shouldReconnect: shouldReconnect)
@@ -188,6 +188,15 @@ extension CorePresenter : CoreModuleInterface {
     }
     
     func requestForCloseAllMozoUIs() {
+        if let topViewController = DisplayUtils.getTopViewController(),
+            let klass = DisplayUtils.getAuthenticationClass(),
+            topViewController.isKind(of: klass) {
+            print("CorePresenter - Request for close all MozoUI, Authentication screen is being displayed.")
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(10)) {
+                self.requestForCloseAllMozoUIs()
+            }
+            return
+        }
         coreWireframe?.requestForCloseAllMozoUIs(completion: {
             self.authDelegate?.mozoUIDidCloseAll()
             self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers()
@@ -213,55 +222,6 @@ extension CorePresenter : CoreModuleWaitingInterface {
         coreWireframe?.authWireframe?.presentInitialAuthInterface()
     }
 }
-extension CorePresenter : AuthModuleDelegate {
-    func didCheckAuthorizationSuccess() {
-        print("On Check Authorization Did Success: Download convenience data")
-        SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
-        readyForGoingLive()
-    }
-    
-    func didCheckAuthorizationFailed() {
-        print("On Check Authorization Did Failed - No connection")
-    }
-    
-    func didRemoveTokenAndLogout() {
-        print("On Check Authorization Did remove token and logout")
-        SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
-        // Notify for all observing objects
-        coreInteractor?.notifyLogoutForAllObservers()
-        stopSilentServices(shouldReconnect: false)
-    }
-    
-    func authModuleDidFinishAuthentication(accessToken: String?) {
-        isAuthenticating = false
-        coreInteractor?.handleAferAuth(accessToken: accessToken)
-        // Notify for all observing objects
-        self.coreInteractor?.notifyAuthSuccessForAllObservers()
-    }
-
-    func authModuleDidFailedToMakeAuthentication(error: ConnectionError) {
-        waitingViewInterface?.displayTryAgain(error, forAction: .BuildAuth)
-    }
-    
-    func authModuleDidCancelAuthentication() {
-        isAuthenticating = false
-        requestForCloseAllMozoUIs()
-    }
-    
-    func authModuleDidFinishLogout() {
-        // Send delegate back to the app
-        authDelegate?.mozoLogoutDidFinish()
-        // Notify for all observing objects
-        coreInteractor?.notifyLogoutForAllObservers()
-        requestForCloseAllMozoUIs()
-        stopSilentServices(shouldReconnect: false)
-    }
-    
-    func authModuleDidCancelLogout() {
-        
-    }
-}
-
 extension CorePresenter: WalletModuleDelegate {
     func walletModuleDidFinish() {
         print("CorePresenter - Wallet Module Did Finished, callbackModule: \(callBackModule?.value ?? "NO MODULE")")

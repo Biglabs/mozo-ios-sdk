@@ -17,6 +17,7 @@ public enum ConnectionError: Error {
     case badRequest
     
     case systemError
+    case incorrectSystemDateTime
     
     case apiError_INTERNAL_ERROR
     case apiError_UNAUTHORIZED_ACCESS
@@ -108,7 +109,8 @@ public enum ConnectionError: Error {
              .authenticationRequired,
              .internalServerError,
              .badRequest,
-             .systemError:
+             .systemError,
+             .incorrectSystemDateTime:
             return false
         default:
             return true
@@ -245,6 +247,8 @@ extension ConnectionError: LocalizedError {
             return "Bad request"
         case .systemError:
             return "System error"
+        case .incorrectSystemDateTime:
+            return "Incorrect System Date Time"
         default:
             return "Api Error"
         }

@@ -17,4 +17,6 @@ protocol AuthModuleDelegate {
     func didCheckAuthorizationSuccess()
     func didCheckAuthorizationFailed()
     func didRemoveTokenAndLogout()
+    
+    func didReceiveErrorWhileExchangingCode()
 }

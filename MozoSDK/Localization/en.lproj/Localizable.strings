@@ -1282,3 +1282,10 @@
 "Valid in %02d:%02d" = "Valid in %02d:%02d";
 "Show parking lot attendants this QR to check in" = "Show parking lot attendants this QR to check in";
 "Show parking lot attendants this QR to check out" = "Show parking lot attendants this QR to check out";
+
+// Speed Selection + Login Incorrect Time
+"You want:" = "You want:";
+"Already have another MozoX account? Log Out" = "Already have another MozoX account? Log Out";
+"Already have another MozoX account?" = "Already have another MozoX account?";
+"The time on your device is incorrect." = "The time on your device is incorrect.";
+"Please update the date and time, then try again." = "Please update the date and time, then try again.";

@@ -1286,3 +1286,10 @@
 "Valid in %02d:%02d" = "Có giá trị trong %02d:%02d";
 "Show parking lot attendants this QR to check in" = "Đưa QR cho nhân viên giữ xe để vào";
 "Show parking lot attendants this QR to check out" = "Đưa QR cho nhân viên giữ xe để ra";
+
+// Speed Selection + Login Incorrect Time
+"You want:" = "Bạn muốn:";
+"Already have another MozoX account? Log Out" = "Đã có tài khoản MozoX khác? Đăng xuất.";
+"Already have another MozoX account?" = "Đã có tài khoản MozoX khác?";
+"The time on your device is incorrect." = "Đồng hồ của bạn không chính xác.";
+"Please update the date and time, then try again." = "Xin vui lòng cập nhật ngày giờ và thử lại sau.";
