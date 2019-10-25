@@ -45,6 +45,7 @@ class RootWireframe : NSObject {
     
     func showRootViewController(_ viewController: UIViewController, inWindow: UIWindow) {
         mozoNavigationController.viewControllers = [viewController]
+        mozoNavigationController.modalPresentationStyle = .fullScreen
         if inWindow.rootViewController != nil {
             let top = getTopViewController()
             top?.present(mozoNavigationController, animated: true, completion: nil)
@@ -72,6 +73,7 @@ class RootWireframe : NSObject {
     
     func presentViewController(_ viewController: UIViewController) {
         let top = getTopViewController()
+        viewController.modalPresentationStyle = .fullScreen
         top?.present(viewController, animated: true, completion: nil)
     }
     
