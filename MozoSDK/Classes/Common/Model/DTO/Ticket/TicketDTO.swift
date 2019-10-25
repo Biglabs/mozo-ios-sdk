@@ -27,6 +27,10 @@ public class TicketDTO: ResponseObjectSerializable {
     public var useCash: Bool?
     public var vehicle: VehicleInfoDTO?
     
+    public var notEnough: Bool?
+    public var expiredDate: Int64?
+    public var cash: Double?
+    
     public required init(partyName: String, coverImage: String) {
         self.partyName = partyName
         self.coverImage = coverImage
@@ -50,6 +54,10 @@ public class TicketDTO: ResponseObjectSerializable {
         self.unitCurrency = json["unitCurrency"].string
         self.useCash = json["useCash"].bool
         self.vehicle = VehicleInfoDTO(json: json["vehicle"])
+        
+        self.notEnough = json["notEnough"].bool
+        self.expiredDate = json["expiredDate"].int64
+        self.cash = json["cash"].double
     }
 }
 
