@@ -187,8 +187,8 @@ class AuthManager : NSObject {
                 
                 print("Got configuration: \(config)")
                 
-                guard let redirectURI = URL(string: Configuration.AUTH_REDIRECT_URL) else {
-                    print("Error creating URL for : \(Configuration.AUTH_REDIRECT_URL)")
+                guard let redirectURI = URL(string: Configuration.authRedirectURL()) else {
+                    print("Error creating URL for : \(Configuration.authRedirectURL())")
                     return
                 }
                 let param = [Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE,
@@ -217,8 +217,8 @@ class AuthManager : NSObject {
             
             // discovers endpoints
             OIDAuthorizationService.discoverConfiguration(forIssuer: issuer){ configuration, error in
-                guard let redirectURI = URL(string: Configuration.AUTH_REDIRECT_URL) else {
-                    print("Error creating URL for : \(Configuration.AUTH_REDIRECT_URL)")
+                guard let redirectURI = URL(string: Configuration.authRedirectURL()) else {
+                    print("Error creating URL for : \(Configuration.authRedirectURL())")
                     return
                 }
                 // https://dev.keycloak.mozocoin.io/auth/realms/mozo/protocol/openid-connect/logout
@@ -253,7 +253,7 @@ class AuthManager : NSObject {
                 self.buildAuthRequest().done({ (authRequest) in
                     let authUrl = authRequest?.authorizationRequestURL()
                     guard let redirectURI = authUrl else {
-                        print("Error creating URL for : \(Configuration.AUTH_REDIRECT_URL)")
+                        print("Error creating URL for : \(Configuration.authRedirectURL())")
                         return
                     }
                     // https://dev.keycloak.mozocoin.io/auth/realms/mozo/protocol/openid-connect/logout
@@ -289,8 +289,8 @@ extension AuthManager {
     
     func doClientRegistration(configuration: OIDServiceConfiguration, callback: @escaping PostRegistrationCallback) {
         
-        guard let redirectURI = URL(string: Configuration.AUTH_REDIRECT_URL) else {
-            print("Error creating URL for : \(Configuration.AUTH_REDIRECT_URL)")
+        guard let redirectURI = URL(string: Configuration.authRedirectURL()) else {
+            print("Error creating URL for : \(Configuration.authRedirectURL())")
             return
         }
         
@@ -320,8 +320,8 @@ extension AuthManager {
     
     func doAuthWithAutoCodeExchange(configuration: OIDServiceConfiguration, clientID: String, clientSecret: String?) {
         
-        guard let redirectURI = URL(string: Configuration.AUTH_REDIRECT_URL) else {
-            print("Error creating URL for : \(Configuration.AUTH_REDIRECT_URL)")
+        guard let redirectURI = URL(string: Configuration.authRedirectURL()) else {
+            print("Error creating URL for : \(Configuration.authRedirectURL())")
             return
         }
         
@@ -340,8 +340,8 @@ extension AuthManager {
     
     func doAuthWithoutCodeExchange(configuration: OIDServiceConfiguration, clientID: String, clientSecret: String?) {
         
-        guard let redirectURI = URL(string: Configuration.AUTH_REDIRECT_URL) else {
-            print("Error creating URL for : \(Configuration.AUTH_REDIRECT_URL)")
+        guard let redirectURI = URL(string: Configuration.authRedirectURL()) else {
+            print("Error creating URL for : \(Configuration.authRedirectURL())")
             return
         }
         
@@ -384,7 +384,7 @@ extension AuthManager {
 //            if tokenExchangeRequest.redirectURL?.absoluteString.contains(Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH) ?? false {
 //                var urlString = tokenExchangeRequest.redirectURL?.absoluteString ?? ""
 //                let startRange = urlString.range(of: Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH)!.lowerBound
-//                let endRange = urlString.range(of: Configuration.AUTH_REDIRECT_URL)!.lowerBound
+//                let endRange = urlString.range(of: Configuration.authRedirectURL())!.lowerBound
 //                let removeString = String(urlString[startRange..<endRange])
 //                urlString = urlString.replace(removeString, withString: "")
 //                let clientIdIndex = urlString.range(of: "&client_id=")!.lowerBound

@@ -102,6 +102,8 @@ public class Configuration {
     
     public static let AUTH_REDIRECT_URL = "com.biglabs.mozosdk://\(AUTH_REDIRECT_CALLBACK_PATH)"
     
+    public static let AUTH_REDIRECT_URL_FOR_IOS_10 = "\(Bundle.main.bundleIdentifier ?? "")://\(AUTH_REDIRECT_CALLBACK_PATH)"
+    
     /**
      NSCoding key for the authState property.
      */
@@ -111,4 +113,11 @@ public class Configuration {
     
     // Landing page
     public static let LANDING_PAGE_URL = "https://\(SUB_DOMAIN)mozocoin.io"
+    
+    public static func authRedirectURL() -> String {
+//        if #available(iOS 10, *) {
+            return AUTH_REDIRECT_URL_FOR_IOS_10
+//        }
+//        return AUTH_REDIRECT_URL
+    }
 }
