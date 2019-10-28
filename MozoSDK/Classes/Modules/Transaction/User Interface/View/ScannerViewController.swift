@@ -113,10 +113,7 @@ class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOutputObj
 
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
-            guard let stringValue = readableObject.stringValue else {
-                back()
-                return
-            }
+            guard let stringValue = readableObject.stringValue else { return }
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             dismiss(animated: true) {
                 self.delegate?.didReceiveValueFromScanner(stringValue)
