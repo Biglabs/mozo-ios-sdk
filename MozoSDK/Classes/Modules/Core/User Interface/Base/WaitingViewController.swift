@@ -101,6 +101,7 @@ extension WaitingViewController: WaitingViewInterface {
                                       message: "Please update the date and time, then try again.".localized,
                                       preferredStyle: .alert)
         alert.addAction(.init(title: "Settings".localized, style: .default, handler: { (action) in
+            (self.navigationController as? MozoNavigationController)?.tapCloseBtn()
             self.openSettings()
         }))
         self.present(alert, animated: true, completion: nil)
