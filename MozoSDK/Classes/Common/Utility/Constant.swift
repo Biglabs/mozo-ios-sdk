@@ -66,6 +66,7 @@ public enum Module {
     case Settings
     case ChangePIN
     case Redeem
+    case TopUp
     
     public var key : String {
         switch self {
@@ -84,6 +85,7 @@ public enum Module {
             case .Settings: return "Settings"
             case .ChangePIN: return "ChangePIN"
             case .Redeem: return "Redeem"
+            case .TopUp: return "TopUp"
         }
     }
     
@@ -104,6 +106,7 @@ public enum Module {
             case .Settings: return "Settings"
             case .ChangePIN: return "ChangePIN"
             case .Redeem: return "Redeem"
+            case .TopUp: return "TopUp"
         }
     }
 }

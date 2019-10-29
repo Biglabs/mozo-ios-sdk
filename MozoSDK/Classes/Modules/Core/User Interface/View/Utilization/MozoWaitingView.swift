@@ -60,6 +60,13 @@ public class MozoWaitingView: UIView {
             NSLayoutConstraint(item: lbExplain, attribute: .top, relatedBy: .equal, toItem: imgLoading, attribute: .bottom, multiplier: 1.0, constant: 16),
             NSLayoutConstraint(item: lbExplain, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1.0, constant: -90)
             ])
+        
+        setupSpinningView()
+    }
+    
+    func setupSpinningView() {
+        let advTimeGif = UIImage.gifImageWithName("spinner")
+        self.imgLoading.image = advTimeGif
     }
     
     public func rotateView(duration: Double = 1.0) {

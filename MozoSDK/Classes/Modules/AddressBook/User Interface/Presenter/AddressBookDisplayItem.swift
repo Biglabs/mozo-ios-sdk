@@ -38,4 +38,6 @@ extension AddressBookDisplayItem : Equatable {
     public static func == (leftSide: AddressBookDisplayItem, rightSide: AddressBookDisplayItem) -> Bool {
         return rightSide.name == leftSide.name && rightSide.address == rightSide.address
     }
+    
+    public static var TopUpAddressBookDisplayItem = AddressBookDisplayItem(name: "Top Up Wallet".localized)
 }

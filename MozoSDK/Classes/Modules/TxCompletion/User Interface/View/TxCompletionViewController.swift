@@ -31,6 +31,8 @@ class TxCompletionViewController: MozoBasicViewController {
     @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var btnDetail: UIButton!
     
+    var moduleRequest: Module = .Transaction
+    
     var stopWaiting = false
     
     override func viewDidLoad() {
@@ -43,7 +45,14 @@ class TxCompletionViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "Send MozoX".localized
+        var text = "Send MozoX"
+        switch moduleRequest {
+        case .TopUp:
+            text = "Top Up"
+        default:
+            break
+        }
+        navigationItem.title = text.localized
         checkAddressBook()
     }
     
@@ -56,9 +65,21 @@ class TxCompletionViewController: MozoBasicViewController {
     }
     
     func checkAddressBook() {
-        print("Check address book")
+        print("TxCompletionViewController - Check address book")
         // No need to show before waiting completed.
         if stopWaiting {
+            if moduleRequest == .TopUp {
+                let addressBook = AddressBookDisplayItem.TopUpAddressBookDisplayItem
+                addressBookView.isHidden = false
+                lbAddress.isHidden = true
+                addressBookView.addressBook = addressBook
+                addressBookView.btnClear.isHidden = true
+                txCompletionViewHeightConstraint.constant = 181
+                
+                btnSave.isHidden = true
+                btnDetail.isHidden = true
+                return
+            }
             // Check address book
             // Verify address is existing in address book list or not
             let contain = AddressBookDTO.arrayContainsItem(detailItem.addressTo, array: SafetyDataManager.shared.addressBookList) ||

@@ -13,6 +13,7 @@ class TransactionPresenter : NSObject {
     var transferUserInterface : TransferViewInterface?
     var confirmUserInterface : ConfirmTransferViewInterface?
     var transactionModuleDelegate: TransactionModuleDelegate?
+    var topUpModuleDelegate: TopUpModuleDelegate?
     
     var searchPhoneNo: String?
     
@@ -33,6 +34,11 @@ extension TransactionPresenter: TransactionModuleInterface {
     func sendConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO) {
         confirmUserInterface?.displaySpinner()
         txInteractor?.sendUserConfirmTransaction(transaction, tokenInfo: tokenInfo)
+    }
+    
+    func topUpConfirmTransaction(_ transaction: TransactionDTO) {
+        confirmUserInterface?.displaySpinner()
+        topUpModuleDelegate?.didConfirmTopUpTransaction(transaction)
     }
     
     func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?) {
@@ -117,7 +123,7 @@ extension TransactionPresenter : TransactionInteractorOutput {
 
 extension TransactionPresenter : PinModuleDelegate {
     func verifiedPINSuccess(_ pin: String) {
-        print("Did receive PIN: \(pin)")
+        print("TransactionPresenter - Did receive PIN: \(pin)")
         transactionModuleDelegate?.removePINDelegate()
         txInteractor?.performTransfer(pin: pin)
     }

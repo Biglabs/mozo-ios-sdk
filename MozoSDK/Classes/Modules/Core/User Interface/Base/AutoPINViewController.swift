@@ -31,7 +31,7 @@ class AutoPINViewController: MozoBasicViewController {
     func setupWaitingView() {
         waitingView = MozoWaitingView(frame: self.view.frame)
         self.view.addSubview(waitingView)
-        waitingView.rotateView()
+//        waitingView.rotateView()
         waitingView.lbExplain.text = "System is using automatically generated PIN to sign your transaction and send it to network...".localized
     }
     
