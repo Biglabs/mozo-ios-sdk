@@ -253,7 +253,7 @@ extension ResetPINViewController: ResetPINViewInterface {
             waitingView.lbExplain.text = "Reset PIN is processing".localized
         }
         waitingView.stopRotating = false
-        waitingView.rotateView()
+//        waitingView.rotateView()
     }
     
     func closeWaiting(clearData: Bool, displayTryAgain: Bool) {
