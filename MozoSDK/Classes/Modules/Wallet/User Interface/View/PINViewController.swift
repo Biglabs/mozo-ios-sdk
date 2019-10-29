@@ -62,6 +62,7 @@ class PINViewController : MozoBasicViewController {
                 break
             }
         }
+        navigationController?.isNavigationBarHidden = false
         navigationItem.title = title.localized
     }
     
