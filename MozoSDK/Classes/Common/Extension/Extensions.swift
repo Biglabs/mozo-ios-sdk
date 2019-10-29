@@ -365,7 +365,7 @@ public extension Date {
         if minuteAgo < self {
             let diff = Calendar.current.dateComponents([.second], from: self, to: Date()).second ?? 0
             if diff < 30 {
-                return "Just Now".localized
+                return "Just now".localized
             }
             return "%d sec(s) ago".localizedFormat(diff)
         } else if hourAgo < self {
