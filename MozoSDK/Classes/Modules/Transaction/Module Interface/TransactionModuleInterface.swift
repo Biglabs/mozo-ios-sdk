@@ -17,4 +17,6 @@ protocol TransactionModuleInterface {
     func showAddressBookInterface()
     
     func findContact(_ phoneNo: String)
+    
+    func topUpConfirmTransaction(_ transaction: TransactionDTO)
 }

@@ -29,7 +29,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
     var transaction : TransactionDTO?
     var tokenInfo: TokenInfoDTO?
     var displayContactItem: AddressBookDisplayItem?
-    var isPaymentRequest: Bool = false
+    var moduleRequest: Module = .Transaction
     
     let defaultHeight : CGFloat = 53
     let addressBookHeight: CGFloat = 108
@@ -45,7 +45,16 @@ class ConfirmTransferViewController: MozoBasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Fix issue: Title is not correct after showing alert
-        self.title = (isPaymentRequest ? "Request MozoX" : "Send MozoX").localized
+        var text = "Send MozoX"
+        switch moduleRequest {
+        case .Payment:
+            text = "Request MozoX"
+        case .TopUp:
+            text = "Top Up"
+        default:
+            break
+        }
+        self.title = text.localized
     }
     
     func setupCircleView() {
@@ -60,21 +69,31 @@ class ConfirmTransferViewController: MozoBasicViewController {
         
         let labelText = "Receiver Address"
         var displayType = TransactionDisplayContactEnum.NoDetail
-        if let displayContactItem = displayContactItem {
+        if moduleRequest == .TopUp {
             lbAddress.isHidden = true
-            if displayContactItem.isStoreBook {
-//                labelText = "Receiver"
-                storeBookView.isHidden = false
-                lbStoreName.text = displayContactItem.name
-                lbStorePhysicalAddress.text = displayContactItem.physicalAddress
-                lbStoreOffchainAddress.text = displayContactItem.address
-                displayType = .StoreBookDetail
-            } else {
-//                labelText = "To"
-                addressBookView.isHidden = false
-                addressBookView.btnClear.isHidden = true
-                addressBookView.addressBook = displayContactItem
-                displayType = .AddressBookDetail
+            
+            displayContactItem = AddressBookDisplayItem.TopUpAddressBookDisplayItem
+            addressBookView.isHidden = false
+            addressBookView.btnClear.isHidden = true
+            addressBookView.addressBook = displayContactItem
+            displayType = .AddressBookDetail
+        } else {
+            if let displayContactItem = displayContactItem {
+                lbAddress.isHidden = true
+                if displayContactItem.isStoreBook {
+    //                labelText = "Receiver"
+                    storeBookView.isHidden = false
+                    lbStoreName.text = displayContactItem.name
+                    lbStorePhysicalAddress.text = displayContactItem.physicalAddress
+                    lbStoreOffchainAddress.text = displayContactItem.address
+                    displayType = .StoreBookDetail
+                } else {
+    //                labelText = "To"
+                    addressBookView.isHidden = false
+                    addressBookView.btnClear.isHidden = true
+                    addressBookView.addressBook = displayContactItem
+                    displayType = .AddressBookDetail
+                }
             }
         }
         lbReceiver.text = labelText.localized
@@ -101,7 +120,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
         lbAmountValueExchange.text = exAmount
     }
     
-    @IBAction func btnSendTapped(_ sender: Any) {
+    @IBAction func btnConfirmTapped(_ sender: Any) {
         eventHandler?.sendConfirmTransaction(transaction!, tokenInfo: self.tokenInfo!)
     }
 }
@@ -111,7 +130,7 @@ extension ConfirmTransferViewController : PopupErrorDelegate {
     }
     
     func didTouchTryAgainButton() {
-        print("User try transfer transaction again.")
+        print("ConfirmTransferViewController - User try transfer transaction again.")
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
             self.eventHandler?.requestToRetryTransfer()
         }

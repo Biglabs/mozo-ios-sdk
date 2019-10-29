@@ -2927,7 +2927,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Confirm"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="btnSendTapped:" destination="iKA-3Y-sf4" eventType="touchUpInside" id="zmv-oz-lvV"/>
+                                            <action selector="btnConfirmTapped:" destination="iKA-3Y-sf4" eventType="touchUpInside" id="zmv-oz-lvV"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTf-gY-xoX">

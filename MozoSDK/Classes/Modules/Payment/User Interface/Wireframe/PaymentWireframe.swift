@@ -31,6 +31,6 @@ class PaymentWireframe: MozoWireframe {
     }
     
     func presentTransactionConfirmInterface(transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayContactItem: AddressBookDisplayItem?) {
-        txWireframe?.presentConfirmInterface(transaction: transaction, tokenInfo: tokenInfo, displayContactItem: displayContactItem, isPaymentRequest: true)
+        txWireframe?.presentConfirmInterface(transaction: transaction, tokenInfo: tokenInfo, displayContactItem: displayContactItem, moduleRequest: .Payment)
     }
 }
