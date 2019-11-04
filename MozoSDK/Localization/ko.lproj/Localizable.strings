@@ -1291,3 +1291,7 @@
 "Already have another MozoX account?" = "다른 모조X 계정을 가지고 계신거에요?";
 "The time on your device is incorrect." = "시간이 정확하지 않습니다";
 "Please update the date and time, then try again." = "시간 업데이트 하시고 다시 시도해보세요.";
+
+// Promotion (Update)
+"Let store staff scan this QR code to redeem" = "스토어 직원에게 이 QR 코드 보여주세요";
+"Latest Promotions" = "최신 프로모션";
