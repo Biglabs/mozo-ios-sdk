@@ -152,25 +152,19 @@ class PaymentViewController: MozoBasicViewController {
     
     @objc func textFieldAmountDidChange() {
         print("TextFieldAmountDidChange")
-        if let rateInfo = SessionStoreManager.exchangeRateInfo {
-            if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
-                let originalText = txtAmount.text ?? "0"
-                let text = originalText.toTextNumberWithoutGrouping()
-                
-                let amountNumber = text.isEmpty ? 0 : NSDecimalNumber(string: text)
-                txtAmount.text = amountNumber.addCommas()
-                if originalText.hasSuffix(NSLocale.current.decimalSeparator ?? ".") {
-                    txtAmount.text = amountNumber.addCommas() + String(originalText.last!)
-                } else if originalText.hasSuffix("\(NSLocale.current.decimalSeparator ?? ".")0") {
-                    txtAmount.text = amountNumber.addCommas() + String(originalText.suffix(2))
-                }
-                let value = amountNumber.doubleValue
-                
-                let exValue = (value * (rateInfo.rate ?? 0))
-                let exValueStr = "\(curSymbol)\(exValue.roundAndAddCommas(toPlaces: type.decimalRound))"
-                lbExchange.text = exValueStr
-            }
+        let originalText = txtAmount.text ?? "0"
+        let text = originalText.toTextNumberWithoutGrouping()
+        
+        let amountNumber = text.isEmpty ? 0 : NSDecimalNumber(string: text)
+        txtAmount.text = amountNumber.addCommas()
+        if originalText.hasSuffix(NSLocale.current.decimalSeparator ?? ".") {
+            txtAmount.text = amountNumber.addCommas() + String(originalText.last!)
+        } else if originalText.hasSuffix("\(NSLocale.current.decimalSeparator ?? ".")0") {
+            txtAmount.text = amountNumber.addCommas() + String(originalText.suffix(2))
         }
+        let value = amountNumber.doubleValue
+        
+        lbExchange.text = DisplayUtils.getExchangeTextFromAmount(value)
     }
     
     @IBAction func touchedBtnCreate(_ sender: Any) {

@@ -99,6 +99,9 @@ public class TxHistoryDisplayCollection {
             let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
             if let type = type, let rateValue = rateInfo.rate {
                 result = (value * rateValue).rounded(toPlaces: type.decimalRound)
+                if type == .VND {
+                    result = ((value * rateValue) / 1000).rounded() * 1000
+                }
             }
         }
         return result

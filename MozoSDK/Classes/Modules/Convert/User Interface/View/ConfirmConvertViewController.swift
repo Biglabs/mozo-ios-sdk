@@ -78,17 +78,8 @@ class ConfirmConvertViewController: MozoBasicViewController {
             let amount = tx.value?.convertOutputValue(decimal: tokenInfo.decimals ?? 0) ?? 0
             lbOnchainAmount.text = amount.roundAndAddCommas()
             lbOffchainAmount.text = lbOnchainAmount.text
-            
-            var exAmount = "0.0"
-            if let rateInfo = SessionStoreManager.exchangeRateInfo {
-                if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
-                    let rate = rateInfo.rate ?? 0
-                    let amountValue = (amount * rate).rounded(toPlaces: type.decimalRound)
-                    exAmount = "\(curSymbol)\(amountValue.roundAndAddCommas())"
-                }
-            }
-            
-            lbOnchainAmountEx.text = exAmount
+                        
+            lbOnchainAmountEx.text = DisplayUtils.getExchangeTextFromAmount(amount)
             lbOffchainAmountEx.text = lbOnchainAmountEx.text
             
             lbGasLimit.text = gasLimit?.addCommas()

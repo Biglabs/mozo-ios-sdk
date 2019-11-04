@@ -223,16 +223,7 @@ class MozoOnchainWalletView: MozoView {
                 let formattedNumber = numberFormatter.string(from: number)
                 
                 lbEthBalance.text = formattedNumber
-                
-                var result = "0.0"
-                if let rateInfo = SessionStoreManager.ethExchangeRateInfo {
-                    let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
-                    if let type = type, let rateValue = rateInfo.rate, let curSymbol = rateInfo.currencySymbol {
-                        let valueText = (balance * rateValue).roundAndAddCommas(toPlaces: type.decimalRound)
-                        result = "\(curSymbol)\(valueText)"
-                    }
-                }
-                lbEthBalanceExchange.text = result
+                lbEthBalanceExchange.text = DisplayUtils.getExchangeTextFromAmount(balance)
             } else {
                 lbEthBalance.text = "Loading...".localized
                 lbEthBalanceExchange.text = "Loading...".localized
@@ -248,15 +239,7 @@ class MozoOnchainWalletView: MozoView {
             if balance >= 0 {
                 let balanceText = balance.roundAndAddCommas()
                 lbOnchainBalance.text = balanceText
-                var result = "0.0"
-                if let rateInfo = SessionStoreManager.exchangeRateInfo {
-                    let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
-                    if let type = type, let rateValue = rateInfo.rate, let curSymbol = rateInfo.currencySymbol {
-                        let valueText = (balance * rateValue).roundAndAddCommas(toPlaces: type.decimalRound)
-                        result = "\(curSymbol)\(valueText)"
-                    }
-                }
-                lbOnchainBalanceExchange.text = result
+                lbOnchainBalanceExchange.text = DisplayUtils.getExchangeTextFromAmount(balance)
             } else {
                 lbOnchainBalance.text = "Loading...".localized
                 lbOnchainBalanceExchange.text = "Loading...".localized

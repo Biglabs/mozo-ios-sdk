@@ -181,27 +181,20 @@ class TransferViewController: MozoBasicViewController {
     
     @objc func textFieldAmountDidChange() {
         print("TransferViewController - TextFieldAmountDidChange")
-        if let rateInfo = SessionStoreManager.exchangeRateInfo {
-            if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
-                let originalText = txtAmount.text ?? "0"
-                let text = originalText.toTextNumberWithoutGrouping()
-                
-                let sendAmount = text.isEmpty ? 0 : NSDecimalNumber(string: text)
-                txtAmount.text = sendAmount.addCommas()
-                if originalText.hasSuffix(NSLocale.current.decimalSeparator ?? ".") {
-                    txtAmount.text = sendAmount.addCommas() + String(originalText.last!)
-                } else if originalText.hasSuffix("\(NSLocale.current.decimalSeparator ?? ".")0") {
-                    txtAmount.text = sendAmount.addCommas() + String(originalText.suffix(2))
-                }
-                
-                let value = sendAmount.doubleValue
-                let exValue = (value * (rateInfo.rate ?? 0)).roundAndAddCommas(toPlaces: type.decimalRound)
-                let exValueStr = "\(curSymbol)\(exValue)"
-                lbExchangeAmount.text = exValueStr
-            }
-        } else {
-            
+        
+        let originalText = txtAmount.text ?? "0"
+        let text = originalText.toTextNumberWithoutGrouping()
+        
+        let sendAmount = text.isEmpty ? 0 : NSDecimalNumber(string: text)
+        txtAmount.text = sendAmount.addCommas()
+        if originalText.hasSuffix(NSLocale.current.decimalSeparator ?? ".") {
+            txtAmount.text = sendAmount.addCommas() + String(originalText.last!)
+        } else if originalText.hasSuffix("\(NSLocale.current.decimalSeparator ?? ".")0") {
+            txtAmount.text = sendAmount.addCommas() + String(originalText.suffix(2))
         }
+        
+        let value = sendAmount.doubleValue
+        lbExchangeAmount.text = DisplayUtils.getExchangeTextFromAmount(value)
     }
     
     @objc func textFieldAmountDidEndEditing() {

@@ -107,17 +107,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
             layoutConstraint.constant = defaultHeight
         }
         
-        var exAmount = "0.0"
-        
-        if let rateInfo = SessionStoreManager.exchangeRateInfo {
-            if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
-                let rate = rateInfo.rate ?? 0
-                let amountValue = (amount * rate).rounded(toPlaces: type.decimalRound)
-                exAmount = "\(curSymbol)\(amountValue.roundAndAddCommas())"
-            }
-        }
-        
-        lbAmountValueExchange.text = exAmount
+        lbAmountValueExchange.text = DisplayUtils.getExchangeTextFromAmount(amount)
     }
     
     @IBAction func btnConfirmTapped(_ sender: Any) {
