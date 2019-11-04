@@ -30,15 +30,16 @@ public enum PromotionStatusCode: String {
 
 public enum PromotionStatusRequestEnum : String {
     case RUNNING = "RUNNING"
-    case ENDED = "ENDED"
     case SCHEDULE = "SCHEDULE"
+    case ENDED = "ENDED"
     case EXPIRED = "EXPIRED"
+    case LATEST = "LATEST"
     
     public var displayText: String {
         switch self {
         case .RUNNING: return "REDEEM"
         case .SCHEDULE: return "COMING SOON"
-        case .ENDED, .EXPIRED: return rawValue
+        default: return rawValue
         }
     }
 }
@@ -48,6 +49,7 @@ public enum PromotionListTypeEnum: String {
     case COMINGSOON = "COMINGSOON"
     case HASHTAG = "HASHTAG"
     case RECOMMEND = "RECOMMEND"
+    case LATEST = "LATEST"
     
     public var loadMoreDisplayText: String {
         switch self {
@@ -55,6 +57,7 @@ public enum PromotionListTypeEnum: String {
         case .COMINGSOON: return "There are a lot of Coming Soon Promotion Events"
         case .HASHTAG: return "There are a lot of Hashtag Promotion Events"
         case .RECOMMEND: return "There are a lot of Recommend Promotion Events"
+        case .LATEST: return "There are a lot of Latest Promotion Events"
         }
     }
     
@@ -64,6 +67,7 @@ public enum PromotionListTypeEnum: String {
         case .COMINGSOON: return "Coming Soon"
         case .HASHTAG: return "Hashtag"
         case .RECOMMEND: return "Recommendation"
+        case .LATEST: return "Latest Promotions"
         }
     }
 }
