@@ -38,15 +38,7 @@ class ConvertCompletionViewController: MozoBasicViewController {
             let amount = tx.tx?.outputs![0].value?.convertOutputValue(decimal: tokenInfo.decimals ?? 0) ?? 0
             lbAmount.text = amount.roundAndAddCommas(toPlaces: tokenInfo.decimals ?? 0)
             
-            var result = "0.0"
-            if let rateInfo = SessionStoreManager.exchangeRateInfo {
-                let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
-                if let type = type, let rateValue = rateInfo.rate, let curSymbol = rateInfo.currencySymbol {
-                    let valueText = (amount * rateValue).roundAndAddCommas(toPlaces: type.decimalRound)
-                    result = "\(curSymbol)\(valueText)"
-                }
-            }
-            lbAmountEx.text = result
+            lbAmountEx.text = DisplayUtils.getExchangeTextFromAmount(amount)
         }
     }
     

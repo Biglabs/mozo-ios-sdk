@@ -110,13 +110,7 @@ class TxCompletionViewController: MozoBasicViewController {
     func updateView() {
         lbAmount.text = detailItem.amount.roundAndAddCommas()
         
-        if let rateInfo = SessionStoreManager.exchangeRateInfo {
-            if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
-                let exValue = (detailItem.amount * (rateInfo.rate ?? 0)).rounded(toPlaces: type.decimalRound)
-                let exValueStr = "(\(curSymbol)\(exValue))"
-                lbAmountEx.text = exValueStr
-            }
-        }
+        lbAmountEx.text = DisplayUtils.getExchangeTextFromAmount(detailItem.amount)
     }
     
     func startSpinnerAnimation() {

@@ -12,7 +12,10 @@ public class DisplayUtils {
     public static func getExchangeTextFromAmount(_ amount: Double) -> String {
         if let rateInfo = SessionStoreManager.exchangeRateInfo {
             if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
-                let exValue = (amount * (rateInfo.rate ?? 0)).roundAndAddCommas(toPlaces: type.decimalRound)
+                var exValue = (amount * (rateInfo.rate ?? 0)).roundAndAddCommas(toPlaces: type.decimalRound)
+                if type == .VND {
+                    exValue = (((amount * (rateInfo.rate ?? 0)) / 1000).rounded() * 1000).addCommas()
+                }
                 let exValueStr = "\(curSymbol)\(exValue)"
                 return exValueStr
             }

@@ -66,13 +66,7 @@ class PaymentQRViewController: MozoBasicViewController {
             
             lbAmountToSend.text = displayItem.amount.roundAndAddCommas()
             
-            if let rateInfo = SessionStoreManager.exchangeRateInfo {
-                if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
-                    let exValue = (displayItem.amount * (rateInfo.rate ?? 0)).rounded(toPlaces: type.decimalRound)
-                    let exValueStr = "(\(curSymbol)\(exValue))"
-                    lbAmountEx.text = exValueStr
-                }
-            }
+            lbAmountEx.text = DisplayUtils.getExchangeTextFromAmount(displayItem.amount)
         }
     }
     

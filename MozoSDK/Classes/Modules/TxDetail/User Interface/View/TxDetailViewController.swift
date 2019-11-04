@@ -72,14 +72,7 @@ class TxDetailViewController: MozoBasicViewController {
         lbAddress.text = address
         let amount = displayItem.amount
         lbAmountValue.text = "\(amount.roundAndAddCommas())"
-        var exAmount = "0.0"
-        if let rateInfo = SessionStoreManager.exchangeRateInfo {
-            if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
-                let amountValue = displayItem.exAmount.roundAndAddCommas(toPlaces: type.decimalRound)
-                exAmount = "\(curSymbol)\(amountValue)"
-            }
-        }
-        lbAmountValueExchange.text = exAmount
+        lbAmountValueExchange.text = DisplayUtils.getExchangeTextFromAmount(amount)
         
         saveView.isHidden = displayEnum != .NoDetail
     }

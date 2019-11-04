@@ -109,15 +109,8 @@ import Foundation
         if lbBalance != nil {
             let balanceText = balance.roundAndAddCommas()
             lbBalance.text = balanceText
-            var result = "0.0"
-            if let rateInfo = SessionStoreManager.exchangeRateInfo {
-                let type = CurrencyType(rawValue: rateInfo.currency?.uppercased() ?? "")
-                if let type = type, let rateValue = rateInfo.rate, let curSymbol = rateInfo.currencySymbol {
-                    let valueText = (balance * rateValue).roundAndAddCommas(toPlaces: type.decimalRound)
-                    result = "\(curSymbol)\(valueText)"
-                }
-            }
-            lbBalanceExchange.text = result
+            
+            lbBalanceExchange.text = DisplayUtils.getExchangeTextFromAmount(balance)
         }
     }
     
