@@ -1190,6 +1190,7 @@
 "At %@" = "Tại %@";
 "Description" = "Mô tả";
 "Purchase" = "Thanh toán";
+"PURCHASE" = "THANH TOÁN";
 "Start in next %d min(s)" = "Sẽ chạy trong vòng %d phút nữa";
 "Running Promotions is empty or your connection is too slow" = "Không có khuyến mãi nào hoặc kết nối internet của bạn quá yếu.";
 "No data to display or your connection is too slow" = "Không tìm thấy thông tin hoặc kết nối internet của bạn quá yếu.";
