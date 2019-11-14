@@ -42,6 +42,10 @@ public class IntermediaryTransactionDTO: ResponseObjectSerializable {
     
     public required init?(){}
     
+    public required init?(tx: TransactionDTO) {
+        self.tx = tx
+    }
+    
     public func toJSON() -> Dictionary<String, Any> {
         var json = Dictionary<String, Any>()
         if let tx = self.tx {

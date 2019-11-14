@@ -15,11 +15,13 @@ public enum ReportBeaconStatus : String {
 
 public class ReportBeaconDTO {
     public var beaconMacList: [String]?
+    public var locale: String?
     public var status: ReportBeaconStatus?
     
     public required init(beaconInfoDTOList: [BeaconInfoDTO], status: Bool){
         self.beaconMacList = beaconInfoDTOList.map { $0.macAddress! }
         self.status = status ? .ON : .OFF
+        self.locale = Configuration.LOCALE
     }
     
     public required init?(){}
@@ -32,6 +34,7 @@ public class ReportBeaconDTO {
         if let status = self.status {
             json["status"] = status.rawValue
         }
+        json["locale"] = self.locale
         return json
     }
     

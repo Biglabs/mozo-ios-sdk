@@ -1,23 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TxHistoryTableViewCell" customModule="MozoSDK" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TxHistoryTableViewCell" customModule="MozoSDK" customModuleProvider="target">
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TxHistoryTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TxHistoryTableViewCell" rowHeight="70" id="EMj-lc-qjq" customClass="TxHistoryTableViewCell" customModule="MozoSDK" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EMj-lc-qjq" id="gcw-A5-OL7">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbU-5k-2Qb">
+                        <rect key="frame" x="15" y="19" width="32" height="32"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ec6-BS-URC">
+                                <rect key="frame" x="9.5" y="8.5" width="13" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="13" id="jyi-d1-rnL"/>
+                                    <constraint firstAttribute="height" constant="15" id="yfA-4y-Dsy"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ec6-BS-URC" firstAttribute="centerX" secondItem="SbU-5k-2Qb" secondAttribute="centerX" id="xkY-EQ-Wc0"/>
+                            <constraint firstItem="Ec6-BS-URC" firstAttribute="centerY" secondItem="SbU-5k-2Qb" secondAttribute="centerY" id="yqu-D4-24s"/>
+                        </constraints>
+                    </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_sent_circle" translatesAutoresizingMaskIntoConstraints="NO" id="W7K-hd-zqW">
                         <rect key="frame" x="15" y="19" width="32" height="32"/>
                         <constraints>
@@ -54,13 +70,17 @@
                     <constraint firstItem="ak6-Rs-FwK" firstAttribute="top" secondItem="gcw-A5-OL7" secondAttribute="topMargin" constant="5" id="2W2-PF-9N6"/>
                     <constraint firstAttribute="trailing" secondItem="Jkk-NY-mKm" secondAttribute="trailing" constant="10" id="9d4-Oe-bs3"/>
                     <constraint firstItem="9RF-r8-E64" firstAttribute="leading" secondItem="ak6-Rs-FwK" secondAttribute="leading" id="AuI-Km-jjI"/>
+                    <constraint firstItem="SbU-5k-2Qb" firstAttribute="top" secondItem="W7K-hd-zqW" secondAttribute="top" id="BPQ-iD-8Lf"/>
                     <constraint firstItem="ak6-Rs-FwK" firstAttribute="leading" secondItem="W7K-hd-zqW" secondAttribute="trailingMargin" constant="20" id="Fbr-tH-YOl"/>
                     <constraint firstItem="Jkk-NY-mKm" firstAttribute="centerY" secondItem="ak6-Rs-FwK" secondAttribute="centerY" id="Lz1-2H-TS0"/>
                     <constraint firstItem="hfx-LX-j1q" firstAttribute="trailing" secondItem="Jkk-NY-mKm" secondAttribute="trailing" id="S8l-4G-0i6"/>
+                    <constraint firstItem="SbU-5k-2Qb" firstAttribute="leading" secondItem="W7K-hd-zqW" secondAttribute="leading" id="WSR-Rk-DuG"/>
                     <constraint firstItem="W7K-hd-zqW" firstAttribute="centerY" secondItem="gcw-A5-OL7" secondAttribute="centerY" id="bcG-qO-Pjy"/>
                     <constraint firstItem="W7K-hd-zqW" firstAttribute="leading" secondItem="gcw-A5-OL7" secondAttribute="leading" constant="15" id="e9F-kD-pmL"/>
                     <constraint firstItem="9RF-r8-E64" firstAttribute="top" secondItem="ak6-Rs-FwK" secondAttribute="bottom" constant="4" id="iMG-co-rGX"/>
                     <constraint firstItem="hfx-LX-j1q" firstAttribute="centerY" secondItem="9RF-r8-E64" secondAttribute="centerY" id="tv5-hE-L83"/>
+                    <constraint firstItem="SbU-5k-2Qb" firstAttribute="bottom" secondItem="W7K-hd-zqW" secondAttribute="bottom" id="u9r-7R-VOX"/>
+                    <constraint firstItem="SbU-5k-2Qb" firstAttribute="trailing" secondItem="W7K-hd-zqW" secondAttribute="trailing" id="vQP-JX-8yP"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -69,11 +89,13 @@
                 <outlet property="lbAmount" destination="Jkk-NY-mKm" id="hvK-bd-6lA"/>
                 <outlet property="lbDateTime" destination="9RF-r8-E64" id="PFc-m1-jfh"/>
                 <outlet property="lbExchangeValue" destination="hfx-LX-j1q" id="yqi-Ek-lm5"/>
+                <outlet property="topUpContainerView" destination="SbU-5k-2Qb" id="E0g-28-NEW"/>
+                <outlet property="topUpImageView" destination="Ec6-BS-URC" id="Jzh-Cz-SL9"/>
             </connections>
             <point key="canvasLocation" x="-516" y="-353"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ic_sent_circle" width="96" height="96"/>
+        <image name="ic_sent_circle" width="48" height="48"/>
     </resources>
 </document>

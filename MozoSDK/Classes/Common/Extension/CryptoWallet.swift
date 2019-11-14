@@ -10,18 +10,18 @@ import CryptoSwift
 import RNCryptor
 
 public extension String {
-    public func toSHA512() -> String {
+    func toSHA512() -> String {
         return self.sha512()
     }
     
-    public func encrypt(key: String) -> String {
+    func encrypt(key: String) -> String {
         let data: Data = self.data(using: .utf8)!
         let encryptedData = RNCryptor.encrypt(data: data, withPassword: key)
         let encryptedString : String = encryptedData.base64EncodedString() // getting base64encoded string of encrypted data.
         return encryptedString
     }
     
-    public func decrypt(key: String) -> String {
+    func decrypt(key: String) -> String {
         do  {
             let data: Data = Data(base64Encoded: self)! // Just get data from encrypted base64Encoded string.
             let decryptedData = try RNCryptor.decrypt(data: data, withPassword: key)
@@ -42,7 +42,7 @@ public extension String {
      - Version:
      0.1
      */
-    public func isEthAddress() -> Bool {
+    func isEthAddress() -> Bool {
         let regex = try? NSRegularExpression(pattern: "^0x([A-Fa-f0-9]{40})*$", options: .caseInsensitive)
         return regex?.firstMatch(in: self, options: [], range: NSMakeRange(0, self.count)) != nil
     }

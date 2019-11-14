@@ -9,7 +9,7 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 public extension ApiManager {
-    public func withdrawAirdropEvent(eventId: Int64) -> Promise<IntermediaryTransactionDTO> {
+    func withdrawAirdropEvent(eventId: Int64) -> Promise<IntermediaryTransactionDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_API_PATH + "/prepare-event/withDraw/\(eventId)"
             print("Withdraw airdrop event with id: \(eventId)")
@@ -34,7 +34,7 @@ public extension ApiManager {
         }
     }
     
-    public func sendSignedWithdrawAirdropEventTx(_ transaction: IntermediaryTransactionDTO) -> Promise<IntermediaryTransactionDTO> {
+    func sendSignedWithdrawAirdropEventTx(_ transaction: IntermediaryTransactionDTO) -> Promise<IntermediaryTransactionDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_API_PATH + "/sign-withDraw"
             let param = transaction.toJSON()

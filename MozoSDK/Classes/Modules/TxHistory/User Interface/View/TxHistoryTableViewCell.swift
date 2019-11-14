@@ -9,13 +9,15 @@ import Foundation
 import UIKit
 
 public class TxHistoryTableViewCell: UITableViewCell {
+    @IBOutlet weak var topUpContainerView: UIView!
+    @IBOutlet weak var topUpImageView: UIImageView!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var lbAction: UILabel!
     @IBOutlet weak var lbDateTime: UILabel?
     @IBOutlet weak var lbAmount: UILabel!
     @IBOutlet weak var lbExchangeValue: UILabel?
     @IBOutlet weak var statusView: UIView!
-    var txHistory : TxHistoryDisplayItem? {
+    public var txHistory : TxHistoryDisplayItem? {
         didSet {
             bindData()
         }
@@ -41,6 +43,19 @@ public class TxHistoryTableViewCell: UITableViewCell {
             imageName = "ic_sent_circle"
         }
         img.image = UIImage(named: imageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
+        // With top up transaction, image tint color will be changed to ThemeManager.shared.success
+        if let topUpReason = txHistory?.topUpReason {
+            if topUpReason == .TOP_UP_ADD_MORE {
+                img.isHidden = true
+                topUpContainerView.roundCorners(cornerRadius: 0.5, borderColor: .clear, borderWidth: 0.1)
+                topUpContainerView.isHidden = false
+                topUpImageView.image = UIImage(named: "ic_receive", in: BundleManager.mozoBundle(), compatibleWith: nil)
+                topUpContainerView.backgroundColor = ThemeManager.shared.success
+            } else {
+                imageName = "ic_sent_circle"
+                img.image = UIImage(named: imageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
+            }
+        }
         lbExchangeValue?.text = ""
 //        lbExchangeValue?.text = "₩\(txHistory?.exAmount ?? 0)"
         

@@ -23,6 +23,7 @@ class CoreWireframe : MozoWireframe {
     var resetPinWireframe: ResetPINWireframe?
     var backupWalletWireframe: BackupWalletWireframe?
     var changePINWireframe: ChangePINWireframe?
+    var topUpWireframe: TopUpWireframe?
     var corePresenter: CorePresenter?
     
     // MARK: Request
@@ -84,6 +85,11 @@ class CoreWireframe : MozoWireframe {
     
     func requestCloseToLastMozoUIs() {
         rootWireframe?.closeToLastMozoUIs()
+    }
+    
+    func requestForTopUpTransfer() {
+        presentWaitingInterface(corePresenter: corePresenter)
+        corePresenter?.requestForAuthentication(module: .TopUp)
     }
     
     // MARK: Communication with others wireframe
@@ -170,5 +176,9 @@ class CoreWireframe : MozoWireframe {
     
     func presentBackupWalletInterface() {
         backupWalletWireframe?.processBackup()
+    }
+    
+    func presentTopUpTransferInterface() {
+        
     }
 }

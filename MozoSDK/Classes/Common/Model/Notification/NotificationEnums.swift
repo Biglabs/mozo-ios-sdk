@@ -49,5 +49,7 @@ public enum NotificationEventType: String {
     
     case PromotionUsed = "promotion_used"
     case PromotionPurchased = "promotion_purchased"
+    
+    case GroupBroadcast = "group_broadcast"
 }
 

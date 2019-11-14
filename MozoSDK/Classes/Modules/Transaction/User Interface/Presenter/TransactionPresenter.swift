@@ -13,7 +13,7 @@ class TransactionPresenter : NSObject {
     var transferUserInterface : TransferViewInterface?
     var confirmUserInterface : ConfirmTransferViewInterface?
     var transactionModuleDelegate: TransactionModuleDelegate?
-    var topUpModuleDelegate: TopUpModuleDelegate?
+    var topUpModuleDelegate: TopUpConfirmModuleDelegate?
     
     var searchPhoneNo: String?
     
@@ -36,9 +36,8 @@ extension TransactionPresenter: TransactionModuleInterface {
         txInteractor?.sendUserConfirmTransaction(transaction, tokenInfo: tokenInfo)
     }
     
-    func topUpConfirmTransaction(_ transaction: TransactionDTO) {
-        confirmUserInterface?.displaySpinner()
-        topUpModuleDelegate?.didConfirmTopUpTransaction(transaction)
+    func topUpConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO) {
+        topUpModuleDelegate?.didConfirmTopUpTransaction(transaction, tokenInfo: tokenInfo)
     }
     
     func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?) {

@@ -22,6 +22,7 @@ public class TxHistoryDTO: ResponseObjectSerializable {
     public var message: String?
     public var symbol: String?
     public var time: Int64?
+    public var topUpReason: String?
     public var txHash: String?
     public var txStatus: String?
     
@@ -39,6 +40,7 @@ public class TxHistoryDTO: ResponseObjectSerializable {
         self.message = json["message"].string
         self.symbol = json["symbol"].string
         self.time = json["time"].int64
+        self.topUpReason = json["topUpReason"].string
         self.txHash = json["txHash"].string
         self.txStatus = json["txStatus"].string
     }
@@ -88,6 +90,9 @@ public class TxHistoryDTO: ResponseObjectSerializable {
         }
         if let time = self.time {
             json["time"] = NSNumber(value: time)
+        }
+        if let topUpReason = topUpReason {
+            json["topUpReason"] = topUpReason
         }
         if let txStatus = self.txStatus {
             json["txStatus"] = txStatus

@@ -17,8 +17,9 @@ public struct TxHistoryDisplayItem {
     
     var addressFrom: String?
     var addressTo: String?
+    var topUpReason: TopUpReasonEnum?
     
-    public init(action : String, date : String, fromNameWithDate: NSAttributedString, amount: Double, exAmount: Double, txStatus: String, addressFrom: String?, addressTo: String?) {
+    public init(action : String, date : String, fromNameWithDate: NSAttributedString, amount: Double, exAmount: Double, txStatus: String, addressFrom: String?, addressTo: String?, topUpReason: TopUpReasonEnum? = nil) {
         self.action = action
         self.date = date
         self.fromNameWithDate = fromNameWithDate
@@ -27,5 +28,6 @@ public struct TxHistoryDisplayItem {
         self.txStatus = txStatus
         self.addressFrom = addressFrom
         self.addressTo = addressTo
+        self.topUpReason = topUpReason
     }
 }

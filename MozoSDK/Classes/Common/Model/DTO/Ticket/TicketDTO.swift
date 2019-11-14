@@ -7,6 +7,11 @@
 
 import Foundation
 import SwiftyJSON
+public enum EnoughTypeEnum: String {
+    case NORMAL = "NORMAL"
+    case NOT_ENOUGH_IN_TOP_UP = "NOT_ENOUGH_IN_TOP_UP"
+    case NOT_ENOUGH_MOZO = "NOT_ENOUGH_MOZO"
+}
 public class TicketDTO: ResponseObjectSerializable {
     
     public var id: Int64?
@@ -27,9 +32,9 @@ public class TicketDTO: ResponseObjectSerializable {
     public var useCash: Bool?
     public var vehicle: VehicleInfoDTO?
     
-    public var notEnough: Bool?
     public var expiredDate: Int64?
     public var cash: Double?
+    public var enoughType: EnoughTypeEnum?
     
     public required init(partyName: String, coverImage: String) {
         self.partyName = partyName
@@ -55,9 +60,9 @@ public class TicketDTO: ResponseObjectSerializable {
         self.useCash = json["useCash"].bool
         self.vehicle = VehicleInfoDTO(json: json["vehicle"])
         
-        self.notEnough = json["notEnough"].bool
         self.expiredDate = json["expiredDate"].int64
         self.cash = json["cash"].double
+        self.enoughType = EnoughTypeEnum(rawValue: json["enoughType"].string ?? "")
     }
 }
 

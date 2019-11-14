@@ -122,6 +122,8 @@ class CorePresenter : NSObject {
             coreWireframe?.presentChangePINInterface()
         case .BackupWallet:
             coreWireframe?.presentBackupWalletInterface()
+        case .TopUp:
+            coreWireframe?.presentTopUpTransferInterface()
         default: coreWireframe?.prepareForWalletInterface()
         }
     }

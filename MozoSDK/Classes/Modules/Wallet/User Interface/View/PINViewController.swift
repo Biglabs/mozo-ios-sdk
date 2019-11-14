@@ -86,6 +86,10 @@ class PINViewController : MozoBasicViewController {
                 }
                 descriptionLabel.text = "Security PIN must be 6 digit numbers".localized
                 break
+            case .Withdraw, .TopUp, .TopUpTransfer:
+                enterPINLabel.text = "Enter your Security PIN".localized
+                descriptionLabel.text = "Security PIN must be 6 digit numbers".localized
+                break
             case .ResetPIN:
                 // Enter new pin and confirm new pin to reset PIN
                 enterPINLabel.text = "ENTER NEW SECURITY PIN".localized

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "MozoSDK"
-  s.version      = "1.5.63"
+  s.version      = "1.5.64"
   s.summary = 'Mozo protocol toolkit for Swift'
   s.description = <<-DESC
                         The Mozo SDK is a Swift implementation of the Mozo protocol. This SDK was originally made by Hoang Nguyen. It allows maintaining authentication/authorization with MozoX Services, receiving MozoX lucky coins via beacons and buying/selling/transferring MozoX. It is also supporting UI components for authentication and buying/selling/transferring MozoX.
@@ -41,7 +41,7 @@ Pod::Spec.new do |s|
   s.dependency 'ReachabilitySwift', '4.3.0'
   s.dependency 'MBProgressHUD', '~> 1.1.0'
   s.dependency 'JWTDecode', '2.3.0'
-  s.dependency 'Kingfisher', '5.4.0'
+  s.dependency 'Kingfisher', '5.9.0'
   s.dependency 'libPhoneNumber-iOS'
 #  s.dependency 'Firebase/Core'
 #  s.dependency 'Firebase/DynamicLinks'
