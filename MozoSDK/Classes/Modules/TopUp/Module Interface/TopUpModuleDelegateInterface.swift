@@ -6,12 +6,12 @@
 //
 
 import Foundation
-protocol TopUpModuleDelegate {
-    func didConfirmTopUpTransaction(_ tx: TransactionDTO)
+protocol TopUpConfirmModuleDelegate {
+    func didConfirmTopUpTransaction(_ tx: TransactionDTO, tokenInfo: TokenInfoDTO)
+}
+protocol TopUpCompletionModuleDelegate {
+    func didTopUpCompleteFailure()
 }
 @objc public protocol TopUpDelegate {
-    func topUpSuccess()
-    func topUpFailureWithErrorString(error: String?, isDisplayingTryAgain: Bool)
-    func topUpFailure(error: Error, isDisplayingTryAgain: Bool)
-    func didCancelTryAgain()
+    func requestGetToken()
 }

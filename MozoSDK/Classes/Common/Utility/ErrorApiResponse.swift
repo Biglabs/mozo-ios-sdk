@@ -89,6 +89,12 @@ public enum ErrorApiResponse: String {
     
     case STORE_USER_ALREADY_INSTALL_APP_ERROR = "STORE_USER_ALREADY_INSTALL_APP_ERROR"
     
+    case STORE_SC_TOPUP_NOT_EXIST = "STORE_SC_TOPUP_NOT_EXIST"
+    case STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR = "STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR"
+    case STORE_PARKING_TICKET_HAVE_TICKET_IN = "STORE_PARKING_TICKET_HAVE_TICKET_IN"
+    case STORE_PARKING_TICKET_NOT_HAVE_TICKET_IN = "STORE_PARKING_TICKET_NOT_HAVE_TICKET_IN"
+    case STORE_PARKING_TICKET_NOT_CREATE_TICKET_MANUAL = "STORE_PARKING_TICKET_NOT_CREATE_TICKET_MANUAL"
+    
     public var description: String {
         switch self {
         case .INTERNAL_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
@@ -167,6 +173,9 @@ public enum ErrorApiResponse: String {
         case .STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_PROMO_USER_NO_PAID_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_PROMO_STATUS_NOT_SCANNED_ERROR: return rawValue
+        case .STORE_SC_TOPUP_NOT_EXIST: return rawValue
+        default:
+            return rawValue
         }
     }
     
@@ -265,6 +274,12 @@ public enum ErrorApiResponse: String {
         case .STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR: return .apiError_STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR
         case .STORE_PROMO_USER_NO_PAID_ERROR: return .apiError_STORE_PROMO_USER_NO_PAID_ERROR
         case .STORE_PROMO_STATUS_NOT_SCANNED_ERROR: return .apiError_STORE_PROMO_STATUS_NOT_SCANNED_ERROR
+            
+        case .STORE_SC_TOPUP_NOT_EXIST: return .apiError_STORE_SC_TOPUP_NOT_EXIST
+        case .STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR: return .apiError_STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR
+        case .STORE_PARKING_TICKET_HAVE_TICKET_IN: return .apiError_STORE_PARKING_TICKET_HAVE_TICKET_IN
+        case .STORE_PARKING_TICKET_NOT_HAVE_TICKET_IN: return .apiError_STORE_PARKING_TICKET_NOT_HAVE_TICKET_IN
+        case .STORE_PARKING_TICKET_NOT_CREATE_TICKET_MANUAL: return .apiError_STORE_PARKING_TICKET_NOT_CREATE_TICKET_MANUAL
         }
     }
 }

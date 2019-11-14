@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TxCompletionInteractorInput {
-    func startWaitingStatusService(hash: String)
+    func startWaitingStatusService(hash: String, moduleRequest: Module)
     func stopService()
 }
 

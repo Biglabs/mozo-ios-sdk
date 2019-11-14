@@ -72,7 +72,7 @@ class AuthManager : NSObject {
             if success {
                 self.setupRefreshTokenTimer()
             } else {
-                
+                // TODO: In case Keycloak server restart, token will never be refreshed, stop refresh token, force re-login
             }
         }
     }

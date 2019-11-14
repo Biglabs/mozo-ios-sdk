@@ -13,12 +13,16 @@ class TxCompletionPresenter : NSObject {
     var completionInteractor: TxCompletionInteractorInput?
     
     var transactionHash: String?
+    
+    var moduleRequest = Module.Transaction
+    
+    var topUpModuleDelegate: TopUpCompletionModuleDelegate?
 }
 
 extension TxCompletionPresenter : TxCompletionModuleInterface {
     func requestWaitingForTxStatus(hash: String) {
         self.transactionHash = hash
-        completionInteractor?.startWaitingStatusService(hash: hash)
+        completionInteractor?.startWaitingStatusService(hash: hash, moduleRequest: moduleRequest)
     }
     
     func requestStopWaiting() {
@@ -44,6 +48,10 @@ extension TxCompletionPresenter : TxCompletionModuleInterface {
 
 extension TxCompletionPresenter : TxCompletionInteractorOutput {
     func didReceiveTxStatus(_ status: TransactionStatusType) {
+        if status == .FAILED, moduleRequest == .TopUp || moduleRequest == .TopUpTransfer {
+            topUpModuleDelegate?.didTopUpCompleteFailure()
+            return
+        }
         completionUserInterface?.updateView(status: status)
     }
     

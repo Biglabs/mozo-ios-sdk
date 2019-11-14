@@ -386,11 +386,34 @@ public class MozoSDK {
         return moduleDependencies.getSuggestKeySearchForPromotion(lat: lat, lon: lon)
     }
     
+    // MARK: PARKING TICKET
+    
     public static func getParkingTicketStatus(id: Int64, isIn: Bool) -> Promise<ParkingTicketStatusType> {
         return moduleDependencies.getParkingTicketStatus(id: id, isIn: isIn)
     }
     
     public static func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO> {
         return moduleDependencies.getParkingTicketByStoreId(storeId: storeId, isIn: isIn)
+    }
+        
+    public static func renewParkingTicket(id: Int64, vehicleTypeKey: String) -> Promise<TicketDTO> {
+        return moduleDependencies.renewParkingTicket(id: id, vehicleTypeKey: vehicleTypeKey)
+    }
+    
+    // MARK: TOP UP
+    public static func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem> {
+        return (moduleDependencies.loadTopUpBalanceInfo())
+    }
+    
+    public static func loadTopUpHistory(page: Int = 0, size: Int = 15) -> Promise<TxHistoryDisplayCollection> {
+        return (moduleDependencies.loadTopUpHistory(page: page, size: size))
+    }
+    
+    public static func openTopUpTransfer(delegate: TopUpDelegate) {
+        moduleDependencies.openTopUpTransfer(delegate: delegate)
+    }
+    
+    public static func topUpWithdraw(delegate: TopUpWithdrawDelegate) {
+        moduleDependencies.topUpWithdraw(delegate: delegate)
     }
 }

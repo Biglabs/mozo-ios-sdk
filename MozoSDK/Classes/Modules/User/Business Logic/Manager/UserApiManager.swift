@@ -11,7 +11,7 @@ import SwiftyJSON
 
 let USER_API_PATH = "/user-profile"
 public extension ApiManager {
-    public func getUserProfile() -> Promise<UserProfileDTO> {
+    func getUserProfile() -> Promise<UserProfileDTO> {
         return Promise { seal in
             let url = Configuration.BASE_URL + USER_API_PATH
             self.execute(.get, url: url)
@@ -34,7 +34,7 @@ public extension ApiManager {
         }
     }
     
-    public func updateAvatarToUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
+    func updateAvatarToUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
         return Promise { seal in
             let url = Configuration.BASE_URL + USER_API_PATH + "/avatar-url"
             let param = userProfile.rawData()
@@ -58,7 +58,7 @@ public extension ApiManager {
         }
     }
     
-    public func updateUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
+    func updateUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
         return Promise { seal in
             let url = Configuration.BASE_URL + USER_API_PATH
             let param = userProfile.rawData()

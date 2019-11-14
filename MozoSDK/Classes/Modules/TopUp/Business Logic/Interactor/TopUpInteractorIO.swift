@@ -7,21 +7,34 @@
 
 import Foundation
 protocol TopUpInteractorInput {
-    func clearRetryPin()
+    func loadTokenInfo()
+    func loadTopUpAddress()
+    
     func sendSignedTopUpTx(pin: String)
-    func prepareTopUp(_ transaction: TransactionDTO)
+    
+    func validateTransferTransaction(tokenInfo: TokenInfoDTO, amount: String, topUpAddress: String?)
+    func topUpTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO, topUpAddress: String?)
+    
+    func requestToRetryTransfer()
 }
 protocol TopUpInteractorOutput {
-    func didFailedToLoadTokenInfo()
+    func didFailedToLoadTokenInfo(error: ConnectionError)
+    func didLoadTokenInfo(_ tokenInfo: TokenInfoDTO)
+    
+    func didFailedToLoadTopUpAddress(error: ConnectionError)
+    func didLoadTopUpAddress(_ address: String)
+    
     func failedToPrepareTopUp(error: ConnectionError)
     func failedToSignTopUp(error: ConnectionError)
-    func failedToSignTopUpWithErrorString(_ error: String?)
     
     func didSendSignedTopUpFailure(error: ConnectionError)
     
-    func requestPinInterface()
-    
-    func didReceiveTxStatus(_ statusType: TransactionStatusType)
-    
+    func requestPINInterface()
+        
     func requestAutoPINInterface()
+    
+    func validateError(_ error: String)
+    func validateSuccessWithTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO)
+    
+    func requestTxCompletion(tokenInfo: TokenInfoDTO, tx: IntermediaryTransactionDTO, moduleRequest: Module)
 }

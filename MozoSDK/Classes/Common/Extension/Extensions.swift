@@ -314,6 +314,10 @@ public extension Double {
         formatter.maximumFractionDigits = maximumFractionDigits //maximum digits in Double after dot (maximum precision)
         return String(formatter.string(from: number) ?? " ")
     }
+    
+    var clean: String {
+       return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
+    }
 }
 
 public extension NSNumber {

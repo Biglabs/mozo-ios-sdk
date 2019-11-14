@@ -99,6 +99,12 @@ public enum ConnectionError: Error {
     
     case apiError_STORE_USER_ALREADY_INSTALL_APP_ERROR
     
+    case apiError_STORE_SC_TOPUP_NOT_EXIST
+    case apiError_STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR
+    case apiError_STORE_PARKING_TICKET_HAVE_TICKET_IN
+    case apiError_STORE_PARKING_TICKET_NOT_HAVE_TICKET_IN
+    case apiError_STORE_PARKING_TICKET_NOT_CREATE_TICKET_MANUAL
+    
     public var isApiError: Bool {
         switch self {
         case .network,
@@ -209,6 +215,12 @@ public enum ConnectionError: Error {
         case .apiError_STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR: return .STORE_PROMO_ID_PAID_IS_OTHER_USER_ERROR
         case .apiError_STORE_PROMO_USER_NO_PAID_ERROR: return .STORE_PROMO_USER_NO_PAID_ERROR
         case .apiError_STORE_PROMO_STATUS_NOT_SCANNED_ERROR: return .STORE_PROMO_STATUS_NOT_SCANNED_ERROR
+            
+        case .apiError_STORE_SC_TOPUP_NOT_EXIST: return .STORE_SC_TOPUP_NOT_EXIST
+        case .apiError_STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR: return .STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR
+        case .apiError_STORE_PARKING_TICKET_HAVE_TICKET_IN: return .STORE_PARKING_TICKET_HAVE_TICKET_IN
+        case .apiError_STORE_PARKING_TICKET_NOT_HAVE_TICKET_IN: return .STORE_PARKING_TICKET_NOT_HAVE_TICKET_IN
+        case .apiError_STORE_PARKING_TICKET_NOT_CREATE_TICKET_MANUAL: return .STORE_PARKING_TICKET_NOT_CREATE_TICKET_MANUAL
         default:
             return nil
         }

@@ -47,8 +47,8 @@ class TxCompletionViewController: MozoBasicViewController {
         super.viewWillAppear(animated)
         var text = "Send MozoX"
         switch moduleRequest {
-        case .TopUp:
-            text = "Top Up"
+        case .TopUp, .TopUpTransfer:
+            text = "Deposit"
         default:
             break
         }
@@ -66,20 +66,20 @@ class TxCompletionViewController: MozoBasicViewController {
     
     func checkAddressBook() {
         print("TxCompletionViewController - Check address book")
+        if moduleRequest == .TopUp || moduleRequest == .TopUpTransfer {
+            let addressBook = AddressBookDisplayItem.TopUpAddressBookDisplayItem
+            addressBookView.isHidden = false
+            lbAddress.isHidden = true
+            addressBookView.addressBook = addressBook
+            addressBookView.btnClear.isHidden = true
+            txCompletionViewHeightConstraint.constant = 181
+            
+            btnSave.isHidden = true
+            btnDetail.isHidden = true
+            return
+        }
         // No need to show before waiting completed.
         if stopWaiting {
-            if moduleRequest == .TopUp {
-                let addressBook = AddressBookDisplayItem.TopUpAddressBookDisplayItem
-                addressBookView.isHidden = false
-                lbAddress.isHidden = true
-                addressBookView.addressBook = addressBook
-                addressBookView.btnClear.isHidden = true
-                txCompletionViewHeightConstraint.constant = 181
-                
-                btnSave.isHidden = true
-                btnDetail.isHidden = true
-                return
-            }
             // Check address book
             // Verify address is existing in address book list or not
             let contain = AddressBookDTO.arrayContainsItem(detailItem.addressTo, array: SafetyDataManager.shared.addressBookList) ||
@@ -114,7 +114,13 @@ class TxCompletionViewController: MozoBasicViewController {
     }
     
     func startSpinnerAnimation() {
-        rotateView()
+//        rotateView()
+        setupSpinningView()
+    }
+    
+    func setupSpinningView() {
+        let advTimeGif = UIImage.gifImageWithName("spinner")
+        self.txStatusImg.image = advTimeGif
     }
     
     private func rotateView(duration: Double = 1.0) {

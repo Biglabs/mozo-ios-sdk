@@ -13,11 +13,21 @@ class TxCompletionInteractor: NSObject {
     var txStatusTimer: Timer?
     var txHash: String?
     
+    var moduleRequest = Module.Transaction
+    
     init(apiManager : ApiManager) {
         self.apiManager = apiManager
     }
     
     @objc func loadTxStatus() {
+        if moduleRequest == .TopUp {
+            if let smartContractAddress = self.txHash {
+                _ = apiManager.getTopUpTxStatus(smartContractAddress: smartContractAddress).done({ (type) in
+                    self.handleTxCompleted(statusType: type)
+                })
+            }
+            return
+        }
         if let txHash = self.txHash {
             _ = apiManager.getTxStatus(hash: txHash).done({ (type) in
                 self.handleTxCompleted(statusType: type)
@@ -37,7 +47,8 @@ class TxCompletionInteractor: NSObject {
 }
 
 extension TxCompletionInteractor: TxCompletionInteractorInput {
-    func startWaitingStatusService(hash: String) {
+    func startWaitingStatusService(hash: String, moduleRequest: Module) {
+        self.moduleRequest = moduleRequest
         self.txHash = hash
         txStatusTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(loadTxStatus), userInfo: nil, repeats: true)
     }

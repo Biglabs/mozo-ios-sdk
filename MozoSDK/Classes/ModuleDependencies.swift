@@ -62,6 +62,8 @@ class ModuleDependencies {
     let changePINWireframe = ChangePINWireframe()
     let redeemWireframe = RedeemWireframe()
     let abImportWireframe = ABImportWireframe()
+    let topUpWireframe = TopUpWireframe()
+    let topUpWithdrawWireframe = TopUpWithdrawWireframe()
     
     let apiManager = ApiManager()
     let webSocketManager = WebSocketManager()
@@ -449,6 +451,26 @@ class ModuleDependencies {
     func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getParkingTicketByStoreId(storeId: storeId, isIn: isIn))!
     }
+        
+    func renewParkingTicket(id: Int64, vehicleTypeKey: String) -> Promise<TicketDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.renewParkingTicket(id: id, vehicleTypeKey: vehicleTypeKey))!
+    }
+    
+    func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.loadTopUpBalanceInfo())!
+    }
+    
+    func loadTopUpHistory(page: Int, size: Int) -> Promise<TxHistoryDisplayCollection> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.loadTopUpHistory(page: page, size: size))!
+    }
+    
+    func openTopUpTransfer(delegate: TopUpDelegate) {
+        topUpWireframe.presentTopUpTransferInterface(delegate: delegate)
+    }
+    
+    func topUpWithdraw(delegate: TopUpWithdrawDelegate) {
+        topUpWithdrawWireframe.requestToWithdrawAndSign(delegate: delegate)
+    }
     
     func configureDependencies() {
         // MARK: Core
@@ -681,6 +703,9 @@ class ModuleDependencies {
         airdropWithdrawDependencies(signManager: signManager)
         convertDependencies(signManager: signManager)
         redeemDependencies(signManager: signManager)
+        // MARK: Top Up
+        topUpDependencies(signManager: signManager)
+        topUpWithdrawDependencies(signManager: signManager)
     }
     
     func authDependencies() {
@@ -850,6 +875,44 @@ class ModuleDependencies {
         abWireframe.abImportWireframe = abImportWireframe
         
         presenter.delegate = abWireframe.abPresenter
+    }
+    
+    func topUpDependencies(signManager: TransactionSignManager) {
+        let presenter = TopUpPresenter()
+        
+        let interactor = TopUpInteractor(apiManager: apiManager)
+        interactor.signManager = signManager
+        interactor.output = presenter
+        
+        presenter.interactor = interactor
+        presenter.wireframe = topUpWireframe
+        
+        topUpWireframe.presenter = presenter
+        topUpWireframe.txWireframe = txWireframe
+        topUpWireframe.walletWireframe = walletWireframe
+        topUpWireframe.txCompletionWireframe = txComWireframe
+        topUpWireframe.rootWireframe = rootWireframe
+        
+        txWireframe.txPresenter?.topUpModuleDelegate = presenter
+        txComWireframe.txComPresenter?.topUpModuleDelegate = presenter
+        
+        coreWireframe.topUpWireframe = topUpWireframe
+    }
+    
+    func topUpWithdrawDependencies(signManager: TransactionSignManager) {
+        let presenter = TopUpWithdrawPresenter()
+        
+        let interactor = TopUpWithdrawInteractor()
+        interactor.apiManager = apiManager
+        interactor.output = presenter
+        interactor.signManager = signManager
+        
+        presenter.interactor = interactor
+        presenter.wireframe = topUpWithdrawWireframe
+        
+        topUpWithdrawWireframe.presenter = presenter
+        topUpWithdrawWireframe.walletWireframe = walletWireframe
+        topUpWithdrawWireframe.rootWireframe = rootWireframe
     }
     
     // MARK: TEST

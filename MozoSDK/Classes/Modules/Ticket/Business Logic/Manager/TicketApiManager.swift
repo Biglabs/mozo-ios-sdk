@@ -37,7 +37,7 @@ public extension ApiManager {
     
     func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getParkingTicketByStoreId?storeId=\(storeId)&in=\(isIn)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getParkingTicketByStoreId/v2?storeId=\(storeId)&in=\(isIn)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -51,6 +51,30 @@ public extension ApiManager {
                 }
                 .catch { error in
                     print("Error when request get parking ticket by store id [\(storeId)]: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    func renewParkingTicket(id: Int64, vehicleTypeKey: String) -> Promise<TicketDTO> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getRenewParkingTicket?id=\(id)&locale=\(Configuration.LOCALE)&vehicleTypeKey=\(vehicleTypeKey)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to renew parking ticket by id [\(id)], json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    if let ticket = TicketDTO(json: jobj) {
+                        seal.fulfill(ticket)
+                    } else {
+                        seal.reject(ConnectionError.systemError)
+                    }
+                }
+                .catch { error in
+                    print("Error when request renew parking ticket by id [\(id)]: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {

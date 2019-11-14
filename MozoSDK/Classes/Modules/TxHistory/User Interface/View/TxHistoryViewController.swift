@@ -31,7 +31,7 @@ class TxHistoryViewController: MozoBasicViewController {
     var loadingPage : Int = 0
     var currentFilterType : TransactionType? = nil {
         didSet {
-            print("Set current filter type: \(currentFilterType)")
+            print("Set current filter type: \(String(describing: currentFilterType))")
         }
     }
     var tokenInfo : TokenInfoDTO?

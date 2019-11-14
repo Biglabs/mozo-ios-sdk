@@ -50,7 +50,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
         case .Payment:
             text = "Request MozoX"
         case .TopUp:
-            text = "Top Up"
+            text = "Deposit"
         default:
             break
         }
@@ -111,6 +111,10 @@ class ConfirmTransferViewController: MozoBasicViewController {
     }
     
     @IBAction func btnConfirmTapped(_ sender: Any) {
+        if moduleRequest == .TopUp {
+            eventHandler?.topUpConfirmTransaction(transaction!, tokenInfo: tokenInfo!)
+            return
+        }
         eventHandler?.sendConfirmTransaction(transaction!, tokenInfo: self.tokenInfo!)
     }
 }

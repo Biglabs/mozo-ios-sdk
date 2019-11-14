@@ -11,7 +11,7 @@ import SwiftyJSON
 
 let TX_API_PATH = "/solo/contract/solo-token/"
 public extension ApiManager {
-    public func getTokenInfoFromAddress(_ address: String) -> Promise<TokenInfoDTO> {
+    func getTokenInfoFromAddress(_ address: String) -> Promise<TokenInfoDTO> {
         return Promise { seal in
             let url = Configuration.BASE_URL + TX_API_PATH + "balance/\(address)"
             self.execute(.get, url: url)
@@ -36,7 +36,7 @@ public extension ApiManager {
         }
     }
     
-    public func transferTransaction(_ transaction: TransactionDTO) -> Promise<IntermediaryTransactionDTO> {
+    func transferTransaction(_ transaction: TransactionDTO) -> Promise<IntermediaryTransactionDTO> {
         return Promise { seal in
             let url = Configuration.BASE_URL + TX_API_PATH + "transfer"
             let param = transaction.toJSON()
@@ -60,7 +60,7 @@ public extension ApiManager {
         }
     }
     
-    public func sendSignedTransaction(_ transaction: IntermediaryTransactionDTO) -> Promise<IntermediaryTransactionDTO> {
+    func sendSignedTransaction(_ transaction: IntermediaryTransactionDTO) -> Promise<IntermediaryTransactionDTO> {
         return Promise { seal in
             let url = Configuration.BASE_URL + TX_API_PATH + "send-signed-tx"
             let param = transaction.toJSON()

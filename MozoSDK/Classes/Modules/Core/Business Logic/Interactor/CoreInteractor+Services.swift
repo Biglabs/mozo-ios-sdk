@@ -304,11 +304,27 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getGPSBeacons(userLat: userLat, userLong: userLong)
     }
     
-    func getParkingTicketStatus(id: Int64, isIn: Bool) -> Promise<ParkingTicketStatusType> {
-        return apiManager.getParkingTicketStatus(id: id, isIn: isIn)
+    func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem> {
+        return Promise { seal in
+            _ = apiManager.getTopUpBalance()
+                .done { (info) in
+                    let item = DetailInfoDisplayItem(tokenInfo: info)
+                    seal.fulfill(item)
+                }.catch({ (err) in
+                    seal.reject(err)
+                })
+        }
     }
     
-    func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO> {
-        return apiManager.getParkingTicketByStoreId(storeId: storeId, isIn: isIn)
+    func loadTopUpHistory(page: Int, size: Int) -> Promise<TxHistoryDisplayCollection> {
+        return Promise { seal in
+            _ = apiManager.getTopUpTxHistory(page: page, size: size)
+                .done { (listTxHistory) in
+                    let collection = TxHistoryDisplayCollection(items: listTxHistory)
+                    seal.fulfill(collection)
+                }.catch { (error) in
+                    seal.reject(error)
+                }
+        }
     }
 }

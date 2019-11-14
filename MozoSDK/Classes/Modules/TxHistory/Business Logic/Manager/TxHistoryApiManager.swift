@@ -16,7 +16,7 @@ public extension ApiManager {
     ///   - address: the address
     ///   - page: the number of page data
     ///   - size: the number of history item
-    public func getListTxHistory(address: String, page: Int = 0, size: Int = 15) -> Promise<[TxHistoryDTO]> {
+    func getListTxHistory(address: String, page: Int = 0, size: Int = 15) -> Promise<[TxHistoryDTO]> {
         return Promise { seal in
             let url = Configuration.BASE_URL + TX_API_PATH + "txhistory/\(address)?page=\(page)&size=\(size)"
             self.execute(.get, url: url)
@@ -46,7 +46,7 @@ public extension ApiManager {
     
     /// Call API to get exchange rate info.
     ///
-    public func getExchangeRateInfo() -> Promise<RateInfoDTO> {
+    func getExchangeRateInfo() -> Promise<RateInfoDTO> {
         return Promise { seal in
             let locale = Locale.current.languageCode ?? "en"
             let url = Configuration.BASE_URL + "/exchange/rate?locale=\(locale)"

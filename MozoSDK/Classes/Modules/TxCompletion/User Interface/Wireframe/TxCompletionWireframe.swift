@@ -18,6 +18,7 @@ class TxCompletionWireframe : MozoWireframe {
         viewController.moduleRequest = moduleRequest
         txComViewController = viewController
         
+        txComPresenter?.moduleRequest = moduleRequest
         txComPresenter?.completionUserInterface = viewController
         rootWireframe?.displayViewController(viewController)
     }

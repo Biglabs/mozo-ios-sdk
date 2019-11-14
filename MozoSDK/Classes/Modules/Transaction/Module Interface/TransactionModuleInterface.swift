@@ -18,5 +18,5 @@ protocol TransactionModuleInterface {
     
     func findContact(_ phoneNo: String)
     
-    func topUpConfirmTransaction(_ transaction: TransactionDTO)
+    func topUpConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO)
 }
