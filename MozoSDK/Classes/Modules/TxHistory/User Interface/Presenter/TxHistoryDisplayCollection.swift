@@ -28,11 +28,9 @@ public class TxHistoryDisplayCollection {
     func displayItemForTxHistoryDTO(_ txHistory: TxHistoryDTO) -> TxHistoryDisplayItem {
         var action = self.buildAction(addressFrom: txHistory.addressFrom!)
         // With top up transaction, action will be created by TopUpReasonEnum(rawValue: txHistory.topUpReason)
-        var isTopUpHistory = false
         let topUpReasonEnum = TopUpReasonEnum(rawValue: txHistory.topUpReason ?? "")
         if let topUpReasonEnum = topUpReasonEnum {
             action = topUpReasonEnum.displayText
-            isTopUpHistory = true
         }
         let date = self.formattedDateTime(txHistory.time ?? 0)
         let amount = (txHistory.amount?.convertOutputValue(decimal: Int(txHistory.decimal ?? 0)))!
