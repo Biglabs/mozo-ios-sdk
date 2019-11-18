@@ -49,6 +49,7 @@ class WithdrawInteractor: NSObject {
     
     func stopService() {
         txStatusTimer?.invalidate()
+        txStatusTimer = nil
     }
     
     @objc func loadTransactionStatus() {

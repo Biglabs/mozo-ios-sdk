@@ -26,6 +26,7 @@ class ABImportInteractor: NSObject {
         isWaiting = false
         NSLog("ABImportInteractor - Stop waiting status service")
         txStatusTimer?.invalidate()
+        txStatusTimer = nil
     }
     
     @objc func loadImportStatus(forInitializing: Bool = false) {

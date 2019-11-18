@@ -55,5 +55,6 @@ extension TxCompletionInteractor: TxCompletionInteractorInput {
     
     func stopService() {
         txStatusTimer?.invalidate()
+        txStatusTimer = nil
     }
 }

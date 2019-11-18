@@ -43,5 +43,6 @@ extension TxProcessInteractor: TxProcessInteractorInput {
     
     func stopService() {
         txStatusTimer?.invalidate()
+        txStatusTimer = nil
     }
 }

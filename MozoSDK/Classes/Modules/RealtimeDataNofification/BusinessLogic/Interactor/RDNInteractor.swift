@@ -28,6 +28,7 @@ class RDNInteractor: NSObject {
     
     func stopReconnectToWebSocket() {
         reconnectTimer?.invalidate()
+        reconnectTimer = nil
         retryCount = 1
     }
 }
