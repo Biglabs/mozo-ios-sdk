@@ -6,7 +6,9 @@
 //
 
 import Foundation
-
+@objc public protocol MozoPopupContactDelegate {
+    func didCloseMozoPopupContact()
+}
 class MozoPopupContact: MozoView {
     @IBOutlet weak var imgTelegram: UIImageView!
     @IBOutlet weak var lbError: UILabel!
@@ -31,6 +33,8 @@ class MozoPopupContact: MozoView {
             }
         }
     }
+    
+    var delegate: MozoPopupContactDelegate?
     
     override func identifier() -> String {
         return "MozoPopupContact"
@@ -86,6 +90,7 @@ class MozoPopupContact: MozoView {
     @objc
     public func dismissView() {
         modalCloseHandler?()
+        delegate?.didCloseMozoPopupContact()
     }
     
     @IBAction func touchedOkBtn(_ sender: Any) {
