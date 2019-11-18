@@ -20,7 +20,7 @@ public class MozoBasicViewController : UIViewController {
     }
     
     func displayMozoError(_ error: String) {
-        if error.contains(" (email + phone)") || error.contains(" (phone + email)") || error.contains(" (이메일 + 전화)") || error.contains(" (전화 + 이메일)") {
+        if error.isMozoErrorWithContact {
             DisplayUtils.displayMozoErrorWithContact(error)
             return
         }
@@ -116,7 +116,7 @@ public class MozoBasicViewController : UIViewController {
         if error == nil {
             errorText = ConnectionError.apiError_INTERNAL_ERROR.apiError?.description
         }
-        if let errorText = errorText, errorText.contains(" (email + phone)") || errorText.contains(" (phone + email)") || errorText.contains(" (이메일 + 전화)") || errorText.contains(" (전화 + 이메일)") {
+        if let errorText = errorText, errorText.isMozoErrorWithContact {
             DisplayUtils.displayMozoErrorWithContact(errorText)
             return
         }
