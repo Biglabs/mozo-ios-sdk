@@ -452,8 +452,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getParkingTicketByStoreId(storeId: storeId, isIn: isIn))!
     }
         
-    func renewParkingTicket(id: Int64, vehicleTypeKey: String) -> Promise<TicketDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.renewParkingTicket(id: id, vehicleTypeKey: vehicleTypeKey))!
+    func renewParkingTicket(id: Int64, vehicleTypeKey: String, isIn: Bool) -> Promise<TicketDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.renewParkingTicket(id: id, vehicleTypeKey: vehicleTypeKey, isIn: isIn))!
     }
     
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem> {
