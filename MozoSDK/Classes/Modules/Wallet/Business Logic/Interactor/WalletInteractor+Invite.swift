@@ -29,6 +29,7 @@ extension WalletInteractor {
     
     func continueWithUpdatingFullyWallet() {
         checkProcessingInvitationTimer?.invalidate()
+        checkProcessingInvitationTimer = nil
         print("Continue with updating full wallets.")
         if let tempWalletInfo = self.tempWalletInfo, self.tempWallets.count > 0 {
             self.updateFullWalletInfo(tempWalletInfo, wallets: tempWallets)
@@ -48,6 +49,7 @@ extension WalletInteractor {
     
     func continueWithUpdatingFullyWalletInAutoMode() {
         checkProcessingInvitationTimer?.invalidate()
+        checkProcessingInvitationTimer = nil
         print("Continue with updating full wallets in auto mode.")
         if let tempWalletInfo = self.tempWalletInfo, self.tempWallets.count > 0 {
             self.updateFullWalletInfoInAutoMode(tempWalletInfo, wallets: tempWallets)

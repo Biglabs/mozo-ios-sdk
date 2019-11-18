@@ -230,6 +230,7 @@ extension CoreInteractor: CoreInteractorInput {
         if SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING {
             print("Continue with checking auth and wallet.")
             checkTokenExpiredTimer?.invalidate()
+            checkTokenExpiredTimer = nil
             self.checkAuthAndWallet(module: checkTokenExpiredModule!)
         }
     }

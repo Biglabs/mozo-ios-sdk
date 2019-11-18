@@ -37,5 +37,6 @@ extension MaintenanceInteractor: MaintenanceInteractorInput {
     func stopService() {
         NSLog("MaintenanceInteractor - Stop service")
         txStatusTimer?.invalidate()
+        txStatusTimer = nil
     }
 }

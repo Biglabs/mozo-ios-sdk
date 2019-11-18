@@ -49,6 +49,7 @@ class TopUpWithdrawInteractor: NSObject {
     
     func stopService() {
         txStatusTimer?.invalidate()
+        txStatusTimer = nil
     }
     
     @objc func loadTransactionStatus() {

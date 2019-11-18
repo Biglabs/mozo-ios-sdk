@@ -18,7 +18,7 @@ public enum TopUpReasonEnum: String {
         case .TOP_UP_WITHDRAW:
             return "Withdraw"
         case .TOP_UP_ADD_MORE:
-            return "Top up"
+            return "Deposit"
         }
     }
 }
