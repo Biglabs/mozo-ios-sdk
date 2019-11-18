@@ -396,8 +396,8 @@ public class MozoSDK {
         return moduleDependencies.getParkingTicketByStoreId(storeId: storeId, isIn: isIn)
     }
         
-    public static func renewParkingTicket(id: Int64, vehicleTypeKey: String) -> Promise<TicketDTO> {
-        return moduleDependencies.renewParkingTicket(id: id, vehicleTypeKey: vehicleTypeKey)
+    public static func renewParkingTicket(id: Int64, vehicleTypeKey: String, isIn: Bool) -> Promise<TicketDTO> {
+        return moduleDependencies.renewParkingTicket(id: id, vehicleTypeKey: vehicleTypeKey, isIn: isIn)
     }
     
     // MARK: TOP UP

@@ -159,7 +159,7 @@ protocol CoreInteractorService {
     
     func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO>
     
-    func renewParkingTicket(id: Int64, vehicleTypeKey: String) -> Promise<TicketDTO>
+    func renewParkingTicket(id: Int64, vehicleTypeKey: String, isIn: Bool) -> Promise<TicketDTO>
     
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem>
         

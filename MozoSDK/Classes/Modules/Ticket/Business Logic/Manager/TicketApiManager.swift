@@ -59,9 +59,9 @@ public extension ApiManager {
         }
     }
     
-    func renewParkingTicket(id: Int64, vehicleTypeKey: String) -> Promise<TicketDTO> {
+    func renewParkingTicket(id: Int64, vehicleTypeKey: String, isIn: Bool) -> Promise<TicketDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getRenewParkingTicket?id=\(id)&locale=\(Configuration.LOCALE)&vehicleTypeKey=\(vehicleTypeKey)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getRenewParkingTicket?id=\(id)&locale=\(Configuration.LOCALE)&in=\(isIn.toString)&vehicleTypeKey=\(vehicleTypeKey)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

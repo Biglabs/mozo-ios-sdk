@@ -97,6 +97,10 @@ public extension String {
     func hasValidSchemeForQRCode() -> Bool {
         return hasPrefix(AppType.Retailer.scheme) || hasPrefix(AppType.Shopper.scheme)
     }
+    
+    var isMozoErrorWithContact: Bool {
+        return contains(" (email + phone)") || contains(" (phone + email)") || contains(" (이메일 + 전화)") || contains(" (전화 + 이메일)")
+    }
 }
 
 internal extension String {

@@ -197,7 +197,7 @@ extension TopUpInteractor: TopUpInteractorInput {
         }
         self.topUpAddress = topUpAddress
         
-        if topUpAddress == nil {
+        if topUpAddress == nil || (topUpAddress ?? "").isEmpty {
             prepareTopUpTransaction(transaction)
         } else {
             prepareTopUpTransfer(transaction)
@@ -233,7 +233,7 @@ extension TopUpInteractor: TopUpInteractorInput {
     }
     
     func sendSignedTopUpTx(pin: String) {
-        if topUpAddress == nil {
+        if topUpAddress == nil || (topUpAddress ?? "").isEmpty {
             sendSignTopUpMultipleTransaction(pin: pin)
         } else {
             sendSignTransfer(pin: pin)

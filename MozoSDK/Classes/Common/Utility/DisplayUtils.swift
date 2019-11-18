@@ -132,57 +132,15 @@ public class DisplayUtils {
             return
         }
         if let topViewController = getTopViewController(), let parentView = topViewController.view {
-            let popupWidth = 315
-            let popupHeight = error == .requestTimedOut ? popupWidth : 384
-            let mozoPopupErrorView = MozoPopupErrorView(frame: CGRect(x: 0, y: 0, width: popupWidth, height: popupHeight))
-            mozoPopupErrorView.delegate = delegate
-            mozoPopupErrorView.shouldTrackNetwork = !isEmbedded
-            mozoPopupErrorView.isEmbedded = isEmbedded
-            if let err = error {
-                mozoPopupErrorView.error = err
-            }
-            
-            if !isEmbedded {
-                mozoPopupErrorView.clipsToBounds = false
-                mozoPopupErrorView.dropShadow()
-                mozoPopupErrorView.containerView.roundCorners(borderColor: .white, borderWidth: 1)
-            }
-            mozoPopupErrorView.center = parentView.center
-            
-            // cover view
-            let displayWidth: CGFloat = parentView.frame.width
-            let displayHeight: CGFloat = parentView.frame.height
-            let coverView = UIView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight))
-            if !isEmbedded {
-                coverView.backgroundColor = .black
-                coverView.alpha = 0.5
-            } else {
-                coverView.backgroundColor = .white
-            }
-            parentView.addSubview(coverView)
-            
-            if allowTapToDismiss {
-                let coverViewTap = UITapGestureRecognizer(target: mozoPopupErrorView, action: #selector(MozoPopupErrorView.dismissView))
-                coverView.addGestureRecognizer(coverViewTap)
-                
-                mozoPopupErrorView.modalCloseHandler = {
-                    mozoPopupErrorView.forceDisable()
-                    mozoPopupErrorView.removeFromSuperview()
-                    coverView.removeFromSuperview()
-                }
-            }
-            
-            mozoPopupErrorView.tapTryHandler = {
-                mozoPopupErrorView.forceDisable()
-                mozoPopupErrorView.removeFromSuperview()
-                coverView.removeFromSuperview()
-            }
-            
-            parentView.addSubview(mozoPopupErrorView)
+            DisplayUtils.displayTryAgainPopupInParentView(parentView: parentView,
+                                                          allowTapToDismiss: allowTapToDismiss,
+                                                          isEmbedded: isEmbedded,
+                                                          error: error,
+                                                          delegate: delegate)
         }
     }
     
-    public static func displayMozoErrorWithContact(_ error: String) {
+    public static func displayMozoErrorWithContact(_ error: String, delegate: MozoPopupContactDelegate? = nil) {
         if let parentView = UIApplication.shared.keyWindow {
             let mozoContactView = MozoPopupContact(frame: CGRect(x: 0, y: 0, width: 300, height: 340))
             mozoContactView.appType = self.appType
@@ -193,6 +151,7 @@ public class DisplayUtils {
             mozoContactView.center = parentView.center
             
             mozoContactView.errorMessage = error
+            mozoContactView.delegate = delegate
             
             // cover view
             let displayWidth: CGFloat = parentView.frame.width
