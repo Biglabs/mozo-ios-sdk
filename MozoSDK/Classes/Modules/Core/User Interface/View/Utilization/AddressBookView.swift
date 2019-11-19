@@ -55,6 +55,9 @@ protocol AddressBookViewDelegate {
             if middleText.isEmpty {
                 lbPhone.isHidden = true
                 height = 45
+                if addressBook.address.isEmpty {
+                    height = 20
+                }
             } else {
                 lbPhone.isHidden = false
                 lbPhone.text = middleText

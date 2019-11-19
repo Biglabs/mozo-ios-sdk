@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -3013,14 +3013,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_tx_complete" translatesAutoresizingMaskIntoConstraints="NO" id="t5u-76-0Jb">
-                                <rect key="frame" x="105" y="42" width="165" height="100"/>
+                                <rect key="frame" x="147.5" y="42" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="165" id="Adk-VL-uNk"/>
-                                    <constraint firstAttribute="height" constant="100" id="tf8-JC-31x"/>
+                                    <constraint firstAttribute="width" constant="80" id="Adk-VL-uNk"/>
+                                    <constraint firstAttribute="height" constant="80" id="tf8-JC-31x"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action Complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcD-jC-ehP">
-                                <rect key="frame" x="109" y="158" width="157.5" height="24"/>
+                                <rect key="frame" x="109" y="138" width="157.5" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -3029,7 +3029,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvd-aJ-yOC">
-                                <rect key="frame" x="112.5" y="234" width="150" height="30"/>
+                                <rect key="frame" x="112.5" y="214" width="150" height="30"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loading" translatesAutoresizingMaskIntoConstraints="NO" id="X38-sh-EUE">
                                         <rect key="frame" x="4.5" y="0.0" width="32" height="30"/>
@@ -3068,7 +3068,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kja-eZ-KQb">
-                                <rect key="frame" x="20" y="234" width="335" height="186"/>
+                                <rect key="frame" x="20" y="214" width="335" height="186"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have just sent:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REv-jj-c6g">
                                         <rect key="frame" x="99" y="0.0" width="137.5" height="18"/>
@@ -3146,7 +3146,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kas-ba-Yvj">
-                                <rect key="frame" x="37.5" y="475" width="300" height="45"/>
+                                <rect key="frame" x="37.5" y="455" width="300" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="KWO-FI-j7j"/>
                                 </constraints>
@@ -3166,7 +3166,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVU-ca-OfZ">
-                                <rect key="frame" x="37.5" y="535" width="300" height="45"/>
+                                <rect key="frame" x="37.5" y="515" width="300" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="5" maxY="0.0"/>
                                 <state key="normal" title="Save Wallet Address" image="ic_user_add">
@@ -3205,6 +3205,9 @@
                         <outlet property="addressBookView" destination="ZPb-fM-d1F" id="YmA-OF-ypy"/>
                         <outlet property="btnDetail" destination="kas-ba-Yvj" id="H1q-B8-bwa"/>
                         <outlet property="btnSave" destination="wVU-ca-OfZ" id="6nZ-Gb-dlf"/>
+                        <outlet property="completeImageView" destination="t5u-76-0Jb" id="IOW-vO-haD"/>
+                        <outlet property="completeImageViewHeightConstraint" destination="tf8-JC-31x" id="K56-7b-lw1"/>
+                        <outlet property="completeImageViewWidthConstraint" destination="Adk-VL-uNk" id="Oc1-5k-9bB"/>
                         <outlet property="labelActionComplete" destination="PcD-jC-ehP" id="MP4-oD-PwJ"/>
                         <outlet property="lbAddress" destination="BYu-pz-fjF" id="emB-5V-5Sj"/>
                         <outlet property="lbAmount" destination="dQy-pN-MP0" id="zTR-mK-iKs"/>
@@ -4719,7 +4722,7 @@
         <image name="ic_sent_circle" width="48" height="48"/>
         <image name="ic_sort_down" width="10" height="6"/>
         <image name="ic_store" width="40" height="36"/>
-        <image name="ic_tx_complete" width="165" height="100"/>
+        <image name="ic_tx_complete" width="120" height="120"/>
         <image name="ic_user" width="14" height="18"/>
         <image name="ic_user_add" width="19" height="16"/>
         <image name="ic_user_profile" width="201" height="201"/>
