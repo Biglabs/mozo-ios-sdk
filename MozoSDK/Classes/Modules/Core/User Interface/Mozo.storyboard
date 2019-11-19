@@ -3117,7 +3117,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZPb-fM-d1F" customClass="AddressBookView" customModule="MozoSDK" customModuleProvider="target">
-                                        <rect key="frame" x="39.5" y="106" width="256" height="80"/>
+                                        <rect key="frame" x="73.5" y="106" width="256" height="80"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="256" id="a1C-hK-Z21"/>
@@ -3133,7 +3133,7 @@
                                     <constraint firstItem="dvK-qO-LTE" firstAttribute="centerX" secondItem="Kja-eZ-KQb" secondAttribute="centerX" id="FbP-aP-JBA"/>
                                     <constraint firstItem="REv-jj-c6g" firstAttribute="top" secondItem="Kja-eZ-KQb" secondAttribute="top" id="O5x-qt-CEF"/>
                                     <constraint firstAttribute="trailing" secondItem="BYu-pz-fjF" secondAttribute="trailing" id="atI-bY-ZLw"/>
-                                    <constraint firstItem="ZPb-fM-d1F" firstAttribute="centerX" secondItem="Kja-eZ-KQb" secondAttribute="centerX" id="bOF-2K-yhk"/>
+                                    <constraint firstItem="ZPb-fM-d1F" firstAttribute="centerX" secondItem="Kja-eZ-KQb" secondAttribute="centerX" constant="34" id="bOF-2K-yhk"/>
                                     <constraint firstItem="dvK-qO-LTE" firstAttribute="top" secondItem="na5-fx-2al" secondAttribute="bottom" constant="16" id="eC3-1T-bNI"/>
                                     <constraint firstAttribute="height" constant="186" id="hfm-4c-Rlp"/>
                                     <constraint firstItem="h0l-uZ-RDH" firstAttribute="centerY" secondItem="dQy-pN-MP0" secondAttribute="centerY" id="lAx-6D-Bbm"/>
