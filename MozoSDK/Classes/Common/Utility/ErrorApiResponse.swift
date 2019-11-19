@@ -93,7 +93,6 @@ public enum ErrorApiResponse: String {
     case STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR = "STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR"
     case STORE_PARKING_TICKET_HAVE_TICKET_IN = "STORE_PARKING_TICKET_HAVE_TICKET_IN"
     case STORE_PARKING_TICKET_NOT_HAVE_TICKET_IN = "STORE_PARKING_TICKET_NOT_HAVE_TICKET_IN"
-    case STORE_PARKING_TICKET_NOT_CREATE_TICKET_MANUAL = "STORE_PARKING_TICKET_NOT_CREATE_TICKET_MANUAL"
     
     case STORE_PARKING_TICKET_ID_NOT_EXIST_ERROR
     case STORE_PARKING_TICKET_OF_OTHER_USER_ERROR
@@ -181,6 +180,11 @@ public enum ErrorApiResponse: String {
         case .STORE_PROMO_USER_NO_PAID_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_PROMO_STATUS_NOT_SCANNED_ERROR: return rawValue
         case .STORE_SC_TOPUP_NOT_EXIST: return rawValue
+            
+        case .STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR: return "The parking ticket feature is not available with you at this store at the moment"
+        case .STORE_PARKING_TICKET_HAVE_TICKET_IN: return "You are already CHECK IN at this store. Please CHECK OUT the previous ticket before using another one."
+        case .STORE_PARKING_TICKET_NOT_HAVE_TICKET_IN: return "You are already CHECK OUT at this store. CHECK OUT ticket is not available for you at the moment."
+            
         default:
             return rawValue
         }
@@ -286,7 +290,6 @@ public enum ErrorApiResponse: String {
         case .STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR: return .apiError_STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR
         case .STORE_PARKING_TICKET_HAVE_TICKET_IN: return .apiError_STORE_PARKING_TICKET_HAVE_TICKET_IN
         case .STORE_PARKING_TICKET_NOT_HAVE_TICKET_IN: return .apiError_STORE_PARKING_TICKET_NOT_HAVE_TICKET_IN
-        case .STORE_PARKING_TICKET_NOT_CREATE_TICKET_MANUAL: return .apiError_STORE_PARKING_TICKET_NOT_CREATE_TICKET_MANUAL
             
         case .STORE_PARKING_TICKET_ID_NOT_EXIST_ERROR: return .apiError_STORE_PARKING_TICKET_ID_NOT_EXIST_ERROR
         case .STORE_PARKING_TICKET_OF_OTHER_USER_ERROR: return .apiError_STORE_PARKING_TICKET_OF_OTHER_USER_ERROR
