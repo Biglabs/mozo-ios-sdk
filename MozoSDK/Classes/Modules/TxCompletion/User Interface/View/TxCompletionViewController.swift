@@ -12,6 +12,9 @@ class TxCompletionViewController: MozoBasicViewController {
     var eventHandler : TxCompletionModuleInterface?
     var detailItem: TxDetailDisplayItem!
     
+    @IBOutlet weak var completeImageView: UIImageView!
+    @IBOutlet weak var completeImageViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var completeImageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var labelActionComplete: UILabel!
     
     @IBOutlet weak var txCompletionView: UIView!
