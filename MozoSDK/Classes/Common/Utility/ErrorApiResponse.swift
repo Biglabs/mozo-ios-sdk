@@ -99,6 +99,8 @@ public enum ErrorApiResponse: String {
     case USER_PROFILE_NOT_FOUND_ERROR
     case STORE_FATAL_USER_NO_OFFCHAIN_ADDRESS
     case STORE_PARKING_TICKET_FEE_NOT_CHANGE_VEHICLE
+    case STORE_PARKING_FEE_NOT_RENEW_TICKET_IN
+    case STORE_PARKING_FEE_NOT_RENEW_TICKET_OUT
     case STORE_PARKING_TICKET_STATUS_CHANGED
     
     public var description: String {
@@ -184,7 +186,8 @@ public enum ErrorApiResponse: String {
         case .STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR: return "The parking ticket feature is not available with you at this store at the moment"
         case .STORE_PARKING_TICKET_HAVE_TICKET_IN: return "You are already CHECK IN at this store. Please CHECK OUT the previous ticket before using another one."
         case .STORE_PARKING_TICKET_NOT_HAVE_TICKET_IN: return "You are already CHECK OUT at this store. CHECK OUT ticket is not available for you at the moment."
-            
+        case .STORE_PARKING_FEE_NOT_RENEW_TICKET_IN: return "CHECK IN ticket at this store is not available at the moment. Please ask parking employee to use traditional RFID."
+        case .STORE_PARKING_FEE_NOT_RENEW_TICKET_OUT: return "CHECK OUT ticket at this store is not available at the moment. Please turn off your internet and open Offline Parking ticket."
         default:
             return rawValue
         }
@@ -296,6 +299,8 @@ public enum ErrorApiResponse: String {
         case .USER_PROFILE_NOT_FOUND_ERROR: return .apiError_USER_PROFILE_NOT_FOUND_ERROR
         case .STORE_FATAL_USER_NO_OFFCHAIN_ADDRESS: return .apiError_STORE_FATAL_USER_NO_OFFCHAIN_ADDRESS
         case .STORE_PARKING_TICKET_FEE_NOT_CHANGE_VEHICLE: return .apiError_STORE_PARKING_TICKET_FEE_NOT_CHANGE_VEHICLE
+        case .STORE_PARKING_FEE_NOT_RENEW_TICKET_IN: return apiError_STORE_PARKING_FEE_NOT_RENEW_TICKET_IN
+        case .STORE_PARKING_FEE_NOT_RENEW_TICKET_OUT: return apiError_STORE_PARKING_FEE_NOT_RENEW_TICKET_OUT
         case .STORE_PARKING_TICKET_STATUS_CHANGED: return .apiError_STORE_PARKING_TICKET_STATUS_CHANGED
         }
     }
