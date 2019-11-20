@@ -171,7 +171,7 @@ class PaymentViewController: MozoBasicViewController {
         if let text = txtAmount.text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             if let tokenInfo = self.tokenInfo {
                 let valueText = text.toTextNumberWithoutGrouping()
-                eventHandler?.createPaymentRequest(valueText.toDoubleValue(), tokenInfo: tokenInfo)
+                eventHandler?.createPaymentRequest(valueText, tokenInfo: tokenInfo)
             } else {
                 displayMozoError("No token info")
             }

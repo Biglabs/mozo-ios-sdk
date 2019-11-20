@@ -35,8 +35,9 @@ extension PaymentPresenter: PaymentModuleInterface {
         wireframe?.presentScannerQRCodeInterface()
     }
     
-    func createPaymentRequest(_ amount: Double, tokenInfo: TokenInfoDTO) {
-        let displayItem = PaymentRequestDisplayItem(id : 0, date: "", amount: amount, displayNameAddress: "", requestingAddress: tokenInfo.address ?? "")
+    func createPaymentRequest(_ amount: String, tokenInfo: TokenInfoDTO) {
+        let amountNumber = NSDecimalNumber(string: amount)
+        let displayItem = PaymentRequestDisplayItem(id : 0, date: "", amount: amountNumber, displayNameAddress: "", requestingAddress: tokenInfo.address ?? "")
         wireframe?.presentPaymentQRInterface(displayItem: displayItem)
     }
     

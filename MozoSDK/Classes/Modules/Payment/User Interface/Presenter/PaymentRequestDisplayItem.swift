@@ -10,11 +10,11 @@ import Foundation
 struct PaymentRequestDisplayItem {
     let id: Int64
     let date: String
-    let amount: Double
+    let amount: NSNumber
     var displayNameAddress: String
     let requestingAddress: String
     
-    init(id: Int64, date: String, amount: Double, displayNameAddress: String, requestingAddress: String) {
+    init(id: Int64, date: String, amount: NSNumber, displayNameAddress: String, requestingAddress: String) {
         self.id = id
         self.date = date
         self.amount = amount
@@ -28,7 +28,7 @@ struct PaymentRequestDisplayItem {
         let address = String(scheme.split(separator: "?")[0].split(separator: ":")[1])
         let amnt = url?.queryParameters?["amount"]
         self.date = ""
-        self.amount = (amnt ?? "0").toDoubleValue()
+        self.amount = NSDecimalNumber(string: amnt ?? "0")
         self.displayNameAddress = ""
         self.requestingAddress = address
         self.id = 0
@@ -39,7 +39,7 @@ struct PaymentRequestDisplayItem {
         let address = String(scheme.split(separator: "?")[0].split(separator: ":")[1])
         let amnt = url?.queryParameters?["amount"]
         self.date = date
-        self.amount = (amnt ?? "0").toDoubleValue()
+        self.amount = NSDecimalNumber(string: amnt ?? "0")
         self.displayNameAddress = ""
         self.requestingAddress = address
         self.id = id

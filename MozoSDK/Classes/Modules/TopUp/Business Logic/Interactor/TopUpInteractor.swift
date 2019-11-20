@@ -54,8 +54,8 @@ class TopUpInteractor: NSObject {
         let trimToAddress = topUpAddress?.trimmingCharacters(in: .whitespacesAndNewlines)
         var txValue = NSNumber(value: 0)
         if let amount = amount {
-            // Fix issue: Convert Double value from String incorrectly
-            txValue = NSDecimalNumber(string: amount).doubleValue.convertTokenValue(decimal: tokenInfo?.decimals ?? 0)
+            // Fix issue: Get double value from NSNumber, result is incorrect
+            txValue = NSDecimalNumber(string: amount).multiplying(by: NSDecimalNumber(decimal: pow(10, tokenInfo?.decimals ?? 0)))
         }
         let outputAddresses = [trimToAddress ?? ""]
         let output = OutputDTO(addresses: outputAddresses, value: txValue)!
