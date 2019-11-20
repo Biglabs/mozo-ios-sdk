@@ -29,7 +29,9 @@ class TransactionInteractor : NSObject {
         var txValue = NSNumber(value: 0)
         if let amount = amount {
             // Fix issue: Convert Double value from String incorrectly
-            txValue = NSDecimalNumber(string: amount).doubleValue.convertTokenValue(decimal: tokenInfo?.decimals ?? 0)
+            // Fix issue: Get double value from NSNumber, result is incorrect
+            txValue = NSDecimalNumber(string: amount).multiplying(by: NSDecimalNumber(decimal: pow(10, tokenInfo?.decimals ?? 0)))
+//                .doubleValue.convertTokenValue(decimal: tokenInfo?.decimals ?? 0)
         }
         
         let output = OutputDTO(addresses: [trimToAddress!], value: txValue)!
@@ -91,8 +93,9 @@ extension TransactionInteractor : TransactionInteractorInput {
         if self.tokenInfo == nil {
             self.tokenInfo = tokenInfo
         }
-        let spendable = tokenInfo.balance?.convertOutputValue(decimal: tokenInfo.decimals ?? 0) ?? 0
-        if transaction.outputs![0].value?.convertOutputValue(decimal: tokenInfo.decimals ?? 0) ?? 0 > spendable {
+        let spendable = tokenInfo.balance ?? NSNumber(value: 0)
+        let outputValue = transaction.outputs?[0].value ?? NSNumber(value: 0)
+        if outputValue.compare(spendable) == .orderedDescending {
             output?.didReceiveError("Error: Your spendable is not enough for this.")
             return
         }

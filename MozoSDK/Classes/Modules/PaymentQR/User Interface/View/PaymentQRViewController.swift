@@ -66,7 +66,7 @@ class PaymentQRViewController: MozoBasicViewController {
             
             lbAmountToSend.text = displayItem.amount.roundAndAddCommas()
             
-            lbAmountEx.text = DisplayUtils.getExchangeTextFromAmount(displayItem.amount)
+            lbAmountEx.text = DisplayUtils.getExchangeTextFromAmount(displayItem.amount.doubleValue)
         }
     }
     

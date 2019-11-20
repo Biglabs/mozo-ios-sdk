@@ -336,6 +336,12 @@ public extension NSNumber {
         let formattedNumber = numberFormatter.string(from: self)
         return formattedNumber ?? "0"
     }
+    
+    func roundAndAddCommas(toPlaces places:Int = 2) -> String {
+        let decimalNumber = NSDecimalNumber(decimal: self.decimalValue)
+        let rounded = decimalNumber.rounding(accordingToBehavior: NSDecimalNumberHandler(roundingMode: .up, scale: Int16(places), raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false))
+        return rounded.addCommas()
+    }
 }
 
 public extension Dictionary {

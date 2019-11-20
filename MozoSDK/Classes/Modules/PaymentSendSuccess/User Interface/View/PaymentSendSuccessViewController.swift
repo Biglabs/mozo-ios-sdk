@@ -30,7 +30,7 @@ class PaymentSendSuccessViewController: MozoBasicViewController {
         if let displayItem = self.displayItem {
             lbAmount.text = displayItem.amount.roundAndAddCommas()
             
-            lbAmountEx.text = DisplayUtils.getExchangeTextFromAmount(displayItem.amount)
+            lbAmountEx.text = DisplayUtils.getExchangeTextFromAmount(displayItem.amount.doubleValue)
             
             if let toAddress = toAddress, let addressBook = DisplayUtils.buildContactDisplayItem(address: toAddress) {
                 addressBookView.isHidden = false
