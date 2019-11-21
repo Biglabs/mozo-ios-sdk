@@ -18,10 +18,7 @@ class PaymentInteractor: NSObject {
         let toAddress = item.requestingAddress
         let input = InputDTO(addresses: [tokenInfo.address!])!
         let trimToAddress = toAddress.trimmingCharacters(in: .whitespacesAndNewlines)
-        let amount = item.amount
-        let value = Double(amount)
-        var txValue = NSNumber(value: 0)
-        txValue = value > 0.0 ? value.convertTokenValue(decimal: tokenInfo.decimals ?? 0) : 0
+        let txValue = NSDecimalNumber(decimal: item.amount.decimalValue).multiplying(byPowerOf10: Int16(tokenInfo.decimals ?? 0))
         
         let output = OutputDTO(addresses: [trimToAddress], value: txValue)!
         let transaction = TransactionDTO(inputs: [input], outputs: [output])
