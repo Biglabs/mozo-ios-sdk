@@ -39,5 +39,5 @@ extension AddressBookDisplayItem : Equatable {
         return rightSide.name == leftSide.name && rightSide.address == rightSide.address
     }
     
-    public static var TopUpAddressBookDisplayItem = AddressBookDisplayItem(name: "Top Up Wallet".localized)
+    public static var TopUpAddressBookDisplayItem = AddressBookDisplayItem(name: "TopUp Account".localized)
 }
