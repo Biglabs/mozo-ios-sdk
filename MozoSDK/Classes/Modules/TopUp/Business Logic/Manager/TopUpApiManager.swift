@@ -50,11 +50,8 @@ public extension ApiManager {
                     // JSON info
                     print("Finish request to get topup address, json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)
-                    if let address = jobj["address"].string {
-                        seal.fulfill(address)
-                    } else {
-                        seal.reject(ConnectionError.systemError)
-                    }
+                    let address = jobj["address"].string ?? ""
+                    seal.fulfill(address)
                 }
                 .catch { error in
                     //Handle error or give feedback to the user
