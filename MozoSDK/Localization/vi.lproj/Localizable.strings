@@ -1307,7 +1307,7 @@
 "TopUp Account" = "Tài khoản TopUp";
 "Deposit" = "Nạp vào";
 "Parking fee" = "Giá giữ xe";
-
+"Withdraw successfully" = "Rút thành công";
 "Withdraw failed, please try again later" = "Rút không thành công. Xin vui lòng thử lại sau";
 "Enter amount to deposit" = "Nhập số lượng để nạp vào";
 "Deposit failed" = "Nạp không thành công.";
