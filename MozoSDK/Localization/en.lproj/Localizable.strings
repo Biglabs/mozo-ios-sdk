@@ -1235,11 +1235,6 @@
 "Redemption" = "Redemption";
 "MozoX Offchain" = "MozoX Offchain";
 
-// Ticket
-"Welcome to %@" = "Welcome to %@";
-"FREE PARKING" = "FREE PARKING";
-"Disappear after %d:%d" = "Disappear after %d:%d";
-
 // Import Address Book
 "Enter MozoX address or phone number" = "Enter MozoX address or phone number";
 "Can't find this contact in your MozoX Address Book" = "Can't find this contact in your MozoX Address Book";
@@ -1273,17 +1268,6 @@
 "Top Local Airdrop Events" = "Top Local Airdrop Events";
 "Top International Airdrop Events" = "Top International Airdrop Events";
 
-// Ticket
-"Check in" = "Check in";
-"Check out" = "Check out";
-"FREE PARKING" = "FREE PARKING";
-"Check in successfully" = "Check in successfully";
-"Check out successfully" = "Check out successfully";
-"Auto close in %02ds" = "Auto close in %02ds";
-"Valid in %02d:%02d" = "Valid in %02d:%02d";
-"Show parking lot attendants this QR to check in" = "Show parking lot attendants this QR to check in";
-"Show parking lot attendants this QR to check out" = "Show parking lot attendants this QR to check out";
-
 // Speed Selection + Login Incorrect Time
 "You want:" = "You want:";
 "Already have another MozoX account? Log Out" = "Already have another MozoX account? Log Out";
@@ -1294,3 +1278,46 @@
 // Promotion (Update)
 "Let store staff scan this QR code to redeem" = "Let store staff scan this QR code to redeem";
 "Latest Promotions" = "Latest Promotions";
+
+// Ticket
+"Parking Ticket" = "Parking Ticket";
+"CHECK IN" = "CHECK IN";
+"Select Vehicle Type" = "Select Vehicle Type";
+"Motorbike" = "Motorbike";
+"Car" = "Car";
+"Bicycle" = "Bicycle";
+"CHECK OUT" = "CHECK OUT";
+"Scan this QR through QR code reader at parking gate to CHECK OUT" = "Scan this QR through QR code reader at parking gate to CHECK OUT";
+"Valid in %02d:%02d" = "Valid in %02d:%02d";
+"Extra fee" = "Extra fee";
+"Change" = "Change";
+"Select payment method" = "Select payment method";
+"Not enough MozoX in TopUp account" = "Not enough MozoX in TopUp account";
+"Please deposit MozoX to TopUp account and try again. Or Use cash." = "Please deposit MozoX to TopUp account and try again. Or Use cash.";
+"Deposit MozoX" = "Deposit MozoX";
+"Check in successfully" = "Check in successfully";
+"Scan this QR through QR code reader at parking gate to CHECK IN" = "Scan this QR through QR code reader at parking gate to CHECK IN";
+"Auto close in %02ds" = "Auto close in %02ds";
+"You are out of MozoX." = "You are out of MozoX.";
+"Check out successfully" = "Check out successfully";
+"TopUp Account" = "TopUp Account";
+"Deposit" = "Deposit";
+"Parking fee" = "Parking fee";
+"Withdraw successfully" = "Withdraw successfully";
+"Withdraw failed, please try again later" = "Withdraw failed, please try again later";
+"Enter amount to deposit" = "Enter amount to deposit";
+"Deposit failed" = "Deposit failed";
+"There is an error occurred, please try again later" = "There is an error occurred, please try again later";
+"Your MozoX is not enough to deposit" = "Your MozoX is not enough to deposit";
+"Show my parking ticket" = "Show my parking ticket";
+"Offline Parking Ticket" = "Offline Parking Ticket";
+"Free Parking Ticket" = "Free Parking Ticket";
+"Not enough MozoX, please use Cash to CHECK OUT" = "Not enough MozoX, please use Cash to CHECK OUT";
+"Not enough MozoX with this type of vehicle" = "Not enough MozoX with this type of vehicle";
+"Please ask parking employee to use traditional RFID." = "Please ask parking employee to use traditional RFID.";
+
+"The parking ticket feature is not available with you at this store at the moment" = "The parking ticket feature is not available with you at this store at the moment";
+"You are already CHECK IN at this store. Please CHECK OUT the previous ticket before using another one." = "You are already CHECK IN at this store. Please CHECK OUT the previous ticket before using another one.";
+"You are already CHECK OUT at this store. CHECK OUT ticket is not available for you at the moment." = "You are already CHECK OUT at this store. CHECK OUT ticket is not available for you at the moment.";
+"CHECK IN ticket at this store is not available at the moment. Please ask parking employee to use traditional RFID." = "CHECK IN ticket at this store is not available at the moment. Please ask parking employee to use traditional RFID.";
+"CHECK OUT ticket at this store is not available at the moment. Please turn off your internet and open Offline Parking ticket." = "CHECK OUT ticket at this store is not available at the moment. Please turn off your internet and open Offline Parking ticket.";

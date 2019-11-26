@@ -1239,11 +1239,6 @@
 "Redemption" = "Đổi thưởng";
 "MozoX Offchain" = "MozoX";
 
-// Ticket
-"Welcome to %@" = "Chào mừng đến với %@";
-"FREE PARKING" = "MIỄN PHÍ GIỮ XE";
-"Disappear after %d:%d" = "Sẽ tự động tắt sau %d:%d";
-
 // Import Address Book
 "Enter MozoX address or phone number" = "Nhập địa chỉ ví MozoX hoặc số điện thoại";
 "Can't find this contact in your MozoX Address Book" = "Không tìm thấy trong danh bạ MozoX của bạn";
@@ -1277,17 +1272,6 @@
 "Top Local Airdrop Events" = "Những sự kiện airdrop đỉnh tại địa phương";
 "Top International Airdrop Events" = "Những sự kiện airdrop đỉnh trên thế giới";
 
-// Ticket
-"Check in" = "Vé vào";
-"Check out" = "Vé ra";
-"FREE PARKING" = "MIỄN PHÍ GIỮ XE";
-"Check in successfully" = "Kiểm vé vào thành công";
-"Check out successfully" = "Kiểm vé ra thành công";
-"Auto close in %02ds" = "Sẽ đóng trong vòng %02d giây";
-"Valid in %02d:%02d" = "Có giá trị trong %02d:%02d";
-"Show parking lot attendants this QR to check in" = "Đưa QR cho nhân viên giữ xe để vào";
-"Show parking lot attendants this QR to check out" = "Đưa QR cho nhân viên giữ xe để ra";
-
 // Speed Selection + Login Incorrect Time
 "You want:" = "Bạn muốn:";
 "Already have another MozoX account? Log Out" = "Đã có tài khoản MozoX khác? Đăng xuất.";
@@ -1298,3 +1282,46 @@
 // Promotion (Update)
 "Let store staff scan this QR code to redeem" = "Đưa mã QR này cho nhân viên của cửa hàng";
 "Latest Promotions" = "Khuyến mãi mới nhất";
+
+// Ticket
+"Parking Ticket" = "Vé giữ xe";
+"CHECK IN" = "VÉ VÀO";
+"Select Vehicle Type" = "Chọn loại xe";
+"Motorbike" = "Xe máy";
+"Car" = "Ô tô";
+"Bicycle" = "Xe đạp";
+"CHECK OUT" = "VÉ RA";
+"Scan this QR through QR code reader at parking gate to CHECK OUT" = "Quét mã QR qua máy đọc tại cổng để RA";
+"Valid in %02d:%02d" = "Có giá trị trong %02d:%02d";
+"Extra fee" = "Phí cộng thêm";
+"Change" = "Thay đổi";
+"Select payment method" = "Chọn cách tính phí";
+"Not enough MozoX in TopUp account" = "Không đủ MozoX trong tài khoản TopUp";
+"Please deposit MozoX to TopUp account and try again. Or Use cash." = "Xin vui lòng nạp MozoX vào tài khoản TopUp và thử lại. Hoặc dùng tiền mặt.";
+"Deposit MozoX" = "Nạp MozoX";
+"Check in successfully" = "Kiểm vé vào thành công";
+"Scan this QR through QR code reader at parking gate to CHECK IN" = "Quét mã QR qua máy đọc tại cổng để VÀO";
+"Auto close in %02ds" = "Sẽ đóng trong vòng %02d giây";
+"You are out of MozoX." = "Bạn không đủ MozoX.";
+"Check out successfully" = "Kiểm vé ra thành công";
+"TopUp Account" = "Tài khoản TopUp";
+"Deposit" = "Nạp vào";
+"Parking fee" = "Giá giữ xe";
+
+"Withdraw failed, please try again later" = "Rút không thành công. Xin vui lòng thử lại sau";
+"Enter amount to deposit" = "Nhập số lượng để nạp vào";
+"Deposit failed" = "Nạp không thành công.";
+"There is an error occurred, please try again later" = "Có lỗi xảy ra. Xin vui lòng thử lại sau.";
+"Your MozoX is not enough to deposit" = "Bạn không đủ MozoX để nạp";
+"Show my parking ticket" = "Hiển thị vé gởi xe";
+"Offline Parking Ticket" = "Vé gởi xe ngoại tuyến";
+"Free Parking Ticket" = "Vé gởi xe miễn phí";
+"Not enough MozoX, please use Cash to CHECK OUT" = "Không đủ MozoX. Xin vui lòng thanh toán bằng tiền mặt để RA";
+"Not enough MozoX with this type of vehicle" = "Không đủ MozoX để trả phí cho loại xe này";
+"Please ask parking employee to use traditional RFID." = "Xin vui lòng yêu cầu nhân viên giữ xe dùng thẻ từ như bình thường.";
+
+"The parking ticket feature is not available with you at this store at the moment" = "Hiện tại tính năng giữ xe không khả dụng với bạn ở cửa hàng này.";
+"You are already CHECK IN at this store. Please CHECK OUT the previous ticket before using another one." = "Xe của bạn đã được gởi thành công tại cửa hàng. Xin vui lòng lấy xe khỏi bãi trước khi lấy vé mới.";
+"You are already CHECK OUT at this store. CHECK OUT ticket is not available for you at the moment." = "Vé RA của bạn đã được xử lý thành công. Không có vé RA nào khả dụng tại cửa hàng lúc này.";
+"CHECK IN ticket at this store is not available at the moment. Please ask parking employee to use traditional RFID." = "Vé VÀO hiện không khả dụng tại cửa hàng này. Xin vui lòng yêu cầu nhân viên giữ xe dùng thẻ từ như bình thường.";
+"CHECK OUT ticket at this store is not available at the moment. Please turn off your internet and open Offline Parking ticket." = "Vé RA hiện không khả dụng tại cửa hàng này. Xin vui lòng tắt internet và dùng vé ngoại tuyến.";
