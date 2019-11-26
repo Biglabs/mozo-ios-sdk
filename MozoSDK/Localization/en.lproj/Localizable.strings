@@ -1321,3 +1321,4 @@
 "You are already CHECK OUT at this store. CHECK OUT ticket is not available for you at the moment." = "You are already CHECK OUT at this store. CHECK OUT ticket is not available for you at the moment.";
 "CHECK IN ticket at this store is not available at the moment. Please ask parking employee to use traditional RFID." = "CHECK IN ticket at this store is not available at the moment. Please ask parking employee to use traditional RFID.";
 "CHECK OUT ticket at this store is not available at the moment. Please turn off your internet and open Offline Parking ticket." = "CHECK OUT ticket at this store is not available at the moment. Please turn off your internet and open Offline Parking ticket.";
+"FREE" = "FREE";
