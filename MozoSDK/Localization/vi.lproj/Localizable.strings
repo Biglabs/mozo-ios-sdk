@@ -1325,3 +1325,4 @@
 "You are already CHECK OUT at this store. CHECK OUT ticket is not available for you at the moment." = "Vé RA của bạn đã được xử lý thành công. Không có vé RA nào khả dụng tại cửa hàng lúc này.";
 "CHECK IN ticket at this store is not available at the moment. Please ask parking employee to use traditional RFID." = "Vé VÀO hiện không khả dụng tại cửa hàng này. Xin vui lòng yêu cầu nhân viên giữ xe dùng thẻ từ như bình thường.";
 "CHECK OUT ticket at this store is not available at the moment. Please turn off your internet and open Offline Parking ticket." = "Vé RA hiện không khả dụng tại cửa hàng này. Xin vui lòng tắt internet và dùng vé ngoại tuyến.";
+"FREE" = "MIỄN PHÍ";
