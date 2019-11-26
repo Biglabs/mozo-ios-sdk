@@ -37,7 +37,7 @@ public extension ApiManager {
     
     func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getParkingTicketByStoreId/v2?storeId=\(storeId)&in=\(isIn)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getParkingTicketByStoreId/v2?storeId=\(storeId)&in=\(isIn)&locale=\(Configuration.LOCALE)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
