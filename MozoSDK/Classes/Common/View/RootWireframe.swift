@@ -103,6 +103,9 @@ class RootWireframe : NSObject {
     
     public func closeToLastMozoUIs() {
         let controllers = mozoNavigationController.viewControllers
-        mozoNavigationController.setViewControllers([controllers[0]], animated: false)
+        // Check controllers count after get first
+        if controllers.count > 0 {
+            mozoNavigationController.setViewControllers([controllers[0]], animated: false)
+        }
     }
 }
