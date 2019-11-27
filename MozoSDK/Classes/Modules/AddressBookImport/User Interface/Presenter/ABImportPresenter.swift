@@ -58,10 +58,14 @@ class ABImportPresenter: NSObject {
                 contactInfoArray.append(contactInfo)
             }
             if contactInfoArray.count > 0 {
-                self.viewInterface?.displaySpinner()
+                DispatchQueue.main.async {
+                    self.viewInterface?.displaySpinner()
+                }
                 self.interactor?.requestImportWithContacts(contactInfoArray)
             } else {
-                self.viewInterface?.showContactEmptyAlert()
+                DispatchQueue.main.async {
+                    self.viewInterface?.showContactEmptyAlert()
+                }
             }
         }
     }
