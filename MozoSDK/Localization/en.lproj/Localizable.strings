@@ -302,7 +302,7 @@
 "MozoX Terms of Use" = "MozoX Terms of Use";
 "I have read and agree with MozoX Terms of Use" = "I have read and agree with MozoX Terms of Use";
 "I Agree" = "I Agree";
-"Selected days" = "Selected days";
+"Selected days:" = "Selected days:";
 "Create Event Successful!" = "Create Event Successful!";
 "Add More MozoX" = "Add More MozoX";
 "Number of new shoppers receiving MozoX" = "Number of new shoppers receiving MozoX";
@@ -414,7 +414,7 @@
 "Active" = "Active";
 "Out of MozoX" = "Out of MozoX";
 "End" = "End";
-"Scheduled" = "Scheduled";
+"Scheduled_Airdrop" = "Scheduled";
 
 "Receivers:" = "Receivers:";
 "Period:" = "Period:";
