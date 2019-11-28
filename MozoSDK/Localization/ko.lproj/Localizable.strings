@@ -297,7 +297,7 @@
 "Create Airdrop Event" = "Airdrop 이벤트 만들기";
 "Event Name" = "이벤트이름";
 "Number of shoppers" = "수령인수";
-"Number of shoppers:" = "수령인수";
+"Number of shoppers:" = "수령인수:";
 "Total Airdrop Amount" = "Airdrop이 필요한 총 MozoX";
 "Hour(s)" = "시간";
 "Event Period" = "기간";
@@ -307,7 +307,7 @@
 "MozoX Terms of Use" = "이용 약관";
 "I have read and agree with MozoX Terms of Use" = "저는 이용 약관을 읽고 동의합니다.";
 "I Agree" = "저는 동의합니다.";
-"Selected days" = "반복 :";
+"Selected days:" = "반복:";
 "Create Event Successful!" = "성공적인 이벤트 만들기";
 "Add More MozoX" = "MozoX 추가";
 "Number of new shoppers receiving MozoX" = "새로운 총 수령인 ";
@@ -419,7 +419,7 @@
 "Active" = "작동중";
 "Out of MozoX" = "MozoX 소진됨";
 "End" = "종료 됨";
-"Scheduled" = "예정된";
+"Scheduled_Airdrop" = "예정된";
 
 "Period:" = "행사기간";
 "Receivers:" = "수령인수:";

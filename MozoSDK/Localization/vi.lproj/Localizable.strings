@@ -260,8 +260,8 @@
 "Airdrops per Shopper:" = "Mỗi khách nhận:";
 "Time:" = "Thời gian:";
 "Airdrop Time" = "Thời gian Airdrop";
-"Frequency:" = "Tần suất:";
-"Frequency" = "Tần suất";
+"Frequency:" = "Tần suất Airdrop:";
+"Frequency" = "Tần suất Airdrop";
 "Duration:" = "Thời hạn:";
 "Duration" = "Thời hạn";
 "Store Location On MozoX Map" = "Vị trí cửa hàng trên bản đồ";
@@ -295,7 +295,7 @@
 "Create Airdrop Event" = "Tạo chương trình Airdrop";
 "Event Name" = "Tên chương trình";
 "Number of shoppers" = "Số người nhận";
-"Number of shoppers:" = "Số người nhận";
+"Number of shoppers:" = "Số người nhận:";
 "Total Airdrop Amount" = "Tổng MozoX Airdrop";
 "Hour(s)" = "Giờ";
 "Event Period" = "Thời hạn";
@@ -305,7 +305,7 @@
 "MozoX Terms of Use" = "Điều khoản sử dụng";
 "I have read and agree with MozoX Terms of Use" = "Tôi đã đọc và đồng ý điều khoản sử dụng";
 "I Agree" = "Tôi đồng ý";
-"Selected days" = "Lặp lại:";
+"Selected days:" = "Lặp lại:";
 "Create Event Successful!" = "Tạo chương trình thành công";
 "Add More MozoX" = "Thêm MozoX";
 "Number of new shoppers receiving MozoX" = "Tổng người nhận mới";
@@ -417,7 +417,7 @@
 "Active" = "Đang chạy";
 "Out of MozoX" = "Hết MozoX";
 "End" = "Đã kết thúc";
-"Scheduled" = "Hẹn giờ";
+"Scheduled_Airdrop" = "Hẹn giờ";
 
 "Receivers:" = "Số người nhận:";
 "Period:" = "Thời hạn:";
