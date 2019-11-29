@@ -29,7 +29,9 @@ class ABImportPresenter: NSObject {
         let store = CNContactStore()
         store.requestAccess(for: .contacts) { granted, error in
             guard granted else {
-                self.viewInterface?.showSettingPermissionAlert()
+                DispatchQueue.main.async {
+                    self.viewInterface?.showSettingPermissionAlert()
+                }
                 return
             }
             
