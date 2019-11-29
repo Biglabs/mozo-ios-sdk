@@ -142,7 +142,7 @@ class TransferViewController: MozoBasicViewController {
         dropdown.hide()
         if let tokenInfo = self.tokenInfo {
             let receiverAddress = displayContactItem?.address ?? txtAddressOrPhoneNo.text
-            let clearAmountText = txtAmount.text?.toTextNumberWithoutGrouping()
+            let clearAmountText = txtAmount.text //?.toTextNumberWithoutGrouping()
             eventHandler?.validateTransferTransaction(tokenInfo: tokenInfo, toAdress: receiverAddress, amount: clearAmountText, displayContactItem: txtAddressOrPhoneNo.isHidden ? displayContactItem : nil)
         }
     }
