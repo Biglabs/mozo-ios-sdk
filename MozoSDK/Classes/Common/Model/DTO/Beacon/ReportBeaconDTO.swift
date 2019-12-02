@@ -14,12 +14,18 @@ public enum ReportBeaconStatus : String {
 }
 
 public class ReportBeaconDTO {
-    public var beaconMacList: [String]?
+    public var beaconList: Dictionary<String, Dictionary<String, Int64>>?
     public var locale: String?
     public var status: ReportBeaconStatus?
     
     public required init(beaconInfoDTOList: [BeaconInfoDTO], status: Bool){
-        self.beaconMacList = beaconInfoDTOList.map { $0.macAddress! }
+        self.beaconList = Dictionary<String, Dictionary<String, Int64>>()
+        for item in beaconInfoDTOList {
+            var subDict = Dictionary<String, Int64>()
+            subDict["major"] = item.major
+            subDict["minor"] = item.minor
+            self.beaconList?["\(item.macAddress!)"] = subDict
+        }
         self.status = status ? .ON : .OFF
         self.locale = Configuration.LOCALE
     }
@@ -28,8 +34,8 @@ public class ReportBeaconDTO {
     
     public func toJSON() -> Dictionary<String, Any> {
         var json = Dictionary<String, Any>()
-        if let beaconMacList = self.beaconMacList {
-            json["beaconMacList"] = beaconMacList
+        if let beaconList = self.beaconList {
+            json["beaconList"] = beaconList
         }
         if let status = self.status {
             json["status"] = status.rawValue
