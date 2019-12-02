@@ -15,7 +15,7 @@ let RETAILER_AIRDROP_RESOURCE_API_PATH = "/retailer/airdrops"
 public extension ApiManager {
     func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_REPORT_API_PATH + "/report-beacon/v4"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_REPORT_API_PATH + "/report-beacon/v5"
             let data = ReportBeaconDTO(beaconInfoDTOList: beacons, status: status)
             let param = data.toJSON()
             print("Report ranged beacons params: \(data.rawString() ?? "NULL")")
