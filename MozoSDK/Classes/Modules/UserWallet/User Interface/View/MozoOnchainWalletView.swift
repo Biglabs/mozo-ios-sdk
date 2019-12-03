@@ -267,7 +267,7 @@ class MozoOnchainWalletView: MozoView {
     }
     
     func copyAddressAndShowHud() {
-        UIPasteboard.general.string = btnAddress.titleLabel?.text
+        UIPasteboard.general.string = btnAddress.titleLabel?.text ?? ""
         showHud()
     }
     

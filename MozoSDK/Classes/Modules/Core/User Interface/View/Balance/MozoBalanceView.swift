@@ -141,7 +141,7 @@ import Foundation
     }
     
     @IBAction func touchCopy(_ sender: Any) {
-        UIPasteboard.general.string = lbAddress.text
+        UIPasteboard.general.string = lbAddress.text ?? ""
     }
     
     @IBAction func touchedShowQR(_ sender: Any) {

@@ -386,7 +386,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
     
     func copyAddressAndShowHud() {
-        UIPasteboard.general.string = btnAddress.titleLabel?.text
+        UIPasteboard.general.string = btnAddress.titleLabel?.text ?? ""
         showHud()
     }
     
