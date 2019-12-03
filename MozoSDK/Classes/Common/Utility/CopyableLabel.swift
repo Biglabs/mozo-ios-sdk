@@ -34,7 +34,7 @@ public class CopyableLabel: UILabel {
     }
     
     override public func copy(_ sender: Any?) {
-        UIPasteboard.general.string = text
+        UIPasteboard.general.string = text ?? ""
         UIMenuController.shared.setMenuVisible(false, animated: true)
     }
     
