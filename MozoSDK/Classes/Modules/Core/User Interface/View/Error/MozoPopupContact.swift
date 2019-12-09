@@ -79,7 +79,7 @@ class MozoPopupContact: MozoView {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
         var urlString = "https://open.kakao.com/o/g6tvra5"
         if tappedImage == imgTelegram {
-            urlString = appType == .Shopper ? "https://t.me/MozoXApp" : "https://t.me/MozoXRetailerApp"
+            urlString = appType == .Shopper ? "https://t.me/MozoX_App" : "https://t.me/MozoX_Retailer"
         } else if tappedImage == imgZalo {
             urlString = "https://zalo.me/428563224447178063"
         }
