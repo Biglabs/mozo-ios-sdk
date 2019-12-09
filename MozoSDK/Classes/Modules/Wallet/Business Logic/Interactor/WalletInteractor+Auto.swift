@@ -51,6 +51,11 @@ extension WalletInteractor {
     
     func manageWalletInAutoMode(isCreateNew: Bool, mnemonics: String, rawPin: String) {
         var wallets = self.walletManager.createNewWallets(mnemonics: mnemonics)
+        // Handle wallets empty
+        if wallets.count < 2 {
+            self.autoOutput?.errorWhileManageWalletAutomatically(connectionError: .systemError, showTryAgain: false)
+            return
+        }
         for i in 0..<wallets.count {
             wallets[i].privateKey = wallets[i].privateKey.encrypt(key: rawPin)
         }

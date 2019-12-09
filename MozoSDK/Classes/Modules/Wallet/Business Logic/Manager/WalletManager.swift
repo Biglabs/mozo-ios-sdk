@@ -19,22 +19,34 @@ class WalletManager : NSObject {
     
     func createNewWallets(mnemonics: String) -> [WalletModel] {
         let path = HDNode.defaultPathMetamaskPrefix
-        let keystore = try! BIP32Keystore(mnemonics: mnemonics, password: "", mnemonicsPassword: "", prefixPath: path)
-        var wallets: [WalletModel] = []
-        
-        let offchainAccount = keystore!.addresses![0]
-        let offchainKey = try! keystore!.UNSAFE_getPrivateKeyData(password: "", account: offchainAccount)
-        let offchainWallet = WalletModel.init(address: offchainAccount.address, privateKey: offchainKey.toHexString())
-        wallets.append(offchainWallet)
-        
-        _ = try! keystore?.createNewChildAccount(password: "")
-        // Paths are stored as an dictionary so we must check the address for sure.
-        let onchainAccount = keystore!.addresses?.first(where: { $0.address != offchainAccount.address })
-        let onchainKey = try! keystore!.UNSAFE_getPrivateKeyData(password: "", account: onchainAccount!)
-        let onchainWallet = WalletModel.init(address: onchainAccount!.address, privateKey: onchainKey.toHexString())
-        wallets.append(onchainWallet)
-        
-        return wallets
+        // Return empty if keystore is unable to created
+        do {
+            if let keystore = try BIP32Keystore(mnemonics: mnemonics, password: "", mnemonicsPassword: "", prefixPath: path) {
+                if keystore.addresses?.count ?? 0 == 0 {
+                    return []
+                }
+                
+                if let offchainAccount = keystore.addresses?[0] {
+                    var wallets: [WalletModel] = []
+                    let offchainKey = try keystore.UNSAFE_getPrivateKeyData(password: "", account: offchainAccount)
+                    let offchainWallet = WalletModel.init(address: offchainAccount.address, privateKey: offchainKey.toHexString())
+                    wallets.append(offchainWallet)
+                    
+                    _ = try keystore.createNewChildAccount(password: "")
+                    // Paths are stored as an dictionary so we must check the address for sure.
+                    if let onchainAccount = keystore.addresses?.first(where: { $0.address != offchainAccount.address }) {
+                        let onchainKey = try keystore.UNSAFE_getPrivateKeyData(password: "", account: onchainAccount)
+                        let onchainWallet = WalletModel.init(address: onchainAccount.address, privateKey: onchainKey.toHexString())
+                        wallets.append(onchainWallet)
+                    }
+                    
+                    return wallets
+                }
+            }
+        } catch let ex {
+            NSLog("WalletManager - createNewWallets exception: \(ex)")
+        }
+        return []
     }
     
     func printTest() {

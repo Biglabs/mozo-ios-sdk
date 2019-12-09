@@ -256,6 +256,11 @@ extension WalletInteractor : WalletInteractorInput {
             _ = updateMnemonicAndPinForCurrentUser(mnemonic: serverEncryptedSeedPhrase, pin: pin).done { (result) in
                 if result {
                     var wallets = self.walletManager.createNewWallets(mnemonics: mnemonic)
+                    // Handle wallets empty
+                    if wallets.count < 2 {
+                        self.output?.errorWhileManageWallet(connectionError: .systemError, showTryAgain: false)
+                        return
+                    }
                     for i in 0..<wallets.count {
                         wallets[i].privateKey = wallets[i].privateKey.encrypt(key: pin)
                     }
@@ -286,6 +291,11 @@ extension WalletInteractor : WalletInteractorInput {
             _ = updateMnemonicAndPinForCurrentUser(mnemonic: (mne?.encrypt(key: pin))!, pin: pin)
         }
         var wallets = walletManager.createNewWallets(mnemonics: mne!)
+        // Handle wallets empty
+        if wallets.count < 2 {
+            self.output?.errorWhileManageWallet(connectionError: .systemError, showTryAgain: false)
+            return
+        }
         for i in 0..<wallets.count {
             wallets[i].privateKey = wallets[i].privateKey.encrypt(key: pin)
         }
