@@ -90,11 +90,11 @@ public extension UILabel {
      - parameter text: The text to add
      - parameter image: The image to add
      */
-    func addImageBeforeText(text: NSMutableAttributedString, image: UIImage, imageSize: CGSize = CGSize(width: 18, height: 16), imageTintColor: UIColor? = nil) {
+    func addImageBeforeText(text: NSMutableAttributedString, image: UIImage, imageSize: CGSize = CGSize(width: 18, height: 16), imageTintColor: UIColor? = nil, x: CGFloat = 0, y: CGFloat = -3) {
         let lAttachment = NSTextAttachment()
         lAttachment.image = image
         
-        lAttachment.bounds = CGRect(x: 0, y: -3, width: imageSize.width, height: imageSize.height)
+        lAttachment.bounds = CGRect(x: x, y: y, width: imageSize.width, height: imageSize.height)
         
         let lAttachmentString = NSAttributedString(attachment: lAttachment)
         
