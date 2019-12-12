@@ -98,7 +98,7 @@ public class MozoSDK {
         return (moduleDependencies.addRetailerSalePerson(parameters:parameters))
     }
     
-    public static func getAirdropStoreNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]> {
+    public static func getAirdropStoreNearby(params: [String: Any]) -> Promise<[AirdropEventDiscoverDTO]> {
         return (moduleDependencies.getAirdropStoreNearby(params: params))
     }
     
@@ -170,7 +170,7 @@ public class MozoSDK {
         return moduleDependencies.getNearestStores(storeId)
     }
     
-    public static func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
+    public static func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
         return moduleDependencies.getListEventAirdropOfStore(storeId)
     }
     
