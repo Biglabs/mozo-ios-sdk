@@ -66,8 +66,8 @@ protocol CoreInteractorService {
     func getListCountryCode() -> Promise<[CountryCodeDTO]>
     
     func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]>
-    func getAirdropStoreNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]>
-    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[StoreInfoDTO]>
+    func getAirdropStoreNearby(params: [String: Any]) -> Promise<[AirdropEventDiscoverDTO]>
+    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]>
     func getNearestStores(_ storeId: Int64) -> Promise<[StoreInfoDTO]>
     func searchStoresWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO>
     func getFavoriteStores(page: Int, size: Int) -> Promise<[StoreInfoDTO]>

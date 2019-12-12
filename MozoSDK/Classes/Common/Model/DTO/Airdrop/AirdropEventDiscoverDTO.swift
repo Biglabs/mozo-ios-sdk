@@ -16,7 +16,10 @@ public class AirdropEventDiscoverDTO {
     public var eventLatitude: Double?
     public var eventLongitude: Double?
     public var eventDistance: Double?
+    public var eventAddress: String?
     public var nextReceiveTime: Int64?
+    public var hourOfDayFrom: Int?
+    public var hourOfDayTo: Int?
     public var storeInfo: StoreInfoDTO?
     
     public required init?(json: SwiftyJSON.JSON) {
@@ -27,7 +30,10 @@ public class AirdropEventDiscoverDTO {
         self.eventLatitude = json["eventLatitude"].double
         self.eventLongitude = json["eventLongitude"].double
         self.eventDistance = json["eventDistance"].double
+        self.eventAddress = json["eventAddress"].string
         self.nextReceiveTime = json["nextReceiveTime"].int64
+        self.hourOfDayFrom = json["hourOfDayFrom"].int
+        self.hourOfDayTo = json["hourOfDayTo"].int
         self.storeInfo = StoreInfoDTO(json: json["storeInfo"])
     }
     
@@ -54,8 +60,17 @@ public class AirdropEventDiscoverDTO {
         if let eventDistance = self.eventDistance {
             json["eventDistance"] = eventDistance
         }
+        if let eventAddress = self.eventAddress {
+            json["eventAddress"] = eventAddress
+        }
         if let nextReceiveTime = self.nextReceiveTime {
             json["nextReceiveTime"] = nextReceiveTime
+        }
+        if let hourOfDayFrom = self.hourOfDayFrom {
+            json["hourOfDayFrom"] = hourOfDayFrom
+        }
+        if let hourOfDayTo = self.hourOfDayTo {
+            json["hourOfDayTo"] = hourOfDayTo
         }
         if let storeInfo = self.storeInfo {
             json["storeInfo"] = storeInfo.toJSON()

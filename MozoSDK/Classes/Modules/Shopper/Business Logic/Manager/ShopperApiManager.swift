@@ -17,16 +17,16 @@ let SHOPPER_NEAREST_API_PATH = SHOPPER_API_PATH + "/nearest/stores"
 let SHOPPER_RECOMMENDATION_API_PATH = SHOPPER_API_PATH + "/recommendation/stores"
 
 public extension ApiManager {
-    func getAirdropStoresNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]> {
+    func getAirdropStoresNearby(params: [String: Any]) -> Promise<[AirdropEventDiscoverDTO]> {
         return Promise { seal in
             let query = "?\(params.queryString)"
-            let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_API_PATH + "/nearby" + query
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/v1/airdrop/nearby" + query
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get airdrop store nearby, json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let list = StoreInfoDTO.arrayFromJson(jobj)
+                    let list = AirdropEventDiscoverDTO.arrayFromJson(jobj)
                     seal.fulfill(list)
                 }
                 .catch { error in
@@ -137,7 +137,7 @@ public extension ApiManager {
         }
     }
     
-    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
+    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/store/\(storeId)/air-drops"
             self.execute(.get, url: url)
@@ -145,7 +145,7 @@ public extension ApiManager {
                     // JSON info
                     print("Finish request to get event of store \(storeId), json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let list = StoreInfoDTO.arrayFromJson(jobj)
+                    let list = AirdropEventDiscoverDTO.arrayFromJson(jobj)
                     seal.fulfill(list)
                 }
                 .catch { error in

@@ -55,19 +55,8 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.addSalePerson(parameters: parameters)
     }
     
-    func getAirdropStoreNearby(params: [String : Any]) -> Promise<[StoreInfoDTO]> {
+    func getAirdropStoreNearby(params: [String : Any]) -> Promise<[AirdropEventDiscoverDTO]> {
         return apiManager.getAirdropStoresNearby(params: params)
-        //        return Promise { seal in
-        //            _ = apiManager.getAirdropStoresNearby(params: params).done({ (stores) in
-        //                let resultStores : [StoreInfoDTO] = stores.map {
-        //                    $0.customerAirdropAmount = ($0.customerAirdropAmount ?? 0) / 100
-        //                    return $0
-        //                }
-        //                return seal.fulfill(resultStores)
-        //            }).catch({ (error) in
-        //
-        //            })
-        //        }
     }
     
     func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
@@ -167,7 +156,7 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getNearestStores(storeId)
     }
     
-    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
+    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
         return apiManager.getListEventAirdropOfStore(storeId)
     }
     

@@ -156,7 +156,7 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.addSalePerson(parameters:parameters))!
     }
     
-    func getAirdropStoreNearby(params: [String: Any]) -> Promise<[StoreInfoDTO]> {
+    func getAirdropStoreNearby(params: [String: Any]) -> Promise<[AirdropEventDiscoverDTO]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropStoreNearby(params: params))!
     }
     
@@ -228,7 +228,7 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getNearestStores(storeId))!
     }
     
-    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
+    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getListEventAirdropOfStore(storeId))!
     }
     
