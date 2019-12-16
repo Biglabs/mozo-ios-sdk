@@ -55,6 +55,7 @@ class TxCompletionViewController: MozoBasicViewController {
         default:
             break
         }
+        navigationController?.isNavigationBarHidden = false
         navigationItem.title = text.localized
         checkAddressBook()
     }

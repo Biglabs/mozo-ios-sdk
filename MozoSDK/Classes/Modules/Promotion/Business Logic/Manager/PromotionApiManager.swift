@@ -416,4 +416,31 @@ public extension ApiManager {
             }
         }
     }
+    
+    func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
+        return Promise { seal in
+            let params = ["size" : size,
+                          "page" : page,
+                          "lat": lat,
+                          "lon": long,
+                          "storeId": storeId,
+                          "type": type] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoInStore?\(params.queryString)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get Shopper promotion in store [\(storeId)], with type [\(type)], json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
+                    let array = PromotionStoreDTO.arrayFrom(jobj)
+                    seal.fulfill(array)
+                }
+                .catch { error in
+                    print("Error when request get Shopper promotion in store [\(storeId)], with type [\(type)]: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
 }

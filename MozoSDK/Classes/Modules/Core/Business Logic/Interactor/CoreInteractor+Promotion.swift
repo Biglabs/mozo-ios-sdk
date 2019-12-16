@@ -88,4 +88,8 @@ extension CoreInteractor {
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]> {
         return apiManager.getSuggestKeySearchForPromotion(lat: lat, lon: lon)
     }
+    
+    func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
+        return apiManager.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat)
+    }
 }

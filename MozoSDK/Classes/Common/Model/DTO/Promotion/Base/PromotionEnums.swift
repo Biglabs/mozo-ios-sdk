@@ -50,6 +50,9 @@ public enum PromotionListTypeEnum: String {
     case HASHTAG = "HASHTAG"
     case RECOMMEND = "RECOMMEND"
     case LATEST = "LATEST"
+    case END = "END"
+    case RUNNING = "RUNNING"
+    case RUNNING_OR_SCHEDULED = "RUNNINGORSCHEDULED"
     
     public var loadMoreDisplayText: String {
         switch self {
@@ -58,6 +61,9 @@ public enum PromotionListTypeEnum: String {
         case .HASHTAG: return "There are a lot of Hashtag Promotion Events"
         case .RECOMMEND: return "There are a lot of Recommend Promotion Events"
         case .LATEST: return "There are a lot of Latest Promotion Events"
+        case .END: return "There are a lot of Past Promotion Events"
+        case .RUNNING: return "There are a lot of Running Promotion Events"
+        default: return ""
         }
     }
     
@@ -68,6 +74,9 @@ public enum PromotionListTypeEnum: String {
         case .HASHTAG: return "Hashtag"
         case .RECOMMEND: return "Recommendation"
         case .LATEST: return "Latest Promotions"
+        case .END: return "Past Promotions"
+        case .RUNNING: return "Running Promotions"
+        default: return ""
         }
     }
 }

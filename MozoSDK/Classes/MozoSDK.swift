@@ -416,4 +416,8 @@ public class MozoSDK {
     public static func topUpWithdraw(delegate: TopUpWithdrawDelegate) {
         moduleDependencies.topUpWithdraw(delegate: delegate)
     }
+    
+    public static func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int = 0, size: Int = 5, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
+        moduleDependencies.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat)
+    }
 }

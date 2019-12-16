@@ -139,7 +139,7 @@ public extension ApiManager {
     
     func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/store/\(storeId)/air-drops"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/v1/store/\(storeId)/air-drops"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
