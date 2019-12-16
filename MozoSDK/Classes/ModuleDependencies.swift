@@ -472,6 +472,10 @@ class ModuleDependencies {
         topUpWithdrawWireframe.requestToWithdrawAndSign(delegate: delegate)
     }
     
+    func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()
