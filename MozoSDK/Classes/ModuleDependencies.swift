@@ -476,6 +476,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat))!
     }
     
+    func getAirdropEventFromStore(_ storeId: Int64, type: AirdropEventType, page: Int, size: Int) -> Promise<[AirdropEventDiscoverDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropEventFromStore(storeId, type: type, page: page, size: size))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

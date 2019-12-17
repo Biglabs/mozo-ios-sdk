@@ -166,4 +166,6 @@ protocol CoreInteractorService {
     func loadTopUpHistory(page: Int, size: Int) -> Promise<TxHistoryDisplayCollection>
     
     func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]>
+    
+    func getAirdropEventFromStore(_ storeId: Int64, type: AirdropEventType, page: Int, size: Int) -> Promise<[AirdropEventDiscoverDTO]>
 }
