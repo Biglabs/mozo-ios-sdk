@@ -276,4 +276,27 @@ public extension ApiManager {
             }
         }
     }
+    
+    func getAirdropEventFromStore(_ storeId: Int64, type: AirdropEventType, page: Int, size: Int) -> Promise<[AirdropEventDiscoverDTO]> {
+        return Promise { seal in
+            let params = ["size" : size,
+                          "page" : page] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/store/\(storeId)/air-drops/\(type)" + "?\(params.queryString)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get airdrop for store [\(storeId)], type [\(type)], json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
+                    let list = AirdropEventDiscoverDTO.arrayFromJson(jobj)
+                    seal.fulfill(list)
+                }
+                .catch { error in
+                    print("Error when request get airdrop for store [\(storeId)], type [\(type)]: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
 }
