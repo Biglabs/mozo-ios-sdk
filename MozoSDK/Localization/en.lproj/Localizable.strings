@@ -496,6 +496,7 @@
 "Coin" = "Coin";
 "Group %d Stores" = "Group %d Stores";
 "Hours: %@ - %@" = "Hours: %@ - %@";
+"Hours: %@" = "Hours: %@";
 "Hashtag" = "Hashtag";
 "You can also care about" = "You can also care about";
 "Your location" = "Your location";
