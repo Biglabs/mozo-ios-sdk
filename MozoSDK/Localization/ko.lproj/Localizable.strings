@@ -1337,3 +1337,11 @@
 "CHECK IN ticket at this store is not available at the moment. Please ask parking employee to use traditional RFID." = "현재 이 매점에서 체크인 티켓을 사용 불가합니다. 전통 RFID 카드 사용하기 위해 직원에게 문의하세요.";
 "CHECK OUT ticket at this store is not available at the moment. Please turn off your internet and open Offline Parking ticket." = "현재 이 매점에서 체크아웃 티켓을 사용 불가합니다. 인터넷 끄고 오프라인 주차 티켓을 사용해보세요.";
 "FREE" = "무료";
+
+"Next %@" = "다음 %@";
+"There are no Airdrop Events" = "Airdrop 이벤트 없다";
+"There are no Promotions" = "프로모션 없다";
+"Active Airdrop Events" = "진행 중 Airdrop 이벤트";
+"Next time Airdrop Events" = "진행 예정 Airdrop";
+"Promotions at store" = "스토어 프로모션";
+"Past Promotions" = "지나간 프로모션";

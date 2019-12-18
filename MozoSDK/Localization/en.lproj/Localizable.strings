@@ -1324,3 +1324,11 @@
 "CHECK IN ticket at this store is not available at the moment. Please ask parking employee to use traditional RFID." = "CHECK IN ticket at this store is not available at the moment. Please ask parking employee to use traditional RFID.";
 "CHECK OUT ticket at this store is not available at the moment. Please turn off your internet and open Offline Parking ticket." = "CHECK OUT ticket at this store is not available at the moment. Please turn off your internet and open Offline Parking ticket.";
 "FREE" = "FREE";
+
+"Next %@" = "Next %@";
+"There are no Airdrop Events" = "There are no Airdrop Events";
+"There are no Promotions" = "There are no Promotions";
+"Active Airdrop Events" = "Active Airdrop Events";
+"Next time Airdrop Events" = "Next time Airdrop Events";
+"Promotions at store" = "Promotions at store";
+"Past Promotions" = "Past Promotions";

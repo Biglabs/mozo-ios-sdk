@@ -13,7 +13,7 @@ public enum AirdropEventType: String {
     public var displayText : String {
         switch self {
         case .ACTIVE: return "Active Airdrop Events"
-        case .WAITING: return "Waiting Airdrop Events"
+        case .WAITING: return "Next time Airdrop Events"
         }
     }
 }
