@@ -500,6 +500,7 @@
 "Coin" = "코인";
 "Group %d Stores" = "상점 %d 그룹";
 "Hours: %@ - %@" = "시간: %@ - %@";
+"Hours: %@" = "시간: %@";
 "Hashtag" = "해시 태그";
 "You can also care about" = "가장 가까운 상점";
 "Your location" = "현 위치";
