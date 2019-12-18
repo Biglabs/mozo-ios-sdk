@@ -52,7 +52,7 @@ public enum PromotionListTypeEnum: String {
     case LATEST = "LATEST"
     case END = "END"
     case RUNNING = "RUNNING"
-    case RUNNING_OR_SCHEDULED = "RUNNINGORSCHEDULED"
+    case RUNNING_OR_SCHEDULED = "RUNNING_OR_SCHEDULED"
     
     public var loadMoreDisplayText: String {
         switch self {
