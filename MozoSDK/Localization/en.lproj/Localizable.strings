@@ -840,6 +840,7 @@
 "Let your customers scan this QR code to download MozoX App and get %@ MozoX tokens for each customer sign up successful." = "Let your customers scan this QR code to download MozoX App and get %@ MozoX tokens for each customer sign up successful.";
 
 "%@ Token" = "%@ Token";
+"%@ Tokens" = "%@ Tokens";
 "Get Tokens" = "Get Tokens";
 "GET TOKENS" = "GET TOKENS";
 "Token" = "Token";

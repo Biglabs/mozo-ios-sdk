@@ -843,6 +843,7 @@
 "Let your customers scan this QR code to download MozoX App and get %@ MozoX tokens for each customer sign up successful." = "고객들이 QR 코드를 스캔하여 MozoX App을 다운로드하도록 초대하면 각 고객이 성공적으로 등록 할 때마다 귀하가 %@ 개의 MozoX 코인을 받게 됩니다.";
 
 "%@ Token" = "%@ 코인";
+"%@ Tokens" = "%@ 코인";
 "Get Tokens" = "코인가져 오기";
 "GET TOKENS" = "코인가져 오기";
 "Token" = "코인";

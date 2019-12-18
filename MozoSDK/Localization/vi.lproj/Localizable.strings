@@ -846,6 +846,7 @@
 "Let your customers scan this QR code to download MozoX App and get %@ MozoX tokens for each customer sign up successful." = "Cho khách quét mã QR này để tải ứng dụng MozoX, bạn sẽ nhận %@ điểm MozoX cho mỗi khách đăng ký thành công.";
 
 "%@ Token" = "%@ MozoX";
+"%@ Tokens" = "%@ MozoX";
 "Get Tokens" = "Săn MozoX";
 "GET TOKENS" = "SĂN MOZOX";
 "Token" = "MozoX";
