@@ -1328,3 +1328,11 @@
 "CHECK IN ticket at this store is not available at the moment. Please ask parking employee to use traditional RFID." = "Vé VÀO hiện không khả dụng tại cửa hàng này. Xin vui lòng yêu cầu nhân viên giữ xe dùng thẻ từ như bình thường.";
 "CHECK OUT ticket at this store is not available at the moment. Please turn off your internet and open Offline Parking ticket." = "Vé RA hiện không khả dụng tại cửa hàng này. Xin vui lòng tắt internet và dùng vé ngoại tuyến.";
 "FREE" = "MIỄN PHÍ";
+
+"Next %@" = "%@ nữa";
+"There are no Airdrop Events" = "Chưa có chương trình Airdrop.";
+"There are no Promotions" = "Chưa có khuyến mãi.";
+"Active Airdrop Events" = "Airdrop đang chạy";
+"Next time Airdrop Events" = "Airdrop sắp nhận được";
+"Promotions at store" = "Khuyến mãi tại cửa hàng";
+"Past Promotions" = "Khuyến mãi trước đây";
