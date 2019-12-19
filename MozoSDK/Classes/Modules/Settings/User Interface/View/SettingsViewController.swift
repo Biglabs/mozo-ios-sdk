@@ -12,7 +12,7 @@ class SettingsViewController: MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        enableBackBarButton()
+        setLeftNavigationBarButton()
         setupTableView()
     }
     
