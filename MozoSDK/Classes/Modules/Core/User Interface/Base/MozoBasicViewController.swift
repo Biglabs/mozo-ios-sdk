@@ -19,6 +19,34 @@ public class MozoBasicViewController : UIViewController {
         navigationItem.hidesBackButton = false
     }
     
+    func setLeftNavigationBarButton() {
+        //your custom view for back image with custom size
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 85, height: 40))
+        let imageView = UIImageView(frame: CGRect(x: -10, y: 10, width: 20, height: 20))
+
+        if let imgBackArrow = UIImage(named: "ic_left_arrow", in: BundleManager.mozoBundle(), compatibleWith: nil) {
+            imageView.image = imgBackArrow.withRenderingMode(.alwaysTemplate)
+            imageView.tintColor = ThemeManager.shared.main
+        }
+        view.addSubview(imageView)
+
+        let label = UILabel(frame: CGRect(x: 10, y: 10, width: 60, height: 18))
+        label.text = "Back".localized
+        label.textColor = ThemeManager.shared.main
+
+        view.addSubview(label)
+
+        let backTap = UITapGestureRecognizer(target: self, action: #selector(tapBackBtn))
+        view.addGestureRecognizer(backTap)
+
+        let leftBarButtonItem = UIBarButtonItem(customView: view)
+        self.navigationItem.leftBarButtonItem = leftBarButtonItem
+    }
+
+    @objc func tapBackBtn() {
+        navigationController?.popViewController(animated: false)
+    }
+    
     func displayMozoError(_ error: String) {
         if error.isMozoErrorWithContact {
             DisplayUtils.displayMozoErrorWithContact(error)
