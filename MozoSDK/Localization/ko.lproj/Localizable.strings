@@ -509,6 +509,7 @@
 "%d Result(s) for" = "에 %d 개 결과";
 "Sorted by:" = "정렬 기준 :";
 "Total MozoX Coins: %@" = "총 MozoX 코인 수";
+"Total MozoX:" = "총 MozoX 코인 수:";
 "Fill in to get %@ MozoX" = "원하는 MozoX %@ 를 입력하세요.";
 "Receive %@ MozoX for each join MozoX" = "MozoX에 가입 할 때마다 %@ MozoX를 받습니다.";
 "Allow MozoX to access your location?" = "MozoX가 귀하의 위치에 접근하도록 허용 하시겠습니까?";
