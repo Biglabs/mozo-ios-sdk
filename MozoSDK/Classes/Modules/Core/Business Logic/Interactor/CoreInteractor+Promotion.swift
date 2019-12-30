@@ -92,4 +92,8 @@ extension CoreInteractor {
     func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
         return apiManager.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat)
     }
+    
+    func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {
+        return apiManager.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat)
+    }
 }
