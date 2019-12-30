@@ -480,6 +480,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropEventFromStore(storeId, type: type, page: page, size: size))!
     }
     
+    func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

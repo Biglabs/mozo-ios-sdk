@@ -424,4 +424,8 @@ public class MozoSDK {
     public static func getAirdropEventFromStore(_ storeId: Int64, type: AirdropEventType, page: Int, size: Int) -> Promise<[AirdropEventDiscoverDTO]> {
         return moduleDependencies.getAirdropEventFromStore(storeId, type: type, page: page, size: size)
     }
+    
+    public static func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {
+        return moduleDependencies.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat)
+    }
 }

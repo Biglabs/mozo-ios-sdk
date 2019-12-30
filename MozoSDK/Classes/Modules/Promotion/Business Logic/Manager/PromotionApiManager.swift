@@ -443,4 +443,28 @@ public extension ApiManager {
             }
         }
     }
+    
+    func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {
+        return Promise { seal in
+            let params = ["size" : size,
+                          "page" : page,
+                          "lat": lat,
+                          "lon": long] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListStoreNearByWithPromo?\(params.queryString)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get promotion store group, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    seal.fulfill(jobj)
+                }
+                .catch { error in
+                    print("Error when request get promotion store group: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
 }
