@@ -990,7 +990,7 @@
 "What are hashtags? Why do I need to choose them?" = "해시태그는 무엇인가요? 왜 내가 해시태그를 사용해야 하나요? ";
 "Hashtags are a words or phrases preceded by a hash sign (#). On MozoX, hashtags are used to help identify your venue according to the description you want customers to discover you by." = "해시태그는 #전에 나오는 단어나 문장입니다. 모조X에서 해시태그는 당신의 매장을 여러매장중에서 구분하기위해 잠재고객들에게 알려주는 방법입니다.  ";
 "Can I get back MozoX Tokens after setting up an airdrop event?" = "에어드랍이벤트를 설정한후, 모조 x 를 돌려받을수 있을까요?";
-"One you have finalized and saved an airdrop event, you cannot retrieve the MozoX Tokens set aside for the event. If the airdrop event status is \"Scheduled\" or \"Active\" you are obligated to use the MozoX tokens for the duration of the event. Once the event status is \"Ended\", you can retrieve any MozoX Tokens that have not been airdropped to customers." = "에어드랍이벤트를 생성하고나면 지급된 모조X토큰을 돌려받을수 없습니다. 만약 에어드랍이벤트가 \"정해진(schedule)\" 아니면 \"실행(active)\" 하게되면 그 이벤트가 설정된 기간동안 진행됩니다. 그리고 이벤트 상태가 \"끝(end)\" 하게되면 그때에 남아있는 모조X동전들을 돌려받을수 있습니다.";
+"Once you have finalized and saved an airdrop event, you cannot retrieve the MozoX Tokens set aside for the event. If the airdrop event status is \"Scheduled\" or \"Active\" you are obligated to use the MozoX tokens for the duration of the event. Once the event status is \"Ended\", you can retrieve any MozoX Tokens that have not been airdropped to customers." = "에어드랍이벤트를 생성하고나면 지급된 모조X토큰을 돌려받을수 없습니다. 만약 에어드랍이벤트가 \"정해진(schedule)\" 아니면 \"실행(active)\" 하게되면 그 이벤트가 설정된 기간동안 진행됩니다. 그리고 이벤트 상태가 \"끝(end)\" 하게되면 그때에 남아있는 모조X동전들을 돌려받을수 있습니다.";
 "Can I share Administrator rights with another manager at my store?" = "나의 Admin 권리를 매장 매니저 와 공유할수있을까요?";
 "We do not recommend sharing Administrator rights with your employees. MozoX Retailer App allows for sub-accounts which grant permissions similar to the Administrator, except that they are not able to edit store information, beacon or sub-accounts. Please note that the sub-account wallet is set to zero when the sub-account is created. The Administrator will need to transfer MozoX Tokens to a sub-account in order for the sub-account holder to create airdrop events.." = "우리는 애드민권리를 당신의 직원과 공유하는것을 추천하지는 않습니다. 모조X매장 어플은 그러한 애드민권리와 비슷한 퍼미션을 서브어카운트로 설정할수 있는 옵션이있습니다. 다만 그 옵션을 통해 스토어정보, 비콘, 서브어카운트정보를 수정하지 못하게 해놓았습니다.서브어카운트 지갑은 서브어카운트가 생성될때 제로상태로 시작하는것을 인지하십시요. 서브어카운트 홀더가 에어드랍 이벤트를 생성하기전에 관리자는 모조X토큰을 서브어카운트로 옮겨놓으셔야합니다. ";
 "When will MozoX tokens airdrop to my customers?" = "언제 모조 x 토큰이 내 고객들에게 에어드랍 되나요?";
@@ -1347,3 +1347,7 @@
 "Next time Airdrop Events" = "진행 예정 Airdrop";
 "Promotions at store" = "스토어 프로모션";
 "Past Promotions" = "지나간 프로모션";
+
+"Stores Near By" = "주변 매점";
+"%d Promotions" = "%d 프로모션";
+"1 Promotion" = "1 프로모션";

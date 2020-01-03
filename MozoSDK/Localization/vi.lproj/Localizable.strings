@@ -982,7 +982,7 @@
 "What are hashtags? Why do I need to choose them?" = "Hashtag là gì? Tại sao phải chọn hashtag khi thiết lập thông tin cửa hàng?";
 "Hashtags are a words or phrases preceded by a hash sign (#). On MozoX, hashtags are used to help identify your venue according to the description you want customers to discover you by." = "Hashtag là một cụm từ bắt đầu bằng dấu #. Người dùng MozoX sẽ khám phá cửa hàng của bạn bằng những từ khóa là hashtag mà bạn đã thiết lập.";
 "Can I get back MozoX Tokens after setting up an airdrop event?" = "Tôi có thể thu hồi lại MozoX sau khi đã thiết lập chương trình airdrop không?";
-"One you have finalized and saved an airdrop event, you cannot retrieve the MozoX Tokens set aside for the event. If the airdrop event status is \"Scheduled\" or \"Active\" you are obligated to use the MozoX tokens for the duration of the event. Once the event status is \"Ended\", you can retrieve any MozoX Tokens that have not been airdropped to customers." = "Bạn không thể lấy lại MozoX khi trạng thái của chương trình Airdrop là \"Hẹn giờ\", \"Đang chạy\" hoặc \"Hết MozoX\" . Nhưng bạn có thể rút MozoX khi trạng thái của chương trình Airdrop là \"kết thúc\" và chương trình airdrop không sử dụng hết MozoX";
+"Once you have finalized and saved an airdrop event, you cannot retrieve the MozoX Tokens set aside for the event. If the airdrop event status is \"Scheduled\" or \"Active\" you are obligated to use the MozoX tokens for the duration of the event. Once the event status is \"Ended\", you can retrieve any MozoX Tokens that have not been airdropped to customers." = "Bạn không thể lấy lại MozoX khi trạng thái của chương trình Airdrop là \"Hẹn giờ\", \"Đang chạy\" hoặc \"Hết MozoX\" . Nhưng bạn có thể rút MozoX khi trạng thái của chương trình Airdrop là \"kết thúc\" và chương trình airdrop không sử dụng hết MozoX";
 "Can I share Administrator rights with another manager at my store?" = "Làm thế nào để chia sẻ quyền quản lý cho những người quản lý khác tại cửa hàng của tôi?";
 "We do not recommend sharing Administrator rights with your employees. MozoX Retailer App allows for sub-accounts which grant permissions similar to the Administrator, except that they are not able to edit store information, beacon or sub-accounts. Please note that the sub-account wallet is set to zero when the sub-account is created. The Administrator will need to transfer MozoX Tokens to a sub-account in order for the sub-account holder to create airdrop events.." = "Bạn có thể chia sẻ quyền quản lý bằng cách thêm họ như tài khoản phụ. Tài khoản phụ sẽ có quyền tương tự như tài khoản chính, ngoại trừ việc không thể chỉnh sửa thông tin store, beacon và tài khoản phụ. Lưu ý rằng ví của tài khoản phụ khi mới tạo ra là 0 MozoX. Để ví của tài khoản phụ có tiền, bạn có thể chuyển MozoX cho họ";
 "When will MozoX tokens airdrop to my customers?" = "Khi nào thì MozoX được airdrop cho khách hàng của tôi?";
@@ -1338,3 +1338,7 @@
 "Next time Airdrop Events" = "Airdrop sắp nhận được";
 "Promotions at store" = "Khuyến mãi tại cửa hàng";
 "Past Promotions" = "Khuyến mãi trước đây";
+
+"Stores Near By" = "Cửa hàng gần đây";
+"%d Promotions" = "%d Khuyến mãi";
+"1 Promotion" = "1 Khuyến mãi";
