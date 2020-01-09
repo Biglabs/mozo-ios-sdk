@@ -22,6 +22,8 @@ public class PromotionDisplayItem {
     public var value: NSNumber
     public var timeLeftInSecs: Int
     public var code: String
+    public var limitUser: Int
+    public var remainingNumber: Int
     
     public init() {
         self.countActivated = 0
@@ -39,6 +41,8 @@ public class PromotionDisplayItem {
         self.value = NSNumber(value: 0)
         self.timeLeftInSecs = 0
         self.code = ""
+        self.limitUser = 0
+        self.remainingNumber = 0
     }
     
     public init(promotionDTO: PromotionDTO) {
@@ -57,6 +61,8 @@ public class PromotionDisplayItem {
         self.value = promotionDTO.value ?? NSNumber(value: 0)
         self.timeLeftInSecs = promotionDTO.timeLeftInSecs ?? 0
         self.code = promotionDTO.code ?? ""
+        self.limitUser = promotionDTO.limitUser ?? 0
+        self.remainingNumber = promotionDTO.remainingNumber ?? 0
     }
     
     public var dateFromTo: String {
@@ -170,5 +176,9 @@ public class PromotionDisplayItem {
         let dateText = formatter.string(from: date)
         
         return dateText
+    }
+    
+    public var remainingText: String {
+        return "\(self.remainingNumber)/\(self.limitUser)"
     }
 }
