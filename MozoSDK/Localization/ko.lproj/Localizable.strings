@@ -1351,3 +1351,15 @@
 "Stores Near By" = "주변 매점";
 "%d Promotions" = "%d 프로모션";
 "1 Promotion" = "1 프로모션";
+
+// First X Promotion
+"Select Promotion Type" = "프로모션 종류 선택";
+"Time Based Limited Coupons" = "시간에 따른 쿠폰";
+"Limited Number Of Coupons" = "수량에 따른 쿠폰";
+"Number of coupons" = "쿠폰 수량";
+"Enter number of coupons" = "쿠폰 수량 입력";
+"Remaining Coupons: %@" = "남은 쿠폰: %@";
+"Remaining Coupons" = "남은 쿠폰";
+"%d Coupons Remaining" = "%s 쿠폰 남았습니다";
+"Sold Out" = "매진";
+"Sold Out: %d" = "매진: %d";
