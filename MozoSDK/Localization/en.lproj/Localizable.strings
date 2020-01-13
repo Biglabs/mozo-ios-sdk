@@ -1338,3 +1338,15 @@
 "Stores Near By" = "Stores Near By";
 "%d Promotions" = "%d Promotions";
 "1 Promotion" = "1 Promotion";
+
+// First X Promotion
+"Select Promotion Type" = "Select Promotion Type";
+"Time Based Limited Coupons" = "Time Based Limited Coupons";
+"Limited Number Of Coupons" = "Limited Number Of Coupons";
+"Number of coupons" = "Number of coupons";
+"Enter number of coupons" = "Enter number of coupons";
+"Remaining Coupons: %@" = "Remaining Coupons: %@";
+"Remaining Coupons" = "Remaining Coupons";
+"%d Coupons Remaining" = "%d Coupons Remaining";
+"Sold Out" = "Sold Out";
+"Sold Out: %d" = "Sold Out: %d";
