@@ -1360,6 +1360,6 @@
 "Enter number of coupons" = "쿠폰 수량 입력";
 "Remaining Coupons: %@" = "남은 쿠폰: %@";
 "Remaining Coupons" = "남은 쿠폰";
-"%d Coupons Remaining" = "%s 쿠폰 남았습니다";
+"%d Coupons Remaining" = "%d 쿠폰 남았습니다";
 "Sold Out" = "매진";
 "Sold Out: %d" = "매진: %d";
