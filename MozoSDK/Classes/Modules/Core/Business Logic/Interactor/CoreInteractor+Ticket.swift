@@ -16,6 +16,10 @@ extension CoreInteractor {
     func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO> {
         return apiManager.getParkingTicketByStoreId(storeId: storeId, isIn: isIn)
     }
+    
+    func getParkingTicketByStoreId(storeId: Int64) -> Promise<TicketDTO> {
+        return apiManager.getParkingTicketByStoreId(storeId: storeId)
+    }
         
     func renewParkingTicket(id: Int64, vehicleTypeKey: String, isIn: Bool) -> Promise<TicketDTO> {
         return apiManager.renewParkingTicket(id: id, vehicleTypeKey: vehicleTypeKey, isIn: isIn)

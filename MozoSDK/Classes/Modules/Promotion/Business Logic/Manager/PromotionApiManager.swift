@@ -450,7 +450,7 @@ public extension ApiManager {
                           "page" : page,
                           "lat": lat,
                           "lon": long] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListStoreNearByWithPromo?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListStoreNearByWithPromo/v1?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

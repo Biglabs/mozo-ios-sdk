@@ -12,10 +12,14 @@ public class PromotionStoreGroupDTO {
     public var distance: Double?
     public var storeInfo: StoreInfoDTO?
     
+    public var supportParking: Bool?
+    
     public required init?(json: SwiftyJSON.JSON) {
         self.promotionCount = json["promotionCount"].int
         self.distance = json["distance"].double
         self.storeInfo = StoreInfoDTO(json: json["storeInfo"])
+        
+        self.supportParking = json["supportParking"].bool
     }
     
     public static func arrayFrom(_ json: SwiftyJSON.JSON) -> [PromotionStoreGroupDTO] {

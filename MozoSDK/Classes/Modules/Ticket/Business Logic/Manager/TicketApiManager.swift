@@ -59,6 +59,30 @@ public extension ApiManager {
         }
     }
     
+    func getParkingTicketByStoreId(storeId: Int64) -> Promise<TicketDTO> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getParkingTicketByStoreIdWithoutInOut?storeId=\(storeId)&locale=\(Configuration.LOCALE)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get parking ticket by store id ONLY [\(storeId)], json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    if let ticket = TicketDTO(json: jobj) {
+                        seal.fulfill(ticket)
+                    } else {
+                        seal.reject(ConnectionError.systemError)
+                    }
+                }
+                .catch { error in
+                    print("Error when request get parking ticket by store id ONLY [\(storeId)]: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
     func renewParkingTicket(id: Int64, vehicleTypeKey: String, isIn: Bool) -> Promise<TicketDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getRenewParkingTicket?id=\(id)&locale=\(Configuration.LOCALE)&in=\(isIn.toString)&vehicleTypeKey=\(vehicleTypeKey)"
