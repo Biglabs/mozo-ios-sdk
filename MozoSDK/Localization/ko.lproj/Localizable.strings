@@ -1350,7 +1350,7 @@
 
 "Stores Near By" = "주변 매점";
 "%d Promotions" = "%d 프로모션";
-"1 Promotion" = "1 프로모션";
+"%d Promotion" = "%d 프로모션";
 
 // First X Promotion
 "Select Promotion Type" = "프로모션 종류 선택";
