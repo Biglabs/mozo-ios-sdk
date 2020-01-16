@@ -1337,7 +1337,7 @@
 
 "Stores Near By" = "Stores Near By";
 "%d Promotions" = "%d Promotions";
-"1 Promotion" = "1 Promotion";
+"%d Promotion" = "%d Promotion";
 
 // First X Promotion
 "Select Promotion Type" = "Select Promotion Type";

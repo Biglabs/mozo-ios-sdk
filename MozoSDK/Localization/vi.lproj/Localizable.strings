@@ -1341,7 +1341,7 @@
 
 "Stores Near By" = "Cửa hàng gần đây";
 "%d Promotions" = "%d Khuyến mãi";
-"1 Promotion" = "1 Khuyến mãi";
+"%d Promotion" = "%d Khuyến mãi";
 
 // First X Promotion
 "Select Promotion Type" = "Chọn loại khuyến mãi";
