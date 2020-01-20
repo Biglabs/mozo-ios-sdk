@@ -320,4 +320,8 @@ extension CoreInteractor: CoreInteractorService {
     func getAirdropEventFromStore(_ storeId: Int64, type: AirdropEventType, page: Int, size: Int) -> Promise<[AirdropEventDiscoverDTO]> {
         return apiManager.getAirdropEventFromStore(storeId, type: type, page: page, size: size)
     }
+    
+    func confirmStoreInfoMerchant() -> Promise<[String: Any]> {
+        return apiManager.confirmStoreInfoMerchant()
+    }
 }
