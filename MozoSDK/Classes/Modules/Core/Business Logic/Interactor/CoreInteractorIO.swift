@@ -172,4 +172,6 @@ protocol CoreInteractorService {
     func getAirdropEventFromStore(_ storeId: Int64, type: AirdropEventType, page: Int, size: Int) -> Promise<[AirdropEventDiscoverDTO]>
     
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON>
+    
+    func confirmStoreInfoMerchant() -> Promise<[String: Any]>
 }

@@ -488,6 +488,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat))!
     }
     
+    func confirmStoreInfoMerchant() -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.confirmStoreInfoMerchant())!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

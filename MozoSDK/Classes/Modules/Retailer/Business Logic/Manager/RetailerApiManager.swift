@@ -17,6 +17,7 @@ let RETAILER_STORE_INFO_API_PATH = "/retailer/storeInfo"
 let RETAILER_STORE_INFO_HASHTAG_API_PATH = "/retailer/storeInfo/hashtag"
 let RETAILER_STORE_INFO_PHOTO_API_PATH = "/retailer/storeInfo/photo"
 let RETAILER_SUPPORT_BEACON_API_PATH = "/retailer/support/beacon"
+let RETAILER_MERCHANT_CONFIRM_STORE_API_PATH = "/retailer/merchantConfirmStore"
 public extension ApiManager {
     func getRetailerInfo() -> Promise<[String: Any]> {
         return Promise { seal in
@@ -143,7 +144,7 @@ public extension ApiManager {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_STORE_INFO_API_PATH
             let param = storeInfo.rawData()
-            print("Request to update store info, param: \(param)")
+            print("Request to update store info, param: \(String(describing: param))")
             self.execute(.put, url: url, parameters: param)
                 .done { json -> Void in
                     // JSON info
@@ -245,6 +246,25 @@ public extension ApiManager {
                 }
                 .catch { error in
                     print("Error when request support beacon: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    func confirmStoreInfoMerchant() -> Promise<[String: Any]> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + RETAILER_MERCHANT_CONFIRM_STORE_API_PATH
+            self.execute(.put, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to confirm store info merchant, json response: \(json)")
+                    seal.fulfill(json)
+                }
+                .catch { error in
+                    print("Error when request confirm store info merchant: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {

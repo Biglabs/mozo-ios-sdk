@@ -432,4 +432,8 @@ public class MozoSDK {
     public static func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {
         return moduleDependencies.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat)
     }
+    
+    public static func confirmStoreInfoMerchant() -> Promise<[String: Any]> {
+        return moduleDependencies.confirmStoreInfoMerchant()
+    }
 }

@@ -38,6 +38,8 @@ public class StoreInfoDTO : ResponseObjectSerializable {
     
     public var distance: Double?
     
+    public var didConfirm: Bool?
+    
     public required init(id: Int64){
         self.id = id
     }
@@ -91,6 +93,7 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         self.disable = json["disable"].bool
         self.offchainAddress = json["offchainAddress"].string
         self.distance = json["distance"].double
+        self.didConfirm = json["didConfirm"].bool
     }
     
     public required init?(){}
