@@ -1350,3 +1350,14 @@
 "%d Coupons Remaining" = "%d Coupons Remaining";
 "Sold Out" = "Sold Out";
 "Sold Out: %d" = "Sold Out: %d";
+
+// Merchant
+"Uploading photos will be continuing after you leave this screen. Do you want to continue?" = "Uploading photos will be continuing after you leave this screen. Do you want to continue?";
+"Welcome %@" = "Welcome %@";
+"Sign up successful as %@ Merchant" = "Sign up successful as %@ Merchant";
+"Please check your information to make sure it is correct." = "Please check your information to make sure it is correct.";
+"Check store information" = "Check store information";
+"Your store is not authorized to create Airdrop Event. Please contact Mall Owner if you need any support." = "Your store is not authorized to create Airdrop Event. Please contact Mall Owner if you need any support.";
+"Why my store is not able to create an Airdrop Event? →" = "Why my store is not able to create an Airdrop Event? →";
+"Phone number is required" = "Phone number is required";
+"Airdrop events require a Beacon sensor in order to detect visitors to your store. Please contact MozoX Support or your Mall Operator to request a Beacon from MozoX." = "Airdrop events require a Beacon sensor in order to detect visitors to your store. Please contact MozoX Support or your Mall Operator to request a Beacon from MozoX.";
