@@ -324,4 +324,8 @@ extension CoreInteractor: CoreInteractorService {
     func confirmStoreInfoMerchant() -> Promise<[String: Any]> {
         return apiManager.confirmStoreInfoMerchant()
     }
+    
+    func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]> {
+        return apiManager.sendRegisterFCMToken(registerDeviceInfo: registerDeviceInfo)
+    }
 }

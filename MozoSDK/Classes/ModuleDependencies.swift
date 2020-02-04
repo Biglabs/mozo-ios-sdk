@@ -492,6 +492,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.confirmStoreInfoMerchant())!
     }
     
+    func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.sendRegisterFCMToken(registerDeviceInfo: registerDeviceInfo))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

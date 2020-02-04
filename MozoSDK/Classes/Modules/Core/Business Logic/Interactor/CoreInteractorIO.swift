@@ -174,4 +174,6 @@ protocol CoreInteractorService {
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON>
     
     func confirmStoreInfoMerchant() -> Promise<[String: Any]>
+    
+    func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]>
 }

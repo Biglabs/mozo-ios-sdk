@@ -436,4 +436,8 @@ public class MozoSDK {
     public static func confirmStoreInfoMerchant() -> Promise<[String: Any]> {
         return moduleDependencies.confirmStoreInfoMerchant()
     }
+    
+    public static func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]> {
+        return moduleDependencies.sendRegisterFCMToken(registerDeviceInfo: registerDeviceInfo)
+    }
 }

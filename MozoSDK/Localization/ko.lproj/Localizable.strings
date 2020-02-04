@@ -1363,3 +1363,14 @@
 "%d Coupons Remaining" = "%d 쿠폰 남았습니다";
 "Sold Out" = "매진";
 "Sold Out: %d" = "매진: %d";
+
+// Merchant
+"Uploading photos will be continuing after you leave this screen. Do you want to continue?" = "이 화면 나간 후 사진 업로드 계속 됩니다. 계속 진행하시겠습니까?";
+"Welcome %@" = "%@ 환영합니다";
+"Sign up successful as %@ Merchant" = "%@ 상점으로 등록 성공하였습니다 ";
+"Please check your information to make sure it is correct." = "정보 맞는지 확인해주세요";
+"Check store information" = "스토어 정보 확인";
+"Your store is not authorized to create Airdrop Event. Please contact Mall Owner if you need any support." = "당신 스토어는 Airdrop 이벤트 만들 수 없습니다. 이메일 주인 연락하여 지원 받으세요.";
+"Why my store is not able to create an Airdrop Event? →" = "왜 나의 스토어는 Airdrop 이벤트 만들 수 없습니까? →";
+"Phone number is required" = "연락처는 필수 입력 항목입니다";
+"Airdrop events require a Beacon sensor in order to detect visitors to your store. Please contact MozoX Support or your Mall Operator to request a Beacon from MozoX." = "Airdrop 이벤트를 만들고 싶을 경우 스토어 방문 손님 확인하기 위한 배콘 센서 필요합니다. MozoX 지원팀이나 메일 운영자에게 연락하여 배콘 신청하세요.";
