@@ -1365,3 +1365,5 @@
 "Why my store is not able to create an Airdrop Event? →" = "Tại sao cửa hàng của tôi không thể tạo chương trình Airdrop?  →";
 "Phone number is required" = "Số điện thoại là trường bắt buộc";
 "Airdrop events require a Beacon sensor in order to detect visitors to your store. Please contact MozoX Support or your Mall Operator to request a Beacon from MozoX." = "Chương trình Airdrop cần cảm biến Beacon để định vị được khách đến cửa hàng của bạn. Vui lòng liên hệ đội ngũ hỗ trợ MozoX hoặc quản lý Mall để gửi yêu cầu nhận Beacon.";
+
+"Beacon list is empty" = "Danh sách beacon trống";

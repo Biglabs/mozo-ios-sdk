@@ -1361,3 +1361,5 @@
 "Why my store is not able to create an Airdrop Event? →" = "Why my store is not able to create an Airdrop Event? →";
 "Phone number is required" = "Phone number is required";
 "Airdrop events require a Beacon sensor in order to detect visitors to your store. Please contact MozoX Support or your Mall Operator to request a Beacon from MozoX." = "Airdrop events require a Beacon sensor in order to detect visitors to your store. Please contact MozoX Support or your Mall Operator to request a Beacon from MozoX.";
+
+"Beacon list is empty" = "Beacon list is empty";
