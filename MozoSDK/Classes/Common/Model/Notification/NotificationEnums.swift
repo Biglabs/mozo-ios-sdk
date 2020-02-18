@@ -14,8 +14,18 @@ public enum NotificationCategoryType: String {
     case AirdropInvite = "airdrop_invite"
     case Customer_Came_In = "customer_came_in"
     case Customer_Came_Out = "customer_came_out"
+    case Agenda = "agenda"
+    case Before_Event = "before_event"
+    case In_Store_Guide = "in_store_guide"
+    case Hackathon_Result = "hackathon_result"
+    case Notice = "notice"
+    case Feedback = "feed_back"
     
     case Default = ""
+    
+    public var identifier: String {
+        return "mozoActionCategory_\(rawValue)"
+    }
     
     public var summaryFormat: String {
         switch self {
@@ -26,6 +36,59 @@ public enum NotificationCategoryType: String {
         case .Customer_Came_In: return "%u more customers arrived"
         case .Customer_Came_Out: return "%u more customers departed"
         case .Default: return rawValue
+        default: return ""
+        }
+    }
+    
+    var needGroup: Bool {
+        switch self {
+        case .Agenda, .Before_Event, .In_Store_Guide, .Hackathon_Result, .Notice, .Feedback, .Default: return false
+        default: return true
+        }
+    }
+    
+    var isRemote: Bool {
+        switch self {
+        case .Agenda, .Before_Event, .In_Store_Guide, .Hackathon_Result, .Notice, .Feedback: return true
+        default: return false
+        }
+    }
+}
+
+public enum NotificationActionType: String {
+    case Agenda_Info = "agenda_info"
+    case Agenda_Parking_Guide = "agenda_parking_guide"
+    case Agenda_Venue = "agenda_venue"
+    
+    case Before_Event_Hall_Layout_Guide = "before_event_hall_layout_guide"
+    case Before_Event_Parking_Ticket = "before_event_parking_ticket"
+    
+    case In_Store_Hall_Layout_Guide = "in_store_hall_layout_guide"
+    case In_Store_Safety_Guide = "in_store_safety_guide"
+    
+    case Hackathon_Result = "hackathon_result"
+    
+    case Notice = "notice"
+
+    case Feed_Back_No_Thanks = "feed_back_no_thanks"
+    case Feed_Back_Start = "feed_back_start"
+    
+    public var identifier: String {
+        return "action_\(rawValue)"
+    }
+    
+    public var name: String {
+        switch self {
+        case .Agenda_Info: return "Info"
+        case .Agenda_Parking_Guide: return "Guide"
+        case .Agenda_Venue: return "Venue"
+        case .Before_Event_Hall_Layout_Guide, .In_Store_Hall_Layout_Guide: return "Hall Layout guide"
+        case .In_Store_Safety_Guide: return "Safety guide"
+        case .Hackathon_Result: return "View"
+        case .Before_Event_Parking_Ticket: return "Parking ticket"
+        case .Notice: return "View"
+        case .Feed_Back_No_Thanks: return "No. Thanks"
+        case .Feed_Back_Start: return "Start"
         }
     }
 }
