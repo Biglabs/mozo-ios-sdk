@@ -130,8 +130,8 @@ public class MozoSDK {
         return moduleDependencies.getLatestAirdropEvent()
     }
     
-    public static func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]> {
-        return moduleDependencies.getAirdropEventList(page: page)
+    public static func getAirdropEventList(page: Int, branchId: Int64? = nil) -> Promise<[AirdropEventDTO]> {
+        return moduleDependencies.getAirdropEventList(page: page, branchId: branchId)
     }
     
     public static func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?> {
@@ -439,5 +439,13 @@ public class MozoSDK {
     
     public static func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]> {
         return moduleDependencies.sendRegisterFCMToken(registerDeviceInfo: registerDeviceInfo)
+    }
+    
+    public static func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
+        return moduleDependencies.createNewBranch(branchInfo)
+    }
+    
+    public static func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
+        return moduleDependencies.getBeacon(beaconId)
     }
 }

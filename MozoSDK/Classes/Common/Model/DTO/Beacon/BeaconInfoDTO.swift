@@ -29,11 +29,24 @@ public class BeaconInfoDTO : ResponseObjectSerializable {
     
     public var name: String?
     
-    public required init(macAddress: String){
+    public var branchId: Int64?
+    
+    public required init(macAddress: String, name: String){
         self.macAddress = macAddress
+        self.name = name
     }
     
-    public required init?(name: String, distance: NSNumber, major: Int64, minor: Int64, rssi: Int, uuid: String, macAddress: String, measuredPower: Int8) {
+    public required init(macAddress: String, branchId: Int64){
+        self.macAddress = macAddress
+        self.branchId = branchId
+    }
+    
+    public required init(name: String, branchId: Int64){
+        self.name = name
+        self.branchId = branchId
+    }
+    
+    public required init?(name: String, distance: NSNumber, major: Int64, minor: Int64, rssi: Int, uuid: String, macAddress: String, measuredPower: Int8, branchId: Int64) {
         self.name = name
         self.distance = distance
         self.major = major
@@ -42,6 +55,7 @@ public class BeaconInfoDTO : ResponseObjectSerializable {
         self.uuId = uuid
         self.macAddress = macAddress
         self.measuredPower = measuredPower
+        self.branchId = branchId
     }
     
     public required init?(distance: NSNumber, major: Int64, minor: Int64, rssi: Int, uuid: String, macAddress: String, measuredPower: Int8) {
@@ -109,7 +123,10 @@ public class BeaconInfoDTO : ResponseObjectSerializable {
         if let storeInfoId = self.storeInfoId {json["storeInfoId"] = storeInfoId}
         if let uuId = self.uuId {json["uuId"] = uuId}
         if let zoneId = self.zoneId {json["zoneId"] = zoneId}
-
+        
+        if let branchId = self.branchId {
+            json["branchId"] = branchId
+        }
         return json
     }
     
