@@ -188,8 +188,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getLatestAirdropEvent())!
     }
     
-    func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropEventList(page: page))!
+    func getAirdropEventList(page: Int, branchId: Int64? = nil) -> Promise<[AirdropEventDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropEventList(page: page, branchId: branchId))!
     }
     
     func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?> {
@@ -494,6 +494,14 @@ class ModuleDependencies {
     
     func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.sendRegisterFCMToken(registerDeviceInfo: registerDeviceInfo))!
+    }
+    
+    func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.createNewBranch(branchInfo))!
+    }
+    
+    func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getBeacon(beaconId))!
     }
     
     func configureDependencies() {

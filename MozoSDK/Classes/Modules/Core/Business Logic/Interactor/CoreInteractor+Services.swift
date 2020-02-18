@@ -110,9 +110,9 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getLatestAirdropEvent()
     }
     
-    func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]> {
+    func getAirdropEventList(page: Int, branchId: Int64?) -> Promise<[AirdropEventDTO]> {
         print("😎 Get airdrop event list by page number \(page).")
-        return apiManager.getAirdropEventList(page: page)
+        return apiManager.getAirdropEventList(page: page, branchId: branchId)
     }
     
     func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?> {
@@ -327,5 +327,13 @@ extension CoreInteractor: CoreInteractorService {
     
     func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]> {
         return apiManager.sendRegisterFCMToken(registerDeviceInfo: registerDeviceInfo)
+    }
+    
+    func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
+        return apiManager.createNewBranch(branchInfo)
+    }
+    
+    func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
+        return apiManager.getBeacon(beaconId)
     }
 }

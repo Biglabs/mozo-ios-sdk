@@ -55,7 +55,7 @@ protocol CoreInteractorService {
     
     func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection>
     func getLatestAirdropEvent() -> Promise<AirdropEventDTO>
-    func getAirdropEventList(page: Int) -> Promise<[AirdropEventDTO]>
+    func getAirdropEventList(page: Int, branchId: Int64?) -> Promise<[AirdropEventDTO]>
     func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?>
     func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]>
     func getRetailerAnalyticAmountAirdropList(page: Int, size: Int, year: Int, month: Int) -> Promise<[AirDropReportDTO]>
@@ -176,4 +176,8 @@ protocol CoreInteractorService {
     func confirmStoreInfoMerchant() -> Promise<[String: Any]>
     
     func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]>
+    
+    func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO>
+    
+    func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO>
 }

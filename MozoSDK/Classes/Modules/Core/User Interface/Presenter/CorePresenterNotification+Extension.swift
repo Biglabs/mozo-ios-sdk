@@ -17,26 +17,77 @@ extension CorePresenter {
             }
             if granted {
                 print("Permission granted")
+                if DisplayUtils.appType == .Shopper {
+                    DispatchQueue.main.async {
+                        UIApplication.shared.registerForRemoteNotifications()
+                    }
+                }
             } else {
                 print("Permission not granted")
             }
         }
         
         //actions defination
-//        let actionView = UNNotificationAction(identifier: "actionView", title: "View".localized, options: [.foreground])
-//        let actionClear = UNNotificationAction(identifier: "actionClear", title: "Clear".localized, options: [.foreground])
+        // AGENDA
+        let actionAgendaInfo = UNNotificationAction(identifier: NotificationActionType.Agenda_Info.identifier, title: NotificationActionType.Agenda_Info.name.localized, options: [.foreground])
+        let actionAgendaParkingGuide = UNNotificationAction(identifier: NotificationActionType.Agenda_Parking_Guide.identifier, title: NotificationActionType.Agenda_Parking_Guide.name.localized, options: [.foreground])
+        let actionAgendaVenue = UNNotificationAction(identifier: NotificationActionType.Agenda_Venue.identifier, title: NotificationActionType.Agenda_Venue.name.localized, options: [.foreground])
         
-        let categoryTypes : [NotificationCategoryType] = [.Balance_Changed_Received, .Balance_Changed_Sent, .Airdropped, .AirdropInvite, .Customer_Came_In, .Customer_Came_Out]
+        // BEFORE EVENT
+        let actionBeforeEventHallLayoutGuide = UNNotificationAction(identifier: NotificationActionType.Before_Event_Hall_Layout_Guide.identifier, title: NotificationActionType.Before_Event_Hall_Layout_Guide.name.localized, options: [.foreground])
+        let actionBeforeEventParkingTicket = UNNotificationAction(identifier: NotificationActionType.Before_Event_Parking_Ticket.identifier, title: NotificationActionType.Before_Event_Parking_Ticket.name.localized, options: [.foreground])
+        
+        // IN STORE
+        let actionInStoreHallLayoutGuide = UNNotificationAction(identifier: NotificationActionType.In_Store_Hall_Layout_Guide.identifier, title: NotificationActionType.In_Store_Hall_Layout_Guide.name.localized, options: [.foreground])
+        let actionInStoreSafetyGuide = UNNotificationAction(identifier: NotificationActionType.In_Store_Safety_Guide.identifier, title: NotificationActionType.In_Store_Safety_Guide.name.localized, options: [.foreground])
+        
+        // HACKATHON RESULT
+        let actionHackathonResult = UNNotificationAction(identifier: NotificationActionType.Hackathon_Result.identifier, title: NotificationActionType.Hackathon_Result.name.localized, options: [.foreground])
+        
+        // NOTICE
+        let actionNotice = UNNotificationAction(identifier: NotificationActionType.Notice.identifier, title: NotificationActionType.Notice.name.localized, options: [.foreground])
+        
+        // FEEDBACK
+        let actionFeedbackNoThanks = UNNotificationAction(identifier: NotificationActionType.Feed_Back_No_Thanks.identifier, title: NotificationActionType.Feed_Back_No_Thanks.name.localized, options: [.foreground])
+        let actionFeedbackStart = UNNotificationAction(identifier: NotificationActionType.Feed_Back_Start.identifier, title: NotificationActionType.Feed_Back_Start.name.localized, options: [.foreground])
+                
+        let categoryTypes : [NotificationCategoryType] = [.Balance_Changed_Received, .Balance_Changed_Sent, .Airdropped, .AirdropInvite, .Customer_Came_In, .Customer_Came_Out, .Agenda, .Before_Event, .In_Store_Guide, .Hackathon_Result, .Notice, .Feedback]
         var categories = [UNNotificationCategory]()
         for type in categoryTypes {
-            let identifier = "mozoActionCategory_\(type.rawValue)"
-            if #available(iOS 12.0, *) {
-                let summaryFormat = type.summaryFormat.localized
-                let category = UNNotificationCategory(identifier: identifier, actions: [], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: nil, categorySummaryFormat: summaryFormat, options: [])
+            let identifier = type.identifier
+            if type.isRemote {
+                var actions = [UNNotificationAction]()
+                switch type {
+                case .Agenda:
+                    actions = [actionAgendaInfo, actionAgendaVenue, actionAgendaParkingGuide]
+                    break
+                case .Before_Event:
+                    actions = [actionBeforeEventHallLayoutGuide, actionBeforeEventParkingTicket]
+                    break
+                case .In_Store_Guide:
+                    actions = [actionInStoreHallLayoutGuide, actionInStoreSafetyGuide]
+                    break
+                case .Hackathon_Result:
+                    actions = [actionHackathonResult]
+                case .Notice:
+                    actions = [actionNotice]
+                    break
+                case .Feedback:
+                    actions = [actionFeedbackNoThanks, actionFeedbackStart]
+                    break
+                default: break
+                }
+                let category = UNNotificationCategory(identifier: identifier, actions: actions, intentIdentifiers: [], options: [])
                 categories.append(category)
             } else {
-                let category = UNNotificationCategory(identifier: identifier, actions: [], intentIdentifiers: [], options: [])
-                categories.append(category)
+                if #available(iOS 12.0, *) {
+                    let summaryFormat = type.summaryFormat.localized
+                    let category = UNNotificationCategory(identifier: identifier, actions: [], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: nil, categorySummaryFormat: summaryFormat, options: [])
+                    categories.append(category)
+                } else {
+                    let category = UNNotificationCategory(identifier: identifier, actions: [], intentIdentifiers: [], options: [])
+                    categories.append(category)
+                }
             }
         }
 
@@ -60,8 +111,8 @@ extension CorePresenter {
             content.sound = UNNotificationSound.default()
             
             // Group notification
-            if displayItem.categoryType != .Default {
-                content.categoryIdentifier = "mozoActionCategory_\(displayItem.categoryType.rawValue)"
+            if displayItem.categoryType.needGroup {
+                content.categoryIdentifier = displayItem.categoryType.identifier
                 content.threadIdentifier = displayItem.categoryType.rawValue.lowercased()
                 if #available(iOS 12.0, *),
                     displayItem.categoryType == .Balance_Changed_Received || displayItem.categoryType == .Balance_Changed_Sent || displayItem.categoryType == .Airdropped {

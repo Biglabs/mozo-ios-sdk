@@ -170,11 +170,14 @@ public extension ApiManager {
         }
     }
     
-    func getAirdropEventList(page: Int, size: Int = 15) -> Promise<[AirdropEventDTO]> {
+    func getAirdropEventList(page: Int, size: Int = 15, branchId: Int64? = nil) -> Promise<[AirdropEventDTO]> {
         return Promise { seal in
-            let params = ["size" : size,
+            var params = ["size" : size,
                            "page" : page,
                            "sort" : "createdOn,desc"] as [String : Any]
+            if let id = branchId {
+                params["branchId"] = id
+            }
             let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_RESOURCE_API_PATH + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
