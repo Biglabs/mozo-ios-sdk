@@ -504,6 +504,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getBeacon(beaconId))!
     }
     
+    func getBranchList(page: Int, size: Int) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getBranchList(page: page, size: size))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

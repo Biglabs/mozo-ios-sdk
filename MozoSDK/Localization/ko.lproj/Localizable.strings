@@ -1376,3 +1376,14 @@
 "Airdrop events require a Beacon sensor in order to detect visitors to your store. Please contact MozoX Support or your Mall Operator to request a Beacon from MozoX." = "Airdrop 이벤트를 만들고 싶을 경우 스토어 방문 손님 확인하기 위한 배콘 센서 필요합니다. MozoX 지원팀이나 메일 운영자에게 연락하여 배콘 신청하세요.";
 
 "Beacon list is empty" = "배콘 리스트 없습니다";
+
+// Notification Custom Actions
+"NOTIFICATION_INFO_LOCALE_KEY" = "Info";
+"NOTIFICATION_VENUE_LOCALE_KEY" = "Venue";
+"NOTIFICATION_GUIDE_LOCALE_KEY" = "Guide";
+"NOTIFICATION_HALL_LAYOUT_GUIDE_LOCALE_KEY" = "Hall Layout guide";
+"NOTIFICATION_PARKING_TICKET_LOCALE_KEY" = "Parking ticket";
+"NOTIFICATION_SAFETY_GUIDE_LOCALE_KEY" = "Safety guide";
+"NOTIFICATION_VIEW_LOCALE_KEY" = "View";
+"NOTIFICATION_NO_THANKS_LOCALE_KEY" = "No. Thanks";
+"NOTIFICATION_START_LOCALE_KEY" = "Start";

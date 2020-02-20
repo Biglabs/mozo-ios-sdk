@@ -1367,3 +1367,14 @@
 "Airdrop events require a Beacon sensor in order to detect visitors to your store. Please contact MozoX Support or your Mall Operator to request a Beacon from MozoX." = "Chương trình Airdrop cần cảm biến Beacon để định vị được khách đến cửa hàng của bạn. Vui lòng liên hệ đội ngũ hỗ trợ MozoX hoặc quản lý Mall để gửi yêu cầu nhận Beacon.";
 
 "Beacon list is empty" = "Danh sách beacon trống";
+
+// Notification Custom Actions
+"NOTIFICATION_INFO_LOCALE_KEY" = "Thông tin";
+"NOTIFICATION_VENUE_LOCALE_KEY" = "Địa điểm";
+"NOTIFICATION_GUIDE_LOCALE_KEY" = "Hướng dẫn";
+"NOTIFICATION_HALL_LAYOUT_GUIDE_LOCALE_KEY" = "Sơ đồ trung tâm";
+"NOTIFICATION_PARKING_TICKET_LOCALE_KEY" = "Vé giữ xe";
+"NOTIFICATION_SAFETY_GUIDE_LOCALE_KEY" = "Hướng dẫn về an toàn";
+"NOTIFICATION_VIEW_LOCALE_KEY" = "Xem";
+"NOTIFICATION_NO_THANKS_LOCALE_KEY" = "Không, Cảm ơn.";
+"NOTIFICATION_START_LOCALE_KEY" = "Bắt đầu";

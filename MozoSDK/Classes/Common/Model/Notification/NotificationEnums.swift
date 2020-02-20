@@ -91,6 +91,33 @@ public enum NotificationActionType: String {
         case .Feed_Back_Start: return "Start"
         }
     }
+    
+    /* Notification Custom Actions
+    "NOTIFICATION_INFO_LOCALE_KEY" = "Info";
+    "NOTIFICATION_VENUE_LOCALE_KEY" = "Venue";
+    "NOTIFICATION_GUIDE_LOCALE_KEY" = "Guide";
+    "NOTIFICATION_HALL_LAYOUT_GUIDE_LOCALE_KEY" = "Hall Layout guide";
+    "NOTIFICATION_PARKING_TICKET_LOCALE_KEY" = "Parking ticket";
+    "NOTIFICATION_SAFETY_GUIDE_LOCALE_KEY" = "Safety guide";
+    "NOTIFICATION_VIEW_LOCALE_KEY" = "View";
+    "NOTIFICATION_NO_THANKS_LOCALE_KEY" = "No. Thanks";
+    "NOTIFICATION_START_LOCALE_KEY" = "Start";
+    */
+    
+    public var localizedTitle: String {
+        switch self {
+        case .Agenda_Info: return "NOTIFICATION_INFO_LOCALE_KEY".localized
+        case .Agenda_Parking_Guide: return "NOTIFICATION_GUIDE_LOCALE_KEY".localized
+        case .Agenda_Venue: return "NOTIFICATION_VENUE_LOCALE_KEY".localized
+        case .Before_Event_Hall_Layout_Guide, .In_Store_Hall_Layout_Guide: return "NOTIFICATION_HALL_LAYOUT_GUIDE_LOCALE_KEY".localized
+        case .In_Store_Safety_Guide: return "NOTIFICATION_SAFETY_GUIDE_LOCALE_KEY".localized
+        case .Hackathon_Result: return "NOTIFICATION_VIEW_LOCALE_KEY".localized
+        case .Before_Event_Parking_Ticket: return "NOTIFICATION_PARKING_TICKET_LOCALE_KEY".localized
+        case .Notice: return "NOTIFICATION_VIEW_LOCALE_KEY".localized
+        case .Feed_Back_No_Thanks: return "NOTIFICATION_NO_THANKS_LOCALE_KEY".localized
+        case .Feed_Back_Start: return "NOTIFICATION_START_LOCALE_KEY".localized
+        }
+    }
 }
 
 public enum NotificationEventType: String {

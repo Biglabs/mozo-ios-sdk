@@ -336,4 +336,8 @@ extension CoreInteractor: CoreInteractorService {
     func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
         return apiManager.getBeacon(beaconId)
     }
+    
+    func getBranchList(page: Int, size: Int) -> Promise<[String: Any]> {
+        return apiManager.getBranchList(page: page, size: size)
+    }
 }

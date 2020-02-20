@@ -180,4 +180,6 @@ protocol CoreInteractorService {
     func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO>
     
     func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO>
+    
+    func getBranchList(page: Int, size: Int) -> Promise<[String: Any]>
 }
