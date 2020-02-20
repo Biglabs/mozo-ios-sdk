@@ -35,4 +35,30 @@ extension ApiManager {
             }
         }
     }
+    
+    func getBranchList(page: Int, size: Int) -> Promise<[String: Any]> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + RETAILER_BRANCH_API_PATH
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get list branch, json response: \(json)")
+                    seal.fulfill(json)
+                }
+                .catch { error in
+                    print("Error when request get list branch: " + error.localizedDescription)
+                    //Handle error or give feedback to the user
+                    guard let err = error as? ConnectionError else {
+                        if error is AFError {
+                            return seal.fulfill([:])
+                        }
+                        return seal.reject(error)
+                    }
+                    seal.reject(err)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
 }

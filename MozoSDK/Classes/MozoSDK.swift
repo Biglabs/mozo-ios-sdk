@@ -448,4 +448,8 @@ public class MozoSDK {
     public static func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
         return moduleDependencies.getBeacon(beaconId)
     }
+    
+    public static func getBranchList(page: Int = 0, size: Int = 15) -> Promise<[String: Any]> {
+        return moduleDependencies.getBranchList(page: page, size: size)
+    }
 }
