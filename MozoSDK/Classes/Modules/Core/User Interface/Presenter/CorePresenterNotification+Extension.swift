@@ -29,27 +29,27 @@ extension CorePresenter {
         
         //actions defination
         // AGENDA
-        let actionAgendaInfo = UNNotificationAction(identifier: NotificationActionType.Agenda_Info.identifier, title: NotificationActionType.Agenda_Info.name.localized, options: [.foreground])
-        let actionAgendaParkingGuide = UNNotificationAction(identifier: NotificationActionType.Agenda_Parking_Guide.identifier, title: NotificationActionType.Agenda_Parking_Guide.name.localized, options: [.foreground])
-        let actionAgendaVenue = UNNotificationAction(identifier: NotificationActionType.Agenda_Venue.identifier, title: NotificationActionType.Agenda_Venue.name.localized, options: [.foreground])
+        let actionAgendaInfo = UNNotificationAction(identifier: NotificationActionType.Agenda_Info.identifier, title: NotificationActionType.Agenda_Info.localizedTitle, options: [.foreground])
+        let actionAgendaParkingGuide = UNNotificationAction(identifier: NotificationActionType.Agenda_Parking_Guide.identifier, title: NotificationActionType.Agenda_Parking_Guide.localizedTitle, options: [.foreground])
+        let actionAgendaVenue = UNNotificationAction(identifier: NotificationActionType.Agenda_Venue.identifier, title: NotificationActionType.Agenda_Venue.localizedTitle, options: [.foreground])
         
         // BEFORE EVENT
-        let actionBeforeEventHallLayoutGuide = UNNotificationAction(identifier: NotificationActionType.Before_Event_Hall_Layout_Guide.identifier, title: NotificationActionType.Before_Event_Hall_Layout_Guide.name.localized, options: [.foreground])
-        let actionBeforeEventParkingTicket = UNNotificationAction(identifier: NotificationActionType.Before_Event_Parking_Ticket.identifier, title: NotificationActionType.Before_Event_Parking_Ticket.name.localized, options: [.foreground])
+        let actionBeforeEventHallLayoutGuide = UNNotificationAction(identifier: NotificationActionType.Before_Event_Hall_Layout_Guide.identifier, title: NotificationActionType.Before_Event_Hall_Layout_Guide.localizedTitle, options: [.foreground])
+        let actionBeforeEventParkingTicket = UNNotificationAction(identifier: NotificationActionType.Before_Event_Parking_Ticket.identifier, title: NotificationActionType.Before_Event_Parking_Ticket.localizedTitle, options: [.foreground])
         
         // IN STORE
-        let actionInStoreHallLayoutGuide = UNNotificationAction(identifier: NotificationActionType.In_Store_Hall_Layout_Guide.identifier, title: NotificationActionType.In_Store_Hall_Layout_Guide.name.localized, options: [.foreground])
-        let actionInStoreSafetyGuide = UNNotificationAction(identifier: NotificationActionType.In_Store_Safety_Guide.identifier, title: NotificationActionType.In_Store_Safety_Guide.name.localized, options: [.foreground])
+        let actionInStoreHallLayoutGuide = UNNotificationAction(identifier: NotificationActionType.In_Store_Hall_Layout_Guide.identifier, title: NotificationActionType.In_Store_Hall_Layout_Guide.localizedTitle, options: [.foreground])
+        let actionInStoreSafetyGuide = UNNotificationAction(identifier: NotificationActionType.In_Store_Safety_Guide.identifier, title: NotificationActionType.In_Store_Safety_Guide.localizedTitle, options: [.foreground])
         
         // HACKATHON RESULT
-        let actionHackathonResult = UNNotificationAction(identifier: NotificationActionType.Hackathon_Result.identifier, title: NotificationActionType.Hackathon_Result.name.localized, options: [.foreground])
+        let actionHackathonResult = UNNotificationAction(identifier: NotificationActionType.Hackathon_Result.identifier, title: NotificationActionType.Hackathon_Result.localizedTitle, options: [.foreground])
         
         // NOTICE
-        let actionNotice = UNNotificationAction(identifier: NotificationActionType.Notice.identifier, title: NotificationActionType.Notice.name.localized, options: [.foreground])
+        let actionNotice = UNNotificationAction(identifier: NotificationActionType.Notice.identifier, title: NotificationActionType.Notice.localizedTitle, options: [.foreground])
         
         // FEEDBACK
-        let actionFeedbackNoThanks = UNNotificationAction(identifier: NotificationActionType.Feed_Back_No_Thanks.identifier, title: NotificationActionType.Feed_Back_No_Thanks.name.localized, options: [.foreground])
-        let actionFeedbackStart = UNNotificationAction(identifier: NotificationActionType.Feed_Back_Start.identifier, title: NotificationActionType.Feed_Back_Start.name.localized, options: [.foreground])
+        let actionFeedbackNoThanks = UNNotificationAction(identifier: NotificationActionType.Feed_Back_No_Thanks.identifier, title: NotificationActionType.Feed_Back_No_Thanks.localizedTitle, options: [.foreground])
+        let actionFeedbackStart = UNNotificationAction(identifier: NotificationActionType.Feed_Back_Start.identifier, title: NotificationActionType.Feed_Back_Start.localizedTitle, options: [.foreground])
                 
         let categoryTypes : [NotificationCategoryType] = [.Balance_Changed_Received, .Balance_Changed_Sent, .Airdropped, .AirdropInvite, .Customer_Came_In, .Customer_Came_Out, .Agenda, .Before_Event, .In_Store_Guide, .Hackathon_Result, .Notice, .Feedback]
         var categories = [UNNotificationCategory]()
