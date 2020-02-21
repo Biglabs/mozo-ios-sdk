@@ -38,6 +38,25 @@ public extension ApiManager {
         }
     }
     
+    func getRetailerInfoForLauching() -> Promise<[String: Any]> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + "/getRetailerInfoForLaunching"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get retailer info, json response: \(json)")
+                    seal.fulfill(json)
+                }
+                .catch { error in
+                    print("Error when request get retailer info: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
     func addSalePerson(parameters: Any?) -> Promise<[String: Any]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_SALE_PERSON_API_PATH

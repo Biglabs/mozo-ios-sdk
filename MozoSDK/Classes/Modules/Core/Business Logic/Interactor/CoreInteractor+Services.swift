@@ -340,4 +340,20 @@ extension CoreInteractor: CoreInteractorService {
     func getBranchList(page: Int, size: Int) -> Promise<[String: Any]> {
         return apiManager.getBranchList(page: page, size: size)
     }
+    
+    func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
+        return apiManager.updateBranchInfo(branchInfo)
+    }
+     
+    func switchBranch(_ branchId: Int64) -> Promise<[String: Any]> {
+        return apiManager.switchBranch(branchId)
+    }
+    
+    func deleteBranchInfoPhotos(_ branchId: Int64, photos: [String]) -> Promise<BranchInfoDTO> {
+        return apiManager.deleteBranchInfoPhotos(branchId, photos: photos)
+    }
+    
+    func getRetailerInfoForLauching() -> Promise<[String: Any]> {
+        return apiManager.getRetailerInfoForLauching()
+    }
 }
