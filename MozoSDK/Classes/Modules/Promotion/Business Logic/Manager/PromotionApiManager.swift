@@ -10,11 +10,11 @@ import PromiseKit
 import SwiftyJSON
 
 let SHOPPER_PROMOTION_RESOURCE_API_PATH = "/shopperPromo"
-let RETAILER_PROMOTION_RESOURCE_API_PATH = "/retailer"
+let RETAILER_RESOURCE_API_PATH = "/retailer"
 public extension ApiManager {
     func getPromoCreateSetting() -> Promise<PromotionSettingDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/getPromoCreateSetting"
+            let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + "/getPromoCreateSetting"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -38,7 +38,7 @@ public extension ApiManager {
     
     func createPromotion(_ promotion: PromotionDTO) -> Promise<[String: Any]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/createPromo/v2"
+            let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + "/createPromo/v2"
             let param = promotion.toJSON()
             print("Create promotion params: \(param)")
             self.execute(.post, url: url, parameters: param)
@@ -62,7 +62,7 @@ public extension ApiManager {
             return Promise { seal in
                 let params = ["size" : size,
                               "page" : page] as [String : Any]
-                let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/getListPromoScheduled?\(params.queryString)"
+                let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + "/getListPromoScheduled?\(params.queryString)"
                 self.execute(.get, url: url)
                     .done { json -> Void in
                         // JSON info
@@ -84,7 +84,7 @@ public extension ApiManager {
             let params = ["size" : size,
                           "page" : page,
                           "statusRequest" : statusRequest.rawValue] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/getListPromo?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + "/getListPromo?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -105,7 +105,7 @@ public extension ApiManager {
     
     func processPromotionCode(code: String) -> Promise<PromotionCodeInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/processPromoCode?code=\(code)"
+            let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + "/processPromoCode?code=\(code)"
             self.execute(.put, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -133,7 +133,7 @@ public extension ApiManager {
             if let billInfo = billInfo {
                 params["billId"] = billInfo
             }
-            let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/usePromoCode"
+            let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + "/usePromoCode"
             self.execute(.put, url: url, parameters: params)
             .done { json -> Void in
                 // JSON info
@@ -157,7 +157,7 @@ public extension ApiManager {
     
     func cancelPromotionCode(code: String) -> Promise<[String: Any]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/cancelPromoCode?code=\(code)"
+            let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + "/cancelPromoCode?code=\(code)"
             self.execute(.put, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -225,7 +225,7 @@ public extension ApiManager {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/getListPromoScanned?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + "/getListPromoScanned?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -344,7 +344,7 @@ public extension ApiManager {
     
     func getRetailerCountPromotion() -> Promise<Int> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_PROMOTION_RESOURCE_API_PATH + "/getCountPromotion"
+            let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + "/getCountPromotion"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
