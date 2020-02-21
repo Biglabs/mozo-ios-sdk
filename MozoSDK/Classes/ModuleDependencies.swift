@@ -507,6 +507,22 @@ class ModuleDependencies {
     func getBranchList(page: Int, size: Int) -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getBranchList(page: page, size: size))!
     }
+     
+    func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.updateBranchInfo(branchInfo))!
+    }
+     
+    func switchBranch(_ branchId: Int64) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.switchBranch(branchId))!
+    }
+    
+    func deleteBranchInfoPhotos(_ branchId: Int64, photos: [String]) -> Promise<BranchInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.deleteBranchInfoPhotos(branchId, photos: photos))!
+    }
+    
+    func getRetailerInfoForLauching() -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerInfoForLauching())!
+    }
     
     func configureDependencies() {
         // MARK: Core

@@ -452,4 +452,20 @@ public class MozoSDK {
     public static func getBranchList(page: Int = 0, size: Int = 15) -> Promise<[String: Any]> {
         return moduleDependencies.getBranchList(page: page, size: size)
     }
+     
+    public static func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
+        return moduleDependencies.updateBranchInfo(branchInfo)
+    }
+     
+    public static func switchBranch(_ branchId: Int64) -> Promise<[String: Any]> {
+        return moduleDependencies.switchBranch(branchId)
+    }
+    
+    public static func deleteBranchInfoPhotos(_ branchId: Int64, photos: [String]) -> Promise<BranchInfoDTO> {
+        return moduleDependencies.deleteBranchInfoPhotos(branchId, photos: photos)
+    }
+    
+    public static func getRetailerInfoForLauching() -> Promise<[String: Any]> {
+        return moduleDependencies.getRetailerInfoForLauching()
+    }
 }

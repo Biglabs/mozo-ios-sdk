@@ -17,6 +17,14 @@ extension String: Localizable {
     public func localizedFormat(_ arguments: CVarArg...) -> String {
         return String(format: self.localized, arguments: arguments)
     }
+    
+    public var mainLocalized: String {
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
+    }
+    
+    public func mainLocalizedFormat(_ arguments: CVarArg...) -> String {
+        return String(format: self.mainLocalized, arguments: arguments)
+    }
 }
 
 public protocol XIBLocalizable {
