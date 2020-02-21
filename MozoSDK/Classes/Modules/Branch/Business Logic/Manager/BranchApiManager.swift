@@ -36,6 +36,31 @@ extension ApiManager {
         }
     }
     
+    func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + RETAILER_BRANCH_API_PATH + "/\(branchInfo.id ?? 0)"
+            let param = branchInfo.toJSON()
+            self.execute(.put, url: url, parameters: param)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to update branch, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    if let result = BranchInfoDTO(json: jobj) {
+                        seal.fulfill(result)
+                    } else {
+                        seal.reject(ConnectionError.systemError)
+                    }
+                }
+                .catch { error in
+                    print("Error when request to update branch: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
     func getBranchList(page: Int, size: Int) -> Promise<[String: Any]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_BRANCH_API_PATH
@@ -61,4 +86,46 @@ extension ApiManager {
             }
         }
     }
+    
+    func switchBranch(_ branchId: Int64) -> Promise<[String: Any]> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + RETAILER_BRANCH_API_PATH + "/switch/\(branchId)"
+            self.execute(.post, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to switch branch, json response: \(json)")
+                    seal.fulfill(json)
+                }
+                .catch { error in
+                    print("Error when request switch branch: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+       }
+   }
+   
+   func deleteBranchInfoPhotos(_ branchId: Int64, photos: [String]) -> Promise<BranchInfoDTO> {
+       return Promise { seal in
+           let url = Configuration.BASE_STORE_URL + RETAILER_BRANCH_API_PATH + "/photo/\(branchId)"
+           print("Request to delete branch info photo, param: \(photos)")
+           self.execute(.delete, url: url, parameters: photos)
+               .done { json -> Void in
+                   // JSON info
+                   print("Finish request to delete branch info photo, json response: \(json)")
+                   let jobj = SwiftyJSON.JSON(json)
+                   if let info = BranchInfoDTO(json: jobj) {
+                       seal.fulfill(info)
+                   }
+               }
+               .catch { error in
+                   print("Error when request delete branch info photo: " + error.localizedDescription)
+                   seal.reject(error)
+               }
+               .finally {
+                   //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+           }
+       }
+   }
 }
