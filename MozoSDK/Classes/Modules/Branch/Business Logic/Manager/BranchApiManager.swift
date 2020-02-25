@@ -61,9 +61,9 @@ extension ApiManager {
         }
     }
     
-    func getBranchList(page: Int, size: Int) -> Promise<[String: Any]> {
+    func getBranchList(page: Int, size: Int, forSwitching: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_BRANCH_API_PATH
+            let url = Configuration.BASE_STORE_URL + (forSwitching ? "/retailer/branchesForSwitching" : RETAILER_BRANCH_API_PATH)
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -121,6 +121,28 @@ extension ApiManager {
                }
                .catch { error in
                    print("Error when request delete branch info photo: " + error.localizedDescription)
+                   seal.reject(error)
+               }
+               .finally {
+                   //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+           }
+       }
+   }
+   
+   func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO> {
+       return Promise { seal in
+           let url = Configuration.BASE_STORE_URL + RETAILER_BRANCH_API_PATH + "/\(branchId)"
+           self.execute(.get, url: url)
+               .done { json -> Void in
+                   // JSON info
+                   print("Finish request to get branch with id \(branchId), json response: \(json)")
+                   let jobj = SwiftyJSON.JSON(json)
+                   if let info = BranchInfoDTO(json: jobj) {
+                       seal.fulfill(info)
+                   }
+               }
+               .catch { error in
+                   print("Error when request get branch with id \(branchId): " + error.localizedDescription)
                    seal.reject(error)
                }
                .finally {

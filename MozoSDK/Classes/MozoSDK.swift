@@ -449,8 +449,8 @@ public class MozoSDK {
         return moduleDependencies.getBeacon(beaconId)
     }
     
-    public static func getBranchList(page: Int = 0, size: Int = 15) -> Promise<[String: Any]> {
-        return moduleDependencies.getBranchList(page: page, size: size)
+    public static func getBranchList(page: Int = 0, size: Int = 15, forSwitching: Bool) -> Promise<[String: Any]> {
+        return moduleDependencies.getBranchList(page: page, size: size, forSwitching: forSwitching)
     }
      
     public static func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
@@ -467,5 +467,9 @@ public class MozoSDK {
     
     public static func getRetailerInfoForLauching() -> Promise<[String: Any]> {
         return moduleDependencies.getRetailerInfoForLauching()
+    }
+    
+    public static func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO> {
+        return moduleDependencies.getBranchById(branchId)
     }
 }

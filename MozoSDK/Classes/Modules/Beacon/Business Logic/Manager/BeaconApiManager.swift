@@ -52,7 +52,7 @@ extension ApiManager {
     
     func getListBeacons() -> Promise<[String: Any]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + "/retailer/beaconByBranch"
+            let url = Configuration.BASE_STORE_URL + RETAILER_BEACON_API_PATH
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
