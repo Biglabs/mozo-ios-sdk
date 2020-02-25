@@ -337,8 +337,8 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getBeacon(beaconId)
     }
     
-    func getBranchList(page: Int, size: Int) -> Promise<[String: Any]> {
-        return apiManager.getBranchList(page: page, size: size)
+    func getBranchList(page: Int, size: Int, forSwitching: Bool) -> Promise<[String: Any]> {
+        return apiManager.getBranchList(page: page, size: size, forSwitching: forSwitching)
     }
     
     func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
@@ -355,5 +355,9 @@ extension CoreInteractor: CoreInteractorService {
     
     func getRetailerInfoForLauching() -> Promise<[String: Any]> {
         return apiManager.getRetailerInfoForLauching()
+    }
+    
+    func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO> {
+        return apiManager.getBranchById(branchId)
     }
 }
