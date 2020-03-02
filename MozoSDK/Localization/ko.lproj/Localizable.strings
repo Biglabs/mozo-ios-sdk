@@ -1027,6 +1027,7 @@
 "The number of Shoppers who will receive MozoX tokens from this Airdrop Event." = "이 에어 드롭 이벤트에서 모조X 토큰을 받을 소핑객 수입니다.";
 "The number of MozoX tokens each Shopper will receive via Airdrop every time they visit to your Store." = "각 소핑객이 귀하의 상점을 방문 할 때마다 에어 드롭을 통해 받는 모조X 토큰의 수입니다.";
 "PLEASE REVIEW THE INFORMATION BELOW, BECAUSE ONCE AN AIRDROP EVENT HAS BEEN CREATED, THE INFORMATION CANNOT BE CHANGED." = "에어 드롭 이벤트가 생성되면 정보를 변경할 수 없으므로 아래 정보를 검토하십시오.";
+"Please review the information below, because once an Airdrop Event has been created, the information cannot be changed." = "에어 드롭 이벤트가 생성되면 정보를 변경할 수 없으므로 아래 정보를 검토하십시오.";
 "Duration" = "기간";
 "Not available" = "사용할 수 없습니다.";
 "Selected days of the week" = "일주일의 선택한 요일";
