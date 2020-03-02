@@ -40,6 +40,7 @@ extension ApiManager {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_BRANCH_API_PATH + "/\(branchInfo.id ?? 0)"
             let param = branchInfo.toJSON()
+            print("Request to update branch, param: \(param)")
             self.execute(.put, url: url, parameters: param)
                 .done { json -> Void in
                     // JSON info
@@ -90,7 +91,7 @@ extension ApiManager {
     func switchBranch(_ branchId: Int64) -> Promise<[String: Any]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_BRANCH_API_PATH + "/switch/\(branchId)"
-            self.execute(.post, url: url)
+            self.execute(.put, url: url)
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to switch branch, json response: \(json)")

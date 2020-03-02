@@ -13,7 +13,7 @@ let TX_API_PATH = "/solo/contract/solo-token/"
 public extension ApiManager {
     func getTokenInfoFromAddress(_ address: String) -> Promise<TokenInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + TX_API_PATH + "balance/\(address)"
+            let url = Configuration.BASE_STORE_URL + TX_API_PATH + "balance/\(address)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -38,7 +38,7 @@ public extension ApiManager {
     
     func transferTransaction(_ transaction: TransactionDTO) -> Promise<IntermediaryTransactionDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + TX_API_PATH + "transfer"
+            let url = Configuration.BASE_STORE_URL + TX_API_PATH + "transfer"
             let param = transaction.toJSON()
             self.execute(.post, url: url, parameters: param)
                 .done { json -> Void in
@@ -62,7 +62,7 @@ public extension ApiManager {
     
     func sendSignedTransaction(_ transaction: IntermediaryTransactionDTO) -> Promise<IntermediaryTransactionDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + TX_API_PATH + "send-signed-tx"
+            let url = Configuration.BASE_STORE_URL + TX_API_PATH + "send-signed-tx"
             let param = transaction.toJSON()
             self.execute(.post, url: url, parameters: param)
                 .done { json -> Void in

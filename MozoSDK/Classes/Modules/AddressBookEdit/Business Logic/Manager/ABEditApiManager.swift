@@ -10,9 +10,9 @@ import PromiseKit
 import SwiftyJSON
 
 public extension ApiManager {
-    public func deleteAddressBook(_ id: Int64) -> Promise<[String : Any]> {
+    func deleteAddressBook(_ id: Int64) -> Promise<[String : Any]> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + ADR_BOOK_API_PATH + "/\(id)"
+            let url = Configuration.BASE_STORE_URL + ADR_BOOK_API_PATH + "/\(id)"
             self.execute(.delete, url: url)
                 .done { json -> Void in
                     // JSON info

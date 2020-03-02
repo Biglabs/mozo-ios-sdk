@@ -63,7 +63,7 @@ extension ApiManager {
         return Promise { seal in
             let appShopper = self.appType == .Shopper
             let params = ["codeLink" : codeString, "appShopper": appShopper] as [String : Any]
-            let url = Configuration.BASE_URL + INVITE_API_PATH + "/updateCodeLinkInstallApp"
+            let url = Configuration.BASE_STORE_URL + INVITE_API_PATH + "/updateCodeLinkInstallApp"
             self.execute(.post, url: url, parameters: params)
                 .done { json -> Void in
                     // JSON info

@@ -12,7 +12,7 @@ extension ApiManager {
     public func importContacts(_ contactInfo: ImportContactInfoDTO) -> Promise<[String: Any]> {
         return Promise { seal in
             let param = contactInfo.toJSON()
-            let url = Configuration.BASE_URL + ADR_BOOK_API_PATH + "/import-contact"
+            let url = Configuration.BASE_STORE_URL + ADR_BOOK_API_PATH + "/import-contact"
             self.execute(.post, url: url, parameters: param)
                 .done { json -> Void in
                     // JSON info
@@ -32,7 +32,7 @@ extension ApiManager {
     
     public func checkProcessImportContact() -> Promise<AddressBookImportProcessDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + ADR_BOOK_API_PATH + "/import-process-checking"
+            let url = Configuration.BASE_STORE_URL + ADR_BOOK_API_PATH + "/import-process-checking"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -57,7 +57,7 @@ extension ApiManager {
     
     public func getAddressBookByPhoneNo(_ phoneNo: String) -> Promise<AddressBookDTO?> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + ADR_BOOK_API_PATH + "/findContact/\(phoneNo)"
+            let url = Configuration.BASE_STORE_URL + ADR_BOOK_API_PATH + "/findContact/\(phoneNo)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

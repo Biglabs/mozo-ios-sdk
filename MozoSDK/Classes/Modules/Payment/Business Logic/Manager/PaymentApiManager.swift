@@ -16,12 +16,12 @@ public extension ApiManager {
     ///   - address: the address
     ///   - page: the number of page data
     ///   - size: the number of payment request item
-    public func getListPaymentRequest(page: Int = 0, size: Int = 15) -> Promise<[PaymentRequestDTO]> {
+    func getListPaymentRequest(page: Int = 0, size: Int = 15) -> Promise<[PaymentRequestDTO]> {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page,
                           "sort" : "timeInSec,desc"] as [String : Any]
-            let url = Configuration.BASE_URL + PAYMENT_REQUEST_API_PATH + "?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + PAYMENT_REQUEST_API_PATH + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

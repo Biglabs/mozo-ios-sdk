@@ -11,7 +11,7 @@ import SwiftyJSON
 extension ApiManager {
     public func resetPINOfUserWallet(walletInfo: WalletInfoDTO) -> Promise<UserProfileDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + USER_API_PATH + "/wallet/reset-pin"
+            let url = Configuration.BASE_STORE_URL + USER_API_PATH + "/wallet/reset-pin"
             let param = walletInfo.rawData()
             self.execute(.put, url: url, parameters: param)
                 .done { json -> Void in

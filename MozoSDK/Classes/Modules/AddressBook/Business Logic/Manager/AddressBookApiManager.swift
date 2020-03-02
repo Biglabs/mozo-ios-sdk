@@ -12,9 +12,9 @@ import SwiftyJSON
 let ADR_BOOK_API_PATH = "/contacts"
 let STORE_BOOK_API_PATH = "/store-books"
 public extension ApiManager {
-    public func getListAddressBook() -> Promise<[AddressBookDTO]> {
+    func getListAddressBook() -> Promise<[AddressBookDTO]> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + "/v2" + ADR_BOOK_API_PATH
+            let url = Configuration.BASE_STORE_URL + "/v2" + ADR_BOOK_API_PATH
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -40,7 +40,7 @@ public extension ApiManager {
         }
     }
     
-    public func getListStoreBook() -> Promise<[StoreBookDTO]> {
+    func getListStoreBook() -> Promise<[StoreBookDTO]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + STORE_BOOK_API_PATH
             self.execute(.get, url: url)
