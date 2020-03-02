@@ -36,14 +36,12 @@ public class BeaconInfoDTO : ResponseObjectSerializable {
         self.name = name
     }
     
-    public required init(macAddress: String, branchId: Int64){
+    public required init(macAddress: String){
         self.macAddress = macAddress
-        self.branchId = branchId
     }
     
-    public required init(name: String, branchId: Int64){
+    public required init(name: String){
         self.name = name
-        self.branchId = branchId
     }
     
     public required init?(name: String, distance: NSNumber, major: Int64, minor: Int64, rssi: Int, uuid: String, macAddress: String, measuredPower: Int8, branchId: Int64) {

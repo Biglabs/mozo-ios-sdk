@@ -52,6 +52,19 @@ public class BranchInfoDTO : StoreInfoDTO {
         self.hashTag = storeInfo.hashTag
     }
     
+    public init?(branchInfo: BranchInfoDTO) {
+        super.init()
+        self.city = branchInfo.city
+        self.closeHour = branchInfo.closeHour
+        self.country = branchInfo.country
+        self.imageLogo = branchInfo.imageLogo
+        self.openHour = branchInfo.openHour
+        self.state = branchInfo.state
+        self.zip = branchInfo.zip
+        self.images = branchInfo.images
+        self.hashTag = branchInfo.hashTag
+    }
+    
     public override func toJSON() -> Dictionary<String, Any> {
         var json = super.toJSON()
         json["images"] = images
@@ -93,5 +106,15 @@ public class BranchInfoDTO : StoreInfoDTO {
     
     public required init(openHour: Int) {
         super.init(openHour: openHour)
+    }
+    
+    public required init(id: Int64, images: [String]) {
+        super.init(id: id)
+        self.images = images
+    }
+    
+    public required init(id: Int64, hashTag: [String]) {
+        super.init(id: id)
+        self.hashTag = hashTag
     }
 }

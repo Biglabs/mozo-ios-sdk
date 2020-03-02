@@ -31,6 +31,7 @@ public class AirdropEventDTO {
     
     public var eventStatus: String?
     public var ownerCreateEvent: Bool?
+    public var beaconInfo: BeaconInfoDTO?
     
     public init?(name: String, address: String, receivedShopper: Int64,
                   mozoAirdropPerCustomerVisit: NSNumber, airdropFreq: Int,
@@ -80,6 +81,7 @@ public class AirdropEventDTO {
         self.stayIn = json["stayIn"].int
         self.eventStatus = json["eventStatus"].string
         self.ownerCreateEvent = json["ownerCreateEvent"].bool
+        self.beaconInfo = BeaconInfoDTO(json: json["beaconInfo"])
     }
 
     public func toJSON() -> Dictionary<String, Any> {

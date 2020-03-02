@@ -31,6 +31,7 @@ public class AirDropReportDTO {
     public var symbol: String?
     public var totalNumMozoOffchain: NSNumber?
     public var userOffChainAddress: String?
+    public var beaconInfo: BeaconInfoDTO?
     
     public required init?(json: SwiftyJSON.JSON) {
         self.airdropDetailsId = json["airdropDetailsId"].int64
@@ -55,6 +56,7 @@ public class AirDropReportDTO {
         self.symbol = json["symbol"].string
         self.totalNumMozoOffchain = json["totalNumMozoOffchain"].number
         self.userOffChainAddress = json["userOffChainAddress"].string
+        self.beaconInfo = BeaconInfoDTO(json: json["beaconInfo"])
     }
     
     public func toJSON() -> Dictionary<String, Any> {

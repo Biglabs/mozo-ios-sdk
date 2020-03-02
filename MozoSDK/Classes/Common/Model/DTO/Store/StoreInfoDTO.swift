@@ -131,6 +131,9 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         if let disable = self.disable {
             json["disable"] = disable
         }
+        if let hashTag = self.hashTag {
+            json["hashTag"] = hashTag
+        }
         return json
     }
     
