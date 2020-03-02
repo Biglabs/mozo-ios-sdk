@@ -14,10 +14,10 @@ public extension ApiManager {
     /// - Parameters:
     ///   - address: the address
     ///   - request: the payment request
-    public func sendPaymentRequest(address: String, request: PaymentRequestDTO) -> Promise<[String: Any]> {
+    func sendPaymentRequest(address: String, request: PaymentRequestDTO) -> Promise<[String: Any]> {
         return Promise { seal in
             let param = request.toJSON()
-            let url = Configuration.BASE_URL + PAYMENT_REQUEST_API_PATH + "/\(address)"
+            let url = Configuration.BASE_STORE_URL + PAYMENT_REQUEST_API_PATH + "/\(address)"
             self.execute(.post, url: url, parameters: param)
                 .done { json -> Void in
                     // JSON info
@@ -34,9 +34,9 @@ public extension ApiManager {
         }
     }
     
-    public func deletePaymentRequest(requestId: Int64) -> Promise<[String: Any]> {
+    func deletePaymentRequest(requestId: Int64) -> Promise<[String: Any]> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + PAYMENT_REQUEST_API_PATH + "/\(requestId)"
+            let url = Configuration.BASE_STORE_URL + PAYMENT_REQUEST_API_PATH + "/\(requestId)"
             self.execute(.delete, url: url)
                 .done { json -> Void in
                     // JSON info

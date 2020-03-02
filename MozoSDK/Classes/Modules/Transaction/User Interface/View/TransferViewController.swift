@@ -47,6 +47,8 @@ class TransferViewController: MozoBasicViewController {
     
     let nbPhoneNumberUtil = NBPhoneNumberUtil()
     
+    var leftBarButtonView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         eventHandler?.loadTokenInfo()
@@ -68,6 +70,7 @@ class TransferViewController: MozoBasicViewController {
         super.viewWillAppear(animated)
         // Fix issue: Title is not correct after navigation back from child controller
         navigationItem.title = "Send MozoX".localized
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButtonView)
     }
     
     deinit {

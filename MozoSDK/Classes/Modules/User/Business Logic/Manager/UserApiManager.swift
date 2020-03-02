@@ -13,7 +13,7 @@ let USER_API_PATH = "/user-profile"
 public extension ApiManager {
     func getUserProfile() -> Promise<UserProfileDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + USER_API_PATH
+            let url = Configuration.BASE_STORE_URL + USER_API_PATH
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -36,7 +36,7 @@ public extension ApiManager {
     
     func updateAvatarToUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + USER_API_PATH + "/avatar-url"
+            let url = Configuration.BASE_STORE_URL + USER_API_PATH + "/avatar-url"
             let param = userProfile.rawData()
             self.execute(.put, url: url, parameters: param)
                 .done { json -> Void in

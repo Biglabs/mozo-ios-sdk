@@ -11,7 +11,7 @@ import SwiftyJSON
 extension ApiManager {
     public func updateWalletToUserProfile(walletInfo: WalletInfoDTO) -> Promise<UserProfileDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + USER_API_PATH + "/wallet"
+            let url = Configuration.BASE_STORE_URL + USER_API_PATH + "/wallet"
             let param = walletInfo.rawData()
             self.execute(.put, url: url, parameters: param)
                 .done { json -> Void in
@@ -35,7 +35,7 @@ extension ApiManager {
     
     public func updateWallets(walletInfo: WalletInfoDTO) -> Promise<UserProfileDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + USER_API_PATH + "/v1/walletAll"
+            let url = Configuration.BASE_STORE_URL + USER_API_PATH + "/v1/walletAll"
             let param = walletInfo.rawData()
             self.execute(.put, url: url, parameters: param)
                 .done { json -> Void in
@@ -59,7 +59,7 @@ extension ApiManager {
     
     public func updateOnlyOnchainWallet(onchainAddress: String) -> Promise<UserProfileDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + USER_API_PATH + "/updateWalletOnchain"
+            let url = Configuration.BASE_STORE_URL + USER_API_PATH + "/updateWalletOnchain"
             let walletInfo = WalletInfoDTO(onchainAddress: onchainAddress)
             let param = walletInfo.rawData()
             self.execute(.put, url: url, parameters: param)

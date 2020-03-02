@@ -18,7 +18,7 @@ public extension ApiManager {
     ///   - size: the number of history item
     func getListTxHistory(address: String, page: Int = 0, size: Int = 15) -> Promise<[TxHistoryDTO]> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + TX_API_PATH + "txhistory/\(address)?page=\(page)&size=\(size)"
+            let url = Configuration.BASE_STORE_URL + TX_API_PATH + "txhistory/\(address)?page=\(page)&size=\(size)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
