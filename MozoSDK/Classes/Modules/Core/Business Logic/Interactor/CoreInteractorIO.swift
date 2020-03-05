@@ -192,4 +192,6 @@ protocol CoreInteractorService {
     func getRetailerInfoForLauching() -> Promise<[String: Any]>
     
     func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO>
+    
+    func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO>
 }

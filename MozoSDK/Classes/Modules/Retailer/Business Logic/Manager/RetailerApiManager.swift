@@ -116,6 +116,32 @@ public extension ApiManager {
         }
     }
     
+    func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
+        return Promise { seal in
+            let param = account.toJSON()
+            print("Request to update sale person, param: \(String(describing: param))")
+            let url = Configuration.BASE_STORE_URL + RETAILER_SALE_PERSON_API_PATH + "/\(account.id ?? 0)"
+            self.execute(.put, url: url, parameters: param)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to update sale person, json response: \(json)")
+                    let jobj = JSON(json)
+                    if let sp = SalePersonDTO(json: jobj) {
+                        seal.fulfill(sp)
+                    } else {
+                        seal.reject(ConnectionError.systemError)
+                    }
+                }
+                .catch { error in
+                    print("Error when request update sale person: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
     func getListCountryCode() -> Promise<[CountryCodeDTO]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + COMMON_COUNTRY_CODE_API_PATH
