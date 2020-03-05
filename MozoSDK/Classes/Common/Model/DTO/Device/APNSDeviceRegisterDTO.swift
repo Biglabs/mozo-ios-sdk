@@ -15,6 +15,7 @@ public class APNSDeviceRegisterDTO : ResponseObjectSerializable {
     public var os: String?
     public var osVersion: String?
     public var token: String?
+    public var locale: String?
     
     public required init(appType: String, instanceId: String, token: String){
         self.appType = appType
@@ -24,6 +25,7 @@ public class APNSDeviceRegisterDTO : ResponseObjectSerializable {
         self.os = UIDevice.current.systemName
         self.osVersion = UIDevice.current.systemVersion
         self.token = token
+        self.locale = Configuration.LOCALE
     }
     
     public required init?(json: SwiftyJSON.JSON) {
@@ -33,6 +35,7 @@ public class APNSDeviceRegisterDTO : ResponseObjectSerializable {
         self.os = json["os"].string
         self.osVersion = json["osVersion"].string
         self.token = json["token"].string
+        self.locale = json["locale"].string
     }
     
     public required init?(){}
@@ -56,6 +59,9 @@ public class APNSDeviceRegisterDTO : ResponseObjectSerializable {
         }
         if let token = self.token {
             json["token"] = token
+        }
+        if let locale = self.locale {
+            json["locale"] = locale
         }
 
         return json
