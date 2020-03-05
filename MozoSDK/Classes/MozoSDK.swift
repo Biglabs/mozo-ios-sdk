@@ -472,4 +472,8 @@ public class MozoSDK {
     public static func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO> {
         return moduleDependencies.getBranchById(branchId)
     }
+    
+    public static func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
+        return moduleDependencies.updateSalePerson(account: account)
+    }
 }

@@ -8,7 +8,12 @@
 
 import Foundation
 import SwiftyJSON
-
+public enum BeaconBranchSynchronizationStatus: String {
+    case NO_NEED_TO_SYNC = "NO_NEED_TO_SYNC"
+    case NEED_SYNC_ADDRESS = "NEED_SYNC_ADDRESS"
+    case NEED_SYNC_LOCATION = "NEED_SYNC_LOCATION"
+    case NEED_SYNC_BOTH = "NEED_SYNC_BOTH"
+}
 public class BeaconInfoDTO : ResponseObjectSerializable {
     public var broadcastingPower: Int8?
     public var distance: NSNumber?
@@ -30,10 +35,17 @@ public class BeaconInfoDTO : ResponseObjectSerializable {
     public var name: String?
     
     public var branchId: Int64?
+    public var address: String?
+    public var beaconBranchSyncStatus: BeaconBranchSynchronizationStatus?
     
     public required init(macAddress: String, name: String){
         self.macAddress = macAddress
         self.name = name
+    }
+    
+    public required init(macAddress: String, address: String){
+        self.macAddress = macAddress
+        self.address = address
     }
     
     public required init(macAddress: String){
@@ -42,6 +54,19 @@ public class BeaconInfoDTO : ResponseObjectSerializable {
     
     public required init(name: String){
         self.name = name
+    }
+    
+    public required init(macAddress: String, latitude: NSNumber, longitude: NSNumber){
+        self.macAddress = macAddress
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+    
+    public required init(macAddress: String, address: String, latitude: NSNumber, longitude: NSNumber){
+        self.macAddress = macAddress
+        self.address = address
+        self.latitude = latitude
+        self.longitude = longitude
     }
     
     public required init?(name: String, distance: NSNumber, major: Int64, minor: Int64, rssi: Int, uuid: String, macAddress: String, measuredPower: Int8, branchId: Int64) {
@@ -84,6 +109,8 @@ public class BeaconInfoDTO : ResponseObjectSerializable {
         self.storeInfoId = json["storeInfoId"].int64
         self.uuId = json["uuId"].string
         self.zoneId = json["zoneId"].string
+        self.address = json["address"].string
+        self.beaconBranchSyncStatus = BeaconBranchSynchronizationStatus(rawValue: json["beaconBranchSyncStatus"].string ?? "")
     }
     
     public required init?(){}
@@ -124,6 +151,10 @@ public class BeaconInfoDTO : ResponseObjectSerializable {
         
         if let branchId = self.branchId {
             json["branchId"] = branchId
+        }
+        
+        if let address = self.address {
+            json["address"] = address
         }
         return json
     }

@@ -360,4 +360,8 @@ extension CoreInteractor: CoreInteractorService {
     func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO> {
         return apiManager.getBranchById(branchId)
     }
+    
+    func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
+        return apiManager.updateSalePerson(account: account)
+    }
 }
