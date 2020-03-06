@@ -364,4 +364,12 @@ extension CoreInteractor: CoreInteractorService {
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
         return apiManager.updateSalePerson(account: account)
     }
+    
+    func syncAddressFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
+        return apiManager.syncAddressFromBranchIntoBeacon(beaconId)
+    }
+    
+    func syncLocationFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
+        return apiManager.syncLocationFromBranchIntoBeacon(beaconId)
+    }
 }

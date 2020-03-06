@@ -476,4 +476,12 @@ public class MozoSDK {
     public static func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
         return moduleDependencies.updateSalePerson(account: account)
     }
+    
+    public static func syncAddressFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
+        return moduleDependencies.syncAddressFromBranchIntoBeacon(beaconId)
+    }
+    
+    public static func syncLocationFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
+        return moduleDependencies.syncLocationFromBranchIntoBeacon(beaconId)
+    }
 }
