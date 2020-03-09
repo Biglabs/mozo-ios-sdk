@@ -532,6 +532,14 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateSalePerson(account: account))!
     }
     
+    func syncAddressFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.syncAddressFromBranchIntoBeacon(beaconId))!
+    }
+    
+    func syncLocationFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.syncLocationFromBranchIntoBeacon(beaconId))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()
