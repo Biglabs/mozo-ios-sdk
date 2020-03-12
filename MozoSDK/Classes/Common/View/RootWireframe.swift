@@ -93,11 +93,11 @@ class RootWireframe : NSObject {
         return nil
     }
     
-    public func closeAllMozoUIs(completion: (() -> Swift.Void)? = nil) {
+    public func closeAllMozoUIs(completion: @escaping (() -> Swift.Void)) {
         mozoNavigationController.viewControllers = []
         mozoNavigationController.dismiss(animated: false) {
             print("Mozo: Dismiss Navigation Controller")
-            completion!()
+            completion()
         }
     }
     

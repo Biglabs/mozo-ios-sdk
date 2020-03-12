@@ -77,9 +77,9 @@ class CoreWireframe : MozoWireframe {
         corePresenter?.requestForAuthentication(module: Module.BackupWallet)
     }
     
-    func requestForCloseAllMozoUIs(completion: (() -> Swift.Void)? = nil) {
+    func requestForCloseAllMozoUIs(completion: @escaping (() -> Swift.Void)) {
         rootWireframe?.closeAllMozoUIs(completion: {
-            completion!()
+            completion()
         })
     }
     
