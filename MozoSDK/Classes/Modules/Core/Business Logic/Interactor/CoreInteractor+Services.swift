@@ -31,8 +31,12 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getRangeColorSettings()
     }
     
-    func registerBeacon(parameters: Any?) -> Promise<[String: Any]>{
+    func registerBeacon(parameters: Any?) -> Promise<[String: Any]> {
         return apiManager.registerBeacon(parameters: parameters, isCreateNew: true)
+    }
+    
+    func registerMoreBeacon(parameters: Any?) -> Promise<[String: Any]> {
+        return apiManager.registerMoreBeacon(parameters: parameters)
     }
     
     func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]>{

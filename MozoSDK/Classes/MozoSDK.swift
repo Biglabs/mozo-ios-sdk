@@ -484,4 +484,8 @@ public class MozoSDK {
     public static func syncLocationFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
         return moduleDependencies.syncLocationFromBranchIntoBeacon(beaconId)
     }
+    
+    public static func registerMoreBeacon(parameters: Any?) -> Promise<[String: Any]> {
+        return moduleDependencies.registerMoreBeacon(parameters: parameters)
+    }
 }

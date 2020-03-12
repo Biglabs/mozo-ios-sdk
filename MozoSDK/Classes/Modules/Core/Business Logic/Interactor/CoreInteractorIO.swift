@@ -45,6 +45,7 @@ protocol CoreInteractorService {
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem>
     func loadEthAndOnchainBalanceInfo() -> Promise<OnchainInfoDTO>
     func registerBeacon(parameters: Any?) -> Promise<[String: Any]>
+    func registerMoreBeacon(parameters: Any?) -> Promise<[String: Any]>
     func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]>
     func deleteBeacon(beaconId: Int64) -> Promise<Bool>
     func getListBeacons() -> Promise<[String : Any]>
