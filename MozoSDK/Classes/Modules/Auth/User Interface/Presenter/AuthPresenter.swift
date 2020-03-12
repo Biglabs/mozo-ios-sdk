@@ -70,7 +70,7 @@ extension AuthPresenter : AuthInteractorOutput {
     }
     
     func finishedBuildAuthRequest(_ request: OIDAuthorizationRequest) {
-        // FIX ME: Figure why we crash here
+        // FIX ME: Figure out why we crash here
         // performs authentication request
         NSLog("AuthPresenter - Initiating authorization request with scope: \(request.scope ?? "DEFAULT_SCOPE")")
         let viewController = DisplayUtils.getTopViewController()
