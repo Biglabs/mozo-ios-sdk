@@ -224,6 +224,10 @@ public class ApiManager {
                         if let errorEnum = ErrorApiResponse(rawValue: error) {
                             if errorEnum == .INVALID_USER_TOKEN {
                                 delegate?.didReceiveInvalidToken()
+                            } else if errorEnum == .USER_DEACTIVATED || errorEnum == .SUB_ACCOUNT_DEACTIVATED {
+                                delegate?.didReceiveDeactivated(error: errorEnum)
+                            } else if errorEnum == .UPDATE_VERSION_REQUIREMENT {
+                                delegate?.didReceiveRequireUpdate()
                             } else {
                                 if errorEnum == .MAINTAINING {
                                     self.delegate?.didReceiveMaintenance()

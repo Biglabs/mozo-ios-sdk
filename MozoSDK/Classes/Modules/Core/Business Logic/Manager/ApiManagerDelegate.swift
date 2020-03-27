@@ -22,4 +22,7 @@ protocol ApiManagerDelegate {
     func didLoadETHFailed()
     
     func didReceiveMaintenance()
+    
+    func didReceiveDeactivated(error: ErrorApiResponse)
+    func didReceiveRequireUpdate()
 }

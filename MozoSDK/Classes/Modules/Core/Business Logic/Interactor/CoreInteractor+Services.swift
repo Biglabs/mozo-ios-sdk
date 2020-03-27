@@ -325,8 +325,8 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getAirdropEventFromStore(storeId, type: type, page: page, size: size)
     }
     
-    func confirmStoreInfoMerchant() -> Promise<[String: Any]> {
-        return apiManager.confirmStoreInfoMerchant()
+    func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
+        return apiManager.confirmStoreInfoMerchant(branchInfo: branchInfo)
     }
     
     func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]> {
