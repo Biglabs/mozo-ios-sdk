@@ -112,7 +112,7 @@ class ResetPINInteractor: NSObject {
     }
     
     func updateFullWalletInfo(_ walletInfo: WalletInfoDTO, wallets: [WalletModel]) {
-        _ = self.apiManager.updateWallets(walletInfo: walletInfo)
+        _ = self.apiManager.updateWalletsForResettingPIN(walletInfo: walletInfo)
             .done { uProfile -> Void in
                 let userDto = UserDTO(id: uProfile.userId, profile: uProfile)
                 SessionStoreManager.saveCurrentUser(user: userDto)

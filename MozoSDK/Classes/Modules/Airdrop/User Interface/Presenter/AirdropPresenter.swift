@@ -42,7 +42,7 @@ extension AirdropPresenter: AirdropInteractorOutput {
     
     func didFailedToLoadTokenInfo() {
         NSLog("AirdropPresenter - Unable load token info")
-        airdropEventDelegate?.createAirdropEventFailureWithErrorString(error: "Sorry, something went wrong. Please try again or restart the app".localized, isDisplayingTryAgain: true)
+        airdropEventDelegate?.createAirdropEventFailureWithErrorString(error: "Sorry, something went wrong. Please try again or restart the app".localized, isDisplayingTryAgain: false)
     }
     
     func didReceiveTxStatus(_ statusType: TransactionStatusType) {

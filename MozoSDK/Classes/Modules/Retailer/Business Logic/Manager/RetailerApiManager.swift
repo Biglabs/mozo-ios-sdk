@@ -17,7 +17,7 @@ let RETAILER_STORE_INFO_API_PATH = "/retailer/storeInfo"
 let RETAILER_STORE_INFO_HASHTAG_API_PATH = "/retailer/storeInfo/hashtag"
 let RETAILER_STORE_INFO_PHOTO_API_PATH = "/retailer/storeInfo/photo"
 let RETAILER_SUPPORT_BEACON_API_PATH = "/retailer/support/beacon"
-let RETAILER_MERCHANT_CONFIRM_STORE_API_PATH = "/retailer/merchantConfirmStore"
+let RETAILER_MERCHANT_CONFIRM_STORE_API_PATH = "/merchantConfirmStore"
 public extension ApiManager {
     func getRetailerInfo() -> Promise<[String: Any]> {
         return Promise { seal in
@@ -299,14 +299,20 @@ public extension ApiManager {
         }
     }
     
-    func confirmStoreInfoMerchant() -> Promise<[String: Any]> {
+    func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_MERCHANT_CONFIRM_STORE_API_PATH
-            self.execute(.put, url: url)
+            let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + RETAILER_MERCHANT_CONFIRM_STORE_API_PATH + "/v1"
+            let param = branchInfo.toJSON()
+            self.execute(.post, url: url, parameters: param)
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to confirm store info merchant, json response: \(json)")
-                    seal.fulfill(json)
+                    let jobj = SwiftyJSON.JSON(json)
+                    if let result = BranchInfoDTO(json: jobj) {
+                        seal.fulfill(result)
+                    } else {
+                        seal.reject(ConnectionError.systemError)
+                    }
                 }
                 .catch { error in
                     print("Error when request confirm store info merchant: " + error.localizedDescription)
