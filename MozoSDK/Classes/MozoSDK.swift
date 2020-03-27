@@ -433,8 +433,8 @@ public class MozoSDK {
         return moduleDependencies.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat)
     }
     
-    public static func confirmStoreInfoMerchant() -> Promise<[String: Any]> {
-        return moduleDependencies.confirmStoreInfoMerchant()
+    public static func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
+        return moduleDependencies.confirmStoreInfoMerchant(branchInfo: branchInfo)
     }
     
     public static func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]> {

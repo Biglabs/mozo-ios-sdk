@@ -115,11 +115,11 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         if let latitude = self.latitude {json["latitude"] = latitude}
         if let longitude = self.longitude {json["longitude"] = longitude}
         if let city = self.city {json["city"] = city}
-        if let closeHour = self.closeHour {json["closeHour"] = closeHour}
         if let country = self.country {json["country"] = country}
         if let imageLogo = self.imageLogo {json["imageLogo"] = imageLogo}
         if let name = self.name {json["name"] = name}
         if let openHour = self.openHour {json["openHour"] = openHour}
+        if let closeHour = self.closeHour {json["closeHour"] = closeHour}
         if let phoneNum = self.phoneNum {json["phoneNum"] = phoneNum}
         if let state = self.state {json["state"] = state}
         if let zip = self.zip {json["zip"] = zip}

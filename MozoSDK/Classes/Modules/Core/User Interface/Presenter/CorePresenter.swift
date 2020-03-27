@@ -8,7 +8,7 @@
 import Foundation
 import UserNotifications
 import Reachability
-
+import UserNotificationsUI
 class CorePresenter : NSObject {
     var coreWireframe : CoreWireframe?
     var coreInteractor : CoreInteractorInput?
@@ -67,6 +67,9 @@ class CorePresenter : NSObject {
     func handleAccessRemoved() {
         print("CorePresenter - Handle processed after account's access removed")
         SessionStoreManager.isAccessDenied = true
+
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
     
     func handleInvalidTokenApiResponse() {
@@ -78,10 +81,12 @@ class CorePresenter : NSObject {
             // MozoX Screens could be contained here.
             if (coreWireframe?.rootWireframe?.mozoNavigationController.viewControllers.count ?? 0) > 0 {
                 print("CorePresenter - Handle invalid token from api response when MozoX Screens is displaying.")
+                // TODO: No need to close all mozo controllers from mozo navigation controller
                 coreWireframe?.requestForCloseAllMozoUIs(completion: {
-                    self.authDelegate?.mozoUIDidCloseAll()
-                    self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers()
+                    self.authDelegate?.mozoUIDidCloseAll() // Back to Main
+                    self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers() // Remove PIN text to retry
                     self.coreWireframe?.requestForAuthentication()
+//                    self.coreWireframe?.authWireframe?.presentLogoutInterface()
                 })
                 
                 removePINDelegate()
@@ -91,7 +96,9 @@ class CorePresenter : NSObject {
 //                self.coreWireframe?.requestForAuthentication()
                 coreWireframe?.authWireframe?.presentLogoutInterface()
             }
-//            coreWireframe?.authWireframe?.presentLogoutInterface()
+//            self.authDelegate?.mozoUIDidCloseAll() // Back to Main
+//            self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers() // Remove PIN text to retry
+//            self.coreWireframe?.authWireframe?.presentLogoutInterface()
         } else {
             // Ignore
             print("CorePresenter - Ignore handle invalid token from api response")
@@ -328,6 +335,14 @@ extension CorePresenter : CoreInteractorOutput {
     
     func didReceiveMaintenance() {
         coreInteractor?.notifyMaintenance(isComplete: false)
+    }
+    
+    func didReceiveDeactivated(error: ErrorApiResponse) {
+        DisplayUtils.displayAccessDeniedScreen()
+    }
+    
+    func didReceiveRequireUpdate() {
+        DisplayUtils.displayUpdateRequireScreen()
     }
 }
 

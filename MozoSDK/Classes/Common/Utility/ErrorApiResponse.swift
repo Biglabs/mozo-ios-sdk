@@ -13,16 +13,20 @@ public enum ErrorApiResponse: String {
     case INVALID_USER_TOKEN = "INVALID_USER_TOKEN"
     case INVALID_REQUEST = "INVALID_REQUEST"
     case MAINTAINING = "MAINTAINING"
+    case UPDATE_VERSION_REQUIREMENT = "UPDATE_VERSION_REQUIREMENT"
+    
     // STORE
     case STORE_UNREGISTERED = "STORE_UNREGISTERED"
     case STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS = "STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS"
     case STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT = "STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT"
     case STORE_RETAILER_BEACON_ALREADY_REGISTERED_BEFORE = "STORE_RETAILER_BEACON_ALREADY_REGISTERED_BEFORE"
+    case STORE_RETAILER_BEACON_ALREADY_REGISTERED_OTHER_BRANCH = "STORE_RETAILER_BEACON_ALREADY_REGISTERED_OTHER_BRANCH"
 
     case STORE_RETAILER_UNAUTHORIZED_ACCESS = "STORE_RETAILER_UNAUTHORIZED_ACCESS"
     case STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS = "STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS"
     case STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE = "STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE"
     case USER_DEACTIVATED = "USER_DEACTIVATED"
+    case SUB_ACCOUNT_DEACTIVATED = "SUB_ACCOUNT_DEACTIVATED"
     
     case STORE_RETAILER_AIR_DROP_INVALID_FROM_PERIOD_IN_THE_PAST = "STORE_RETAILER_AIR_DROP_INVALID_FROM_PERIOD_IN_THE_PAST"
     case STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_PERIOD = "STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_PERIOD"
@@ -131,10 +135,12 @@ public enum ErrorApiResponse: String {
         case .STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE: return "This phone number has already been registered. Please enter another number."
         case .USER_DEACTIVATED: return "Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)"
+        case .SUB_ACCOUNT_DEACTIVATED: return "Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)"
 
         case .STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_RETAILER_BEACON_ALREADY_REGISTERED_BEFORE: return "This beacon has been registered to another store. Please contact us for more information (email + phone)"
+        case .STORE_RETAILER_BEACON_ALREADY_REGISTERED_OTHER_BRANCH: return "This beacon has been registered to another branch. Please contact us for more information (email + phone)"
 
         case .STORE_RETAILER_AIR_DROP_INVALID_FROM_PERIOD_IN_THE_PAST: return "Event start date must be at least 10 minutes later than current time. Please check your input."
         case .STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_PERIOD: return "Event start date must be earlier than its end date. Please check your input."
@@ -202,6 +208,7 @@ public enum ErrorApiResponse: String {
         case .INVALID_USER_TOKEN: return .apiError_INVALID_USER_TOKEN
         case .INVALID_REQUEST: return .apiError_INVALID_REQUEST
         case .MAINTAINING: return .apiError_MAINTAINING
+        case .UPDATE_VERSION_REQUIREMENT: return .apiError_UPDATE_VERSION_REQUIREMENT
             
         case .SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS:
             return .apiError_SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS
@@ -234,12 +241,13 @@ public enum ErrorApiResponse: String {
             return .apiError_STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS
         case .STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE:
             return .apiError_STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE
-        case .USER_DEACTIVATED:
-            return .apiError_USER_DEACTIVATED
+        case .USER_DEACTIVATED: return .apiError_USER_DEACTIVATED
+        case .SUB_ACCOUNT_DEACTIVATED: return .apiError_SUB_ACCOUNT_DEACTIVATED
             
         case .STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS: return .apiError_STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS
         case .STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT: return .apiError_STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT
         case .STORE_RETAILER_BEACON_ALREADY_REGISTERED_BEFORE: return .apiError_STORE_RETAILER_BEACON_ALREADY_REGISTERED_BEFORE
+        case .STORE_RETAILER_BEACON_ALREADY_REGISTERED_OTHER_BRANCH: return .apiError_STORE_RETAILER_BEACON_ALREADY_REGISTERED_OTHER_BRANCH
             
         case .STORE_RETAILER_AIR_DROP_INVALID_FROM_PERIOD_IN_THE_PAST: return .apiError_STORE_RETAILER_AIR_DROP_INVALID_FROM_PERIOD_IN_THE_PAST
         case .STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_PERIOD: return .apiError_STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_PERIOD

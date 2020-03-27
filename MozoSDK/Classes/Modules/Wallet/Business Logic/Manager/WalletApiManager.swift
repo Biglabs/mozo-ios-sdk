@@ -81,4 +81,54 @@ extension ApiManager {
             }
         }
     }
+    
+    public func updateWalletsForResettingPIN(walletInfo: WalletInfoDTO) -> Promise<UserProfileDTO> {
+        return Promise { seal in
+            // PUT /api/app/user-profile/saveWalletResetPin
+            let url = Configuration.BASE_STORE_URL + USER_API_PATH + "/saveWalletResetPin"
+            let param = walletInfo.rawData()
+            self.execute(.put, url: url, parameters: param)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to update wallet info when resetting PIN to user profile, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    let userProfile = UserProfileDTO.init(json: jobj)
+                    seal.fulfill(userProfile!)
+                }
+                .catch { error in
+                    //Handle error or give feedback to the user
+                    let err = error as! ConnectionError
+                    print("Error when request update wallet info when resetting PIN to user profile: " + error.localizedDescription)
+                    seal.reject(err)
+                }
+                .finally {
+                    // UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func updateWalletsForChangingPIN(walletInfo: WalletInfoDTO) -> Promise<UserProfileDTO> {
+        return Promise { seal in
+            // PUT /api/app/user-profile/saveWalletChangePin
+            let url = Configuration.BASE_STORE_URL + USER_API_PATH + "/saveWalletChangePin"
+            let param = walletInfo.rawData()
+            self.execute(.put, url: url, parameters: param)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to update wallet info when changing PIN from auto to manual, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    let userProfile = UserProfileDTO.init(json: jobj)
+                    seal.fulfill(userProfile!)
+                }
+                .catch { error in
+                    //Handle error or give feedback to the user
+                    let err = error as! ConnectionError
+                    print("Error when request update wallet info when changing PIN from auto to manual: " + error.localizedDescription)
+                    seal.reject(err)
+                }
+                .finally {
+                    // UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
 }

@@ -41,6 +41,13 @@ public enum AppType: String {
     public var scheme: String {
         return "mozox.\(rawValue)"
     }
+    
+    public var appStoreUrl: String {
+        switch self {
+        case .Retailer: return "https://itunes.apple.com/app/id1447347986"
+        case .Shopper:  return "https://itunes.apple.com/app/id1447452721"
+        }
+    }
 }
 
 enum TransactionDisplayContactEnum: Int {

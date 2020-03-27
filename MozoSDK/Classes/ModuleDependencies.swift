@@ -492,8 +492,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat))!
     }
     
-    func confirmStoreInfoMerchant() -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.confirmStoreInfoMerchant())!
+    func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.confirmStoreInfoMerchant(branchInfo: branchInfo))!
     }
     
     func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]> {

@@ -46,7 +46,23 @@ extension CorePresenter : AuthModuleDelegate {
         requestForCloseAllMozoUIs()
     }
     
+    func checkToDismissAccessDeniedIfNeed() {
+        if let topViewController = DisplayUtils.getTopViewController() {
+            if let klass = DisplayUtils.getAuthenticationClass(), topViewController.isKind(of: klass) {
+                print("CorePresenter - Access denied screen is being displayed.")
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.checkToDismissAccessDeniedIfNeed()
+                }
+                return
+            }
+            if let adViewController = topViewController as? AccessDeniedViewController {
+                adViewController.dismiss(animated: false, completion: nil)
+            }
+        }
+    }
+    
     func authModuleDidFinishLogout() {
+        checkToDismissAccessDeniedIfNeed()
         // Send delegate back to the app
         authDelegate?.mozoLogoutDidFinish()
         // Notify for all observing objects

@@ -39,6 +39,9 @@ protocol CoreInteractorOutput {
     func didReceiveMaintenance()
     
     func didDetectWalletInAutoMode(module: Module)
+    
+    func didReceiveDeactivated(error: ErrorApiResponse)
+    func didReceiveRequireUpdate()
 }
 
 protocol CoreInteractorService {
@@ -174,7 +177,7 @@ protocol CoreInteractorService {
     
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON>
     
-    func confirmStoreInfoMerchant() -> Promise<[String: Any]>
+    func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO>
     
     func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]>
     
