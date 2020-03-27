@@ -753,7 +753,7 @@
 "Photo is uploading..." = "사진을 업로드하는 중 ...";
 "Creating Airdrop Event, it may take some minutes." = "Airdrop 이벤트 만들기중, 몇 분이 걸릴 수 있습니다.";
 "Back to Event List" = "이벤트 목록으로 돌아 가기";
-"Beacon E3:C9:40:4B:75:94 is Detected" = "Beacon E3 : C9 : 40 : 4B : 75 : 94이 검출되었습니다";
+"Beacon %@ is Detected" = "Beacon %@ 이 검출되었습니다";
 "Set up signal range by sliding Distance Bar" = "거리 바 슬라이딩으로 신호 범위를 설정하십시오";
 "Beacon battery will last longer if you set distance under %@m" = "Beacon 배터리는 거리를 %@m 미만으로 설정하면 오래 지속됩니다.";
 "No images available" = "사용할 수있는 이미지가 없습니다.";
