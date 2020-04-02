@@ -119,4 +119,11 @@ public class BranchInfoDTO : StoreInfoDTO {
         super.init(id: id)
         self.hashTag = hashTag
     }
+    
+    public required init(id: Int64, address: String, long: NSNumber, lat: NSNumber) {
+        super.init(id: id)
+        self.address = address
+        self.longitude = long
+        self.latitude = lat
+    }
 }

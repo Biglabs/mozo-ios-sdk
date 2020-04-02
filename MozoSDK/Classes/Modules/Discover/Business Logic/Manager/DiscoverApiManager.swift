@@ -16,7 +16,7 @@ extension ApiManager {
                           "page" : page,
                           "userLat": lat,
                           "userLng": long] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + DISCOVER_AIRDROP_EVENT_PATH + "/\(type.rawValue)?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + DISCOVER_AIRDROP_EVENT_PATH + "/\(type.rawValue)/v1?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

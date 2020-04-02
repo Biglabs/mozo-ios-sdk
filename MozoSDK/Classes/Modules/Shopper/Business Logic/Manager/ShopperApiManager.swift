@@ -11,16 +11,16 @@ import SwiftyJSON
 
 let SHOPPER_API_PATH = "/shopper"
 let SHOPPER_AIRDROP_API_PATH = SHOPPER_API_PATH + "/airdrop"
-let SHOPPER_FAVORITE_API_PATH = "/favorite/stores"
+
 let SHOPPER_SEARCH_API_PATH = SHOPPER_API_PATH + "/v1/search/stores"
 let SHOPPER_NEAREST_API_PATH = SHOPPER_API_PATH + "/nearest/stores"
-let SHOPPER_RECOMMENDATION_API_PATH = SHOPPER_API_PATH + "/recommendation/stores"
+let SHOPPER_RECOMMENDATION_API_PATH = SHOPPER_API_PATH + "/recommendation/branches"
 
 public extension ApiManager {
     func getAirdropStoresNearby(params: [String: Any]) -> Promise<[AirdropEventDiscoverDTO]> {
         return Promise { seal in
             let query = "?\(params.queryString)"
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/v1/airdrop/nearby" + query
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/v2/airdrop/nearby" + query
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -139,7 +139,7 @@ public extension ApiManager {
     
     func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/v1/store/\(storeId)/air-drops"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/v1/branch/\(storeId)/air-drops"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -191,7 +191,7 @@ public extension ApiManager {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/v1" + SHOPPER_FAVORITE_API_PATH + "?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/branches/favorite" + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -212,7 +212,7 @@ public extension ApiManager {
     
     func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + SHOPPER_FAVORITE_API_PATH + "/\(storeId)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/branches//\(storeId)/favorite"
             let method = isMarkFavorite ? HTTPMethod.post : .delete
             self.execute(method, url: url)
                 .done { json -> Void in
@@ -232,7 +232,7 @@ public extension ApiManager {
     
     func getStoreDetail(_ storeId: Int64) -> Promise<StoreInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/store/\(storeId)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/branches/\(storeId)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -281,7 +281,7 @@ public extension ApiManager {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/store/\(storeId)/air-drops/\(type)" + "?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/branch/\(storeId)/air-drops/\(type)" + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
