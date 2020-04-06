@@ -39,6 +39,7 @@ public enum ConnectionError: Error {
     case apiError_TRANSACTION_ERROR_NONCE_TOO_LOW
     case apiError_TRANSACTION_ERROR_SEND_TX
     case apiError_TRANSACTION_ERROR_INVALID_ADDRESS
+    case apiError_ERROR_CANNOT_TRANSFER_TO_YOUR_OWN_WALLET
     
     case apiError_SOLOMON_FATAL_USER_NO_PROFILE
     
@@ -167,6 +168,8 @@ public enum ConnectionError: Error {
             return .TRANSACTION_ERROR_SEND_TX
         case .apiError_TRANSACTION_ERROR_INVALID_ADDRESS:
             return .TRANSACTION_ERROR_INVALID_ADDRESS
+        case .apiError_ERROR_CANNOT_TRANSFER_TO_YOUR_OWN_WALLET:
+            return .ERROR_CANNOT_TRANSFER_TO_YOUR_OWN_WALLET
             
         case .apiError_SOLOMON_FATAL_USER_NO_PROFILE: return .SOLOMON_FATAL_USER_NO_PROFILE
         
