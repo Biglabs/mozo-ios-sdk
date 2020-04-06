@@ -119,6 +119,10 @@ extension PaymentQRViewController {
         if inputValue.isEmpty {
             return
         }
+        let hasPrefixWith0X = inputValue.hasPrefix("0x")
+        if hasPrefixWith0X {
+            return
+        }
         // Check type of text: Phone Number or Plain Text
         if !inputValue.isValidPhoneNumber() {
             self.displayError("We only support to search with phone number.")
@@ -128,10 +132,15 @@ extension PaymentQRViewController {
             self.displayError("Invalid country code")
             return
         }
+        if inputValue.hasPrefix("0") {
+            eventHandler?.findContact(inputValue)
+            return
+        }
         if let country = countryData.findCountryByText(inputValue) {
             if let nbPhoneNumber = try? nbPhoneNumberUtil.parse(inputValue, defaultRegion: country.countryCode) {
                 if !nbPhoneNumberUtil.isValidNumber(nbPhoneNumber) {
                     self.displayError("Invalid phone number")
+                    return
                 }
                 eventHandler?.findContact(inputValue)
             } else {
