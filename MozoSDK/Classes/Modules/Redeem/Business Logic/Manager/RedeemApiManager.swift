@@ -11,7 +11,7 @@ import SwiftyJSON
 extension ApiManager {
     public func getPromotionRedeemInfo(promotionId: Int64) -> Promise<PromotionRedeemInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getInfoPromoRedeem?promoId=\(promotionId)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getInfoPromoRedeem/v1?promoId=\(promotionId)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -88,7 +88,7 @@ extension ApiManager {
     ///   - hash: the transaction hash
     public func getPromoTxHash(hash: String) -> Promise<SwiftyJSON.JSON> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getPromoTxHash?txHash=\(hash)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getPromoTxHash/v1?txHash=\(hash)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -108,7 +108,7 @@ extension ApiManager {
     
     public func getPromotionPaidDetail(promotionId: Int64) -> Promise<PromotionPaidDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getPromoPaidDetail?promoId=\(promotionId)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getPromoPaidDetail/v1?promoId=\(promotionId)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -132,7 +132,7 @@ extension ApiManager {
     
     public func getPromotionPaidDetailByCode(_ promotionCode: String) -> Promise<PromotionPaidDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getPromoPaidDetailByCode?promoCode=\(promotionCode)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getPromoPaidDetailByCode/v1?promoCode=\(promotionCode)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -156,7 +156,7 @@ extension ApiManager {
     
     public func getPromotionPaidHistoryDetail(_ id: Int64) -> Promise<PromotionPaidDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getPromoPaidHistoryDetail?idPaidPromoDetail=\(id)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getPromoPaidHistoryDetail/v1?idPaidPromoDetail=\(id)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

@@ -14,6 +14,7 @@ public class BranchInfoDTO : StoreInfoDTO {
     public var isEditable: Bool?
     public var isMain: Bool?
     public var beaconCountNeedToSync: Int?
+    public var totalBeaconCount: Int? // Only finishedConfiguration
     
     public required init?(json: SwiftyJSON.JSON) {
         super.init(json: json)
@@ -22,6 +23,7 @@ public class BranchInfoDTO : StoreInfoDTO {
         self.isEditable = json["isEditable"].bool
         self.isMain = json["isMain"].bool
         self.beaconCountNeedToSync = json["beaconCountNeedToSync"].int
+        self.totalBeaconCount = json["totalBeaconCount"].int
     }
     
     public init?(address: String, city: String, closeHour: Int, country: String, imageLogo: String, latitude: NSNumber, longitude: NSNumber, name: String, openHour: Int, state: String, zip: String, images: [String], hashTag: [String]) {
