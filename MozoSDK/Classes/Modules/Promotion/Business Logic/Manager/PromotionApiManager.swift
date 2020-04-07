@@ -181,7 +181,7 @@ public extension ApiManager {
                           "lat": lat,
                           "lon": long,
                           "type" : type.rawValue] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromo?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromo/v1?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -248,7 +248,7 @@ public extension ApiManager {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoHistoryInBag?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoHistoryInBag/v1?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -273,7 +273,7 @@ public extension ApiManager {
                           "page" : page,
                           "lat": lat,
                           "lon": long] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoPurchasedInBag?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoPurchasedInBag/v1?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -299,7 +299,7 @@ public extension ApiManager {
                           "lat": lat,
                           "lon": long,
                           "storeId": storeId] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoRunningInStore?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoRunningInBranch?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -323,7 +323,7 @@ public extension ApiManager {
                           "page" : page,
                           "lat": lat,
                           "lon": long] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoSavedInBag?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoSavedInBag/v1?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -370,7 +370,7 @@ public extension ApiManager {
                           "lon" : long,
                           "lat" : lat,
                           "text" : text] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/searchPromo?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/searchPromo/v1?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -425,7 +425,7 @@ public extension ApiManager {
                           "lon": long,
                           "storeId": storeId,
                           "type": type] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoInStore?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoInBranch?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -450,7 +450,7 @@ public extension ApiManager {
                           "page" : page,
                           "lat": lat,
                           "lon": long] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListStoreNearByWithPromo/v1?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListBranchNearByWithPromo?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
