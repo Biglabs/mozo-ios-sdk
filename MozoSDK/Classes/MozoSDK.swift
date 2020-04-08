@@ -230,7 +230,7 @@ public class MozoSDK {
         return moduleDependencies.getStoreDetail(storeId)
     }
     
-    public static func getRecommendationStores(_ storeId: Int64, size: Int = 5, long: Double?, lat: Double?) -> Promise<[StoreInfoDTO]> {
+    public static func getRecommendationStores(_ storeId: Int64, size: Int = 5, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
         return moduleDependencies.getRecommendationStores(storeId, size: size, long: long, lat: lat)
     }
     

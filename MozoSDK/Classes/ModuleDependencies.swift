@@ -292,7 +292,7 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getStoreDetail(storeId))!
     }
     
-    func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[StoreInfoDTO]> {
+    func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRecommendationStores(storeId, size: size, long: long, lat: lat))!
     }
     
