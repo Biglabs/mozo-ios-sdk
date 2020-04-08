@@ -1428,7 +1428,7 @@
 "Editable" = "Editable";
 "Main Branch" = "Main Branch";
 "View only" = "View only";
-"You’re not allow to manage this Branch" = "You’re not allow to manage this Branch";
+"You’re not allowed to manage this Branch" = "You’re not allowed to manage this Branch";
 "Do you want to update Beacons' Address and Location?" = "Do you want to update Beacons' Address and Location?";
 "Don’t worry, you can do it later in Beacon List." = "Don’t worry, you can do it later in Beacon List.";
 "Branch Information" = "Branch Information";

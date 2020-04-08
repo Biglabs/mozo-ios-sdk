@@ -1432,7 +1432,7 @@
 "Editable" = "Có thể chỉnh sửa";
 "Main Branch" = "Trụ sở chính";
 "View only" = "Không thể chỉnh sửa";
-"You’re not allow to manage this Branch" = "Bạn không có quyền để cập nhật thông tin Chi nhánh này";
+"You’re not allowed to manage this Branch" = "Bạn không có quyền để cập nhật thông tin Chi nhánh này";
 "Do you want to update Beacons' Address and Location?" = "Bạn có muốn cập nhật địa chỉ và vị trí của beacons";
 "Don’t worry, you can do it later in Beacon List." = "Yên tâm, bạn có thể thực hiện việc đó ở màn hình danh sách beacons sau này cũng được";
 "Branch Information" = "Thông tin Chi nhánh";

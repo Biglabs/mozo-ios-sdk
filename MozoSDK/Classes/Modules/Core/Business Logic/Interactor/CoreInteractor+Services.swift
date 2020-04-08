@@ -220,7 +220,7 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getStoreDetail(storeId)
     }
     
-    func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[StoreInfoDTO]> {
+    func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
         return apiManager.getRecommendationStores(storeId, size: size, long: long, lat: lat)
     }
     

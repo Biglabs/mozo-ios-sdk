@@ -9,11 +9,13 @@ import Foundation
 import SwiftyJSON
 public class CollectionStoreInfoDTO: ResponseObjectSerializable {
     public var totalElements: Int64?
-    public var stores: [StoreInfoDTO]?
+//    public var stores: [StoreInfoDTO]?
+    public var branches: [BranchInfoDTO]?
     
     public required init?(json: SwiftyJSON.JSON) {
         self.totalElements = json["totalElements"].int64
-        self.stores = json["stores"].array?.filter({ StoreInfoDTO(json: $0) != nil }).map({ StoreInfoDTO(json: $0)! })
+//        self.stores = json["stores"].array?.filter({ StoreInfoDTO(json: $0) != nil }).map({ StoreInfoDTO(json: $0)! })
+        self.branches = json["branches"].array?.filter({ BranchInfoDTO(json: $0) != nil }).map({ BranchInfoDTO(json: $0)! })
     }
     
     public required init?(){}
@@ -23,9 +25,9 @@ public class CollectionStoreInfoDTO: ResponseObjectSerializable {
         if let totalElements = self.totalElements {
             json["totalElements"] = totalElements
         }
-        if let stores = self.stores {
-            json["stores"] = stores.map({$0.toJSON()})
-        }
+//        if let stores = self.stores {
+//            json["stores"] = stores.map({$0.toJSON()})
+//        }
         return json
     }
 }

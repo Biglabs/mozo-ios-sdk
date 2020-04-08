@@ -12,7 +12,7 @@ import SwiftyJSON
 let SHOPPER_API_PATH = "/shopper"
 let SHOPPER_AIRDROP_API_PATH = SHOPPER_API_PATH + "/airdrop"
 
-let SHOPPER_SEARCH_API_PATH = SHOPPER_API_PATH + "/v1/search/stores"
+let SHOPPER_SEARCH_API_PATH = SHOPPER_API_PATH + "/search/branches"
 let SHOPPER_NEAREST_API_PATH = SHOPPER_API_PATH + "/nearest/stores"
 let SHOPPER_RECOMMENDATION_API_PATH = SHOPPER_API_PATH + "/recommendation/branches"
 
@@ -92,10 +92,10 @@ public extension ApiManager {
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get nearest stores, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)
-                    if let collection = CollectionStoreInfoDTO(json: jobj) {
-                        seal.fulfill(collection.stores ?? [])
-                    }
+//                    let jobj = SwiftyJSON.JSON(json)
+//                    if let collection = CollectionStoreInfoDTO(json: jobj) {
+//                        seal.fulfill(collection.stores ?? [])
+//                    }
                 }
                 .catch { error in
                     print("Error when request get nearest stores: " + error.localizedDescription)
@@ -107,12 +107,12 @@ public extension ApiManager {
         }
     }
     
-    func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[StoreInfoDTO]> {
+    func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
         return Promise { seal in
-            var params = ["storeId" : storeId,
+            var params = ["branchId" : storeId,
                           "top": size] as [String : Any]
             if let lat = lat, let long = long {
-                params = ["storeId" : storeId,
+                params = ["branchId" : storeId,
                           "top": size,
                           "lat": lat,
                           "lon": long] as [String : Any]
@@ -122,10 +122,9 @@ public extension ApiManager {
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get recommendation stores, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)
-                    if let collection = CollectionStoreInfoDTO(json: jobj) {
-                        seal.fulfill(collection.stores ?? [])
-                    }
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
+                    let list = BranchInfoDTO.branchArrayFromJson(jobj)
+                    seal.fulfill(list)
                 }
                 .catch { error in
                     print("Error when request get recommendation stores: " + error.localizedDescription)
@@ -139,7 +138,7 @@ public extension ApiManager {
     
     func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/v1/branch/\(storeId)/air-drops"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/branch/\(storeId)/air-drops"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

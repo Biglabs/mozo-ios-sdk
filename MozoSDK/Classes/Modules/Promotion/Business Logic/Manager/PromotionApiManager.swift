@@ -298,7 +298,7 @@ public extension ApiManager {
                           "page" : page,
                           "lat": lat,
                           "lon": long,
-                          "storeId": storeId] as [String : Any]
+                          "branchId": storeId] as [String : Any]
             let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoRunningInBranch?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
@@ -423,7 +423,7 @@ public extension ApiManager {
                           "page" : page,
                           "lat": lat,
                           "lon": long,
-                          "storeId": storeId,
+                          "branchId": storeId,
                           "type": type] as [String : Any]
             let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoInBranch?\(params.queryString)"
             self.execute(.get, url: url)
