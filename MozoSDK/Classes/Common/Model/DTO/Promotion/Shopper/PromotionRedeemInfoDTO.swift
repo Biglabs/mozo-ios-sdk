@@ -10,11 +10,11 @@ import SwiftyJSON
 public class PromotionRedeemInfoDTO {
     public var balanceInfoToken: TokenInfoDTO?
     public var promo: PromotionDTO?
-    public var storeInfo: StoreInfoDTO?
+    public var branch: BranchInfoDTO?
     
     public required init?(json: SwiftyJSON.JSON) {
         self.balanceInfoToken = TokenInfoDTO(json: json["balanceInfoToken"])
         self.promo = PromotionDTO(json: json["promo"])
-        self.storeInfo = StoreInfoDTO(json: json["storeInfo"])
+        self.branch = BranchInfoDTO(json: json["branch"])
     }
 }

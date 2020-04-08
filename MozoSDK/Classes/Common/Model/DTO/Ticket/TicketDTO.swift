@@ -25,7 +25,8 @@ public class TicketDTO: ResponseObjectSerializable {
     
     public var specialTicket: Bool?
     public var timeCreateOtp: Int64?
-    public var storeInfo: StoreInfoDTO?
+
+    public var branch: BranchInfoDTO?
     public var extraMozo: NSNumber?
     public var extraCash: Double?
     public var unitCurrency: String?
@@ -53,7 +54,8 @@ public class TicketDTO: ResponseObjectSerializable {
         
         self.specialTicket = json["specialTicket"].bool
         self.timeCreateOtp = json["timeCreateOtp"].int64
-        self.storeInfo = StoreInfoDTO(json: json["storeInfo"])
+
+        self.branch = BranchInfoDTO(json: json["branch"])
         self.extraMozo = json["extraMozo"].number
         self.extraCash = json["extraCash"].double
         self.unitCurrency = json["unitCurrency"].string

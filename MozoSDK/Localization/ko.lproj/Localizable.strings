@@ -1470,7 +1470,7 @@
 "Update required to use App" = "앱 사용을 위한 업데이트 필요합니다";
 "We’ve released a new version of the app\nPlease update the latest version." = "앱의 새로운 버전 나왔습니다\n최신 버전으로 업데이트 하세요.";
 "Name and Address must not be empty" = "이름과 주소는 비어서 안된다.";
-"Beacon signal range is configured successfully.\nIf you want to modify Beacon Setting, go to More → Beacon List" = "Beacon 신호 범위 설정 성공.\nBeacon 설정 수정 원하면 기타 → Beacon 리스트로 이동하세요";
+"Beacon signal range is configured successfully.\n\nIf you want to modify Beacon Setting, go to More → Beacon List" = "Beacon 신호 범위 설정 성공.\n\nBeacon 설정 수정 원하면 기타 → Beacon 리스트로 이동하세요";
 "Beacon signal range and Beacon location on map are configured successfully.\nIf you want to modify Beacon Setting, go to More → Beacon List" = "Beacon 신호 범위 및 Beacon 지도 위치 설정 성공.\nBeacon 설정 수정 원하면 기타 → Beacon 리스트로 이동하세요";
 "Could not transfer MozoX to your own wallet" = "본인에게 MozoX 보내기 불가능";
 "More → Beacon List" = "기타 → Beacon 리스트";

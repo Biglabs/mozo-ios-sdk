@@ -228,10 +228,6 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getListCountryCode())!
     }
     
-    func getNearestStores(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getNearestStores(storeId))!
-    }
-    
     func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getListEventAirdropOfStore(storeId))!
     }
@@ -240,7 +236,7 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.searchStoresWithText(text, page: page, size: size, long: long, lat: lat, sort: sort))!
     }
     
-    func getFavoriteStores(page: Int, size: Int) -> Promise<[StoreInfoDTO]> {
+    func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getFavoriteStores(page: page, size: size))!
     }
     
@@ -288,7 +284,7 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateRetailerStoreInfo(storeInfo: storeInfo))!
     }
     
-    func getStoreDetail(_ storeId: Int64) -> Promise<StoreInfoDTO> {
+    func getStoreDetail(_ storeId: Int64) -> Promise<BranchInfoDTO> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getStoreDetail(storeId))!
     }
     

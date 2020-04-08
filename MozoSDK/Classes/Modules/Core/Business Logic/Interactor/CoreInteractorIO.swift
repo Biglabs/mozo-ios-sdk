@@ -72,9 +72,9 @@ protocol CoreInteractorService {
     func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]>
     func getAirdropStoreNearby(params: [String: Any]) -> Promise<[AirdropEventDiscoverDTO]>
     func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]>
-    func getNearestStores(_ storeId: Int64) -> Promise<[StoreInfoDTO]>
+    
     func searchStoresWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO>
-    func getFavoriteStores(page: Int, size: Int) -> Promise<[StoreInfoDTO]>
+    func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]>
     func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]>
     func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber>
     
@@ -89,7 +89,7 @@ protocol CoreInteractorService {
     func updateRetailerStoreInfoHashtag(hashTags: [String]) -> Promise<StoreInfoDTO>
     func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO>
     
-    func getStoreDetail(_ storeId: Int64) -> Promise<StoreInfoDTO>
+    func getStoreDetail(_ storeId: Int64) -> Promise<BranchInfoDTO>
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]>
     
     func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[String: Any]>

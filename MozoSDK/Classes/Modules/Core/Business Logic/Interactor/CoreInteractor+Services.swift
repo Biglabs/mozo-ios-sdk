@@ -156,10 +156,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getListCountryCode()
     }
     
-    func getNearestStores(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
-        return apiManager.getNearestStores(storeId)
-    }
-    
     func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
         return apiManager.getListEventAirdropOfStore(storeId)
     }
@@ -168,7 +164,7 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.searchStoresWithText(text, page: page, size: size, long: long, lat: lat, sort: sort)
     }
     
-    func getFavoriteStores(page: Int, size: Int) -> Promise<[StoreInfoDTO]> {
+    func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]> {
         return apiManager.getFavoriteStores(page: page, size: size)
     }
     
@@ -216,7 +212,7 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.updateRetailerStoreInfo(storeInfo: storeInfo)
     }
     
-    func getStoreDetail(_ storeId: Int64) -> Promise<StoreInfoDTO> {
+    func getStoreDetail(_ storeId: Int64) -> Promise<BranchInfoDTO> {
         return apiManager.getStoreDetail(storeId)
     }
     

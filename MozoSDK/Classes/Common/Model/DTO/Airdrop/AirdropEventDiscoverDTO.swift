@@ -20,7 +20,6 @@ public class AirdropEventDiscoverDTO {
     public var nextReceiveTime: Int64?
     public var hourOfDayFrom: Int?
     public var hourOfDayTo: Int?
-//    public var storeInfo: StoreInfoDTO?
     public var branch: BranchInfoDTO?
     
     public required init?(json: SwiftyJSON.JSON) {
@@ -35,7 +34,6 @@ public class AirdropEventDiscoverDTO {
         self.nextReceiveTime = json["nextReceiveTime"].int64
         self.hourOfDayFrom = json["hourOfDayFrom"].int
         self.hourOfDayTo = json["hourOfDayTo"].int
-//        self.storeInfo = StoreInfoDTO(json: json["storeInfo"])
         self.branch = BranchInfoDTO(json: json["branch"])
     }
     

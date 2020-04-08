@@ -84,29 +84,6 @@ public extension ApiManager {
         }
     }
     
-    func getNearestStores(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
-        return Promise { seal in
-            let params = ["storeId" : storeId] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_NEAREST_API_PATH + "?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get nearest stores, json response: \(json)")
-//                    let jobj = SwiftyJSON.JSON(json)
-//                    if let collection = CollectionStoreInfoDTO(json: jobj) {
-//                        seal.fulfill(collection.stores ?? [])
-//                    }
-                }
-                .catch { error in
-                    print("Error when request get nearest stores: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
         return Promise { seal in
             var params = ["branchId" : storeId,
@@ -186,7 +163,7 @@ public extension ApiManager {
     }
     
     // MARK: Favorite
-    func getFavoriteStores(page: Int, size: Int) -> Promise<[StoreInfoDTO]> {
+    func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]> {
         return Promise { seal in
             let params = ["size" : size,
                           "page" : page] as [String : Any]
@@ -196,7 +173,7 @@ public extension ApiManager {
                     // JSON info
                     print("Finish request to get favorite stores, json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let list = StoreInfoDTO.arrayFromJson(jobj)
+                    let list = BranchInfoDTO.branchArrayFromJson(jobj)
                     seal.fulfill(list)
                 }
                 .catch { error in
@@ -229,7 +206,7 @@ public extension ApiManager {
         }
     }
     
-    func getStoreDetail(_ storeId: Int64) -> Promise<StoreInfoDTO> {
+    func getStoreDetail(_ storeId: Int64) -> Promise<BranchInfoDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/branches/\(storeId)"
             self.execute(.get, url: url)
@@ -237,7 +214,7 @@ public extension ApiManager {
                     // JSON info
                     print("Finish request to get store detail with id \(storeId), json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)
-                    if let storeInfo = StoreInfoDTO(json: jobj) {
+                    if let storeInfo = BranchInfoDTO(json: jobj) {
                         seal.fulfill(storeInfo)
                     }
                 }

@@ -166,10 +166,6 @@ public class MozoSDK {
         return moduleDependencies.getListCountryCode()
     }
     
-    public static func getNearestStores(_ storeId: Int64) -> Promise<[StoreInfoDTO]> {
-        return moduleDependencies.getNearestStores(storeId)
-    }
-    
     public static func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
         return moduleDependencies.getListEventAirdropOfStore(storeId)
     }
@@ -178,7 +174,7 @@ public class MozoSDK {
         return moduleDependencies.searchStoresWithText(text, page: page, size: size, long: long, lat: lat, sort: sort)
     }
     
-    public static func getFavoriteStores(page: Int = 0, size: Int = 15) -> Promise<[StoreInfoDTO]> {
+    public static func getFavoriteStores(page: Int = 0, size: Int = 15) -> Promise<[BranchInfoDTO]> {
         return moduleDependencies.getFavoriteStores(page: page, size: size)
     }
     
@@ -226,7 +222,7 @@ public class MozoSDK {
         return moduleDependencies.updateRetailerStoreInfo(storeInfo: storeInfo)
     }
     
-    public static func getStoreDetail(_ storeId: Int64) -> Promise<StoreInfoDTO> {
+    public static func getStoreDetail(_ storeId: Int64) -> Promise<BranchInfoDTO> {
         return moduleDependencies.getStoreDetail(storeId)
     }
     
