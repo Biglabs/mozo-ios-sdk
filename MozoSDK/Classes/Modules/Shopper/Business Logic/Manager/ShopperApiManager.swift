@@ -107,12 +107,12 @@ public extension ApiManager {
         }
     }
     
-    func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[StoreInfoDTO]> {
+    func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
         return Promise { seal in
-            var params = ["storeId" : storeId,
+            var params = ["branchId" : storeId,
                           "top": size] as [String : Any]
             if let lat = lat, let long = long {
-                params = ["storeId" : storeId,
+                params = ["branchId" : storeId,
                           "top": size,
                           "lat": lat,
                           "lon": long] as [String : Any]
