@@ -23,7 +23,7 @@ public enum PromotionStatusCode: String {
     case AVAILABLE = "AVAILABLE"
     case USED = "USED"
     case EXPIRED = "EXPIRED"
-    case OTHERSTORE = "OTHERSTORE"
+    case OTHERBRANCH = "OTHER_BRANCH"
     case SCANNED = "SCANNED"
     case SUCCEED = "SUCCEED"
 }
