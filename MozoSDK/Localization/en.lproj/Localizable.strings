@@ -36,7 +36,7 @@
 "Continue" = "Continue";
 "Close" = "Close";
 "Clear" = "Clear";
-"Scan QR Code" = "Scan QR Code";
+
 "Scan" = "Scan";
 "Enlarge QR Code" = "Enlarge QR Code";
 "Send" = "Send";
@@ -186,7 +186,7 @@
 "MozoX Retailer" = "MozoX Retailer";
 "Sync Beacon" = "Sync Beacon";
 "Remove Beacon from its Package. Scan QR Code to sync Beacon with your store." = "Remove Beacon from its Package. Scan QR Code to sync Beacon with your store.";
-"Scan QR Code" = "Scan QR Code";
+
 "Beacon Sync Successful!" = "Beacon Sync Successful!";
 "Now stick Beacon where you want to use it (Wall, Counter, Ceiling) to detect Shoppers whenever they visit your store." = "Now stick Beacon where you want to use it (Wall, Counter, Ceiling) to detect Shoppers whenever they visit your store.";
 "Beacon Range Configuration" = "Beacon Range Configuration";
@@ -201,7 +201,7 @@
 "Beacon %@ is Detected!" = "Beacon %@ is Detected!";
 "Beacon Location Setting" = "Beacon Location Setting";
 "Make sure that your store location is displayed correctly. Shoppers will use this location to find your store." = "Make sure that your store location is displayed correctly. Shoppers will use this location to find your store.";
-"Edit Location" = "Edit Location";
+
 "Store Location is correct. Let me continue." = "Store Location is correct. Let me continue.";
 "Configuration Successful!" = "Configuration Successful!";
 "Beacon range and location on map are configured successfully." = "Beacon range and location on map are configured successfully.";
@@ -411,7 +411,7 @@
 "Mozoscan is a Block Explorer and Analytics Platform for MozoX, a decentralized smart contract platform. Mozoscan 2018 - Running on MozoX Network. htttps://scan.mozocoin.io" = "Mozoscan is a Block Explorer and Analytics Platform for MozoX, a decentralized smart contract platform. Mozoscan 2018 - Running on MozoX Network. htttps://scan.mozocoin.io";
 "4. Desktop Wallet" = "4. Desktop Wallet";
 "5. Web App for Retailer" = "5. Web App for Retailer";
-"Active" = "Active";
+
 "Out of MozoX" = "Out of MozoX";
 "End" = "End";
 "Scheduled_Airdrop" = "Scheduled";
