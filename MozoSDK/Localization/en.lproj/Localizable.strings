@@ -1458,7 +1458,7 @@
 "We’ve released a new version of the app\nPlease update the latest version." = "We’ve released a new version of the app\nPlease update the latest version.";
 "Name and Address must not be empty" = "Name and Address must not be empty";
 "Beacon signal range is configured successfully.\n\nIf you want to modify Beacon Setting, go to More → Beacon List" = "Beacon signal range is configured successfully.\n\nIf you want to modify Beacon Setting, go to More → Beacon List";
-"Beacon signal range and Beacon location on map are configured successfully.\nIf you want to modify Beacon Setting, go to More → Beacon List" = "Beacon signal range and Beacon location on map are configured successfully.\nIf you want to modify Beacon Setting, go to More → Beacon List";
+"Beacon signal range and Beacon location on map are configured successfully.\n\nIf you want to modify Beacon Setting, go to More → Beacon List" = "Beacon signal range and Beacon location on map are configured successfully.\n\nIf you want to modify Beacon Setting, go to More → Beacon List";
 "Could not transfer MozoX to your own wallet" = "Could not transfer MozoX to your own wallet";
 "More → Beacon List" = "More → Beacon List";
 "Add New Sub Account" = "Add New Sub Account";
