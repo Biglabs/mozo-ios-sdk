@@ -35,6 +35,7 @@ class TxDetailViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
         navigationItem.title = "Transaction Detail".localized
         updateView()
     }
