@@ -1462,7 +1462,7 @@
 "We’ve released a new version of the app\nPlease update the latest version." = "Ứng dụng đã có phiên bản mới.\nXin vui lòng cập nhật phiên bản mới nhất.";
 "Name and Address must not be empty" = "Tên và địa chỉ không thể để trống";
 "Beacon signal range is configured successfully.\n\nIf you want to modify Beacon Setting, go to More → Beacon List" = "Cập nhật phạm vi beacon thành công.\n\nNếu bạn muốn thay đổi thiết lập beacon, chuyển đến Thêm → Danh sách beacon";
-"Beacon signal range and Beacon location on map are configured successfully.\nIf you want to modify Beacon Setting, go to More → Beacon List" = "Cập nhật phạm vi và vị trí của beacon thành công.\nNếu bạn muốn thay đổi thiết lập beacon, chuyển đến Thêm → Danh sách beacon";
+"Beacon signal range and Beacon location on map are configured successfully.\n\nIf you want to modify Beacon Setting, go to More → Beacon List" = "Cập nhật phạm vi và vị trí của beacon thành công.\n\nNếu bạn muốn thay đổi thiết lập beacon, chuyển đến Thêm → Danh sách beacon";
 "Could not transfer MozoX to your own wallet" = "Không thể chuyển MozoX cho chính bạn.";
 "More → Beacon List" = "Thêm → Danh sách beacon";
 "Add New Sub Account" = "Thêm tài khoản phụ";
