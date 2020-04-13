@@ -1442,6 +1442,7 @@
 "Main Branch" = "메인 분기";
 "View only" = "보기만 합니다";
 "You’re not allowed to manage this Branch" = "이 분기를 관리할 권한 없습니다";
+"You’re not allowed to edit this Branch" = "이 분기를 수정할 권한 없습니다";
 "Do you want to update Beacons' Address and Location?" = "Beacon 주소와 위치 업데이트 하겠습니까?";
 "Don’t worry, you can do it later in Beacon List." = "걱정마세요. Beacon 리스트에서 나중에 작업해도 됩니다";
 "Branch Information" = "분기 정보";
