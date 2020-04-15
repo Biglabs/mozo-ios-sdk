@@ -654,7 +654,7 @@
 
 "Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)" = "Tài khoản của bạn tạm thời bị vô hiệu hóa. Xin đăng nhập bằng tài khoản khác hoặc liên hệ tư vấn viên để biết thêm thông tin (phone + email)";
 
-"This beacon has been registered to another store. Please contact us for more information (email + phone)" = "Beacon đã được đăng ký bởi cửa hàng khác. Liên hệ tư vấn viên để biết thêm thông tin (email + phone)";
+"This beacon has been registered to another branch. Please contact us for more information (email + phone)" = "Beacon đã được đăng ký bởi cửa hàng khác. Liên hệ tư vấn viên để biết thêm thông tin (email + phone)";
 
 "Event start date must be at least 10 minutes later than current time. Please check your input." = "Thời điểm bắt đầu chương trình phải lớn hơn hiện tại 10 phút. Vui lòng kiểm tra lại thông tin.";
 "Event start date must be earlier than its end date. Please check your input." = "Thời điểm bắt đầu chương trình phải diễn ra trước ngày kết thúc. Vui lòng kiểm tra lại thông tin.";
