@@ -110,7 +110,7 @@ extension AuthPresenter : AuthInteractorOutput {
         let currentAuthorizationFlow = OIDAuthorizationService.present(request, presenting: viewController!) { (response, error) in
             print("AuthPresenter - Finish present logout, error: [\(String(describing: error))]")
             if error == nil {
-                // Must waiting for AppAuth WebViewController display.
+                // TODO: Must wait for AppAuth WebViewController display.
                 self.authInteractor?.clearAllAuthSession()
                 self.authModuleDelegate?.authModuleDidFinishLogout()
             }

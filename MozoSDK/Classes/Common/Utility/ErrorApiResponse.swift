@@ -141,7 +141,7 @@ public enum ErrorApiResponse: String {
 
         case .STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
-        case .STORE_RETAILER_BEACON_ALREADY_REGISTERED_BEFORE: return "This beacon has been registered to another store. Please contact us for more information (email + phone)"
+        case .STORE_RETAILER_BEACON_ALREADY_REGISTERED_BEFORE: return "This beacon has been registered to another branch. Please contact us for more information (email + phone)"
         case .STORE_RETAILER_BEACON_ALREADY_REGISTERED_OTHER_BRANCH: return "This beacon has been registered to another branch. Please contact us for more information (email + phone)"
 
         case .STORE_RETAILER_AIR_DROP_INVALID_FROM_PERIOD_IN_THE_PAST: return "Event start date must be at least 10 minutes later than current time. Please check your input."

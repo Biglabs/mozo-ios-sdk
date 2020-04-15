@@ -650,7 +650,7 @@
 
 "Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)" = "Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)";
 
-"This beacon has been registered to another store. Please contact us for more information (email + phone)" = "This beacon has been registered to another store. Please contact us for more information (email + phone)";
+"This beacon has been registered to another branch. Please contact us for more information (email + phone)" = "This beacon has been registered to another branch. Please contact us for more information (email + phone)";
 
 "Event start date must be at least 10 minutes later than current time. Please check your input." = "Event start date must be at least 10 minutes later than current time. Please check your input.";
 "Event start date must be earlier than its end date. Please check your input." = "Event start date must be earlier than its end date. Please check your input.";

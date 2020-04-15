@@ -654,9 +654,7 @@
 
 "Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)" = "계정서비스가 잠시 중단 되었습니다.다른 계정으로 로그인하거나 자세한 내용은 고객서비스팀에게 문의하십시오 (전화 + 이메일).";
 
-"This beacon has been registered to another store. Please contact us for more information (email + phone)" = "이 Beacon은 다른 상점에 등록되었습니다. 자세한 내용은 카운슬러에게 문의하십시오 (이메일 + 전화).";
-"This beacon has been registered to another store. Please contact us for more information (email + phone)" = "이 Beacon은 다른 상점에 등록되었습니다. 자세한 내용은 카운슬러에게 문의하십시오 (이메일 + 전화).";
-
+"This beacon has been registered to another branch. Please contact us for more information (email + phone)" = "이 Beacon은 다른 상점에 등록되었습니다. 자세한 내용은 카운슬러에게 문의하십시오 (이메일 + 전화).";
 
 "Event start date must be at least 10 minutes later than current time. Please check your input." = "이벤트의 시작 시간은 현재 시간보다 10 분 전이여야 합니다. 정보를 다시 확인하십시오.";
 "Event start date must be earlier than its end date. Please check your input." = "이벤트의 시작 시간은 종료 날짜 이전에 이루어져야합니다. 정보를 다시확인하십시오.";
