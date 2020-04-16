@@ -222,7 +222,7 @@ public class ApiManager {
                     if let error = mozoResponse.error {
                         NSLog("ApiManager - Request failed with error \(error), url: \(url)")
                         if let errorEnum = ErrorApiResponse(rawValue: error) {
-                            if errorEnum == .INVALID_USER_TOKEN {
+                            if errorEnum == .INVALID_USER_TOKEN || errorEnum == .UNAUTHORIZED_ACCESS {
                                 delegate?.didReceiveInvalidToken()
                             } else if errorEnum == .USER_DEACTIVATED || errorEnum == .SUB_ACCOUNT_DEACTIVATED {
                                 delegate?.didReceiveDeactivated(error: errorEnum)

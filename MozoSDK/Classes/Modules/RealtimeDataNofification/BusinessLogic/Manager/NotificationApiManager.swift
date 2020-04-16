@@ -11,7 +11,7 @@ import PromiseKit
 import SwiftyJSON
 
 public extension ApiManager {
-    public func getListNotification(page: Int, size: Int) -> Promise<[WSMessage]> {
+    func getListNotification(page: Int, size: Int) -> Promise<[WSMessage]> {
         return Promise { seal in
             let appTypeText = appType.rawValue.uppercased()
             let params = ["size" : size,
