@@ -10,7 +10,7 @@ import Foundation
 class AnonManager : NSObject {
     var apiManager : ApiManager? {
         didSet {
-            handleAnonymousAuthenticate()
+//            handleAnonymousAuthenticate()
         }
     }
     
