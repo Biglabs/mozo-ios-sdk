@@ -42,6 +42,7 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidCancelAuthentication() {
+        print("CorePresenter - Auth module did cancel authentication.")
         isAuthenticating = false
         requestForCloseAllMozoUIs()
     }
@@ -72,6 +73,7 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidCancelLogout() {
+        print("CorePresenter - Auth module did cancel logout.")
         
     }
 }
