@@ -11,6 +11,8 @@ import Foundation
     func mozoAuthenticationDidFinish()
     func mozoLogoutDidFinish()
     func mozoUIDidCloseAll()
+    
+    func mozoDidExpiredToken()
 }
 
 protocol TransactionDelegate {

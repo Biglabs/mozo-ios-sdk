@@ -365,4 +365,8 @@ extension CoreInteractor: CoreInteractorInput {
             NotificationCenter.default.post(name: .didMeetMaintenance, object: nil)
         }
     }
+    
+    func notifyTokenExpired() {
+        NotificationCenter.default.post(name: .didExpiredToken, object: nil)
+    }
 }

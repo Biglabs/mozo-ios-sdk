@@ -22,7 +22,7 @@ class CorePresenter : NSObject {
     
     var requestingABModule: Module?
     
-    var isAuthenticating = false
+    var isLoggingOut = false
 
     override init() {
         super.init()
@@ -75,18 +75,23 @@ class CorePresenter : NSObject {
     func handleInvalidTokenApiResponse() {
         print("CorePresenter - Handle invalid token from api response")
         // TODO: Must check current view controller is kind of UIAlertViewController
-        if !isAuthenticating {
-            isAuthenticating = true
+//        if let topViewController = DisplayUtils.getTopViewController() {
+//            NSLog("CorePresenter - Top view controller: \(topViewController.debugDescription)")
+//        }
+//        if !isLoggingOut {
+//            isLoggingOut = true
             coreWireframe?.authWireframe?.clearAllSessionData()
             // MozoX Screens could be contained here.
             if (coreWireframe?.rootWireframe?.mozoNavigationController.viewControllers.count ?? 0) > 0 {
                 print("CorePresenter - Handle invalid token from api response when MozoX Screens is displaying.")
                 // TODO: No need to close all mozo controllers from mozo navigation controller
                 coreWireframe?.requestForCloseAllMozoUIs(completion: {
-                    self.authDelegate?.mozoUIDidCloseAll() // Back to Main
+//                    self.authDelegate?.mozoUIDidCloseAll() // Back to Main
                     self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers() // Remove PIN text to retry
-                    self.coreWireframe?.requestForAuthentication()
+//                    self.coreWireframe?.requestForAuthentication()
 //                    self.coreWireframe?.authWireframe?.presentLogoutInterface()
+                    
+                    self.authDelegate?.mozoDidExpiredToken()
                 })
                 
                 removePINDelegate()
@@ -94,15 +99,17 @@ class CorePresenter : NSObject {
                 print("CorePresenter - Handle invalid token from api response when No MozoX Screens is displaying.")
                 // FIX ME: Crash "Application tried to present modally an active controller <SFAuthenticationViewController>"
 //                self.coreWireframe?.requestForAuthentication()
-                coreWireframe?.authWireframe?.presentLogoutInterface()
+//                coreWireframe?.authWireframe?.presentLogoutInterface()
+                self.authDelegate?.mozoDidExpiredToken()
             }
+            
 //            self.authDelegate?.mozoUIDidCloseAll() // Back to Main
 //            self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers() // Remove PIN text to retry
 //            self.coreWireframe?.authWireframe?.presentLogoutInterface()
-        } else {
-            // Ignore
-            print("CorePresenter - Ignore handle invalid token from api response")
-        }
+//        } else {
+//            // Ignore
+//            print("CorePresenter - Ignore handle invalid token from api response")
+//        }
     }
     
     deinit {

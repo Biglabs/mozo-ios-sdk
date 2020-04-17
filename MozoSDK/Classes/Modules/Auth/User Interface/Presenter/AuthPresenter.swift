@@ -15,6 +15,10 @@ class AuthPresenter : NSObject {
     
     var retryOnResponse: OIDAuthorizationResponse?
     
+    var isLoggingOut = false
+    
+//    var logoutQueue = DispatchQueue(label: "logoutQueue", attributes: .concurrent)
+        
     func startRefreshTokenTimer() {
         authInteractor?.startRefreshTokenTimer()
     }
@@ -40,7 +44,15 @@ extension AuthPresenter : AuthModuleInterface {
     }
     
     func performLogout() {
-        authInteractor?.buildLogoutRequest()
+        // TODO: Avoid race condition here using logout queue
+//        logoutQueue.async(flags: .barrier) {
+//        }
+        if !isLoggingOut {
+            isLoggingOut = true
+            authInteractor?.buildLogoutRequest()
+        } else {
+            NSLog("AuthPresenter - Logout Authentication process is pending.")
+        }
     }
 }
 
@@ -99,6 +111,7 @@ extension AuthPresenter : AuthInteractorOutput {
     }
     
     func cancelledAuthenticateByUser() {
+        NSLog("AuthPresenter - Cancelled authenticate by user")
         authModuleDelegate?.authModuleDidCancelAuthentication()
     }
     
@@ -109,7 +122,10 @@ extension AuthPresenter : AuthInteractorOutput {
         // performs logout request
         let currentAuthorizationFlow = OIDAuthorizationService.present(request, presenting: viewController!) { (response, error) in
             print("AuthPresenter - Finish present logout, error: [\(String(describing: error))]")
-            if error == nil {
+            self.isLoggingOut = false
+            if error != nil {
+                self.authModuleDelegate?.authModuleDidCancelLogout()
+            } else {
                 // TODO: Must wait for AppAuth WebViewController display.
                 self.authInteractor?.clearAllAuthSession()
                 self.authModuleDelegate?.authModuleDidFinishLogout()
