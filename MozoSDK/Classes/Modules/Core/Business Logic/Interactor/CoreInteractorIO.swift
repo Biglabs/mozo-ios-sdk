@@ -23,6 +23,8 @@ protocol CoreInteractorInput {
     func notifyConvertSuccessOnchainToOffchain(balanceNoti: BalanceNotification)
     func notifyProfileChangesForAllObserver()
     func notifyMaintenance(isComplete: Bool)
+    
+    func notifyTokenExpired()
 }
 
 protocol CoreInteractorOutput {

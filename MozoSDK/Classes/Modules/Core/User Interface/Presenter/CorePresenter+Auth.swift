@@ -31,7 +31,7 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidFinishAuthentication(accessToken: String?) {
-        isAuthenticating = false
+        isLoggingOut = false
         coreInteractor?.handleAferAuth(accessToken: accessToken)
         // Notify for all observing objects
         self.coreInteractor?.notifyAuthSuccessForAllObservers()
@@ -42,7 +42,8 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidCancelAuthentication() {
-        isAuthenticating = false
+        print("CorePresenter - Auth module did cancel authentication.")
+        isLoggingOut = false
         requestForCloseAllMozoUIs()
     }
     
@@ -62,6 +63,7 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidFinishLogout() {
+        isLoggingOut = false
         checkToDismissAccessDeniedIfNeed()
         // Send delegate back to the app
         authDelegate?.mozoLogoutDidFinish()
@@ -72,6 +74,7 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidCancelLogout() {
-        
+        print("CorePresenter - Auth module did cancel logout.")
+        isLoggingOut = false
     }
 }
