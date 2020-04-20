@@ -1353,6 +1353,7 @@
 "Remaining Coupons: %@" = "Số coupon còn lại: %@";
 "Remaining Coupons" = "Số coupon còn lại";
 "%d Coupons Remaining" = "Còn %d coupon";
+"%d Coupon Remaining" = "Còn %d coupon";
 "Sold Out" = "Đã bán hết";
 "Sold Out: %d" = "Đã bán hết: %d";
 

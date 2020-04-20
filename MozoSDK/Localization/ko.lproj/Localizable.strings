@@ -1360,6 +1360,7 @@
 "Remaining Coupons: %@" = "남은 쿠폰: %@";
 "Remaining Coupons" = "남은 쿠폰";
 "%d Coupons Remaining" = "%d 쿠폰 남았습니다";
+"%d Coupon Remaining" = "%d 쿠폰 남았습니다";
 "Sold Out" = "매진";
 "Sold Out: %d" = "매진: %d";
 
