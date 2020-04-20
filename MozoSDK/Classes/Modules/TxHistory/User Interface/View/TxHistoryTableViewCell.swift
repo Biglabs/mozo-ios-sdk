@@ -13,9 +13,13 @@ public class TxHistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var topUpImageView: UIImageView!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var lbAction: UILabel!
-    @IBOutlet weak var lbDateTime: UILabel?
+    @IBOutlet weak var lbFromTo: UILabel!
+    @IBOutlet weak var lbFromToWidthConstraint: NSLayoutConstraint! // Default 27
+    @IBOutlet weak var lbNameOrAddress: UILabel!
+    @IBOutlet weak var lbNameOrAddressLeadingConstraint: NSLayoutConstraint! // Default 2
+    @IBOutlet weak var lbDateTime: UILabel!
     @IBOutlet weak var lbAmount: UILabel!
-    @IBOutlet weak var lbExchangeValue: UILabel?
+    @IBOutlet weak var lbExchangeValue: UILabel!
     @IBOutlet weak var statusView: UIView!
     public var txHistory : TxHistoryDisplayItem? {
         didSet {
@@ -30,7 +34,24 @@ public class TxHistoryTableViewCell: UITableViewCell {
     
     func bindData(){
         lbAction.text = txHistory?.action.localized
-        lbDateTime?.attributedText = txHistory?.fromNameWithDate
+//        lbDateTime?.attributedText = txHistory?.fromNameWithDate
+        let fromtoText = txHistory?.fromtoText ?? ""
+        
+        let descriptor = UIFont.boldSystemFont(ofSize: 11).fontDescriptor.withSymbolicTraits([.traitBold, .traitItalic])
+        let font : UIFont = UIFont.init(descriptor: descriptor!, size: 11)
+        lbNameOrAddress.font = font
+        let fromToWithNameOrAddress = (fromtoText.isEmpty ? txHistory?.nameOrAddress : "\(fromtoText) \(txHistory?.nameOrAddress ?? "")") ?? ""
+        let finalStr = NSAttributedString(string: fromToWithNameOrAddress)
+        let lStrLabelText = NSMutableAttributedString(attributedString: finalStr)
+        let string = NSString(string: fromToWithNameOrAddress)
+        let range = string.range(of: txHistory?.nameOrAddress ?? "")
+        lStrLabelText.addAttribute(.font, value: font, range: range)
+        lStrLabelText.addAttribute(.foregroundColor, value: ThemeManager.shared.textSection, range: range)
+        lbNameOrAddress.attributedText = lStrLabelText
+        lbNameOrAddress.lineBreakMode = (txHistory?.name.isEmpty ?? false) ? .byTruncatingTail : .byTruncatingMiddle
+        
+        let dateStr = txHistory?.date ?? ""
+        lbDateTime.text = dateStr
         
         let amount = txHistory?.amount ?? 0
         let amountText = amount.roundAndAddCommas()
