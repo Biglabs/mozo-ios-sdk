@@ -1360,7 +1360,7 @@
 // Merchant
 "Uploading photos will be continuing after you leave this screen. Do you want to continue?" = "Quá trình tải hình ảnh vẫn tiếp tục khi bạn thoát màn hình này. Bạn có muốn tiếp tục hay không?";
 "Welcome %@" = "Chào mừng %@";
-"Sign up successful as %@ Merchant" = "Đã đăng kí thành công cửa hàng %@";
+"Signed up successfully as merchant at %@" = "Đã đăng kí thành công cửa hàng tại %@";
 "Please check your information to make sure it is correct." = "Vui lòng kiểm tra thông tin của bạn có chính xác hay không.";
 "Check store information" = "Kiểm tra thông tin cửa hàng";
 "Your store is not authorized to create Airdrop Event. Please contact Mall Owner if you need any support." = "Cửa hàng của bạn không thể tạo chương trình Airdrop. Vui lòng liên hệ chủ mall để được hỗ trợ.";

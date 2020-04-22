@@ -1367,7 +1367,7 @@
 // Merchant
 "Uploading photos will be continuing after you leave this screen. Do you want to continue?" = "이 화면 나간 후 사진 업로드 계속 됩니다. 계속 진행하시겠습니까?";
 "Welcome %@" = "%@ 환영합니다";
-"Sign up successful as %@ Merchant" = "%@ 상점으로 등록 성공하였습니다 ";
+"Signed up successfully as merchant at %@" = "%@ 상점으로 등록 성공하였습니다 ";
 "Please check your information to make sure it is correct." = "정보 맞는지 확인해주세요";
 "Check store information" = "스토어 정보 확인";
 "Your store is not authorized to create Airdrop Event. Please contact Mall Owner if you need any support." = "당신 스토어는 Airdrop 이벤트 만들 수 없습니다. 이메일 주인 연락하여 지원 받으세요.";
