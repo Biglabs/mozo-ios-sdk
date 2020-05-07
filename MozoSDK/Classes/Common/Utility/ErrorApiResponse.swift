@@ -17,6 +17,7 @@ public enum ErrorApiResponse: String {
     
     // STORE
     case STORE_UNREGISTERED = "STORE_UNREGISTERED"
+    case STORE_SUSPENDED = "STORE_SUSPENDED"
     case STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS = "STORE_RETAILER_BEACON_UNAUTHORIZED_ACCESS"
     case STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT = "STORE_RETAILER_BEACON_INVALID_MAC_ADDRESS_FORMAT"
     case STORE_RETAILER_BEACON_ALREADY_REGISTERED_BEFORE = "STORE_RETAILER_BEACON_ALREADY_REGISTERED_BEFORE"
@@ -133,6 +134,7 @@ public enum ErrorApiResponse: String {
         case .SOLOMON_FATAL_USER_NO_PROFILE: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
 
         case .STORE_UNREGISTERED: return "Your store have not been registered on our website yet. Please contact MozoX Customer Service for support. (Zalo - Kakao - Telegram)"
+        case .STORE_SUSPENDED: return "This store has left MozoX ecosystem. Sorry for any inconvenience."
         case .STORE_RETAILER_UNAUTHORIZED_ACCESS: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
         case .STORE_RETAILER_SALE_PERSON_PHONE_NUMBER_ADDED_BEFORE: return "This phone number has already been registered. Please enter another number."
@@ -240,6 +242,7 @@ public enum ErrorApiResponse: String {
         case .SOLOMON_FATAL_USER_NO_PROFILE: return .apiError_SOLOMON_FATAL_USER_NO_PROFILE
         
         case .STORE_UNREGISTERED: return .apiError_STORE_UNREGISTERED
+        case .STORE_SUSPENDED: return .apiError_STORE_SUSPENDED
         case .STORE_RETAILER_UNAUTHORIZED_ACCESS: return .apiError_STORE_RETAILER_UNAUTHORIZED_ACCESS
         case .STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS:
             return .apiError_STORE_RETAILER_EDIT_STORE_INFO_UNAUTHORIZED_ACCESS
