@@ -95,11 +95,12 @@ public extension ApiManager {
      GET /api/app/topUp/getTopUpTxhistory
      getTxHistoryByAddress
      */
-    func getTopUpTxHistory(topUpAddress: String?, page: Int = 0, size: Int = 15) -> Promise<[TxHistoryDTO]> {
+    func getTopUpTxHistory(topUpAddress: String?, offChainAddress: String?, page: Int = 0, size: Int = 15) -> Promise<[TxHistoryDTO]> {
         return Promise { seal in
             var urlComponents = URLComponents(string: "\(Configuration.BASE_STORE_URL)\(TOP_UP_API_PATH)/getTopUpTxhistory")
             urlComponents?.queryItems = [
                 URLQueryItem(name: "topUpAddress", value: topUpAddress),
+                URLQueryItem(name: "offchainAddress", value: offChainAddress),
                 URLQueryItem(name: "page", value: String(page)),
                 URLQueryItem(name: "size", value: String(size))
             ]
