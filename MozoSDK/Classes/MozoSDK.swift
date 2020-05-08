@@ -405,8 +405,8 @@ public class MozoSDK {
         return (moduleDependencies.loadTopUpBalanceInfo())
     }
     
-    public static func loadTopUpHistory(page: Int = 0, size: Int = 15) -> Promise<TxHistoryDisplayCollection> {
-        return (moduleDependencies.loadTopUpHistory(page: page, size: size))
+    public static func loadTopUpHistory(topUpAddress: String? = nil, page: Int = 0, size: Int = 15) -> Promise<TxHistoryDisplayCollection> {
+        return (moduleDependencies.loadTopUpHistory(topUpAddress: topUpAddress, page: page, size: size))
     }
     
     public static func openTopUpTransfer(delegate: TopUpDelegate) {

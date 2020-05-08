@@ -171,7 +171,7 @@ protocol CoreInteractorService {
     
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem>
         
-    func loadTopUpHistory(page: Int, size: Int) -> Promise<TxHistoryDisplayCollection>
+    func loadTopUpHistory(topUpAddress: String?, page: Int, size: Int) -> Promise<TxHistoryDisplayCollection>
     
     func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]>
     

@@ -464,8 +464,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.loadTopUpBalanceInfo())!
     }
     
-    func loadTopUpHistory(page: Int, size: Int) -> Promise<TxHistoryDisplayCollection> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.loadTopUpHistory(page: page, size: size))!
+    func loadTopUpHistory(topUpAddress: String?, page: Int, size: Int) -> Promise<TxHistoryDisplayCollection> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.loadTopUpHistory(topUpAddress: topUpAddress, page: page, size: size))!
     }
     
     func openTopUpTransfer(delegate: TopUpDelegate) {

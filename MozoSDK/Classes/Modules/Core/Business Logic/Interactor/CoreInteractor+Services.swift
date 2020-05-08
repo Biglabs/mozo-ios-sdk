@@ -305,9 +305,9 @@ extension CoreInteractor: CoreInteractorService {
         }
     }
     
-    func loadTopUpHistory(page: Int, size: Int) -> Promise<TxHistoryDisplayCollection> {
+    func loadTopUpHistory(topUpAddress: String?, page: Int, size: Int) -> Promise<TxHistoryDisplayCollection> {
         return Promise { seal in
-            _ = apiManager.getTopUpTxHistory(page: page, size: size)
+            _ = apiManager.getTopUpTxHistory(topUpAddress: topUpAddress, page: page, size: size)
                 .done { (listTxHistory) in
                     let collection = TxHistoryDisplayCollection(items: listTxHistory)
                     seal.fulfill(collection)
