@@ -18,8 +18,8 @@ extension CoreInteractor: CoreInteractorService {
                     .done { (listTxHistory) in
                         let collection = TxHistoryDisplayCollection(items: listTxHistory)
                         seal.fulfill(collection)
-                    }.catch { (error) in
-                        seal.reject(error)
+                }.catch { (error) in
+                    seal.reject(error)
                 }
             } else {
                 
@@ -79,9 +79,9 @@ extension CoreInteractor: CoreInteractorService {
                             SessionStoreManager.tokenInfo = tokenInfo
                             let item = DetailInfoDisplayItem(tokenInfo: tokenInfo)
                             seal.fulfill(item)
-                        }.catch({ (err) in
-                            seal.reject(err)
-                        })
+                    }.catch({ (err) in
+                        seal.reject(err)
+                    })
                 }
             } else {
                 seal.reject(SystemError.noAuthen)
@@ -99,9 +99,9 @@ extension CoreInteractor: CoreInteractorService {
                         .done { (onchainInfo) in
                             SessionStoreManager.onchainInfo = onchainInfo
                             seal.fulfill(onchainInfo)
-                        }.catch({ (err) in
-                            seal.reject(err)
-                        })
+                    }.catch({ (err) in
+                        seal.reject(err)
+                    })
                 }
             } else {
                 seal.reject(SystemError.noAuthen)
@@ -195,7 +195,7 @@ extension CoreInteractor: CoreInteractorService {
     func getCommonHashtag() -> Promise<[String]> {
         return apiManager.getCommonHashtag()
     }
-
+    
     func deleteRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
         return apiManager.deleteRetailerStoreInfoPhotos(photos: photos)
     }
@@ -299,21 +299,26 @@ extension CoreInteractor: CoreInteractorService {
                 .done { (info) in
                     let item = DetailInfoDisplayItem(tokenInfo: info)
                     seal.fulfill(item)
-                }.catch({ (err) in
-                    seal.reject(err)
-                })
+            }.catch({ (err) in
+                seal.reject(err)
+            })
         }
     }
     
-    func loadTopUpHistory(page: Int, size: Int) -> Promise<TxHistoryDisplayCollection> {
+    func loadTopUpHistory(topUpAddress: String?, page: Int, size: Int) -> Promise<TxHistoryDisplayCollection> {
         return Promise { seal in
-            _ = apiManager.getTopUpTxHistory(page: page, size: size)
-                .done { (listTxHistory) in
-                    let collection = TxHistoryDisplayCollection(items: listTxHistory)
-                    seal.fulfill(collection)
+            if let userObj = SessionStoreManager.loadCurrentUser(),
+                let offChainAddress = userObj.profile?.walletInfo?.offchainAddress {
+                apiManager.getTopUpTxHistory(topUpAddress: topUpAddress, offChainAddress: offChainAddress, page: page, size: size)
+                    .done { (listTxHistory) in
+                        let collection = TxHistoryDisplayCollection(items: listTxHistory)
+                        seal.fulfill(collection)
                 }.catch { (error) in
                     seal.reject(error)
                 }
+            } else {
+                seal.reject(PMKError.badInput)
+            }
         }
     }
     
@@ -344,7 +349,7 @@ extension CoreInteractor: CoreInteractorService {
     func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
         return apiManager.updateBranchInfo(branchInfo)
     }
-     
+    
     func switchBranch(_ branchId: Int64) -> Promise<[String: Any]> {
         return apiManager.switchBranch(branchId)
     }
