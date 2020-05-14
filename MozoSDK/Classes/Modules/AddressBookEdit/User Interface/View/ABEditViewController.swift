@@ -82,7 +82,7 @@ extension ABEditViewController : UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard let viewText = textView.text else { return true }
         let count = viewText.count + text.count - range.length
-        return count <= Configuration.MAX_ADDRESS_BOOK_NAME_LENGTH
+        return count <= Configuration.MAX_NAME_LENGTH
     }
     
     func textViewDidChange(_ textView: UITextView) {
