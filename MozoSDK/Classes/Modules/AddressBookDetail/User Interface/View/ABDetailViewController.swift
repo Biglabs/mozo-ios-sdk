@@ -122,6 +122,6 @@ extension ABDetailViewController : UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
         let count = text.count + string.count - range.length
-        return count <= Configuration.MAX_ADDRESS_BOOK_NAME_LENGTH
+        return count <= Configuration.MAX_NAME_LENGTH
     }
 }

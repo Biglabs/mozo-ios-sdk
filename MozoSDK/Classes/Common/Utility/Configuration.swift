@@ -14,7 +14,7 @@ public class Configuration {
     public static let SUB_DOMAIN = SUB_DOMAIN_ENUM.rawValue
     public static let GRANT_TYPE = "password"
     public static let MIN_PASSWORD_LENGTH = 6
-    public static let MAX_ADDRESS_BOOK_NAME_LENGTH = 24
+    public static let MAX_NAME_LENGTH = 128
     public static var FONT_SIZE: UIFontTextSize = UIFontTextSize(.xSmall)
     public static let DEVICE_TOKEN = "DEVICE_TOKEN"
     public static let API_KEY_DEFAULT = "API_KEY_DEFAULT"
