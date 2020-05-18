@@ -25,6 +25,7 @@ public class AirDropReportDTO {
     public var numberOfReceivedShopper: Int?
     public var periodFromDate: Int64?
     public var periodToDate: Int64?
+    public var zoneId: String?
     public var salePersonUserId: String?
     public var smartAddress: String?
     public var stayIn: Int?
@@ -50,6 +51,7 @@ public class AirDropReportDTO {
         self.numberOfReceivedShopper = json["numberOfReceivedShopper"].int
         self.periodFromDate = json["periodFromDate"].int64
         self.periodToDate = json["periodToDate"].int64
+        self.zoneId = json["zoneId"].string
         self.salePersonUserId = json["salePersonUserId"].string
         self.smartAddress = json["smartAddress"].string
         self.stayIn = json["stayIn"].int
