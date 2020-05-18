@@ -22,6 +22,7 @@ public class AirdropEventDTO {
     public var name: String?
     public var periodFromDate: Int64?
     public var periodToDate: Int64?
+    public var zoneId: String?
     public var smartAddress: String?
     public var stayIn: Int?
     public var totalNumMozoOffchain: NSNumber?
@@ -34,11 +35,11 @@ public class AirdropEventDTO {
     public var beaconInfo: BeaconInfoDTO?
     
     public init?(name: String, address: String, receivedShopper: Int64,
-                  mozoAirdropPerCustomerVisit: NSNumber, airdropFreq: Int,
-                  hourOfDayFrom: Int, hourOfDayTo: Int,
-                  periodFromDate: Int64, periodToDate: Int64,
-                  totalNumMozoOffchain: NSNumber, active: Bool,
-                  beaconInfoId: Int64, appliedDateOfWeek: [Int]){
+                 mozoAirdropPerCustomerVisit: NSNumber, airdropFreq: Int,
+                 hourOfDayFrom: Int, hourOfDayTo: Int,
+                 periodFromDate: Int64?, periodToDate: Int64,
+                 totalNumMozoOffchain: NSNumber, active: Bool,
+                 beaconInfoId: Int64, appliedDateOfWeek: [Int]) {
         self.active = active
         self.name = name
         self.address = address
@@ -54,7 +55,7 @@ public class AirdropEventDTO {
         self.appliedDateOfWeek = appliedDateOfWeek
     }
     
-    public init?(smartAddress: String, totalNumMozoOffchain: NSNumber){
+    public init?(smartAddress: String, totalNumMozoOffchain: NSNumber) {
         self.smartAddress = smartAddress
         self.totalNumMozoOffchain = totalNumMozoOffchain
     }
@@ -71,6 +72,7 @@ public class AirdropEventDTO {
         self.id = json["id"].int64
         self.periodFromDate = json["periodFromDate"].int64
         self.periodToDate = json["periodToDate"].int64
+        self.zoneId = json["zoneId"].string
         self.totalNumMozoOffchain = json["totalNumMozoOffchain"].number
         self.appliedDateOfWeek = json["appliedDateOfWeek"].array?.map ({ $0.int ?? 0 })
         self.actualAirdroppedTime = json["actualAirdroppedTime"].int
@@ -83,7 +85,7 @@ public class AirdropEventDTO {
         self.ownerCreateEvent = json["ownerCreateEvent"].bool
         self.beaconInfo = BeaconInfoDTO(json: json["beaconInfo"])
     }
-
+    
     public func toJSON() -> Dictionary<String, Any> {
         var json = Dictionary<String, Any>()
         if let id = self.id {
@@ -118,6 +120,9 @@ public class AirdropEventDTO {
         }
         if let periodToDate = self.periodToDate {
             json["periodToDate"] = periodToDate
+        }
+        if let zoneId = self.zoneId {
+            json["zoneId"] = zoneId
         }
         if let totalNumMozoOffchain = self.totalNumMozoOffchain {
             json["totalNumMozoOffchain"] = totalNumMozoOffchain

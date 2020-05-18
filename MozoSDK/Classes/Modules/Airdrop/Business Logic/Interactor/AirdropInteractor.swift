@@ -62,14 +62,17 @@ class AirdropInteractor: NSObject {
         if event.airdropFreq ?? 0 < AIRDROP_FREQUENCY_LARGER_THAN {
             return "Frequency must be greater than %d minutes".localizedFormat(AIRDROP_FREQUENCY_LARGER_THAN / 60)
         }
-        let startDate = Date(timeIntervalSince1970: TimeInterval(event.periodFromDate ?? 0))
-        let endDate = Date(timeIntervalSince1970: TimeInterval(event.periodToDate ?? 0))
-        if startDate <= Date().addingTimeInterval(TimeInterval(60 * AIRDROP_START_DATE_LARGER_THAN_CURRENT)) {
-            return "Time of Start date must larger than current time %d minutes at least.".localizedFormat(AIRDROP_START_DATE_LARGER_THAN_CURRENT)
+        if event.periodFromDate != nil {
+            let startDate = Date(timeIntervalSince1970: TimeInterval(event.periodFromDate!))
+            let endDate = Date(timeIntervalSince1970: TimeInterval(event.periodToDate ?? 0))
+            if startDate <= Date().addingTimeInterval(TimeInterval(60 * AIRDROP_START_DATE_LARGER_THAN_CURRENT)) {
+                return "Time of Start date must larger than current time %d minutes at least.".localizedFormat(AIRDROP_START_DATE_LARGER_THAN_CURRENT)
+            }
+            if startDate >= endDate {
+                return "Invalid Airdrop start date - end date.".localized
+            }
         }
-        if startDate >= endDate {
-            return "Invalid Airdrop start date - end date.".localized
-        }
+        
         return nil
     }
     

@@ -701,6 +701,7 @@
 "MMM d, yyyy" = "d/M/yyyy";
 "MMMM yyyy" = "MMMM yyyy";
 "HH:mm MMM d, yyyy" = "HH:mm d/M/yyyy";
+"From %@\nTo %@" = "Từ %@\nĐến %@";
 "Info" = "Thông báo";
 "Your name" = "Tên";
 "Your phone number" = "Số điện thoại";
