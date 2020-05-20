@@ -70,6 +70,7 @@ public class PromotionDisplayItem {
     public var dateFromTo: String {
         let dateFormat = "MMM d".localized
         let formatter = DateFormatter()
+        formatter.timeZone = zoneId != nil ? TimeZone.init(identifier: zoneId!) : TimeZone.current
         formatter.dateFormat = dateFormat
         
         let fromDate = Date(timeIntervalSince1970: TimeInterval(periodFromDate))
