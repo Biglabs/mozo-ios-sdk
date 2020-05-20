@@ -699,6 +699,7 @@
 "MMM d, yyyy" = "MMM d, yyyy";
 "MMMM yyyy" = "MMMM yyyy";
 "HH:mm MMM d, yyyy" = "HH:mm MMM d, yyyy";
+"HH:mm (z) MMM d, yyyy" = "HH:mm (z) MMM d, yyyy";
 "From %@\nTo %@" = "From %@\nTo %@";
 "Under Construction" = "Under Construction";
 "Info" = "Info";
