@@ -17,6 +17,7 @@ public class PromotionDTO {
     public var name: String?
     public var periodFromDate: Int64?
     public var periodToDate: Int64?
+    public var zoneId: String?
     public var promoStatus: PromotionStatusEnum?
     public var promoType: PromotionTypeEnum?
     public var receivedMozoX: NSNumber?
@@ -27,7 +28,7 @@ public class PromotionDTO {
     public var remainingNumber: Int?
     
     public init(discountPercent: Int, imageName: String, name: String,
-                periodFromDate: Int64, periodToDate: Int64, value: NSNumber,
+                periodFromDate: Int64?, periodToDate: Int64, value: NSNumber,
                 promoType: PromotionTypeEnum = .DURATION, limitUser: Int?) {
         self.discountPercent = discountPercent
         self.imageName = imageName
@@ -49,6 +50,7 @@ public class PromotionDTO {
         self.name = json["name"].string
         self.periodFromDate = json["periodFromDate"].int64
         self.periodToDate = json["periodToDate"].int64
+        self.zoneId = json["zoneId"].string
         self.promoStatus = PromotionStatusEnum(rawValue: json["promoStatus"].string ?? "")
         self.promoType = PromotionTypeEnum(rawValue: json["promoType"].string ?? "")
         self.receivedMozoX = json["receivedMozoX"].number
@@ -87,6 +89,9 @@ public class PromotionDTO {
         }
         if let periodToDate = self.periodToDate {
             json["periodToDate"] = periodToDate
+        }
+        if let zoneId = self.zoneId {
+            json["zoneId"] = zoneId
         }
         if let promoStatus = self.promoStatus {
             json["promoStatus"] = promoStatus

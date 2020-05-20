@@ -16,6 +16,7 @@ public class PromotionDisplayItem {
     public var name: String
     public var periodFromDate: Int64
     public var periodToDate: Int64
+    public var zoneId: String?
     public var promoStatus: PromotionStatusEnum
     public var promoType: PromotionTypeEnum
     public var receivedMozoX: NSNumber
@@ -55,6 +56,7 @@ public class PromotionDisplayItem {
         self.name = promotionDTO.name ?? ""
         self.periodFromDate = promotionDTO.periodFromDate ?? 0
         self.periodToDate = promotionDTO.periodToDate ?? 0
+        self.zoneId = promotionDTO.zoneId
         self.promoStatus = promotionDTO.promoStatus ?? PromotionStatusEnum.END
         self.promoType = promotionDTO.promoType ?? PromotionTypeEnum.DURATION
         self.receivedMozoX = promotionDTO.receivedMozoX ?? NSNumber(value: 0)
@@ -157,9 +159,10 @@ public class PromotionDisplayItem {
     }
     
     public var fromDateText: String {
-        let dateFormat = "HH:mm MMM d, yyyy".localized
+        let dateFormat = "HH:mm (z) MMM d, yyyy".localized
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat
+        formatter.timeZone = zoneId != nil ? TimeZone.init(identifier: zoneId!) : TimeZone.current
         
         let date = Date(timeIntervalSince1970: TimeInterval(periodFromDate))
         let dateText = formatter.string(from: date)
@@ -168,9 +171,10 @@ public class PromotionDisplayItem {
     }
     
     public var toDateText: String {
-        let dateFormat = "HH:mm MMM d, yyyy".localized
+        let dateFormat = "HH:mm (z) MMM d, yyyy".localized
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat
+        formatter.timeZone = zoneId != nil ? TimeZone.init(identifier: zoneId!) : TimeZone.current
         
         let date = Date(timeIntervalSince1970: TimeInterval(periodToDate))
         let dateText = formatter.string(from: date)

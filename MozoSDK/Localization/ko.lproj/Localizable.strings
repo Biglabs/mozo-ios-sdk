@@ -701,6 +701,7 @@
 "MMM d, yyyy" = "yyyy년 M월 d일";
 "MMMM yyyy" = "yyyy년 M월 d일";
 "HH:mm MMM d, yyyy" = "HH:mm yyyy년 M월 d일";
+"HH:mm (z) MMM d, yyyy" = "HH:mm (z) yyyy년 M월 d일";
 "From %@\nTo %@" = "부터 %@\n까지 %@";
 "Under Construction" = "개발중";
 "Info" = "정보";
