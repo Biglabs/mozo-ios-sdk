@@ -379,7 +379,6 @@
 "%d min" = "%d분";
 "%d mins" = "%d분";
 "Insufficient Balance" = "밸런스가 충분하지 않습니다.";
-"Invalid Airdrop start time - end time." = "종료 기간은 시작 기간 이후에 이루어져야합니다.";
 "The Event can only begin after %d minutes" = "이벤트의 시작 기간은  현재 기간보다 최소한 %d 분 이상 커야합니다.";
 "Period time \"To\" must be greater than currently" = "종료 기간은 현재 기간보다 커야합니다.";
 "Frequency must be greater than %d" = "빈도는 %d 보다 커야합니다.";
@@ -568,9 +567,6 @@
 
 "Allow MozoX to access your location?\nMozoX uses this to provide more relevant and personalized experiences, like helping you to find local events and get better suggestion.\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "MozoX에서 귀하의 위치를 사용하도록 허용 하시겠습니까?\nMozoX는이 정보를 사용하여 제안 사항을 개선하고 사용자 환경을 업그레이드함으로써\nAirdrop 이벤트를 쉽게 찾을 수 있도록합니다.\n이 기능을 열려면 응용 '앱 설정'을 선택하고 권한 메뉴 아래에있는 위치를 활성화하십시오.";
 "Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "수신자의 수량과' 각 쇼핑객에게 Airdrop한 MozoX'의 수량을 입력하십시오.";
-"Invalid Airdrop start date - end date." = "Airdrop 시작일 및 종료일이 유효하지 않습니다.";
-"Invalid Airdrop start time - end time." = "Airdrop 시작 시간 및 종료 시간이 유효하지 않습니다.";
-"Time of Start date must larger than current time %d minutes at least." = "시작 시간은 현재시간 보다 %d 분이상, 이후로 정해야 합니다.";
 
 "Frequency must be equal or larger than %d minutes" = "Airdrop 빈도는  최소한 %d 분입니다.";
 "Sorry, something went wrong. Please try again or restart the app." = "죄송합니다. 무엇인가 잘못되었습니다. 다시 시도하거나 앱을 다시 시작하십시오.";
@@ -592,8 +588,6 @@
 "Sent" = "보내기";
 "Received" = "수신됨";
 "Balance is not enough." = "밸런스가 충분하지 않습니다.";
-"Invalid Airdrop start date - end date." = "Airdrop 시작일 - 종료일이 유효하지 않습니다.";
-"Time of Start date must larger than current time %d minutes at least." = "시작 시간은 현재보다 %d 분 이상 커야합니다.";
 "Unable to create transaction." = "거래를 생성 할 수 없습니다.";
 "Unable to create airdrop event." = "Airdrop이벤트를 만들 수 없습니다.";
 
@@ -656,9 +650,9 @@
 
 "This beacon has been registered to another branch. Please contact us for more information (email + phone)" = "이 Beacon은 다른 상점에 등록되었습니다. 자세한 내용은 카운슬러에게 문의하십시오 (이메일 + 전화).";
 
-"Event start date must be at least 10 minutes later than current time. Please check your input." = "이벤트의 시작 시간은 현재 시간보다 10 분 전이여야 합니다. 정보를 다시 확인하십시오.";
-"Event start date must be earlier than its end date. Please check your input." = "이벤트의 시작 시간은 종료 날짜 이전에 이루어져야합니다. 정보를 다시확인하십시오.";
-"The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input." = "\"부터\"적용된 시간은 \"까지\" 적용된 시간보다 이전이어야합니다. 입력 내용을 다시 확인하십시오.";
+"error_date_less_current" = "이벤트의 시작 시간은 현재 시간보다 10 분 전이여야 합니다. 정보를 다시 확인하십시오.";
+"error_date_start_must_earlier_end" = "이벤트의 시작 시간은 종료 날짜 이전에 이루어져야합니다. 정보를 다시확인하십시오.";
+"error_time_start_must_earlier_end" = "\"부터\"적용된 시간은 \"까지\" 적용된 시간보다 이전이어야합니다. 입력 내용을 다시 확인하십시오.";
 "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours)." = "빈도'는 쇼핑객이  최근 성공적으로 수령 한 이후 동일한 이벤트에서 MozoX를 계속받을 수있는 최소 시간입니다. MozoX 수신 빈도는 30 분 이상이어야합니다. 정보를 다시 확인하십시오.";
 "Incorrect total amount of MozoX tokens to be airdropped. Please check your input." = "Airdrop한 MozoX 금액이 가능한 잔액보다 큽니다. 정보를 다시 확인하십시오";
 "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input." = "각 쇼핑객에게 드린 Airdrop  MozoX 금액이 유효하지 않습니다. 정보를 다시확인하십시오.";
@@ -701,7 +695,7 @@
 "MMM d, yyyy" = "yyyy년 M월 d일";
 "MMMM yyyy" = "yyyy년 M월 d일";
 "HH:mm MMM d, yyyy" = "HH:mm yyyy년 M월 d일";
-"HH:mm (z) MMM d, yyyy" = "HH:mm (z) yyyy년 M월 d일";
+"display_date_time_zone" = "HH:mm (O) yyyy년 M월 d일";
 "From %@\nTo %@" = "부터 %@\n까지 %@";
 "Under Construction" = "개발중";
 "Info" = "정보";

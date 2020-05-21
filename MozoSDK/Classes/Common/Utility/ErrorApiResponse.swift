@@ -146,11 +146,11 @@ public enum ErrorApiResponse: String {
         case .STORE_RETAILER_BEACON_ALREADY_REGISTERED_BEFORE: return "This beacon has been registered to another branch. Please contact us for more information (email + phone)"
         case .STORE_RETAILER_BEACON_ALREADY_REGISTERED_OTHER_BRANCH: return "This beacon has been registered to another branch. Please contact us for more information (email + phone)"
 
-        case .STORE_RETAILER_AIR_DROP_INVALID_FROM_PERIOD_IN_THE_PAST: return "Event start date must be at least 10 minutes later than current time. Please check your input."
-        case .STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_PERIOD: return "Event start date must be earlier than its end date. Please check your input."
-        case .STORE_RETAILER_AIR_DROP_INVALID_FROM_HOUR_OF_DAY: return "Invalid Airdrop start time - end time."
-        case .STORE_RETAILER_AIR_DROP_INVALID_TO_HOUR_OF_DAY: return "Invalid Airdrop start time - end time."
-        case .STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_HOUR_OF_DAY: return "The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input."
+        case .STORE_RETAILER_AIR_DROP_INVALID_FROM_PERIOD_IN_THE_PAST: return "error_date_less_current"
+        case .STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_PERIOD: return "error_date_start_must_earlier_end"
+        case .STORE_RETAILER_AIR_DROP_INVALID_FROM_HOUR_OF_DAY: return "error_time_start_must_earlier_end"
+        case .STORE_RETAILER_AIR_DROP_INVALID_TO_HOUR_OF_DAY: return "error_time_start_must_earlier_end"
+        case .STORE_RETAILER_AIR_DROP_INVALID_FROM_GREATER_THAN_OR_EQUAL_TO_HOUR_OF_DAY: return "error_time_start_must_earlier_end"
         case .STORE_RETAILER_AIR_DROP_INVALID_TOTAL_AMOUNT: return "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event.\n\"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours)."
         case .STORE_RETAILER_AIR_DROP_INVALID_PER_CUSTOMER_AMOUNT: return "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input."
         case .STORE_RETAILER_AIR_DROP_INVALID_TOO_LOW_FREQUENCY: return "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event.\n\"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours)."
@@ -175,7 +175,7 @@ public enum ErrorApiResponse: String {
             
         case .STORE_USER_ALREADY_INSTALL_APP_ERROR: return rawValue
             
-        case .STORE_PROMO_PERIOD_TIME_ERROR: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
+        case .STORE_PROMO_PERIOD_TIME_ERROR: return "error_date_less_current"
         case .STORE_PROMO_SECRET_CODE_ERROR: return "Invalid QR Code"
         case .STORE_PROMO_NOT_EXIST_ERROR: return rawValue
         case .STORE_PROMO_NOT_ACTIVE_ERROR: return rawValue
