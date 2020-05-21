@@ -65,11 +65,8 @@ class AirdropInteractor: NSObject {
         if event.periodFromDate != nil {
             let startDate = Date(timeIntervalSince1970: TimeInterval(event.periodFromDate!))
             let endDate = Date(timeIntervalSince1970: TimeInterval(event.periodToDate ?? 0))
-            if startDate <= Date().addingTimeInterval(TimeInterval(60 * AIRDROP_START_DATE_LARGER_THAN_CURRENT)) {
-                return "Time of Start date must larger than current time %d minutes at least.".localizedFormat(AIRDROP_START_DATE_LARGER_THAN_CURRENT)
-            }
             if startDate >= endDate {
-                return "Invalid Airdrop start date - end date.".localized
+                return "error_date_start_must_earlier_end".localized
             }
         }
         

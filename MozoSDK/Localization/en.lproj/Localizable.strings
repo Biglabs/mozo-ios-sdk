@@ -564,9 +564,6 @@
 
 "Allow MozoX to access your location?\nMozoX uses this to provide more relevant and personalized experiences, like helping you to find local events and get better suggestion.\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "Allow MozoX to access your location?\nMozoX uses this to provide more relevant and personalized experiences, like helping you to find local events and get better suggestion.\nTo enable this, tap App Settings below and activate Location under the Permissions menu.";
 "Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "Please input \"Receiver\" and number of \"Airdrop per shopper\"";
-"Invalid Airdrop start date - end date." = "Invalid Airdrop start date - end date.";
-"Invalid Airdrop start time - end time." = "Invalid Airdrop start time - end time.";
-"Time of Start date must larger than current time %d minutes at least." = "Time of Start date must larger than current time %d minutes at least.";
 
 "Frequency must be equal or larger than %d minutes" = "Frequency must be equal or larger than %d minutes";
 "Sorry, something went wrong. Please try again or restart the app." = "Sorry, something went wrong. Please try again or restart the app.";
@@ -588,8 +585,6 @@
 "Sent" = "Sent";
 "Received" = "Received";
 "Balance is not enough." = "Balance is not enough.";
-"Invalid Airdrop start date - end date." = "Invalid Airdrop start date - end date.";
-"Time of Start date must larger than current time %d minutes at least." = "Time of Start date must larger than current time %d minutes at least.";
 "Unable to create transaction." = "Unable to create transaction.";
 "Unable to create airdrop event." = "Unable to create airdrop event.";
 
@@ -652,9 +647,9 @@
 
 "This beacon has been registered to another branch. Please contact us for more information (email + phone)" = "This beacon has been registered to another branch. Please contact us for more information (email + phone)";
 
-"Event start date must be at least 10 minutes later than current time. Please check your input." = "Event start date must be at least 10 minutes later than current time. Please check your input.";
-"Event start date must be earlier than its end date. Please check your input." = "Event start date must be earlier than its end date. Please check your input.";
-"The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input." = "The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input.";
+"error_date_less_current" = "Event start date must be at least 10 minutes later than current time. Please check your input.";
+"error_date_start_must_earlier_end" = "Event start date must be earlier than its end date. Please check your input.";
+"error_time_start_must_earlier_end" = "The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input.";
 "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at 24 hours)." = "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours).";
 "Incorrect total amount of MozoX tokens to be airdropped. Please check your input." = "Incorrect total amount of MozoX tokens to be airdropped. Please check your input.";
 "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input." = "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input.";
@@ -699,7 +694,7 @@
 "MMM d, yyyy" = "MMM d, yyyy";
 "MMMM yyyy" = "MMMM yyyy";
 "HH:mm MMM d, yyyy" = "HH:mm MMM d, yyyy";
-"HH:mm (z) MMM d, yyyy" = "HH:mm (z) MMM d, yyyy";
+"display_date_time_zone" = "HH:mm (O) MMM d, yyyy";
 "From %@\nTo %@" = "From %@\nTo %@";
 "Under Construction" = "Under Construction";
 "Info" = "Info";

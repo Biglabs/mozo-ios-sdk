@@ -568,9 +568,6 @@
 
 "Allow MozoX to access your location?\nMozoX uses this to provide more relevant and personalized experiences, like helping you to find local events and get better suggestion.\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "Cho phép MozoX sử dụng vị trí của bạn?\nMozoX dùng thông tin này để cải thiện việc gợi ý và nâng cấp trải nghiệm người dùng, giúp bạn dễ dàng tìm thấy những chương trình Airdrop xung quanh.\nĐể mở chức năng này, chọn App Settings và kích hoạt Location nằm bên dưới Permissions Menu.";
 "Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "Xin nhập số \"người nhận\" và số MozoX \"Airdrop cho mỗi khách\"";
-"Invalid Airdrop start date - end date." = "Ngày bắt đầu và kết thúc Airdrop không hợp lệ";
-"Invalid Airdrop start time - end time." = "Thời gian bắt đầu và kết thúc Airdrop không hợp lệ";
-"Time of Start date must larger than current time %d minutes at least." = "Thời điểm bắt đầu phải lớn hơn hiện tại ít nhất %d phút.";
 
 "Frequency must be equal or larger than %d minutes" = "Tuần suất Airdrop nhỏ nhất là %d phút.";
 "Sorry, something went wrong. Please try again or restart the app." = "Có lỗi xảy ra. Xin thử lại hoặc mở lại ứng dụng.";
@@ -592,8 +589,6 @@
 "Sent" = "Đã gửi";
 "Received" = "Đã nhận";
 "Balance is not enough." = "Số dư không đủ";
-"Invalid Airdrop start date - end date." = "Ngày bắt đầu - kết thúc Airdrop không hợp lệ";
-"Time of Start date must larger than current time %d minutes at least." = "Thời điểm bắt đầu phải lớn hơn hiện tại ít nhất %d phút.";
 "Unable to create transaction." = "Không thể thực hiện giao dịch.";
 "Unable to create airdrop event." = "Không thể tạo chương trình Airdrop.";
 
@@ -656,9 +651,9 @@
 
 "This beacon has been registered to another branch. Please contact us for more information (email + phone)" = "Beacon đã được đăng ký bởi cửa hàng khác. Liên hệ tư vấn viên để biết thêm thông tin (email + phone)";
 
-"Event start date must be at least 10 minutes later than current time. Please check your input." = "Thời điểm bắt đầu chương trình phải lớn hơn hiện tại 10 phút. Vui lòng kiểm tra lại thông tin.";
-"Event start date must be earlier than its end date. Please check your input." = "Thời điểm bắt đầu chương trình phải diễn ra trước ngày kết thúc. Vui lòng kiểm tra lại thông tin.";
-"The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input." = "Giờ bắt đầu phải diễn ra trước giờ kết thúc. Xin kiểm tra lại thông tin.";
+"error_date_less_current" = "Thời điểm bắt đầu chương trình phải lớn hơn hiện tại 10 phút. Vui lòng kiểm tra lại thông tin.";
+"error_date_start_must_earlier_end" = "Thời điểm bắt đầu chương trình phải diễn ra trước ngày kết thúc. Vui lòng kiểm tra lại thông tin.";
+"error_time_start_must_earlier_end" = "Giờ bắt đầu phải diễn ra trước giờ kết thúc. Xin kiểm tra lại thông tin.";
 "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at 24 hours)." = "\"Tần suất\" là thời gian tối thiểu khách hàng có thể tiếp tục nhận MozoX từ cùng một chương trình, tính từ lần nhận thành công gần nhất. Tần suất nhận MozoX phải lớn hơn 30 phút. Vui lòng kiểm tra lại thông tin.";
 "Incorrect total amount of MozoX tokens to be airdropped. Please check your input." = "Số MozoX Airdrop lớn hơn số dư khả dụng. Xin kiểm tra lại thông tin.";
 "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input." = "Số MozoX Airdrop cho mỗi khách không hợp lệ. Xin kiểm tra lại thông tin.";
@@ -701,7 +696,7 @@
 "MMM d, yyyy" = "d/M/yyyy";
 "MMMM yyyy" = "MMMM yyyy";
 "HH:mm MMM d, yyyy" = "HH:mm d/M/yyyy";
-"HH:mm (z) MMM d, yyyy" = "HH:mm (z) d/M/yyyy";
+"display_date_time_zone" = "HH:mm (O) d/M/yyyy";
 "From %@\nTo %@" = "Từ %@\nĐến %@";
 "Info" = "Thông báo";
 "Your name" = "Tên";
