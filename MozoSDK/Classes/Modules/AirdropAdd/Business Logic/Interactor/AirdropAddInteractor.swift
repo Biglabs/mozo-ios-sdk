@@ -33,7 +33,7 @@ class AirdropAddInteractor: NSObject {
         let totalInDouble = event.totalNumMozoOffchain?.doubleValue ?? 0
         
         if totalInDouble > (tokenInfo.balance ?? 0).convertOutputValue(decimal: tokenInfo.decimals ?? 0) {
-            output?.failedToAddMozoToAirdropEvent(error: "Balance is not enough.".localized)
+            output?.failedToAddMozoToAirdropEvent(error: "error_amount_not_enough_to_airdrop".localized)
             return
         }
         let total = totalInDouble.convertTokenValue(decimal: tokenInfo.decimals ?? 0)
