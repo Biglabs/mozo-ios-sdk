@@ -378,7 +378,6 @@
 "%d hours" = "%d시";
 "%d min" = "%d분";
 "%d mins" = "%d분";
-"Insufficient Balance" = "밸런스가 충분하지 않습니다.";
 "The Event can only begin after %d minutes" = "이벤트의 시작 기간은  현재 기간보다 최소한 %d 분 이상 커야합니다.";
 "Period time \"To\" must be greater than currently" = "종료 기간은 현재 기간보다 커야합니다.";
 "Frequency must be greater than %d" = "빈도는 %d 보다 커야합니다.";
@@ -587,7 +586,6 @@
 "Customer has just left" = "고객이 방금 떠났습니다.";
 "Sent" = "보내기";
 "Received" = "수신됨";
-"Balance is not enough." = "밸런스가 충분하지 않습니다.";
 "Unable to create transaction." = "거래를 생성 할 수 없습니다.";
 "Unable to create airdrop event." = "Airdrop이벤트를 만들 수 없습니다.";
 
@@ -654,7 +652,7 @@
 "error_date_start_must_earlier_end" = "이벤트의 시작 시간은 종료 날짜 이전에 이루어져야합니다. 정보를 다시확인하십시오.";
 "error_time_start_must_earlier_end" = "\"부터\"적용된 시간은 \"까지\" 적용된 시간보다 이전이어야합니다. 입력 내용을 다시 확인하십시오.";
 "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours)." = "빈도'는 쇼핑객이  최근 성공적으로 수령 한 이후 동일한 이벤트에서 MozoX를 계속받을 수있는 최소 시간입니다. MozoX 수신 빈도는 30 분 이상이어야합니다. 정보를 다시 확인하십시오.";
-"Incorrect total amount of MozoX tokens to be airdropped. Please check your input." = "Airdrop한 MozoX 금액이 가능한 잔액보다 큽니다. 정보를 다시 확인하십시오";
+"error_amount_not_enough_to_airdrop" = "Airdrop한 MozoX 금액이 가능한 잔액보다 큽니다. 정보를 다시 확인하십시오";
 "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input." = "각 쇼핑객에게 드린 Airdrop  MozoX 금액이 유효하지 않습니다. 정보를 다시확인하십시오.";
 
 "Something is wrong with your account status. Please try again." = "오류가 발생했습니다. 다시 시도하십시오.";

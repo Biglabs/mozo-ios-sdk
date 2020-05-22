@@ -375,7 +375,6 @@
 "%d hours" = "%d giờ";
 "%d min" = "%d phút";
 "%d mins" = "%d phút";
-"Insufficient Balance" = "Số dư không đủ";
 "Airdrop time \"To\" must be greater than time \"From\"" = "Thời điểm kết thúc phải diễn ra sau thời điểm bắt đầu";
 "Period time \"To\" must be greater than time \"From\"" = "Thời điểm kết thúc phải diễn ra sau thời điểm bắt đầu";
 "The Event can only begin after %d minutes" = "Thời điểm bắt đầu chương trình phải lớn hơn hiện tại ít nhất %d phút";
@@ -588,7 +587,6 @@
 "Customer has left" = "Khách vừa đi khỏi";
 "Sent" = "Đã gửi";
 "Received" = "Đã nhận";
-"Balance is not enough." = "Số dư không đủ";
 "Unable to create transaction." = "Không thể thực hiện giao dịch.";
 "Unable to create airdrop event." = "Không thể tạo chương trình Airdrop.";
 
@@ -655,7 +653,7 @@
 "error_date_start_must_earlier_end" = "Thời điểm bắt đầu chương trình phải diễn ra trước ngày kết thúc. Vui lòng kiểm tra lại thông tin.";
 "error_time_start_must_earlier_end" = "Giờ bắt đầu phải diễn ra trước giờ kết thúc. Xin kiểm tra lại thông tin.";
 "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at 24 hours)." = "\"Tần suất\" là thời gian tối thiểu khách hàng có thể tiếp tục nhận MozoX từ cùng một chương trình, tính từ lần nhận thành công gần nhất. Tần suất nhận MozoX phải lớn hơn 30 phút. Vui lòng kiểm tra lại thông tin.";
-"Incorrect total amount of MozoX tokens to be airdropped. Please check your input." = "Số MozoX Airdrop lớn hơn số dư khả dụng. Xin kiểm tra lại thông tin.";
+"error_amount_not_enough_to_airdrop" = "Số MozoX Airdrop lớn hơn số dư khả dụng. Xin kiểm tra lại thông tin.";
 "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input." = "Số MozoX Airdrop cho mỗi khách không hợp lệ. Xin kiểm tra lại thông tin.";
 
 "Something is wrong with your account status. Please try again." = "Có lỗi xảy ra. Xin thử lại";

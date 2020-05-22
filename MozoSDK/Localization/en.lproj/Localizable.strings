@@ -372,7 +372,6 @@
 "%d hours" = "%d hours";
 "%d min" = "%d min";
 "%d mins" = "%d mins";
-"Insufficient Balance" = "Insufficient Balance";
 "Airdrop time \"To\" must be greater than time \"From\"" = "Airdrop time \"To\" must be greater than time \"From\"";
 "Period time \"To\" must be greater than time \"From\"" = "Period time \"To\" must be greater than time \"From\"";
 "The Event can only begin after %d minutes" = "The Event can only begin after %d minutes";
@@ -584,7 +583,6 @@
 "Customer has just left" = "Customer has just left";
 "Sent" = "Sent";
 "Received" = "Received";
-"Balance is not enough." = "Balance is not enough.";
 "Unable to create transaction." = "Unable to create transaction.";
 "Unable to create airdrop event." = "Unable to create airdrop event.";
 
@@ -651,7 +649,7 @@
 "error_date_start_must_earlier_end" = "Event start date must be earlier than its end date. Please check your input.";
 "error_time_start_must_earlier_end" = "The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input.";
 "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at 24 hours)." = "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours).";
-"Incorrect total amount of MozoX tokens to be airdropped. Please check your input." = "Incorrect total amount of MozoX tokens to be airdropped. Please check your input.";
+"error_amount_not_enough_to_airdrop" = "Incorrect total amount of MozoX tokens to be airdropped. Please check your input.";
 "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input." = "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input.";
 
 "Something is wrong with your account status. Please try again." = "Something is wrong with your account status. Please try again.";
