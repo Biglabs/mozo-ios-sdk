@@ -61,7 +61,7 @@ public extension ApiManager {
     
     func createAirdropEvent(event: AirdropEventDTO) -> Promise<[IntermediaryTransactionDTO]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_API_PATH + "/prepare-event"
+            let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_API_PATH + "/prepare-event/v2"
             let param = event.toJSON()
             print("Create airdrop event params: \(param)")
             self.execute(.post, url: url, parameters: param)
