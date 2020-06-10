@@ -18,8 +18,8 @@ public class Configuration {
     public static var FONT_SIZE: UIFontTextSize = UIFontTextSize(.xSmall)
     public static let DEVICE_TOKEN = "DEVICE_TOKEN"
     public static let API_KEY_DEFAULT = "API_KEY_DEFAULT"
-    public static let LOCALE = Locale.current.languageCode ?? "en"
-    public static let PARAM_LANGUAGE = "?language=\(LOCALE)"
+    public static let LOCALE = Locale.current.identifier
+    public static let PARAM_LANGUAGE = "?language=\(Locale.current.languageCode ?? "en")"
     
     // User id for anonymous user
     public static let USER_ID_ANONYMOUS = "Mozo@UserId@Anonymous"
