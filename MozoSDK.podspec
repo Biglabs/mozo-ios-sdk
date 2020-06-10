@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "MozoSDK"
-  s.version      = "1.6.46"
+  s.version      = "2.0.0-alpha01"
   s.summary = 'Mozo protocol toolkit for Swift'
   s.description = <<-DESC
                         The Mozo SDK is a Swift implementation of the Mozo protocol. This SDK was originally made by Hoang Nguyen. It allows maintaining authentication/authorization with MozoX Services, receiving MozoX lucky coins via beacons and buying/selling/transferring MozoX. It is also supporting UI components for authentication and buying/selling/transferring MozoX.
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Mozo developers' => 'developer@mozocoin.io' }
   s.source           = { :git => 'https://github.com/Biglabs/mozo-ios-sdk.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.social_media_url = 'https://facebook.com/mozocoin.io'
 
   s.swift_version = '4.1'
   s.ios.deployment_target = '10.0'
