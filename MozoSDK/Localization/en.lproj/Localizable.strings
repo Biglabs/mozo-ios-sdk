@@ -88,7 +88,7 @@
 "Requested list is empty" = "Requested list is empty";
 "From:" = "From:";
 "Request:" = "Request:";
-"%@ MozoX" = "%@ MozoX";
+"%@ Mozo" = "%@ Mozo";
 "Send MozoX" = "Send MozoX";
 "Confirmation" = "Confirmation";
 "From MozoX Offchain Wallet" = "From MozoX Offchain Wallet";
@@ -362,7 +362,6 @@
 "Repeat:" = "Repeat:";
 "Your Store must have at least %d Hashtag." = "Your Store must have at least %d Hashtag.";
 "Only letters and numbers are allowed." = "Only letters and numbers are allowed.";
-"MozoX" = "MozoX";
 "Cancel" = "Cancel";
 "Yes" = "Yes";
 "No" = "No";
@@ -460,7 +459,7 @@
 "Store Address" = "Store Address";
 
 // SHOPPER
-"MozoX" = "MozoX";
+"Mozo" = "Mozo";
 "Get Coins" = "Get Coins";
 "My wallet" = "My wallet";
 "Profile" = "Profile";
@@ -853,8 +852,7 @@
 "Total MozoX tokens: %@" = "Total MozoX tokens: %@";
 
 // Discover + Beacon Error + About Content + Group Stores
-"Try search to discover more MozoX Airdrop Events" = "Try search to discover more MozoX Airdrop Events";
-"Please try search to discover more MozoX Airdrop Events" = "Please try search to discover more MozoX Airdrop Events";
+"airdrop_empty_discover_more" = "Try search to discover more Mozo Airdrop Events";
 "%.1fkm away" = "%.1fkm away";
 "%.1fm away" = "%.1fm away";
 "%dm away" = "%dm away";
@@ -886,9 +884,9 @@
 "View Event List" = "View Event List";
 
 "Select language to share" = "Select language to share";
-"MozoX App" = "MozoX App";
-"MozoX Retailer App" = "MozoX Retailer App";
-"Reward %@ MozoX" = "Reward %@ MozoX";
+"invite_shopper_app_name" = "Mozo Wallet App";
+"invite_retailer_app_name" = "Mozo Business App";
+"invite_reward_amount" = "Reward %@ Mozo";
 "Let your friends scan this QR codes or invite them to join MozoX. You will get rewards for each friend signed up successful." = "Let your friends scan this QR codes or invite them to join MozoX. You will get rewards for each friend signed up successful.";
 
 "Once per day" = "Once per day";
@@ -908,8 +906,8 @@
 
 // Invitation
 "Share via your network" = "Share via your network";
-"Let your friends scan this QR code to invite them to join MozoX, or message them by clicking on the “Share via your network” button." = "Let your friends scan this QR code to invite them to join MozoX, or message them by clicking on the “Share via your network” button.";
-"Let your friends scan this QR code to invite them to join MozoX, or message them by clicking on the “Share via your network” button. You will get rewards for each friend who sign up." = "Let your friends scan this QR code to invite them to join MozoX, or message them by clicking on the “Share via your network” button. You will get rewards for each friend who sign up.";
+"invite_explain_no_reward" = "Let your friends scan this QR code to invite them to join Mozo, or message them by clicking on the “Share via your network” button.";
+"invite_explain_reward" = "Let your friends scan this QR code to invite them to join Mozo, or message them by clicking on the “Share via your network” button. You will get rewards for each friend who sign up.";
 
 "View Photo" = "View Photo";
 "Select language for MozoX invitation" = "Select language for MozoX invitation";
@@ -1084,7 +1082,7 @@
 "Use" = "Use";
 "USE" = "USE";
 "(%d) USE" = "(%d) USE";
-"Discover stores around you to get more MozoX tokens now." = "Discover stores around you to get more MozoX tokens now.";
+"promo_empty_discover_more" = "Discover stores around you to get more Mozo tokens now.";
 "Show me" = "Show me";
 "Receive more MozoX by tapping" = "Receive more MozoX by tapping";
 "Paid Promotion" = "Paid Promotion";
@@ -1162,7 +1160,7 @@
 "Recommendation" = "Recommendation";
 "Coming Soon" = "Coming Soon";
 "COMING SOON" = "COMING SOON";
-"No Promotions nearby. Discover stores around you to get more MozoX tokens now." = "No Promotions nearby. Discover stores around you to get more MozoX tokens now.";
+"promo_empty_nearby" = "No Promotions nearby. Discover stores around you to get more Mozo tokens now.";
 "Redemption Amount" = "Redemption Amount";
 "Your MozoX Balance: %@" = "Your MozoX Balance: %@";
 "Your MozoX Balance:" = "Your MozoX Balance:";
@@ -1218,7 +1216,7 @@
 "Unsecure wallet 😱" = "Unsecure wallet 😱";
 "Airdrop events is almost out of MozoX 😞" = "Airdrop events is almost out of MozoX 😞";
 "Turn on for better experience →" = "Turn on for better experience →";
-"Turn on bluetooth to receive MozoX →" = "Turn on bluetooth to receive MozoX →";
+"todo_action_turn_on_bluetooth" = "Turn on bluetooth to receive Mozo →";
 "Discover your bookmarked promotions →" = "Discover your bookmarked promotions →";
 "Discover your purchased promotions →" = "Discover your purchased promotions →";
 "Review and create a new airdrop event →" = "Review and create a new airdrop event →";
@@ -1231,7 +1229,7 @@
 "Review and add more MozoX →" = "Review and add more MozoX →";
 "Unsolve" = "Unsolve";
 "Unsolve (%d)" = "Unsolve (%d)";
-"Complete these actions to make sure there are no problems happen while using MozoX app:" = "Complete these actions to make sure there are no problems happen while using MozoX app:";
+"todo_action_explain" = "Complete these actions to make sure there are no problems happen while using Mozo app:";
 "To Do List" = "To Do List";
 "Redemption" = "Redemption";
 "MozoX Offchain" = "MozoX Offchain";
@@ -1295,7 +1293,7 @@
 "Select payment method" = "Select payment method";
 "ticket_not_enough_mozo_in_top_up" = "Not enough Mozo in TopUp account";
 "ticket_not_enough_mozo_in_top_up_sub" = "Please deposit Mozo to TopUp account and try again. Or Use cash.";
-"Deposit MozoX" = "Deposit MozoX";
+"ticket_btn_deposit" = "Deposit Mozo";
 "Check in successfully" = "Check in successfully";
 "Scan this QR through QR code reader at parking gate to CHECK IN" = "Scan this QR through QR code reader at parking gate to CHECK IN";
 "Auto close in %02ds" = "Auto close in %02ds";
@@ -1312,7 +1310,7 @@
 "Show my parking ticket" = "Show my parking ticket";
 "Offline Parking Ticket" = "Offline Parking Ticket";
 "Free Parking Ticket" = "Free Parking Ticket";
-"Not enough MozoX, please use Cash to CHECK OUT" = "Not enough MozoX, please use Cash to CHECK OUT";
+"ticket_not_enough_mozo_for_check_out" = "Not enough Mozo, please use Cash to CHECK OUT";
 "ticket_not_enough_mozo_for_vehicle" = "Not enough Mozo with this type of vehicle";
 "ticket_not_enough_mozo_for_vehicle_sub" = "Please ask parking employee to use traditional RFID.";
 
@@ -1456,6 +1454,6 @@
 "Name and Address must not be empty" = "Name and Address must not be empty";
 "Beacon signal range is configured successfully.\n\nIf you want to modify Beacon Setting, go to More → Beacon List" = "Beacon signal range is configured successfully.\n\nIf you want to modify Beacon Setting, go to More → Beacon List";
 "Beacon signal range and Beacon location on map are configured successfully.\n\nIf you want to modify Beacon Setting, go to More → Beacon List" = "Beacon signal range and Beacon location on map are configured successfully.\n\nIf you want to modify Beacon Setting, go to More → Beacon List";
-"Could not transfer MozoX to your own wallet" = "Could not transfer MozoX to your own wallet";
+"Could not send Mozo to your own wallet" = "Could not send Mozo to your own wallet";
 "More → Beacon List" = "More → Beacon List";
 "Add New Sub Account" = "Add New Sub Account";

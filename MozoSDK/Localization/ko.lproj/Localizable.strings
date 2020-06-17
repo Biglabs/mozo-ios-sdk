@@ -88,7 +88,6 @@
 "Requested list is empty" = "요청한 리스트가 비어 있습니다.";
 "From:" = "부터:";
 "Request:" = "요청하기";
-"%@ MozoX" = "%@ MozoX";
 "Send MozoX" = "MozoX 보내기";
 "Confirmation" = "확인";
 "From MozoX Offchain Wallet" = "MozoX Offchain 월렛에서";
@@ -368,7 +367,6 @@
 "Repeat:" = "반복";
 "Your Store must have at least %d Hashtag." = "귀하의 상점은 적어도 하나의 해시 태그가 있어야합니다.";
 "Only letters and numbers are allowed." = "숫자 나 문자에만 허용됩니다.";
-"MozoX" = "MozoX";
 "Cancel" = "취소";
 "Yes" = "동의";
 "No" = "아니요";
@@ -463,7 +461,6 @@
 "Store Address" = "상점 주소";
 
 // SHOPPER
-"MozoX" = "MozoX";
 "Get Coins" = "코인 가져 오기";
 "My wallet" = "내 지갑";
 "Profile" = "프로필";
@@ -853,8 +850,7 @@
 "Total MozoX tokens: %@" = "총 MozoX 코인 : %@ 입니다.";
 
 // Discover + Beacon Error + About Content + Group Stores
-"Try search to discover more MozoX Airdrop Events" = "MozoX Airdrop 이벤트를  더 검색해보세요.";
-"Please try search to discover more MozoX Airdrop Events" = "MozoX Airdrop 이벤트를  더 검색해보시기를 바랍니다.";
+"airdrop_empty_discover_more" = "Mozo Airdrop 이벤트를  더 검색해보세요.";
 "%.1fkm away" = "%.1fkm 거리에 있습니다.";
 "%.1fm away" = "%.1fm 거리에 있습니다.";
 "%dm away" = "%dm 거리에 있습니다.";
@@ -886,9 +882,9 @@
 "View Event List" = "이벤트 리스트보기";
 
 "Select language to share" = "공유 할 언어 선택";
-"MozoX App" = "MozoX 앱";
-"MozoX Retailer App" = "MozoX 소매 앱";
-"Reward %@ MozoX" = "%@ 의 MozoX 보상을 받게 됩니다.";
+"invite_shopper_app_name" = "Mozo 지갑 앱";
+"invite_retailer_app_name" = "Mozo 비지니스 앱";
+"invite_reward_amount" = "%@ 의 Mozo 보상을 받게 됩니다.";
 "Let your friends scan this QR codes or invite them to join MozoX. You will get rewards for each friend signed up successful." = "친구가 이 QR 코드를 스캔하거나 MozoX에 가입하도록 초대하십시오. 성공적으로 등록 된 각 친구에 대한 보상을 받게 됩니다.";
 
 "Once per day" = "하루에 한 번";
@@ -908,8 +904,8 @@
 
 // Invitation
 "Share via your network" = "네트워크를 통해 공유";
-"Let your friends scan this QR code to invite them to join MozoX, or message them by clicking on the “Share via your network” button." = "친구가 이 QR 코드를 스캔하여 MozoX에 가입하도록 초대하거나 “네트워크를 통해 공유“버튼을 클릭하여 메시지를 보내도록하십시오.";
-"Let your friends scan this QR code to invite them to join MozoX, or message them by clicking on the “Share via your network” button. You will get rewards for each friend who sign up." = "친구가 이 QR 코드를 스캔하여 MozoX에 가입하도록 초대하거나 “네트워크를 통해 공유“버튼을 클릭하여 메시지를 보내도록하십시오. 가입 한 각 친구에 대한 보상을 받게됩니다.";
+"invite_explain_no_reward" = "친구가 이 QR 코드를 스캔하여 Mozo에 가입하도록 초대하거나 \"네트워크를 통해 공유\"버튼을 클릭하여 메시지를 보내도록하십시오.";
+"invite_explain_reward" = "친구에게 이 QR 코드를 스캔하게 하여 Mozo에 가입하도록 초대하거나 \"네트워크를 통해 공유\"버튼을 클릭하여 메시지를 보내도록하십시오. 가입 한 각 친구에 대한 보상을 받게됩니다.";
 
 "View Photo" = "사진보기";
 "Select language for MozoX invitation" = "MozoX 초대 언어 선택";
@@ -1094,7 +1090,7 @@
 "Use" = "사용";
 "USE" = "사용";
 "(%d) USE" = "(%d) 사용";
-"Discover stores around you to get more MozoX tokens now." = "주변 스토어를 살펴봐 모조X를 더 받트세요";
+"Khám phá cửa hàng xung quanh để kiếm thêm điểm thưởng Mozo." = "주변 상점를 살펴봐 Mozo를 더 받트세요";
 "Show me" = "나에게 보여줘";
 "Receive more MozoX by tapping" = "탭해서 모조X를 더 받으세요";
 "Paid Promotion" = "결제된 프로모션";
@@ -1172,7 +1168,7 @@
 "Recommendation" = "추천";
 "Coming Soon" = "시작 예정";
 "COMING SOON" = "시작 예정";
-"No Promotions nearby. Discover stores around you to get more MozoX tokens now." = "근처에 있는 프로모션 없습니다. 당신 주변 스토어 살펴봐 더 많은 모조X 토큰 받아가세요.";
+"promo_empty_nearby" = "근처에 있는 프로모션 없습니다. 당신 주변 상점 살펴봐 더 많은 Mozo 토큰 받아가세요.";
 "Redemption Amount" = "결제해야 할 모조X";
 "Your MozoX Balance: %@" = "잔여 모조X: %@";
 "Your MozoX Balance:" = "잔여 모조 X:";
@@ -1228,7 +1224,7 @@
 "Unsecure wallet 😱" = "안전하지 않은 지갑 😱";
 "Airdrop events is almost out of MozoX 😞" = "에어드롭 이벤트에 모조X 거의다 배분했습니다 😞";
 "Turn on for better experience →" = "더 좋은 체험을 위해 위치 기능 켜십시요 →";
-"Turn on bluetooth to receive MozoX →" = "모조X 받기 위해 블루투스 기능 켜십시요 →";
+"todo_action_turn_on_bluetooth" = "Mozo 받기 위해 블루투스 기능 켜십시요 →";
 "Discover your bookmarked promotions →" = "좋아하는 프로모션 보기 →";
 "Discover your purchased promotions →" = "구매한 프로모션 사용하기 →";
 "Review and create a new airdrop event →" = "새로운 이벤트 리뷰하고 만들기 →";
@@ -1241,7 +1237,7 @@
 "Review and add more MozoX →" = "모조X 보기 와 추가하기";
 "Unsolve" = "처리되지 않았습니다";
 "Unsolve (%d)" = "(%d) 처리되지 않았습니다";
-"Complete these actions to make sure there are no problems happen while using MozoX app:" = "모조X 앱을 문제 없이 사용하기 위해 아래에 나열된 것을 완료하세요.";
+"todo_action_explain" = "Mozo 앱을 문제 없이 사용하기 위해 아래에 나열된 것을 완료하세요.";
 "To Do List" = "해야 할 일";
 "Redemption" = "토큰 사용";
 "MozoX Offchain" = "MozoX Offchain";
@@ -1305,7 +1301,7 @@
 "Select payment method" = "결제 방법 선택";
 "ticket_not_enough_mozo_in_top_up" = "TopUP 계정에 Mozo 수 부족";
 "ticket_not_enough_mozo_in_top_up_sub" = "TopUp 계정에 Mozo 충전한 뒤 다시 시도해보세요. 또는 현금으로 하세요.";
-"Deposit MozoX" = "MozoX 충전";
+"ticket_btn_deposit" = "Mozo 충전";
 "Check in successfully" = "체크인 성공";
 "Scan this QR through QR code reader at parking gate to CHECK IN" = "체크인 하기 위해 입구에 있는 QR 코드 인식기를 통해 이 QR 코드 스캔하세요";
 "Auto close in %02ds" = "%02d초 안에 자도 닫임";
@@ -1322,7 +1318,7 @@
 "Show my parking ticket" = "나의 주차 티켓 보여주기";
 "Offline Parking Ticket" = "오프라인 주차 티켓";
 "Free Parking Ticket" = "무료 주차 티켓";
-"Not enough MozoX, please use Cash to CHECK OUT" = "MozoX 부족. 체크아웃 하기 위해 현금으로 하세요.";
+"ticket_not_enough_mozo_for_check_out" = "Mozo 부족. 체크아웃 하기 위해 현금으로 하세요.";
 "ticket_not_enough_mozo_for_vehicle" = "이 차량 종류에 대한 Mozo 부족";
 "ticket_not_enough_mozo_for_vehicle_sub" = "전통 RFID 카드 사용하기 위해 직원에게 문의하세요.";
 
@@ -1466,6 +1462,6 @@
 "Name and Address must not be empty" = "이름과 주소는 비어서 안된다.";
 "Beacon signal range is configured successfully.\n\nIf you want to modify Beacon Setting, go to More → Beacon List" = "Beacon 신호 범위 설정 성공.\n\nBeacon 설정 수정 원하면 기타 → Beacon 리스트로 이동하세요";
 "Beacon signal range and Beacon location on map are configured successfully.\n\nIf you want to modify Beacon Setting, go to More → Beacon List" = "Beacon 신호 범위 및 Beacon 지도 위치 설정 성공.\n\nBeacon 설정 수정 원하면 기타 → Beacon 리스트로 이동하세요";
-"Could not transfer MozoX to your own wallet" = "본인에게 MozoX 보내기 불가능";
+"Could not send Mozo to your own wallet" = "본인에게 Mozo 보내기 불가능";
 "More → Beacon List" = "기타 → Beacon 리스트";
 "Add New Sub Account" = "새로운 하위 계정 추가";

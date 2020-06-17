@@ -129,7 +129,7 @@ public enum ErrorApiResponse: String {
         case .TRANSACTION_ERROR_NONCE_TOO_LOW: return "Something is wrong with your account status. Please try again."
         case .TRANSACTION_ERROR_SEND_TX: return "Something is wrong with your account status. Please try again."
         case .TRANSACTION_ERROR_INVALID_ADDRESS: return "This wallet address does not exist. We only support registered MozoX wallet addresses."
-        case .ERROR_CANNOT_TRANSFER_TO_YOUR_OWN_WALLET: return "Could not transfer to your own wallet"
+        case .ERROR_CANNOT_TRANSFER_TO_YOUR_OWN_WALLET: return "Could not send Mozo to your own wallet"
             
         case .SOLOMON_FATAL_USER_NO_PROFILE: return "Cannot connect to MozoX servers. Please contact us for more information (email + phone)"
 

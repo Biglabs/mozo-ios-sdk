@@ -44,7 +44,7 @@ public enum TodoEnum: String {
     public var actionText: String {
         switch self {
         case .LOCATION_SERVICE_OFF: return "Turn on for better experience →"
-        case .BLUETOOTH_OFF: return "Turn on bluetooth to receive MozoX →"
+        case .BLUETOOTH_OFF: return "todo_action_turn_on_bluetooth"
         case .AIRDROP_NEARBY: return "Discover stores offering MozoX →"
         case .PROMOTION_NEARBY: return "Discover your bookmarked promotions →"
         case .VOUCHER_NEARBY: return "Discover your purchased promotions →"
