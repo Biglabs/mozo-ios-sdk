@@ -11,7 +11,7 @@ import SwiftyJSON
 
 let RETAILER_ANALYTICS_RESOURCE_API_PATH = "/retailer/analytics"
 public extension ApiManager {
-    public func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?> {
+    func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_ANALYTICS_RESOURCE_API_PATH + "/home"
             self.execute(.get, url: url)
@@ -32,7 +32,7 @@ public extension ApiManager {
         }
     }
     
-    public func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]> {
+    func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_ANALYTICS_RESOURCE_API_PATH + "/customer-and-airdrop"
             self.execute(.get, url: url)

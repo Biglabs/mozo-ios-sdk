@@ -137,26 +137,26 @@ public class PromotionDisplayItem {
         return "%d%% OFF".localizedFormat(discountPercent)
     }
     
-    public var mozoXRequireDouble: Double {
+    public var mozoRequireDouble: Double {
         let decimals = SessionStoreManager.tokenInfo?.decimals ?? 2
         return self.value.convertOutputValue(decimal: decimals)
     }
     
-    public var mozoXRequireText: String {
-        return self.mozoXRequireDouble.addCommas()
+    public var mozoRequireText: String {
+        return self.mozoRequireDouble.addCommas()
     }
     
-    public var mozoXRequireExchangeText: String {
-        return DisplayUtils.getExchangeTextFromAmount(self.mozoXRequireDouble)
+    public var mozoRequireExchangeText: String {
+        return DisplayUtils.getExchangeTextFromAmount(self.mozoRequireDouble)
     }
     
-    public var mozoXTotalReceived: Double {
+    public var mozoTotalReceived: Double {
         let decimals = SessionStoreManager.tokenInfo?.decimals ?? 2
         return self.receivedMozoX.convertOutputValue(decimal: decimals)
     }
     
-    public var mozoXTotalReceivedText: String {
-        return self.mozoXTotalReceived.addCommas()
+    public var mozoTotalReceivedText: String {
+        return self.mozoTotalReceived.addCommas()
     }
     
     public var fromDateText: String {
