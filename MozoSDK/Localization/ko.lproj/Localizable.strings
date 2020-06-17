@@ -666,10 +666,10 @@
 "Global Ultility" = "전 세계적으로 사용 가능";
 "Share Interest" = "관심 분야 공유";
 "Token of Discovery" = "발견된 코인";
-"Discover interested store around you and get reward by MozoX" = "주위에 관심있는 상점을 찾고 MozoX 를 받으십시오.";
-"Use rewarded MozoX to redeem in any stores using MozoX" = "받은 MozoX 코인을 MozoX를 적용하는 상점에서 보상으로 바꿀 수 있습니다.";
-"Transfer MozoX to your friends easily by using MozoX Wallet" = "MozoX 월렛을  통해 MozoX를 친구에게 쉽게 이전합니다.";
-"Discover more and get more with MozoX" = "MozoX로 더 많이 발견하고 더 많이 얻으십시오.";
+"intro_step_collectible" = "주위에 관심있는 상점을 찾고 Mozo 를 받으십시오.";
+"intro_step_global_ultility" = " 받은 Mozo 코인을 Mozo를 적용하는 상점에서 보상으로 바꿀 수 있습니다.";
+"intro_step_share_interest" = "Mozo 월렛을  통해 Mozo를 친구에게 쉽게 이전합니다.";
+"intro_step_token_of_discovery" = "Mozo 체험하고 받으시오";
 "Let's get started!" = "시작하자!";
 "Disrupt Foot Traffic" = "고객 트래픽 폭발";
 "Analytics" = "분석 보고";
@@ -1303,13 +1303,12 @@
 "Extra fee" = "추가 비용";
 "Change" = "수정";
 "Select payment method" = "결제 방법 선택";
-"Not enough MozoX in TopUp account" = "TopUP 계정에 MozoX 수 부족";
-"Please deposit MozoX to TopUp account and try again. Or Use cash." = "TopUp 계정에 MozoX 충전한 뒤 다시 시도해보세요. 또는 현금으로 하세요.";
+"ticket_not_enough_mozo_in_top_up" = "TopUP 계정에 Mozo 수 부족";
+"ticket_not_enough_mozo_in_top_up_sub" = "TopUp 계정에 Mozo 충전한 뒤 다시 시도해보세요. 또는 현금으로 하세요.";
 "Deposit MozoX" = "MozoX 충전";
 "Check in successfully" = "체크인 성공";
 "Scan this QR through QR code reader at parking gate to CHECK IN" = "체크인 하기 위해 입구에 있는 QR 코드 인식기를 통해 이 QR 코드 스캔하세요";
 "Auto close in %02ds" = "%02d초 안에 자도 닫임";
-"You are out of MozoX." = "MozoX 부족";
 "Check out successfully" = "체크아웃 성공";
 "TopUp Account" = "TopUp 계정";
 "Deposit" = "입금";
@@ -1324,8 +1323,8 @@
 "Offline Parking Ticket" = "오프라인 주차 티켓";
 "Free Parking Ticket" = "무료 주차 티켓";
 "Not enough MozoX, please use Cash to CHECK OUT" = "MozoX 부족. 체크아웃 하기 위해 현금으로 하세요.";
-"Not enough MozoX with this type of vehicle" = "이 차량 종류에 대한 MozoX 부족";
-"Please ask parking employee to use traditional RFID." = "전통 RFID 카드 사용하기 위해 직원에게 문의하세요.";
+"ticket_not_enough_mozo_for_vehicle" = "이 차량 종류에 대한 Mozo 부족";
+"ticket_not_enough_mozo_for_vehicle_sub" = "전통 RFID 카드 사용하기 위해 직원에게 문의하세요.";
 
 "The parking ticket feature is not available with you at this store at the moment" = "당신에게 이 매점에서 주차 티켓 기능은 지원되지 않습니다.";
 "You are already CHECK IN at this store. Please CHECK OUT the previous ticket before using another one." = "이 매점에 이미 체크인 되었습니다. 기존 티켓 체크아웃 한 뒤 다은 것을 사용하세요.";
