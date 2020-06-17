@@ -667,10 +667,10 @@
 "Global Ultility" = "Khả dụng trên toàn cầu";
 "Share Interest" = "Chia sẻ nhanh chóng";
 "Token of Discovery" = "Điểm thưởng cho sự khám phá";
-"Discover interested store around you and get reward by MozoX" = "Khám phá những cửa hàng xung quanh và nhận MozoX";
-"Use rewarded MozoX to redeem in any stores using MozoX" = "MozoX đã nhận có thể dùng đổi thưởng tại các cửa hàng áp dụng MozoX";
-"Transfer MozoX to your friends easily by using MozoX Wallet" = "Dễ dàng chuyển nhận MozoX với bạn bè với ví MozoX";
-"Discover more and get more with MozoX" = "Khám phá và nhận thưởng với MozoX";
+"intro_step_collectible" = "Khám phá những cửa hàng xung quanh và nhận Mozo";
+"intro_step_global_ultility" = "Dùng Mozo đã nhận để đổi thưởng tại các cửa hàng trong hệ thống Mozo";
+"intro_step_share_interest" = "Dễ dàng chuyển nhận điểm thưởng Mozo với bạn bè với ví Mozo";
+"intro_step_token_of_discovery" = "Hãy khám phá và nhận Mozo";
 "Let's get started!" = "Bắt đầu";
 "Disrupt Foot Traffic" = "Đẩy mạnh lưu lượng khách";
 "Analytics" = "Báo cáo";
@@ -1297,13 +1297,12 @@
 "Extra fee" = "Phí cộng thêm";
 "Change" = "Thay đổi";
 "Select payment method" = "Chọn cách tính phí";
-"Not enough MozoX in TopUp account" = "Không đủ MozoX trong tài khoản TopUp";
-"Please deposit MozoX to TopUp account and try again. Or Use cash." = "Xin vui lòng nạp MozoX vào tài khoản TopUp và thử lại. Hoặc dùng tiền mặt.";
+"ticket_not_enough_mozo_in_top_up" = "Không đủ Mozo trong tài khoản TopUp";
+"ticket_not_enough_mozo_in_top_up_sub" = "Xin vui lòng nạp Mozo vào tài khoản TopUp và thử lại. Hoặc dùng tiền mặt.";
 "Deposit MozoX" = "Nạp MozoX";
 "Check in successfully" = "Kiểm vé vào thành công";
 "Scan this QR through QR code reader at parking gate to CHECK IN" = "Quét mã QR qua máy đọc tại cổng để VÀO";
 "Auto close in %02ds" = "Sẽ đóng trong vòng %02d giây";
-"You are out of MozoX." = "Bạn không đủ MozoX.";
 "Check out successfully" = "Kiểm vé ra thành công";
 "TopUp Account" = "Tài khoản TopUp";
 "Deposit" = "Nạp vào";
@@ -1318,8 +1317,8 @@
 "Offline Parking Ticket" = "Vé gởi xe ngoại tuyến";
 "Free Parking Ticket" = "Vé gởi xe miễn phí";
 "Not enough MozoX, please use Cash to CHECK OUT" = "Không đủ MozoX. Xin vui lòng thanh toán bằng tiền mặt để RA";
-"Not enough MozoX with this type of vehicle" = "Không đủ MozoX để trả phí cho loại xe này";
-"Please ask parking employee to use traditional RFID." = "Xin vui lòng yêu cầu nhân viên giữ xe dùng thẻ từ như bình thường.";
+"ticket_not_enough_mozo_for_vehicle" = "Không đủ Mozo để trả phí cho loại xe này";
+"ticket_not_enough_mozo_for_vehicle_sub" = "Xin vui lòng yêu cầu nhân viên giữ xe dùng thẻ từ như bình thường.";
 
 "The parking ticket feature is not available with you at this store at the moment" = "Hiện tại tính năng giữ xe không khả dụng với bạn ở cửa hàng này.";
 "You are already CHECK IN at this store. Please CHECK OUT the previous ticket before using another one." = "Xe của bạn đã được gởi thành công tại cửa hàng. Xin vui lòng lấy xe khỏi bãi trước khi lấy vé mới.";

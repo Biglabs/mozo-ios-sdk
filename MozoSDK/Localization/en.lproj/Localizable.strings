@@ -665,10 +665,10 @@
 "Global Ultility" = "Global Ultility";
 "Share Interest" = "Share Interest";
 "Token of Discovery" = "Token of Discovery";
-"Discover interested store around you and get reward by MozoX" = "Discover interested store around you and get reward by MozoX";
-"Use rewarded MozoX to redeem in any stores using MozoX" = "Use rewarded MozoX to redeem in any stores using MozoX";
-"Transfer MozoX to your friends easily by using MozoX Wallet" = "Transfer MozoX to your friends easily by using MozoX Wallet";
-"Discover more and get more with MozoX" = "Discover more and get more with MozoX";
+"intro_step_collectible" = "Discover interested store around you and get reward by Mozo";
+"intro_step_global_ultility" = "Use rewarded Mozo to redeem in any stores in Mozo ecosystem";
+"intro_step_share_interest" = "Transfer Mozo to your friends easily by using Mozo Wallet";
+"intro_step_token_of_discovery" = "Let discover and get Mozo";
 "Let's get started!" = "Let's get started!";
 "Disrupt Foot Traffic" = "Disrupt Foot Traffic";
 "Analytics" = "Analytics";
@@ -1293,13 +1293,12 @@
 "Extra fee" = "Extra fee";
 "Change" = "Change";
 "Select payment method" = "Select payment method";
-"Not enough MozoX in TopUp account" = "Not enough MozoX in TopUp account";
-"Please deposit MozoX to TopUp account and try again. Or Use cash." = "Please deposit MozoX to TopUp account and try again. Or Use cash.";
+"ticket_not_enough_mozo_in_top_up" = "Not enough Mozo in TopUp account";
+"ticket_not_enough_mozo_in_top_up_sub" = "Please deposit Mozo to TopUp account and try again. Or Use cash.";
 "Deposit MozoX" = "Deposit MozoX";
 "Check in successfully" = "Check in successfully";
 "Scan this QR through QR code reader at parking gate to CHECK IN" = "Scan this QR through QR code reader at parking gate to CHECK IN";
 "Auto close in %02ds" = "Auto close in %02ds";
-"You are out of MozoX." = "You are out of MozoX.";
 "Check out successfully" = "Check out successfully";
 "TopUp Account" = "TopUp Account";
 "Deposit" = "Deposit";
@@ -1314,8 +1313,8 @@
 "Offline Parking Ticket" = "Offline Parking Ticket";
 "Free Parking Ticket" = "Free Parking Ticket";
 "Not enough MozoX, please use Cash to CHECK OUT" = "Not enough MozoX, please use Cash to CHECK OUT";
-"Not enough MozoX with this type of vehicle" = "Not enough MozoX with this type of vehicle";
-"Please ask parking employee to use traditional RFID." = "Please ask parking employee to use traditional RFID.";
+"ticket_not_enough_mozo_for_vehicle" = "Not enough Mozo with this type of vehicle";
+"ticket_not_enough_mozo_for_vehicle_sub" = "Please ask parking employee to use traditional RFID.";
 
 "The parking ticket feature is not available with you at this store at the moment" = "The parking ticket feature is not available with you at this store at the moment";
 "You are already CHECK IN at this store. Please CHECK OUT the previous ticket before using another one." = "You are already CHECK IN at this store. Please CHECK OUT the previous ticket before using another one.";
