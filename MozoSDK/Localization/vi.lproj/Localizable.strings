@@ -505,7 +505,7 @@
 "Sorted by:" = "Sắp xếp theo:";
 "Total MozoX Coins" = "Tổng MozoX";
 "Total MozoX Coins:" = "Tổng MozoX:";
-"Total MozoX:" = "Tổng MozoX:";
+"text_total_mozo" = "Tổng Mozo:";
 "Fill in to get %@ MozoX" = "Điền để nhận %@ MozoX";
 "Receive %@ MozoX for each join" = "Nhận %@ MozoX cho mỗi người tham gia";
 "Allow MozoX to access your location?" = "Cho phép MozoX truy cập vị trí của bạn?";
@@ -640,7 +640,7 @@
 "System error" = "Lỗi hệ thống";
 /* API ERROR MESSAGE */
 "Your session has expired. Please login again" = "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại";
-"Cannot connect to MozoX servers. Please contact us for more information (email + phone)" = "Không thể kết nối máy chủ MozoX. Liên hệ tư vấn viên để biết thêm thông tin (email + phone)";
+"error_fatal" = "Không thể kết nối máy chủ Mozo. Liên hệ tư vấn viên để biết thêm thông tin (email + phone)";
 
 "Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)" = "Tài khoản của bạn tạm thời bị vô hiệu hóa. Xin đăng nhập bằng tài khoản khác hoặc liên hệ tư vấn viên để biết thêm thông tin (phone + email)";
 
@@ -820,7 +820,7 @@
 "Cannot complete convert MozoX from Onchain to Offchain." = "Không thể hoàn tất việc đổi MozoX từ Onchain thành Offchain.";
 "Please try again after some time." = "Xin đợi một lúc và thử lại.";
 "No routes found" = "Không tìm thấy đường đi";
-"Discover more Airdrop Events to get MozoX 👌" = "Khám phá thêm chương trình Airdrop để nhận MozoX 👌";
+"airdrop_discover_more_on_map" = "Khám phá thêm chương trình Airdrop để nhận Mozo 👌";
 "Your store have not been registered on our website yet. Please contact MozoX Customer Service for support. (Zalo - Kakao - Telegram)" = "Cửa hàng của bạn chưa được đăng ký trên hệ thống website MozoX. Xin liên hệ dịch vụ chăm sóc khách hàng để được hỗ trợ. (Zalo - Kakao - Telegram)";
 "This store has left MozoX ecosystem. Sorry for any inconvenience." = "Cửa hàng này đã ra khỏi hệ sinh thái MozoX. Xin lỗi vì sự bất tiện này.";
 "Withdraw MozoX from airdrop event is failed" = "Rút MozoX từ chương trình Airdrop thất bại.";
@@ -861,7 +861,7 @@
 "%dm away" = "Cách %dm";
 "Version" = "Phiên bản";
 "Website" = "Trang Web";
-"MozoX Token’s primary application is to serve as the foundation for Mozo’s rewards-based solution for retail venues to increase and control foot traffic. MozoX Tokens can be used as rewards and then redeemed at any participating retailer in the MozoX network. Beyond this purpose, MozoX Tokens can also be exchanged as gifts or bought and sold through selected exchange platform." = "Ứng dụng chính của điểm MozoX là phục vụ cho giải pháp phần thưởng Mozo, cho các địa điểm bán lẻ để tăng và kiểm soát lưu lượng khách đến cửa hàng. Điểm MozoX có thể được sử dụng làm phần thưởng và sau đó được đổi tại bất kỳ cửa hàng bán lẻ nào tham gia vào trong mạng MozoX. Ngoài mục đích này, điểm MozoX còn có thể được trao đổi làm quà tặng hoặc mua và bán thông qua các sàn giao dịch được chỉ định";
+"text_about_mozo" = "Ứng dụng chính của Mozo là sử dụng nó để làm nền tảng phục vụ cho giải pháp thưởng của Mozo, để các nhà bán lẻ, các trung tâm tổ chức sự kiện để kiểm soát và tăng lưu lượng khách đến. Mozo có thể dùng để thưởng và đổi tại bất kỳ cửa hàng nào trong hệ sinh thái Mozo. Ngoài mục đích này, Mozo còn được dùng như quà tặng.";
 
 
 "Beacon Error" = "Beacon lỗi";
@@ -913,15 +913,14 @@
 "invite_explain_reward" = "Cho bạn bè quét mã QR này để mời họ tham gia Mozo, hoặc ấn chọn \"Chia sẻ qua mạng xã hội\" để đăng tải thông điệp. Bạn sẽ được thưởng Mozo cho mỗi người bạn đăng ký thành công.";
 
 "View Photo" = "Xem ảnh";
-"Select language for MozoX invitation" = "Chọn ngôn ngữ cho lời mời tham gia MozoX";
-"Share Retailer App Instead" = "Hoặc chia sẻ ứng dụng MozoX Retailer";
+"invite_select_language" = "Chọn ngôn ngữ cho lời mời tham gia Mozo";
 
 // Reset PIN - Notification Group - Suggestion Search - Empty state with CTA - Maintenance Mode - Profile Update Notification - Error Popup
-"%u more MozoX received" = "%u MozoX nữa đã được nhận";
-"%u more MozoX sent" = "%u MozoX nữa đã được gửi đi";
-"%u more MozoX received from Airdrop Events" = "%u MozoX nữa đã nhận được từ chương trình Airdrop";
+"notify_group_received_more" = "%u Mozo nữa đã được nhận";
+"notify_group_sent" = "%u Mozo nữa đã được gửi đi";
+"notify_group_received_from_event" = "%u Mozo nữa đã nhận được từ chương trình Airdrop";
 "Your friends have joined MozoX" = "Bạn bè của bạn đã tham gia MozoX";
-"%u more friends joined MozoX" = "%u người bạn nữa đã tham gia MozoX";
+"notify_group_friends_joined" = "%u người bạn nữa đã tham gia Mozo";
 "Customers arrived" = "Khách vừa đến";
 "%u more customers arrived" = "%u khách vừa đến";
 "Customers departed" = "Khách đã rời khỏi";
@@ -1086,7 +1085,7 @@
 "(%d) USE" = "(%d) DÙNG";
 "promo_empty_discover_more" = "Khám phá cửa hàng xung quanh để kiếm thêm điểm thưởng Mozo.";
 "Show me" = "Xem";
-"Receive more MozoX by tapping" = "Nhấn để nhận thêm MozoX";
+"promo_receive_more_by_tapping" = "Nhấn để nhận thêm điểm thưởng Mozo";
 "Paid Promotion" = "Khuyến mãi đã thanh toán";
 "Purchased:" = "Đã thanh toán:";
 "Purchased Date & Time:" = "Ngày giờ thanh toán:";
@@ -1164,10 +1163,9 @@
 "COMING SOON" = "SẮP DIỄN RA";
 "promo_empty_nearby" = "Không có khuyến mãi nào gần đây. Khám phá cửa hàng xung quanh để kiếm thêm điểm thưởng Mozo.";
 "Redemption Amount" = "Số MozoX cần thanh toán";
-"Your MozoX Balance: %@" = "Số dư MozoX: %@";
-"Your MozoX Balance:" = "Số dư MozoX:";
-"Your MozoX" = "MozoX hiện có";
-"MozoX Collected Today" = "MozoX đã nhận trong ngày";
+"text_your_mozo_balance" = "Số dư Mozo:";
+"text_your_mozo" = "Mozo hiện có";
+"text_mozo_collected_today" = "Mozo đã nhận trong ngày";
 "Activating..." = "Đang kích hoạt...";
 "Running Promotions (%d)" = "Khuyến mãi hiện có (%d)";
 "Running Promotions" = "Khuyến mãi hiện có";
