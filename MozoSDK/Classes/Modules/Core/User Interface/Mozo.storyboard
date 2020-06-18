@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -489,7 +489,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter amount to send" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eb8-Io-Hbg">
-                                        <rect key="frame" x="20" y="167" width="315" height="17"/>
+                                        <rect key="frame" x="20" y="167" width="315" height="18.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                         <userDefinedRuntimeAttributes>
@@ -497,13 +497,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cax-bg-RYT">
-                                        <rect key="frame" x="355" y="175.5" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="355" y="176.5" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4v-2e-FHz">
-                                        <rect key="frame" x="20" y="186.5" width="335" height="1"/>
+                                        <rect key="frame" x="20" y="187.5" width="335" height="1"/>
                                         <color key="backgroundColor" red="0.83137254901960778" green="0.83137254901960778" blue="0.83137254901960778" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="TgG-O3-DHY"/>
@@ -521,7 +521,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error: Please input value in decimal format." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQo-Vs-NRk">
-                                        <rect key="frame" x="20" y="190" width="225" height="14"/>
+                                        <rect key="frame" x="20" y="191" width="225" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.94117647059999998" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -530,7 +530,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LoO-n6-V1E">
-                                        <rect key="frame" x="20" y="196.5" width="335" height="15"/>
+                                        <rect key="frame" x="20" y="197.5" width="335" height="15"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spendable:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SpS-KG-5Az">
                                                 <rect key="frame" x="0.0" y="0.0" width="64" height="15"/>
@@ -742,7 +742,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter amount to receive" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="05s-JH-OKv">
-                                        <rect key="frame" x="60" y="142" width="275" height="18"/>
+                                        <rect key="frame" x="60" y="141.5" width="275" height="19.5"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -751,7 +751,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8e0-Sv-6PP">
-                                        <rect key="frame" x="20" y="173" width="335" height="1"/>
+                                        <rect key="frame" x="20" y="174" width="335" height="1"/>
                                         <color key="backgroundColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="dn8-xW-6LM"/>
@@ -942,7 +942,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter amount to convert MozoX Offchain" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wDX-Ob-1vJ">
-                                                <rect key="frame" x="46" y="145" width="314" height="18"/>
+                                                <rect key="frame" x="46" y="144.5" width="314" height="19.5"/>
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -3464,7 +3464,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter contact name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ct-aR-6Vp">
-                                <rect key="frame" x="15" y="50" width="345" height="18"/>
+                                <rect key="frame" x="15" y="50" width="345" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -3475,7 +3475,7 @@
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyt-90-smz">
-                                <rect key="frame" x="15" y="81" width="345" height="1"/>
+                                <rect key="frame" x="15" y="82.5" width="345" height="1"/>
                                 <color key="backgroundColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="aTK-Jd-UQe"/>
@@ -3493,13 +3493,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0x97309d360C015695cf50892f035E516ccA1898F0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sje-Vk-7dr">
-                                <rect key="frame" x="15" y="136" width="345" height="18.5"/>
+                                <rect key="frame" x="15" y="137.5" width="345" height="18.5"/>
                                 <color key="textColor" red="0.078431372549019607" green="0.10196078431372549" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pry-n7-Yog">
-                                <rect key="frame" x="15" y="111" width="84.5" height="15"/>
+                                <rect key="frame" x="15" y="112.5" width="84.5" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -3525,7 +3525,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u68-uo-hX5" userLabel="CheckView">
-                                <rect key="frame" x="132.5" y="221.5" width="110" height="23"/>
+                                <rect key="frame" x="132.5" y="223" width="110" height="23"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_check_success" translatesAutoresizingMaskIntoConstraints="NO" id="ggG-rg-Oju">
                                         <rect key="frame" x="0.0" y="0.0" width="23" height="23"/>
@@ -3558,7 +3558,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lVG-08-RMK">
-                                <rect key="frame" x="15" y="169.5" width="345" height="1"/>
+                                <rect key="frame" x="15" y="171" width="345" height="1"/>
                                 <color key="backgroundColor" red="0.83137254900000002" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="RqS-TY-s85"/>
@@ -4014,18 +4014,18 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Input value in decimal format" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZMT-G6-8MR">
-                                        <rect key="frame" x="20" y="271" width="315" height="17"/>
+                                        <rect key="frame" x="20" y="271" width="315" height="18.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRe-0T-jGt">
-                                        <rect key="frame" x="355" y="279.5" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="355" y="280.5" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xq-za-hV9">
-                                        <rect key="frame" x="20" y="290.5" width="335" height="1"/>
+                                        <rect key="frame" x="20" y="291.5" width="335" height="1"/>
                                         <color key="backgroundColor" red="0.83137254900000002" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="K7E-sl-qTn"/>
@@ -4043,7 +4043,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tE8-P5-Vfz">
-                                        <rect key="frame" x="20" y="300.5" width="335" height="15"/>
+                                        <rect key="frame" x="20" y="301.5" width="335" height="15"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spendable:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6W-sb-6M1">
                                                 <rect key="frame" x="0.0" y="0.0" width="64" height="15"/>
@@ -4076,7 +4076,7 @@
                                         </constraints>
                                     </view>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error: Please input value in decimal format." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0q-HQ-ntV">
-                                        <rect key="frame" x="20" y="294" width="225" height="14"/>
+                                        <rect key="frame" x="20" y="295" width="225" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.94117647059999998" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -4206,7 +4206,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyQ-J9-hNB">
-                                            <rect key="frame" x="-130" y="6" width="110" height="32"/>
+                                            <rect key="frame" x="245" y="6" width="110" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="110" id="Dbg-1Q-FIa"/>
                                                 <constraint firstAttribute="height" constant="32" id="gFP-yz-d3f"/>
@@ -4277,7 +4277,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 0.5 MozoX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbF-Ak-YyV">
-                                                    <rect key="frame" x="-100.5" y="16" width="90.5" height="18"/>
+                                                    <rect key="frame" x="274.5" y="16" width="90.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -4289,7 +4289,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAj-3l-ZWm">
-                                                    <rect key="frame" x="-10" y="45.5" width="0.0" height="0.0"/>
+                                                    <rect key="frame" x="365" y="45.5" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -4446,13 +4446,13 @@
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjF-Xj-QzZ">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VFv-5B-Srl">
                                                 <rect key="frame" x="0.0" y="46.5" width="279" height="117"/>
-                                                <string key="text">Customers will accumulate enough reward tokens aka MozoX to redeem them for deals, discounts and promotions in the rewards program. Customers will accumulate enough reward tokens aka MozoX to redeem them for deals, discounts and promotions in the rewards program.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lTW-QZ-Xrl">
                                                 <rect key="frame" x="0.0" y="171.5" width="279" height="39"/>
                                                 <subviews>
@@ -4488,7 +4488,7 @@
                                             </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="kjF-Xj-QzZ" firstAttribute="top" secondItem="XgO-bs-kvZ" secondAttribute="bottom" constant="8" id="XrA-7l-Ocx"/>
+                                            <constraint firstItem="VFv-5B-Srl" firstAttribute="top" secondItem="XgO-bs-kvZ" secondAttribute="bottom" constant="8" id="fsy-c8-dLM"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -4530,8 +4530,8 @@
                         <outlet property="imgViewMaintenanceHeightConstraint" destination="2g2-zs-56c" id="bMT-g6-57w"/>
                         <outlet property="imgViewMaintenanceTopConstraint" destination="QUX-9k-08J" id="rbY-Iu-fFN"/>
                         <outlet property="imgViewMaintenanceWidthConstraint" destination="1Bj-ql-2qM" id="TTr-QE-GxJ"/>
-                        <outlet property="lbAnswer" destination="kjF-Xj-QzZ" id="2vl-iV-11c"/>
                         <outlet property="lbQuestionTitle" destination="XgO-bs-kvZ" id="IV1-Tr-TG2"/>
+                        <outlet property="txAnswer" destination="VFv-5B-Srl" id="gew-Tv-JXb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jxu-or-Kbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4712,7 +4712,7 @@
         <image name="ic_info" width="23" height="23"/>
         <image name="ic_loading" width="94.5" height="90"/>
         <image name="ic_mozo_offchain" width="24" height="24"/>
-        <image name="ic_mozo_onchain" width="30" height="30"/>
+        <image name="ic_mozo_onchain" width="24" height="24"/>
         <image name="ic_paper" width="15" height="18"/>
         <image name="ic_payment_complete" width="133" height="80"/>
         <image name="ic_pencil" width="26" height="26"/>
