@@ -504,7 +504,7 @@
 "%d Result(s) for" = "에 %d 개 결과";
 "Sorted by:" = "정렬 기준 :";
 "Total MozoX Coins: %@" = "총 MozoX 코인 수";
-"Total MozoX:" = "총 MozoX 코인 수:";
+"text_total_mozo" = "총 Mozo 코인 수:";
 "Fill in to get %@ MozoX" = "원하는 MozoX %@ 를 입력하세요.";
 "Receive %@ MozoX for each join MozoX" = "MozoX에 가입 할 때마다 %@ MozoX를 받습니다.";
 "Allow MozoX to access your location?" = "MozoX가 귀하의 위치에 접근하도록 허용 하시겠습니까?";
@@ -639,7 +639,7 @@
 
 // API ERROR MESSAGE
 "Your session has expired. Please login again" = "기간이 만료되었습니다. 다시 로그인하십시오.";
-"Cannot connect to MozoX servers. Please contact us for more information (email + phone)" = "MozoX 서버에 연결할 수 없습니다. 자세한 내용은 문의하십시오 (이메일 + 전화).";
+"error_fatal" = "Mozo 서버에 연결할 수 없습니다. 자세한 내용은 문의하십시오. (이메일 + 전화).";
 
 "Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)" = "계정서비스가 잠시 중단 되었습니다.다른 계정으로 로그인하거나 자세한 내용은 고객서비스팀에게 문의하십시오 (전화 + 이메일).";
 
@@ -815,7 +815,7 @@
 "Cannot complete convert MozoX from Onchain to Offchain." = "Onchain에서 Offchain으로 MozoX 변환을 완료 할 수 없습니다.";
 "Please try again after some time." = "잠시 후 다시 시도하십시오. ";
 "No routes found" = "경로를 찾을 수 없습니다.";
-"Discover more Airdrop Events to get MozoX 👌" = "MozoX를 얻기 위하여 더 많은 Airdrop 이벤트를 발견하시기를 바랍니다 👌";
+"airdrop_discover_more_on_map" = "Mozo를 얻기 위하여 더 많은 Airdrop 이벤트를 발견하시기를 바랍니다 👌";
 "Your store have not been registered on our website yet. Please contact MozoX Customer Service for support. (Zalo - Kakao - Telegram)" = "귀하의 상점은 저희 웹 사이트에 아직 등록되지 않았습니다. MozoX 고객 서비스에 지원을 요청하십시오. (Zalo - Kakao - Telegram)";
 "This store has left MozoX ecosystem. Sorry for any inconvenience." = "이 스토어는 MozoX 에코시스템에서 나갔습니다. 불편 드려서 죄송합니다.";
 "Withdraw MozoX from airdrop event is failed" = "실패된 Airdrop 이벤트에서 MozoX를 철회합니다.";
@@ -856,7 +856,7 @@
 "%dm away" = "%dm 거리에 있습니다.";
 "Version" = "버전";
 "Website" = "웹 사이트";
-"MozoX Token’s primary application is to serve as the foundation for Mozo’s rewards-based solution for retail venues to increase and control foot traffic. MozoX Tokens can be used as rewards and then redeemed at any participating retailer in the MozoX network. Beyond this purpose, MozoX Tokens can also be exchanged as gifts or bought and sold through selected exchange platform." = "MozoX Token의 기본 응용 프로그램은 소매점에 방문자 트래픽을 늘리고 제어하는 Mozo의 보상 기반 솔루션을위한 기반으로 사용하는 것입니다. MozoX Tokens은 보상으로 사용 되고 그 다음에 MozoX 네트워크의 참여하는 소매점에서 사용할 수 있습니다. 이 목적 외에도 MozoX Tokens은 선물로 교환하거나 선택한 교환 플랫폼을 통해 판매 및 판매 할 수 있습니다.";
+"text_about_mozo" = "Mozo Token의 주요 응용 프로그램은 소매점이 도보 트래픽을 늘리고 제어 할 수 있도록 Mozo의 보상 기반 솔루션을위한 기반으로 사용하는 것입니다.Mozo 토큰은 보상으로 사용 된 다음 Mozo 네트워크에 참여하는 모든 소매점에서 사용할 수 있습니다.이 목적 외에도 Mozo 토큰은 선물로 교환하거나 선정 된 교환 플랫폼을 통해 판매 및 판매 할 수 있습니다.";
 
 
 "Beacon Error" = "Beacon 오류";
@@ -908,15 +908,14 @@
 "invite_explain_reward" = "친구에게 이 QR 코드를 스캔하게 하여 Mozo에 가입하도록 초대하거나 \"네트워크를 통해 공유\"버튼을 클릭하여 메시지를 보내도록하십시오. 가입 한 각 친구에 대한 보상을 받게됩니다.";
 
 "View Photo" = "사진보기";
-"Select language for MozoX invitation" = "MozoX 초대 언어 선택";
-"Share Retailer App Instead" = "소매점 앱 공유";
+"invite_select_language" = "Mozo 초대 언어 선택";
 
 // Reset PIN - Notification Group - Suggestion Search - Empty state with CTA - Maintenance Mode - Profile Update Notification - Error Popup
-"%u more MozoX received" = "%u 모조X 더 수신됩니다.";
-"%u more MozoX sent" = "%u 모조X 더 전송 됩니다.";
-"%u more MozoX received from Airdrop Events" = "%u 총 모조X를 Airdrop 이벤트에서  더 받았습니다.";
+"notify_group_received_more" = "%u Mozo 더 수신됩니다.";
+"notify_group_sent" = "%u Mozo 더 전송 됩니다.";
+"notify_group_received_from_event" = "%u 총 Mozo를 Airdrop 이벤트에서  더 받았습니다.";
 "Your friends have joined MozoX" = "친구들이 모조X에 가입했습니다.";
-"%u more friends joined MozoX" = "%u 친구들이 모조X에 더 가입했습니다.";
+"notify_group_friends_joined" = "%u 친구들이 Mozo에 더 가입했습니다.";
 "Customers arrived" = "고객이 도착했습니다.";
 "%u more customers arrived" = "%u 고객이 더 도착했습니다.";
 "Customers departed" = "고객이 떠났습니다.";
@@ -1092,7 +1091,7 @@
 "(%d) USE" = "(%d) 사용";
 "Khám phá cửa hàng xung quanh để kiếm thêm điểm thưởng Mozo." = "주변 상점를 살펴봐 Mozo를 더 받트세요";
 "Show me" = "나에게 보여줘";
-"Receive more MozoX by tapping" = "탭해서 모조X를 더 받으세요";
+"promo_receive_more_by_tapping" = "탭해서 Mozo를 더 받으세요";
 "Paid Promotion" = "결제된 프로모션";
 "Purchased:" = "결제완료:";
 "Purchased Date & Time:" = "결제 날짜 및 시간:";
@@ -1170,10 +1169,9 @@
 "COMING SOON" = "시작 예정";
 "promo_empty_nearby" = "근처에 있는 프로모션 없습니다. 당신 주변 상점 살펴봐 더 많은 Mozo 토큰 받아가세요.";
 "Redemption Amount" = "결제해야 할 모조X";
-"Your MozoX Balance: %@" = "잔여 모조X: %@";
-"Your MozoX Balance:" = "잔여 모조 X:";
-"Your MozoX" = "당신의 모조X";
-"MozoX Collected Today" = "오늘 받으신 모조X";
+"text_your_mozo_balance" = "잔여 Mozo:";
+"text_your_mozo" = "당신의 Mozo";
+"text_mozo_collected_today" = "오늘 받으신 Mozo";
 "Activating..." = "활성화 중...";
 "Running Promotions (%d)" = "진행 중인 프로모션 (%d)";
 "Running Promotions" = "진행 중인 프로모션";
