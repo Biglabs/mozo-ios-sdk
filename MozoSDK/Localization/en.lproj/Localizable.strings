@@ -959,33 +959,6 @@
 "Go to Airdrop Events list" = "Go to Airdrop Events list";
 "Go to Promotions list" = "Go to Promotions list";
 
-"What are MozoX Tokens? What are MozoX Tokens used for?" = "What are MozoX Tokens? What are MozoX Tokens used for?";
-"MozoX Tokens are digital utility tokens that can be used by merchants to reward customers for visiting their venues. Customers can collect MozoX Tokens and redeem them for discounts on products and services as determined by each merchant." = "MozoX Tokens are digital utility tokens that can be used by merchants to reward customers for visiting their venues. Customers can collect MozoX Tokens and redeem them for discounts on products and services as determined by each merchant.";
-
-"How can I attract customers with MozoX?" = "How can I attract customers with MozoX?";
-"By offering MozoX Tokens for visiting your venue, customers will have an incentive to come there and, by offering discounts through a redemption program, you are ensured that customers will want to keep collecting MozoX Tokens." = "By offering MozoX Tokens for visiting your venue, customers will have an incentive to come there and, by offering discounts through a redemption program, you are ensured that customers will want to keep collecting MozoX Tokens.";
-"What is the difference between MozoX and other types of advertising?" = "What is the difference between MozoX and other types of advertising?";
-"With MozoX, you only reward customers when they physically enter your venue, so there is a 1:1 correlation between advertising monies spent and customers at your venue. Other advertising channels do not offer any guarantees that their clicks or banners will result in customers in your venue." = "With MozoX, you only reward customers when they physically enter your venue, so there is a 1:1 correlation between advertising monies spent and customers at your venue. Other advertising channels do not offer any guarantees that their clicks or banners will result in customers in your venue.";
-"How do MozoX Tokens work as a rewards program using blockchain technology?" = "How do MozoX Tokens work as a rewards program using blockchain technology?";
-"Customers will accumulate enough reward tokens aka MozoX to redeem them for deals, discounts and promotions in the rewards program. So these customers now have an incentive to go to where retailers and venue operators are set up airdrop events. By applying blockchain technology, MozoX is more secure and convenient than any traditional loyalty applications. Furthermore, by incorporating with location based service technology, MozoX ensures that user really physically enter the venue.\nRetailers and venue operators use MozoX Retailer App to set up airdrop events through the use of a beacon, a specific location detector, that requires the users must be in range of the beacon inorder to receive MozoX. This will help Retailers and venue operators control their foot traffic. Additionally, using MozoX Retailer App, Retailers and venue operators can set up their deals, discounts and promotions.\nCustomers use MozoX App to browse, search, discover airdrop events, deals, discounts and promotions offered by both Retailer and venu operator.\nMozoX App(s) also help Retailers/venue operators and customers consummates the deals, discounts and promotions in effective and efficient way." = "Customers will accumulate enough reward tokens aka MozoX to redeem them for deals, discounts and promotions in the rewards program. So these customers now have an incentive to go to where retailers and venue operators are set up airdrop events. By applying blockchain technology, MozoX is more secure and convenient than any traditional loyalty applications. Furthermore, by incorporating with location based service technology, MozoX ensures that user really physically enter the venue.\nRetailers and venue operators use MozoX Retailer App to set up airdrop events through the use of a beacon, a specific location detector, that requires the users must be in range of the beacon inorder to receive MozoX. This will help Retailers and venue operators control their foot traffic. Additionally, using MozoX Retailer App, Retailers and venue operators can set up their deals, discounts and promotions.\nCustomers use MozoX App to browse, search, discover airdrop events, deals, discounts and promotions offered by both Retailer and venu operator.\nMozoX App(s) also help Retailers/venue operators and customers consummates the deals, discounts and promotions in effective and efficient way.";
-"What are hashtags? Why do I need to choose them?" = "What are hashtags? Why do I need to choose them?";
-"Hashtags are a words or phrases preceded by a hash sign (#). On MozoX, hashtags are used to help identify your venue according to the description you want customers to discover you by." = "Hashtags are a words or phrases preceded by a hash sign (#). On MozoX, hashtags are used to help identify your venue according to the description you want customers to discover you by.";
-"Can I get back MozoX Tokens after setting up an airdrop event?" = "Can I get back MozoX Tokens after setting up an airdrop event?";
-"Once you have finalized and saved an airdrop event, you cannot retrieve the MozoX Tokens set aside for the event. If the airdrop event status is \"Scheduled\" or \"Active\" you are obligated to use the MozoX tokens for the duration of the event. Once the event status is \"Ended\", you can retrieve any MozoX Tokens that have not been airdropped to customers." = "Once you have finalized and saved an airdrop event, you cannot retrieve the MozoX Tokens set aside for the event. If the airdrop event status is \"Scheduled\" or \"Active\" you are obligated to use the MozoX tokens for the duration of the event. Once the event status is \"Ended\", you can retrieve any MozoX Tokens that have not been airdropped to customers.";
-"Can I share Administrator rights with another manager at my store?" = "Can I share Administrator rights with another manager at my store?";
-"We do not recommend sharing Administrator rights with your employees. MozoX Retailer App allows for sub-accounts which grant permissions similar to the Administrator, except that they are not able to edit store information, beacon or sub-accounts. Please note that the sub-account wallet is set to zero when the sub-account is created. The Administrator will need to transfer MozoX Tokens to a sub-account in order for the sub-account holder to create airdrop events.." = "We do not recommend sharing Administrator rights with your employees. MozoX Retailer App allows for sub-accounts which grant permissions similar to the Administrator, except that they are not able to edit store information, beacon or sub-accounts. Please note that the sub-account wallet is set to zero when the sub-account is created. The Administrator will need to transfer MozoX Tokens to a sub-account in order for the sub-account holder to create airdrop events..";
-"When will MozoX tokens airdrop to my customers?" = "When will MozoX tokens airdrop to my customers?";
-"If customers walk into beacon range of your store during the time the airdrop event is happening, they will receive MozoX tokens." = "If customers walk into beacon range of your store during the time the airdrop event is happening, they will receive MozoX tokens.";
-
-"How can I earn MozoX ?" = "How can I earn MozoX ?";
-"MozoX App provides functions so that allow you to discover airdrop events using a map view or a list view, search... Check the airdrop date and time and then go to store during those dates and times to receive MozoX. DO NOT forget to turn on bluetooth when you enter the store" = "MozoX App provides functions so that allow you to discover airdrop events using a map view or a list view, search... Check the airdrop date and time and then go to store during those dates and times to receive MozoX. DO NOT forget to turn on bluetooth when you enter the store";
-"How can I send MozoX as a gift to my friends?" = "How can I send MozoX as a gift to my friends?";
-"On the wallet screen, using the feature \"Send MozoX\" to send MozoX to your friend's wallet.\nBest practise:\n- If your friend is with you, you can simply scan QR code address on his wallet screen. Remember to save your friend 's address to your MozoX address book for later use." = "On the wallet screen, using the feature \"Send MozoX\" to send MozoX to your friend's wallet.\nBest practise:\n- If your friend is with you, you can simply scan QR code address on his wallet screen. Remember to save your friend 's address to your MozoX address book for later use.";
-"How long I have to wait to get the next airdrop from the same event of a store?" = "How long I have to wait to get the next airdrop from the same event of a store?";
-"The store sets \"Airdrop Frequency\" for each event that they create. As you visit the store after that time, you will get the next airdrop. Its frequency is typically 1 day." = "The store sets \"Airdrop Frequency\" for each event that they create. As you visit the store after that time, you will get the next airdrop. Its frequency is typically 1 day.";
-"Why do I need to turn on Bluetooth to get MozoX from airdrop events?" = "Why do I need to turn on Bluetooth to get MozoX from airdrop events?";
-"Each store in MozoX system has one or more beacons. When the users visit the store and turns on Bluetooth, the beacon will interact with MozoX application via Bluetooth, so you can get airdrop automatically from the system." = "Each store in MozoX system has one or more beacons. When the users visit the store and turns on Bluetooth, the beacon will interact with MozoX application via Bluetooth, so you can get airdrop automatically from the system.";
-
 // Bonus Notification + Unregistered Store + Simplyfy Create Airdrop Event
 "You got %@ Bonus MozoX" = "You got %@ Bonus MozoX";
 "For signing up with us" = "For signing up with us";
@@ -1455,3 +1428,101 @@
 "Could not send Mozo to your own wallet" = "Could not send Mozo to your own wallet";
 "More → Beacon List" = "More → Beacon List";
 "Add New Sub Account" = "Add New Sub Account";
+
+/**
+FAQ contents
+*/
+"faq_shopper_1_title" = "What are Mozo Tokens? What are Mozo Tokens used for?";
+"faq_shopper_2_title" = "How can I earn Mozo?";
+"faq_shopper_3_title" = "How can I send Mozo as a gift to my friends?";
+"faq_shopper_4_title" = "How long I have to wait to get the next airdrop from the same event of a store?";
+"faq_shopper_5_title" = "Why do I need to turn on Bluetooth to get Mozo from airdrop events?";
+"faq_shopper_6_title" = "If I lost or replaced my phone, how can I get back into my Mozo account ?";
+"faq_shopper_7_title" = "When I need support, how can i contact to Mozo team?";
+"faq_shopper_8_title" = "What is a PIN? Is it different than a password?";
+
+"faq_shopper_1_answer" = "Mozo Tokens are digital utility tokens that can be used by merchants to reward customers for visiting their venues. Customers can collect Mozo Tokens and redeem them for discounts on products and services as determined by each merchant.";
+"faq_shopper_2_answer" = "Mozo Wallet App provides functions so that allow you to discover airdrop events using a map view or a list view, search… Check the airdrop date and time and then go to store during those dates and times to receive Mozo. DO NOT forget to turn on bluetooth when you enter the store.";
+"faq_shopper_3_answer" = "On the wallet screen, using the feature \"Send Mozo\" to send Mozo to your friend\'s wallet.<br/>
+You can send Mozo by inputting your friend\'s phone number.<br/>
+Best practise:<br/>
+- If your friend is with you, you can simply scan QR code address on his wallet screen. Remember to save your friend\'s address to your Mozo address book for later use.";
+"faq_shopper_4_answer" = "The store sets \"Airdrop Frequency\" for each event that they create. As you visit the store after that time, you will get the next airdrop. Its frequency is typically 1 day.";
+"faq_shopper_5_answer" = "Each store in Mozo system has one or more beacons. When the users visit the store and turns on Bluetooth, the beacon will interact with Mozo application via Bluetooth, so you can get airdrop automatically from the system.";
+"faq_shopper_6_answer" = "Simply install the Mozo Business or Wallet App on new device.It is recommended that you change your password by using the \"reset password\" feature.";
+"faq_shopper_7_answer" = "Please contact Mozo Customer Support at:<br/>
+<a href=\"https://t.me/MozoXRetailerApp\">Telegram</a><br/>
+<a href=\"https://open.kakao.com/o/g6tvra5\">Kakao Talk</a><br/>
+<a href=\"https://zalo.me/428563224447178063\">Zalo</a><br/>
+<a href=\"https://www.facebook.com/mozocoin.io\">Facebook</a><br/>
+<a href=\"https://twitter.com/MozoToken\">Twitter</a><br/>
+<br/>
+Or email to <a href=\"mailto:support@mozocoin.io\">support@mozocoin.io</a>";
+"faq_shopper_8_answer" = "PIN stands for Personal Identification Number. A PIN is similar to a password in that both try to ensure that the person seeking access is the person who is authorized to gain access.<br/>
+In Mozo, a password is used to protect your account (phone number when you login to system). A PIN is used to protected your wallet. You will always be asked for your PIN before transferring Mozo.";
+
+"faq_retailer_1_title" = "What are Mozo Tokens? What are Mozo Tokens used for?";
+"faq_retailer_2_title" = "How do Mozo Tokens work as a rewards program using blockchain technology?";
+"faq_retailer_3_title" = "How can I get Mozo Tokens?";
+"faq_retailer_4_title" = "How can I attract customers with Mozo?";
+"faq_retailer_5_title" = "What is the difference between Mozo and other types of advertising?";
+"faq_retailer_6_title" = "What are hashtags? Why do I need to choose them?";
+"faq_retailer_7_title" = "Can i change the registered phone number in my Mozo account?";
+"faq_retailer_8_title" = "How many Mozo airdrops are suitable for my customers?";
+"faq_retailer_9_title" = "Can I get back Mozo Tokens after setting up an airdrop event?";
+"faq_retailer_10_title" = "Can I change the information for an airdrop event after it is created ?";
+"faq_retailer_11_title" = "How many airdrop events can be created?";
+"faq_retailer_12_title" = "Can I share Administrator rights with another manager at my store?";
+"faq_retailer_13_title" = "When will Mozo tokens airdrop to my customers?";
+"faq_retailer_14_title" = "What is Mozo Promotion?";
+"faq_retailer_15_title" = "If I lost or replaced my phone, how can I get back into my Mozo account ?";
+"faq_retailer_16_title" = "When I need support, how can i contact to Mozo team?";
+"faq_retailer_17_title" = "What is a PIN? Is it different than a password?";
+"faq_retailer_18_title" = "How to buy Mozo?";
+
+"faq_retailer_1_answer" = "Mozo Tokens are digital utility tokens that can be used by merchants to reward customers for visiting their venues. Customers can collect Mozo Tokens and redeem them for discounts on products and services as determined by each merchant.";
+"faq_retailer_2_answer" = "Customers will accumulate enough reward tokens aka Mozo to redeem them for deals, discounts and promotions in the rewards program. So these customers now have an incentive to go to where retailers and venue operators are set up airdrop events. By applying blockchain technology, Mozo is more secure and convenient than any traditional loyalty applications. Furthermore, by incorporating with location based service technology, Mozo ensures that user really physically enter the venue.<br/>
+Retailers and venue operators use Mozo Business App to set up airdrop events through the use of a beacon, a specific location detector, that requires the users must be in range of the beacon in order to receive Mozo. This will help Retailers and venue operators control their foot traffic. Additionally, using Mozo Business App, Retailers and venue operators can set up their deals, discounts and promotions.<br/>
+Customers use Mozo Wallet App to browse, search, discover airdrop events, deals, discounts and promotions offered by both Retailer and venu operator.<br/>
+Mozo Wallet and Business App also help Retailers/venue operators and customers consummates the deals, discounts and promotions in effective and efficient way.";
+"faq_retailer_3_answer" = "When you sign up to be a Mozo Retailer, we will give you a certain number of Mozo Tokens to help you get started. Once you have used all the initial Mozo Tokens as a reward for your customers, you can purchase more Mozo Tokens directly from us.";
+"faq_retailer_4_answer" = "By offering Mozo Tokens for visiting your venue, customers will have an incentive to come there and, by offering discounts through a redemption program, you are ensured that customers will want to keep collecting Mozo Tokens.";
+"faq_retailer_5_answer" = "With Mozo, you only reward customers when they physically enter your venue, so there is a 1:1 correlation between advertising monies spent and customers at your venue. Other advertising channels do not offer any guarantees that their clicks or banners will result in customers in your venue.";
+"faq_retailer_6_answer" = "Hashtags are a words or phrases preceded by a hash sign (#). On Mozo, hashtags are used to help identify your venue according to the description you want customers to discover you by.";
+"faq_retailer_7_answer" = "It is not easy to change your phone number once provided. In Mozo system, we use phone number to identify you and becomes a private key. Therefore, phone number you provided us is very important. If you want to change phone number you must contact Mozo team";
+"faq_retailer_8_answer" = "We recommend you consider the set up smart contract to drop 10,000 tokens per person";
+"faq_retailer_9_answer" = "One you have finalized and saved an airdrop event, you cannot retrieve the Mozo Tokens set aside for the event. If the airdrop event status is \"Scheduled\" or \"Active\" you are obligated to use the Mozo tokens for the duration of the event.  Once the event status is \"Ended\", you can retrieve any Mozo Tokens that have not been airdropped to customers.";
+"faq_retailer_10_answer" = "No, you cannot change the airdrop information after it has been created.";
+"faq_retailer_11_answer" = "You can create as many events as you want, limited only by having a sufficient amount of Mozo Tokens in your wallet.";
+"faq_retailer_12_answer" = "We do not recommend sharing Administrator rights with your employees. Mozo Business App allows for sub-accounts which grant permissions similar to the Administrator, except that they are not able to edit sub-accounts. Please note that the sub-account wallet is set to zero when the sub-account is created. The Administrator will need to transfer Mozo Tokens to a sub-account in order for the sub-account holder to create airdrop events.";
+"faq_retailer_13_answer" = "If customers walk into beacon range of your store during the time the airdrop event is happening, they will receive Mozo tokens.";
+"faq_retailer_14_answer" = "Promotions attract shoppers by allowing them to redeem their Mozo for discounts of your products and services. (e.g., Redeem 1000 Mozo in exchange for a 20% discount on selected items.)";
+"faq_retailer_15_answer" = "Simply install the Mozo Business or Wallet App on new device.It is recommended that you change your password by using the \"reset password\" feature.";
+"faq_retailer_16_answer" = "Please contact Mozo Customer Support at:<br/>
+<a href=\"https://t.me/MozoXRetailerApp\">Telegram</a><br/>
+<a href=\"https://open.kakao.com/o/g6tvra5\">Kakao Talk</a><br/>
+<a href=\"https://zalo.me/428563224447178063\">Zalo</a><br/>
+<a href=\"https://www.facebook.com/mozocoin.io\">Facebook</a><br/>
+<a href=\"https://twitter.com/MozoToken\">Twitter</a><br/>
+<br/>
+Or email to <a href=\"mailto:support@mozocoin.io\">support@mozocoin.io</a>";
+"faq_retailer_17_answer" = "PIN stands for Personal Identification Number. A PIN is similar to a password in that both try to ensure that the person seeking access is the person who is authorized to gain access.<br/>
+In Mozo, a password is used to protect your account (phone number when you login to system). A PIN is used to protected your wallet. You will always be asked for your PIN before transferring Mozo.";
+"faq_retailer_18_answer" = "You can BUY Mozo at <a href=\"https://mozocoin.io/retailer-portal/buy-mozo-by-crypto\">https://mozocoin.io/retailer-portal/buy-mozo-by-crypto</a><br/>
+<br/>
+Please make sure you have a Mozo wallet using the Mozo Wallet App or Mozo Business App before BUYing.<br/>
+If you don\'t have wallet, please follow these instructions:<br/>
+- <a href=\"https://mozocoin.io/retailer/help-center#how-to-sign-up-on-mozox-retailer-app\">Mozo Business App</a><br/>
+- <a href=\"https://mozocoin.io#home-faq-shopper-6\">Mozo Wallet App</a><br/>
+<br/>
+After signing up successfully, return to our website and try again.<br/>
+<br/>
+Choose ETH or BTC.<br/>
+Input number of Mozo you want to BUY (or number of ETH/BTC you want to change to Mozo)<br/>
+Click on \"Buy\" button.<br/>
+The system will provide a reserved ETH/BTC address. You should transfer your ETH/BTC to this address and the system will transfer Mozo to your wallet in Mozo Business App or Mozo Wallet App.<br/>
+<br/>
+Note:<br/>
+- This address will be reserved for 24 hours and can be used only once. You will need another address if you want to do another transaction. This means that you can only transfer ETH or BTC to this reserved address once. If you try transfer more than once using the same reserved address, your ETH or BTC will be lost. We are not able to recover your coins.<br/>
+- Please make sure you want to make a BUY Mozo transaction before getting a reserved address. If you get an address without doing a transaction, you may be blocked 1 week before getting another address.<br/>";
+

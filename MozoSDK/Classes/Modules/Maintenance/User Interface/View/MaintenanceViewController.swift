@@ -19,7 +19,7 @@ class MaintenanceViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var imgQuestion: UIImageView!
     @IBOutlet weak var lbQuestionTitle: UILabel!
-    @IBOutlet weak var lbAnswer: UILabel!
+    @IBOutlet weak var txAnswer: UITextView!
     @IBOutlet weak var btnReadMore: UIButton!
     @IBOutlet weak var imgArrow: UIImageView!
     
@@ -47,7 +47,7 @@ class MaintenanceViewController: UIViewController {
         
         print("Label title, minY [\(lbQuestionTitle.frame.minY)], maxY [\(lbQuestionTitle.frame.maxY)]")
         
-        print("Label answer, minY [\(lbAnswer.frame.minY)], maxY [\(lbAnswer.frame.maxY)]")
+        print("Label answer, minY [\(txAnswer.frame.minY)], maxY [\(txAnswer.frame.maxY)]")
         
         print("Button read more, minY [\(btnReadMore.frame.minY)], maxY [\(btnReadMore.frame.maxY)]")
     }
@@ -61,8 +61,9 @@ class MaintenanceViewController: UIViewController {
         view.insertSubview(mainViewBorder, belowSubview: containerView)
 
         mainViewBorder.dropShadow()
-        mainViewBorder.layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
-        mainViewBorder.layer.shadowRadius = 3.0
+        mainViewBorder.layer.shadowOffset = CGSize(width: 0.0, height: -3)
+        mainViewBorder.layer.shadowRadius = 0.5
+        mainViewBorder.layer.shadowOpacity = 0.5
         mainViewBorder.layer.shadowColor = UIColor(hexString: "b9c1cc").cgColor
         
         mainViewBorder.translatesAutoresizingMaskIntoConstraints = false
@@ -96,7 +97,7 @@ class MaintenanceViewController: UIViewController {
         lbQuestionTitle.text = displayItem.title.localized
         
         let displayText = displayItem.answer.localized
-        lbAnswer.text = displayText
+        txAnswer.attributedText = displayText.convertHtmlToAttributedStringWithCSS(font: UIFont.systemFont(ofSize: 16), csscolor: "black", lineheight: 5, csstextalign: "unset")
         
 //        let lbWidth = UIScreen.main.bounds.width
 //        let fontAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
@@ -104,11 +105,11 @@ class MaintenanceViewController: UIViewController {
         
         print("Label title, minY [\(lbQuestionTitle.frame.minY)], maxY [\(lbQuestionTitle.frame.maxY)]")
         
-        print("Label answer, minY [\(lbAnswer.frame.minY)], maxY [\(lbAnswer.frame.maxY)]")
+        print("Label answer, minY [\(txAnswer.frame.minY)], maxY [\(txAnswer.frame.maxY)]")
         
         print("Button read more, minY [\(btnReadMore.frame.minY)], maxY [\(btnReadMore.frame.maxY)]")
         
-        lbAnswer.numberOfLines = 0
+//        txAnswer.numberOfLines = 0
     }
     
     @objc func openReadMore() {
