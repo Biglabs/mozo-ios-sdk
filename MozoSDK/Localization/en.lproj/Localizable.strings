@@ -22,13 +22,13 @@
 "An error has occurred." = "An error has occurred.";
 "Your balance is not insufficient for this transfer amount." = "Your balance is not insufficient for this transfer amount.";
 "Deposit" = "Deposit";
-"Sign In to MozoX" = "Sign In to MozoX";
-"Log Out MozoX" = "Log Out MozoX";
-"Send MozoX" = "Send MozoX";
+"btn_signin_mozo" = "Sign In to Mozo";
+"btn_logout_mozo" = "Log Out Mozo";
+"title_send_mozo" = "Send Mozo";
 "Transaction History" = "Transaction History";
 "Withdraw" = "Withdraw";
 "Withdraw MozoX" = "Withdraw MozoX";
-"Request MozoX" = "Request MozoX";
+"title_request_mozo" = "Request Mozo";
 "Confirm" = "Confirm";
 "Back" = "Back";
 "Cancel" = "Cancel";
@@ -58,7 +58,7 @@
 "Enter your Security PIN" = "Enter your Security PIN";
 "Enter Security PIN" = "Enter Security PIN";
 "Enter your Security PIN\nto restore wallet" = "Enter your Security PIN\nto restore wallet";
-"Enter your Security PIN\nto send MozoX" = "Enter your Security PIN\nto send MozoX";
+"title_enter_pin_to_send" = "Enter your Security PIN\nto send Mozo";
 "Enter your Security PIN\nto create airdrop event" = "Enter your Security PIN\nto create airdrop event";
 "Security PIN must be 6 digits" = "Security PIN must be 6 digits";
 "Confirm Security PIN" = "Confirm Security PIN";
@@ -74,7 +74,6 @@
 "Sent %@ MozoX" = "Sent %@ MozoX";
 "From %@" = "From %@";
 "To %@" = "To %@";
-"Request MozoX" = "Request MozoX";
 "Receive Amount" = "Receive Amount";
 "Requested List" = "Requested List";
 "Create Request" = "Create Request";
@@ -89,7 +88,6 @@
 "From:" = "From:";
 "Request:" = "Request:";
 "%@ Mozo" = "%@ Mozo";
-"Send MozoX" = "Send MozoX";
 "Confirmation" = "Confirmation";
 "From MozoX Offchain Wallet" = "From MozoX Offchain Wallet";
 "Receiver Address" = "Receiver Address";
@@ -111,7 +109,7 @@
 "MozoX Offchain Wallet" = "MozoX Offchain Wallet";
 "Transaction history list is empty" = "Transaction history list is empty";
 "MozoX Offchain Balance" = "MozoX Offchain Balance";
-"Your MozoX Offchain Wallet Address" = "Your MozoX Offchain Wallet Address";
+"text_your_mozo_wallet_address" = "Your Mozo Wallet Address";
 "To" = "To";
 "From" = "From";
 "You must" = "You must";
@@ -647,9 +645,9 @@
 "error_date_less_current" = "Event start date must be at least 10 minutes later than current time. Please check your input.";
 "error_date_start_must_earlier_end" = "Event start date must be earlier than its end date. Please check your input.";
 "error_time_start_must_earlier_end" = "The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input.";
-"\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at 24 hours)." = "\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours).";
-"error_amount_not_enough_to_airdrop" = "Incorrect total amount of MozoX tokens to be airdropped. Please check your input.";
-"Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input." = "Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input.";
+"error_invalid_frequency" = "Frequency is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX during the same airdrop event.\n\"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours).";
+"error_invalid_total_amount" = "Incorrect total amount of Mozo to be airdropped. Please check your input.";
+"error_invalid_per_customer_amount" = "Incorrect amount of Mozo tokens to be airdropped to each Shopper visiting your store. Please check your input.";
 
 "Something is wrong with your account status. Please try again." = "Something is wrong with your account status. Please try again.";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "Your wallet was updated but did not sync with your current device. Please restore your wallet first.";
@@ -775,9 +773,9 @@
 "Copied to clipboard" = "Copied to clipboard";
 "Go to Etherscan.io" = "Go to Etherscan.io";
 "Token List:" = "Token List:";
-"Convert to MozoX Offchain" = "Convert to MozoX Offchain";
+"btn_convert_to_mozo" = "Convert to Mozo";
 "Pending transaction..." = "Pending transaction...";
-"How to add MozoX Onchain?" = "How to add MozoX Onchain?";
+"text_how_to_add_mozo_x" = "How to add MozoX?";
 "Enter amount to convert MozoX Offchain" = "Enter amount to convert MozoX Offchain";
 "Convert To Offchain" = "Convert To Offchain";
 "Slow" = "Slow";
@@ -790,7 +788,7 @@
 "ETH balance is not enough." = "ETH balance is not enough.";
 "From Onchain" = "From Onchain";
 "To Offchain" = "To Offchain";
-"Enter your Security PIN\nto convert MozoX from onchain to offchain." = "Enter your Security PIN\nto convert MozoX from onchain to offchain.";
+"title_enter_pin_to_convert" = "Enter your Security PIN\nto convert MozoX in Onchain wallet to Mozo.";
 "Broadcasting transaction..." = "Broadcasting transaction...";
 "It’s might take about 3 minutes to complete" = "It’s might take about 3 minutes to complete";
 "Hide transaction" = "Hide transaction";
@@ -810,18 +808,17 @@
 
 "There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later." = "There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later.";
 "Can not send transaction to Ethereum network or sent but failed. Please check your data and try again." = "Can not send transaction to Ethereum network or sent but failed. Please check your data and try again.";
-"We're sorry because something is wrong. We will transfer MozoX Offchain to your wallet later." = "We're sorry because something is wrong. We will transfer MozoX Offchain to your wallet later.";
 
 "Convert Failed" = "Convert Failed";
 "Cannot complete convert MozoX from Onchain to Offchain." = "Cannot complete convert MozoX from Onchain to Offchain.";
 "Please try again after some time." = "Please try again after some time.";
 "No routes found" = "No routes found";
 "airdrop_discover_more_on_map" = "Discover more Airdrop Events to get Mozo 👌";
-"Your store have not been registered on our website yet. Please contact MozoX Customer Service for support. (Zalo - Kakao - Telegram)" = "Your store have not been registered on our website yet. Please contact MozoX Customer Service for support. (Zalo - Kakao - Telegram)";
-"This store has left MozoX ecosystem. Sorry for any inconvenience." = "This store has left MozoX ecosystem. Sorry for any inconvenience.";
+"error_store_unregisted" = "Your store was not registered on our website. Please contact Mozo Customer Service for support.";
+"error_store_suspened" = "This store has left Mozo ecosystem. Sorry for any inconvenience.";
 "Withdraw MozoX from airdrop event is failed" = "Withdraw MozoX from airdrop event is failed";
-"This airdrop event has not ended yet. You can not withdraw MozoX. Please try again later." = "This airdrop event has not ended yet. You can not withdraw MozoX. Please try again later.";
-"There is no MozoX in this airdrop event." = "There is no MozoX in this airdrop event.";
+"error_event_can_not_withdraw" = "This airdrop event has not ended yet. You can not withdraw Mozo. Please try again later.";
+"error_event_no_mozo" = "There is no Mozo in this Airdrop Event.";
 "You are not the owner of this event." = "You are not the owner of this event.";
 
 "Create Airdrop Event to attract more customer by Airdrop MozoX." = "Create Airdrop Event to attract more customer by Airdrop MozoX.";
@@ -893,16 +890,16 @@
 "Loading..." = "Loading...";
 
 // Detect Onchain inside Offchain
-"Detected %@ MozoX Onchain" = "Detected %@ MozoX Onchain";
+"text_detected_mozo_x" = "Detected %@ MozoX in Onchain wallet";
 "Do you want to convert these MozoX Onchain in this wallet into MozoX Offchain?" = "Do you want to convert these MozoX Onchain in this wallet into MozoX Offchain?";
 "Your ETH balance is: %@" = "Your ETH balance is: %@";
-"You need to transfer %@ ETH into this MozoX Offchain Wallet address to pay TX Fee" = "You need to transfer %@ ETH into this MozoX Offchain Wallet address to pay TX Fee";
-"Converting MozoX Offchain..." = "Converting MozoX Offchain...";
+"text_msg_required_eth" = "You need to transfer %@ ETH into this Onchain Wallet address to pay TX Fee";
+"text_converting_mozo" = "Converting to Mozo...";
 
-"This wallet address does not exist. We only support registered MozoX wallet addresses." = "This wallet address does not exist. We only support registered MozoX wallet addresses.";
+"error_wallet_address_not_exist" = "This wallet address does not exist. We only support registered Mozo wallet addresses.";
 
-"Your friend joined MozoX" = "Your friend joined MozoX";
-"%@ joined MozoX" = "%@ joined MozoX";
+"nofity_invite_friend_joined" = "Your friends have joined Mozo";
+"notify_invite_joined_mozo" = "%@ joined Mozo";
 
 // Invitation
 "Share via your network" = "Share via your network";
@@ -943,13 +940,13 @@
 "Did you know?" = "Did you know?";
 "Search Result" = "Search Result";
 "Try one of these instead:" = "Try one of these instead:";
-"Requested List is empty or your connection is too slow" = "Requested List is empty or your connection is too slow";
-"Any MozoX Request from your friends will be displayed here." = "Any MozoX Request from your friends will be displayed here.";
+"payment_empty_msg_title" = "Requested List is empty or your connection is too slow";
+"payment_empty_msg_content" = "Any Mozo Request from your friends will be displayed here.";
 "Favorite Stores is empty or your connection is too slow" = "Favorite Stores is empty or your connection is too slow";
 "Seems you didn't add any Favourite Stores, we love sharing some interesting stores for you." = "Seems you didn't add any Favourite Stores, we love sharing some interesting stores for you.";
 "Discover more stores" = "Discover more stores";
-"Transaction History is emtpy or your connection is too slow" = "Transaction History is emtpy or your connection is too slow";
-"Transfer MozoX to your friends or request them to send you MozoX." = "Transfer MozoX to your friends or request them to send you MozoX.";
+"history_empty_title" = "Transaction History is emtpy or your connection is too slow";
+"history_empty_content" = "Send Mozo to your friends or request them to send you Mozo.";
 "Go to Wallet" = "Go to Wallet";
 "Airdrop Event List" = "Airdrop Event List";
 "Airdrop Event List is empty or your connection is too slow" = "Airdrop Event List is empty or your connection is too slow";
@@ -960,10 +957,10 @@
 "Go to Promotions list" = "Go to Promotions list";
 
 // Bonus Notification + Unregistered Store + Simplyfy Create Airdrop Event
-"You got %@ Bonus MozoX" = "You got %@ Bonus MozoX";
+"notify_receive_bonus" = "You got %@ Bonus Mozo";
 "For signing up with us" = "For signing up with us";
 "For being verified store" = "For being verified store";
-"For being a 1st 1,000 MozoX Retailers" = "For being a 1st 1,000 MozoX Retailers";
+"notify_receive_bonus_top_retailers" = "For being a 1st 1,000 Mozo Retailers";
 
 "Unregistered Store" = "Unregistered Store";
 "If you have not registered yet, please register." = "If you have not registered yet, please register.";
@@ -1008,9 +1005,9 @@
 "*What are Recovery Phrase?" = "*What are Recovery Phrase?";
 "Recovery Phrase are random set of words used to secure your digital wallet. You should write down these words in order so that in the event you lose your digital wallet or forget your PIN, you can recover your wallet and/or reset your PIN." = "Recovery Phrase are random set of words used to secure your digital wallet. You should write down these words in order so that in the event you lose your digital wallet or forget your PIN, you can recover your wallet and/or reset your PIN.";
 
-"Create MozoX Wallet" = "Create MozoX Wallet";
-"Creating your MozoX wallet..." = "Creating your MozoX wallet...";
-"Recovering your MozoX wallet..." = "Recovering your MozoX wallet...";
+"title_create_wallet" = "Create Mozo Wallet";
+"text_explain_creating_wallet" = "Creating your Mozo wallet…";
+"text_explain_recovering_wallet" = "Recovering your Mozo wallet...";
 
 "Backup Wallet" = "Backup Wallet";
 "This is your recovery phrase" = "This is your recovery phrase";
@@ -1174,30 +1171,29 @@
 "Go to Settings →" = "Go to Settings →";
 "Location service is off 🗺" = "Location service is off 🗺";
 "Bluetooth is tuned off 😔..." = "Bluetooth is tuned off 😔...";
-"Get MozoX from nearby airdrop events 🎁" = "Get MozoX from nearby airdrop events 🎁";
+"todo_msg_get_nearby_airdrop" = "Get Mozo from nearby airdrop events 🎁";
 "Interesting promotions nearby 🤩" = "Interesting promotions nearby 🤩";
 "Purchased promotions nearby 🤣" = "Purchased promotions nearby 🤣";
 "Purchased promotions expiring soon 😣" = "Purchased promotions expiring soon 😣";
 "Airdrop events that will expire soon ⏳" = "Airdrop events that will expire soon ⏳";
-"Your wallet is almost out of MozoX 😞" = "Your wallet is almost out of MozoX 😞";
-"Your wallet is almost out of MozoX 😞" = "Your wallet is almost out of MozoX 😞";
+"todo_msg_wallet_almost_out_of_mozo" = "Your wallet is almost out of Mozo 😞";
 "Promotions that will expire soon 👌" = "Promotions that will expire soon 👌";
 "No planned airdrop events 😐" = "No planned airdrop events 😐";
 "No planned promotions 😐" = "No planned promotions 😐";
 "Unsecure wallet 😱" = "Unsecure wallet 😱";
-"Airdrop events is almost out of MozoX 😞" = "Airdrop events is almost out of MozoX 😞";
+"todo_msg_event_almost_out_of_mozo" = "Airdrop events is almost out of Mozo 😞";
 "Turn on for better experience →" = "Turn on for better experience →";
 "todo_action_turn_on_bluetooth" = "Turn on bluetooth to receive Mozo →";
 "Discover your bookmarked promotions →" = "Discover your bookmarked promotions →";
 "Discover your purchased promotions →" = "Discover your purchased promotions →";
 "Review and create a new airdrop event →" = "Review and create a new airdrop event →";
-"Buy more MozoX →" = "Buy more MozoX →";
-"Discover stores offering MozoX →" = "Discover stores offering MozoX →";
+"todo_action_buy_mozo" = "Buy more Mozo →";
+"todo_action_discover_stores" = "Discover stores offering Mozo →";
 "Create a new promotion →" = "Create a new promotion →";
 "Create to increase foot traffic →" = "Create to increase foot traffic →";
 "Create promotion →" = "Create promotion →";
 "Set up your own PIN →" = "Set up your own PIN →";
-"Review and add more MozoX →" = "Review and add more MozoX →";
+"todo_action_review_add_more_mozo" = "Review and add more Mozo →";
 "Unsolve" = "Unsolve";
 "Unsolve (%d)" = "Unsolve (%d)";
 "todo_action_explain" = "Complete these actions to make sure there are no problems happen while using Mozo app:";
@@ -1209,7 +1205,7 @@
 "Enter MozoX address or phone number" = "Enter MozoX address or phone number";
 "Can't find this contact in your MozoX Address Book" = "Can't find this contact in your MozoX Address Book";
 "Find in MozoX System →" = "Find in MozoX System →";
-"This phone number does not belong to any MozoX Wallet Address" = "This phone number does not belong to any MozoX Wallet Address";
+"text_msg_phone_not_belong_any_wallet" = "This phone number does not belong to any Mozo Wallet Address";
 "We only support search with phone number." = "We only support search with phone number.";
 
 "Import Contacts" = "Import Contacts";
@@ -1228,7 +1224,7 @@
 "Update" = "Update";
 "Change Settings" = "Change Settings";
 "Cannot access your Contact Book" = "Cannot access your Contact Book";
-"You must give MozoX permission to access the Contact Book first" = "You must give MozoX permission to access the Contact Book first";
+"text_reuqest_permission_contact" = "You must give Mozo permission to access the Contact Book first";
 "Not yet synchronized" = "Not yet synchronized";
 "Cannot synchronize, your Contact Book is empty." = "Cannot synchronize, your Contact Book is empty.";
 
@@ -1240,8 +1236,7 @@
 
 // Speed Selection + Login Incorrect Time
 "You want:" = "You want:";
-"Already have another MozoX account? Log Out" = "Already have another MozoX account? Log Out";
-"Already have another MozoX account?" = "Already have another MozoX account?";
+"text_already_have_account" = "Already have another Mozo account?";
 "The time on your device is incorrect." = "The time on your device is incorrect.";
 "Please update the date and time, then try again." = "Please update the date and time, then try again.";
 
@@ -1277,7 +1272,7 @@
 "Enter amount to deposit" = "Enter amount to deposit";
 "Deposit failed" = "Deposit failed";
 "There is an error occurred, please try again later" = "There is an error occurred, please try again later";
-"Your MozoX is not enough to deposit" = "Your MozoX is not enough to deposit";
+"ticket_not_enough_to_deposit" = "Your Mozo is not enough to deposit";
 "Show my parking ticket" = "Show my parking ticket";
 "Offline Parking Ticket" = "Offline Parking Ticket";
 "Free Parking Ticket" = "Free Parking Ticket";

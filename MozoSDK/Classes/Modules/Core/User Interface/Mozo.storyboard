@@ -369,10 +369,10 @@
             </objects>
             <point key="canvasLocation" x="802" y="-298"/>
         </scene>
-        <!--Send MozoX-->
+        <!--Send Mozo-->
         <scene sceneID="91a-F8-xYw">
             <objects>
-                <viewController storyboardIdentifier="TransferViewController" title="Send MozoX" id="ljP-Qq-otX" customClass="TransferViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TransferViewController" title="Send Mozo" id="ljP-Qq-otX" customClass="TransferViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hNH-eo-mIA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3842,10 +3842,10 @@
             </objects>
             <point key="canvasLocation" x="7128.8000000000002" y="-297.30134932533736"/>
         </scene>
-        <!--Send MozoX-->
+        <!--Send Mozo-->
         <scene sceneID="SkE-Ho-TSH">
             <objects>
-                <viewController title="Send MozoX" id="Tsd-Ac-mOB" customClass="TransferViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Send Mozo" id="Tsd-Ac-mOB" customClass="TransferViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bxa-Q5-MWs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

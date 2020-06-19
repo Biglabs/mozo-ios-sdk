@@ -255,7 +255,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
                 self.topConstraint.constant = CGFloat(self.topConstraintConverting)
                 self.onchainDetectedViewHeightConstraint.constant = CGFloat(self.detectedViewHeightConverting)
                 self.onchainDetectedTitleTopConstraint.constant = CGFloat(self.detectedTitleTopConvering)
-                self.onchainDetectedTitle.text = "Converting MozoX Offchain...".localized
+                self.onchainDetectedTitle.text = "text_converting_mozo".localized
                 self.onchainDetectedDescription.isHidden = true
                 
                 self.onchainDetectedView.isHidden = false
@@ -267,7 +267,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
                 
                 let balance = (info.balanceOfTokenOnchain?.balance ?? 0).convertOutputValue(decimal: info.balanceOfTokenOnchain?.decimals ?? 2)
                 
-                self.onchainDetectedTitle.text = "Detected %@ MozoX Onchain".localizedFormat(balance.roundAndAddCommas(toPlaces: info.balanceOfTokenOnchain?.decimals ?? 0))
+                self.onchainDetectedTitle.text = "text_detected_mozo_x".localizedFormat(balance.roundAndAddCommas(toPlaces: info.balanceOfTokenOnchain?.decimals ?? 0))
                 self.onchainDetectedDescription.isHidden = false
                 self.onchainDetectedTitleTopConstraint.constant = CGFloat(self.detectedTitleTopDefault)
                 

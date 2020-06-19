@@ -60,7 +60,7 @@ class TransferViewController: MozoBasicViewController {
 //        if Locale.current.languageCode == "en" {
 //            let attribute = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 10)]
 //            txtAddress.placeholder = ""
-//            txtAddress.attributedPlaceholder = NSAttributedString(string:"Enter MozoX address or phone number".localized, attributes: attribute)
+//            txtAddress.attributedPlaceholder = NSAttributedString(string:"Enter Mozo address or phone number".localized, attributes: attribute)
 //        }
         // Observer balance changed notification
         NotificationCenter.default.addObserver(self, selector: #selector(onBalanceDidUpdate(_:)), name: .didChangeBalance, object: nil)
@@ -69,7 +69,7 @@ class TransferViewController: MozoBasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Fix issue: Title is not correct after navigation back from child controller
-        navigationItem.title = "Send MozoX".localized
+        navigationItem.title = "title_send_mozo".localized
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButtonView)
     }
     
@@ -113,8 +113,6 @@ class TransferViewController: MozoBasicViewController {
     
     @objc func doneButtonActionForAddressOrPhone() {
         txtAddressOrPhoneNo.resignFirstResponder()
-        
-        // Auto check input. If input is phone number, auto find contact in MozoX
         validatePhoneNoAfterFinding()
     }
     

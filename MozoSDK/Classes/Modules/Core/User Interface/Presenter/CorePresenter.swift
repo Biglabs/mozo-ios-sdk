@@ -81,9 +81,8 @@ class CorePresenter : NSObject {
 //        if !isLoggingOut {
 //            isLoggingOut = true
             coreWireframe?.authWireframe?.clearAllSessionData()
-            // MozoX Screens could be contained here.
+            // Mozo Screens could be contained here.
             if (coreWireframe?.rootWireframe?.mozoNavigationController.viewControllers.count ?? 0) > 0 {
-                print("CorePresenter - Handle invalid token from api response when MozoX Screens is displaying.")
                 // TODO: No need to close all mozo controllers from mozo navigation controller
                 coreWireframe?.requestForCloseAllMozoUIs(completion: {
 //                    self.authDelegate?.mozoUIDidCloseAll() // Back to Main
@@ -96,7 +95,6 @@ class CorePresenter : NSObject {
                 
                 removePINDelegate()
             } else {
-                print("CorePresenter - Handle invalid token from api response when No MozoX Screens is displaying.")
                 // FIX ME: Crash "Application tried to present modally an active controller <SFAuthenticationViewController>"
 //                self.coreWireframe?.requestForAuthentication()
 //                coreWireframe?.authWireframe?.presentLogoutInterface()

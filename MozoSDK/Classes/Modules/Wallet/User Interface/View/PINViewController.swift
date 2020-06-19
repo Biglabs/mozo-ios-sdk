@@ -73,11 +73,11 @@ class PINViewController : MozoBasicViewController {
         if self.passPhrase == nil {
             switch moduleRequested {
             case .Transaction, .Airdrop, .Convert, .Redeem:
-                var text = "Enter your Security PIN\nto send MozoX"
+                var text = "title_enter_pin_to_send"
                 if moduleRequested == .Airdrop {
                     text = "Enter your Security PIN\nto create airdrop event"
                 } else if moduleRequested == .Convert {
-                    text = "Enter your Security PIN\nto convert MozoX from onchain to offchain."
+                    text = "title_enter_pin_to_convert"
                 }
                 if Locale.current.languageCode != "ko" {
                     enterPINLabel.text = text.localized.uppercased()

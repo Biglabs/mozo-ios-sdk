@@ -45,10 +45,10 @@ class ConfirmTransferViewController: MozoBasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Fix issue: Title is not correct after showing alert
-        var text = "Send MozoX"
+        var text = "title_send_mozo"
         switch moduleRequest {
         case .Payment:
-            text = "Request MozoX"
+            text = "title_request_mozo"
         case .TopUp:
             text = "Deposit"
         default:

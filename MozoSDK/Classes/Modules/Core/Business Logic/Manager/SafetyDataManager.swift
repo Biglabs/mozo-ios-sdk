@@ -55,11 +55,9 @@ class SafetyDataManager {
     
     public var offchainDetailDisplayData : DetailInfoDisplayItem? {
         get {
-            print("Get detail display data for MozoX offchain")
             return self._offchainDetailDisplayData
         }
         set {
-            print("Set detail display data for MozoX offchain")
             offchainDetailDisplayDataLockQueue.sync {
                 self._offchainDetailDisplayData = newValue
             }
@@ -72,11 +70,9 @@ class SafetyDataManager {
     
     public var onchainFromOffchainDetailDisplayData : DetailInfoDisplayItem? {
         get {
-            print("Get detail display data of onchain for MozoX offchain")
             return self._onchainFromOffchainDetailDisplayData
         }
         set {
-            print("Set detail display data of onchain for MozoX offchain")
             onchainFromOffchainDetailDisplayDataLockQueue.sync {
                 self._onchainFromOffchainDetailDisplayData = newValue
             }
@@ -90,11 +86,9 @@ class SafetyDataManager {
     
     public var onchainDetailDisplayData : DetailInfoDisplayItem? {
         get {
-            print("Get detail display data for MozoX onchain")
             return self._onchainDetailDisplayData
         }
         set {
-            print("Set detail display data for MozoX onchain")
             onchainDetailDisplayDataLockQueue.sync {
                 self._onchainDetailDisplayData = newValue
             }

@@ -164,6 +164,6 @@ extension PaymentQRViewController: AddressBookViewDelegate {
 }
 extension PaymentQRViewController {
     func notFoundContact(_ phoneNo: String) {
-        displayMozoError("This phone number is not belong to any MozoX Wallet Address")
+        displayMozoError("text_msg_phone_not_belong_any_wallet")
     }
 }
