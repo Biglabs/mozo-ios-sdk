@@ -22,7 +22,7 @@ class MozoPopupContact: MozoView {
     
     let removeTexts = [" (email + phone)", " (phone + email)", " (이메일 + 전화)", " (전화 + 이메일)"]
     
-    var errorMessage = "Can not connect to MozoX servers. Contact your agency for more infomation.".localized {
+    var errorMessage = "error_fatal".localized {
         didSet {
             if lbError != nil {
                 var finalText = errorMessage.localized

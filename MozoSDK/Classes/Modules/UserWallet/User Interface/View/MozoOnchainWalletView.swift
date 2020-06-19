@@ -287,7 +287,7 @@ class MozoOnchainWalletView: MozoView {
     
     func checkDisableButtonConvert(isPending: Bool) {
         if !isPending {
-            btnConvert.setTitle("Convert to MozoX Offchain".localized, for: .normal)
+            btnConvert.setTitle("btn_convert_to_mozo".localized, for: .normal)
             btnConvert.isUserInteractionEnabled = true
             btnConvert.backgroundColor = ThemeManager.shared.main
         } else {

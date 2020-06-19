@@ -21,13 +21,13 @@ class WalletProcessingViewController: MozoBasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         rotateView()
-        let explainText = isCreateNew ? "Creating your MozoX wallet..." : "Recovering your MozoX wallet..."
+        let explainText = isCreateNew ? "text_explain_creating_wallet" : "text_explain_recovering_wallet"
         lbExplainWaiting.text = explainText.localized
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let title = isCreateNew ? "Create MozoX Wallet" : "Recover MozoX Wallet"
+        let title = isCreateNew ? "title_create_wallet" : "Recover Mozo Wallet"
         navigationItem.title = title.localized
         navigationItem.rightBarButtonItem = nil
     }

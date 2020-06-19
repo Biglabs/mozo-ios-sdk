@@ -103,7 +103,7 @@ extension ABImportViewController: ABImportViewInterface {
     }
     
     func showSettingPermissionAlert() {
-        let alert = UIAlertController(title: "Cannot access your Contact Book".localized, message: "You must give MozoX permission to access the Contact Book first".localized, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Cannot access your Contact Book".localized, message: "text_reuqest_permission_contact".localized, preferredStyle: .alert)
         alert.addAction(.init(title: "Change Settings".localized, style: .default, handler: { (action) in
             self.openSettings()
         }))

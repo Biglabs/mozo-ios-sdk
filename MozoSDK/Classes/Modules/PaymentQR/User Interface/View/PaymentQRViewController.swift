@@ -55,7 +55,7 @@ class PaymentQRViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Request MozoX".localized
+        title = "title_request_mozo".localized
     }
     
     func bindData() {
@@ -102,8 +102,6 @@ class PaymentQRViewController: MozoBasicViewController {
     
     @objc func doneButtonActionForAddressOrPhone() {
         txtAddressOrPhoneNo.resignFirstResponder()
-        
-        // Auto check input. If input is phone number, auto find contact in MozoX
         validatePhoneNoAfterFinding()
     }
     

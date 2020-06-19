@@ -38,14 +38,14 @@ public class NotiDisplayItemData {
                     prefix = prefix.localized
                     actionText = action.localized
                     let amount = blNoti.amount?.convertOutputValue(decimal: blNoti.decimal ?? 0)
-                    amountText = "%@ MozoX".localizedFormat((amount ?? 0.0).roundAndAddCommas())
-                    title = "\(action) %@ MozoX".localizedFormat((amount ?? 0.0).roundAndAddCommas())
+                    amountText = "%@ Mozo".localizedFormat((amount ?? 0.0).roundAndAddCommas())
+                    title = "\(action) %@ Mozo".localizedFormat((amount ?? 0.0).roundAndAddCommas())
                     if let airdropNoti = rawNoti as? AirdropNotification {
                         subtitle = "\(prefix) \(airdropNoti.storeName ?? "")"
                         image = "ic_notif_airdropped"
                         category = .Airdropped
                     } else if let inviteNoti = rawNoti as? InviteNotification {
-                        subtitle = inviteNoti.phoneNumSignUp != nil ? "%@ joined MozoX".localizedFormat(inviteNoti.phoneNumSignUp ?? "") : "Your friend joined MozoX".localized
+                        subtitle = inviteNoti.phoneNumSignUp != nil ? "notify_invite_joined_mozo".localizedFormat(inviteNoti.phoneNumSignUp ?? "") : "nofity_invite_friend_joined".localized
                         detailText = subtitle
                         image = "ic_notif_invite"
                         category = .AirdropInvite
@@ -73,7 +73,7 @@ public class NotiDisplayItemData {
                  NotificationEventType.AirdropTopRetailer.rawValue:
                 if let blNoti = rawNoti as? BalanceNotification {
                     let amount = blNoti.amount?.convertOutputValue(decimal: blNoti.decimal ?? 0)
-                    title = "You got %@ Bonus MozoX".localizedFormat((amount ?? 0.0).roundAndAddCommas())
+                    title = "notify_receive_bonus".localizedFormat((amount ?? 0.0).roundAndAddCommas())
                     actionText = title // To display on Retailer App - Notification List
                     image = "ic_notif_open_box"
                     switch rawNoti.event {
@@ -84,7 +84,7 @@ public class NotiDisplayItemData {
                         subtitle = "For signing up with us".localized
                         break
                     case NotificationEventType.AirdropTopRetailer.rawValue:
-                        subtitle = "For being a 1st 1,000 MozoX Retailers".localized
+                        subtitle = "notify_receive_bonus_top_retailers".localized
                         break
                     default:
                         break

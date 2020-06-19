@@ -115,7 +115,7 @@ class TxHistoryViewController: MozoBasicViewController {
         
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width - 40, height: 20))
         label.textAlignment = .center
-        label.text = "Transaction History is emtpy or your connection is too slow".localized
+        label.text = "history_empty_title".localized
         label.textColor = ThemeManager.shared.textSection
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 2
@@ -123,7 +123,7 @@ class TxHistoryViewController: MozoBasicViewController {
         
         let description = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width - 92, height: 30))
         description.textAlignment = .center
-        description.text = "Transfer MozoX to your friends or request them to send you MozoX.".localized
+        description.text = "history_empty_content".localized
         description.textColor = ThemeManager.shared.textSection
         description.font = UIFont.systemFont(ofSize: 13)
         description.numberOfLines = 4

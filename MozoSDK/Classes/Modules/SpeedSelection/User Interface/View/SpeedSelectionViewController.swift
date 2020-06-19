@@ -33,7 +33,7 @@ class SpeedSelectionViewController : MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "Create MozoX Wallet".localized
+        navigationItem.title = "title_create_wallet".localized
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: barButtonView)
     }
     

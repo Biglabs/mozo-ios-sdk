@@ -207,7 +207,7 @@ class ConvertViewController: MozoBasicViewController {
                 let resultInDoule = result.convertOutputValue(decimal: info.balanceOfETH?.decimals ?? 18)
                 let resultText = resultInDoule.removeZerosFromEnd(maximumFractionDigits: 8)
                 
-                let string = "You need to transfer %@ ETH into this MozoX Offchain Wallet address to pay TX Fee".localizedFormat(resultText) as NSString
+                let string = "text_msg_required_eth".localizedFormat(resultText) as NSString
                 let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13.0)])
                 
                 let boldFontAttribute = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 13.0)]

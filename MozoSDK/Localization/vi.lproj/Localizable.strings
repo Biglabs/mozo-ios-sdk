@@ -22,13 +22,13 @@
 "An error has occurred." = "Có lỗi xảy ra";
 "Your balance is not insufficient for this transfer amount." = "Số dư không đủ để gửi";
 "Deposit" = "Gửi vào";
-"Sign In to MozoX" = "Đăng nhập MozoX";
-"Log Out MozoX" = "Đăng xuất MozoX";
-"Send MozoX" = "Gửi MozoX";
+"btn_signin_mozo" = "Đăng nhập Mozo";
+"btn_logout_mozo" = "Đăng xuất Mozo";
+"title_send_mozo" = "Gửi Mozo";
 "Transaction History" = "Lịch sử giao dịch";
 "Withdraw" = "Rút ra";
 "Withdraw MozoX" = "Rút MozoX";
-"Request MozoX" = "Yêu cầu nhận MozoX";
+"title_request_mozo" = "Yêu cầu Mozo";
 "Confirm" = "Xác nhận";
 "Back" = "Trở lại";
 "Cancel" = "Thoát";
@@ -58,7 +58,7 @@
 "Enter your Security PIN" = "Nhập mã PIN";
 "Enter Security PIN" = "Nhập mã PIN";
 "Enter your Security PIN\nto restore wallet" = "Nhập mã PIN\nđể khôi phục lại ví";
-"Enter your Security PIN\nto send MozoX" = "Nhập mã PIN\nđể gửi MozoX";
+"title_enter_pin_to_send" = "Nhập mã PIN\nđể gửi Mozo";
 "Enter your Security PIN\nto create airdrop event" = "Nhập mã PIN\nđể tạo chương trình";
 "Security PIN must be 6 digits" = "Mã PIN phải đủ 6 số";
 "Confirm Security PIN" = "Xác nhận mã PIN";
@@ -74,7 +74,6 @@
 "Sent %@ MozoX" = "Đã gửi %@ MozoX";
 "From %@" = "Từ %@";
 "To %@" = "Đến %@";
-"Request MozoX" = "Yêu cầu MozoX";
 "Receive Amount" = "Tổng nhận";
 "Requested List" = "Danh sách được yêu cầu";
 "Create Request" = "Tạo yêu cầu";
@@ -88,7 +87,6 @@
 "Requested list is empty" = "Danh sách trống";
 "From:" = "Từ:";
 "Request:" = "Yêu cầu:";
-"Send MozoX" = "Gửi MozoX";
 "Confirmation" = "Xác nhận";
 "From MozoX Offchain Wallet" = "Từ ví MozoX Offchain";
 "Receiver Address" = "Địa chỉ người nhận";
@@ -110,7 +108,7 @@
 "MozoX Offchain Wallet" = "Ví MozoX Offchain";
 "Transaction history list is empty" = "Danh sách trống";
 "MozoX Offchain Balance" = "Tổng MozoX Offchain";
-"Your MozoX Offchain Wallet Address" = "Địa chỉ ví MozoX Offchain của bạn";
+"text_your_mozo_wallet_address" = "Địa chỉ ví Mozo của bạn";
 "To" = "Đến";
 "From" = "Từ";
 "You must" = "Bạn phải";
@@ -649,9 +647,9 @@
 "error_date_less_current" = "Thời điểm bắt đầu chương trình phải lớn hơn hiện tại 10 phút. Vui lòng kiểm tra lại thông tin.";
 "error_date_start_must_earlier_end" = "Thời điểm bắt đầu chương trình phải diễn ra trước ngày kết thúc. Vui lòng kiểm tra lại thông tin.";
 "error_time_start_must_earlier_end" = "Giờ bắt đầu phải diễn ra trước giờ kết thúc. Xin kiểm tra lại thông tin.";
-"\"Frequency\" is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX tokens during the same airdrop event. \"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at 24 hours)." = "\"Tần suất\" là thời gian tối thiểu khách hàng có thể tiếp tục nhận MozoX từ cùng một chương trình, tính từ lần nhận thành công gần nhất. Tần suất nhận MozoX phải lớn hơn 30 phút. Vui lòng kiểm tra lại thông tin.";
-"error_amount_not_enough_to_airdrop" = "Số MozoX Airdrop lớn hơn số dư khả dụng. Xin kiểm tra lại thông tin.";
-"Incorrect amount of MozoX tokens to be airdropped to each Shopper visiting your store. Please check your input." = "Số MozoX Airdrop cho mỗi khách không hợp lệ. Xin kiểm tra lại thông tin.";
+"error_invalid_frequency" = "Tần suất là thời gian tối thiểu khách hàng có thể tiếp tục nhận điểm thưởng Mozo từ cùng một chương trình airdrop, tính từ lần nhận thành công gần nhất.\nTần suất nhận điểm thưởng Mozo phải lớn hơn 30 phút. Vui lòng kiểm tra lại thông tin. (Chúng tôi khuyến nghị nên để tần suất là 24 giờ)";
+"error_invalid_total_amount" = "Số Mozo Airdrop lớn hơn số dư khả dụng. Xin kiểm tra lại thông tin.";
+"error_invalid_per_customer_amount" = "Số điểm thưởng Mozo Airdrop cho mỗi khách không hợp lệ. Xin kiểm tra lại thông tin.";
 
 "Something is wrong with your account status. Please try again." = "Có lỗi xảy ra. Xin thử lại";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "Tài khoản ví đã được cập nhật nhưng chưa đồng bộ với thiết bị đang dùng. Xin khôi phục lại ví trước khi bắt đầu.";
@@ -779,9 +777,9 @@
 "Copied to clipboard" = "Đã sao chép";
 "Go to Etherscan.io" = "Đi đến Etherscan.io";
 "Token List:" = "Danh sách Token:";
-"Convert to MozoX Offchain" = "Chuyển đổi thành MozoX Offchain";
+"btn_convert_to_mozo" = "Chuyển thành điểm thưởng Mozo";
 "Pending transaction..." = "Đang xử lý giao dịch...";
-"How to add MozoX Onchain?" = "Hướng dẫn thêm MozoX Onchain";
+"text_how_to_add_mozo_x" = "Hướng dẫn thêm MozoX";
 "Enter amount to convert MozoX Offchain" = "Nhập số lượng đổi thành MozoX Offchain";
 "Convert To Offchain" = "Đổi thành MozoX Offchain";
 "Slow" = "Chậm";
@@ -794,7 +792,7 @@
 "ETH balance is not enough." = "Không đủ ETH";
 "From Onchain" = "Từ Onchain";
 "To Offchain" = "Thành Offchain";
-"Enter your Security PIN\nto convert MozoX from onchain to offchain." = "Nhập mã PIN để chuyển đổi MozoX từ Onchain thành Offchain.";
+"title_enter_pin_to_convert" = "Nhập mã PIN\nđể chuyển đổi MozoX trong Ví Onchain thành Mozo.";
 "Broadcasting transaction..." = "Đang gửi thông tin giao dịch...";
 "It’s might take about 3 minutes to complete" = "Sẽ mất khoảng 3 phút để hoàn tất";
 "Hide transaction" = "Ẩn màn hình";
@@ -814,18 +812,17 @@
 
 "There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later." = "Đang có một giao dịch ở trạng thái chờ. Không thể thực hiện giao dịch khác. Vui lòng đợi khoảng 3 phút và thực hiện lại giao dịch.";
 "Can not send transaction to Ethereum network or sent but failed. Please check your data and try again." = "Không thể gởi giao dịch đến hệ thống Ethereum hoặc đã gới nhưng xẩy ra lỗi. Xin vui lòng kiểm tra thông tin và thực hiện lại giao dịch";
-"We're sorry because something is wrong. We will transfer MozoX Offchain to your wallet later." = "Có lỗi bất thường xảy ra. Chúng tôi sẽ tìm hiểu và chuyển MozoX Offchain đến tài khoản của bạn.";
 
 "Convert Failed" = "Chuyển đổi thất bại";
 "Cannot complete convert MozoX from Onchain to Offchain." = "Không thể hoàn tất việc đổi MozoX từ Onchain thành Offchain.";
 "Please try again after some time." = "Xin đợi một lúc và thử lại.";
 "No routes found" = "Không tìm thấy đường đi";
 "airdrop_discover_more_on_map" = "Khám phá thêm chương trình Airdrop để nhận Mozo 👌";
-"Your store have not been registered on our website yet. Please contact MozoX Customer Service for support. (Zalo - Kakao - Telegram)" = "Cửa hàng của bạn chưa được đăng ký trên hệ thống website MozoX. Xin liên hệ dịch vụ chăm sóc khách hàng để được hỗ trợ. (Zalo - Kakao - Telegram)";
-"This store has left MozoX ecosystem. Sorry for any inconvenience." = "Cửa hàng này đã ra khỏi hệ sinh thái MozoX. Xin lỗi vì sự bất tiện này.";
+"error_store_unregisted" = "Cửa hàng của bạn chưa được đăng ký trên hệ thống website Mozo. Xin liên hệ dịch vụ chăm sóc khách hàng để được hỗ trợ.";
+"error_store_suspened" = "Cửa hàng này đã rời khỏi hệ sinh thái Mozo. Xin lỗi vì sự bất tiện này.";
 "Withdraw MozoX from airdrop event is failed" = "Rút MozoX từ chương trình Airdrop thất bại.";
-"This airdrop event has not ended yet. You can not withdraw MozoX. Please try again later." = "Bạn không thể rút MozoX từ chương trình Airdrop chưa kết thúc. Xin thử lại sau.";
-"There is no MozoX in this airdrop event." = "Chương trình Airdrop không còn MozoX. Không thể thao tác.";
+"error_event_can_not_withdraw" = "Bạn không thể rút Mozo từ chương trình Airdrop chưa kết thúc. Xin thử lại sau.";
+"error_event_no_mozo" = "Chương trình Airdrop không còn Mozo. Không thể thao tác.";
 "You are not the owner of this event." = "Bạn không phải chủ chương trình Airdrop này.";
 
 "Create Airdrop Event to attract more customer by Airdrop MozoX." = "Tạo chương trình Airdrop MozoX để thu hút nhiều khách hàng hơn. ";
@@ -896,16 +893,16 @@
 "Loading..." = "Đang tải...";
 
 // Detect Onchain inside Offchain
-"Detected %@ MozoX Onchain" = "Phát hiện %@ MozoX Onchain";
+"text_detected_mozo_x" = "Phát hiện %@ MozoX trong Ví Onchain";
 "Do you want to convert these MozoX Onchain in this wallet into MozoX Offchain?" = "Bạn có muốn chuyển MozoX Onchain trong ví thành MozoX Offchain?";
 "Your ETH balance is: %@" = "Số dư ETH: %@";
-"You need to transfer %@ ETH into this MozoX Offchain Wallet address to pay TX Fee" = "Bạn cần chuyển %@ ETH vào ví MozoX Offchain này để trả phí giao dịch";
-"Converting MozoX Offchain..." = "Đang chuyển đổi MozoX Offchain...";
+"text_msg_required_eth" = "Bạn cần chuyển %@ ETH vào ví Onchain này để trả phí giao dịch";
+"text_converting_mozo" = "Đang chuyển đổi thành Mozo...";
 
-"This wallet address does not exist. We only support registered MozoX wallet addresses." = "Địa chỉ ví không tồn tại. Hệ thống chỉ cho phép thực hiện giao dịch với những địa chỉ ví MozoX đã được đăng ký.";
+"error_wallet_address_not_exist" = "Địa chỉ ví không tồn tại. Hệ thống chỉ cho phép thực hiện giao dịch với những địa chỉ ví Mozo đã được đăng ký.";
 
-"Your friend joined MozoX" = "Bạn bè của bạn đã tham gia MozoX";
-"%@ joined MozoX" = "%@ đã tham gia MozoX";
+"nofity_invite_friend_joined" = "Bạn bè của bạn đã tham gia Mozo";
+"notify_invite_joined_mozo" = "%@ đã tham gia Mozo";
 
 // Invitation
 "Share via your network" = "Chia sẻ qua mạng xã hội";
@@ -946,13 +943,13 @@
 "Did you know?" = "Bạn có biết?";
 "Search Result" = "Kết quả tìm kiếm";
 "Try one of these instead:" = "Bạn có thể thử một trong những lựa chọn bên dưới:";
-"Requested List is empty or your connection is too slow" = "Danh sách yêu cầu trống hoặc mạng quá chậm";
-"Any MozoX Request from your friends will be displayed here." = "Bất kỳ yêu cầu MozoX nào từ bạn bè sẽ được hiển thị tại đây.";
+"payment_empty_msg_title" = "Danh sách yêu cầu trống hoặc mạng quá chậm";
+"payment_empty_msg_content" = "Bất kỳ yêu cầu Mozo nào từ bạn bè sẽ được hiển thị tại đây.";
 "Favorite Stores is empty or your connection is too slow" = "Cửa hàng yêu thích trống hoặc mạng quá chậm";
 "Seems you didn't add any Favourite Stores, we love sharing some interesting stores for you." = "Có vẻ bạn chưa thêm bất kỳ Cửa hàng yêu thích nào, chúng tôi rất muốn chia sẻ một số cửa hàng thú vị cho bạn.";
 "Discover more stores" = "Khám phá thêm các cửa hàng";
-"Transaction History is emtpy or your connection is too slow" = "Lịch sử giao dịch trống hoặc mạng quá chậm";
-"Transfer MozoX to your friends or request them to send you MozoX." = "Chuyển MozoX cho bạn bè hoặc yêu cầu họ gửi MozoX cho bạn.";
+"history_empty_title" = "Lịch sử giao dịch trống hoặc mạng quá chậm";
+"history_empty_content" = "Chuyển Mozo cho bạn bè hoặc yêu cầu họ gửi Mozo cho bạn.";
 "Go to Wallet" = "Chuyển đến Ví";
 "Airdrop Event List" = "Danh sách chương trình Airdrop";
 "Airdrop Event List is empty or your connection is too slow" = "Danh sách chương trình Airdrop trống hoặc mạng quá chậm";
@@ -963,10 +960,10 @@
 "Go to Promotions list" = "Chuyển đến danh sách Khuyến mãi";
 
 // Bonus Notification + Unregistered Store + Simplyfy Create Airdrop Event
-"You got %@ Bonus MozoX" = "Bạn được thưởng %@ MozoX";
+"notify_receive_bonus" = "Bạn được thưởng %@ Mozo";
 "For signing up with us" = "Khi đăng nhập thành công";
 "For being verified store" = "Khi cửa hàng của bạn gia nhập MozoX thành công";
-"For being a 1st 1,000 MozoX Retailers" = "Trở thành một trong 1,000 nhà bán lẻ MozoX đầu tiên";
+"notify_receive_bonus_top_retailers" = "Trở thành một trong 1,000 nhà bán lẻ Mozo đầu tiên";
 
 "Unregistered Store" = "Cửa hàng của bạn chưa đăng kí";
 "If you have not registered yet, please register." = "Nếu bạn chưa đăng kí, xin vui lòng đăng kí.";
@@ -1011,9 +1008,9 @@
 "*What are Recovery Phrase?" = "*Cụm từ khôi phục là gì?";
 "Recovery Phrase are random set of words used to secure your digital wallet. You should write down these words in order so that in the event you lose your digital wallet or forget your PIN, you can recover your wallet and/or reset your PIN." = "Cụm từ khôi phục là một tập các từ được phát sinh ngẫu nhiên bởi thuật toán. Bạn phải ghi lại những từ này phòng trường hợp mất thiết bị hoặc quên mã PIN, bạn có thể dùng nó để phục hồi ví hoặc tạo PIN mới.";
 
-"Create MozoX Wallet" = "Tạo ví MozoX";
-"Creating your MozoX wallet..." = "Đang tạo ví MozoX...";
-"Recovering your MozoX wallet..." = "Đang khôi phục thông tin của ví MozoX...";
+"title_create_wallet" = "Tạo ví Mozo";
+"text_explain_creating_wallet" = "Đang tạo ví Mozo...";
+"text_explain_recovering_wallet" = "Đang khôi phục thông tin của ví Mozo...";
 
 "Backup Wallet" = "Sao lưu ví";
 "This is your recovery phrase" = "Cụm từ khôi phục";
@@ -1177,30 +1174,29 @@
 "Go to Settings →" = "Thiết lập →";
 "Location service is off 🗺" = "Định vị bị tắt  🗺";
 "Bluetooth is tuned off 😔..." = "Bluetooth bị tắt 😔...";
-"Get MozoX from nearby airdrop events 🎁" = "Nhận MozoX từ những airdrop gần đây  🎁";
+"todo_msg_get_nearby_airdrop" = "Nhận Mozo từ những airdrop gần đây  🎁";
 "Interesting promotions nearby 🤩" = "Khuyến mãi hấp dẫn ở gần đây 🤩";
 "Purchased promotions nearby 🤣" = "Khuyến mãi bạn đã mua ở gần đây 🤣";
 "Purchased promotions expiring soon 😣" = "Khuyến mãi bạn đã mua sắp hết hạn 😣";
 "Airdrop events that will expire soon ⏳" = "Chương trình airdrop sắp kết thúc ⏳";
-"Your wallet is almost out of MozoX 😞" = "Ví của bạn sắp hết MozoX 😞";
-"Your wallet is almost out of MozoX 😞" = "Ví của bạn sắp hết MozoX 😞";
+"todo_msg_wallet_almost_out_of_mozo" = "Ví của bạn sắp hết Mozo 😞";
 "Promotions that will expire soon 👌" = "Khuyến mãi sắp kết thúc  👌";
 "No planned airdrop events 😐" = "Chưa có chương trình airdrop nào 😐";
 "No planned promotions 😐" = "Chưa có khuyến mãi nào 😐";
 "Unsecure wallet 😱" = "Ví không an toàn 😱";
-"Airdrop events is almost out of MozoX 😞" = "Chương trình airdrop sắp hết MozoX 😞";
+"todo_msg_event_almost_out_of_mozo" = "Chương trình airdrop sắp hết Mozo 😞";
 "Turn on for better experience →" = "Bật định vị để trải nghiệm tốt hơn →";
 "todo_action_turn_on_bluetooth" = "Bật bluetooth để nhận Mozo →";
 "Discover your bookmarked promotions →" = "Khám phá khuyến mãi yêu thích của bạn →";
 "Discover your purchased promotions →" = "Sử dụng khuyến mãi đã mua →";
 "Review and create a new airdrop event →" = "Xem và tạo chương trình mới →";
-"Buy more MozoX →" = "Mua thêm MozoX →";
-"Discover stores offering MozoX →" = "Xem những cửa hàng gần nhất để nhận MozoX →";
+"todo_action_buy_mozo" = "Mua thêm Mozo →";
+"todo_action_discover_stores" = "Xem những cửa hàng gần nhất để nhận Mozo →";
 "Create a new promotion →" = "Tạo khuyến mãi mới →";
 "Create to increase foot traffic →" = "Tạo để tăng lượt khách đến cửa hàng →";
 "Create promotion →" = "Tạo khuyến mãi →";
 "Set up your own PIN →" = "Thiết lập PIN của riêng bạn →";
-"Review and add more MozoX →" = "Xem và chuyển thêm MozoX →";
+"todo_action_review_add_more_mozo" = "Xem và chuyển thêm Mozo →";
 "Unsolve" = "Chưa được xử lý";
 "Unsolve (%d)" = "Chưa được xử lý (%d)";
 "todo_action_explain" = "Xin vui lòng giải quyết những vấn đề sau để ứng dụng Mozo phục vụ bạn tốt hơn:";
@@ -1212,7 +1208,7 @@
 "Enter MozoX address or phone number" = "Nhập địa chỉ ví MozoX hoặc số điện thoại";
 "Can't find this contact in your MozoX Address Book" = "Không tìm thấy trong danh bạ MozoX của bạn";
 "Find in MozoX System →" = "Tìm trong hệ thống MozoX →";
-"This phone number is not belong to any MozoX Wallet Address" = "Số điện thoại này chưa có ví MozoX.";
+"text_msg_phone_not_belong_any_wallet" = "Số điện thoại này chưa có ví Mozo.";
 "We only support to search with phone number." = "Hệ thống hiện chỉ hỗ trợ tìm với số điện thoại.";
 
 "Import Contacts" = "Nhập từ danh bạ";
@@ -1231,7 +1227,7 @@
 "Update" = "Cập nhật";
 "Change Settings" = "Thay đổi thiết lập";
 "Cannot access your Contact Book" = "Không thể truy cập danh bạ";
-"You must give MozoX permission to access the Contact Book first" = "Trước hết bạn cần cấp quyền truy cập danh bạ";
+"text_reuqest_permission_contact" = "Trước hết bạn cần cấp quyền cho Mozo truy cập danh bạ";
 "Not yet synchronized" = "Chưa được đồng bộ";
 "Cannot synchronize, your Contact Book is empty." = "Danh bạ trống, không thể tiến hành đồng bộ.";
 
@@ -1243,8 +1239,7 @@
 
 // Speed Selection + Login Incorrect Time
 "You want:" = "Bạn muốn:";
-"Already have another MozoX account? Log Out" = "Đã có tài khoản MozoX khác? Đăng xuất.";
-"Already have another MozoX account?" = "Đã có tài khoản MozoX khác?";
+"text_already_have_account" = "Đã có tài khoản Mozo khác?";
 "The time on your device is incorrect." = "Đồng hồ của bạn không chính xác.";
 "Please update the date and time, then try again." = "Xin vui lòng cập nhật ngày giờ và thử lại sau.";
 
@@ -1280,7 +1275,7 @@
 "Enter amount to deposit" = "Nhập số lượng để nạp vào";
 "Deposit failed" = "Nạp không thành công.";
 "There is an error occurred, please try again later" = "Có lỗi xảy ra. Xin vui lòng thử lại sau.";
-"Your MozoX is not enough to deposit" = "Bạn không đủ MozoX để nạp";
+"ticket_not_enough_to_deposit" = "Bạn không đủ Mozo để nạp";
 "Show my parking ticket" = "Hiển thị vé gởi xe";
 "Offline Parking Ticket" = "Vé gởi xe ngoại tuyến";
 "Free Parking Ticket" = "Vé gởi xe miễn phí";

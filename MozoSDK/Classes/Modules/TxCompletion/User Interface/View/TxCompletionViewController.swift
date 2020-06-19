@@ -48,7 +48,7 @@ class TxCompletionViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        var text = "Send MozoX"
+        var text = "title_send_mozo"
         switch moduleRequest {
         case .TopUp, .TopUpTransfer:
             text = "Deposit"

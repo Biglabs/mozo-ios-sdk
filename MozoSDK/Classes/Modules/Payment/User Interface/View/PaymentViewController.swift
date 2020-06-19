@@ -63,7 +63,7 @@ class PaymentViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "Request MozoX".localized
+        navigationItem.title = "btn_request_mozo".localized
     }
     
     func checkDisableButtonSend(_ text: String = "") {
@@ -202,7 +202,7 @@ class PaymentViewController: MozoBasicViewController {
         
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width - 40, height: 20))
         label.textAlignment = .center
-        label.text = "Requested List is empty or your connection is too slow".localized
+        label.text = "payment_empty_msg_title".localized
         label.textColor = ThemeManager.shared.textSection
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 2
@@ -210,7 +210,7 @@ class PaymentViewController: MozoBasicViewController {
         
         let description = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width - 92, height: 30))
         description.textAlignment = .center
-        description.text = "Any MozoX Request from your friends will be displayed here.".localized
+        description.text = "payment_empty_msg_content".localized
         description.textColor = ThemeManager.shared.textSection
         description.font = UIFont.systemFont(ofSize: 13)
         description.numberOfLines = 4
