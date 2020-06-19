@@ -889,7 +889,7 @@
 "Select language to share" = "Chọn ngôn ngữ để chia sẻ";
 "invite_shopper_app_name" = "Ứng dụng Ví Mozo";
 "invite_retailer_app_name" = "Ứng dụng Mozo Kinh doanh";
-"invite_reward_amount" = "Được thưởng %s Mozo";
+"invite_reward_amount" = "Được thưởng %@ Mozo";
 "Let your friends scan this QR codes or invite them to join MozoX. You will get rewards for each friend signed up successful." = "Hãy mời bạn bè của bạn quét mã QR này hoặc mời họ tham gia MozoX. Bạn sẽ nhận được thưởng cho mỗi người bạn đăng ký thành công.";
 
 "Once per day" = "Một lần một ngày";
