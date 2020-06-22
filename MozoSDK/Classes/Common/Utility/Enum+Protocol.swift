@@ -28,7 +28,8 @@ public enum ServiceType: String {
     
     public var auth: String {
         switch self {
-        case .DEV, .STAGING: return "\(rawValue)keycloak."
+        case .DEV: return "\(rawValue)keycloak."
+        case .STAGING: return "\(rawValue)login."
         case .PRODUCTION: return "login."
         }
     }
