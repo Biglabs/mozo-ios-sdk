@@ -97,7 +97,7 @@ class ConvertViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "Convert To Offchain".localized
+        navigationItem.title = "text_convert_title".localized
     }
     
     override func viewDidLayoutSubviews() {
@@ -143,11 +143,11 @@ class ConvertViewController: MozoBasicViewController {
         
         btnContinue.roundCorners(cornerRadius: 0.015, borderColor: .white, borderWidth: 0.1)
         
-        let string = "Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive.".localized as NSString
+        let string = "text_convert_explain_gas_price".localized as NSString
         
-        let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13.0)])
+        let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0)])
         
-        let boldFontAttribute = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 13.0)]
+        let boldFontAttribute = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14.0)]
         
         // Part of string to be bold
         attributedString.addAttributes(boldFontAttribute, range: string.range(of: "TX fee = gas price * gas limit"))

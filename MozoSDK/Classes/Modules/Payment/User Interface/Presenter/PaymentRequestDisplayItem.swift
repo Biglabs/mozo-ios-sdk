@@ -22,7 +22,6 @@ struct PaymentRequestDisplayItem {
         self.requestingAddress = requestingAddress
     }
     
-    //    mozox:ec00a109f574e6960a12226d13b0ece38619e08c?amount=0.05
     init(scheme: String){
         let url = URL(string: scheme)
         let address = String(scheme.split(separator: "?")[0].split(separator: ":")[1])

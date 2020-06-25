@@ -50,7 +50,7 @@ extension WithdrawPresenter: WithdrawInteractorOutput {
             delegate?.withdrawMozoFromAirdropEventSuccess()
             delegate = nil
         } else {
-            delegate?.withdrawMozoFromAirdropEventFailureWithErrorString(error: "Withdraw MozoX from airdrop event is failed.")
+            delegate?.withdrawMozoFromAirdropEventFailureWithErrorString(error: "error_event_withdraw_failed".localized)
         }
     }
     

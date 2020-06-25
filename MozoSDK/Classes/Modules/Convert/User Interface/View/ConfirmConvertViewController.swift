@@ -39,7 +39,7 @@ class ConfirmConvertViewController: MozoBasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Convert To Offchain".localized
+        self.title = "text_convert_title".localized
     }
     
     func setupLayout() {
@@ -57,7 +57,7 @@ class ConfirmConvertViewController: MozoBasicViewController {
     func setupDashLines() {
         let lines = [lineConvert, lineFromTo, lineGasLimit, lineGasPrice]
         for line in lines {
-            let v = line as! UIView
+            let v = line!
             v.backgroundColor = .clear
             let p0 = CGPoint(x: v.frame.minX, y: v.frame.minY)
             let p1 = CGPoint(x: v.frame.maxX, y: v.frame.minY)

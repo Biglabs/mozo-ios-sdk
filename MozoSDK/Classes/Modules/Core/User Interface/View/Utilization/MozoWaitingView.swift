@@ -27,8 +27,7 @@ public class MozoWaitingView: UIView {
         commonInit()
     }
     
-    override public func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
+    public override func awakeFromNib() {
         commonInit()
     }
     

@@ -19,8 +19,7 @@ import UIKit
         loadViewFromNib()
     }
     
-    override public func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
+    public override func awakeFromNib() {
         loadViewFromNib()
     }
     

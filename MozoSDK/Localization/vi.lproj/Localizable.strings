@@ -14,7 +14,7 @@
 "Enter Contact Name" = "Nhập tên người nhận";
 "Address Saved" = "Đã lưu địa chỉ";
 "This address already exists in your Address Book" = "Địa chỉ đã tồn tại";
-"Your MozoX Wallet Address" = "Địa chỉ ví MozoX của bạn";
+"text_wallet_address" = "Địa chỉ ví Mozo của bạn";
 "Creating Interface" = "Đang khởi tạo giao diện";
 "Copied!" = "Đã sao chép";
 "There is no internet connection!" = "Mất kết nối Internet!";
@@ -27,7 +27,7 @@
 "title_send_mozo" = "Gửi Mozo";
 "Transaction History" = "Lịch sử giao dịch";
 "Withdraw" = "Rút ra";
-"Withdraw MozoX" = "Rút MozoX";
+"btn_withdraw_mozo" = "Rút Mozo";
 "title_request_mozo" = "Yêu cầu Mozo";
 "Confirm" = "Xác nhận";
 "Back" = "Trở lại";
@@ -70,25 +70,22 @@
 "Create Wallet failed" = "Tạo ví thất bại";
 "Customer has entered" = "Khách vào cửa hàng";
 "Customer has left" = "Khách vừa đi khỏi";
-"Received %@ MozoX" = "Đã nhận %@ MozoX";
-"Sent %@ MozoX" = "Đã gửi %@ MozoX";
 "From %@" = "Từ %@";
 "To %@" = "Đến %@";
 "Receive Amount" = "Tổng nhận";
 "Requested List" = "Danh sách được yêu cầu";
 "Create Request" = "Tạo yêu cầu";
-"You can ask another user to send MozoX to your wallet address by creating a Request." = "Bạn có thể yêu cầu một người dùng khác gửi MozoX đến ví của mình bằng việc tạo một yêu cầu nhận MozoX";
+"text_request_explain" = "Bạn có thể yêu cầu một người dùng khác gửi Mozo đến ví của mình bằng việc tạo một yêu cầu nhận Mozo.";
 "Send Request" = "Gửi yêu cầu";
-"Scan To Send MozoX" = "Quét để gửi MozoX";
+"btn_scan_to_send" = "Quét để gửi Mozo";
 "Scan to send:" = "Quét để gửi";
 "Send request to" = "Gửi yêu cầu đến";
 "Send Request Successful" = "Gửi yêu cầu thành công";
-"You sent Request MozoX to:" = "Đã gửi yêu cầu nhận:";
 "Requested list is empty" = "Danh sách trống";
 "From:" = "Từ:";
 "Request:" = "Yêu cầu:";
 "Confirmation" = "Xác nhận";
-"From MozoX Offchain Wallet" = "Từ ví MozoX Offchain";
+"text_from_mozo_wallet" = "Từ Ví Mozo";
 "Receiver Address" = "Địa chỉ người nhận";
 "Enter receiver wallet address" = "Điền địa chỉ ví người nhận";
 "Error: The Receiver Address is not valid." = "Lỗi: Địa chỉ người nhận không hợp lệ";
@@ -122,7 +119,6 @@
 "Failed" = "Thất bại";
 "Success" = "Thành công";
 "View All" = "Xem toàn bộ";
-"Total MozoX coins" = "Tổng số MozoX";
 "Phone Number" = "Số điện thoại";
 "Enter your mobile phone" = "Nhập số điện thoại";
 "Version %@" = "Phiên bản %@";
@@ -152,7 +148,6 @@
 "Successful" = "Thành công";
 "Restore Wallet" = "Khôi phục ví";
 "Account Verify" = "Xác nhận tài khoản";
-"Your store is not registered on our website yet, please contact Mozo Operation team for support." = "Cửa hàng của bạn chưa đăng ký với Website MozoX, xin liên lạc tư vấn viên để được hỗ trợ.";
 "Email" = "Email";
 "Mail" = "Mail";
 "Phone" = "SĐT";
@@ -172,8 +167,8 @@
 "Log Out Successful!" = "Đăng xuất thành công";
 "Back to log in" = "Quay lại trang đăng nhập";
 
-"Enter amount to receive" = "Nhập số MozoX cần nhận";
-"Enter amount to send" = "Nhập số MozoX cần gửi";
+"Enter amount to receive" = "Nhập số Mozo cần nhận";
+"Enter amount to send" = "Nhập số Mozo cần gửi";
 "Name can not be empty" = "Vui lòng nhập tên";
 "Add New Address" = "Thêm địa chỉ mới";
 "Save changes" = "Lưu";
@@ -204,7 +199,6 @@
 "Configuration Successful!" = "Thiết lập thành công";
 "Beacon range and location on map are configured successfully." = "Đã thiết lập thành công phạm vi hoạt động của Beacon và vị trí hiển thị trên bản đồ.";
 "Create Airdrop Event" = "Tạo chương trình Airdrop";
-"Airdrop MozoX coins to Shoppers who are using MozoX Shopper App when they visit your store." = "Airdrop MozoX cho những khách sử dụng app MozoX khi đến cửa hàng.";
 "Continue" = "Tiếp tục";
 "Log in with another phone number" = "Đăng nhập với số điện thoại khác";
 "Use my location" = "Dùng vị trí hiện tại";
@@ -218,7 +212,6 @@
 "Running Event" = "Chương trình đang chạy";
 "Mail" = "Mail";
 "Call" = "Gọi";
-"Your store is not registered on our website. Please contact MozoX Customer Service for support. (Email\/Phone Number)" = "Bạn chưa đăng ký trên Website. Vui lòng liên hệ bộ phận tư vấn để được hỗ trợ.";
 "Saving.." = "Đang lưu..";
 "Scanning.." = "Đang quét..";
 "Beacon detected, connecting.." = "Đã nhận diện Beacon, đang kết nối..";
@@ -247,9 +240,8 @@
 "Map" = "Bản đồ";
 "Add\nPhoto" = "Thêm\nảnh";
 "Photo" = "Ảnh";
-"Buy MozoX" = "Mua MozoX";
+"btn_buy_mozo" = "Mua Mozo";
 "Shoppers this month" = "Khách hàng trong tháng";
-"Airdropped MozoX" = "MozoX đã Airdrop";
 "Active Events" = "Chương trình đang chạy";
 "View all Events" = "Xem toàn bộ";
 "View all Shoppers" = "Xem toàn bộ";
@@ -261,7 +253,7 @@
 "Frequency" = "Tần suất Airdrop";
 "Duration:" = "Thời hạn:";
 "Duration" = "Thời hạn";
-"Store Location On MozoX Map" = "Vị trí cửa hàng trên bản đồ";
+"text_store_location_on_map" = "Vị trí cửa hàng trên bản đồ ứng dụng Mozo";
 "Edit Location" = "Sửa vị trí";
 "Select Photo Album" = "Chọn Album ảnh";
 "Tap to select Images" = "Chạm để chọn ảnh";
@@ -272,7 +264,6 @@
 "OK" = "Đồng ý";
 "Settings" = "Thiết lập";
 "Package" = "Hộp";
-"Total MozoX coins" = "Tổng số MozoX";
 "Filter" = "Lọc";
 "Notification Filter" = "Lọc thông báo";
 "Notification" = "Thông báo";
@@ -285,10 +276,8 @@
 "System Notification" = "Thông báo từ hệ thống";
 "Update Notification" = "Thông báo khi có cập nhật";
 "Daily Analytics" = "Báo cáo ngày";
-"Shoppers Receiving MozoX" = "Khách đã nhận";
-"Shoppers Receiving MozoX:" = "Khách đã nhận:";
-"Total number of MozoX airdropped" = "Tổng MozoX đã Airdrop";
-"Total MozoX airdropped" = "Tổng MozoX đã Airdrop";
+"text_analytic_number_of_mozo_airdroped" = "Tổng Mozo đã airdrop";
+"text_event_total_mozo_airdroped" = "Tổng số Mozo được airdrop";
 "Create Airdrop Event" = "Tạo chương trình Airdrop";
 "Event Name" = "Tên chương trình";
 "Number of shoppers" = "Số người nhận";
@@ -299,12 +288,9 @@
 "Event Period:" = "Thời hạn:";
 "Create" = "Tạo mới";
 "Selected days" = "Ngày hoạt động";
-"MozoX Terms of Use" = "Điều khoản sử dụng";
-"I have read and agree with MozoX Terms of Use" = "Tôi đã đọc và đồng ý điều khoản sử dụng";
-"I Agree" = "Tôi đồng ý";
 "Selected days:" = "Lặp lại:";
 "Create Event Successful!" = "Tạo chương trình thành công";
-"Add More MozoX" = "Thêm MozoX";
+"btn_add_more_mozo" = "Thêm Mozo";
 "Number of new shoppers receiving MozoX" = "Tổng người nhận mới";
 "Add MozoX" = "Thêm MozoX";
 "Add New Sub-Account" = "Thêm tài khoản phụ";
@@ -317,7 +303,6 @@
 "Enter your mobile phone number" = "Nhập số di động của bạn";
 "Sign Up Successful!" = "Đăng ký thành công";
 "Do you want to remove this Sub-Account?" = "Bạn muốn xóa tài khoản phụ này?";
-"Withdraw MozoX" = "Rút MozoX";
 "Do you want to add this phone number as Sub-Account?" = "Bạn muốn thêm số điện thoại này vào tài khoản phụ?";
 "Today" = "Hôm nay";
 "AM" = "AM";
@@ -410,7 +395,7 @@
 "4. Desktop Wallet" = "4. Desktop Wallet";
 "5. Web App for Retailer" = "5. Web App cho chủ cửa hàng";
 
-"Out of MozoX" = "Hết MozoX";
+"text_event_out_of_mozo" = "Hết Mozo";
 "End" = "Đã kết thúc";
 "Scheduled_Airdrop" = "Hẹn giờ";
 
@@ -501,8 +486,6 @@
 "Results not found" = "Không có kết quả trùng khớp";
 "%d Result(s) for" = "%d Kết quả cho";
 "Sorted by:" = "Sắp xếp theo:";
-"Total MozoX Coins" = "Tổng MozoX";
-"Total MozoX Coins:" = "Tổng MozoX:";
 "text_total_mozo" = "Tổng Mozo:";
 "Fill in to get %@ MozoX" = "Điền để nhận %@ MozoX";
 "Receive %@ MozoX for each join" = "Nhận %@ MozoX cho mỗi người tham gia";
@@ -672,11 +655,11 @@
 "Redeem" = "Mua";
 "Liquidity" = "Linh hoạt";
 "Reduce Cost" = "Giảm thiểu chi phí";
-"Airdrop MozoX to attract more customers to your store" = "Thu hút nhiều khách hàng hơn bằng cách Airdrop MozoX";
-"Collect and analyze customer information to create better customer insights" = "Thu thập và phân tích thông tin người dùng để đưa ra chiến lược tốt hơn";
-"Let customers redeem to buy product in your store by using MozoX" = "Cho phép khách thanh toán bằng MozoX như một hình thức đổi thưởng tại cửa hàng.";
-"Transfer, buy more MozoX and withdraw easily by using MozoX Wallet" = "Chuyển nhận, nạp và rút MozoX dễ dàng với Ví MozoX";
-"Disrupt foot traffic and save more cost with MozoX" = "Tăng lượng khách và giảm thiểu chi phí với MozoX";
+"intro_step_disrupt_foot_traffic" = "Thu hút nhiều khách hàng hơn bằng cách tạo chương trình Airdrop Mozo";
+"intro_step_analytics" = "Thu thập và phân tích thông tin người dùng để đưa ra chiến lược tốt hơn";
+"intro_step_redeem" = "Cho phép khách thanh toán bằng Mozo như một hình thức đổi thưởng tại cửa hàng.";
+"intro_step_liquidity" = "Chuyển nhận, nạp và rút Mozo dễ dàng với Ví Mozo";
+"intro_step_reduce_cost" = "Tăng lượng khách và giảm thiểu chi phí với Mozo";
 "This month airdropped" = "Airdrop trong tháng";
 "Visited Shoppers" = "Danh sách khách hàng";
 "Every (Frequency of Airdrop)" = "Tần suất airdrop";
@@ -780,13 +763,13 @@
 "btn_convert_to_mozo" = "Chuyển thành điểm thưởng Mozo";
 "Pending transaction..." = "Đang xử lý giao dịch...";
 "text_how_to_add_mozo_x" = "Hướng dẫn thêm MozoX";
-"Enter amount to convert MozoX Offchain" = "Nhập số lượng đổi thành MozoX Offchain";
-"Convert To Offchain" = "Đổi thành MozoX Offchain";
+"text_convert_hint_enter_amount" = "Nhập số lượng MozoX để đổi thành điểm thưởng Mozo";
+"text_convert_title" = "Chuyển thành điểm thưởng Mozo";
 "Slow" = "Chậm";
 "Average" = "Trung Bình";
 "Fast" = "Nhanh";
 "Normal" = "Bình thường";
-"Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive." = "Gas Price là chi phí được tính bằng đơn vị GWEI dùng để thực hiện một giao dịch trong Ethereum. Tổng chi phí (TX fee) được tính = Số Gas thực dùng * Gas Price, phí này được dùng trả cho “thợ đào” (Miner) để họ đưa giao dịch vào một khối (Block). Gas Price cao đồng nghĩa với giao dịch diễn ra nhanh hơn (nhưng tốn kém hơn).";
+"text_convert_explain_gas_price" = "Gas Price là chi phí được tính bằng đơn vị GWEI dùng để thực hiện một giao dịch trong Ethereum. Tổng chi phí (TX fee) được tính = Số Gas thực dùng * Gas Price, phí này được dùng trả cho “thợ đào” (Miner) để họ đưa giao dịch vào một khối (Block). Gas Price cao đồng nghĩa với giao dịch diễn ra nhanh hơn (nhưng tốn kém hơn).";
 "Read more" = "Chi tiết";
 "Onchain balance is not enough." = "Không đủ MozoX Onchain";
 "ETH balance is not enough." = "Không đủ ETH";
@@ -800,10 +783,10 @@
 "Broadcast completed" = "Đã xử lý xong";
 "Waiting for transaction status..." = "Đang chờ kết quả...";
 "Convert Successful" = "Chuyển đổi thành công";
-"You have just converted MozoX from Onchain to Offchain:" = "Bạn vừa đổi thành công MozoX từ Onchain thành Offchain:";
+"text_convert_just_converted" = "Bạn vừa đổi thành công từ MozoX thành điểm thưởng Mozo:";
 "Back to Onchain Wallet" = "Trở về ví Onchain";
 "Convert Failed" = "Chuyển đổi thất bại";
-"Cannot complete convert MozoX from Onchain to Offchain. Please try again after some time." = "Không thể hoàn tất việc chuyển đổi. Xin đợi một lúc và thử lại.";
+"text_convert_failed_and_try" = "Không thể chuyển đổi từ MozoX thành điểm thưởng Mozo.";
 "There are no Airdrop Events around you" = "Không có chương trình Airdrop gần bạn";
 "Discover" = "Khám phá";
 "On Going Events" = "Chương trình sắp Airdrop";
@@ -814,13 +797,12 @@
 "Can not send transaction to Ethereum network or sent but failed. Please check your data and try again." = "Không thể gởi giao dịch đến hệ thống Ethereum hoặc đã gới nhưng xẩy ra lỗi. Xin vui lòng kiểm tra thông tin và thực hiện lại giao dịch";
 
 "Convert Failed" = "Chuyển đổi thất bại";
-"Cannot complete convert MozoX from Onchain to Offchain." = "Không thể hoàn tất việc đổi MozoX từ Onchain thành Offchain.";
 "Please try again after some time." = "Xin đợi một lúc và thử lại.";
 "No routes found" = "Không tìm thấy đường đi";
 "airdrop_discover_more_on_map" = "Khám phá thêm chương trình Airdrop để nhận Mozo 👌";
 "error_store_unregisted" = "Cửa hàng của bạn chưa được đăng ký trên hệ thống website Mozo. Xin liên hệ dịch vụ chăm sóc khách hàng để được hỗ trợ.";
 "error_store_suspened" = "Cửa hàng này đã rời khỏi hệ sinh thái Mozo. Xin lỗi vì sự bất tiện này.";
-"Withdraw MozoX from airdrop event is failed" = "Rút MozoX từ chương trình Airdrop thất bại.";
+"error_event_withdraw_failed" = "Rút Mozo từ chương trình Airdrop thất bại.";
 "error_event_can_not_withdraw" = "Bạn không thể rút Mozo từ chương trình Airdrop chưa kết thúc. Xin thử lại sau.";
 "error_event_no_mozo" = "Chương trình Airdrop không còn Mozo. Không thể thao tác.";
 "You are not the owner of this event." = "Bạn không phải chủ chương trình Airdrop này.";
@@ -875,7 +857,7 @@
 "Enter your phone number" = "Nhập số điện thoại của bạn";
 "Enter your email address" = "Nhập email của bạn";
 "Message" = "Tin nhắn";
-"My Beacon is not working, I need another one from MozoX team." = "Beacon của tôi không hoạt động, tôi cần một cái khác";
+"error_beacon_not_working" = "Beacon của tôi không hoạt động, tôi cần một cái khác.";
 "Thank you" = "Cảm ơn";
 "We will get back to you shortly" = "Chúng tôi sẽ sớm liên lạc lại với bạn ";
 
@@ -894,7 +876,7 @@
 
 // Detect Onchain inside Offchain
 "text_detected_mozo_x" = "Phát hiện %@ MozoX trong Ví Onchain";
-"Do you want to convert these MozoX Onchain in this wallet into MozoX Offchain?" = "Bạn có muốn chuyển MozoX Onchain trong ví thành MozoX Offchain?";
+"text_convert_confirm_question" = "Bạn có muốn chuyển MozoX trong ví thành điểm thưởng Mozo?";
 "Your ETH balance is: %@" = "Số dư ETH: %@";
 "text_msg_required_eth" = "Bạn cần chuyển %@ ETH vào ví Onchain này để trả phí giao dịch";
 "text_converting_mozo" = "Đang chuyển đổi thành Mozo...";
@@ -972,20 +954,20 @@
 
 "Basic Info" = "Thông tin cơ bản";
 "Enter Airdrop Event name" = "Nhập tên chương trình";
-"Number of MozoX Airdrop per Shopper" = "Số MozoX thưởng cho mỗi người dùng";
+"text_event_number_of_mozo_per_shopper" = "Số Mozo thưởng cho mỗi người dùng";
 "Airdrop Event Time Setting" = "Thiết lập thời gian";
 "Start from now" = "Bắt đầu ngay bây giờ";
 "Now" = "Bây giờ";
-"Shopper will see event name when they use MozoX app to get tokens." = "Người dùng sẽ tìm thấy tên chương trình này trên MozoX App";
-"The number of Shoppers who will receive MozoX tokens from this Airdrop Event." = "Số người dùng sẽ được nhận thưởng từ chương trình này";
-"The number of MozoX tokens each Shopper will receive via Airdrop every time they visit to your Store." = "Số MozoX thưởng cho người dùng mỗi khi họ ghé thăm cửa hàng bạn";
+"text_event_explain_name" = "Người dùng sẽ tìm thấy tên chương trình này trên ứng dụng Ví Mozo và nhận nó";
+"text_event_explain_number_of_shopper" = "Số người dùng sẽ được nhận điểm thưởng từ chương trình Airdrop này";
+"text_event_explain_number_of_mozo" = "Số điểm thưởng Mozo mỗi người dùng được nhận khi họ ghé thăm cửa hàng bạn";
 "PLEASE REVIEW THE INFORMATION BELOW, BECAUSE ONCE AN AIRDROP EVENT HAS BEEN CREATED, THE INFORMATION CANNOT BE CHANGED." = "XIN VUI LÒNG KIỂM TRA KỸ THÔNG TIN VÌ BẠN KHÔNG THỂ THAY ĐỔI NỘI DUNG CHƯƠNG TRÌNH MỘT KHI ĐÃ ĐƯỢC TẠO";
 "Please review the information below, because once an Airdrop Event has been created, the information cannot be changed." = "Xin vui lòng kiểm tra kỹ thông tin vì bạn không thể thay đổi nội dung chương trình một khi đã được tạo.";
 "Duration" = "Thời gian";
 "text_not_available" = "(Không tính được)";
 "Selected days of the week" = "Chọn thứ trong tuần";
 
-"Total MozoX you need to Airdrop" = "Tổng số MozoX";
+"text_event_total_mozo_token" = "Tổng số điểm thưởng Mozo";
 
 // Beacon Settings, Beacon Failure contact, Map Route, Speed Selection, Auto Create Wallet, Backup Wallet, Change PIN, Auto PIN
 "Writing data to Beacon..." = "Đang thiết lập dữ liệu cho beacon...";
@@ -1094,9 +1076,9 @@
 "Promotion Display Image (Optional)" = "Hình ảnh hiển thị của khuyến mãi (Không bắt buộc)";
 "Promotion Display Image" = "Hình ảnh hiển thị của khuyến mãi";
 "Take photo or upload from your gallery" = "Chụp ảnh hoặc tải hình từ gallery";
-"The percentage discount a Shopper will receive when they redeem MozoX to take advantage of your promotion offer.\n\nEx: Shoppers will receive a 50% discount on the purchase of a bottle of Coca Cola when they redeem 15,000 MozoX." = "Số phần trăm giảm giá cho khách hàng nếu họ trả MozoX.\n\nVí dụ: Khách hàng sẽ được giảm giá 50% khi mua một chai Coca cola khi họ trả 15.000 MozoX.";
-"This is the number of MozoX tokens a Shopper must redeem in order to receive the Promotion discount." = "Đây là số MozoX khách hàng phải trả để được giảm giá";
-"Describe what discount Shopper will receive if they redeem MozoX for this Promotion" = "Mô tả khuyến mãi khách hàng sẽ nhận được nếu họ trả MozoX cho bạn";
+"promo_explain_percent" = "Số phần trăm giảm giá cho khách hàng nếu họ trả Mozo.\n\nVí dụ: Khách hàng sẽ được giảm giá 50% khi mua một chai Coca cola khi họ trả 15.000 Mozo.";
+"promo_explain_number_of_mozo" = "Đây là số Mozo khách hàng phải trả để được giảm giá";
+"promo_explain_description" = "Mô tả khuyến mãi khách hàng sẽ nhận được nếu họ trả Mozo cho bạn";
 "Discount percentage" = "Phần trăm giảm";
 "Discount Percentage" = "Phần trăm giảm";
 "Preview Promotion" = "Xem thử khuyến mãi";
@@ -1120,20 +1102,17 @@
 "Added into favorite promotions" = "Đã thêm vào trong danh sách yêu thích";
 "Removed from favorite promotions" = "Đã bỏ ra khỏi danh sách yêu thích";
 "Process time out. Please re-scan QR Code." = "Hết thời gian xử lý. Xin vui lòng quét lại mã QR.";
-"Airdrop Event is a MozoX feature let your store attract more Shoppers by creating Airdrop Events to airdrop MozoX for each Shopper visit your store." = "Chương trình Airdrop là tính năng của MozoX giúp cửa hàng thu hút khách hàng bằng cách tạo ra chương trình để thưởng MozoX cho khách hàng khi họ đến cửa hàng của bạn.";
-"Promotion is a MozoX feature let your store attract more Shoppers by allowing them to redeem MozoX and get discount on receipt." = "Khuyến mãi là tính năng của MozoX giúp cửa hàng thu hút khách hàng bằng cách cho phép họ trả MozoX và được hưởng ưu đãi giảm giá.";
-"Ex: Shopper can redeem 1,000 MozoX to get 50% discount on receipt." = "Ví dụ: Khách hàng có thể trả 1.000 MozoX để được giảm giá 50%.";
 "Don’t miss out other Promotions 🤩" = "Khám phá các khuyến mãi khác 🤩";
 "Next %d days" = "%d ngày nữa";
 "Next %d day" = "%d ngày nữa";
 "Promotion is being processed" = "Khuyến mãi này đang được xử lý";
-"Promotions attract shoppers by allowing them to redeem their MozoX for discounts of your products and services. (e.g., Redeem 1000 MozoX in exchange for a 20% discount on selected items.)" = "Khuyến mãi thu hút khách hàng bằng cách cho phép khách hàng trả MozoX để được hưởng giảm giá từ sản phẩm và dịch vụ của bạn. (Ví dụ: Trả 1.000 MozoX để được giảm giá 20% trên một sản phẩm bạn lựa chọn)";
-"Airdrop Events attract more shoppers by rewarding them for visiting your store or venue. Shoppers can receive MozoX via \"airdrop\" into the digital wallets inside their MozoX Shopper App each time they enter your premises." = "Chương trình Airdrop thu hút khách hàng bằng cách thưởng cho khách hàng đến cửa hàng của bạn. Khách hàng sẽ được nhận MozoX vào ví điện tử trong ứng dụng MozoX mỗi khi họ ghé thăm cửa hàng của bạn.";
+"text_tips_event" = "Chương trình Airdrop thu hút khách hàng bằng cách thưởng cho khách hàng đến cửa hàng của bạn. Khách hàng sẽ được nhận Mozo vào ví điện tử trong ứng dụng Mozo mỗi khi họ ghé thăm cửa hàng của bạn.";
+"text_tips_sync_beacon_location" = "Sử dụng địa chỉ beacon để định vị vị trí";
 "Recommendation" = "Dành cho bạn";
 "Coming Soon" = "Sắp diễn ra";
 "COMING SOON" = "SẮP DIỄN RA";
 "promo_empty_nearby" = "Không có khuyến mãi nào gần đây. Khám phá cửa hàng xung quanh để kiếm thêm điểm thưởng Mozo.";
-"Redemption Amount" = "Số MozoX cần thanh toán";
+"Redemption Amount" = "Số Mozo cần thanh toán";
 "text_your_mozo_balance" = "Số dư Mozo:";
 "text_your_mozo" = "Mozo hiện có";
 "text_mozo_collected_today" = "Mozo đã nhận trong ngày";
@@ -1167,6 +1146,8 @@
 "EXPIRED" = "ĐÃ HẾT HẠN";
 "Cancel processing promotion successfully" = "Mã khuyến mãi đã được khôi phục.";
 "Processing Promotions" = "Mã khuyến mãi đang xử lý";
+"text_update_required_title" = "Khuyến nghị cập nhật ứng dụng";
+"text_update_required_content" = "Ứng dụng đã có phiên bản mới\nXin vui lòng cập nhật phiên bản mới nhất.";
 
 // Reminder - Todo List
 "Your internet connection has a problem 😔" = "Kết nối internet có vấn đề 😔";
@@ -1205,25 +1186,24 @@
 "MozoX Offchain" = "MozoX";
 
 // Import Address Book
-"Enter MozoX address or phone number" = "Nhập địa chỉ ví MozoX hoặc số điện thoại";
-"Can't find this contact in your MozoX Address Book" = "Không tìm thấy trong danh bạ MozoX của bạn";
-"Find in MozoX System →" = "Tìm trong hệ thống MozoX →";
+"text_contact_hint_input_address_phone" = "Nhập địa chỉ ví Mozo hoặc số điện thoại";
+"error_contact_not_found" = "Không tìm thấy trong danh bạ Mozo của bạn";
+"text_contact_find_system" = "Tìm trong hệ thống Mozo →";
 "text_msg_phone_not_belong_any_wallet" = "Số điện thoại này chưa có ví Mozo.";
 "We only support to search with phone number." = "Hệ thống hiện chỉ hỗ trợ tìm với số điện thoại.";
 
 "Import Contacts" = "Nhập từ danh bạ";
 "Import Contacts successful!" = "Nhập từ danh bạ thành công";
-"Quickly add friends to MozoX Address Book from the phone book" = "Thêm bạn bè vào danh bạ MozoX từ danh bạ điện thoại nhanh chóng";
+"text_contact_inport_from_phone" = "Thêm bạn bè vào danh bạ Mozo từ danh bạ điện thoại nhanh chóng";
 "Update Contacts" = "Cập nhật danh bạ";
 "Updating..." = "Đang cập nhật...";
-"Friends in your contact list will automatically be added to MozoX Address Book." = "Bạn bè trong danh bạ điện thoại sẽ tự động được thêm vào danh bạ MozoX.";
+"text_contact_friends_will_be_added" = "Bạn bè trong danh bạ điện thoại sẽ tự động được thêm vào danh bạ Mozo.";
 "Last updated:" = "Cập nhật gần nhất:";
 
-"You sent Request MozoX:" = "Đã gửi yêu cầu nhận MozoX:";
+"text_request_sent" = "Đã gửi yêu cầu nhận Mozo:";
 
 "Synchronize Contacts" = "Đồng bộ danh bạ";
 "Synchronize Contacts successful!" = "Đồng bộ thành công";
-"Your MozoX Request was sent" = "Đã gửi yêu cầu nhận MozoX:";
 "Update" = "Cập nhật";
 "Change Settings" = "Thay đổi thiết lập";
 "Cannot access your Contact Book" = "Không thể truy cập danh bạ";
@@ -1347,7 +1327,7 @@
 "Beacon Detail" = "Thông tin chi tiết của beacon";
 "Add Beacon" = "Thêm beacon";
 "Beacon Settings" = "Thiết lập beacon";
-"Beacon Location On Map in MozoX App" = "Vị trí của beacon trên bản đồ trong ứng dụng MozoX";
+"text_beacon_location_on_map" = "Vị trí của beacon trên bản đồ trong ứng dụng Mozo";
 "Beacon Range" = "Phạm vi Beacon";
 "Branch" = "Chi nhánh";
 "Beacon Name" = "Tên beacon";
@@ -1374,7 +1354,6 @@
 "Use Branch Location" = "Dùng vị trí của Chi nhánh";
 "Edit Beacon Range" = "Thay đổi phạm vi beacon";
 "Beacon Location" = "Vị trí beacon";
-"Cannot connect to MozoX servers." = "Không thể kết nối đến hệ thống MozoX.";
 "All Branches" = "Tất cả các chi nhánh";
 
 "New Branch" = "Thêm Chi nhánh";

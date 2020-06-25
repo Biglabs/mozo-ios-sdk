@@ -191,6 +191,7 @@ class AuthManager : NSObject {
                     print("Error creating URL for : \(Configuration.authRedirectURL())")
                     return
                 }
+
                 let param = [Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE,
                              Configuration.AUTH_PARAM_APPLICATION_TYPE : Configuration.AUTH_PARAM_APPLICATION_TYPE_VALUE]
                 // builds authentication request
