@@ -78,7 +78,7 @@ public class NotiDisplayItemData {
                     image = "ic_notif_open_box"
                     switch rawNoti.event {
                     case NotificationEventType.AirdropFounder.rawValue:
-                        subtitle = "For being verified store".localized
+                        subtitle = "notify_receive_bonus_verified_store".localized
                         break
                     case NotificationEventType.AirdropSignup.rawValue:
                         subtitle = "For signing up with us".localized

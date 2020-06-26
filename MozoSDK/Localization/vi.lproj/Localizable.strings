@@ -102,9 +102,9 @@
 "Wallet Address" = "Địa chỉ ví";
 "View Transaction Detail" = "Xem chi tiết giao dịch";
 "Transaction History" = "Lịch sử giao dịch";
-"MozoX Offchain Wallet" = "Ví MozoX Offchain";
+"text_mozo_wallet" = "Ví Mozo";
 "Transaction history list is empty" = "Danh sách trống";
-"MozoX Offchain Balance" = "Tổng MozoX Offchain";
+"text_mozo_balance" = "Tổng Mozo";
 "text_your_mozo_wallet_address" = "Địa chỉ ví Mozo của bạn";
 "To" = "Đến";
 "From" = "Từ";
@@ -154,7 +154,7 @@
 "Call" = "Gọi";
 "Log in with another phone number" = "Đăng nhập bằng SĐT khác";
 "Account Verified" = "Tài khoản đã được xác nhận";
-"Welcome" = "Chào mừng đến với MozoX";
+"Welcome" = "Chào mừng đến với Mozo";
 "Address" = "Địa chỉ";
 "Start" = "Bắt đầu";
 "Sign Up Succesful" = "Đăng ký thành công";
@@ -179,7 +179,7 @@
 /* RETAILER */
 "MozoX Retailer" = "MozoX Retailer";
 "Sync Beacon" = "Đồng bộ Beacon";
-"Remove Beacon from its Package. Scan QR Code to sync Beacon with your store." = "Lấy Beacon từ hộp MozoX. Quét QR Code để đồng bộ Beacon với cửa hàng.";
+"Remove Beacon from its Package. Scan QR Code to sync Beacon with your store." = "Lấy Beacon từ hộp Mozo. Quét QR Code để đồng bộ Beacon với cửa hàng.";
 
 "Beacon Sync Successful!" = "Đồng bộ Beacon thành công!";
 "Now stick Beacon where you want to use it (Wall, Counter, Ceiling) to detect Shoppers whenever they visit your store." = "Đặt Beacon ở vị trí bạn muốn định vị khách khi họ đến cửa hàng.";
@@ -241,6 +241,7 @@
 "Add\nPhoto" = "Thêm\nảnh";
 "Photo" = "Ảnh";
 "btn_buy_mozo" = "Mua Mozo";
+"btn_request_mozo" = "Yêu cầu Mozo";
 "Shoppers this month" = "Khách hàng trong tháng";
 "Active Events" = "Chương trình đang chạy";
 "View all Events" = "Xem toàn bộ";
@@ -269,10 +270,9 @@
 "Notification" = "Thông báo";
 "Shopper Notification" = "Thông báo từ khách";
 "Display All" = "Hiển thị toàn bộ";
-"Received MozoX" = "MozoX đã nhận";
 "Apply" = "Áp dụng";
 "New Shopper has arrived" = "Khách hàng vừa đến";
-"Mozo Sent" = "Đã gửi MozoX";
+"Mozo Sent" = "Đã gửi Mozo";
 "System Notification" = "Thông báo từ hệ thống";
 "Update Notification" = "Thông báo khi có cập nhật";
 "Daily Analytics" = "Báo cáo ngày";
@@ -282,7 +282,7 @@
 "Event Name" = "Tên chương trình";
 "Number of shoppers" = "Số người nhận";
 "Number of shoppers:" = "Số người nhận:";
-"Total Airdrop Amount" = "Tổng MozoX Airdrop";
+"Total Airdrop Amount" = "Tổng Mozo Airdrop";
 "Hour(s)" = "Giờ";
 "Event Period" = "Thời hạn";
 "Event Period:" = "Thời hạn:";
@@ -291,8 +291,7 @@
 "Selected days:" = "Lặp lại:";
 "Create Event Successful!" = "Tạo chương trình thành công";
 "btn_add_more_mozo" = "Thêm Mozo";
-"Number of new shoppers receiving MozoX" = "Tổng người nhận mới";
-"Add MozoX" = "Thêm MozoX";
+"btn_add_mozo" = "Thêm Mozo";
 "Add New Sub-Account" = "Thêm tài khoản phụ";
 "Select Country" = "Chọn quốc gia";
 "Select ISD" = "Mã vùng";
@@ -313,8 +312,6 @@
 "Everyday" = "Mỗi ngày";
 "Today" = "Hôm nay";
 "Earlier" = "Trước đó";
-"Airdrop MozoX coins to Shoppers who use MozoX Shopper App when they visit to your store." = "Airdrop MozoX cho những khách sử dụng app MozoX khi đến cửa hàng.";
-"MozoX coins" = "MozoX";
 "Our Products" = "Sản phẩm";
 "Privacy Policy And Terms of Use" = "Quyền riêng tư & điều khoản sử dụng";
 "Event list is empty" = "Danh sách trống";
@@ -322,7 +319,6 @@
 "In store" = "Đang ở cửa hàng";
 "Last visited: %@" = "Lần đến gần nhất: %@";
 "Invite user" = "Mời người dùng";
-"Receive %@ MozoX for each customer joining MozoX" = "Nhận ngay %@ MozoX cho mỗi người tham gia";
 "FAQ" = "Câu hỏi thường gặp";
 "Notification list is empty" = "Danh sách trống";
 "Beacons list is empty" = "Danh sách trống";
@@ -362,8 +358,8 @@
 "Period time \"To\" must be greater than currently" = "Thời điểm kết thúc phải diễn ra sau hiện tại.";
 "Frequency must be greater than %d minutes" = "Tần suất phải lớn hơn %d phút";
 "Can't find Beacon" = "Không thể tìm ra Beacon";
-"Please input \"Number of Shoppers\" and number of \"Airdrop per Shopper\"" = "Nhập số người nhận và số MozoX Airdrop cho mỗi người";
-"Added MozoX Successfully!" = "Đã thêm MozoX thành công";
+"Please input \"Number of Shoppers\" and number of \"Airdrop per Shopper\"" = "Nhập số người nhận và số Mozo Airdrop cho mỗi người";
+"text_msg_add_mozo_success" = "Đã thêm Mozo thành công";
 "Please input a valid Phone Number" = "Vui lòng nhập số điện thoại hợp lệ";
 "Invalid country code" = "Mã vùng không hợp lệ";
 "Photos uploading..." = "Đang tải ảnh lên";
@@ -372,28 +368,15 @@
 "You do not have permission to do this action!" = "Bạn không có quyền thực thi thao tác này.";
 "Are you sure to logout" = "Bạn muốn đăng xuất?";
 "Ex: 1st Tony Moly event" = "Vd: Chương trình của Tony Moly";
-"Let your customers scan this QR code to download MozoX App and get %@ MozoX coins for each customer sign up successful." = "Cho khách hàng quét QR code này để tải ứng dụng MozoX và nhận ngay %@ MozoX cho mỗi lượt đăng ký thành công.";
-"Or share MozoX via your network" = "Hoặc có thể chia sẻ MozoX thông qua mạng xã hội";
-"Share MozoX" = "Chia sẻ MozoX";
 "Start" = "Bắt đầu";
 "Currently" = "Hiện tại";
-"Share MozoX" = "Chia sẻ MozoX";
 "Invite friends" = "Mời bạn bè";
-"Or share MozoX via your network" = "Hoặc có thể chia sẻ MozoX thông qua mạng xã hội";
-"Receive %@ MozoX coins" = "Nhận ngay %@ MozoX";
-"%@ join MozoX" = "SĐT %@ vừa tham gia MozoX";
 "Just Now" = "Vừa";
 "Create airdrop event failed. Please try again!" = "Tạo chương trình thất bại, vui lòng thử lại!";
 "Try again" = "Thử lại";
 "Email Us" = "Email cho chúng tôi";
 "General" = "Tổng quan";
 "Airdrop" = "Airdrop";
-"1. MozoX App for Retailer" = "1. Ứng dụng MozoX cho chủ cửa hàng";
-"2. MozoX App for Shopper" = "2. Ứng dụng MozoX";
-"3. MozoScan" = "3. MozoScan";
-"Mozoscan is a Block Explorer and Analytics Platform for MozoX, a decentralized smart contract platform. Mozoscan 2018 - Running on MozoX Network. htttps://scan.mozocoin.io" = "MozoScan là Anlytics Platform và là Block Explorer của MozoX. Đồng thời là nền tảng ủy thác Smart Contracts. MozoScan2018 - Chạy trên mạng lưới MozoX. https://scan.mozocoin.io";
-"4. Desktop Wallet" = "4. Desktop Wallet";
-"5. Web App for Retailer" = "5. Web App cho chủ cửa hàng";
 
 "text_event_out_of_mozo" = "Hết Mozo";
 "End" = "Đã kết thúc";
@@ -487,17 +470,11 @@
 "%d Result(s) for" = "%d Kết quả cho";
 "Sorted by:" = "Sắp xếp theo:";
 "text_total_mozo" = "Tổng Mozo:";
-"Fill in to get %@ MozoX" = "Điền để nhận %@ MozoX";
-"Receive %@ MozoX for each join" = "Nhận %@ MozoX cho mỗi người tham gia";
-"Allow MozoX to access your location?" = "Cho phép MozoX truy cập vị trí của bạn?";
-"MozoX uses this information to provide more relevant and personalized experiences, like helping you to find local events and to provide better suggestions.\n\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "MozoX dùng thông tin này để cải thiện việc gợi ý và nâng cấp trải nghiệm người dùng, giúp bạn dễ dàng tìm thấy những chương trình Airdrop xung quanh. Để mở chức năng này, chọn App Settings và kích hoạt Location nằm bên dưới Permissions Menu.";
 "Not now" = "Để sau";
 "App Settings" = "Thiết lập";
 "Added into favorite stores" = "Đã thêm vào cửa hàng yêu thích";
 "Cash" = "Tiền mặt";
 "Today collected coins" = "Coin nhận hôm nay";
-"Fill in to get %@ MozoX" = "Điền để nhận %@ MozoX";
-"Receive %@ MozoX for each join MozoX" = "Nhận %@ MozoX cho mỗi người tham gia";
 "Name" = "Tên";
 "Date of birth" = "Ngày sinh";
 "Email" = "Email";
@@ -523,11 +500,7 @@
 "New password" = "Mật khẩu mới";
 "Enter new password" = "Nhập mật khẩu mới";
 "Change password successful!" = "Đổi mật khẩu thành công";
-"Have your friends scan this QR code to download MozoX App and get %d MozoX coins for each friend signed up successfully." = "Cho bạn bè quét QR code này để tải ứng dụng MozoX và nhận ngay %d MozoX cho mỗi lượt đăng ký thành công.";
-"Or share MozoX via your network" = "Hoặc chia sẻ MozoX thông qua mạng xã hội";
-"Share MozoX" = "Chia sẻ MozoX";
 "Promotion Details" = "Chi tiết khuyến mãi";
-"Receive %d MozoX for transfering MozoX coins to your friends!" = "Nhận ngay %d MozoX bằng cách gửi MozoX tới bạn bè!";
 /* LOCAL ERROR MESSAGE */
 "Unknown Error" = "Lỗi không xác định";
 "Scan timeout" = "Thời gian quét quá hạn";
@@ -543,9 +516,6 @@
 "Copied!" = "Đã sao chép!";
 "Scanned value is invalid." = "Dữ liệu quét được không hợp lệ.";
 
-"Allow MozoX to access your location?\nMozoX uses this to provide more relevant and personalized experiences, like helping you to find local events and get better suggestion.\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "Cho phép MozoX sử dụng vị trí của bạn?\nMozoX dùng thông tin này để cải thiện việc gợi ý và nâng cấp trải nghiệm người dùng, giúp bạn dễ dàng tìm thấy những chương trình Airdrop xung quanh.\nĐể mở chức năng này, chọn App Settings và kích hoạt Location nằm bên dưới Permissions Menu.";
-"Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "Xin nhập số \"người nhận\" và số MozoX \"Airdrop cho mỗi khách\"";
-
 "Frequency must be equal or larger than %d minutes" = "Tuần suất Airdrop nhỏ nhất là %d phút.";
 "Sorry, something went wrong. Please try again or restart the app." = "Có lỗi xảy ra. Xin thử lại hoặc mở lại ứng dụng.";
 "Back" = "Trở lại";
@@ -557,7 +527,6 @@
 "Confirm" = "Xác nhận";
 "Yes" = "Đồng ý";
 "No" = "Không";
-"Success" = "Thành công";
 "Are you sure?" = "Xin xác nhận.";
 "Contacts list is empty" = "Danh sách trống";
 
@@ -592,10 +561,8 @@
 "Period time \"To\" must be greater than currently" = "Thời gian kết thúc chương trình Airdrop phải lớn hơn hiện tại";
 "Frequency must be greater than %d minutes" = "Tần suất Airdrop phải lớn hơn %d phút";
 "Cannot find any beacon on your store" = "Không thể tìm thấy Beacon";
-"Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "Xin nhập \"Số người nhận\" và \"Số Airdrop cho mỗi người\".";
-"Airdrop event transaction is created with failure status." = "Đã xảy ra lỗi trong quá trình chuyển MozoX vào chương trình Airdrop được tạo mới.";
-
-"Add MozoX To Airdrop Event transaction is created with failure status." = "Đã xảy ra lỗi trong quá trình chuyển MozoX vào chương trình Airdrop được tạo mới.";
+"Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "Xin nhập \"Số người nhận\" và \"Số Mozo thưởng cho mỗi người dùng\".";
+"Airdrop event transaction is created with failure status." = "Đã xảy ra lỗi trong quá trình chuyển Mozo vào chương trình Airdrop được tạo mới.";
 
 "Invalid country code." = "Mã vùng không hợp lệ.";
 
@@ -721,8 +688,6 @@
 "The verification service is temporarily unavailable. Please try again after 30 seconds." = "Dịch vụ xác minh tạm thời không khả dụng. Vui lòng thử lại sau 30 giây.";
 "An internal server error has occurred" = "Đã xảy ra lỗi máy chủ nội bộ";
 
-"Your store is not register on website for MozoX Retailer Website yet. Please contact MozoX Customer Service for support:" = "Cửa hàng của bạn chưa được đăng ký tại Website MozoX dành cho chủ cửa hàng. Xin liên hệ đội tư vấn để được hỗ trợ:";
-
 "Welcome, %@" = "Chào mừng, %@";
 "You’re logged in as sub-account of %@" = "Đã đăng nhập với vai trò tài khoản phụ tại %@";
 "Photo is uploading..." = "Đang tải ảnh lên...";
@@ -771,7 +736,7 @@
 "Normal" = "Bình thường";
 "text_convert_explain_gas_price" = "Gas Price là chi phí được tính bằng đơn vị GWEI dùng để thực hiện một giao dịch trong Ethereum. Tổng chi phí (TX fee) được tính = Số Gas thực dùng * Gas Price, phí này được dùng trả cho “thợ đào” (Miner) để họ đưa giao dịch vào một khối (Block). Gas Price cao đồng nghĩa với giao dịch diễn ra nhanh hơn (nhưng tốn kém hơn).";
 "Read more" = "Chi tiết";
-"Onchain balance is not enough." = "Không đủ MozoX Onchain";
+"Onchain balance is not enough." = "Không đủ số dư trong ví Onchain";
 "ETH balance is not enough." = "Không đủ ETH";
 "From Onchain" = "Từ Onchain";
 "To Offchain" = "Thành Offchain";
@@ -807,31 +772,15 @@
 "error_event_no_mozo" = "Chương trình Airdrop không còn Mozo. Không thể thao tác.";
 "You are not the owner of this event." = "Bạn không phải chủ chương trình Airdrop này.";
 
-"Create Airdrop Event to attract more customer by Airdrop MozoX." = "Tạo chương trình Airdrop MozoX để thu hút nhiều khách hàng hơn. ";
 "At least six characters" = "Cần ít nhất 6 ký tự";
 
 "There are no Airdrop Events around" = "Không có chương trình Airdrop quanh đây";
 
 // Convert "coin" to "token"
 
-"Airdrop MozoX tokens to Shoppers who use MozoX Shopper App when they visit to your store." = "Tặng MozoX cho khách đã cài ứng dụng MozoX khi họ đến cửa hàng.";
-"MozoX tokens" = "Điểm MozoX";
-"Let your customers scan this QR code to download MozoX App and get %@ MozoX tokens for each customer sign up successful." = "Cho khách quét mã QR này để tải ứng dụng MozoX, bạn sẽ nhận %@ điểm MozoX cho mỗi khách đăng ký thành công.";
-
-"%@ Token" = "%@ MozoX";
-"%@ Tokens" = "%@ MozoX";
-"Get Tokens" = "Săn MozoX";
-"GET TOKENS" = "SĂN MOZOX";
-"Token" = "MozoX";
-"Tokens" = "MozoX";
-"Today collected tokens" = "MozoX nhận hôm nay";
-"Have your friends scan this QR code to download MozoX App and get %@ MozoX tokens for each friend signed up successfully." = "Mời bạn bè quét QR này để tải ứng dụng MozoX, bạn sẽ nhận được %@ MozoX cho mỗi người bạn đăng ký thành công.";
-"Receive %@ MozoX for transfering MozoX tokens to your friends!" = "Nhận ngay %@ MozoX khi gửi MozoX cho bạn bè!";
-"Total MozoX tokens" = "Tổng MozoX";
-"Walk to earn tokens" = "Đi để nhận MozoX";
-"Receive %@ MozoX tokens" = "Đã nhận %@ MozoX";
-"Total MozoX tokens:" = "Tổng MozoX:";
-"Total MozoX tokens: %@" = "Tổng MozoX: %@";
+"%@ Tokens" = "%@ Mozo";
+"Get Tokens" = "Săn Mozo";
+"Today collected tokens" = "Mozo nhận hôm nay";
 
 // Discover + Beacon Error + About Content + Group Stores
 "airdrop_empty_discover_more" = "Thử tìm kiếm để khám phá thêm các chương trình Mozo Airdrop";
@@ -869,7 +818,6 @@
 "invite_shopper_app_name" = "Ứng dụng Ví Mozo";
 "invite_retailer_app_name" = "Ứng dụng Mozo Kinh doanh";
 "invite_reward_amount" = "Được thưởng %@ Mozo";
-"Let your friends scan this QR codes or invite them to join MozoX. You will get rewards for each friend signed up successful." = "Hãy mời bạn bè của bạn quét mã QR này hoặc mời họ tham gia MozoX. Bạn sẽ nhận được thưởng cho mỗi người bạn đăng ký thành công.";
 
 "Once per day" = "Một lần một ngày";
 "Loading..." = "Đang tải...";
@@ -898,7 +846,6 @@
 "notify_group_received_more" = "%u Mozo nữa đã được nhận";
 "notify_group_sent" = "%u Mozo nữa đã được gửi đi";
 "notify_group_received_from_event" = "%u Mozo nữa đã nhận được từ chương trình Airdrop";
-"Your friends have joined MozoX" = "Bạn bè của bạn đã tham gia MozoX";
 "notify_group_friends_joined" = "%u người bạn nữa đã tham gia Mozo";
 "Customers arrived" = "Khách vừa đến";
 "%u more customers arrived" = "%u khách vừa đến";
@@ -935,21 +882,21 @@
 "Go to Wallet" = "Chuyển đến Ví";
 "Airdrop Event List" = "Danh sách chương trình Airdrop";
 "Airdrop Event List is empty or your connection is too slow" = "Danh sách chương trình Airdrop trống hoặc mạng quá chậm";
-"Airdrop MozoX tokens for Shoppers when they visit your store" = "Airdrop MozoX cho khách đến cửa hàng của bạn.";
+"text_event_empty" = "Airdrop điểm thưởng Mozo cho khách đến cửa hàng của bạn.";
 "Foot Traffic is empty or your connection is too slow" = "Lưu lượng khách đến trống hoặc mạng quá chậm.";
-"Create Airdrop Event to attract more customers by Airdropping MozoX." = "Tạo chương trình Airdrop để thu hút nhiều khách hàng hơn bằng cách Airdropping MozoX.";
+"text_empty_visit_customer" = "Tạo chương trình Airdrop để thu hút nhiều khách hàng hơn bằng cách Airdropping điểm thưởng Mozo.";
 "Go to Airdrop Events list" = "Chuyển đến danh sách chương trình Airdrop";
 "Go to Promotions list" = "Chuyển đến danh sách Khuyến mãi";
 
 // Bonus Notification + Unregistered Store + Simplyfy Create Airdrop Event
 "notify_receive_bonus" = "Bạn được thưởng %@ Mozo";
 "For signing up with us" = "Khi đăng nhập thành công";
-"For being verified store" = "Khi cửa hàng của bạn gia nhập MozoX thành công";
+"notify_receive_bonus_verified_store" = "Khi cửa hàng của bạn gia nhập Mozo thành công";
 "notify_receive_bonus_top_retailers" = "Trở thành một trong 1,000 nhà bán lẻ Mozo đầu tiên";
 
 "Unregistered Store" = "Cửa hàng của bạn chưa đăng kí";
 "If you have not registered yet, please register." = "Nếu bạn chưa đăng kí, xin vui lòng đăng kí.";
-"If your store has not approved yet, please feel free to contact MozoX Team for support:" = "Nếu cửa hàng của bạn chưa được duyệt, xin vui lòng liên hệ MozoX để được trợ giúp:";
+"text_msg_store_not_approved" = "Nếu cửa hàng của bạn chưa được duyệt, xin vui lòng liên hệ Mozo để được trợ giúp:";
 "Register Now" = "Đăng kí ngay";
 
 "Basic Info" = "Thông tin cơ bản";
@@ -1057,7 +1004,7 @@
 "Active Promotion" = "Khuyến mãi đang hoạt động";
 "Show QR Code" = "Hiển thị mã QR";
 "Scan QR Code" = "Quét mã QR";
-"Create a Promotion to attract more Shoppers by offering MozoX and discounts" = "Tạo khuyến mãi để thu hút khách hàng bằng cách thu MozoX và giảm giá";
+"text_promo_empty" = "Tạo khuyến mãi để thu hút khách hàng bằng cách cho khách hàng đổi điểm thưởng Mozo với khuyến mãi của bạn";
 "Create Promotion" = "Tạo khuyến mãi";
 "Optional" = "Không bắt buộc";
 "(Optional)" = "(Không bắt buộc)";
@@ -1069,10 +1016,9 @@
 "SCHEDULED" = "SẮP DIỄN RA";
 "Time to Expiration:" = "Hết hiệu lực:";
 "Promotion List is empty or your connection is too slow" = "Không tìm thấy khuyến mãi nào hoặc internet của bạn có vấn đề.";
-"What is MozoX Promotion?" = "Khuyến mãi trong hệ thống MozoX là gì?";
 "Enter discount %" = "Nhập % giảm giá";
-"MozoX required for discount" = "Số MozoX cần thiết để giảm giá";
-"Enter MozoX number" = "Nhập số MozoX";
+"text_promo_mozo_for_discount" = "Số Mozo cần thiết để giảm giá";
+"text_promo_hint_mozo_number" = "Nhập số Mozo";
 "Promotion Display Image (Optional)" = "Hình ảnh hiển thị của khuyến mãi (Không bắt buộc)";
 "Promotion Display Image" = "Hình ảnh hiển thị của khuyến mãi";
 "Take photo or upload from your gallery" = "Chụp ảnh hoặc tải hình từ gallery";
@@ -1304,7 +1250,6 @@
 "Your store is not authorized to create Airdrop Event. Please contact Mall Owner if you need any support." = "Cửa hàng của bạn không thể tạo chương trình Airdrop. Vui lòng liên hệ chủ mall để được hỗ trợ.";
 "Why my store is not able to create an Airdrop Event? →" = "Tại sao cửa hàng của tôi không thể tạo chương trình Airdrop?  →";
 "Phone number is required" = "Số điện thoại là trường bắt buộc";
-"Airdrop events require a Beacon sensor in order to detect visitors to your store. Please contact MozoX Support or your Mall Operator to request a Beacon from MozoX." = "Chương trình Airdrop cần cảm biến Beacon để định vị được khách đến cửa hàng của bạn. Vui lòng liên hệ đội ngũ hỗ trợ MozoX hoặc quản lý Mall để gửi yêu cầu nhận Beacon.";
 
 "Beacon list is empty" = "Danh sách beacon trống";
 
