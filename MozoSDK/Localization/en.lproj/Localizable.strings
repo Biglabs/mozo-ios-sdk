@@ -176,7 +176,7 @@
 
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ" = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 // RETAILER
-"MozoX Retailer" = "MozoX Retailer";
+"Mozo Business" = "Mozo Business";
 "Sync Beacon" = "Sync Beacon";
 "Remove Beacon from its Package. Scan QR Code to sync Beacon with your store." = "Remove Beacon from its Package. Scan QR Code to sync Beacon with your store.";
 
@@ -1066,7 +1066,7 @@
 "Shopper purchased promotion" = "Shopper purchased promotion";
 "Don’t show again" = "Don’t show again";
 "Invalid Recovery Phrase" = "Invalid Recovery Phrase";
-"MozoX Received" = "MozoX Received";
+"text_promo_mozo_received" = "Mozo Received";
 "Billing information (Optional)" = "Billing information (Optional)";
 "Billing information" = "Billing information";
 "Enter billing information" = "Enter billing information";
@@ -1125,7 +1125,6 @@
 "todo_action_explain" = "Complete these actions to make sure there are no problems happen while using Mozo app:";
 "To Do List" = "To Do List";
 "Redemption" = "Redemption";
-"MozoX Offchain" = "MozoX Offchain";
 
 // Import Address Book
 "text_contact_hint_input_address_phone" = "Enter Mozo address or phone number";
