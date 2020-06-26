@@ -23,8 +23,7 @@ class ExpandImageView: UIView {
         loadViewFromNib()
     }
     
-    override public func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
+    public override func awakeFromNib() {
         loadViewFromNib()
     }
     

@@ -14,7 +14,7 @@
 "Enter Contact Name" = "Enter Contact Name";
 "Address Saved" = "Address Saved";
 "This address already exists in your Address Book" = "This address already exists in your Address Book";
-"Your MozoX Wallet Address" = "Your MozoX Wallet Address";
+"text_wallet_address" = "Your Mozo Wallet Address";
 "Creating Interface" = "Creating Interface";
 "Copied!" = "Copied!";
 "There is no internet connection!" = "There is no internet connection!";
@@ -27,7 +27,7 @@
 "title_send_mozo" = "Send Mozo";
 "Transaction History" = "Transaction History";
 "Withdraw" = "Withdraw";
-"Withdraw MozoX" = "Withdraw MozoX";
+"btn_withdraw_mozo" = "Withdraw Mozo";
 "title_request_mozo" = "Request Mozo";
 "Confirm" = "Confirm";
 "Back" = "Back";
@@ -70,26 +70,23 @@
 "Create Wallet failed" = "Create Wallet failed";
 "Customer has entered" = "Customer has entered";
 "Customer has left" = "Customer has left";
-"Received %@ MozoX" = "Received %@ MozoX";
-"Sent %@ MozoX" = "Sent %@ MozoX";
 "From %@" = "From %@";
 "To %@" = "To %@";
 "Receive Amount" = "Receive Amount";
 "Requested List" = "Requested List";
 "Create Request" = "Create Request";
-"You can ask another user to send MozoX to your wallet address by creating a Request." = "You can ask another user to send MozoX to your wallet address by creating a Request.";
+"text_request_explain" = "You can ask another user to send Mozo to your wallet address by creating a Request.";
 "Send Request" = "Send Request";
-"Scan To Send MozoX" = "Scan To Send MozoX";
+"btn_scan_to_send" = "Scan to send Mozo";
 "Scan to send:" = "Scan to send:";
 "Send request to" = "Send request to";
 "Send Request Successful" = "Send Request Successful";
-"You sent Request MozoX to:" = "You sent Request MozoX to:";
 "Requested list is empty" = "Requested list is empty";
 "From:" = "From:";
 "Request:" = "Request:";
 "%@ Mozo" = "%@ Mozo";
 "Confirmation" = "Confirmation";
-"From MozoX Offchain Wallet" = "From MozoX Offchain Wallet";
+"text_from_mozo_wallet" = "From Mozo Wallet";
 "Receiver Address" = "Receiver Address";
 "Enter receiver wallet address" = "Enter receiver wallet address";
 "Error: The Receiver Address is not valid." = "Error: The Receiver Address is not valid.";
@@ -106,9 +103,9 @@
 "Wallet Address" = "Wallet Address";
 "View Transaction Detail" = "View Transaction Detail";
 "Transaction History" = "Transaction History";
-"MozoX Offchain Wallet" = "MozoX Offchain Wallet";
+"text_mozo_wallet" = "Mozo Wallet";
 "Transaction history list is empty" = "Transaction history list is empty";
-"MozoX Offchain Balance" = "MozoX Offchain Balance";
+"text_mozo_balance" = "Mozo Balance";
 "text_your_mozo_wallet_address" = "Your Mozo Wallet Address";
 "To" = "To";
 "From" = "From";
@@ -122,7 +119,6 @@
 "Failed" = "Failed";
 "Success" = "Success";
 "View All" = "View All";
-"Total MozoX coins" = "Total MozoX coins";
 "Phone Number" = "Phone Number";
 "Enter your mobile phone" = "Enter your mobile phone";
 "Version 0.1" = "Version 0.1";
@@ -152,7 +148,6 @@
 "Successful" = "Successful";
 "Restore Wallet" = "Restore Wallet";
 "Account Verify" = "Account Verify";
-"Your store is not registered on our website yet, please contact Mozo Operation team for support." = "Your store is not registered on our website yet, please contact Mozo Operation team for support.";
 "Email" = "Email";
 "Mail" = "Mail";
 "Phone" = "Phone";
@@ -204,7 +199,6 @@
 "Configuration Successful!" = "Configuration Successful!";
 "Beacon range and location on map are configured successfully." = "Beacon range and location on map are configured successfully.";
 "Create Airdrop Event" = "Create Airdrop Event";
-"Airdrop MozoX coins to Shoppers who are using MozoX Shopper App when they visit your store." = "Airdrop MozoX coins to Shoppers who are using MozoX Shopper App when they visit your store.";
 "Continue" = "Continue";
 "Log in with another phone number" = "Log in with another phone number";
 "Use my location" = "Use my location";
@@ -218,7 +212,6 @@
 "Running Event" = "Running Event";
 "Mail" = "Mail";
 "Call" = "Call";
-"Your store is not registered on our website. Please contact MozoX Customer Service for support. (Email/Phone Number)" = "Your store is not registered on our website. Please contact MozoX Customer Service for support. (Email/Phone Number)";
 "Saving.." = "Saving..";
 "Scanning.." = "Scanning..";
 "Beacon detected, connecting.." = "Beacon detected, connecting..";
@@ -245,9 +238,9 @@
 "Map" = "Map";
 "Add\nPhoto" = "Add\nPhoto";
 "Photo" = "Photo";
-"Buy MozoX" = "Buy MozoX";
+"btn_buy_mozo" = "Buy Mozo";
+"btn_request_mozo" = "Request Mozo";
 "Shoppers this month" = "Shoppers this month";
-"Airdropped MozoX" = "Airdropped MozoX";
 "Active Events" = "Active Events";
 "View all Events" = "View all Events";
 "View all Shoppers" = "View all Shoppers";
@@ -259,7 +252,7 @@
 "Frequency" = "Frequency";
 "Duration:" = "Duration:";
 "Duration" = "Duration";
-"Store Location On MozoX Map" = "Store Location On MozoX Map";
+"text_store_location_on_map" = "Store Location On Map in Mozo App";
 "Edit Location" = "Edit Location";
 "Select Photo Album" = "Select Photo Album";
 "Tap to select Images" = "Tap to select Images";
@@ -270,23 +263,19 @@
 "OK" = "OK";
 "Settings" = "Settings";
 "Package" = "Package";
-"Total MozoX coins" = "Total MozoX coins";
 "Filter" = "Filter";
 "Notification Filter" = "Notification Filter";
 "Notification" = "Notification";
 "Shopper Notification" = "Shopper Notification";
 "Display All" = "Display All";
-"Received MozoX" = "Received MozoX";
 "Apply" = "Apply";
 "New Shopper has arrived" = "New Shopper has arrived";
 "Mozo Sent" = "Mozo Sent";
 "System Notification" = "System Notification";
 "Update Notification" = "Update Notification";
 "Daily Analytics" = "Daily Analytics";
-"Shoppers Receiving MozoX" = "Shoppers Receiving MozoX";
-"Shoppers Receiving MozoX:" = "Shoppers Receiving MozoX:";
-"Total number of MozoX airdropped" = "Total number of MozoX airdropped";
-"Total MozoX airdropped" = "Total MozoX airdropped";
+"text_analytic_number_of_mozo_airdroped" = "Total number of Mozo airdropped";
+"text_event_total_mozo_airdroped" = "Total Mozo airdropped";
 "Create Airdrop Event" = "Create Airdrop Event";
 "Event Name" = "Event Name";
 "Number of shoppers" = "Number of shoppers";
@@ -297,14 +286,10 @@
 "Event Period:" = "Event Period:";
 "Create" = "Create";
 "Selected days" = "Selected days";
-"MozoX Terms of Use" = "MozoX Terms of Use";
-"I have read and agree with MozoX Terms of Use" = "I have read and agree with MozoX Terms of Use";
-"I Agree" = "I Agree";
 "Selected days:" = "Selected days:";
 "Create Event Successful!" = "Create Event Successful!";
-"Add More MozoX" = "Add More MozoX";
-"Number of new shoppers receiving MozoX" = "Number of new shoppers receiving MozoX";
-"Add MozoX" = "Add MozoX";
+"btn_add_more_mozo" = "Add More Mozo";
+"btn_add_mozo" = "Add Mozo";
 "Add New Sub-Account" = "Add New Sub-Account";
 "Select Country" = "Select Country";
 "Select ISD" = "Select ISD";
@@ -315,7 +300,6 @@
 "Enter your mobile phone number" = "Enter your mobile phone number";
 "Sign Up Successful!" = "Sign Up Successful!";
 "Do you want to remove this Sub-Account?" = "Do you want to remove this Sub-Account?";
-"Withdraw MozoX" = "Withdraw MozoX";
 "Do you want to add this phone number as Sub-Account?" = "Do you want to add this phone number as Sub-Account?";
 "Today" = "Today";
 "AM" = "AM";
@@ -326,8 +310,6 @@
 "Everyday" = "Everyday";
 "Today" = "Today";
 "Earlier" = "Earlier";
-"Airdrop MozoX coins to Shoppers who use MozoX Shopper App when they visit to your store." = "Airdrop MozoX coins to Shoppers who use MozoX Shopper App when they visit to your store.";
-"MozoX coins" = "MozoX coins";
 "Our Products" = "Our Products";
 "Privacy Policy And Terms of Use" = "Privacy Policy And Terms of Use";
 "Event list is empty" = "Event list is empty";
@@ -335,7 +317,6 @@
 "In store" = "In store";
 "Last visited: %@" = "Last visited: %@";
 "Invite user" = "Invite user";
-"Receive %@ MozoX for each customer joining MozoX" = "Receive %@ MozoX for each customer joining MozoX";
 "FAQ" = "FAQ";
 "Notification list is empty" = "Notification list is empty";
 "Beacons list is empty" = "Beacons list is empty";
@@ -376,7 +357,7 @@
 "Frequency must be greater than %d minutes" = "Frequency must be greater than %d minutes";
 "Can't find Beacon" = "Can't find Beacon";
 "Please input \"Number of Shoppers\" and number of \"Airdrop per Shopper\"" = "Please input \"Number of Shoppers\" and number of \"Airdrop per Shopper\"";
-"Added MozoX Successfully!" = "Added MozoX Successfully!";
+"text_msg_add_mozo_success" = "Added Mozo Successfully!";
 "Please input a valid Phone Number" = "Please input a valid Phone Number";
 "Invalid country code" = "Invalid country code";
 "Photos uploading..." = "Photos uploading...";
@@ -385,30 +366,17 @@
 "You do not have permission to do this action!" = "You do not have permission to do this action!";
 "Are you sure to logout" = "Are you sure to logout";
 "Ex: 1st Tony Moly event" = "Ex: 1st Tony Moly event";
-"Let your customers scan this QR code to download MozoX App and get %@ MozoX coins for each customer sign up successful." = "Let your customers scan this QR code to download MozoX App and get %@ MozoX coins for each customer sign up successful.";
-"Or share MozoX via your network" = "Or share MozoX via your network";
-"Share MozoX" = "Share MozoX";
 "Start" = "Start";
 "Currently" = "Currently";
-"Share MozoX" = "Share MozoX";
 "Invite friends" = "Invite friends";
-"Or share MozoX via your network" = "Or share MozoX via your network";
-"Receive %@ MozoX coins" = "Receive %@ MozoX coins";
-"%@ join MozoX" = "%@ join MozoX";
 "Just Now" = "Just Now";
 "Create airdrop event failed. Please try again!" = "Create airdrop event failed. Please try again!";
 "Try again" = "Try again";
 "Email Us" = "Email Us";
 "General" = "General";
 "Airdrop" = "Airdrop";
-"1. MozoX App for Retailer" = "1. MozoX App for Retailer";
-"2. MozoX App for Shopper" = "2. MozoX App for Shopper";
-"3. MozoScan" = "3. MozoScan";
-"Mozoscan is a Block Explorer and Analytics Platform for MozoX, a decentralized smart contract platform. Mozoscan 2018 - Running on MozoX Network. htttps://scan.mozocoin.io" = "Mozoscan is a Block Explorer and Analytics Platform for MozoX, a decentralized smart contract platform. Mozoscan 2018 - Running on MozoX Network. htttps://scan.mozocoin.io";
-"4. Desktop Wallet" = "4. Desktop Wallet";
-"5. Web App for Retailer" = "5. Web App for Retailer";
 
-"Out of MozoX" = "Out of MozoX";
+"text_event_out_of_mozo" = "Out of Mozo";
 "End" = "End";
 "Scheduled_Airdrop" = "Scheduled";
 
@@ -500,20 +468,12 @@
 "Results not found" = "Results not found";
 "%d Result(s) for" = "%d Result(s) for";
 "Sorted by:" = "Sorted by:";
-"Total MozoX Coins" = "Total MozoX Coins";
-"Total MozoX Coins:" = "Total MozoX Coins:";
 "text_total_mozo" = "Total Mozo:";
-"Fill in to get %@ MozoX" = "Fill in to get %@ MozoX";
-"Receive %@ MozoX for each join" = "Receive %@ MozoX for each join";
-"Allow MozoX to access your location?" = "Allow MozoX to access your location?";
-"MozoX uses this information to provide more relevant and personalized experiences, like helping you to find local events and to provide better suggestions.\n\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "MozoX uses this information to provide more relevant and personalized experiences, like helping you to find local events and to provide better suggestions.\n\nTo enable this, tap App Settings below and activate Location under the Permissions menu.";
 "Not now" = "Not now";
 "App Settings" = "App Settings";
 "Added into favorite stores" = "Added into favorite stores";
 "Cash" = "Cash";
 "Today collected coins" = "Today collected coins";
-"Fill in to get %@ MozoX" = "Fill in to get %@ MozoX";
-"Receive %@ MozoX for each join MozoX" = "Receive %@ MozoX for each join MozoX";
 "Name" = "Name";
 "Date of birth" = "Date of birth";
 "Email" = "Email";
@@ -538,11 +498,7 @@
 "New password" = "New password";
 "Enter new password" = "Enter new password";
 "Change password successful!" = "Change password successful!";
-"Have your friends scan this QR code to download MozoX App and get %@ MozoX coins for each friend signed up successfully." = "Have your friends scan this QR code to download MozoX App and get %@ MozoX coins for each friend signed up successfully.";
-"Or share MozoX via your network" = "Or share MozoX via your network";
-"Share MozoX" = "Share MozoX";
 "Promotion Details" = "Promotion Details";
-"Receive %@ MozoX for transfering MozoX coins to your friends!" = "Receive %@ MozoX for transfering MozoX coins to your friends!";
 // LOCAL ERROR MESSAGE
 "Unknown Error" = "Unknown Error";
 "Scan timeout" = "Scan timeout";
@@ -558,9 +514,6 @@
 "Copied!" = "Copied!";
 "Scanned value is invalid." = "Scanned value is invalid.";
 
-"Allow MozoX to access your location?\nMozoX uses this to provide more relevant and personalized experiences, like helping you to find local events and get better suggestion.\nTo enable this, tap App Settings below and activate Location under the Permissions menu." = "Allow MozoX to access your location?\nMozoX uses this to provide more relevant and personalized experiences, like helping you to find local events and get better suggestion.\nTo enable this, tap App Settings below and activate Location under the Permissions menu.";
-"Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "Please input \"Receiver\" and number of \"Airdrop per shopper\"";
-
 "Frequency must be equal or larger than %d minutes" = "Frequency must be equal or larger than %d minutes";
 "Sorry, something went wrong. Please try again or restart the app." = "Sorry, something went wrong. Please try again or restart the app.";
 "Back" = "Back";
@@ -572,7 +525,6 @@
 "Confirm" = "Confirm";
 "Yes" = "Yes";
 "No" = "No";
-"Success" = "Success";
 "Are you sure?" = "Are you sure?";
 "Contacts list is empty" = "Contacts list is empty";
 
@@ -610,8 +562,6 @@
 "Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "Please input \"Receiver\" and number of \"Airdrop per shopper\"";
 "Airdrop event transaction is created with failure status." = "Airdrop event transaction is created with failure status.";
 
-"Add MozoX To Airdrop Event transaction is created with failure status." = "Add MozoX To Airdrop Event transaction is created with failure status.";
-
 "Invalid country code." = "Invalid country code.";
 
 "Amount is too low, please input valid amount." = "Amount is too low, please input valid amount.";
@@ -645,7 +595,7 @@
 "error_date_less_current" = "Event start date must be at least 10 minutes later than current time. Please check your input.";
 "error_date_start_must_earlier_end" = "Event start date must be earlier than its end date. Please check your input.";
 "error_time_start_must_earlier_end" = "The applied \"from\" hour must be earlier than the applied \"to\" hour. Please check your input.";
-"error_invalid_frequency" = "Frequency is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more MozoX during the same airdrop event.\n\"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours).";
+"error_invalid_frequency" = "Frequency is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more Mozo during the same airdrop event.\n\"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours).";
 "error_invalid_total_amount" = "Incorrect total amount of Mozo to be airdropped. Please check your input.";
 "error_invalid_per_customer_amount" = "Incorrect amount of Mozo tokens to be airdropped to each Shopper visiting your store. Please check your input.";
 
@@ -672,11 +622,11 @@
 "Redeem" = "Redeem";
 "Liquidity" = "Liquidity";
 "Reduce Cost" = "Reduce Cost";
-"Airdrop MozoX to attract more customers to your store" = "Airdrop MozoX to attract more customers to your store";
-"Collect and analyze customer information to create better customer insights" = "Collect and analyze customer information to create better customer insights";
-"Let customers redeem to buy product in your store by using MozoX" = "Let customers redeem to buy product in your store by using MozoX";
-"Transfer, buy more MozoX and withdraw easily by using MozoX Wallet" = "Transfer, buy more MozoX and withdraw easily by using MozoX Wallet";
-"Disrupt foot traffic and save more cost with MozoX" = "Disrupt foot traffic and save more cost with MozoX";
+"intro_step_disrupt_foot_traffic" = "Airdrop Mozo to attract more customers to your store";
+"intro_step_analytics" = "Collect and analyze customer information to create better customer insights";
+"intro_step_redeem" = "Let customers redeem Mozo to buy product in your store";
+"intro_step_liquidity" = "Transfer, buy more Mozo and withdraw easily by using Mozo Wallet";
+"intro_step_reduce_cost" = "Disrupt foot traffic and save more cost with Mozo";
 "This month airdropped" = "This month airdropped";
 "Visited Shoppers" = "Visited Shoppers";
 "Every (Frequency of Airdrop)" = "Every (Frequency of Airdrop)";
@@ -734,8 +684,6 @@
 "The verification service is temporarily unavailable. Please try again after 30 seconds." = "The verification service is temporarily unavailable. Please try again after 30 seconds.";
 "An internal server error has occurred" = "An internal server error has occurred";
 
-"Your store is not register on website for MozoX Retailer Website yet. Please contact MozoX Customer Service for support:" = "Your store is not register on website for MozoX Retailer Website yet. Please contact MozoX Customer Service for support:";
-
 "Welcome, %@" = "Welcome, %@";
 "You’re logged in as sub-account of %@" = "You’re logged in as sub-account of %@";
 "Photo is uploading..." = "Photo is uploading...";
@@ -776,13 +724,13 @@
 "btn_convert_to_mozo" = "Convert to Mozo";
 "Pending transaction..." = "Pending transaction...";
 "text_how_to_add_mozo_x" = "How to add MozoX?";
-"Enter amount to convert MozoX Offchain" = "Enter amount to convert MozoX Offchain";
-"Convert To Offchain" = "Convert To Offchain";
+"text_convert_hint_enter_amount" = "Enter amount of MozoX to convert to Mozo";
+"text_convert_title" = "Convert to Mozo";
 "Slow" = "Slow";
 "Average" = "Average";
 "Fast" = "Fast";
 "Normal" = "Normal";
-"Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive." = "Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive.";
+"text_convert_explain_gas_price" = "Gas Price is the amount you pay per unit of gas. TX fee = Gas Used by Txn * Gas Price & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive.";
 "Read more" = "Read more";
 "Onchain balance is not enough." = "Onchain balance is not enough.";
 "ETH balance is not enough." = "ETH balance is not enough.";
@@ -796,10 +744,10 @@
 "Broadcast completed" = "Broadcast completed";
 "Waiting for transaction status..." = "Waiting for transaction status...";
 "Convert Successful" = "Convert Successful";
-"You have just converted MozoX from Onchain to Offchain:" = "You have just converted MozoX from Onchain to Offchain:";
+"text_convert_just_converted" = "You have just converted MozoX to Mozo:";
 "Back to Onchain Wallet" = "Back to Onchain Wallet";
 "Convert Failed" = "Convert Failed";
-"Cannot complete convert MozoX from Onchain to Offchain.\nPlease try again after some time." = "Cannot complete convert MozoX from Onchain to Offchain.\nPlease try again after some time.";
+"text_convert_failed_and_try" = "Cannot convert from MozoX to Mozo.";
 "There are no Airdrop Events around you" = "There are no Airdrop Events around you";
 "Discover" = "Discover";
 "On Going Events" = "On Going Events";
@@ -810,43 +758,25 @@
 "Can not send transaction to Ethereum network or sent but failed. Please check your data and try again." = "Can not send transaction to Ethereum network or sent but failed. Please check your data and try again.";
 
 "Convert Failed" = "Convert Failed";
-"Cannot complete convert MozoX from Onchain to Offchain." = "Cannot complete convert MozoX from Onchain to Offchain.";
 "Please try again after some time." = "Please try again after some time.";
 "No routes found" = "No routes found";
 "airdrop_discover_more_on_map" = "Discover more Airdrop Events to get Mozo 👌";
 "error_store_unregisted" = "Your store was not registered on our website. Please contact Mozo Customer Service for support.";
 "error_store_suspened" = "This store has left Mozo ecosystem. Sorry for any inconvenience.";
-"Withdraw MozoX from airdrop event is failed" = "Withdraw MozoX from airdrop event is failed";
+"error_event_withdraw_failed" = "Withdraw Mozo from airdrop event is failed.";
 "error_event_can_not_withdraw" = "This airdrop event has not ended yet. You can not withdraw Mozo. Please try again later.";
 "error_event_no_mozo" = "There is no Mozo in this Airdrop Event.";
 "You are not the owner of this event." = "You are not the owner of this event.";
 
-"Create Airdrop Event to attract more customer by Airdrop MozoX." = "Create Airdrop Event to attract more customer by Airdrop MozoX.";
 "At least six characters" = "At least six characters";
 
 "There are no Airdrop Events around" = "There are no Airdrop Events around";
 
 // Convert "coin" to "token"
 
-"Airdrop MozoX tokens to Shoppers who use MozoX Shopper App when they visit to your store." = "Airdrop MozoX tokens to Shoppers who use MozoX Shopper App when they visit to your store.";
-"MozoX tokens" = "MozoX tokens";
-"Let your customers scan this QR code to download MozoX App and get %@ MozoX tokens for each customer sign up successful." = "Let your customers scan this QR code to download MozoX App and get %@ MozoX tokens for each customer sign up successful.";
-
-"%@ Token" = "%@ Token";
 "%@ Tokens" = "%@ Tokens";
 "Get Tokens" = "Get Tokens";
-"GET TOKENS" = "GET TOKENS";
-"Token" = "Token";
-"Tokens" = "Tokens";
 "Today collected tokens" = "Today collected tokens";
-"Have your friends scan this QR code to download MozoX App and get %@ MozoX tokens for each friend signed up successfully." = "Have your friends scan this QR code to download MozoX App and get %@ MozoX tokens for each friend signed up successfully.";
-"Receive %@ MozoX for transfering MozoX tokens to your friends!" = "Receive %@ MozoX for transfering MozoX tokens to your friends!";
-"Total MozoX tokens" = "Total MozoX tokens";
-"Walk to earn tokens" = "Walk to earn tokens";
-"Token" = "Token";
-"Receive %@ MozoX tokens" = "Receive %@ MozoX tokens";
-"Total MozoX tokens:" = "Total MozoX tokens:";
-"Total MozoX tokens: %@" = "Total MozoX tokens: %@";
 
 // Discover + Beacon Error + About Content + Group Stores
 "airdrop_empty_discover_more" = "Try search to discover more Mozo Airdrop Events";
@@ -872,7 +802,7 @@
 "Enter your phone number" = "Enter your phone number";
 "Enter your email address" = "Enter your email address";
 "Message" = "Message";
-"My Beacon is not working, I need another one from MozoX team." = "My Beacon is not working, I need another one from MozoX team.";
+"error_beacon_not_working" = "My beacon is not working, I need another one from Mozo team.";
 "Thank you" = "Thank you";
 "We will get back to you shortly" = "We will get back to you shortly";
 
@@ -884,14 +814,13 @@
 "invite_shopper_app_name" = "Mozo Wallet App";
 "invite_retailer_app_name" = "Mozo Business App";
 "invite_reward_amount" = "Reward %@ Mozo";
-"Let your friends scan this QR codes or invite them to join MozoX. You will get rewards for each friend signed up successful." = "Let your friends scan this QR codes or invite them to join MozoX. You will get rewards for each friend signed up successful.";
 
 "Once per day" = "Once per day";
 "Loading..." = "Loading...";
 
 // Detect Onchain inside Offchain
 "text_detected_mozo_x" = "Detected %@ MozoX in Onchain wallet";
-"Do you want to convert these MozoX Onchain in this wallet into MozoX Offchain?" = "Do you want to convert these MozoX Onchain in this wallet into MozoX Offchain?";
+"text_convert_confirm_question" = "Do you want to convert these MozoX in this wallet into Mozo?";
 "Your ETH balance is: %@" = "Your ETH balance is: %@";
 "text_msg_required_eth" = "You need to transfer %@ ETH into this Onchain Wallet address to pay TX Fee";
 "text_converting_mozo" = "Converting to Mozo...";
@@ -913,7 +842,6 @@
 "notify_group_received_more" = "%u more Mozo received";
 "notify_group_sent" = "%u more Mozo sent";
 "notify_group_received_from_event" = "%u more Mozo received from Airdrop Events";
-"Your friends have joined MozoX" = "Your friends have joined MozoX";
 "notify_group_friends_joined" = "%u more friends joined Mozo";
 "Customers arrived" = "Customers arrived";
 "%u more customers arrived" = "%u more customers arrived";
@@ -950,39 +878,39 @@
 "Go to Wallet" = "Go to Wallet";
 "Airdrop Event List" = "Airdrop Event List";
 "Airdrop Event List is empty or your connection is too slow" = "Airdrop Event List is empty or your connection is too slow";
-"Airdrop MozoX tokens for Shoppers when they visit your store" = "Airdrop MozoX tokens for Shoppers when they visit your store";
+"text_event_empty" = "Airdrop Mozo tokens for Shoppers when they visit your store";
 "Foot Traffic is empty or your connection is too slow" = "Foot Traffic is empty or your connection is too slow";
-"Create Airdrop Event to attract more customers by Airdropping MozoX." = "Create Airdrop Event to attract more customers by Airdropping MozoX.";
+"text_empty_visit_customer" = "Create Airdrop Event to attract more customers by Airdropping Mozo.";
 "Go to Airdrop Events list" = "Go to Airdrop Events list";
 "Go to Promotions list" = "Go to Promotions list";
 
 // Bonus Notification + Unregistered Store + Simplyfy Create Airdrop Event
 "notify_receive_bonus" = "You got %@ Bonus Mozo";
 "For signing up with us" = "For signing up with us";
-"For being verified store" = "For being verified store";
+"notify_receive_bonus_verified_store" = "For being verified store";
 "notify_receive_bonus_top_retailers" = "For being a 1st 1,000 Mozo Retailers";
 
 "Unregistered Store" = "Unregistered Store";
 "If you have not registered yet, please register." = "If you have not registered yet, please register.";
-"If your store has not approved yet, please feel free to contact MozoX Team for support:" = "If your store has not approved yet, please feel free to contact MozoX Team for support:";
+"text_msg_store_not_approved" = "If your store has not approved yet, please feel free to contact Mozo Team for support:";
 "Register Now" = "Register Now";
 
 "Basic Info" = "Basic Info";
 "Enter Airdrop Event name" = "Enter Airdrop Event name";
-"Number of MozoX Airdrop per Shopper" = "Number of MozoX Airdrop per Shopper";
+"text_event_number_of_mozo_per_shopper" = "Number of Mozo Airdrop per Shopper";
 "Airdrop Event Time Setting" = "Airdrop Event Time Setting";
 "Start from now" = "Start from now";
 "Now" = "Now";
-"Shopper will see event name when they use MozoX app to get tokens." = "Shopper will see event name when they use MozoX app to get tokens.";
-"The number of Shoppers who will receive MozoX tokens from this Airdrop Event." = "The number of Shoppers who will receive MozoX tokens from this Airdrop Event.";
-"The number of MozoX tokens each Shopper will receive via Airdrop every time they visit to your Store." = "The number of MozoX tokens each Shopper will receive via Airdrop every time they visit to your Store.";
+"text_event_explain_name" = "Shopper will see event name when they use Mozo Wallet App to get tokens.";
+"text_event_explain_number_of_shopper" = "The number of Shoppers who will receive Mozo tokens from this Airdrop Event.";
+"text_event_explain_number_of_mozo" = "The number of Mozo tokens each Shopper will receive via Airdrop every time they visit to your Store.";
 "PLEASE REVIEW THE INFORMATION BELOW, BECAUSE ONCE AN AIRDROP EVENT HAS BEEN CREATED, THE INFORMATION CANNOT BE CHANGED." = "PLEASE REVIEW THE INFORMATION BELOW, BECAUSE ONCE AN AIRDROP EVENT HAS BEEN CREATED, THE INFORMATION CANNOT BE CHANGED.";
 "Please review the information below, because once an Airdrop Event has been created, the information cannot be changed." = "Please review the information below, because once an Airdrop Event has been created, the information cannot be changed.";
 "Duration" = "Duration";
 "text_not_available" = "(Not available)";
 "Selected days of the week" = "Selected days of the week";
 
-"Total MozoX you need to Airdrop" = "Total MozoX you need to Airdrop";
+"text_event_total_mozo_token" = "Total Mozo tokens";
 
 // Beacon Settings, Beacon Failure contact, Map Route, Speed Selection, Auto Create Wallet, Backup Wallet, Change PIN, Auto PIN
 "Writing data to Beacon..." = "Writing data to Beacon...";
@@ -1072,7 +1000,7 @@
 "Active Promotion" = "Active Promotion";
 "Show QR Code" = "Show QR Code";
 "Scan QR Code" = "Scan QR Code";
-"Create a Promotion to attract more Shoppers by offering MozoX and discounts" = "Create a Promotion to attract more Shoppers by offering MozoX and discounts";
+"text_promo_empty" = "Create a Promotion to attract more Shoppers by allow them to convert Mozo tokens with your discounts";
 "Create Promotion" = "Create Promotion";
 "Optional" = "Optional";
 "(Optional)" = "(Optional)";
@@ -1084,16 +1012,15 @@
 "SCHEDULED" = "SCHEDULED";
 "Time to Expiration:" = "Time to Expiration:";
 "Promotion List is empty or your connection is too slow" = "Promotion List is empty or your connection is too slow";
-"What is MozoX Promotion?" = "What is MozoX Promotion?";
 "Enter discount %" = "Enter discount %";
-"MozoX required for discount" = "MozoX required for discount";
-"Enter MozoX number" = "Enter MozoX number";
+"text_promo_mozo_for_discount" = "Mozo required for discount";
+"text_promo_hint_mozo_number" = "Enter Mozo number";
 "Promotion Display Image (Optional)" = "Promotion Display Image (Optional)";
 "Promotion Display Image" = "Promotion Display Image";
 "Take photo or upload from your gallery" = "Take photo or upload from your gallery";
-"The percentage discount a Shopper will receive when they redeem MozoX to take advantage of your promotion offer.\n\nEx: Shoppers will receive a 50% discount on the purchase of a bottle of Coca Cola when they redeem 15,000 MozoX." = "The percentage discount a Shopper will receive when they redeem MozoX to take advantage of your promotion offer.\n\nEx: Shoppers will receive a 50% discount on the purchase of a bottle of Coca Cola when they redeem 15,000 MozoX.";
-"This is the number of MozoX tokens a Shopper must redeem in order to receive the Promotion discount." = "This is the number of MozoX tokens a Shopper must redeem in order to receive the Promotion discount.";
-"Describe what discount Shopper will receive if they redeem MozoX for this Promotion" = "Describe what discount Shopper will receive if they redeem MozoX for this Promotion";
+"promo_explain_percent" = "The percentage discount a Shopper will receive when they redeem Mozo to take advantage of your promotion offer.\n\nEx: Shoppers will receive a 50% discount on the purchase of a bottle of Coca Cola when they redeem 15,000 Mozo.";
+"promo_explain_number_of_mozo" = "This is the number of Mozo tokens a Shopper must redeem in order to receive the Promotion discount.";
+"promo_explain_description" = "Describe what discount Shopper will receive if they redeem Mozo for this Promotion";
 "Discount percentage" = "Discount percentage";
 "Discount Percentage" = "Discount Percentage";
 "Preview Promotion" = "Preview Promotion";
@@ -1117,15 +1044,12 @@
 "Added into favorite promotions" = "Added into favorite promotions";
 "Removed from favorite promotions" = "Removed from favorite promotions";
 "Process time out. Please re-scan QR Code." = "Process time out. Please re-scan QR Code.";
-"Airdrop Event is a MozoX feature let your store attract more Shoppers by creating Airdrop Events to airdrop MozoX for each Shopper visit your store." = "Airdrop Event is a MozoX feature let your store attract more Shoppers by creating Airdrop Events to airdrop MozoX for each Shopper visit your store.";
-"Promotion is a MozoX feature let your store attract more Shoppers by allowing them to redeem MozoX and get discount on receipt." = "Promotion is a MozoX feature let your store attract more Shoppers by allowing them to redeem MozoX and get discount on receipt.";
-"Ex: Shopper can redeem 1,000 MozoX to get 50% discount on receipt." = "Ex: Shopper can redeem 1,000 MozoX to get 50% discount on receipt.";
 "Don’t miss out other Promotions 🤩" = "Don’t miss out other Promotions 🤩";
 "Next %d days" = "Next %d days";
 "Next %d day" = "Next %d day";
 "Promotion is being processed" = "Promotion is being processed";
-"Promotions attract shoppers by allowing them to redeem their MozoX for discounts of your products and services. (e.g., Redeem 1000 MozoX in exchange for a 20% discount on selected items.)" = "Promotions attract shoppers by allowing them to redeem their MozoX for discounts of your products and services. (e.g., Redeem 1000 MozoX in exchange for a 20% discount on selected items.)";
-"Airdrop Events attract more shoppers by rewarding them for visiting your store or venue. Shoppers can receive MozoX via \"airdrop\" into the digital wallets inside their MozoX Shopper App each time they enter your premises." = "Airdrop Events attract more shoppers by rewarding them for visiting your store or venue. Shoppers can receive MozoX via \"airdrop\" into the digital wallets inside their MozoX Shopper App each time they enter your premises.";
+"text_tips_event" = "Airdrop Events attract more shoppers by rewarding them for visiting your store or venue. Shoppers can receive Mozo via \"airdrop\" into the digital wallets inside their Mozo App each time they enter your premises.";
+"text_tips_sync_beacon_location" = "Use Beacon\'s address to locate Beacon\'s location";
 "Recommendation" = "Recommendation";
 "Coming Soon" = "Coming Soon";
 "COMING SOON" = "COMING SOON";
@@ -1164,6 +1088,8 @@
 "EXPIRED" = "EXPIRED";
 "Cancel processing promotion successfully" = "Cancel processing promotion successfully";
 "Processing Promotions" = "Processing Promotions";
+"text_update_required_title" = "Update required to use App";
+"text_update_required_content" = "We’ve released a new version of the app\nPlease update the latest version.";
 
 // Reminder - Todo List
 "Your internet connection has a problem 😔" = "Your internet connection has a problem 😔";
@@ -1202,25 +1128,24 @@
 "MozoX Offchain" = "MozoX Offchain";
 
 // Import Address Book
-"Enter MozoX address or phone number" = "Enter MozoX address or phone number";
-"Can't find this contact in your MozoX Address Book" = "Can't find this contact in your MozoX Address Book";
-"Find in MozoX System →" = "Find in MozoX System →";
+"text_contact_hint_input_address_phone" = "Enter Mozo address or phone number";
+"error_contact_not_found" = "Can't find this contact in your Mozo address book";
+"text_contact_find_system" = "Find in Mozo system →";
 "text_msg_phone_not_belong_any_wallet" = "This phone number does not belong to any Mozo Wallet Address";
 "We only support search with phone number." = "We only support search with phone number.";
 
 "Import Contacts" = "Import Contacts";
 "Import Contacts successful!" = "Import contact successful!";
-"Quickly add friends to MozoX Address Book from the phone book" = "Quickly add friends to MozoX Address Book from the phone book";
+"text_contact_inport_from_phone" = "Quickly add friends to Mozo Address Book from the phone book";
 "Update Contacts" = "Update Contacts";
 "Updating..." = "Updating...";
-"Friends in your contact list will automatically be added to MozoX Address Book." = "Friends in your contact list will automatically be added to MozoX Address Book.";
+"text_contact_friends_will_be_added" = "Friends in your contact list will automatically be added to Mozo address book.";
 "Last updated:" = "Last updated:";
 
-"You sent Request MozoX:" = "You sent Request MozoX:";
+"text_request_sent" = "You sent Request Mozo:";
 
 "Synchronize Contacts" = "Synchronize Contacts";
 "Synchronize Contacts successful!" = "Synchronize Contacts successful!";
-"Your MozoX Request was sent" = "Your MozoX Request was sent";
 "Update" = "Update";
 "Change Settings" = "Change Settings";
 "Cannot access your Contact Book" = "Cannot access your Contact Book";
@@ -1321,7 +1246,6 @@
 "Your store is not authorized to create Airdrop Event. Please contact Mall Owner if you need any support." = "Your store is not authorized to create Airdrop Event. Please contact Mall Owner if you need any support.";
 "Why my store is not able to create an Airdrop Event? →" = "Why my store is not able to create an Airdrop Event? →";
 "Phone number is required" = "Phone number is required";
-"Airdrop events require a Beacon sensor in order to detect visitors to your store. Please contact MozoX Support or your Mall Operator to request a Beacon from MozoX." = "Airdrop events require a Beacon sensor in order to detect visitors to your store. Please contact MozoX Support or your Mall Operator to request a Beacon from MozoX.";
 
 "Beacon list is empty" = "Beacon list is empty";
 
@@ -1344,7 +1268,7 @@
 "Beacon Detail" = "Beacon Detail";
 "Add Beacon" = "Add Beacon";
 "Beacon Settings" = "Beacon Settings";
-"Beacon Location On Map in MozoX App" = "Beacon Location On Map in MozoX App";
+"text_beacon_location_on_map" = "Beacon Location On Map in Mozo App";
 "Beacon Range" = "Beacon Range";
 "Branch" = "Branch";
 "Beacon Name" = "Beacon Name";
@@ -1371,7 +1295,6 @@
 "Use Branch Location" = "Use Branch Location";
 "Edit Beacon Range" = "Edit Beacon Range";
 "Beacon Location" = "Beacon Location";
-"Cannot connect to MozoX servers." = "Cannot connect to MozoX servers.";
 "All Branches" = "All Branches";
 
 "New Branch" = "New Branch";
