@@ -177,7 +177,7 @@
 
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ" = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 /* RETAILER */
-"MozoX Retailer" = "MozoX Retailer";
+"Mozo Business" = "Mozo Kinh Doanh";
 "Sync Beacon" = "Đồng bộ Beacon";
 "Remove Beacon from its Package. Scan QR Code to sync Beacon with your store." = "Lấy Beacon từ hộp Mozo. Quét QR Code để đồng bộ Beacon với cửa hàng.";
 
@@ -1070,7 +1070,7 @@
 "Shopper purchased promotion" = "Khách hàng đã mua khuyến mãi";
 "Don’t show again" = "Không hiện lại";
 "Invalid Recovery Phrase" = "Chuỗi ký tự phục hồi không hợp lệ";
-"MozoX Received" = "MozoX đã nhận";
+"text_promo_mozo_received" = "Mozo đã nhận";
 "Billing information (Optional)" = "Thông tin hóa đơn (Không bắt buộc)";
 "Billing information" = "Thông tin hóa đơn";
 "Enter billing information" = "Nhập thông tin hóa đơn";
@@ -1129,7 +1129,6 @@
 "todo_action_explain" = "Xin vui lòng giải quyết những vấn đề sau để ứng dụng Mozo phục vụ bạn tốt hơn:";
 "To Do List" = "Những việc cần làm";
 "Redemption" = "Đổi thưởng";
-"MozoX Offchain" = "MozoX";
 
 // Import Address Book
 "text_contact_hint_input_address_phone" = "Nhập địa chỉ ví Mozo hoặc số điện thoại";

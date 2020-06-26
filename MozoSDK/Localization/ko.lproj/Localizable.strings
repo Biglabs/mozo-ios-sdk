@@ -178,7 +178,7 @@
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ" = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 // Retailer
-"MozoX Retailer" = "MozoX 소매점";
+"Mozo Business" = "Mozo비지니스";
 "Sync Beacon" = "Beacon 동기화";
 "Remove Beacon from its Package. Scan QR Code to sync Beacon with your store." = "Mozo 박스에서 Beacon을 가져와서  Beacon을 상점과 동기화하기 위하여 QR 코드를 스캔하십시오.";
 
@@ -1075,7 +1075,7 @@
 "Shopper purchased promotion" = "프로모션을 구매한 구매자";
 "Don’t show again" = "다시 보지 않습니다.";
 "Invalid Recovery Phrase" = "잘못된 복구 문구";
-"MozoX Received" = "받으신 모조X";
+"text_promo_mozo_received" = "받으신 Mozo";
 "Billing information (Optional)" = "영수증 정보 (옵션)";
 "Billing information" = "영수증 정보";
 "Enter billing information" = "영수증 정보 입력";
@@ -1134,7 +1134,6 @@
 "todo_action_explain" = "Mozo 앱을 문제 없이 사용하기 위해 아래에 나열된 것을 완료하세요.";
 "To Do List" = "해야 할 일";
 "Redemption" = "토큰 사용";
-"MozoX Offchain" = "MozoX Offchain";
 
 // Import Address Book
 "text_contact_hint_input_address_phone" = "Mozo 주소 또는 연락처 입력";
