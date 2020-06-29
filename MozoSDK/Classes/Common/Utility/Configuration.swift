@@ -120,4 +120,13 @@ public class Configuration {
 //        }
 //        return AUTH_REDIRECT_URL
     }
+    
+    public static func languageTag() -> String {
+        let locale = Locale.current
+        guard let languageCode = locale.languageCode,
+            let regionCode = locale.regionCode else {
+                return "en-US"
+        }
+        return "\(languageCode)-\(regionCode)"
+    }
 }
