@@ -773,7 +773,7 @@
 "There are no Airdrop Events around" = "There are no Airdrop Events around";
 
 // Convert "coin" to "token"
-
+"text_token" = "Tokens";
 "%@ Tokens" = "%@ Tokens";
 "Get Tokens" = "Get Tokens";
 "Today collected tokens" = "Today collected tokens";
