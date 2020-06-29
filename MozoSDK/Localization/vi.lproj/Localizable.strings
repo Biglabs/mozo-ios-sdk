@@ -777,7 +777,7 @@
 "There are no Airdrop Events around" = "Không có chương trình Airdrop quanh đây";
 
 // Convert "coin" to "token"
-
+"text_token" = "Mozo";
 "%@ Tokens" = "%@ Mozo";
 "Get Tokens" = "Săn Mozo";
 "Today collected tokens" = "Mozo nhận hôm nay";

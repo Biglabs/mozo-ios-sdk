@@ -772,7 +772,7 @@
 "There are no Airdrop Events around" = "주변에는 Airdrop 이벤트가 없습니다.";
 
 // Convert "coin" to "token"
-
+"text_token" = "코인";
 "%@ Tokens" = "%@ 코인";
 "Get Tokens" = "코인가져 오기";
 "Today collected tokens" = "오늘 수집한 코인";
