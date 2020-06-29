@@ -706,7 +706,8 @@
 
 "Invalid email address" = "이메일 주소가 잘못되었습니다.";
 
-"Uploading photos progress will be continuing after you leave this screen. Do you want to go back?" = "이 화면을 종료하면 사진 업로드 진행 상태가 계속됩니다. 당신이 돌아가시겠습니까?";
+"text_msg_uploading_ask_go_back" = "이 화면을 종료하면 사진 업로드 진행 상태가 계속됩니다. 당신이 돌아가시겠습니까?";
+"text_msg_uploading_ask_continue" = "이 화면 나간 후 사진 업로드 계속 됩니다. 계속 진행하시겠습니까?";
 "Create Airdrop Event failed.\nPlease try again." = "에어 드롭 이벤트 만들기가 실패했습니다.\n다시 시도하십시오.";
 
 "App requires permission to access Camera to capture image. Tap \'Settings\' and go to \'Permissions\' to grant permission." = "앱에서 이미지를 캡처하려면 카메라에 액세스 할 수있는 권한이 필요합니다. \ '설정 \'을 선택하고  \ '권한 \'으로 이동하여 권한을 부여하십시오.";
