@@ -707,7 +707,8 @@
 
 "Invalid email address" = "Invalid email address";
 
-"Uploading photos progress will be continuing after you leave this screen. Do you want to go back?" = "Uploading photos progress will be continuing after you leave this screen. Do you want to go back?";
+"text_msg_uploading_ask_go_back" = "Uploading photos progress will be continuing after you leave this screen. Do you want to go back?";
+"text_msg_uploading_ask_continue" = "Uploading photos progress will be continuing after you leave this screen. Do you want to continue?";
 "Create Airdrop Event failed.\nPlease try again." = "Create Airdrop Event failed.\nPlease try again.";
 
 "App requires permission to access Camera to capture image. Tap \'Settings\' and go to \'Permissions\' to grant permission." = "App requires permission to access Camera to capture image. Tap \'Settings\' and go to \'Permissions\' to grant permission.";
