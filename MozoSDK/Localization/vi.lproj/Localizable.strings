@@ -776,10 +776,8 @@
 
 "There are no Airdrop Events around" = "Không có chương trình Airdrop quanh đây";
 
-// Convert "coin" to "token"
 "text_token" = "Mozo";
 "text_navi_get_mozo" = "Săn Mozo";
-"Today collected tokens" = "Mozo nhận hôm nay";
 
 // Discover + Beacon Error + About Content + Group Stores
 "airdrop_empty_discover_more" = "Thử tìm kiếm để khám phá thêm các chương trình Mozo Airdrop";

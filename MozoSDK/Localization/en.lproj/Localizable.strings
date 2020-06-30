@@ -772,10 +772,8 @@
 
 "There are no Airdrop Events around" = "There are no Airdrop Events around";
 
-// Convert "coin" to "token"
 "text_token" = "Mozo";
 "text_navi_get_mozo" = "Get Mozo";
-"Today collected tokens" = "Today collected tokens";
 
 // Discover + Beacon Error + About Content + Group Stores
 "airdrop_empty_discover_more" = "Try search to discover more Mozo Airdrop Events";
