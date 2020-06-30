@@ -426,7 +426,6 @@
 "Store Address" = "상점 주소";
 
 // SHOPPER
-"Get Coins" = "코인 가져 오기";
 "My wallet" = "내 지갑";
 "Profile" = "프로필";
 "List view" = "리스트 양식 보기";
@@ -772,11 +771,8 @@
 
 "There are no Airdrop Events around" = "주변에는 Airdrop 이벤트가 없습니다.";
 
-// Convert "coin" to "token"
-"text_token" = "코인";
-"%@ Tokens" = "%@ 코인";
-"Get Tokens" = "코인가져 오기";
-"Today collected tokens" = "오늘 수집한 코인";
+"text_token" = "Mozo";
+"text_navi_get_mozo" = "Mozo 받으시오";
 
 // Discover + Beacon Error + About Content + Group Stores
 "airdrop_empty_discover_more" = "Mozo Airdrop 이벤트를  더 검색해보세요.";

@@ -427,7 +427,6 @@
 "Store Address" = "Địa chỉ cửa hàng";
 
 /* SHOPPER */
-"Get Coins" = "Nhận coin";
 "My wallet" = "Ví";
 "Profile" = "Hồ sơ";
 "List view" = "Dạng list";
@@ -777,11 +776,8 @@
 
 "There are no Airdrop Events around" = "Không có chương trình Airdrop quanh đây";
 
-// Convert "coin" to "token"
 "text_token" = "Mozo";
-"%@ Tokens" = "%@ Mozo";
-"Get Tokens" = "Săn Mozo";
-"Today collected tokens" = "Mozo nhận hôm nay";
+"text_navi_get_mozo" = "Săn Mozo";
 
 // Discover + Beacon Error + About Content + Group Stores
 "airdrop_empty_discover_more" = "Thử tìm kiếm để khám phá thêm các chương trình Mozo Airdrop";
