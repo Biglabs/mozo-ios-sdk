@@ -82,6 +82,19 @@ public class PromotionDisplayItem {
         return "\(fromDateText) - \(toDateText)"
     }
     
+    public var dateFromToLocal: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d".localized
+        
+        let fromDate = Date(timeIntervalSince1970: TimeInterval(periodFromDate))
+        let fromDateText = formatter.string(from: fromDate).uppercased()
+        
+        let toDate = Date(timeIntervalSince1970: TimeInterval(periodToDate))
+        let toDateText = formatter.string(from: toDate).uppercased()
+        
+        return "\(fromDateText) - \(toDateText)"
+    }
+    
     public var dayLeftText: String {
         let dayText = self.dayLeft > 1 ? "days" : "day"
         return "(\("%d \(dayText) left".localizedFormat(self.dayLeft)))"
