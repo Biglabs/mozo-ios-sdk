@@ -426,7 +426,6 @@
 
 // SHOPPER
 "Mozo" = "Mozo";
-"Get Coins" = "Get Coins";
 "My wallet" = "My wallet";
 "Profile" = "Profile";
 "List view" = "List view";
@@ -774,9 +773,8 @@
 "There are no Airdrop Events around" = "There are no Airdrop Events around";
 
 // Convert "coin" to "token"
-"text_token" = "Tokens";
-"%@ Tokens" = "%@ Tokens";
-"Get Tokens" = "Get Tokens";
+"text_token" = "Mozo";
+"text_navi_get_mozo" = "Get Mozo";
 "Today collected tokens" = "Today collected tokens";
 
 // Discover + Beacon Error + About Content + Group Stores

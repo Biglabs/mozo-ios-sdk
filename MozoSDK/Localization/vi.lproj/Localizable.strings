@@ -427,7 +427,6 @@
 "Store Address" = "Địa chỉ cửa hàng";
 
 /* SHOPPER */
-"Get Coins" = "Nhận coin";
 "My wallet" = "Ví";
 "Profile" = "Hồ sơ";
 "List view" = "Dạng list";
@@ -779,8 +778,7 @@
 
 // Convert "coin" to "token"
 "text_token" = "Mozo";
-"%@ Tokens" = "%@ Mozo";
-"Get Tokens" = "Săn Mozo";
+"text_navi_get_mozo" = "Săn Mozo";
 "Today collected tokens" = "Mozo nhận hôm nay";
 
 // Discover + Beacon Error + About Content + Group Stores
