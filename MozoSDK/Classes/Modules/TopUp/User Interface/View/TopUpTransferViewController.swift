@@ -162,7 +162,7 @@ class TopUpTransferViewController: MozoBasicViewController {
     }
     
     @IBAction func btnContinueTapped(_ sender: Any) {
-        if let tokenInfo = self.tokenInfo, let clearAmountText = txtAmount.text?.toTextNumberWithoutGrouping() {
+        if let tokenInfo = self.tokenInfo, let clearAmountText = txtAmount.text {
             eventHandler?.validateTopUpTransferTransaction(tokenInfo: tokenInfo, amount: clearAmountText)
         }
     }
