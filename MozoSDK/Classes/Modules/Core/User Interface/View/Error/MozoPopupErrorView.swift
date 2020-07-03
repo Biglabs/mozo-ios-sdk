@@ -62,18 +62,19 @@ public class MozoPopupErrorView : MozoView {
     func setupReachability() {
         let hostName = Configuration.BASE_HOST
         print("MozoPopupErrorView - Set up Reachability with host name: \(hostName)")
-        reachability = Reachability(hostname: hostName)
-        reachability?.whenReachable = { reachability in
-            print("MozoPopupErrorView - Reachability when reachable: \(reachability.description) - \(reachability.connection)")
-            self.stopNotifier()
-            self.tryAgain()
-        }
-        reachability?.whenUnreachable = { reachability in
-            print("MozoPopupErrorView - Reachability when unreachable: \(reachability.description) - \(reachability.connection)")
-            
-        }
-        print("MozoPopupErrorView - Reachability --- start notifier")
         do {
+            try reachability = Reachability(hostname: hostName)
+            reachability?.whenReachable = { reachability in
+                print("MozoPopupErrorView - Reachability when reachable: \(reachability.description) - \(reachability.connection)")
+                self.stopNotifier()
+                self.tryAgain()
+            }
+            reachability?.whenUnreachable = { reachability in
+                print("MozoPopupErrorView - Reachability when unreachable: \(reachability.description) - \(reachability.connection)")
+                
+            }
+            print("MozoPopupErrorView - Reachability --- start notifier")
+
             try reachability?.startNotifier()
         } catch {
             

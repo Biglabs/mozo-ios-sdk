@@ -41,17 +41,18 @@ class CorePresenter : NSObject {
     func setupReachability() {
         let hostName = Configuration.BASE_HOST
         print("Set up Reachability with host name: \(hostName)")
-        reachability = Reachability(hostname: hostName)
-        reachability?.whenReachable = { reachability in
-            print("Reachability when reachable: \(reachability.description) - \(reachability.connection)")
-            self.readyForGoingLive()
-        }
-        reachability?.whenUnreachable = { reachability in
-            print("Reachability when unreachable: \(reachability.description) - \(reachability.connection)")
-            self.stopSilentServices()
-        }
-        print("Reachability --- start notifier")
         do {
+            try reachability = Reachability(hostname: hostName)
+            reachability?.whenReachable = { reachability in
+                print("Reachability when reachable: \(reachability.description) - \(reachability.connection)")
+                self.readyForGoingLive()
+            }
+            reachability?.whenUnreachable = { reachability in
+                print("Reachability when unreachable: \(reachability.description) - \(reachability.connection)")
+                self.stopSilentServices()
+            }
+            print("Reachability --- start notifier")
+            
             try reachability?.startNotifier()
         } catch {
             

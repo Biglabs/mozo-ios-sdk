@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://www.mozocoin.io/'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Mozo developers' => 'developer@mozocoin.io' }
+  s.author           = { 'Mozo Developers' => 'developer@mozocoin.io' }
   s.source           = { :git => 'https://github.com/Biglabs/mozo-ios-sdk.git', :tag => s.version.to_s }
   s.social_media_url = 'https://facebook.com/mozocoin.io'
 
@@ -28,20 +28,19 @@ Pod::Spec.new do |s|
   }
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
   
-  s.dependency 'SwiftyJSON', '4.3.0'
-  s.dependency 'web3swift', '~> 1.1.1'
-  s.dependency 'secp256k1_ios', '~> 0.1'
-  s.dependency 'RNCryptor', '~> 5.0.3'
+  s.dependency 'SwiftyJSON', '5.0'
+  s.dependency 'web3swift', '~> 2.2.1'
+  s.dependency 'secp256k1_ios', '~> 0.1.3'
+  s.dependency 'RNCryptor', '~> 5.1.0'
   s.dependency 'PromiseKit/Alamofire', '6.8.4'
   s.dependency 'Alamofire', '4.8.2'
   s.dependency 'AlamofireImage', '3.5.2'
   s.dependency 'CoreStore', '5.1.1'
-  s.dependency 'AppAuth', '~> 1.2.0'
-  s.dependency 'Starscream', '3.0.2'
-  s.dependency 'ReachabilitySwift', '4.3.0'
-  s.dependency 'MBProgressHUD', '~> 1.1.0'
-  s.dependency 'JWTDecode', '2.3.0'
-  s.dependency 'Kingfisher', '5.9.0'
+  s.dependency 'AppAuth', '~> 1.4.0'
+  s.dependency 'ReachabilitySwift', '5.0.0'
+  s.dependency 'MBProgressHUD', '~> 1.2.0'
+  s.dependency 'JWTDecode', '2.4.1'
+  s.dependency 'Kingfisher', '5.14.0'
   s.dependency 'libPhoneNumber-iOS'
 #  s.dependency 'Firebase/Core'
 #  s.dependency 'Firebase/DynamicLinks'
