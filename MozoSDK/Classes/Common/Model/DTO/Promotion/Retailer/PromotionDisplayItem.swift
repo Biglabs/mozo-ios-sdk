@@ -138,12 +138,23 @@ public class PromotionDisplayItem {
     }
     
     public var startInNextDaysFromNow: Int {
-        let fromDate = Date()
+        let fromDate = Calendar.current.date(
+            bySettingHour: 0,
+            minute: 0,
+            second: 0,
+            of: Date()
+        ) ?? Date()
         
-        let toDate = Date(timeIntervalSince1970: TimeInterval(periodFromDate))
+        let toDate = Calendar.current.date(
+            bySettingHour: 0,
+            minute: 0,
+            second: 0,
+            of: Date(timeIntervalSince1970: TimeInterval(periodFromDate))
+        ) ?? Date()
+        
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: fromDate, to: toDate)
-        return abs(components.day ?? 0) + 1
+        return max(abs(components.day ?? 0), 1)
     }
     
     public var percentOffText: String {
