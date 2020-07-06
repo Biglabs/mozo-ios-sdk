@@ -111,4 +111,15 @@ public extension UILabel {
         
         self.attributedText = lStrLabelText
     }
+    
+    func setTextWithShadow(text: String, shadowColor: UIColor = UIColor(hexString: "80000000")) {
+        let shadow = NSShadow()
+        shadow.shadowColor = shadowColor
+        shadow.shadowBlurRadius = 2
+        shadow.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        attributedText = NSMutableAttributedString(string: text, attributes: [
+                NSAttributedString.Key.shadow: shadow
+            ]
+        )
+    }
 }
