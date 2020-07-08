@@ -76,7 +76,7 @@ class AirdropInteractor: NSObject {
     func processAirdropEvent(_ event: AirdropEventDTO, tokenInfo: TokenInfoDTO) {
         if let balance = tokenInfo.balance, let decimals = tokenInfo.decimals {
             if event.totalNumMozoOffchain?.doubleValue ?? 0 > balance.convertOutputValue(decimal: decimals) {
-                output?.failedToSignAirdropEventWithErrorString("error_amount_not_enough_to_airdrop".localized)
+                output?.failedToSignAirdropEventWithErrorString("error_invalid_total_amount".localized)
                 return
             }
             let perCustomer = (event.mozoAirdropPerCustomerVisit?.doubleValue ?? 0).convertTokenValue(decimal: decimals)

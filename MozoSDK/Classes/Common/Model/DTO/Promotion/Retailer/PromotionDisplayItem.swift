@@ -129,12 +129,23 @@ public class PromotionDisplayItem {
     }
     
     public var dayLeftFromNow: Int {
-        let fromDate = Date()
+        let fromDate = (Calendar.current.date(
+            bySettingHour: 0,
+            minute: 0,
+            second: 0,
+            of: Date()
+            ) ?? Date()).timeIntervalSince1970
         
-        let toDate = Date(timeIntervalSince1970: TimeInterval(periodToDate))
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: fromDate, to: toDate)
-        return abs(components.day ?? 0) + 1
+        /**
+        * Add 1 second to End time (+ 1000ms) because this time is 23:59:59
+        */
+        let toDate = periodToDate + 1
+        let duration = Double(toDate - Int64(fromDate)) / (24.0*60*60)
+        
+        let durationRouned = Int(duration)
+        let result = (duration / Double(durationRouned)) > 1.0 ? durationRouned + 1 : durationRouned
+        
+        return max(result, 1)
     }
     
     public var startInNextDaysFromNow: Int {
@@ -152,8 +163,7 @@ public class PromotionDisplayItem {
             of: Date(timeIntervalSince1970: TimeInterval(periodFromDate))
         ) ?? Date()
         
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: fromDate, to: toDate)
+        let components = Calendar.current.dateComponents([.day], from: fromDate, to: toDate)
         return max(abs(components.day ?? 0), 1)
     }
     
