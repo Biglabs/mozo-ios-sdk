@@ -812,7 +812,7 @@
 "View Event List" = "Xem danh sách chương trình";
 
 "Select language to share" = "Chọn ngôn ngữ để chia sẻ";
-"invite_shopper_app_name" = "Ứng dụng Ví Mozo";
+"invite_shopper_app_name" = "Ứng dụng Mozo Người dùng";
 "invite_retailer_app_name" = "Ứng dụng Mozo Kinh doanh";
 "invite_reward_amount" = "Được thưởng %@ Mozo";
 
@@ -902,7 +902,7 @@
 "Airdrop Event Time Setting" = "Thiết lập thời gian";
 "Start from now" = "Bắt đầu ngay bây giờ";
 "Now" = "Bây giờ";
-"text_event_explain_name" = "Người dùng sẽ tìm thấy tên chương trình này trên ứng dụng Ví Mozo và nhận nó";
+"text_event_explain_name" = "Người dùng sẽ tìm thấy tên chương trình này trên ứng dụng Mozo và nhận nó";
 "text_event_explain_number_of_shopper" = "Số người dùng sẽ được nhận điểm thưởng từ chương trình Airdrop này";
 "text_event_explain_number_of_mozo" = "Số điểm thưởng Mozo mỗi người dùng được nhận khi họ ghé thăm cửa hàng bạn";
 "PLEASE REVIEW THE INFORMATION BELOW, BECAUSE ONCE AN AIRDROP EVENT HAS BEEN CREATED, THE INFORMATION CANNOT BE CHANGED." = "XIN VUI LÒNG KIỂM TRA KỸ THÔNG TIN VÌ BẠN KHÔNG THỂ THAY ĐỔI NỘI DUNG CHƯƠNG TRÌNH MỘT KHI ĐÃ ĐƯỢC TẠO";
@@ -1360,7 +1360,7 @@ FAQ contents
 "faq_shopper_8_title" = "Mã PIN là gì, có khác với mật khẩu đăng nhập hay không?";
 
 "faq_shopper_1_answer" = "Mozo là điểm thưởng dùng công nghệ blockchain mà người bán hàng có thể lì xì cho khách hàng khi họ đến cửa hàng. Người nhận được lì xì có thể dùng nó để được hưởng khuyến mãi do người bán hàng tạo ra.";
-"faq_shopper_2_answer" = "Ứng dụng Ví Mozo cung cấp khá nhiều công cụ để bạn khám phá những địa điểm có lì xì như bản đồ, danh sách, tìm kiếm… Chọn thời gian thích hợp và đi đến cửa hàng. Nhớ bật bluetooth để nhận Mozo.";
+"faq_shopper_2_answer" = "Ứng dụng Mozo Người dùng cung cấp khá nhiều công cụ để bạn khám phá những địa điểm có lì xì như bản đồ, danh sách, tìm kiếm… Chọn thời gian thích hợp và đi đến cửa hàng. Nhớ bật bluetooth để nhận Mozo.";
 "faq_shopper_3_answer" = "Sử dụng tính năng \"Gởi\" trên màn hình \"Ví\" của bạn và gởi Mozo tới địa chỉ ví người bạn muốn gởi.<br/>
 Bạn có thể chuyển cho bạn bè bắng cách dùng số điện thoại.<br/>
 Mẹo:<br/>
@@ -1401,8 +1401,8 @@ Trong Mozo, mật khẩu dùng để bảo vệ tài khoản của bạn (số �
 "faq_retailer_1_answer" = "Mozo là điểm thưởng dùng công nghệ blockchain mà người bán hàng có thể lì xì cho khách hàng khi họ đến cửa hàng. Người nhận được lì xì có thể dùng nó để được hưởng khuyến mãi do người bán hàng tạo ra.";
 "faq_retailer_2_answer" = "Khách hàng sẽ phải tích lũy đủ điểm thưởng Mozo để có thể quy đổi các chương trình hậu mãi, giảm giá và khuyến mãi trong các chương trình dành riêng cho khách hàng thân thiết. Do đó họ có động lực để đi đến những nơi đã được thiết lập chương trình lì xì bởi người bán hàng và nhà điều hành dịch vụ. Ứng dụng công nghệ mới blockchain, Mozo bảo bảo tính an toàn hơn hẳn tất cả các ứng dụng cổ điển trong lĩnh vực này. Ngoài ra, kết hợp với công nghệ định vị, Mozo bảo đảm lượt khách đến đúng vị trí mong muốn.<br/>
 Người bán hàng và nhà điều hành dịch vụ sẽ dùng ứng dụng Mozo Kinh doanh để thiết lập các chương trình lì xì gắn với beacon, loại thiết bị định vị bảo đảm khách hàng phải đến nơi cần đến. Công cụ này giúp họ có thể làm chủ được cách bố trí lượt khách. Hơn nữa, họ có thể thiết lập các chương trình hậu mãi, giảm giá và khuyến mãi với ứng dụng Mozo Kinh doanh.<br/>
-Khách hàng sẽ dùng ứng dụng Ví Mozo để duyệt, tìm kiếm và khám phá tất cả các chương trình lì xì, hậu mãi, giảm giá và khuyến mãi được thiết lập bởi người bán hàng và nhà điều hành dịch vụ.<br/>
-Ứng dụng Ví Mozo và Mozo Kinh doanh còn hỗ trợ việc thực hiện các giao dịch hậu mãi, giảm giá và khuyến mãi một cách hiệu quả.";
+Khách hàng sẽ dùng ứng dụng Mozo Người dùng để duyệt, tìm kiếm và khám phá tất cả các chương trình lì xì, hậu mãi, giảm giá và khuyến mãi được thiết lập bởi người bán hàng và nhà điều hành dịch vụ.<br/>
+Ứng dụng Mozo Người dùng và Mozo Kinh doanh còn hỗ trợ việc thực hiện các giao dịch hậu mãi, giảm giá và khuyến mãi một cách hiệu quả.";
 "faq_retailer_3_answer" = "Người bán hàng một khi trở thành thành viên của Mozo sẽ được nhận một số điểm thưởng để dùng thử. Sau khi dùng hết, người bán hàng có thể mua trực tiếp với Mozo.";
 "faq_retailer_4_answer" = "Khách hàng sẽ dùng điểm thưởng đổi khuyến mãi do người bán hàng tạo ra nên có động lực đi đến cửa hàng để thu thập điểm thưởng.";
 "faq_retailer_5_answer" = "Với Mozo, bạn chỉ lì xì cho khách hàng thực sự đến cửa hàng của bạn nên tỉ lệ chuyển đổi là 1:1 trong mối tương quan giữa số tiền bỏ ra và lượt khách đến cửa hàng của bạn. Các kênh quảng cáo truyền thống chỉ bảo đảm người dùng bấm xem thông tin trực tuyến của bạn chứ không chắc chắn người dùng sẽ đến cửa hàng.";
@@ -1428,17 +1428,17 @@ Hoặc gởi email đến <a href=\"mailto:support@mozocoin.io\">support@mozocoi
 Trong Mozo, mật khẩu dùng để bảo vệ tài khoản của bạn (số điện thoại và được yêu cầu nhập khi bạn đăng nhập). PIN dùng để bảo vệ Ví của bạn. Bạn sẽ bị yêu cầu nhập PIN mỗi khi thực hiện lệnh chuyển Mozo.";
 "faq_retailer_18_answer" = "Bạn có thể MUA Mozo tại <a href=\"https://mozocoin.io/retailer-portal/buy-mozo-by-crypto\">https://mozocoin.io/retailer-portal/buy-mozo-by-crypto</a><br/>
 <br/>
-Bạn phải chắc mình đã có \"Ví\" trên ứng dụng Mozo Kinh doanh hoặc Ví Mozo trước khi MUA.<br/>
+Bạn phải chắc mình đã có \"Ví\" trên ứng dụng Mozo trước khi MUA.<br/>
 Nếu bạn chưa có \"Ví\", xin vui lòng theo hướng dẫn tại:<br/>
 - <a href=\"https://mozocoin.io/retailer/help-center#how-to-sign-up-on-mozox-retailer-app\">Ứng dụng Mozo Kinh doanh</a><br/>
-- <a href=\"https://mozocoin.io#home-faq-shopper-6\">Ứng dụng Ví Mozo</a><br/>
+- <a href=\"https://mozocoin.io#home-faq-shopper-6\">Ứng dụng Mozo Người dùng</a><br/>
 <br/>
 Sau khi đăng nhập hoàn tất, quay trở lại để mua.<br/>
 <br/>
 Chọn ETH hoặc BTC.<br/>
 Nhập số Mozo muốn mua (hay số ETH/BTC mà bạn muốn chuyển đổi thành Mozo)<br/>
 Bấm \"Mua\"<br/>
-Hệ thống sẽ cung cấp cho bạn một địa chỉ dành riêng. Ban sẽ dùng bất kỳ phần mềm Ví nào để chuyển ETH/BTC vào địa chỉ này.<br/>
+Hệ thống sẽ cung cấp cho bạn một địa chỉ dành riêng. Bạn sẽ dùng bất kỳ phần mềm Ví nào để chuyển ETH/BTC vào địa chỉ này và hệ thống sẽ chuyển Mozo vào Ví của bạn trong ứng dụng Mozo Kinh doanh hay Người dùng.<br/>
 <br/>
 Lưu ý:<br/>
 - Địa chỉ dành riêng chỉ có giá trị trong vòng 24h và được sử dụng để chuyển 1 lần. Sau khi thực hiện xong, bạn có thể xin một địa chỉ khác. Nếu bạn cố tình thực hiện nhiều hơn, bạn sẽ bị mất mà không có cách nào để phục hồi được.<br/>
