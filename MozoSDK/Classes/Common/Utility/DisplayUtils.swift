@@ -10,17 +10,17 @@ public class DisplayUtils {
     public static var appType = AppType.Shopper
     
     public static func getExchangeTextFromAmount(_ amount: Double) -> String {
-        if let rateInfo = SessionStoreManager.exchangeRateInfo {
-            if let type = CurrencyType(rawValue: rateInfo.currency ?? ""), let curSymbol = rateInfo.currencySymbol {
-                var exValue = (amount * (rateInfo.rate ?? 0)).roundAndAddCommas(toPlaces: type.decimalRound)
-                if type == .VND {
-                    exValue = (((amount * (rateInfo.rate ?? 0)) / 1000).rounded() * 1000).addCommas()
-                }
-                let exValueStr = "\(curSymbol)\(exValue)"
-                return exValueStr
+        let rateInfo = SessionStoreManager.exchangeRateInfo
+        let curType = (rateInfo?.currency ?? CurrencyType.USD.rawValue)
+        if let curSymbol = rateInfo?.currencySymbol {
+            var exValue = (amount * (rateInfo?.rate ?? 0)).roundAndAddCommas()
+            if curType == CurrencyType.VND.rawValue {
+                exValue = (((amount * (rateInfo?.rate ?? 0)) / 1000).rounded() * 1000).addCommas()
             }
+            let exValueStr = "\(curSymbol)\(exValue)"
+            return exValueStr
         }
-        return ""
+        return "\(rateInfo?.currencySymbol ?? "")0"
     }
     
     public static func generateQRCode(from string: String) -> UIImage? {
@@ -28,7 +28,7 @@ public class DisplayUtils {
         
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
             filter.setValue(data, forKey: "inputMessage")
-            let transform = CGAffineTransform(scaleX: 3, y: 3)
+            let transform = CGAffineTransform(scaleX: 9, y: 9)
             
             if let output = filter.outputImage?.transformed(by: transform) {
                 return UIImage(ciImage: output)

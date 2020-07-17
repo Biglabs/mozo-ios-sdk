@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 protocol ConvertCompletionModuleInterface {
-    func handleViewHash(_ hash: String)
+    func handleViewHash(_ hash: String, controller: UIViewController)
 }

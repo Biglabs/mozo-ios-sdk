@@ -50,7 +50,7 @@ class ConvertCompletionViewController: MozoBasicViewController {
     
     @IBAction func touchHash(_ sender: Any) {
         if let hash = btnHash.titleLabel?.text {
-            eventHandler?.handleViewHash(hash)
+            eventHandler?.handleViewHash(hash, controller: self)
         }
     }
     

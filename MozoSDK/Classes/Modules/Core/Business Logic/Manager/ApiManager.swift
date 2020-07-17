@@ -110,7 +110,12 @@ public class ApiManager {
     }
     
     func execute(_ method: Alamofire.HTTPMethod, url: String, parameters: Any? = nil) -> Promise<[String: Any]> {
-        print("Execute url: " + url)
+        #if DEBUG
+        print("--> \(method.rawValue) \(url)")
+        if let json = parameters as? Dictionary<String, AnyObject> {
+            print("params: " + json.description)
+        }
+        #endif
         let headers = self.buildHTTPHeaders(withToken: true)
         if parameters == nil {
             return self.execute(method, url: url, headers: headers, params: nil)

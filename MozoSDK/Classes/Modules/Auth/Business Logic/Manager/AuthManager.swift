@@ -250,7 +250,6 @@ class AuthManager : NSObject {
             
             // discovers endpoints
             OIDAuthorizationService.discoverConfiguration(forIssuer: issuer){ configuration, error in
-                //https://dev.keycloak.mozocoin.io/auth/realms/mozo/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Fdev.keycloak.mozocoin.io%2Fauth%2Frealms%2Fmozo%2Fprotocol%2Fopenid-connect%2Fauth%3Fredirect_uri%3Dcom.biglabs.mozosdk.com.biglabs.mozo.example.shopper%253A%252Foauth2redirect%252Fmozo-provider%26client_id%3Dshopper_mobile_app%26response_type%3Dcode%26prompt%3Dconsent%26state%3Dam2co_gSzvHnI9og18k6TA%26nonce%3DWVxtbsRYwqJJU-mv9tZrUQ%26scope%3Dopenid%2520profile%2520phone%26code_challenge%3DGVORdp4PooXIWvUcDzBi9mrE1fm3sU3TkBBnKUVevTg%26code_challenge_method%3DS256%26kc_locale%3Dvi%26application_type%3Dnative&client_id=shopper_mobile_app&response_type=code&prompt=consent&state=am2co_gSzvHnI9og18k6TA&nonce=WVxtbsRYwqJJU-mv9tZrUQ&scope=openid%20profile%20phone&code_challenge=GVORdp4PooXIWvUcDzBi9mrE1fm3sU3TkBBnKUVevTg&code_challenge_method=S256&kc_locale=vi&application_type=native
                 self.buildAuthRequest().done({ (authRequest) in
                     let authUrl = authRequest?.authorizationRequestURL()
                     guard let redirectURI = authUrl else {

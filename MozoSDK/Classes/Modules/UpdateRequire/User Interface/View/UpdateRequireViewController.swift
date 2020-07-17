@@ -34,9 +34,7 @@ class UpdateRequireViewController: UIViewController {
     }
         
     @IBAction func touchBtnUpdate(_ sender: Any) {
-        if let url = URL(string: DisplayUtils.appType.appStoreUrl) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
+        openLink(link: DisplayUtils.appType.appStoreUrl)
     }
 }
 extension UpdateRequireViewController {
