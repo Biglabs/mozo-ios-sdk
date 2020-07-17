@@ -16,10 +16,8 @@ class MaintenancePresenter: NSObject {
         interactor?.output = self
     }
     
-    func openReadMore(item: FAQDisplayItem) {
-        guard let url = URL(string: "\(Configuration.LANDING_PAGE_URL)\(item.link)") else { return }
-        print("MaintenancePresenter - OpenReadMore with url [\(url)]")
-        UIApplication.shared.open(url)
+    func openReadMore(item: FAQDisplayItem, controller: UIViewController) {
+        controller.openLink(link: "\(Configuration.LANDING_PAGE_URL)\(item.link)")
     }
     
     func startWaiting() {

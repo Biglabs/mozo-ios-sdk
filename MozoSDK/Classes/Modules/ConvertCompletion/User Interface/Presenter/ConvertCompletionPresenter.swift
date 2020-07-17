@@ -6,12 +6,12 @@
 //
 
 import Foundation
+import UIKit
 class ConvertCompletionPresenter: NSObject {
     
 }
 extension ConvertCompletionPresenter: ConvertCompletionModuleInterface {
-    func handleViewHash(_ hash: String) {
-        guard let url = URL(string: "https://etherscan.io/tx/\(hash)") else { return }
-        UIApplication.shared.open(url)
+    func handleViewHash(_ hash: String, controller: UIViewController) {
+        controller.openLink(link: "https://etherscan.io/tx/\(hash)")
     }
 }

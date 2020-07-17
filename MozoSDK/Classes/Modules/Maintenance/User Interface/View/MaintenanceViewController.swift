@@ -113,7 +113,7 @@ class MaintenanceViewController: UIViewController {
     }
     
     @objc func openReadMore() {
-        eventHandler.openReadMore(item: displayItem)
+        eventHandler.openReadMore(item: displayItem, controller: self)
     }
     
     @IBAction func touchBtnReadMore(_ sender: Any) {
