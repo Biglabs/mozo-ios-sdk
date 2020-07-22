@@ -217,6 +217,11 @@ public extension UIView {
         clipsToBounds = true
     }
     
+    func roundedCircle() {
+        layer.cornerRadius = bounds.height / 2
+        clipsToBounds = true
+    }
+    
     func roundCornersBezier(frame: CGRect, corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: frame, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
