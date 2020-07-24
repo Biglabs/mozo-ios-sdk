@@ -639,6 +639,7 @@
 "MMMM yyyy" = "MMMM yyyy";
 "HH:mm MMM d, yyyy" = "HH:mm d/M/yyyy";
 "display_date_time_zone" = "HH:mm (O) d/M/yyyy";
+"display_date_time_zone_brln" = "HH:mm (O)\nd/M/yyyy";
 "From %@\nTo %@" = "Từ %@\nĐến %@";
 "Info" = "Thông báo";
 "Your name" = "Tên";

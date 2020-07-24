@@ -368,7 +368,7 @@ public extension Double {
 }
 
 public extension NSNumber {
-    func convertOutputValue(decimal: Int) -> Double{
+    func convertOutputValue(decimal: Int) -> Double {
         let retValue = Double(truncating: self) / Double(truncating: pow(10, decimal) as NSNumber)
         return retValue
     }

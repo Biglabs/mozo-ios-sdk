@@ -638,6 +638,7 @@
 "MMMM yyyy" = "MMMM yyyy";
 "HH:mm MMM d, yyyy" = "HH:mm MMM d, yyyy";
 "display_date_time_zone" = "HH:mm (O) MMM d, yyyy";
+"display_date_time_zone_brln" = "HH:mm (O)\nMMM d, yyyy";
 "From %@\nTo %@" = "From %@\nTo %@";
 "Under Construction" = "Under Construction";
 "Info" = "Info";
