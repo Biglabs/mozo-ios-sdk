@@ -597,6 +597,7 @@
 "error_invalid_frequency" = "빈도\'는 쇼핑객이  최근 성공적으로 수령 한 이후 동일한 이벤트에서 Mozo를 계속받을 수있는 최소 시간입니다. Mozo 수신 빈도는 30 분 이상이어야합니다. 정보를 다시 확인하십시오.";
 "error_invalid_total_amount" = "Airdrop한 Mozo 금액이 가능한 잔액보다 큽니다. 정보를 다시 확인하십시오";
 "error_invalid_per_customer_amount" = "각 쇼핑객에게 드린 Airdrop Mozo 금액이 유효하지 않습니다. 정보를 다시확인하십시오.";
+"error_input_number_of_shopper_out_of_range" = "\'%@\'가 허용 된 시스템 제한을 초과했습니다 (%@ - %@)";
 
 "Something is wrong with your account status. Please try again." = "오류가 발생했습니다. 다시 시도하십시오.";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "월렛 계정이 업데이트되었지만 사용중인 장치와 동기화되지 않았습니다. 시작하기 전에 월렛을 복구하십시오.";
@@ -904,6 +905,7 @@
 "Basic Info" = "기본 정보";
 "Enter Airdrop Event name" = "에어 드롭 이벤트이름 입력";
 "text_event_number_of_mozo_per_shopper" = "소핑객 당 Airdrop을 한 Mozo의 수";
+"text_event_number_of_shopper_add_more" = "새로운 총 수령인";
 "Airdrop Event Time Setting" = "에어 드롭 이벤트 시간 설정";
 "Start from now" = "지금부터 시작";
 "Now" = "지금";

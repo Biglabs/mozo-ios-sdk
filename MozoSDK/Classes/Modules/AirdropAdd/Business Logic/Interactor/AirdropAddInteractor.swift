@@ -71,7 +71,7 @@ class AirdropAddInteractor: NSObject {
     }
     
     func sendTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO) {
-        _ = apiManager?.transferTransaction(transaction).done { (interTx) in
+        _ = apiManager?.prepareAddMoreTx(transaction).done { (interTx) in
             self.transaction = interTx
             self.requestForPin()
         }.catch({ (error) in

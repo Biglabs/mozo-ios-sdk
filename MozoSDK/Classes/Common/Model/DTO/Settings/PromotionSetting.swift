@@ -13,12 +13,16 @@ public class PromotionSettingDTO : ResponseObjectSerializable {
     public var discountPercent: Int?
     public var imageDefaults: [String]?
     public var numberMozoXRequire: NSNumber?
+    public var minValueCreation: NSNumber?
+    public var maxValueCreation: NSNumber?
     
     public required init?(json: SwiftyJSON.JSON) {
         self.discountFee = json["discountFee"].string
         self.discountPercent = json["discountPercent"].int
         self.imageDefaults = json["imageDefaults"].array?.filter({ $0.string != nil }).map({ $0.string! })
         self.numberMozoXRequire = json["numberMozoXRequire"].number
+        self.minValueCreation = json["minValueCreation"].number
+        self.maxValueCreation = json["maxValueCreation"].number
     }
     
     public init(dict: Dictionary<String, Any>) {
@@ -26,6 +30,8 @@ public class PromotionSettingDTO : ResponseObjectSerializable {
         self.discountPercent = dict["discountPercent"] as? Int
         self.imageDefaults = dict["imageDefaults"] as? [String]
         self.numberMozoXRequire = dict["numberMozoXRequire"] as? NSNumber
+        self.minValueCreation = dict["minValueCreation"] as? NSNumber
+        self.maxValueCreation = dict["maxValueCreation"] as? NSNumber
     }
     
     public func toJSON() -> Dictionary<String, Any> {
@@ -42,6 +48,26 @@ public class PromotionSettingDTO : ResponseObjectSerializable {
         if let numberMozoXRequire = self.numberMozoXRequire {
             json["numberMozoXRequire"] = numberMozoXRequire
         }
+        if let minValueCreation = self.minValueCreation {
+            json["minValueCreation"] = minValueCreation
+        }
+        if let maxValueCreation = self.maxValueCreation {
+            json["maxValueCreation"] = maxValueCreation
+        }
         return json
+    }
+    
+    public func defaultMozoAmount() -> Double {
+        let decimals = SessionStoreManager.tokenInfo?.decimals ?? 2
+        return numberMozoXRequire?.convertOutputValue(decimal: decimals) ?? 0
+    }
+    
+    public func minMAPS() -> Double {
+        let decimals = SessionStoreManager.tokenInfo?.decimals ?? 2
+        return (minValueCreation ?? NSNumber(value: 100)).convertOutputValue(decimal: decimals)
+    }
+    public func maxMAPS() -> Double {
+        let decimals = SessionStoreManager.tokenInfo?.decimals ?? 2
+        return (maxValueCreation ?? NSNumber(value: 500000000000)).convertOutputValue(decimal: decimals)
     }
 }

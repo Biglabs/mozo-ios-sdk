@@ -10,6 +10,30 @@ import PromiseKit
 import SwiftyJSON
 
 public extension ApiManager {
+    func prepareAddMoreTx(_ transaction: TransactionDTO) -> Promise<IntermediaryTransactionDTO> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + "/air-drops/prepare-add-more"
+            let param = transaction.toJSON()
+            self.execute(.post, url: url, parameters: param)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to send transfer transaction, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)
+                    let tx = IntermediaryTransactionDTO(json: jobj)
+                    seal.fulfill(tx!)
+                }
+                .catch { error in
+                    //Handle error or give feedback to the user
+                    let err = error as! ConnectionError
+                    print("Error when request send transfer transaction: " + error.localizedDescription)
+                    seal.reject(err)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
     public func sendAddMoreSignedAirdropEventTx(_ transaction: IntermediaryTransactionDTO) -> Promise<IntermediaryTransactionDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_API_PATH + "/sign-transfer"

@@ -596,6 +596,7 @@
 "error_invalid_frequency" = "Frequency is the minimum duration of time from the previous airdrop to a Shopper before the Shopper can collect more Mozo during the same airdrop event.\n\"Frequency\" must be greater than 30 minutes*. Please check your input. (*We recommend setting \"Frequency\" at  24 hours).";
 "error_invalid_total_amount" = "Incorrect total amount of Mozo to be airdropped. Please check your input.";
 "error_invalid_per_customer_amount" = "Incorrect amount of Mozo tokens to be airdropped to each Shopper visiting your store. Please check your input.";
+"error_input_number_of_shopper_out_of_range" = "\'%@\' is outside of the minimums %@ and maximums %@ allowed by our system.";
 
 "Something is wrong with your account status. Please try again." = "Something is wrong with your account status. Please try again.";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "Your wallet was updated but did not sync with your current device. Please restore your wallet first.";
@@ -895,6 +896,7 @@
 "Basic Info" = "Basic Info";
 "Enter Airdrop Event name" = "Enter Airdrop Event name";
 "text_event_number_of_mozo_per_shopper" = "Number of Mozo Airdrop per Shopper";
+"text_event_number_of_shopper_add_more" = "Number of new shoppers";
 "Airdrop Event Time Setting" = "Airdrop Event Time Setting";
 "Start from now" = "Start from now";
 "Now" = "Now";
