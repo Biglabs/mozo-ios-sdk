@@ -194,7 +194,7 @@ public class PromotionDisplayItem {
     }
     
     public var fromDateText: String {
-        let dateFormat = "display_date_time_zone".localized
+        let dateFormat = "display_date_time_zone_brln".localized
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat
         formatter.timeZone = zoneId != nil ? TimeZone.init(identifier: zoneId!) : TimeZone.current
@@ -206,7 +206,7 @@ public class PromotionDisplayItem {
     }
     
     public var toDateText: String {
-        let dateFormat = "display_date_time_zone".localized
+        let dateFormat = "display_date_time_zone_brln".localized
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat
         formatter.timeZone = zoneId != nil ? TimeZone.init(identifier: zoneId!) : TimeZone.current

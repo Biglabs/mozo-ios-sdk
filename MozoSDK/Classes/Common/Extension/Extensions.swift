@@ -217,6 +217,11 @@ public extension UIView {
         clipsToBounds = true
     }
     
+    func roundedCircle() {
+        layer.cornerRadius = bounds.height / 2
+        clipsToBounds = true
+    }
+    
     func roundCornersBezier(frame: CGRect, corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: frame, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
@@ -363,7 +368,7 @@ public extension Double {
 }
 
 public extension NSNumber {
-    func convertOutputValue(decimal: Int) -> Double{
+    func convertOutputValue(decimal: Int) -> Double {
         let retValue = Double(truncating: self) / Double(truncating: pow(10, decimal) as NSNumber)
         return retValue
     }

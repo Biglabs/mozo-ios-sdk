@@ -599,6 +599,7 @@
 "error_invalid_frequency" = "Tần suất là thời gian tối thiểu khách hàng có thể tiếp tục nhận điểm thưởng Mozo từ cùng một chương trình airdrop, tính từ lần nhận thành công gần nhất.\nTần suất nhận điểm thưởng Mozo phải lớn hơn 30 phút. Vui lòng kiểm tra lại thông tin. (Chúng tôi khuyến nghị nên để tần suất là 24 giờ)";
 "error_invalid_total_amount" = "Số Mozo Airdrop lớn hơn số dư khả dụng. Xin kiểm tra lại thông tin.";
 "error_invalid_per_customer_amount" = "Số điểm thưởng Mozo Airdrop cho mỗi khách không hợp lệ. Xin kiểm tra lại thông tin.";
+"error_input_number_of_shopper_out_of_range" = "\'%@\' vượt quá giới hạn cho phép của hệ thống (%@ - %@)";
 
 "Something is wrong with your account status. Please try again." = "Có lỗi xảy ra. Xin thử lại";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "Tài khoản ví đã được cập nhật nhưng chưa đồng bộ với thiết bị đang dùng. Xin khôi phục lại ví trước khi bắt đầu.";
@@ -639,6 +640,7 @@
 "MMMM yyyy" = "MMMM yyyy";
 "HH:mm MMM d, yyyy" = "HH:mm d/M/yyyy";
 "display_date_time_zone" = "HH:mm (O) d/M/yyyy";
+"display_date_time_zone_brln" = "HH:mm (O)\nd/M/yyyy";
 "From %@\nTo %@" = "Từ %@\nĐến %@";
 "Info" = "Thông báo";
 "Your name" = "Tên";
@@ -899,6 +901,7 @@
 "Basic Info" = "Thông tin cơ bản";
 "Enter Airdrop Event name" = "Nhập tên chương trình";
 "text_event_number_of_mozo_per_shopper" = "Số Mozo thưởng cho mỗi người dùng";
+"text_event_number_of_shopper_add_more" = "Tổng người nhận mới";
 "Airdrop Event Time Setting" = "Thiết lập thời gian";
 "Start from now" = "Bắt đầu ngay bây giờ";
 "Now" = "Bây giờ";
