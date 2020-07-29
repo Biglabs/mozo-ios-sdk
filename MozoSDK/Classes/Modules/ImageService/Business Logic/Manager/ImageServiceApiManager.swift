@@ -11,7 +11,7 @@ import SwiftyJSON
 
 let IMAGE_SERVICE_API_PATH = "/image"
 public extension ApiManager {
-    public func getUrlToUploadImage() -> Promise<String> {
+    func getUrlToUploadImage() -> Promise<String> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + IMAGE_SERVICE_API_PATH + "/url-for-binary"
             self.execute(.get, url: url)
@@ -33,7 +33,7 @@ public extension ApiManager {
         }
     }
     
-    public func uploadImage(images: [UIImage], url: String, progressionHandler: @escaping (_ fractionCompleted: Double)-> Void) -> Promise<[String]> {
+    func uploadImage(images: [UIImage], url: String, progressionHandler: @escaping (_ fractionCompleted: Double)-> Void) -> Promise<[String]> {
         return Promise { seal in
             Alamofire.upload(multipartFormData: { (multipartFormData) in
                 for image in images {

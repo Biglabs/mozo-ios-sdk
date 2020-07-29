@@ -86,7 +86,7 @@ public class TxHistoryDisplayCollection {
     }
     
     func buildDisplayNameOrAddress(addressFrom: String, addressTo: String, action: String, name: String) -> String {
-        var address = action == TransactionType.Received.value ? addressFrom : addressTo
+        let address = action == TransactionType.Received.value ? addressFrom : addressTo
         return name.isEmpty ? address : name
     }
     
