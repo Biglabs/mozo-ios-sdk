@@ -190,4 +190,8 @@ public class MozoBasicViewController : UIViewController {
             self.mozoPopupTokenExpired?.removeFromSuperview()
         }
     }
+    
+    override public var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
 }

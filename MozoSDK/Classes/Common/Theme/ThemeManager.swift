@@ -35,7 +35,6 @@ public struct ThemeManager {
     
     public static func applyTheme() {
         UIApplication.shared.delegate?.window??.tintColor = shared.main
-        UIApplication.shared.statusBarStyle = .default
         
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.tintColor = shared.main

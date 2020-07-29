@@ -68,6 +68,6 @@ public class PromotionSettingDTO : ResponseObjectSerializable {
     }
     public func maxMAPS() -> Double {
         let decimals = SessionStoreManager.tokenInfo?.decimals ?? 2
-        return (maxValueCreation ?? NSDecimalNumber(value: 500000000000)).convertOutputValue(decimal: decimals)
+        return (maxValueCreation ?? NSDecimalNumber(string: "500000000000")).convertOutputValue(decimal: decimals)
     }
 }
