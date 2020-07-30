@@ -79,6 +79,7 @@ extension PaymentInteractor : PaymentInteractorInput {
                 print("Address used to load balance: \(address)")
                 _ = apiManager.getTokenInfoFromAddress(address)
                     .done { (tokenInfo) in
+                        SessionStoreManager.tokenInfo = tokenInfo
                         self.output?.didLoadTokenInfo(tokenInfo)
                     }.catch({ (err) in
                         self.output?.errorWhileLoadingTokenInfo(err as? ConnectionError ?? .systemError)

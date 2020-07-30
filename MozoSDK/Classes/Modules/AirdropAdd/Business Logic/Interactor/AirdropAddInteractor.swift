@@ -111,6 +111,7 @@ extension AirdropAddInteractor: AirdropAddInteractorInput {
                 print("Address used to load balance: \(address)")
                 _ = apiManager?.getTokenInfoFromAddress(address)
                     .done { (tokenInfo) in
+                        SessionStoreManager.tokenInfo = tokenInfo
                         self.processAirdropEvent(event, tokenInfo: tokenInfo)
                     }.catch({ (err) in
                         self.output?.didFailedToLoadTokenInfo()
