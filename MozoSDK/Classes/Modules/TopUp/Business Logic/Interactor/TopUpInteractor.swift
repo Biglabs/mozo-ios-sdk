@@ -216,6 +216,7 @@ extension TopUpInteractor: TopUpInteractorInput {
                 print("TopUpInteractor - Address used to load balance: \(address)")
                 _ = apiManager.getTokenInfoFromAddress(address)
                     .done { (tokenInfo) in
+                        SessionStoreManager.tokenInfo = tokenInfo
                         self.output?.didLoadTokenInfo(tokenInfo)
                     }.catch({ (err) in
                         self.output?.didFailedToLoadTokenInfo(error: err as? ConnectionError ?? .systemError)

@@ -203,6 +203,7 @@ extension TransactionInteractor : TransactionInteractorInput {
                 print("Address used to load balance: \(address)")
                 _ = apiManager.getTokenInfoFromAddress(address)
                     .done { (tokenInfo) in
+                        SessionStoreManager.tokenInfo = tokenInfo
                         // TODO: Notify for all observing objects.
                         self.output?.didLoadTokenInfo(tokenInfo)
                     }.catch({ (err) in
