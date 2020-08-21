@@ -275,4 +275,29 @@ public extension ApiManager {
             }
         }
     }
+    
+    /**
+        COVID-19 support APIs
+     */
+    func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]> {
+        return Promise { seal in
+            let query = "?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/covid/nearby" + query
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    print("Finish request to get covid zones nearby, json response: \(json)")
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
+                    let list = CovidZone.arrayFromJson(jobj)
+                    seal.fulfill(list)
+                }
+                .catch { error in
+                    print("Error when request get covid zones nearby: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
 }

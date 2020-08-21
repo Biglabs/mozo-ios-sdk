@@ -120,4 +120,6 @@ public class Configuration {
 //        }
 //        return AUTH_REDIRECT_URL
     }
+    
+    public static let MAX_DAY_OF_COVID = 24
 }

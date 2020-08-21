@@ -140,7 +140,7 @@ public class PromotionDisplayItem {
         * Add 1 second to End time (+ 1000ms) because this time is 23:59:59
         */
         let toDate = periodToDate + 1
-        let duration = Double(toDate - Int64(fromDate)) / (24.0*60*60)
+        let duration = Double(toDate - Int64(fromDate)) / (24.0 * 60 * 60)
         
         let durationRouned = Int(duration)
         let result = (duration / Double(durationRouned)) > 1.0 ? durationRouned + 1 : durationRouned

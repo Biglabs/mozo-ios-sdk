@@ -204,4 +204,7 @@ protocol CoreInteractorService {
     func syncAddressFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO>
     
     func syncLocationFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO>
+    
+    // MARK: COVID-19 support APIs
+    func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]>
 }
