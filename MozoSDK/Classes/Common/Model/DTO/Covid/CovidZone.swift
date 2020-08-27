@@ -78,6 +78,15 @@ public class CovidZone {
         return Configuration.MAX_DAY_OF_COVID - countToEnd()
     }
     
+    public var color: UIColor {
+        let count = countToEnd()
+        switch count {
+            case let(day) where day > 10: return ThemeManager.shared.error
+            case let(day) where day > 0: return ThemeManager.shared.primary
+            default: return ThemeManager.shared.covidPassed
+        }
+    }
+    
     public var icon: String {
         let count = countToEnd()
         switch count {

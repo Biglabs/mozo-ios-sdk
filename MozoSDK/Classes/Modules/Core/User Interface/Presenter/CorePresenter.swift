@@ -494,6 +494,10 @@ extension CorePresenter : RDNInteractorOutput {
     func didReceivedPromotionPurchased(eventType: NotificationEventType, purchasedNoti: PromotionPurchasedNotification, rawMessage: String) {
         performNotifications(noti: purchasedNoti, rawMessage: rawMessage)
     }
+    
+    func didReceivedCovidWarning(eventType: NotificationEventType, warningNoti: CovidWarningNotification, rawMessage: String) {
+        performNotifications(noti: warningNoti, rawMessage: rawMessage)
+    }
 }
 
 extension CorePresenter: PaymentQRModuleDelegate {

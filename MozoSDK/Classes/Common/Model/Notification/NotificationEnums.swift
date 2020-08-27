@@ -20,6 +20,7 @@ public enum NotificationCategoryType: String {
     case Hackathon_Result = "hackathon_result"
     case Notice = "notice"
     case Feedback = "feed_back"
+    case CovidZone = "covid_event"
     
     case Default = ""
     
@@ -35,6 +36,7 @@ public enum NotificationCategoryType: String {
         case .AirdropInvite: return "notify_group_friends_joined"
         case .Customer_Came_In: return "%u more customers arrived"
         case .Customer_Came_Out: return "%u more customers departed"
+        case .CovidZone: return "covid_noti_content"
         case .Default: return rawValue
         default: return ""
         }
@@ -141,5 +143,6 @@ public enum NotificationEventType: String {
     case PromotionPurchased = "promotion_purchased"
     
     case GroupBroadcast = "group_broadcast"
+    case CovidZone = "covid_event"
 }
 

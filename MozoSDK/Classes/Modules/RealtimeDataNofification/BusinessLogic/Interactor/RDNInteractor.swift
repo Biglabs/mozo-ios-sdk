@@ -169,6 +169,9 @@ extension RDNInteractor {
                 } else if rdNoti.event == NotificationEventType.PromotionPurchased.rawValue,
                     let noti = PromotionPurchasedNotification(json: jobj)  {
                     output?.didReceivedPromotionPurchased(eventType: NotificationEventType(rawValue: rdNoti.event!)!, purchasedNoti: noti, rawMessage: rawJsonMessage)
+                } else if rdNoti.event == NotificationEventType.CovidZone.rawValue,
+                    let noti = CovidWarningNotification(json: jobj)  {
+                    output?.didReceivedCovidWarning(eventType: NotificationEventType(rawValue: rdNoti.event!)!, warningNoti: noti, rawMessage: rawJsonMessage)
                 } else {
                     NSLog("Can not handle message: \(messageContent)")
                 }

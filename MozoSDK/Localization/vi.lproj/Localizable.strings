@@ -3,7 +3,13 @@
  Mozo SDK
  
  Created by Hoang Nguyen on 9/15/18.\n Copyright © 2018 Hoang Nguyen. All rights reserved.\n */
-/* MozoSDK */
+
+"covid_card_title" = "Vùng cảnh báo Covid-19";
+"covid_card_locations" = "%@ và %d địa điểm nữa.";
+"covid_card_source" = "Nguồn: Cổng thông tin bộ Y tế";
+"covid_noti_title" = "Cảnh báo Covid-19!";
+"covid_noti_content" = "Có %d vùng cảnh báo Covid-19 mới ở gần bạn.";
+
 "Address Book" = "Danh bạ";
 "Select Address" = "Chọn địa chỉ";
 "Select from Address Book" = "Chọn từ danh bạ";
