@@ -377,4 +377,9 @@ extension CoreInteractor: CoreInteractorService {
     func syncLocationFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
         return apiManager.syncLocationFromBranchIntoBeacon(beaconId)
     }
+    
+    // MARK: COVID-19 support APIs
+    func getCovidZones(params: [String : Any]) -> Promise<[CovidZone]> {
+        return apiManager.getCovidZones(params: params)
+    }
 }

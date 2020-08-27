@@ -110,10 +110,28 @@ public class NotiDisplayItemData {
                 detailText = subtitle
                 actionText = title // To display on Retailer App - Notification List
                 break
+            case NotificationEventType.CovidZone.rawValue:
+                if let warning = rawNoti as? CovidWarningNotification {
+                    title = "covid_noti_title".localized
+                    subtitle = "covid_noti_content".localizedFormat(warning.numNewWarningZone ?? 0)
+                }
+                image = "ic_notif_covid_warning"
+                break
             default:
                 break
             }
-            displayItem = NotiDisplayItem(event: NotificationEventType(rawValue: rawNoti.event!)!, title: title, subTitle: subtitle, body: body, image: image, actionText: actionText, amountText: amountText, detailText: detailText, summaryArgumentCount: summaryArgumentCount, categoryType: category)
+            displayItem = NotiDisplayItem(
+                event: NotificationEventType(rawValue: rawNoti.event!)!,
+                title: title,
+                subTitle: subtitle,
+                body: body,
+                image: image,
+                actionText: actionText,
+                amountText: amountText,
+                detailText: detailText,
+                summaryArgumentCount: summaryArgumentCount,
+                categoryType: category
+            )
         }
     }
 }

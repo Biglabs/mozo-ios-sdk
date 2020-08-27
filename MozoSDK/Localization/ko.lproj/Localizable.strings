@@ -3,7 +3,13 @@
  Mozo SDK
  
  Created by Hoang Nguyen on 9/15/18.\n Copyright © 2018 Hoang Nguyen. All rights reserved.\n */
-// MozoSDK
+
+"covid_card_title" = "Covid 경고 구역";
+"covid_card_locations" = "%@ 그리고 %d개 위치 더.";
+"covid_card_source" = "출처: 보건부 웹사이트";
+"covid_noti_title" = "Covid-19 경고!";
+"covid_noti_content" = "근처에 새로운 Covid 경고 구역이 %d개 있다.";
+
 "Address Book" = "주소록";
 "Select Address" = "주소 선택";
 "Select from Address Book" = "주소록에서 선택";

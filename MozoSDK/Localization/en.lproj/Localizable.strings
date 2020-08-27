@@ -3,7 +3,13 @@
  Mozo SDK
  
  Created by Hoang Nguyen on 9/15/18.\n Copyright © 2018 Hoang Nguyen. All rights reserved.\n */
-// MozoSDK
+
+"covid_card_title" = "Covid-19 Warning Zone";
+"covid_card_locations" = "%@ and %d more locations.";
+"covid_card_source" = "Source: Ministry of Health\'s website";
+"covid_noti_title" = "Covid-19 Warning!";
+"covid_noti_content" = "There are %d new Covid warning zones near you.";
+
 "Address Book" = "Address Book";
 "Select Address" = "Select Address";
 "Select from Address Book" = "Select from Address Book";
@@ -431,6 +437,7 @@
 "Map view" = "Map view";
 "Search history" = "Search history";
 "Your Information" = "Your Information";
+"profile_menu_mozo_messages" = "Mozo Messages";
 "Invite friends" = "Invite friends";
 "Favorite Stores" = "Favorite Stores";
 "Settings" = "Settings";

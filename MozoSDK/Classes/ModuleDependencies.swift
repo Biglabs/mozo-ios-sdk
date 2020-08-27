@@ -540,6 +540,11 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.syncLocationFromBranchIntoBeacon(beaconId))!
     }
     
+    // MARK: COVID-19 support APIs
+    func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getCovidZones(params: params))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()
