@@ -244,8 +244,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite))!
     }
     
-    func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getTodayCollectedAmount(startTime: startTime, endTime: endTime))!
+    func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getUserSummary(startTime: startTime, endTime: endTime))!
     }
     
     func getUrlToUploadImage() -> Promise<String> {

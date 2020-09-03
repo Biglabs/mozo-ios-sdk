@@ -182,8 +182,8 @@ public class MozoSDK {
         return moduleDependencies.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite)
     }
     
-    public static func getTodayCollectedAmount(startTime: Int = 0, endTime: Int = 86400) -> Promise<NSNumber> {
-        return moduleDependencies.getTodayCollectedAmount(startTime: startTime, endTime: endTime)
+    public static func getUserSummary(startTime: Int = 0, endTime: Int = 86400) -> Promise<UserSummary?> {
+        return moduleDependencies.getUserSummary(startTime: startTime, endTime: endTime)
     }
     
     public static func getUrlToUploadImage() -> Promise<String> {

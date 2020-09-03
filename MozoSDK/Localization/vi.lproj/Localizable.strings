@@ -1130,6 +1130,10 @@
 "Create promotion →" = "Tạo khuyến mãi →";
 "Set up your own PIN →" = "Thiết lập PIN của riêng bạn →";
 "todo_action_review_add_more_mozo" = "Xem và chuyển thêm Mozo →";
+"todo_msg_event_message_new" = "Bạn có tin nhắn chưa đọc 📩";
+"todo_action_event_message_new" = "Đọc →";
+"todo_msg_event_promo_special" = "Bạn được tặng những ưu đãi đặc biệt 🎁";
+"todo_action_event_promo_special" = "Xem →";
 "Unsolve" = "Chưa được xử lý";
 "Unsolve (%d)" = "Chưa được xử lý (%d)";
 "todo_action_explain" = "Xin vui lòng giải quyết những vấn đề sau để ứng dụng Mozo phục vụ bạn tốt hơn:";

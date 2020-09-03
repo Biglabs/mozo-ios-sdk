@@ -172,8 +172,8 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite)
     }
     
-    func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber> {
-        return apiManager.getTodayCollectedAmount(startTime: startTime, endTime: endTime)
+    func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?> {
+        return apiManager.getUserSummary(startTime: startTime, endTime: endTime)
     }
     
     func getUrlToUploadImage() -> Promise<String> {

@@ -78,7 +78,7 @@ protocol CoreInteractorService {
     func searchStoresWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO>
     func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]>
     func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]>
-    func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber>
+    func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?>
     
     func getUrlToUploadImage() -> Promise<String>
     func uploadImage(images: [UIImage], url: String, progressionHandler: @escaping (_ fractionCompleted: Double)-> Void) -> Promise<[String]>

@@ -35,19 +35,16 @@ public extension ApiManager {
         }
     }
     
-    func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber> {
+    func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?> {
         return Promise { seal in
             let params = ["startTime" : startTime,
                           "endTime" : endTime] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_REPORT_API_PATH + "/get-amount-coin-by-user?\(params.queryString)"
+            let url = Configuration.BASE_STORE_URL + "/shopper/getUserSummary?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get amount of collected coin from time \(startTime) to time \(endTime), json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_RESULT_KEY]
-                    if let number = jobj.number {
-                        seal.fulfill(number)
-                    }
+                    seal.fulfill(UserSummary(json: SwiftyJSON.JSON(json)))
                 }
                 .catch { error in
                     print("Error when request get amount of collected coin from time \(startTime) to time \(endTime): " + error.localizedDescription)

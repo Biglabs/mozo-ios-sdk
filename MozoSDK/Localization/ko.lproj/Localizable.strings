@@ -1134,6 +1134,10 @@
 "Create promotion →" = "프로모션 만들기 →";
 "Set up your own PIN →" = "당신의 PIN을 만들기 →";
 "todo_action_review_add_more_mozo" = "Mozo 보기와 추가하기 →";
+"todo_msg_event_message_new" = "읽지 않은 메시지가 있습니다 📩";
+"todo_action_event_message_new" = "읽기 →";
+"todo_msg_event_promo_special" = "특별한 혜택을 받았습니다 🎁";
+"todo_action_event_promo_special" = "보기 →";
 "Unsolve" = "처리되지 않았습니다";
 "Unsolve (%d)" = "(%d) 처리되지 않았습니다";
 "todo_action_explain" = "Mozo 앱을 문제 없이 사용하기 위해 아래에 나열된 것을 완료하세요.";
