@@ -487,6 +487,14 @@ public class MozoSDK {
     
     // MARK: COVID-19 support APIs
     public static func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]> {
-        return (moduleDependencies.getCovidZones(params: params))
+        return moduleDependencies.getCovidZones(params: params)
+    }
+    
+    // MARK: Mozo Messages APIs
+    public static func getConversationList(page: Int, size: Int) -> Promise<[Conversation]> {
+        return moduleDependencies.getConversationList(page: page, size: size)
+    }
+    public static func getChatMessages(id: Int, page: Int, size: Int) -> Promise<[ConversationMessage]> {
+        return moduleDependencies.getChatMessages(id: id, page: page, size: size)
     }
 }

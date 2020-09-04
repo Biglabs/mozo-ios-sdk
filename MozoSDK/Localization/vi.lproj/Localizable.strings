@@ -1100,6 +1100,7 @@
 "Processing Promotions" = "Mã khuyến mãi đang xử lý";
 "text_update_required_title" = "Khuyến nghị cập nhật ứng dụng";
 "text_update_required_content" = "Ứng dụng đã có phiên bản mới\nXin vui lòng cập nhật phiên bản mới nhất.";
+"text_special_check_box" = "Khuyến mãi đặc biệt dành cho chương trình quay số may mắn";
 
 // Reminder - Todo List
 "Your internet connection has a problem 😔" = "Kết nối internet có vấn đề 😔";

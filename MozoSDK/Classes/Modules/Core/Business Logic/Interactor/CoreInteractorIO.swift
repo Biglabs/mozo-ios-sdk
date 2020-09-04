@@ -207,4 +207,8 @@ protocol CoreInteractorService {
     
     // MARK: COVID-19 support APIs
     func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]>
+    
+    // MARK: Mozo Messages APIs
+    func getConversationList(page: Int, size: Int) -> Promise<[Conversation]>
+    func getChatMessages(id: Int, page: Int, size: Int) -> Promise<[ConversationMessage]>
 }

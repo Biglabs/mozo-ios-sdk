@@ -545,6 +545,14 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getCovidZones(params: params))!
     }
     
+    // MARK: Mozo Messages APIs
+    func getConversationList(page: Int, size: Int) -> Promise<[Conversation]> {
+       return (coreWireframe.corePresenter?.coreInteractorService?.getConversationList(page: page, size: size))!
+    }
+    func getChatMessages(id: Int, page: Int, size: Int) -> Promise<[ConversationMessage]> {
+       return (coreWireframe.corePresenter?.coreInteractorService?.getChatMessages(id: id, page: page, size: size))!
+    }
+    
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

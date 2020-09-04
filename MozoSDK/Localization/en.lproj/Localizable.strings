@@ -1096,6 +1096,7 @@
 "Processing Promotions" = "Processing Promotions";
 "text_update_required_title" = "Update required to use App";
 "text_update_required_content" = "We’ve released a new version of the app\nPlease update the latest version.";
+"text_special_check_box" = "Special promotion for lucky draw program";
 
 // Reminder - Todo List
 "Your internet connection has a problem 😔" = "Your internet connection has a problem 😔";

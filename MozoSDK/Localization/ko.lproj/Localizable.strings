@@ -1104,6 +1104,7 @@
 "Processing Promotions" = "처리 중인 프로모션";
 "text_update_required_title" = "앱 사용을 위한 업데이트 필요합니다";
 "text_update_required_content" = "앱의 새로운 버전 나왔습니다\n최신 버전으로 업데이트 하세요.";
+"text_special_check_box" = "행운 추첨 프로그램 특별 프로모션";
 
 // Reminder - Todo List
 "Your internet connection has a problem 😔" = "인터넷 연결 문제 있다 😔";

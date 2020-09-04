@@ -382,4 +382,12 @@ extension CoreInteractor: CoreInteractorService {
     func getCovidZones(params: [String : Any]) -> Promise<[CovidZone]> {
         return apiManager.getCovidZones(params: params)
     }
+    
+    // MARK: Mozo Messages APIs
+    func getConversationList(page: Int, size: Int) -> Promise<[Conversation]> {
+        apiManager.getConversationList(page: page, size: size)
+    }
+    func getChatMessages(id: Int, page: Int, size: Int) -> Promise<[ConversationMessage]> {
+        apiManager.getChatMessages(id: id, page: page, size: size)
+    }
 }

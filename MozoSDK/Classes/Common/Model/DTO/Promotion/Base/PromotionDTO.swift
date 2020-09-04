@@ -26,10 +26,19 @@ public class PromotionDTO {
     public var code: String?
     public var limitUser: Int?
     public var remainingNumber: Int?
+    public var specialLucky: Bool?
     
-    public init(discountPercent: Int, imageName: String, name: String,
-                periodFromDate: Int64?, periodToDate: Int64, value: NSNumber,
-                promoType: PromotionTypeEnum = .DURATION, limitUser: Int?) {
+    public init(
+        discountPercent: Int,
+        imageName: String,
+        name: String,
+        periodFromDate: Int64?,
+        periodToDate: Int64,
+        value: NSNumber,
+        promoType: PromotionTypeEnum = .DURATION,
+        limitUser: Int?,
+        isSpecial: Bool
+    ) {
         self.discountPercent = discountPercent
         self.imageName = imageName
         self.name = name
@@ -38,6 +47,7 @@ public class PromotionDTO {
         self.value = value
         self.promoType = promoType
         self.limitUser = limitUser
+        self.specialLucky = isSpecial
     }
         
     public required init?(json: SwiftyJSON.JSON) {
@@ -59,6 +69,7 @@ public class PromotionDTO {
         self.code = json["code"].string
         self.limitUser = json["limitUser"].int
         self.remainingNumber = json["remainingNumber"].int
+        self.specialLucky = json["specialLucky"].bool
     }
     
     public func toJSON() -> Dictionary<String, Any> {
@@ -107,6 +118,9 @@ public class PromotionDTO {
         }
         if let limitUser = self.limitUser {
             json["limitUser"] = limitUser
+        }
+        if let specialLucky = self.specialLucky {
+            json["specialLucky"] = specialLucky
         }
         return json
     }
