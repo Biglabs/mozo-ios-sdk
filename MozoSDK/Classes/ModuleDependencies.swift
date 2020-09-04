@@ -244,8 +244,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite))!
     }
     
-    func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getTodayCollectedAmount(startTime: startTime, endTime: endTime))!
+    func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getUserSummary(startTime: startTime, endTime: endTime))!
     }
     
     func getUrlToUploadImage() -> Promise<String> {
@@ -543,6 +543,14 @@ class ModuleDependencies {
     // MARK: COVID-19 support APIs
     func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getCovidZones(params: params))!
+    }
+    
+    // MARK: Mozo Messages APIs
+    func getConversationList(page: Int, size: Int) -> Promise<[Conversation]> {
+       return (coreWireframe.corePresenter?.coreInteractorService?.getConversationList(page: page, size: size))!
+    }
+    func getChatMessages(id: Int, page: Int, size: Int) -> Promise<[ConversationMessage]> {
+       return (coreWireframe.corePresenter?.coreInteractorService?.getChatMessages(id: id, page: page, size: size))!
     }
     
     func configureDependencies() {

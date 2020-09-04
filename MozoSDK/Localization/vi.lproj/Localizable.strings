@@ -1100,6 +1100,7 @@
 "Processing Promotions" = "Mã khuyến mãi đang xử lý";
 "text_update_required_title" = "Khuyến nghị cập nhật ứng dụng";
 "text_update_required_content" = "Ứng dụng đã có phiên bản mới\nXin vui lòng cập nhật phiên bản mới nhất.";
+"text_special_check_box" = "Khuyến mãi đặc biệt dành cho chương trình quay số may mắn";
 
 // Reminder - Todo List
 "Your internet connection has a problem 😔" = "Kết nối internet có vấn đề 😔";
@@ -1130,6 +1131,10 @@
 "Create promotion →" = "Tạo khuyến mãi →";
 "Set up your own PIN →" = "Thiết lập PIN của riêng bạn →";
 "todo_action_review_add_more_mozo" = "Xem và chuyển thêm Mozo →";
+"todo_msg_event_message_new" = "Bạn có tin nhắn chưa đọc 📩";
+"todo_action_event_message_new" = "Đọc →";
+"todo_msg_event_promo_special" = "Bạn được tặng những ưu đãi đặc biệt 🎁";
+"todo_action_event_promo_special" = "Xem →";
 "Unsolve" = "Chưa được xử lý";
 "Unsolve (%d)" = "Chưa được xử lý (%d)";
 "todo_action_explain" = "Xin vui lòng giải quyết những vấn đề sau để ứng dụng Mozo phục vụ bạn tốt hơn:";

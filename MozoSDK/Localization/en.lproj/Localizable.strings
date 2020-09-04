@@ -1096,6 +1096,7 @@
 "Processing Promotions" = "Processing Promotions";
 "text_update_required_title" = "Update required to use App";
 "text_update_required_content" = "We’ve released a new version of the app\nPlease update the latest version.";
+"text_special_check_box" = "Special promotion for lucky draw program";
 
 // Reminder - Todo List
 "Your internet connection has a problem 😔" = "Your internet connection has a problem 😔";
@@ -1126,6 +1127,10 @@
 "Create promotion →" = "Create promotion →";
 "Set up your own PIN →" = "Set up your own PIN →";
 "todo_action_review_add_more_mozo" = "Review and add more Mozo →";
+"todo_msg_event_message_new" = "You have some unread messages 📩";
+"todo_action_event_message_new" = "Read →";
+"todo_msg_event_promo_special" = "You are offered special promotions 🎁";
+"todo_action_event_promo_special" = "View →";
 "Unsolve" = "Unsolve";
 "Unsolve (%d)" = "Unsolve (%d)";
 "todo_action_explain" = "Complete these actions to make sure there are no problems happen while using Mozo app:";

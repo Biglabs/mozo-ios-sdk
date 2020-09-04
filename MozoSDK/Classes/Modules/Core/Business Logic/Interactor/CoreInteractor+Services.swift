@@ -172,8 +172,8 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite)
     }
     
-    func getTodayCollectedAmount(startTime: Int, endTime: Int) -> Promise<NSNumber> {
-        return apiManager.getTodayCollectedAmount(startTime: startTime, endTime: endTime)
+    func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?> {
+        return apiManager.getUserSummary(startTime: startTime, endTime: endTime)
     }
     
     func getUrlToUploadImage() -> Promise<String> {
@@ -381,5 +381,13 @@ extension CoreInteractor: CoreInteractorService {
     // MARK: COVID-19 support APIs
     func getCovidZones(params: [String : Any]) -> Promise<[CovidZone]> {
         return apiManager.getCovidZones(params: params)
+    }
+    
+    // MARK: Mozo Messages APIs
+    func getConversationList(page: Int, size: Int) -> Promise<[Conversation]> {
+        apiManager.getConversationList(page: page, size: size)
+    }
+    func getChatMessages(id: Int, page: Int, size: Int) -> Promise<[ConversationMessage]> {
+        apiManager.getChatMessages(id: id, page: page, size: size)
     }
 }
