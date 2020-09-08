@@ -10,6 +10,9 @@
 "covid_noti_title" = "Covid-19 Warning!";
 "covid_noti_content" = "There are %d new Covid warning zones near you.";
 
+"messages_attached_image_text" = "[Attached images]";
+"messages_invite_notice" = "We would like to invite you as our permanent guest in order to offer special promotions and sending notification.";
+
 "Address Book" = "Address Book";
 "Select Address" = "Select Address";
 "Select from Address Book" = "Select from Address Book";

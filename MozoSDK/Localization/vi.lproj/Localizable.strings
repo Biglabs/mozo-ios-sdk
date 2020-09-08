@@ -10,6 +10,9 @@
 "covid_noti_title" = "Cảnh báo Covid-19!";
 "covid_noti_content" = "Có %d vùng cảnh báo Covid-19 mới ở gần bạn.";
 
+"messages_attached_image_text" = "[Hình ảnh đính kèm]";
+"messages_invite_notice" = "Chúng tôi hân hạnh được mời bạn làm thành viên dài hạn nhằm cung cấp những ưu đãi đặc biệt và nhắn tin.";
+
 "Address Book" = "Danh bạ";
 "Select Address" = "Chọn địa chỉ";
 "Select from Address Book" = "Chọn từ danh bạ";
@@ -439,6 +442,7 @@
 "Map view" = "Bản đồ";
 "Search history" = "Lịch sử tìm kiếm";
 "Your Information" = "Thông tin cá nhân";
+"profile_menu_mozo_messages" = "Tin nhắn Mozo";
 "Invite friends" = "Mời bạn bè";
 "Favorite Stores" = "Cửa hàng yêu thích";
 "Settings" = "Thiết lập";

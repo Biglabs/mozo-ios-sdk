@@ -23,4 +23,12 @@ public class ConversationMessage: ResponseObjectSerializable {
         self.timeRead = json["timeRead"].int64
         self.userSend = json["userSend"].bool
     }
+    
+    public func getTimeCreatedDisplay() -> String {
+        var time = Date().timeIntervalSince1970
+        if let infoTime = timeCreatedOn {
+            time = Double(infoTime)
+        }
+        return DisplayUtils.formatMessageTime(time: time)
+    }
 }

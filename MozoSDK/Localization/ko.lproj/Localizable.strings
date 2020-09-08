@@ -10,6 +10,9 @@
 "covid_noti_title" = "Covid-19 경고!";
 "covid_noti_content" = "근처에 새로운 Covid 경고 구역이 %d개 있다.";
 
+"messages_attached_image_text" = "[이미지 첨부]";
+"messages_invite_notice" = "우리는 당신에게 특별한 혜택과 메시지를 제공하기 위해 장기 회원으로 초대하게 되어 기쁩니다.";
+
 "Address Book" = "주소록";
 "Select Address" = "주소 선택";
 "Select from Address Book" = "주소록에서 선택";
@@ -437,6 +440,7 @@
 "Map view" = "지도";
 "Search history" = "기록 검색 ";
 "Your Information" = "개인 정보";
+"profile_menu_mozo_messages" = "Mozo 메시지";
 "Invite friends" = "친구 초대";
 "Favorite Stores" = "좋아하는 상점들";
 "Settings" = "설정";

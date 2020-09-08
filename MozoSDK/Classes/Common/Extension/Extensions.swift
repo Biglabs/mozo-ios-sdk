@@ -249,11 +249,16 @@ public extension UIView {
         layer.insertSublayer(gradient, at: 0)
     }
     
-    func visiblity(gone: Bool, dimension: CGFloat = 0.0, attribute: NSLayoutConstraint.Attribute = .height) {
+    func visiblity(gone: Bool, dimension: CGFloat = 0.0, attribute: NSLayoutConstraint.Attribute = .height, animate: Bool = true) {
         if let constraint = (self.constraints.filter{$0.firstAttribute == attribute}.first) {
             constraint.constant = gone ? 0.0 : dimension
             self.setNeedsLayout()
-            UIView.animate(withDuration: 0.5) {
+            if animate {
+                UIView.animate(withDuration: 0.5) {
+                    self.layoutIfNeeded()
+                    self.isHidden = gone
+                }
+            } else {
                 self.layoutIfNeeded()
                 self.isHidden = gone
             }

@@ -15,6 +15,14 @@ public class CopyableLabel: UILabel {
         }
     }
     
+    private let selectionOverlay: CALayer = {
+        let layer = CALayer()
+        layer.cornerRadius = 8
+        layer.backgroundColor = UIColor.black.withAlphaComponent(0.14).cgColor
+        layer.isHidden = true
+        return layer
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -26,6 +34,9 @@ public class CopyableLabel: UILabel {
     }
     
     func setup() {
+        layer.addSublayer(selectionOverlay)
+        NotificationCenter.default.addObserver(self, selector: #selector(didHideMenu), name: NSNotification.Name.UIMenuControllerDidHideMenu, object: nil)
+        
         isUserInteractionEnabled = true
         addGestureRecognizer(UILongPressGestureRecognizer(
             target: self,
@@ -33,22 +44,49 @@ public class CopyableLabel: UILabel {
         ))
     }
     
-    override public func copy(_ sender: Any?) {
-        UIPasteboard.general.string = text ?? ""
-        UIMenuController.shared.setMenuVisible(false, animated: true)
+    private func textRect() -> CGRect {
+        let inset: CGFloat = -4
+        return textRect(forBounds: bounds, limitedToNumberOfLines: numberOfLines).insetBy(dx: inset, dy: inset)
+    }
+    
+    @objc
+    private func didHideMenu(_ notification: Notification) {
+        selectionOverlay.isHidden = true
     }
     
     @objc
     func showCopyMenu(sender: Any?) {
+        guard let text = text, !text.isEmpty else { return }
         becomeFirstResponder()
         let menu = UIMenuController.shared
         if !menu.isMenuVisible {
-            menu.setTargetRect(bounds, in: self)
+            selectionOverlay.isHidden = false
+            menu.setTargetRect(textRect(), in: self)
             menu.setMenuVisible(true, animated: true)
         }
     }
     
-    override public func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+    private func cancelSelection() {
+        let menu = UIMenuController.shared
+        menu.setMenuVisible(false, animated: true)
+    }
+    
+    public override func copy(_ sender: Any?) {
+        cancelSelection()
+        UIPasteboard.general.string = text ?? ""
+    }
+    
+    public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         return (action == #selector(copy(_:)))
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        selectionOverlay.frame = textRect()
+    }
+    
+    public override func resignFirstResponder() -> Bool {
+        cancelSelection()
+        return super.resignFirstResponder()
     }
 }
