@@ -15,6 +15,15 @@ public class ConversationMessage: ResponseObjectSerializable {
     public var timeRead: Int64?
     public var userSend: Bool? = false
     
+    public init(id: Int?, message: String?, images: [String]?, timeCreatedOn: Int64?, timeRead: Int64?, userSend: Bool?) {
+        self.id = id
+        self.message = message
+        self.images = images
+        self.timeCreatedOn = timeCreatedOn
+        self.timeRead = timeRead
+        self.userSend = userSend
+    }
+    
     public required init?(json: JSON) {
         self.id = json["id"].int
         self.message = json["message"].string

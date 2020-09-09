@@ -552,6 +552,9 @@ class ModuleDependencies {
     func getChatMessages(id: Int, page: Int, size: Int) -> Promise<[ConversationMessage]> {
        return (coreWireframe.corePresenter?.coreInteractorService?.getChatMessages(id: id, page: page, size: size))!
     }
+    func updateReadConversation(conversationId: Int, lastMessageId: Int) -> Promise<Any> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.updateReadConversation(conversationId: conversationId, lastMessageId: lastMessageId))!
+    }
     
     func configureDependencies() {
         // MARK: Core

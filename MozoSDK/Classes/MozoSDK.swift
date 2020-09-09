@@ -497,4 +497,7 @@ public class MozoSDK {
     public static func getChatMessages(id: Int, page: Int, size: Int) -> Promise<[ConversationMessage]> {
         return moduleDependencies.getChatMessages(id: id, page: page, size: size)
     }
+    public static func updateReadConversation(conversationId: Int, lastMessageId: Int) -> Promise<Any> {
+        return moduleDependencies.updateReadConversation(conversationId: conversationId, lastMessageId: lastMessageId)
+    }
 }

@@ -390,4 +390,7 @@ extension CoreInteractor: CoreInteractorService {
     func getChatMessages(id: Int, page: Int, size: Int) -> Promise<[ConversationMessage]> {
         apiManager.getChatMessages(id: id, page: page, size: size)
     }
+    func updateReadConversation(conversationId: Int, lastMessageId: Int) -> Promise<Any> {
+        apiManager.updateReadConversation(conversationId: conversationId, lastMessageId: lastMessageId)
+    }
 }

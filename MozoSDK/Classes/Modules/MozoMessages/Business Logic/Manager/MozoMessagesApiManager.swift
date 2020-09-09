@@ -55,4 +55,26 @@ extension ApiManager {
             }
         }
     }
+    
+    public func updateReadConversation(conversationId: Int, lastMessageId: Int) -> Promise<Any> {
+        return Promise { seal in
+            let params = [
+                "id" : conversationId,
+                "lastDetailId" : lastMessageId
+            ] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/message/ackListMessageDetails"
+            self.execute(.put, url: url, parameters: params)
+                .done { json -> Void in
+                    let jobj = SwiftyJSON.JSON(json)
+                    let result = jobj[RESPONSE_TYPE_RESULT_KEY]
+                    seal.fulfill(result)
+                }
+                .catch { error in
+                        seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
 }
