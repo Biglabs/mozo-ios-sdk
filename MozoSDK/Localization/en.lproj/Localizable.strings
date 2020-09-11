@@ -1134,6 +1134,10 @@
 "todo_action_event_message_new" = "Read →";
 "todo_msg_event_promo_special" = "You are offered special promotions 🎁";
 "todo_action_event_promo_special" = "View →";
+"todo_msg_event_lucky_award" = "You are received awards from Mozo lucky draw program 🎁";
+"todo_action_event_lucky_award" = "View messages →";
+"todo_msg_event_lucky_notice" = "Join friend inviting event in order to get special awards";
+"todo_action_event_lucky_notice" = "Invite friends →";
 "Unsolve" = "Unsolve";
 "Unsolve (%d)" = "Unsolve (%d)";
 "todo_action_explain" = "Complete these actions to make sure there are no problems happen while using Mozo app:";

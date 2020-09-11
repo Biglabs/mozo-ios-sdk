@@ -10,12 +10,14 @@ import SwiftyJSON
 
 public class TodoDTO: ResponseObjectSerializable {
     public var id: String?
+    public var data: TodoData?
+    public var priority: Int?
     public var severity: String?
-    public var data: String?
     
     public required init?(json: SwiftyJSON.JSON) {
         self.id = json["id"].string
-        self.data = json["data"].string
+        self.data = TodoData(json: json["data"])
+        self.priority = json["priority"].int
         self.severity = json["severity"].string
     }
     
@@ -23,17 +25,21 @@ public class TodoDTO: ResponseObjectSerializable {
     
     public func toJSON() -> Dictionary<String, Any> {
         var json = Dictionary<String, Any>()
-        if let data = self.data {
-            json["data"] = data
-        }
         if let keyReminder = self.id {
             json["keyReminder"] = keyReminder
+        }
+        if let data = self.data {
+            json["data"] = data.toJSON()
+        }
+        if let priority = self.priority {
+            json["priority"] = priority
         }
         if let serverity = self.severity {
             json["severity"] = serverity
         }
         return json
     }
+    
     public static func arrayFromJson(_ json: SwiftyJSON.JSON) -> [TodoDTO] {
         let array = json.array?.map({ TodoDTO(json: $0)! })
         return array ?? []

@@ -1139,6 +1139,10 @@
 "todo_action_event_message_new" = "Đọc →";
 "todo_msg_event_promo_special" = "Bạn được tặng những ưu đãi đặc biệt 🎁";
 "todo_action_event_promo_special" = "Xem →";
+"todo_msg_event_lucky_award" = "Bạn nhận được quà tặng từ chương trình quay số may mắn của Mozo 🎁";
+"todo_action_event_lucky_award" = "Xem tin nhắn →";
+"todo_msg_event_lucky_notice" = "Tham gia sự kiện mời bạn bè để nhận nhiều phần quà hấp dẫn.";
+"todo_action_event_lucky_notice" = "Mời bạn bè →";
 "Unsolve" = "Chưa được xử lý";
 "Unsolve (%d)" = "Chưa được xử lý (%d)";
 "todo_action_explain" = "Xin vui lòng giải quyết những vấn đề sau để ứng dụng Mozo phục vụ bạn tốt hơn:";
