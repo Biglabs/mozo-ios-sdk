@@ -21,7 +21,7 @@ public enum NotificationCategoryType: String {
     case Notice = "notice"
     case Feedback = "feed_back"
     case CovidZone = "covid_event"
-    
+    case LuckyDraw = "lucky_draw_award"
     case Default = ""
     
     public var identifier: String {
@@ -37,6 +37,7 @@ public enum NotificationCategoryType: String {
         case .Customer_Came_In: return "%u more customers arrived"
         case .Customer_Came_Out: return "%u more customers departed"
         case .CovidZone: return "covid_noti_content"
+        case .LuckyDraw: return "lucky_draw_noti_content"
         case .Default: return rawValue
         default: return ""
         }
@@ -144,5 +145,6 @@ public enum NotificationEventType: String {
     
     case GroupBroadcast = "group_broadcast"
     case CovidZone = "covid_event"
+    case LuckyDraw = "lucky_draw_award"
 }
 

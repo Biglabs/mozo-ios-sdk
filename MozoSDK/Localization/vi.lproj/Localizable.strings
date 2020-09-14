@@ -13,6 +13,9 @@
 "messages_attached_image_text" = "[Hình ảnh đính kèm]";
 "messages_invite_notice" = "Chúng tôi hân hạnh được mời bạn làm thành viên dài hạn nhằm cung cấp những ưu đãi đặc biệt và nhắn tin.";
 
+"lucky_draw_noti_title" = "";
+"lucky_draw_noti_content" = "Chúc mừng bạn đã nhận được phần thưởng từ chương trình quay số may mắn của Mozo.";
+
 "Address Book" = "Danh bạ";
 "Select Address" = "Chọn địa chỉ";
 "Select from Address Book" = "Chọn từ danh bạ";

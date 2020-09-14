@@ -26,4 +26,5 @@ protocol RDNInteractorOutput {
     func didReceivedPromotionUsed(eventType: NotificationEventType, usedNoti: PromotionUsedNotification, rawMessage: String)
     func didReceivedPromotionPurchased(eventType: NotificationEventType, purchasedNoti: PromotionPurchasedNotification, rawMessage: String)
     func didReceivedCovidWarning(eventType: NotificationEventType, warningNoti: CovidWarningNotification, rawMessage: String)
+    func didReceivedLuckyDraw(noti: LuckyDrawNotification, rawMessage: String)
 }
