@@ -494,10 +494,10 @@ public class MozoSDK {
     public static func getConversationList(page: Int, size: Int) -> Promise<[Conversation]> {
         return moduleDependencies.getConversationList(page: page, size: size)
     }
-    public static func getChatMessages(id: Int, page: Int, size: Int) -> Promise<[ConversationMessage]> {
+    public static func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]> {
         return moduleDependencies.getChatMessages(id: id, page: page, size: size)
     }
-    public static func updateReadConversation(conversationId: Int, lastMessageId: Int) -> Promise<Any> {
+    public static func updateReadConversation(conversationId: Int64, lastMessageId: Int) -> Promise<Any> {
         return moduleDependencies.updateReadConversation(conversationId: conversationId, lastMessageId: lastMessageId)
     }
 }

@@ -7,9 +7,9 @@
 
 import Foundation
 public class TodoDisplayCollection {
-    public var displayItems: [TodoDisplayItem] = []
+    public var displayItems: [TodoDTO] = []
     
     public init(items: [TodoDTO]) {
-        displayItems = items.map { TodoDisplayItem(dto: $0) }
+        displayItems = items
     }
 }

@@ -32,7 +32,7 @@ extension ApiManager {
         }
     }
     
-    public func getChatMessages(id: Int, page: Int, size: Int) -> Promise<[ConversationMessage]> {
+    public func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]> {
         return Promise { seal in
             let params = [
                 "id" : id,
@@ -56,7 +56,7 @@ extension ApiManager {
         }
     }
     
-    public func updateReadConversation(conversationId: Int, lastMessageId: Int) -> Promise<Any> {
+    public func updateReadConversation(conversationId: Int64, lastMessageId: Int) -> Promise<Any> {
         return Promise { seal in
             let params = [
                 "id" : conversationId,

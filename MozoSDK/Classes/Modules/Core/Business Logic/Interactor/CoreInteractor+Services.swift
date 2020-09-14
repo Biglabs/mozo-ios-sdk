@@ -387,10 +387,10 @@ extension CoreInteractor: CoreInteractorService {
     func getConversationList(page: Int, size: Int) -> Promise<[Conversation]> {
         apiManager.getConversationList(page: page, size: size)
     }
-    func getChatMessages(id: Int, page: Int, size: Int) -> Promise<[ConversationMessage]> {
+    func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]> {
         apiManager.getChatMessages(id: id, page: page, size: size)
     }
-    func updateReadConversation(conversationId: Int, lastMessageId: Int) -> Promise<Any> {
+    func updateReadConversation(conversationId: Int64, lastMessageId: Int) -> Promise<Any> {
         apiManager.updateReadConversation(conversationId: conversationId, lastMessageId: lastMessageId)
     }
 }

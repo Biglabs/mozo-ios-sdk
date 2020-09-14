@@ -40,14 +40,14 @@ public class Conversation: ResponseObjectSerializable {
     }
     
     public class Info: ResponseObjectSerializable {
-        public var id: Int?
+        public var id: Int64?
         public var status: String?
         public var timeCreateOn: Int64?
         public var canReply: Bool? = false
         public var read: Bool? = false
         
         public required init?(json: JSON) {
-            self.id = json["id"].int
+            self.id = json["id"].int64
             self.status = json["status"].string
             self.timeCreateOn = json["timeCreateOn"].int64
             self.canReply = json["canReply"].bool
