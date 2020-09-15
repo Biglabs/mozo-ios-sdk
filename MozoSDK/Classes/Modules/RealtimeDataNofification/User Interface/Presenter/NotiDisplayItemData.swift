@@ -119,7 +119,7 @@ public class NotiDisplayItemData {
             case NotificationEventType.LuckyDraw.rawValue:
                 image = "ic_notif_award"
                 title = "lucky_draw_noti_title".localized
-                subtitle = "lucky_draw_noti_content".localized
+                body = "lucky_draw_noti_content".localized
             default:
                 break
             }

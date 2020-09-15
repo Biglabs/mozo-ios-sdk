@@ -12,6 +12,7 @@
 
 "messages_attached_image_text" = "[Attached images]";
 "messages_invite_notice" = "We would like to invite you as our permanent guest in order to offer special promotions and sending notification.";
+"messages_msg_empty" = "You have no message";
 
 "lucky_draw_noti_title" = "";
 "lucky_draw_noti_content" = "Congratulations on your receipt of the Mozo lucky draw program's reward.";

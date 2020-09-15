@@ -32,6 +32,25 @@ extension ApiManager {
         }
     }
     
+    public func getConversationDetails(id: Int64) -> Promise<Conversation?> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/message/getContactMessageDetail?id=\(id)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    let jobj = SwiftyJSON.JSON(json)
+                    let result = Conversation.init(json: jobj)
+                    seal.fulfill(result)
+                }
+                .catch { error in
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
     public func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]> {
         return Promise { seal in
             let params = [

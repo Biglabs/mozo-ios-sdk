@@ -387,6 +387,9 @@ extension CoreInteractor: CoreInteractorService {
     func getConversationList(page: Int, size: Int) -> Promise<[Conversation]> {
         apiManager.getConversationList(page: page, size: size)
     }
+    func getConversationDetails(id: Int64) -> Promise<Conversation?> {
+        apiManager.getConversationDetails(id: id)
+    }
     func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]> {
         apiManager.getChatMessages(id: id, page: page, size: size)
     }

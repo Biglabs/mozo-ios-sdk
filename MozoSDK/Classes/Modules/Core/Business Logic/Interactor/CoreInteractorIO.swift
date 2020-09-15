@@ -210,6 +210,7 @@ protocol CoreInteractorService {
     
     // MARK: Mozo Messages APIs
     func getConversationList(page: Int, size: Int) -> Promise<[Conversation]>
+    func getConversationDetails(id: Int64) -> Promise<Conversation?>
     func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]>
     func updateReadConversation(conversationId: Int64, lastMessageId: Int) -> Promise<Any>
 }

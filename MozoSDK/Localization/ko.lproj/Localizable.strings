@@ -12,6 +12,7 @@
 
 "messages_attached_image_text" = "[이미지 첨부]";
 "messages_invite_notice" = "우리는 당신에게 특별한 혜택과 메시지를 제공하기 위해 장기 회원으로 초대하게 되어 기쁩니다.";
+"messages_msg_empty" = "아무 메시지가 없습니다";
 
 "lucky_draw_noti_title" = "";
 "lucky_draw_noti_content" = "Mozo 행운 추첨 프로그램의 보상을 받은 것을 축하한다.";
