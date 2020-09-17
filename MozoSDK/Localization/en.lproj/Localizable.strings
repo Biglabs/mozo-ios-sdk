@@ -14,8 +14,8 @@
 "messages_invite_notice" = "We would like to invite you as our permanent guest in order to offer special promotions and sending notification.";
 "messages_msg_empty" = "You have no message";
 
-"lucky_draw_noti_title" = "";
-"lucky_draw_noti_content" = "Congratulations on your receipt of the Mozo lucky draw program's reward.";
+"lucky_draw_noti_title" = "Bạn đã trúng thưởng!";
+"lucky_draw_noti_content" = "Chúc mừng bạn đã nhận được phần thưởng từ chương trình quay số may mắn của Mozo.";
 
 "Address Book" = "Address Book";
 "Select Address" = "Select Address";
