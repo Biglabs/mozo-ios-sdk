@@ -111,12 +111,15 @@ public class NotiDisplayItemData {
                 actionText = title // To display on Retailer App - Notification List
                 break
             case NotificationEventType.CovidZone.rawValue:
-                if let warning = rawNoti as? CovidWarningNotification {
-                    title = "covid_noti_title".localized
-                    subtitle = "covid_noti_content".localizedFormat(warning.numNewWarningZone ?? 0)
-                }
+                let warning = rawNoti as? CovidWarningNotification
+                title = "covid_noti_title".localized
+                subtitle = "covid_noti_content".localizedFormat(warning?.numNewWarningZone ?? 0)
                 image = "ic_notif_covid_warning"
                 break
+            case NotificationEventType.LuckyDraw.rawValue:
+                image = "ic_notif_award"
+                title = "lucky_draw_noti_title".localized
+                body = "lucky_draw_noti_content".localized
             default:
                 break
             }

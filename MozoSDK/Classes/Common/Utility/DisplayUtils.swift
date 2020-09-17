@@ -173,6 +173,21 @@ public class DisplayUtils {
         }
     }
     
+    public static func formatMessageTime(time: Double) -> String {
+        let today = Calendar.current
+        let date = Date(timeIntervalSince1970: time)
+        let years = today.dateComponents([.year], from: Date(), to: date).year
+        
+        var pattern = "MMM dd, yyyy"
+        if today.isDateInToday(date) {
+            pattern = "HH:mm"
+        } else if years == 0 {
+            pattern = "MMM dd"
+        }
+        
+        return convertDateToStringWithFormat(date, format: pattern.localized)
+    }
+    
     public static func convertInt64ToStringWithFormat(_ dateInt64: Int64, format: String) -> String{
         let date = Date(timeIntervalSince1970:Double(dateInt64))
         return convertDateToStringWithFormat(date, format: format)

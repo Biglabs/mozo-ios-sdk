@@ -32,7 +32,26 @@ extension ApiManager {
         }
     }
     
-    public func getChatMessages(id: Int, page: Int, size: Int) -> Promise<[ConversationMessage]> {
+    public func getConversationDetails(id: Int64) -> Promise<Conversation?> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/message/getContactMessageDetail?id=\(id)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    // JSON info
+                    let jobj = SwiftyJSON.JSON(json)
+                    let result = Conversation.init(json: jobj)
+                    seal.fulfill(result)
+                }
+                .catch { error in
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]> {
         return Promise { seal in
             let params = [
                 "id" : id,
@@ -49,6 +68,28 @@ extension ApiManager {
                 }
                 .catch { error in
                     seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    public func updateReadConversation(conversationId: Int64, lastMessageId: Int) -> Promise<Any> {
+        return Promise { seal in
+            let params = [
+                "id" : conversationId,
+                "lastDetailId" : lastMessageId
+            ] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/message/ackListMessageDetails"
+            self.execute(.put, url: url, parameters: params)
+                .done { json -> Void in
+                    let jobj = SwiftyJSON.JSON(json)
+                    let result = jobj[RESPONSE_TYPE_RESULT_KEY]
+                    seal.fulfill(result)
+                }
+                .catch { error in
+                        seal.reject(error)
                 }
                 .finally {
                     //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false

@@ -10,6 +10,13 @@
 "covid_noti_title" = "Covid-19 Warning!";
 "covid_noti_content" = "There are %d new Covid warning zones near you.";
 
+"messages_attached_image_text" = "[Attached images]";
+"messages_invite_notice" = "We would like to invite you as our permanent guest in order to offer special promotions and sending notification.";
+"messages_msg_empty" = "You have no message";
+
+"lucky_draw_noti_title" = "Bạn đã trúng thưởng!";
+"lucky_draw_noti_content" = "Chúc mừng bạn đã nhận được phần thưởng từ chương trình quay số may mắn của Mozo.";
+
 "Address Book" = "Address Book";
 "Select Address" = "Select Address";
 "Select from Address Book" = "Select from Address Book";
@@ -1131,6 +1138,10 @@
 "todo_action_event_message_new" = "Read →";
 "todo_msg_event_promo_special" = "You are offered special promotions 🎁";
 "todo_action_event_promo_special" = "View →";
+"todo_msg_event_lucky_award" = "You are received awards from Mozo lucky draw program 🎁";
+"todo_action_event_lucky_award" = "View messages →";
+"todo_msg_event_lucky_notice" = "Join friend inviting event in order to get special awards";
+"todo_action_event_lucky_notice" = "Invite friends →";
 "Unsolve" = "Unsolve";
 "Unsolve (%d)" = "Unsolve (%d)";
 "todo_action_explain" = "Complete these actions to make sure there are no problems happen while using Mozo app:";

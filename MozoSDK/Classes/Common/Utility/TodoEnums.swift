@@ -23,6 +23,8 @@ public enum TodoEnum: String {
     case AIRDROP_OUT_OF_MOZOX = "AIRDROP_OUT_OF_MOZOX"
     case MESSAGE_NEW = "MESSAGE_NEW"
     case NEW_SPECIAL_PROMOTION = "NEW_SPECIAL_PROMOTION"
+    case LUCKY_DRAW_AWARD = "LUCKY_DRAW_AWARD"
+    case LUCKY_DRAW_NOTICE = "LUCKY_DRAW_NOTICE"
 
     public var message: String {
         switch self {
@@ -42,6 +44,8 @@ public enum TodoEnum: String {
             case .AIRDROP_OUT_OF_MOZOX: return "todo_msg_event_almost_out_of_mozo"
             case .MESSAGE_NEW: return "todo_msg_event_message_new"
             case .NEW_SPECIAL_PROMOTION: return "todo_msg_event_promo_special"
+            case .LUCKY_DRAW_AWARD: return "todo_msg_event_lucky_award"
+            case .LUCKY_DRAW_NOTICE: return "todo_msg_event_lucky_notice"
         }
     }
     
@@ -63,6 +67,8 @@ public enum TodoEnum: String {
             case .AIRDROP_OUT_OF_MOZOX: return "todo_action_review_add_more_mozo"
             case .MESSAGE_NEW: return "todo_action_event_message_new"
             case .NEW_SPECIAL_PROMOTION: return "todo_action_event_promo_special"
+            case .LUCKY_DRAW_AWARD: return "todo_action_event_lucky_award"
+            case .LUCKY_DRAW_NOTICE: return "todo_action_event_lucky_notice"
         }
     }
 }

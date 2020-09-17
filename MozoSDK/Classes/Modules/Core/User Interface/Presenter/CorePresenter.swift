@@ -498,6 +498,10 @@ extension CorePresenter : RDNInteractorOutput {
     func didReceivedCovidWarning(eventType: NotificationEventType, warningNoti: CovidWarningNotification, rawMessage: String) {
         performNotifications(noti: warningNoti, rawMessage: rawMessage)
     }
+    
+    func didReceivedLuckyDraw(noti: LuckyDrawNotification, rawMessage: String) {
+        performNotifications(noti: noti, rawMessage: rawMessage)
+    }
 }
 
 extension CorePresenter: PaymentQRModuleDelegate {

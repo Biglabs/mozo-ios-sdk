@@ -10,6 +10,13 @@
 "covid_noti_title" = "Covid-19 경고!";
 "covid_noti_content" = "근처에 새로운 Covid 경고 구역이 %d개 있다.";
 
+"messages_attached_image_text" = "[이미지 첨부]";
+"messages_invite_notice" = "우리는 당신에게 특별한 혜택과 메시지를 제공하기 위해 장기 회원으로 초대하게 되어 기쁩니다.";
+"messages_msg_empty" = "아무 메시지가 없습니다";
+
+"lucky_draw_noti_title" = "Bạn đã trúng thưởng!";
+"lucky_draw_noti_content" = "Chúc mừng bạn đã nhận được phần thưởng từ chương trình quay số may mắn của Mozo.";
+
 "Address Book" = "주소록";
 "Select Address" = "주소 선택";
 "Select from Address Book" = "주소록에서 선택";
@@ -437,6 +444,7 @@
 "Map view" = "지도";
 "Search history" = "기록 검색 ";
 "Your Information" = "개인 정보";
+"profile_menu_mozo_messages" = "Mozo 메시지";
 "Invite friends" = "친구 초대";
 "Favorite Stores" = "좋아하는 상점들";
 "Settings" = "설정";
@@ -1139,6 +1147,10 @@
 "todo_action_event_message_new" = "읽기 →";
 "todo_msg_event_promo_special" = "특별한 혜택을 받았습니다 🎁";
 "todo_action_event_promo_special" = "보기 →";
+"todo_msg_event_lucky_award" = "Mozo 추첨 프로그램에서 선물을 받았습니다.🎁";
+"todo_action_event_lucky_award" = "메시지 보기 →";
+"todo_msg_event_lucky_notice" = "특별한 상을 받으려면 친구 초대 행사에 참여하세요";
+"todo_action_event_lucky_notice" = "친구 초대 →";
 "Unsolve" = "처리되지 않았습니다";
 "Unsolve (%d)" = "(%d) 처리되지 않았습니다";
 "todo_action_explain" = "Mozo 앱을 문제 없이 사용하기 위해 아래에 나열된 것을 완료하세요.";

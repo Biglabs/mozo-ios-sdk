@@ -10,6 +10,13 @@
 "covid_noti_title" = "Cảnh báo Covid-19!";
 "covid_noti_content" = "Có %d vùng cảnh báo Covid-19 mới ở gần bạn.";
 
+"messages_attached_image_text" = "[Hình ảnh đính kèm]";
+"messages_invite_notice" = "Chúng tôi hân hạnh được mời bạn làm thành viên dài hạn nhằm cung cấp những ưu đãi đặc biệt và nhắn tin.";
+"messages_msg_empty" = "Chưa có tin nhắn nào";
+
+"lucky_draw_noti_title" = "Bạn đã trúng thưởng!";
+"lucky_draw_noti_content" = "Chúc mừng bạn đã nhận được phần thưởng từ chương trình quay số may mắn của Mozo.";
+
 "Address Book" = "Danh bạ";
 "Select Address" = "Chọn địa chỉ";
 "Select from Address Book" = "Chọn từ danh bạ";
@@ -439,6 +446,7 @@
 "Map view" = "Bản đồ";
 "Search history" = "Lịch sử tìm kiếm";
 "Your Information" = "Thông tin cá nhân";
+"profile_menu_mozo_messages" = "Tin nhắn Mozo";
 "Invite friends" = "Mời bạn bè";
 "Favorite Stores" = "Cửa hàng yêu thích";
 "Settings" = "Thiết lập";
@@ -1135,6 +1143,10 @@
 "todo_action_event_message_new" = "Đọc →";
 "todo_msg_event_promo_special" = "Bạn được tặng những ưu đãi đặc biệt 🎁";
 "todo_action_event_promo_special" = "Xem →";
+"todo_msg_event_lucky_award" = "Bạn nhận được quà tặng từ chương trình quay số may mắn của Mozo 🎁";
+"todo_action_event_lucky_award" = "Xem tin nhắn →";
+"todo_msg_event_lucky_notice" = "Tham gia sự kiện mời bạn bè để nhận nhiều phần quà hấp dẫn.";
+"todo_action_event_lucky_notice" = "Mời bạn bè →";
 "Unsolve" = "Chưa được xử lý";
 "Unsolve (%d)" = "Chưa được xử lý (%d)";
 "todo_action_explain" = "Xin vui lòng giải quyết những vấn đề sau để ứng dụng Mozo phục vụ bạn tốt hơn:";
