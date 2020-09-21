@@ -1147,8 +1147,8 @@
 "todo_action_event_lucky_award" = "Xem tin nhắn →";
 "todo_msg_event_lucky_notice" = "Tham gia sự kiện mời bạn bè để nhận nhiều phần quà hấp dẫn.";
 "todo_action_event_lucky_notice" = "Mời bạn bè →";
-"Unsolve" = "Chưa được xử lý";
-"Unsolve (%d)" = "Chưa được xử lý (%d)";
+"todo_header_unsolve" = "Chưa được xử lý (%d)";
+"todo_header_unsolves" = "Chưa được xử lý (%d)";
 "todo_action_explain" = "Xin vui lòng giải quyết những vấn đề sau để ứng dụng Mozo phục vụ bạn tốt hơn:";
 "To Do List" = "Những việc cần làm";
 "Redemption" = "Đổi thưởng";

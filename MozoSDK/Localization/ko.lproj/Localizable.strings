@@ -1151,8 +1151,8 @@
 "todo_action_event_lucky_award" = "메시지 보기 →";
 "todo_msg_event_lucky_notice" = "특별한 상을 받으려면 친구 초대 행사에 참여하세요";
 "todo_action_event_lucky_notice" = "친구 초대 →";
-"Unsolve" = "처리되지 않았습니다";
-"Unsolve (%d)" = "(%d) 처리되지 않았습니다";
+"todo_header_unsolve" = "(%d) 처리되지 않았습니다";
+"todo_header_unsolves" = "(%d) 처리되지 않았습니다";
 "todo_action_explain" = "Mozo 앱을 문제 없이 사용하기 위해 아래에 나열된 것을 완료하세요.";
 "To Do List" = "해야 할 일";
 "Redemption" = "토큰 사용";
