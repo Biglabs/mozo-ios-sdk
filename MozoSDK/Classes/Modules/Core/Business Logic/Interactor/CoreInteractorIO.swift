@@ -209,8 +209,10 @@ protocol CoreInteractorService {
     func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]>
     
     // MARK: Mozo Messages APIs
-    func getConversationList(page: Int, size: Int) -> Promise<[Conversation]>
+    func getConversationList(text: String?, page: Int, size: Int) -> Promise<[Conversation]>
     func getConversationDetails(id: Int64) -> Promise<Conversation?>
     func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]>
-    func updateReadConversation(conversationId: Int64, lastMessageId: Int) -> Promise<Any>
+    func responseConversation(conversationId: Int64, status: String) -> Promise<Any>
+    func updateReadConversation(conversationId: Int64, lastMessageId: Int64) -> Promise<Any>
+    func sendMessage(id: Int64, message: String?, images: [String]?, userSend: Bool) -> Promise<Any>
 }

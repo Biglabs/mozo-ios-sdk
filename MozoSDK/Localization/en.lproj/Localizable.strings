@@ -10,9 +10,15 @@
 "covid_noti_title" = "Covid-19 Warning!";
 "covid_noti_content" = "There are %d new Covid warning zones near you.";
 
+"messages_action_accept" = "Accept";
+"messages_action_reject" = "Reject";
 "messages_attached_image_text" = "[Attached images]";
 "messages_invite_notice" = "We would like to invite you as our permanent guest in order to offer special promotions and sending notification.";
+"messages_reject_notice" = "Do you want to reject receiving message from this sender?";
 "messages_msg_empty" = "You have no message";
+"messages_msg_accepted" = "You have accepted receiving message from this sender";
+"messages_msg_blocked" = "You have rejected receiving message from this sender";
+"messages_hint_type_msg" = "Type message";
 
 "lucky_draw_noti_title" = "Bạn đã trúng thưởng!";
 "lucky_draw_noti_content" = "Chúc mừng bạn đã nhận được phần thưởng từ chương trình quay số may mắn của Mozo.";

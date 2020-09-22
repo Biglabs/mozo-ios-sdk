@@ -9,12 +9,22 @@ import Foundation
 import SwiftyJSON
 public class Conversation: ResponseObjectSerializable {
     
+    public enum Action : String {
+        case ACCEPT = "ACCEPT"
+        case REJECT = "REJECT"
+        
+        public var display : String {
+            switch self {
+            case .ACCEPT: return "messages_action_accept"
+            case .REJECT: return "messages_action_reject"
+            }
+        }
+    }
+    
     public enum Status : String {
         case NORMAL = "NORMAL"
         case INVITED = "INVITED"
         case BLOCKED = "BLOCKED"
-        case ACCEPT = "ACCEPT"
-        case REJECT = "REJECT"
     }
     
     public var branch: BranchInfoDTO?
@@ -39,6 +49,24 @@ public class Conversation: ResponseObjectSerializable {
         return DisplayUtils.formatMessageTime(time: time)
     }
     
+    public func showAccept() -> Bool {
+        return info?.getStatus() == .INVITED || info?.getStatus() == .BLOCKED
+    }
+    
+    public func showReject() -> Bool {
+        return info?.getStatus() == .INVITED || info?.getStatus() == .NORMAL
+    }
+    
+    public func toggleAccept() -> String {
+        self.info?.status = Status.NORMAL.rawValue
+        return Action.ACCEPT.rawValue
+    }
+    
+    public func toggleReject() -> String {
+        self.info?.status = Status.BLOCKED.rawValue
+        return Action.REJECT.rawValue
+    }
+    
     public class Info: ResponseObjectSerializable {
         public var id: Int64?
         public var status: String?
@@ -52,6 +80,10 @@ public class Conversation: ResponseObjectSerializable {
             self.timeCreateOn = json["timeCreateOn"].int64
             self.canReply = json["canReply"].bool
             self.read = json["read"].bool
+        }
+        
+        public func getStatus() -> Status {
+            return self.status == nil ? .NORMAL : (Status.init(rawValue: self.status!.uppercased()) ?? .NORMAL)
         }
     }
 }

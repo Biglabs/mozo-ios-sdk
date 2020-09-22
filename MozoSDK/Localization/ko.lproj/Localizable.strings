@@ -10,9 +10,15 @@
 "covid_noti_title" = "Covid-19 경고!";
 "covid_noti_content" = "근처에 새로운 Covid 경고 구역이 %d개 있다.";
 
+"messages_action_accept" = "수락하다";
+"messages_action_reject" = "거부하다";
 "messages_attached_image_text" = "[이미지 첨부]";
 "messages_invite_notice" = "우리는 당신에게 특별한 혜택과 메시지를 제공하기 위해 장기 회원으로 초대하게 되어 기쁩니다.";
+"messages_reject_notice" = "이 출처로부터 메시지를 받는 것을 거부하시겠습니까?";
 "messages_msg_empty" = "아무 메시지가 없습니다";
+"messages_msg_accepted" = "이 근원으로 부터 메시지를 메시지를 수락했습니다";
+"messages_msg_blocked" = "이 근원으로 부터 메시지를 거절했습니다";
+"messages_hint_type_msg" = "메시지를 입력";
 
 "lucky_draw_noti_title" = "Bạn đã trúng thưởng!";
 "lucky_draw_noti_content" = "Chúc mừng bạn đã nhận được phần thưởng từ chương trình quay số may mắn của Mozo.";

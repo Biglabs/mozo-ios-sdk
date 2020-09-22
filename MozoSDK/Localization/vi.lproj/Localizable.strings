@@ -10,9 +10,15 @@
 "covid_noti_title" = "Cảnh báo Covid-19!";
 "covid_noti_content" = "Có %d vùng cảnh báo Covid-19 mới ở gần bạn.";
 
+"messages_action_accept" = "Chấp nhận";
+"messages_action_reject" = "Từ chối";
 "messages_attached_image_text" = "[Hình ảnh đính kèm]";
 "messages_invite_notice" = "Chúng tôi hân hạnh được mời bạn làm thành viên dài hạn nhằm cung cấp những ưu đãi đặc biệt và nhắn tin.";
+"messages_reject_notice" = "Bạn có muốn từ chối nhận tin nhắn từ nguồn này không?";
 "messages_msg_empty" = "Chưa có tin nhắn nào";
+"messages_msg_accepted" = "Bạn đã chấp nhận nhận tin nhắn từ nguồn này";
+"messages_msg_blocked" = "Bạn đã từ chối nhận tin nhắn từ nguồn này";
+"messages_hint_type_msg" = "Nhập tin nhắn";
 
 "lucky_draw_noti_title" = "Bạn đã trúng thưởng!";
 "lucky_draw_noti_content" = "Chúc mừng bạn đã nhận được phần thưởng từ chương trình quay số may mắn của Mozo.";
