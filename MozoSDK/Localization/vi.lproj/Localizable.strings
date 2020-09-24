@@ -19,9 +19,13 @@
 "messages_msg_accepted" = "Bạn đã chấp nhận nhận tin nhắn từ nguồn này";
 "messages_msg_blocked" = "Bạn đã từ chối nhận tin nhắn từ nguồn này";
 "messages_hint_type_msg" = "Nhập tin nhắn";
+"messages_hint_search_bar" = "Tìm theo tên Nhà bán lẻ";
 
 "lucky_draw_noti_title" = "Bạn đã trúng thưởng!";
 "lucky_draw_noti_content" = "Chúc mừng bạn đã nhận được phần thưởng từ chương trình quay số may mắn của Mozo.";
+
+"promo_branch_count" = "và %d địa điểm nữa";
+"promo_branchs_count" = "và %d địa điểm nữa";
 
 "Address Book" = "Danh bạ";
 "Select Address" = "Chọn địa chỉ";

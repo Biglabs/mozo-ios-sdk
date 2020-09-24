@@ -19,9 +19,13 @@
 "messages_msg_accepted" = "You have accepted receiving message from this sender";
 "messages_msg_blocked" = "You have rejected receiving message from this sender";
 "messages_hint_type_msg" = "Type message";
+"messages_hint_search_bar" = "Search by retailer name";
 
 "lucky_draw_noti_title" = "Bạn đã trúng thưởng!";
 "lucky_draw_noti_content" = "Chúc mừng bạn đã nhận được phần thưởng từ chương trình quay số may mắn của Mozo.";
+
+"promo_branch_count" = "and %d more location";
+"promo_branchs_count" = "and %d more locations";
 
 "Address Book" = "Address Book";
 "Select Address" = "Select Address";

@@ -27,6 +27,8 @@ public class PromotionDTO {
     public var limitUser: Int?
     public var remainingNumber: Int?
     public var specialLucky: Bool?
+    public var applyManyBranch: Bool?
+    public var countOtherBranches: Int?
     
     public init(
         discountPercent: Int,
@@ -70,6 +72,8 @@ public class PromotionDTO {
         self.limitUser = json["limitUser"].int
         self.remainingNumber = json["remainingNumber"].int
         self.specialLucky = json["specialLucky"].bool
+        self.applyManyBranch = json["applyManyBranch"].bool
+        self.countOtherBranches = json["countOtherBranches"].int
     }
     
     public func toJSON() -> Dictionary<String, Any> {
@@ -121,6 +125,12 @@ public class PromotionDTO {
         }
         if let specialLucky = self.specialLucky {
             json["specialLucky"] = specialLucky
+        }
+        if let applyManyBranch = self.applyManyBranch {
+            json["applyManyBranch"] = applyManyBranch
+        }
+        if let countOtherBranches = self.countOtherBranches {
+            json["countOtherBranches"] = countOtherBranches
         }
         return json
     }

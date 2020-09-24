@@ -19,9 +19,13 @@
 "messages_msg_accepted" = "이 근원으로 부터 메시지를 메시지를 수락했습니다";
 "messages_msg_blocked" = "이 근원으로 부터 메시지를 거절했습니다";
 "messages_hint_type_msg" = "메시지를 입력";
+"messages_hint_search_bar" = "소매점 이름으로 찾기";
 
 "lucky_draw_noti_title" = "Bạn đã trúng thưởng!";
 "lucky_draw_noti_content" = "Chúc mừng bạn đã nhận được phần thưởng từ chương trình quay số may mắn của Mozo.";
+
+"promo_branch_count" = "그리고 %d개 위치 더";
+"promo_branchs_count" = "그리고 %d개 위치 더";
 
 "Address Book" = "주소록";
 "Select Address" = "주소 선택";

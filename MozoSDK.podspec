@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
   s.dependency 'Alamofire', '4.8.2'
   s.dependency 'AlamofireImage', '3.5.2'
   s.dependency 'CoreStore', '5.1.1'
-  s.dependency 'AppAuth', '~> 1.4.0'
+  s.dependency 'AppAuth'
   s.dependency 'ReachabilitySwift', '5.0.0'
   s.dependency 'MBProgressHUD', '~> 1.2.0'
   s.dependency 'JWTDecode', '2.4.1'
