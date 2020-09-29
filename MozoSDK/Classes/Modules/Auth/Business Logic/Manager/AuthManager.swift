@@ -118,7 +118,7 @@ class AuthManager : NSObject {
         }
     }
     
-    private func checkAuthorization(){
+    private func checkAuthorization() {
         print("Check authorization, try request.")
         SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKING
         apiManager?.checkTokenExpired().done({ (result) in
@@ -170,7 +170,7 @@ class AuthManager : NSObject {
             print("Fetching configuration for issuer: \(issuer)")
             
             // discovers endpoints
-            OIDAuthorizationService.discoverConfiguration(forIssuer: issuer){ configuration, error in
+            OIDAuthorizationService.discoverConfiguration(forIssuer: issuer) { configuration, error in
                 guard let config = configuration else {
                     print("😞 Error retrieving discovery document: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
                     self.setAuthState(nil)
@@ -192,23 +192,25 @@ class AuthManager : NSObject {
                     return
                 }
 
-                let param = [Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE,
-                             Configuration.AUTH_PARAM_APPLICATION_TYPE : Configuration.AUTH_PARAM_APPLICATION_TYPE_VALUE]
                 // builds authentication request
                 let request = OIDAuthorizationRequest(configuration: config,
                                                       clientId: self.clientId,
                                                       clientSecret: nil,
-                                                      scopes: [OIDScopeOpenID, OIDScopeProfile],
+                                                      scopes: [OIDScopeOpenID, OIDScopeProfile, OIDScopePhone],
                                                       redirectURL: redirectURI,
                                                       responseType: OIDResponseTypeCode,
-                                                      additionalParameters: param)
+                                                      additionalParameters: [
+                                                          Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE,
+                                                          Configuration.AUTH_PARAM_APPLICATION_TYPE : Configuration.AUTH_PARAM_APPLICATION_TYPE_VALUE,
+                                                          Configuration.AUTH_PARAM_PROMPT: "consent"
+                                                      ])
                 
                 seal.fulfill(request)
             }
         }
     }
     
-    func buildLogoutRequest()-> Promise<OIDAuthorizationRequest?> {
+    func buildLogoutRequest() -> Promise<OIDAuthorizationRequest?> {
         return Promise { seal in
             guard let issuer = URL(string: Configuration.AUTH_ISSSUER) else {
                 print("😞 Error creating URL for : \(Configuration.AUTH_ISSSUER)")
@@ -405,7 +407,7 @@ extension AuthManager {
 //                return
 //            }
             NSLog("Performing authorization code exchange with request: [\(tokenExchangeRequest)]")
-            OIDAuthorizationService.perform(tokenExchangeRequest){ response, error in
+            OIDAuthorizationService.perform(tokenExchangeRequest) { response, error in
                 if let tokenResponse = response {
                     NSLog("Received token response with accessToken: \(tokenResponse.accessToken ?? "DEFAULT_TOKEN")")
                     seal.fulfill(tokenResponse.accessToken ?? "")

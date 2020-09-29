@@ -15,7 +15,7 @@ extension ApiManager {
                 "size" : size,
                 "page" : page
                 ] as [String : Any]
-            if let keyword = text, keyword.count > 0 {
+            if let keyword = text?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), keyword.count > 0 {
                 params["text"] = keyword
             }
             let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/message/getListContactMessage?\(params.queryString)"

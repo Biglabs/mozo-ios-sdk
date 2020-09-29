@@ -49,6 +49,7 @@ extension AuthPresenter : AuthModuleInterface {
 //        }
         if !isLoggingOut {
             isLoggingOut = true
+            clearAllSessionData()
             authInteractor?.buildLogoutRequest()
         }
     }
