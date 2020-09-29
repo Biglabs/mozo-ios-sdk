@@ -384,8 +384,8 @@ extension CoreInteractor: CoreInteractorService {
     }
     
     // MARK: Mozo Messages APIs
-    func getConversationList(page: Int, size: Int) -> Promise<[Conversation]> {
-        apiManager.getConversationList(page: page, size: size)
+    func getConversationList(text: String?, page: Int, size: Int) -> Promise<[Conversation]> {
+        apiManager.getConversationList(text: text, page: page, size: size)
     }
     func getConversationDetails(id: Int64) -> Promise<Conversation?> {
         apiManager.getConversationDetails(id: id)
@@ -393,7 +393,13 @@ extension CoreInteractor: CoreInteractorService {
     func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]> {
         apiManager.getChatMessages(id: id, page: page, size: size)
     }
-    func updateReadConversation(conversationId: Int64, lastMessageId: Int) -> Promise<Any> {
+    func responseConversation(conversationId: Int64, status: String) -> Promise<Any> {
+        apiManager.responseConversation(conversationId: conversationId, status: status)
+    }
+    func updateReadConversation(conversationId: Int64, lastMessageId: Int64) -> Promise<Any> {
         apiManager.updateReadConversation(conversationId: conversationId, lastMessageId: lastMessageId)
+    }
+    func sendMessage(id: Int64, message: String?, images: [String]?, userSend: Bool) -> Promise<Any> {
+        apiManager.sendMessage(id: id, message: message, images: images, userSend: userSend)
     }
 }

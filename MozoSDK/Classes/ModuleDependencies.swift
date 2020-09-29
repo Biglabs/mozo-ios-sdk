@@ -546,8 +546,8 @@ class ModuleDependencies {
     }
     
     // MARK: Mozo Messages APIs
-    func getConversationList(page: Int, size: Int) -> Promise<[Conversation]> {
-       return (coreWireframe.corePresenter?.coreInteractorService?.getConversationList(page: page, size: size))!
+    func getConversationList(text: String?, page: Int, size: Int) -> Promise<[Conversation]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getConversationList(text: text, page: page, size: size))!
     }
     func getConversationDetails(id: Int64) -> Promise<Conversation?> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getConversationDetails(id: id))!
@@ -555,10 +555,15 @@ class ModuleDependencies {
     func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]> {
        return (coreWireframe.corePresenter?.coreInteractorService?.getChatMessages(id: id, page: page, size: size))!
     }
-    func updateReadConversation(conversationId: Int64, lastMessageId: Int) -> Promise<Any> {
+    func responseConversation(conversationId: Int64, status: String) -> Promise<Any> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.responseConversation(conversationId: conversationId, status: status))!
+    }
+    func updateReadConversation(conversationId: Int64, lastMessageId: Int64) -> Promise<Any> {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateReadConversation(conversationId: conversationId, lastMessageId: lastMessageId))!
     }
-    
+    func sendMessage(id: Int64, message: String?, images: [String]?, userSend: Bool) -> Promise<Any> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.sendMessage(id: id, message: message, images: images, userSend: userSend))!
+    }
     func configureDependencies() {
         // MARK: Core
         coreDependencies()

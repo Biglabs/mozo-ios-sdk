@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Photos
+
 public class ImageDisplayUtils {
     public static func displayExpandImageView(names: [String], selectedIndex: Int = 0) {
         if let parentView = UIApplication.shared.keyWindow {
@@ -40,4 +42,26 @@ public class ImageDisplayUtils {
         result.append(contentsOf: Array(strings[..<index]))
         return result
     }
+    
+    public static func resolveAssets(_ assets: [PHAsset], size: CGSize = CGSize(width: 720, height: 1280), completion: @escaping (_ images: [UIImage]) -> Void) {
+            DispatchQueue.global(qos: .userInitiated).async {
+                let imageManager = PHImageManager.default()
+                let requestOptions = PHImageRequestOptions()
+                requestOptions.isSynchronous = true
+                requestOptions.isNetworkAccessAllowed = true
+
+                var images = [UIImage]()
+                for asset in assets {
+                    imageManager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: requestOptions) { image, _ in
+                        if let image = image {
+                            images.append(image)
+                        }
+                    }
+                }
+
+                DispatchQueue.main.async {
+                    completion(images)
+                }
+            }
+        }
 }

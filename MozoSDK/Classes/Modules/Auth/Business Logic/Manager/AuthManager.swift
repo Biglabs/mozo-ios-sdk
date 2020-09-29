@@ -118,7 +118,7 @@ class AuthManager : NSObject {
         }
     }
     
-    private func checkAuthorization(){
+    private func checkAuthorization() {
         print("Check authorization, try request.")
         SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKING
         apiManager?.checkTokenExpired().done({ (result) in
@@ -170,7 +170,7 @@ class AuthManager : NSObject {
             print("Fetching configuration for issuer: \(issuer)")
             
             // discovers endpoints
-            OIDAuthorizationService.discoverConfiguration(forIssuer: issuer){ configuration, error in
+            OIDAuthorizationService.discoverConfiguration(forIssuer: issuer) { configuration, error in
                 guard let config = configuration else {
                     print("😞 Error retrieving discovery document: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
                     self.setAuthState(nil)
@@ -192,23 +192,25 @@ class AuthManager : NSObject {
                     return
                 }
 
-                let param = [Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE,
-                             Configuration.AUTH_PARAM_APPLICATION_TYPE : Configuration.AUTH_PARAM_APPLICATION_TYPE_VALUE]
                 // builds authentication request
                 let request = OIDAuthorizationRequest(configuration: config,
                                                       clientId: self.clientId,
                                                       clientSecret: nil,
-                                                      scopes: [OIDScopeOpenID, OIDScopeProfile],
+                                                      scopes: [OIDScopeOpenID, OIDScopeProfile, OIDScopePhone],
                                                       redirectURL: redirectURI,
                                                       responseType: OIDResponseTypeCode,
-                                                      additionalParameters: param)
+                                                      additionalParameters: [
+                                                          Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE,
+                                                          Configuration.AUTH_PARAM_APPLICATION_TYPE : Configuration.AUTH_PARAM_APPLICATION_TYPE_VALUE,
+                                                          Configuration.AUTH_PARAM_PROMPT: "consent"
+                                                      ])
                 
                 seal.fulfill(request)
             }
         }
     }
     
-    func buildLogoutRequest()-> Promise<OIDAuthorizationRequest?> {
+    func buildLogoutRequest() -> Promise<OIDAuthorizationRequest?> {
         return Promise { seal in
             guard let issuer = URL(string: Configuration.AUTH_ISSSUER) else {
                 print("😞 Error creating URL for : \(Configuration.AUTH_ISSSUER)")
@@ -217,39 +219,43 @@ class AuthManager : NSObject {
             print("Fetching configuration for issuer: \(issuer)")
             
             // discovers endpoints
-            OIDAuthorizationService.discoverConfiguration(forIssuer: issuer){ configuration, error in
+            OIDAuthorizationService.discoverConfiguration(forIssuer: issuer) { configuration, error in
                 guard let redirectURI = URL(string: Configuration.authRedirectURL()) else {
                     print("Error creating URL for : \(Configuration.authRedirectURL())")
                     return
                 }
                 // https://dev.keycloak.mozocoin.io/auth/realms/mozo/protocol/openid-connect/logout
                 let endSessionUrl = issuer.appendingPathComponent(Configuration.END_SESSION_URL_PATH)
-                
-                let config = OIDServiceConfiguration.init(authorizationEndpoint: endSessionUrl, tokenEndpoint: endSessionUrl)
+                let tokenEndpointUrl = issuer.appendingPathComponent(Configuration.END_POINT_TOKEN_PATH)
+                let config = OIDServiceConfiguration.init(authorizationEndpoint: endSessionUrl, tokenEndpoint: tokenEndpointUrl)
                 
                 let request = OIDAuthorizationRequest(configuration: config,
                                                       clientId: self.clientId,
                                                       clientSecret: nil,
-                                                      scopes: [OIDScopeOpenID, OIDScopeProfile],
+                                                      scopes: [OIDScopeOpenID, OIDScopeProfile, OIDScopePhone],
                                                       redirectURL: redirectURI,
                                                       responseType: OIDResponseTypeCode,
-                                                      additionalParameters: nil)
+                                                      additionalParameters: [
+                                                          Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE,
+                                                          Configuration.AUTH_PARAM_APPLICATION_TYPE : Configuration.AUTH_PARAM_APPLICATION_TYPE_VALUE,
+                                                          Configuration.AUTH_PARAM_PROMPT: "consent"
+                                                      ])
                 
                 seal.fulfill(request)
             }
         }
     }
     
-    func buildLogoutRequestWithLoginRedirect()-> Promise<OIDAuthorizationRequest?> {
+    func buildLogoutRequestWithLoginRedirect() -> Promise<OIDAuthorizationRequest?> {
         return Promise { seal in
-            guard let issuer = URL(string: Configuration.AUTH_ISSSUER) else {
-                print("😞 Error creating URL for : \(Configuration.AUTH_ISSSUER)")
-                return seal.reject(SystemError.incorrectURL)
-            }
-            print("Fetching configuration for issuer: \(issuer)")
+//            guard let issuer = URL(string: Configuration.AUTH_ISSSUER) else {
+//                print("😞 Error creating URL for : \(Configuration.AUTH_ISSSUER)")
+//                return seal.reject(SystemError.incorrectURL)
+//            }
+//            print("Fetching configuration for issuer: \(issuer)")
             
             // discovers endpoints
-            OIDAuthorizationService.discoverConfiguration(forIssuer: issuer){ configuration, error in
+//            OIDAuthorizationService.discoverConfiguration(forIssuer: issuer) { conf, error in
                 self.buildAuthRequest().done({ (authRequest) in
                     let authUrl = authRequest?.authorizationRequestURL()
                     guard let redirectURI = authUrl else {
@@ -257,9 +263,9 @@ class AuthManager : NSObject {
                         return
                     }
                     // https://dev.keycloak.mozocoin.io/auth/realms/mozo/protocol/openid-connect/logout
-                    let endSessionUrl = issuer.appendingPathComponent(Configuration.END_SESSION_URL_PATH)
-                    
-                    let config = OIDServiceConfiguration.init(authorizationEndpoint: endSessionUrl, tokenEndpoint: authRequest?.configuration.tokenEndpoint ?? endSessionUrl)
+                    let endSessionUrl = URL(string: Configuration.AUTH_ISSSUER.appending(Configuration.END_SESSION_URL_PATH))!
+                    let tokenEndpointUrl = URL(string: Configuration.AUTH_ISSSUER.appending(Configuration.END_POINT_TOKEN_PATH))!
+                    let config = OIDServiceConfiguration.init(authorizationEndpoint: endSessionUrl, tokenEndpoint: tokenEndpointUrl)
                     
                     let request = OIDAuthorizationRequest(configuration: config,
                                                           clientId: self.clientId,
@@ -279,7 +285,7 @@ class AuthManager : NSObject {
                     print("😞 Error creating URL for : \(Configuration.AUTH_ISSSUER)")
                     return seal.reject(SystemError.incorrectURL)
                 })
-            }
+//            }
         }
     }
 }
@@ -405,7 +411,7 @@ extension AuthManager {
 //                return
 //            }
             NSLog("Performing authorization code exchange with request: [\(tokenExchangeRequest)]")
-            OIDAuthorizationService.perform(tokenExchangeRequest){ response, error in
+            OIDAuthorizationService.perform(tokenExchangeRequest) { response, error in
                 if let tokenResponse = response {
                     NSLog("Received token response with accessToken: \(tokenResponse.accessToken ?? "DEFAULT_TOKEN")")
                     seal.fulfill(tokenResponse.accessToken ?? "")

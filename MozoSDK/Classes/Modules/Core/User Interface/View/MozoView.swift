@@ -23,6 +23,10 @@ import UIKit
         loadViewFromNib()
     }
     
+    public override func layoutSubviews() {
+        checkDisable()
+    }
+    
     func loadView(identifier: String) -> UIView {
         let bundle = BundleManager.mozoBundle()
         let nib = UINib(nibName: identifier, bundle: bundle)

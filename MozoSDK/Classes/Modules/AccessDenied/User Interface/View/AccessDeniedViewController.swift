@@ -90,8 +90,7 @@ class AccessDeniedViewController: UIViewController {
         } else if tappedImage == imgZalo {
             urlString = "https://zalo.me/428563224447178063"
         }
-        guard let url = URL(string: urlString) else { return }
-        UIApplication.shared.open(url)
+        openLink(link: urlString)
     }
 }
 extension AccessDeniedViewController {

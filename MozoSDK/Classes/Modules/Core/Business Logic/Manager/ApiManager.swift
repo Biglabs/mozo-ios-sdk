@@ -35,14 +35,11 @@ public class ApiManager {
         client = Alamofire.SessionManager(configuration: configuration)
     }
     
-    private func getToken() -> String{
-        if let accessToken = AccessTokenManager.getAccessToken() {
-            return "bearer " + accessToken
-        }
-        return ""
+    private func getToken() -> String {
+        return "bearer \(AccessTokenManager.getAccessToken() ?? "")"
     }
     
-    private func buildHTTPHeaders(withToken: Bool) ->HTTPHeaders {
+    private func buildHTTPHeaders(withToken: Bool) -> HTTPHeaders {
         let headers: HTTPHeaders = [
             "API-Key": apiKey ?? "",
             "Authorization": withToken ? getToken() : "",
@@ -110,13 +107,13 @@ public class ApiManager {
     }
     
     func execute(_ method: Alamofire.HTTPMethod, url: String, parameters: Any? = nil) -> Promise<[String: Any]> {
+        let headers = self.buildHTTPHeaders(withToken: true)
         #if DEBUG
-        print("--> \(method.rawValue) \(url)")
+        print("--> \(method.rawValue) \(url)\nToken: \(String(describing: headers["Authorization"] ?? ""))")
         if let json = parameters as? Dictionary<String, AnyObject> {
             print("params: " + json.description)
         }
         #endif
-        let headers = self.buildHTTPHeaders(withToken: true)
         if parameters == nil {
             return self.execute(method, url: url, headers: headers, params: nil)
         } else if let params = parameters as? [String: Any] {

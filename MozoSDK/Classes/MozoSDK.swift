@@ -491,8 +491,8 @@ public class MozoSDK {
     }
     
     // MARK: Mozo Messages APIs
-    public static func getConversationList(page: Int, size: Int) -> Promise<[Conversation]> {
-        return moduleDependencies.getConversationList(page: page, size: size)
+    public static func getConversationList(text: String?, page: Int, size: Int) -> Promise<[Conversation]> {
+        return moduleDependencies.getConversationList(text: text, page: page, size: size)
     }
     public static func getConversationDetails(id: Int64) -> Promise<Conversation?> {
         return moduleDependencies.getConversationDetails(id: id)
@@ -500,7 +500,13 @@ public class MozoSDK {
     public static func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]> {
         return moduleDependencies.getChatMessages(id: id, page: page, size: size)
     }
-    public static func updateReadConversation(conversationId: Int64, lastMessageId: Int) -> Promise<Any> {
+    public static func responseConversation(conversationId: Int64, status: String) -> Promise<Any> {
+        return moduleDependencies.responseConversation(conversationId: conversationId, status: status)
+    }
+    public static func updateReadConversation(conversationId: Int64, lastMessageId: Int64) -> Promise<Any> {
         return moduleDependencies.updateReadConversation(conversationId: conversationId, lastMessageId: lastMessageId)
+    }
+    public static func sendMessage(id: Int64, message: String?, images: [String]?, userSend: Bool) -> Promise<Any> {
+        return moduleDependencies.sendMessage(id: id, message: message, images: images, userSend: userSend)
     }
 }

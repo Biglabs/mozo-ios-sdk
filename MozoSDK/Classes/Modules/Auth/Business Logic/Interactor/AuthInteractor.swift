@@ -33,6 +33,7 @@ extension AuthInteractor: AuthManagerDelegate {
     }
 }
 extension AuthInteractor : AuthInteractorInput {
+    // MARK: Callback from URL Scheme
     func processAuthorizationCallBackUrl(_ url: URL) {
         NSLog("AuthInteractor - Process authorization callback url: \(url)")
         if authManager?.currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: url) ?? false {

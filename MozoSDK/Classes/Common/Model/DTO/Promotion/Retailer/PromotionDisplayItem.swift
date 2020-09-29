@@ -25,6 +25,9 @@ public class PromotionDisplayItem {
     public var code: String
     public var limitUser: Int
     public var remainingNumber: Int
+    public var specialLucky: Bool = false
+    public var applyManyBranch: Bool = false
+    public var countOtherBranches: Int = 0
     
     public init() {
         self.countActivated = 0
@@ -65,6 +68,9 @@ public class PromotionDisplayItem {
         self.code = promotionDTO.code ?? ""
         self.limitUser = promotionDTO.limitUser ?? 0
         self.remainingNumber = promotionDTO.remainingNumber ?? 0
+        self.specialLucky = promotionDTO.specialLucky == true
+        self.applyManyBranch = promotionDTO.applyManyBranch == true
+        self.countOtherBranches = promotionDTO.countOtherBranches ?? 0
     }
     
     public var dateFromTo: String {

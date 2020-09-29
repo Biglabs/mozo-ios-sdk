@@ -70,6 +70,8 @@ public class Configuration {
     
     public static let END_SESSION_URL_PATH = "/protocol/openid-connect/logout"
     
+    internal static let END_POINT_TOKEN_PATH = "/protocol/openid-connect/token"
+    
     // LOGOUT WITH REDIRECT
     public static let LOGOUT_URL_WITH_REDIRECT_URI = "\(AUTH_ISSSUER)\(END_SESSION_URL_PATH)?redirect_uri="
     
@@ -90,19 +92,21 @@ public class Configuration {
     
     public static let AUTH_PARAM_APPLICATION_TYPE_VALUE = "native"
     
+    public static let AUTH_PARAM_PROMPT = "prompt"
+    
     /**
      The OAuth redirect URI for the client @c kClientID.
      For client configuration instructions, see the [README](https://github.com/openid/AppAuth-iOS/blob/master/Examples/Example-iOS_Swift-Carthage/README.md).
      */
 //    public static let AUTH_REDIRECT_URL = "com.biglabs.mozosdk:/oauth2redirect/mozo-provider"
     
-    public static let AUTH_REDIRECT_CALLBACK_PATH = "oauth2redirect/mozo-provider"
+    //public static let AUTH_REDIRECT_CALLBACK_PATH = "oauth2redirect/mozo-provider"
     
 //    public static let AUTH_REDIRECT_URL = "\((Bundle.main.bundleIdentifier ?? "").lowercased())://\(AUTH_REDIRECT_CALLBACK_PATH)"
     
-    public static let AUTH_REDIRECT_URL = "com.biglabs.mozosdk://\(AUTH_REDIRECT_CALLBACK_PATH)"
+    //public static let AUTH_REDIRECT_URL = "com.biglabs.mozosdk://\(AUTH_REDIRECT_CALLBACK_PATH)"
     
-    public static let AUTH_REDIRECT_URL_FOR_IOS_10 = "\(Bundle.main.bundleIdentifier ?? "")://\(AUTH_REDIRECT_CALLBACK_PATH)"
+    //public static let AUTH_REDIRECT_URL_FOR_IOS_10 = "\(Bundle.main.bundleIdentifier ?? "")://\(AUTH_REDIRECT_CALLBACK_PATH)"
     
     /**
      NSCoding key for the authState property.
@@ -116,9 +120,10 @@ public class Configuration {
     
     public static func authRedirectURL() -> String {
 //        if #available(iOS 10, *) {
-            return AUTH_REDIRECT_URL_FOR_IOS_10
+//            return AUTH_REDIRECT_URL_FOR_IOS_10
 //        }
 //        return AUTH_REDIRECT_URL
+        return "com.biglabs.mozosdk.\(String(describing: Bundle.main.bundleIdentifier!)):/oauth2redirect/mozo-provider"
     }
     
     public static let MAX_DAY_OF_COVID = 24

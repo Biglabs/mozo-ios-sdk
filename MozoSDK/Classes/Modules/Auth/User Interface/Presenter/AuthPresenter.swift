@@ -49,9 +49,8 @@ extension AuthPresenter : AuthModuleInterface {
 //        }
         if !isLoggingOut {
             isLoggingOut = true
+            clearAllSessionData()
             authInteractor?.buildLogoutRequest()
-        } else {
-            NSLog("AuthPresenter - Logout Authentication process is pending.")
         }
     }
 }
