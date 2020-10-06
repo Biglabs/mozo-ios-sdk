@@ -25,7 +25,7 @@
 "lucky_draw_noti_content" = "Chúc mừng bạn đã nhận được phần thưởng từ chương trình quay số may mắn của Mozo.";
 
 "promo_branch_count" = "그리고 %d개 위치 더";
-"promo_branchs_count" = "그리고 %d개 위치 더";
+"promo_branches_count" = "그리고 %d개 위치 더";
 
 "Address Book" = "주소록";
 "Select Address" = "주소 선택";
@@ -1336,6 +1336,8 @@
 "Edit Beacon Range" = "Beacon 범위 수정";
 "Beacon Location" = "Beacon 위치";
 "All Branches" = "모든 분기";
+"count_branch" = "%d 분기";
+"count_branches" = "%d 분기";
 
 "New Branch" = "새로운 분기";
 "Branch Name" = "분기 이름";

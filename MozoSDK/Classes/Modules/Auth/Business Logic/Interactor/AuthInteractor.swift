@@ -100,7 +100,7 @@ extension AuthInteractor : AuthInteractorInput {
     }
     
     func buildLogoutRequest() {
-        _ = authManager?.buildLogoutRequest().done({ (request) in
+        _ = authManager?.buildLogoutRequestWithLoginRedirect().done({ (request) in
             if let rq = request {
                 self.output?.finishBuildLogoutRequest(rq)
             }

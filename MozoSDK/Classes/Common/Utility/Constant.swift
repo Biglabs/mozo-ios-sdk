@@ -239,4 +239,5 @@ public enum RetailerType: String {
     case NORMAL = "NORMAL"
     case BUILDING = "BUILDING"
     case MERCHANT = "MERCHANT"
+    case CHAIN_OFFICE = "CHAIN_OFFICE"
 }

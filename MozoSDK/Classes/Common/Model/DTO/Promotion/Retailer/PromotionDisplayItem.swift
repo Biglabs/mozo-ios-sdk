@@ -69,8 +69,8 @@ public class PromotionDisplayItem {
         self.limitUser = promotionDTO.limitUser ?? 0
         self.remainingNumber = promotionDTO.remainingNumber ?? 0
         self.specialLucky = promotionDTO.specialLucky == true
-        self.applyManyBranch = promotionDTO.applyManyBranch == true
-        self.countOtherBranches = promotionDTO.countOtherBranches ?? 0
+        self.applyManyBranch = promotionDTO.applyManyBranch == true || promotionDTO.isManyBranch == true
+        self.countOtherBranches = promotionDTO.countOtherBranches ?? promotionDTO.applyBranchIds?.count ?? 0
     }
     
     public var dateFromTo: String {
@@ -225,5 +225,14 @@ public class PromotionDisplayItem {
     
     public var remainingText: String {
         return "\(self.remainingNumber)/\(self.limitUser)"
+    }
+    
+    public var distanceText: String {
+        if applyManyBranch, countOtherBranches > 0 {
+            let count = countOtherBranches
+            return (count > 1 ? "promo_branches_count" : "promo_branch_count").localizedFormat(count)
+        } else {
+            return "%dm away".localizedFormat(0)
+        }
     }
 }
