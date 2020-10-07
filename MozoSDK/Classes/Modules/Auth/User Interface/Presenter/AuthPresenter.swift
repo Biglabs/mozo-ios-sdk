@@ -47,11 +47,11 @@ extension AuthPresenter : AuthModuleInterface {
         // TODO: Avoid race condition here using logout queue
 //        logoutQueue.async(flags: .barrier) {
 //        }
-        if !isLoggingOut {
+        //if !isLoggingOut {
             isLoggingOut = true
             clearAllSessionData()
             authInteractor?.buildLogoutRequest()
-        }
+        //}
     }
 }
 
