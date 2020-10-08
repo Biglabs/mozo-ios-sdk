@@ -26,6 +26,7 @@
 
 "promo_branch_count" = "and %d more location";
 "promo_branches_count" = "and %d more locations";
+"promo_branches_in_chain" = "Branches in chain-stores";
 
 "Address Book" = "Address Book";
 "Select Address" = "Select Address";

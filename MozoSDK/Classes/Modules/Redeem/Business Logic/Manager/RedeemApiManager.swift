@@ -33,6 +33,25 @@ extension ApiManager {
         }
     }
     
+    public func getBranchesInChain(promotionId: Int64, lat: Double, lng: Double) -> Promise<[BranchInfoDTO]> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + "/shopper/branch/getLinkPromo/\(promotionId)?lat=\(lat)&lon=\(lng)"
+            self.execute(.get, url: url)
+                .done { json -> Void in
+                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
+                    let branches = BranchInfoDTO.branchArrayFromJson(jobj)
+                    seal.fulfill(branches)
+                }
+                .catch { error in
+                    print("Error when request get promotion redeem info: " + error.localizedDescription)
+                    seal.reject(error)
+                }
+                .finally {
+                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
     public func preparePromotionRedeemTransaction(_ promotionId: Int64) -> Promise<PromotionRedeemDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/preparePromoRedeem?promoId=\(promotionId)"

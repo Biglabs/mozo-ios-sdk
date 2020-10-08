@@ -17,7 +17,6 @@ public class CustomImageView: UIImageView {
     public func loadImageUsingUrlString(_ urlString: String, defaultImageName: String = "img_store_no_img", loadingColor: UIColor = ThemeManager.shared.main,
                                  isDefaultImageFromMozo: Bool = false, isShowLoading: Bool = false,
                                  isUseScreenCenter: Bool = false) {
-        print("Download image with url: \(urlString)")
         if !defaultImageName.isEmpty {
             image = isDefaultImageFromMozo ? UIImage(named: defaultImageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
                 : UIImage(named: defaultImageName)
@@ -45,7 +44,6 @@ public class CustomImageView: UIImageView {
         Alamofire.request(urlString).responseImage { response in
             switch response.result {
             case .success( _):
-                print("Download image success")
                 DispatchQueue.main.async {
                     if let imageToCache = response.result.value {
                         print("Save cache image.")

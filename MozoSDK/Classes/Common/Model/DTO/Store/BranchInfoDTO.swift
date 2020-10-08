@@ -130,4 +130,13 @@ public class BranchInfoDTO : StoreInfoDTO {
         self.longitude = long
         self.latitude = lat
     }
+    
+    public var distanceText: String {
+        let dist = distance ?? 0
+        var awayText = "%.1fkm away".localizedFormat(dist)
+        if dist < 1 {
+            awayText = "%dm away".localizedFormat(Int(dist * 1000))
+        }
+        return awayText
+    }
 }
