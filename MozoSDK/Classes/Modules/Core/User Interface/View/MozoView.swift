@@ -29,8 +29,11 @@ import UIKit
     
     func loadView(identifier: String) -> UIView {
         let bundle = BundleManager.mozoBundle()
-        let nib = UINib(nibName: identifier, bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        let view = bundle.loadNibNamed(identifier, owner: self, options: nil)?.first as! UIView
+//
+//        let bundle = BundleManager.mozoBundle()
+//        let nib = UINib(nibName: identifier, bundle: bundle)
+//        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         view.frame = bounds
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         checkDisable()
@@ -64,44 +67,48 @@ import UIKit
     
     // MARK: Observation Initialization
     func addUniqueAuthObserver() {
-        print("Add unique authentication observers")
+        #if !TARGET_INTERFACE_BUILDER
         NotificationCenter.default.removeObserver(self, name: .didAuthenticationSuccessWithMozo, object: nil)
         NotificationCenter.default.removeObserver(self, name: .didLogoutFromMozo, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onUserDidLoginSuccess(_:)), name: .didAuthenticationSuccessWithMozo, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onUserDidLogout(_:)), name: .didLogoutFromMozo, object: nil)
+        #endif
     }
     
     func addOriginalObserver() {
-        print("Add original observers")
+        #if !TARGET_INTERFACE_BUILDER
         NotificationCenter.default.removeObserver(self, name: .didReceiveDetailDisplayItem, object: nil)
         NotificationCenter.default.removeObserver(self, name: .didReceiveExchangeInfo, object: nil)
         NotificationCenter.default.removeObserver(self, name: .didLoadTokenInfoFailed, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onDetailDisplayDataDidReceive(_:)), name: .didReceiveDetailDisplayItem, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onExchangeRateInfoDidReceive(_:)), name: .didReceiveExchangeInfo, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onLoadTokenInfoFailed(_:)), name: .didLoadTokenInfoFailed, object: nil)
+        #endif
     }
     
     func addUniqueBalanceChangeObserver() {
-        print("Add unique balance change observer")
+        #if !TARGET_INTERFACE_BUILDER
         NotificationCenter.default.removeObserver(self, name: .didChangeBalance, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onBalanceDidUpdate(_:)), name: .didChangeBalance, object: nil)
+        #endif
     }
     
     func removeObserverAfterLogout() {
-        print("Remove observer after logout")
+        #if !TARGET_INTERFACE_BUILDER
         NotificationCenter.default.removeObserver(self, name: .didChangeBalance, object: nil)
         NotificationCenter.default.removeObserver(self, name: .didReceiveDetailDisplayItem, object: nil)
         NotificationCenter.default.removeObserver(self, name: .didReceiveExchangeInfo, object: nil)
         NotificationCenter.default.removeObserver(self, name: .didLoadTokenInfoFailed, object: nil)
+        #endif
     }
     
     // MARK: Observation actions
-    @objc func onUserDidLoginSuccess(_ notification: Notification){
+    @objc func onUserDidLoginSuccess(_ notification: Notification) {
         print("On User Did Login Success: Update view")
         updateView()
     }
     
-    @objc func onUserDidLogout(_ notification: Notification){
+    @objc func onUserDidLogout(_ notification: Notification) {
         print("On User Did Logout: Update view")
         removeObserverAfterLogout()
         updateView()
