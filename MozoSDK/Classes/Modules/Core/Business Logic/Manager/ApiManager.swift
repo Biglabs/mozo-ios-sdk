@@ -110,8 +110,8 @@ public class ApiManager {
         let headers = self.buildHTTPHeaders(withToken: true)
         #if DEBUG
         print("--> \(method.rawValue) \(url)\nToken: \(String(describing: headers["Authorization"] ?? ""))")
-        if let json = parameters as? Dictionary<String, AnyObject> {
-            print("params: " + json.description)
+        if let json = parameters as? Dictionary<String, Any> {
+            print("params: \(String(describing: json))")
         }
         #endif
         if parameters == nil {

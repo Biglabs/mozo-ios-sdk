@@ -15,6 +15,8 @@ public class PromotionSettingDTO : ResponseObjectSerializable {
     public var numberMozoXRequire: NSNumber?
     public var minValueCreation: NSNumber?
     public var maxValueCreation: NSNumber?
+    public var canCreateMultiBranch: Bool?
+    public var availableBranches: [BranchInfoDTO]?
     
     public required init?(json: SwiftyJSON.JSON) {
         self.discountFee = json["discountFee"].string
@@ -23,6 +25,8 @@ public class PromotionSettingDTO : ResponseObjectSerializable {
         self.numberMozoXRequire = json["numberMozoXRequire"].number
         self.minValueCreation = json["minValueCreation"].number
         self.maxValueCreation = json["maxValueCreation"].number
+        self.canCreateMultiBranch = json["canCreateMultiBranch"].bool
+        self.availableBranches = BranchInfoDTO.branchArrayFromJson(json["availableBranches"])
     }
     
     public init(dict: Dictionary<String, Any>) {
@@ -32,6 +36,10 @@ public class PromotionSettingDTO : ResponseObjectSerializable {
         self.numberMozoXRequire = dict["numberMozoXRequire"] as? NSNumber
         self.minValueCreation = dict["minValueCreation"] as? NSNumber
         self.maxValueCreation = dict["maxValueCreation"] as? NSNumber
+        self.canCreateMultiBranch = dict["canCreateMultiBranch"] as? Bool
+        if let raw = dict["availableBranches"] {
+            self.availableBranches = BranchInfoDTO.branchArrayFromJson(SwiftyJSON.JSON(raw))
+        }
     }
     
     public func toJSON() -> Dictionary<String, Any> {
@@ -54,7 +62,17 @@ public class PromotionSettingDTO : ResponseObjectSerializable {
         if let maxValueCreation = self.maxValueCreation {
             json["maxValueCreation"] = maxValueCreation
         }
+        if let canCreateMultiBranch = self.canCreateMultiBranch {
+            json["canCreateMultiBranch"] = canCreateMultiBranch
+        }
+        if let availableBranches = self.availableBranches {
+            json["availableBranches"] = availableBranches.map({$0.toJSON()})
+        }
         return json
+    }
+    
+    public func canCreatePromo4All() -> Bool {
+        return canCreateMultiBranch == true && availableBranches != nil && availableBranches!.count > 0
     }
     
     public func defaultMozoAmount() -> Double {

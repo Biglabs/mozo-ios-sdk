@@ -15,6 +15,7 @@ public class BranchInfoDTO : StoreInfoDTO {
     public var isMain: Bool?
     public var beaconCountNeedToSync: Int?
     public var totalBeaconCount: Int? // Only finishedConfiguration
+    public var type: RetailerType?
     
     public required init?(json: SwiftyJSON.JSON) {
         super.init(json: json)
@@ -24,6 +25,7 @@ public class BranchInfoDTO : StoreInfoDTO {
         self.isMain = json["isMain"].bool
         self.beaconCountNeedToSync = json["beaconCountNeedToSync"].int
         self.totalBeaconCount = json["totalBeaconCount"].int
+        self.type = RetailerType(rawValue: json["type"].string ?? RetailerType.NORMAL.rawValue)
     }
     
     public init?(address: String, city: String, closeHour: Int, country: String, imageLogo: String, latitude: NSNumber, longitude: NSNumber, name: String, openHour: Int, state: String, zip: String, images: [String], hashTag: [String]) {
@@ -127,5 +129,14 @@ public class BranchInfoDTO : StoreInfoDTO {
         self.address = address
         self.longitude = long
         self.latitude = lat
+    }
+    
+    public var distanceText: String {
+        let dist = distance ?? 0
+        var awayText = "%.1fkm away".localizedFormat(dist)
+        if dist < 1 {
+            awayText = "%dm away".localizedFormat(Int(dist * 1000))
+        }
+        return awayText
     }
 }

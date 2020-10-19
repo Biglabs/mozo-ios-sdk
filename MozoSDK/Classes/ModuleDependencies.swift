@@ -380,6 +380,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionRedeemInfo(promotionId: promotionId))!
     }
     
+    func getBranchesInChain(promotionId: Int64, lat: Double, lng: Double) -> Promise<[BranchInfoDTO]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getBranchesInChain(promotionId: promotionId, lat: lat, lng: lng))!
+    }
+    
     func redeemPromotion(_ promotionId: Int64, delegate: RedeemPromotionDelegate) {
         redeemWireframe.requestToRedeemAndSign(promotionId, delegate: delegate)
     }

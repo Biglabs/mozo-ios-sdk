@@ -81,6 +81,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
             isAnonymous = false
         }
         super.loadViewFromNib()
+        #if !TARGET_INTERFACE_BUILDER
         loadDisplayData()
         testAssests()
         setupTableView()
@@ -90,6 +91,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         setupTarget()
         setupOnchainWalletView()
         setupObservers()
+        #endif
     }
     
     override func layoutSubviews() {

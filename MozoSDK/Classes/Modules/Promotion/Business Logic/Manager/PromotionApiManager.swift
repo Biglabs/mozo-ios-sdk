@@ -40,7 +40,6 @@ public extension ApiManager {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + "/createPromo/v3"
             let param = promotion.toJSON()
-            print("Create promotion params: \(param)")
             self.execute(.post, url: url, parameters: param)
                 .done { json -> Void in
                     // JSON info

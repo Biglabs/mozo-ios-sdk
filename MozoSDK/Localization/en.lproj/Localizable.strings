@@ -25,7 +25,8 @@
 "lucky_draw_noti_content" = "Chúc mừng bạn đã nhận được phần thưởng từ chương trình quay số may mắn của Mozo.";
 
 "promo_branch_count" = "and %d more location";
-"promo_branchs_count" = "and %d more locations";
+"promo_branches_count" = "and %d more locations";
+"promo_branches_in_chain" = "Branches in chain-stores";
 
 "Address Book" = "Address Book";
 "Select Address" = "Select Address";
@@ -1327,6 +1328,8 @@
 "Edit Beacon Range" = "Edit Beacon Range";
 "Beacon Location" = "Beacon Location";
 "All Branches" = "All Branches";
+"count_branch" = "%d branch";
+"count_branches" = "%d branches";
 
 "New Branch" = "New Branch";
 "Branch Name" = "Branch Name";

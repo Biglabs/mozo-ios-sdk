@@ -30,6 +30,10 @@ public class PromotionDTO {
     public var applyManyBranch: Bool?
     public var countOtherBranches: Int?
     
+    // MARK: Multiple branches promo
+    public var applyBranchIds: [Int64]?
+    public var isManyBranch: Bool?
+    
     public init(
         discountPercent: Int,
         imageName: String,
@@ -73,7 +77,9 @@ public class PromotionDTO {
         self.remainingNumber = json["remainingNumber"].int
         self.specialLucky = json["specialLucky"].bool
         self.applyManyBranch = json["applyManyBranch"].bool
+        self.applyBranchIds = json["applyBranchIds"].array?.filter({ $0.int64 != nil }).map({ $0.int64! })
         self.countOtherBranches = json["countOtherBranches"].int
+        self.isManyBranch = json["isManyBranch"].bool
     }
     
     public func toJSON() -> Dictionary<String, Any> {
@@ -129,8 +135,14 @@ public class PromotionDTO {
         if let applyManyBranch = self.applyManyBranch {
             json["applyManyBranch"] = applyManyBranch
         }
+        if let applyBranchIds = self.applyBranchIds {
+            json["applyBranchIds"] = applyBranchIds
+        }
         if let countOtherBranches = self.countOtherBranches {
             json["countOtherBranches"] = countOtherBranches
+        }
+        if let isManyBranch = self.isManyBranch {
+            json["isManyBranch"] = isManyBranch
         }
         return json
     }

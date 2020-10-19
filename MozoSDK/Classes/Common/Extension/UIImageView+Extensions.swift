@@ -18,9 +18,7 @@ public extension UIImageView {
                    isDefaultImageFromMozo: Bool = false, isShowLoading: Bool = false) {
         let placeHolderImage = isDefaultImageFromMozo ? UIImage(named: defaultImageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
             : UIImage(named: defaultImageName)
-        print("Download image with url: \(urlString)")
         let paramUrlString = "\(urlString)?width=\(Int(self.frame.width * UIScreen.main.scale * 2))&height=\(Int(self.frame.height * UIScreen.main.scale * 2))"
-        print("Download image with url param: \(paramUrlString)")
         let url = URL(string: paramUrlString)!
         let processor = DownsamplingImageProcessor(size: self.frame.size)
         var kf = self.kf
@@ -35,24 +33,22 @@ public extension UIImageView {
                 .scaleFactor(UIScreen.main.scale * 2),
                 .transition(.fade(1)),
                 .cacheOriginalImage
-            ])
-        {
-            result in
-            switch result {
-            case .success(let value):
-                print("Download image success: \(value.source.url?.absoluteString ?? "")")
-            case .failure(let error):
-                print("Download image failure with error: \(error)")
-            }
-        }
+            ], completionHandler:
+                {
+                    result in
+                    switch result {
+                    case .success(_):
+                        return
+                    case .failure(let error):
+                        print("Download image failure with error: \(error)")
+                    }
+                })
     }
     
     func loadImageWithUrlString(_ urlString: String, defaultImageName: String = "img_store_no_img", loadingColor: UIColor = ThemeManager.shared.main,
                                 isDefaultImageFromMozo: Bool = false, isShowLoading: Bool = false,
                                 isUseScreenCenter: Bool = false) {
-        print("Download image with url: \(urlString)")
         let paramUrlString = "\(urlString)?width=\(Int(self.frame.width * UIScreen.main.scale * 2))&height=\(Int(self.frame.height * UIScreen.main.scale * 2))"
-        print("Download image with url param: \(paramUrlString)")
         if !defaultImageName.isEmpty {
             image = isDefaultImageFromMozo ? UIImage(named: defaultImageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
                 : UIImage(named: defaultImageName)
@@ -79,7 +75,6 @@ public extension UIImageView {
         Alamofire.request(paramUrlString).responseImage { response in
             switch response.result {
             case .success( _):
-                print("Download image success")
                 DispatchQueue.main.async {
                     if let imageToCache = response.result.value {
                         print("Save cache image.")
