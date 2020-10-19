@@ -26,6 +26,7 @@
 
 "promo_branch_count" = "그리고 %d개 위치 더";
 "promo_branches_count" = "그리고 %d개 위치 더";
+"promo_branches_in_chain" = "체인점의 지점";
 
 "Address Book" = "주소록";
 "Select Address" = "주소 선택";
