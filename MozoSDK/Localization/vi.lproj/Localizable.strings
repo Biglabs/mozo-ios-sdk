@@ -573,7 +573,6 @@
 "Open hour must not be later than Close hour" = "Giờ mở cửa không được phép lớn hơn giờ đóng cửa";
 "Close hour must be later than Open hour" = "Giờ đóng cửa phải lớn hơn giờ mở cửa";
 "You do not have permission to do this action!" = "Bạn không có quyền thực thi thao tác này!";
-"Are you sure to logout" = "Xác nhận đăng xuất";
 
 
 "You can only add a maximum of %d hashtags" = "Chỉ có thể chọn tối đa %d Hashtag";

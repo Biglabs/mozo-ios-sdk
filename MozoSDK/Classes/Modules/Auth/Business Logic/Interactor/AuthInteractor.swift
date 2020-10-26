@@ -64,6 +64,7 @@ extension AuthInteractor : AuthInteractorInput {
     }
     
     func handleAuthorizationResponse(_ response: OIDAuthorizationResponse?, error: Error?) {
+        authManager?.setCurrentAuthorizationFlow(nil)
         if let response = response {
             let authState = OIDAuthState(authorizationResponse: response)
             authManager?.setAuthState(authState)
@@ -100,11 +101,7 @@ extension AuthInteractor : AuthInteractorInput {
     }
     
     func buildLogoutRequest() {
-        _ = authManager?.buildLogoutRequestWithLoginRedirect().done({ (request) in
-            if let rq = request {
-                self.output?.finishBuildLogoutRequest(rq)
-            }
-        })
+        self.output?.finishBuildLogoutRequest()
     }
     
     func handleLogoutState() {

@@ -31,7 +31,7 @@ protocol AuthInteractorOutput {
     func finishedAuthenticate(accessToken: String?)
     func cancelledAuthenticateByUser()
     
-    func finishBuildLogoutRequest(_ request: OIDAuthorizationRequest)
+    func finishBuildLogoutRequest()
     func finishLogout()
     
     func didCheckAuthorizationSuccess()

@@ -97,6 +97,7 @@ class ModuleDependencies {
     }
     
     func logout() {
+        authWireframe.authPresenter?.logoutWillBePerformed()
         coreWireframe.requestForLogout()
     }
     
