@@ -28,7 +28,7 @@ class CoreWireframe : MozoWireframe {
     
     // MARK: Request
     func requestForAuthentication() {
-        presentWaitingInterface(corePresenter: corePresenter)
+        //presentWaitingInterface(corePresenter: corePresenter)
         corePresenter?.requestForAuthentication(module: Module.Wallet)
     }
     

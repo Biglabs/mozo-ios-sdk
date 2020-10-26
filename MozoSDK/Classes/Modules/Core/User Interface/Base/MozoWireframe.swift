@@ -10,7 +10,7 @@ import Foundation
 class MozoWireframe: NSObject {
     var rootWireframe : RootWireframe?
     
-    func dismissModuleInterface(){
+    func dismissModuleInterface() {
         let coreEventHandler = rootWireframe?.mozoNavigationController.coreEventHandler
         coreEventHandler?.requestForCloseAllMozoUIs()
     }

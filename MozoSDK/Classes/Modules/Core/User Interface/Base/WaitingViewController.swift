@@ -11,49 +11,19 @@ enum WaitingRetryAction {
     case BuildAuth
 }
 class WaitingViewController: MozoBasicViewController {
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
     var eventHandler: CoreModuleWaitingInterface?
-    @IBOutlet weak var imgLoading: UIImageView!
-    
-    var stopRotating = false
-    // TODO: Rotate never stop
-    
     var retryAction: WaitingRetryAction?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        rotateView()
-        setupSpinningView()
-    }
-    
-    func setupSpinningView() {
-        let advTimeGif = UIImage.gifImageWithName("spinner")
-        self.imgLoading.image = advTimeGif
-    }
-    
-    private func rotateView(duration: Double = 1.0) {
-        UIView.animate(withDuration: duration, delay: 0.0, options: .curveLinear, animations: {
-            self.imgLoading.transform = self.imgLoading.transform.rotated(by: CGFloat.pi)
-        }) { finished in
-            if !self.stopRotating {
-                self.rotateView(duration: duration)
-            } else {
-                self.imgLoading.transform = .identity
-            }
-        }
+        self.loadingIndicator.transform = CGAffineTransform(scaleX: 2, y: 2)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print("WaitingViewController - View will disappear")
-        if self.isMovingFromParentViewController {
-            print("WaitingViewController - View will disappear - isMovingFromParentViewController")
-            stopRotating = true
-        }
     }
     
     func openSettings() {
@@ -95,10 +65,6 @@ extension WaitingViewController: WaitingViewInterface {
                 DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
             }
         }
-    }
-    
-    func stopRotate() {
-        stopRotating = true
     }
     
     func displayAlertIncorrectSystemDateTime() {
