@@ -33,6 +33,11 @@ public class PromotionDTO {
     // MARK: Multiple branches promo
     public var applyBranchIds: [Int64]?
     public var isManyBranch: Bool?
+    public var selectedBranch: BranchInfoDTO? = nil
+    
+    public init() {
+        // MARK: empty constructor
+    }
     
     public init(
         discountPercent: Int,
@@ -150,5 +155,33 @@ public class PromotionDTO {
     public static func arrayFromJson(_ json: SwiftyJSON.JSON) -> [PromotionDTO] {
         let array = json.array?.map({ PromotionDTO(json: $0)! })
         return array ?? []
+    }
+}
+extension PromotionDTO: Equatable {
+    public static func == (lhs: PromotionDTO, rhs: PromotionDTO) -> Bool {
+        return
+            lhs.countActivated == rhs.countActivated &&
+            lhs.countPurchased == rhs.countPurchased &&
+            lhs.discountFee == rhs.discountFee &&
+            lhs.discountPercent == rhs.discountPercent &&
+            lhs.id == rhs.id &&
+            lhs.imageName == rhs.imageName &&
+            lhs.name == rhs.name &&
+            lhs.periodFromDate == rhs.periodFromDate &&
+            lhs.periodToDate == rhs.periodToDate &&
+            lhs.zoneId == rhs.zoneId &&
+            lhs.promoStatus == rhs.promoStatus &&
+            lhs.promoType == rhs.promoType &&
+            lhs.receivedMozoX == rhs.receivedMozoX &&
+            lhs.value == rhs.value &&
+            lhs.timeLeftInSecs == rhs.timeLeftInSecs &&
+            lhs.code == rhs.code &&
+            lhs.limitUser == rhs.limitUser &&
+            lhs.remainingNumber == rhs.remainingNumber &&
+            lhs.specialLucky == rhs.specialLucky &&
+            lhs.applyManyBranch == rhs.applyManyBranch &&
+            lhs.countOtherBranches == rhs.countOtherBranches &&
+            lhs.applyBranchIds == rhs.applyBranchIds &&
+            lhs.isManyBranch == rhs.isManyBranch
     }
 }

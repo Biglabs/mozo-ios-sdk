@@ -235,4 +235,13 @@ public class PromotionDisplayItem {
             return "%dm away".localizedFormat(0)
         }
     }
+    
+    public var distanceTextPreview: String {
+        let count = countOtherBranches - 1
+        if applyManyBranch, count > 0 {
+            return (count > 1 ? "promo_branches_count" : "promo_branch_count").localizedFormat(count)
+        } else {
+            return "%dm away".localizedFormat(0)
+        }
+    }
 }
