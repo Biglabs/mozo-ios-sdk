@@ -77,12 +77,6 @@ extension AuthPresenter : AuthInteractorOutput {
     
     func finishedBuildAuthRequest(_ request: OIDAuthorizationRequest) {
         let viewController = DisplayUtils.getTopViewController()
-        if let authViewController = viewController,
-           let klass = DisplayUtils.getAuthenticationClass(),
-           authViewController.isKind(of: klass) {
-            print("AuthPresenter - Authentication screen is being displayed.")
-            //            return
-        }
         let currentAuthorizationFlow = OIDAuthorizationService.present(request, presenting: viewController!) { (response, error) in
             self.authInteractor?.handleAuthorizationResponse(response, error: error)
         }
@@ -130,7 +124,7 @@ extension AuthPresenter : AuthInteractorOutput {
                     /**
                      Re-call Sign In
                      */
-                    self.authInteractor?.buildAuthRequest()
+                    MozoSDK.authenticate()
                 }
             }
             self.authInteractor?.setCurrentAuthorizationFlow(currentAuthorizationFlow)
