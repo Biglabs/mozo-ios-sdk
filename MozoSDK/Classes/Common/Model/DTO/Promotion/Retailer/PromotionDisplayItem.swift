@@ -27,6 +27,7 @@ public class PromotionDisplayItem {
     public var remainingNumber: Int
     public var specialLucky: Bool = false
     public var applyManyBranch: Bool = false
+    public var applyBranches: [BranchInfoDTO]?
     public var countOtherBranches: Int = 0
     
     public init() {
@@ -70,6 +71,7 @@ public class PromotionDisplayItem {
         self.remainingNumber = promotionDTO.remainingNumber ?? 0
         self.specialLucky = promotionDTO.specialLucky == true
         self.applyManyBranch = promotionDTO.applyManyBranch == true || promotionDTO.isManyBranch == true
+        self.applyBranches = promotionDTO.applyBranches
         self.countOtherBranches = promotionDTO.countOtherBranches ?? promotionDTO.applyBranchIds?.count ?? 0
     }
     

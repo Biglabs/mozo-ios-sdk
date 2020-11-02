@@ -27,6 +27,8 @@
 "promo_branch_count" = "và %d địa điểm nữa";
 "promo_branches_count" = "và %d địa điểm nữa";
 "promo_branches_in_chain" = "Những chi nhánh trong cùng chuỗi";
+"promo_branches_label" = "Chi nhánh";
+"promo_for_branches_label" = "Khuyến mãi ở nhiều chi nhánh";
 
 "Address Book" = "Danh bạ";
 "Select Address" = "Chọn địa chỉ";
