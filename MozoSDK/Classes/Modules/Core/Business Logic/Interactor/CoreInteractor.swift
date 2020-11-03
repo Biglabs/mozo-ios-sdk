@@ -170,7 +170,7 @@ class CoreInteractor: NSObject {
                 }
             }).catch({ (err) in
                 // TODO: Handle Database Error here
-                print("Get wallet count of user [\(id)], error: \(err)")
+                "Get wallet count of user [\(id)], error: \(err)".log()
             })
         } else {
             // Continue with Speed Selection
@@ -189,7 +189,7 @@ class CoreInteractor: NSObject {
                 // Process invitation if any.
                 self.processInvitation()
             } else {
-                print("😎 Load user info.")
+                "😎 Load user info.".log()
                 _ = getUserProfile().done({ () in
                     self.checkWallet(module: module)
                     // Process invitation if any.
@@ -228,7 +228,7 @@ extension CoreInteractor: CoreInteractorInput {
     
     @objc func repeatCheckForAuthentication() {
         if SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING {
-            print("Continue with checking auth and wallet.")
+            "Continue with checking auth and wallet.".log()
             checkTokenExpiredTimer?.invalidate()
             checkTokenExpiredTimer = nil
             self.checkAuthAndWallet(module: checkTokenExpiredModule!)
@@ -236,7 +236,7 @@ extension CoreInteractor: CoreInteractorInput {
     }
     
     func checkForAuthentication(module: Module) {
-        print("CoreInteractor - Check for authentication. Waiting for check token expired from Auth Module.")
+        "CoreInteractor - Check for authentication. Waiting for check token expired from Auth Module.".log()
         checkTokenExpiredModule = module
         checkTokenExpiredTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.repeatCheckForAuthentication), userInfo: nil, repeats: true)
     }

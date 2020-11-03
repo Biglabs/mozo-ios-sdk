@@ -78,6 +78,7 @@ extension AuthPresenter : AuthInteractorOutput {
     func finishedBuildAuthRequest(_ request: OIDAuthorizationRequest) {
         let viewController = DisplayUtils.getTopViewController()
         let currentAuthorizationFlow = OIDAuthorizationService.present(request, presenting: viewController!) { (response, error) in
+            self.authModuleDelegate?.willHandleAuthResponse()
             self.authInteractor?.handleAuthorizationResponse(response, error: error)
         }
         authInteractor?.setCurrentAuthorizationFlow(currentAuthorizationFlow)
@@ -120,6 +121,7 @@ extension AuthPresenter : AuthInteractorOutput {
                     // TODO: Must wait for AppAuth WebViewController display.
                     self.authInteractor?.clearAllAuthSession()
                     self.authModuleDelegate?.authModuleDidFinishLogout()
+                    self.authModuleDelegate?.willHandleAuthResponse()
                     
                     /**
                      Re-call Sign In

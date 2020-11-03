@@ -139,6 +139,12 @@ public extension String {
             return nil
         }
     }
+    
+    func log() {
+        if MozoSDK.network() != .MainNet {
+            print("[Mozo] \(self)")
+        }
+    }
 }
 
 internal extension String {

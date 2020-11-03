@@ -35,13 +35,13 @@ public extension ApiManager {
         }
     }
     
-    func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO> {
+    func getParkingTicketByStoreId(id: Int64, isIn: Bool) -> Promise<TicketDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getParkingTicketByStoreId/v2?storeId=\(storeId)&in=\(isIn)&locale=\(Configuration.LOCALE)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getParkingTicketByBranchId?branchId=\(id)&in=\(isIn)&locale=\(Configuration.LOCALE)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get parking ticket by store id [\(storeId)], json response: \(json)")
+                    print("Finish request to get parking ticket by id [\(id)], json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)
                     if let ticket = TicketDTO(json: jobj) {
                         seal.fulfill(ticket)
@@ -50,7 +50,7 @@ public extension ApiManager {
                     }
                 }
                 .catch { error in
-                    print("Error when request get parking ticket by store id [\(storeId)]: " + error.localizedDescription)
+                    print("Error when request get parking ticket by id [\(id)]: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {
@@ -59,13 +59,13 @@ public extension ApiManager {
         }
     }
     
-    func getParkingTicketByStoreId(storeId: Int64) -> Promise<TicketDTO> {
+    func getParkingTicketByStoreId(id: Int64) -> Promise<TicketDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getParkingTicketByStoreIdWithoutInOut?storeId=\(storeId)&locale=\(Configuration.LOCALE)"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_PARKING_TICKET_API_PATH + "/getParkingTicketByBranchIdWithoutInOut?branchId=\(id)&locale=\(Configuration.LOCALE)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get parking ticket by store id ONLY [\(storeId)], json response: \(json)")
+                    print("Finish request to get parking ticket by id ONLY [\(id)], json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)
                     if let ticket = TicketDTO(json: jobj) {
                         seal.fulfill(ticket)
@@ -74,7 +74,7 @@ public extension ApiManager {
                     }
                 }
                 .catch { error in
-                    print("Error when request get parking ticket by store id ONLY [\(storeId)]: " + error.localizedDescription)
+                    print("Error when request get parking ticket by id ONLY [\(id)]: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {

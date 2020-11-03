@@ -77,4 +77,8 @@ extension CorePresenter : AuthModuleDelegate {
         print("CorePresenter - Auth module did cancel logout.")
         isLoggingOut = false
     }
+    
+    func willHandleAuthResponse() {
+        self.authDelegate?.willHandleAuthResponse()
+    }
 }
