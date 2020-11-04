@@ -13,7 +13,7 @@ import Foundation
     func mozoUIDidCloseAll()
     
     func mozoDidExpiredToken()
-    func willHandleAuthResponse()
+    func willExecuteNextStep()
 }
 
 protocol TransactionDelegate {

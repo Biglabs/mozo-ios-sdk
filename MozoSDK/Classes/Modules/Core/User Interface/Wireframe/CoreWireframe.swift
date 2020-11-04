@@ -33,7 +33,7 @@ class CoreWireframe : MozoWireframe {
     }
     
     func requestForLogout() {
-        authWireframe?.presentLogoutInterface()
+        corePresenter?.requestForLogout()
     }
     
     func requestForTransfer() {

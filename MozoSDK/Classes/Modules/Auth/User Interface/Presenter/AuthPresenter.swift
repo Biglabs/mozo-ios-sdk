@@ -14,9 +14,7 @@ class AuthPresenter : NSObject {
     var authModuleDelegate : AuthModuleDelegate?
     
     var retryOnResponse: OIDAuthorizationResponse?
-    
-    var isLoggingOut = false
-    
+        
     func startRefreshTokenTimer() {
         authInteractor?.startRefreshTokenTimer()
     }
@@ -42,11 +40,8 @@ extension AuthPresenter : AuthModuleInterface {
     }
     
     func performLogout() {
-        if !isLoggingOut {
-            isLoggingOut = true
-            clearAllSessionData()
-            authInteractor?.buildLogoutRequest()
-        }
+        clearAllSessionData()
+        authInteractor?.buildLogoutRequest()
     }
 }
 
@@ -78,7 +73,7 @@ extension AuthPresenter : AuthInteractorOutput {
     func finishedBuildAuthRequest(_ request: OIDAuthorizationRequest) {
         let viewController = DisplayUtils.getTopViewController()
         let currentAuthorizationFlow = OIDAuthorizationService.present(request, presenting: viewController!) { (response, error) in
-            self.authModuleDelegate?.willHandleAuthResponse()
+            self.authModuleDelegate?.willExecuteNextStep()
             self.authInteractor?.handleAuthorizationResponse(response, error: error)
         }
         authInteractor?.setCurrentAuthorizationFlow(currentAuthorizationFlow)
@@ -114,19 +109,13 @@ extension AuthPresenter : AuthInteractorOutput {
             
             // performs logout request
             let currentAuthorizationFlow = OIDAuthorizationService.present(request, externalUserAgent: userAgent) { (response, error) in
-                self.isLoggingOut = false
                 if error != nil {
                     self.authModuleDelegate?.authModuleDidCancelLogout()
                 } else {
-                    // TODO: Must wait for AppAuth WebViewController display.
                     self.authInteractor?.clearAllAuthSession()
                     self.authModuleDelegate?.authModuleDidFinishLogout()
-                    self.authModuleDelegate?.willHandleAuthResponse()
-                    
-                    /**
-                     Re-call Sign In
-                     */
-                    MozoSDK.authenticate()
+                    self.authModuleDelegate?.willExecuteNextStep()
+                    self.authModuleDelegate?.willRelaunchAuthentication()
                 }
             }
             self.authInteractor?.setCurrentAuthorizationFlow(currentAuthorizationFlow)

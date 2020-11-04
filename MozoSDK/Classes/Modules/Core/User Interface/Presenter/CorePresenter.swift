@@ -22,7 +22,7 @@ class CorePresenter : NSObject {
     
     var requestingABModule: Module?
     
-    var isLoggingOut = false
+    internal var isProcessing = false
 
     override init() {
         super.init()
@@ -80,7 +80,6 @@ class CorePresenter : NSObject {
 //            NSLog("CorePresenter - Top view controller: \(topViewController.debugDescription)")
 //        }
 //        if !isLoggingOut {
-//            isLoggingOut = true
             coreWireframe?.authWireframe?.clearAllSessionData()
             // Mozo Screens could be contained here.
             if (coreWireframe?.rootWireframe?.mozoNavigationController.viewControllers.count ?? 0) > 0 {
@@ -195,11 +194,19 @@ private extension CorePresenter {
 }
 extension CorePresenter : CoreModuleInterface {
     func requestForAuthentication(module: Module) {
-        coreInteractor?.checkForAuthentication(module: module)
+        "Start login: \(!isProcessing)".log()
+        if !isProcessing {
+            isProcessing = true
+            coreInteractor?.checkForAuthentication(module: module)
+        }
     }
     
     func requestForLogout() {
-        
+        "Start logout: \(!isProcessing)".log()
+        if !isProcessing {
+            isProcessing = true
+            coreWireframe?.authWireframe?.presentLogoutInterface()
+        }
     }
     
     func requestForCloseAllMozoUIs() {

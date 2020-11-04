@@ -20,5 +20,6 @@ protocol AuthModuleDelegate {
     
     func didReceiveErrorWhileExchangingCode()
     
-    func willHandleAuthResponse()
+    func willExecuteNextStep()
+    func willRelaunchAuthentication()
 }
