@@ -9,21 +9,22 @@ import Foundation
 
 extension CorePresenter : AuthModuleDelegate {
     func didReceiveErrorWhileExchangingCode() {
+        "didReceiveErrorWhileExchangingCode".log()
         waitingViewInterface?.displayAlertIncorrectSystemDateTime()
     }
     
     func didCheckAuthorizationSuccess() {
-        print("On Check Authorization Did Success: Download convenience data")
+        "On Check Authorization Did Success: Download convenience data".log()
         SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
         readyForGoingLive()
     }
     
     func didCheckAuthorizationFailed() {
-        print("On Check Authorization Did Failed - No connection")
+        "On Check Authorization Did Failed - No connection".log()
     }
     
     func didRemoveTokenAndLogout() {
-        print("On Check Authorization Did remove token and logout")
+        "On Check Authorization Did remove token and logout".log()
         SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
         // Notify for all observing objects
         coreInteractor?.notifyLogoutForAllObservers()
@@ -31,20 +32,24 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidFinishAuthentication(accessToken: String?) {
-        isLoggingOut = false
+        isProcessing = false
+        "End process authModuleDidFinishAuthentication".log()
         coreInteractor?.handleAferAuth(accessToken: accessToken)
         // Notify for all observing objects
         self.coreInteractor?.notifyAuthSuccessForAllObservers()
     }
     
     func authModuleDidFailedToMakeAuthentication(error: ConnectionError) {
+        isProcessing = false
+        "End process authModuleDidFailedToMakeAuthentication".log()
         waitingViewInterface?.displayTryAgain(error, forAction: .BuildAuth)
     }
     
     func authModuleDidCancelAuthentication() {
-        print("CorePresenter - Auth module did cancel authentication.")
-        isLoggingOut = false
+        isProcessing = false
+        "End process authModuleDidCancelAuthentication".log()
         requestForCloseAllMozoUIs()
+        stopSilentServices(shouldReconnect: false)
     }
     
     func checkToDismissAccessDeniedIfNeed() {
@@ -63,7 +68,6 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidFinishLogout() {
-        isLoggingOut = false
         checkToDismissAccessDeniedIfNeed()
         // Send delegate back to the app
         authDelegate?.mozoLogoutDidFinish()
@@ -74,7 +78,17 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidCancelLogout() {
-        print("CorePresenter - Auth module did cancel logout.")
-        isLoggingOut = false
+        isProcessing = false
+        "End process authModuleDidCancelLogout".log()
+        stopSilentServices(shouldReconnect: false)
+    }
+    
+    func willExecuteNextStep() {
+        self.authDelegate?.willExecuteNextStep()
+    }
+    
+    func willRelaunchAuthentication() {
+        // MARK: Force start Authentication flow after logout
+        coreInteractor?.checkForAuthentication(module: .Wallet)
     }
 }

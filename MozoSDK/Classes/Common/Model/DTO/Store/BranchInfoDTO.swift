@@ -17,6 +17,11 @@ public class BranchInfoDTO : StoreInfoDTO {
     public var totalBeaconCount: Int? // Only finishedConfiguration
     public var type: RetailerType?
     
+    /**
+     Use for update state
+     */
+    public var selected: Bool = false
+    
     public required init?(json: SwiftyJSON.JSON) {
         super.init(json: json)
         self.beacons = BeaconInfoDTO.arrayFromJson(json["beacons"])

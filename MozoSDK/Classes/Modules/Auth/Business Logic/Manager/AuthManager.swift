@@ -41,32 +41,32 @@ class AuthManager : NSObject {
     
     func setupRefreshTokenTimer() {
         if let refreshTokenTimer = refreshTokenTimer, refreshTokenTimer.isValid {
-            print("AuthManager - Refresh token timer is existing.")
+            "AuthManager - Refresh token timer is existing.".log()
             return
         }
-        print("AuthManager - Setup refresh token timer.")
+        "AuthManager - Setup refresh token timer.".log()
         let tokenExpiredAfterSeconds = network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : network == .DevNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV : TOKEN_EXPIRE_AFTER_SECONDS_FOR_STAG
         var fireAt = Date().addingTimeInterval(TimeInterval(tokenExpiredAfterSeconds))
         if let accessTokenExpirationDate = self.authState?.lastTokenResponse?.accessTokenExpirationDate {
             let expiresAt : Date = accessTokenExpirationDate
             fireAt = expiresAt.addingTimeInterval(TimeInterval(-tokenExpiredAfterSeconds))
         } else {
-            print("Setup refresh token timer with out access token expiration date.")
+            "Setup refresh token timer with out access token expiration date.".log()
         }
-        print("Timer refresh token will be fire at: \(fireAt)")
+        "Timer refresh token will be fire at: \(fireAt)".log()
         if fireAt > Date() {
-            print("Setup refresh token timer, add to main run loop.")
+            "Setup refresh token timer, add to main run loop.".log()
             refreshTokenTimer = Timer(fireAt: fireAt, interval: 0, target: self, selector: #selector(fireRefreshToken), userInfo: nil, repeats: false)
             RunLoop.main.add(refreshTokenTimer!, forMode: .commonModes)
         } else {
             print("Timer refresh token won't be fire at: \(fireAt), current date: \(Date())")
-//            print("Refresh token timer directly.")
-//            fireRefreshToken()
+            //            print("Refresh token timer directly.")
+            //            fireRefreshToken()
         }
     }
     
     @objc func fireRefreshToken() {
-        print("Fire refresh token.")
+        "Fire refresh token.".log()
         revokeRefreshTokenTimer()
         checkRefreshToken { (success) in
             if success {
@@ -83,7 +83,7 @@ class AuthManager : NSObject {
     }
     
     func clearAll() {
-        print("AuthManager - clear all: token, pin secret, user info, auth state.")
+        "AuthManager - clear all: token, pin secret, user info, auth state.".log()
         AccessTokenManager.clearToken()
         AccessTokenManager.clearPinSecret()
         SessionStoreManager.clearCurrentUser()
@@ -97,17 +97,17 @@ class AuthManager : NSObject {
     
     private func checkRefreshToken(_ completion: @escaping (_ success: Bool) -> Void) {
         let expiresAt : Date = authState?.lastTokenResponse?.accessTokenExpirationDate ?? Date()
-        print("Check authorization, access token: \(authState?.lastTokenResponse?.accessToken ?? "NULL"), expires at: \(expiresAt), expires at time interval since now: \(expiresAt.timeIntervalSinceNow)")
+        "Check authorization, access token: \(authState?.lastTokenResponse?.accessToken ?? "NULL"), expires at: \(expiresAt), expires at time interval since now: \(expiresAt.timeIntervalSinceNow)".log()
         let tokenExpiredAfterSeconds = network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV
         if(expiresAt.timeIntervalSinceNow < TimeInterval(tokenExpiredAfterSeconds)) {
-            print("Token expired, refresh token using: \(authState?.lastTokenResponse?.refreshToken ?? "NULL")")
+            "Token expired, refresh token using: \(authState?.lastTokenResponse?.refreshToken ?? "NULL")".log()
             authState?.setNeedsTokenRefresh()
             authState?.performAction(freshTokens: { (accessToken, ic, error) in
                 if let error = error {
-                    print("Did refresh token, error: \(error), ic: \(ic ?? "NULL")")
+                    "Did refresh token, error: \(error), ic: \(ic ?? "NULL")".log()
                     completion(false)
                 } else {
-                    print("Did refresh token, access token: \(self.authState?.lastTokenResponse?.accessToken ?? "NULL"), refresh token: \(self.authState?.lastTokenResponse?.refreshToken ?? "NULL"), expires at: \(String(describing: self.authState?.lastTokenResponse?.accessTokenExpirationDate))")
+                    "Did refresh token, access token: \(self.authState?.lastTokenResponse?.accessToken ?? "NULL"), refresh token: \(self.authState?.lastTokenResponse?.refreshToken ?? "NULL"), expires at: \(String(describing: self.authState?.lastTokenResponse?.accessTokenExpirationDate))".log()
                     AccessTokenManager.saveToken(self.authState?.lastTokenResponse?.accessToken)
                     AuthDataManager.saveAuthState(self.authState)
                     completion(true)
@@ -153,139 +153,31 @@ class AuthManager : NSObject {
         self.currentAuthorizationFlow = authorizationFlow
     }
     
-//    func handleRedirectUrl(_ url: URL) -> Bool {
-//        if currentAuthorizationFlow?.resumeAuthorizationFlow(with: url) == true {
-//            setCurrentAuthorizationFlow(nil)
-//            return true
-//        }
-//        return false
-//    }
-    
-    func buildAuthRequest() -> Promise<OIDAuthorizationRequest?> {
+    func buildAuthRequest(_ hasRedirect: Bool = true) -> Promise<OIDAuthorizationRequest?> {
         return Promise { seal in
-            guard let issuer = URL(string: Configuration.AUTH_ISSSUER) else {
-                print("😞 Error creating URL for : \(Configuration.AUTH_ISSSUER)")
-                return seal.reject(SystemError.incorrectURL)
+            guard let redirectURI = URL(string: Configuration.authRedirectURL()) else {
+                print("Error creating URL for : \(Configuration.authRedirectURL())")
+                return
             }
-            print("Fetching configuration for issuer: \(issuer)")
+            let endSessionUrl = URL(string: Configuration.AUTH_ISSSUER.appending(Configuration.BEGIN_SESSION_URL_PATH))!
+            let tokenEndpointUrl = URL(string: Configuration.AUTH_ISSSUER.appending(Configuration.END_POINT_TOKEN_PATH))!
+            let config = OIDServiceConfiguration.init(authorizationEndpoint: endSessionUrl, tokenEndpoint: tokenEndpointUrl)
             
-            // discovers endpoints
-            OIDAuthorizationService.discoverConfiguration(forIssuer: issuer) { configuration, error in
-                guard let config = configuration else {
-                    print("😞 Error retrieving discovery document: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
-                    self.setAuthState(nil)
-                    var connectionError = ConnectionError.systemError
-                    if let error = error, let errorInfo = (error as NSError).userInfo["NSUnderlyingError"] as? NSError, errorInfo.domain == NSURLErrorDomain {
-                        if errorInfo.code == NSURLErrorNotConnectedToInternet {
-                            connectionError = ConnectionError.noInternetConnection
-                        } else if errorInfo.code == NSURLErrorTimedOut {
-                            connectionError = ConnectionError.requestTimedOut
-                        }
-                    }
-                    return seal.reject(connectionError)
-                }
-                
-                print("Got configuration: \(config)")
-                
-                guard let redirectURI = URL(string: Configuration.authRedirectURL()) else {
-                    print("Error creating URL for : \(Configuration.authRedirectURL())")
-                    return
-                }
-
-                // builds authentication request
-                let request = OIDAuthorizationRequest(configuration: config,
-                                                      clientId: self.clientId,
-                                                      clientSecret: nil,
-                                                      scopes: [OIDScopeOpenID, OIDScopeProfile, OIDScopePhone],
-                                                      redirectURL: redirectURI,
-                                                      responseType: OIDResponseTypeCode,
-                                                      additionalParameters: [
-                                                          Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE,
-                                                          Configuration.AUTH_PARAM_APPLICATION_TYPE : Configuration.AUTH_PARAM_APPLICATION_TYPE_VALUE,
-                                                          Configuration.AUTH_PARAM_PROMPT: "consent"
-                                                      ])
-                
-                seal.fulfill(request)
-            }
-        }
-    }
-    
-    func buildLogoutRequest() -> Promise<OIDAuthorizationRequest?> {
-        return Promise { seal in
-            guard let issuer = URL(string: Configuration.AUTH_ISSSUER) else {
-                print("😞 Error creating URL for : \(Configuration.AUTH_ISSSUER)")
-                return seal.reject(SystemError.incorrectURL)
-            }
-            print("Fetching configuration for issuer: \(issuer)")
+            // builds authentication request
+            let request = OIDAuthorizationRequest(
+                configuration: config,
+                clientId: self.clientId,
+                clientSecret: nil,
+                scopes: [OIDScopeOpenID, OIDScopeProfile, OIDScopePhone],
+                redirectURL: redirectURI,
+                responseType: OIDResponseTypeCode,
+                additionalParameters: [
+                    Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE,
+                    Configuration.AUTH_PARAM_APPLICATION_TYPE : Configuration.AUTH_PARAM_APPLICATION_TYPE_VALUE,
+                    Configuration.AUTH_PARAM_PROMPT: "consent"
+                ])
             
-            // discovers endpoints
-            OIDAuthorizationService.discoverConfiguration(forIssuer: issuer) { configuration, error in
-                guard let redirectURI = URL(string: Configuration.authRedirectURL()) else {
-                    print("Error creating URL for : \(Configuration.authRedirectURL())")
-                    return
-                }
-                // https://dev.keycloak.mozocoin.io/auth/realms/mozo/protocol/openid-connect/logout
-                let endSessionUrl = issuer.appendingPathComponent(Configuration.END_SESSION_URL_PATH)
-                let tokenEndpointUrl = issuer.appendingPathComponent(Configuration.END_POINT_TOKEN_PATH)
-                let config = OIDServiceConfiguration.init(authorizationEndpoint: endSessionUrl, tokenEndpoint: tokenEndpointUrl)
-                
-                let request = OIDAuthorizationRequest(configuration: config,
-                                                      clientId: self.clientId,
-                                                      clientSecret: nil,
-                                                      scopes: [OIDScopeOpenID, OIDScopeProfile, OIDScopePhone],
-                                                      redirectURL: redirectURI,
-                                                      responseType: OIDResponseTypeCode,
-                                                      additionalParameters: [
-                                                          Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE,
-                                                          Configuration.AUTH_PARAM_APPLICATION_TYPE : Configuration.AUTH_PARAM_APPLICATION_TYPE_VALUE,
-                                                          Configuration.AUTH_PARAM_PROMPT: "consent"
-                                                      ])
-                
-                seal.fulfill(request)
-            }
-        }
-    }
-    
-    func buildLogoutRequestWithLoginRedirect() -> Promise<OIDAuthorizationRequest?> {
-        return Promise { seal in
-//            guard let issuer = URL(string: Configuration.AUTH_ISSSUER) else {
-//                print("😞 Error creating URL for : \(Configuration.AUTH_ISSSUER)")
-//                return seal.reject(SystemError.incorrectURL)
-//            }
-//            print("Fetching configuration for issuer: \(issuer)")
-            
-            // discovers endpoints
-//            OIDAuthorizationService.discoverConfiguration(forIssuer: issuer) { conf, error in
-                self.buildAuthRequest().done({ (authRequest) in
-                    let authUrl = authRequest?.authorizationRequestURL()
-                    guard let redirectURI = authUrl else {
-                        print("Error creating URL for : \(Configuration.authRedirectURL())")
-                        return
-                    }
-                    // https://dev.keycloak.mozocoin.io/auth/realms/mozo/protocol/openid-connect/logout
-                    let endSessionUrl = URL(string: Configuration.AUTH_ISSSUER.appending(Configuration.END_SESSION_URL_PATH))!
-                    let tokenEndpointUrl = URL(string: Configuration.AUTH_ISSSUER.appending(Configuration.END_POINT_TOKEN_PATH))!
-                    let config = OIDServiceConfiguration.init(authorizationEndpoint: endSessionUrl, tokenEndpoint: tokenEndpointUrl)
-                    
-                    let request = OIDAuthorizationRequest(configuration: config,
-                                                          clientId: self.clientId,
-                                                          clientSecret: nil,
-                                                          scope: authRequest?.scope,
-                                                          redirectURL: redirectURI,
-                                                          responseType: OIDResponseTypeCode,
-                                                          state: authRequest?.state,
-                                                          nonce: authRequest?.nonce,
-                                                          codeVerifier: authRequest?.codeVerifier,
-                                                          codeChallenge: authRequest?.codeChallenge,
-                                                          codeChallengeMethod: authRequest?.codeChallengeMethod,
-                                                          additionalParameters: authRequest?.additionalParameters)
-                    
-                    seal.fulfill(request)
-                }).catch({ (error) in
-                    print("😞 Error creating URL for : \(Configuration.AUTH_ISSSUER)")
-                    return seal.reject(SystemError.incorrectURL)
-                })
-//            }
+            seal.fulfill(request)
         }
     }
 }
@@ -387,33 +279,34 @@ extension AuthManager {
                 return seal.reject(SystemError.incorrectCodeExchangeRequest)
             }
             // SSO: Not support
-//            if tokenExchangeRequest.redirectURL?.absoluteString.contains(Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH) ?? false {
-//                var urlString = tokenExchangeRequest.redirectURL?.absoluteString ?? ""
-//                let startRange = urlString.range(of: Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH)!.lowerBound
-//                let endRange = urlString.range(of: Configuration.authRedirectURL())!.lowerBound
-//                let removeString = String(urlString[startRange..<endRange])
-//                urlString = urlString.replace(removeString, withString: "")
-//                let clientIdIndex = urlString.range(of: "&client_id=")!.lowerBound
-//                urlString = String(urlString[urlString.startIndex..<clientIdIndex])
-//                let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
-//                let newRequest = OIDTokenRequest(configuration: tokenExchangeRequest.configuration, grantType: tokenExchangeRequest.grantType, authorizationCode: tokenExchangeRequest.authorizationCode, redirectURL: url!, clientID: tokenExchangeRequest.clientID, clientSecret: tokenExchangeRequest.clientSecret, scope: tokenExchangeRequest.scope, refreshToken: tokenExchangeRequest.refreshToken, codeVerifier: tokenExchangeRequest.codeVerifier, additionalParameters: tokenExchangeRequest.additionalParameters)
-//                NSLog("Performing authorization code exchange with request: [\(newRequest)]")
-//                OIDAuthorizationService.perform(newRequest){ response, error in
-//                    if let tokenResponse = response {
-//                        NSLog("Received token response with accessToken: \(tokenResponse.accessToken ?? "DEFAULT_TOKEN")")
-//                        seal.fulfill(tokenResponse.accessToken ?? "")
-//                    } else {
-//                        NSLog("Token exchange error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
-//                        seal.reject(error!)
-//                    }
-//                    self.authState?.update(with: response, error: error)
-//                }
-//                return
-//            }
+            //            if tokenExchangeRequest.redirectURL?.absoluteString.contains(Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH) ?? false {
+            //                var urlString = tokenExchangeRequest.redirectURL?.absoluteString ?? ""
+            //                let startRange = urlString.range(of: Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH)!.lowerBound
+            //                let endRange = urlString.range(of: Configuration.authRedirectURL())!.lowerBound
+            //                let removeString = String(urlString[startRange..<endRange])
+            //                urlString = urlString.replace(removeString, withString: "")
+            //                let clientIdIndex = urlString.range(of: "&client_id=")!.lowerBound
+            //                urlString = String(urlString[urlString.startIndex..<clientIdIndex])
+            //                let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
+            //                let newRequest = OIDTokenRequest(configuration: tokenExchangeRequest.configuration, grantType: tokenExchangeRequest.grantType, authorizationCode: tokenExchangeRequest.authorizationCode, redirectURL: url!, clientID: tokenExchangeRequest.clientID, clientSecret: tokenExchangeRequest.clientSecret, scope: tokenExchangeRequest.scope, refreshToken: tokenExchangeRequest.refreshToken, codeVerifier: tokenExchangeRequest.codeVerifier, additionalParameters: tokenExchangeRequest.additionalParameters)
+            //                NSLog("Performing authorization code exchange with request: [\(newRequest)]")
+            //                OIDAuthorizationService.perform(newRequest){ response, error in
+            //                    if let tokenResponse = response {
+            //                        NSLog("Received token response with accessToken: \(tokenResponse.accessToken ?? "DEFAULT_TOKEN")")
+            //                        seal.fulfill(tokenResponse.accessToken ?? "")
+            //                    } else {
+            //                        NSLog("Token exchange error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
+            //                        seal.reject(error!)
+            //                    }
+            //                    self.authState?.update(with: response, error: error)
+            //                }
+            //                return
+            //            }
             NSLog("Performing authorization code exchange with request: [\(tokenExchangeRequest)]")
             OIDAuthorizationService.perform(tokenExchangeRequest) { response, error in
                 if let tokenResponse = response {
                     NSLog("Received token response with accessToken: \(tokenResponse.accessToken ?? "DEFAULT_TOKEN")")
+                    AuthDataManager.saveIdToken(tokenResponse.idToken)
                     seal.fulfill(tokenResponse.accessToken ?? "")
                 } else {
                     NSLog("Token exchange error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")

@@ -8,23 +8,30 @@
 import Foundation
 
 public class SessionStoreManager {
-    public static func loadCurrentUser() -> UserDTO?{
-        // Get User from UserDefaults
-        if let userData = UserDefaults.standard.data(forKey: Configuration.USER_INFO),
-            let user = try? JSONDecoder().decode(UserDTO.self, from: userData) {
+    private static var userInfo: UserDTO?
+    
+    public static func loadCurrentUser() -> UserDTO? {
+        if let user = userInfo {
             return user
+            
+        } else if let userData = UserDefaults.standard.data(forKey: Configuration.USER_INFO) {
+            if let user = try? JSONDecoder().decode(UserDTO.self, from: userData) {
+                userInfo = user
+                return user
+            }
         }
-        print("Not found User Info")
         return nil
     }
     
     public static func saveCurrentUser(user: UserDTO) {
+        userInfo = user
         if let encoded = try? JSONEncoder().encode(user) {
             UserDefaults.standard.set(encoded, forKey: Configuration.USER_INFO)
         }
     }
     
     public static func clearCurrentUser() {
+        userInfo = nil
         UserDefaults.standard.removeObject(forKey: Configuration.USER_INFO)
     }
     

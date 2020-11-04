@@ -23,7 +23,6 @@ class WalletWireframe: MozoWireframe {
     func presentPINInterface(passPharse: String?, requestFrom module: Module = Module.Wallet,
                              recoverFromServerEncryptedPhrase : Bool = false,
                              enterNewPINToChangePIN: Bool = false) {
-        print("WalletWireframe - Present PIN Interface")
         let viewController = viewControllerFromStoryBoard(PINViewControllerIdentifier) as! PINViewController
         viewController.eventHandler = walletPresenter
         viewController.passPhrase = passPharse

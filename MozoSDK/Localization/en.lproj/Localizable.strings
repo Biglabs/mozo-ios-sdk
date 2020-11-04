@@ -27,6 +27,8 @@
 "promo_branch_count" = "and %d more location";
 "promo_branches_count" = "and %d more locations";
 "promo_branches_in_chain" = "Branches in chain-stores";
+"promo_branches_label" = "Branches";
+"promo_for_branches_label" = "Promotions for branches";
 
 "Address Book" = "Address Book";
 "Select Address" = "Select Address";
@@ -387,7 +389,7 @@
 "Maximum number of photos is %d" = "Maximum number of photos is %d";
 "Closing Hour must be later than Opening Hour" = "Closing Hour must be later than Opening Hour";
 "You do not have permission to do this action!" = "You do not have permission to do this action!";
-"Are you sure to logout" = "Are you sure to logout";
+"Are you sure to logout" = "Are you sure to logout?";
 "Ex: 1st Tony Moly event" = "Ex: 1st Tony Moly event";
 "Start" = "Start";
 "Currently" = "Currently";
@@ -570,7 +572,6 @@
 "Open hour must not be later than Close hour" = "Open hour must not be later than Close hour";
 "Close hour must be later than Open hour" = "Close hour must be later than Open hour";
 "You do not have permission to do this action!" = "You do not have permission to do this action!";
-"Are you sure to logout" = "Are you sure to logout";
 
 
 "You can only add a maximum of %d hashtags" = "You can only add a maximum of %d hashtags";

@@ -35,14 +35,14 @@ extension AuthInteractor: AuthManagerDelegate {
 extension AuthInteractor : AuthInteractorInput {
     // MARK: Callback from URL Scheme
     func processAuthorizationCallBackUrl(_ url: URL) {
-        NSLog("AuthInteractor - Process authorization callback url: \(url)")
+        "AuthInteractor - Process authorization callback url: \(url)".log()
         if authManager?.currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: url) ?? false {
             authManager?.setCurrentAuthorizationFlow(nil)
         } else {
             var urlString = Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH + "?redirect_uri=" + url.absoluteString
             urlString = urlString.replace("?state=", withString: "&state=")
             if let newURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!) {
-                NSLog("AuthInteractor - Reprocess authorization callback url: \(newURL)")
+                "AuthInteractor - Reprocess authorization callback url: \(newURL)".log()
                 if authManager?.currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: newURL) ?? false {
                     authManager?.setCurrentAuthorizationFlow(nil)
                 }
@@ -51,7 +51,7 @@ extension AuthInteractor : AuthInteractorInput {
     }
     
     func startRefreshTokenTimer() {
-        print("AuthInteractor - Start Refresh token timer")
+        "AuthInteractor - Start Refresh token timer".log()
         authManager?.setupRefreshTokenTimer()
     }
     
@@ -64,10 +64,11 @@ extension AuthInteractor : AuthInteractorInput {
     }
     
     func handleAuthorizationResponse(_ response: OIDAuthorizationResponse?, error: Error?) {
+        authManager?.setCurrentAuthorizationFlow(nil)
         if let response = response {
             let authState = OIDAuthState(authorizationResponse: response)
             authManager?.setAuthState(authState)
-            NSLog("AuthInteractor - Authorization response with code: \(response.authorizationCode ?? "DEFAULT_CODE")")
+            "AuthInteractor - Authorization response with code: \(response.authorizationCode ?? "DEFAULT_CODE")".log()
             _ = authManager?.codeExchange().done({ (accessToken) in
                 self.output?.finishedAuthenticate(accessToken: accessToken)
                 self.authManager?.setupRefreshTokenTimer()
@@ -75,8 +76,9 @@ extension AuthInteractor : AuthInteractorInput {
                 self.output?.errorWhileExchangeCode(error: error as? ConnectionError ?? .systemError, response: response)
             })
         } else {
-            NSLog("AuthInteractor - Authorization error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
+            "AuthInteractor - Authorization error: \(error?.localizedDescription ?? "DEFAULT_ERROR")".log()
             output?.cancelledAuthenticateByUser()
+            //authManager?.revokeRefreshTokenTimer()
         }
     }
     
@@ -100,11 +102,7 @@ extension AuthInteractor : AuthInteractorInput {
     }
     
     func buildLogoutRequest() {
-        _ = authManager?.buildLogoutRequestWithLoginRedirect().done({ (request) in
-            if let rq = request {
-                self.output?.finishBuildLogoutRequest(rq)
-            }
-        })
+        self.output?.finishBuildLogoutRequest()
     }
     
     func handleLogoutState() {

@@ -39,7 +39,6 @@ import UIKit
     }
     
     @IBAction func tapped(_ sender: Any) {
-        print("Tapped Mozo Button Login")
         if AccessTokenManager.getAccessToken() != nil {
             MozoSDK.logout()
         } else {

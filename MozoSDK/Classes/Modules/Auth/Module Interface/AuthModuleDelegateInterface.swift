@@ -19,4 +19,7 @@ protocol AuthModuleDelegate {
     func didRemoveTokenAndLogout()
     
     func didReceiveErrorWhileExchangingCode()
+    
+    func willExecuteNextStep()
+    func willRelaunchAuthentication()
 }

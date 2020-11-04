@@ -34,14 +34,14 @@ class CoreDataStore : NSObject {
     // MARK: User
     
     func countById(_ id: String) -> Int? {
-        let count = stack.fetchCount(From<ManagedUser>().where(\.id == id))
+        let count = try? stack.fetchCount(From<ManagedUser>().where(\.id == id))
         return count
     }
     
     func countWalletByUserId(_ id: String) -> Promise<Int> {
         return Promise { seal in
-            if let userEntity = stack.fetchOne(From<ManagedUser>().where(\.id == id)) {
-                let count = userEntity.wallets?.count ?? -1
+            if let entity = try? stack.fetchOne(From<ManagedUser>().where(\.id == id)), let user = entity {
+                let count = user.wallets?.count ?? -1
                 print("Wallets count: [\(count)]")
                 seal.fulfill(count)
             } else {
@@ -52,13 +52,13 @@ class CoreDataStore : NSObject {
     
     func getUserById(_ id: String) -> Promise<UserModel>{
         return Promise { seal in
-            if let userEntity = stack.fetchOne(From<ManagedUser>().where(\.id == id)) {
-                print("Wallets count: [\(userEntity.wallets?.count ?? -1)]")
-                let wallets : [WalletModel]? = userEntity.wallets?.map {
+            if let entity = try? stack.fetchOne(From<ManagedUser>().where(\.id == id)), let user = entity {
+                print("Wallets count: [\(user.wallets?.count ?? -1)]")
+                let wallets : [WalletModel]? = user.wallets?.map {
                     let wallet = $0 as! ManagedWallet
                     return WalletModel(address: wallet.address, privateKey: wallet.privateKey)
                 }
-                let userModel = UserModel(id: userEntity.id, mnemonic: userEntity.mnemonic, pin: userEntity.pin, wallets: NSSet(array: wallets!))
+                let userModel = UserModel(id: user.id, mnemonic: user.mnemonic, pin: user.pin, wallets: NSSet(array: wallets!))
                 seal.fulfill(userModel)
             } else {
                 seal.reject(ConnectionError.unknowError)
@@ -100,7 +100,7 @@ class CoreDataStore : NSObject {
     func updateUser(_ userModel: UserModel) -> Promise<Any?>{
         return Promise { seal in
             stack.perform(asynchronous: { (transaction) -> ManagedUser in
-                let userEntity = transaction.fetchOne(
+                let userEntity = try transaction.fetchOne(
                     From<ManagedUser>()
                         .where(\.id == userModel.id!)
                 )
@@ -124,7 +124,7 @@ class CoreDataStore : NSObject {
     func updateWallet(_ walletModel: WalletModel, toUser id: String) -> Promise<Any?>{
         return Promise { seal in
             stack.perform(asynchronous: { (transaction) -> ManagedUser in
-                let userEntity = transaction.fetchOne(
+                let userEntity = try transaction.fetchOne(
                     From<ManagedUser>()
                         .where(\.id == id)
                 )
@@ -150,7 +150,7 @@ class CoreDataStore : NSObject {
     func updatePrivateKeysOfWallet(_ walletModel: WalletModel) -> Promise<Bool>{
         return Promise { seal in
             stack.perform(asynchronous: { (transaction) -> ManagedWallet in
-                let walletEntity = transaction.fetchOne(
+                let walletEntity = try transaction.fetchOne(
                     From<ManagedWallet>()
                         .where(\.address == walletModel.address)
                 )
@@ -171,7 +171,7 @@ class CoreDataStore : NSObject {
     
     func getWalletByUserId(_ id: String) -> Promise<WalletModel>{
         return Promise { seal in
-            if let userEntity = stack.fetchOne(From<ManagedUser>().where(\.id == id)) {
+            if let userEntity = try stack.fetchOne(From<ManagedUser>().where(\.id == id)) {
                 print("Wallets count: [\(userEntity.wallets?.count ?? -1)]")
                 let wallets : [WalletModel]? = userEntity.wallets?.map {
                     let wallet = $0 as! ManagedWallet
@@ -186,7 +186,7 @@ class CoreDataStore : NSObject {
     
     func getWalletsByUserId(_ id: String) -> Promise<[WalletModel]>{
         return Promise { seal in
-            if let userEntity = stack.fetchOne(From<ManagedUser>().where(\.id == id)) {
+            if let userEntity = try stack.fetchOne(From<ManagedUser>().where(\.id == id)) {
                 print("Wallets count: [\(userEntity.wallets?.count ?? -1)]")
                 let wallets : [WalletModel]? = userEntity.wallets?.map {
                     let wallet = $0 as! ManagedWallet
@@ -200,7 +200,7 @@ class CoreDataStore : NSObject {
     }
     
     func getAllUsers() {
-        if let list = stack.fetchAll(From<ManagedUser>()) {
+        if let list = try? stack.fetchAll(From<ManagedUser>()) {
             print("User count: [\(list.count)]")
             for item in list {
                 let userModel = UserModel(id: item.id, mnemonic: item.mnemonic, pin: item.pin, wallets: NSSet(array: []))

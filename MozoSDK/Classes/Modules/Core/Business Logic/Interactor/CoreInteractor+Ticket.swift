@@ -14,11 +14,11 @@ extension CoreInteractor {
     }
     
     func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO> {
-        return apiManager.getParkingTicketByStoreId(storeId: storeId, isIn: isIn)
+        return apiManager.getParkingTicketByStoreId(id: storeId, isIn: isIn)
     }
     
     func getParkingTicketByStoreId(storeId: Int64) -> Promise<TicketDTO> {
-        return apiManager.getParkingTicketByStoreId(storeId: storeId)
+        return apiManager.getParkingTicketByStoreId(id: storeId)
     }
         
     func renewParkingTicket(id: Int64, vehicleTypeKey: String, isIn: Bool) -> Promise<TicketDTO> {

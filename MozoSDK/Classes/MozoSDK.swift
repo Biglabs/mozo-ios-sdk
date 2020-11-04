@@ -513,4 +513,8 @@ public class MozoSDK {
     public static func sendMessage(id: Int64, message: String?, images: [String]?, userSend: Bool) -> Promise<Any> {
         return moduleDependencies.sendMessage(id: id, message: message, images: images, userSend: userSend)
     }
+    
+    internal static func network() -> MozoNetwork {
+        return moduleDependencies.network
+    }
 }

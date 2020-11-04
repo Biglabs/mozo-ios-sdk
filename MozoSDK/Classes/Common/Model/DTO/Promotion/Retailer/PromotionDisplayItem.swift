@@ -27,6 +27,7 @@ public class PromotionDisplayItem {
     public var remainingNumber: Int
     public var specialLucky: Bool = false
     public var applyManyBranch: Bool = false
+    public var applyBranches: [BranchInfoDTO]?
     public var countOtherBranches: Int = 0
     
     public init() {
@@ -70,6 +71,7 @@ public class PromotionDisplayItem {
         self.remainingNumber = promotionDTO.remainingNumber ?? 0
         self.specialLucky = promotionDTO.specialLucky == true
         self.applyManyBranch = promotionDTO.applyManyBranch == true || promotionDTO.isManyBranch == true
+        self.applyBranches = promotionDTO.applyBranches
         self.countOtherBranches = promotionDTO.countOtherBranches ?? promotionDTO.applyBranchIds?.count ?? 0
     }
     
@@ -230,6 +232,15 @@ public class PromotionDisplayItem {
     public var distanceText: String {
         if applyManyBranch, countOtherBranches > 0 {
             let count = countOtherBranches
+            return (count > 1 ? "promo_branches_count" : "promo_branch_count").localizedFormat(count)
+        } else {
+            return "%dm away".localizedFormat(0)
+        }
+    }
+    
+    public var distanceTextPreview: String {
+        let count = countOtherBranches - 1
+        if applyManyBranch, count > 0 {
             return (count > 1 ? "promo_branches_count" : "promo_branch_count").localizedFormat(count)
         } else {
             return "%dm away".localizedFormat(0)

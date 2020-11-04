@@ -80,7 +80,7 @@ class ModuleDependencies {
     
     func isNetworkReachable() -> Bool {
         if let reachability = coreWireframe.corePresenter?.reachability {
-            return reachability.connection != .unavailable
+            return reachability.connection != .none
         }
         return false
     }
@@ -97,6 +97,7 @@ class ModuleDependencies {
     }
     
     func logout() {
+        authWireframe.authPresenter?.logoutWillBePerformed()
         coreWireframe.requestForLogout()
     }
     

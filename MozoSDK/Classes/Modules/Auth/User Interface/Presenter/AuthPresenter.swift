@@ -14,10 +14,6 @@ class AuthPresenter : NSObject {
     var authModuleDelegate : AuthModuleDelegate?
     
     var retryOnResponse: OIDAuthorizationResponse?
-    
-    var isLoggingOut = false
-    
-//    var logoutQueue = DispatchQueue(label: "logoutQueue", attributes: .concurrent)
         
     func startRefreshTokenTimer() {
         authInteractor?.startRefreshTokenTimer()
@@ -44,14 +40,8 @@ extension AuthPresenter : AuthModuleInterface {
     }
     
     func performLogout() {
-        // TODO: Avoid race condition here using logout queue
-//        logoutQueue.async(flags: .barrier) {
-//        }
-        //if !isLoggingOut {
-            isLoggingOut = true
-            clearAllSessionData()
-            authInteractor?.buildLogoutRequest()
-        //}
+        clearAllSessionData()
+        authInteractor?.buildLogoutRequest()
     }
 }
 
@@ -81,20 +71,9 @@ extension AuthPresenter : AuthInteractorOutput {
     }
     
     func finishedBuildAuthRequest(_ request: OIDAuthorizationRequest) {
-        // FIX ME: Figure out why we crash here
-        // performs authentication request
-        NSLog("AuthPresenter - Initiating authorization request with scope: \(request.scope ?? "DEFAULT_SCOPE")")
         let viewController = DisplayUtils.getTopViewController()
-        
-        if let authViewController = viewController,
-            let klass = DisplayUtils.getAuthenticationClass(),
-            authViewController.isKind(of: klass) {
-            print("AuthPresenter - Authentication screen is being displayed.")
-            return
-        }
-        NSLog("AuthPresenter - Top view controller [\(String(describing: viewController.self))] will be used to perform authentication request.")
-        // performs authentication request
         let currentAuthorizationFlow = OIDAuthorizationService.present(request, presenting: viewController!) { (response, error) in
+            self.authModuleDelegate?.willExecuteNextStep()
             self.authInteractor?.handleAuthorizationResponse(response, error: error)
         }
         authInteractor?.setCurrentAuthorizationFlow(currentAuthorizationFlow)
@@ -110,27 +89,37 @@ extension AuthPresenter : AuthInteractorOutput {
     }
     
     func cancelledAuthenticateByUser() {
-        NSLog("AuthPresenter - Cancelled authenticate by user")
         authModuleDelegate?.authModuleDidCancelAuthentication()
     }
     
-    func finishBuildLogoutRequest(_ request: OIDAuthorizationRequest) {
-        // performs logout request
-        NSLog("AuthPresenter - Initiating logout request with scope: \(request.scope ?? "DEFAULT_SCOPE")")
-        let viewController = DisplayUtils.getTopViewController()
-        // performs logout request
-        let currentAuthorizationFlow = OIDAuthorizationService.present(request, presenting: viewController!) { (response, error) in
-            print("AuthPresenter - Finish present logout, error: [\(String(describing: error))]")
-            self.isLoggingOut = false
-            if error != nil {
-                self.authModuleDelegate?.authModuleDidCancelLogout()
-            } else {
-                // TODO: Must wait for AppAuth WebViewController display.
-                self.authInteractor?.clearAllAuthSession()
-                self.authModuleDelegate?.authModuleDidFinishLogout()
+    func finishBuildLogoutRequest() {
+        let issuer = URL(string: Configuration.AUTH_ISSSUER)
+        OIDAuthorizationService.discoverConfiguration(forIssuer: issuer!) { configuration, error in
+            let redirectURI = URL(string: Configuration.authRedirectURL())
+            guard let idToken = AuthDataManager.loadIdToken() else { return }
+            let request = OIDEndSessionRequest(
+                configuration: configuration!,
+                idTokenHint: idToken,
+                postLogoutRedirectURL: redirectURI!,
+                additionalParameters: nil
+            )
+            let viewController = DisplayUtils.getTopViewController()
+            guard let userAgent = OIDExternalUserAgentIOS(presenting: viewController!) else { return }
+            
+            
+            // performs logout request
+            let currentAuthorizationFlow = OIDAuthorizationService.present(request, externalUserAgent: userAgent) { (response, error) in
+                if error != nil {
+                    self.authModuleDelegate?.authModuleDidCancelLogout()
+                } else {
+                    self.authInteractor?.clearAllAuthSession()
+                    self.authModuleDelegate?.authModuleDidFinishLogout()
+                    self.authModuleDelegate?.willExecuteNextStep()
+                    self.authModuleDelegate?.willRelaunchAuthentication()
+                }
             }
+            self.authInteractor?.setCurrentAuthorizationFlow(currentAuthorizationFlow)
         }
-        authInteractor?.setCurrentAuthorizationFlow(currentAuthorizationFlow)
     }
     
     func finishLogout() {

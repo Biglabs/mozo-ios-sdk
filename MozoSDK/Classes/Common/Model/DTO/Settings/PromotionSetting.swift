@@ -71,10 +71,6 @@ public class PromotionSettingDTO : ResponseObjectSerializable {
         return json
     }
     
-    public func canCreatePromo4All() -> Bool {
-        return canCreateMultiBranch == true && availableBranches != nil && availableBranches!.count > 0
-    }
-    
     public func defaultMozoAmount() -> Double {
         let decimals = SessionStoreManager.tokenInfo?.decimals ?? 2
         return numberMozoXRequire?.convertOutputValue(decimal: decimals) ?? 0

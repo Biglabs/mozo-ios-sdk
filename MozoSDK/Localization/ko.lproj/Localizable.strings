@@ -27,6 +27,8 @@
 "promo_branch_count" = "그리고 %d개 위치 더";
 "promo_branches_count" = "그리고 %d개 위치 더";
 "promo_branches_in_chain" = "체인점의 지점";
+"promo_branches_label" = "분기";
+"promo_for_branches_label" = "지점 프로모션";
 
 "Address Book" = "주소록";
 "Select Address" = "주소 선택";
@@ -570,7 +572,6 @@
 "Open hour must not be later than Close hour" = "오픈 시간은 닫는 시간보다 더 크면 안 됩니다.";
 "Close hour must be later than Open hour" = "닫는 시간은 오픈 시간보다 더 켜야합니다.";
 "You do not have permission to do this action!" = "이 작업을 수행 할 수있는 권한이 없습니다.";
-"Are you sure to logout" = "로그 아웃 하시겠습니까?";
 
 
 "You can only add a maximum of %d hashtags" = "최대 해시 태그 %d 개만 추가 할 수 있습니다.";
