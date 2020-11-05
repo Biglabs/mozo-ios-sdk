@@ -29,6 +29,7 @@ extension CorePresenter : AuthModuleDelegate {
         // Notify for all observing objects
         coreInteractor?.notifyLogoutForAllObservers()
         stopSilentServices(shouldReconnect: false)
+        MozoSDK.logout()
     }
     
     func authModuleDidFinishAuthentication(accessToken: String?) {
