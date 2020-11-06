@@ -46,8 +46,9 @@ class RootWireframe : NSObject {
     let mozoNavigationController = MozoNavigationController()
     
     func showRootViewController(_ viewController: UIViewController, inWindow: UIWindow) {
-        mozoNavigationController.viewControllers = [viewController]
         mozoNavigationController.modalPresentationStyle = .fullScreen
+        mozoNavigationController.pushViewController(viewController, animated: true)
+        
         if inWindow.rootViewController != nil {
             let topController = DisplayUtils.getTopViewController()
             if let controller = topController, let klass = DisplayUtils.getAuthenticationClass(), controller.isKind(of: klass) {
@@ -65,7 +66,7 @@ class RootWireframe : NSObject {
     }
     
     func displayViewController(_ viewController: UIViewController) {
-        print("RootWireframe - Present \(viewController.self)")
+        "RootWireframe - Present \(viewController.self)".log()
         if mozoNavigationController.viewControllers.count > 0 || DisplayUtils.getTopViewController() is MozoNavigationController {
             // Need to call override function to push view controller
             var viewControllers : [UIViewController] = mozoNavigationController.viewControllers

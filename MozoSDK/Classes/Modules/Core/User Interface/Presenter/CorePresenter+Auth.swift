@@ -56,7 +56,7 @@ extension CorePresenter : AuthModuleDelegate {
     func checkToDismissAccessDeniedIfNeed() {
         if let topViewController = DisplayUtils.getTopViewController() {
             if let klass = DisplayUtils.getAuthenticationClass(), topViewController.isKind(of: klass) {
-                print("CorePresenter - Access denied screen is being displayed.")
+                "CorePresenter - Authentication screen is being displayed.".log()
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
                     self.checkToDismissAccessDeniedIfNeed()
                 }

@@ -8,7 +8,7 @@
 import Foundation
 extension WalletWireframe {
     func processInitialWallet(isCreateNew : Bool = false) {
-        presentWalletProcessingInterface(isCreateNew: isCreateNew)
+        //presentWalletProcessingInterface(isCreateNew: isCreateNew)
         walletPresenter?.processInitialWalletInterfaceAutomatically(isCreateNew: isCreateNew)
     }
     
