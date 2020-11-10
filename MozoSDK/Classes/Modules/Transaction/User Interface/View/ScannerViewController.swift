@@ -8,26 +8,31 @@
 import Foundation
 import AVFoundation
 import UIKit
-protocol ScannerViewControllerDelegate {
+public protocol ScannerViewControllerDelegate {
     func didReceiveValueFromScanner(_ value: String)
 }
-class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOutputObjectsDelegate {
-    var delegate: ScannerViewControllerDelegate?
+public class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOutputObjectsDelegate {
+    public var delegate: ScannerViewControllerDelegate?
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
-
-    override func viewDidLoad() {
+    
+    public override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .black
+        self.createBackButton()
+        
         captureSession = AVCaptureSession()
 
-        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
+        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
+            failed()
+            return
+        }
         let videoInput: AVCaptureDeviceInput
 
         do {
             videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
         } catch {
+            failed()
             return
         }
 
@@ -56,27 +61,43 @@ class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOutputObj
         view.layer.addSublayer(previewLayer)
 
         captureSession.startRunning()
-        
-        self.createBackButton()
     }
 
     func createBackButton() {
-        let frame = CGRect(x: 19, y: view.frame.size.height - 27, width: 65, height: 18)
-        let backView = UIView(frame: frame)
+        let bottomPadding: CGFloat = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        let bottomOffset: CGFloat = 50 + bottomPadding * 0.5
         
-        let imageFrame = CGRect(x: 0, y: 0, width: 19, height: 15)
+        let parentWidth: CGFloat = 130
+        let parentHeight: CGFloat = 45
+        
+        let frame = CGRect(
+            x: view.frame.size.width / 2 - parentWidth / 2,
+            y: view.frame.size.height - bottomPadding - bottomOffset - parentHeight,
+            width: parentWidth,
+            height: parentHeight
+        )
+        let backView = UIView(frame: frame)
+        backView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.4)
+        backView.roundedCircle()
+        
+        let textWidth: CGFloat = 50
+        let textPadding: CGFloat = 9
+        
+        let imageWidth: CGFloat = 22.8
+        let imageHeight: CGFloat = 18
+        let imageFrame = CGRect(x: parentWidth / 2 - (imageWidth + textPadding + textWidth) / 2, y: parentHeight / 2 - imageHeight / 2, width: imageWidth, height: imageHeight)
         let imageView = UIImageView(frame: imageFrame)
         imageView.image = UIImage(named: "ic_left_arrow_white", in: BundleManager.mozoBundle(), compatibleWith: nil)
         backView.addSubview(imageView)
         
-        let lbFrame = CGRect(x: imageFrame.size.width + 9, y: 0, width: 65, height: 18)
-        let label = UILabel(frame: lbFrame)
+        let label = UILabel(frame: CGRect(x: imageFrame.maxX + textPadding, y: imageFrame.minY, width: textWidth, height: imageHeight))
+        label.adjustsFontSizeToFitWidth = true
+        label.adjustsFontForContentSizeCategory = true
         label.text = "Back".localized
-        label.font = UIFont.systemFont(ofSize: 15)
+        //        label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = .white
         backView.addSubview(label)
         
-        backView.backgroundColor = .clear
         view.addSubview(backView)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.back))
@@ -87,30 +108,33 @@ class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOutputObj
 
     func failed() {
         let ac = UIAlertController(title: "Scanning not supported".localized, message: "Your device does not support scanning a code from an item.\nPlease use a device with a camera.".localized, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK".localized, style: .default))
-        present(ac, animated: true)
-        captureSession = nil
+        ac.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { _ in
+            self.back()
+        }))
+        DispatchQueue.main.async {
+             self.present(ac, animated: true, completion: nil)
+        }
     }
-
-    override func viewWillAppear(_ animated: Bool) {
+    
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         if (captureSession?.isRunning == false) {
             captureSession.startRunning()
         }
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
+    
+    public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
         if (captureSession?.isRunning == true) {
             captureSession.stopRunning()
         }
+        captureSession = nil
     }
-
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+    
+    public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         captureSession.stopRunning()
-
+        
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
@@ -120,15 +144,17 @@ class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOutputObj
             }
             return
         }
-
+        
         back()
     }
-
+    
     @objc func back() {
-        self.dismiss(animated: true)
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
+    
+    public override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
