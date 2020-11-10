@@ -515,6 +515,6 @@ public class MozoSDK {
     }
     
     internal static func network() -> MozoNetwork {
-        return moduleDependencies.network
+        return moduleDependencies?.network ?? .TestNet
     }
 }

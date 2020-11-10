@@ -626,6 +626,7 @@
 "error_invalid_total_amount" = "Số Mozo Airdrop lớn hơn số dư khả dụng. Xin kiểm tra lại thông tin.";
 "error_invalid_per_customer_amount" = "Số điểm thưởng Mozo Airdrop cho mỗi khách không hợp lệ. Xin kiểm tra lại thông tin.";
 "error_input_number_of_shopper_out_of_range" = "\'%@\' vượt quá giới hạn cho phép của hệ thống (%@ - %@)";
+"error_temporary_suspend" = "Tính năng này tạm thời bị khóa. Sẽ khả dụng sớm trong đợt phát hành tới. Xin vui lòng theo dõi những cập nhật của chúng tôi trên kho Ứng dụng.";
 
 "Something is wrong with your account status. Please try again." = "Có lỗi xảy ra. Xin thử lại";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "Tài khoản ví đã được cập nhật nhưng chưa đồng bộ với thiết bị đang dùng. Xin khôi phục lại ví trước khi bắt đầu.";
@@ -673,11 +674,7 @@
 "Your phone number" = "Số điện thoại";
 "Coming soon" = "Sắp ra mắt";
 "Under Construction" = "Đang phát triển";
-"Info" = "Thông báo";
-"Your name" = "Tên";
-"Your phone number" = "Số điện thoại";
 "Action Complete" = "Thao tác hoàn tất";
-"Coming soon" = "Sắp ra mắt";
 "Foot Traffic" = "Số lượt khách hàng";
 "%@ Coin" = "%@ Coin";
 "To select photo from library." = "Để chọn ảnh trong điện thoại.";

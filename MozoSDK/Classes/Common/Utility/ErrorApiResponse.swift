@@ -14,6 +14,7 @@ public enum ErrorApiResponse: String {
     case INVALID_REQUEST = "INVALID_REQUEST"
     case MAINTAINING = "MAINTAINING"
     case UPDATE_VERSION_REQUIREMENT = "UPDATE_VERSION_REQUIREMENT"
+    case TEMPORARILY_SUSPENDED = "TEMPORARILY_SUSPENDED"
     
     // STORE
     case STORE_UNREGISTERED = "STORE_UNREGISTERED"
@@ -119,6 +120,7 @@ public enum ErrorApiResponse: String {
         case .INVALID_USER_TOKEN: return "Your session has expired. Please login again"
         case .INVALID_REQUEST: return "error_fatal"
         case .MAINTAINING: return rawValue
+        case .TEMPORARILY_SUSPENDED: return "error_temporary_suspend"
             
         case .SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS: return "Your wallet was updated but did not sync with your current device. Please restore your wallet first."
         case .SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS: return "The destination wallet was not found. Please recheck the wallet address or try another wallet address"
@@ -217,6 +219,7 @@ public enum ErrorApiResponse: String {
         case .INVALID_REQUEST: return .apiError_INVALID_REQUEST
         case .MAINTAINING: return .apiError_MAINTAINING
         case .UPDATE_VERSION_REQUIREMENT: return .apiError_UPDATE_VERSION_REQUIREMENT
+        case .TEMPORARILY_SUSPENDED: return .apiError_TEMPORARILY_SUSPENDED
             
         case .SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS:
             return .apiError_SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS

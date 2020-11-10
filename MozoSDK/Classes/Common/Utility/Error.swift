@@ -25,6 +25,7 @@ public enum ConnectionError: Error {
     case apiError_INVALID_REQUEST
     case apiError_MAINTAINING
     case apiError_UPDATE_VERSION_REQUIREMENT
+    case apiError_TEMPORARILY_SUSPENDED
     
     case apiError_SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS
     case apiError_SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS
@@ -146,6 +147,7 @@ public enum ConnectionError: Error {
         case .apiError_INVALID_REQUEST: return .INVALID_REQUEST
         case .apiError_MAINTAINING: return .MAINTAINING
         case .apiError_UPDATE_VERSION_REQUIREMENT: return .UPDATE_VERSION_REQUIREMENT
+        case .apiError_TEMPORARILY_SUSPENDED: return .TEMPORARILY_SUSPENDED
             
         case .apiError_SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS:
             return .SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS

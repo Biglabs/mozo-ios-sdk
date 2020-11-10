@@ -113,8 +113,8 @@ extension CoreInteractor: ApiManagerDelegate {
         output?.didReceiveDeactivated(error: error)
     }
     
-    func didReceiveRequireUpdate() {
+    func didReceiveRequireUpdate(type: ErrorApiResponse) {
         print("CoreInteractor - Did receive maintenance")
-        output?.didReceiveRequireUpdate()
+        output?.didReceiveRequireUpdate(type: type)
     }
 }

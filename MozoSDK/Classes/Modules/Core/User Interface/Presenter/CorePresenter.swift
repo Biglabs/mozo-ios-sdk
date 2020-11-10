@@ -23,6 +23,7 @@ class CorePresenter : NSObject {
     var requestingABModule: Module?
     
     internal var isProcessing = false
+    internal var alertController: UIAlertController? = nil
     
     override init() {
         super.init()
@@ -348,8 +349,17 @@ extension CorePresenter : CoreInteractorOutput {
         DisplayUtils.displayAccessDeniedScreen()
     }
     
-    func didReceiveRequireUpdate() {
-        DisplayUtils.displayUpdateRequireScreen()
+    func didReceiveRequireUpdate(type: ErrorApiResponse) {
+        if type == .UPDATE_VERSION_REQUIREMENT {
+            DisplayUtils.displayUpdateRequireScreen()
+            
+        } else if alertController == nil, let viewController = DisplayUtils.getTopViewController() {
+            alertController = UIAlertController(title: "Info".localized, message: type.description.localized, preferredStyle: UIAlertController.Style.alert)
+            alertController!.addAction(UIAlertAction(title: "OK".localized, style: UIAlertAction.Style.cancel, handler: { action in
+                self.alertController = nil
+            }))
+            viewController.present(alertController!, animated: true, completion: nil)
+        }
     }
 }
 

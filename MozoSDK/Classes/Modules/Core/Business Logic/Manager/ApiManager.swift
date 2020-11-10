@@ -101,7 +101,12 @@ public class ApiManager {
     }
     
     func executeWithoutToken(_ method: Alamofire.HTTPMethod, url: String, parameters: Any? = nil) -> Promise<[String: Any]> {
-        print("Execute url: " + url)
+        #if DEBUG
+        print("--> \(method.rawValue) \(url)\n NO TOKEN")
+        if let json = parameters as? Dictionary<String, Any> {
+            print("params: \(String(describing: json))")
+        }
+        #endif
         let headers = self.buildHTTPHeaders(withToken: false)
         return self.execute(method, url: url, headers: headers, body: parameters!)
     }
@@ -165,7 +170,7 @@ public class ApiManager {
                             seal.reject(error)
                         })
                     case .failure(let error):
-                        print("Request failed with error: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))")
+                        "🔴 Request failed with error: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))".log()
                         let connectionError = self.checkResponse(response: response, error: error)
                         if connectionError == .authenticationRequired, let viewController = DisplayUtils.getTopViewController(), !viewController.isKind(of: WaitingViewController.self) {
                             self.delegate?.didReceiveAuthorizationRequired()
@@ -199,7 +204,7 @@ public class ApiManager {
                             seal.reject(error)
                         })
                     case .failure(let error):
-                        print("Request failed with error: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))")
+                        "🔴 Request failed: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))".log()
                         let connectionError = self.checkResponse(response: response, error: error)
                         if connectionError == .authenticationRequired, let viewController = DisplayUtils.getTopViewController(), !viewController.isKind(of: WaitingViewController.self) {
                             self.delegate?.didReceiveAuthorizationRequired()
@@ -222,15 +227,27 @@ public class ApiManager {
                     seal.fulfill(mozoResponse.data)
                 } else {
                     if let error = mozoResponse.error {
-                        NSLog("ApiManager - Request failed with error \(error), url: \(url)")
+                        "🔴 Request failed: \(error), url: \(url)".log()
                         if let errorEnum = ErrorApiResponse(rawValue: error) {
-                            if errorEnum == .INVALID_USER_TOKEN || errorEnum == .UNAUTHORIZED_ACCESS {
+                            switch errorEnum {
+                            case .INVALID_USER_TOKEN, .UNAUTHORIZED_ACCESS:
                                 delegate?.didReceiveInvalidToken()
-                            } else if errorEnum == .USER_DEACTIVATED || errorEnum == .SUB_ACCOUNT_DEACTIVATED {
+                                break
+                                
+                            case .USER_DEACTIVATED, .SUB_ACCOUNT_DEACTIVATED:
                                 delegate?.didReceiveDeactivated(error: errorEnum)
-                            } else if errorEnum == .UPDATE_VERSION_REQUIREMENT {
-                                delegate?.didReceiveRequireUpdate()
-                            } else {
+                                break
+                                
+                            case .UPDATE_VERSION_REQUIREMENT:
+                                delegate?.didReceiveRequireUpdate(type: errorEnum)
+                                break
+                                
+                            case .TEMPORARILY_SUSPENDED:
+                                delegate?.didReceiveRequireUpdate(type: .TEMPORARILY_SUSPENDED)
+                                seal.reject(errorEnum.connectionError)
+                                break
+                                
+                            default:
                                 if errorEnum == .MAINTAINING {
                                     self.delegate?.didReceiveMaintenance()
                                 }
@@ -265,7 +282,6 @@ public class ApiManager {
                 .responseJSON { response in
                     switch response.result {
                     case .success(let json):
-                        print("Response result value: \(json)")
                         guard let json = json as? [String: Any] else {
                             return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil))
                         }
@@ -275,7 +291,7 @@ public class ApiManager {
                             seal.reject(error)
                         })
                     case .failure(let error):
-                        print("Request failed with error: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))")
+                        "🔴 Request failed: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))".log()
                         let connectionError = self.checkResponse(response: response, error: error)
                         if connectionError == .authenticationRequired, let viewController = DisplayUtils.getTopViewController(), !viewController.isKind(of: WaitingViewController.self) {
                             self.delegate?.didReceiveAuthorizationRequired()

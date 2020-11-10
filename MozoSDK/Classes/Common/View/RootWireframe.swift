@@ -53,20 +53,25 @@ class RootWireframe : NSObject {
             let topController = DisplayUtils.getTopViewController()
             if let controller = topController, let klass = DisplayUtils.getAuthenticationClass(), controller.isKind(of: klass) {
                 controller.dismiss(animated: false, completion: nil)
+                
+                "RootWireframe - topController == getAuthenticationClass".log()
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     let contrl = DisplayUtils.getTopViewController()
+                    "RootWireframe - asyncAfter, \(String(describing: contrl.self))".log()
                     contrl?.present(self.mozoNavigationController, animated: true, completion: nil)
                 }
             } else {
+                "RootWireframe - \(String(describing: topController.self)) != getAuthenticationClass".log()
                 topController?.present(mozoNavigationController, animated: true, completion: nil)
             }
         } else {
+            "RootWireframe - inWindow.rootViewController == nil".log()
             inWindow.rootViewController = mozoNavigationController
         }
     }
     
     func displayViewController(_ viewController: UIViewController) {
-        "RootWireframe - Present \(viewController.self)".log()
         if mozoNavigationController.viewControllers.count > 0 || DisplayUtils.getTopViewController() is MozoNavigationController {
             // Need to call override function to push view controller
             var viewControllers : [UIViewController] = mozoNavigationController.viewControllers

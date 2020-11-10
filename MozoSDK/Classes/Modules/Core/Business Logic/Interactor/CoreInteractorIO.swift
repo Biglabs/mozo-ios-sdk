@@ -43,7 +43,7 @@ protocol CoreInteractorOutput {
     func didDetectWalletInAutoMode(module: Module)
     
     func didReceiveDeactivated(error: ErrorApiResponse)
-    func didReceiveRequireUpdate()
+    func didReceiveRequireUpdate(type: ErrorApiResponse)
 }
 
 protocol CoreInteractorService {
