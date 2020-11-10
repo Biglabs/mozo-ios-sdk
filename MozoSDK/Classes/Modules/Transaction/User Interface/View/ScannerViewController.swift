@@ -19,7 +19,6 @@ public class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOu
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        self.createBackButton()
         
         captureSession = AVCaptureSession()
 
@@ -59,6 +58,7 @@ public class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOu
         previewLayer.frame = view.layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
         view.layer.addSublayer(previewLayer)
+        self.createBackButton()
 
         captureSession.startRunning()
     }
@@ -107,6 +107,8 @@ public class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOu
     }
 
     func failed() {
+        self.createBackButton()
+        
         let ac = UIAlertController(title: "Scanning not supported".localized, message: "Your device does not support scanning a code from an item.\nPlease use a device with a camera.".localized, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { _ in
             self.back()
