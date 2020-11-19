@@ -30,6 +30,8 @@
 "promo_branches_label" = "분기";
 "promo_for_branches_label" = "지점 프로모션";
 
+"btn_show_codes" = "코드 표시";
+
 "Address Book" = "주소록";
 "Select Address" = "주소 선택";
 "Select from Address Book" = "주소록에서 선택";

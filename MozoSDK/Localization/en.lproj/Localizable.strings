@@ -30,6 +30,8 @@
 "promo_branches_label" = "Branches";
 "promo_for_branches_label" = "Promotions for branches";
 
+"btn_show_codes" = "Show codes";
+
 "Address Book" = "Address Book";
 "Select Address" = "Select Address";
 "Select from Address Book" = "Select from Address Book";

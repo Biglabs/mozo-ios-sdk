@@ -30,6 +30,8 @@
 "promo_branches_label" = "Chi nhánh";
 "promo_for_branches_label" = "Khuyến mãi ở nhiều chi nhánh";
 
+"btn_show_codes" = "Hiện mã";
+
 "Address Book" = "Danh bạ";
 "Select Address" = "Chọn địa chỉ";
 "Select from Address Book" = "Chọn từ danh bạ";
