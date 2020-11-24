@@ -13,7 +13,7 @@ let RETAILER_ANALYTICS_RESOURCE_API_PATH = "/retailer/analytics"
 public extension ApiManager {
     func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_ANALYTICS_RESOURCE_API_PATH + "/home/v1"
+            let url = Configuration.BASE_STORE_URL + RETAILER_ANALYTICS_RESOURCE_API_PATH + "/home/v2"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
