@@ -473,6 +473,10 @@ public class MozoSDK {
         return moduleDependencies.getBranchById(branchId)
     }
     
+    public static func checkBranchName(_ name: String) -> Promise<Any> {
+        return moduleDependencies.checkBranchName(name)
+    }
+    
     public static func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
         return moduleDependencies.updateSalePerson(account: account)
     }

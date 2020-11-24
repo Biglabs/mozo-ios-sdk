@@ -201,6 +201,8 @@ protocol CoreInteractorService {
     
     func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO>
     
+    func checkBranchName(_ name: String) -> Promise<Any>
+    
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO>
     
     func syncAddressFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO>

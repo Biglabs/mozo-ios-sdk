@@ -629,6 +629,7 @@
 "error_invalid_per_customer_amount" = "Số điểm thưởng Mozo Airdrop cho mỗi khách không hợp lệ. Xin kiểm tra lại thông tin.";
 "error_input_number_of_shopper_out_of_range" = "\'%@\' vượt quá giới hạn cho phép của hệ thống (%@ - %@)";
 "error_temporary_suspend" = "Tính năng này tạm thời bị khóa. Sẽ khả dụng sớm trong đợt phát hành tới.\nXin vui lòng theo dõi những cập nhật của chúng tôi trên kho Ứng dụng.";
+"error_branch_name_existed" = "Chi nhánh tên %@ đã tồn tại. Xin vui lòng đặt tên khác.";
 
 "Something is wrong with your account status. Please try again." = "Có lỗi xảy ra. Xin thử lại";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "Tài khoản ví đã được cập nhật nhưng chưa đồng bộ với thiết bị đang dùng. Xin khôi phục lại ví trước khi bắt đầu.";
@@ -1372,7 +1373,7 @@
 "Add New Sub Account Successful" = "Thêm Tài khoản phụ thành công";
 "Location" = "Vị trí";
 "The location service to locate your input address is not available now. Please try again." = "Hệ thống định vị dùng để tìm vị trí của địa chỉ bạn nhập vào hiện tại không khả dụng. Xin vui lòng thử lại sau.";
-"Can not locate the location from your input address." = "Không thể định vị được vị trí cho địa chỉ mà bạn đã nhập";
+"error_can_not_fetch_location_from_address" = "Không thể định vị được vị trí cho địa chỉ mà bạn đã nhập.";
 "Synced to %@" = "Đã đồng bộ với địa chỉ %@";
 "Create New Branch Successful" = "Tạo mới Chi nhánh thành công";
 "Sync Location" = "Đồng bộ vị trí";

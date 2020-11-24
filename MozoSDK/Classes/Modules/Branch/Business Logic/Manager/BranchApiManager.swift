@@ -13,7 +13,7 @@ let RETAILER_BRANCH_API_PATH = "/retailer/branches"
 extension ApiManager {
     func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_BRANCH_API_PATH
+            let url = "\(Configuration.BASE_STORE_URL)/retailer/v1/branches"
             let param = branchInfo.toJSON()
             self.execute(.post, url: url, parameters: param)
                 .done { json -> Void in
@@ -38,7 +38,7 @@ extension ApiManager {
     
     func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_BRANCH_API_PATH + "/\(branchInfo.id ?? 0)"
+            let url = "\(Configuration.BASE_STORE_URL)/retailer/v1/branches/\(branchInfo.id ?? 0)"
             let param = branchInfo.toJSON()
             print("Request to update branch, param: \(param)")
             self.execute(.put, url: url, parameters: param)
@@ -151,4 +151,20 @@ extension ApiManager {
            }
        }
    }
+    
+    func checkBranchName(_ name: String) -> Promise<Any> {
+        return Promise { seal in
+            let url = "\(Configuration.BASE_STORE_URL)/retailer/branches/checkAvailableName"
+            var json = Dictionary<String, Any>()
+            json["name"] = name
+            
+            self.execute(.post, url: url, parameters: json)
+                .done { json -> Void in
+                    seal.fulfill(json)
+                }
+                .catch { error in
+                    seal.reject(error)
+                }
+        }
+    }
 }

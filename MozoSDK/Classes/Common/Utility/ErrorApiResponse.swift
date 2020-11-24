@@ -42,6 +42,8 @@ public enum ErrorApiResponse: String {
     case STORE_RETAILER_AIRDROP_TOTAL_NUM_MOZO_REACH_MAX = "STORE_RETAILER_AIRDROP_TOTAL_NUM_MOZO_REACH_MAX"
     case STORE_RETAILER_AIRDROP_NUM_SHOPPER_REACH_MAX = "STORE_RETAILER_AIRDROP_NUM_SHOPPER_REACH_MAX"
     
+    case STORE_BRANCH_NAME_ALREADY_EXISTED = "STORE_BRANCH_NAME_ALREADY_EXISTED"
+    
     case STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT = "STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT"
     case STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE = "STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE"
     
@@ -162,6 +164,8 @@ public enum ErrorApiResponse: String {
         case .STORE_RETAILER_AIRDROP_TOTAL_NUM_MOZO_REACH_MAX: return "Something is wrong with your account status. Please try again."
         case .STORE_RETAILER_AIRDROP_NUM_SHOPPER_REACH_MAX: return "error_input_number_of_shopper_out_of_range"
             
+        case .STORE_BRANCH_NAME_ALREADY_EXISTED: return "error_branch_name_existed"
+            
         case .STORE_ERROR_INPUT_DTO: return "error_fatal"
         case .STORE_ADDRESS_STATUS_PENDING: return "There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later."
         case .STORE_ADDRESS_SIGN_TRANSACTION_STATUS_PENDING: return "There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later."
@@ -274,6 +278,9 @@ public enum ErrorApiResponse: String {
         case .STORE_RETAILER_AIR_DROP_NOT_EXIST_ERROR: return .apiError_STORE_RETAILER_AIR_DROP_NOT_EXIST_ERROR
         case .STORE_RETAILER_AIRDROP_TOTAL_NUM_MOZO_REACH_MAX: return .apiError_STORE_RETAILER_AIRDROP_TOTAL_NUM_MOZO_REACH_MAX
         case .STORE_RETAILER_AIRDROP_NUM_SHOPPER_REACH_MAX: return .apiError_STORE_RETAILER_AIRDROP_NUM_SHOPPER_REACH_MAX
+            
+        case .STORE_BRANCH_NAME_ALREADY_EXISTED: return .apiError_STORE_BRANCH_NAME_ALREADY_EXISTED
+            
         case .STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT: return .apiError_STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT
         case .STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE: return .apiError_STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE
             

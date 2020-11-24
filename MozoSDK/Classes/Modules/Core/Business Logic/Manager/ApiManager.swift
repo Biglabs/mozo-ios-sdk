@@ -253,6 +253,8 @@ public class ApiManager {
                                 }
                                 seal.reject(errorEnum.connectionError)
                             }
+                        } else {
+                            seal.reject(ConnectionError.internalServerError)
                         }
                     }
                 }

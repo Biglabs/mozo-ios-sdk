@@ -366,6 +366,10 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getBranchById(branchId)
     }
     
+    func checkBranchName(_ name: String) -> Promise<Any> {
+        return apiManager.checkBranchName(name)
+    }
+    
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
         return apiManager.updateSalePerson(account: account)
     }

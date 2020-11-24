@@ -626,6 +626,7 @@
 "error_invalid_per_customer_amount" = "Incorrect amount of Mozo tokens to be airdropped to each Shopper visiting your store. Please check your input.";
 "error_input_number_of_shopper_out_of_range" = "\'%@\' is outside of the minimums %@ and maximums %@ allowed by our system.";
 "error_temporary_suspend" = "This feature is temporarily suspended.\It will be available soon in next release. Please check for our updates on App stores.";
+"error_branch_name_existed" = "Branch named %@ is already existed. Please choose another name.";
 
 "Something is wrong with your account status. Please try again." = "Something is wrong with your account status. Please try again.";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "Your wallet was updated but did not sync with your current device. Please restore your wallet first.";
@@ -1371,7 +1372,7 @@
 "Add New Sub Account Successful" = "Add New Sub Account Successful";
 "Location" = "Location";
 "The location service to locate your input address is not available now. Please try again." = "The location service to locate your input address is not available now. Please try again.";
-"Can not locate the location from your input address." = "Can not locate the location from your input address.";
+"error_can_not_fetch_location_from_address" = "Can not locate the location from your input address.";
 "Synced to %@" = "Synced to %@";
 "Create New Branch Successful" = "Create New Branch Successful";
 "Sync Location" = "Sync Location";

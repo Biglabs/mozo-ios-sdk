@@ -533,6 +533,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getBranchById(branchId))!
     }
     
+    func checkBranchName(_ name: String) -> Promise<Any> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.checkBranchName(name))!
+    }
+    
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateSalePerson(account: account))!
     }
