@@ -36,7 +36,6 @@ class PINViewController : MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureView()
     }
     
@@ -64,6 +63,11 @@ class PINViewController : MozoBasicViewController {
         }
         navigationController?.isNavigationBarHidden = false
         navigationItem.title = title.localized
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Cancel".localized,
+            style: UIBarButtonItemStyle.plain,
+            target: self, action: #selector(self.tapCancelBtn)
+        )
     }
     
     func configureView() {
@@ -164,6 +168,10 @@ class PINViewController : MozoBasicViewController {
     @IBAction func touchBtnForgot(_ sender: Any) {
         eventHandler?.displayResetPINInterface(requestFrom: moduleRequested)
     }
+    
+    @objc func tapCancelBtn() {
+        eventHandler?.cancel()
+    }
 }
 
 extension PINViewController: PinTextFieldDelegate {
@@ -172,8 +180,6 @@ extension PINViewController: PinTextFieldDelegate {
     }
     
     func textFieldValueChanged(_ textField: PinTextField) {
-        let value = textField.text ?? ""
-        print("value changed: \(value)")
     }
     
     func textFieldShouldEndEditing(_ textField: PinTextField) -> Bool {
@@ -312,7 +318,6 @@ private extension PINViewController {
     }
     
     func validationSuccess() {
-        print("😍 success!")
         statusImg.isHidden = false
         // Make sure status container view is not hidden
         statusContainerView.isHidden = false
@@ -328,12 +333,14 @@ private extension PINViewController {
     }
     
     func validationFail() {
-        print("😞 failure!")
         // Make sure status container view is not hidden
         statusContainerView.isHidden = false
         statusImg.isHidden = true
         statusLabel.isHidden = false
         statusLabel.text = "Incorrect Security PIN".localized
         statusLabel.textColor = ThemeManager.shared.error
+        
+        pinTextField.becomeFirstResponder()
+        pinTextField.text = ""
     }
 }

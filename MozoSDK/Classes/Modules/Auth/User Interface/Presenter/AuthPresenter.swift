@@ -109,13 +109,15 @@ extension AuthPresenter : AuthInteractorOutput {
             
             // performs logout request
             let currentAuthorizationFlow = OIDAuthorizationService.present(request, externalUserAgent: userAgent) { (response, error) in
-                if error != nil {
-                    self.authModuleDelegate?.authModuleDidCancelLogout()
-                } else {
+                if error == nil {
+                    "AuthPresenter - Logout success".log()
                     self.authInteractor?.clearAllAuthSession()
                     self.authModuleDelegate?.authModuleDidFinishLogout()
                     self.authModuleDelegate?.willExecuteNextStep()
                     self.authModuleDelegate?.willRelaunchAuthentication()
+                } else {
+                    "AuthPresenter - Logout failed".log()
+                    self.authModuleDelegate?.authModuleDidCancelLogout()
                 }
             }
             self.authInteractor?.setCurrentAuthorizationFlow(currentAuthorizationFlow)

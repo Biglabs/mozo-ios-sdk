@@ -76,22 +76,13 @@ class CorePresenter : NSObject {
     
     func handleInvalidTokenApiResponse() {
         print("CorePresenter - Handle invalid token from api response")
-        // TODO: Must check current view controller is kind of UIAlertViewController
-        //        if let topViewController = DisplayUtils.getTopViewController() {
-        //            NSLog("CorePresenter - Top view controller: \(topViewController.debugDescription)")
-        //        }
-        //        if !isLoggingOut {
         coreWireframe?.authWireframe?.clearAllSessionData()
         // Mozo Screens could be contained here.
         if (coreWireframe?.rootWireframe?.mozoNavigationController.viewControllers.count ?? 0) > 0 {
             // TODO: No need to close all mozo controllers from mozo navigation controller
             coreWireframe?.requestForCloseAllMozoUIs(completion: {
-                self.isProcessing = false
-                //                    self.authDelegate?.mozoUIDidCloseAll() // Back to Main
                 self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers() // Remove PIN text to retry
-                //                    self.coreWireframe?.requestForAuthentication()
-                //                    self.coreWireframe?.authWireframe?.presentLogoutInterface()
-                
+                self.isProcessing = false
                 self.authDelegate?.mozoDidExpiredToken()
             })
             
@@ -267,6 +258,11 @@ extension CorePresenter: WalletModuleDelegate {
             }
         }
         readyForGoingLive()
+    }
+    
+    func cancelFlow() {
+        self.isProcessing = false
+        requestForCloseAllMozoUIs()
     }
 }
 

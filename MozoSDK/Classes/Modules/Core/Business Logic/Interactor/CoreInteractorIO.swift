@@ -10,6 +10,7 @@ import PromiseKit
 import SwiftyJSON
 protocol CoreInteractorInput {
     func checkForAuthentication(module: Module)
+    func stopCheckTokenTimer()
     func handleAferAuth(accessToken: String?)
     func handleUserProfileAfterAuth()
     
