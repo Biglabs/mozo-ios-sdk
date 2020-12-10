@@ -27,6 +27,7 @@ class AuthManager : NSObject {
         didSet {
             authState = AuthDataManager.loadAuthState()
             if authState != nil {
+                reportToken()
                 checkAuthorization()
             }
         }
@@ -46,22 +47,19 @@ class AuthManager : NSObject {
         }
         "AuthManager - Setup refresh token timer.".log()
         let tokenExpiredAfterSeconds = network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : network == .DevNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV : TOKEN_EXPIRE_AFTER_SECONDS_FOR_STAG
-        var fireAt = Date().addingTimeInterval(TimeInterval(tokenExpiredAfterSeconds))
+        var fireAt = Date()
         if let accessTokenExpirationDate = self.authState?.lastTokenResponse?.accessTokenExpirationDate {
-            let expiresAt : Date = accessTokenExpirationDate
-            fireAt = expiresAt.addingTimeInterval(TimeInterval(-tokenExpiredAfterSeconds))
-        } else {
-            "Setup refresh token timer with out access token expiration date.".log()
+            "Token Expiration Time: \(accessTokenExpirationDate.description(with: .current))".log()
+            fireAt = accessTokenExpirationDate
         }
-        "Timer refresh token will be fire at: \(fireAt)".log()
+        fireAt = fireAt.addingTimeInterval(TimeInterval(-tokenExpiredAfterSeconds))
+        "Refresh token will be fire at: \(fireAt.description(with: .current))".log()
+        
         if fireAt > Date() {
-            "Setup refresh token timer, add to main run loop.".log()
             refreshTokenTimer = Timer(fireAt: fireAt, interval: 0, target: self, selector: #selector(fireRefreshToken), userInfo: nil, repeats: false)
             RunLoop.main.add(refreshTokenTimer!, forMode: .commonModes)
         } else {
-            print("Timer refresh token won't be fire at: \(fireAt), current date: \(Date())")
-            //            print("Refresh token timer directly.")
-            //            fireRefreshToken()
+            fireRefreshToken()
         }
     }
     
@@ -96,21 +94,27 @@ class AuthManager : NSObject {
         revokeRefreshTokenTimer()
     }
     
+    func reportToken() {
+        if let token = AccessTokenManager.getAccessToken(), !token.isEmpty {
+            _ = apiManager?.reportToken(token)
+        }
+    }
+    
     private func checkRefreshToken(_ completion: @escaping (_ success: Bool) -> Void) {
         let expiresAt : Date = authState?.lastTokenResponse?.accessTokenExpirationDate ?? Date()
-        "Check authorization, access token: \(authState?.lastTokenResponse?.accessToken ?? "NULL"), expires at: \(expiresAt), expires at time interval since now: \(expiresAt.timeIntervalSinceNow)".log()
+        "Check authorization, access token: \(authState?.lastTokenResponse?.accessToken ?? "NULL") \nexpires at: \(expiresAt), expires at time interval since now: \(expiresAt.timeIntervalSinceNow)".log()
         let tokenExpiredAfterSeconds = network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV
         if(expiresAt.timeIntervalSinceNow < TimeInterval(tokenExpiredAfterSeconds)) {
-            "Token expired, refresh token using: \(authState?.lastTokenResponse?.refreshToken ?? "NULL")".log()
             authState?.setNeedsTokenRefresh()
             authState?.performAction(freshTokens: { (accessToken, ic, error) in
                 if let error = error {
                     "Did refresh token, error: \(error), ic: \(ic ?? "NULL")".log()
                     completion(false)
                 } else {
-                    "Did refresh token, access token: \(self.authState?.lastTokenResponse?.accessToken ?? "NULL"), refresh token: \(self.authState?.lastTokenResponse?.refreshToken ?? "NULL"), expires at: \(String(describing: self.authState?.lastTokenResponse?.accessTokenExpirationDate))".log()
+                    "Did refresh token, access token: \(self.authState?.lastTokenResponse?.accessToken ?? "NULL") \nrefresh token: \(self.authState?.lastTokenResponse?.refreshToken ?? "NULL") \nexpires at: \(String(describing: self.authState?.lastTokenResponse?.accessTokenExpirationDate))".log()
                     AccessTokenManager.saveToken(self.authState?.lastTokenResponse?.accessToken)
                     AuthDataManager.saveAuthState(self.authState)
+                    self.reportToken()
                     completion(true)
                 }
             }, additionalRefreshParameters: nil)
@@ -120,7 +124,6 @@ class AuthManager : NSObject {
     }
     
     private func checkAuthorization() {
-        print("Check authorization, try request.")
         SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKING
         apiManager?.checkTokenExpired().done({ (result) in
             print("Did check token expired success.")

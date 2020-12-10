@@ -47,10 +47,10 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidCancelAuthentication() {
-        isProcessing = false
         "End process authModuleDidCancelAuthentication".log()
         requestForCloseAllMozoUIs()
         stopSilentServices(shouldReconnect: false)
+        isProcessing = false
     }
     
     func checkToDismissAccessDeniedIfNeed() {
@@ -76,9 +76,12 @@ extension CorePresenter : AuthModuleDelegate {
         coreInteractor?.notifyLogoutForAllObservers()
         requestForCloseAllMozoUIs()
         stopSilentServices(shouldReconnect: false)
+        isProcessing = false
+        coreInteractor?.stopCheckTokenTimer()
     }
     
     func authModuleDidCancelLogout() {
+        coreInteractor?.stopCheckTokenTimer()
         isProcessing = false
         "End process authModuleDidCancelLogout".log()
         stopSilentServices(shouldReconnect: false)

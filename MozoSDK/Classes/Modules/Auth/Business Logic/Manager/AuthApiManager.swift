@@ -10,23 +10,34 @@ import PromiseKit
 import SwiftyJSON
 
 let AUTH_CHECK_TOKEN_API_PATH = "/protocol/openid-connect/userinfo"
-public extension ApiManager {
-    public func checkTokenExpired() -> Promise<[String : Any]> {
+extension ApiManager {
+    func checkTokenExpired() -> Promise<[String : Any]> {
         return Promise { seal in
             let url = Configuration.AUTH_ISSSUER + AUTH_CHECK_TOKEN_API_PATH
             self.execute(.get, url: url)
                 .done { json -> Void in
-                    // JSON info
-                    print("Finish check token expired, json response: \(json)")
                     seal.fulfill(json)
                 }
                 .catch { error in
-                    print("Error check token expired: " + error.localizedDescription)
                     seal.reject(error)
                 }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
+        }
+    }
+    
+    func reportToken(_ token: String) -> Promise<Any> {
+        return Promise { seal in
+            "Report token \(token)".log()
+            let url = Configuration.BASE_HOST + "/store/api/public/tokenHistory/addTokenHistory"
+            let params = ["token" : token] as [String : Any]
+            self.execute(.post, url: url, parameters: params)
+                .done { json -> Void in
+                    "Report token isSuccessful: \(json)".log()
+                    seal.fulfill(json)
+                }
+                .catch { error in
+                    "Report token failed: \(error)".log()
+                    seal.reject(error)
+                }
         }
     }
 }

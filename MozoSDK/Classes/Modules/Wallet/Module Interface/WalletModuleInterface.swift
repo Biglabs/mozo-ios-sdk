@@ -10,7 +10,7 @@ import Foundation
 
 protocol WalletModuleInterface {
     func processInitialWalletInterface()
-    
+    func cancel()
     func generateMnemonics()
     func skipShowPassPharse(passPharse : String, requestedModule: Module)
     

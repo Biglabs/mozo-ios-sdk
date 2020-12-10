@@ -186,10 +186,8 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
     
     func setupButtonBorder() {
-        sendMozoView.roundCorners(cornerRadius: 0.149, borderColor: .white, borderWidth: 1)
-        sendMozoView.layer.cornerRadius = 18
-        paymentRequestView.roundCorners(cornerRadius: 0.149, borderColor: .white, borderWidth: 1)
-        paymentRequestView.layer.cornerRadius = 18
+        sendMozoView.roundedCircle()
+        paymentRequestView.roundedCircle()
         
         infoViewBorderWidthConstraint.constant = UIScreen.main.bounds.width - 26
         infoViewBorder.dropShadow()

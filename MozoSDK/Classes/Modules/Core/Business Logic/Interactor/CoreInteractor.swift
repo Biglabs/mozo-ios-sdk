@@ -227,18 +227,27 @@ extension CoreInteractor: CoreInteractorInput {
     }
     
     @objc func repeatCheckForAuthentication() {
-        if SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING {
+        let status = SafetyDataManager.shared.checkTokenExpiredStatus
+        "repeatCheckForAuthentication \(status.rawValue)".log()
+        if status != .CHECKING {
             "Continue with checking auth and wallet.".log()
-            checkTokenExpiredTimer?.invalidate()
-            checkTokenExpiredTimer = nil
+            stopCheckTokenTimer()
             self.checkAuthAndWallet(module: checkTokenExpiredModule!)
         }
     }
     
     func checkForAuthentication(module: Module) {
         "CoreInteractor - Check for authentication. Waiting for check token expired from Auth Module.".log()
+        stopCheckTokenTimer()
         checkTokenExpiredModule = module
         checkTokenExpiredTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.repeatCheckForAuthentication), userInfo: nil, repeats: true)
+    }
+    
+    func stopCheckTokenTimer() {
+        "CoreInteractor - STOP Check Token Timer".log()
+        SafetyDataManager.shared.checkTokenExpiredStatus = .IDLE
+        checkTokenExpiredTimer?.invalidate()
+        checkTokenExpiredTimer = nil
     }
     
     func handleAferAuth(accessToken: String?) {
