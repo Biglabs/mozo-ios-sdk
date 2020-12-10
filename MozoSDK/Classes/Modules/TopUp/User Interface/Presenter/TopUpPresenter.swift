@@ -72,6 +72,10 @@ extension TopUpPresenter: TopUpModuleInterface {
             self.topUpDelegate?.requestGetToken()
         })
     }
+    
+    func dismiss() {
+        wireframe?.dismissModuleInterface()
+    }
 }
 extension TopUpPresenter: TopUpConfirmModuleDelegate {
     func didConfirmTopUpTransaction(_ tx: TransactionDTO, tokenInfo: TokenInfoDTO) {

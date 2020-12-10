@@ -377,8 +377,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionListWithType(page: page, size: size, long: long, lat: lat, type: type))!
     }
     
-    func getPromotionRedeemInfo(promotionId: Int64) -> Promise<PromotionRedeemInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionRedeemInfo(promotionId: promotionId))!
+    func getPromotionRedeemInfo(promotionId: Int64, branchId: Int64) -> Promise<PromotionRedeemInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionRedeemInfo(promotionId: promotionId, branchId: branchId))!
     }
     
     func getBranchesInChain(promotionId: Int64, lat: Double, lng: Double) -> Promise<[BranchInfoDTO]> {

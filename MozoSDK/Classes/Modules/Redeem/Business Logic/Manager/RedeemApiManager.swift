@@ -9,9 +9,11 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 extension ApiManager {
-    public func getPromotionRedeemInfo(promotionId: Int64) -> Promise<PromotionRedeemInfoDTO> {
+    public func getPromotionRedeemInfo(promotionId: Int64, branchId: Int64) -> Promise<PromotionRedeemInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getInfoPromoRedeem/v2?promoId=\(promotionId)"
+            let url = Configuration.BASE_STORE_URL
+                + SHOPPER_PROMOTION_RESOURCE_API_PATH
+                + "/getInfoPromoRedeem/v2?promoId=\(promotionId)&branchId=\(branchId)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
