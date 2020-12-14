@@ -27,10 +27,10 @@ class AuthPresenter : NSObject {
         authInteractor?.processAuthorizationCallBackUrl(url)
     }
     
-    func logoutWillBePerformed() {
-        NSLog("AuthPresenter - Logout will be performed")
-        self.authInteractor?.clearAllAuthSession()
-        self.authModuleDelegate?.authModuleDidFinishLogout()
+    func logoutWillBePerformed(callback: (() -> Void)? = nil) {
+        "AuthPresenter - Logout will be performed".log()
+        clearAllSessionData()
+        self.authModuleDelegate?.authModuleDidFinishLogout(callback: callback)
     }
 }
 
@@ -112,9 +112,10 @@ extension AuthPresenter : AuthInteractorOutput {
                 if error == nil {
                     "AuthPresenter - Logout success".log()
                     self.authInteractor?.clearAllAuthSession()
-                    self.authModuleDelegate?.authModuleDidFinishLogout()
-                    self.authModuleDelegate?.willExecuteNextStep()
-                    self.authModuleDelegate?.willRelaunchAuthentication()
+                    self.authModuleDelegate?.authModuleDidFinishLogout {
+                        self.authModuleDelegate?.willExecuteNextStep()
+                        self.authModuleDelegate?.willRelaunchAuthentication()
+                    }
                 } else {
                     "AuthPresenter - Logout failed".log()
                     self.authModuleDelegate?.authModuleDidCancelLogout()

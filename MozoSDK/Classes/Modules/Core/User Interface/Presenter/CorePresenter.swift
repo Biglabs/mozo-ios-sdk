@@ -75,7 +75,7 @@ class CorePresenter : NSObject {
     }
     
     func handleInvalidTokenApiResponse() {
-        print("CorePresenter - Handle invalid token from api response")
+        "CorePresenter - Handle invalid token from api response, auth in process: \(self.isProcessing)".log()
         coreWireframe?.authWireframe?.clearAllSessionData()
         // Mozo Screens could be contained here.
         if (coreWireframe?.rootWireframe?.mozoNavigationController.viewControllers.count ?? 0) > 0 {
