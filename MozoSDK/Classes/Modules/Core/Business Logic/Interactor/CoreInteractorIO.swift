@@ -10,6 +10,7 @@ import PromiseKit
 import SwiftyJSON
 protocol CoreInteractorInput {
     func checkForAuthentication(module: Module)
+    func stopCheckTokenTimer()
     func handleAferAuth(accessToken: String?)
     func handleUserProfileAfterAuth()
     
@@ -43,7 +44,7 @@ protocol CoreInteractorOutput {
     func didDetectWalletInAutoMode(module: Module)
     
     func didReceiveDeactivated(error: ErrorApiResponse)
-    func didReceiveRequireUpdate()
+    func didReceiveRequireUpdate(type: ErrorApiResponse)
 }
 
 protocol CoreInteractorService {
@@ -129,7 +130,7 @@ protocol CoreInteractorService {
     
     func getShopperPromotionListWithType(page: Int, size: Int, long: Double, lat: Double, type: PromotionListTypeEnum) -> Promise<[PromotionStoreDTO]>
     
-    func getPromotionRedeemInfo(promotionId: Int64) -> Promise<PromotionRedeemInfoDTO>
+    func getPromotionRedeemInfo(promotionId: Int64, branchId: Int64) -> Promise<PromotionRedeemInfoDTO>
     
     func getBranchesInChain(promotionId: Int64, lat: Double, lng: Double) -> Promise<[BranchInfoDTO]>
     
@@ -200,6 +201,8 @@ protocol CoreInteractorService {
     func getRetailerInfoForLauching() -> Promise<[String: Any]>
     
     func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO>
+    
+    func checkBranchName(_ name: String) -> Promise<Any>
     
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO>
     

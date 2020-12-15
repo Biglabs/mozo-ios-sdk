@@ -10,7 +10,7 @@ import Foundation
 class AuthWireframe: MozoWireframe {
     var authPresenter : AuthPresenter?
     
-    func presentInitialAuthInterface(){
+    func presentInitialAuthInterface() {
         authPresenter?.performAuthentication()
     }
     

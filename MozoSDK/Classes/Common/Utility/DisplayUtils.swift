@@ -28,6 +28,7 @@ public class DisplayUtils {
         
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
             filter.setValue(data, forKey: "inputMessage")
+            filter.setValue("H", forKey: "inputCorrectionLevel")
             let transform = CGAffineTransform(scaleX: 9, y: 9)
             
             if let output = filter.outputImage?.transformed(by: transform) {
@@ -277,5 +278,13 @@ public class DisplayUtils {
             className = "SFSafariViewController"
         }
         return NSClassFromString(className)
+    }
+    
+    public static func isAuthenticationOnTop() -> Bool {
+         if let topViewController = getTopViewController(), let klass = getAuthenticationClass(), topViewController.isKind(of: klass) {
+            return true
+         } else {
+            return false
+         }
     }
 }

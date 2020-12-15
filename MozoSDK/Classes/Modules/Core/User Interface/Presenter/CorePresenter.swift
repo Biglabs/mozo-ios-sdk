@@ -23,7 +23,8 @@ class CorePresenter : NSObject {
     var requestingABModule: Module?
     
     internal var isProcessing = false
-
+    internal var alertController: UIAlertController? = nil
+    
     override init() {
         super.init()
         initSilentServices()
@@ -68,46 +69,9 @@ class CorePresenter : NSObject {
     func handleAccessRemoved() {
         print("CorePresenter - Handle processed after account's access removed")
         SessionStoreManager.isAccessDenied = true
-
+        
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-    }
-    
-    func handleInvalidTokenApiResponse() {
-        print("CorePresenter - Handle invalid token from api response")
-        // TODO: Must check current view controller is kind of UIAlertViewController
-//        if let topViewController = DisplayUtils.getTopViewController() {
-//            NSLog("CorePresenter - Top view controller: \(topViewController.debugDescription)")
-//        }
-//        if !isLoggingOut {
-            coreWireframe?.authWireframe?.clearAllSessionData()
-            // Mozo Screens could be contained here.
-            if (coreWireframe?.rootWireframe?.mozoNavigationController.viewControllers.count ?? 0) > 0 {
-                // TODO: No need to close all mozo controllers from mozo navigation controller
-                coreWireframe?.requestForCloseAllMozoUIs(completion: {
-//                    self.authDelegate?.mozoUIDidCloseAll() // Back to Main
-                    self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers() // Remove PIN text to retry
-//                    self.coreWireframe?.requestForAuthentication()
-//                    self.coreWireframe?.authWireframe?.presentLogoutInterface()
-                    
-                    self.authDelegate?.mozoDidExpiredToken()
-                })
-                
-                removePINDelegate()
-            } else {
-                // FIX ME: Crash "Application tried to present modally an active controller <SFAuthenticationViewController>"
-//                self.coreWireframe?.requestForAuthentication()
-//                coreWireframe?.authWireframe?.presentLogoutInterface()
-                self.authDelegate?.mozoDidExpiredToken()
-            }
-            
-//            self.authDelegate?.mozoUIDidCloseAll() // Back to Main
-//            self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers() // Remove PIN text to retry
-//            self.coreWireframe?.authWireframe?.presentLogoutInterface()
-//        } else {
-//            // Ignore
-//            print("CorePresenter - Ignore handle invalid token from api response")
-//        }
     }
     
     deinit {
@@ -160,7 +124,7 @@ private extension CorePresenter {
     private func startSlientServices() {
         // Check walletInfo from UserProfile to start silent services
         if let userObj = SessionStoreManager.loadCurrentUser(), let profile = userObj.profile, profile.walletInfo?.offchainAddress != nil, SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING,
-            AccessTokenManager.getAccessToken() != nil {
+           AccessTokenManager.getAccessToken() != nil {
             print("CorePresenter - Start silent services, socket service.")
             rdnInteractor?.startService()
             print("CorePresenter - Start silent services, refresh token service.")
@@ -209,21 +173,21 @@ extension CorePresenter : CoreModuleInterface {
         }
     }
     
-    func requestForCloseAllMozoUIs() {
-        if let topViewController = DisplayUtils.getTopViewController(),
-            let klass = DisplayUtils.getAuthenticationClass(),
-            topViewController.isKind(of: klass) {
-            print("CorePresenter - Request for close all MozoUI, Authentication screen is being displayed.")
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(10)) {
-                self.requestForCloseAllMozoUIs()
+    func requestForCloseAllMozoUIs(_ callback: (() -> Void)?) {
+        if DisplayUtils.isAuthenticationOnTop() {
+            "CorePresenter - Request for close all MozoUI, Authentication screen is being displayed.".log()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                self.requestForCloseAllMozoUIs(callback)
             }
             return
         }
         coreWireframe?.requestForCloseAllMozoUIs(completion: {
             self.authDelegate?.mozoUIDidCloseAll()
             self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers()
+            self.isProcessing = false
+            callback?()
         })
-    
+        
         removePINDelegate()
     }
     
@@ -263,15 +227,21 @@ extension CorePresenter: WalletModuleDelegate {
             if coreWireframe?.rootWireframe?.mozoNavigationController.viewControllers.count ?? 0 > 0 {
                 // Close all existing Mozo's UIs
                 coreWireframe?.requestForCloseAllMozoUIs(completion: {
+                    self.isProcessing = false
                     // Send delegate back to the app
                     self.authDelegate?.mozoAuthenticationDidFinish()
                 })
             } else {
+                self.isProcessing = false
                 // Send delegate back to the app
                 self.authDelegate?.mozoAuthenticationDidFinish()
             }
         }
         readyForGoingLive()
+    }
+    
+    func cancelFlow() {
+        requestForCloseAllMozoUIs(nil)
     }
 }
 
@@ -284,14 +254,14 @@ extension CorePresenter : CoreInteractorOutput {
     }
     
     func continueWithWalletAuto(_ callbackModule: Module) {
-        print("CorePresenter - Continue with Wallet Auto, callbackModule: \(callbackModule.value)")
+        "CorePresenter - Continue with Wallet Auto, callbackModule: \(callbackModule.value)".log()
         // Should display call back module (if any)
         self.callBackModule = callbackModule
         coreWireframe?.processWalletAuto()
     }
     
     func continueWithWallet(_ callbackModule: Module) {
-        print("CorePresenter - Continue with Wallet, callbackModule: \(callbackModule.value)")
+        "CorePresenter - Continue with Wallet, callbackModule: \(callbackModule.value)".log()
         // Should display call back module (if any)
         self.callBackModule = callbackModule
         presentModuleInterface(.Wallet)
@@ -333,14 +303,13 @@ extension CorePresenter : CoreInteractorOutput {
     }
     
     func didReceiveInvalidToken() {
-        print("CorePresenter - Did receive invalid user token")
-        handleInvalidTokenApiResponse()
+        self.authDelegate?.mozoDidExpiredToken()
     }
     
     func didReceiveAuthorizationRequired() {
         print("CorePresenter - Did receive authorization required")
         if let viewController = DisplayUtils.getTopViewController(), !viewController.isKind(of: WaitingViewController.self) {
-            handleInvalidTokenApiResponse()
+            self.authDelegate?.mozoDidExpiredToken()
         } else {
             // Ignore
         }
@@ -354,8 +323,17 @@ extension CorePresenter : CoreInteractorOutput {
         DisplayUtils.displayAccessDeniedScreen()
     }
     
-    func didReceiveRequireUpdate() {
-        DisplayUtils.displayUpdateRequireScreen()
+    func didReceiveRequireUpdate(type: ErrorApiResponse) {
+        if type == .UPDATE_VERSION_REQUIREMENT {
+            DisplayUtils.displayUpdateRequireScreen()
+            
+        } else if alertController == nil, let viewController = DisplayUtils.getTopViewController() {
+            alertController = UIAlertController(title: "Info".localized, message: type.description.localized, preferredStyle: UIAlertController.Style.alert)
+            alertController!.addAction(UIAlertAction(title: "OK".localized, style: UIAlertAction.Style.cancel, handler: { action in
+                self.alertController = nil
+            }))
+            viewController.present(alertController!, animated: true, completion: nil)
+        }
     }
 }
 
@@ -478,8 +456,8 @@ extension CorePresenter : RDNInteractorOutput {
     }
     
     func didInvalidToken(tokenNoti: InvalidTokenNotification) {
-        print("CorePresenter - Did receive invalid token from Notification Module")
-        handleInvalidTokenApiResponse()
+        "CorePresenter - Did receive invalid token from Notification Module".log()
+        requestForLogout()
     }
     
     func didInvitedSuccess(inviteNoti: InviteNotification, rawMessage: String) {

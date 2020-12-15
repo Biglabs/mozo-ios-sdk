@@ -46,6 +46,11 @@ class TopUpTransferViewController: MozoBasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = "Deposit".localized
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Cancel".localized,
+            style: UIBarButtonItemStyle.plain,
+            target: self, action: #selector(self.tapCancelBtn)
+        )
     }
     
     deinit {
@@ -169,6 +174,10 @@ class TopUpTransferViewController: MozoBasicViewController {
     
     @IBAction func btnGetTokenTapped(_ sender: Any) {
         eventHandler?.requestGetToken()
+    }
+    
+    @objc func tapCancelBtn() {
+        eventHandler?.dismiss()
     }
 }
 extension TopUpTransferViewController : TopUpTransferViewInterface {

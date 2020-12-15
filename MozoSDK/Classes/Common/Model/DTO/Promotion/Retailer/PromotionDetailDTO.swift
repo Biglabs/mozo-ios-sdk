@@ -10,6 +10,7 @@ import SwiftyJSON
 public class PromotionDetailDTO {
     public var activationDate: Int64?
     public var promoCode: String?
+    public var promoCustomCode: String?
     public var purchasedTimeSec: Int64?
     public var statusCodeEnum: PromotionStatusCode?
     
@@ -18,5 +19,6 @@ public class PromotionDetailDTO {
         self.purchasedTimeSec = json["purchasedTimeSec"].int64
         self.statusCodeEnum = PromotionStatusCode(rawValue: json["statusCodeEnum"].string ?? "")
         self.promoCode = json["promoCode"].string
+        self.promoCustomCode = json["promoCustomCode"].string
     }
 }

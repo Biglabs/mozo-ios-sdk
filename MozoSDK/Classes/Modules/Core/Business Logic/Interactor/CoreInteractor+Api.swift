@@ -99,7 +99,6 @@ extension CoreInteractor: ApiManagerDelegate {
     }
     
     func didReceiveAuthorizationRequired() {
-        print("CoreInteractor - Did receive authorization required")
         output?.didReceiveAuthorizationRequired()
     }
     
@@ -113,8 +112,8 @@ extension CoreInteractor: ApiManagerDelegate {
         output?.didReceiveDeactivated(error: error)
     }
     
-    func didReceiveRequireUpdate() {
+    func didReceiveRequireUpdate(type: ErrorApiResponse) {
         print("CoreInteractor - Did receive maintenance")
-        output?.didReceiveRequireUpdate()
+        output?.didReceiveRequireUpdate(type: type)
     }
 }

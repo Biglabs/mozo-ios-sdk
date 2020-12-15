@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creating your Mozo wallet..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fti-Ln-d6H">
-                                <rect key="frame" x="5" y="445" width="404" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creating your Mozo wallet..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fti-Ln-d6H">
+                                <rect key="frame" x="50" y="445" width="314" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -38,8 +38,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fti-Ln-d6H" firstAttribute="top" secondItem="Kvw-Ts-Ym1" secondAttribute="bottom" constant="25" id="CYH-a0-gol"/>
-                            <constraint firstItem="KyG-dT-t5X" firstAttribute="trailing" secondItem="fti-Ln-d6H" secondAttribute="trailing" constant="5" id="HLI-2g-mgD"/>
-                            <constraint firstItem="fti-Ln-d6H" firstAttribute="leading" secondItem="KyG-dT-t5X" secondAttribute="leading" constant="5" id="Idt-Z3-VWO"/>
+                            <constraint firstItem="KyG-dT-t5X" firstAttribute="trailing" secondItem="fti-Ln-d6H" secondAttribute="trailing" constant="50" id="HLI-2g-mgD"/>
+                            <constraint firstItem="fti-Ln-d6H" firstAttribute="leading" secondItem="KyG-dT-t5X" secondAttribute="leading" constant="50" id="Idt-Z3-VWO"/>
                             <constraint firstItem="Kvw-Ts-Ym1" firstAttribute="centerX" secondItem="b7u-7U-Ufg" secondAttribute="centerX" id="ahl-UM-Hge"/>
                             <constraint firstItem="Kvw-Ts-Ym1" firstAttribute="centerY" secondItem="b7u-7U-Ufg" secondAttribute="centerY" constant="-60" id="gQK-I4-bMc"/>
                         </constraints>

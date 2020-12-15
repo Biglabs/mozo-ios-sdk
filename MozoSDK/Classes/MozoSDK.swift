@@ -314,8 +314,8 @@ public class MozoSDK {
         return moduleDependencies.getShopperPromotionListWithType(page: page, size: size, long: long, lat: lat, type: type)
     }
     
-    public static func getPromotionRedeemInfo(promotionId: Int64) -> Promise<PromotionRedeemInfoDTO> {
-        return moduleDependencies.getPromotionRedeemInfo(promotionId: promotionId)
+    public static func getPromotionRedeemInfo(promotionId: Int64, branchId: Int64) -> Promise<PromotionRedeemInfoDTO> {
+        return moduleDependencies.getPromotionRedeemInfo(promotionId: promotionId, branchId: branchId)
     }
     
     public static func getBranchesInChain(promotionId: Int64, lat: Double, lng: Double) -> Promise<[BranchInfoDTO]> {
@@ -473,6 +473,10 @@ public class MozoSDK {
         return moduleDependencies.getBranchById(branchId)
     }
     
+    public static func checkBranchName(_ name: String) -> Promise<Any> {
+        return moduleDependencies.checkBranchName(name)
+    }
+    
     public static func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
         return moduleDependencies.updateSalePerson(account: account)
     }
@@ -515,6 +519,6 @@ public class MozoSDK {
     }
     
     internal static func network() -> MozoNetwork {
-        return moduleDependencies.network
+        return moduleDependencies?.network ?? .TestNet
     }
 }

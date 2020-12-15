@@ -9,6 +9,7 @@ import Foundation
 
 protocol WalletModuleDelegate {
     func walletModuleDidFinish()
+    func cancelFlow()
 }
 
 protocol PinModuleDelegate {

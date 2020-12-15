@@ -13,7 +13,7 @@ let RETAILER_ANALYTICS_RESOURCE_API_PATH = "/retailer/analytics"
 public extension ApiManager {
     func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_ANALYTICS_RESOURCE_API_PATH + "/home"
+            let url = Configuration.BASE_STORE_URL + RETAILER_ANALYTICS_RESOURCE_API_PATH + "/home/v2"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -23,7 +23,6 @@ public extension ApiManager {
                     seal.fulfill(result)
                 }
                 .catch { error in
-                    print("Error when request get retailer analytic home: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {
@@ -44,7 +43,6 @@ public extension ApiManager {
                     seal.fulfill(result)
                 }
                 .catch { error in
-                    print("Error when request get retailer analytic list: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {
@@ -53,7 +51,7 @@ public extension ApiManager {
         }
     }
     
-    public func getRetailerAnalyticAmountAirdropList(page: Int = 0, size: Int = 15, year: Int = 0, month: Int = 0) -> Promise<[AirDropReportDTO]> {
+    func getRetailerAnalyticAmountAirdropList(page: Int = 0, size: Int = 15, year: Int = 0, month: Int = 0) -> Promise<[AirDropReportDTO]> {
         return Promise { seal in
             var params = ["size" : size,
                           "page" : page] as [String : Any]
@@ -73,7 +71,6 @@ public extension ApiManager {
                     seal.fulfill(result)
                 }
                 .catch { error in
-                    print("Error when request get retailer analytic amount airdrop list: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {
@@ -82,7 +79,7 @@ public extension ApiManager {
         }
     }
     
-    public func getVisitCustomerList(page: Int = 0, size: Int = 15, year: Int = 0, month: Int = 0) -> Promise<[VisitedCustomerDTO]> {
+    func getVisitCustomerList(page: Int = 0, size: Int = 15, year: Int = 0, month: Int = 0) -> Promise<[VisitedCustomerDTO]> {
         return Promise { seal in
             var params = ["size" : size,
                           "page" : page] as [String : Any]
@@ -102,7 +99,6 @@ public extension ApiManager {
                     seal.fulfill(result)
                 }
                 .catch { error in
-                    print("Error when request get visit customers list: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {

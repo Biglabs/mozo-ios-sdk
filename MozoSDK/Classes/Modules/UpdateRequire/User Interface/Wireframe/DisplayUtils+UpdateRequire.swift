@@ -28,7 +28,7 @@ extension DisplayUtils {
             print("DisplayUtils - Display Update require screen with top view controller: \(topViewController)")
             let viewController = UpdateRequireViewController.viewControllerFromXIB()
             viewController.modalPresentationStyle = .fullScreen
-            topViewController.present(viewController, animated: false)
+            topViewController.present(viewController, animated: true)
         } else {
             print("DisplayUtils - Can not display Update require screen - no top view controller")
         }

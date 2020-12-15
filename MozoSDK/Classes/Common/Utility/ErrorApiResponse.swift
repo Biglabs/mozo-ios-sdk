@@ -14,6 +14,7 @@ public enum ErrorApiResponse: String {
     case INVALID_REQUEST = "INVALID_REQUEST"
     case MAINTAINING = "MAINTAINING"
     case UPDATE_VERSION_REQUIREMENT = "UPDATE_VERSION_REQUIREMENT"
+    case TEMPORARILY_SUSPENDED = "TEMPORARILY_SUSPENDED"
     
     // STORE
     case STORE_UNREGISTERED = "STORE_UNREGISTERED"
@@ -40,6 +41,8 @@ public enum ErrorApiResponse: String {
     case STORE_RETAILER_AIR_DROP_NOT_EXIST_ERROR = "STORE_RETAILER_AIR_DROP_NOT_EXIST_ERROR"
     case STORE_RETAILER_AIRDROP_TOTAL_NUM_MOZO_REACH_MAX = "STORE_RETAILER_AIRDROP_TOTAL_NUM_MOZO_REACH_MAX"
     case STORE_RETAILER_AIRDROP_NUM_SHOPPER_REACH_MAX = "STORE_RETAILER_AIRDROP_NUM_SHOPPER_REACH_MAX"
+    
+    case STORE_BRANCH_NAME_ALREADY_EXISTED = "STORE_BRANCH_NAME_ALREADY_EXISTED"
     
     case STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT = "STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT"
     case STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE = "STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE"
@@ -119,6 +122,7 @@ public enum ErrorApiResponse: String {
         case .INVALID_USER_TOKEN: return "Your session has expired. Please login again"
         case .INVALID_REQUEST: return "error_fatal"
         case .MAINTAINING: return rawValue
+        case .TEMPORARILY_SUSPENDED: return "error_temporary_suspend"
             
         case .SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS: return "Your wallet was updated but did not sync with your current device. Please restore your wallet first."
         case .SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS: return "The destination wallet was not found. Please recheck the wallet address or try another wallet address"
@@ -159,6 +163,8 @@ public enum ErrorApiResponse: String {
         case .STORE_RETAILER_AIR_DROP_NOT_EXIST_ERROR: return "Something is wrong with your account status. Please try again."
         case .STORE_RETAILER_AIRDROP_TOTAL_NUM_MOZO_REACH_MAX: return "Something is wrong with your account status. Please try again."
         case .STORE_RETAILER_AIRDROP_NUM_SHOPPER_REACH_MAX: return "error_input_number_of_shopper_out_of_range"
+            
+        case .STORE_BRANCH_NAME_ALREADY_EXISTED: return "error_branch_name_existed"
             
         case .STORE_ERROR_INPUT_DTO: return "error_fatal"
         case .STORE_ADDRESS_STATUS_PENDING: return "There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later."
@@ -217,6 +223,7 @@ public enum ErrorApiResponse: String {
         case .INVALID_REQUEST: return .apiError_INVALID_REQUEST
         case .MAINTAINING: return .apiError_MAINTAINING
         case .UPDATE_VERSION_REQUIREMENT: return .apiError_UPDATE_VERSION_REQUIREMENT
+        case .TEMPORARILY_SUSPENDED: return .apiError_TEMPORARILY_SUSPENDED
             
         case .SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS:
             return .apiError_SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS
@@ -271,6 +278,9 @@ public enum ErrorApiResponse: String {
         case .STORE_RETAILER_AIR_DROP_NOT_EXIST_ERROR: return .apiError_STORE_RETAILER_AIR_DROP_NOT_EXIST_ERROR
         case .STORE_RETAILER_AIRDROP_TOTAL_NUM_MOZO_REACH_MAX: return .apiError_STORE_RETAILER_AIRDROP_TOTAL_NUM_MOZO_REACH_MAX
         case .STORE_RETAILER_AIRDROP_NUM_SHOPPER_REACH_MAX: return .apiError_STORE_RETAILER_AIRDROP_NUM_SHOPPER_REACH_MAX
+            
+        case .STORE_BRANCH_NAME_ALREADY_EXISTED: return .apiError_STORE_BRANCH_NAME_ALREADY_EXISTED
+            
         case .STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT: return .apiError_STORE_SHOPPER_FAVORITE_STORE_INVALID_INPUT
         case .STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE: return .apiError_STORE_SHOPPER_FAVORITE_STORE_EXISTING_FAVORITE_STORE
             

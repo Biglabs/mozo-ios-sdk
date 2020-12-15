@@ -140,7 +140,7 @@ class CoreInteractor: NSObject {
     }
     
     func checkWallet(module: Module) {
-        print("CoreInteractor - Check wallet")
+        "CoreInteractor - Check wallet".log()
         // Check wallet
         if let wallet = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo, wallet.encryptSeedPhrase != nil, let id = SessionStoreManager.loadCurrentUser()?.id {
             let serverHaveBothOffChainAndOnChain = wallet.offchainAddress != nil && wallet.onchainAddress != nil
@@ -227,18 +227,27 @@ extension CoreInteractor: CoreInteractorInput {
     }
     
     @objc func repeatCheckForAuthentication() {
-        if SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING {
+        let status = SafetyDataManager.shared.checkTokenExpiredStatus
+        "repeatCheckForAuthentication \(status.rawValue)".log()
+        if status != .CHECKING {
             "Continue with checking auth and wallet.".log()
-            checkTokenExpiredTimer?.invalidate()
-            checkTokenExpiredTimer = nil
+            stopCheckTokenTimer()
             self.checkAuthAndWallet(module: checkTokenExpiredModule!)
         }
     }
     
     func checkForAuthentication(module: Module) {
-        "CoreInteractor - Check for authentication. Waiting for check token expired from Auth Module.".log()
+        "CoreInteractor - Check for authentication. Waiting for check token expired from \(module.key).".log()
+        stopCheckTokenTimer()
         checkTokenExpiredModule = module
-        checkTokenExpiredTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.repeatCheckForAuthentication), userInfo: nil, repeats: true)
+        checkTokenExpiredTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.repeatCheckForAuthentication), userInfo: nil, repeats: true)
+    }
+    
+    func stopCheckTokenTimer() {
+        "CoreInteractor - STOP Check Token Timer".log()
+        checkTokenExpiredTimer?.invalidate()
+        checkTokenExpiredTimer = nil
+        SafetyDataManager.shared.checkTokenExpiredStatus = .IDLE
     }
     
     func handleAferAuth(accessToken: String?) {

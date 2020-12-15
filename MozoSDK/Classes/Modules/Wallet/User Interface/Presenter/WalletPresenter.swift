@@ -64,6 +64,10 @@ extension WalletPresenter: WalletModuleInterface {
         walletInteractor?.checkLocalWalletExisting()
     }
     
+    func cancel() {
+        walletModuleDelegate?.cancelFlow()
+    }
+    
     func enterPIN(pin: String) {
         pinUserInterface?.showConfirmPIN()
     }
