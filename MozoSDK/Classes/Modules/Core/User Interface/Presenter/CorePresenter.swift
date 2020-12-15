@@ -184,6 +184,7 @@ extension CorePresenter : CoreModuleInterface {
         coreWireframe?.requestForCloseAllMozoUIs(completion: {
             self.authDelegate?.mozoUIDidCloseAll()
             self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers()
+            self.isProcessing = false
             callback?()
         })
         
@@ -240,7 +241,6 @@ extension CorePresenter: WalletModuleDelegate {
     }
     
     func cancelFlow() {
-        self.isProcessing = false
         requestForCloseAllMozoUIs(nil)
     }
 }

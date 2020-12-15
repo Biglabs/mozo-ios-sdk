@@ -50,15 +50,14 @@ extension CorePresenter : AuthModuleDelegate {
         "End process authModuleDidCancelAuthentication".log()
         requestForCloseAllMozoUIs(nil)
         stopSilentServices(shouldReconnect: false)
-        isProcessing = false
     }
     
     func checkToDismissAccessDeniedIfNeed(callback: (() -> Void)? = nil) {
         "CorePresenter - try to dismiss AccessDeniedViewController, authentication in process: \(self.isProcessing)".log()
         let topViewController = DisplayUtils.getTopViewController()
         if let klass = DisplayUtils.getAuthenticationClass(), topViewController?.isKind(of: klass) == true {
-            "CorePresenter - \(klass) on top, try to dismiss AccessDeniedViewController after 3s".log()
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
+            "CorePresenter - \(klass) on top, try to dismiss AccessDeniedViewController after 2s".log()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
                 if let top = DisplayUtils.getTopViewController(), top is AccessDeniedViewController {
                     top.dismiss(animated: false, completion: callback)
                 } else {
@@ -80,11 +79,11 @@ extension CorePresenter : AuthModuleDelegate {
             self.authDelegate?.mozoLogoutDidFinish()
             // Notify for all observing objects
             self.coreInteractor?.notifyLogoutForAllObservers()
-            self.requestForCloseAllMozoUIs(nil)
-            self.stopSilentServices(shouldReconnect: false)
-            self.isProcessing = false
             self.coreInteractor?.stopCheckTokenTimer()
-            callback?()
+            self.requestForCloseAllMozoUIs {
+                self.stopSilentServices(shouldReconnect: false)
+                callback?()
+            }
         }
     }
     
