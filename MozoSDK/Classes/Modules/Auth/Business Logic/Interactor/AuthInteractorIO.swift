@@ -23,6 +23,7 @@ protocol AuthInteractorInput {
     func startRefreshTokenTimer()
     
     func processAuthorizationCallBackUrl(_ url: URL)
+    func applicationDidEnterBackground()
 }
 
 protocol AuthInteractorOutput {

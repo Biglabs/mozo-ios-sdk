@@ -97,9 +97,7 @@ class ModuleDependencies {
     }
     
     func logout() {
-        authWireframe.authPresenter?.logoutWillBePerformed {
-            self.coreWireframe.requestForLogout()
-        }
+        coreWireframe.requestForLogout()
     }
     
     func transferMozo() {

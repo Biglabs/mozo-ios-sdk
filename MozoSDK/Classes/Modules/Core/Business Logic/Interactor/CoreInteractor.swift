@@ -245,9 +245,9 @@ extension CoreInteractor: CoreInteractorInput {
     
     func stopCheckTokenTimer() {
         "CoreInteractor - STOP Check Token Timer".log()
-        SafetyDataManager.shared.checkTokenExpiredStatus = .IDLE
         checkTokenExpiredTimer?.invalidate()
         checkTokenExpiredTimer = nil
+        SafetyDataManager.shared.checkTokenExpiredStatus = .IDLE
     }
     
     func handleAferAuth(accessToken: String?) {

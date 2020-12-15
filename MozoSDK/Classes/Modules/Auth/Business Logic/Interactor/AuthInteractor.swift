@@ -108,4 +108,10 @@ extension AuthInteractor : AuthInteractorInput {
     func handleLogoutState() {
 
     }
+    
+    func applicationDidEnterBackground() {
+        if !DisplayUtils.isAuthenticationOnTop() {
+            authManager?.currentAuthorizationFlow?.failExternalUserAgentFlowWithError(SystemError.noAuthen)
+        }
+    }
 }

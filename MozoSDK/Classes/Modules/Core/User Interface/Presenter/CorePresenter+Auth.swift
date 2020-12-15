@@ -48,7 +48,7 @@ extension CorePresenter : AuthModuleDelegate {
     
     func authModuleDidCancelAuthentication() {
         "End process authModuleDidCancelAuthentication".log()
-        requestForCloseAllMozoUIs()
+        requestForCloseAllMozoUIs(nil)
         stopSilentServices(shouldReconnect: false)
         isProcessing = false
     }
@@ -80,7 +80,7 @@ extension CorePresenter : AuthModuleDelegate {
             self.authDelegate?.mozoLogoutDidFinish()
             // Notify for all observing objects
             self.coreInteractor?.notifyLogoutForAllObservers()
-            self.requestForCloseAllMozoUIs()
+            self.requestForCloseAllMozoUIs(nil)
             self.stopSilentServices(shouldReconnect: false)
             self.isProcessing = false
             self.coreInteractor?.stopCheckTokenTimer()

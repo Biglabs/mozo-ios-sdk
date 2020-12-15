@@ -99,7 +99,6 @@ extension CoreInteractor: ApiManagerDelegate {
     }
     
     func didReceiveAuthorizationRequired() {
-        print("CoreInteractor - Did receive authorization required")
         output?.didReceiveAuthorizationRequired()
     }
     
