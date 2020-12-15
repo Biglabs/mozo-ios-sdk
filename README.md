@@ -1,11 +1,11 @@
 # Mozo SDK for iOS
 [![Badge w/ Version](https://cocoapod-badges.herokuapp.com/v/MozoSDK/badge.png)](https://cocoapods.org/pods/MozoSDK)
 
-This open-source library allows you to integrate Mozo supported features into your iOS app.
+This open-source  library allows you to integrate Mozo supported features into your iOS app. 
 
 Learn more about the provided samples, documentation, integrating the SDK into your app, accessing source code, and more at [our website][1].
 
-## Setting Up
+## Setting Up  
 
 To get started with the Mozo SDK for iOS, check out [our website][1]. You can set up the SDK and start building a new project, or you integrate the SDK in an existing project. You can also run the samples to get a sense of how the SDK works.
 
