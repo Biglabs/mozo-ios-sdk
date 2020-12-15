@@ -27,21 +27,27 @@ class AuthPresenter : NSObject {
         authInteractor?.processAuthorizationCallBackUrl(url)
     }
     
-    func logoutWillBePerformed() {
-        NSLog("AuthPresenter - Logout will be performed")
-        self.authInteractor?.clearAllAuthSession()
-        self.authModuleDelegate?.authModuleDidFinishLogout()
+    @objc func applicationDidEnterBackground() {
+        authInteractor?.applicationDidEnterBackground()
+    }
+    
+    func subcribeApplicationEvents() {
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
     }
 }
 
 extension AuthPresenter : AuthModuleInterface {
     func performAuthentication() {
+        subcribeApplicationEvents()
         authInteractor?.buildAuthRequest()
     }
     
     func performLogout() {
+        subcribeApplicationEvents()
         clearAllSessionData()
-        authInteractor?.buildLogoutRequest()
+        authModuleDelegate?.authModuleDidFinishLogout {
+            self.authInteractor?.buildLogoutRequest()
+        }
     }
 }
 
@@ -86,10 +92,13 @@ extension AuthPresenter : AuthInteractorOutput {
     func finishedAuthenticate(accessToken: String?) {
         retryOnResponse = nil
         authModuleDelegate?.authModuleDidFinishAuthentication(accessToken: accessToken)
+        NotificationCenter.default.removeObserver(self)
     }
     
     func cancelledAuthenticateByUser() {
+        retryOnResponse = nil
         authModuleDelegate?.authModuleDidCancelAuthentication()
+        NotificationCenter.default.removeObserver(self)
     }
     
     func finishBuildLogoutRequest() {
@@ -112,9 +121,10 @@ extension AuthPresenter : AuthInteractorOutput {
                 if error == nil {
                     "AuthPresenter - Logout success".log()
                     self.authInteractor?.clearAllAuthSession()
-                    self.authModuleDelegate?.authModuleDidFinishLogout()
-                    self.authModuleDelegate?.willExecuteNextStep()
-                    self.authModuleDelegate?.willRelaunchAuthentication()
+                    self.authModuleDelegate?.authModuleDidFinishLogout {
+                        self.authModuleDelegate?.willExecuteNextStep()
+                        self.authModuleDelegate?.willRelaunchAuthentication()
+                    }
                 } else {
                     "AuthPresenter - Logout failed".log()
                     self.authModuleDelegate?.authModuleDidCancelLogout()
@@ -136,6 +146,6 @@ extension AuthPresenter: PopupErrorDelegate {
     }
     
     func didClosePopupWithoutRetry() {
-        retryOnResponse = nil
+        self.cancelledAuthenticateByUser()
     }
 }

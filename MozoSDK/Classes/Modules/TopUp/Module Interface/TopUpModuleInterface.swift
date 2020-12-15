@@ -12,4 +12,5 @@ protocol TopUpModuleInterface {
     
     func validateTopUpTransferTransaction(tokenInfo: TokenInfoDTO, amount: String)
     func requestGetToken()
+    func dismiss()
 }

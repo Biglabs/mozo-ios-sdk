@@ -279,4 +279,12 @@ public class DisplayUtils {
         }
         return NSClassFromString(className)
     }
+    
+    public static func isAuthenticationOnTop() -> Bool {
+         if let topViewController = getTopViewController(), let klass = getAuthenticationClass(), topViewController.isKind(of: klass) {
+            return true
+         } else {
+            return false
+         }
+    }
 }

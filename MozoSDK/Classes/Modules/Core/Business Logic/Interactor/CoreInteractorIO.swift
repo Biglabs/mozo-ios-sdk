@@ -130,7 +130,7 @@ protocol CoreInteractorService {
     
     func getShopperPromotionListWithType(page: Int, size: Int, long: Double, lat: Double, type: PromotionListTypeEnum) -> Promise<[PromotionStoreDTO]>
     
-    func getPromotionRedeemInfo(promotionId: Int64) -> Promise<PromotionRedeemInfoDTO>
+    func getPromotionRedeemInfo(promotionId: Int64, branchId: Int64) -> Promise<PromotionRedeemInfoDTO>
     
     func getBranchesInChain(promotionId: Int64, lat: Double, lng: Double) -> Promise<[BranchInfoDTO]>
     

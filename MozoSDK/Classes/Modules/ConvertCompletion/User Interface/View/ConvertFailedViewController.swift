@@ -31,7 +31,7 @@ class ConvertFailedViewController: MozoBasicViewController {
     
     func handleBackToOnchainWallet() {
         if let navigationController = self.navigationController as? MozoNavigationController, let coreEventHandler = navigationController.coreEventHandler {
-            coreEventHandler.requestForCloseAllMozoUIs()
+            coreEventHandler.requestForCloseAllMozoUIs(nil)
         }
     }
     
