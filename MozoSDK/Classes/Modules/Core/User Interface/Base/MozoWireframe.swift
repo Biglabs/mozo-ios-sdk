@@ -12,7 +12,7 @@ class MozoWireframe: NSObject {
     
     func dismissModuleInterface() {
         let coreEventHandler = rootWireframe?.mozoNavigationController.coreEventHandler
-        coreEventHandler?.requestForCloseAllMozoUIs()
+        coreEventHandler?.requestForCloseAllMozoUIs(nil)
     }
     
     func presentWaitingInterface(corePresenter: CorePresenter?) {

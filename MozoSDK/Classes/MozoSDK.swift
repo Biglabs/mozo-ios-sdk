@@ -314,8 +314,8 @@ public class MozoSDK {
         return moduleDependencies.getShopperPromotionListWithType(page: page, size: size, long: long, lat: lat, type: type)
     }
     
-    public static func getPromotionRedeemInfo(promotionId: Int64) -> Promise<PromotionRedeemInfoDTO> {
-        return moduleDependencies.getPromotionRedeemInfo(promotionId: promotionId)
+    public static func getPromotionRedeemInfo(promotionId: Int64, branchId: Int64) -> Promise<PromotionRedeemInfoDTO> {
+        return moduleDependencies.getPromotionRedeemInfo(promotionId: promotionId, branchId: branchId)
     }
     
     public static func getBranchesInChain(promotionId: Int64, lat: Double, lng: Double) -> Promise<[BranchInfoDTO]> {

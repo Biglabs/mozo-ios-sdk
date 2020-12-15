@@ -50,7 +50,7 @@ class PassPhraseViewController: MozoBasicViewController {
         if requestedModule == .BackupWallet {
             if let mozoNavigationController = navigationController as? MozoNavigationController,
                 let coreEventHandler = mozoNavigationController.coreEventHandler {
-                coreEventHandler.requestForCloseAllMozoUIs()
+                coreEventHandler.requestForCloseAllMozoUIs(nil)
             }
         } else {
             if let mozoNavigationController = navigationController as? MozoNavigationController {

@@ -73,6 +73,6 @@ public class MozoNavigationController : UINavigationController {
     }
     
     @objc func tapCloseBtn() {
-        coreEventHandler?.requestForCloseAllMozoUIs()
+        coreEventHandler?.requestForCloseAllMozoUIs(nil)
     }
 }

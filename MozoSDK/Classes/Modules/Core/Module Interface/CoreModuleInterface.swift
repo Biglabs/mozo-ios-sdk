@@ -10,7 +10,7 @@ import Foundation
 protocol CoreModuleInterface {
     func requestForAuthentication(module: Module)
     func requestForLogout()
-    func requestForCloseAllMozoUIs()
+    func requestForCloseAllMozoUIs(_ callback: (() -> Void)?)
 }
 protocol CoreModuleWaitingInterface {
     func retryGetUserProfile()
