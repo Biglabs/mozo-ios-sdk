@@ -29,6 +29,16 @@
 "promo_branches_in_chain" = "Những chi nhánh trong cùng chuỗi";
 "promo_branches_label" = "Chi nhánh";
 "promo_for_branches_label" = "Khuyến mãi ở nhiều chi nhánh";
+// MARK: Restriction
+"promo_restrict_none" = "Không";
+"promo_restrict_once_per_user" = "Một lần cho mỗi khách";
+"promo_restrict_once_per_user_msg" = "Khuyến mãi này chỉ cho mua một lần. Bạn đã mua lúc %@.";
+"promo_restrict_once_per_day" = "Một lần mỗi ngày (24h)";
+"promo_restrict_once_per_day_msg" = "Bạn có thể mua khuyến mãi này trong vòng %@ nữa.";
+"promo_restrict_once_new_user_of_store" = "Một lần dành cho khách hàng mới (tính tất cả chi nhánh)";
+"promo_restrict_once_new_user_of_store_msg" = "Khuyến mãi này chỉ dành cho khách hàng mới. Bạn đã mua lúc %@.";
+"promo_restrict_once_per_new_register_user" = "Một lần dành cho người đăng kí mới";
+"promo_restrict_once_per_new_register_user_msg" = "Khuyến mãi này chỉ dành cho người đăng kí mới.";
 
 "btn_show_codes" = "Hiện mã";
 

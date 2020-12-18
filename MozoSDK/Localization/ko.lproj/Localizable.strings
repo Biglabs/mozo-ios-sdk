@@ -29,6 +29,16 @@
 "promo_branches_in_chain" = "체인점의 지점";
 "promo_branches_label" = "분기";
 "promo_for_branches_label" = "지점 프로모션";
+// MARK: Restriction
+"promo_restrict_none" = "아니요";
+"promo_restrict_once_per_user" = "고객당 1회";
+"promo_restrict_once_per_user_msg" = "이 프로모션은 고객 1인당 1회 제한된다. %@에 구매하셨습니다.";
+"promo_restrict_once_per_day" = "1일 1회(24시간)";
+"promo_restrict_once_per_day_msg" = "이 프로모션은 다음 %@에 살 수 있다.";
+"promo_restrict_once_new_user_of_store" = "신규 고객 1회(모든 지점의 카운트)";
+"promo_restrict_once_new_user_of_store_msg" = "이 프로모션은 신규 고객에 적용된다. 당신은 %@에 구매하셨습니다.";
+"promo_restrict_once_per_new_register_user" = "신규 구독자에게 한 번";
+"promo_restrict_once_per_new_register_user_msg" = "이 프로모션은 신규 등록에 한해 적용된다.";
 
 "btn_show_codes" = "코드 표시";
 
