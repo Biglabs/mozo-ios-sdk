@@ -53,6 +53,10 @@ extension CoreInteractor {
         return apiManager.getPromotionPaidDetailByCode(promotionCode)
     }
     
+    func processPromotionByCustomCode(code: String, branchId: Int64, lat: Double? = nil, lng: Double? = nil) -> Promise<Any> {
+        return apiManager.processPromotionByCustomCode(code: code, branchId: branchId, lat: lat, lng: lng)
+    }
+    
     func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
         return apiManager.updateFavoritePromotion(promotionId, isFavorite: isFavorite)
     }

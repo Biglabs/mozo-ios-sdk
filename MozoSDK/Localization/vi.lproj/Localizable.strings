@@ -31,6 +31,7 @@
 "promo_for_branches_label" = "Khuyến mãi ở nhiều chi nhánh";
 // MARK: Restriction
 "promo_restrict_none" = "Không";
+"promo_restrict_time_format" = "HH:mm dd/MMM/yyyy";
 "promo_restrict_once_per_user" = "Một lần cho mỗi khách";
 "promo_restrict_once_per_user_msg" = "Khuyến mãi này chỉ cho mua một lần. Bạn đã mua lúc %@.";
 "promo_restrict_once_per_day" = "Một lần mỗi ngày (24h)";
@@ -39,8 +40,10 @@
 "promo_restrict_once_new_user_of_store_msg" = "Khuyến mãi này chỉ dành cho khách hàng mới. Bạn đã mua lúc %@.";
 "promo_restrict_once_per_new_register_user" = "Một lần dành cho người đăng kí mới";
 "promo_restrict_once_per_new_register_user_msg" = "Khuyến mãi này chỉ dành cho người đăng kí mới.";
-
+"promo_price_discount" = "Giá đã khuyến mãi";
+"promo_pos_custom_code_explain" = "Đưa mã này cho thu ngân để đổi khuyến mãi";
 "btn_show_codes" = "Hiện mã";
+"btn_show_code" = "Hiện mã";
 
 "Address Book" = "Danh bạ";
 "Select Address" = "Chọn địa chỉ";
@@ -1214,7 +1217,7 @@
 "Please update the date and time, then try again." = "Xin vui lòng cập nhật ngày giờ và thử lại sau.";
 
 // Promotion (Update)
-"Let store staff scan this QR code to redeem" = "Đưa mã QR này cho nhân viên của cửa hàng";
+"promo_paid_explain_notice" = "Đưa mã QR này cho nhân viên của cửa hàng HOẶC đưa mã cho thu ngân.";
 "Latest Promotions" = "Khuyến mãi mới nhất";
 
 // Ticket
