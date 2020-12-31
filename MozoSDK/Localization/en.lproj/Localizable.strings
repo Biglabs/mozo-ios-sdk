@@ -29,8 +29,21 @@
 "promo_branches_in_chain" = "Branches in chain-stores";
 "promo_branches_label" = "Branches";
 "promo_for_branches_label" = "Promotions for branches";
-
+// MARK: Restriction
+"promo_restrict_none" = "None";
+"promo_restrict_time_format" = "HH:mm yyyy/MMM/dd";
+"promo_restrict_once_per_user" = "Once per customer";
+"promo_restrict_once_per_user_msg" = "This promotion is restricted by once per customer. You bought it at %@.";
+"promo_restrict_once_per_day" = "Once per day (24h)";
+"promo_restrict_once_per_day_msg" = "You can buy this promotion in next %@.";
+"promo_restrict_once_new_user_of_store" = "Once for new customer (count on all branches)";
+"promo_restrict_once_new_user_of_store_msg" = "This promotion is applied for new customer only. You bought at %@.";
+"promo_restrict_once_per_new_register_user" = "Once for new register user";
+"promo_restrict_once_per_new_register_user_msg" = "This promotion is applied for new register only.";
+"promo_price_discount" = "Price after discount";
+"promo_pos_custom_code_explain" = "Show this code to cashier to redeem";
 "btn_show_codes" = "Show codes";
+"btn_show_code" = "Show code";
 
 "Address Book" = "Address Book";
 "Select Address" = "Select Address";
@@ -1203,7 +1216,7 @@
 "Please update the date and time, then try again." = "Please update the date and time, then try again.";
 
 // Promotion (Update)
-"Let store staff scan this QR code to redeem" = "Let store staff scan this QR code to redeem";
+"promo_paid_explain_notice" = "Let store staff scan this QR code to redeem OR show code to cashier.";
 "Latest Promotions" = "Latest Promotions";
 
 // Ticket

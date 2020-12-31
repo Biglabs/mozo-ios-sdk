@@ -334,6 +334,10 @@ public class MozoSDK {
         return moduleDependencies.getPromotionPaidDetailByCode(promotionCode)
     }
     
+    public static func processPromotionByCustomCode(code: String, branchId: Int64, lat: Double? = nil, lng: Double? = nil) -> Promise<Any> {
+        return moduleDependencies.processPromotionByCustomCode(code: code, branchId: branchId, lat: lat, lng: lng)
+    }
+    
     public static func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
         return moduleDependencies.updateFavoritePromotion(promotionId, isFavorite: isFavorite)
     }

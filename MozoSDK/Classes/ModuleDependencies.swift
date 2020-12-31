@@ -396,6 +396,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionPaidDetailByCode(promotionCode))!
     }
     
+    func processPromotionByCustomCode(code: String, branchId: Int64, lat: Double? = nil, lng: Double? = nil) -> Promise<Any> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.processPromotionByCustomCode(code: code, branchId: branchId, lat: lat, lng: lng))!
+    }
+    
     func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateFavoritePromotion(promotionId, isFavorite: isFavorite))!
     }

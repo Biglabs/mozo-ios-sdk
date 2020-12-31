@@ -138,6 +138,8 @@ protocol CoreInteractorService {
     
     func getPromotionPaidDetailByCode(_ promotionCode: String) -> Promise<PromotionPaidDTO>
     
+    func processPromotionByCustomCode(code: String, branchId: Int64, lat: Double?, lng: Double?) -> Promise<Any>
+    
     func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]>
     
     func getPromotionPaidHistoryDetail(_ id: Int64) -> Promise<PromotionPaidDTO>

@@ -252,6 +252,7 @@ public extension UIView {
         gradient.frame = frame
         gradient.colors = colors
         gradient.locations = locations
+        layer.sublayers?.forEach { $0.removeFromSuperlayer() }
         layer.insertSublayer(gradient, at: 0)
     }
 }

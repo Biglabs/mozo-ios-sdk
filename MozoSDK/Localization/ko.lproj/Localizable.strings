@@ -29,8 +29,21 @@
 "promo_branches_in_chain" = "체인점의 지점";
 "promo_branches_label" = "분기";
 "promo_for_branches_label" = "지점 프로모션";
-
+// MARK: Restriction
+"promo_restrict_none" = "아니요";
+"promo_restrict_time_format" = "HH:mm yyyy/MMM/dd";
+"promo_restrict_once_per_user" = "고객당 1회";
+"promo_restrict_once_per_user_msg" = "이 프로모션은 고객 1인당 1회 제한된다. %@에 구매하셨습니다.";
+"promo_restrict_once_per_day" = "1일 1회(24시간)";
+"promo_restrict_once_per_day_msg" = "이 프로모션은 다음 %@에 살 수 있다.";
+"promo_restrict_once_new_user_of_store" = "신규 고객 1회(모든 지점의 카운트)";
+"promo_restrict_once_new_user_of_store_msg" = "이 프로모션은 신규 고객에 적용된다. 당신은 %@에 구매하셨습니다.";
+"promo_restrict_once_per_new_register_user" = "신규 구독자에게 한 번";
+"promo_restrict_once_per_new_register_user_msg" = "이 프로모션은 신규 등록에 한해 적용된다.";
+"promo_price_discount" = "할인후가격";
+"promo_pos_custom_code_explain" = "이 코드를 상환하려면 출납원에게 표시";
 "btn_show_codes" = "코드 표시";
+"btn_show_code" = "코드 표시";
 
 "Address Book" = "주소록";
 "Select Address" = "주소 선택";
@@ -1212,7 +1225,7 @@
 "Please update the date and time, then try again." = "시간 업데이트 하시고 다시 시도해보세요.";
 
 // Promotion (Update)
-"Let store staff scan this QR code to redeem" = "스토어 직원에게 이 QR 코드 보여주세요";
+"promo_paid_explain_notice" = "이 QR 코드를 스캔하도록 점원이나 출납원에게 보여주세요";
 "Latest Promotions" = "최신 프로모션";
 
 // Ticket
