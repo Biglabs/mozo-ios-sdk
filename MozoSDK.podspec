@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
   s.dependency 'ReachabilitySwift'
   s.dependency 'MBProgressHUD', '~> 1.2.0'
   s.dependency 'JWTDecode', '2.5'
-  s.dependency 'Kingfisher', '5.15'
+  s.dependency 'Kingfisher', '5.15.8'
   s.dependency 'libPhoneNumber-iOS'
 #  
 #  s.static_framework = true

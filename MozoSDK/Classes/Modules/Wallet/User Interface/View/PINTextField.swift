@@ -314,6 +314,7 @@ extension PinTextField: UIKeyInput {
     }
     
     public func insertText(_ charToInsert: String) {
+        UISelectionFeedbackGenerator().selectionChanged()
         if charToInsert.hasOnlyNewlineSymbols {
             if (delegate?.textFieldShouldReturn(self) ?? true) {
                 let _ = resignFirstResponder()
@@ -334,6 +335,7 @@ extension PinTextField: UIKeyInput {
     
     public func deleteBackward() {
         guard hasText else { return }
+        UISelectionFeedbackGenerator().selectionChanged()
         text?.removeLast()
         delegate?.textFieldValueChanged(self)
     }

@@ -111,7 +111,7 @@ public class ApiManager {
         return self.execute(method, url: url, headers: headers, body: parameters!)
     }
     
-    func execute(_ method: Alamofire.HTTPMethod, url: String, parameters: Any? = nil) -> Promise<[String: Any]> {
+    public func execute(_ method: Alamofire.HTTPMethod, url: String, parameters: Any? = nil) -> Promise<[String: Any]> {
         let headers = self.buildHTTPHeaders(withToken: true)
         #if DEBUG
         print("--> \(method.rawValue) \(url)\nToken: \(String(describing: headers["Authorization"] ?? ""))")
