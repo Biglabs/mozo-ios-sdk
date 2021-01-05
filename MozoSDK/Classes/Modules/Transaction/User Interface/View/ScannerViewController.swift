@@ -16,9 +16,15 @@ public class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOu
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
+    private var bottomPadding: CGFloat = 0
+    private var bottomOffset: CGFloat = 0
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        
+        bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        bottomOffset = 50 + bottomPadding * 0.5
         
         captureSession = AVCaptureSession()
 
@@ -41,9 +47,24 @@ public class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOu
             failed()
             return
         }
+        
+        let size = 260
+        let screenWidth = self.view.frame.size.width
+        let xPos = (screenWidth / CGFloat(2)) - CGFloat(size / 2)
+        let yPos = (self.view.frame.size.height / CGFloat(2))  - bottomPadding - bottomOffset - CGFloat(size / 2)
+        let scanRect = CGRect(
+            x: Int(xPos),
+            y: Int(yPos),
+            width: size,
+            height: size
+        )
 
         let metadataOutput = AVCaptureMetadataOutput()
-
+        let x = scanRect.origin.x/480
+        let y = scanRect.origin.y/640
+        let width = scanRect.width/480
+        let height = scanRect.height/640
+        metadataOutput.rectOfInterest = CGRect(x: x, y: y, width: width, height: height)
         if (captureSession.canAddOutput(metadataOutput)) {
             captureSession.addOutput(metadataOutput)
 
@@ -58,15 +79,26 @@ public class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOu
         previewLayer.frame = view.layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
         view.layer.addSublayer(previewLayer)
+
+        /**
+         * Draw non capture area
+         */
+        let pathBigRect = UIBezierPath(rect: view.layer.bounds)
+        pathBigRect.append(UIBezierPath(rect: scanRect))
+        pathBigRect.usesEvenOddFillRule = true
+        let fillLayer = CAShapeLayer()
+        fillLayer.path = pathBigRect.cgPath
+        fillLayer.fillRule = kCAFillRuleEvenOdd
+        fillLayer.fillColor = UIColor.black.cgColor
+        fillLayer.opacity = 0.4
+        view.layer.addSublayer(fillLayer)
+
         self.createBackButton()
 
         captureSession.startRunning()
     }
 
     func createBackButton() {
-        let bottomPadding: CGFloat = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
-        let bottomOffset: CGFloat = 50 + bottomPadding * 0.5
-        
         let parentWidth: CGFloat = 130
         let parentHeight: CGFloat = 45
         
@@ -104,6 +136,19 @@ public class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOu
         tap.numberOfTapsRequired = 1
         backView.isUserInteractionEnabled = true
         backView.addGestureRecognizer(tap)
+        
+        /**
+         * Add Scan QR code as title
+         */
+        let titleMargin: CGFloat = 40
+        let titleLabel = UILabel(frame: CGRect(x: titleMargin, y: 100, width: view.frame.size.width - titleMargin * 2, height: 30))
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.adjustsFontForContentSizeCategory = true
+        titleLabel.text = "Scan QR Code".localized
+        titleLabel.font = UIFont.systemFont(ofSize: 20)
+        titleLabel.textColor = .white
+        titleLabel.textAlignment = .center
+        view.addSubview(titleLabel)
     }
 
     func failed() {

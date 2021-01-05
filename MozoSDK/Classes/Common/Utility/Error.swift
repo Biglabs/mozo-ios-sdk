@@ -293,7 +293,7 @@ extension ConnectionError: LocalizedError {
         case .authenticationRequired:
             return "Authentication Required"
         case .internalServerError:
-            return "Internal Server error"
+            return "An internal server error has occurred"
         case .badRequest:
             return "Bad request"
         case .systemError:
