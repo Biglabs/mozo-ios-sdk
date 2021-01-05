@@ -22,6 +22,7 @@ class RedeemPresenter: NSObject {
 extension RedeemPresenter: PinModuleDelegate {
     func verifiedPINSuccess(_ pin: String) {
         wireframe?.removeDelegateAfterSigning()
+        delegate?.showLoading(shouldShow: true)
         interactor?.sendSignedTx(pin: pin)
     }
 }
@@ -64,6 +65,7 @@ extension RedeemPresenter: RedeemInteractorOutput {
     }
     
     func requestPinInterface() {
+        delegate?.showLoading(shouldShow: false)
         wireframe?.presentPinInterface()
     }
 }

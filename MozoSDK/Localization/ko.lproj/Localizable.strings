@@ -22,13 +22,18 @@
 "messages_hint_search_bar" = "소매점 이름으로 찾기";
 
 "lucky_draw_noti_title" = "Bạn đã trúng thưởng!";
-"lucky_draw_noti_content" = "Chúc mừng bạn đã nhận được phần thưởng từ chương trình quay số may mắn của Mozo.";
+"lucky_draw_noti_content" = "Mozo 행운 추첨 프로그램의 보상을 받은 것을 축하한다.";
 
 "promo_branch_count" = "그리고 %d개 위치 더";
 "promo_branches_count" = "그리고 %d개 위치 더";
 "promo_branches_in_chain" = "체인점의 지점";
 "promo_branches_label" = "분기";
 "promo_for_branches_label" = "지점 프로모션";
+
+"promo_paid_explain_normal" = "점원에게 QR 코드 아래를 스캔하게 하거나 전화기를 사용하여 상점 QR을 스캔하도록 합니다.";
+"promo_paid_explain_custom_code" = "점원이 QR 코드 아래를 스캔하도록 하거나 show code를 누릅니다.";
+"promo_paid_action_show_store_code" = "상점 QR을 스캔";
+
 // MARK: Restriction
 "promo_restrict_none" = "아니요";
 "promo_restrict_time_format" = "HH:mm yyyy/MMM/dd";
@@ -641,6 +646,7 @@
 "error_input_number_of_shopper_out_of_range" = "\'%@\'가 허용 된 시스템 제한을 초과했습니다 (%@ - %@)";
 "error_temporary_suspend" = "이 기능은 일시적으로 중단된다. 그것은 다음 출시 때 곧 출시될 것이다.\n앱 스토어에서 업데이트를 확인하십시오.";
 "error_branch_name_existed" = "이름이 %@인 지점이 이미 있음 다른 이름을 선택하십시오.";
+"error_promo_other_store" = "다른 스토어의 프로모션입니다";
 
 "Something is wrong with your account status. Please try again." = "오류가 발생했습니다. 다시 시도하십시오.";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "월렛 계정이 업데이트되었지만 사용중인 장치와 동기화되지 않았습니다. 시작하기 전에 월렛을 복구하십시오.";
@@ -1225,7 +1231,6 @@
 "Please update the date and time, then try again." = "시간 업데이트 하시고 다시 시도해보세요.";
 
 // Promotion (Update)
-"promo_paid_explain_notice" = "이 QR 코드를 스캔하도록 점원이나 출납원에게 보여주세요";
 "Latest Promotions" = "최신 프로모션";
 
 // Ticket

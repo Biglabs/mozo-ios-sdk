@@ -29,6 +29,11 @@
 "promo_branches_in_chain" = "Branches in chain-stores";
 "promo_branches_label" = "Branches";
 "promo_for_branches_label" = "Promotions for branches";
+
+"promo_paid_explain_normal" = "Let clerk scan below QR code OR use your phone to scan store's QR.";
+"promo_paid_explain_custom_code" = "Let clerk scan below QR code OR tap show code.";
+"promo_paid_action_show_store_code" = "Scan store's QR";
+
 // MARK: Restriction
 "promo_restrict_none" = "None";
 "promo_restrict_time_format" = "HH:mm yyyy/MMM/dd";
@@ -640,6 +645,7 @@
 "error_input_number_of_shopper_out_of_range" = "\'%@\' is outside of the minimums %@ and maximums %@ allowed by our system.";
 "error_temporary_suspend" = "This feature is temporarily suspended.\It will be available soon in next release. Please check for our updates on App stores.";
 "error_branch_name_existed" = "Branch named %@ is already existed. Please choose another name.";
+"error_promo_other_store" = "Promotion belong to other store";
 
 "Something is wrong with your account status. Please try again." = "Something is wrong with your account status. Please try again.";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "Your wallet was updated but did not sync with your current device. Please restore your wallet first.";
@@ -1216,7 +1222,6 @@
 "Please update the date and time, then try again." = "Please update the date and time, then try again.";
 
 // Promotion (Update)
-"promo_paid_explain_notice" = "Let store staff scan this QR code to redeem OR show code to cashier.";
 "Latest Promotions" = "Latest Promotions";
 
 // Ticket

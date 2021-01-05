@@ -29,6 +29,11 @@
 "promo_branches_in_chain" = "Những chi nhánh trong cùng chuỗi";
 "promo_branches_label" = "Chi nhánh";
 "promo_for_branches_label" = "Khuyến mãi ở nhiều chi nhánh";
+
+"promo_paid_explain_normal" = "Để nhân viên bán hàng quét mã QR bên dưới HOẶC dùng điện thoại của bạn để quét mã cửa hàng.";
+"promo_paid_explain_custom_code" = "Để nhân viên bán hàng quét mã QR bên dưới HOẶC bấm hiện mã.";
+"promo_paid_action_show_store_code" = "Quét mã cửa hàng";
+
 // MARK: Restriction
 "promo_restrict_none" = "Không";
 "promo_restrict_time_format" = "HH:mm dd/MMM/yyyy";
@@ -643,6 +648,7 @@
 "error_input_number_of_shopper_out_of_range" = "\'%@\' vượt quá giới hạn cho phép của hệ thống (%@ - %@)";
 "error_temporary_suspend" = "Tính năng này tạm thời bị khóa. Sẽ khả dụng sớm trong đợt phát hành tới.\nXin vui lòng theo dõi những cập nhật của chúng tôi trên kho Ứng dụng.";
 "error_branch_name_existed" = "Chi nhánh tên %@ đã tồn tại. Xin vui lòng đặt tên khác.";
+"error_promo_other_store" = "Khuyến mãi này của cửa hàng khác";
 
 "Something is wrong with your account status. Please try again." = "Có lỗi xảy ra. Xin thử lại";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "Tài khoản ví đã được cập nhật nhưng chưa đồng bộ với thiết bị đang dùng. Xin khôi phục lại ví trước khi bắt đầu.";
@@ -1217,7 +1223,6 @@
 "Please update the date and time, then try again." = "Xin vui lòng cập nhật ngày giờ và thử lại sau.";
 
 // Promotion (Update)
-"promo_paid_explain_notice" = "Đưa mã QR này cho nhân viên của cửa hàng HOẶC đưa mã cho thu ngân.";
 "Latest Promotions" = "Khuyến mãi mới nhất";
 
 // Ticket
