@@ -163,7 +163,7 @@ public class PromotionDTO {
             json["isManyBranch"] = isManyBranch
         }
         
-        json["targetConsumer"] = target
+        json["targetConsumer"] = target.rawValue
         if let priceOriginal = self.priceOriginal {
             json["priceBeforeDiscount"] = priceOriginal
         }
