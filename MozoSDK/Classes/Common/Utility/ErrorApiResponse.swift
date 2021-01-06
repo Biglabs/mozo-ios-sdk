@@ -187,7 +187,7 @@ public enum ErrorApiResponse: String {
         case .STORE_USER_ALREADY_INSTALL_APP_ERROR: return rawValue
             
         case .STORE_PROMO_PERIOD_TIME_ERROR: return "error_date_less_current"
-        case .STORE_PROMO_SECRET_CODE_ERROR: return "Invalid QR Code"
+        case .STORE_PROMO_SECRET_CODE_ERROR: return "Invalid promotion code"
         case .STORE_PROMO_NOT_EXIST_ERROR: return rawValue
         case .STORE_PROMO_NOT_ACTIVE_ERROR: return rawValue
         case .STORE_PROMO_DETAIL_NOT_EXIST_ERROR: return rawValue
