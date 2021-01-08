@@ -71,7 +71,6 @@ extension ApiManager {
                 .catch { error in
                     //Handle error or give feedback to the user
                     let err = error as! ConnectionError
-                    print("Error when request prepare promotion redeem transaction: " + error.localizedDescription)
                     seal.reject(err)
                 }
                 .finally {
