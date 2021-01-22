@@ -4,6 +4,9 @@
  
  Created by Hoang Nguyen on 9/15/18.\n Copyright © 2018 Hoang Nguyen. All rights reserved.\n */
 
+"error_bus_not_found" = "Không có vé miễn phí cho tuyến này";
+"error_bus_reach_limit" = "Bạn đã sử dụng hết vé miễn phí. Xin vui lòng thử lại vào ngày mai";
+
 "covid_card_title" = "Vùng cảnh báo Covid-19";
 "covid_card_locations" = "%@ và %d địa điểm nữa.";
 "covid_card_source" = "Nguồn: Cổng thông tin bộ Y tế";
@@ -478,10 +481,7 @@
 "List view" = "Dạng list";
 "Map view" = "Bản đồ";
 "Search history" = "Lịch sử tìm kiếm";
-"Your Information" = "Thông tin cá nhân";
-"profile_menu_mozo_messages" = "Tin nhắn Mozo";
 "Invite friends" = "Mời bạn bè";
-"Favorite Stores" = "Cửa hàng yêu thích";
 "Settings" = "Thiết lập";
 "Privacy & Policy" = "Quyền riêng tư & chính sách";
 "About" = "Thông tin";
@@ -1040,7 +1040,6 @@
 "Promotion used" = "Khuyến mãi đã sử dụng";
 "Activation Date & Time:" = "Ngày giờ kích hoạt:";
 "Running Promotions Now" = "Những khuyến mãi đang xảy ra";
-"My Promotions" = "Danh sách khuyến mãi";
 "Activated" = "Đã kích hoạt";
 "Activate Date & Time:" = "Ngày giờ kích hoạt:";
 "DETAIL" = "CHI TIẾT";

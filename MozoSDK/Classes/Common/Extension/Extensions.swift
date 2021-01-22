@@ -17,6 +17,10 @@ public extension Bool {
 }
 
 public extension String {
+    func asMozoImage() -> UIImage? {
+        return UIImage(named: self, in: BundleManager.mozoBundle(), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+    }
+    
     func isValidReceiveFormat() -> Bool{
         let regex = try? NSRegularExpression(pattern: "^[a-zA-Z]+:[a-zA-Z0-9]+\\?[a-zA-Z]+=[0-9.]*$", options: .caseInsensitive)
         return regex?.firstMatch(in: self, options: [], range: NSMakeRange(0, self.count)) != nil

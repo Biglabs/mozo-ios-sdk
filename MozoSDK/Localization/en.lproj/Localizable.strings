@@ -4,6 +4,9 @@
  
  Created by Hoang Nguyen on 9/15/18.\n Copyright © 2018 Hoang Nguyen. All rights reserved.\n */
 
+"error_bus_not_found" = "There\'s no free tickets for this route";
+"error_bus_reach_limit" = "You used all free tickets today. Please try again tomorrow";
+
 "covid_card_title" = "Covid-19 Warning Zone";
 "covid_card_locations" = "%@ and %d more locations.";
 "covid_card_source" = "Source: Ministry of Health\'s website";
@@ -476,10 +479,7 @@
 "List view" = "List view";
 "Map view" = "Map view";
 "Search history" = "Search history";
-"Your Information" = "Your Information";
-"profile_menu_mozo_messages" = "Mozo Messages";
 "Invite friends" = "Invite friends";
-"Favorite Stores" = "Favorite Stores";
 "Settings" = "Settings";
 "Privacy & Policy" = "Privacy & Policy";
 "About" = "About";
@@ -1039,7 +1039,6 @@
 "Promotion used" = "Promotion used";
 "Activation Date & Time:" = "Activation Date & Time:";
 "Running Promotions Now" = "Running Promotions Now";
-"My Promotions" = "My Promotions";
 "Activated" = "Activated";
 "Activate Date & Time:" = "Activate Date & Time:";
 "DETAIL" = "DETAIL";

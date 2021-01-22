@@ -476,10 +476,7 @@
 "List view" = "리스트 양식 보기";
 "Map view" = "지도";
 "Search history" = "기록 검색 ";
-"Your Information" = "개인 정보";
-"profile_menu_mozo_messages" = "Mozo 메시지";
 "Invite friends" = "친구 초대";
-"Favorite Stores" = "좋아하는 상점들";
 "Settings" = "설정";
 "Privacy & Policy" = "프라이버시 및 정책";
 "About" = "관하여";
@@ -1048,7 +1045,6 @@
 "Promotion used" = "사용한 프로모션";
 "Activation Date & Time:" = "활성화 날짜 및 시간:";
 "Running Promotions Now" = "현재 진행 중인 프로모션";
-"My Promotions" = "나의 프로모션";
 "Activated" = "활성화 되었습니다";
 "Activate Date & Time:" = "활성화 될 날짜 및 시간:";
 "DETAIL" = "세부 사항";

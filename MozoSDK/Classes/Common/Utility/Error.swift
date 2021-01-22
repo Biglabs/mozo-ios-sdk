@@ -27,6 +27,9 @@ public enum ConnectionError: Error {
     case apiError_UPDATE_VERSION_REQUIREMENT
     case apiError_TEMPORARILY_SUSPENDED
     
+    case apiError_STORE_BUS_CAMPAIGN_NOT_FOUND
+    case apiError_STORE_BUS_TICKET_NO_MORE_TICKET_TODAY
+    
     case apiError_SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS
     case apiError_SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS
     
@@ -152,6 +155,9 @@ public enum ConnectionError: Error {
         case .apiError_MAINTAINING: return .MAINTAINING
         case .apiError_UPDATE_VERSION_REQUIREMENT: return .UPDATE_VERSION_REQUIREMENT
         case .apiError_TEMPORARILY_SUSPENDED: return .TEMPORARILY_SUSPENDED
+            
+        case .apiError_STORE_BUS_CAMPAIGN_NOT_FOUND: return .STORE_BUS_CAMPAIGN_NOT_FOUND
+        case .apiError_STORE_BUS_TICKET_NO_MORE_TICKET_TODAY: return .STORE_BUS_TICKET_NO_MORE_TICKET_TODAY
             
         case .apiError_SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS:
             return .SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS
@@ -303,7 +309,7 @@ extension ConnectionError: LocalizedError {
         case .incorrectSystemDateTime:
             return "Incorrect System Date Time"
         default:
-            return "Api Error"
+            return self.isApiError ? self.apiError?.description : "Api Error"
         }
     }
 }
