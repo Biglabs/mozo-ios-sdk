@@ -160,8 +160,8 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getListEventAirdropOfStore(storeId)
     }
     
-    func searchStoresWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {
-        return apiManager.searchStoresWithText(text, page: page, size: size, long: long, lat: lat, sort: sort)
+    func searchStoresWithText(_ text: String, page: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {
+        return apiManager.searchStoresWithText(text, page: page, long: long, lat: lat, sort: sort)
     }
     
     func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]> {
@@ -388,14 +388,14 @@ extension CoreInteractor: CoreInteractorService {
     }
     
     // MARK: Mozo Messages APIs
-    func getConversationList(text: String?, page: Int, size: Int) -> Promise<[Conversation]> {
-        apiManager.getConversationList(text: text, page: page, size: size)
+    func getConversationList(text: String?, page: Int) -> Promise<[Conversation]> {
+        apiManager.getConversationList(text: text, page: page)
     }
     func getConversationDetails(id: Int64) -> Promise<Conversation?> {
         apiManager.getConversationDetails(id: id)
     }
-    func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]> {
-        apiManager.getChatMessages(id: id, page: page, size: size)
+    func getChatMessages(id: Int64, page: Int) -> Promise<[ConversationMessage]> {
+        apiManager.getChatMessages(id: id, page: page)
     }
     func responseConversation(conversationId: Int64, status: String) -> Promise<Any> {
         apiManager.responseConversation(conversationId: conversationId, status: status)

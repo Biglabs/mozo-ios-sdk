@@ -170,8 +170,8 @@ public class MozoSDK {
         return moduleDependencies.getListEventAirdropOfStore(storeId)
     }
     
-    public static func searchStoresWithText(_ text: String, page: Int = 0, size: Int = 15, long: Double, lat: Double, sort: String = "distance") -> Promise<CollectionStoreInfoDTO> {
-        return moduleDependencies.searchStoresWithText(text, page: page, size: size, long: long, lat: lat, sort: sort)
+    public static func searchStoresWithText(_ text: String, page: Int = 0, long: Double, lat: Double, sort: String = "distance") -> Promise<CollectionStoreInfoDTO> {
+        return moduleDependencies.searchStoresWithText(text, page: page, long: long, lat: lat, sort: sort)
     }
     
     public static func getFavoriteStores(page: Int = 0, size: Int = 15) -> Promise<[BranchInfoDTO]> {
@@ -503,14 +503,14 @@ public class MozoSDK {
     }
     
     // MARK: Mozo Messages APIs
-    public static func getConversationList(text: String?, page: Int, size: Int) -> Promise<[Conversation]> {
-        return moduleDependencies.getConversationList(text: text, page: page, size: size)
+    public static func getConversationList(text: String?, page: Int) -> Promise<[Conversation]> {
+        return moduleDependencies.getConversationList(text: text, page: page)
     }
     public static func getConversationDetails(id: Int64) -> Promise<Conversation?> {
         return moduleDependencies.getConversationDetails(id: id)
     }
-    public static func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]> {
-        return moduleDependencies.getChatMessages(id: id, page: page, size: size)
+    public static func getChatMessages(id: Int64, page: Int) -> Promise<[ConversationMessage]> {
+        return moduleDependencies.getChatMessages(id: id, page: page)
     }
     public static func responseConversation(conversationId: Int64, status: String) -> Promise<Any> {
         return moduleDependencies.responseConversation(conversationId: conversationId, status: status)

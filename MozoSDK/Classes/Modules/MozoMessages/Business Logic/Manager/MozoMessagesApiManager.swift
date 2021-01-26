@@ -9,10 +9,10 @@ import Foundation
 import SwiftyJSON
 import PromiseKit
 extension ApiManager {
-    public func getConversationList(text: String?, page: Int, size: Int) -> Promise<[Conversation]> {
+    public func getConversationList(text: String?, page: Int) -> Promise<[Conversation]> {
         return Promise { seal in
             var params = [
-                "size" : size,
+                "size" : Configuration.PAGING_SIZE,
                 "page" : page
                 ] as [String : Any]
             if let keyword = text?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), keyword.count > 0 {
@@ -54,11 +54,11 @@ extension ApiManager {
         }
     }
     
-    public func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]> {
+    public func getChatMessages(id: Int64, page: Int) -> Promise<[ConversationMessage]> {
         return Promise { seal in
             let params = [
                 "id" : id,
-                "size" : size,
+                "size" : Configuration.PAGING_SIZE,
                 "page" : page
                 ] as [String : Any]
             let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/message/getListMessageDetail?\(params.queryString)"

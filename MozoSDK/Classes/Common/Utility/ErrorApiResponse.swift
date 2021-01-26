@@ -18,7 +18,11 @@ public enum ErrorApiResponse: String {
     
     // BUS TICKET
     case STORE_BUS_CAMPAIGN_NOT_FOUND = "STORE_BUS_CAMPAIGN_NOT_FOUND"
+    case STORE_BUS_NOT_FOUND = "STORE_BUS_NOT_FOUND"
     case STORE_BUS_TICKET_NO_MORE_TICKET_TODAY = "STORE_BUS_TICKET_NO_MORE_TICKET_TODAY"
+    case STORE_BUS_TICKET_USED = "STORE_BUS_TICKET_USED"
+    case STORE_BUS_TICKET_EXPIRED = "STORE_BUS_TICKET_EXPIRED"
+    case STORE_BUS_ROUTE_NOT_OPERATE = "STORE_BUS_ROUTE_NOT_OPERATE"
     
     // STORE
     case STORE_UNREGISTERED = "STORE_UNREGISTERED"
@@ -131,7 +135,11 @@ public enum ErrorApiResponse: String {
         case .TEMPORARILY_SUSPENDED: return "error_temporary_suspend"
             
         case .STORE_BUS_CAMPAIGN_NOT_FOUND: return "error_bus_not_found"
+        case .STORE_BUS_NOT_FOUND: return "error_bus_not_found"
         case .STORE_BUS_TICKET_NO_MORE_TICKET_TODAY: return "error_bus_reach_limit"
+        case .STORE_BUS_TICKET_USED: return "error_fatal"
+        case .STORE_BUS_TICKET_EXPIRED: return "error_fatal"
+        case .STORE_BUS_ROUTE_NOT_OPERATE: return "error_bus_out_of_time"
             
         case .SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS: return "Your wallet was updated but did not sync with your current device. Please restore your wallet first."
         case .SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS: return "The destination wallet was not found. Please recheck the wallet address or try another wallet address"
@@ -236,7 +244,11 @@ public enum ErrorApiResponse: String {
         case .TEMPORARILY_SUSPENDED: return .apiError_TEMPORARILY_SUSPENDED
             
         case .STORE_BUS_CAMPAIGN_NOT_FOUND: return .apiError_STORE_BUS_CAMPAIGN_NOT_FOUND
+        case .STORE_BUS_NOT_FOUND: return .apiError_STORE_BUS_CAMPAIGN_NOT_FOUND
         case .STORE_BUS_TICKET_NO_MORE_TICKET_TODAY: return .apiError_STORE_BUS_TICKET_NO_MORE_TICKET_TODAY
+        case .STORE_BUS_TICKET_USED: return .apiError_STORE_BUS_TICKET_USED
+        case .STORE_BUS_TICKET_EXPIRED: return .apiError_STORE_BUS_TICKET_EXPIRED
+        case .STORE_BUS_ROUTE_NOT_OPERATE: return .apiError_STORE_BUS_ROUTE_NOT_OPERATE
             
         case .SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS:
             return .apiError_SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS

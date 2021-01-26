@@ -4,8 +4,9 @@
  
  Created by Hoang Nguyen on 9/15/18.\n Copyright © 2018 Hoang Nguyen. All rights reserved.\n */
 
-"error_bus_not_found" = "There\'s no free tickets for this route";
-"error_bus_reach_limit" = "You used all free tickets today. Please try again tomorrow";
+"error_bus_not_found" = "There\'s no free tickets for this route.";
+"error_bus_reach_limit" = "You used all free tickets today. Please try again tomorrow.";
+"error_bus_out_of_time" = "This route is out of operation time.";
 
 "covid_card_title" = "Covid-19 Warning Zone";
 "covid_card_locations" = "%@ and %d more locations.";

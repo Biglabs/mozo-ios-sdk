@@ -76,7 +76,7 @@ protocol CoreInteractorService {
     func getAirdropStoreNearby(params: [String: Any]) -> Promise<[AirdropEventDiscoverDTO]>
     func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]>
     
-    func searchStoresWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO>
+    func searchStoresWithText(_ text: String, page: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO>
     func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]>
     func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]>
     func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?>
@@ -216,9 +216,9 @@ protocol CoreInteractorService {
     func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]>
     
     // MARK: Mozo Messages APIs
-    func getConversationList(text: String?, page: Int, size: Int) -> Promise<[Conversation]>
+    func getConversationList(text: String?, page: Int) -> Promise<[Conversation]>
     func getConversationDetails(id: Int64) -> Promise<Conversation?>
-    func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]>
+    func getChatMessages(id: Int64, page: Int) -> Promise<[ConversationMessage]>
     func responseConversation(conversationId: Int64, status: String) -> Promise<Any>
     func updateReadConversation(conversationId: Int64, lastMessageId: Int64) -> Promise<Any>
     func sendMessage(id: Int64, message: String?, images: [String]?, userSend: Bool) -> Promise<Any>

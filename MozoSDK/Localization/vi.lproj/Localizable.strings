@@ -6,6 +6,7 @@
 
 "error_bus_not_found" = "Không có vé miễn phí cho tuyến này";
 "error_bus_reach_limit" = "Bạn đã sử dụng hết vé miễn phí. Xin vui lòng thử lại vào ngày mai";
+"error_bus_out_of_time" = "Tuyến này đã hết giờ hoạt động.";
 
 "covid_card_title" = "Vùng cảnh báo Covid-19";
 "covid_card_locations" = "%@ và %d địa điểm nữa.";

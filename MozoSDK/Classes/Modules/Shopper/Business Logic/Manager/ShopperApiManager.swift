@@ -134,9 +134,9 @@ public extension ApiManager {
         }
     }
     
-    func searchStoresWithText(_ text: String, page: Int = 0, size: Int = 15, long: Double, lat: Double, sort: String = "distance") -> Promise<CollectionStoreInfoDTO> {
+    func searchStoresWithText(_ text: String, page: Int = 0, long: Double, lat: Double, sort: String = "distance") -> Promise<CollectionStoreInfoDTO> {
         return Promise { seal in
-            let params = ["size" : size,
+            let params = ["size" : Configuration.PAGING_SIZE,
                           "page" : page,
                           "lon" : long,
                           "lat" : lat,

@@ -4,6 +4,10 @@
  
  Created by Hoang Nguyen on 9/15/18.\n Copyright © 2018 Hoang Nguyen. All rights reserved.\n */
 
+"error_bus_not_found" = "이 노선은 무료 승차권이 없습니다";
+"error_bus_reach_limit" = "오늘 모든 무료 티켓을 사용했어요. 내일 다시 시도하십시오.";
+"error_bus_out_of_time" = "이 노선은 운행 시간이 초과되었습니다.";
+
 "covid_card_title" = "Covid 경고 구역";
 "covid_card_locations" = "%@ 그리고 %d개 위치 더.";
 "covid_card_source" = "출처: 보건부 웹사이트";
