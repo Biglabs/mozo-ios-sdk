@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 import PromiseKit
 import SwiftyJSON
 let PAYMENT_REQUEST_API_PATH = "/payment-request"

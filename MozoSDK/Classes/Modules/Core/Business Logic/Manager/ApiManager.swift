@@ -11,7 +11,7 @@ import PromiseKit
 import SwiftyJSON
 
 public class ApiManager {
-    private (set) var client: SessionManager
+    private (set) var client: Session
     var delegate: ApiManagerDelegate?
     var apiKey: String?
     var appType: AppType = .Shopper
@@ -27,12 +27,11 @@ public class ApiManager {
         let cachePolicy: NSURLRequest.CachePolicy = .useProtocolCachePolicy//hasInternetConnection ? .UseProtocolCachePolicy : .ReturnCacheDataElseLoad
         
         // Create a custom configuration
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
+        let configuration = URLSessionConfiguration.af.default
         configuration.requestCachePolicy = cachePolicy
         configuration.urlCache = cache
         // Create your own manager instance that uses your custom configuration
-        client = Alamofire.SessionManager(configuration: configuration)
+        client = Alamofire.Session(configuration: configuration)
     }
     
     private func getToken() -> String {
@@ -146,7 +145,7 @@ public class ApiManager {
             guard let URL = URL(string: url) else {return}
             var request = URLRequest(url: URL)
             request.httpMethod = method.rawValue
-            request.allHTTPHeaderFields = headers
+            request.allHTTPHeaderFields = headers.dictionary
             var httpBody : Data? = nil
             
             if ((body as? Data) != nil) {
@@ -187,7 +186,7 @@ public class ApiManager {
             guard let URL = URL(string: url) else {return}
             var request = URLRequest(url: URL)
             request.httpMethod = method.rawValue
-            request.allHTTPHeaderFields = headers
+            request.allHTTPHeaderFields = headers.dictionary
             request.httpBody = param.data(using: String.Encoding.utf8)
 
             self.client.request(request)
@@ -305,9 +304,9 @@ public class ApiManager {
         }
     }
     
-    func checkResponse(response: DataResponse<Any>, error: Error) -> ConnectionError {
+    func checkResponse(response: AFDataResponse<Any>, error: Error) -> ConnectionError {
         var connectionError = ConnectionError.unknowError
-        if response.result.error != nil || (response.response?.statusCode)! < 200 || (response.response?.statusCode)! > 299  {
+        if response.error != nil || (response.response?.statusCode)! < 200 || (response.response?.statusCode)! > 299  {
             connectionError = self.mappingConnectionError(response.response, error: error)!
         }
         return connectionError

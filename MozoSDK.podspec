@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Mozo Developers' => 'developer@mozocoin.io' }
   s.source           = { :git => 'https://github.com/Biglabs/mozo-ios-sdk.git', :tag => s.version.to_s }
-  s.social_media_url = 'https://facebook.com/mozocoin.io'
+  s.social_media_url = 'https://facebook.com/MozoXVietNam'
 
   s.swift_version = '4.1'
   s.ios.deployment_target = '11.0'
@@ -28,18 +28,16 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
   
   s.dependency 'SwiftyJSON', '5.0'
-  s.dependency 'web3swift', '~> 2.2.1'
+  s.dependency 'web3swift', '~> 2.3.0'
   s.dependency 'secp256k1_ios', '~> 0.1.3'
   s.dependency 'RNCryptor', '~> 5.1.0'
-  s.dependency 'PromiseKit/Alamofire', '6.8.4'
-  s.dependency 'Alamofire', '4.8.2'
-  s.dependency 'AlamofireImage', '3.5.2'
-  s.dependency 'CoreStore', '7.3'
+  s.dependency 'AlamofireImage'
+  s.dependency 'CoreStore', '7.3.1'
   s.dependency 'AppAuth'
   s.dependency 'ReachabilitySwift'
-  s.dependency 'MBProgressHUD', '~> 1.2.0'
-  s.dependency 'JWTDecode', '2.5'
-  s.dependency 'Kingfisher', '5.15.8'
+  s.dependency 'MBProgressHUD'
+  s.dependency 'JWTDecode', '2.6.0'
+  s.dependency 'Kingfisher', '6.1.1'
   s.dependency 'libPhoneNumber-iOS'
 #  
 #  s.static_framework = true
