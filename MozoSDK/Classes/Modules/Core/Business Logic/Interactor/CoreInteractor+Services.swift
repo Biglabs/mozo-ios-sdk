@@ -342,8 +342,8 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getBeacon(beaconId)
     }
     
-    func getBranchList(page: Int, size: Int, forSwitching: Bool) -> Promise<[String: Any]> {
-        return apiManager.getBranchList(page: page, size: size, forSwitching: forSwitching)
+    func getBranchList(page: Int, forSwitching: Bool) -> Promise<[String: Any]> {
+        return apiManager.getBranchList(page: page, forSwitching: forSwitching)
     }
     
     func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {

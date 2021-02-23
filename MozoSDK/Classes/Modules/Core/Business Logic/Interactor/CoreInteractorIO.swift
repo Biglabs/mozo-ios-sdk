@@ -198,7 +198,7 @@ protocol CoreInteractorService {
     
     func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO>
     
-    func getBranchList(page: Int, size: Int, forSwitching: Bool) -> Promise<[String: Any]>
+    func getBranchList(page: Int, forSwitching: Bool) -> Promise<[String: Any]>
     
     func getRetailerInfoForLauching() -> Promise<[String: Any]>
     

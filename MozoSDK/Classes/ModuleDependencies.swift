@@ -512,8 +512,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getBeacon(beaconId))!
     }
     
-    func getBranchList(page: Int, size: Int, forSwitching: Bool) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getBranchList(page: page, size: size, forSwitching: forSwitching))!
+    func getBranchList(page: Int, forSwitching: Bool) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getBranchList(page: page, forSwitching: forSwitching))!
     }
      
     func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {

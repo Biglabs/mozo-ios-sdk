@@ -453,8 +453,8 @@ public class MozoSDK {
         return moduleDependencies.getBeacon(beaconId)
     }
     
-    public static func getBranchList(page: Int = 0, size: Int = 15, forSwitching: Bool) -> Promise<[String: Any]> {
-        return moduleDependencies.getBranchList(page: page, size: size, forSwitching: forSwitching)
+    public static func getBranchList(page: Int = 0, forSwitching: Bool) -> Promise<[String: Any]> {
+        return moduleDependencies.getBranchList(page: page, forSwitching: forSwitching)
     }
      
     public static func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
