@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import secp256k1_ios
+import secp256k1
 
 public struct SECP256K1Service {
     static var context = secp256k1_context_create(UInt32(SECP256K1_CONTEXT_SIGN|SECP256K1_CONTEXT_VERIFY))

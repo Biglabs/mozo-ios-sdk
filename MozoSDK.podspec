@@ -29,7 +29,6 @@ Pod::Spec.new do |s|
   
   s.dependency 'SwiftyJSON', '5.0'
   s.dependency 'web3swift', '~> 2.3.0'
-  s.dependency 'secp256k1_ios', '~> 0.1.3'
   s.dependency 'RNCryptor', '~> 5.1.0'
   s.dependency 'AlamofireImage'
   s.dependency 'CoreStore', '7.3.1'
