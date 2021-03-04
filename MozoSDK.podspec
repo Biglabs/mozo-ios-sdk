@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
 
   s.name         = "MozoSDK"
-  s.version      = "2.0.40"
+  s.version      = "2.0.41"
   s.summary = 'Mozo protocol toolkit for Swift'
   s.description = <<-DESC
-                        The Mozo SDK is a Swift implementation of the Mozo protocol. This SDK was originally made by Hoang Nguyen. It allows maintaining authentication/authorization with Mozo Services, receiving Mozo Tokens via beacons and buying/selling/transferring Mozo. It is also supporting UI components for authentication and buying/selling/transferring Mozo.
+                        The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaining authentication/authorization with Mozo Services, receiving Mozo Tokens via beacons and buying/selling/transferring Mozo. It is also supporting UI components for authentication and buying/selling/transferring Mozo.
                         ```
                     DESC
 
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Mozo Developers' => 'developer@mozocoin.io' }
-  s.source           = { :git => 'https://github.com/Biglabs/mozo-ios-sdk.git', :branch => "release/v#{s.version}" }
+  s.source           = { :git => 'https://github.com/Biglabs/mozo-ios-sdk.git', :tag => "v#{s.version}" }
   s.social_media_url = 'https://facebook.com/MozoXVietNam'
 
   s.swift_version = '4.1'
@@ -27,17 +27,18 @@ Pod::Spec.new do |s|
   }
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
   
-  s.dependency 'SwiftyJSON', '5.0'
-  s.dependency 'web3swift', '~> 2.3.0'
-  s.dependency 'RNCryptor', '~> 5.1.0'
-  s.dependency 'AlamofireImage'
-  s.dependency 'CoreStore', '7.3.1'
   s.dependency 'AppAuth'
+  s.dependency 'CoreStore', '7.3.1'
+  
+  s.dependency 'RNCryptor', '~> 5.1.0'
+  s.dependency 'web3swift', '~> 2.3.0'
+
   s.dependency 'ReachabilitySwift'
   s.dependency 'MBProgressHUD'
-  s.dependency 'JWTDecode', '2.6.0'
+  s.dependency 'AlamofireImage'
   s.dependency 'Kingfisher', '6.1.1'
+  s.dependency 'SwiftyJSON', '5.0'
   s.dependency 'libPhoneNumber-iOS'
-#  
-#  s.static_framework = true
+  s.dependency 'JWTDecode', '2.6.0'
+
 end
