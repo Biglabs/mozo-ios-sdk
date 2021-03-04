@@ -21,6 +21,8 @@ public class Configuration {
     public static let LOCALE = Locale.current.identifier
     public static let PARAM_LANGUAGE = "?language=\(LOCALE)"
     
+    public static let PAGING_SIZE = 100
+    
     // User id for anonymous user
     public static let USER_ID_ANONYMOUS = "Mozo@UserId@Anonymous"
     

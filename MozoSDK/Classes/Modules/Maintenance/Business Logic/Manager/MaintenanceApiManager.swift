@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 import PromiseKit
 import SwiftyJSON
 
@@ -14,7 +15,7 @@ extension ApiManager {
         return Promise { seal in
             let url = Configuration.BASE_HOST + "/system-status"
             NSLog("Request check maintenance with url: \(url)")
-            Alamofire.request(url, method: .get)
+            AF.request(url, method: .get)
                 .validate()
                 .responseJSON { response in
                     NSLog("Response from check maintenance: \(response)")

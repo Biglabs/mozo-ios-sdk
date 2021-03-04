@@ -86,6 +86,7 @@ class ExpandImageView: UIView {
         layout.itemSize = CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
         collectionView.collectionViewLayout = layout
         collectionView.alwaysBounceHorizontal = false
+        collectionView.isPagingEnabled = true
     }
     
     @objc func touchClose() {

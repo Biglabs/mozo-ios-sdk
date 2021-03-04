@@ -27,6 +27,12 @@ public enum ConnectionError: Error {
     case apiError_UPDATE_VERSION_REQUIREMENT
     case apiError_TEMPORARILY_SUSPENDED
     
+    case apiError_STORE_BUS_CAMPAIGN_NOT_FOUND
+    case apiError_STORE_BUS_TICKET_NO_MORE_TICKET_TODAY
+    case apiError_STORE_BUS_TICKET_USED
+    case apiError_STORE_BUS_TICKET_EXPIRED
+    case apiError_STORE_BUS_ROUTE_NOT_OPERATE
+    
     case apiError_SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS
     case apiError_SOLOMON_PAYMENT_REQUEST_INVALID_NON_EXIST_WALLET_ADDRESS
     
@@ -104,6 +110,8 @@ public enum ConnectionError: Error {
     case apiError_STORE_PROMO_USER_NO_PAID_ERROR
     case apiError_STORE_PROMO_STATUS_NOT_SCANNED_ERROR
     case apiError_STORE_PROMO_ENDED_ERROR
+    case apiError_STORE_PROMO_OF_OTHER_STORE_ERROR
+    case apiError_STORE_PROMO_TYPE_FIRST_USER_LIMIT_ERROR
     
     case apiError_SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD
     
@@ -150,6 +158,12 @@ public enum ConnectionError: Error {
         case .apiError_MAINTAINING: return .MAINTAINING
         case .apiError_UPDATE_VERSION_REQUIREMENT: return .UPDATE_VERSION_REQUIREMENT
         case .apiError_TEMPORARILY_SUSPENDED: return .TEMPORARILY_SUSPENDED
+            
+        case .apiError_STORE_BUS_CAMPAIGN_NOT_FOUND: return .STORE_BUS_CAMPAIGN_NOT_FOUND
+        case .apiError_STORE_BUS_TICKET_NO_MORE_TICKET_TODAY: return .STORE_BUS_TICKET_NO_MORE_TICKET_TODAY
+        case .apiError_STORE_BUS_TICKET_USED: return .STORE_BUS_TICKET_USED
+        case .apiError_STORE_BUS_TICKET_EXPIRED: return .STORE_BUS_TICKET_EXPIRED
+        case .apiError_STORE_BUS_ROUTE_NOT_OPERATE: return .STORE_BUS_ROUTE_NOT_OPERATE
             
         case .apiError_SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS:
             return .SOLOMON_USER_ADDRESS_BOOK_DUPLICATE_OFFCHAIN_ADDRESS
@@ -244,6 +258,8 @@ public enum ConnectionError: Error {
         case .apiError_STORE_PROMO_USER_NO_PAID_ERROR: return .STORE_PROMO_USER_NO_PAID_ERROR
         case .apiError_STORE_PROMO_STATUS_NOT_SCANNED_ERROR: return .STORE_PROMO_STATUS_NOT_SCANNED_ERROR
         case .apiError_STORE_PROMO_ENDED_ERROR: return .STORE_PROMO_ENDED_ERROR
+        case .apiError_STORE_PROMO_OF_OTHER_STORE_ERROR: return .STORE_PROMO_OF_OTHER_STORE_ERROR
+        case .apiError_STORE_PROMO_TYPE_FIRST_USER_LIMIT_ERROR: return .INTERNAL_ERROR
             
         case .apiError_STORE_SC_TOPUP_NOT_EXIST: return .STORE_SC_TOPUP_NOT_EXIST
         case .apiError_STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR: return .STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR
@@ -291,7 +307,7 @@ extension ConnectionError: LocalizedError {
         case .authenticationRequired:
             return "Authentication Required"
         case .internalServerError:
-            return "Internal Server error"
+            return "An internal server error has occurred"
         case .badRequest:
             return "Bad request"
         case .systemError:
@@ -299,7 +315,7 @@ extension ConnectionError: LocalizedError {
         case .incorrectSystemDateTime:
             return "Incorrect System Date Time"
         default:
-            return "Api Error"
+            return self.isApiError ? self.apiError?.description : "Api Error"
         }
     }
 }

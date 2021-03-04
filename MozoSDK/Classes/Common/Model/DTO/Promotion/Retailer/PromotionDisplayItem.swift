@@ -30,6 +30,10 @@ public class PromotionDisplayItem {
     public var applyBranches: [BranchInfoDTO]?
     public var countOtherBranches: Int = 0
     
+    public var target: PromotionTarget
+    public var priceOriginal: String?
+    public var priceDiscount: String?
+    
     public init() {
         self.countActivated = 0
         self.countPurchased = 0
@@ -48,6 +52,7 @@ public class PromotionDisplayItem {
         self.code = ""
         self.limitUser = 0
         self.remainingNumber = 0
+        self.target = .NONCE
     }
     
     public init(promotionDTO: PromotionDTO) {
@@ -73,6 +78,9 @@ public class PromotionDisplayItem {
         self.applyManyBranch = promotionDTO.applyManyBranch == true || promotionDTO.isManyBranch == true
         self.applyBranches = promotionDTO.applyBranches
         self.countOtherBranches = promotionDTO.countOtherBranches ?? promotionDTO.applyBranchIds?.count ?? 0
+        self.target = promotionDTO.target
+        self.priceOriginal = promotionDTO.priceOriginal
+        self.priceDiscount = promotionDTO.priceDiscount
     }
     
     public var dateFromTo: String {

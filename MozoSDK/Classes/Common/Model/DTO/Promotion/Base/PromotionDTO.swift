@@ -36,6 +36,11 @@ public class PromotionDTO {
     public var isManyBranch: Bool?
     public var selectedBranch: BranchInfoDTO? = nil
     
+    // MARK: Restriction
+    public var target: PromotionTarget = .NONCE
+    public var priceOriginal: String?
+    public var priceDiscount: String?
+    
     public init() {
         // MARK: empty constructor
     }
@@ -87,6 +92,9 @@ public class PromotionDTO {
         self.applyBranches = BranchInfoDTO.branchArrayFromJson(json["applyBranches"])
         self.countOtherBranches = json["countOtherBranches"].int
         self.isManyBranch = json["isManyBranch"].bool
+        self.target = PromotionTarget.init(rawValue: json["targetConsumer"].string ?? PromotionTarget.NONCE.rawValue) ?? .NONCE
+        self.priceOriginal = json["priceBeforeDiscount"].string
+        self.priceDiscount = json["priceAfterDiscount"].string
     }
     
     public func toJSON() -> Dictionary<String, Any> {
@@ -154,6 +162,14 @@ public class PromotionDTO {
         if let isManyBranch = self.isManyBranch {
             json["isManyBranch"] = isManyBranch
         }
+        
+        json["targetConsumer"] = target.rawValue
+        if let priceOriginal = self.priceOriginal {
+            json["priceBeforeDiscount"] = priceOriginal
+        }
+        if let priceDiscount = self.priceDiscount {
+            json["priceAfterDiscount"] = priceDiscount
+        }
         return json
     }
     
@@ -188,6 +204,10 @@ extension PromotionDTO: Equatable {
             lhs.countOtherBranches == rhs.countOtherBranches &&
             lhs.applyBranchIds == rhs.applyBranchIds &&
             lhs.applyBranches?.count == rhs.applyBranches?.count &&
-            lhs.isManyBranch == rhs.isManyBranch
+            lhs.isManyBranch == rhs.isManyBranch &&
+        
+            lhs.target == rhs.target &&
+            lhs.priceOriginal == rhs.priceOriginal &&
+            lhs.priceDiscount == rhs.priceDiscount
     }
 }

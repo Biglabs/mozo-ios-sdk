@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 import PromiseKit
 import SwiftyJSON
 
@@ -62,9 +63,13 @@ extension ApiManager {
         }
     }
     
-    func getBranchList(page: Int, size: Int, forSwitching: Bool) -> Promise<[String: Any]> {
+    func getBranchList(page: Int, forSwitching: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + (forSwitching ? "/retailer/branchesForSwitching" : RETAILER_BRANCH_API_PATH)
+            let params = [
+                "page" : page,
+                "size" : Configuration.PAGING_SIZE
+            ] as [String : Any]
+            let url = Configuration.BASE_STORE_URL + (forSwitching ? "/retailer/branchesForSwitching" : RETAILER_BRANCH_API_PATH) + "?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

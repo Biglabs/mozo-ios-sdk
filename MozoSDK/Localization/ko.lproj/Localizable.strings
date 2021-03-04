@@ -4,6 +4,10 @@
  
  Created by Hoang Nguyen on 9/15/18.\n Copyright © 2018 Hoang Nguyen. All rights reserved.\n */
 
+"error_bus_not_found" = "이 노선은 무료 승차권이 없습니다";
+"error_bus_reach_limit" = "오늘 모든 무료 티켓을 사용했어요. 내일 다시 시도하십시오.";
+"error_bus_out_of_time" = "이 노선은 운행 시간이 초과되었습니다.";
+
 "covid_card_title" = "Covid 경고 구역";
 "covid_card_locations" = "%@ 그리고 %d개 위치 더.";
 "covid_card_source" = "출처: 보건부 웹사이트";
@@ -22,7 +26,7 @@
 "messages_hint_search_bar" = "소매점 이름으로 찾기";
 
 "lucky_draw_noti_title" = "Bạn đã trúng thưởng!";
-"lucky_draw_noti_content" = "Chúc mừng bạn đã nhận được phần thưởng từ chương trình quay số may mắn của Mozo.";
+"lucky_draw_noti_content" = "Mozo 행운 추첨 프로그램의 보상을 받은 것을 축하한다.";
 
 "promo_branch_count" = "그리고 %d개 위치 더";
 "promo_branches_count" = "그리고 %d개 위치 더";
@@ -30,7 +34,25 @@
 "promo_branches_label" = "분기";
 "promo_for_branches_label" = "지점 프로모션";
 
+"promo_paid_explain_normal" = "점원에게 QR 코드 아래를 스캔하게 하거나 전화기를 사용하여 상점 QR을 스캔하도록 합니다.";
+"promo_paid_explain_custom_code" = "점원이 QR 코드 아래를 스캔하도록 하거나 show code를 누릅니다.";
+"promo_paid_action_show_store_code" = "상점 QR을 스캔";
+
+// MARK: Restriction
+"promo_restrict_none" = "아니요";
+"promo_restrict_time_format" = "HH:mm yyyy/MMM/dd";
+"promo_restrict_once_per_user" = "고객당 1회";
+"promo_restrict_once_per_user_msg" = "이 프로모션은 고객 1인당 1회 제한된다. %@에 구매하셨습니다.";
+"promo_restrict_once_per_day" = "1일 1회(24시간)";
+"promo_restrict_once_per_day_msg" = "이 프로모션은 다음 %@에 살 수 있다.";
+"promo_restrict_once_new_user_of_store" = "신규 고객 1회(모든 지점의 카운트)";
+"promo_restrict_once_new_user_of_store_msg" = "이 프로모션은 신규 고객에 적용된다. 당신은 %@에 구매하셨습니다.";
+"promo_restrict_once_per_new_register_user" = "신규 구독자에게 한 번";
+"promo_restrict_once_per_new_register_user_msg" = "이 프로모션은 신규 등록에 한해 적용된다.";
+"promo_price_discount" = "할인후가격";
+"promo_pos_custom_code_explain" = "이 코드를 상환하려면 출납원에게 표시";
 "btn_show_codes" = "코드 표시";
+"btn_show_code" = "코드 표시";
 
 "Address Book" = "주소록";
 "Select Address" = "주소 선택";
@@ -458,10 +480,7 @@
 "List view" = "리스트 양식 보기";
 "Map view" = "지도";
 "Search history" = "기록 검색 ";
-"Your Information" = "개인 정보";
-"profile_menu_mozo_messages" = "Mozo 메시지";
 "Invite friends" = "친구 초대";
-"Favorite Stores" = "좋아하는 상점들";
 "Settings" = "설정";
 "Privacy & Policy" = "프라이버시 및 정책";
 "About" = "관하여";
@@ -628,6 +647,7 @@
 "error_input_number_of_shopper_out_of_range" = "\'%@\'가 허용 된 시스템 제한을 초과했습니다 (%@ - %@)";
 "error_temporary_suspend" = "이 기능은 일시적으로 중단된다. 그것은 다음 출시 때 곧 출시될 것이다.\n앱 스토어에서 업데이트를 확인하십시오.";
 "error_branch_name_existed" = "이름이 %@인 지점이 이미 있음 다른 이름을 선택하십시오.";
+"error_promo_other_store" = "다른 스토어의 프로모션입니다";
 
 "Something is wrong with your account status. Please try again." = "오류가 발생했습니다. 다시 시도하십시오.";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "월렛 계정이 업데이트되었지만 사용중인 장치와 동기화되지 않았습니다. 시작하기 전에 월렛을 복구하십시오.";
@@ -1029,7 +1049,6 @@
 "Promotion used" = "사용한 프로모션";
 "Activation Date & Time:" = "활성화 날짜 및 시간:";
 "Running Promotions Now" = "현재 진행 중인 프로모션";
-"My Promotions" = "나의 프로모션";
 "Activated" = "활성화 되었습니다";
 "Activate Date & Time:" = "활성화 될 날짜 및 시간:";
 "DETAIL" = "세부 사항";
@@ -1212,7 +1231,6 @@
 "Please update the date and time, then try again." = "시간 업데이트 하시고 다시 시도해보세요.";
 
 // Promotion (Update)
-"Let store staff scan this QR code to redeem" = "스토어 직원에게 이 QR 코드 보여주세요";
 "Latest Promotions" = "최신 프로모션";
 
 // Ticket

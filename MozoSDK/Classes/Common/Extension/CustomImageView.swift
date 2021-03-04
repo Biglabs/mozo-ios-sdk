@@ -40,12 +40,11 @@ public class CustomImageView: UIImageView {
             loadingView.startAnimating()
             self.addSubview(loadingView)
         }
-        DataRequest.addAcceptableImageContentTypes(["image/jpg"])
-        Alamofire.request(urlString).responseImage { response in
+        AF.request(urlString).responseImage { response in
             switch response.result {
             case .success( _):
                 DispatchQueue.main.async {
-                    if let imageToCache = response.result.value {
+                    if let imageToCache = response.value {
                         print("Save cache image.")
                         if self.imageUrlString == urlString {
                             if isShowLoading {

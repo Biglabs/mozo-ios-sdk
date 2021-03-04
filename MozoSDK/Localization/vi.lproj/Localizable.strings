@@ -4,6 +4,10 @@
  
  Created by Hoang Nguyen on 9/15/18.\n Copyright © 2018 Hoang Nguyen. All rights reserved.\n */
 
+"error_bus_not_found" = "Không có vé miễn phí cho tuyến này";
+"error_bus_reach_limit" = "Bạn đã sử dụng hết vé miễn phí. Xin vui lòng thử lại vào ngày mai";
+"error_bus_out_of_time" = "Tuyến này đã hết giờ hoạt động.";
+
 "covid_card_title" = "Vùng cảnh báo Covid-19";
 "covid_card_locations" = "%@ và %d địa điểm nữa.";
 "covid_card_source" = "Nguồn: Cổng thông tin bộ Y tế";
@@ -30,7 +34,25 @@
 "promo_branches_label" = "Chi nhánh";
 "promo_for_branches_label" = "Khuyến mãi ở nhiều chi nhánh";
 
+"promo_paid_explain_normal" = "Để nhân viên bán hàng quét mã QR bên dưới HOẶC dùng điện thoại của bạn để quét mã cửa hàng.";
+"promo_paid_explain_custom_code" = "Để nhân viên bán hàng quét mã QR bên dưới HOẶC bấm hiện mã.";
+"promo_paid_action_show_store_code" = "Quét mã cửa hàng";
+
+// MARK: Restriction
+"promo_restrict_none" = "Không";
+"promo_restrict_time_format" = "HH:mm dd/MMM/yyyy";
+"promo_restrict_once_per_user" = "Một lần cho mỗi khách";
+"promo_restrict_once_per_user_msg" = "Khuyến mãi này chỉ cho mua một lần. Bạn đã mua lúc %@.";
+"promo_restrict_once_per_day" = "Một lần mỗi ngày (24h)";
+"promo_restrict_once_per_day_msg" = "Bạn có thể mua khuyến mãi này trong vòng %@ nữa.";
+"promo_restrict_once_new_user_of_store" = "Một lần dành cho khách hàng mới (tính tất cả chi nhánh)";
+"promo_restrict_once_new_user_of_store_msg" = "Khuyến mãi này chỉ dành cho khách hàng mới. Bạn đã mua lúc %@.";
+"promo_restrict_once_per_new_register_user" = "Một lần dành cho người đăng kí mới";
+"promo_restrict_once_per_new_register_user_msg" = "Khuyến mãi này chỉ dành cho người đăng kí mới.";
+"promo_price_discount" = "Giá đã khuyến mãi";
+"promo_pos_custom_code_explain" = "Đưa mã này cho thu ngân để đổi khuyến mãi";
 "btn_show_codes" = "Hiện mã";
+"btn_show_code" = "Hiện mã";
 
 "Address Book" = "Danh bạ";
 "Select Address" = "Chọn địa chỉ";
@@ -460,10 +482,7 @@
 "List view" = "Dạng list";
 "Map view" = "Bản đồ";
 "Search history" = "Lịch sử tìm kiếm";
-"Your Information" = "Thông tin cá nhân";
-"profile_menu_mozo_messages" = "Tin nhắn Mozo";
 "Invite friends" = "Mời bạn bè";
-"Favorite Stores" = "Cửa hàng yêu thích";
 "Settings" = "Thiết lập";
 "Privacy & Policy" = "Quyền riêng tư & chính sách";
 "About" = "Thông tin";
@@ -630,6 +649,7 @@
 "error_input_number_of_shopper_out_of_range" = "\'%@\' vượt quá giới hạn cho phép của hệ thống (%@ - %@)";
 "error_temporary_suspend" = "Tính năng này tạm thời bị khóa. Sẽ khả dụng sớm trong đợt phát hành tới.\nXin vui lòng theo dõi những cập nhật của chúng tôi trên kho Ứng dụng.";
 "error_branch_name_existed" = "Chi nhánh tên %@ đã tồn tại. Xin vui lòng đặt tên khác.";
+"error_promo_other_store" = "Khuyến mãi này của cửa hàng khác";
 
 "Something is wrong with your account status. Please try again." = "Có lỗi xảy ra. Xin thử lại";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "Tài khoản ví đã được cập nhật nhưng chưa đồng bộ với thiết bị đang dùng. Xin khôi phục lại ví trước khi bắt đầu.";
@@ -1021,7 +1041,6 @@
 "Promotion used" = "Khuyến mãi đã sử dụng";
 "Activation Date & Time:" = "Ngày giờ kích hoạt:";
 "Running Promotions Now" = "Những khuyến mãi đang xảy ra";
-"My Promotions" = "Danh sách khuyến mãi";
 "Activated" = "Đã kích hoạt";
 "Activate Date & Time:" = "Ngày giờ kích hoạt:";
 "DETAIL" = "CHI TIẾT";
@@ -1204,7 +1223,6 @@
 "Please update the date and time, then try again." = "Xin vui lòng cập nhật ngày giờ và thử lại sau.";
 
 // Promotion (Update)
-"Let store staff scan this QR code to redeem" = "Đưa mã QR này cho nhân viên của cửa hàng";
 "Latest Promotions" = "Khuyến mãi mới nhất";
 
 // Ticket

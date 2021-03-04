@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 import PromiseKit
 import SwiftyJSON
 
@@ -35,7 +36,7 @@ public extension ApiManager {
     
     func uploadImage(images: [UIImage], url: String, progressionHandler: @escaping (_ fractionCompleted: Double)-> Void) -> Promise<[String]> {
         return Promise { seal in
-            Alamofire.upload(multipartFormData: { (multipartFormData) in
+            AF.upload(multipartFormData: { (multipartFormData) in
                 for image in images {
                     if let imgData = UIImageJPEGRepresentation(image, 1.0) {
                         let imageSize = imgData.count
@@ -43,43 +44,37 @@ public extension ApiManager {
                         multipartFormData.append(imgData, withName: "", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/*")
                     }
                 }
-            }, to: url, encodingCompletion: { encodingResult in
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    upload.uploadProgress { progress in
-                        print("Progress upload image with url \(url), \(progress.fractionCompleted * 100)%")
-                        progressionHandler(progress.fractionCompleted)
+            }, to: url)
+            .uploadProgress { progress in
+                print("Progress upload image with url \(url), \(progress.fractionCompleted * 100)%")
+                progressionHandler(progress.fractionCompleted)
+            }
+            .responseJSON { response in
+                switch response.result {
+                case .success(let json):
+                    print("Finish request to upload image, json: \(json)")
+                    guard let json = json as? [String: Any] else {
+                        return seal.reject(ConnectionError.systemError)
                     }
-                    upload.responseJSON { response in
-                        switch response.result {
-                        case .success(let json):
-                            print("Finish request to upload image, json: \(json)")
-                            guard let json = json as? [String: Any] else {
-                                return seal.reject(ConnectionError.systemError)
+                    self.handleApiResponseJSON(json, url: url).done({ (jsonData) in
+                        let jobj = JSON(jsonData)
+                        let items = jobj[RESPONSE_TYPE_ARRAY_KEY].array ?? []
+                        var values : [String] = []
+                        for item in items {
+                            if let string = item[RESPONSE_TYPE_VALUE_KEY].string {
+                                values.append(string)
                             }
-                            self.handleApiResponseJSON(json, url: url).done({ (jsonData) in
-                                let jobj = JSON(jsonData)
-                                let items = jobj[RESPONSE_TYPE_ARRAY_KEY].array ?? []
-                                var values : [String] = []
-                                for item in items {
-                                    if let string = item[RESPONSE_TYPE_VALUE_KEY].string {
-                                        values.append(string)
-                                    }
-                                }
-                                seal.fulfill(values)
-                            }).catch({ (error) in
-                                seal.reject(error)
-                            })
-                        case .failure(let error):
-                            print("Request failed with error: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))")
-                            let connectionError = self.checkResponse(response: response, error: error)
-                            seal.reject(connectionError)
                         }
-                    }
+                        seal.fulfill(values)
+                    }).catch({ (error) in
+                        seal.reject(error)
+                    })
                 case .failure(let error):
-                    print("Error when request to upload image: " + error.localizedDescription)
+                    print("Request failed with error: \(error.localizedDescription), url: \(url), detail: \(self.getErrorDetailMessage(responseData: response.data))")
+                    let connectionError = self.checkResponse(response: response, error: error)
+                    seal.reject(connectionError)
                 }
-            })
+            }
         }
     }
 }

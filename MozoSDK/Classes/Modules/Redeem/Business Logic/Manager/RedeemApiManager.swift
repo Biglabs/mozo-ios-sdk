@@ -71,7 +71,6 @@ extension ApiManager {
                 .catch { error in
                     //Handle error or give feedback to the user
                     let err = error as! ConnectionError
-                    print("Error when request prepare promotion redeem transaction: " + error.localizedDescription)
                     seal.reject(err)
                 }
                 .finally {
@@ -196,6 +195,30 @@ extension ApiManager {
                 .finally {
                     //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
+        }
+    }
+    
+    public func processPromotionByCustomCode(code: String, branchId: Int64, lat: Double? = nil, lng: Double? = nil) -> Promise<Any> {
+        return Promise { seal in
+            var urlComponents = URLComponents(string: Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/usePromo?lat=0&lng=0")
+            var items = [URLQueryItem]()
+            if let latitude = lat {
+                items.append(URLQueryItem(name: "lat", value: "\(latitude)"))
+            }
+            if let longtitude = lng {
+                items.append(URLQueryItem(name: "lng", value: "\(longtitude)"))
+            }
+            urlComponents?.queryItems = items
+            var params = Dictionary<String, Any>()
+            params["code"] = code
+            params["branchId"] = "\(branchId)"
+            self.execute(.post, url: urlComponents!.url!.absoluteString, parameters: params)
+                .done { json -> Void in
+                    seal.fulfill(SwiftyJSON.JSON(json))
+                }
+                .catch { error in
+                    seal.reject(error)
+                }
         }
     }
 }

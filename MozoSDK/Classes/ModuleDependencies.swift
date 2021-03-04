@@ -232,8 +232,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getListEventAirdropOfStore(storeId))!
     }
     
-    func searchStoresWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.searchStoresWithText(text, page: page, size: size, long: long, lat: lat, sort: sort))!
+    func searchStoresWithText(_ text: String, page: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.searchStoresWithText(text, page: page, long: long, lat: lat, sort: sort))!
     }
     
     func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]> {
@@ -396,6 +396,10 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionPaidDetailByCode(promotionCode))!
     }
     
+    func processPromotionByCustomCode(code: String, branchId: Int64, lat: Double? = nil, lng: Double? = nil) -> Promise<Any> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.processPromotionByCustomCode(code: code, branchId: branchId, lat: lat, lng: lng))!
+    }
+    
     func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateFavoritePromotion(promotionId, isFavorite: isFavorite))!
     }
@@ -508,8 +512,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getBeacon(beaconId))!
     }
     
-    func getBranchList(page: Int, size: Int, forSwitching: Bool) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getBranchList(page: page, size: size, forSwitching: forSwitching))!
+    func getBranchList(page: Int, forSwitching: Bool) -> Promise<[String: Any]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getBranchList(page: page, forSwitching: forSwitching))!
     }
      
     func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
@@ -554,14 +558,14 @@ class ModuleDependencies {
     }
     
     // MARK: Mozo Messages APIs
-    func getConversationList(text: String?, page: Int, size: Int) -> Promise<[Conversation]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getConversationList(text: text, page: page, size: size))!
+    func getConversationList(text: String?, page: Int) -> Promise<[Conversation]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getConversationList(text: text, page: page))!
     }
     func getConversationDetails(id: Int64) -> Promise<Conversation?> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getConversationDetails(id: id))!
     }
-    func getChatMessages(id: Int64, page: Int, size: Int) -> Promise<[ConversationMessage]> {
-       return (coreWireframe.corePresenter?.coreInteractorService?.getChatMessages(id: id, page: page, size: size))!
+    func getChatMessages(id: Int64, page: Int) -> Promise<[ConversationMessage]> {
+       return (coreWireframe.corePresenter?.coreInteractorService?.getChatMessages(id: id, page: page))!
     }
     func responseConversation(conversationId: Int64, status: String) -> Promise<Any> {
         return (coreWireframe.corePresenter?.coreInteractorService?.responseConversation(conversationId: conversationId, status: status))!

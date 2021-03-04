@@ -23,7 +23,7 @@ class ExpandImageCollectionViewCell: UICollectionViewCell {
 //            let paramUrlString = "\(url)?width=\(Int(imageView.frame.width * UIScreen.main.scale * 2))&height=\(Int(imageView.frame.height * UIScreen.main.scale * 2))"
 //            imageView.imageUrlString = paramUrlString
 //            imageView.loadImageUsingUrlString(paramUrlString, defaultImageName: "", isShowLoading: true, isUseScreenCenter: true)
-            imageView.loadImage(url, defaultImageName: "", isShowLoading: true)
+            imageView.loadImage(url, defaultImageName: "")
         } else {
             imageView.image = nil
         }

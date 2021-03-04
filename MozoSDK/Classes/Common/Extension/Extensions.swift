@@ -17,6 +17,10 @@ public extension Bool {
 }
 
 public extension String {
+    func asMozoImage() -> UIImage? {
+        return UIImage(named: self, in: BundleManager.mozoBundle(), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+    }
+    
     func isValidReceiveFormat() -> Bool{
         let regex = try? NSRegularExpression(pattern: "^[a-zA-Z]+:[a-zA-Z0-9]+\\?[a-zA-Z]+=[0-9.]*$", options: .caseInsensitive)
         return regex?.firstMatch(in: self, options: [], range: NSMakeRange(0, self.count)) != nil
@@ -145,6 +149,19 @@ public extension String {
             print("[Mozo] \(self)")
         }
     }
+    
+    func split(usingRegex pattern: String) -> [String] {
+        //### Crashes when you pass invalid `pattern`
+        let regex = try! NSRegularExpression(pattern: pattern)
+        let matches = regex.matches(in: self, range: NSRange(0..<utf16.count))
+        let ranges = [startIndex..<startIndex] + matches.map{Range($0.range, in: self)!} + [endIndex..<endIndex]
+        return (0...matches.count).map {String(self[ranges[$0].upperBound..<ranges[$0+1].lowerBound])}
+    }
+    
+    func summary() -> String {
+        let result = self.split(usingRegex: "\\.|\r\n|\n")
+        return (result.first ?? self) + ((result.count > 1 && !result[1].isEmpty) ? "…" : "")
+    }
 }
 
 internal extension String {
@@ -216,6 +233,12 @@ public extension UIColor {
 }
 
 public extension UIView {
+    func roundedAvatar() {
+        roundedCircle()
+        layer.borderWidth = 1
+        layer.borderColor = UIColor(hexString: "cacaca").cgColor
+    }
+    
     func roundCorners(cornerRadius: CGFloat = 0.02, borderColor: UIColor, borderWidth: CGFloat) {
         layer.cornerRadius = cornerRadius * bounds.size.width
         layer.borderWidth = borderWidth
@@ -252,6 +275,7 @@ public extension UIView {
         gradient.frame = frame
         gradient.colors = colors
         gradient.locations = locations
+        layer.sublayers?.forEach { $0.removeFromSuperlayer() }
         layer.insertSublayer(gradient, at: 0)
     }
 }

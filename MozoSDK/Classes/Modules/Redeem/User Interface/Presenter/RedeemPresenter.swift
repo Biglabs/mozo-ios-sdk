@@ -22,14 +22,17 @@ class RedeemPresenter: NSObject {
 extension RedeemPresenter: PinModuleDelegate {
     func verifiedPINSuccess(_ pin: String) {
         wireframe?.removeDelegateAfterSigning()
+        delegate?.showLoading(shouldShow: true)
         interactor?.sendSignedTx(pin: pin)
     }
 }
 extension RedeemPresenter: RedeemInteractorOutput {
     func requestAutoPINInterface() {
+        delegate?.showLoading(shouldShow: false)
         wireframe?.presentAutoPINInterface(needShowRoot: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Configuration.TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS)) {
             self.wireframe?.rootWireframe?.dismissTopViewController()
+            self.delegate?.showLoading(shouldShow: true)
         }
     }
     
@@ -64,6 +67,7 @@ extension RedeemPresenter: RedeemInteractorOutput {
     }
     
     func requestPinInterface() {
+        delegate?.showLoading(shouldShow: false)
         wireframe?.presentPinInterface()
     }
 }

@@ -31,15 +31,23 @@ class DemoViewController: UIViewController {
 }
 
 extension DemoViewController: AuthenticationDelegate {
-    func mozoAuthenticationDidFinish() {
-        print("Mozo: Finish authentication")
-        let alert = UIAlertController(title: "MOZO", message: "Finish authentication", preferredStyle: .alert)
-        alert.addAction(.init(title: "OK", style: .default) {(action) in
-            
-        })
-        self.present(alert, animated: true, completion: nil)
-    }
-    
+	func mozoAuthenticationDidFinish() {
+		print("Mozo: Finish authentication")
+		let alert = UIAlertController(title: "MOZO", message: "Finish authentication", preferredStyle: .alert)
+		alert.addAction(.init(title: "OK", style: .default) {(action) in
+			
+		})
+		self.present(alert, animated: true, completion: nil)
+	}
+	
+	func mozoDidExpiredToken() {
+		print("Mozo: Token Expired")
+	}
+	
+	func willExecuteNextStep() {
+		print("Mozo: Execute Next Step")
+	}
+	
     func mozoLogoutDidFinish() {
         print("Mozo: Finish logout")
     }
