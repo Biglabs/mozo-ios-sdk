@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Mozo Developers' => 'developer@mozocoin.io' }
-  s.source           = { :git => 'https://github.com/Biglabs/mozo-ios-sdk.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/Biglabs/mozo-ios-sdk.git', :branch => "release/v#{s.version}" }
   s.social_media_url = 'https://facebook.com/MozoXVietNam'
 
   s.swift_version = '4.1'
