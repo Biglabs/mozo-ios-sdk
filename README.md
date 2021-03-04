@@ -35,45 +35,6 @@ With iOS 10 and higher you need to add some keys to the Info.plist of your proje
 <string>To enable you to receive Mozo Tokens.</string>
 ```
 
-## Include the SDK for iOS in an Existing Application
-
-The [samples](https://github.com/biglabs/mozo-ios-sdk/Examples) included with the SDK for iOS are standalone projects that are already set up for you. You can also integrate the SDK for iOS with your own existing project. Below is how to import the Mozo Mobile SDK for iOS into your project:
-
-* [CocoaPods](https://cocoapods.org/)
-
-1. The Mozo Mobile SDK for iOS is available through [CocoaPods](http://cocoapods.org). If you have not installed CocoaPods, install CocoaPods by running the command:
-
-$ gem install cocoapods
-$ pod setup
-
-Depending on your system settings, you may have to use `sudo` for installing `cocoapods` as follows:
-
-$ sudo gem install cocoapods
-$ pod setup
-
-2. In your project directory (the directory where your `*.xcodeproj` file is), create a plain text file named `Podfile` (without any file extension) and add the lines below. Replace `YourTarget` with your actual target name.
-
-source 'https://github.com/CocoaPods/Specs.git'
-
-platform :ios, '10.0'
-use_frameworks!
-
-target :'YourTarget' do
-pod 'MozoSDK'
-end
-
-![image](readme-images/cocoapods-setup-01.png?raw=true)
-
-3. Then run the following command:
-
-$ pod install
-
-4. Open up `*.xcworkspace` with Xcode and start using the SDK.
-
-![image](readme-images/cocoapods-setup-02.png?raw=true)
-
-**Note**: Do **NOT** use `*.xcodeproj`.
-
 ## Getting Started with Swift
 
 1. Import the MozoSDK header in the application delegate.
