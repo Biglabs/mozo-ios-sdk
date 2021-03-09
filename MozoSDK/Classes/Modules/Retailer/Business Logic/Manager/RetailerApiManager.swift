@@ -11,7 +11,7 @@ import SwiftyJSON
 
 let RETAILER_INFO_API_PATH = "/retailer/info"
 let RETAILER_SALE_PERSON_API_PATH = "/retailer/saleperson"
-let COMMON_COUNTRY_CODE_API_PATH = "/common/countries"
+let COMMON_COUNTRY_CODE_API_PATH = "/common/v1/countries"
 let TAGS_API_PATH = "/tags"
 let RETAILER_STORE_INFO_API_PATH = "/retailer/storeInfo"
 let RETAILER_STORE_INFO_HASHTAG_API_PATH = "/retailer/storeInfo/hashtag"
