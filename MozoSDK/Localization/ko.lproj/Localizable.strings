@@ -648,6 +648,7 @@
 "error_temporary_suspend" = "이 기능은 일시적으로 중단된다. 그것은 다음 출시 때 곧 출시될 것이다.\n앱 스토어에서 업데이트를 확인하십시오.";
 "error_branch_name_existed" = "이름이 %@인 지점이 이미 있음 다른 이름을 선택하십시오.";
 "error_promo_other_store" = "다른 스토어의 프로모션입니다";
+"error_promo_target_consumer" = "이 프로모션은 사용할 수 없습니다";
 
 "Something is wrong with your account status. Please try again." = "오류가 발생했습니다. 다시 시도하십시오.";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "월렛 계정이 업데이트되었지만 사용중인 장치와 동기화되지 않았습니다. 시작하기 전에 월렛을 복구하십시오.";
