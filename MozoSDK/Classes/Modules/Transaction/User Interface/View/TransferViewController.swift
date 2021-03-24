@@ -31,7 +31,7 @@ class TransferViewController: MozoBasicViewController {
     @IBOutlet weak var btnContinue: UIButton!
     @IBOutlet weak var constraintTopSpace: NSLayoutConstraint!
     let topSpace : CGFloat = 14.0
-    let topSpaceWithAB: CGFloat = 38
+    let topSpaceWithAB: CGFloat = 45
     
     private let refreshControl = UIRefreshControl()
     var tokenInfo : TokenInfoDTO?
