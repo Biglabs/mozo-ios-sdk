@@ -1,9 +1,10 @@
 # Mozo SDK for iOS
 [![Badge w/ Version](https://cocoapod-badges.herokuapp.com/v/MozoSDK/badge.png)](https://cocoapods.org/pods/MozoSDK)
+[![Swift version](https://img.shields.io/badge/Swift-5-orange)](#)
+[![iOS version](https://img.shields.io/badge/iOS-11-green)](#)
 
-This open-source  library allows you to integrate Mozo supported features into your iOS app. 
-
-Learn more about the provided samples, documentation, integrating the SDK into your app, accessing source code, and more at [our website][1].
+MozoSDK for iOS by MozoX Pte. Ltd.
+For more information please see [the website][1].
 
 ## Setting Up  
 
@@ -11,8 +12,8 @@ To get started with the Mozo SDK for iOS, check out [our website][1]. You can se
 
 To use the Mozo SDK for iOS, you will need the following installed on your development machine:
 
-* Xcode 9 or later
-* iOS 10 or later
+* Xcode 12 or later
+* iOS 11 or later
 
 At the Mozo GitHub repo, you can check out the [SDK source code](https://github.com/biglabs/mozo-ios-sdk).
 
