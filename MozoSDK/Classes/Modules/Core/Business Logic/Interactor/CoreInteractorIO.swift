@@ -186,8 +186,6 @@ protocol CoreInteractorService {
     
     func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO>
     
-    func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]>
-    
     func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO>
     
     func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO>

@@ -441,10 +441,6 @@ public class MozoSDK {
         return moduleDependencies.confirmStoreInfoMerchant(branchInfo: branchInfo)
     }
     
-    public static func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]> {
-        return moduleDependencies.sendRegisterFCMToken(registerDeviceInfo: registerDeviceInfo)
-    }
-    
     public static func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
         return moduleDependencies.createNewBranch(branchInfo)
     }
