@@ -651,6 +651,7 @@
 "error_branch_name_existed" = "Chi nhánh tên %@ đã tồn tại. Xin vui lòng đặt tên khác.";
 "error_promo_other_store" = "Khuyến mãi này của cửa hàng khác";
 "error_promo_target_consumer" = "Khuyến mãi này không còn khả dụng với bạn";
+"error_promo_not_active" = "Khuyến mãi chưa chính thức mở bán!\n\nKiểm tra lại cài đặt \"Ngày & giờ\" trên thiết bị và đưa về chế độ tự động";
 
 "Something is wrong with your account status. Please try again." = "Có lỗi xảy ra. Xin thử lại";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "Tài khoản ví đã được cập nhật nhưng chưa đồng bộ với thiết bị đang dùng. Xin khôi phục lại ví trước khi bắt đầu.";

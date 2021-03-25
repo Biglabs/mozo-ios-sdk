@@ -648,6 +648,7 @@
 "error_branch_name_existed" = "Branch named %@ is already existed. Please choose another name.";
 "error_promo_other_store" = "Promotion belong to other store";
 "error_promo_target_consumer" = "This promotion is not available for you";
+"error_promo_not_active" = "Promotion has not officially opened for sale!\n\nCheck the \"Date & time\" setting on your device again and turn it on automatically";
 
 "Something is wrong with your account status. Please try again." = "Something is wrong with your account status. Please try again.";
 "Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "Your wallet was updated but did not sync with your current device. Please restore your wallet first.";
