@@ -35,7 +35,7 @@ extension ApiManager {
     
     public func getTodoListSetting() -> Promise<TodoSettingDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/getTodoListSetting/v1"
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/getTodoListSetting/v2"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

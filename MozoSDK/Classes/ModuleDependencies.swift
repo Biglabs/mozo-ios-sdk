@@ -500,10 +500,6 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.confirmStoreInfoMerchant(branchInfo: branchInfo))!
     }
     
-    func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.sendRegisterFCMToken(registerDeviceInfo: registerDeviceInfo))!
-    }
-    
     func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
         return (coreWireframe.corePresenter?.coreInteractorService?.createNewBranch(branchInfo))!
     }

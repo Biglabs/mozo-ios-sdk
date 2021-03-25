@@ -330,10 +330,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.confirmStoreInfoMerchant(branchInfo: branchInfo)
     }
     
-    func sendRegisterFCMToken(registerDeviceInfo: APNSDeviceRegisterDTO) -> Promise<[String: Any]> {
-        return apiManager.sendRegisterFCMToken(registerDeviceInfo: registerDeviceInfo)
-    }
-    
     func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
         return apiManager.createNewBranch(branchInfo)
     }

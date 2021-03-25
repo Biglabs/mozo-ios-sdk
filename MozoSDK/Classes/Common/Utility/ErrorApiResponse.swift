@@ -90,6 +90,7 @@ public enum ErrorApiResponse: String {
     case STORE_PROMO_ENDED_ERROR = "STORE_PROMO_ENDED_ERROR"
     case STORE_PROMO_OF_OTHER_STORE_ERROR = "STORE_PROMO_OF_OTHER_STORE_ERROR"
     case STORE_PROMO_TYPE_FIRST_USER_LIMIT_ERROR = "STORE_PROMO_TYPE_FIRST_USER_LIMIT_ERROR"
+    case STORE_PROMO_TARGET_CONSUMER_ERROR = "STORE_PROMO_TARGET_CONSUMER_ERROR"
     
     case SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD = "SOLOMON_USER_PROFILE_WALLET_INVALID_ONCHAIN_SAME_OFFCHAIN_FIELD"
     // SOLOMON
@@ -221,6 +222,8 @@ public enum ErrorApiResponse: String {
         case .STORE_PROMO_USER_NO_PAID_ERROR: return "error_fatal"
         case .STORE_PROMO_STATUS_NOT_SCANNED_ERROR: return rawValue
         case .STORE_PROMO_OF_OTHER_STORE_ERROR: return "error_promo_other_store"
+        case .STORE_PROMO_TYPE_FIRST_USER_LIMIT_ERROR: return "error_fatal"
+        case .STORE_PROMO_TARGET_CONSUMER_ERROR: return "error_promo_target_consumer"
         case .STORE_SC_TOPUP_NOT_EXIST: return rawValue
             
         case .STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR: return "The parking ticket feature is not available with you at this store at the moment"
@@ -349,6 +352,7 @@ public enum ErrorApiResponse: String {
         case .STORE_PROMO_ENDED_ERROR: return .apiError_STORE_PROMO_ENDED_ERROR
         case .STORE_PROMO_OF_OTHER_STORE_ERROR: return .apiError_STORE_PROMO_OF_OTHER_STORE_ERROR
         case .STORE_PROMO_TYPE_FIRST_USER_LIMIT_ERROR: return .apiError_STORE_PROMO_TYPE_FIRST_USER_LIMIT_ERROR
+        case .STORE_PROMO_TARGET_CONSUMER_ERROR: return .apiError_STORE_PROMO_TARGET_CONSUMER_ERROR
             
         case .STORE_SC_TOPUP_NOT_EXIST: return .apiError_STORE_SC_TOPUP_NOT_EXIST
         case .STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR: return .apiError_STORE_STORE_NOT_SUPPORT_PARKING_TICKET_ERROR
