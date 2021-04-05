@@ -25,6 +25,10 @@ extension RedeemPresenter: PinModuleDelegate {
         delegate?.showLoading(shouldShow: true)
         interactor?.sendSignedTx(pin: pin)
     }
+    
+    func cancel() {
+        delegate?.cancel()
+    }
 }
 extension RedeemPresenter: RedeemInteractorOutput {
     func requestAutoPINInterface() {

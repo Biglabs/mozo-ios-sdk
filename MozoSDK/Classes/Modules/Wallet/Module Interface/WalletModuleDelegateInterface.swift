@@ -14,5 +14,6 @@ protocol WalletModuleDelegate {
 
 protocol PinModuleDelegate {
     func verifiedPINSuccess(_ pin: String)
+    func cancel()
 }
 

@@ -65,6 +65,7 @@ extension WalletPresenter: WalletModuleInterface {
     }
     
     func cancel() {
+        pinModuleDelegate?.cancel()
         walletModuleDelegate?.cancelFlow()
     }
     

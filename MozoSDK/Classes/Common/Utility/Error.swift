@@ -325,7 +325,7 @@ extension ConnectionError: LocalizedError {
 extension ConnectionError : Equatable {
     public static func == (leftSide: ConnectionError, rightSide: ConnectionError) -> Bool {
         if leftSide.isApiError, rightSide.isApiError {
-            return leftSide.apiError?.description == rightSide.apiError?.description
+            return leftSide.apiError?.rawValue == rightSide.apiError?.rawValue
         }
         return leftSide.errorDescription == rightSide.errorDescription
     }

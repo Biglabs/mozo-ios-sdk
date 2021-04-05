@@ -23,6 +23,9 @@ extension TopUpWithdrawPresenter: PinModuleDelegate {
         wireframe?.removeDelegateAfterSigning()
         interactor?.sendSignedTx(pin: pin)
     }
+    
+    func cancel() {
+    }
 }
 extension TopUpWithdrawPresenter: TopUpWithdrawInteractorOutput {
     func requestAutoPINInterface() {
