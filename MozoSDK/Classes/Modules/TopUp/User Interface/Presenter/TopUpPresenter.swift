@@ -95,6 +95,9 @@ extension TopUpPresenter: PinModuleDelegate {
         wireframe?.removeDelegateAfterSigning()
         interactor?.sendSignedTopUpTx(pin: pin)
     }
+    
+    func cancel() {
+    }
 }
 extension TopUpPresenter: TopUpInteractorOutput {
     func validateError(_ error: String) {

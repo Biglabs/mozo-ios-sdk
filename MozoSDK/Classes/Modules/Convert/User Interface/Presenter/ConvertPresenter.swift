@@ -161,7 +161,10 @@ extension ConvertPresenter: PinModuleDelegate {
     func verifiedPINSuccess(_ pin: String) {
         wireframe?.removeDelegateAfterSigning()
         interactor?.performTransfer(pin: pin)
-    }    
+    }
+    
+    func cancel() {
+    }
 }
 extension ConvertPresenter: TxProcessModuleDelegate {
     func didReceiveTxStatus(_ status: TransactionStatusType, transaction: IntermediaryTransactionDTO) {

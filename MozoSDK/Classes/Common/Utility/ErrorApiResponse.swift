@@ -207,7 +207,7 @@ public enum ErrorApiResponse: String {
         case .STORE_PROMO_PERIOD_TIME_ERROR: return "error_date_less_current"
         case .STORE_PROMO_SECRET_CODE_ERROR: return "Invalid promotion code"
         case .STORE_PROMO_NOT_EXIST_ERROR: return rawValue
-        case .STORE_PROMO_NOT_ACTIVE_ERROR: return rawValue
+        case .STORE_PROMO_NOT_ACTIVE_ERROR: return "error_promo_not_active"
         case .STORE_PROMO_DETAIL_NOT_EXIST_ERROR: return rawValue
         case .STORE_PROMO_UPDATE_SAVED_ERROR: return rawValue
         case .STORE_PROMO_BALANCE_NOT_ENOUGH_ERROR: return "Your spendable is not enough for this."

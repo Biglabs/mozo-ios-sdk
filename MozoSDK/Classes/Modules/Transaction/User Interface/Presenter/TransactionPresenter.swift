@@ -126,4 +126,7 @@ extension TransactionPresenter : PinModuleDelegate {
         transactionModuleDelegate?.removePINDelegate()
         txInteractor?.performTransfer(pin: pin)
     }
+    
+    func cancel() {
+    }
 }

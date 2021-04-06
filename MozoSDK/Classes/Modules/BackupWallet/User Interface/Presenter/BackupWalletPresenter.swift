@@ -69,4 +69,7 @@ extension BackupWalletPresenter: PinModuleDelegate {
     func verifiedPINSuccess(_ pin: String) {
         processAfterReceivingPIN(pin: pin)
     }
+    
+    func cancel() {
+    }
 }

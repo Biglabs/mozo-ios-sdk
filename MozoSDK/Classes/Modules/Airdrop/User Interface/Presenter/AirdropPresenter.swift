@@ -31,6 +31,9 @@ extension AirdropPresenter: PinModuleDelegate {
         wireframe?.removeDelegateAfterSigning()
         interactor?.sendSignedAirdropEventTx(pin: pin)
     }
+    
+    func cancel() {
+    }
 }
 extension AirdropPresenter: AirdropInteractorOutput {
     func requestAutoPINInterface() {

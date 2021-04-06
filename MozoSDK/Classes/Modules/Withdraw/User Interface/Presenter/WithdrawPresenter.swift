@@ -23,6 +23,9 @@ extension WithdrawPresenter: PinModuleDelegate {
         wireframe?.removeDelegateAfterSigning()
         interactor?.sendSignedTx(pin: pin)
     }
+    
+    func cancel() {
+    }
 }
 extension WithdrawPresenter: WithdrawInteractorOutput {
     func requestAutoPINInterface() {

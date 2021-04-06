@@ -11,4 +11,5 @@ import Foundation
     func redeemPromotionFailureWithErrorString(error: String?)
     func redeemPromotionFailure(error: Error)
     func showLoading(shouldShow: Bool)
+    func cancel()
 }

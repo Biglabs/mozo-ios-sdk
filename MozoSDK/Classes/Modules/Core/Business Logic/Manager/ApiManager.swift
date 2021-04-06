@@ -34,6 +34,11 @@ public class ApiManager {
         client = Alamofire.Session(configuration: configuration)
     }
     
+    public convenience init(_ del: ApiManagerDelegate) {
+        self.init()
+        self.delegate = del
+    }
+    
     private func getToken() -> String {
         return "bearer \(AccessTokenManager.getAccessToken() ?? "")"
     }
