@@ -981,7 +981,7 @@
 "Create Wallet Automatically" = "Tạo ví tự động";
 "Your Recovery Phrase* and security PIN will be auto generated and remembered by our system." = "Cụm từ khôi phục* và mã PIN được tự động tạo và ghi nhớ bởi hệ thống.";
 "Create Wallet Manually" = "Tạo ví do bạn điều khiển";
-"You will need to back up your Recovery Phrase and security PIN created by you." = "Bạn cần phải ghi lại cụm từ khôi phục và tự tạo mã PIN của riêng mình.";
+"mozo_create_wallet_manual_explain" = "Vui lòng sao lưu \"Cụm từ khôi phục\" của bạn bằng cách nhấp vào menu \"Thiết lập\" và \"Sao lưu ví\"";
 "*What are Recovery Phrase?" = "*Cụm từ khôi phục là gì?";
 "Recovery Phrase are random set of words used to secure your digital wallet. You should write down these words in order so that in the event you lose your digital wallet or forget your PIN, you can recover your wallet and/or reset your PIN." = "Cụm từ khôi phục là một tập các từ được phát sinh ngẫu nhiên bởi thuật toán. Bạn phải ghi lại những từ này phòng trường hợp mất thiết bị hoặc quên mã PIN, bạn có thể dùng nó để phục hồi ví hoặc tạo PIN mới.";
 
