@@ -9,7 +9,7 @@ import Foundation
 import SwiftyJSON
 
 public class TodoDTO: ResponseObjectSerializable {
-    public var idKey: TodoEnum = .LOCATION_SERVICE_OFF
+    public var idKey: TodoEnum = .CUSTOM
     public var id: String? {
         didSet {
             idKey = TodoEnum(rawValue: self.id ?? "") ?? idKey
@@ -36,6 +36,24 @@ public class TodoDTO: ResponseObjectSerializable {
     }
     
     public required init?() {}
+    
+    public func displayTitle() -> String? {
+        switch idKey {
+        case .CUSTOM:
+            return data?.customTitle
+        default:
+            return idKey.message.localized
+        }
+    }
+    
+    public func displayAction() -> String? {
+        switch idKey {
+        case .CUSTOM:
+            return data?.customAction
+        default:
+            return idKey.actionText.localized
+        }
+    }
     
     public func toJSON() -> Dictionary<String, Any> {
         var json = Dictionary<String, Any>()
