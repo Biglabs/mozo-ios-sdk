@@ -265,7 +265,7 @@ public extension UIView {
         layer.shadowOffset = isOnlyBottom ? CGSize(width: 0.0, height: 3.0) : CGSize.zero
         layer.shadowRadius = isOnlyBottom ? 1.5 : 3
         
-        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
         layer.shouldRasterize = true
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
