@@ -32,7 +32,7 @@ class AuthPresenter : NSObject {
     }
     
     func subcribeApplicationEvents() {
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
 }
 

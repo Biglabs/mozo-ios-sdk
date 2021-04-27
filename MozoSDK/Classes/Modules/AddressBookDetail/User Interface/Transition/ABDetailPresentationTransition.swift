@@ -32,13 +32,11 @@ class ABDetailPresentationTransition: NSObject, UIViewControllerAnimatedTransiti
         let finalCenter = CGPoint(x: fromVC.view.bounds.size.width / 2, y: 20 + toViewFrame.size.height / 2)
         toVC.view.center = CGPoint(x: finalCenter.x, y: finalCenter.y - 1000)
         
-        let options = UIViewAnimationOptions.curveEaseIn
-        
         UIView.animate(withDuration: self.transitionDuration(using: transitionContext),
                        delay: 0.0,
                        usingSpringWithDamping: 0.64,
                        initialSpringVelocity: 0.22,
-                       options: options,
+                       options: .curveEaseIn,
                        animations: {
                         toVC.view.center = finalCenter
                         toVC.transitioningBackgroundView.alpha = 0.7

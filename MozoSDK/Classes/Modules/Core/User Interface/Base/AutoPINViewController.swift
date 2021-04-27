@@ -90,7 +90,7 @@ class AutoPINViewController: MozoBasicViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if self.isMovingFromParentViewController {
+        if self.isMovingFromParent {
             SessionStoreManager.saveNotShowAutoPINScreen(isChecked)
             waitingView.stopRotating = true
             navigationController?.isNavigationBarHidden = false

@@ -65,7 +65,7 @@ class PINViewController : MozoBasicViewController {
         navigationItem.title = title.localized
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Cancel".localized,
-            style: UIBarButtonItemStyle.plain,
+            style: UIBarButtonItem.Style.plain,
             target: self, action: #selector(self.tapCancelBtn)
         )
     }
@@ -276,7 +276,7 @@ private extension PINViewController {
         effectView.layer.cornerRadius = 15
         effectView.layer.masksToBounds = true
         
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
         activityIndicator.color = ThemeManager.shared.main
         activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
         activityIndicator.startAnimating()

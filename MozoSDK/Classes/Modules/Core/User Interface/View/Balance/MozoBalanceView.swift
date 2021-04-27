@@ -167,7 +167,7 @@ import Foundation
             }
         } else {
             refreshView?.isHidden = false
-            bringSubview(toFront: refreshView!)
+            bringSubviewToFront(refreshView!)
         }
         refreshView?.isRefreshing = false
     }

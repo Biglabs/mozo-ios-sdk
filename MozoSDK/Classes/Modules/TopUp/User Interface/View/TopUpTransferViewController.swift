@@ -48,7 +48,7 @@ class TopUpTransferViewController: MozoBasicViewController {
         navigationItem.title = "Deposit".localized
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Cancel".localized,
-            style: UIBarButtonItemStyle.plain,
+            style: UIBarButtonItem.Style.plain,
             target: self, action: #selector(self.tapCancelBtn)
         )
     }
@@ -73,9 +73,9 @@ class TopUpTransferViewController: MozoBasicViewController {
     func setupTarget() {
         // Add a "textFieldDidChange" notification method to the text field control.
         
-        txtAmount.addTarget(self, action: #selector(textFieldAmountDidChange), for: UIControlEvents.editingChanged)
-        txtAmount.addTarget(self, action: #selector(textFieldAmountDidBeginEditing), for: UIControlEvents.editingDidBegin)
-        txtAmount.addTarget(self, action: #selector(textFieldAmountDidEndEditing), for: UIControlEvents.editingDidEnd)
+        txtAmount.addTarget(self, action: #selector(textFieldAmountDidChange), for: UIControl.Event.editingChanged)
+        txtAmount.addTarget(self, action: #selector(textFieldAmountDidBeginEditing), for: UIControl.Event.editingDidBegin)
+        txtAmount.addTarget(self, action: #selector(textFieldAmountDidEndEditing), for: UIControl.Event.editingDidEnd)
         txtAmount.delegate = self
     }
     

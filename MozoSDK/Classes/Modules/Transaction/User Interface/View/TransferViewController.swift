@@ -79,12 +79,12 @@ class TransferViewController: MozoBasicViewController {
     
     func setupTarget() {
         // Add a "textFieldDidChange" notification method to the text field control.
-        txtAddressOrPhoneNo.addTarget(self, action: #selector(textFieldAddressDidChange), for: UIControlEvents.editingChanged)
-        txtAddressOrPhoneNo.addTarget(self, action: #selector(textFieldAddressDidBeginEditing), for: UIControlEvents.editingDidBegin)
-        txtAddressOrPhoneNo.addTarget(self, action: #selector(textFieldAddressDidEndEditing), for: UIControlEvents.editingDidEnd)
-        txtAmount.addTarget(self, action: #selector(textFieldAmountDidChange), for: UIControlEvents.editingChanged)
-        txtAmount.addTarget(self, action: #selector(textFieldAmountDidBeginEditing), for: UIControlEvents.editingDidBegin)
-        txtAmount.addTarget(self, action: #selector(textFieldAmountDidEndEditing), for: UIControlEvents.editingDidEnd)
+        txtAddressOrPhoneNo.addTarget(self, action: #selector(textFieldAddressDidChange), for: UIControl.Event.editingChanged)
+        txtAddressOrPhoneNo.addTarget(self, action: #selector(textFieldAddressDidBeginEditing), for: UIControl.Event.editingDidBegin)
+        txtAddressOrPhoneNo.addTarget(self, action: #selector(textFieldAddressDidEndEditing), for: UIControl.Event.editingDidEnd)
+        txtAmount.addTarget(self, action: #selector(textFieldAmountDidChange), for: UIControl.Event.editingChanged)
+        txtAmount.addTarget(self, action: #selector(textFieldAmountDidBeginEditing), for: UIControl.Event.editingDidBegin)
+        txtAmount.addTarget(self, action: #selector(textFieldAmountDidEndEditing), for: UIControl.Event.editingDidEnd)
         txtAmount.delegate = self
     }
     
@@ -101,8 +101,8 @@ class TransferViewController: MozoBasicViewController {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
         doneToolbar.barStyle = UIBarStyle.default
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Done".localized, style: UIBarButtonItemStyle.done, target: self, action: #selector(self.doneButtonActionForAddressOrPhone))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done".localized, style: UIBarButtonItem.Style.done, target: self, action: #selector(self.doneButtonActionForAddressOrPhone))
         
         doneToolbar.items = [flexSpace, done]
         doneToolbar.sizeToFit()

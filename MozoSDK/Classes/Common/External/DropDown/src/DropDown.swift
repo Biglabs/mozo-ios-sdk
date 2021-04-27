@@ -790,7 +790,7 @@ extension DropDown {
 		for index in 0..<dataSource.count {
 			configureCell(templateCell, at: index)
 			templateCell.bounds.size.height = cellHeight
-            let width = templateCell.systemLayoutSizeFitting(UILayoutFittingCompressedSize).width
+            let width = templateCell.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).width
 			
 			if width > maxWidth {
 				maxWidth = width
@@ -872,7 +872,7 @@ extension DropDown {
 
 		let visibleWindow = window != nil ? window : UIWindow.visibleWindow()
 		visibleWindow?.addSubview(self)
-        visibleWindow?.bringSubview(toFront: self)
+        visibleWindow?.bringSubviewToFront(self)
 
 		self.translatesAutoresizingMaskIntoConstraints = false
 		visibleWindow?.addUniversalConstraints(format: "|[dropDown]|", views: ["dropDown": self])
@@ -908,7 +908,7 @@ extension DropDown {
 			completion: nil)
 
 		accessibilityViewIsModal = true
-        UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil)
+        UIAccessibility.post(notification: UIAccessibility.Notification.screenChanged, argument: nil)
 
 		//deselectRows(at: selectedRowIndices)
 		selectRows(at: selectedRowIndices)
@@ -953,7 +953,7 @@ extension DropDown {
 
 				self.isHidden = true
 				self.removeFromSuperview()
-				UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil)
+                UIAccessibility.post(notification: UIAccessibility.Notification.screenChanged, argument: nil)
 		})
 	}
 
@@ -1021,7 +1021,7 @@ extension DropDown {
 			else { return }
         
         // remove from indices
-        if let selectedRowIndex = selectedRowIndices.index(where: { $0 == index  }) {
+        if let selectedRowIndex = selectedRowIndices.firstIndex(where: { $0 == index  }) {
             selectedRowIndices.remove(at: selectedRowIndex)
         }
 
@@ -1199,12 +1199,12 @@ extension DropDown {
 		NotificationCenter.default.addObserver(
 			self,
 			selector: #selector(keyboardUpdate),
-            name: NSNotification.Name.UIKeyboardWillShow,
+            name: UIResponder.keyboardWillShowNotification,
 			object: nil)
 		NotificationCenter.default.addObserver(
 			self,
 			selector: #selector(keyboardUpdate),
-            name: NSNotification.Name.UIKeyboardWillHide,
+            name: UIResponder.keyboardWillHideNotification,
 			object: nil)
 	}
 

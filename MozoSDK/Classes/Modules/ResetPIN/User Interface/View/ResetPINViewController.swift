@@ -109,15 +109,15 @@ class ResetPINViewController: MozoBasicViewController {
     }
     
     func setupKeyboardEvents() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangeFrame(_:)), name: .UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangeFrame(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
         print("Keyboard will show")
         keyboardWasShown = true
-        let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect ?? CGRect.zero).size
+        let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect ?? CGRect.zero).size
         keyboardHeight = keyboardSize.height
         updateScrollViewInsets()
     }
@@ -125,7 +125,7 @@ class ResetPINViewController: MozoBasicViewController {
     @objc func keyboardWillHide(_ notification: Notification) {
         print("Keyboard will hide")
         if keyboardWasShown {
-            let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect ?? CGRect.zero).size;
+            let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect ?? CGRect.zero).size;
             keyboardHeight = keyboardSize.height
             updateScrollViewInsets()
         }

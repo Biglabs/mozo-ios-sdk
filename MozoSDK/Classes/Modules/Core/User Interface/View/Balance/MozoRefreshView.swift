@@ -22,7 +22,7 @@ class MozoRefreshView: UIView {
             }
         }
     }
-    let ai = UIActivityIndicatorView(activityIndicatorStyle: .white)
+    let ai = UIActivityIndicatorView(style: .white)
 
     override init(frame: CGRect) {
         super.init(frame: frame)

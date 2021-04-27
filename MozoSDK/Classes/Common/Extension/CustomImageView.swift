@@ -28,7 +28,7 @@ public class CustomImageView: UIImageView {
             self.image = imageFromCache
             return
         }
-        let loadingView = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        let loadingView = UIActivityIndicatorView(style: .white)
         if isShowLoading {
             loadingView.color = loadingColor
             loadingView.frame = self.frame

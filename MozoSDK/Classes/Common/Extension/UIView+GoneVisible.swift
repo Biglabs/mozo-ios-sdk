@@ -13,7 +13,7 @@ public enum GVSpace {
     case leading
     case trailing
     
-    func layoutAttribute() -> NSLayoutAttribute {
+    func layoutAttribute() -> NSLayoutConstraint.Attribute {
         switch self {
         case .top: return .top
         case .bottom: return .bottom
@@ -74,12 +74,12 @@ extension NSLayoutConstraint {
         return firstAttribute == .width && secondAttribute == .notAnAttribute && type(of: self) === NSLayoutConstraint.self
     }
     
-    fileprivate func isSpacing(itemView: UIView, attribute: NSLayoutAttribute) -> Bool {
+    fileprivate func isSpacing(itemView: UIView, attribute: NSLayoutConstraint.Attribute) -> Bool {
         return (firstItem as? UIView == itemView && firstAttribute == attribute)
             || (secondItem as? UIView == itemView && secondAttribute == attribute)
     }
     
-    fileprivate func isEqual(itemView: UIView, attribute: NSLayoutAttribute) -> Bool {
+    fileprivate func isEqual(itemView: UIView, attribute: NSLayoutConstraint.Attribute) -> Bool {
         return (firstItem as? UIView == itemView && secondItem != nil && firstAttribute == attribute)
             || (secondItem as? UIView == itemView && secondAttribute == attribute)
     }
@@ -223,12 +223,12 @@ extension UIView {
         completion?()
     }
     
-    private func goneSpacing(_ attribute: NSLayoutAttribute) {
+    private func goneSpacing(_ attribute: NSLayoutConstraint.Attribute) {
         guard let spacingConstraints = findSpacingConstraints(itemView: self, attribute: attribute) else { return }
         spacingConstraints.forEach { $0.setGoneConstant() }
     }
     
-    private func visibleSpacing(_ attribute: NSLayoutAttribute) {
+    private func visibleSpacing(_ attribute: NSLayoutConstraint.Attribute) {
         guard let spacingConstraints = findSpacingConstraints(itemView: self, attribute: attribute) else { return }
         spacingConstraints.forEach { $0.setVisibleConstant() }
     }
@@ -249,7 +249,7 @@ extension UIView {
         return constraints.filter { $0.isAspectRatio() }
     }
     
-    private func findSpacingConstraints(itemView: UIView, attribute: NSLayoutAttribute) -> [NSLayoutConstraint]? {
+    private func findSpacingConstraints(itemView: UIView, attribute: NSLayoutConstraint.Attribute) -> [NSLayoutConstraint]? {
         guard let superview = superview else { return nil }
         let spacingConstraints = superview.constraints.filter { $0.isSpacing(itemView: itemView, attribute: attribute) }
         if spacingConstraints.count > 0 {
@@ -259,7 +259,7 @@ extension UIView {
         }
     }
     
-    private func findEqualConstraints(itemView: UIView, attribute: NSLayoutAttribute) -> [NSLayoutConstraint]? {
+    private func findEqualConstraints(itemView: UIView, attribute: NSLayoutConstraint.Attribute) -> [NSLayoutConstraint]? {
         guard let superview = superview else { return nil }
         let equalConstraints = superview.constraints.filter { $0.isEqual(itemView: itemView, attribute: attribute) }
         if equalConstraints.count > 0 {
@@ -282,7 +282,7 @@ extension UIView {
     }
     
     @discardableResult
-    private func addConstraint(attribute: NSLayoutAttribute, constant: CGFloat) -> NSLayoutConstraint {
+    private func addConstraint(attribute: NSLayoutConstraint.Attribute, constant: CGFloat) -> NSLayoutConstraint {
         let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: constant)
         constraint.priority = UILayoutPriority(rawValue: 751)
         addConstraint(constraint)

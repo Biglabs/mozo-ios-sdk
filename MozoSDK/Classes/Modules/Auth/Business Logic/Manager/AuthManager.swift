@@ -57,7 +57,7 @@ class AuthManager : NSObject {
         
         if fireAt > Date() {
             refreshTokenTimer = Timer(fireAt: fireAt, interval: 0, target: self, selector: #selector(fireRefreshToken), userInfo: nil, repeats: false)
-            RunLoop.main.add(refreshTokenTimer!, forMode: .commonModes)
+            RunLoop.main.add(refreshTokenTimer!, forMode: RunLoop.Mode.common)
         } else {
             fireRefreshToken()
         }

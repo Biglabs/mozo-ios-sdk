@@ -9,7 +9,7 @@ import Foundation
 public extension UITableView {
     func applyFooterLoadingView() {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: superview!.frame.width, height: 50))
-        let ai = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let ai = UIActivityIndicatorView(style: .gray)
         ai.startAnimating()
         ai.center = footerView.center
         footerView.addSubview(ai)

@@ -62,8 +62,7 @@ class TxCompletionViewController: MozoBasicViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if self.isMovingFromParentViewController {
-            print("View controller was popped")
+        if self.isMovingFromParent {
             eventHandler?.requestStopWaiting()
         }
     }

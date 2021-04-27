@@ -34,8 +34,8 @@ class ABDetailViewController : MozoBasicViewController {
     func updateView() {
         txtAddress.text = address
         txtName.delegate = self
-        txtName.addTarget(self, action: #selector(textFieldNameDidBeginEditing), for: UIControlEvents.editingDidBegin)
-        txtName.addTarget(self, action: #selector(textFieldNameDidEndEditing), for: UIControlEvents.editingDidEnd)
+        txtName.addTarget(self, action: #selector(textFieldNameDidBeginEditing), for: .editingDidBegin)
+        txtName.addTarget(self, action: #selector(textFieldNameDidEndEditing), for: .editingDidEnd)
         addDoneButtonOnKeyboard()
     }
     
@@ -58,8 +58,8 @@ class ABDetailViewController : MozoBasicViewController {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
         doneToolbar.barStyle = UIBarStyle.default
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Done".localized, style: UIBarButtonItemStyle.done, target: self, action: #selector(self.doneButtonAction))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done".localized, style: .done, target: self, action: #selector(self.doneButtonAction))
         
         doneToolbar.items = [flexSpace, done]
         doneToolbar.sizeToFit()

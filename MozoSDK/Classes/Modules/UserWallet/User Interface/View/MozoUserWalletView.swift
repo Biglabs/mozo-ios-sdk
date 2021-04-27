@@ -114,7 +114,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     
     func setupOnchainWalletView() {
         self.addSubview(onchainWalletView)
-        self.bringSubview(toFront: onchainWalletView)
+        self.bringSubviewToFront(onchainWalletView)
         self.onchainWalletView.isHidden = true
     }
 
@@ -367,7 +367,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
             }
         } else {
             refreshView?.isHidden = false
-            bringSubview(toFront: refreshView!)
+            bringSubviewToFront(refreshView!)
         }
         refreshView?.isRefreshing = false
     }

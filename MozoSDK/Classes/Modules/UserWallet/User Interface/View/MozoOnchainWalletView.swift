@@ -94,7 +94,7 @@ class MozoOnchainWalletView: MozoView {
         print("Load ETH and Onchain balance info")
         if !isLoading {
             isLoading = true
-            _ = MozoSDK.loadEthAndOnchainBalanceInfo().done({ (onchainInfo) in
+            MozoSDK.loadEthAndOnchainBalanceInfo().done({ (onchainInfo) in
                 self.checkDisableButtonConvert(isPending: !(onchainInfo.convertToMozoXOnchain ?? false))
             }).catch({ (error) in
                 self.checkDisableButtonConvert(isPending: true)
@@ -113,9 +113,9 @@ class MozoOnchainWalletView: MozoView {
         
         let string = "Go to Etherscan.io".localized as NSString
         
-        let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13.0)])
+        let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13.0)])
         
-        let boldFontAttribute = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 13.0)]
+        let boldFontAttribute = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13.0)]
         
         // Part of string to be bold
         attributedString.addAttributes(boldFontAttribute, range: string.range(of: "Etherscan.io"))

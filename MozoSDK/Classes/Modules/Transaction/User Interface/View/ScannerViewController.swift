@@ -102,7 +102,7 @@ public class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOu
             pathBigRect.usesEvenOddFillRule = true
             let fillLayer = CAShapeLayer()
             fillLayer.path = pathBigRect.cgPath
-            fillLayer.fillRule = kCAFillRuleEvenOdd
+            fillLayer.fillRule = CAShapeLayerFillRule.evenOdd
             fillLayer.fillColor = UIColor.black.cgColor
             fillLayer.opacity = 0.4
             view.layer.addSublayer(fillLayer)
