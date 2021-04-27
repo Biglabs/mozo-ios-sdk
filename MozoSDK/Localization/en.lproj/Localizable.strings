@@ -823,8 +823,6 @@
 
 "At least six characters" = "At least six characters";
 
-"There are no Airdrop Events around" = "There are no Airdrop Events around";
-
 "text_token" = "Mozo";
 "text_navi_get_mozo" = "Get Mozo";
 
@@ -980,7 +978,7 @@
 "Create Wallet Automatically" = "Create Wallet Automatically";
 "Your Recovery Phrase* and security PIN will be auto generated and remembered by our system." = "Your Recovery Phrase* and security PIN will be auto generated and remembered by our system.";
 "Create Wallet Manually" = "Create Wallet Manually";
-"You will need to back up your Recovery Phrase and security PIN created by you." = "You will need to back up your Recovery Phrase and security PIN created by you.";
+"mozo_create_wallet_manual_explain" = "Please back up your Recovery Phrase by clicking on \"Setting\" and \"Back up wallet\" menu";
 "*What are Recovery Phrase?" = "*What are Recovery Phrase?";
 "Recovery Phrase are random set of words used to secure your digital wallet. You should write down these words in order so that in the event you lose your digital wallet or forget your PIN, you can recover your wallet and/or reset your PIN." = "Recovery Phrase are random set of words used to secure your digital wallet. You should write down these words in order so that in the event you lose your digital wallet or forget your PIN, you can recover your wallet and/or reset your PIN.";
 

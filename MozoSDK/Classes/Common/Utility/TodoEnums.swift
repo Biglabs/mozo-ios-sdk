@@ -7,6 +7,7 @@
 
 import Foundation
 public enum TodoEnum: String {
+    case CUSTOM = "CUSTOM"
     case LOCATION_SERVICE_OFF = "LOCATION_SERVICE_OFF"
     case BLUETOOTH_OFF = "BLUETOOTH_OFF"
     case AIRDROP_NEARBY = "AIRDROP_NEARBY"
@@ -28,6 +29,7 @@ public enum TodoEnum: String {
 
     public var message: String {
         switch self {
+            case .CUSTOM: return "custom"
             case .LOCATION_SERVICE_OFF: return "Location service is off 🗺"
             case .BLUETOOTH_OFF: return "Bluetooth is tuned off 😔..."
             case .AIRDROP_NEARBY: return "todo_msg_get_nearby_airdrop"
@@ -51,6 +53,7 @@ public enum TodoEnum: String {
     
     public var actionText: String {
         switch self {
+            case .CUSTOM: return "custom"
             case .LOCATION_SERVICE_OFF: return "Turn on for better experience →"
             case .BLUETOOTH_OFF: return "todo_action_turn_on_bluetooth"
             case .AIRDROP_NEARBY: return "todo_action_discover_stores"

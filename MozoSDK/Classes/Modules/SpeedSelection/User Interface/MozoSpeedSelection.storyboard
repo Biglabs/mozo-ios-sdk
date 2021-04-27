@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -47,7 +47,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Your Recovery Phrase* and security PIN will be auto generated and remembered by our system."/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cP5-TG-XyE">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cP5-TG-XyE">
                                         <rect key="frame" x="0.0" y="0.0" width="290" height="110"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
@@ -72,7 +72,7 @@
                                     <constraint firstAttribute="bottom" secondItem="cP5-TG-XyE" secondAttribute="bottom" id="zzy-AP-P61"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Voy-7y-pxZ">
+                            <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Voy-7y-pxZ">
                                 <rect key="frame" x="15" y="180" width="290" height="110"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlightedImage="ic_check" translatesAutoresizingMaskIntoConstraints="NO" id="YYt-BH-tzY">
@@ -91,7 +91,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Create Wallet Manually"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will need to back up your Recovery Phrase and security PIN created by you." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="hAL-xc-qmR">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Promotion has not officially opened for sale! Check the &quot;Date &amp; time&quot; setting on your device again and turn it on automatically" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="hAL-xc-qmR">
                                         <rect key="frame" x="61" y="45.5" width="209" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="Bns-BK-ymJ"/>
@@ -100,10 +100,10 @@
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="You will need to back up your Recovery Phrase and security PIN created by you."/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="mozo_create_wallet_manual_explain"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylT-Td-wh5">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylT-Td-wh5">
                                         <rect key="frame" x="0.0" y="0.0" width="290" height="110"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
@@ -111,7 +111,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Ekh-Ag-CRh" firstAttribute="leading" secondItem="Voy-7y-pxZ" secondAttribute="leading" constant="61" id="6ok-1o-pLe"/>
                                     <constraint firstItem="ylT-Td-wh5" firstAttribute="leading" secondItem="Voy-7y-pxZ" secondAttribute="leading" id="89d-XH-MmS"/>
@@ -128,7 +128,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*What are Recovery Phrase?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bii-MV-lOf">
-                                <rect key="frame" x="35" y="318" width="195" height="18"/>
+                                <rect key="frame" x="15" y="318" width="195" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -137,7 +137,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jhr-eT-Sak">
-                                <rect key="frame" x="35" y="343" width="250" height="109"/>
+                                <rect key="frame" x="15" y="343" width="290" height="93.5"/>
                                 <string key="text">Recovery Phrase are random set of words used to secure your digital wallet. You should write down these words in order so that in the event you lose your digital wallet or forget your PIN, you can recover your wallet and/or reset your PIN.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -151,7 +151,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMf-Bm-lVA">
                                 <rect key="frame" x="0.0" y="452" width="320" height="116"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAI-Jc-ztm">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAI-Jc-ztm">
                                         <rect key="frame" x="15" y="0.0" width="290" height="50"/>
                                         <color key="backgroundColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -163,6 +163,9 @@
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Continue"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="touchBtnContinue:" destination="ydB-hX-WIu" eventType="touchUpInside" id="DIK-zX-VXM"/>
@@ -177,7 +180,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="text_already_have_account"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8x4-UK-q9c">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8x4-UK-q9c">
                                         <rect key="frame" x="244" y="70" width="51" height="28"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                         <state key="normal" title="Log Out">
@@ -213,6 +216,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="MkF-IJ-GeL"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Bii-MV-lOf" firstAttribute="top" secondItem="Voy-7y-pxZ" secondAttribute="bottom" constant="28" id="0Uq-MP-YFd"/>
@@ -228,12 +232,11 @@
                             <constraint firstItem="MF0-Qr-CUO" firstAttribute="leading" secondItem="MkF-IJ-GeL" secondAttribute="leading" constant="15" id="VBM-yT-omE"/>
                             <constraint firstItem="0hR-HG-OdX" firstAttribute="top" secondItem="MkF-IJ-GeL" secondAttribute="top" constant="19" id="X1X-XU-jpb"/>
                             <constraint firstItem="Jhr-eT-Sak" firstAttribute="top" secondItem="Bii-MV-lOf" secondAttribute="bottom" constant="7" id="Xss-bn-Ped"/>
-                            <constraint firstItem="MkF-IJ-GeL" firstAttribute="trailing" secondItem="Jhr-eT-Sak" secondAttribute="trailing" constant="35" id="fS3-Hp-m60"/>
-                            <constraint firstItem="Jhr-eT-Sak" firstAttribute="leading" secondItem="MkF-IJ-GeL" secondAttribute="leading" constant="35" id="ir1-ga-cMP"/>
+                            <constraint firstItem="MkF-IJ-GeL" firstAttribute="trailing" secondItem="Jhr-eT-Sak" secondAttribute="trailing" constant="15" id="fS3-Hp-m60"/>
+                            <constraint firstItem="Jhr-eT-Sak" firstAttribute="leading" secondItem="MkF-IJ-GeL" secondAttribute="leading" constant="15" id="ir1-ga-cMP"/>
                             <constraint firstItem="MF0-Qr-CUO" firstAttribute="top" secondItem="MkF-IJ-GeL" secondAttribute="top" constant="50" id="wIr-9c-Wkg"/>
                             <constraint firstItem="0hR-HG-OdX" firstAttribute="leading" secondItem="MkF-IJ-GeL" secondAttribute="leading" constant="15" id="xSF-U3-OUM"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="MkF-IJ-GeL"/>
                     </view>
                     <connections>
                         <outlet property="autoImgCheck" destination="L4o-Bd-z12" id="xSR-af-vj3"/>

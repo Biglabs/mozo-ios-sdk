@@ -11,9 +11,12 @@ import SwiftyJSON
 extension ApiManager {
     public func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]> {
         return Promise { seal in
-            let params = ["blueToothOff" : blueToothOff,
-                          "lat": lat,
-                          "lon": long] as [String : Any]
+            let params = [
+                "blueToothOff" : blueToothOff,
+                "lat": lat,
+                "lon": long,
+                "locale": Configuration.LOCALE
+            ] as [String : Any]
             let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/getTodoListShopper?\(params.queryString)"
             self.execute(.get, url: url)
                 .done { json -> Void in

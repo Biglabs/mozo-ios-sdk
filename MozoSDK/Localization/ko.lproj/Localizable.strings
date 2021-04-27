@@ -821,8 +821,6 @@
 
 "At least six characters" = "6 자 이상 필요합니다.";
 
-"There are no Airdrop Events around" = "주변에는 Airdrop 이벤트가 없습니다.";
-
 "text_token" = "Mozo";
 "text_navi_get_mozo" = "Mozo 받으시오";
 
@@ -988,7 +986,7 @@
 "Create Wallet Automatically" = "지갑 자동 만들기";
 "Your Recovery Phrase* and security PIN will be auto generated and remembered by our system." = "당신의 복구 문구* 및 보안 PIN을 자동적으로 생성되어 시스템에 저장됩니다.";
 "Create Wallet Manually" = "지갑 직접 만들기";
-"You will need to back up your Recovery Phrase and security PIN created by you." = "당신이 만든 복구 문구 및 보안 PIN을 백업해야 합니다.";
+"mozo_create_wallet_manual_explain" = "Please back up your Recovery Phrase by clicking on \"Setting\" and \"Back up wallet\" menu";
 "*What are Recovery Phrase?" = "*복구 문구는 무엇입니까?";
 "Recovery Phrase are random set of words used to secure your digital wallet. You should write down these words in order so that in the event you lose your digital wallet or forget your PIN, you can recover your wallet and/or reset your PIN." = "복구 문구는 전자 지갑 보안을 위한 임의 글자 세트입니다. 전자 지갑 분실이나 PIN을 잊어버릴 경우, 자기 전자 지갑을 복구하거나 PIN을 재설정하기 위해 이 글자들을 꼭 써 놓아야 합니다.";
 

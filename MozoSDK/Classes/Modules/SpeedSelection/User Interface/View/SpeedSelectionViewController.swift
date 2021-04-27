@@ -89,11 +89,16 @@ class SpeedSelectionViewController : MozoBasicViewController {
     }
     
     @IBAction func touchBtnContinue(_ sender: Any) {
-        if isSelectAuto {
-            eventHandler?.decideAutoWay()
-        } else {
-            eventHandler?.decideManualWay()
-        }
+        /**
+         * Disable create Wallet manually
+         * @see https://vinatechnology.atlassian.net/browse/MOZOX-3
+            if isSelectAuto {
+                eventHandler?.decideAutoWay()
+            } else {
+                eventHandler?.decideManualWay()
+            }
+         */
+        eventHandler?.decideAutoWay()
     }
     
     @IBAction func touchBtnLogout(_ sender: Any) {

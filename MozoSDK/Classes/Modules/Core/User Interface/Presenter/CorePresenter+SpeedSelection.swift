@@ -16,7 +16,8 @@ extension CorePresenter: SpeedSelectionModuleDelegate {
     }
     
     func didRequestLogoutInternally() {
-        print("CorePresenter - Handle logout internally")
-        coreWireframe?.requestForLogout()
+        coreWireframe?.corePresenter?.requestForCloseAllMozoUIs() {
+            self.coreWireframe?.requestForLogout()
+        }
     }
 }
