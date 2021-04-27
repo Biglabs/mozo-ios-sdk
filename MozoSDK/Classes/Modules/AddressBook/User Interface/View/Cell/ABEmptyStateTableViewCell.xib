@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,21 +14,21 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qiP-j1-zCV" id="6If-9E-faA">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="239.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" restorationIdentifier="MozoFoundNoDataView" translatesAutoresizingMaskIntoConstraints="NO" id="6Ht-Tp-NtC">
                         <rect key="frame" x="16" y="11" width="343" height="218"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_search_not_found" translatesAutoresizingMaskIntoConstraints="NO" id="ivY-rI-yHv">
-                                <rect key="frame" x="81" y="0.0" width="181" height="185"/>
+                                <rect key="frame" x="81" y="0.0" width="181" height="181"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="181" id="4wB-Qe-BE9"/>
-                                    <constraint firstAttribute="height" constant="185" id="bs4-FU-T7r"/>
+                                    <constraint firstAttribute="height" constant="181" id="bs4-FU-T7r"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results not found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Km8-io-iJr">
-                                <rect key="frame" x="104.5" y="200" width="134" height="21"/>
+                                <rect key="frame" x="104.5" y="196" width="134" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -39,14 +37,14 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="NIa-PF-4mX"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Km8-io-iJr" firstAttribute="top" secondItem="ivY-rI-yHv" secondAttribute="bottom" constant="15" id="7Ds-2O-YU3"/>
                             <constraint firstItem="ivY-rI-yHv" firstAttribute="top" secondItem="NIa-PF-4mX" secondAttribute="top" id="ABX-Yk-7zA"/>
                             <constraint firstItem="Km8-io-iJr" firstAttribute="centerX" secondItem="6Ht-Tp-NtC" secondAttribute="centerX" id="o42-YF-ba9"/>
                             <constraint firstItem="ivY-rI-yHv" firstAttribute="centerX" secondItem="6Ht-Tp-NtC" secondAttribute="centerX" id="obR-pu-o2S"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="NIa-PF-4mX"/>
                     </view>
                 </subviews>
                 <constraints>

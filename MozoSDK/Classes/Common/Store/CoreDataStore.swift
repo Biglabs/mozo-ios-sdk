@@ -40,7 +40,7 @@ class CoreDataStore : NSObject {
     
     func countWalletByUserId(_ id: String) -> Promise<Int> {
         return Promise { seal in
-            if let entity = try? stack.fetchOne(From<ManagedUser>().where(\.id == id)), let user = entity {
+            if let user = try? stack.fetchOne(From<ManagedUser>().where(\.id == id)) {
                 let count = user.wallets?.count ?? -1
                 print("Wallets count: [\(count)]")
                 seal.fulfill(count)
@@ -52,7 +52,7 @@ class CoreDataStore : NSObject {
     
     func getUserById(_ id: String) -> Promise<UserModel>{
         return Promise { seal in
-            if let entity = try? stack.fetchOne(From<ManagedUser>().where(\.id == id)), let user = entity {
+            if let user = try? stack.fetchOne(From<ManagedUser>().where(\.id == id)) {
                 print("Wallets count: [\(user.wallets?.count ?? -1)]")
                 let wallets : [WalletModel]? = user.wallets?.map {
                     let wallet = $0 as! ManagedWallet

@@ -34,7 +34,7 @@ class ABImportViewController: MozoBasicViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if self.isMovingFromParentViewController {
+        if self.isMovingFromParent {
             eventHandler?.stopCheckStatus()
             stopRotating = true
         }
@@ -85,7 +85,7 @@ class ABImportViewController: MozoBasicViewController {
     }
     
     func openSettings() {
-        let url = URL(string: UIApplicationOpenSettingsURLString)
+        let url = URL(string: UIApplication.openSettingsURLString)
         UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
     

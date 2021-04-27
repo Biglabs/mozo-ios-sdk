@@ -44,8 +44,8 @@ class ABEditViewController : MozoBasicViewController {
         let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
         toolbar.barStyle = UIBarStyle.default
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        saveBtn = UIBarButtonItem(title: "Save changes".localized, style: UIBarButtonItemStyle.done, target: self, action: #selector(saveButtonAction))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        saveBtn = UIBarButtonItem(title: "Save changes".localized, style: UIBarButtonItem.Style.done, target: self, action: #selector(saveButtonAction))
         
         toolbar.items = [flexSpace, saveBtn!]
         toolbar.sizeToFit()

@@ -22,12 +22,12 @@ extension UISegmentedControl{
         self.setTitleTextAttributes(selectedAttributes, for: .selected)
     }
     
-    public func addUnderLines(normalAttributes: [NSAttributedString.Key : Any] = [NSAttributedStringKey.foregroundColor: ThemeManager.shared.textSection,
-                                                                                  NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)],
-                              highlightedAttributes: [NSAttributedString.Key : Any] = [NSAttributedStringKey.foregroundColor: ThemeManager.shared.textSection,
-                                                                                       NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)],
-                              selectedAttributes: [NSAttributedString.Key : Any] = [NSAttributedStringKey.foregroundColor: UIColor(hexString: "333333"),
-                                                                                    NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)],
+    public func addUnderLines(normalAttributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.foregroundColor: ThemeManager.shared.textSection,
+                                                                                  NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)],
+                              highlightedAttributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.foregroundColor: ThemeManager.shared.textSection,
+                                                                                       NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)],
+                              selectedAttributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.foregroundColor: UIColor(hexString: "333333"),
+                                                                                    NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)],
                               underLineColor: UIColor = ThemeManager.shared.primary,
                               underLineBorderColor: UIColor = UIColor(hexString: "f2f6fb"),
                               underLineBorderWidth: CGFloat = 1.0,

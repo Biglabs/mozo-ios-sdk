@@ -108,7 +108,7 @@ extension CorePresenter {
             content.subtitle = displayItem.subTitle
             content.body = displayItem.body
             content.categoryIdentifier = "mozoActionCategory"
-            content.sound = UNNotificationSound.default()
+            content.sound = UNNotificationSound.default
             
             // Group notification
             if displayItem.categoryType.needGroup {
@@ -151,7 +151,7 @@ extension UNNotificationAttachment {
             try fileManager.createDirectory(at: tmpSubFolderURL, withIntermediateDirectories: true, attributes: nil)
             let imageFileIdentifier = identifier+".png"
             let fileURL = tmpSubFolderURL.appendingPathComponent(imageFileIdentifier)
-            guard let imageData = UIImagePNGRepresentation(image) else {
+            guard let imageData = image.pngData() else {
                 return nil
             }
             try imageData.write(to: fileURL)

@@ -35,7 +35,7 @@ public class CopyableLabel: UILabel {
     
     func setup() {
         layer.addSublayer(selectionOverlay)
-        NotificationCenter.default.addObserver(self, selector: #selector(didHideMenu), name: NSNotification.Name.UIMenuControllerDidHideMenu, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didHideMenu), name: UIMenuController.didHideMenuNotification, object: nil)
         
         isUserInteractionEnabled = true
         addGestureRecognizer(UILongPressGestureRecognizer(

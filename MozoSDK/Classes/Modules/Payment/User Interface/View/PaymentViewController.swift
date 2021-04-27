@@ -90,7 +90,7 @@ class PaymentViewController: MozoBasicViewController {
     
     func setupTarget() {
         segmentControl.addTarget(self, action: #selector(self.segmmentControlChanged), for: .valueChanged)
-        txtAmount.addTarget(self, action: #selector(textFieldAmountDidChange), for: UIControlEvents.editingChanged)
+        txtAmount.addTarget(self, action: #selector(textFieldAmountDidChange), for: UIControl.Event.editingChanged)
         txtAmount.delegate = self
         txtAmount.doneAccessory = true
     }
@@ -108,8 +108,6 @@ class PaymentViewController: MozoBasicViewController {
             self.tableView?.addSubview(refreshControl)
         }
         self.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-        
-        containerButtonView.backgroundColor = UIColor(white: 1, alpha: 0.7)
     }
     
     @objc func refresh(_ sender: Any? = nil) {
@@ -143,10 +141,12 @@ class PaymentViewController: MozoBasicViewController {
     func updateLayout() {
         switch currentTab {
         case .List:
-            view.insertSubview(listContainerView, aboveSubview: createContainerView)
+            listContainerView.isHidden = false
+            createContainerView.isHidden = true
             refresh()
         case .Create:
-            view.insertSubview(createContainerView, aboveSubview: listContainerView)
+            listContainerView.isHidden = true
+            createContainerView.isHidden = false
         }
     }
     
@@ -301,7 +301,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         return true
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
     

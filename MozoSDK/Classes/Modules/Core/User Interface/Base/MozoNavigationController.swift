@@ -59,7 +59,7 @@ public class MozoNavigationController : UINavigationController {
     }
     
     func addCancelBtn(item: UINavigationItem) {
-        let cancelBtn = UIBarButtonItem(title: "Cancel".localized, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.tapCloseBtn))
+        let cancelBtn = UIBarButtonItem(title: "Cancel".localized, style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.tapCloseBtn))
         item.rightBarButtonItem = cancelBtn
     }
     
@@ -67,7 +67,7 @@ public class MozoNavigationController : UINavigationController {
         let bundle = BundleManager.mozoBundle()
         let nib = UINib(nibName: "CloseView", bundle: bundle)
         let button = nib.instantiate(withOwner: self, options: nil)[0] as! UIButton
-        button.imageEdgeInsets = UIEdgeInsetsMake(15, 30, 15, 78)
+        button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 30, bottom: 15, right: 78)
         
         return button
     }

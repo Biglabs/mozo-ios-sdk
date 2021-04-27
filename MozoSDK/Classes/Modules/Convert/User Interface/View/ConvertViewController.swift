@@ -145,9 +145,9 @@ class ConvertViewController: MozoBasicViewController {
         
         let string = "text_convert_explain_gas_price".localized as NSString
         
-        let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0)])
+        let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)])
         
-        let boldFontAttribute = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14.0)]
+        let boldFontAttribute = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14.0)]
         
         // Part of string to be bold
         attributedString.addAttributes(boldFontAttribute, range: string.range(of: "TX fee = gas price * gas limit"))
@@ -163,9 +163,9 @@ class ConvertViewController: MozoBasicViewController {
     func layoutLoadingStateForEthAndTransferFee(balanceText: String = "Loading...".localized, isWarning: Bool = false) {
         let string = "Your ETH balance is: %@".localizedFormat(balanceText) as NSString
         let textColorString  = isWarning ? "f05454" : "000000"
-        let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13.0), NSAttributedStringKey.foregroundColor: UIColor(hexString: textColorString)])
+        let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.foregroundColor: UIColor(hexString: textColorString)])
         
-        let boldFontAttribute = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 13.0)]
+        let boldFontAttribute = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13.0)]
         
         // Part of string to be bold
         attributedString.addAttributes(boldFontAttribute, range: string.range(of: balanceText))
@@ -208,9 +208,9 @@ class ConvertViewController: MozoBasicViewController {
                 let resultText = resultInDoule.removeZerosFromEnd(maximumFractionDigits: 8)
                 
                 let string = "text_msg_required_eth".localizedFormat(resultText) as NSString
-                let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13.0)])
+                let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13.0)])
                 
-                let boldFontAttribute = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 13.0)]
+                let boldFontAttribute = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13.0)]
                 
                 // Part of string to be bold
                 attributedString.addAttributes(boldFontAttribute, range: string.range(of: resultText))
@@ -241,8 +241,8 @@ class ConvertViewController: MozoBasicViewController {
     }
     
     func setupTarget() {
-        txtAmount.addTarget(self, action: #selector(textFieldAmountDidBeginEditing), for: UIControlEvents.editingDidBegin)
-        txtAmount.addTarget(self, action: #selector(textFieldAmountDidEndEditing), for: UIControlEvents.editingDidEnd)
+        txtAmount.addTarget(self, action: #selector(textFieldAmountDidBeginEditing), for: UIControl.Event.editingDidBegin)
+        txtAmount.addTarget(self, action: #selector(textFieldAmountDidEndEditing), for: UIControl.Event.editingDidEnd)
         txtAmount.delegate = self
     }
     

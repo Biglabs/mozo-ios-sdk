@@ -117,7 +117,7 @@ public class MozoBasicViewController : UIViewController {
         navigationItem.hidesBackButton = true
         mozoSpinnerView = UIView.init(frame: self.view.bounds)
         mozoSpinnerView?.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
         ai.color = ThemeManager.shared.main
         ai.startAnimating()
         ai.center = (mozoSpinnerView?.center)!

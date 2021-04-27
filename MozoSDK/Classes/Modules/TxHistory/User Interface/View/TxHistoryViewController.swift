@@ -22,6 +22,7 @@ class TxHistoryViewController: MozoBasicViewController {
     var noticeEmptyView: UIView!
     
     private let refreshControl = UIRefreshControl()
+    private let ROW_HEIGHT: CGFloat = 61
     private var isLoadingMoreTH = false
     private var isFiltering = false
     
@@ -51,6 +52,7 @@ class TxHistoryViewController: MozoBasicViewController {
         self.tableView.applyFooterLoadingView()
         
         tableView.register(UINib(nibName: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
         setLayerBorder()
         eventHandler?.loadTokenInfo()
         loadHistoryWithPage(page: currentPage)
@@ -71,9 +73,9 @@ class TxHistoryViewController: MozoBasicViewController {
     }
     
     func setLayerBorder() {
-        btnFloatingAll.roundCorners(cornerRadius: 0.15, borderColor: .clear, borderWidth: 0)
-        btnFloatingReceived.roundCorners(cornerRadius: 0.15, borderColor: .clear, borderWidth: 0)
-        btnFloatingSent.roundCorners(cornerRadius: 0.15, borderColor: .clear, borderWidth: 0)
+        btnFloatingAll.roundedCircle()
+        btnFloatingReceived.roundedCircle()
+        btnFloatingSent.roundedCircle()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -253,7 +255,7 @@ extension TxHistoryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 61
+        return ROW_HEIGHT
     }
 }
 

@@ -73,7 +73,7 @@ public extension UILabel {
         lStrLabelText = NSMutableAttributedString(attributedString: finalStr)
         let range = NSRange(location: (self.text?.count)!, length: text.count)
         
-        lStrLabelText.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
+        lStrLabelText.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
         
         self.attributedText = lStrLabelText
     }

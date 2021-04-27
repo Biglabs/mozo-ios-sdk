@@ -41,7 +41,7 @@ public struct ThemeManager {
         navigationBarAppearace.tintColor = shared.main
         navigationBarAppearace.barTintColor = .white
         navigationBarAppearace.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor: UIColor.black
+            NSAttributedString.Key.foregroundColor: UIColor.black
         ]
     }
 }
