@@ -6,16 +6,18 @@
 MozoSDK for iOS by MozoX Pte. Ltd.
 For more information please see [the website][1].
 
-## Setting Up  
+## Install
 
-To get started with the Mozo SDK for iOS, check out [our website][1]. You can set up the SDK and start building a new project, or you integrate the SDK in an existing project. You can also run the samples to get a sense of how the SDK works.
+#### Using [CocoaPods](https://cocoapods.org/pods/MozoSDK)
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '11.0'
+use_frameworks!
 
-To use the Mozo SDK for iOS, you will need the following installed on your development machine:
-
-* Xcode 12 or later
-* iOS 11 or later
-
-At the Mozo GitHub repo, you can check out the [SDK source code](https://github.com/biglabs/mozo-ios-sdk).
+target 'MyApp' do
+  pod 'MozoSDK', '~> 2.0'
+end
+```
 
 ## Requirements
 
