@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name            = "MozoSDK"
-  s.version         = "2.0.46"
+  s.version         = "2.0.47"
   s.summary         = "Mozo protocol toolkit for Swift"
   s.description     = <<-DESC
 The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaining authentication, authorization with Mozo Services, receiving Mozo Tokens via beacons and buying, selling, transferring Mozo. It is also supporting UI components for authentication and buying, selling, transferring Mozo.
@@ -14,11 +14,11 @@ The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaini
   s.source           = { :git => "https://github.com/Biglabs/mozo-ios-sdk.git", :tag => "v#{s.version}" }
   s.social_media_url = "https://facebook.com/MozoXVietNam"
 
-  s.swift_version    = "5"
+  s.swift_version    = "4.2"
   s.ios.deployment_target = "11.0"
 
-  s.source_files = "MozoSDK/**/*.{h,m,swift}"
-  s.resources = ['MozoSDK/Classes/**/*.xcdatamodeld', 'MozoSDK/Classes/**/*.txt']
+  s.source_files     = "MozoSDK/**/*.{h,m,swift}"
+  s.resources        = ['MozoSDK/Classes/**/*.xcdatamodeld', 'MozoSDK/Classes/**/*.txt']
   s.resource_bundles = {
       'MozoSDK' => ['MozoSDK/Classes/**/*.{storyboard,xib}',
                     'MozoSDK/Assets/*.{xcassets,gif}',
