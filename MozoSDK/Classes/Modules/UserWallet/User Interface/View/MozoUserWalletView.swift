@@ -123,7 +123,10 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         historyTable.dataSource = self
         historyTable.delegate = self
         historyTable.tableFooterView = UIView()
-        setupRefreshControl()
+        
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        historyTable?.refreshControl = refreshControl
+        
         setupNoContentView()
     }
     
@@ -166,23 +169,10 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         }
     }
     
-    func setupRefreshControl() {
-        // Add Refresh Control to Table View
-        if #available(iOS 10.0, *) {
-            self.historyTable?.refreshControl = refreshControl
-        } else {
-            self.historyTable?.addSubview(refreshControl)
-        }
-        self.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-    }
-    
     @objc func refresh(_ sender: Any? = nil) {
         loadTxHistory()
-        loadOffchainInfo()
+        loadOnchainInfo()
         loadTokenInfo()
-        if let refreshControl = sender as? UIRefreshControl, refreshControl.isRefreshing {
-            refreshControl.endRefreshing()
-        }
     }
     
     func setupButtonBorder() {
@@ -239,16 +229,24 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
     
     func loadTxHistory() {
-        print("\(String(describing: self)) - Load display collection item data.")
         _ = MozoSDK.getTxHistoryDisplayCollection().done { (collectionData) in
             self.collection = collectionData
+            
+            self.refreshControl.endRefreshing()
         }.catch({ (error) in
             
+            self.refreshControl.endRefreshing()
         })
     }
     
-    func loadOffchainInfo() {
-        print("\(String(describing: self)) - Load offchain info data.")
+    func loadOnchainInfo() {
+        /**
+         * Detect Onchain MozoX inside Offchain Wallet Address
+         * */
+        /**
+         * Disable Detect On-chain feature for now
+         * Thursday, May 6, 2021 4:21:04 PM GMT+07:00
+         *
         _ = MozoSDK.getOffchainTokenInfo().done { (info) in
             self.offchainInfo = info
             if (info.convertToMozoXOnchain ?? false) == false {
@@ -279,6 +277,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         }.catch { (error) in
             self.topConstraint.constant = CGFloat(self.topConstraintDefault)
         }
+         */
     }
     
     func loadTokenInfo() {
@@ -295,7 +294,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         clearValueOnUI()
         if !isAnonymous {
             loadTxHistory()
-            loadOffchainInfo()
+            loadOnchainInfo()
             print("\(String(describing: self)) - Load display data.")
             if let item = SafetyDataManager.shared.offchainDetailDisplayData {
                 print("\(String(describing: self)) - Receive display data: \(item)")
@@ -452,11 +451,11 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     
     @objc func onDidCloseAllMozoUI(_ notification: Notification) {
         // Reload onchain info when view appear
-        loadOffchainInfo()
+        loadOnchainInfo()
     }
     
     @objc func onDidConvertSuccessOnchainToOffchain(_ notification: Notification) {
-        loadOffchainInfo()
+        loadOnchainInfo()
     }
     
     func removeEthAndDetectedObservers() {

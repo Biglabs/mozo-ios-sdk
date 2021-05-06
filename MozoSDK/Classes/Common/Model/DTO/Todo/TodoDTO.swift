@@ -42,7 +42,7 @@ public class TodoDTO: ResponseObjectSerializable {
         case .CUSTOM:
             return data?.customTitle
         default:
-            return idKey.message.localized
+            return data?.customTitle ?? idKey.message.localized
         }
     }
     
@@ -51,7 +51,7 @@ public class TodoDTO: ResponseObjectSerializable {
         case .CUSTOM:
             return data?.customAction
         default:
-            return idKey.actionText.localized
+            return data?.customAction ?? idKey.actionText.localized
         }
     }
     
