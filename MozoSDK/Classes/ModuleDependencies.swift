@@ -168,10 +168,6 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.sendRangedBeacons(beacons: beacons, status: status))!
     }
     
-    func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRangeColorSettings())!
-    }
-    
     func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getTxHistoryDisplayCollection())!
     }
@@ -440,8 +436,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getTodoListSetting())!
     }
     
-    func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getGPSBeacons(userLat: userLat, userLong: userLong))!
+    func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
+        return (coreWireframe.corePresenter?.coreInteractorService?.getGPSBeacons(params: params))!
     }
     
     func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO> {

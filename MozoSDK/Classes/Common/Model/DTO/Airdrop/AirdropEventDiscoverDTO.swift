@@ -17,6 +17,7 @@ public class AirdropEventDiscoverDTO {
     public var eventLongitude: Double?
     public var eventDistance: Double?
     public var eventAddress: String?
+    public var eventType: String?
     public var nextReceiveTime: Int64?
     public var hourOfDayFrom: Int?
     public var hourOfDayTo: Int?
@@ -31,6 +32,7 @@ public class AirdropEventDiscoverDTO {
         self.eventLongitude = json["eventLongitude"].double
         self.eventDistance = json["eventDistance"].double
         self.eventAddress = json["eventAddress"].string
+        self.eventType = json["eventType"].string
         self.nextReceiveTime = json["nextReceiveTime"].int64
         self.hourOfDayFrom = json["hourOfDayFrom"].int
         self.hourOfDayTo = json["hourOfDayTo"].int
@@ -62,6 +64,9 @@ public class AirdropEventDiscoverDTO {
         }
         if let eventAddress = self.eventAddress {
             json["eventAddress"] = eventAddress
+        }
+        if let type = self.eventType {
+            json["eventType"] = type
         }
         if let nextReceiveTime = self.nextReceiveTime {
             json["nextReceiveTime"] = nextReceiveTime

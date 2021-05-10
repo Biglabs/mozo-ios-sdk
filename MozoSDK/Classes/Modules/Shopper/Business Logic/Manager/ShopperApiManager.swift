@@ -40,12 +40,10 @@ public extension ApiManager {
         }
     }
     
-    func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]> {
+    func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
         return Promise { seal in
-            let params = ["userLat" : userLat,
-                          "userLong": userLong] as [String : Any]
             let query = "?\(params.queryString)"
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/beacon/gps" + query
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/v1/beacon/gps" + query
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -56,27 +54,6 @@ public extension ApiManager {
                 }
                 .catch { error in
                     print("Error when request get GPS beacons: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
-    func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]> {
-        return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_API_PATH + "/color/range-settings"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get range color settings, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let list = AirdropColorRangeDTO.arrayFromJson(jobj)
-                    seal.fulfill(list)
-                }
-                .catch { error in
-                    print("Error when request get range color settings: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {
