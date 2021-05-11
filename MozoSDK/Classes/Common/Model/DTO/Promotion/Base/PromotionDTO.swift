@@ -41,6 +41,9 @@ public class PromotionDTO {
     public var priceOriginal: String?
     public var priceDiscount: String?
     
+    // MARK: Appearance of promotion
+    public var international: Bool = true
+    
     public init() {
         // MARK: empty constructor
     }
@@ -93,6 +96,7 @@ public class PromotionDTO {
         self.countOtherBranches = json["countOtherBranches"].int
         self.isManyBranch = json["isManyBranch"].bool
         self.target = PromotionTarget.init(rawValue: json["targetConsumer"].string ?? PromotionTarget.NONCE.rawValue) ?? .NONCE
+        self.international = json["international"].bool ?? true
         self.priceOriginal = json["priceBeforeDiscount"].string
         self.priceDiscount = json["priceAfterDiscount"].string
     }
@@ -164,6 +168,7 @@ public class PromotionDTO {
         }
         
         json["targetConsumer"] = target.rawValue
+        json["international"] = self.international
         if let priceOriginal = self.priceOriginal {
             json["priceBeforeDiscount"] = priceOriginal
         }
@@ -207,6 +212,7 @@ extension PromotionDTO: Equatable {
             lhs.isManyBranch == rhs.isManyBranch &&
         
             lhs.target == rhs.target &&
+            lhs.international == rhs.international &&
             lhs.priceOriginal == rhs.priceOriginal &&
             lhs.priceDiscount == rhs.priceDiscount
     }

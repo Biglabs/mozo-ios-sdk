@@ -72,7 +72,6 @@ protocol CoreInteractorService {
     func removeSalePerson(id: Int64) -> Promise<[String: Any]>
     func getListCountryCode() -> Promise<[CountryCodeDTO]>
     
-    func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]>
     func getAirdropStoreNearby(params: [String: Any]) -> Promise<[AirdropEventDiscoverDTO]>
     func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]>
     
@@ -160,7 +159,7 @@ protocol CoreInteractorService {
     
     func getTodoListSetting() -> Promise<TodoSettingDTO>
     
-    func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]>
+    func getGPSBeacons(params: [String: Any]) -> Promise<[String]>
     
     func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO>
     

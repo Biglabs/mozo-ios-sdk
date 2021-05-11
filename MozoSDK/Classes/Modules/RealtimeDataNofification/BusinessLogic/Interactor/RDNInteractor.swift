@@ -23,91 +23,13 @@ class RDNInteractor: NSObject {
     
     @objc func connectToWebSocketServer() {
         manager.connect()
-        manager.socket.advancedDelegate = self
+        manager.delegate = self
     }
     
     func stopReconnectToWebSocket() {
         reconnectTimer?.invalidate()
         reconnectTimer = nil
         retryCount = 1
-    }
-}
-extension RDNInteractor : RDNInteractorInput {
-    func startService() {
-        stopReconnectToWebSocket()
-        if !manager.isConnected() {
-            NSLog("RDNInteractor - Start services.")
-            connectToWebSocketServer()
-        }
-    }
-    
-    func stopService(shouldReconnect: Bool) {
-        stopReconnectToWebSocket()
-        shouldReconnectAfterDisconnected = shouldReconnect
-        if manager.isConnected() {
-            NSLog("RDNInteractor - Stop services.")
-            manager.disconnect()
-        }
-    }
-}
-// MARK: Websocket Delegate Methods.
-extension RDNInteractor : WebSocketAdvancedDelegate {
-    func websocketDidConnect(socket: WebSocket) {
-        NSLog("Websocket is connected")
-        stopReconnectToWebSocket()
-        shouldReconnectAfterDisconnected = true
-    }
-    func websocketDidDisconnect(socket: WebSocket, error: Error?) {
-        if let e = error {
-            NSLog("Websocket is disconnected: \(e.localizedDescription)")
-        } else {
-            NSLog("Websocket disconnected")
-        }
-        if shouldReconnectAfterDisconnected {
-            NSLog("RDNInteractor - Reconnect after disconnect")
-            let mutiplier = pow(2.0, Double(retryCount))
-            let timeInterval = Double(SOCKET_RETRY_DELAY_IN_SECONDS) * mutiplier
-            NSLog("RDNInteractor - Reconnect after disconnect - delay time in seconds: \(timeInterval)")
-            reconnectTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(connectToWebSocketServer), userInfo: nil, repeats: false)
-            retryCount += 1
-            if retryCount > SOCKET_RETRY_MAXIMUM_TIME {
-                retryCount = 0
-            }
-        }
-    }
-    func websocketDidReceiveMessage(socket: WebSocket, text: String, response: WebSocket.WSResponse) {
-        print("Received notification text: \(text)")
-        processMessage(message: text, response: response)
-    }
-    func websocketDidReceiveData(socket: WebSocket, data: Data, response: WebSocket.WSResponse) {
-        print("Received notification data: \(data.count)")
-    }
-    func websocketHttpUpgrade(socket: WebSocket, request: String) {
-        print("websocket Http Upgrade with request: \(request)")
-    }
-    func websocketHttpUpgrade(socket: WebSocket, response: String) {
-        print("websocket Http Upgrade with response: \(response)")
-    }
-}
-// MARK: WS Message (Private)
-extension RDNInteractor {
-    private func processMessage(message: String, response: WebSocket.WSResponse) {
-        // split string by | character
-        let strings = message.components(separatedBy: "|");
-        
-        if strings.count == 2 {
-            // Check connected response
-            if strings[0] == "71" {
-                return
-            }
-            // Check Ping
-            if strings[0] == "1" {
-                print("Received ping!")
-                return
-            }
-            let jsonMessage = strings[1]
-            processJsonWS(jsonMessage)
-        }
     }
     
     private func processJsonWS(_ jsonMessage: String) {
@@ -197,5 +119,67 @@ extension RDNInteractor {
         }
         // Save to user default
         SessionStoreManager.saveNotificationHistory(histories)
+    }
+}
+extension RDNInteractor : RDNInteractorInput {
+    func startService() {
+        stopReconnectToWebSocket()
+        if !manager.isConnected {
+            NSLog("RDNInteractor - Start services.")
+            connectToWebSocketServer()
+        }
+    }
+    
+    func stopService(shouldReconnect: Bool) {
+        stopReconnectToWebSocket()
+        shouldReconnectAfterDisconnected = shouldReconnect
+        if manager.isConnected {
+            NSLog("RDNInteractor - Stop services.")
+            manager.disconnect()
+        }
+    }
+}
+// MARK: Websocket Delegate Methods.
+extension RDNInteractor : SocketDelegate {
+    func onSocketConnected() {
+        stopReconnectToWebSocket()
+        shouldReconnectAfterDisconnected = true
+    }
+    
+    func onSocketDisconnected(_ error: String?) {
+        if let e = error {
+            NSLog("Websocket is disconnected: \(e)")
+        } else {
+            NSLog("Websocket disconnected")
+        }
+        if shouldReconnectAfterDisconnected {
+            NSLog("RDNInteractor - Reconnect after disconnect")
+            let mutiplier = pow(2.0, Double(retryCount))
+            let timeInterval = Double(SOCKET_RETRY_DELAY_IN_SECONDS) * mutiplier
+            NSLog("RDNInteractor - Reconnect after disconnect - delay time in seconds: \(timeInterval)")
+            reconnectTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(connectToWebSocketServer), userInfo: nil, repeats: false)
+            retryCount += 1
+            if retryCount > SOCKET_RETRY_MAXIMUM_TIME {
+                retryCount = 0
+            }
+        }
+    }
+    
+    func onSocketReceivedText(_ text: String) {
+        let strings = text.components(separatedBy: "|");
+        
+        if strings.count == 2 {
+            // Check connected response
+            if strings[0] == "71" {
+                return
+            }
+            // Check Ping
+            if strings[0] == "1" {
+                print("Received ping!")
+                return
+            }
+            let jsonMessage = strings[1]
+            processJsonWS(jsonMessage)
+        }
     }
 }

@@ -8,13 +8,21 @@
 import Foundation
 import Starscream
 
-public class WebSocketManager {
-    var socket: WebSocket
+public protocol SocketDelegate {
+    func onSocketConnected()
+    func onSocketDisconnected(_ error: String?)
+    func onSocketReceivedText(_ text: String)
+}
+public class WebSocketManager: WebSocketDelegate {
+    private var socket: WebSocket
     var appType: AppType = .Shopper
+    var isConnected: Bool = false
+    var delegate: SocketDelegate? = nil
     
     public init() {
         let request = URLRequest(url: URL(string: Configuration.WEB_SOCKET_URL)!)
         socket = WebSocket(request: request)
+        socket.delegate = self
     }
     
     func buildUUID() -> String {
@@ -48,18 +56,48 @@ public class WebSocketManager {
         // Build header with current access token
         let request = requestWithHeader()
         socket = WebSocket(request: request)
-        print("WebSocketManager - [connect] with URL \(socket.currentURL)")
+        socket.delegate = self
+        print("WebSocketManager - [connect] with URL \(String(describing: socket.request.url))")
         socket.connect()
     }
     
     func disconnect() {
-        if socket.isConnected {
+        if self.isConnected {
             print("WebSocketManager - [disconnect].")
             socket.disconnect()
         }
     }
     
-    func isConnected() -> Bool {
-        return socket.isConnected
+    public func didReceive(event: WebSocketEvent, client: WebSocket) {
+        switch event {
+            case .connected(let headers):
+                isConnected = true
+                delegate?.onSocketConnected()
+                print("WebSocketManager is connected: \(headers)")
+            case .disconnected(let reason, let code):
+                isConnected = false
+                delegate?.onSocketDisconnected(reason)
+                print("WebSocketManager is disconnected: \(reason) with code: \(code)")
+            case .text(let string):
+                delegate?.onSocketReceivedText(string)
+                print("WebSocketManager - Received text: \(string)")
+            case .binary(let data):
+                print("WebSocketManager - Received data: \(data.count)")
+            case .ping(_):
+                break
+            case .pong(_):
+                break
+            case .viabilityChanged(_):
+                break
+            case .reconnectSuggested(_):
+                break
+            case .cancelled:
+                isConnected = false
+                delegate?.onSocketDisconnected("cancelled")
+            case .error(let error):
+                isConnected = false
+                delegate?.onSocketDisconnected(error?.localizedDescription)
+                print("WebSocketManager - [error] with URL \(String(describing: error))")
+            }
     }
 }

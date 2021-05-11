@@ -106,10 +106,6 @@ public class MozoSDK {
         return (moduleDependencies.sendRangedBeacons(beacons: beacons, status: status))
     }
     
-    public static func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]> {
-        return (moduleDependencies.getRangeColorSettings())
-    }
-    
     public static func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection> {
         return (moduleDependencies.getTxHistoryDisplayCollection())
     }
@@ -378,8 +374,8 @@ public class MozoSDK {
         return moduleDependencies.getTodoListSetting()
     }
     
-    public static func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]> {
-        return moduleDependencies.getGPSBeacons(userLat: userLat, userLong: userLong)
+    public static func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
+        return moduleDependencies.getGPSBeacons(params: params)
     }
     
     public static func searchPromotionsWithText(_ text: String, page: Int = 0, size: Int = 15, long: Double = 0, lat: Double = 0) -> Promise<CollectionPromotionInfoDTO> {

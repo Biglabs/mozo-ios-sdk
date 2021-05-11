@@ -64,6 +64,6 @@ enum TransactionDisplayContactEnum: Int {
     }
 }
 
-public protocol ResponseObjectSerializable: class {
+public protocol ResponseObjectSerializable: AnyObject {
     init?(json: JSON)
 }

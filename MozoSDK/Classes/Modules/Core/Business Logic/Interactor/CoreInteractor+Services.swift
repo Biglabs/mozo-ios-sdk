@@ -27,10 +27,6 @@ extension CoreInteractor: CoreInteractorService {
         }
     }
     
-    func getRangeColorSettings() -> Promise<[AirdropColorRangeDTO]> {
-        return apiManager.getRangeColorSettings()
-    }
-    
     func registerBeacon(parameters: Any?) -> Promise<[String: Any]> {
         return apiManager.registerBeacon(parameters: parameters, isCreateNew: true)
     }
@@ -289,8 +285,8 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getTodoListSetting()
     }
     
-    func getGPSBeacons(userLat: Double, userLong: Double) -> Promise<[String]> {
-        return apiManager.getGPSBeacons(userLat: userLat, userLong: userLong)
+    func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
+        return apiManager.getGPSBeacons(params: params)
     }
     
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem> {
