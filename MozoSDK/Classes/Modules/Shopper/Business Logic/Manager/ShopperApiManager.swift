@@ -43,7 +43,7 @@ public extension ApiManager {
     func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
         return Promise { seal in
             let query = "?\(params.queryString)"
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/v1/beacon/gps" + query
+            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/beacon/gps" + query
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
