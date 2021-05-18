@@ -35,9 +35,9 @@ The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaini
   s.dependency 'ReachabilitySwift'
   s.dependency 'MBProgressHUD'
   s.dependency 'AlamofireImage'
-  s.dependency 'Kingfisher', '6.1.1'
-  s.dependency 'SwiftyJSON', '5.0'
+  s.dependency 'Kingfisher'
+  s.dependency 'SwiftyJSON'
   s.dependency 'libPhoneNumber-iOS'
-  s.dependency 'JWTDecode', '2.6.0'
+  s.dependency 'JWTDecode'
 
 end
