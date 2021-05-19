@@ -176,7 +176,7 @@ class AuthManager : NSObject {
                 redirectURL: redirectURI,
                 responseType: OIDResponseTypeCode,
                 additionalParameters: [
-                    Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE,
+                    Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE.replace("_", withString: "-"),
                     Configuration.AUTH_PARAM_APPLICATION_TYPE : Configuration.AUTH_PARAM_APPLICATION_TYPE_VALUE,
                     Configuration.AUTH_PARAM_PROMPT: "consent"
                 ])

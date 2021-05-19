@@ -19,19 +19,11 @@ public enum ServiceType: String {
     case PRODUCTION = ""
     
     public var socket: String {
-        switch self {
-        case .DEV: return "dev.noti.mozocoin.io"
-        case .STAGING: return "staging.noti.mozocoin.io"
-        case .PRODUCTION: return "noti.mozocoin.io"
-        }
+        return "\(rawValue)noti.mozocoin.io"
     }
     
     public var auth: String {
-        switch self {
-        case .DEV: return "\(rawValue)keycloak."
-        case .STAGING: return "\(rawValue)login."
-        case .PRODUCTION: return "login."
-        }
+        return "\(rawValue)login."
     }
 }
 

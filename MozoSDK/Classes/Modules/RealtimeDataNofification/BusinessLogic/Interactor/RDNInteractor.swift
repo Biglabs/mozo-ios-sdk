@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Starscream
 import SwiftyJSON
 let SOCKET_RETRY_DELAY_IN_SECONDS = 5
 let SOCKET_RETRY_MAXIMUM_TIME = 8
