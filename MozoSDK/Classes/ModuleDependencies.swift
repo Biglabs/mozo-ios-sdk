@@ -160,10 +160,6 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.addSalePerson(parameters:parameters))!
     }
     
-    func getAirdropStoreNearby(params: [String: Any]) -> Promise<[AirdropEventDiscoverDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropStoreNearby(params: params))!
-    }
-    
     func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.sendRangedBeacons(beacons: beacons, status: status))!
     }
@@ -222,10 +218,6 @@ class ModuleDependencies {
     
     func getListCountryCode() -> Promise<[CountryCodeDTO]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getListCountryCode())!
-    }
-    
-    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getListEventAirdropOfStore(storeId))!
     }
     
     func searchStoresWithText(_ text: String, page: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {
@@ -290,10 +282,6 @@ class ModuleDependencies {
     
     func handleAccessRemove() {
         coreWireframe.corePresenter?.handleAccessRemoved()
-    }
-    
-    func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getDiscoverAirdrops(type: type, page: page, size: size, long: long, lat: lat))!
     }
     
     func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
@@ -482,10 +470,6 @@ class ModuleDependencies {
     
     func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat))!
-    }
-    
-    func getAirdropEventFromStore(_ storeId: Int64, type: AirdropEventType, page: Int, size: Int) -> Promise<[AirdropEventDiscoverDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropEventFromStore(storeId, type: type, page: page, size: size))!
     }
     
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {

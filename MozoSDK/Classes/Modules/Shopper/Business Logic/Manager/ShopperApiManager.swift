@@ -18,27 +18,6 @@ let SHOPPER_NEAREST_API_PATH = SHOPPER_API_PATH + "/nearest/stores"
 let SHOPPER_RECOMMENDATION_API_PATH = SHOPPER_API_PATH + "/recommendation/branches"
 
 public extension ApiManager {
-    func getAirdropStoresNearby(params: [String: Any]) -> Promise<[AirdropEventDiscoverDTO]> {
-        return Promise { seal in
-            let query = "?\(params.queryString)"
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/v2/airdrop/nearby" + query
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get airdrop store nearby, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let list = AirdropEventDiscoverDTO.arrayFromJson(jobj)
-                    seal.fulfill(list)
-                }
-                .catch { error in
-                    print("Error when request get airdrop store nearby: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
     
     func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
         return Promise { seal in
@@ -83,27 +62,6 @@ public extension ApiManager {
                 }
                 .catch { error in
                     print("Error when request get recommendation stores: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
-    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
-        return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/branch/\(storeId)/air-drops"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get event of store \(storeId), json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let list = AirdropEventDiscoverDTO.arrayFromJson(jobj)
-                    seal.fulfill(list)
-                }
-                .catch { error in
-                    print("Error when request get event of store \(storeId): " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {
@@ -223,29 +181,6 @@ public extension ApiManager {
                 }
                 .catch { error in
                     print("Error when request get suggestion search: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
-    func getAirdropEventFromStore(_ storeId: Int64, type: AirdropEventType, page: Int, size: Int) -> Promise<[AirdropEventDiscoverDTO]> {
-        return Promise { seal in
-            let params = ["size" : size,
-                          "page" : page] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/branch/\(storeId)/air-drops/\(type)" + "?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get airdrop for store [\(storeId)], type [\(type)], json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let list = AirdropEventDiscoverDTO.arrayFromJson(jobj)
-                    seal.fulfill(list)
-                }
-                .catch { error in
-                    print("Error when request get airdrop for store [\(storeId)], type [\(type)]: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {

@@ -72,9 +72,6 @@ protocol CoreInteractorService {
     func removeSalePerson(id: Int64) -> Promise<[String: Any]>
     func getListCountryCode() -> Promise<[CountryCodeDTO]>
     
-    func getAirdropStoreNearby(params: [String: Any]) -> Promise<[AirdropEventDiscoverDTO]>
-    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]>
-    
     func searchStoresWithText(_ text: String, page: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO>
     func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]>
     func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]>
@@ -93,8 +90,6 @@ protocol CoreInteractorService {
     
     func getStoreDetail(_ storeId: Int64) -> Promise<BranchInfoDTO>
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]>
-    
-    func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[String: Any]>
     
     func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]>
     
@@ -178,8 +173,6 @@ protocol CoreInteractorService {
     func loadTopUpHistory(topUpAddress: String?, page: Int, size: Int) -> Promise<TxHistoryDisplayCollection>
     
     func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]>
-    
-    func getAirdropEventFromStore(_ storeId: Int64, type: AirdropEventType, page: Int, size: Int) -> Promise<[AirdropEventDiscoverDTO]>
     
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON>
     

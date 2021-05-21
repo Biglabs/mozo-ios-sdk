@@ -55,10 +55,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.addSalePerson(parameters: parameters)
     }
     
-    func getAirdropStoreNearby(params: [String : Any]) -> Promise<[AirdropEventDiscoverDTO]> {
-        return apiManager.getAirdropStoresNearby(params: params)
-    }
-    
     func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
         return apiManager.sendRangedBeacons(beacons: beacons, status: status)
     }
@@ -152,10 +148,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getListCountryCode()
     }
     
-    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
-        return apiManager.getListEventAirdropOfStore(storeId)
-    }
-    
     func searchStoresWithText(_ text: String, page: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {
         return apiManager.searchStoresWithText(text, page: page, long: long, lat: lat, sort: sort)
     }
@@ -214,10 +206,6 @@ extension CoreInteractor: CoreInteractorService {
     
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
         return apiManager.getRecommendationStores(storeId, size: size, long: long, lat: lat)
-    }
-    
-    func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[String: Any]> {
-        return apiManager.getDiscoverAirdrops(type: type, page: page, size: size, long: long, lat: lat)
     }
     
     func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
@@ -316,10 +304,6 @@ extension CoreInteractor: CoreInteractorService {
                 seal.reject(PMKError.badInput)
             }
         }
-    }
-    
-    func getAirdropEventFromStore(_ storeId: Int64, type: AirdropEventType, page: Int, size: Int) -> Promise<[AirdropEventDiscoverDTO]> {
-        return apiManager.getAirdropEventFromStore(storeId, type: type, page: page, size: size)
     }
     
     func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {

@@ -98,10 +98,6 @@ public class MozoSDK {
         return (moduleDependencies.addRetailerSalePerson(parameters:parameters))
     }
     
-    public static func getAirdropStoreNearby(params: [String: Any]) -> Promise<[AirdropEventDiscoverDTO]> {
-        return (moduleDependencies.getAirdropStoreNearby(params: params))
-    }
-    
     public static func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
         return (moduleDependencies.sendRangedBeacons(beacons: beacons, status: status))
     }
@@ -160,10 +156,6 @@ public class MozoSDK {
     
     public static func getListCountryCode() -> Promise<[CountryCodeDTO]> {
         return moduleDependencies.getListCountryCode()
-    }
-    
-    public static func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
-        return moduleDependencies.getListEventAirdropOfStore(storeId)
     }
     
     public static func searchStoresWithText(_ text: String, page: Int = 0, long: Double, lat: Double, sort: String = "distance") -> Promise<CollectionStoreInfoDTO> {
@@ -228,10 +220,6 @@ public class MozoSDK {
     
     public static func handleAccessRemove() {
         return moduleDependencies.handleAccessRemove()
-    }
-    
-    public static func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[String: Any]> {
-        return moduleDependencies.getDiscoverAirdrops(type: type, page: page, size: size, long: long, lat: lat)
     }
     
     public static func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
@@ -423,10 +411,6 @@ public class MozoSDK {
     
     public static func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int = 0, size: Int = 5, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
         moduleDependencies.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat)
-    }
-    
-    public static func getAirdropEventFromStore(_ storeId: Int64, type: AirdropEventType, page: Int, size: Int) -> Promise<[AirdropEventDiscoverDTO]> {
-        return moduleDependencies.getAirdropEventFromStore(storeId, type: type, page: page, size: size)
     }
     
     public static func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {
