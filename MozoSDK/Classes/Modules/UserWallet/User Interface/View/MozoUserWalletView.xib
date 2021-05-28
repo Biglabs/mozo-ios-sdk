@@ -171,10 +171,16 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="BHY-cZ-Kfa"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCircle" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4a2-EJ-NDC" customClass="MozoSendView" customModule="MozoSDK" customModuleProvider="target">
                             <rect key="frame" x="181.5" y="148" width="148.5" height="35"/>
                             <color key="backgroundColor" red="0.30588235289999999" green="0.58039215690000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCircle" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -209,6 +215,11 @@
                         <constraint firstItem="B1n-Lm-BiE" firstAttribute="width" secondItem="e5h-qz-jHv" secondAttribute="width" multiplier="0.43" id="zf0-RZ-bxW"/>
                         <constraint firstItem="4a2-EJ-NDC" firstAttribute="trailing" secondItem="msh-cO-O4e" secondAttribute="trailing" id="zvi-Q7-9HX"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLO-Yp-iJH">
                     <rect key="frame" x="15" y="328" width="145" height="18"/>

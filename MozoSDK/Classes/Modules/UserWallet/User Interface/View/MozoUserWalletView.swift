@@ -53,8 +53,6 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     let topConstraintWithAction = 113
     let topConstraintConverting = 82
     
-    private let refreshControl = UIRefreshControl()
-    
     var hud: MBProgressHUD?
     
     let onchainWalletView = MozoOnchainWalletView.init(frame: CGRect(x: 0, y: 66, width: UIScreen.main.bounds.width, height: 650))
@@ -124,8 +122,9 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         historyTable.delegate = self
         historyTable.tableFooterView = UIView()
         
+        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-        historyTable?.refreshControl = refreshControl
+        historyTable.refreshControl = refreshControl
         
         setupNoContentView()
     }
@@ -176,18 +175,13 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
     
     func setupButtonBorder() {
-        sendMozoView.roundedCircle()
-        paymentRequestView.roundedCircle()
-        
         infoViewBorderWidthConstraint.constant = UIScreen.main.bounds.width - 26
         infoViewBorder.dropShadow()
         let rectShadow = CGRect(x: infoViewBorder.bounds.origin.x, y: infoViewBorder.bounds.origin.y, width: UIScreen.main.bounds.width - 26, height: infoViewBorder.bounds.height)
         infoViewBorder.layer.shadowPath = UIBezierPath(rect: rectShadow).cgPath
-        infoViewBorder.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
-        infoViewBorder.layer.shadowRadius = 2.0
+        infoViewBorder.layer.shadowOffset = CGSize(width: 0.0, height: 2.5)
+        infoViewBorder.layer.shadowRadius = 3.0
         infoViewBorder.layer.shadowColor = UIColor(hexString: "a8c5ec").cgColor
-        
-        infoView.roundCorners(cornerRadius: 0.015, borderColor: ThemeManager.shared.disable, borderWidth: 0.5)
     }
 
     func clearValueOnUI() {
@@ -232,10 +226,10 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         _ = MozoSDK.getTxHistoryDisplayCollection().done { (collectionData) in
             self.collection = collectionData
             
-            self.refreshControl.endRefreshing()
+            self.historyTable.refreshControl?.endRefreshing()
         }.catch({ (error) in
             
-            self.refreshControl.endRefreshing()
+            self.historyTable.refreshControl?.endRefreshing()
         })
     }
     
