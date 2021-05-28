@@ -11,4 +11,5 @@ import Foundation
     func topUpWithdrawFailed()
     func topUpWithdrawFailureWithErrorString(error: String?)
     func topUpWithdrawFailure(error: Error)
+    func topUpCancel()
 }

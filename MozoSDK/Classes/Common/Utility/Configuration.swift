@@ -116,7 +116,7 @@ public class Configuration {
     public static let AUTH_STATE = "Mozo@AuthState"
     public static let AUTH_ID_TOKEN = "Mozo@IdToken"
     
-    public static let TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS = 10
+    public static let TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS = 5
     
     // Landing page
     public static let LANDING_PAGE_URL = "https://\(SUB_DOMAIN)mozocoin.io"
