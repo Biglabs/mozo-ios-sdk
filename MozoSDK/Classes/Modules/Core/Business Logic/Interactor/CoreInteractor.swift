@@ -47,8 +47,7 @@ class CoreInteractor: NSObject {
     private func getUserProfile() -> Promise<Void> {
         return Promise { seal in
             _ = apiManager.getUserProfile().done { (userProfile) in
-                // Fix issue: User id of profile can be NULL
-                if userProfile.id != nil {
+                if let userId = userProfile.userId, !userId.isEmpty {
                     let user = UserDTO(id: userProfile.userId, profile: userProfile)
                     SessionStoreManager.saveCurrentUser(user: user)
                 
