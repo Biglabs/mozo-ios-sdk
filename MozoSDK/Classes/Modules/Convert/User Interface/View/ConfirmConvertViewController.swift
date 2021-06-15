@@ -32,6 +32,8 @@ class ConfirmConvertViewController: MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lbOnchainAmountEx.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
+        lbOffchainAmountEx.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
         enableBackBarButton()
         setupLayout()
         updateData()

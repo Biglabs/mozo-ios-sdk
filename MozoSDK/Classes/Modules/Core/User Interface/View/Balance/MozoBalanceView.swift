@@ -68,6 +68,8 @@ import Foundation
         setupButtonBorder()
         addOriginalObserver()
         addUniqueAuthObserver()
+        
+        lbBalanceExchange.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
     }
     
     func loadDisplayData() {

@@ -46,8 +46,8 @@ class PaymentQRViewController: MozoBasicViewController {
     var displayItem: PaymentRequestDisplayItem?
     
     override func viewDidLoad() {
-        print("PaymentQRViewController - View did load")
         super.viewDidLoad()
+        lbAmountEx.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
         enableBackBarButton()
         commonSetup()
         bindData()

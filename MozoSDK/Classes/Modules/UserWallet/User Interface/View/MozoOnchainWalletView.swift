@@ -56,6 +56,8 @@ class MozoOnchainWalletView: MozoView {
     
     override func loadViewFromNib() {
         super.loadViewFromNib()
+        lbEthBalanceExchange.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
+        lbOnchainBalanceExchange.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
         loadDisplayData()
         setupButtonBorder()
         setupLayout()

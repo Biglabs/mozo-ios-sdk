@@ -49,8 +49,8 @@ class PaymentViewController: MozoBasicViewController {
     }
     
     override func viewDidLoad() {
-        print("PaymentViewController - View did load")
         super.viewDidLoad()
+        lbExchange.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
         setupNoticeEmptyView()
         eventHandler?.loadTokenInfo()
         setupSegment()

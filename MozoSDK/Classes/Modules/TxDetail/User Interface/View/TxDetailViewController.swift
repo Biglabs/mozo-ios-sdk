@@ -27,10 +27,12 @@ class TxDetailViewController: MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lbAmountValueExchange.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
         if navigationController?.viewControllers.count ?? 0 > 2 {
             enableBackBarButton()
         }
-        setBtnBorder()
+        saveBtn.roundCorners(cornerRadius: 0.08, borderColor: ThemeManager.shared.main, borderWidth: 1)
+        addressBookView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,10 +40,6 @@ class TxDetailViewController: MozoBasicViewController {
         navigationController?.isNavigationBarHidden = false
         navigationItem.title = "Transaction Detail".localized
         updateView()
-    }
-    
-    func setBtnBorder() {
-        saveBtn.roundCorners(cornerRadius: 0.08, borderColor: ThemeManager.shared.main, borderWidth: 1)
     }
     
     func updateView() {

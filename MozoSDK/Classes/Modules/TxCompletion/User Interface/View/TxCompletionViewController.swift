@@ -40,6 +40,7 @@ class TxCompletionViewController: MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lbAmountEx.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
         setBtnLayer()
         startSpinnerAnimation()
         updateView()

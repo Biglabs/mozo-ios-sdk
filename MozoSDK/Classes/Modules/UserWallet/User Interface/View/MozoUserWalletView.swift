@@ -80,8 +80,8 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         }
         super.loadViewFromNib()
         #if !TARGET_INTERFACE_BUILDER
+        lbBalanceExchange.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
         loadDisplayData()
-        testAssests()
         setupTableView()
         setupSegment()
         setupButtonBorder()
@@ -90,19 +90,6 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         setupOnchainWalletView()
         setupObservers()
         #endif
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
-    func testAssests() {
-        let img = UIImage(named: "ic_send", in: BundleManager.mozoBundle(), compatibleWith: nil)
-        if img != nil {
-            print("MozoUserWalletView - TEST ASSESTS - CAN LOAD IMAGE")
-        } else {
-            print("MozoUserWalletView - TEST ASSESTS - CAN NOT LOAD IMAGE")
-        }
     }
     
     override func updateView() {
