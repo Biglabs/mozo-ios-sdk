@@ -81,3 +81,14 @@ class TxDetailViewController: MozoBasicViewController {
         eventHandler?.requestAddToAddressBook(address)
     }
 }
+extension TxDetailViewController: AddressBookViewDelegate {
+    func didTouchClear() {
+    }
+    
+    func openContactDetails(_ id: Int64, _ isStoreContact: Bool) {
+        if isStoreContact {
+            eventHandler?.requestCloseAllUI()
+            NotificationCenter.default.post(name: .openStoreDetailsFromHistory, object: nil, userInfo: ["id": id])
+        }
+    }
+}

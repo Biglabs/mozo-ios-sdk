@@ -11,15 +11,13 @@ import SwiftyJSON
 public class StoreBookDTO: ResponseObjectSerializable {
     
     public var id: Int64?
-    public var ownerUid: String?
     public var name: String?
     public var physicalAddress: String?
     public var offchainAddress: String?
     public var phoneNo: String?
 
     public required init?(json: SwiftyJSON.JSON) {
-        self.id = json["id"].int64
-        self.ownerUid = json["ownerUid"].string
+        self.id = json["storeId"].int64
         self.name = json["storeName"].string
         self.offchainAddress = json["storeOffchainAddress"].string
         self.physicalAddress = json["storePhysicalAddress"].string
@@ -32,9 +30,6 @@ public class StoreBookDTO: ResponseObjectSerializable {
         var json = Dictionary<String, Any>()
         if let id = self.id {
             json["id"] = id
-        }
-        if let ownerUid = self.ownerUid {
-            json["ownerUid"] = ownerUid
         }
         if let name = self.name {
             json["storeName"] = name

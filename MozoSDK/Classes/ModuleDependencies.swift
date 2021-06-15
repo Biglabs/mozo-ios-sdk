@@ -728,7 +728,7 @@ class ModuleDependencies {
         let txDetailPresenter = TxDetailPresenter()
         
         txDetailPresenter.detailModuleDelegate = coreWireframe.corePresenter
-        
+        txDetailPresenter.wireframe = txDetailWireframe
         txDetailWireframe.txDetailPresenter = txDetailPresenter
         txDetailWireframe.rootWireframe = rootWireframe
     }

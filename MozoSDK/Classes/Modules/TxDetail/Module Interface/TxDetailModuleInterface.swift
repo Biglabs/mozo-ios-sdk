@@ -9,4 +9,5 @@ import Foundation
 
 protocol TxDetailModuleInterface {
     func requestAddToAddressBook(_ address: String)
+    func requestCloseAllUI()
 }
