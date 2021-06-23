@@ -40,6 +40,10 @@ public class StoreInfoDTO : ResponseObjectSerializable {
     
     public var didConfirm: Bool?
     
+    public var description: String?
+    public var website: String?
+    public var videoUrl: String?
+    
     public required init(id: Int64){
         self.id = id
     }
@@ -94,6 +98,9 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         self.offchainAddress = json["offchainAddress"].string
         self.distance = json["distance"].double
         self.didConfirm = json["didConfirm"].bool
+        self.description = json["description"].string
+        self.website = json["website"].string
+        self.videoUrl = json["videoUrl"].string
     }
     
     public required init?(){}
@@ -133,6 +140,16 @@ public class StoreInfoDTO : ResponseObjectSerializable {
         }
         if let hashTag = self.hashTag {
             json["hashTag"] = hashTag
+        }
+        
+        if let description = self.description {
+            json["description"] = description
+        }
+        if let website = self.website {
+            json["website"] = website
+        }
+        if let videoUrl = self.videoUrl {
+            json["videoUrl"] = videoUrl
         }
         return json
     }
