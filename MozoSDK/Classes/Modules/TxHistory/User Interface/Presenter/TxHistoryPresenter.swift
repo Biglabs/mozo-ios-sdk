@@ -22,8 +22,8 @@ extension TxHistoryPresenter : TxHistoryModuleInterface {
         txhInteractor?.getTokenInfoForHistory()
     }
     
-    func updateDisplayData(page: Int) {
-        txhInteractor?.getListTxHistory(page: page)
+    func updateDisplayData(page: Int, type: TransactionType) {
+        txhInteractor?.getListTxHistory(page: page, type: type)
     }
 }
 extension TxHistoryPresenter: TxHistoryInteractorOutput {

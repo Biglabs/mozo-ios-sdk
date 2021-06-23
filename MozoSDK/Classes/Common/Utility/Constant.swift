@@ -143,6 +143,7 @@ public enum BalanceDisplayType {
 }
 
 public enum TransactionType {
+    case All
     case Sent
     case Received
     
@@ -150,6 +151,7 @@ public enum TransactionType {
         switch self {
         case .Sent: return "Sent"
         case .Received: return "Received"
+        default: return "All"
         }
     }
 }

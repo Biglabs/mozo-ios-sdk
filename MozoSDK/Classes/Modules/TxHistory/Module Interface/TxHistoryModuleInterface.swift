@@ -9,6 +9,6 @@ import Foundation
 
 protocol TxHistoryModuleInterface {
     func selectTxHistoryOnUI(_ txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO)
-    func updateDisplayData(page: Int)
+    func updateDisplayData(page: Int, type: TransactionType)
     func loadTokenInfo()
 }
