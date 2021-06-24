@@ -37,23 +37,6 @@ class TxHistoryViewController: MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNoticeEmptyView()
-        definesPresentationContext = true
-        
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-        self.tableView?.refreshControl = refreshControl
-        self.tableView.applyFooterLoadingView()
-        
-        tableView.register(UINib(nibName: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER)
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
-        
-        eventHandler?.loadTokenInfo()
-        loadHistoryWithPage()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         navigationItem.prompt = "Transaction History".localized
         navigationItem.hidesBackButton = true
         
@@ -81,6 +64,20 @@ class TxHistoryViewController: MozoBasicViewController {
         )
         segment.addTarget(self, action: #selector(self.segmentedValueChanged(_:)), for: .valueChanged)
         navigationItem.titleView = segment
+        
+        setupNoticeEmptyView()
+        definesPresentationContext = true
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        self.tableView?.refreshControl = refreshControl
+        self.tableView.applyFooterLoadingView()
+        
+        tableView.register(UINib(nibName: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
+        
+        eventHandler?.loadTokenInfo()
+        loadHistoryWithPage()
     }
     
     @objc func refresh(_ sender: Any? = nil) {
@@ -253,6 +250,7 @@ extension TxHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, for: indexPath) as! TxHistoryTableViewCell
         cell.txHistory = dataCollection()?.displayItems.getElement(indexPath.row)
+        cell.type = filterType
         return cell
     }
     

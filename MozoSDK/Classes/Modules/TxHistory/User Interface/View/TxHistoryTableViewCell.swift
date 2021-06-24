@@ -21,11 +21,13 @@ public class TxHistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var lbAmount: UILabel!
     @IBOutlet weak var lbExchangeValue: UILabel!
     @IBOutlet weak var statusView: UIView!
+    
     public var txHistory : TxHistoryDisplayItem? {
         didSet {
             bindData()
         }
     }
+    public var type: TransactionType = .All
     
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -77,7 +79,7 @@ public class TxHistoryTableViewCell: UITableViewCell {
             }
         } else {
             var imageName = "ic_received_circle"
-            if txHistory?.action == TransactionType.Received.value {
+            if type == .Received || txHistory?.action == TransactionType.Received.value {
                 lbAmount.textColor = ThemeManager.shared.main
                 lbAmount.text = "+\(amountText)"
             } else {
