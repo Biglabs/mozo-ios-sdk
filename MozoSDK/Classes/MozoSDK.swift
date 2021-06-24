@@ -222,6 +222,54 @@ public class MozoSDK {
         return moduleDependencies.handleAccessRemove()
     }
     
+    public static func handleNotificationAction(
+        _ notificationResponse: UNNotificationResponse,
+        _ handler: (_ type: NotificationEventType, _ messageId: Int64?) -> Void
+    ) -> Bool {
+        if let notiContent = notificationResponse.notification.request.content.userInfo["notiContent"] as? String {
+            let notiJson = SwiftyJSON.JSON(parseJSON: notiContent)
+            let wsMessage = WSMessage(json: notiJson)
+            guard let content = wsMessage?.content else { return false }
+            let jobj = SwiftyJSON.JSON(parseJSON: content)
+            if let balanceNoti = BalanceNotification(json: jobj),
+               let event = balanceNoti.event,
+               let type = NotificationEventType.init(rawValue: event)
+            {
+                switch type {
+                case .Airdropped, .AirdropInvite, .AirdropSignup, .BalanceChanged:
+                    if SessionStoreManager.tokenInfo == nil {
+                        _ = moduleDependencies.coreWireframe.corePresenter?.coreInteractorService?.loadBalanceInfo().done({ _ in
+                            if let tokenInfo = SessionStoreManager.tokenInfo {
+                                moduleDependencies.txDetailWireframe.presentTransactionDetailInterface(
+                                    TxDetailDisplayData(
+                                        notify: balanceNoti,
+                                        tokenInfo: tokenInfo
+                                    ).buildItemFromBalanceNotification(wsMessage?.time)
+                                )
+                            }
+                        })
+                    } else {
+                        moduleDependencies.txDetailWireframe.presentTransactionDetailInterface(
+                            TxDetailDisplayData(
+                                notify: balanceNoti,
+                                tokenInfo: SessionStoreManager.tokenInfo!
+                            ).buildItemFromBalanceNotification(wsMessage?.time)
+                        )
+                    }
+                    break
+                default:
+                    let luckyNotify = LuckyDrawNotification(json: jobj)
+                    handler(type, luckyNotify?.messageId)
+                    break
+                }
+            }
+            
+            return true
+        }
+        
+        return false
+    }
+    
     public static func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
         return moduleDependencies.requestSupportBeacon(info: info)
     }
