@@ -27,8 +27,13 @@ class CorePresenter : NSObject {
     
     override init() {
         super.init()
+        NotificationCenter.default.addObserver(self, selector: #selector(didFinishLaunching), name: UIApplication.didFinishLaunchingNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willTerminate), name: UIApplication.willTerminateNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveMaintenanceHealthy), name: .didMaintenanceComplete, object: nil)
+        
         initSilentServices()
-        addAppObservations()
         initUserNotificationCenter()
         setupReachability()
     }
@@ -115,42 +120,40 @@ private extension CorePresenter {
         
     }
     
-    private func addAppObservations() {
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveMaintenanceHealthy), name: .didMaintenanceComplete, object: nil)
-    }
-    
     private func startSlientServices() {
         // Check walletInfo from UserProfile to start silent services
         if let userObj = SessionStoreManager.loadCurrentUser(), let profile = userObj.profile, profile.walletInfo?.offchainAddress != nil, SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING,
            AccessTokenManager.getAccessToken() != nil {
-            print("CorePresenter - Start silent services, socket service.")
+            "CorePresenter - Start silent services, socket service.".log()
             rdnInteractor?.startService()
-            print("CorePresenter - Start silent services, refresh token service.")
+            "CorePresenter - Start silent services, refresh token service.".log()
             coreWireframe?.authWireframe?.startRefreshTokenTimer()
         }
     }
     
-    public func stopSilentServices(shouldReconnect: Bool = true) {
-        print("CorePresenter - Stop silent services.")
+    internal func stopSilentServices(shouldReconnect: Bool = true) {
+        "CorePresenter - Stop silent services, socket service".log()
         // Stop silent services
         rdnInteractor?.stopService(shouldReconnect: shouldReconnect)
     }
     
-    @objc func didEnterBackground(_ notification: Notification) {
-        print("App did enter background.")
-        stopSilentServices()
-    }
-    
-    @objc func willEnterForeground(_ notification: Notification) {
-        print("App will enter foreground.")
-        // Check walletInfo from UserProfile to start silent services
+    @objc func didFinishLaunching(_ notification: Notification) {
         startSlientServices()
     }
     
+    @objc func willEnterForeground(_ notification: Notification) {
+        // MARK: willEnterForeground
+    }
+    
+    @objc func didEnterBackground(_ notification: Notification) {
+        // MARK: didEnterBackground
+    }
+    
+    @objc func willTerminate(_ notification: Notification) {
+        stopSilentServices()
+    }
+    
     @objc func didReceiveMaintenanceHealthy(_ notification: Notification) {
-        print("CorePresenter - Did receive maintenance healthy")
         if let topViewController = DisplayUtils.getTopViewController(), topViewController is WaitingViewController {
             retryGetUserProfile()
         }

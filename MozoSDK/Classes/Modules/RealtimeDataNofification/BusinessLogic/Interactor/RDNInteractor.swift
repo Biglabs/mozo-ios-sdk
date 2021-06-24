@@ -174,7 +174,7 @@ extension RDNInteractor : SocketDelegate {
             }
             // Check Ping
             if strings[0] == "1" {
-                print("Received ping!")
+                "Received ping!".log()
                 return
             }
             let jsonMessage = strings[1]
