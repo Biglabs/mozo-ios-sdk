@@ -393,7 +393,6 @@
 "Repeat:" = "Lặp lại:";
 "Your Store must have at least %d Hashtag." = "Cửa hàng cần ít nhất %d Hashtag.";
 "Only letters and numbers are allowed." = "Chỉ được phép nhập số hoặc chữ cái.";
-"Cancel" = "Thoát";
 "Yes" = "Đồng ý";
 "No" = "Không";
 "Just now" = "Vừa xong";
@@ -566,7 +565,6 @@
 "Sorry, something went wrong. Please try again or restart the app." = "Có lỗi xảy ra. Xin thử lại hoặc mở lại ứng dụng.";
 "Back" = "Trở lại";
 "Error" = "Lỗi";
-"Cancel" = "Thoát";
 "To:" = "Đến:";
 "From" = "Từ";
 "Coin" = "Coin";

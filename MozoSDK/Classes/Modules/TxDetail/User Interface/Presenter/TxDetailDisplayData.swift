@@ -82,38 +82,29 @@ class TxDetailDisplayData {
         return displayItem
     }
     
-    func buildItemFromBalanceNotification(_ time: Int64? = nil) -> TxDetailDisplayItem {
-        let amount = balanceNotification?.amount ?? 0
-        let addressFrom = balanceNotification?.from ?? ""
-        let addressTo = balanceNotification?.to ?? ""
-        
+    func buildHistoryDisplayItem(_ time: Int64? = nil) -> TxHistoryDisplayItem {
         let decimal = tokenInfo?.decimals ?? 0
         var dateTime = Date()
         if let t = time, t > 0 {
             dateTime = Date(timeIntervalSince1970: Double(t / 1000))
         }
-        
-        let balance = tokenInfo?.balance ?? 0.0
-        let currentBalance = balance.convertOutputValue(decimal: decimal)
         let currentAddress = tokenInfo?.address ?? ""
         
-        let cvAmount = amount.convertOutputValue(decimal: decimal)
-        
-        let displayItem = TxDetailDisplayItem(
-            action: buildAction(addressFrom: addressFrom, currentAddress: currentAddress),
-            addressFrom: addressFrom,
-            addressTo: addressTo,
-            amount: cvAmount,
-            exAmount: calculateExchangeValue(cvAmount),
-            dateTime: buildDateString(dateTime),
-            fees: 0,
-            symbol: nil,
-            hash: transaction?.tx?.hash ?? "",
-            currentBalance: currentBalance,
-            exCurrentBalance: calculateExchangeValue(currentBalance),
-            currentAddress: currentAddress
+        let amount = (balanceNotification?.amount ?? 0).convertOutputValue(decimal: decimal)
+        return TxHistoryDisplayItem(
+            action: buildAction(addressFrom: balanceNotification?.from ?? "", currentAddress: currentAddress),
+            date: buildDateString(dateTime),
+            fromNameWithDate: NSAttributedString(),
+            amount: amount,
+            exAmount: calculateExchangeValue(amount),
+            txStatus: "",
+            addressFrom: balanceNotification?.from,
+            addressTo: balanceNotification?.to,
+            topUpReason: nil,
+            nameOrAddress: "",
+            fromtoText: "",
+            name: ""
         )
-        return displayItem
     }
     
     func calculateExchangeValue(_ value: Double) -> Double {

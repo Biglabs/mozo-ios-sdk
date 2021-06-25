@@ -240,21 +240,24 @@ public class MozoSDK {
                     if SessionStoreManager.tokenInfo == nil {
                         _ = moduleDependencies.coreWireframe.corePresenter?.coreInteractorService?.loadBalanceInfo().done({ _ in
                             if let tokenInfo = SessionStoreManager.tokenInfo {
-                                moduleDependencies.txDetailWireframe.presentTransactionDetailInterface(
-                                    TxDetailDisplayData(
+                                moduleDependencies.displayTransactionDetail(
+                                    txHistory: TxDetailDisplayData(
                                         notify: balanceNoti,
                                         tokenInfo: tokenInfo
-                                    ).buildItemFromBalanceNotification(wsMessage?.time)
+                                    ).buildHistoryDisplayItem(wsMessage?.time),
+                                    tokenInfo: tokenInfo
                                 )
                             }
                         })
                     } else {
-                        moduleDependencies.txDetailWireframe.presentTransactionDetailInterface(
-                            TxDetailDisplayData(
+                        moduleDependencies.displayTransactionDetail(
+                            txHistory: TxDetailDisplayData(
                                 notify: balanceNoti,
                                 tokenInfo: SessionStoreManager.tokenInfo!
-                            ).buildItemFromBalanceNotification(wsMessage?.time)
+                            ).buildHistoryDisplayItem(wsMessage?.time),
+                            tokenInfo: SessionStoreManager.tokenInfo!
                         )
+
                     }
                     break
                 default:

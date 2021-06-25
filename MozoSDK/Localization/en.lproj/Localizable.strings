@@ -390,7 +390,6 @@
 "Repeat:" = "Repeat:";
 "Your Store must have at least %d Hashtag." = "Your Store must have at least %d Hashtag.";
 "Only letters and numbers are allowed." = "Only letters and numbers are allowed.";
-"Cancel" = "Cancel";
 "Yes" = "Yes";
 "No" = "No";
 "Just now" = "Just now";
@@ -563,7 +562,6 @@
 "Sorry, something went wrong. Please try again or restart the app." = "Sorry, something went wrong. Please try again or restart the app.";
 "Back" = "Back";
 "Error" = "Error";
-"Cancel" = "Cancel";
 "To:" = "To:";
 "From" = "From";
 "Coin" = "Coin";

@@ -85,7 +85,7 @@ public class TxHistoryTableViewCell: UITableViewCell {
             } else {
                 lbAmount.textColor = ThemeManager.shared.title
                 lbAmount.text = "-\(amountText)"
-                imageName = "ic_sent_circle"
+                imageName = (txHistory?.addressFrom == txHistory?.addressTo) ? "ic_transfer_myself" : "ic_sent_circle"
             }
             img.image = UIImage(named: imageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
         }
