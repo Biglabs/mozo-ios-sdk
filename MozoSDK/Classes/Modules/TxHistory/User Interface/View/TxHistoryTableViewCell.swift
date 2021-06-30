@@ -82,10 +82,12 @@ public class TxHistoryTableViewCell: UITableViewCell {
             if type == .Received || txHistory?.action == TransactionType.Received.value {
                 lbAmount.textColor = ThemeManager.shared.main
                 lbAmount.text = "+\(amountText)"
+                lbAction.text = TransactionType.Received.value.localized
             } else {
                 lbAmount.textColor = ThemeManager.shared.title
                 lbAmount.text = "-\(amountText)"
-                imageName = (txHistory?.addressFrom == txHistory?.addressTo) ? "ic_transfer_myself" : "ic_sent_circle"
+                imageName = (type == .All && txHistory?.addressFrom == txHistory?.addressTo) ? "ic_transfer_myself" : "ic_sent_circle"
+                lbAction.text = TransactionType.Sent.value.localized
             }
             img.image = UIImage(named: imageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
         }

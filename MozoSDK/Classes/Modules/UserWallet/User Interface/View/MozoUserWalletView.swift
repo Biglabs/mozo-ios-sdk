@@ -28,6 +28,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     @IBOutlet weak var sendMozoView: MozoSendView!
     @IBOutlet weak var paymentRequestView: MozoPaymentRequestView!
     
+    @IBOutlet weak var historyLoading: UIActivityIndicatorView!
     @IBOutlet weak var historyTable: UITableView!
     @IBOutlet weak var infoViewBorderWidthConstraint: NSLayoutConstraint!
     
@@ -212,7 +213,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     func loadTxHistory() {
         _ = MozoSDK.getTxHistoryDisplayCollection().done { (collectionData) in
             self.collection = collectionData
-            
+            self.historyLoading.isHidden = true
             self.historyTable.refreshControl?.endRefreshing()
         }.catch({ (error) in
             

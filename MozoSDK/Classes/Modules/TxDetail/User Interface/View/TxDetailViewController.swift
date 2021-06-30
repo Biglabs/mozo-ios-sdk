@@ -44,14 +44,18 @@ class TxDetailViewController: MozoBasicViewController {
     
     func updateView() {
         var imageName = "ic_received_circle"
-        if displayItem.action == TransactionType.Sent.value {
-            imageName = displayItem.addressFrom == displayItem.addressTo ? "ic_transfer_myself" : "ic_sent_circle"
+        if displayItem.type == .Received || displayItem.action == TransactionType.Received.value {
+            lbTxType.text = TransactionType.Received.value.localized
+            lbActionType.text = "From".localized
+        } else {
+            imageName = (
+                displayItem.type == .All && displayItem.addressFrom == displayItem.addressTo
+            ) ? "ic_transfer_myself" : "ic_sent_circle"
+            lbTxType.text = TransactionType.Sent.value.localized
+            lbActionType.text = "To".localized
         }
         actionImg.image = UIImage(named: imageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
-        lbTxType.text = displayItem.action.localized
         lbDateTime.text = displayItem.dateTime
-        
-        lbActionType.text = (displayItem.action == TransactionType.Sent.value ? "To" : "From").localized
         
         let address = displayItem.action == TransactionType.Sent.value ? displayItem.addressTo : displayItem.addressFrom
         

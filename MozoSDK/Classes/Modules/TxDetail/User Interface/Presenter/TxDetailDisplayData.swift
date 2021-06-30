@@ -13,6 +13,7 @@ class TxDetailDisplayData {
     var rawTx: TransactionDTO?
     var txHistory: TxHistoryDisplayItem?
     var balanceNotification: BalanceNotification?
+    var type: TransactionType = .All
     
     init(transaction: IntermediaryTransactionDTO, tokenInfo: TokenInfoDTO) {
         self.transaction = transaction
@@ -57,7 +58,7 @@ class TxDetailDisplayData {
         let exAmount = calculateExchangeValue(cvAmount)
         let exCurrentBalance = calculateExchangeValue(currentBalance)
         
-        let displayItem = TxDetailDisplayItem(action: action, addressFrom: addressFrom, addressTo: addressTo, amount: cvAmount, exAmount: exAmount, dateTime: cvDate, fees: 0, symbol: nil, hash: rawTx?.hash ?? "", currentBalance: currentBalance, exCurrentBalance: exCurrentBalance, currentAddress: currentAddress)
+        let displayItem = TxDetailDisplayItem(action: action, addressFrom: addressFrom, addressTo: addressTo, amount: cvAmount, exAmount: exAmount, dateTime: cvDate, fees: 0, symbol: nil, hash: rawTx?.hash ?? "", currentBalance: currentBalance, exCurrentBalance: exCurrentBalance, currentAddress: currentAddress, type: self.type)
         return displayItem
     }
     
@@ -78,7 +79,7 @@ class TxDetailDisplayData {
         let exAmount = calculateExchangeValue(cvAmount)
         let exCurrentBalance = calculateExchangeValue(currentBalance)
         
-        let displayItem = TxDetailDisplayItem(action: action, addressFrom: addressFrom, addressTo: addressTo, amount: cvAmount, exAmount: exAmount, dateTime: cvDate, fees: 0, symbol: nil, hash: transaction?.tx?.hash ?? "", currentBalance: currentBalance, exCurrentBalance: exCurrentBalance, currentAddress: currentAddress)
+        let displayItem = TxDetailDisplayItem(action: action, addressFrom: addressFrom, addressTo: addressTo, amount: cvAmount, exAmount: exAmount, dateTime: cvDate, fees: 0, symbol: nil, hash: transaction?.tx?.hash ?? "", currentBalance: currentBalance, exCurrentBalance: exCurrentBalance, currentAddress: currentAddress, type: self.type)
         return displayItem
     }
     
@@ -129,7 +130,7 @@ class TxDetailDisplayData {
         let exAmount = calculateExchangeValue(amount)
         let exCurrentBalance = calculateExchangeValue(currentBalance)
         
-        let displayItem = TxDetailDisplayItem(action: txHistory?.action ?? "", addressFrom: txHistory?.addressFrom ?? "", addressTo: txHistory?.addressTo ?? "", amount: amount, exAmount: exAmount, dateTime: txHistory?.date ?? "", fees: 0, symbol: nil, hash: transaction?.tx?.hash ?? "", currentBalance: currentBalance, exCurrentBalance: exCurrentBalance, currentAddress: currentAddress)
+        let displayItem = TxDetailDisplayItem(action: txHistory?.action ?? "", addressFrom: txHistory?.addressFrom ?? "", addressTo: txHistory?.addressTo ?? "", amount: amount, exAmount: exAmount, dateTime: txHistory?.date ?? "", fees: 0, symbol: nil, hash: transaction?.tx?.hash ?? "", currentBalance: currentBalance, exCurrentBalance: exCurrentBalance, currentAddress: currentAddress, type: self.type)
         return displayItem
     }
     

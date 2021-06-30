@@ -59,7 +59,7 @@ class CoreWireframe : MozoWireframe {
     
     func requestForTransactionDetail(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
         presentWaitingInterface(corePresenter: corePresenter)
-        corePresenter?.txHistoryModuleDidChooseItemOnUI(txHistory: txHistory, tokenInfo: tokenInfo)
+        corePresenter?.txHistoryModuleDidChooseItemOnUI(txHistory: txHistory, tokenInfo: tokenInfo, type: .All)
     }
     
     func requestForConvert(isConvertOffchainToOffchain: Bool) {

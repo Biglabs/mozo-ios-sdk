@@ -263,7 +263,7 @@ extension TxHistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let selectedItem = dataCollection()?.displayItems.getElement(indexPath.row), let tokenInfo = tokenInfo {
-            eventHandler?.selectTxHistoryOnUI(selectedItem, tokenInfo: tokenInfo)
+            eventHandler?.selectTxHistoryOnUI(selectedItem, tokenInfo: tokenInfo, type: filterType)
         }
     }
 }

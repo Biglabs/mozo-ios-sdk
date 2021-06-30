@@ -20,4 +20,5 @@ struct TxDetailDisplayItem {
     let currentBalance: Double
     let exCurrentBalance: Double
     let currentAddress: String
+    let type: TransactionType
 }

@@ -16,6 +16,7 @@
                 <outlet property="btnCopy" destination="aeW-8G-EmX" id="V9z-uO-v8p"/>
                 <outlet property="btnReload" destination="FIi-Ns-pBJ" id="DED-8k-6mQ"/>
                 <outlet property="btnShowQR" destination="JGy-hq-Utj" id="fbR-So-ono"/>
+                <outlet property="historyLoading" destination="r0V-7d-8rP" id="rXd-YO-yNL"/>
                 <outlet property="historyTable" destination="7bB-cU-eCA" id="oq8-xQ-tsJ"/>
                 <outlet property="imgMozo" destination="ftd-Bg-IRB" id="8sq-1c-Hfn"/>
                 <outlet property="imgQR" destination="msh-cO-O4e" id="O5Y-PD-SDl"/>
@@ -249,6 +250,13 @@
                     <rect key="frame" x="5" y="356" width="360" height="311"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="r0V-7d-8rP">
+                    <rect key="frame" x="177.5" y="386" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="G8S-tn-bfe"/>
+                        <constraint firstAttribute="width" constant="20" id="mOd-GK-ftD"/>
+                    </constraints>
+                </activityIndicatorView>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-9F-Tch">
                     <rect key="frame" x="15" y="19" width="345" height="0.0"/>
                     <subviews>
@@ -307,8 +315,10 @@
                 <constraint firstItem="Uyj-nT-dTx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="dia-N6-q8j"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e5h-qz-jHv" secondAttribute="trailing" constant="15" id="mxU-x3-F2j"/>
                 <constraint firstItem="7bB-cU-eCA" firstAttribute="leading" secondItem="e5h-qz-jHv" secondAttribute="leading" constant="-10" id="pQA-yH-3uG"/>
+                <constraint firstItem="r0V-7d-8rP" firstAttribute="top" secondItem="HLO-Yp-iJH" secondAttribute="bottom" constant="40" id="pSe-zO-aEB"/>
                 <constraint firstItem="vcA-It-ew4" firstAttribute="trailing" secondItem="e5h-qz-jHv" secondAttribute="trailing" id="rPj-rU-Lf5"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Uyj-nT-dTx" secondAttribute="trailing" id="rmN-if-dos"/>
+                <constraint firstItem="r0V-7d-8rP" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tEg-gy-7t9"/>
                 <constraint firstItem="e5h-qz-jHv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="x1W-gn-Xbs"/>
                 <constraint firstItem="rOG-9F-Tch" firstAttribute="leading" secondItem="e5h-qz-jHv" secondAttribute="leading" id="y1G-Uy-udJ"/>
             </constraints>

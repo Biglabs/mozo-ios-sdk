@@ -14,8 +14,8 @@ class TxHistoryPresenter : NSObject {
     var txhUserInterface: TxHistoryViewInterface?
 }
 extension TxHistoryPresenter : TxHistoryModuleInterface {
-    func selectTxHistoryOnUI(_ txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
-        txhModuleDelegate?.txHistoryModuleDidChooseItemOnUI(txHistory: txHistory, tokenInfo: tokenInfo)
+    func selectTxHistoryOnUI(_ txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO, type: TransactionType) {
+        txhModuleDelegate?.txHistoryModuleDidChooseItemOnUI(txHistory: txHistory, tokenInfo: tokenInfo, type: type)
     }
     
     func loadTokenInfo() {
