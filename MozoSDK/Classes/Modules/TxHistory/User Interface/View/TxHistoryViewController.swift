@@ -33,6 +33,7 @@ class TxHistoryViewController: MozoBasicViewController {
     private var canLoadMoreReceived: Bool = true
     private var canLoadMoreSent: Bool = true
     
+    private var isLoadingChanged: Bool = false
     private var filterType : TransactionType = .All
     
     override func viewDidLoad() {
@@ -234,23 +235,31 @@ class TxHistoryViewController: MozoBasicViewController {
         default:
             filterType = .All
         }
+        tableView.refreshControl?.beginRefreshing()
+        isLoadingChanged = true
+        tableView.reloadData()
+        
         if dataCollection() == nil {
             loadHistoryWithPage()
         } else {
-            tableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
+                self.isLoadingChanged = false
+                self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
+            })
         }
     }
 }
 // MARK: - Table View
 extension TxHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataCollection()?.displayItems.count ?? 0
+        return isLoadingChanged ? 0 : (dataCollection()?.displayItems.count ?? 0)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, for: indexPath) as! TxHistoryTableViewCell
-        cell.txHistory = dataCollection()?.displayItems.getElement(indexPath.row)
         cell.type = filterType
+        cell.txHistory = dataCollection()?.displayItems.getElement(indexPath.row)
         return cell
     }
     
@@ -274,6 +283,7 @@ extension TxHistoryViewController : TxHistoryViewInterface {
     }
     
     func showTxHistoryDisplayData(_ data: TxHistoryDisplayCollection, forPage: Int) {
+        isLoadingChanged = false
         isLoadingMoreTH = false
         segment.isEnabled = true
         tableView.tableFooterView?.isHidden = true

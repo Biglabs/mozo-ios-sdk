@@ -29,12 +29,7 @@ public class TxHistoryTableViewCell: UITableViewCell {
     }
     public var type: TransactionType = .All
     
-    public override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    func bindData(){
+    func bindData() {
         lbAction.text = txHistory?.action.localized
 //        lbDateTime?.attributedText = txHistory?.fromNameWithDate
         let fromtoText = txHistory?.fromtoText ?? ""
