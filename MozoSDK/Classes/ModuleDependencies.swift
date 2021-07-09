@@ -332,14 +332,6 @@ class ModuleDependencies {
         coreWireframe.requestForBackUpWallet()
     }
     
-    func getPromoCreateSetting() -> Promise<PromotionSettingDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromoCreateSetting())!
-    }
-    
-    func createPromotion(_ promotion: PromotionDTO) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.createPromotion(promotion))!
-    }
-    
     func getRetailerPromotionList(page: Int, size: Int, statusRequest: PromotionStatusRequestEnum) -> Promise<[PromotionDTO]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerPromotionList(page: page, size: size, statusRequest: statusRequest))!
     }
@@ -476,56 +468,24 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat))!
     }
     
-    func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.confirmStoreInfoMerchant(branchInfo: branchInfo))!
-    }
-    
-    func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.createNewBranch(branchInfo))!
-    }
-    
-    func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getBeacon(beaconId))!
-    }
-    
     func getBranchList(page: Int, forSwitching: Bool) -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getBranchList(page: page, forSwitching: forSwitching))!
-    }
-     
-    func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateBranchInfo(branchInfo))!
     }
      
     func switchBranch(_ branchId: Int64) -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.switchBranch(branchId))!
     }
     
-    func deleteBranchInfoPhotos(_ branchId: Int64, photos: [String]) -> Promise<BranchInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.deleteBranchInfoPhotos(branchId, photos: photos))!
-    }
-    
     func getRetailerInfoForLauching() -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerInfoForLauching())!
     }
-    
-    func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getBranchById(branchId))!
-    }
-    
+
     func checkBranchName(_ name: String) -> Promise<Any> {
         return (coreWireframe.corePresenter?.coreInteractorService?.checkBranchName(name))!
     }
     
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateSalePerson(account: account))!
-    }
-    
-    func syncAddressFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.syncAddressFromBranchIntoBeacon(beaconId))!
-    }
-    
-    func syncLocationFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.syncLocationFromBranchIntoBeacon(beaconId))!
     }
     
     // MARK: COVID-19 support APIs

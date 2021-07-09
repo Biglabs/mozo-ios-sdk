@@ -306,40 +306,16 @@ extension CoreInteractor: CoreInteractorService {
         }
     }
     
-    func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return apiManager.confirmStoreInfoMerchant(branchInfo: branchInfo)
-    }
-    
-    func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return apiManager.createNewBranch(branchInfo)
-    }
-    
-    func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return apiManager.getBeacon(beaconId)
-    }
-    
     func getBranchList(page: Int, forSwitching: Bool) -> Promise<[String: Any]> {
         return apiManager.getBranchList(page: page, forSwitching: forSwitching)
-    }
-    
-    func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return apiManager.updateBranchInfo(branchInfo)
     }
     
     func switchBranch(_ branchId: Int64) -> Promise<[String: Any]> {
         return apiManager.switchBranch(branchId)
     }
     
-    func deleteBranchInfoPhotos(_ branchId: Int64, photos: [String]) -> Promise<BranchInfoDTO> {
-        return apiManager.deleteBranchInfoPhotos(branchId, photos: photos)
-    }
-    
     func getRetailerInfoForLauching() -> Promise<[String: Any]> {
         return apiManager.getRetailerInfoForLauching()
-    }
-    
-    func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO> {
-        return apiManager.getBranchById(branchId)
     }
     
     func checkBranchName(_ name: String) -> Promise<Any> {
@@ -348,14 +324,6 @@ extension CoreInteractor: CoreInteractorService {
     
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
         return apiManager.updateSalePerson(account: account)
-    }
-    
-    func syncAddressFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return apiManager.syncAddressFromBranchIntoBeacon(beaconId)
-    }
-    
-    func syncLocationFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return apiManager.syncLocationFromBranchIntoBeacon(beaconId)
     }
     
     // MARK: COVID-19 support APIs

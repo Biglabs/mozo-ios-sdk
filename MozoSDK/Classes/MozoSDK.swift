@@ -321,14 +321,6 @@ public class MozoSDK {
         return moduleDependencies.requestForBackUpWallet()
     }
     
-    public static func getPromoCreateSetting() -> Promise<PromotionSettingDTO> {
-        return moduleDependencies.getPromoCreateSetting()
-    }
-    
-    public static func createPromotion(_ promotion: PromotionDTO) -> Promise<[String: Any]> {
-        return moduleDependencies.createPromotion(promotion)
-    }
-    
     public static func getRetailerPromotionList(page: Int = 0, size: Int = 15, statusRequest: PromotionStatusRequestEnum = .RUNNING) -> Promise<[PromotionDTO]> {
         return moduleDependencies.getRetailerPromotionList(page: page, size: size, statusRequest: statusRequest)
     }
@@ -468,40 +460,16 @@ public class MozoSDK {
         return moduleDependencies.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat)
     }
     
-    public static func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return moduleDependencies.confirmStoreInfoMerchant(branchInfo: branchInfo)
-    }
-    
-    public static func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return moduleDependencies.createNewBranch(branchInfo)
-    }
-    
-    public static func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return moduleDependencies.getBeacon(beaconId)
-    }
-    
     public static func getBranchList(page: Int = 0, forSwitching: Bool) -> Promise<[String: Any]> {
         return moduleDependencies.getBranchList(page: page, forSwitching: forSwitching)
-    }
-     
-    public static func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return moduleDependencies.updateBranchInfo(branchInfo)
     }
      
     public static func switchBranch(_ branchId: Int64) -> Promise<[String: Any]> {
         return moduleDependencies.switchBranch(branchId)
     }
     
-    public static func deleteBranchInfoPhotos(_ branchId: Int64, photos: [String]) -> Promise<BranchInfoDTO> {
-        return moduleDependencies.deleteBranchInfoPhotos(branchId, photos: photos)
-    }
-    
     public static func getRetailerInfoForLauching() -> Promise<[String: Any]> {
         return moduleDependencies.getRetailerInfoForLauching()
-    }
-    
-    public static func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO> {
-        return moduleDependencies.getBranchById(branchId)
     }
     
     public static func checkBranchName(_ name: String) -> Promise<Any> {
@@ -510,14 +478,6 @@ public class MozoSDK {
     
     public static func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
         return moduleDependencies.updateSalePerson(account: account)
-    }
-    
-    public static func syncAddressFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return moduleDependencies.syncAddressFromBranchIntoBeacon(beaconId)
-    }
-    
-    public static func syncLocationFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return moduleDependencies.syncLocationFromBranchIntoBeacon(beaconId)
     }
     
     public static func registerMoreBeacon(parameters: Any?) -> Promise<[String: Any]> {

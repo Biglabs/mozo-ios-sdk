@@ -298,29 +298,4 @@ public extension ApiManager {
             }
         }
     }
-    
-    func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + RETAILER_MERCHANT_CONFIRM_STORE_API_PATH + "/v1"
-            let param = branchInfo.toJSON()
-            self.execute(.post, url: url, parameters: param)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to confirm store info merchant, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)
-                    if let result = BranchInfoDTO(json: jobj) {
-                        seal.fulfill(result)
-                    } else {
-                        seal.reject(ConnectionError.systemError)
-                    }
-                }
-                .catch { error in
-                    print("Error when request confirm store info merchant: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
 }

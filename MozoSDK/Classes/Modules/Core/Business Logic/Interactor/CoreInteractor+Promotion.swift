@@ -9,14 +9,6 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 extension CoreInteractor {
-    func getPromoCreateSetting() -> Promise<PromotionSettingDTO> {
-        return apiManager.getPromoCreateSetting()
-    }
-    
-    func createPromotion(_ promotion: PromotionDTO) -> Promise<[String : Any]> {
-        return apiManager.createPromotion(promotion)
-    }
-    
     func getRetailerPromotionList(page: Int, size: Int, statusRequest: PromotionStatusRequestEnum) -> Promise<[PromotionDTO]> {
         return apiManager.getRetailerPromotionList(page: page, size: size, statusRequest: statusRequest)
     }

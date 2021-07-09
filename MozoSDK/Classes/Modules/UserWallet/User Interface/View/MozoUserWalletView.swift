@@ -378,7 +378,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         hud?.label.textColor = .white
         hud?.label.numberOfLines = 2
         hud?.offset = CGPoint(x: 0, y: -300)
-        hud?.bezelView.color = UIColor(hexString: "e63b4b61")
+        hud?.bezelView.color = UIColor(hexString: "333333")
         hud?.isUserInteractionEnabled = false
         hud?.hide(animated: true, afterDelay: 1.5)
     }

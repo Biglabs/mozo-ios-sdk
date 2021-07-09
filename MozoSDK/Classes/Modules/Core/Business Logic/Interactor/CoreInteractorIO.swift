@@ -111,10 +111,6 @@ protocol CoreInteractorService {
     
     func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO>
     
-    func getPromoCreateSetting() -> Promise<PromotionSettingDTO>
-    
-    func createPromotion(_ promotion: PromotionDTO) -> Promise<[String: Any]>
-    
     func getRetailerPromotionList(page: Int, size: Int, statusRequest: PromotionStatusRequestEnum) -> Promise<[PromotionDTO]>
     
     func processPromotionCode(code: String) -> Promise<PromotionCodeInfoDTO>
@@ -175,32 +171,16 @@ protocol CoreInteractorService {
     func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]>
     
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON>
-    
-    func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO>
-    
-    func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO>
-    
-    func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO>
      
     func switchBranch(_ branchId: Int64) -> Promise<[String: Any]>
-    
-    func deleteBranchInfoPhotos(_ branchId: Int64, photos: [String]) -> Promise<BranchInfoDTO>
-    
-    func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO>
     
     func getBranchList(page: Int, forSwitching: Bool) -> Promise<[String: Any]>
     
     func getRetailerInfoForLauching() -> Promise<[String: Any]>
     
-    func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO>
-    
     func checkBranchName(_ name: String) -> Promise<Any>
     
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO>
-    
-    func syncAddressFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO>
-    
-    func syncLocationFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO>
     
     // MARK: COVID-19 support APIs
     func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]>
