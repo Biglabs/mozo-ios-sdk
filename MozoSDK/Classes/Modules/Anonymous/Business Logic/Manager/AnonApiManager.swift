@@ -13,7 +13,7 @@ let ANONYMOUS_API_PATH = "/anonymous"
 extension ApiManager {
     public func anonymousAuthenticate(anonymousUser: AnonymousUserDTO) -> Promise<AnonymousUserDTO?> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + ANONYMOUS_API_PATH
+            let url = Configuration.BASE_SOLO + ANONYMOUS_API_PATH
             let data = anonymousUser.rawData()
             self.execute(.post, url: url, parameters: data)
                 .done { json -> Void in
@@ -36,7 +36,7 @@ extension ApiManager {
     }
     
     public func linkAnonymousUser(UUID: String, userId: String) -> Promise<[String : Any]> {
-        let url = Configuration.BASE_URL + ANONYMOUS_API_PATH
+        let url = Configuration.BASE_SOLO + ANONYMOUS_API_PATH
         return self.execute(.post, url: url)
     }
 }

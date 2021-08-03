@@ -140,7 +140,7 @@ class MozoOnchainWalletView: MozoView {
     }
     
     @objc func openHowTo() {
-        guard var url = URL(string: "\(Configuration.LANDING_PAGE_URL)/help-center?section=faq-contributer#home-faq-how-to-buy-mozox-onchain-on-exchange") else { return }
+        guard var url = URL(string: "https://\(Configuration.BASE_DOMAIN.landingPage)/help-center?section=faq-contributer#home-faq-how-to-buy-mozox-onchain-on-exchange") else { return }
         url.appendQueryItem(name: "language", value: Configuration.LOCALE)
         UIApplication.shared.open(url)
     }

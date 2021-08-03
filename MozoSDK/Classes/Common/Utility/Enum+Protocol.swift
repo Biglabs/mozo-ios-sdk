@@ -13,17 +13,65 @@ public enum MediaType: String {
     case APPLICATION_FORM_URLENCODED = "application/x-www-form-urlencoded"
 }
 
-public enum ServiceType: String {
-    case DEV = "dev."
-    case STAGING = "staging."
-    case PRODUCTION = ""
+internal enum ServiceType: String {
+    case DEVELOP
+    case STAGING
+    case PRODUCTION
     
-    public var socket: String {
-        return "\(rawValue)noti.mozocoin.io"
+    var api: String {
+        switch self {
+        case .PRODUCTION:
+            return "gateway.mozotoken.com"
+        case .STAGING:
+            return "staging.gateway.mozotoken.com"
+        default:
+            return "gateway.cng.mozotoken.com"
+        }
     }
     
-    public var auth: String {
-        return "\(rawValue)login."
+    var socket: String {
+        switch self {
+        case .PRODUCTION:
+            return "noti.mozotoken.com"
+        case .STAGING:
+            return "staging.noti.mozotoken.com"
+        default:
+            return "noti.cng.mozotoken.com"
+        }
+    }
+    
+    var auth: String {
+        switch self {
+        case .PRODUCTION:
+            return "login.mozotoken.com"
+        case .STAGING:
+            return "staging.login.mozotoken.com"
+        default:
+            return "login.cng.mozotoken.com"
+        }
+    }
+    
+    
+    var image: String {
+        switch self {
+        case .PRODUCTION:
+            return "image.mozotoken.com"
+        case .STAGING:
+            return "staging.image.mozotoken.com"
+        default:
+            return "image.cng.mozotoken.com"
+        }
+    }
+    
+    var landingPage: String {
+        switch self {
+        case .PRODUCTION:
+            return "mozotoken.com"
+        case .STAGING:
+            return "staging.mozotoken.com"
+        default:
+            return "cng.mozotoken.com"
+        }
     }
 }
 

@@ -17,7 +17,7 @@ class MaintenancePresenter: NSObject {
     }
     
     func openReadMore(item: FAQDisplayItem, controller: UIViewController) {
-        controller.openLink(link: "\(Configuration.LANDING_PAGE_URL)\(item.link)")
+        controller.openLink(link: "https://\(Configuration.BASE_DOMAIN.landingPage)\(item.link)")
     }
     
     func startWaiting() {

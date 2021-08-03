@@ -13,7 +13,6 @@ import SwiftyJSON
 public class ApiManager {
     private (set) var client: Session
     var delegate: ApiManagerDelegate?
-    var apiKey: String?
     var appType: AppType = .Shopper
     
     public init() {
@@ -45,7 +44,6 @@ public class ApiManager {
     
     private func buildHTTPHeaders(withToken: Bool) -> HTTPHeaders {
         let headers: HTTPHeaders = [
-            "API-Key": apiKey ?? "",
             "Authorization": withToken ? getToken() : "",
             "Content-Type": MediaType.APPLICATION_JSON.rawValue,
             "Accept": MediaType.APPLICATION_JSON.rawValue,

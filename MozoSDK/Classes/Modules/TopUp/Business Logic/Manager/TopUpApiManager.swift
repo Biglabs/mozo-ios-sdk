@@ -98,15 +98,13 @@ public extension ApiManager {
      */
     func getTopUpTxHistory(topUpAddress: String?, offChainAddress: String?, page: Int = 0, size: Int = 15) -> Promise<[TxHistoryDTO]> {
         return Promise { seal in
-            var urlComponents = URLComponents(string: "\(Configuration.BASE_STORE_URL)\(TOP_UP_API_PATH)/getTopUpTxhistory/v1")
-            urlComponents?.queryItems = [
-                URLQueryItem(name: "topUpAddress", value: topUpAddress),
-                URLQueryItem(name: "offChainAddress", value: offChainAddress),
-                URLQueryItem(name: "page", value: String(page)),
-                URLQueryItem(name: "size", value: String(size))
-            ]
+            var api = URL(string: "\(Configuration.BASE_HOST)/mozoscan/api/public/top-up-accounts/getTxHistory")!
+            api.appendQueryItem(name: "topUpAddress", value: topUpAddress)
+            api.appendQueryItem(name: "offChainAddress", value: offChainAddress)
+            api.appendQueryItem(name: "page", value: String(page))
+            api.appendQueryItem(name: "size", value: String(size))
             
-            self.execute(.get, url: urlComponents!.url!.absoluteString)
+            self.execute(.get, url: api.absoluteString)
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get list topup tx history, json response: \(json)")

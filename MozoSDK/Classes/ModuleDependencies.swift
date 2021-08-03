@@ -13,14 +13,6 @@ import PromiseKit
 
 class ModuleDependencies {
     // MARK: - Properties
-    
-    public var apiKey: String {
-        didSet {
-            // Call API to check key
-            apiManager.apiKey = apiKey
-        }
-    }
-    
     public var network: MozoNetwork = .TestNet {
         didSet {
            authWireframe.authPresenter?.authInteractor?.updateNetwork(network)
@@ -70,7 +62,6 @@ class ModuleDependencies {
     
     // MARK: Initialization
     init() {
-        apiKey = ""
         configureDependencies()
     }
     

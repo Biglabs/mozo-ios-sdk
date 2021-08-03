@@ -14,10 +14,13 @@ import SwiftyJSON
 public class MozoSDK {
     private static var moduleDependencies: ModuleDependencies!
     
-    public static func configure(apiKey: String = Configuration.API_KEY_DEFAULT, network: MozoNetwork = .TestNet, appType: AppType = .Shopper) {
-        Configuration.SUB_DOMAIN_ENUM = network.serviceType
+    public static func configure(network: MozoNetwork = .TestNet, appType: AppType = .Shopper) {
+        switch network {
+            case .DevNet: Configuration.BASE_DOMAIN = .DEVELOP
+            case .TestNet: Configuration.BASE_DOMAIN = .STAGING
+            case .MainNet: Configuration.BASE_DOMAIN = .PRODUCTION
+        }
         moduleDependencies = ModuleDependencies()
-        moduleDependencies.apiKey = apiKey
         moduleDependencies.network = network
         moduleDependencies.appType = appType
     }
