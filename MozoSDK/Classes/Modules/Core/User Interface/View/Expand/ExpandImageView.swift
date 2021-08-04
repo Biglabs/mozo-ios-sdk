@@ -79,13 +79,13 @@ class ExpandImageView: UIView {
         collectionView.delegate = self
         collectionView.register(UINib(nibName: EXPAND_IMAGE_COLLECTION_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellWithReuseIdentifier: EXPAND_IMAGE_COLLECTION_VIEW_CELL_IDENTIFIER)
         collectionView.showsHorizontalScrollIndicator = false
-        let layout = CarouselFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.sideItemScale = 1.0
-        layout.spacingMode = .fixed(spacing: 0)
+        
+        let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
-        collectionView.alwaysBounceHorizontal = false
         collectionView.isPagingEnabled = true
     }
     
