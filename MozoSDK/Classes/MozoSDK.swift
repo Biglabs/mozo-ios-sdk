@@ -98,10 +98,6 @@ public class MozoSDK {
         return (moduleDependencies.addRetailerSalePerson(parameters:parameters))
     }
     
-    public static func getAirdropStoreNearby(params: [String: Any]) -> Promise<[AirdropEventDiscoverDTO]> {
-        return (moduleDependencies.getAirdropStoreNearby(params: params))
-    }
-    
     public static func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
         return (moduleDependencies.sendRangedBeacons(beacons: beacons, status: status))
     }
@@ -160,10 +156,6 @@ public class MozoSDK {
     
     public static func getListCountryCode() -> Promise<[CountryCodeDTO]> {
         return moduleDependencies.getListCountryCode()
-    }
-    
-    public static func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
-        return moduleDependencies.getListEventAirdropOfStore(storeId)
     }
     
     public static func searchStoresWithText(_ text: String, page: Int = 0, long: Double, lat: Double, sort: String = "distance") -> Promise<CollectionStoreInfoDTO> {
@@ -230,8 +222,55 @@ public class MozoSDK {
         return moduleDependencies.handleAccessRemove()
     }
     
-    public static func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[String: Any]> {
-        return moduleDependencies.getDiscoverAirdrops(type: type, page: page, size: size, long: long, lat: lat)
+    public static func handleNotificationAction(
+        _ notificationResponse: UNNotificationResponse,
+        _ handler: (_ type: NotificationEventType, _ messageId: Int64?) -> Void
+    ) -> Bool {
+        if let notiContent = notificationResponse.notification.request.content.userInfo["notiContent"] as? String {
+            let notiJson = SwiftyJSON.JSON(parseJSON: notiContent)
+            let wsMessage = WSMessage(json: notiJson)
+            guard let content = wsMessage?.content else { return false }
+            let jobj = SwiftyJSON.JSON(parseJSON: content)
+            if let balanceNoti = BalanceNotification(json: jobj),
+               let event = balanceNoti.event,
+               let type = NotificationEventType.init(rawValue: event)
+            {
+                switch type {
+                case .Airdropped, .AirdropInvite, .AirdropSignup, .BalanceChanged:
+                    if SessionStoreManager.tokenInfo == nil {
+                        _ = moduleDependencies.coreWireframe.corePresenter?.coreInteractorService?.loadBalanceInfo().done({ _ in
+                            if let tokenInfo = SessionStoreManager.tokenInfo {
+                                moduleDependencies.displayTransactionDetail(
+                                    txHistory: TxDetailDisplayData(
+                                        notify: balanceNoti,
+                                        tokenInfo: tokenInfo
+                                    ).buildHistoryDisplayItem(wsMessage?.time),
+                                    tokenInfo: tokenInfo
+                                )
+                            }
+                        })
+                    } else {
+                        moduleDependencies.displayTransactionDetail(
+                            txHistory: TxDetailDisplayData(
+                                notify: balanceNoti,
+                                tokenInfo: SessionStoreManager.tokenInfo!
+                            ).buildHistoryDisplayItem(wsMessage?.time),
+                            tokenInfo: SessionStoreManager.tokenInfo!
+                        )
+
+                    }
+                    break
+                default:
+                    let luckyNotify = LuckyDrawNotification(json: jobj)
+                    handler(type, luckyNotify?.messageId)
+                    break
+                }
+            }
+            
+            return true
+        }
+        
+        return false
     }
     
     public static func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
@@ -280,14 +319,6 @@ public class MozoSDK {
     
     public static func requestForBackUpWallet() {
         return moduleDependencies.requestForBackUpWallet()
-    }
-    
-    public static func getPromoCreateSetting() -> Promise<PromotionSettingDTO> {
-        return moduleDependencies.getPromoCreateSetting()
-    }
-    
-    public static func createPromotion(_ promotion: PromotionDTO) -> Promise<[String: Any]> {
-        return moduleDependencies.createPromotion(promotion)
     }
     
     public static func getRetailerPromotionList(page: Int = 0, size: Int = 15, statusRequest: PromotionStatusRequestEnum = .RUNNING) -> Promise<[PromotionDTO]> {
@@ -425,48 +456,20 @@ public class MozoSDK {
         moduleDependencies.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat)
     }
     
-    public static func getAirdropEventFromStore(_ storeId: Int64, type: AirdropEventType, page: Int, size: Int) -> Promise<[AirdropEventDiscoverDTO]> {
-        return moduleDependencies.getAirdropEventFromStore(storeId, type: type, page: page, size: size)
-    }
-    
     public static func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {
         return moduleDependencies.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat)
-    }
-    
-    public static func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return moduleDependencies.confirmStoreInfoMerchant(branchInfo: branchInfo)
-    }
-    
-    public static func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return moduleDependencies.createNewBranch(branchInfo)
-    }
-    
-    public static func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return moduleDependencies.getBeacon(beaconId)
     }
     
     public static func getBranchList(page: Int = 0, forSwitching: Bool) -> Promise<[String: Any]> {
         return moduleDependencies.getBranchList(page: page, forSwitching: forSwitching)
     }
      
-    public static func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return moduleDependencies.updateBranchInfo(branchInfo)
-    }
-     
     public static func switchBranch(_ branchId: Int64) -> Promise<[String: Any]> {
         return moduleDependencies.switchBranch(branchId)
     }
     
-    public static func deleteBranchInfoPhotos(_ branchId: Int64, photos: [String]) -> Promise<BranchInfoDTO> {
-        return moduleDependencies.deleteBranchInfoPhotos(branchId, photos: photos)
-    }
-    
     public static func getRetailerInfoForLauching() -> Promise<[String: Any]> {
         return moduleDependencies.getRetailerInfoForLauching()
-    }
-    
-    public static func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO> {
-        return moduleDependencies.getBranchById(branchId)
     }
     
     public static func checkBranchName(_ name: String) -> Promise<Any> {
@@ -475,14 +478,6 @@ public class MozoSDK {
     
     public static func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
         return moduleDependencies.updateSalePerson(account: account)
-    }
-    
-    public static func syncAddressFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return moduleDependencies.syncAddressFromBranchIntoBeacon(beaconId)
-    }
-    
-    public static func syncLocationFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return moduleDependencies.syncLocationFromBranchIntoBeacon(beaconId)
     }
     
     public static func registerMoreBeacon(parameters: Any?) -> Promise<[String: Any]> {

@@ -37,8 +37,12 @@ public extension UIImageView {
         }
     }
     
-    func loadImage(_ urlString: String, defaultImageName: String = "img_store_no_img",
-                   isDefaultImageFromMozo: Bool = false) {
+    func loadImage(
+        _ urlString: String,
+        defaultImageName: String = "img_store_no_img",
+        isDefaultImageFromMozo: Bool = false,
+        _ onLoadComplete: (() -> Void)? = nil
+    ) {
         let placeHolderImage = isDefaultImageFromMozo ? UIImage(named: defaultImageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
             : UIImage(named: defaultImageName)
         let paramUrlString = "\(urlString)?width=\(Int(self.frame.width * UIScreen.main.scale * 2))&height=\(Int(self.frame.height * UIScreen.main.scale * 2))"
@@ -53,8 +57,8 @@ public extension UIImageView {
                 .transition(.fade(1)),
                 .cacheOriginalImage
             ], completionHandler:
-                {
-                    result in
+                { result in
+                    onLoadComplete?()
                     switch result {
                     case .success(_):
                         return

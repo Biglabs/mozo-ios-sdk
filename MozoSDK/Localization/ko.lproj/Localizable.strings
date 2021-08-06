@@ -394,7 +394,6 @@
 "Repeat:" = "반복";
 "Your Store must have at least %d Hashtag." = "귀하의 상점은 적어도 하나의 해시 태그가 있어야합니다.";
 "Only letters and numbers are allowed." = "숫자 나 문자에만 허용됩니다.";
-"Cancel" = "취소";
 "Yes" = "동의";
 "No" = "아니요";
 "Just now" = "지금";
@@ -476,7 +475,6 @@
 
 // SHOPPER
 "My wallet" = "내 지갑";
-"Profile" = "프로필";
 "List view" = "리스트 양식 보기";
 "Map view" = "지도";
 "Search history" = "기록 검색 ";
@@ -565,7 +563,6 @@
 "Sorry, something went wrong. Please try again or restart the app." = "죄송합니다. 무엇인가 잘못되었습니다. 다시 시도하거나 앱을 다시 시작하십시오.";
 "Back" = "돌아가기";
 "Error" = "오류";
-"Cancel" = "취소";
 "To" = "까지";
 "From" = "부터";
 "Coin" = "코인";
@@ -1339,7 +1336,6 @@
 "Enter Beacon Name" = "Beacon 이름 입력";
 "Change Beacon Settings Successful" = "Beacon 설정 성공";
 "Add New Beacon Successful" = "Beacon 추가 성공";
-"Select Beacon to run Airdrop Event" = "Airdrop 이벤트 진행을 위한 Beacon 선택";
 "Select Beacon" = "Beacon 선택";
 "Setting up" = "설정";
 "Address is different from Branch" = "주소는 분기와 다릅니다";
@@ -1378,7 +1374,6 @@
 "View only" = "보기만 합니다";
 "You’re not allowed to manage this Branch" = "이 분기를 관리할 권한 없습니다";
 "You’re not allowed to edit this Branch" = "이 분기를 수정할 권한 없습니다";
-"Do you want to update Beacons' Address and Location?" = "Beacon 주소와 위치 업데이트 하겠습니까?";
 "Don’t worry, you can do it later in Beacon List." = "걱정마세요. Beacon 리스트에서 나중에 작업해도 됩니다";
 "Branch Information" = "분기 정보";
 

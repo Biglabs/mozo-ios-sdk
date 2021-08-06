@@ -13,8 +13,6 @@ public class Configuration {
     public static var SUB_DOMAIN_ENUM = ServiceType.DEV
     public static let SUB_DOMAIN = SUB_DOMAIN_ENUM.rawValue
     public static let GRANT_TYPE = "password"
-    public static let MIN_PASSWORD_LENGTH = 6
-    public static let MAX_NAME_LENGTH = 128
     public static var FONT_SIZE: UIFontTextSize = UIFontTextSize(.xSmall)
     public static let DEVICE_TOKEN = "DEVICE_TOKEN"
     public static let API_KEY_DEFAULT = "API_KEY_DEFAULT"
@@ -22,6 +20,10 @@ public class Configuration {
     public static let PARAM_LANGUAGE = "?language=\(LOCALE)"
     
     public static let PAGING_SIZE = 100
+    public static let MAX_DAY_OF_COVID = 24
+    public static let MIN_PASSWORD_LENGTH = 6
+    public static let MAX_NAME_LENGTH = 128
+    public static let SHOW_MOZO_EQUIVALENT_CURRENCY = false
     
     // User id for anonymous user
     public static let USER_ID_ANONYMOUS = "Mozo@UserId@Anonymous"
@@ -96,38 +98,15 @@ public class Configuration {
     
     public static let AUTH_PARAM_PROMPT = "prompt"
     
-    /**
-     The OAuth redirect URI for the client @c kClientID.
-     For client configuration instructions, see the [README](https://github.com/openid/AppAuth-iOS/blob/master/Examples/Example-iOS_Swift-Carthage/README.md).
-     */
-//    public static let AUTH_REDIRECT_URL = "com.biglabs.mozosdk:/oauth2redirect/mozo-provider"
-    
-    //public static let AUTH_REDIRECT_CALLBACK_PATH = "oauth2redirect/mozo-provider"
-    
-//    public static let AUTH_REDIRECT_URL = "\((Bundle.main.bundleIdentifier ?? "").lowercased())://\(AUTH_REDIRECT_CALLBACK_PATH)"
-    
-    //public static let AUTH_REDIRECT_URL = "com.biglabs.mozosdk://\(AUTH_REDIRECT_CALLBACK_PATH)"
-    
-    //public static let AUTH_REDIRECT_URL_FOR_IOS_10 = "\(Bundle.main.bundleIdentifier ?? "")://\(AUTH_REDIRECT_CALLBACK_PATH)"
-    
-    /**
-     NSCoding key for the authState property.
-     */
     public static let AUTH_STATE = "Mozo@AuthState"
     public static let AUTH_ID_TOKEN = "Mozo@IdToken"
     
-    public static let TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS = 10
+    public static let TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS = 5
     
     // Landing page
     public static let LANDING_PAGE_URL = "https://\(SUB_DOMAIN)mozocoin.io"
     
     public static func authRedirectURL() -> String {
-//        if #available(iOS 10, *) {
-//            return AUTH_REDIRECT_URL_FOR_IOS_10
-//        }
-//        return AUTH_REDIRECT_URL
         return "com.biglabs.mozosdk.\(String(describing: Bundle.main.bundleIdentifier!)):/oauth2redirect/mozo-provider"
     }
-    
-    public static let MAX_DAY_OF_COVID = 24
 }

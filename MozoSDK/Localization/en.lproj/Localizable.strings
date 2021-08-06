@@ -390,7 +390,6 @@
 "Repeat:" = "Repeat:";
 "Your Store must have at least %d Hashtag." = "Your Store must have at least %d Hashtag.";
 "Only letters and numbers are allowed." = "Only letters and numbers are allowed.";
-"Cancel" = "Cancel";
 "Yes" = "Yes";
 "No" = "No";
 "Just now" = "Just now";
@@ -476,7 +475,6 @@
 // SHOPPER
 "Mozo" = "Mozo";
 "My wallet" = "My wallet";
-"Profile" = "Profile";
 "List view" = "List view";
 "Map view" = "Map view";
 "Search history" = "Search history";
@@ -564,7 +562,6 @@
 "Sorry, something went wrong. Please try again or restart the app." = "Sorry, something went wrong. Please try again or restart the app.";
 "Back" = "Back";
 "Error" = "Error";
-"Cancel" = "Cancel";
 "To:" = "To:";
 "From" = "From";
 "Coin" = "Coin";
@@ -1331,7 +1328,6 @@
 "Enter Beacon Name" = "Enter Beacon Name";
 "Change Beacon Settings Successful" = "Change Beacon Settings Successful";
 "Add New Beacon Successful" = "Add New Beacon Successful";
-"Select Beacon to run Airdrop Event" = "Select Beacon to run Airdrop Event";
 "Select Beacon" = "Select Beacon";
 "Setting up" = "Setting up";
 "Address is different from Branch" = "Address is different from Branch";
@@ -1370,7 +1366,6 @@
 "View only" = "View only";
 "You’re not allowed to manage this Branch" = "You’re not allowed to manage this Branch";
 "You’re not allowed to edit this Branch" = "You’re not allowed to edit this Branch";
-"Do you want to update Beacons' Address and Location?" = "Do you want to update Beacons' Address and Location?";
 "Don’t worry, you can do it later in Beacon List." = "Don’t worry, you can do it later in Beacon List.";
 "Branch Information" = "Branch Information";
 

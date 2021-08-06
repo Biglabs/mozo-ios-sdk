@@ -55,10 +55,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.addSalePerson(parameters: parameters)
     }
     
-    func getAirdropStoreNearby(params: [String : Any]) -> Promise<[AirdropEventDiscoverDTO]> {
-        return apiManager.getAirdropStoresNearby(params: params)
-    }
-    
     func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
         return apiManager.sendRangedBeacons(beacons: beacons, status: status)
     }
@@ -152,10 +148,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getListCountryCode()
     }
     
-    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
-        return apiManager.getListEventAirdropOfStore(storeId)
-    }
-    
     func searchStoresWithText(_ text: String, page: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {
         return apiManager.searchStoresWithText(text, page: page, long: long, lat: lat, sort: sort)
     }
@@ -214,10 +206,6 @@ extension CoreInteractor: CoreInteractorService {
     
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
         return apiManager.getRecommendationStores(storeId, size: size, long: long, lat: lat)
-    }
-    
-    func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[String: Any]> {
-        return apiManager.getDiscoverAirdrops(type: type, page: page, size: size, long: long, lat: lat)
     }
     
     func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
@@ -318,44 +306,16 @@ extension CoreInteractor: CoreInteractorService {
         }
     }
     
-    func getAirdropEventFromStore(_ storeId: Int64, type: AirdropEventType, page: Int, size: Int) -> Promise<[AirdropEventDiscoverDTO]> {
-        return apiManager.getAirdropEventFromStore(storeId, type: type, page: page, size: size)
-    }
-    
-    func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return apiManager.confirmStoreInfoMerchant(branchInfo: branchInfo)
-    }
-    
-    func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return apiManager.createNewBranch(branchInfo)
-    }
-    
-    func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return apiManager.getBeacon(beaconId)
-    }
-    
     func getBranchList(page: Int, forSwitching: Bool) -> Promise<[String: Any]> {
         return apiManager.getBranchList(page: page, forSwitching: forSwitching)
-    }
-    
-    func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return apiManager.updateBranchInfo(branchInfo)
     }
     
     func switchBranch(_ branchId: Int64) -> Promise<[String: Any]> {
         return apiManager.switchBranch(branchId)
     }
     
-    func deleteBranchInfoPhotos(_ branchId: Int64, photos: [String]) -> Promise<BranchInfoDTO> {
-        return apiManager.deleteBranchInfoPhotos(branchId, photos: photos)
-    }
-    
     func getRetailerInfoForLauching() -> Promise<[String: Any]> {
         return apiManager.getRetailerInfoForLauching()
-    }
-    
-    func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO> {
-        return apiManager.getBranchById(branchId)
     }
     
     func checkBranchName(_ name: String) -> Promise<Any> {
@@ -364,14 +324,6 @@ extension CoreInteractor: CoreInteractorService {
     
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
         return apiManager.updateSalePerson(account: account)
-    }
-    
-    func syncAddressFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return apiManager.syncAddressFromBranchIntoBeacon(beaconId)
-    }
-    
-    func syncLocationFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return apiManager.syncLocationFromBranchIntoBeacon(beaconId)
     }
     
     // MARK: COVID-19 support APIs

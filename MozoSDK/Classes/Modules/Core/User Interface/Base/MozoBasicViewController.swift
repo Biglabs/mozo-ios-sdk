@@ -44,7 +44,7 @@ public class MozoBasicViewController : UIViewController {
     }
 
     @objc func tapBackBtn() {
-        navigationController?.popViewController(animated: false)
+        navigationController?.popViewController(animated: true)
     }
     
     func displayMozoError(_ error: String) {

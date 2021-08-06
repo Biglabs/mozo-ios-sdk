@@ -27,10 +27,12 @@ class TxDetailViewController: MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lbAmountValueExchange.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
         if navigationController?.viewControllers.count ?? 0 > 2 {
             enableBackBarButton()
         }
-        setBtnBorder()
+        saveBtn.roundCorners(cornerRadius: 0.08, borderColor: ThemeManager.shared.main, borderWidth: 1)
+        addressBookView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,17 +42,20 @@ class TxDetailViewController: MozoBasicViewController {
         updateView()
     }
     
-    func setBtnBorder() {
-        saveBtn.roundCorners(cornerRadius: 0.08, borderColor: ThemeManager.shared.main, borderWidth: 1)
-    }
-    
     func updateView() {
-        let imageName = displayItem.action == TransactionType.Sent.value ? "ic_sent_circle" : "ic_received_circle"
+        var imageName = "ic_received_circle"
+        if displayItem.type == .Received || displayItem.action == TransactionType.Received.value {
+            lbTxType.text = TransactionType.Received.value.localized
+            lbActionType.text = "From".localized
+        } else {
+            imageName = (
+                displayItem.type == .All && displayItem.addressFrom == displayItem.addressTo
+            ) ? "ic_transfer_myself" : "ic_sent_circle"
+            lbTxType.text = TransactionType.Sent.value.localized
+            lbActionType.text = "To".localized
+        }
         actionImg.image = UIImage(named: imageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
-        lbTxType.text = displayItem.action.localized
         lbDateTime.text = displayItem.dateTime
-        
-        lbActionType.text = (displayItem.action == TransactionType.Sent.value ? "To" : "From").localized
         
         let address = displayItem.action == TransactionType.Sent.value ? displayItem.addressTo : displayItem.addressFrom
         
@@ -81,5 +86,16 @@ class TxDetailViewController: MozoBasicViewController {
     @IBAction func touchedBtnSave(_ sender: Any) {
         let address = displayItem.action == TransactionType.Sent.value ? displayItem.addressTo : displayItem.addressFrom
         eventHandler?.requestAddToAddressBook(address)
+    }
+}
+extension TxDetailViewController: AddressBookViewDelegate {
+    func didTouchClear() {
+    }
+    
+    func openContactDetails(_ id: Int64, _ isStoreContact: Bool) {
+        if isStoreContact {
+            eventHandler?.requestCloseAllUI()
+            NotificationCenter.default.post(name: .openStoreDetailsFromHistory, object: nil, userInfo: ["id": id])
+        }
     }
 }

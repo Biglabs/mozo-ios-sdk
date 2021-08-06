@@ -21,18 +21,15 @@ public class TxHistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var lbAmount: UILabel!
     @IBOutlet weak var lbExchangeValue: UILabel!
     @IBOutlet weak var statusView: UIView!
+    
     public var txHistory : TxHistoryDisplayItem? {
         didSet {
             bindData()
         }
     }
+    public var type: TransactionType = .All
     
-    public override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    func bindData(){
+    func bindData() {
         lbAction.text = txHistory?.action.localized
 //        lbDateTime?.attributedText = txHistory?.fromNameWithDate
         let fromtoText = txHistory?.fromtoText ?? ""
@@ -77,13 +74,15 @@ public class TxHistoryTableViewCell: UITableViewCell {
             }
         } else {
             var imageName = "ic_received_circle"
-            if txHistory?.action == TransactionType.Received.value {
+            if type == .Received || txHistory?.action == TransactionType.Received.value {
                 lbAmount.textColor = ThemeManager.shared.main
                 lbAmount.text = "+\(amountText)"
+                lbAction.text = TransactionType.Received.value.localized
             } else {
                 lbAmount.textColor = ThemeManager.shared.title
                 lbAmount.text = "-\(amountText)"
-                imageName = "ic_sent_circle"
+                imageName = (type == .All && txHistory?.addressFrom == txHistory?.addressTo) ? "ic_transfer_myself" : "ic_sent_circle"
+                lbAction.text = TransactionType.Sent.value.localized
             }
             img.image = UIImage(named: imageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
         }

@@ -25,6 +25,7 @@ extension TopUpWithdrawPresenter: PinModuleDelegate {
     }
     
     func cancel() {
+        delegate?.topUpCancel()
     }
 }
 extension TopUpWithdrawPresenter: TopUpWithdrawInteractorOutput {

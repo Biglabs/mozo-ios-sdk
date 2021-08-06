@@ -160,10 +160,6 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.addSalePerson(parameters:parameters))!
     }
     
-    func getAirdropStoreNearby(params: [String: Any]) -> Promise<[AirdropEventDiscoverDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropStoreNearby(params: params))!
-    }
-    
     func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.sendRangedBeacons(beacons: beacons, status: status))!
     }
@@ -222,10 +218,6 @@ class ModuleDependencies {
     
     func getListCountryCode() -> Promise<[CountryCodeDTO]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getListCountryCode())!
-    }
-    
-    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getListEventAirdropOfStore(storeId))!
     }
     
     func searchStoresWithText(_ text: String, page: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {
@@ -292,10 +284,6 @@ class ModuleDependencies {
         coreWireframe.corePresenter?.handleAccessRemoved()
     }
     
-    func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getDiscoverAirdrops(type: type, page: page, size: size, long: long, lat: lat))!
-    }
-    
     func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.requestSupportBeacon(info: info))!
     }
@@ -342,14 +330,6 @@ class ModuleDependencies {
     
     func requestForBackUpWallet() {
         coreWireframe.requestForBackUpWallet()
-    }
-    
-    func getPromoCreateSetting() -> Promise<PromotionSettingDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromoCreateSetting())!
-    }
-    
-    func createPromotion(_ promotion: PromotionDTO) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.createPromotion(promotion))!
     }
     
     func getRetailerPromotionList(page: Int, size: Int, statusRequest: PromotionStatusRequestEnum) -> Promise<[PromotionDTO]> {
@@ -484,64 +464,28 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat))!
     }
     
-    func getAirdropEventFromStore(_ storeId: Int64, type: AirdropEventType, page: Int, size: Int) -> Promise<[AirdropEventDiscoverDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropEventFromStore(storeId, type: type, page: page, size: size))!
-    }
-    
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat))!
-    }
-    
-    func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.confirmStoreInfoMerchant(branchInfo: branchInfo))!
-    }
-    
-    func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.createNewBranch(branchInfo))!
-    }
-    
-    func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getBeacon(beaconId))!
     }
     
     func getBranchList(page: Int, forSwitching: Bool) -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getBranchList(page: page, forSwitching: forSwitching))!
     }
      
-    func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateBranchInfo(branchInfo))!
-    }
-     
     func switchBranch(_ branchId: Int64) -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.switchBranch(branchId))!
-    }
-    
-    func deleteBranchInfoPhotos(_ branchId: Int64, photos: [String]) -> Promise<BranchInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.deleteBranchInfoPhotos(branchId, photos: photos))!
     }
     
     func getRetailerInfoForLauching() -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerInfoForLauching())!
     }
-    
-    func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getBranchById(branchId))!
-    }
-    
+
     func checkBranchName(_ name: String) -> Promise<Any> {
         return (coreWireframe.corePresenter?.coreInteractorService?.checkBranchName(name))!
     }
     
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateSalePerson(account: account))!
-    }
-    
-    func syncAddressFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.syncAddressFromBranchIntoBeacon(beaconId))!
-    }
-    
-    func syncLocationFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.syncLocationFromBranchIntoBeacon(beaconId))!
     }
     
     // MARK: COVID-19 support APIs
@@ -744,7 +688,7 @@ class ModuleDependencies {
         let txDetailPresenter = TxDetailPresenter()
         
         txDetailPresenter.detailModuleDelegate = coreWireframe.corePresenter
-        
+        txDetailPresenter.wireframe = txDetailWireframe
         txDetailWireframe.txDetailPresenter = txDetailPresenter
         txDetailWireframe.rootWireframe = rootWireframe
     }

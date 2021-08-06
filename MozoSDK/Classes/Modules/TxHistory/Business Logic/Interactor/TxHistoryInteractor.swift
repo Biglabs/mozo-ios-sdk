@@ -16,11 +16,10 @@ class TxHistoryInteractor: NSObject {
     }
 }
 extension TxHistoryInteractor : TxHistoryInteractorInput {
-    func getListTxHistory(page: Int = 0) {
+    func getListTxHistory(page: Int = 0, type: TransactionType = .All) {
         if let userObj = SessionStoreManager.loadCurrentUser(),
             let address = userObj.profile?.walletInfo?.offchainAddress {
-                print("Address used to load tx history: \(address)")
-                apiManager.getListTxHistory(address: address, page: page)
+                apiManager.getListTxHistory(address: address, page: page, type: type)
                 .done { (listTxHistory) in
                     self.output?.finishGetListTxHistory(listTxHistory, forPage: page)
                 }.catch { (error) in

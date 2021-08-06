@@ -51,6 +51,8 @@ class TransferViewController: MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lbExchangeAmount.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
+        
         eventHandler?.loadTokenInfo()
         addDoneButtonOnKeyboard()
         setupTarget()

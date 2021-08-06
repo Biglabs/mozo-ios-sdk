@@ -157,13 +157,6 @@ public class TxHistoryDisplayCollection {
         return lStrLabelText
     }
     
-    func filterByTransactionType(_ txType: TransactionType) -> [TxHistoryDisplayItem] {
-        let filteredArray = displayItems.filter({( item : TxHistoryDisplayItem) -> Bool in
-            return item.action == txType.value
-        })
-        return filteredArray
-    }
-    
     func calculateExchangeValue(_ value: Double) -> Double {
         var result = 0.0
         if let rateInfo = SessionStoreManager.exchangeRateInfo {

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TxHistoryInteractorInput {
-    func getListTxHistory(page: Int)
+    func getListTxHistory(page: Int, type: TransactionType)
     func getTokenInfoForHistory()
 }
 

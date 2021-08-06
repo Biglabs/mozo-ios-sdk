@@ -12,49 +12,6 @@ import SwiftyJSON
 let SHOPPER_PROMOTION_RESOURCE_API_PATH = "/shopperPromo"
 let RETAILER_RESOURCE_API_PATH = "/retailer"
 public extension ApiManager {
-    func getPromoCreateSetting() -> Promise<PromotionSettingDTO> {
-        return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + "/getPromoCreateSetting"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get promotion create setting, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)
-                    if let setting = PromotionSettingDTO(json: jobj) {
-                        seal.fulfill(setting)
-                    } else {
-                        seal.reject(ConnectionError.systemError)
-                    }
-                }
-                .catch { error in
-                    print("Error when request get promotion create setting: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
-    func createPromotion(_ promotion: PromotionDTO) -> Promise<[String: Any]> {
-        return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + "/createPromo/v3"
-            let param = promotion.toJSON()
-            self.execute(.post, url: url, parameters: param)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to Create promotion, json response: \(json)")
-                    seal.fulfill(json)
-                }
-                .catch { error in
-                    print("Error when request Create promotion: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
     
     func getRetailerPromotionList(page: Int, size: Int, statusRequest: PromotionStatusRequestEnum) -> Promise<[PromotionDTO]> {
         if statusRequest == .SCHEDULE {

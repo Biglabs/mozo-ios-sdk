@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Starscream
 import SwiftyJSON
 let SOCKET_RETRY_DELAY_IN_SECONDS = 5
 let SOCKET_RETRY_MAXIMUM_TIME = 8
@@ -175,7 +174,7 @@ extension RDNInteractor : SocketDelegate {
             }
             // Check Ping
             if strings[0] == "1" {
-                print("Received ping!")
+                "Received ping!".log()
                 return
             }
             let jsonMessage = strings[1]

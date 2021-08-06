@@ -161,6 +161,9 @@ extension PaymentQRViewController: AddressBookViewDelegate {
         displayContactItem = nil
         txtAddressOrPhoneNo.text = ""
     }
+    
+    func openContactDetails(_ id: Int64, _ isStoreContact: Bool) {
+    }
 }
 extension PaymentQRViewController {
     func notFoundContact(_ phoneNo: String) {

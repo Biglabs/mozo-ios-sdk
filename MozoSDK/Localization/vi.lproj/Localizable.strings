@@ -393,7 +393,6 @@
 "Repeat:" = "Lặp lại:";
 "Your Store must have at least %d Hashtag." = "Cửa hàng cần ít nhất %d Hashtag.";
 "Only letters and numbers are allowed." = "Chỉ được phép nhập số hoặc chữ cái.";
-"Cancel" = "Thoát";
 "Yes" = "Đồng ý";
 "No" = "Không";
 "Just now" = "Vừa xong";
@@ -478,7 +477,6 @@
 
 /* SHOPPER */
 "My wallet" = "Ví";
-"Profile" = "Hồ sơ";
 "List view" = "Dạng list";
 "Map view" = "Bản đồ";
 "Search history" = "Lịch sử tìm kiếm";
@@ -567,7 +565,6 @@
 "Sorry, something went wrong. Please try again or restart the app." = "Có lỗi xảy ra. Xin thử lại hoặc mở lại ứng dụng.";
 "Back" = "Trở lại";
 "Error" = "Lỗi";
-"Cancel" = "Thoát";
 "To:" = "Đến:";
 "From" = "Từ";
 "Coin" = "Coin";
@@ -1332,7 +1329,6 @@
 "Enter Beacon Name" = "Nhập tên beacon";
 "Change Beacon Settings Successful" = "Thiết lập beacon thành công";
 "Add New Beacon Successful" = "Thêm beacon thành công";
-"Select Beacon to run Airdrop Event" = "Chọn beacon để chạy sự kiện airdrop";
 "Select Beacon" = "Chọn beacon";
 "Setting up" = "Thiết lập";
 "Address is different from Branch" = "Địa chỉ khác với địa chỉ của Chi nhánh";
@@ -1371,7 +1367,6 @@
 "View only" = "Không thể chỉnh sửa";
 "You’re not allowed to manage this Branch" = "Bạn không có quyền để cập nhật thông tin Chi nhánh này";
 "You’re not allowed to edit this Branch" = "Bạn không có quyền để cập nhật thông tin Chi nhánh này";
-"Do you want to update Beacons' Address and Location?" = "Bạn có muốn cập nhật địa chỉ và vị trí của beacons";
 "Don’t worry, you can do it later in Beacon List." = "Yên tâm, bạn có thể thực hiện việc đó ở màn hình danh sách beacons sau này cũng được";
 "Branch Information" = "Thông tin Chi nhánh";
 

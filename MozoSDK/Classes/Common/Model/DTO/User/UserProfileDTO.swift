@@ -9,7 +9,6 @@ import Foundation
 import SwiftyJSON
 
 public class UserProfileDTO: Codable, ResponseObjectSerializable {
-    public var id: Int?
     public var userId: String?
     public var status: String?
     public var phoneNumber: String?
@@ -39,7 +38,6 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
     }
     
     public required init?(json: SwiftyJSON.JSON) {
-        self.id = json["id"].int
         self.userId = json["userId"].string
         self.status = json["status"].string
         self.phoneNumber = json["phoneNumber"].string
@@ -57,9 +55,6 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
     
     public func toJSON() -> Dictionary<String, Any> {
         var json = Dictionary<String, Any>()
-        if let id = self.id {
-            json["id"] = id
-        }
         if let avatarUrl = self.avatarUrl {
             json["avatarUrl"] = avatarUrl
         }

@@ -511,6 +511,6 @@ public extension Notification.Name {
     static let didChangeProfile = Notification.Name("didChangeProfile")
     static let didMeetMaintenance = Notification.Name("didMeetMaintenance")
     static let didMaintenanceComplete = Notification.Name("didMaintenanceComplete")
-    
     static let didExpiredToken = Notification.Name("didExpiredToken")
+    static let openStoreDetailsFromHistory = Notification.Name("openStoreDetailsFromHistory")
 }

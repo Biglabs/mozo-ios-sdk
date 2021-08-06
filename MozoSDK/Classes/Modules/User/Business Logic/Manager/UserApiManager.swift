@@ -13,7 +13,7 @@ let USER_API_PATH = "/user-profile"
 public extension ApiManager {
     func getUserProfile() -> Promise<UserProfileDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + USER_API_PATH
+            let url = Configuration.BASE_STORE_URL + USER_API_PATH + "/v1"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info

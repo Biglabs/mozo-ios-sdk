@@ -9,11 +9,15 @@ import Foundation
 
 class TxDetailPresenter : NSObject {
     var detailModuleDelegate: TxDetailModuleDelegate?
-    
+    var wireframe: TxDetailWireframe?
 }
 
 extension TxDetailPresenter : TxDetailModuleInterface {
     func requestAddToAddressBook(_ address: String) {
         detailModuleDelegate?.detailModuleRequestAddToAddressBook(address)
+    }
+    
+    func requestCloseAllUI() {
+        wireframe?.dismissModuleInterface()
     }
 }

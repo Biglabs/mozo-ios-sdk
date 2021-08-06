@@ -8,6 +8,7 @@
 import Foundation
 protocol AddressBookViewDelegate {
     func didTouchClear()
+    func openContactDetails(_ id: Int64, _ isStoreContact: Bool)
 }
 @IBDesignable class AddressBookView: MozoView {
     @IBOutlet weak var containView: UIView!
@@ -29,11 +30,11 @@ protocol AddressBookViewDelegate {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        setupLayout()
-    }
+        let tap = UITapGestureRecognizer(target: self, action: #selector(touchedRoot))
+        tap.numberOfTapsRequired = 1
+        containView.isUserInteractionEnabled = true
+        containView.addGestureRecognizer(tap)
     
-    func setupLayout() {
-        //ic_user_profile
     }
     
     func bindData() {
@@ -69,5 +70,11 @@ protocol AddressBookViewDelegate {
     
     @IBAction func touchBtnClear(_ sender: Any?) {
         delegate?.didTouchClear()
+    }
+    
+    @objc func touchedRoot() {
+        if let id = addressBook?.id {
+            delegate?.openContactDetails(id, addressBook?.isStoreBook == true)
+        }
     }
 }

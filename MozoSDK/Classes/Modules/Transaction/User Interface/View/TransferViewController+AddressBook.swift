@@ -162,6 +162,9 @@ extension TransferViewController: AddressBookViewDelegate {
         // Fix issue: Button Select Address Book Top Constraint is incorrect
         hideErrorValidation()
     }
+    
+    func openContactDetails(_ id: Int64, _ isStoreContact: Bool) {
+    }
 }
 extension TransferViewController {
     func notFoundContact(_ phoneNo: String) {

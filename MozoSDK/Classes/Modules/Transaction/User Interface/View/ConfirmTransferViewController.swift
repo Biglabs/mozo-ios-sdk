@@ -37,6 +37,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lbAmountValueExchange.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
         setupCircleView()
         enableBackBarButton()
         updateView()

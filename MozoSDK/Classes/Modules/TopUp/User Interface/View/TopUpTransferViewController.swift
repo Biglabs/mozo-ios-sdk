@@ -36,7 +36,7 @@ class TopUpTransferViewController: MozoBasicViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lbExchangeAmount.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
         loadData()
         updateLayout()
         

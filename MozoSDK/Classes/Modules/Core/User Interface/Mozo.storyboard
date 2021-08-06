@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -638,7 +638,7 @@
                                     <constraint firstAttribute="bottom" secondItem="UQi-ge-hcb" secondAttribute="bottom" id="qjb-Jv-RBw"/>
                                     <constraint firstItem="cPJ-fc-yvr" firstAttribute="leading" secondItem="okW-gp-dTr" secondAttribute="leading" constant="20" id="swQ-be-jfA"/>
                                     <constraint firstItem="oxH-yK-tVU" firstAttribute="leading" secondItem="okW-gp-dTr" secondAttribute="leading" constant="20" id="ubO-gn-XIH"/>
-                                    <constraint firstItem="F1s-q6-Ldq" firstAttribute="top" secondItem="oxH-yK-tVU" secondAttribute="bottom" constant="14" id="vO2-bM-DLj"/>
+                                    <constraint firstItem="F1s-q6-Ldq" firstAttribute="centerY" secondItem="2y3-D2-1Hn" secondAttribute="centerY" id="vO2-bM-DLj"/>
                                     <constraint firstAttribute="trailing" secondItem="j4v-2e-FHz" secondAttribute="trailing" constant="20" id="vpp-aT-fyR"/>
                                     <constraint firstItem="cax-bg-RYT" firstAttribute="leading" secondItem="Eb8-Io-Hbg" secondAttribute="trailing" constant="20" id="xSX-Ro-Lk6"/>
                                     <constraint firstItem="UQi-ge-hcb" firstAttribute="leading" secondItem="okW-gp-dTr" secondAttribute="leading" id="yv0-AF-Fwg"/>
@@ -3315,7 +3315,7 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grb-DX-vYY" customClass="AddressBookView" customModule="MozoSDK" customModuleProvider="target">
                                 <rect key="frame" x="20" y="189" width="374" height="80"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="nJM-xi-67z"/>
                                 </constraints>
@@ -3779,75 +3779,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3d2-0D-6YH">
-                                <rect key="frame" x="0.0" y="44" width="414" height="111"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4md-az-4JY">
-                                        <rect key="frame" x="60.5" y="41" width="91" height="30"/>
-                                        <color key="backgroundColor" red="0.30588235294117649" green="0.58039215686274503" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="91" id="Ojf-wd-1fs"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="All">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="All"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="touchedBtnFloatingAll:" destination="jeU-qY-uT5" eventType="touchUpInside" id="8qp-8d-Ebl"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7h-38-egp">
-                                        <rect key="frame" x="161.5" y="41" width="91" height="30"/>
-                                        <color key="backgroundColor" red="0.81960784313725488" green="0.84313725490196079" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="91" id="BRB-jz-MWg"/>
-                                            <constraint firstAttribute="height" constant="30" id="xjV-2A-oC7"/>
-                                        </constraints>
-                                        <state key="normal" title="Received">
-                                            <color key="titleColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Received"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="touchedBtnFloatingReceived:" destination="jeU-qY-uT5" eventType="touchUpInside" id="TUO-bg-L7I"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFe-8z-CCM">
-                                        <rect key="frame" x="262.5" y="41" width="91" height="30"/>
-                                        <color key="backgroundColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="91" id="4yT-fp-pml"/>
-                                        </constraints>
-                                        <state key="normal" title="Sent">
-                                            <color key="titleColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Sent"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="toucheBtnFloatingSent:" destination="jeU-qY-uT5" eventType="touchUpInside" id="IA4-8f-yYO"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="A7h-38-egp" firstAttribute="leading" secondItem="4md-az-4JY" secondAttribute="trailing" constant="10" id="7uH-oM-YeT"/>
-                                    <constraint firstItem="4md-az-4JY" firstAttribute="height" secondItem="A7h-38-egp" secondAttribute="height" id="8v7-xs-ycz"/>
-                                    <constraint firstItem="4md-az-4JY" firstAttribute="centerY" secondItem="A7h-38-egp" secondAttribute="centerY" id="H5q-up-Okb"/>
-                                    <constraint firstItem="oFe-8z-CCM" firstAttribute="leading" secondItem="A7h-38-egp" secondAttribute="trailing" constant="10" id="IpR-ap-Fmf"/>
-                                    <constraint firstAttribute="height" constant="111" id="SbS-8y-ZgI"/>
-                                    <constraint firstItem="oFe-8z-CCM" firstAttribute="centerY" secondItem="A7h-38-egp" secondAttribute="centerY" id="d3y-UQ-srf"/>
-                                    <constraint firstItem="A7h-38-egp" firstAttribute="centerX" secondItem="3d2-0D-6YH" secondAttribute="centerX" id="gEh-sK-1hH"/>
-                                    <constraint firstItem="A7h-38-egp" firstAttribute="top" secondItem="3d2-0D-6YH" secondAttribute="top" constant="40.799999999999997" id="q2M-Jo-bHz"/>
-                                    <constraint firstItem="oFe-8z-CCM" firstAttribute="height" secondItem="A7h-38-egp" secondAttribute="height" id="tOx-vR-mq5"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hue-4H-CZq">
-                                <rect key="frame" x="0.0" y="155" width="414" height="741"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="jeU-qY-uT5" id="bFb-MF-PQy"/>
@@ -3858,21 +3791,13 @@
                         <viewLayoutGuide key="safeArea" id="efl-ff-KkP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="3d2-0D-6YH" firstAttribute="trailing" secondItem="efl-ff-KkP" secondAttribute="trailing" id="7Se-TT-P38"/>
-                            <constraint firstItem="3d2-0D-6YH" firstAttribute="top" secondItem="efl-ff-KkP" secondAttribute="top" id="Aky-nG-C1H"/>
-                            <constraint firstItem="Hue-4H-CZq" firstAttribute="top" secondItem="3d2-0D-6YH" secondAttribute="bottom" id="PJU-03-Mnp"/>
+                            <constraint firstItem="Hue-4H-CZq" firstAttribute="top" secondItem="efl-ff-KkP" secondAttribute="top" id="PJU-03-Mnp"/>
                             <constraint firstItem="Hue-4H-CZq" firstAttribute="bottom" secondItem="TF7-ws-AfI" secondAttribute="bottom" id="YBO-cs-UdL"/>
                             <constraint firstItem="Hue-4H-CZq" firstAttribute="trailing" secondItem="efl-ff-KkP" secondAttribute="trailing" id="e6p-3S-VfX"/>
-                            <constraint firstItem="3d2-0D-6YH" firstAttribute="leading" secondItem="efl-ff-KkP" secondAttribute="leading" id="mRV-pH-PBq"/>
                             <constraint firstItem="Hue-4H-CZq" firstAttribute="leading" secondItem="efl-ff-KkP" secondAttribute="leading" id="qO3-RX-tcb"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="btnFloatingAll" destination="4md-az-4JY" id="yNq-nP-ZRN"/>
-                        <outlet property="btnFloatingReceived" destination="A7h-38-egp" id="Nej-Ok-QAj"/>
-                        <outlet property="btnFloatingSent" destination="oFe-8z-CCM" id="Xct-6N-XCu"/>
-                        <outlet property="floatingView" destination="3d2-0D-6YH" id="wid-lZ-wlp"/>
-                        <outlet property="floatingViewHeightConstraint" destination="SbS-8y-ZgI" id="LeA-wL-G6c"/>
                         <outlet property="tableView" destination="Hue-4H-CZq" id="xxy-E2-127"/>
                     </connections>
                 </viewController>

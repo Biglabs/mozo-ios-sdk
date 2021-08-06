@@ -72,9 +72,6 @@ protocol CoreInteractorService {
     func removeSalePerson(id: Int64) -> Promise<[String: Any]>
     func getListCountryCode() -> Promise<[CountryCodeDTO]>
     
-    func getAirdropStoreNearby(params: [String: Any]) -> Promise<[AirdropEventDiscoverDTO]>
-    func getListEventAirdropOfStore(_ storeId: Int64) -> Promise<[AirdropEventDiscoverDTO]>
-    
     func searchStoresWithText(_ text: String, page: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO>
     func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]>
     func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]>
@@ -93,8 +90,6 @@ protocol CoreInteractorService {
     
     func getStoreDetail(_ storeId: Int64) -> Promise<BranchInfoDTO>
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]>
-    
-    func getDiscoverAirdrops(type: AirdropEventDiscoverType, page: Int, size: Int, long: Double, lat: Double) -> Promise<[String: Any]>
     
     func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]>
     
@@ -115,10 +110,6 @@ protocol CoreInteractorService {
     func loadUserProfile() -> Promise<UserProfileDTO>
     
     func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO>
-    
-    func getPromoCreateSetting() -> Promise<PromotionSettingDTO>
-    
-    func createPromotion(_ promotion: PromotionDTO) -> Promise<[String: Any]>
     
     func getRetailerPromotionList(page: Int, size: Int, statusRequest: PromotionStatusRequestEnum) -> Promise<[PromotionDTO]>
     
@@ -179,35 +170,17 @@ protocol CoreInteractorService {
     
     func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]>
     
-    func getAirdropEventFromStore(_ storeId: Int64, type: AirdropEventType, page: Int, size: Int) -> Promise<[AirdropEventDiscoverDTO]>
-    
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON>
-    
-    func confirmStoreInfoMerchant(branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO>
-    
-    func createNewBranch(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO>
-    
-    func updateBranchInfo(_ branchInfo: BranchInfoDTO) -> Promise<BranchInfoDTO>
      
     func switchBranch(_ branchId: Int64) -> Promise<[String: Any]>
-    
-    func deleteBranchInfoPhotos(_ branchId: Int64, photos: [String]) -> Promise<BranchInfoDTO>
-    
-    func getBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO>
     
     func getBranchList(page: Int, forSwitching: Bool) -> Promise<[String: Any]>
     
     func getRetailerInfoForLauching() -> Promise<[String: Any]>
     
-    func getBranchById(_ branchId: Int64) -> Promise<BranchInfoDTO>
-    
     func checkBranchName(_ name: String) -> Promise<Any>
     
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO>
-    
-    func syncAddressFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO>
-    
-    func syncLocationFromBranchIntoBeacon(_ beaconId: Int64) -> Promise<BeaconInfoDTO>
     
     // MARK: COVID-19 support APIs
     func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]>

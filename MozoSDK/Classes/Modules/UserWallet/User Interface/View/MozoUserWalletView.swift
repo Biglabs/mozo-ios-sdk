@@ -28,6 +28,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     @IBOutlet weak var sendMozoView: MozoSendView!
     @IBOutlet weak var paymentRequestView: MozoPaymentRequestView!
     
+    @IBOutlet weak var historyLoading: UIActivityIndicatorView!
     @IBOutlet weak var historyTable: UITableView!
     @IBOutlet weak var infoViewBorderWidthConstraint: NSLayoutConstraint!
     
@@ -52,8 +53,6 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     let topConstraintDefault = 20
     let topConstraintWithAction = 113
     let topConstraintConverting = 82
-    
-    private let refreshControl = UIRefreshControl()
     
     var hud: MBProgressHUD?
     
@@ -82,8 +81,8 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         }
         super.loadViewFromNib()
         #if !TARGET_INTERFACE_BUILDER
+        lbBalanceExchange.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
         loadDisplayData()
-        testAssests()
         setupTableView()
         setupSegment()
         setupButtonBorder()
@@ -92,19 +91,6 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         setupOnchainWalletView()
         setupObservers()
         #endif
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
-    func testAssests() {
-        let img = UIImage(named: "ic_send", in: BundleManager.mozoBundle(), compatibleWith: nil)
-        if img != nil {
-            print("MozoUserWalletView - TEST ASSESTS - CAN LOAD IMAGE")
-        } else {
-            print("MozoUserWalletView - TEST ASSESTS - CAN NOT LOAD IMAGE")
-        }
     }
     
     override func updateView() {
@@ -124,8 +110,9 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         historyTable.delegate = self
         historyTable.tableFooterView = UIView()
         
+        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-        historyTable?.refreshControl = refreshControl
+        historyTable.refreshControl = refreshControl
         
         setupNoContentView()
     }
@@ -176,18 +163,13 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
     
     func setupButtonBorder() {
-        sendMozoView.roundedCircle()
-        paymentRequestView.roundedCircle()
-        
         infoViewBorderWidthConstraint.constant = UIScreen.main.bounds.width - 26
         infoViewBorder.dropShadow()
         let rectShadow = CGRect(x: infoViewBorder.bounds.origin.x, y: infoViewBorder.bounds.origin.y, width: UIScreen.main.bounds.width - 26, height: infoViewBorder.bounds.height)
         infoViewBorder.layer.shadowPath = UIBezierPath(rect: rectShadow).cgPath
-        infoViewBorder.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
-        infoViewBorder.layer.shadowRadius = 2.0
+        infoViewBorder.layer.shadowOffset = CGSize(width: 0.0, height: 2.5)
+        infoViewBorder.layer.shadowRadius = 3.0
         infoViewBorder.layer.shadowColor = UIColor(hexString: "a8c5ec").cgColor
-        
-        infoView.roundCorners(cornerRadius: 0.015, borderColor: ThemeManager.shared.disable, borderWidth: 0.5)
     }
 
     func clearValueOnUI() {
@@ -231,11 +213,11 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     func loadTxHistory() {
         _ = MozoSDK.getTxHistoryDisplayCollection().done { (collectionData) in
             self.collection = collectionData
-            
-            self.refreshControl.endRefreshing()
+            self.historyLoading.isHidden = true
+            self.historyTable.refreshControl?.endRefreshing()
         }.catch({ (error) in
             
-            self.refreshControl.endRefreshing()
+            self.historyTable.refreshControl?.endRefreshing()
         })
     }
     
@@ -396,7 +378,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         hud?.label.textColor = .white
         hud?.label.numberOfLines = 2
         hud?.offset = CGPoint(x: 0, y: -300)
-        hud?.bezelView.color = UIColor(hexString: "e63b4b61")
+        hud?.bezelView.color = UIColor(hexString: "333333")
         hud?.isUserInteractionEnabled = false
         hud?.hide(animated: true, afterDelay: 1.5)
     }

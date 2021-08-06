@@ -9,98 +9,85 @@ import Foundation
 import UIKit
 
 class TxHistoryViewController: MozoBasicViewController {
-    var eventHandler: TxHistoryModuleInterface?
-    // MARK: - Properties
+    
     @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var btnSelect: UIButton!
-    @IBOutlet weak var floatingView: UIView!
-    @IBOutlet weak var floatingViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var btnFloatingAll: UIButton!
-    @IBOutlet weak var btnFloatingReceived: UIButton!
-    @IBOutlet weak var btnFloatingSent: UIButton!
     
-    var noticeEmptyView: UIView!
+    var eventHandler: TxHistoryModuleInterface?
     
-    private let refreshControl = UIRefreshControl()
     private let ROW_HEIGHT: CGFloat = 61
     private var isLoadingMoreTH = false
-    private var isFiltering = false
     
-    var collection : TxHistoryDisplayCollection?
-    var filteredItems = [TxHistoryDisplayItem]()
-    var currentPage : Int = 0
-    var loadingPage : Int = 0
-    var currentFilterType : TransactionType? = nil {
-        didSet {
-            print("Set current filter type: \(String(describing: currentFilterType))")
-        }
-    }
-    var tokenInfo : TokenInfoDTO?
+    private let segment = UISegmentedControl(items: ["All".localized, "Received".localized, "Sent".localized])
+    private var noticeEmptyView: UIView!
+    private var tokenInfo: TokenInfoDTO?
     
-    // MARK: - View Setup
+    private var dataAll: TxHistoryDisplayCollection?
+    private var dataReceived: TxHistoryDisplayCollection?
+    private var dataSent: TxHistoryDisplayCollection?
+    
+    private var pageAll: Int = 0
+    private var pageReceived: Int = 0
+    private var pageSent: Int = 0
+    
+    private var canLoadMoreAll: Bool = true
+    private var canLoadMoreReceived: Bool = true
+    private var canLoadMoreSent: Bool = true
+    
+    private var isLoadingChanged: Bool = false
+    private var filterType : TransactionType = .All
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.prompt = "Transaction History".localized
+        navigationItem.hidesBackButton = true
+        
+        segment.sizeToFit()
+        segment.selectedSegmentIndex = 0
+        if #available(iOS 13.0, *) {
+            segment.largeContentTitle = "Transaction History".localized
+            segment.selectedSegmentTintColor = ThemeManager.shared.primary
+        } else {
+           segment.tintColor = ThemeManager.shared.primary
+        }
+        segment.setTitleTextAttributes(
+            [
+                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15),
+                NSAttributedString.Key.foregroundColor: UIColor.white
+            ],
+            for: .selected
+        )
+        segment.setTitleTextAttributes(
+            [
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15),
+                NSAttributedString.Key.foregroundColor: ThemeManager.shared.textSection
+            ],
+            for: .normal
+        )
+        segment.addTarget(self, action: #selector(self.segmentedValueChanged(_:)), for: .valueChanged)
+        navigationItem.titleView = segment
+        
         setupNoticeEmptyView()
         definesPresentationContext = true
-        // Add Refresh Control to Table View
-        if #available(iOS 10.0, *) {
-            self.tableView?.refreshControl = refreshControl
-        } else {
-            self.tableView?.addSubview(refreshControl)
-        }
-        self.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        self.tableView?.refreshControl = refreshControl
         self.tableView.applyFooterLoadingView()
         
         tableView.register(UINib(nibName: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
-        setLayerBorder()
+        
         eventHandler?.loadTokenInfo()
-        loadHistoryWithPage(page: currentPage)
+        loadHistoryWithPage()
     }
     
     @objc func refresh(_ sender: Any? = nil) {
-        loadHistoryWithPage(page: 0)
-        if let refreshControl = sender as? UIRefreshControl, refreshControl.isRefreshing {
-            refreshControl.endRefreshing()
-        }
-//        updateDisplayButtons()
-//        filterContentForType()
+        pageCollection(0)
+        loadHistoryWithPage()
     }
     
-    func loadHistoryWithPage(page: Int) {
-        eventHandler?.updateDisplayData(page: page)
-        loadingPage = page
-    }
-    
-    func setLayerBorder() {
-        btnFloatingAll.roundedCircle()
-        btnFloatingReceived.roundedCircle()
-        btnFloatingSent.roundedCircle()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = "Transaction History".localized
-        // Fix issue: Back button show up after going back from transaction detail controller
-        self.navigationItem.hidesBackButton = true
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    // MARK: - Private instance methods
-    
-    func filterContentForType(_ type: TransactionType? = nil) {
-        if collection == nil || collection?.displayItems.count == 0 {
-            return
-        }
-        isFiltering = false
-        if type != nil {
-            isFiltering = true
-            filteredItems = (collection?.filterByTransactionType(type!))!
-        }
-        tableView.reloadData()
+    func loadHistoryWithPage() {
+        eventHandler?.updateDisplayData(page: pageCollection(), type: filterType)
     }
     
     // MARK: Empty View
@@ -163,6 +150,72 @@ class TxHistoryViewController: MozoBasicViewController {
             ])
     }
     
+    private func dataCollection() -> TxHistoryDisplayCollection? {
+        switch filterType {
+        case .Received:
+            return dataReceived
+        case .Sent:
+            return dataSent
+        default:
+            return dataAll
+        }
+    }
+    
+    private func dataCollection(_ newData: TxHistoryDisplayCollection) {
+        switch filterType {
+        case .Received:
+            dataReceived = newData
+        case .Sent:
+            dataSent = newData
+        default:
+            dataAll = newData
+        }
+    }
+    
+    private func pageCollection() -> Int {
+        switch filterType {
+        case .Received:
+            return pageReceived
+        case .Sent:
+            return pageSent
+        default:
+            return pageAll
+        }
+    }
+    
+    private func pageCollection(_ newPage: Int) {
+        switch filterType {
+        case .Received:
+            pageReceived = newPage
+        case .Sent:
+            pageSent = newPage
+        default:
+            pageAll = newPage
+        }
+    }
+    
+    private func canLoadMore() -> Bool {
+        switch filterType {
+        case .Received:
+            return canLoadMoreReceived
+        case .Sent:
+            return canLoadMoreSent
+        default:
+            return canLoadMoreAll
+        }
+    }
+    
+    private func canLoadMore(_ loadMore: Bool) {
+        switch filterType {
+        case .Received:
+            canLoadMoreReceived = loadMore
+        case .Sent:
+            canLoadMoreSent = loadMore
+        default:
+            canLoadMoreAll = loadMore
+        }
+    }
+    
     @objc func touchBtnGoToWallet() {
         if let navigationController = self.navigationController as? MozoNavigationController, let coreEventHandler = navigationController.coreEventHandler {
             coreEventHandler.requestForCloseAllMozoUIs(nil)
@@ -170,87 +223,43 @@ class TxHistoryViewController: MozoBasicViewController {
     }
     
     func checkShowNoContent() {
-        if self.collection?.displayItems.count ?? 0 > 0 {
-            tableView.backgroundView = nil
-            floatingView.isHidden = false
-            floatingViewHeightConstraint.constant = 111
-        } else {
-            tableView.backgroundView = noticeEmptyView
-            floatingView.isHidden = true
-            floatingViewHeightConstraint.constant = 0
+        tableView.backgroundView = (dataCollection()?.displayItems.count ?? 0) > 0 ? noticeEmptyView : nil
+    }
+    
+    @objc func segmentedValueChanged(_ sender:UISegmentedControl!) {
+        switch sender.selectedSegmentIndex {
+        case 1:
+            filterType = .Received
+        case 2:
+            filterType = .Sent
+        default:
+            filterType = .All
         }
-    }
-    
-    // MARK: Change display of buttons
-    func updateDisplayButtons(_ type: TransactionType? = nil) {
-        currentFilterType = type
-        if type == nil {
-            // All
-            btnFloatingAll.backgroundColor = ThemeManager.shared.main
-            btnFloatingAll.setTitleColor(.white, for: .normal)
-            btnFloatingReceived.backgroundColor = ThemeManager.shared.disable
-            btnFloatingReceived.setTitleColor(ThemeManager.shared.textSection, for: .normal)
-            btnFloatingSent.backgroundColor = ThemeManager.shared.disable
-            btnFloatingSent.setTitleColor(ThemeManager.shared.textSection, for: .normal)
-        } else if type == .Received {
-            // Received
-            btnFloatingAll.backgroundColor = ThemeManager.shared.disable
-            btnFloatingAll.setTitleColor(ThemeManager.shared.textSection, for: .normal)
-            btnFloatingReceived.backgroundColor = ThemeManager.shared.main
-            btnFloatingReceived.setTitleColor(.white, for: .normal)
-            btnFloatingSent.backgroundColor = ThemeManager.shared.disable
-            btnFloatingSent.setTitleColor(ThemeManager.shared.textSection, for: .normal)
+        tableView.refreshControl?.beginRefreshing()
+        isLoadingChanged = true
+        tableView.reloadData()
+        
+        if dataCollection() == nil {
+            loadHistoryWithPage()
         } else {
-            // Sent
-            btnFloatingAll.backgroundColor = ThemeManager.shared.disable
-            btnFloatingAll.setTitleColor(ThemeManager.shared.textSection, for: .normal)
-            btnFloatingReceived.backgroundColor = ThemeManager.shared.disable
-            btnFloatingReceived.setTitleColor(ThemeManager.shared.textSection, for: .normal)
-            btnFloatingSent.backgroundColor = ThemeManager.shared.main
-            btnFloatingSent.setTitleColor(.white, for: .normal)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
+                self.isLoadingChanged = false
+                self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
+            })
         }
-    }
-    
-    // MARK: Floating view actions
-    @IBAction func touchedBtnFloatingAll(_ sender: Any) {
-        updateDisplayButtons()
-        filterContentForType()
-    }
-    
-    @IBAction func touchedBtnFloatingReceived(_ sender: Any) {
-        updateDisplayButtons(.Received)
-        filterContentForType(.Received)
-    }
-    
-    @IBAction func toucheBtnFloatingSent(_ sender: Any) {
-        updateDisplayButtons(.Sent)
-        filterContentForType(.Sent)
     }
 }
 // MARK: - Table View
 extension TxHistoryViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        checkShowNoContent()
-        return collection != nil ? 1 : 0
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering {
-            return filteredItems.count
-        }
-
-        return collection?.displayItems.count ?? 0
+        return isLoadingChanged ? 0 : (dataCollection()?.displayItems.count ?? 0)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, for: indexPath) as! TxHistoryTableViewCell
-        let item: TxHistoryDisplayItem
-        if isFiltering {
-            item = filteredItems[indexPath.row]
-        } else {
-            item = (collection?.displayItems[indexPath.row])!
-        }
-        cell.txHistory = item
+        cell.type = filterType
+        cell.txHistory = dataCollection()?.displayItems.getElement(indexPath.row)
         return cell
     }
     
@@ -262,8 +271,8 @@ extension TxHistoryViewController: UITableViewDataSource {
 extension TxHistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let selectedItem = isFiltering ? filteredItems[indexPath.row] : collection?.displayItems[indexPath.row], let tokenInfo = tokenInfo {
-            eventHandler?.selectTxHistoryOnUI(selectedItem, tokenInfo: tokenInfo)
+        if let selectedItem = dataCollection()?.displayItems.getElement(indexPath.row), let tokenInfo = tokenInfo {
+            eventHandler?.selectTxHistoryOnUI(selectedItem, tokenInfo: tokenInfo, type: filterType)
         }
     }
 }
@@ -274,21 +283,21 @@ extension TxHistoryViewController : TxHistoryViewInterface {
     }
     
     func showTxHistoryDisplayData(_ data: TxHistoryDisplayCollection, forPage: Int) {
+        isLoadingChanged = false
+        isLoadingMoreTH = false
+        segment.isEnabled = true
         tableView.tableFooterView?.isHidden = true
-        if forPage > currentPage {
-            isLoadingMoreTH = false
-            if data.displayItems.count > 0 {
-                // Append to current collection
-                collection?.appendCollection(data)
-                currentPage = forPage
-            }
+        
+        canLoadMore(data.displayItems.count == Configuration.PAGING_SIZE)
+        
+        if pageCollection() == 0 {
+            dataCollection(data)
         } else {
-            currentPage = 0
-            isFiltering = false
-            collection = data
+            dataCollection()?.appendCollection(data)
         }
-        // Check current filter type
-        filterContentForType(currentFilterType)
+        
+        tableView.reloadData()
+        tableView.refreshControl?.endRefreshing()
     }
     
     func showNoContentMessage() {
@@ -317,12 +326,12 @@ extension TxHistoryViewController: UIScrollViewDelegate {
         //Bottom Refresh
         if scrollView == tableView {
             if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
-                if !isLoadingMoreTH && collection != nil && (collection?.displayItems.count)! > 0 {
-                    tableView.tableFooterView?.isHidden = false
-                    let nextPage = currentPage + 1
-                    print("Load more transaction histories with next page: \(nextPage)")
+                if !isLoadingMoreTH && dataCollection() != nil && canLoadMore() {
                     isLoadingMoreTH = true
-                    loadHistoryWithPage(page: nextPage)
+                    segment.isEnabled = false
+                    tableView.tableFooterView?.isHidden = false
+                    pageCollection(pageCollection() + 1)
+                    loadHistoryWithPage()
                 }
             }
         }
@@ -334,10 +343,9 @@ extension TxHistoryViewController : PopupErrorDelegate {
     }
     
     func didTouchTryAgainButton() {
-        print("User try reload transaction history again.")
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
             self.eventHandler?.loadTokenInfo()
-            self.loadHistoryWithPage(page: self.loadingPage)
+            self.loadHistoryWithPage()
         }
     }
 }

@@ -143,6 +143,7 @@ public enum BalanceDisplayType {
 }
 
 public enum TransactionType {
+    case All
     case Sent
     case Received
     
@@ -150,6 +151,7 @@ public enum TransactionType {
         switch self {
         case .Sent: return "Sent"
         case .Received: return "Received"
+        default: return "All"
         }
     }
 }
@@ -233,11 +235,4 @@ public enum AirdropEventDiscoverType: String {
 public enum ParkingTicketStatusType: String {
     case SUCCESS = "SUCCESS"
     case NONE = "NONE"
-}
-
-public enum RetailerType: String {
-    case NORMAL = "NORMAL"
-    case BUILDING = "BUILDING"
-    case MERCHANT = "MERCHANT"
-    case CHAIN_OFFICE = "CHAIN_OFFICE"
 }

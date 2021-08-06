@@ -16,11 +16,18 @@ public extension ApiManager {
     /// - Parameters:
     ///   - address: the address
     ///   - page: the number of page data
-    ///   - size: the number of history item
-    func getListTxHistory(address: String, page: Int = 0, size: Int = 15) -> Promise<[TxHistoryDTO]> {
+    ///   - type: type of history
+    func getListTxHistory(address: String, page: Int = 0, type: TransactionType = .All) -> Promise<[TxHistoryDTO]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + TX_API_PATH + "txhistory/\(address)?page=\(page)&size=\(size)"
-            self.execute(.get, url: url)
+//            let url = Configuration.BASE_STORE_URL + TX_API_PATH + "txhistory/\(address)?page=\(page)&size=\(size)"
+            var api = URL(string: Configuration.BASE_STORE_URL + TX_API_PATH + "txhistory/\(address)")!
+            api.appendQueryItem(name: "page", value: String(page))
+            api.appendQueryItem(name: "size", value: String(Configuration.PAGING_SIZE))
+            if type != .All {
+                api.appendQueryItem(name: "isReceive", value: String(type == .Received))
+            }
+            
+            self.execute(.get, url: api.absoluteString)
                 .done { json -> Void in
                     // JSON info
                     print("Finish request to get list tx history, json response: \(json)")
