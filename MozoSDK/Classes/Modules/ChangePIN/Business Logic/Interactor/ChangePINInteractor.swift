@@ -39,30 +39,37 @@ class ChangePINInteractor: NSObject {
         _ = self.dataManager.updatePrivateKeys(onchainWallet)
     }
     
-    func manageChangePINForWallet(_ mnemonics: String, pin: String) {
-        var wallets = walletManager.createNewWallets(mnemonics: mnemonics)
-        if wallets.count == 2 {
-            let encryptedMnemonics = mnemonics.encrypt(key: pin)
-            
-            for i in 0..<wallets.count {
-                wallets[i].privateKey = wallets[i].privateKey.encrypt(key: pin)
+    func manageChangePINForWallet(_ encryptedSeedPhrase: String, currentPIN: String, pin: String) {
+        DispatchQueue.global(qos: .background).async { [self] in
+            let mnemonics = encryptedSeedPhrase.decrypt(key: currentPIN)
+            var wallets = walletManager.createNewWallets(mnemonics: mnemonics)
+            if wallets.count == 2 {
+                let encryptedMnemonics = mnemonics.encrypt(key: pin)
+                
+                for i in 0..<wallets.count {
+                    wallets[i].privateKey = wallets[i].privateKey.encrypt(key: pin)
+                }
+                
+                let offchainWallet = wallets[0]
+                let offchainAddress = offchainWallet.address
+                let onchainWallet = wallets[1]
+                let onchainAddress = onchainWallet.address
+                
+                let updatingWalletInfo = WalletInfoDTO(encryptSeedPhrase: encryptedMnemonics, offchainAddress: offchainAddress, onchainAddress: onchainAddress)
+                DispatchQueue.main.async {
+                    _ = apiManager.updateWalletsForChangingPIN(walletInfo: updatingWalletInfo).done { (userProfile) in
+                        let userDto = UserDTO(id: userProfile.userId, profile: userProfile)
+                        SessionStoreManager.saveCurrentUser(user: userDto)
+                        self.updateMnemonicAndPinForCurrentUser(wallets: wallets, mnemonic: encryptedMnemonics, pin: pin)
+                    }.catch { (error) in
+                        self.output?.changePINFailedWithError(error as? ConnectionError ?? .systemError)
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.output?.changePINFailedWithError(.systemError)
+                }
             }
-            
-            let offchainWallet = wallets[0]
-            let offchainAddress = offchainWallet.address
-            let onchainWallet = wallets[1]
-            let onchainAddress = onchainWallet.address
-            
-            let updatingWalletInfo = WalletInfoDTO(encryptSeedPhrase: encryptedMnemonics, offchainAddress: offchainAddress, onchainAddress: onchainAddress)
-            _ = apiManager.updateWalletsForChangingPIN(walletInfo: updatingWalletInfo).done { (userProfile) in
-                let userDto = UserDTO(id: userProfile.userId, profile: userProfile)
-                SessionStoreManager.saveCurrentUser(user: userDto)
-                self.updateMnemonicAndPinForCurrentUser(wallets: wallets, mnemonic: encryptedMnemonics, pin: pin)
-            }.catch { (error) in
-                self.output?.changePINFailedWithError(error as? ConnectionError ?? .systemError)
-            }
-        } else {
-            self.output?.changePINFailedWithError(.systemError)
         }
     }
 }
@@ -70,8 +77,7 @@ extension ChangePINInteractor: ChangePINInteractorInput {
     func changePIN(currentPIN: String, newPIN: String) {
         if let wallet = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo,
             let encryptedSeedPhrase = wallet.encryptSeedPhrase {
-            let mnemonics = encryptedSeedPhrase.decrypt(key: currentPIN)
-            self.manageChangePINForWallet(mnemonics, pin: newPIN)
+            self.manageChangePINForWallet(encryptedSeedPhrase, currentPIN: currentPIN, pin: newPIN)
         } else {
             // System error
             self.output?.changePINFailedWithError(.systemError)
