@@ -32,9 +32,9 @@ internal enum ServiceType: String {
     var socket: String {
         switch self {
         case .PRODUCTION:
-            return "noti.mozotoken.com"
+            return "noti.mozocoin.io"
         case .STAGING:
-            return "staging.noti.mozotoken.com"
+            return "staging.noti.mozocoin.io"
         default:
             return "noti.cng.mozotoken.com"
         }
@@ -43,9 +43,9 @@ internal enum ServiceType: String {
     var auth: String {
         switch self {
         case .PRODUCTION:
-            return "login.mozotoken.com"
+            return "login.mozocoin.io"
         case .STAGING:
-            return "staging.login.mozotoken.com"
+            return "staging.login.mozocoin.io"
         default:
             return "login.cng.mozotoken.com"
         }
