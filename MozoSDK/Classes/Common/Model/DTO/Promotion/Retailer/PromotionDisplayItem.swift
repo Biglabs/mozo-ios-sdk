@@ -34,6 +34,8 @@ public class PromotionDisplayItem {
     public var priceOriginal: String?
     public var priceDiscount: String?
     
+    public var showUseButton: Bool = false
+    
     public init() {
         self.countActivated = 0
         self.countPurchased = 0
@@ -81,6 +83,7 @@ public class PromotionDisplayItem {
         self.target = promotionDTO.target
         self.priceOriginal = promotionDTO.priceOriginal
         self.priceDiscount = promotionDTO.priceDiscount
+        self.showUseButton = promotionDTO.showUseButton
     }
     
     public var dateFromTo: String {
