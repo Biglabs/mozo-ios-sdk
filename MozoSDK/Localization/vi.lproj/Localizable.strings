@@ -1278,11 +1278,6 @@
 "%d Promotion" = "%d Khuyến mãi";
 
 // First X Promotion
-"Select Promotion Type" = "Chọn loại khuyến mãi";
-"Time Based Limited Coupons" = "Giới hạn theo thời gian";
-"Limited Number Of Coupons" = "Giới hạn theo số lượng";
-"Number of coupons" = "Số lượng coupon";
-"Enter number of coupons" = "Nhập số lượng coupon";
 "Remaining Coupons: %@" = "Số coupon còn lại: %@";
 "Remaining Coupons" = "Số coupon còn lại";
 "%d Coupons Remaining" = "Còn %d coupon";
