@@ -104,10 +104,15 @@ extension AuthPresenter : AuthInteractorOutput {
     func finishBuildLogoutRequest() {
         let issuer = URL(string: Configuration.AUTH_ISSSUER)
         OIDAuthorizationService.discoverConfiguration(forIssuer: issuer!) { configuration, error in
+            guard let config = configuration else {
+                self.authModuleDelegate?.authModuleDidCancelLogout()
+                return
+            }
+            
             let redirectURI = URL(string: Configuration.authRedirectURL())
             guard let idToken = AuthDataManager.loadIdToken() else { return }
             let request = OIDEndSessionRequest(
-                configuration: configuration!,
+                configuration: config,
                 idTokenHint: idToken,
                 postLogoutRedirectURL: redirectURI!,
                 additionalParameters: nil
