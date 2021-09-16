@@ -1316,7 +1316,7 @@
 "Beacon Detail" = "Thông tin chi tiết của beacon";
 "Add Beacon" = "Thêm beacon";
 "Beacon Settings" = "Thiết lập beacon";
-"text_beacon_location_on_map" = "Vị trí của beacon trên bản đồ trong ứng dụng Mozo";
+"text_beacon_location_on_map" = "Vị trí beacon trên bản đồ của Mozo";
 "Beacon Range" = "Phạm vi Beacon";
 "Branch" = "Chi nhánh";
 "Beacon Name" = "Tên beacon";
