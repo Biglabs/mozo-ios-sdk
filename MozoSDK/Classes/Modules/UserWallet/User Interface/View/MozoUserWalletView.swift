@@ -225,10 +225,6 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         /**
          * Detect Onchain MozoX inside Offchain Wallet Address
          * */
-        /**
-         * Disable Detect On-chain feature for now
-         * Thursday, May 6, 2021 4:21:04 PM GMT+07:00
-         *
         _ = MozoSDK.getOffchainTokenInfo().done { (info) in
             self.offchainInfo = info
             if (info.convertToMozoXOnchain ?? false) == false {
@@ -259,7 +255,6 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         }.catch { (error) in
             self.topConstraint.constant = CGFloat(self.topConstraintDefault)
         }
-         */
     }
     
     func loadTokenInfo() {
