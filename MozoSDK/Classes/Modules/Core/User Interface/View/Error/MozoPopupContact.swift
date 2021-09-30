@@ -81,7 +81,7 @@ class MozoPopupContact: MozoView {
         if tappedImage == imgTelegram {
             urlString = appType == .Shopper ? "https://t.me/MozoX_App" : "https://t.me/MozoX_Retailer"
         } else if tappedImage == imgZalo {
-            urlString = "https://zalo.me/428563224447178063"
+            urlString = "https://zalo.me/4501855982660092369"
         }
         guard let url = URL(string: urlString) else { return }
         UIApplication.shared.open(url)
