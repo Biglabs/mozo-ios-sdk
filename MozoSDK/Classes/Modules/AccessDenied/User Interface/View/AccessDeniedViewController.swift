@@ -88,7 +88,7 @@ class AccessDeniedViewController: UIViewController {
         if tappedImage == imgTelegram {
             urlString = "https://t.me/MozoXRetailerApp"
         } else if tappedImage == imgZalo {
-            urlString = "https://zalo.me/428563224447178063"
+            urlString = "https://zalo.me/4501855982660092369"
         }
         openLink(link: urlString)
     }
