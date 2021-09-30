@@ -311,6 +311,7 @@ extension CorePresenter : CoreInteractorOutput {
     
     func didReceiveAuthorizationRequired() {
         print("CorePresenter - Did receive authorization required")
+        isProcessing = false
         if let viewController = DisplayUtils.getTopViewController(), !viewController.isKind(of: WaitingViewController.self) {
             self.authDelegate?.mozoDidExpiredToken()
         } else {
