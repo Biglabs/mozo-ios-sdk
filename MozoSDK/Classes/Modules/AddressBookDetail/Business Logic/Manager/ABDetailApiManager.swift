@@ -12,7 +12,7 @@ import SwiftyJSON
 public extension ApiManager {
     func updateAddressBook(_ addressBook: AddressBookDTO, isCreateNew: Bool) -> Promise<AddressBookDTO?> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + ADR_BOOK_API_PATH
+            let url = Configuration.BASE_STORE_URL + ADR_BOOK_API_PATH
             let param = addressBook.toJSON()
             self.execute((isCreateNew ? .post : .put), url: url, parameters: param)
                 .done { json -> Void in

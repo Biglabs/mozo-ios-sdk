@@ -1321,7 +1321,7 @@
 "Beacon Detail" = "Thông tin chi tiết của beacon";
 "Add Beacon" = "Thêm beacon";
 "Beacon Settings" = "Thiết lập beacon";
-"text_beacon_location_on_map" = "Vị trí của beacon trên bản đồ trong ứng dụng Mozo";
+"text_beacon_location_on_map" = "Vị trí beacon trên bản đồ của Mozo";
 "Beacon Range" = "Phạm vi Beacon";
 "Branch" = "Chi nhánh";
 "Beacon Name" = "Tên beacon";
@@ -1424,8 +1424,8 @@ Mẹo:<br/>
 "faq_shopper_7_answer" = "Xin vui lòng liên lạc với đội ngũ hỗ trợ Mozo theo các kênh sau:<br/>
 <a href=\"https://t.me/MozoXRetailerApp\">Telegram</a><br/>
 <a href=\"https://open.kakao.com/o/g6tvra5\">Kakao Talk</a><br/>
-<a href=\"https://zalo.me/428563224447178063\">Zalo</a><br/>
-<a href=\"https://www.facebook.com/mozocoin.io\">Facebook</a><br/>
+<a href=\"https://zalo.me/4501855982660092369\">Zalo</a><br/>
+<a href=\"https://www.facebook.com/MozoXVietNam\">Facebook</a><br/>
 <a href=\"https://twitter.com/MozoToken\">Twitter</a><br/>
 <br/>
 Hoặc gởi email đến <a href=\"mailto:support@mozocoin.io\">support@mozocoin.io</a>";
@@ -1472,19 +1472,19 @@ Khách hàng sẽ dùng ứng dụng Mozo Người dùng để duyệt, tìm ki�
 "faq_retailer_16_answer" = "Xin vui lòng liên lạc với đội ngũ hỗ trợ Mozo theo các kênh sau:<br/>
 <a href=\"https://t.me/MozoXRetailerApp\">Telegram</a><br/>
 <a href=\"https://open.kakao.com/o/g6tvra5\">Kakao Talk</a><br/>
-<a href=\"https://zalo.me/428563224447178063\">Zalo</a><br/>
-<a href=\"https://www.facebook.com/mozocoin.io\">Facebook</a><br/>
+<a href=\"https://zalo.me/4501855982660092369\">Zalo</a><br/>
+<a href=\"https://www.facebook.com/MozoXVietNam\">Facebook</a><br/>
 <a href=\"https://twitter.com/MozoToken\">Twitter</a><br/>
 <br/>
 Hoặc gởi email đến <a href=\"mailto:support@mozocoin.io\">support@mozocoin.io</a>";
 "faq_retailer_17_answer" = "PIN là một dạng mã số cá nhân. PIN tương tự như mật khẩu dùng để bảo vệ tài sản của bạn khỏi những truy cập không được phép.</a>
 Trong Mozo, mật khẩu dùng để bảo vệ tài khoản của bạn (số điện thoại và được yêu cầu nhập khi bạn đăng nhập). PIN dùng để bảo vệ Ví của bạn. Bạn sẽ bị yêu cầu nhập PIN mỗi khi thực hiện lệnh chuyển Mozo.";
-"faq_retailer_18_answer" = "Bạn có thể MUA Mozo tại <a href=\"https://mozocoin.io/retailer-portal/buy-mozo-by-crypto\">https://mozocoin.io/retailer-portal/buy-mozo-by-crypto</a><br/>
+"faq_retailer_18_answer" = "Bạn có thể MUA Mozo tại <a href=\"https://mozotoken.com/portal/buy-mozo-by-crypto\">https://mozotoken.com/portal/buy-mozo-by-crypto</a><br/>
 <br/>
 Bạn phải chắc mình đã có \"Ví\" trên ứng dụng Mozo trước khi MUA.<br/>
 Nếu bạn chưa có \"Ví\", xin vui lòng theo hướng dẫn tại:<br/>
-- <a href=\"https://mozocoin.io/retailer/help-center#how-to-sign-up-on-mozox-retailer-app\">Ứng dụng Mozo Kinh doanh</a><br/>
-- <a href=\"https://mozocoin.io#home-faq-shopper-6\">Ứng dụng Mozo Người dùng</a><br/>
+- <a href=\"https://mozotoken.com/help-center?section=faq-retailer#how-to-sign-up-on-mozox-retailer-app\">Ứng dụng Mozo Kinh doanh</a><br/>
+- <a href=\"https://mozotoken.com/help-center?section=faq-shopper#home-faq-shopper-6\">Ứng dụng Mozo Người dùng</a><br/>
 <br/>
 Sau khi đăng nhập hoàn tất, quay trở lại để mua.<br/>
 <br/>

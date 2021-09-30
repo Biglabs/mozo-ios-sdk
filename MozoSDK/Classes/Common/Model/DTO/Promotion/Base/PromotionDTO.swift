@@ -44,6 +44,9 @@ public class PromotionDTO {
     // MARK: Appearance of promotion
     public var international: Bool = true
     
+    // MARK: Optional to show 'USE' button
+    public var showUseButton: Bool = false
+    
     public init() {
         // MARK: empty constructor
     }
@@ -99,6 +102,7 @@ public class PromotionDTO {
         self.international = json["international"].bool ?? true
         self.priceOriginal = json["priceBeforeDiscount"].string
         self.priceDiscount = json["priceAfterDiscount"].string
+        self.showUseButton = json["showUseButton"].bool ?? false
     }
     
     public func toJSON() -> Dictionary<String, Any> {

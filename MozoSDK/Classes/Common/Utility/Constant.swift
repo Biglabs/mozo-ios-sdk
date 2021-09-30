@@ -168,14 +168,6 @@ public enum MozoNetwork {
         case .MainNet: return "MainNet"
         }
     }
-    
-    public var serviceType: ServiceType {
-        switch self {
-        case .DevNet: return .DEV
-        case .TestNet: return .STAGING
-        case .MainNet: return .PRODUCTION
-        }
-    }
 }
 
 public enum CurrencyType: String {

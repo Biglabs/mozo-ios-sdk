@@ -11,7 +11,7 @@ import SwiftyJSON
 extension ApiManager {
     public func getGasPrices() -> Promise<GasPriceDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + "/getGasPrices"
+            let url = Configuration.BASE_SOLO + "/getGasPrices"
             self.execute(.get , url: url)
                 .done { json -> Void in
                     // JSON info

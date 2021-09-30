@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
 The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaining authentication, authorization with Mozo Services, receiving Mozo Tokens via beacons and buying, selling, transferring Mozo. It is also supporting UI components for authentication and buying, selling, transferring Mozo.
                       DESC
 
-  s.homepage         = "https://mozocoin.io"
+  s.homepage         = "https://mozotoken.com"
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => "MIT", :file => "LICENSE" }
   s.authors          = { "Mozo Developers" => "developer@mozocoin.io" }

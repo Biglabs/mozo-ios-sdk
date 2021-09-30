@@ -42,7 +42,7 @@ extension ApiManager {
     ///
     public func getEthAndOnchainExchangeRateInfo() -> Promise<EthRateInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_URL + "/exchange/rateETHAndToken?locale=\(Configuration.LOCALE)"
+            let url = Configuration.BASE_SOLO + "/exchange/rateETHAndToken?locale=\(Configuration.LOCALE)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
