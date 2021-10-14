@@ -43,7 +43,7 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get amount of collected coin from time \(startTime) to time \(endTime), json response: \(json)")
+                    "Finish request to get amount of collected coin from time \(startTime) to time \(endTime), json response: \(json)".log()
                     seal.fulfill(UserSummary(json: SwiftyJSON.JSON(json)))
                 }
                 .catch { error in

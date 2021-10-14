@@ -270,7 +270,6 @@
 "My Store" = "Cửa hàng";
 "More" = "Thêm";
 "Event List" = "Danh sách chương trình";
-"Beacon List" = "Danh sách Beacon";
 "Add Sub-Account" = "Thêm tài khoản phụ";
 "Add" = "Thêm";
 "Log Out" = "Đăng xuất";
@@ -1316,7 +1315,6 @@
 // Multiple Beacon
 "No. Thanks" = "Không. Cảm ơn";
 "Yes, go to Beacon List" = "Có, chuyển đến danh sách beacon";
-"Beacon" = "Beacon";
 "No Beacon added yet" = "Chưa có beacon nào.";
 "Beacon Detail" = "Thông tin chi tiết của beacon";
 "Add Beacon" = "Thêm beacon";

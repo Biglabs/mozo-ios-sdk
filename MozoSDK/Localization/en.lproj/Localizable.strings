@@ -269,7 +269,6 @@
 "My Store" = "My Store";
 "More" = "More";
 "Event List" = "Event List";
-"Beacon List" = "Beacon List";
 "Add Sub-Account" = "Add Sub-Account";
 "Add" = "Add";
 "Log Out" = "Log Out";
@@ -1315,7 +1314,6 @@
 // Multiple Beacon
 "No. Thanks" = "No. Thanks";
 "Yes, go to Beacon List" = "Yes, go to Beacon List";
-"Beacon" = "Beacon";
 "No Beacon added yet" = "No Beacon added yet";
 "Beacon Detail" = "Beacon Detail";
 "Add Beacon" = "Add Beacon";

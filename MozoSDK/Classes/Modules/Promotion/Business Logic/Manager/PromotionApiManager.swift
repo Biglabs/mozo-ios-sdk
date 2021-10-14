@@ -22,13 +22,13 @@ public extension ApiManager {
                 self.execute(.get, url: url)
                     .done { json -> Void in
                         // JSON info
-                        print("Finish request to get Promotion list with type \(statusRequest), json response: \(json)")
+                        "Finish request to get Promotion list with type \(statusRequest), json response: \(json)".log()
                         let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                         let array = PromotionDTO.arrayFromJson(jobj)
                         seal.fulfill(array)
                     }
                     .catch { error in
-                        print("Error when request get Promotion list with type \(statusRequest): " + error.localizedDescription)
+                        "Error when request get Promotion list with type \(statusRequest): \(error.localizedDescription)".log()
                         seal.reject(error)
                     }
                     .finally {
@@ -44,13 +44,13 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get Promotion list with type \(statusRequest), json response: \(json)")
+                    "Finish request to get Promotion list with type \(statusRequest), json response: \(json)".log()
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let array = PromotionDTO.arrayFromJson(jobj)
                     seal.fulfill(array)
                 }
                 .catch { error in
-                    print("Error when request get Promotion list with type \(statusRequest): " + error.localizedDescription)
+                    "Error when request get Promotion list with type \(statusRequest): \(error.localizedDescription)".log()
                     seal.reject(error)
                 }
                 .finally {
@@ -141,13 +141,13 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get Shopper promotion list with type \(type.rawValue), json response: \(json)")
+                    "Finish request to get Shopper promotion list with type \(type.rawValue), json response: \(json)".log()
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let array = PromotionStoreDTO.arrayFrom(jobj)
                     seal.fulfill(array)
                 }
                 .catch { error in
-                    print("Error when request get Shopper promotion list with type \(type.rawValue): " + error.localizedDescription)
+                    "Error when request get Shopper promotion list with type \(type.rawValue): \(error.localizedDescription)".log()
                     seal.reject(error)
                 }
                 .finally {
@@ -185,13 +185,13 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get Scanned Promotion list, json response: \(json)")
+                    "Finish request to get Scanned Promotion list, json response: \(json)".log()
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let array = PromotionCodeInfoDTO.arrayFrom(jobj)
                     seal.fulfill(array)
                 }
                 .catch { error in
-                    print("Error when request get scanned Promotion list: " + error.localizedDescription)
+                    "Error when request get scanned Promotion list: \(error.localizedDescription)".log()
                     seal.reject(error)
                 }
                 .finally {
@@ -208,13 +208,13 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get Shopper promotion history, json response: \(json)")
+                    "Finish request to get Shopper promotion history, json response: \(json)".log()
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let array = PromotionStoreDTO.arrayFrom(jobj)
                     seal.fulfill(array)
                 }
                 .catch { error in
-                    print("Error when request get Shopper promotion history: " + error.localizedDescription)
+                    "Error when request get Shopper promotion history: \(error.localizedDescription)".log()
                     seal.reject(error)
                 }
                 .finally {
@@ -233,13 +233,13 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get Shopper promotion purchased, json response: \(json)")
+                    "Finish request to get Shopper promotion purchased, json response: \(json)".log()
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let array = PromotionStoreDTO.arrayFrom(jobj)
                     seal.fulfill(array)
                 }
                 .catch { error in
-                    print("Error when request get Shopper promotion purchased: " + error.localizedDescription)
+                    "Error when request get Shopper promotion purchased: \(error.localizedDescription)".log()
                     seal.reject(error)
                 }
                 .finally {
@@ -259,12 +259,12 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get Shopper promotion running, json response: \(json)")
+                    "Finish request to get Shopper promotion running, json response: \(json)".log()
                     let jobj = SwiftyJSON.JSON(json)
                     seal.fulfill(jobj)
                 }
                 .catch { error in
-                    print("Error when request get Shopper promotion running: " + error.localizedDescription)
+                    "Error when request get Shopper promotion running: \(error.localizedDescription)".log()
                     seal.reject(error)
                 }
                 .finally {
@@ -283,13 +283,13 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get Shopper promotion saved, json response: \(json)")
+                    "Finish request to get Shopper promotion saved, json response: \(json)".log()
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let array = PromotionStoreDTO.arrayFrom(jobj)
                     seal.fulfill(array)
                 }
                 .catch { error in
-                    print("Error when request get Shopper promotion saved: " + error.localizedDescription)
+                    "Error when request get Shopper promotion saved: \(error.localizedDescription)".log()
                     seal.reject(error)
                 }
                 .finally {
@@ -385,13 +385,13 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get Shopper promotion in store [\(storeId)], with type [\(type)], json response: \(json)")
+                    "Finish request to get Shopper promotion in store [\(storeId)], with type [\(type)], json response: \(json)".log()
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let array = PromotionStoreDTO.arrayFrom(jobj)
                     seal.fulfill(array)
                 }
                 .catch { error in
-                    print("Error when request get Shopper promotion in store [\(storeId)], with type [\(type)]: " + error.localizedDescription)
+                    "Error when request get Shopper promotion in store [\(storeId)], with type [\(type)]: \(error.localizedDescription)".log()
                     seal.reject(error)
                 }
                 .finally {

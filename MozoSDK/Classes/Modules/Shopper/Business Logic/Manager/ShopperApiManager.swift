@@ -26,13 +26,13 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get GPS beacons, json response: \(json)")
+                    "Finish request to get GPS beacons, json response: \(json)".log()
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let list = (jobj.array ?? []).filter({ $0.string != nil }).map({ $0.string! })
                     seal.fulfill(list)
                 }
                 .catch { error in
-                    print("Error when request get GPS beacons: " + error.localizedDescription)
+                    "Error when request get GPS beacons: \(error.localizedDescription)".log()
                     seal.reject(error)
                 }
                 .finally {
@@ -199,7 +199,6 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get covid zones nearby, json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let list = CovidZone.arrayFromJson(jobj)
                     seal.fulfill(list)

@@ -270,7 +270,6 @@
 "My Store" = "상점";
 "More" = "추가";
 "Event List" = "이벤트 리스트";
-"Beacon List" = "Beacon 리스트";
 "Add Sub-Account" = "하위 계정 추가";
 "Add" = "추가";
 "Log Out" = "로그 아웃";
@@ -1323,7 +1322,6 @@
 // Multiple Beacon
 "No. Thanks" = "아니요. 감사합니다";
 "Yes, go to Beacon List" = "네, Beacon 리스트로 이동합니다";
-"Beacon" = "Beacon";
 "No Beacon added yet" = "추가된 Beacon 없음";
 "Beacon Detail" = "Beacon 디테일";
 "Add Beacon" = "Beacon 추가";

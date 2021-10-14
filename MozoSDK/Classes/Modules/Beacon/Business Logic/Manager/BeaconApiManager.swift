@@ -76,7 +76,7 @@ extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get list beacons, json response: \(json)")
+                    "Finish request to get list beacons, json response: \(json)".log()
                     seal.fulfill(json)
                 }
                 .catch { error in
