@@ -54,7 +54,6 @@ protocol CoreInteractorService {
     func registerMoreBeacon(parameters: Any?) -> Promise<[String: Any]>
     func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]>
     func deleteBeacon(beaconId: Int64) -> Promise<Bool>
-    func getListBeacons() -> Promise<[String : Any]>
     func getRetailerInfo() -> Promise<[String : Any]>
     func addSalePerson(parameters: Any?) -> Promise<[String: Any]>
     

@@ -105,10 +105,6 @@ public class MozoSDK {
         return (moduleDependencies.deleteBeacon(beaconId: beaconId))
     }
     
-    public static func getListBeacons() -> Promise<[String : Any]> {
-        return (moduleDependencies.getListBeacons())
-    }
-    
     public static func getRetailerInfo() -> Promise<[String : Any]> {
         return (moduleDependencies.getRetailerInfo())
     }

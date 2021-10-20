@@ -122,10 +122,6 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.deleteBeacon(beaconId: beaconId))!
     }
     
-    func getListBeacons() -> Promise<[String : Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getListBeacons())!
-    }
-    
     func getRetailerInfo() -> Promise<[String : Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerInfo())!
     }

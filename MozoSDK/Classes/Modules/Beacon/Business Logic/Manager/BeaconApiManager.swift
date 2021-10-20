@@ -69,30 +69,4 @@ extension ApiManager {
             }
         }
     }
-    
-    func getListBeacons() -> Promise<[String: Any]> {
-        return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_BEACON_API_PATH
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    "Finish request to get list beacons, json response: \(json)".log()
-                    seal.fulfill(json)
-                }
-                .catch { error in
-                    print("Error when request get list beacons: " + error.localizedDescription)
-                    //Handle error or give feedback to the user
-                    guard let err = error as? ConnectionError else {
-                        if error is AFError {
-                            return seal.fulfill([:])
-                        }
-                        return seal.reject(error)
-                    }
-                    seal.reject(err)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
 }
