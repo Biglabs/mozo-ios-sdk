@@ -145,7 +145,7 @@ public extension String {
     }
     
     func log() {
-        if MozoSDK.network() != .MainNet {
+        if MozoSDK.network != .MainNet {
             print("[Mozo] \(self)")
         }
     }

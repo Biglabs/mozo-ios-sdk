@@ -12,7 +12,21 @@ import PromiseKit
 import SwiftyJSON
 
 public class MozoSDK {
+    // MARK: - Properties
     private static var moduleDependencies: ModuleDependencies!
+
+    private (set) static var network: MozoNetwork = .TestNet {
+        didSet {
+            moduleDependencies.authWireframe.authPresenter?.authInteractor?.updateNetwork(network)
+        }
+    }
+    
+    private (set) static var appType: AppType = .Shopper {
+        didSet {
+            moduleDependencies.webSocketManager.appType = appType
+            moduleDependencies.authWireframe.authPresenter?.authInteractor?.updateClientId(appType)
+        }
+    }
     
     public static func configure(network: MozoNetwork = .TestNet, appType: AppType = .Shopper) {
         switch network {
@@ -21,8 +35,8 @@ public class MozoSDK {
             case .MainNet: Configuration.BASE_DOMAIN = .PRODUCTION
         }
         moduleDependencies = ModuleDependencies()
-        moduleDependencies.network = network
-        moduleDependencies.appType = appType
+        self.network = network
+        self.appType = appType
     }
     
     public static func setAuthDelegate(_ delegate: AuthenticationDelegate) {
@@ -510,9 +524,5 @@ public class MozoSDK {
     }
     public static func sendMessage(id: Int64, message: String?, images: [String]?, userSend: Bool) -> Promise<Any> {
         return moduleDependencies.sendMessage(id: id, message: message, images: images, userSend: userSend)
-    }
-    
-    internal static func network() -> MozoNetwork {
-        return moduleDependencies?.network ?? .TestNet
     }
 }

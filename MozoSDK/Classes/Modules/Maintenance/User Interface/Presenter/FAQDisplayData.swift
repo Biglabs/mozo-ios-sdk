@@ -7,7 +7,7 @@
 
 import Foundation
 class FAQDisplayData {
-    let displayItems = DisplayUtils.appType == .Shopper ? FAQDisplayData.allItemsShopper() : FAQDisplayData.allItemsRetailer()
+    let displayItems = MozoSDK.appType == .Shopper ? FAQDisplayData.allItemsShopper() : FAQDisplayData.allItemsRetailer()
     
     func randomItem() -> FAQDisplayItem {
         return displayItems.randomElement() ?? displayItems[0]

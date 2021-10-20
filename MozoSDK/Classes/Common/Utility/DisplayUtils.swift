@@ -7,8 +7,6 @@
 
 import Foundation
 public class DisplayUtils {
-    public static var appType = AppType.Shopper
-    
     public static func getExchangeTextFromAmount(_ amount: Double) -> String {
         let rateInfo = SessionStoreManager.exchangeRateInfo
         let curType = (rateInfo?.currency ?? CurrencyType.USD.rawValue)
@@ -144,7 +142,7 @@ public class DisplayUtils {
     public static func displayMozoErrorWithContact(_ error: String, delegate: MozoPopupContactDelegate? = nil) {
         if let parentView = UIApplication.shared.keyWindow {
             let mozoContactView = MozoPopupContact(frame: CGRect(x: 0, y: 0, width: 300, height: 340))
-            mozoContactView.appType = self.appType
+            mozoContactView.appType = MozoSDK.appType
             mozoContactView.clipsToBounds = false
             mozoContactView.dropShadow()
             mozoContactView.containerView.roundCorners(borderColor: .white, borderWidth: 1)

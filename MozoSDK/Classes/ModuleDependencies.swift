@@ -12,22 +12,6 @@ import SwiftyJSON
 import PromiseKit
 
 class ModuleDependencies {
-    // MARK: - Properties
-    public var network: MozoNetwork = .TestNet {
-        didSet {
-           authWireframe.authPresenter?.authInteractor?.updateNetwork(network)
-        }
-    }
-    
-    public var appType: AppType = .Shopper {
-        didSet {
-            DisplayUtils.appType = appType
-            webSocketManager.appType = appType
-            apiManager.appType = appType
-            authWireframe.authPresenter?.authInteractor?.updateClientId(appType)
-        }
-    }
-    
     let coreDataStore = CoreDataStore()
     let rootWireframe = RootWireframe()
     
@@ -57,7 +41,6 @@ class ModuleDependencies {
     let topUpWireframe = TopUpWireframe()
     let topUpWithdrawWireframe = TopUpWithdrawWireframe()
     
-    let apiManager = ApiManager()
     let webSocketManager = WebSocketManager()
     
     // MARK: Initialization
@@ -536,11 +519,11 @@ class ModuleDependencies {
         let corePresenter = CorePresenter()
         
         let anonManager = AnonManager()
-        anonManager.apiManager = apiManager
+        anonManager.apiManager = ApiManager.shared
         let userDataManager = UserDataManager()
         userDataManager.coreDataStore = coreDataStore
         
-        let coreInteractor = CoreInteractor(anonManager: anonManager, apiManager: apiManager, userDataManager: userDataManager)
+        let coreInteractor = CoreInteractor(anonManager: anonManager, apiManager: ApiManager.shared, userDataManager: userDataManager)
         coreInteractor.output = corePresenter
         
         let rdnInteractor = RDNInteractor(webSocketManager: webSocketManager)
@@ -575,7 +558,7 @@ class ModuleDependencies {
     func changePINDependencies(walletManager: WalletManager, dataManager: WalletDataManager) {
         let changePINPresenter = ChangePINPresenter()
         
-        let changePINInteractor = ChangePINInteractor(walletManager: walletManager, dataManager: dataManager, apiManager: apiManager)
+        let changePINInteractor = ChangePINInteractor(walletManager: walletManager, dataManager: dataManager, apiManager: ApiManager.shared)
         changePINInteractor.output = changePINPresenter
         
         changePINPresenter.interactor = changePINInteractor
@@ -614,7 +597,7 @@ class ModuleDependencies {
     func convertDependencies(signManager: TransactionSignManager) {
         let cvPresenter = ConvertPresenter()
         
-        let cvInteractor = ConvertInteractor(apiManager: apiManager, signManager: signManager)
+        let cvInteractor = ConvertInteractor(apiManager: ApiManager.shared, signManager: signManager)
         cvInteractor.output = cvPresenter
         
         cvPresenter.interactor = cvInteractor
@@ -630,7 +613,7 @@ class ModuleDependencies {
     func txProcessDependencies() {
         let tpPresenter = TxProcessPresenter()
         
-        let tpInteractor = TxProcessInteractor(apiManager: apiManager)
+        let tpInteractor = TxProcessInteractor(apiManager: ApiManager.shared)
         tpInteractor.output = tpPresenter
         
         tpPresenter.interactor = tpInteractor
@@ -650,7 +633,7 @@ class ModuleDependencies {
         let abdPresenter = ABDetailPresenter()
         
         let abdInteractor = ABDetailInteractor()
-        abdInteractor.apiManager = apiManager
+        abdInteractor.apiManager = ApiManager.shared
         abdInteractor.output = abdPresenter
         
         abdPresenter.detailInteractor = abdInteractor
@@ -687,7 +670,7 @@ class ModuleDependencies {
     func transactionCompletionDependencies() {
         let txComPresenter = TxCompletionPresenter()
         
-        let txComInteractor = TxCompletionInteractor(apiManager: apiManager)
+        let txComInteractor = TxCompletionInteractor(apiManager: ApiManager.shared)
         txComInteractor.output = txComPresenter
         
         txComPresenter.completionInteractor = txComInteractor
@@ -700,7 +683,7 @@ class ModuleDependencies {
     func transactionHistoryDependencies() {
         let txhPresenter = TxHistoryPresenter()
         
-        let txhInteractor = TxHistoryInteractor(apiManager: apiManager)
+        let txhInteractor = TxHistoryInteractor(apiManager: ApiManager.shared)
         txhInteractor.output = txhPresenter
         
         txhPresenter.txhInteractor = txhInteractor
@@ -714,7 +697,7 @@ class ModuleDependencies {
     func transactionDependencies() {
         let txPresenter = TransactionPresenter()
         
-        let txInteractor = TransactionInteractor(apiManager: apiManager)
+        let txInteractor = TransactionInteractor(apiManager: ApiManager.shared)
         txInteractor.output = txPresenter
         
         let txDataManager = TransactionDataManager()
@@ -743,7 +726,7 @@ class ModuleDependencies {
         let authPresenter = AuthPresenter()
         
         let authManager = AuthManager()
-        authManager.apiManager = apiManager
+        authManager.apiManager = ApiManager.shared
         let authInteractor = AuthInteractor(authManager: authManager)
         authInteractor.output = authPresenter
         
@@ -762,7 +745,7 @@ class ModuleDependencies {
         let walletDataManager = WalletDataManager()
         walletDataManager.coreDataStore = coreDataStore
         
-        let walletInteractor = WalletInteractor(walletManager: walletManager, dataManager: walletDataManager, apiManager: apiManager)
+        let walletInteractor = WalletInteractor(walletManager: walletManager, dataManager: walletDataManager, apiManager: ApiManager.shared)
         walletInteractor.output = walletPresenter
         walletInteractor.autoOutput = walletPresenter
         
@@ -784,7 +767,7 @@ class ModuleDependencies {
     func resetPINDependencies(walletManager: WalletManager, dataManager: WalletDataManager) {
         let resetPINPresenter = ResetPINPresenter()
         
-        let resetPINInteractor = ResetPINInteractor(walletManager: walletManager, dataManager: dataManager, apiManager: apiManager)
+        let resetPINInteractor = ResetPINInteractor(walletManager: walletManager, dataManager: dataManager, apiManager: ApiManager.shared)
         resetPINInteractor.output = resetPINPresenter
         
         resetPINPresenter.interactor = resetPINInteractor
@@ -801,7 +784,7 @@ class ModuleDependencies {
         let adPresenter = AirdropPresenter()
         
         let adInteractor = AirdropInteractor()
-        adInteractor.apiManager = apiManager
+        adInteractor.apiManager = ApiManager.shared
         adInteractor.output = adPresenter
         adInteractor.signManager = signManager
         
@@ -817,7 +800,7 @@ class ModuleDependencies {
         let addPresenter = AirdropAddPresenter()
         
         let addInteractor = AirdropAddInteractor()
-        addInteractor.apiManager = apiManager
+        addInteractor.apiManager = ApiManager.shared
         addInteractor.output = addPresenter
         addInteractor.signManager = signManager
         
@@ -833,7 +816,7 @@ class ModuleDependencies {
         let withdrawPresenter = WithdrawPresenter()
         
         let withdrawInteractor = WithdrawInteractor()
-        withdrawInteractor.apiManager = apiManager
+        withdrawInteractor.apiManager = ApiManager.shared
         withdrawInteractor.output = withdrawPresenter
         withdrawInteractor.signManager = signManager
         
@@ -848,7 +831,7 @@ class ModuleDependencies {
     func paymentDependencies() {
         let paymentPresenter = PaymentPresenter()
         
-        let paymentInteractor = PaymentInteractor(apiManager: apiManager)
+        let paymentInteractor = PaymentInteractor(apiManager: ApiManager.shared)
         paymentInteractor.output = paymentPresenter
         
         paymentPresenter.interactor = paymentInteractor
@@ -863,7 +846,7 @@ class ModuleDependencies {
     func paymentQRDependencies() {
         let paymentQRPresenter = PaymentQRPresenter()
         
-        let paymentQRInteractor = PaymentQRInteractor(apiManager: apiManager)
+        let paymentQRInteractor = PaymentQRInteractor(apiManager: ApiManager.shared)
         paymentQRInteractor.output = paymentQRPresenter
         
         paymentQRPresenter.interactor = paymentQRInteractor
@@ -878,7 +861,7 @@ class ModuleDependencies {
         let redeemPresenter = RedeemPresenter()
         
         let redeemInteractor = RedeemInteractor()
-        redeemInteractor.apiManager = apiManager
+        redeemInteractor.apiManager = ApiManager.shared
         redeemInteractor.output = redeemPresenter
         redeemInteractor.signManager = signManager
         
@@ -894,7 +877,7 @@ class ModuleDependencies {
         let presenter = ABImportPresenter()
         
         let interactor = ABImportInteractor()
-        interactor.apiManager = apiManager
+        interactor.apiManager = ApiManager.shared
         interactor.output = presenter
         
         presenter.interactor = interactor
@@ -911,7 +894,7 @@ class ModuleDependencies {
     func topUpDependencies(signManager: TransactionSignManager) {
         let presenter = TopUpPresenter()
         
-        let interactor = TopUpInteractor(apiManager: apiManager)
+        let interactor = TopUpInteractor(apiManager: ApiManager.shared)
         interactor.signManager = signManager
         interactor.output = presenter
         
@@ -934,7 +917,7 @@ class ModuleDependencies {
         let presenter = TopUpWithdrawPresenter()
         
         let interactor = TopUpWithdrawInteractor()
-        interactor.apiManager = apiManager
+        interactor.apiManager = ApiManager.shared
         interactor.output = presenter
         interactor.signManager = signManager
         

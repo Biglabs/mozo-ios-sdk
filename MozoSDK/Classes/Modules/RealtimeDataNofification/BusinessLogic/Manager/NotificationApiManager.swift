@@ -13,7 +13,7 @@ import SwiftyJSON
 public extension ApiManager {
     func getListNotification(page: Int, size: Int) -> Promise<[WSMessage]> {
         return Promise { seal in
-            let appTypeText = appType.rawValue.uppercased()
+            let appTypeText = MozoSDK.appType.rawValue.uppercased()
             let params = ["size" : size,
                           "page" : page,
                           "appType" : appTypeText] as [String : Any]

@@ -34,7 +34,7 @@ class UpdateRequireViewController: UIViewController {
     }
         
     @IBAction func touchBtnUpdate(_ sender: Any) {
-        openLink(link: DisplayUtils.appType.appStoreUrl)
+        openLink(link: MozoSDK.appType.appStoreUrl)
     }
 }
 extension UpdateRequireViewController {

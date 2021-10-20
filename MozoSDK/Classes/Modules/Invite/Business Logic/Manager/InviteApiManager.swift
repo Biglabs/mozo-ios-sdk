@@ -12,7 +12,7 @@ let INVITE_API_PATH = "/invite"
 extension ApiManager {
     public func getInviteLink(locale: String, inviteAppType: AppType) -> Promise<InviteLinkDTO> {
         return Promise { seal in
-            let appShopper = self.appType == .Shopper
+            let appShopper = MozoSDK.appType == .Shopper
             let inviteShopper = inviteAppType == .Shopper
             let params = ["locale" : locale, "appShopper": appShopper, "inviteShopper" : inviteShopper] as [String : Any]
             let url = Configuration.BASE_STORE_URL + INVITE_API_PATH + "/getInviteLink"
@@ -61,7 +61,7 @@ extension ApiManager {
     
     public func updateCodeLinkInstallApp(codeString: String) -> Promise<InviteLinkDTO> {
         return Promise { seal in
-            let appShopper = self.appType == .Shopper
+            let appShopper = MozoSDK.appType == .Shopper
             let params = ["codeLink" : codeString, "appShopper": appShopper] as [String : Any]
             let url = Configuration.BASE_STORE_URL + INVITE_API_PATH + "/updateCodeLinkInstallApp"
             self.execute(.post, url: url, parameters: params)
