@@ -15,18 +15,20 @@ public class MozoSDK {
     // MARK: - Properties
     private static var moduleDependencies: ModuleDependencies!
 
-    private (set) static var network: MozoNetwork = .TestNet {
+    private(set) static var network: MozoNetwork = .TestNet {
         didSet {
             moduleDependencies.authWireframe.authPresenter?.authInteractor?.updateNetwork(network)
         }
     }
     
-    private (set) static var appType: AppType = .Shopper {
+    private(set) static var appType: AppType = .Shopper {
         didSet {
             moduleDependencies.webSocketManager.appType = appType
             moduleDependencies.authWireframe.authPresenter?.authInteractor?.updateClientId(appType)
         }
     }
+    
+    public private(set) static var homePage: String = "https://\(Configuration.BASE_DOMAIN.landingPage)"
     
     public static func configure(network: MozoNetwork = .TestNet, appType: AppType = .Shopper) {
         switch network {
