@@ -15,7 +15,7 @@ platform :ios, '11.0'
 use_frameworks!
 
 target 'MyApp' do
-  pod 'MozoSDK', '~> 2.0'
+  pod 'MozoSDK'
 end
 ```
 
