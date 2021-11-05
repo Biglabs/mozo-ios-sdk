@@ -146,7 +146,11 @@ class MozoOnchainWalletView: MozoView {
     }
     
     @objc func openEtherscan() {
-        guard let url = URL(string: "https://etherscan.io/address/\(btnAddress.titleLabel?.text ?? "")") else { return }
+        var etherscanDomain = "ropsten.etherscan.io"
+        if MozoSDK.network == .MainNet {
+            etherscanDomain = "etherscan.io"
+        }
+        guard let url = URL(string: "https://\(etherscanDomain)/address/\(btnAddress.titleLabel?.text ?? "")") else { return }
         UIApplication.shared.open(url)
     }
     
@@ -175,10 +179,12 @@ class MozoOnchainWalletView: MozoView {
         
         infoEthViewBorder.dropShadow()
         infoEthViewBorder.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
-        infoEthViewBorder.layer.shadowRadius = 2.0
+        infoEthViewBorder.layer.shadowRadius = 10.0
         infoEthViewBorder.layer.shadowColor = UIColor(hexString: "a8c5ec").cgColor
+        infoEthViewBorder.layer.cornerRadius = 20.0
         
         infoEthView.roundCorners(cornerRadius: 0.015, borderColor: UIColor(hexString: "a0afbe"), borderWidth: 0.5)
+        infoEthView.layer.cornerRadius = 20.0
         
         if infoOnchainViewBorder == nil {
             infoOnchainViewBorder = UIView(frame: CGRect(x: infoOnchainView.frame.origin.x - 2, y: infoOnchainView.frame.origin.y, width: UIScreen.main.bounds.width - 30 + 4, height: 134))
@@ -188,10 +194,12 @@ class MozoOnchainWalletView: MozoView {
         
         infoOnchainViewBorder.dropShadow()
         infoOnchainViewBorder.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
-        infoOnchainViewBorder.layer.shadowRadius = 2.0
+        infoOnchainViewBorder.layer.shadowRadius = 10.0
         infoOnchainViewBorder.layer.shadowColor = UIColor(hexString: "a8c5ec").cgColor
+        infoOnchainViewBorder.layer.cornerRadius = 20.0
         
         infoOnchainView.roundCorners(cornerRadius: 0.015, borderColor: UIColor(hexString: "a0afbe"), borderWidth: 0.5)
+        infoOnchainView.layer.cornerRadius = 20.0
         
         checkDisableButtonConvert(isPending: !(SessionStoreManager.onchainInfo?.convertToMozoXOnchain ?? false))
     }
@@ -309,7 +317,7 @@ class MozoOnchainWalletView: MozoView {
     }
     
     @IBAction func touchConvertButton(_ sender: Any) {
-        MozoSDK.convertMozoXOnchain()
+        MozoSDK.modules.coreWF.requestForConvert()
     }
     
     @IBAction func touchRequestButton(_ sender: Any) {

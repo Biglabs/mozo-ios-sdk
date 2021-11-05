@@ -12,7 +12,13 @@ import SwiftyJSON
 public class WalletInfoDTO: Codable, ResponseObjectSerializable {
     public var encryptSeedPhrase: String?
     public var offchainAddress: String?
-    public var onchainAddress: String?
+    public var onchainAddress: String? {
+        /**
+         * Keep the OnChain address the same as OffChain address
+         * to make easy to use for users
+         */
+        return offchainAddress
+    }
     public var encryptedPin: String?
     
     public required init(encryptSeedPhrase: String?, offchainAddress: String?){
@@ -23,24 +29,24 @@ public class WalletInfoDTO: Codable, ResponseObjectSerializable {
     public required init(encryptSeedPhrase: String?, offchainAddress: String?, onchainAddress: String?) {
         self.encryptSeedPhrase = encryptSeedPhrase
         self.offchainAddress = offchainAddress
-        self.onchainAddress = onchainAddress
+//        self.onchainAddress = onchainAddress
     }
     
     public required init(encryptSeedPhrase: String?, offchainAddress: String?, onchainAddress: String?, encryptedPin: String?) {
         self.encryptSeedPhrase = encryptSeedPhrase
         self.offchainAddress = offchainAddress
-        self.onchainAddress = onchainAddress
+//        self.onchainAddress = onchainAddress
         self.encryptedPin = encryptedPin
     }
     
     public required init(onchainAddress: String?) {
-        self.onchainAddress = onchainAddress
+//        self.onchainAddress = onchainAddress
     }
     
     public required init?(json: SwiftyJSON.JSON) {
         self.encryptSeedPhrase = json["encryptSeedPhrase"].string
         self.offchainAddress = json["offchainAddress"].string
-        self.onchainAddress = json["onchainAddress"].string
+//        self.onchainAddress = json["onchainAddress"].string
         self.encryptedPin = json["encryptedPin"].string
     }
     

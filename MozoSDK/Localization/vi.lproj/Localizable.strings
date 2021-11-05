@@ -772,6 +772,7 @@
 "Go to Etherscan.io" = "Đi đến Etherscan.io";
 "Token List:" = "Danh sách Token:";
 "btn_convert_to_mozo" = "Chuyển thành điểm thưởng Mozo";
+"btn_convert_to_mozox" = "Chuyển thành MozoX";
 "Pending transaction..." = "Đang xử lý giao dịch...";
 "text_how_to_add_mozo_x" = "Hướng dẫn thêm MozoX";
 "text_convert_hint_enter_amount" = "Nhập số lượng MozoX để đổi thành điểm thưởng Mozo";

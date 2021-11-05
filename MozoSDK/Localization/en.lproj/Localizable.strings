@@ -771,6 +771,7 @@
 "Go to Etherscan.io" = "Go to Etherscan.io";
 "Token List:" = "Token List:";
 "btn_convert_to_mozo" = "Convert to Mozo";
+"btn_convert_to_mozox" = "Convert to MozoX";
 "Pending transaction..." = "Pending transaction...";
 "text_how_to_add_mozo_x" = "How to add MozoX?";
 "text_convert_hint_enter_amount" = "Enter amount of MozoX to convert to Mozo";

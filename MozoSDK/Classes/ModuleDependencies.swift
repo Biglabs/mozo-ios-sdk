@@ -15,7 +15,7 @@ class ModuleDependencies {
     let coreDataStore = CoreDataStore()
     let rootWireframe = RootWireframe()
     
-    let coreWireframe = CoreWireframe()
+    let coreWF = CoreWireframe()
     let walletWireframe = WalletWireframe()
     let resetPINWireframe = ResetPINWireframe()
     let authWireframe = AuthWireframe()
@@ -49,18 +49,18 @@ class ModuleDependencies {
     }
     
     func setAuthDelegate(_ delegate: AuthenticationDelegate) {
-        coreWireframe.corePresenter?.authDelegate = delegate
+        coreWF.corePresenter?.authDelegate = delegate
     }
     
     func isNetworkReachable() -> Bool {
-        if let reachability = coreWireframe.corePresenter?.reachability {
+        if let reachability = coreWF.corePresenter?.reachability {
             return reachability.connection != .none
         }
         return false
     }
     
     func authenticate() {
-        coreWireframe.requestForAuthentication()
+        coreWF.requestForAuthentication()
     }
     
     func processAuthorizationCallBackUrl(_ url: URL) {
@@ -71,71 +71,67 @@ class ModuleDependencies {
     }
     
     func logout() {
-        coreWireframe.requestForLogout()
+        coreWF.requestForLogout()
     }
     
     func transferMozo() {
-        coreWireframe.requestForTransfer()
+        coreWF.requestForTransfer()
     }
     
     func displayTransactionHistory() {
-        coreWireframe.requestForTxHistory()
+        coreWF.requestForTxHistory()
     }
     
     func displayPaymentRequest() {
-        coreWireframe.requestForPaymentRequest()
+        coreWF.requestForPaymentRequest()
     }
     
     func displayAddressBook() {
-        coreWireframe.requestForAddressBook()
-    }
-    
-    func convertMozoXOnchain(isConvertOffchainToOffchain: Bool) {
-        coreWireframe.requestForConvert(isConvertOffchainToOffchain: isConvertOffchainToOffchain)
+        coreWF.requestForAddressBook()
     }
     
     func displayTransactionDetail(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
-        coreWireframe.requestForTransactionDetail(txHistory: txHistory, tokenInfo: tokenInfo)
+        coreWF.requestForTransactionDetail(txHistory: txHistory, tokenInfo: tokenInfo)
     }
     
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem>{
-        return (coreWireframe.corePresenter?.coreInteractorService?.loadBalanceInfo())!
+        return (coreWF.corePresenter?.coreInteractorService?.loadBalanceInfo())!
     }
     
     func loadEthAndOnchainBalanceInfo() -> Promise<OnchainInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.loadEthAndOnchainBalanceInfo())!
+        return (coreWF.corePresenter?.coreInteractorService?.loadEthAndOnchainBalanceInfo())!
     }
     
     func registerBeacon(parameters: Any?) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.registerBeacon(parameters: parameters))!
+        return (coreWF.corePresenter?.coreInteractorService?.registerBeacon(parameters: parameters))!
     }
     
     func registerMoreBeacon(parameters: Any?) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.registerMoreBeacon(parameters: parameters))!
+        return (coreWF.corePresenter?.coreInteractorService?.registerMoreBeacon(parameters: parameters))!
     }
     
     func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateBeaconSettings(parameters: parameters))!
+        return (coreWF.corePresenter?.coreInteractorService?.updateBeaconSettings(parameters: parameters))!
     }
     
     func deleteBeacon(beaconId: Int64) -> Promise<Bool> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.deleteBeacon(beaconId: beaconId))!
+        return (coreWF.corePresenter?.coreInteractorService?.deleteBeacon(beaconId: beaconId))!
     }
     
     func getRetailerInfo() -> Promise<[String : Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerInfo())!
+        return (coreWF.corePresenter?.coreInteractorService?.getRetailerInfo())!
     }
     
     func addRetailerSalePerson(parameters: Any?) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.addSalePerson(parameters:parameters))!
+        return (coreWF.corePresenter?.coreInteractorService?.addSalePerson(parameters:parameters))!
     }
     
     func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.sendRangedBeacons(beacons: beacons, status: status))!
+        return (coreWF.corePresenter?.coreInteractorService?.sendRangedBeacons(beacons: beacons, status: status))!
     }
     
     func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getTxHistoryDisplayCollection())!
+        return (coreWF.corePresenter?.coreInteractorService?.getTxHistoryDisplayCollection())!
     }
     
     func createAirdropEvent(event: AirdropEventDTO, delegate: AirdropEventDelegate) {
@@ -151,183 +147,183 @@ class ModuleDependencies {
     }
     
     func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getLatestAirdropEvent())!
+        return (coreWF.corePresenter?.coreInteractorService?.getLatestAirdropEvent())!
     }
     
     func getAirdropEventList(page: Int, branchId: Int64? = nil) -> Promise<[AirdropEventDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropEventList(page: page, branchId: branchId))!
+        return (coreWF.corePresenter?.coreInteractorService?.getAirdropEventList(page: page, branchId: branchId))!
     }
     
     func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerAnalyticHome())!
+        return (coreWF.corePresenter?.coreInteractorService?.getRetailerAnalyticHome())!
     }
     
     func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerAnalyticList())!
+        return (coreWF.corePresenter?.coreInteractorService?.getRetailerAnalyticList())!
     }
     
     func getVisitCustomerList(page: Int, size: Int, year: Int, month: Int) -> Promise<[VisitedCustomerDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getVisitCustomerList(page: page, size: size, year: year, month: month))!
+        return (coreWF.corePresenter?.coreInteractorService?.getVisitCustomerList(page: page, size: size, year: year, month: month))!
     }
     
     func getRetailerAnalyticAmountAirdropList(page: Int, size: Int, year: Int, month: Int) -> Promise<[AirDropReportDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerAnalyticAmountAirdropList(page: page, size: size, year: year, month: month))!
+        return (coreWF.corePresenter?.coreInteractorService?.getRetailerAnalyticAmountAirdropList(page: page, size: size, year: year, month: month))!
     }
     
     func getRunningAirdropEvents(page: Int, size: Int) -> Promise<[AirdropEventDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRunningAirdropEvents(page: page, size: size))!
+        return (coreWF.corePresenter?.coreInteractorService?.getRunningAirdropEvents(page: page, size: size))!
     }
     
     func getListSalePerson() -> Promise<[SalePersonDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getListSalePerson())!
+        return (coreWF.corePresenter?.coreInteractorService?.getListSalePerson())!
     }
     
     func removeSalePerson(id: Int64) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.removeSalePerson(id: id))!
+        return (coreWF.corePresenter?.coreInteractorService?.removeSalePerson(id: id))!
     }
     
     func getListCountryCode() -> Promise<[CountryCodeDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getListCountryCode())!
+        return (coreWF.corePresenter?.coreInteractorService?.getListCountryCode())!
     }
     
     func searchStoresWithText(_ text: String, page: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.searchStoresWithText(text, page: page, long: long, lat: lat, sort: sort))!
+        return (coreWF.corePresenter?.coreInteractorService?.searchStoresWithText(text, page: page, long: long, lat: lat, sort: sort))!
     }
     
     func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getFavoriteStores(page: page, size: size))!
+        return (coreWF.corePresenter?.coreInteractorService?.getFavoriteStores(page: page, size: size))!
     }
     
     func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite))!
+        return (coreWF.corePresenter?.coreInteractorService?.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite))!
     }
     
     func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getUserSummary(startTime: startTime, endTime: endTime))!
+        return (coreWF.corePresenter?.coreInteractorService?.getUserSummary(startTime: startTime, endTime: endTime))!
     }
     
     func getUrlToUploadImage() -> Promise<String> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getUrlToUploadImage())!
+        return (coreWF.corePresenter?.coreInteractorService?.getUrlToUploadImage())!
     }
     
     func uploadImage(images: [UIImage], url: String, progressionHandler: @escaping (_ fractionCompleted: Double)-> Void) -> Promise<[String]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.uploadImage(images: images, url: url, progressionHandler: progressionHandler))!
+        return (coreWF.corePresenter?.coreInteractorService?.uploadImage(images: images, url: url, progressionHandler: progressionHandler))!
     }
     
     func updateUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateUserProfile(userProfile: userProfile))!
+        return (coreWF.corePresenter?.coreInteractorService?.updateUserProfile(userProfile: userProfile))!
     }
     
     func updateAvatarToUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateAvatarToUserProfile(userProfile: userProfile))!
+        return (coreWF.corePresenter?.coreInteractorService?.updateAvatarToUserProfile(userProfile: userProfile))!
     }
     
     func getCommonHashtag() -> Promise<[String]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getCommonHashtag())!
+        return (coreWF.corePresenter?.coreInteractorService?.getCommonHashtag())!
     }
     
     func deleteRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.deleteRetailerStoreInfoPhotos(photos: photos))!
+        return (coreWF.corePresenter?.coreInteractorService?.deleteRetailerStoreInfoPhotos(photos: photos))!
     }
     
     func updateRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateRetailerStoreInfoPhotos(photos: photos))!
+        return (coreWF.corePresenter?.coreInteractorService?.updateRetailerStoreInfoPhotos(photos: photos))!
     }
     
     func updateRetailerStoreInfoHashtag(hashTags: [String]) -> Promise<StoreInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateRetailerStoreInfoHashtag(hashTags: hashTags))!
+        return (coreWF.corePresenter?.coreInteractorService?.updateRetailerStoreInfoHashtag(hashTags: hashTags))!
     }
     
     func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateRetailerStoreInfo(storeInfo: storeInfo))!
+        return (coreWF.corePresenter?.coreInteractorService?.updateRetailerStoreInfo(storeInfo: storeInfo))!
     }
     
     func getStoreDetail(_ storeId: Int64) -> Promise<BranchInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getStoreDetail(storeId))!
+        return (coreWF.corePresenter?.coreInteractorService?.getStoreDetail(storeId))!
     }
     
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRecommendationStores(storeId, size: size, long: long, lat: lat))!
+        return (coreWF.corePresenter?.coreInteractorService?.getRecommendationStores(storeId, size: size, long: long, lat: lat))!
     }
     
     func handleAccessRemove() {
-        coreWireframe.corePresenter?.handleAccessRemoved()
+        coreWF.corePresenter?.handleAccessRemoved()
     }
     
     func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.requestSupportBeacon(info: info))!
+        return (coreWF.corePresenter?.coreInteractorService?.requestSupportBeacon(info: info))!
     }
     
     func getOffchainTokenInfo() -> Promise<OffchainInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getOffchainTokenInfo())!
+        return (coreWF.corePresenter?.coreInteractorService?.getOffchainTokenInfo())!
     }
     
     func getInviteLink(locale: String, inviteAppType: AppType) -> Promise<InviteLinkDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getInviteLink(locale: locale, inviteAppType: inviteAppType))!
+        return (coreWF.corePresenter?.coreInteractorService?.getInviteLink(locale: locale, inviteAppType: inviteAppType))!
     }
     
     func getListLanguageInfo() -> Promise<[InviteLanguageDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getListLanguageInfo())!
+        return (coreWF.corePresenter?.coreInteractorService?.getListLanguageInfo())!
     }
     
     func updateCodeLinkInstallApp(codeString: String) -> Promise<InviteLinkDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateCodeLinkInstallApp(codeString: codeString))!
+        return (coreWF.corePresenter?.coreInteractorService?.updateCodeLinkInstallApp(codeString: codeString))!
     }
     
     func processInvitationCode() {
-        return (coreWireframe.corePresenter?.coreInteractorService?.processInvitationCode())!
+        return (coreWF.corePresenter?.coreInteractorService?.processInvitationCode())!
     }
     
     func getListNotification(page: Int, size: Int) -> Promise<[WSMessage]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getListNotification(page: page, size: size))!
+        return (coreWF.corePresenter?.coreInteractorService?.getListNotification(page: page, size: size))!
     }
     
     func getSuggestKeySearch(lat: Double, lon: Double) -> Promise<[String]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getSuggestKeySearch(lat: lat, lon: lon))!
+        return (coreWF.corePresenter?.coreInteractorService?.getSuggestKeySearch(lat: lat, lon: lon))!
     }
     
     func loadUserProfile() -> Promise<UserProfileDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.loadUserProfile())!
+        return (coreWF.corePresenter?.coreInteractorService?.loadUserProfile())!
     }
     
     func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getCreateAirdropEventSettings())!
+        return (coreWF.corePresenter?.coreInteractorService?.getCreateAirdropEventSettings())!
     }
     
     func requestForChangePin() {
-        coreWireframe.requestForChangePin()
+        coreWF.requestForChangePin()
     }
     
     func requestForBackUpWallet() {
-        coreWireframe.requestForBackUpWallet()
+        coreWF.requestForBackUpWallet()
     }
     
     func getRetailerPromotionList(page: Int, size: Int, statusRequest: PromotionStatusRequestEnum) -> Promise<[PromotionDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerPromotionList(page: page, size: size, statusRequest: statusRequest))!
+        return (coreWF.corePresenter?.coreInteractorService?.getRetailerPromotionList(page: page, size: size, statusRequest: statusRequest))!
     }
     
     func processPromotionCode(code: String) -> Promise<PromotionCodeInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.processPromotionCode(code: code))!
+        return (coreWF.corePresenter?.coreInteractorService?.processPromotionCode(code: code))!
     }
     
     func usePromotionCode(code: String, billInfo: String?) -> Promise<PromotionCodeInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.usePromotionCode(code: code, billInfo: billInfo))!
+        return (coreWF.corePresenter?.coreInteractorService?.usePromotionCode(code: code, billInfo: billInfo))!
     }
     
     func cancelPromotionCode(code: String) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.cancelPromotionCode(code: code))!
+        return (coreWF.corePresenter?.coreInteractorService?.cancelPromotionCode(code: code))!
     }
     
     func getShopperPromotionListWithType(page: Int, size: Int, long: Double, lat: Double, type: PromotionListTypeEnum) -> Promise<[PromotionStoreDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionListWithType(page: page, size: size, long: long, lat: lat, type: type))!
+        return (coreWF.corePresenter?.coreInteractorService?.getShopperPromotionListWithType(page: page, size: size, long: long, lat: lat, type: type))!
     }
     
     func getPromotionRedeemInfo(promotionId: Int64, branchId: Int64) -> Promise<PromotionRedeemInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionRedeemInfo(promotionId: promotionId, branchId: branchId))!
+        return (coreWF.corePresenter?.coreInteractorService?.getPromotionRedeemInfo(promotionId: promotionId, branchId: branchId))!
     }
     
     func getBranchesInChain(promotionId: Int64, lat: Double, lng: Double) -> Promise<[BranchInfoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getBranchesInChain(promotionId: promotionId, lat: lat, lng: lng))!
+        return (coreWF.corePresenter?.coreInteractorService?.getBranchesInChain(promotionId: promotionId, lat: lat, lng: lng))!
     }
     
     func redeemPromotion(_ promotionId: Int64, delegate: RedeemPromotionDelegate) {
@@ -335,91 +331,91 @@ class ModuleDependencies {
     }
     
     func getPromotionPaidDetail(promotionId: Int64) -> Promise<PromotionPaidDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionPaidDetail(promotionId: promotionId))!
+        return (coreWF.corePresenter?.coreInteractorService?.getPromotionPaidDetail(promotionId: promotionId))!
     }
     
     func getPromotionPaidDetailByCode(_ promotionCode: String) -> Promise<PromotionPaidDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionPaidDetailByCode(promotionCode))!
+        return (coreWF.corePresenter?.coreInteractorService?.getPromotionPaidDetailByCode(promotionCode))!
     }
     
     func processPromotionByCustomCode(code: String, branchId: Int64, lat: Double? = nil, lng: Double? = nil) -> Promise<Any> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.processPromotionByCustomCode(code: code, branchId: branchId, lat: lat, lng: lng))!
+        return (coreWF.corePresenter?.coreInteractorService?.processPromotionByCustomCode(code: code, branchId: branchId, lat: lat, lng: lng))!
     }
     
     func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateFavoritePromotion(promotionId, isFavorite: isFavorite))!
+        return (coreWF.corePresenter?.coreInteractorService?.updateFavoritePromotion(promotionId, isFavorite: isFavorite))!
     }
     
     func getPromotionPaidHistoryDetail(_ id: Int64) -> Promise<PromotionPaidDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionPaidHistoryDetail(id))!
+        return (coreWF.corePresenter?.coreInteractorService?.getPromotionPaidHistoryDetail(id))!
     }
     
     func getShopperPromotionSaved(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionSaved(page: page, size: size, long: long, lat: lat))!
+        return (coreWF.corePresenter?.coreInteractorService?.getShopperPromotionSaved(page: page, size: size, long: long, lat: lat))!
     }
     
     func getShopperPromotionRunning(page: Int, size: Int, long: Double, lat: Double, storeId: Int64) -> Promise<JSON> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionRunning(page: page, size: size, long: long, lat: lat, storeId: storeId))!
+        return (coreWF.corePresenter?.coreInteractorService?.getShopperPromotionRunning(page: page, size: size, long: long, lat: lat, storeId: storeId))!
     }
     
     func getShopperPromotionPurchased(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionPurchased(page: page, size: size, long: long, lat: lat))!
+        return (coreWF.corePresenter?.coreInteractorService?.getShopperPromotionPurchased(page: page, size: size, long: long, lat: lat))!
     }
     
     func getShopperPromotionHistory(page: Int, size: Int) -> Promise<[PromotionStoreDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionHistory(page: page, size: size))!
+        return (coreWF.corePresenter?.coreInteractorService?.getShopperPromotionHistory(page: page, size: size))!
     }
     
     func getRetailerPromotionScannedList(page: Int, size: Int) -> Promise<[PromotionCodeInfoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerPromotionScannedList(page: page, size: size))!
+        return (coreWF.corePresenter?.coreInteractorService?.getRetailerPromotionScannedList(page: page, size: size))!
     }
     
     func getRetailerCountPromotion() -> Promise<Int> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerCountPromotion())!
+        return (coreWF.corePresenter?.coreInteractorService?.getRetailerCountPromotion())!
     }
     
     func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperTodoList(blueToothOff: blueToothOff, long: long, lat: lat))!
+        return (coreWF.corePresenter?.coreInteractorService?.getShopperTodoList(blueToothOff: blueToothOff, long: long, lat: lat))!
     }
     
     func getTodoListSetting() -> Promise<TodoSettingDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getTodoListSetting())!
+        return (coreWF.corePresenter?.coreInteractorService?.getTodoListSetting())!
     }
     
     func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getGPSBeacons(params: params))!
+        return (coreWF.corePresenter?.coreInteractorService?.getGPSBeacons(params: params))!
     }
     
     func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.searchPromotionsWithText(text, page: page, size: size, long: long, lat: lat))!
+        return (coreWF.corePresenter?.coreInteractorService?.searchPromotionsWithText(text, page: page, size: size, long: long, lat: lat))!
     }
     
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getSuggestKeySearchForPromotion(lat: lat, lon: lon))!
+        return (coreWF.corePresenter?.coreInteractorService?.getSuggestKeySearchForPromotion(lat: lat, lon: lon))!
     }
     
     func getParkingTicketStatus(id: Int64, isIn: Bool) -> Promise<ParkingTicketStatusType> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getParkingTicketStatus(id: id, isIn: isIn))!
+        return (coreWF.corePresenter?.coreInteractorService?.getParkingTicketStatus(id: id, isIn: isIn))!
     }
     
     func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getParkingTicketByStoreId(storeId: storeId, isIn: isIn))!
+        return (coreWF.corePresenter?.coreInteractorService?.getParkingTicketByStoreId(storeId: storeId, isIn: isIn))!
     }
     
     func getParkingTicketByStoreId(storeId: Int64) -> Promise<TicketDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getParkingTicketByStoreId(storeId: storeId))!
+        return (coreWF.corePresenter?.coreInteractorService?.getParkingTicketByStoreId(storeId: storeId))!
     }
         
     func renewParkingTicket(id: Int64, vehicleTypeKey: String, isIn: Bool) -> Promise<TicketDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.renewParkingTicket(id: id, vehicleTypeKey: vehicleTypeKey, isIn: isIn))!
+        return (coreWF.corePresenter?.coreInteractorService?.renewParkingTicket(id: id, vehicleTypeKey: vehicleTypeKey, isIn: isIn))!
     }
     
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.loadTopUpBalanceInfo())!
+        return (coreWF.corePresenter?.coreInteractorService?.loadTopUpBalanceInfo())!
     }
     
     func loadTopUpHistory(topUpAddress: String?, page: Int, size: Int) -> Promise<TxHistoryDisplayCollection> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.loadTopUpHistory(topUpAddress: topUpAddress, page: page, size: size))!
+        return (coreWF.corePresenter?.coreInteractorService?.loadTopUpHistory(topUpAddress: topUpAddress, page: page, size: size))!
     }
     
     func openTopUpTransfer(delegate: TopUpDelegate) {
@@ -431,56 +427,56 @@ class ModuleDependencies {
     }
     
     func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat))!
+        return (coreWF.corePresenter?.coreInteractorService?.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat))!
     }
     
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat))!
+        return (coreWF.corePresenter?.coreInteractorService?.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat))!
     }
     
     func getBranchList(page: Int, forSwitching: Bool) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getBranchList(page: page, forSwitching: forSwitching))!
+        return (coreWF.corePresenter?.coreInteractorService?.getBranchList(page: page, forSwitching: forSwitching))!
     }
      
     func switchBranch(_ branchId: Int64) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.switchBranch(branchId))!
+        return (coreWF.corePresenter?.coreInteractorService?.switchBranch(branchId))!
     }
     
     func getRetailerInfoForLauching() -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerInfoForLauching())!
+        return (coreWF.corePresenter?.coreInteractorService?.getRetailerInfoForLauching())!
     }
 
     func checkBranchName(_ name: String) -> Promise<Any> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.checkBranchName(name))!
+        return (coreWF.corePresenter?.coreInteractorService?.checkBranchName(name))!
     }
     
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateSalePerson(account: account))!
+        return (coreWF.corePresenter?.coreInteractorService?.updateSalePerson(account: account))!
     }
     
     // MARK: COVID-19 support APIs
     func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getCovidZones(params: params))!
+        return (coreWF.corePresenter?.coreInteractorService?.getCovidZones(params: params))!
     }
     
     // MARK: Mozo Messages APIs
     func getConversationList(text: String?, page: Int) -> Promise<[Conversation]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getConversationList(text: text, page: page))!
+        return (coreWF.corePresenter?.coreInteractorService?.getConversationList(text: text, page: page))!
     }
     func getConversationDetails(id: Int64) -> Promise<Conversation?> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getConversationDetails(id: id))!
+        return (coreWF.corePresenter?.coreInteractorService?.getConversationDetails(id: id))!
     }
     func getChatMessages(id: Int64, page: Int) -> Promise<[ConversationMessage]> {
-       return (coreWireframe.corePresenter?.coreInteractorService?.getChatMessages(id: id, page: page))!
+       return (coreWF.corePresenter?.coreInteractorService?.getChatMessages(id: id, page: page))!
     }
     func responseConversation(conversationId: Int64, status: String) -> Promise<Any> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.responseConversation(conversationId: conversationId, status: status))!
+        return (coreWF.corePresenter?.coreInteractorService?.responseConversation(conversationId: conversationId, status: status))!
     }
     func updateReadConversation(conversationId: Int64, lastMessageId: Int64) -> Promise<Any> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateReadConversation(conversationId: conversationId, lastMessageId: lastMessageId))!
+        return (coreWF.corePresenter?.coreInteractorService?.updateReadConversation(conversationId: conversationId, lastMessageId: lastMessageId))!
     }
     func sendMessage(id: Int64, message: String?, images: [String]?, userSend: Bool) -> Promise<Any> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.sendMessage(id: id, message: message, images: images, userSend: userSend))!
+        return (coreWF.corePresenter?.coreInteractorService?.sendMessage(id: id, message: message, images: images, userSend: userSend))!
     }
     func configureDependencies() {
         // MARK: Core
@@ -528,27 +524,27 @@ class ModuleDependencies {
         corePresenter.coreInteractor = coreInteractor
         corePresenter.rdnInteractor = rdnInteractor
         corePresenter.coreInteractorService = coreInteractor
-        corePresenter.coreWireframe = coreWireframe
+        corePresenter.coreWireframe = coreWF
         
         rootWireframe.mozoNavigationController.coreEventHandler = corePresenter
         
-        coreWireframe.corePresenter = corePresenter
-        coreWireframe.authWireframe = authWireframe
-        coreWireframe.walletWireframe = walletWireframe
-        coreWireframe.txWireframe = txWireframe
-        coreWireframe.txhWireframe = txhWireframe
-        coreWireframe.txCompleteWireframe = txComWireframe
-        coreWireframe.txDetailWireframe = txDetailWireframe
-        coreWireframe.abDetailWireframe = abDetailWireframe
-        coreWireframe.abWireframe = abWireframe
-        coreWireframe.rootWireframe = rootWireframe
-        coreWireframe.paymentWireframe = paymentWireframe
-        coreWireframe.paymentQRWireframe = paymentQRWireframe
-        coreWireframe.convertWireframe = convertWireframe
-        coreWireframe.speedSelectionWireframe = speedSelectionWireframe
-        coreWireframe.resetPinWireframe = resetPINWireframe
-        coreWireframe.backupWalletWireframe = backupWalletWireframe
-        coreWireframe.changePINWireframe = changePINWireframe
+        coreWF.corePresenter = corePresenter
+        coreWF.authWireframe = authWireframe
+        coreWF.walletWireframe = walletWireframe
+        coreWF.txWireframe = txWireframe
+        coreWF.txhWireframe = txhWireframe
+        coreWF.txCompleteWireframe = txComWireframe
+        coreWF.txDetailWireframe = txDetailWireframe
+        coreWF.abDetailWireframe = abDetailWireframe
+        coreWF.abWireframe = abWireframe
+        coreWF.rootWireframe = rootWireframe
+        coreWF.paymentWireframe = paymentWireframe
+        coreWF.paymentQRWireframe = paymentQRWireframe
+        coreWF.convertWireframe = convertWireframe
+        coreWF.speedSelectionWireframe = speedSelectionWireframe
+        coreWF.resetPinWireframe = resetPINWireframe
+        coreWF.backupWalletWireframe = backupWalletWireframe
+        coreWF.changePINWireframe = changePINWireframe
     }
     
     func changePINDependencies(walletManager: WalletManager, dataManager: WalletDataManager) {
@@ -585,7 +581,7 @@ class ModuleDependencies {
     
     func speedSelectionDependencies() {
         let speedSelectionPresenter = SpeedSelectionPresenter()
-        speedSelectionPresenter.delegate = coreWireframe.corePresenter
+        speedSelectionPresenter.delegate = coreWF.corePresenter
         speedSelectionWireframe.presenter = speedSelectionPresenter
         speedSelectionWireframe.rootWireframe = rootWireframe
     }
@@ -634,7 +630,7 @@ class ModuleDependencies {
         
         abdPresenter.detailInteractor = abdInteractor
         abdPresenter.detailWireframe = abDetailWireframe
-        abdPresenter.detailModuleDelegate = coreWireframe.corePresenter
+        abdPresenter.detailModuleDelegate = coreWF.corePresenter
         
         abDetailWireframe.detailPresenter = abdPresenter
         abDetailWireframe.rootWireframe = rootWireframe
@@ -648,7 +644,7 @@ class ModuleDependencies {
         
         abPresenter.abInteractor = abInteractor
         abPresenter.abWireframe = abWireframe
-        abPresenter.abModuleDelegate = coreWireframe.corePresenter
+        abPresenter.abModuleDelegate = coreWF.corePresenter
         
         abWireframe.abPresenter = abPresenter
         abWireframe.rootWireframe = rootWireframe
@@ -657,7 +653,7 @@ class ModuleDependencies {
     func transactionDetailDependencies() {
         let txDetailPresenter = TxDetailPresenter()
         
-        txDetailPresenter.detailModuleDelegate = coreWireframe.corePresenter
+        txDetailPresenter.detailModuleDelegate = coreWF.corePresenter
         txDetailPresenter.wireframe = txDetailWireframe
         txDetailWireframe.txDetailPresenter = txDetailPresenter
         txDetailWireframe.rootWireframe = rootWireframe
@@ -670,7 +666,7 @@ class ModuleDependencies {
         txComInteractor.output = txComPresenter
         
         txComPresenter.completionInteractor = txComInteractor
-        txComPresenter.completionModuleDelegate = coreWireframe.corePresenter
+        txComPresenter.completionModuleDelegate = coreWF.corePresenter
         
         txComWireframe.txComPresenter = txComPresenter
         txComWireframe.rootWireframe = rootWireframe
@@ -684,7 +680,7 @@ class ModuleDependencies {
         
         txhPresenter.txhInteractor = txhInteractor
         txhPresenter.txhWireframe = txhWireframe
-        txhPresenter.txhModuleDelegate = coreWireframe.corePresenter
+        txhPresenter.txhModuleDelegate = coreWF.corePresenter
         
         txhWireframe.txhPresenter = txhPresenter
         txhWireframe.rootWireframe = rootWireframe
@@ -703,7 +699,7 @@ class ModuleDependencies {
         
         txPresenter.txInteractor = txInteractor
         txPresenter.txWireframe = txWireframe
-        txPresenter.transactionModuleDelegate = coreWireframe.corePresenter
+        txPresenter.transactionModuleDelegate = coreWF.corePresenter
         
         txWireframe.txPresenter = txPresenter
         txWireframe.rootWireframe = rootWireframe
@@ -728,7 +724,7 @@ class ModuleDependencies {
         
         authPresenter.authInteractor = authInteractor
         authPresenter.authWireframe = authWireframe
-        authPresenter.authModuleDelegate = coreWireframe.corePresenter
+        authPresenter.authModuleDelegate = coreWF.corePresenter
         
         authWireframe.authPresenter = authPresenter
         authWireframe.rootWireframe = rootWireframe
@@ -748,7 +744,7 @@ class ModuleDependencies {
         walletPresenter.walletInteractor = walletInteractor
         walletPresenter.walletInteractorAuto = walletInteractor
         walletPresenter.walletWireframe = walletWireframe
-        walletPresenter.walletModuleDelegate = coreWireframe.corePresenter
+        walletPresenter.walletModuleDelegate = coreWF.corePresenter
         
         walletWireframe.walletPresenter = walletPresenter
         walletWireframe.rootWireframe = rootWireframe
@@ -847,7 +843,7 @@ class ModuleDependencies {
         
         paymentQRPresenter.interactor = paymentQRInteractor
         paymentQRPresenter.wireframe = paymentQRWireframe
-        paymentQRPresenter.delegate = coreWireframe.corePresenter
+        paymentQRPresenter.delegate = coreWF.corePresenter
         
         paymentQRWireframe.presenter = paymentQRPresenter
         paymentQRWireframe.rootWireframe = rootWireframe
@@ -906,7 +902,7 @@ class ModuleDependencies {
         txWireframe.txPresenter?.topUpModuleDelegate = presenter
         txComWireframe.txComPresenter?.topUpModuleDelegate = presenter
         
-        coreWireframe.topUpWireframe = topUpWireframe
+        coreWF.topUpWireframe = topUpWireframe
     }
     
     func topUpWithdrawDependencies(signManager: TransactionSignManager) {

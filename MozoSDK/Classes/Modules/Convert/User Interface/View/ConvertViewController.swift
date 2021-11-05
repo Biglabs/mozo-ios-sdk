@@ -69,7 +69,7 @@ class ConvertViewController: MozoBasicViewController {
     
     var eventHandler: ConvertModuleInterface?
     
-    var isConvertOffchainToOffchain = false
+    var isOn2Off = true
     
     var offchainInfo: OffchainInfoDTO?
     
@@ -92,7 +92,7 @@ class ConvertViewController: MozoBasicViewController {
         setupLayout()
         setupTarget()
         setupRefreshControl()
-        loadInitialData()
+        refresh()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,40 +106,17 @@ class ConvertViewController: MozoBasicViewController {
         scrollView.contentSize = CGSize(width: view.frame.width, height: height)
     }
     
-    func loadInitialData() {
-        if isConvertOffchainToOffchain {
-            eventHandler?.loadEthAndFeeTransfer()
-            eventHandler?.loadEthAndOffchainInfo()
-        } else {
-            eventHandler?.loadEthAndOnchainInfo()
-        }
-        eventHandler?.loadGasPrice()
-    }
-    
-    func setupLayout() {        
-        if isConvertOffchainToOffchain {
-            infoEthViewBorder = UIView(frame: CGRect(x: ethContainerView.frame.origin.x - 2, y: ethContainerView.frame.origin.y, width: UIScreen.main.bounds.width - 30 + 4, height: CGFloat(ethContainerHeightDefault)))
-            infoEthViewBorder.backgroundColor = .clear
-            containerView.insertSubview(infoEthViewBorder, belowSubview: ethContainerView)
-            
-            infoEthViewBorder.dropShadow()
-            infoEthViewBorder.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
-            infoEthViewBorder.layer.shadowRadius = 2.0
-            infoEthViewBorder.layer.shadowColor = UIColor(hexString: "a8c5ec").cgColor
-            
-            layoutLoadingStateForEthAndTransferFee()
-            
-            amountBorderView.isHidden = true
-            lbSpendableTitle.isHidden = true
-            lbSpendable.isHidden = true
-            lbSpendableTrail.isHidden = true
-            
-            txtAmount.text = "Loading...".localized
-            txtAmount.isUserInteractionEnabled = false
-        } else {
-            ethContainerView.isHidden = true
-            amountTopConstraint.constant = CGFloat(amountTopDefault)
-        }
+    func setupLayout() {
+        infoEthViewBorder = UIView(frame: CGRect(x: ethContainerView.frame.origin.x - 2, y: ethContainerView.frame.origin.y, width: UIScreen.main.bounds.width - 30 + 4, height: CGFloat(ethContainerHeightDefault)))
+        infoEthViewBorder.backgroundColor = .clear
+        containerView.insertSubview(infoEthViewBorder, belowSubview: ethContainerView)
+        
+        infoEthViewBorder.dropShadow()
+        infoEthViewBorder.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+        infoEthViewBorder.layer.shadowRadius = 2.0
+        infoEthViewBorder.layer.shadowColor = UIColor(hexString: "a8c5ec").cgColor
+        
+        layoutLoadingStateForEthAndTransferFee()
         
         btnContinue.roundCorners(cornerRadius: 0.015, borderColor: .white, borderWidth: 0.1)
         
@@ -198,15 +175,10 @@ class ConvertViewController: MozoBasicViewController {
             let ethBalanceText = ethBalanceInDouble.removeZerosFromEnd(maximumFractionDigits: 8)
             
             // balance < transfer fee
-            if (info.balanceOfETH?.balance ?? 0).compare(info.feeTransferERC20 ?? 0) == .orderedAscending {
+            let missingEthAmount = info.getMissingEthAmount()
+            if missingEthAmount > 0 {
                 layoutLoadingStateForEthAndTransferFee(balanceText: ethBalanceText, isWarning: true)
-                
-                let feeDecimalNumber = NSDecimalNumber(decimal: (info.feeTransferERC20 ?? 0).decimalValue)
-                let ethBalanceDecimalNumber = NSDecimalNumber(decimal: (info.balanceOfETH?.balance ?? 0).decimalValue)
-                let result = feeDecimalNumber.subtracting(ethBalanceDecimalNumber)
-                let resultInDoule = result.convertOutputValue(decimal: info.balanceOfETH?.decimals ?? 18)
-                let resultText = resultInDoule.removeZerosFromEnd(maximumFractionDigits: 8)
-                
+                let resultText = missingEthAmount.removeZerosFromEnd(maximumFractionDigits: 8)
                 let string = "text_msg_required_eth".localizedFormat(resultText) as NSString
                 let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13.0)])
                 
@@ -216,8 +188,10 @@ class ConvertViewController: MozoBasicViewController {
                 attributedString.addAttributes(boldFontAttribute, range: string.range(of: resultText))
                 attributedString.addAttributes(boldFontAttribute, range: string.range(of: "ETH"))
                 ethNeedLb.attributedText = attributedString
+                txtAmount.isEnabled = false
             } else {
                 layoutLoadingStateForEthAndTransferFee(balanceText: ethBalanceText)
+                txtAmount.isEnabled = true
             }
         }
     }
@@ -229,12 +203,14 @@ class ConvertViewController: MozoBasicViewController {
     }
     
     @objc func refresh(_ sender: Any? = nil) {
-        if isConvertOffchainToOffchain {
-            eventHandler?.loadEthAndFeeTransfer()
+        if isOn2Off {
             eventHandler?.loadEthAndOffchainInfo()
         } else {
             eventHandler?.loadEthAndOnchainInfo()
         }
+        eventHandler?.loadEthAndFeeTransfer()
+        eventHandler?.loadGasPrice()
+        
         if let refreshControl = sender as? UIRefreshControl, refreshControl.isRefreshing {
             refreshControl.endRefreshing()
         }
@@ -374,7 +350,7 @@ class ConvertViewController: MozoBasicViewController {
     }
     
     @IBAction func touchContinue(_ sender: Any) {
-        if isConvertOffchainToOffchain {
+        if isOn2Off {
             if let ethInfo = self.ethInfo, let offchainInfo = self.offchainInfo, let gasPrice = self.gasPrice, let gasLimit = gasPrice.gasLimit, selectedGasPriceInGWEI.compare(NSNumber(value: 0)) == .orderedDescending {
                 eventHandler?.validateTxConvert(ethInfo: ethInfo, offchainInfo: offchainInfo, gasPrice: selectedGasPriceInGWEI, gasLimit: gasLimit)
                 return
@@ -415,12 +391,12 @@ extension ConvertViewController: ConvertViewInterface {
     func updateEthAndOffchainInfo(_ offchainInfo: OffchainInfoDTO) {
         self.offchainInfo = offchainInfo
         if let info = offchainInfo.balanceOfTokenOnchain, let balance = info.balance, let decimals = info.decimals {
-            txtAmount.text = balance
+            lbSpendable.text = balance
                 .convertOutputValue(decimal: decimals)
                 .roundAndAddCommas(toPlaces: decimals)
             checkDisableButtonContinueForConvertOffToOff()
         } else {
-            txtAmount.text = "Loading...".localized
+            lbSpendable.text = "Loading...".localized
             setEnableButtonContinue(false)
         }
     }

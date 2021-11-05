@@ -7,14 +7,9 @@
 
 import Foundation
 import MBProgressHUD
-let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
-
 @IBDesignable class MozoUserWalletView: MozoView {
-    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var segmentControl: UISegmentedControl!
-    @IBOutlet weak var segmentControlHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var infoView: UIView!
-    @IBOutlet weak var infoViewBorder: UIView!
     @IBOutlet weak var btnReload: UIButton!
     @IBOutlet weak var lbBalance: UILabel!
     @IBOutlet weak var imgMozo: UIImageView!
@@ -30,7 +25,6 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     
     @IBOutlet weak var historyLoading: UIActivityIndicatorView!
     @IBOutlet weak var historyTable: UITableView!
-    @IBOutlet weak var infoViewBorderWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var onchainDetectedView: UIView!
     @IBOutlet weak var onchainDetectedViewHeightConstraint: NSLayoutConstraint!
@@ -105,7 +99,10 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
 
     func setupTableView() {
-        historyTable.register(UINib(nibName: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER)
+        historyTable.register(
+            UINib(nibName: TxHistoryTableViewCell.identifier, bundle: BundleManager.mozoBundle()),
+            forCellReuseIdentifier: TxHistoryTableViewCell.identifier
+        )
         historyTable.dataSource = self
         historyTable.delegate = self
         historyTable.tableFooterView = UIView()
@@ -124,8 +121,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
     
     func setupLayout() {
-        let imgReload = UIImage(named: "ic_curved_arrows", in: BundleManager.mozoBundle(), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
-        btnReload.setImage(imgReload, for: .normal)
+        btnReload.setImage("ic_curved_arrows".asMozoImage(), for: .normal)
         btnReload.tintColor = UIColor(hexString: "d1d7dd")
         
         topConstraint.constant = CGFloat(topConstraintDefault)
@@ -133,8 +129,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         onchainDetectedView.roundCorners(cornerRadius: 0.015, borderColor: UIColor(hexString: "80a9e0"), borderWidth: 0.5)
         onchainDetectedView.layer.cornerRadius = 5
         
-        let imgArrow = UIImage(named: "ic_left_arrow", in: BundleManager.mozoBundle(), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
-        imgViewArrow.image = imgArrow
+        imgViewArrow.image = "ic_left_arrow".asMozoImage()
         imgViewArrow.tintColor = UIColor(hexString: "4e94f3")
         imgViewArrow.transform = imgViewArrow.transform.rotated(by: CGFloat.pi)
     }
@@ -152,7 +147,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     
     @objc func openConvert() {
         if let offchainInfo = offchainInfo, let isConvert = offchainInfo.convertToMozoXOnchain, isConvert {
-            MozoSDK.convertMozoXOnchain(isConvertOffchainToOffchain: true)
+            MozoSDK.modules.coreWF.requestForConvert(isOn2Off: false)
         }
     }
     
@@ -163,13 +158,17 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
     
     func setupButtonBorder() {
-        infoViewBorderWidthConstraint.constant = UIScreen.main.bounds.width - 26
-        infoViewBorder.dropShadow()
-        let rectShadow = CGRect(x: infoViewBorder.bounds.origin.x, y: infoViewBorder.bounds.origin.y, width: UIScreen.main.bounds.width - 26, height: infoViewBorder.bounds.height)
-        infoViewBorder.layer.shadowPath = UIBezierPath(rect: rectShadow).cgPath
-        infoViewBorder.layer.shadowOffset = CGSize(width: 0.0, height: 2.5)
-        infoViewBorder.layer.shadowRadius = 3.0
-        infoViewBorder.layer.shadowColor = UIColor(hexString: "a8c5ec").cgColor
+        infoView.dropShadow()
+        let rectShadow = CGRect(
+            x: infoView.bounds.origin.x,
+            y: infoView.bounds.origin.y,
+            width: UIScreen.main.bounds.width - 26,
+            height: infoView.bounds.height
+        )
+        infoView.layer.shadowPath = UIBezierPath(rect: rectShadow).cgPath
+        infoView.layer.shadowOffset = CGSize(width: 0.0, height: 2.5)
+        infoView.layer.shadowRadius = 20.0
+        infoView.layer.shadowColor = UIColor(hexString: "a8c5ec").cgColor
     }
 
     func clearValueOnUI() {
@@ -224,7 +223,9 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     func loadOnchainInfo() {
         /**
          * Detect Onchain MozoX inside Offchain Wallet Address
+         * unnecessary for now, view MozoX in OnChain tab
          * */
+        /*
         _ = MozoSDK.getOffchainTokenInfo().done { (info) in
             self.offchainInfo = info
             if (info.convertToMozoXOnchain ?? false) == false {
@@ -255,6 +256,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         }.catch { (error) in
             self.topConstraint.constant = CGFloat(self.topConstraintDefault)
         }
+        */
     }
     
     func loadTokenInfo() {
@@ -418,6 +420,10 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         copyAddressAndShowHud()
     }
     
+    @IBAction func touchConvert(_ sender: Any) {
+        MozoSDK.modules.coreWF.requestForConvert(isOn2Off: false)
+    }
+    
     // MARK: NOTIFICATION - OBSERVATION
     
     func setupObservers() {
@@ -463,7 +469,7 @@ extension MozoUserWalletView : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, for: indexPath) as! TxHistoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TxHistoryTableViewCell.identifier, for: indexPath) as! TxHistoryTableViewCell
         let item = (collection?.displayItems[indexPath.row])!
         cell.txHistory = item
         return cell

@@ -13,18 +13,18 @@ import SwiftyJSON
 
 public class MozoSDK {
     // MARK: - Properties
-    private static var moduleDependencies: ModuleDependencies!
+    static var modules: ModuleDependencies!
 
     private(set) static var network: MozoNetwork = .TestNet {
         didSet {
-            moduleDependencies.authWireframe.authPresenter?.authInteractor?.updateNetwork(network)
+            modules.authWireframe.authPresenter?.authInteractor?.updateNetwork(network)
         }
     }
     
     private(set) static var appType: AppType = .Shopper {
         didSet {
-            moduleDependencies.webSocketManager.appType = appType
-            moduleDependencies.authWireframe.authPresenter?.authInteractor?.updateClientId(appType)
+            modules.webSocketManager.appType = appType
+            modules.authWireframe.authPresenter?.authInteractor?.updateClientId(appType)
         }
     }
     
@@ -36,205 +36,201 @@ public class MozoSDK {
             case .TestNet: Configuration.BASE_DOMAIN = .STAGING
             case .MainNet: Configuration.BASE_DOMAIN = .PRODUCTION
         }
-        moduleDependencies = ModuleDependencies()
+        modules = ModuleDependencies()
         self.network = network
         self.appType = appType
     }
     
     public static func setAuthDelegate(_ delegate: AuthenticationDelegate) {
-        moduleDependencies.setAuthDelegate(delegate)
+        modules.setAuthDelegate(delegate)
     }
     
     public static func isNetworkReachable() -> Bool {
-        return moduleDependencies.isNetworkReachable()
+        return modules.isNetworkReachable()
     }
     
     public static func authenticate() {
-        moduleDependencies.authenticate()
+        modules.authenticate()
     }
     
     public static func processAuthorizationCallBackUrl(_ url: URL) {
-        moduleDependencies.processAuthorizationCallBackUrl(url)
+        modules.processAuthorizationCallBackUrl(url)
     }
     
     public static func logout() {
-        moduleDependencies.logout()
+        modules.logout()
     }
     
     public static func transferMozo() {
-        moduleDependencies.transferMozo()
+        modules.transferMozo()
     }
     
     public static func displayTransactionHistory() {
-        moduleDependencies.displayTransactionHistory()
+        modules.displayTransactionHistory()
     }
     
     public static func displayPaymentRequest() {
-        moduleDependencies.displayPaymentRequest()
+        modules.displayPaymentRequest()
     }
     
     public static func displayAddressBook() {
-        moduleDependencies.displayAddressBook()
-    }
-    
-    public static func convertMozoXOnchain(isConvertOffchainToOffchain: Bool = false) {
-        moduleDependencies.convertMozoXOnchain(isConvertOffchainToOffchain: isConvertOffchainToOffchain)
+        modules.displayAddressBook()
     }
     
     public static func displayTransactionDetail(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
-        moduleDependencies.displayTransactionDetail(txHistory: txHistory, tokenInfo: tokenInfo)
+        modules.displayTransactionDetail(txHistory: txHistory, tokenInfo: tokenInfo)
     }
     
     public static func loadBalanceInfo() -> Promise<DetailInfoDisplayItem> {
-        return (moduleDependencies.loadBalanceInfo())
+        return (modules.loadBalanceInfo())
     }
     
     public static func loadEthAndOnchainBalanceInfo() -> Promise<OnchainInfoDTO> {
-        return (moduleDependencies.loadEthAndOnchainBalanceInfo())
+        return (modules.loadEthAndOnchainBalanceInfo())
     }
     
     public static func registerBeacon(parameters: Any?) -> Promise<[String: Any]> {
-        return (moduleDependencies.registerBeacon(parameters: parameters))
+        return (modules.registerBeacon(parameters: parameters))
     }
     
     public static func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]> {
-        return (moduleDependencies.updateBeaconSettings(parameters: parameters))
+        return (modules.updateBeaconSettings(parameters: parameters))
     }
     
     public static func deleteBeacon(beaconId: Int64) -> Promise<Bool> {
-        return (moduleDependencies.deleteBeacon(beaconId: beaconId))
+        return (modules.deleteBeacon(beaconId: beaconId))
     }
     
     public static func getRetailerInfo() -> Promise<[String : Any]> {
-        return (moduleDependencies.getRetailerInfo())
+        return (modules.getRetailerInfo())
     }
     
     public static func addRetailerSalePerson(parameters: Any?) -> Promise<[String: Any]> {
-        return (moduleDependencies.addRetailerSalePerson(parameters:parameters))
+        return (modules.addRetailerSalePerson(parameters:parameters))
     }
     
     public static func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
-        return (moduleDependencies.sendRangedBeacons(beacons: beacons, status: status))
+        return (modules.sendRangedBeacons(beacons: beacons, status: status))
     }
     
     public static func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection> {
-        return (moduleDependencies.getTxHistoryDisplayCollection())
+        return (modules.getTxHistoryDisplayCollection())
     }
     
     public static func createAirdropEvent(event: AirdropEventDTO, delegate: AirdropEventDelegate) {
-        return (moduleDependencies.createAirdropEvent(event: event, delegate: delegate))
+        return (modules.createAirdropEvent(event: event, delegate: delegate))
     }
     
     public static func addMoreMozoToAirdropEvent(event: AirdropEventDTO, delegate: AirdropAddEventDelegate) {
-        return (moduleDependencies.addMoreMozoToAirdropEvent(event: event, delegate: delegate))
+        return (modules.addMoreMozoToAirdropEvent(event: event, delegate: delegate))
     }
     
     public static func withdrawMozoFromAirdropEventId(_ eventId: Int64, delegate: WithdrawAirdropEventDelegate) {
-        return (moduleDependencies.withdrawMozoFromAirdropEventId(eventId, delegate: delegate))
+        return (modules.withdrawMozoFromAirdropEventId(eventId, delegate: delegate))
     }
     
     public static func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
-        return moduleDependencies.getLatestAirdropEvent()
+        return modules.getLatestAirdropEvent()
     }
     
     public static func getAirdropEventList(page: Int, branchId: Int64? = nil) -> Promise<[AirdropEventDTO]> {
-        return moduleDependencies.getAirdropEventList(page: page, branchId: branchId)
+        return modules.getAirdropEventList(page: page, branchId: branchId)
     }
     
     public static func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?> {
-        return moduleDependencies.getRetailerAnalyticHome()
+        return modules.getRetailerAnalyticHome()
     }
     
     public static func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]> {
-        return moduleDependencies.getRetailerAnalyticList()
+        return modules.getRetailerAnalyticList()
     }
     
     public static func getVisitCustomerList(page: Int, size: Int = 15, year: Int = 0, month: Int = 0) -> Promise<[VisitedCustomerDTO]> {
-        return moduleDependencies.getVisitCustomerList(page: page, size: size, year: year, month: month)
+        return modules.getVisitCustomerList(page: page, size: size, year: year, month: month)
     }
     
     public static func getRetailerAnalyticAmountAirdropList(page: Int, size: Int = 15, year: Int = 0, month: Int = 0) -> Promise<[AirDropReportDTO]> {
-        return moduleDependencies.getRetailerAnalyticAmountAirdropList(page: page, size: size, year: year, month: month)
+        return modules.getRetailerAnalyticAmountAirdropList(page: page, size: size, year: year, month: month)
     }
     
     public static func getRunningAirdropEvents(page: Int = 0, size: Int = 5) -> Promise<[AirdropEventDTO]> {
-        return moduleDependencies.getRunningAirdropEvents(page: page, size: size)
+        return modules.getRunningAirdropEvents(page: page, size: size)
     }
     
     public static func getListSalePerson() -> Promise<[SalePersonDTO]> {
-        return moduleDependencies.getListSalePerson()
+        return modules.getListSalePerson()
     }
     
     public static func removeSalePerson(id: Int64) -> Promise<[String: Any]> {
-        return moduleDependencies.removeSalePerson(id: id)
+        return modules.removeSalePerson(id: id)
     }
     
     public static func getListCountryCode() -> Promise<[CountryCodeDTO]> {
-        return moduleDependencies.getListCountryCode()
+        return modules.getListCountryCode()
     }
     
     public static func searchStoresWithText(_ text: String, page: Int = 0, long: Double, lat: Double, sort: String = "distance") -> Promise<CollectionStoreInfoDTO> {
-        return moduleDependencies.searchStoresWithText(text, page: page, long: long, lat: lat, sort: sort)
+        return modules.searchStoresWithText(text, page: page, long: long, lat: lat, sort: sort)
     }
     
     public static func getFavoriteStores(page: Int = 0, size: Int = 15) -> Promise<[BranchInfoDTO]> {
-        return moduleDependencies.getFavoriteStores(page: page, size: size)
+        return modules.getFavoriteStores(page: page, size: size)
     }
     
     public static func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
-        return moduleDependencies.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite)
+        return modules.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite)
     }
     
     public static func getUserSummary(startTime: Int = 0, endTime: Int = 86400) -> Promise<UserSummary?> {
-        return moduleDependencies.getUserSummary(startTime: startTime, endTime: endTime)
+        return modules.getUserSummary(startTime: startTime, endTime: endTime)
     }
     
     public static func getUrlToUploadImage() -> Promise<String> {
-        return moduleDependencies.getUrlToUploadImage()
+        return modules.getUrlToUploadImage()
     }
     
     public static func uploadImage(images: [UIImage], url: String, progressionHandler: @escaping (_ fractionCompleted: Double)-> Void) -> Promise<[String]> {
-        return moduleDependencies.uploadImage(images: images, url: url, progressionHandler: progressionHandler)
+        return modules.uploadImage(images: images, url: url, progressionHandler: progressionHandler)
     }
     
     public static func updateUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
-        return moduleDependencies.updateUserProfile(userProfile: userProfile)
+        return modules.updateUserProfile(userProfile: userProfile)
     }
     
     public static func updateAvatarToUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
-        return moduleDependencies.updateAvatarToUserProfile(userProfile: userProfile)
+        return modules.updateAvatarToUserProfile(userProfile: userProfile)
     }
     
     public static func getCommonHashtag() -> Promise<[String]> {
-        return moduleDependencies.getCommonHashtag()
+        return modules.getCommonHashtag()
     }
     
     public static func deleteRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
-        return moduleDependencies.deleteRetailerStoreInfoPhotos(photos: photos)
+        return modules.deleteRetailerStoreInfoPhotos(photos: photos)
     }
     
     public static func updateRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
-        return moduleDependencies.updateRetailerStoreInfoPhotos(photos: photos)
+        return modules.updateRetailerStoreInfoPhotos(photos: photos)
     }
     
     public static func updateRetailerStoreInfoHashtag(hashTags: [String]) -> Promise<StoreInfoDTO> {
-        return moduleDependencies.updateRetailerStoreInfoHashtag(hashTags: hashTags)
+        return modules.updateRetailerStoreInfoHashtag(hashTags: hashTags)
     }
     
     public static func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO> {
-        return moduleDependencies.updateRetailerStoreInfo(storeInfo: storeInfo)
+        return modules.updateRetailerStoreInfo(storeInfo: storeInfo)
     }
     
     public static func getStoreDetail(_ storeId: Int64) -> Promise<BranchInfoDTO> {
-        return moduleDependencies.getStoreDetail(storeId)
+        return modules.getStoreDetail(storeId)
     }
     
     public static func getRecommendationStores(_ storeId: Int64, size: Int = 5, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
-        return moduleDependencies.getRecommendationStores(storeId, size: size, long: long, lat: lat)
+        return modules.getRecommendationStores(storeId, size: size, long: long, lat: lat)
     }
     
     public static func handleAccessRemove() {
-        return moduleDependencies.handleAccessRemove()
+        return modules.handleAccessRemove()
     }
     
     public static func handleNotificationAction(
@@ -253,9 +249,9 @@ public class MozoSDK {
                 switch type {
                 case .Airdropped, .AirdropInvite, .AirdropSignup, .BalanceChanged:
                     if SessionStoreManager.tokenInfo == nil {
-                        _ = moduleDependencies.coreWireframe.corePresenter?.coreInteractorService?.loadBalanceInfo().done({ _ in
+                        _ = modules.coreWF.corePresenter?.coreInteractorService?.loadBalanceInfo().done({ _ in
                             if let tokenInfo = SessionStoreManager.tokenInfo {
-                                moduleDependencies.displayTransactionDetail(
+                                modules.displayTransactionDetail(
                                     txHistory: TxDetailDisplayData(
                                         notify: balanceNoti,
                                         tokenInfo: tokenInfo
@@ -265,7 +261,7 @@ public class MozoSDK {
                             }
                         })
                     } else {
-                        moduleDependencies.displayTransactionDetail(
+                        modules.displayTransactionDetail(
                             txHistory: TxDetailDisplayData(
                                 notify: balanceNoti,
                                 tokenInfo: SessionStoreManager.tokenInfo!
@@ -289,238 +285,238 @@ public class MozoSDK {
     }
     
     public static func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
-        return moduleDependencies.requestSupportBeacon(info: info)
+        return modules.requestSupportBeacon(info: info)
     }
     
     public static func getOffchainTokenInfo() -> Promise<OffchainInfoDTO> {
-        return moduleDependencies.getOffchainTokenInfo()
+        return modules.getOffchainTokenInfo()
     }
     
     public static func getInviteLink(locale: String, inviteAppType: AppType) -> Promise<InviteLinkDTO> {
-        return moduleDependencies.getInviteLink(locale: locale, inviteAppType: inviteAppType)
+        return modules.getInviteLink(locale: locale, inviteAppType: inviteAppType)
     }
     
     public static func getListLanguageInfo() -> Promise<[InviteLanguageDTO]> {
-        return moduleDependencies.getListLanguageInfo()
+        return modules.getListLanguageInfo()
     }
     
     public static func updateCodeLinkInstallApp(codeString: String) -> Promise<InviteLinkDTO> {
-        return moduleDependencies.updateCodeLinkInstallApp(codeString: codeString)
+        return modules.updateCodeLinkInstallApp(codeString: codeString)
     }
     
     public static func processInvitationCode() {
-        return moduleDependencies.processInvitationCode()
+        return modules.processInvitationCode()
     }
     
     public static func getListNotification(page: Int = 0, size: Int = 15) -> Promise<[WSMessage]> {
-        return moduleDependencies.getListNotification(page: page, size: size)
+        return modules.getListNotification(page: page, size: size)
     }
     
     public static func getSuggestKeySearch(lat: Double = 0, lon: Double = 0) -> Promise<[String]> {
-        return moduleDependencies.getSuggestKeySearch(lat: lat, lon: lon)
+        return modules.getSuggestKeySearch(lat: lat, lon: lon)
     }
     
     public static func loadUserProfile() -> Promise<UserProfileDTO> {
-        return moduleDependencies.loadUserProfile()
+        return modules.loadUserProfile()
     }
     
     public static func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO> {
-        return moduleDependencies.getCreateAirdropEventSettings()
+        return modules.getCreateAirdropEventSettings()
     }
     
     public static func requestForChangePin() {
-        return moduleDependencies.requestForChangePin()
+        return modules.requestForChangePin()
     }
     
     public static func requestForBackUpWallet() {
-        return moduleDependencies.requestForBackUpWallet()
+        return modules.requestForBackUpWallet()
     }
     
     public static func getRetailerPromotionList(page: Int = 0, size: Int = 15, statusRequest: PromotionStatusRequestEnum = .RUNNING) -> Promise<[PromotionDTO]> {
-        return moduleDependencies.getRetailerPromotionList(page: page, size: size, statusRequest: statusRequest)
+        return modules.getRetailerPromotionList(page: page, size: size, statusRequest: statusRequest)
     }
     
     public static func processPromotionCode(code: String) -> Promise<PromotionCodeInfoDTO> {
-        return moduleDependencies.processPromotionCode(code: code)
+        return modules.processPromotionCode(code: code)
     }
     
     public static func usePromotionCode(code: String, billInfo: String?) -> Promise<PromotionCodeInfoDTO> {
-        return moduleDependencies.usePromotionCode(code: code, billInfo: billInfo)
+        return modules.usePromotionCode(code: code, billInfo: billInfo)
     }
     
     public static func cancelPromotionCode(code: String) -> Promise<[String: Any]> {
-        return moduleDependencies.cancelPromotionCode(code: code)
+        return modules.cancelPromotionCode(code: code)
     }
     
     public static func getShopperPromotionListWithType(page: Int = 0, size: Int = 15, long: Double = 0, lat: Double = 0, type: PromotionListTypeEnum = .TOP) -> Promise<[PromotionStoreDTO]> {
-        return moduleDependencies.getShopperPromotionListWithType(page: page, size: size, long: long, lat: lat, type: type)
+        return modules.getShopperPromotionListWithType(page: page, size: size, long: long, lat: lat, type: type)
     }
     
     public static func getPromotionRedeemInfo(promotionId: Int64, branchId: Int64) -> Promise<PromotionRedeemInfoDTO> {
-        return moduleDependencies.getPromotionRedeemInfo(promotionId: promotionId, branchId: branchId)
+        return modules.getPromotionRedeemInfo(promotionId: promotionId, branchId: branchId)
     }
     
     public static func getBranchesInChain(promotionId: Int64, lat: Double, lng: Double) -> Promise<[BranchInfoDTO]> {
-        return moduleDependencies.getBranchesInChain(promotionId: promotionId, lat: lat, lng: lng)
+        return modules.getBranchesInChain(promotionId: promotionId, lat: lat, lng: lng)
     }
     
     public static func redeemPromotion(_ promotionId: Int64, delegate: RedeemPromotionDelegate) {
-        return moduleDependencies.redeemPromotion(promotionId, delegate: delegate)
+        return modules.redeemPromotion(promotionId, delegate: delegate)
     }
     
     public static func getPromotionPaidDetail(promotionId: Int64) -> Promise<PromotionPaidDTO> {
-        return moduleDependencies.getPromotionPaidDetail(promotionId: promotionId)
+        return modules.getPromotionPaidDetail(promotionId: promotionId)
     }
     
     public static func getPromotionPaidDetailByCode(_ promotionCode: String) -> Promise<PromotionPaidDTO> {
-        return moduleDependencies.getPromotionPaidDetailByCode(promotionCode)
+        return modules.getPromotionPaidDetailByCode(promotionCode)
     }
     
     public static func processPromotionByCustomCode(code: String, branchId: Int64, lat: Double? = nil, lng: Double? = nil) -> Promise<Any> {
-        return moduleDependencies.processPromotionByCustomCode(code: code, branchId: branchId, lat: lat, lng: lng)
+        return modules.processPromotionByCustomCode(code: code, branchId: branchId, lat: lat, lng: lng)
     }
     
     public static func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
-        return moduleDependencies.updateFavoritePromotion(promotionId, isFavorite: isFavorite)
+        return modules.updateFavoritePromotion(promotionId, isFavorite: isFavorite)
     }
     
     public static func getPromotionPaidHistoryDetail(_ id: Int64) -> Promise<PromotionPaidDTO> {
-        return moduleDependencies.getPromotionPaidHistoryDetail(id)
+        return modules.getPromotionPaidHistoryDetail(id)
     }
     
     public static func getShopperPromotionSaved(page: Int = 0, size: Int = 15, long: Double = 0, lat: Double = 0) -> Promise<[PromotionStoreDTO]> {
-        return moduleDependencies.getShopperPromotionSaved(page: page, size: size, long: long, lat: lat)
+        return modules.getShopperPromotionSaved(page: page, size: size, long: long, lat: lat)
     }
     
     public static func getShopperPromotionRunning(page: Int = 0, size: Int = 15, long: Double = 0, lat: Double = 0, storeId: Int64) -> Promise<JSON> {
-        return moduleDependencies.getShopperPromotionRunning(page: page, size: size, long: long, lat: lat, storeId: storeId)
+        return modules.getShopperPromotionRunning(page: page, size: size, long: long, lat: lat, storeId: storeId)
     }
     
     public static func getShopperPromotionPurchased(page: Int = 0, size: Int = 15, long: Double = 0, lat: Double = 0) -> Promise<[PromotionStoreDTO]> {
-        return moduleDependencies.getShopperPromotionPurchased(page: page, size: size, long: long, lat: lat)
+        return modules.getShopperPromotionPurchased(page: page, size: size, long: long, lat: lat)
     }
     
     public static func getShopperPromotionHistory(page: Int = 0, size: Int = 15) -> Promise<[PromotionStoreDTO]> {
-        return moduleDependencies.getShopperPromotionHistory(page: page, size: size)
+        return modules.getShopperPromotionHistory(page: page, size: size)
     }
     
     public static func getRetailerPromotionScannedList(page: Int = 0, size: Int = 15) -> Promise<[PromotionCodeInfoDTO]> {
-        return moduleDependencies.getRetailerPromotionScannedList(page: page, size: size)
+        return modules.getRetailerPromotionScannedList(page: page, size: size)
     }
     
     public static func getRetailerCountPromotion() -> Promise<Int> {
-        return moduleDependencies.getRetailerCountPromotion()
+        return modules.getRetailerCountPromotion()
     }
     
     public static func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]> {
-        return moduleDependencies.getShopperTodoList(blueToothOff: blueToothOff, long: long, lat: lat)
+        return modules.getShopperTodoList(blueToothOff: blueToothOff, long: long, lat: lat)
     }
     
     public static func getTodoListSetting() -> Promise<TodoSettingDTO> {
-        return moduleDependencies.getTodoListSetting()
+        return modules.getTodoListSetting()
     }
     
     public static func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
-        return moduleDependencies.getGPSBeacons(params: params)
+        return modules.getGPSBeacons(params: params)
     }
     
     public static func searchPromotionsWithText(_ text: String, page: Int = 0, size: Int = 15, long: Double = 0, lat: Double = 0) -> Promise<CollectionPromotionInfoDTO> {
-        return moduleDependencies.searchPromotionsWithText(text, page: page, size: size, long: long, lat: lat)
+        return modules.searchPromotionsWithText(text, page: page, size: size, long: long, lat: lat)
     }
     
     public static func getSuggestKeySearchForPromotion(lat: Double = 0, lon: Double = 0) -> Promise<[String]> {
-        return moduleDependencies.getSuggestKeySearchForPromotion(lat: lat, lon: lon)
+        return modules.getSuggestKeySearchForPromotion(lat: lat, lon: lon)
     }
     
     // MARK: PARKING TICKET
     
     public static func getParkingTicketStatus(id: Int64, isIn: Bool) -> Promise<ParkingTicketStatusType> {
-        return moduleDependencies.getParkingTicketStatus(id: id, isIn: isIn)
+        return modules.getParkingTicketStatus(id: id, isIn: isIn)
     }
     
     public static func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO> {
-        return moduleDependencies.getParkingTicketByStoreId(storeId: storeId, isIn: isIn)
+        return modules.getParkingTicketByStoreId(storeId: storeId, isIn: isIn)
     }
     
     public static func getParkingTicketByStoreId(storeId: Int64) -> Promise<TicketDTO> {
-        return moduleDependencies.getParkingTicketByStoreId(storeId: storeId)
+        return modules.getParkingTicketByStoreId(storeId: storeId)
     }
         
     public static func renewParkingTicket(id: Int64, vehicleTypeKey: String, isIn: Bool) -> Promise<TicketDTO> {
-        return moduleDependencies.renewParkingTicket(id: id, vehicleTypeKey: vehicleTypeKey, isIn: isIn)
+        return modules.renewParkingTicket(id: id, vehicleTypeKey: vehicleTypeKey, isIn: isIn)
     }
     
     // MARK: TOP UP
     public static func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem> {
-        return (moduleDependencies.loadTopUpBalanceInfo())
+        return (modules.loadTopUpBalanceInfo())
     }
     
     public static func loadTopUpHistory(topUpAddress: String? = nil, page: Int = 0, size: Int = 15) -> Promise<TxHistoryDisplayCollection> {
-        return (moduleDependencies.loadTopUpHistory(topUpAddress: topUpAddress, page: page, size: size))
+        return (modules.loadTopUpHistory(topUpAddress: topUpAddress, page: page, size: size))
     }
     
     public static func openTopUpTransfer(delegate: TopUpDelegate) {
-        moduleDependencies.openTopUpTransfer(delegate: delegate)
+        modules.openTopUpTransfer(delegate: delegate)
     }
     
     public static func topUpWithdraw(delegate: TopUpWithdrawDelegate) {
-        moduleDependencies.topUpWithdraw(delegate: delegate)
+        modules.topUpWithdraw(delegate: delegate)
     }
     
     public static func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int = 0, size: Int = 5, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        moduleDependencies.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat)
+        modules.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat)
     }
     
     public static func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {
-        return moduleDependencies.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat)
+        return modules.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat)
     }
     
     public static func getBranchList(page: Int = 0, forSwitching: Bool) -> Promise<[String: Any]> {
-        return moduleDependencies.getBranchList(page: page, forSwitching: forSwitching)
+        return modules.getBranchList(page: page, forSwitching: forSwitching)
     }
      
     public static func switchBranch(_ branchId: Int64) -> Promise<[String: Any]> {
-        return moduleDependencies.switchBranch(branchId)
+        return modules.switchBranch(branchId)
     }
     
     public static func getRetailerInfoForLauching() -> Promise<[String: Any]> {
-        return moduleDependencies.getRetailerInfoForLauching()
+        return modules.getRetailerInfoForLauching()
     }
     
     public static func checkBranchName(_ name: String) -> Promise<Any> {
-        return moduleDependencies.checkBranchName(name)
+        return modules.checkBranchName(name)
     }
     
     public static func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
-        return moduleDependencies.updateSalePerson(account: account)
+        return modules.updateSalePerson(account: account)
     }
     
     public static func registerMoreBeacon(parameters: Any?) -> Promise<[String: Any]> {
-        return moduleDependencies.registerMoreBeacon(parameters: parameters)
+        return modules.registerMoreBeacon(parameters: parameters)
     }
     
     // MARK: COVID-19 support APIs
     public static func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]> {
-        return moduleDependencies.getCovidZones(params: params)
+        return modules.getCovidZones(params: params)
     }
     
     // MARK: Mozo Messages APIs
     public static func getConversationList(text: String?, page: Int) -> Promise<[Conversation]> {
-        return moduleDependencies.getConversationList(text: text, page: page)
+        return modules.getConversationList(text: text, page: page)
     }
     public static func getConversationDetails(id: Int64) -> Promise<Conversation?> {
-        return moduleDependencies.getConversationDetails(id: id)
+        return modules.getConversationDetails(id: id)
     }
     public static func getChatMessages(id: Int64, page: Int) -> Promise<[ConversationMessage]> {
-        return moduleDependencies.getChatMessages(id: id, page: page)
+        return modules.getChatMessages(id: id, page: page)
     }
     public static func responseConversation(conversationId: Int64, status: String) -> Promise<Any> {
-        return moduleDependencies.responseConversation(conversationId: conversationId, status: status)
+        return modules.responseConversation(conversationId: conversationId, status: status)
     }
     public static func updateReadConversation(conversationId: Int64, lastMessageId: Int64) -> Promise<Any> {
-        return moduleDependencies.updateReadConversation(conversationId: conversationId, lastMessageId: lastMessageId)
+        return modules.updateReadConversation(conversationId: conversationId, lastMessageId: lastMessageId)
     }
     public static func sendMessage(id: Int64, message: String?, images: [String]?, userSend: Bool) -> Promise<Any> {
-        return moduleDependencies.sendMessage(id: id, message: message, images: images, userSend: userSend)
+        return modules.sendMessage(id: id, message: message, images: images, userSend: userSend)
     }
 }

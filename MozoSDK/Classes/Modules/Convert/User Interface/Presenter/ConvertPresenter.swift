@@ -15,7 +15,7 @@ class ConvertPresenter: NSObject {
     var delegate: ConvertModuleDelegate?
         
     var isDisplayingConfirm = false
-    var isConvertOffchainToOffchain: Bool = false
+    var isOn2Off: Bool = true
     
     func handleError(_ error: ConnectionError) {
         if isDisplayingConfirm {
@@ -143,7 +143,7 @@ extension ConvertPresenter: PopupErrorDelegate {
             confirmConvertViewInterface?.displaySpinner()
             interactor?.requestToRetryTransfer()
         } else {
-            if isConvertOffchainToOffchain {
+            if isOn2Off {
                 loadEthAndFeeTransfer()
                 loadEthAndOffchainInfo()
             } else {

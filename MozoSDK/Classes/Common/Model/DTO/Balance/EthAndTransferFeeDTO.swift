@@ -19,6 +19,25 @@ public class EthAndTransferFeeDTO: ResponseObjectSerializable {
     
     public required init?(){}
     
+    func getMissingEthAmount() -> Double {
+        /*
+         val balance = balanceOfETH?.balance.safe()
+                 val missing = feeTransferERC20.safe() - balance
+                 return Support.toAmountNonDecimal(
+                     missing,
+                     balanceOfETH?.decimals ?: 18 //WEI -> ETH
+                 )
+         */
+        let balance: NSDecimalNumber = NSDecimalNumber(decimal: balanceOfETH?.balance?.decimalValue ?? 0)
+        let missing: NSDecimalNumber = NSDecimalNumber(decimal: feeTransferERC20?.decimalValue ?? 0).subtracting(balance)
+        
+        
+//        let feeDecimalNumber = NSDecimalNumber(decimal: (info.feeTransferERC20 ?? 0).decimalValue)
+//        let ethBalanceDecimalNumber = NSDecimalNumber(decimal: (info.balanceOfETH?.balance ?? 0).decimalValue)
+//        let result = feeDecimalNumber.subtracting(ethBalanceDecimalNumber)
+        return missing.convertOutputValue(decimal: balanceOfETH?.decimals ?? 18 /*WEI -> ETH*/)
+    }
+    
     public func toJSON() -> Dictionary<String, Any> {
         var json = Dictionary<String, Any>()
         if let balanceOfETH = self.balanceOfETH {

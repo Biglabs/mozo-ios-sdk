@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -124,7 +124,7 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Address:"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUW-iQ-QkS">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUW-iQ-QkS">
                                             <rect key="frame" x="74" y="106.5" width="87" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="4Vt-Ja-vcT"/>
@@ -258,6 +258,7 @@
                                                 <constraint firstAttribute="height" constant="35" id="l37-Oz-Lbx"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             <state key="normal" title="Convert to Mozo" image="ic_convert">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -337,6 +338,9 @@
                                         <constraint firstItem="H65-Ir-IxI" firstAttribute="centerY" secondItem="c7x-d9-WIg" secondAttribute="centerY" id="MCQ-vS-fdj"/>
                                         <constraint firstItem="Xa4-F9-hN2" firstAttribute="centerY" secondItem="c7x-d9-WIg" secondAttribute="centerY" id="mYM-mr-FIa"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCircle" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -368,6 +372,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="mR7-Jv-IKB" firstAttribute="height" secondItem="vUN-kp-3ea" secondAttribute="height" priority="250" id="3hR-o8-qSr"/>
@@ -377,7 +382,6 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Wxd-VE-UaD" secondAttribute="trailing" id="khg-8Q-KTw"/>
                 <constraint firstItem="Wxd-VE-UaD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="wVN-Lf-yst"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="130.40000000000001" y="152.47376311844079"/>
         </view>
     </objects>
