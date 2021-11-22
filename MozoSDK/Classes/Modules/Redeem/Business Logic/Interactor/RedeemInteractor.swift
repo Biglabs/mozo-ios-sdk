@@ -84,7 +84,11 @@ extension RedeemInteractor: RedeemInteractorInput {
     }
     
     func sendSignedTx(pin: String) {
-        signManager?.signTransaction(promotionRedeem!.itx!, pin: pin)
+        guard let itx = promotionRedeem?.itx else {
+            self.output?.failedToSignTransaction(error: ConnectionError.systemError.localizedDescription)
+            return
+        }
+        signManager?.signTransaction(itx, pin: pin)
             .done { (signedInterTx) in
                 let redeemDto = PromotionRedeemDTO(idRaw: self.promotionRedeem!.idRaw!, signedTx: signedInterTx)
                 self.apiManager?.sendSignedPromotionRedeemTransaction(redeemDto).done({ (receivedTx) in

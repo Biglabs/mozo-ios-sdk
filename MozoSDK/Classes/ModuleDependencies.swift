@@ -12,7 +12,6 @@ import SwiftyJSON
 import PromiseKit
 
 class ModuleDependencies {
-    let coreDataStore = CoreDataStore()
     let rootWireframe = RootWireframe()
     
     let coreWireframe = CoreWireframe()
@@ -517,7 +516,7 @@ class ModuleDependencies {
         let anonManager = AnonManager()
         anonManager.apiManager = ApiManager.shared
         let userDataManager = UserDataManager()
-        userDataManager.coreDataStore = coreDataStore
+        userDataManager.coreDataStore = CoreDataStore.shared
         
         let coreInteractor = CoreInteractor(anonManager: anonManager, apiManager: ApiManager.shared, userDataManager: userDataManager)
         coreInteractor.output = corePresenter
@@ -696,9 +695,8 @@ class ModuleDependencies {
         let txInteractor = TransactionInteractor(apiManager: ApiManager.shared)
         txInteractor.output = txPresenter
         
-        let txDataManager = TransactionDataManager()
-        txDataManager.coreDataStore = coreDataStore
-        let signManager = TransactionSignManager(dataManager: txDataManager)
+        let signManager = TransactionSignManager.shared
+        signManager.redeemWF = redeemWireframe
         txInteractor.signManager = signManager
         
         txPresenter.txInteractor = txInteractor
@@ -739,7 +737,7 @@ class ModuleDependencies {
         
         let walletManager = WalletManager()
         let walletDataManager = WalletDataManager()
-        walletDataManager.coreDataStore = coreDataStore
+        walletDataManager.coreDataStore = CoreDataStore.shared
         
         let walletInteractor = WalletInteractor(walletManager: walletManager, dataManager: walletDataManager, apiManager: ApiManager.shared)
         walletInteractor.output = walletPresenter
@@ -958,7 +956,7 @@ class ModuleDependencies {
     }
     
     func testLocalData() {
-        coreDataStore.getAllUsers()
+        CoreDataStore.shared.getAllUsers()
     }
     
     func testEthAddress() {
