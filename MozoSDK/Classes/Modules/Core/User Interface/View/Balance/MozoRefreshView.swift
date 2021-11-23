@@ -6,9 +6,13 @@
 //
 
 import Foundation
+protocol MozoRefreshViewDelegate {
+    func didRefresh()
+}
 class MozoRefreshView: UIView {
-    var containerView: UIView!
     @IBOutlet weak var btnRefresh: UIButton!
+    
+    var containerView: UIView!
     var isRefreshing : Bool = false {
         didSet {
             ai.isHidden = !isRefreshing
@@ -22,6 +26,7 @@ class MozoRefreshView: UIView {
             }
         }
     }
+    var delegate: MozoRefreshViewDelegate? = nil
     let ai = UIActivityIndicatorView(style: .white)
 
     override init(frame: CGRect) {
@@ -34,7 +39,7 @@ class MozoRefreshView: UIView {
         loadViewFromNib()
     }
     
-    func loadViewFromNib(){
+    func loadViewFromNib() {
         let nib = UINib(nibName: "MozoRefreshView", bundle: BundleManager.mozoBundle())
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         view.frame = frame
@@ -57,6 +62,6 @@ class MozoRefreshView: UIView {
     
     @IBAction func touchedRefreshBtn(_ sender: Any) {
         isRefreshing = true
-        _ = MozoSDK.loadBalanceInfo()
+        delegate?.didRefresh()
     }
 }

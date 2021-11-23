@@ -56,12 +56,10 @@ extension CoreInteractor: CoreInteractorService {
     }
     
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem> {
-        print("😎 Load balance info.")
         return Promise { seal in
             // TODO: Check authen and authorization first
             if let userObj = SessionStoreManager.loadCurrentUser() {
                 if let address = userObj.profile?.walletInfo?.offchainAddress {
-                    print("Address used to load balance: \(address)")
                     _ = apiManager.getTokenInfoFromAddress(address)
                         .done { (tokenInfo) in
                             SessionStoreManager.tokenInfo = tokenInfo

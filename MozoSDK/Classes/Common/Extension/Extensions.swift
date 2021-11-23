@@ -452,7 +452,7 @@ public extension URL {
         let queryItem = URLQueryItem(name: name, value: value)
 
         // Append the new query item in the existing query items array
-        if let index = queryItems.index(of: queryItem) {
+        if let index = queryItems.firstIndex(of: queryItem) {
             queryItems.remove(at: index)
         }
         queryItems.append(queryItem)
