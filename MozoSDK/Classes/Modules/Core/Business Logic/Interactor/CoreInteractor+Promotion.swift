@@ -33,10 +33,6 @@ extension CoreInteractor {
         return apiManager.getPromotionRedeemInfo(promotionId: promotionId, branchId: branchId)
     }
     
-    func getBranchesInChain(promotionId: Int64, lat: Double, lng: Double) -> Promise<[BranchInfoDTO]> {
-        return apiManager.getBranchesInChain(promotionId: promotionId, lat: lat, lng: lng)
-    }
-    
     func getPromotionPaidDetail(promotionId: Int64) -> Promise<PromotionPaidDTO> {
         return apiManager.getPromotionPaidDetail(promotionId: promotionId)
     }

@@ -360,10 +360,6 @@ public class MozoSDK {
         return moduleDependencies.getPromotionRedeemInfo(promotionId: promotionId, branchId: branchId)
     }
     
-    public static func getBranchesInChain(promotionId: Int64, lat: Double, lng: Double) -> Promise<[BranchInfoDTO]> {
-        return moduleDependencies.getBranchesInChain(promotionId: promotionId, lat: lat, lng: lng)
-    }
-    
     public static func redeemPromotion(_ promotionId: Int64, delegate: RedeemPromotionDelegate) {
         return moduleDependencies.redeemPromotion(promotionId, delegate: delegate)
     }

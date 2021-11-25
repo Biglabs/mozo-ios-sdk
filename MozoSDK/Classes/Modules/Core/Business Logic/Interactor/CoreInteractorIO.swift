@@ -121,8 +121,6 @@ protocol CoreInteractorService {
     
     func getPromotionRedeemInfo(promotionId: Int64, branchId: Int64) -> Promise<PromotionRedeemInfoDTO>
     
-    func getBranchesInChain(promotionId: Int64, lat: Double, lng: Double) -> Promise<[BranchInfoDTO]>
-    
     func getPromotionPaidDetail(promotionId: Int64) -> Promise<PromotionPaidDTO>
     
     func getPromotionPaidDetailByCode(_ promotionCode: String) -> Promise<PromotionPaidDTO>
