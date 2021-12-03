@@ -15,6 +15,7 @@ public class BranchInfoDTO : StoreInfoDTO {
     public var isMain: Bool?
     public var beaconCountNeedToSync: Int?
     public var totalBeaconCount: Int?
+    public var fullDescription: String?
     
     /**
      Use for update state
@@ -29,6 +30,7 @@ public class BranchInfoDTO : StoreInfoDTO {
         self.isMain = json["isMain"].bool
         self.beaconCountNeedToSync = json["beaconCountNeedToSync"].int
         self.totalBeaconCount = json["totalBeaconCount"].int
+        self.fullDescription = json["fullDescription"].string
     }
     
     public init?(address: String, city: String, closeHour: Int, country: String, imageLogo: String, latitude: NSNumber, longitude: NSNumber, name: String, openHour: Int, state: String, zip: String, images: [String], hashTag: [String]) {
