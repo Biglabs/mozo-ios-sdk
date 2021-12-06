@@ -85,9 +85,7 @@ public class TransactionSignManager {
                     let decryptedPrivateKey = privateKey.decrypt(key: pin)
                     guard let publicKey = Web3Utils.privateToPublic(Data(hex: decryptedPrivateKey))?.dropFirst().toHexString().addHexPrefix()
                     else {
-                        self.signCallback?(nil)
-                        self.signCallback = nil
-                        self.signData = nil
+                        // MARK: PIN is wrong
                         return
                     }
                     
