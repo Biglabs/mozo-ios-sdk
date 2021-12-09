@@ -9,6 +9,7 @@ import Foundation
 
 class MozoWireframe: NSObject {
     var rootWireframe : RootWireframe?
+    private var isAutoPinPresenting = false
     
     func dismissModuleInterface() {
         let coreEventHandler = rootWireframe?.mozoNavigationController.coreEventHandler
@@ -29,6 +30,18 @@ class MozoWireframe: NSObject {
         } else {
             rootWireframe?.displayViewController(viewController)
         }
+        isAutoPinPresenting = true
+    }
+    
+    func dismissAutoPinIfNeed() {
+        if isAutoPinPresenting || getTopViewController() is AutoPINViewController {
+            dismissTopInterface()
+            isAutoPinPresenting = false
+        }
+    }
+    
+    func dismissTopInterface() {
+        rootWireframe?.dismissTopViewController()
     }
     
     public func getTopViewController() -> UIViewController! {

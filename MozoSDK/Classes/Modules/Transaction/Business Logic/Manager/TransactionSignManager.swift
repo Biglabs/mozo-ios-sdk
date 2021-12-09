@@ -96,17 +96,20 @@ public class TransactionSignManager {
                             result.append(Triple(d, signature, publicKey))
                         }
                     }
+                    self.redeemWF?.dismissAutoPinIfNeed()
                     self.signCallback?(result)
                     self.signCallback = nil
                     self.signData = nil
                     
                 } else {
+                    self.redeemWF?.dismissAutoPinIfNeed()
                     self.signCallback?(nil)
                     self.signCallback = nil
                     self.signData = nil
                 }
             })
         } else {
+            redeemWF?.dismissAutoPinIfNeed()
             signCallback?(nil)
             signCallback = nil
             self.signData = nil

@@ -101,8 +101,8 @@ public extension String {
     }
     
     func toTextNumberWithoutGrouping() -> String {
-        let decimalSeparator = NSLocale.current.decimalSeparator ?? "."
-        let groupingSeparator = NSLocale.current.groupingSeparator ?? ","
+        let decimalSeparator = Locale.current.decimalSeparator ?? "."
+        let groupingSeparator = Locale.current.groupingSeparator ?? ","
         return self.replace(groupingSeparator, withString: "").replace(decimalSeparator, withString: ".")
     }
     

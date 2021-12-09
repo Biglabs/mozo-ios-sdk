@@ -80,7 +80,13 @@ public enum AppType: String {
     case Retailer = "retailer"
     
     public var scheme: String {
-        return "mozox.\(rawValue)"
+        var suffix = ""
+        switch MozoSDK.network {
+        case .DevNet: suffix = "dev."
+        case .TestNet: suffix = "staging."
+        default: break
+        }
+        return "\(suffix)mozox.\(rawValue)"
     }
     
     public var appStoreUrl: String {
