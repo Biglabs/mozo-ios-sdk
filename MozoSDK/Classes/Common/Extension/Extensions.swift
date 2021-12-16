@@ -423,6 +423,7 @@ public extension Dictionary {
         for (key,value) in self {
             output += "\(key)=\(value)&"
         }
+        output.removeLast()
         return output
     }
 }
