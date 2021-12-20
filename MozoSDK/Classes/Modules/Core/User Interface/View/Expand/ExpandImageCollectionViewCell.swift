@@ -25,8 +25,7 @@ class ExpandImageCollectionViewCell: UICollectionViewCell {
         
         if let imageName = self.imageName, !imageName.isEmpty {
             loadingIndicator.startAnimating()
-            let url = "\(Configuration.DOMAIN_IMAGE)\(imageName)"
-            imageView.loadImage(url, defaultImageName: "") {
+            imageView.load(imageName, placeHolder: "") {
                 self.loadingIndicator?.stopAnimating()
             }
         } else {

@@ -29,10 +29,20 @@ public extension UIViewController {
         view.endEditing(true)
     }
     
-    func openLink(link : String) {
+    func openLink(_ parent: UIViewController? = nil, link : String) {
         if var url = URL(string: link) {
             url.appendQueryItem(name: "language", value: Configuration.LOCALE)
-            present(SFSafariViewController(url: url), animated: true, completion: nil)
+            
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = false
+            let vc = SFSafariViewController(url: url, configuration: config)
+            vc.modalPresentationStyle = .pageSheet
+            
+            if let controller = parent {
+                controller.present(vc, animated: true)
+            } else {
+                self.present(vc, animated: true)
+            }
         }
     }
 }
