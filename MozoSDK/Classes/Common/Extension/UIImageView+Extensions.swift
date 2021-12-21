@@ -25,7 +25,7 @@ public extension UIImageView {
             return
         }
 
-        let scale = UIScreen.main.scale * 2
+        let scale = UIScreen.main.scale
         let iWidth = Int(self.frame.width * scale)
         let iHeight = Int(self.frame.height * scale)
         
