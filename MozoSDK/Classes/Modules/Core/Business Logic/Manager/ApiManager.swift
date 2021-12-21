@@ -31,7 +31,7 @@ public class ApiManager {
         configuration.requestCachePolicy = cachePolicy
         configuration.urlCache = cache
         // Create your own manager instance that uses your custom configuration
-        client = Alamofire.Session(configuration: configuration)
+        client = Session(configuration: configuration)
     }
     
     private func getToken() -> String {
