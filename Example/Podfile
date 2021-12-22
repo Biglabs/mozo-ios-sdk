@@ -7,6 +7,7 @@ target 'example' do
 
   # Pods for example
   pod 'MozoSDK', :path => '../'
+  pod 'web3swift', :git => 'https://github.com/vuquangnguyen-biglabs/web3swift.git', :branch => 'develop'
 end
 
 post_install do |installer|
