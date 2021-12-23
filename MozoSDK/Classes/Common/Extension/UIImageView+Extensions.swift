@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import SDWebImage
 
-let imageCache = NSCache<NSString, AnyObject>()
 public extension UIImageView {
     func load(
         _ url: String?,
