@@ -320,11 +320,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.updateSalePerson(account: account)
     }
     
-    // MARK: COVID-19 support APIs
-    func getCovidZones(params: [String : Any]) -> Promise<[CovidZone]> {
-        return apiManager.getCovidZones(params: params)
-    }
-    
     // MARK: Mozo Messages APIs
     func getConversationList(text: String?, page: Int) -> Promise<[Conversation]> {
         apiManager.getConversationList(text: text, page: page)

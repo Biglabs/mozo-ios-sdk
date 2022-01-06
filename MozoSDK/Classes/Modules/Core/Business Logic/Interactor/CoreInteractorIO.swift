@@ -179,9 +179,6 @@ protocol CoreInteractorService {
     
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO>
     
-    // MARK: COVID-19 support APIs
-    func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]>
-    
     // MARK: Mozo Messages APIs
     func getConversationList(text: String?, page: Int) -> Promise<[Conversation]>
     func getConversationDetails(id: Int64) -> Promise<Conversation?>

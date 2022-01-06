@@ -495,11 +495,6 @@ public class MozoSDK {
         return moduleDependencies.registerMoreBeacon(parameters: parameters)
     }
     
-    // MARK: COVID-19 support APIs
-    public static func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]> {
-        return moduleDependencies.getCovidZones(params: params)
-    }
-    
     // MARK: Mozo Messages APIs
     public static func getConversationList(text: String?, page: Int) -> Promise<[Conversation]> {
         return moduleDependencies.getConversationList(text: text, page: page)

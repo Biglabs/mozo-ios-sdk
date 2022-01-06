@@ -17,7 +17,6 @@ public class Configuration {
     public static let PARAM_LANGUAGE = "?language=\(LOCALE)"
     
     public static let PAGING_SIZE = 100
-    public static let MAX_DAY_OF_COVID = 24
     public static let MIN_PASSWORD_LENGTH = 6
     public static let MAX_NAME_LENGTH = 128
     public static let SHOW_MOZO_EQUIVALENT_CURRENCY = false
