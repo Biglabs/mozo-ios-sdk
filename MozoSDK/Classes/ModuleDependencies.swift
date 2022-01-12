@@ -393,22 +393,6 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getSuggestKeySearchForPromotion(lat: lat, lon: lon))!
     }
     
-    func getParkingTicketStatus(id: Int64, isIn: Bool) -> Promise<ParkingTicketStatusType> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getParkingTicketStatus(id: id, isIn: isIn))!
-    }
-    
-    func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getParkingTicketByStoreId(storeId: storeId, isIn: isIn))!
-    }
-    
-    func getParkingTicketByStoreId(storeId: Int64) -> Promise<TicketDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getParkingTicketByStoreId(storeId: storeId))!
-    }
-        
-    func renewParkingTicket(id: Int64, vehicleTypeKey: String, isIn: Bool) -> Promise<TicketDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.renewParkingTicket(id: id, vehicleTypeKey: vehicleTypeKey, isIn: isIn))!
-    }
-    
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem> {
         return (coreWireframe.corePresenter?.coreInteractorService?.loadTopUpBalanceInfo())!
     }

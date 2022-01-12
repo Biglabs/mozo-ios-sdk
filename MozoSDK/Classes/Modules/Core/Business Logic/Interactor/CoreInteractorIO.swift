@@ -153,14 +153,6 @@ protocol CoreInteractorService {
     
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]>
     
-    func getParkingTicketStatus(id: Int64, isIn: Bool) -> Promise<ParkingTicketStatusType>
-    
-    func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO>
-    
-    func getParkingTicketByStoreId(storeId: Int64) -> Promise<TicketDTO>
-    
-    func renewParkingTicket(id: Int64, vehicleTypeKey: String, isIn: Bool) -> Promise<TicketDTO>
-    
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem>
         
     func loadTopUpHistory(topUpAddress: String?, page: Int, size: Int) -> Promise<TxHistoryDisplayCollection>

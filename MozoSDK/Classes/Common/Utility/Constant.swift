@@ -216,8 +216,3 @@ public enum MaintenanceStatusType: String {
     case MAINTAINED = "MAINTAINED"
     case HEALTHY = "HEALTHY"
 }
-
-public enum ParkingTicketStatusType: String {
-    case SUCCESS = "SUCCESS"
-    case NONE = "NONE"
-}
