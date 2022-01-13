@@ -129,10 +129,6 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.addSalePerson(parameters:parameters))!
     }
     
-    func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.sendRangedBeacons(beacons: beacons, status: status))!
-    }
-    
     func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getTxHistoryDisplayCollection())!
     }

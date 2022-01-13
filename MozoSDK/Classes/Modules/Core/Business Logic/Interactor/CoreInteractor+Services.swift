@@ -51,10 +51,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.addSalePerson(parameters: parameters)
     }
     
-    func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
-        return apiManager.sendRangedBeacons(beacons: beacons, status: status)
-    }
-    
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem> {
         return Promise { seal in
             // TODO: Check authen and authorization first

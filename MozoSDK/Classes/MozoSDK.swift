@@ -113,10 +113,6 @@ public class MozoSDK {
         return (moduleDependencies.addRetailerSalePerson(parameters:parameters))
     }
     
-    public static func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
-        return (moduleDependencies.sendRangedBeacons(beacons: beacons, status: status))
-    }
-    
     public static func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection> {
         return (moduleDependencies.getTxHistoryDisplayCollection())
     }

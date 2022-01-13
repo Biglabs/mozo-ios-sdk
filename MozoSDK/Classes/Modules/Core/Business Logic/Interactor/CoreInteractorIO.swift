@@ -57,8 +57,6 @@ protocol CoreInteractorService {
     func getRetailerInfo() -> Promise<[String : Any]>
     func addSalePerson(parameters: Any?) -> Promise<[String: Any]>
     
-    func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String: Any]>
-    
     func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection>
     func getLatestAirdropEvent() -> Promise<AirdropEventDTO>
     func getAirdropEventList(page: Int, branchId: Int64?) -> Promise<[AirdropEventDTO]>
