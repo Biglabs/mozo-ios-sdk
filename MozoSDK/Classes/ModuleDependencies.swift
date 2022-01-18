@@ -369,14 +369,6 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerCountPromotion())!
     }
     
-    func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperTodoList(blueToothOff: blueToothOff, long: long, lat: lat))!
-    }
-    
-    func getTodoListSetting() -> Promise<TodoSettingDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getTodoListSetting())!
-    }
-    
     func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getGPSBeacons(params: params))!
     }

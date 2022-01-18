@@ -404,14 +404,6 @@ public class MozoSDK {
         return moduleDependencies.getRetailerCountPromotion()
     }
     
-    public static func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]> {
-        return moduleDependencies.getShopperTodoList(blueToothOff: blueToothOff, long: long, lat: lat)
-    }
-    
-    public static func getTodoListSetting() -> Promise<TodoSettingDTO> {
-        return moduleDependencies.getTodoListSetting()
-    }
-    
     public static func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
         return moduleDependencies.getGPSBeacons(params: params)
     }

@@ -255,14 +255,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getCreateAirdropEventSettings()
     }
     
-    func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]> {
-        return apiManager.getShopperTodoList(blueToothOff: blueToothOff, long: long, lat: lat)
-    }
-    
-    func getTodoListSetting() -> Promise<TodoSettingDTO> {
-        return apiManager.getTodoListSetting()
-    }
-    
     func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
         return apiManager.getGPSBeacons(params: params)
     }

@@ -141,10 +141,6 @@ protocol CoreInteractorService {
     
     func getRetailerCountPromotion() -> Promise<Int>
     
-    func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]>
-    
-    func getTodoListSetting() -> Promise<TodoSettingDTO>
-    
     func getGPSBeacons(params: [String: Any]) -> Promise<[String]>
     
     func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO>
