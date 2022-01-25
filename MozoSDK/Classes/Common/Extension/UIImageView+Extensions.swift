@@ -14,6 +14,7 @@ public extension UIImageView {
     func load(
         _ url: String?,
         placeHolder: String = "ic_store_profile",
+        shouldScale: Bool = true,
         _ onLoadComplete: (() -> Void)? = nil
     ) {
         let placeHolderImage = UIImage(named: placeHolder) ?? placeHolder.asMozoImage()?.withRenderingMode(.alwaysOriginal)
@@ -25,22 +26,26 @@ public extension UIImageView {
         }
 
         let scale = UIScreen.main.scale
-        let iWidth = Int(self.frame.width * scale)
-        let iHeight = Int(self.frame.height * scale)
-        
         var finalUrl = safeUrl
         if !safeUrl.hasPrefix("http") {
-            finalUrl = "\(Configuration.DOMAIN_IMAGE)\(safeUrl)?width=\(iWidth)&height=\(iHeight)"
+            finalUrl = "\(Configuration.DOMAIN_IMAGE)\(safeUrl)"
         }
-    
+        if shouldScale {
+            let iWidth = Int(self.frame.width * scale)
+            let iHeight = Int(self.frame.height * scale)
+            finalUrl = "\(finalUrl)?width=\(iWidth)&height=\(iHeight)"
+        }
+        let thumbnailSize = CGSize(width: 200 * scale, height: 200 * scale)
+        
         self.sd_imageTransition = .fade
         self.sd_setImage(
             with: URL(string: finalUrl),
             placeholderImage: placeHolderImage,
-            options: [],
+            options: [
+                .progressiveLoad
+            ],
             context: [
-                .imageThumbnailPixelSize : CGSize(width: iWidth, height: iHeight),
-                .imageScaleFactor: 0.2
+                .imageThumbnailPixelSize: thumbnailSize
             ],
             progress: nil,
             completed: { _, error, _, loadedUrl in
