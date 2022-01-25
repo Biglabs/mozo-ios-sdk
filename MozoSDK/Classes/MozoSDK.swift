@@ -380,20 +380,8 @@ public class MozoSDK {
         return moduleDependencies.getPromotionPaidHistoryDetail(id)
     }
     
-    public static func getShopperPromotionSaved(page: Int = 0, size: Int = 15, long: Double = 0, lat: Double = 0) -> Promise<[PromotionStoreDTO]> {
-        return moduleDependencies.getShopperPromotionSaved(page: page, size: size, long: long, lat: lat)
-    }
-    
     public static func getShopperPromotionRunning(page: Int = 0, size: Int = 15, long: Double = 0, lat: Double = 0, storeId: Int64) -> Promise<JSON> {
         return moduleDependencies.getShopperPromotionRunning(page: page, size: size, long: long, lat: lat, storeId: storeId)
-    }
-    
-    public static func getShopperPromotionPurchased(page: Int = 0, size: Int = 15, long: Double = 0, lat: Double = 0) -> Promise<[PromotionStoreDTO]> {
-        return moduleDependencies.getShopperPromotionPurchased(page: page, size: size, long: long, lat: lat)
-    }
-    
-    public static func getShopperPromotionHistory(page: Int = 0, size: Int = 15) -> Promise<[PromotionStoreDTO]> {
-        return moduleDependencies.getShopperPromotionHistory(page: page, size: size)
     }
     
     public static func getRetailerPromotionScannedList(page: Int = 0, size: Int = 15) -> Promise<[PromotionCodeInfoDTO]> {

@@ -53,20 +53,8 @@ extension CoreInteractor {
         return apiManager.getPromotionPaidHistoryDetail(id)
     }
     
-    func getShopperPromotionSaved(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return apiManager.getShopperPromotionSaved(page: page, size: size, long: long, lat: lat)
-    }
-   
     func getShopperPromotionRunning(page: Int, size: Int, long: Double, lat: Double, storeId: Int64) -> Promise<JSON> {
         return apiManager.getShopperPromotionRunning(page: page, size: size, long: long, lat: lat, storeId: storeId)
-    }
-   
-    func getShopperPromotionPurchased(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return apiManager.getShopperPromotionPurchased(page: page, size: size, long: long, lat: lat)
-    }
-   
-    func getShopperPromotionHistory(page: Int, size: Int) -> Promise<[PromotionStoreDTO]> {
-        return apiManager.getShopperPromotionHistory(page: page, size: size)
     }
    
     func getRetailerPromotionScannedList(page: Int, size: Int) -> Promise<[PromotionCodeInfoDTO]> {

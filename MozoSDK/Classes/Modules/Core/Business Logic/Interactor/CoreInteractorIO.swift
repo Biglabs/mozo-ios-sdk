@@ -129,13 +129,7 @@ protocol CoreInteractorService {
     
     func getPromotionPaidHistoryDetail(_ id: Int64) -> Promise<PromotionPaidDTO>
     
-    func getShopperPromotionSaved(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]>
-    
     func getShopperPromotionRunning(page: Int, size: Int, long: Double, lat: Double, storeId: Int64) -> Promise<JSON>
-    
-    func getShopperPromotionPurchased(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]>
-    
-    func getShopperPromotionHistory(page: Int, size: Int) -> Promise<[PromotionStoreDTO]>
     
     func getRetailerPromotionScannedList(page: Int, size: Int) -> Promise<[PromotionCodeInfoDTO]>
     

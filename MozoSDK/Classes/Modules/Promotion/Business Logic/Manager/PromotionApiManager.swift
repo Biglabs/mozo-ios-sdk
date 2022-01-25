@@ -200,54 +200,6 @@ public extension ApiManager {
         }
     }
     
-    func getShopperPromotionHistory(page: Int, size: Int) -> Promise<[PromotionStoreDTO]> {
-        return Promise { seal in
-            let params = ["size" : size,
-                          "page" : page] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoHistoryInBag/v1?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    "Finish request to get Shopper promotion history, json response: \(json)".log()
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let array = PromotionStoreDTO.arrayFrom(jobj)
-                    seal.fulfill(array)
-                }
-                .catch { error in
-                    "Error when request get Shopper promotion history: \(error.localizedDescription)".log()
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
-    func getShopperPromotionPurchased(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return Promise { seal in
-            let params = ["size" : size,
-                          "page" : page,
-                          "lat": lat,
-                          "lon": long] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoPurchasedInBag/v1?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    "Finish request to get Shopper promotion purchased, json response: \(json)".log()
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let array = PromotionStoreDTO.arrayFrom(jobj)
-                    seal.fulfill(array)
-                }
-                .catch { error in
-                    "Error when request get Shopper promotion purchased: \(error.localizedDescription)".log()
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
     func getShopperPromotionRunning(page: Int, size: Int, long: Double, lat: Double, storeId: Int64) -> Promise<JSON> {
         return Promise { seal in
             let params = ["size" : size,
@@ -265,31 +217,6 @@ public extension ApiManager {
                 }
                 .catch { error in
                     "Error when request get Shopper promotion running: \(error.localizedDescription)".log()
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
-    func getShopperPromotionSaved(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return Promise { seal in
-            let params = ["size" : size,
-                          "page" : page,
-                          "lat": lat,
-                          "lon": long] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoSavedInBag/v1?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    "Finish request to get Shopper promotion saved, json response: \(json)".log()
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let array = PromotionStoreDTO.arrayFrom(jobj)
-                    seal.fulfill(array)
-                }
-                .catch { error in
-                    "Error when request get Shopper promotion saved: \(error.localizedDescription)".log()
                     seal.reject(error)
                 }
                 .finally {
