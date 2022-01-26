@@ -35,7 +35,6 @@ class ModuleDependencies {
     let speedSelectionWireframe = SpeedSelectionWireframe()
     let backupWalletWireframe = BackupWalletWireframe()
     let changePINWireframe = ChangePINWireframe()
-    let redeemWireframe = RedeemWireframe()
     let abImportWireframe = ABImportWireframe()
     let topUpWireframe = TopUpWireframe()
     let topUpWithdrawWireframe = TopUpWithdrawWireframe()
@@ -185,18 +184,6 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getListCountryCode())!
     }
     
-    func searchStoresWithText(_ text: String, page: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.searchStoresWithText(text, page: page, long: long, lat: lat, sort: sort))!
-    }
-    
-    func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getFavoriteStores(page: page, size: size))!
-    }
-    
-    func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite))!
-    }
-    
     func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getUserSummary(startTime: startTime, endTime: endTime))!
     }
@@ -235,10 +222,6 @@ class ModuleDependencies {
     
     func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO> {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateRetailerStoreInfo(storeInfo: storeInfo))!
-    }
-    
-    func getStoreDetail(_ storeId: Int64) -> Promise<BranchInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getStoreDetail(storeId))!
     }
     
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
@@ -313,36 +296,8 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.cancelPromotionCode(code: code))!
     }
     
-    func getShopperPromotionListWithType(page: Int, size: Int, long: Double, lat: Double, type: PromotionListTypeEnum) -> Promise<[PromotionStoreDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionListWithType(page: page, size: size, long: long, lat: lat, type: type))!
-    }
-    
-    func getPromotionRedeemInfo(promotionId: Int64, branchId: Int64) -> Promise<PromotionRedeemInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionRedeemInfo(promotionId: promotionId, branchId: branchId))!
-    }
-    
-    func redeemPromotion(_ promotionId: Int64, delegate: RedeemPromotionDelegate) {
-        redeemWireframe.requestToRedeemAndSign(promotionId, delegate: delegate)
-    }
-    
-    func getPromotionPaidDetail(promotionId: Int64) -> Promise<PromotionPaidDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionPaidDetail(promotionId: promotionId))!
-    }
-    
-    func getPromotionPaidDetailByCode(_ promotionCode: String) -> Promise<PromotionPaidDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionPaidDetailByCode(promotionCode))!
-    }
-    
-    func processPromotionByCustomCode(code: String, branchId: Int64, lat: Double? = nil, lng: Double? = nil) -> Promise<Any> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.processPromotionByCustomCode(code: code, branchId: branchId, lat: lat, lng: lng))!
-    }
-    
     func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateFavoritePromotion(promotionId, isFavorite: isFavorite))!
-    }
-    
-    func getPromotionPaidHistoryDetail(_ id: Int64) -> Promise<PromotionPaidDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionPaidHistoryDetail(id))!
     }
     
     func getShopperPromotionRunning(page: Int, size: Int, long: Double, lat: Double, storeId: Int64) -> Promise<JSON> {
@@ -359,10 +314,6 @@ class ModuleDependencies {
     
     func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getGPSBeacons(params: params))!
-    }
-    
-    func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.searchPromotionsWithText(text, page: page, size: size, long: long, lat: lat))!
     }
     
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]> {
@@ -383,10 +334,6 @@ class ModuleDependencies {
     
     func topUpWithdraw(delegate: TopUpWithdrawDelegate) {
         topUpWithdrawWireframe.requestToWithdrawAndSign(delegate: delegate)
-    }
-    
-    func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat))!
     }
     
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {
@@ -647,7 +594,6 @@ class ModuleDependencies {
         txInteractor.output = txPresenter
         
         let signManager = TransactionSignManager.shared
-        signManager.redeemWF = redeemWireframe
         txInteractor.signManager = signManager
         
         txPresenter.txInteractor = txInteractor
@@ -661,7 +607,6 @@ class ModuleDependencies {
         airdropAddDependencies(signManager: signManager)
         airdropWithdrawDependencies(signManager: signManager)
         convertDependencies(signManager: signManager)
-        redeemDependencies(signManager: signManager)
         // MARK: Top Up
         topUpDependencies(signManager: signManager)
         topUpWithdrawDependencies(signManager: signManager)
@@ -800,22 +745,6 @@ class ModuleDependencies {
         
         paymentQRWireframe.presenter = paymentQRPresenter
         paymentQRWireframe.rootWireframe = rootWireframe
-    }
-    
-    func redeemDependencies(signManager: TransactionSignManager) {
-        let redeemPresenter = RedeemPresenter()
-        
-        let redeemInteractor = RedeemInteractor()
-        redeemInteractor.apiManager = ApiManager.shared
-        redeemInteractor.output = redeemPresenter
-        redeemInteractor.signManager = signManager
-        
-        redeemPresenter.interactor = redeemInteractor
-        redeemPresenter.wireframe = redeemWireframe
-        
-        redeemWireframe.redeemPresenter = redeemPresenter
-        redeemWireframe.walletWireframe = walletWireframe
-        redeemWireframe.rootWireframe = rootWireframe
     }
     
     func abImportDependencies() {

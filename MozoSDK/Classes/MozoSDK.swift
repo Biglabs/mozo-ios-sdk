@@ -169,18 +169,6 @@ public class MozoSDK {
         return moduleDependencies.getListCountryCode()
     }
     
-    public static func searchStoresWithText(_ text: String, page: Int = 0, long: Double, lat: Double, sort: String = "distance") -> Promise<CollectionStoreInfoDTO> {
-        return moduleDependencies.searchStoresWithText(text, page: page, long: long, lat: lat, sort: sort)
-    }
-    
-    public static func getFavoriteStores(page: Int = 0, size: Int = 15) -> Promise<[BranchInfoDTO]> {
-        return moduleDependencies.getFavoriteStores(page: page, size: size)
-    }
-    
-    public static func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
-        return moduleDependencies.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite)
-    }
-    
     public static func getUserSummary(startTime: Int = 0, endTime: Int = 86400) -> Promise<UserSummary?> {
         return moduleDependencies.getUserSummary(startTime: startTime, endTime: endTime)
     }
@@ -219,10 +207,6 @@ public class MozoSDK {
     
     public static func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO> {
         return moduleDependencies.updateRetailerStoreInfo(storeInfo: storeInfo)
-    }
-    
-    public static func getStoreDetail(_ storeId: Int64) -> Promise<BranchInfoDTO> {
-        return moduleDependencies.getStoreDetail(storeId)
     }
     
     public static func getRecommendationStores(_ storeId: Int64, size: Int = 5, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
@@ -348,36 +332,8 @@ public class MozoSDK {
         return moduleDependencies.cancelPromotionCode(code: code)
     }
     
-    public static func getShopperPromotionListWithType(page: Int = 0, size: Int = 15, long: Double = 0, lat: Double = 0, type: PromotionListTypeEnum = .TOP) -> Promise<[PromotionStoreDTO]> {
-        return moduleDependencies.getShopperPromotionListWithType(page: page, size: size, long: long, lat: lat, type: type)
-    }
-    
-    public static func getPromotionRedeemInfo(promotionId: Int64, branchId: Int64) -> Promise<PromotionRedeemInfoDTO> {
-        return moduleDependencies.getPromotionRedeemInfo(promotionId: promotionId, branchId: branchId)
-    }
-    
-    public static func redeemPromotion(_ promotionId: Int64, delegate: RedeemPromotionDelegate) {
-        return moduleDependencies.redeemPromotion(promotionId, delegate: delegate)
-    }
-    
-    public static func getPromotionPaidDetail(promotionId: Int64) -> Promise<PromotionPaidDTO> {
-        return moduleDependencies.getPromotionPaidDetail(promotionId: promotionId)
-    }
-    
-    public static func getPromotionPaidDetailByCode(_ promotionCode: String) -> Promise<PromotionPaidDTO> {
-        return moduleDependencies.getPromotionPaidDetailByCode(promotionCode)
-    }
-    
-    public static func processPromotionByCustomCode(code: String, branchId: Int64, lat: Double? = nil, lng: Double? = nil) -> Promise<Any> {
-        return moduleDependencies.processPromotionByCustomCode(code: code, branchId: branchId, lat: lat, lng: lng)
-    }
-    
     public static func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
         return moduleDependencies.updateFavoritePromotion(promotionId, isFavorite: isFavorite)
-    }
-    
-    public static func getPromotionPaidHistoryDetail(_ id: Int64) -> Promise<PromotionPaidDTO> {
-        return moduleDependencies.getPromotionPaidHistoryDetail(id)
     }
     
     public static func getShopperPromotionRunning(page: Int = 0, size: Int = 15, long: Double = 0, lat: Double = 0, storeId: Int64) -> Promise<JSON> {
@@ -394,10 +350,6 @@ public class MozoSDK {
     
     public static func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
         return moduleDependencies.getGPSBeacons(params: params)
-    }
-    
-    public static func searchPromotionsWithText(_ text: String, page: Int = 0, size: Int = 15, long: Double = 0, lat: Double = 0) -> Promise<CollectionPromotionInfoDTO> {
-        return moduleDependencies.searchPromotionsWithText(text, page: page, size: size, long: long, lat: lat)
     }
     
     public static func getSuggestKeySearchForPromotion(lat: Double = 0, lon: Double = 0) -> Promise<[String]> {
@@ -419,10 +371,6 @@ public class MozoSDK {
     
     public static func topUpWithdraw(delegate: TopUpWithdrawDelegate) {
         moduleDependencies.topUpWithdraw(delegate: delegate)
-    }
-    
-    public static func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int = 0, size: Int = 5, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        moduleDependencies.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat)
     }
     
     public static func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {

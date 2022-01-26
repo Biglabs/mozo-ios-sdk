@@ -15,7 +15,6 @@ public class TransactionSignManager {
     public static let shared = TransactionSignManager()
     let notiReceivePin = "RequestForPin"
     let dataManager : TransactionDataManager
-    var redeemWF: RedeemWireframe?
     
     private var signCallback: (([Triple]?) -> ())? = nil
     private var signData: [String]? = nil
@@ -46,14 +45,14 @@ public class TransactionSignManager {
             if SessionStoreManager.getNotShowAutoPINScreen() == true {
                 sign(decryptPin)
             } else {
-                redeemWF?.presentAutoPINInterface(needShowRoot: true)
+                // MARK: redeemWF?.presentAutoPINInterface(needShowRoot: true)
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Configuration.TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS) + .milliseconds(1)) {
                     self.sign(decryptPin)
                 }
             }
         } else {
             NotificationCenter.default.addObserver(self, selector: #selector(onResultReceived(_:)), name: Notification.Name(notiReceivePin), object: nil)
-            redeemWF?.presentPinInterface()
+            // MARK: redeemWF?.presentPinInterface()
         }
     }
     
@@ -96,20 +95,20 @@ public class TransactionSignManager {
                             result.append(Triple(d, signature, publicKey))
                         }
                     }
-                    self.redeemWF?.dismissAutoPinIfNeed()
+                    // MARK: self.redeemWF?.dismissAutoPinIfNeed()
                     self.signCallback?(result)
                     self.signCallback = nil
                     self.signData = nil
                     
                 } else {
-                    self.redeemWF?.dismissAutoPinIfNeed()
+                    // MARK: self.redeemWF?.dismissAutoPinIfNeed()
                     self.signCallback?(nil)
                     self.signCallback = nil
                     self.signData = nil
                 }
             })
         } else {
-            redeemWF?.dismissAutoPinIfNeed()
+            // MARK: redeemWF?.dismissAutoPinIfNeed()
             signCallback?(nil)
             signCallback = nil
             self.signData = nil

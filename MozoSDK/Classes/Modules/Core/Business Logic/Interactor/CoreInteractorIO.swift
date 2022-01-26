@@ -69,9 +69,6 @@ protocol CoreInteractorService {
     func removeSalePerson(id: Int64) -> Promise<[String: Any]>
     func getListCountryCode() -> Promise<[CountryCodeDTO]>
     
-    func searchStoresWithText(_ text: String, page: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO>
-    func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]>
-    func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]>
     func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?>
     
     func getUrlToUploadImage() -> Promise<String>
@@ -85,7 +82,6 @@ protocol CoreInteractorService {
     func updateRetailerStoreInfoHashtag(hashTags: [String]) -> Promise<StoreInfoDTO>
     func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO>
     
-    func getStoreDetail(_ storeId: Int64) -> Promise<BranchInfoDTO>
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]>
     
     func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]>
@@ -115,19 +111,7 @@ protocol CoreInteractorService {
     func usePromotionCode(code: String, billInfo: String?) -> Promise<PromotionCodeInfoDTO>
     func cancelPromotionCode(code: String) -> Promise<[String: Any]>
     
-    func getShopperPromotionListWithType(page: Int, size: Int, long: Double, lat: Double, type: PromotionListTypeEnum) -> Promise<[PromotionStoreDTO]>
-    
-    func getPromotionRedeemInfo(promotionId: Int64, branchId: Int64) -> Promise<PromotionRedeemInfoDTO>
-    
-    func getPromotionPaidDetail(promotionId: Int64) -> Promise<PromotionPaidDTO>
-    
-    func getPromotionPaidDetailByCode(_ promotionCode: String) -> Promise<PromotionPaidDTO>
-    
-    func processPromotionByCustomCode(code: String, branchId: Int64, lat: Double?, lng: Double?) -> Promise<Any>
-    
     func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]>
-    
-    func getPromotionPaidHistoryDetail(_ id: Int64) -> Promise<PromotionPaidDTO>
     
     func getShopperPromotionRunning(page: Int, size: Int, long: Double, lat: Double, storeId: Int64) -> Promise<JSON>
     
@@ -137,15 +121,11 @@ protocol CoreInteractorService {
     
     func getGPSBeacons(params: [String: Any]) -> Promise<[String]>
     
-    func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO>
-    
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]>
     
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem>
         
     func loadTopUpHistory(topUpAddress: String?, page: Int, size: Int) -> Promise<TxHistoryDisplayCollection>
-    
-    func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]>
     
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON>
      

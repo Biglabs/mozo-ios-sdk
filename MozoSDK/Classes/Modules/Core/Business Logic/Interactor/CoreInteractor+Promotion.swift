@@ -25,34 +25,10 @@ extension CoreInteractor {
         return apiManager.cancelPromotionCode(code: code)
     }
     
-    func getShopperPromotionListWithType(page: Int, size: Int, long: Double, lat: Double, type: PromotionListTypeEnum) -> Promise<[PromotionStoreDTO]> {
-        return apiManager.getShopperPromotionListWithType(page: page, size: size, long: long, lat: lat, type: type)
-    }
-    
-    func getPromotionRedeemInfo(promotionId: Int64, branchId: Int64) -> Promise<PromotionRedeemInfoDTO> {
-        return apiManager.getPromotionRedeemInfo(promotionId: promotionId, branchId: branchId)
-    }
-    
-    func getPromotionPaidDetail(promotionId: Int64) -> Promise<PromotionPaidDTO> {
-        return apiManager.getPromotionPaidDetail(promotionId: promotionId)
-    }
-    
-    func getPromotionPaidDetailByCode(_ promotionCode: String) -> Promise<PromotionPaidDTO> {
-        return apiManager.getPromotionPaidDetailByCode(promotionCode)
-    }
-    
-    func processPromotionByCustomCode(code: String, branchId: Int64, lat: Double? = nil, lng: Double? = nil) -> Promise<Any> {
-        return apiManager.processPromotionByCustomCode(code: code, branchId: branchId, lat: lat, lng: lng)
-    }
-    
     func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
         return apiManager.updateFavoritePromotion(promotionId, isFavorite: isFavorite)
     }
-    
-    func getPromotionPaidHistoryDetail(_ id: Int64) -> Promise<PromotionPaidDTO> {
-        return apiManager.getPromotionPaidHistoryDetail(id)
-    }
-    
+
     func getShopperPromotionRunning(page: Int, size: Int, long: Double, lat: Double, storeId: Int64) -> Promise<JSON> {
         return apiManager.getShopperPromotionRunning(page: page, size: size, long: long, lat: lat, storeId: storeId)
     }
@@ -65,16 +41,8 @@ extension CoreInteractor {
         return apiManager.getRetailerCountPromotion()
     }
     
-    func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO> {
-        return apiManager.searchPromotionsWithText(text, page: page, size: size, long: long, lat: lat)
-    }
-    
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]> {
         return apiManager.getSuggestKeySearchForPromotion(lat: lat, lon: lon)
-    }
-    
-    func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return apiManager.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat)
     }
     
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {

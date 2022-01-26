@@ -130,32 +130,6 @@ public extension ApiManager {
         }
     }
     
-    func getShopperPromotionListWithType(page: Int, size: Int, long: Double, lat: Double, type: PromotionListTypeEnum) -> Promise<[PromotionStoreDTO]> {
-        return Promise { seal in
-            let params = ["size" : size,
-                          "page" : page,
-                          "lat": lat,
-                          "lon": long,
-                          "type" : type.rawValue] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromo/v1?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    "Finish request to get Shopper promotion list with type \(type.rawValue), json response: \(json)".log()
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let array = PromotionStoreDTO.arrayFrom(jobj)
-                    seal.fulfill(array)
-                }
-                .catch { error in
-                    "Error when request get Shopper promotion list with type \(type.rawValue): \(error.localizedDescription)".log()
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
     func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
             let params = ["promoId" : promotionId,
@@ -246,35 +220,6 @@ public extension ApiManager {
         }
     }
     
-    func searchPromotionsWithText(_ text: String, page: Int = 0, size: Int = 15, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO> {
-        return Promise { seal in
-            let params = ["size" : size,
-                          "page" : page,
-                          "lon" : long,
-                          "lat" : lat,
-                          "text" : text] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/searchPromo/v1?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to search promotions, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)
-                    if let result = CollectionPromotionInfoDTO(json: jobj) {
-                        seal.fulfill(result)
-                    } else {
-                        seal.reject(ConnectionError.systemError)
-                    }
-                }
-                .catch { error in
-                    print("Error when request search promotions: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]> {
         return Promise { seal in
             let params = ["lat" : lat,
@@ -292,33 +237,6 @@ public extension ApiManager {
                 }
                 .catch { error in
                     print("Error when request get suggestion search for promotion: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
-    func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return Promise { seal in
-            let params = ["size" : size,
-                          "page" : page,
-                          "lat": lat,
-                          "lon": long,
-                          "branchId": storeId,
-                          "type": type] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoInBranch?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    "Finish request to get Shopper promotion in store [\(storeId)], with type [\(type)], json response: \(json)".log()
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let array = PromotionStoreDTO.arrayFrom(jobj)
-                    seal.fulfill(array)
-                }
-                .catch { error in
-                    "Error when request get Shopper promotion in store [\(storeId)], with type [\(type)]: \(error.localizedDescription)".log()
                     seal.reject(error)
                 }
                 .finally {

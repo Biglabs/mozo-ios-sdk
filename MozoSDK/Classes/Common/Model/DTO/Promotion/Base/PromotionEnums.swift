@@ -47,7 +47,7 @@ public enum PromotionTypeEnum: String {
     case ARCHIVERMENT = "ARCHIVERMENT"
 }
 
-public enum PromotionStatusCode: String {
+public enum PromoStatusCode: String {
     case AVAILABLE = "AVAILABLE"
     case USED = "USED"
     case EXPIRED = "EXPIRED"
