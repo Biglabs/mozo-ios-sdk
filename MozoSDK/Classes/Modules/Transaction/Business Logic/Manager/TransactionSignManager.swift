@@ -45,14 +45,18 @@ public class TransactionSignManager {
             if SessionStoreManager.getNotShowAutoPINScreen() == true {
                 sign(decryptPin)
             } else {
-                // MARK: redeemWF?.presentAutoPINInterface(needShowRoot: true)
+                ModuleDependencies.shared.coreWireframe.presentAutoPINInterface(needShowRoot: true)
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Configuration.TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS) + .milliseconds(1)) {
                     self.sign(decryptPin)
                 }
             }
         } else {
             NotificationCenter.default.addObserver(self, selector: #selector(onResultReceived(_:)), name: Notification.Name(notiReceivePin), object: nil)
-            // MARK: redeemWF?.presentPinInterface()
+            ModuleDependencies.shared.walletWireframe.walletPresenter?.pinModuleDelegate = self
+            ModuleDependencies.shared.walletWireframe.presentPINInterface(
+                passPharse: nil,
+                requestFrom: Module.Redeem
+            )
         }
     }
     
@@ -95,20 +99,20 @@ public class TransactionSignManager {
                             result.append(Triple(d, signature, publicKey))
                         }
                     }
-                    // MARK: self.redeemWF?.dismissAutoPinIfNeed()
+                    ModuleDependencies.shared.coreWireframe.dismissAutoPinIfNeed()
                     self.signCallback?(result)
                     self.signCallback = nil
                     self.signData = nil
                     
                 } else {
-                    // MARK: self.redeemWF?.dismissAutoPinIfNeed()
+                    ModuleDependencies.shared.coreWireframe.dismissAutoPinIfNeed()
                     self.signCallback?(nil)
                     self.signCallback = nil
                     self.signData = nil
                 }
             })
         } else {
-            // MARK: redeemWF?.dismissAutoPinIfNeed()
+            ModuleDependencies.shared.coreWireframe.dismissAutoPinIfNeed()
             signCallback?(nil)
             signCallback = nil
             self.signData = nil
@@ -192,5 +196,17 @@ public class TransactionSignManager {
                 })
             }
         }
+    }
+}
+extension TransactionSignManager: PinModuleDelegate {
+    func verifiedPINSuccess(_ pin: String) {
+        ModuleDependencies.shared.walletWireframe.walletPresenter?.pinModuleDelegate = nil
+        self.sign(pin)
+    }
+    
+    func cancel() {
+        self.signCallback?(nil)
+        self.signCallback = nil
+        self.signData = nil
     }
 }

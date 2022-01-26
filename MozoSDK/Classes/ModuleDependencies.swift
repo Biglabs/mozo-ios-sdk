@@ -12,6 +12,8 @@ import SwiftyJSON
 import PromiseKit
 
 class ModuleDependencies {
+    static var shared = ModuleDependencies()
+    
     let rootWireframe = RootWireframe()
     
     let coreWireframe = CoreWireframe()
