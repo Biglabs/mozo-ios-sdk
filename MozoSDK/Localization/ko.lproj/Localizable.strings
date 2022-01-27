@@ -474,8 +474,6 @@
 
 // SHOPPER
 "My wallet" = "내 지갑";
-"List view" = "리스트 양식 보기";
-"Map view" = "지도";
 "Search history" = "기록 검색 ";
 "Invite friends" = "친구 초대";
 "Settings" = "설정";
@@ -796,7 +794,6 @@
 "Convert Failed" = "변환 실패";
 "text_convert_failed_and_try" = "MozoX에서 Mozo로 변환을 완료 할 수 없습니다.";
 "There are no Airdrop Events around you" = "주변에 Airdrop 이벤트가 없습니다.";
-"Discover" = "발견하기";
 "On Going Events" = "Airdrop 다가오는 이벤트";
 "Top Airdrop Events" = "가장 많은 Airdrop 이벤트";
 "Nearest Events" = "가장 가까운 Airdrop 이벤트";

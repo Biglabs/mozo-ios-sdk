@@ -474,8 +474,6 @@
 // SHOPPER
 "Mozo" = "Mozo";
 "My wallet" = "My wallet";
-"List view" = "List view";
-"Map view" = "Map view";
 "Search history" = "Search history";
 "Invite friends" = "Invite friends";
 "Settings" = "Settings";
@@ -798,7 +796,6 @@
 "Convert Failed" = "Convert Failed";
 "text_convert_failed_and_try" = "Cannot convert from MozoX to Mozo.";
 "There are no Airdrop Events around you" = "There are no Airdrop Events around you";
-"Discover" = "Discover";
 "On Going Events" = "On Going Events";
 "Top Airdrop Events" = "Top Airdrop Events";
 "Nearest Events" = "Nearest Events";
