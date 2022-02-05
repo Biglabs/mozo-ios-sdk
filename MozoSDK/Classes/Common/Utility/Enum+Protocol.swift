@@ -55,7 +55,7 @@ internal enum ServiceType: String {
     var image: String {
         switch self {
         case .PRODUCTION:
-            return "image.mozotoken.com"
+            return "image.mozocoin.io"
         case .STAGING:
             return "staging.image.mozotoken.com"
         default:
