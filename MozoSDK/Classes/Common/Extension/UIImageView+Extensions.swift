@@ -42,7 +42,7 @@ public extension UIImageView {
             with: URL(string: finalUrl),
             placeholderImage: placeHolderImage,
             options: [
-                .progressiveLoad
+                .progressiveLoad, .retryFailed
             ],
             context: [
                 .imageThumbnailPixelSize: thumbnailSize
