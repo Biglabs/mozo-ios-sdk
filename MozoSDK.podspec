@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name            = "MozoSDK"
-  s.version         = "2.1.0"
+  s.version         = "2.1.1"
   s.summary         = "Mozo protocol toolkit for Swift"
   s.description     = <<-DESC
 The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaining authentication, authorization with Mozo Services, receiving Mozo Tokens via beacons and buying, selling, transferring Mozo. It is also supporting UI components for authentication and buying, selling, transferring Mozo.
@@ -30,7 +30,7 @@ The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaini
   s.dependency 'CoreStore'
   
   s.dependency 'RNCryptor', '~> 5.1.0'
-  s.dependency 'web3swift', '~> 2.3.0'
+  s.dependency 'web3swift', '~> 2.5.0'
 
   s.dependency 'ReachabilitySwift'
   s.dependency 'MBProgressHUD'
