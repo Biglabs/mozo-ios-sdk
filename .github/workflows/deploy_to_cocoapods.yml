@@ -2,8 +2,10 @@ name: Release to Cocoapods
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+    - master
+    - release/*
+    - hotfix/*
 
 jobs:
   build:
@@ -11,19 +13,19 @@ jobs:
     runs-on: macOS-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
     
-    - name: Install Cocoapods
-      run: gem install cocoapods
-    
-    - name: Deploy to Cocoapods
-      run: |
-        pod repo update
-        pod lib lint --allow-warnings
-      # pod trunk register developer@mozocoin.io 'Mozo Developer' --description='GitHub Actions Token'
-        pod trunk me
-        grep -A2 'trunk.cocoapods.org' ~/.netrc
-        pod trunk push --allow-warnings
-      env:
-        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
-        # Get your trunk token by using: pod trunk me --verbose
+      - name: Install Cocoapods
+        run: gem install cocoapods
+
+      - name: Deploy to Cocoapods
+        run: |
+          pod repo update
+          pod lib lint --allow-warnings
+        # pod trunk register developer@mozocoin.io 'Mozo Developer' --description='GitHub Actions Token'
+          pod trunk me
+          grep -A2 'trunk.cocoapods.org' ~/.netrc
+          pod trunk push --allow-warnings
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+          # Get your trunk token by using: pod trunk me --verbose
