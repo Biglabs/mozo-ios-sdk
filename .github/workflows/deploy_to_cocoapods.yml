@@ -22,7 +22,7 @@ jobs:
         run: |
           pod repo update
           pod lib lint --allow-warnings
-        # pod trunk register developer@mozocoin.io 'Mozo Developer' --description='GitHub Actions Token'
+          # pod trunk register developer@mozocoin.io 'Mozo Developer' --description='GitHub Actions Token'
           pod trunk me
           grep -A2 'trunk.cocoapods.org' ~/.netrc
           pod trunk push --allow-warnings
