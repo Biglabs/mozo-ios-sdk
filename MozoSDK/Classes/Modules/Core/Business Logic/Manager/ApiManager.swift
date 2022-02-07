@@ -156,10 +156,10 @@ public class ApiManager {
 
             self.client.request(request)
                 .validate()
-                .responseJSON { response in
+                .responseData { response in
                     switch response.result {
-                    case .success(let json):
-                        guard let json = json as? [String: Any] else {
+                    case .success(let data):
+                        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
                             return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil))
                         }
                         self.handleApiResponseJSON(json, url: url).done({ (jsonData) in
@@ -190,10 +190,10 @@ public class ApiManager {
 
             self.client.request(request)
                 .validate()
-                .responseJSON { response in
+                .responseData { response in
                     switch response.result {
-                    case .success(let json):
-                        guard let json = json as? [String: Any] else {
+                    case .success(let data):
+                        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
                             return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil))
                         }
                         self.handleApiResponseJSON(json, url: url).done({ (jsonData) in
@@ -279,10 +279,10 @@ public class ApiManager {
         return Promise { seal in
             self.client.request(url, method: method, parameters: params, encoding: JSONEncoding.default, headers: headers)
                 .validate()
-                .responseJSON { response in
+                .responseData { response in
                     switch response.result {
-                    case .success(let json):
-                        guard let json = json as? [String: Any] else {
+                    case .success(let data):
+                        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
                             return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil))
                         }
                         self.handleApiResponseJSON(json, url: url).done({ (jsonData) in
@@ -303,7 +303,7 @@ public class ApiManager {
         }
     }
     
-    func checkResponse(response: AFDataResponse<Any>, error: Error) -> ConnectionError {
+    func checkResponse(response: AFDataResponse<Data>, error: Error) -> ConnectionError {
         var connectionError = ConnectionError.unknowError
         if response.error != nil || (response.response?.statusCode)! < 200 || (response.response?.statusCode)! > 299  {
             connectionError = self.mappingConnectionError(response.response, error: error)!
