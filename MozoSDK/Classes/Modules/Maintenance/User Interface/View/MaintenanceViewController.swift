@@ -69,10 +69,10 @@ class MaintenanceViewController: UIViewController {
         mainViewBorder.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addConstraints([
-            NSLayoutConstraint(item: mainViewBorder, attribute: .centerX, relatedBy: .equal, toItem: self.containerView, attribute: .centerX, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: mainViewBorder, attribute: .top, relatedBy: .equal, toItem: self.containerView, attribute: .top, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: mainViewBorder, attribute: .width, relatedBy: .equal, toItem: self.containerView, attribute: .width, multiplier: 1.0,  constant: 16),
-            NSLayoutConstraint(item: mainViewBorder, attribute: .height, relatedBy: .equal, toItem: self.containerView, attribute: .height, multiplier: 1.0, constant: 8)
+            NSLayoutConstraint(item: mainViewBorder!, attribute: .centerX, relatedBy: .equal, toItem: self.containerView, attribute: .centerX, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: mainViewBorder!, attribute: .top, relatedBy: .equal, toItem: self.containerView, attribute: .top, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: mainViewBorder!, attribute: .width, relatedBy: .equal, toItem: self.containerView, attribute: .width, multiplier: 1.0,  constant: 16),
+            NSLayoutConstraint(item: mainViewBorder!, attribute: .height, relatedBy: .equal, toItem: self.containerView, attribute: .height, multiplier: 1.0, constant: 8)
             ])
         
         let iArrow = UIImage(named: "ic_left_arrow_white", in: BundleManager.mozoBundle(), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)

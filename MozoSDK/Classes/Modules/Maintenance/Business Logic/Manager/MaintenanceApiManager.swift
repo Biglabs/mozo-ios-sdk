@@ -14,15 +14,13 @@ extension ApiManager {
     public static func checkMaintenence() -> Promise<MaintenanceStatusType> {
         return Promise { seal in
             let url = Configuration.BASE_HOST + "/system-status"
-            NSLog("Request check maintenance with url: \(url)")
             AF.request(url, method: .get)
                 .validate()
-                .responseJSON { response in
-                    NSLog("Response from check maintenance: \(response)")
+                .responseData { response in
                     switch response.result {
-                    case .success(let json):
-                        print("Finish check maintenance with json: \(json)")
-                        guard let json = json as? [String: Any] else {
+                    case .success(let data):
+                        
+                        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
                             return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil))
                         }
                         let jsonObj = JSON(json)
@@ -35,7 +33,7 @@ extension ApiManager {
                         }
                         seal.fulfill(.MAINTAINED)
                     case .failure(let error):
-                        NSLog("Request check maintenance failed with error: \(error.localizedDescription), url: \(url))")
+                        print("Check maintenance failed with error: \(error.localizedDescription), url: \(url))")
                         seal.reject(error)
                     }
             }

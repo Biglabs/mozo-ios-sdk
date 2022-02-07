@@ -49,11 +49,10 @@ public extension ApiManager {
                 print("Progress upload image with url \(url), \(progress.fractionCompleted * 100)%")
                 progressionHandler(progress.fractionCompleted)
             }
-            .responseJSON { response in
+            .responseData { response in
                 switch response.result {
-                case .success(let json):
-                    print("Finish request to upload image, json: \(json)")
-                    guard let json = json as? [String: Any] else {
+                case .success(let data):
+                    guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
                         return seal.reject(ConnectionError.systemError)
                     }
                     self.handleApiResponseJSON(json, url: url).done({ (jsonData) in
