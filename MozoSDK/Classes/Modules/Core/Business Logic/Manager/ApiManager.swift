@@ -12,10 +12,11 @@ import SwiftyJSON
 
 public class ApiManager {
     private (set) var client: Session
-    var delegate: ApiManagerDelegate?
-    var appType: AppType = .Shopper
+    public var delegate: ApiManagerDelegate?
     
-    public init() {
+    public static let shared = ApiManager()
+    
+    private init() {
         // Create a shared URL cache
         let memoryCapacity = 4 * 1024 * 1024; // 4 MB
         let diskCapacity = 20 * 1024 * 1024; // 20 MB
@@ -30,12 +31,7 @@ public class ApiManager {
         configuration.requestCachePolicy = cachePolicy
         configuration.urlCache = cache
         // Create your own manager instance that uses your custom configuration
-        client = Alamofire.Session(configuration: configuration)
-    }
-    
-    public convenience init(_ del: ApiManagerDelegate) {
-        self.init()
-        self.delegate = del
+        client = Session(configuration: configuration)
     }
     
     private func getToken() -> String {

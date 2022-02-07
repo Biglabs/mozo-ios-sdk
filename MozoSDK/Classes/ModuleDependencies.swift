@@ -12,23 +12,8 @@ import SwiftyJSON
 import PromiseKit
 
 class ModuleDependencies {
-    // MARK: - Properties
-    public var network: MozoNetwork = .TestNet {
-        didSet {
-           authWireframe.authPresenter?.authInteractor?.updateNetwork(network)
-        }
-    }
+    static var shared = ModuleDependencies()
     
-    public var appType: AppType = .Shopper {
-        didSet {
-            DisplayUtils.appType = appType
-            webSocketManager.appType = appType
-            apiManager.appType = appType
-            authWireframe.authPresenter?.authInteractor?.updateClientId(appType)
-        }
-    }
-    
-    let coreDataStore = CoreDataStore()
     let rootWireframe = RootWireframe()
     
     let coreWireframe = CoreWireframe()
@@ -52,12 +37,10 @@ class ModuleDependencies {
     let speedSelectionWireframe = SpeedSelectionWireframe()
     let backupWalletWireframe = BackupWalletWireframe()
     let changePINWireframe = ChangePINWireframe()
-    let redeemWireframe = RedeemWireframe()
     let abImportWireframe = ABImportWireframe()
     let topUpWireframe = TopUpWireframe()
     let topUpWithdrawWireframe = TopUpWithdrawWireframe()
     
-    let apiManager = ApiManager()
     let webSocketManager = WebSocketManager()
     
     // MARK: Initialization
@@ -139,20 +122,12 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.deleteBeacon(beaconId: beaconId))!
     }
     
-    func getListBeacons() -> Promise<[String : Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getListBeacons())!
-    }
-    
     func getRetailerInfo() -> Promise<[String : Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerInfo())!
     }
     
     func addRetailerSalePerson(parameters: Any?) -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.addSalePerson(parameters:parameters))!
-    }
-    
-    func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.sendRangedBeacons(beacons: beacons, status: status))!
     }
     
     func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection> {
@@ -211,18 +186,6 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getListCountryCode())!
     }
     
-    func searchStoresWithText(_ text: String, page: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.searchStoresWithText(text, page: page, long: long, lat: lat, sort: sort))!
-    }
-    
-    func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getFavoriteStores(page: page, size: size))!
-    }
-    
-    func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite))!
-    }
-    
     func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getUserSummary(startTime: startTime, endTime: endTime))!
     }
@@ -261,10 +224,6 @@ class ModuleDependencies {
     
     func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO> {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateRetailerStoreInfo(storeInfo: storeInfo))!
-    }
-    
-    func getStoreDetail(_ storeId: Int64) -> Promise<BranchInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getStoreDetail(storeId))!
     }
     
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
@@ -339,56 +298,12 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.cancelPromotionCode(code: code))!
     }
     
-    func getShopperPromotionListWithType(page: Int, size: Int, long: Double, lat: Double, type: PromotionListTypeEnum) -> Promise<[PromotionStoreDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionListWithType(page: page, size: size, long: long, lat: lat, type: type))!
-    }
-    
-    func getPromotionRedeemInfo(promotionId: Int64, branchId: Int64) -> Promise<PromotionRedeemInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionRedeemInfo(promotionId: promotionId, branchId: branchId))!
-    }
-    
-    func getBranchesInChain(promotionId: Int64, lat: Double, lng: Double) -> Promise<[BranchInfoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getBranchesInChain(promotionId: promotionId, lat: lat, lng: lng))!
-    }
-    
-    func redeemPromotion(_ promotionId: Int64, delegate: RedeemPromotionDelegate) {
-        redeemWireframe.requestToRedeemAndSign(promotionId, delegate: delegate)
-    }
-    
-    func getPromotionPaidDetail(promotionId: Int64) -> Promise<PromotionPaidDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionPaidDetail(promotionId: promotionId))!
-    }
-    
-    func getPromotionPaidDetailByCode(_ promotionCode: String) -> Promise<PromotionPaidDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionPaidDetailByCode(promotionCode))!
-    }
-    
-    func processPromotionByCustomCode(code: String, branchId: Int64, lat: Double? = nil, lng: Double? = nil) -> Promise<Any> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.processPromotionByCustomCode(code: code, branchId: branchId, lat: lat, lng: lng))!
-    }
-    
     func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateFavoritePromotion(promotionId, isFavorite: isFavorite))!
     }
     
-    func getPromotionPaidHistoryDetail(_ id: Int64) -> Promise<PromotionPaidDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionPaidHistoryDetail(id))!
-    }
-    
-    func getShopperPromotionSaved(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionSaved(page: page, size: size, long: long, lat: lat))!
-    }
-    
     func getShopperPromotionRunning(page: Int, size: Int, long: Double, lat: Double, storeId: Int64) -> Promise<JSON> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionRunning(page: page, size: size, long: long, lat: lat, storeId: storeId))!
-    }
-    
-    func getShopperPromotionPurchased(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionPurchased(page: page, size: size, long: long, lat: lat))!
-    }
-    
-    func getShopperPromotionHistory(page: Int, size: Int) -> Promise<[PromotionStoreDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionHistory(page: page, size: size))!
     }
     
     func getRetailerPromotionScannedList(page: Int, size: Int) -> Promise<[PromotionCodeInfoDTO]> {
@@ -399,40 +314,12 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerCountPromotion())!
     }
     
-    func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperTodoList(blueToothOff: blueToothOff, long: long, lat: lat))!
-    }
-    
-    func getTodoListSetting() -> Promise<TodoSettingDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getTodoListSetting())!
-    }
-    
     func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getGPSBeacons(params: params))!
     }
     
-    func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.searchPromotionsWithText(text, page: page, size: size, long: long, lat: lat))!
-    }
-    
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getSuggestKeySearchForPromotion(lat: lat, lon: lon))!
-    }
-    
-    func getParkingTicketStatus(id: Int64, isIn: Bool) -> Promise<ParkingTicketStatusType> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getParkingTicketStatus(id: id, isIn: isIn))!
-    }
-    
-    func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getParkingTicketByStoreId(storeId: storeId, isIn: isIn))!
-    }
-    
-    func getParkingTicketByStoreId(storeId: Int64) -> Promise<TicketDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getParkingTicketByStoreId(storeId: storeId))!
-    }
-        
-    func renewParkingTicket(id: Int64, vehicleTypeKey: String, isIn: Bool) -> Promise<TicketDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.renewParkingTicket(id: id, vehicleTypeKey: vehicleTypeKey, isIn: isIn))!
     }
     
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem> {
@@ -449,10 +336,6 @@ class ModuleDependencies {
     
     func topUpWithdraw(delegate: TopUpWithdrawDelegate) {
         topUpWithdrawWireframe.requestToWithdrawAndSign(delegate: delegate)
-    }
-    
-    func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionInStore(storeId: storeId, type: type, page: page, size: size, long: long, lat: lat))!
     }
     
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {
@@ -477,11 +360,6 @@ class ModuleDependencies {
     
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
         return (coreWireframe.corePresenter?.coreInteractorService?.updateSalePerson(account: account))!
-    }
-    
-    // MARK: COVID-19 support APIs
-    func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getCovidZones(params: params))!
     }
     
     // MARK: Mozo Messages APIs
@@ -536,11 +414,11 @@ class ModuleDependencies {
         let corePresenter = CorePresenter()
         
         let anonManager = AnonManager()
-        anonManager.apiManager = apiManager
+        anonManager.apiManager = ApiManager.shared
         let userDataManager = UserDataManager()
-        userDataManager.coreDataStore = coreDataStore
+        userDataManager.coreDataStore = CoreDataStore.shared
         
-        let coreInteractor = CoreInteractor(anonManager: anonManager, apiManager: apiManager, userDataManager: userDataManager)
+        let coreInteractor = CoreInteractor(anonManager: anonManager, apiManager: ApiManager.shared, userDataManager: userDataManager)
         coreInteractor.output = corePresenter
         
         let rdnInteractor = RDNInteractor(webSocketManager: webSocketManager)
@@ -575,7 +453,7 @@ class ModuleDependencies {
     func changePINDependencies(walletManager: WalletManager, dataManager: WalletDataManager) {
         let changePINPresenter = ChangePINPresenter()
         
-        let changePINInteractor = ChangePINInteractor(walletManager: walletManager, dataManager: dataManager, apiManager: apiManager)
+        let changePINInteractor = ChangePINInteractor(walletManager: walletManager, dataManager: dataManager, apiManager: ApiManager.shared)
         changePINInteractor.output = changePINPresenter
         
         changePINPresenter.interactor = changePINInteractor
@@ -614,7 +492,7 @@ class ModuleDependencies {
     func convertDependencies(signManager: TransactionSignManager) {
         let cvPresenter = ConvertPresenter()
         
-        let cvInteractor = ConvertInteractor(apiManager: apiManager, signManager: signManager)
+        let cvInteractor = ConvertInteractor(apiManager: ApiManager.shared, signManager: signManager)
         cvInteractor.output = cvPresenter
         
         cvPresenter.interactor = cvInteractor
@@ -630,7 +508,7 @@ class ModuleDependencies {
     func txProcessDependencies() {
         let tpPresenter = TxProcessPresenter()
         
-        let tpInteractor = TxProcessInteractor(apiManager: apiManager)
+        let tpInteractor = TxProcessInteractor(apiManager: ApiManager.shared)
         tpInteractor.output = tpPresenter
         
         tpPresenter.interactor = tpInteractor
@@ -650,7 +528,7 @@ class ModuleDependencies {
         let abdPresenter = ABDetailPresenter()
         
         let abdInteractor = ABDetailInteractor()
-        abdInteractor.apiManager = apiManager
+        abdInteractor.apiManager = ApiManager.shared
         abdInteractor.output = abdPresenter
         
         abdPresenter.detailInteractor = abdInteractor
@@ -687,7 +565,7 @@ class ModuleDependencies {
     func transactionCompletionDependencies() {
         let txComPresenter = TxCompletionPresenter()
         
-        let txComInteractor = TxCompletionInteractor(apiManager: apiManager)
+        let txComInteractor = TxCompletionInteractor(apiManager: ApiManager.shared)
         txComInteractor.output = txComPresenter
         
         txComPresenter.completionInteractor = txComInteractor
@@ -700,7 +578,7 @@ class ModuleDependencies {
     func transactionHistoryDependencies() {
         let txhPresenter = TxHistoryPresenter()
         
-        let txhInteractor = TxHistoryInteractor(apiManager: apiManager)
+        let txhInteractor = TxHistoryInteractor(apiManager: ApiManager.shared)
         txhInteractor.output = txhPresenter
         
         txhPresenter.txhInteractor = txhInteractor
@@ -714,12 +592,10 @@ class ModuleDependencies {
     func transactionDependencies() {
         let txPresenter = TransactionPresenter()
         
-        let txInteractor = TransactionInteractor(apiManager: apiManager)
+        let txInteractor = TransactionInteractor(apiManager: ApiManager.shared)
         txInteractor.output = txPresenter
         
-        let txDataManager = TransactionDataManager()
-        txDataManager.coreDataStore = coreDataStore
-        let signManager = TransactionSignManager(dataManager: txDataManager)
+        let signManager = TransactionSignManager.shared
         txInteractor.signManager = signManager
         
         txPresenter.txInteractor = txInteractor
@@ -733,7 +609,6 @@ class ModuleDependencies {
         airdropAddDependencies(signManager: signManager)
         airdropWithdrawDependencies(signManager: signManager)
         convertDependencies(signManager: signManager)
-        redeemDependencies(signManager: signManager)
         // MARK: Top Up
         topUpDependencies(signManager: signManager)
         topUpWithdrawDependencies(signManager: signManager)
@@ -743,7 +618,7 @@ class ModuleDependencies {
         let authPresenter = AuthPresenter()
         
         let authManager = AuthManager()
-        authManager.apiManager = apiManager
+        authManager.apiManager = ApiManager.shared
         let authInteractor = AuthInteractor(authManager: authManager)
         authInteractor.output = authPresenter
         
@@ -760,9 +635,9 @@ class ModuleDependencies {
         
         let walletManager = WalletManager()
         let walletDataManager = WalletDataManager()
-        walletDataManager.coreDataStore = coreDataStore
+        walletDataManager.coreDataStore = CoreDataStore.shared
         
-        let walletInteractor = WalletInteractor(walletManager: walletManager, dataManager: walletDataManager, apiManager: apiManager)
+        let walletInteractor = WalletInteractor(walletManager: walletManager, dataManager: walletDataManager, apiManager: ApiManager.shared)
         walletInteractor.output = walletPresenter
         walletInteractor.autoOutput = walletPresenter
         
@@ -784,7 +659,7 @@ class ModuleDependencies {
     func resetPINDependencies(walletManager: WalletManager, dataManager: WalletDataManager) {
         let resetPINPresenter = ResetPINPresenter()
         
-        let resetPINInteractor = ResetPINInteractor(walletManager: walletManager, dataManager: dataManager, apiManager: apiManager)
+        let resetPINInteractor = ResetPINInteractor(walletManager: walletManager, dataManager: dataManager, apiManager: ApiManager.shared)
         resetPINInteractor.output = resetPINPresenter
         
         resetPINPresenter.interactor = resetPINInteractor
@@ -801,7 +676,7 @@ class ModuleDependencies {
         let adPresenter = AirdropPresenter()
         
         let adInteractor = AirdropInteractor()
-        adInteractor.apiManager = apiManager
+        adInteractor.apiManager = ApiManager.shared
         adInteractor.output = adPresenter
         adInteractor.signManager = signManager
         
@@ -817,7 +692,7 @@ class ModuleDependencies {
         let addPresenter = AirdropAddPresenter()
         
         let addInteractor = AirdropAddInteractor()
-        addInteractor.apiManager = apiManager
+        addInteractor.apiManager = ApiManager.shared
         addInteractor.output = addPresenter
         addInteractor.signManager = signManager
         
@@ -833,7 +708,7 @@ class ModuleDependencies {
         let withdrawPresenter = WithdrawPresenter()
         
         let withdrawInteractor = WithdrawInteractor()
-        withdrawInteractor.apiManager = apiManager
+        withdrawInteractor.apiManager = ApiManager.shared
         withdrawInteractor.output = withdrawPresenter
         withdrawInteractor.signManager = signManager
         
@@ -848,7 +723,7 @@ class ModuleDependencies {
     func paymentDependencies() {
         let paymentPresenter = PaymentPresenter()
         
-        let paymentInteractor = PaymentInteractor(apiManager: apiManager)
+        let paymentInteractor = PaymentInteractor(apiManager: ApiManager.shared)
         paymentInteractor.output = paymentPresenter
         
         paymentPresenter.interactor = paymentInteractor
@@ -863,7 +738,7 @@ class ModuleDependencies {
     func paymentQRDependencies() {
         let paymentQRPresenter = PaymentQRPresenter()
         
-        let paymentQRInteractor = PaymentQRInteractor(apiManager: apiManager)
+        let paymentQRInteractor = PaymentQRInteractor(apiManager: ApiManager.shared)
         paymentQRInteractor.output = paymentQRPresenter
         
         paymentQRPresenter.interactor = paymentQRInteractor
@@ -874,27 +749,11 @@ class ModuleDependencies {
         paymentQRWireframe.rootWireframe = rootWireframe
     }
     
-    func redeemDependencies(signManager: TransactionSignManager) {
-        let redeemPresenter = RedeemPresenter()
-        
-        let redeemInteractor = RedeemInteractor()
-        redeemInteractor.apiManager = apiManager
-        redeemInteractor.output = redeemPresenter
-        redeemInteractor.signManager = signManager
-        
-        redeemPresenter.interactor = redeemInteractor
-        redeemPresenter.wireframe = redeemWireframe
-        
-        redeemWireframe.redeemPresenter = redeemPresenter
-        redeemWireframe.walletWireframe = walletWireframe
-        redeemWireframe.rootWireframe = rootWireframe
-    }
-    
     func abImportDependencies() {
         let presenter = ABImportPresenter()
         
         let interactor = ABImportInteractor()
-        interactor.apiManager = apiManager
+        interactor.apiManager = ApiManager.shared
         interactor.output = presenter
         
         presenter.interactor = interactor
@@ -911,7 +770,7 @@ class ModuleDependencies {
     func topUpDependencies(signManager: TransactionSignManager) {
         let presenter = TopUpPresenter()
         
-        let interactor = TopUpInteractor(apiManager: apiManager)
+        let interactor = TopUpInteractor(apiManager: ApiManager.shared)
         interactor.signManager = signManager
         interactor.output = presenter
         
@@ -934,7 +793,7 @@ class ModuleDependencies {
         let presenter = TopUpWithdrawPresenter()
         
         let interactor = TopUpWithdrawInteractor()
-        interactor.apiManager = apiManager
+        interactor.apiManager = ApiManager.shared
         interactor.output = presenter
         interactor.signManager = signManager
         
@@ -979,7 +838,7 @@ class ModuleDependencies {
     }
     
     func testLocalData() {
-        coreDataStore.getAllUsers()
+        CoreDataStore.shared.getAllUsers()
     }
     
     func testEthAddress() {

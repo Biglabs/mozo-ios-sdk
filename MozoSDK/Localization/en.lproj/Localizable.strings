@@ -269,7 +269,6 @@
 "My Store" = "My Store";
 "More" = "More";
 "Event List" = "Event List";
-"Beacon List" = "Beacon List";
 "Add Sub-Account" = "Add Sub-Account";
 "Add" = "Add";
 "Log Out" = "Log Out";
@@ -475,8 +474,6 @@
 // SHOPPER
 "Mozo" = "Mozo";
 "My wallet" = "My wallet";
-"List view" = "List view";
-"Map view" = "Map view";
 "Search history" = "Search history";
 "Invite friends" = "Invite friends";
 "Settings" = "Settings";
@@ -799,7 +796,6 @@
 "Convert Failed" = "Convert Failed";
 "text_convert_failed_and_try" = "Cannot convert from MozoX to Mozo.";
 "There are no Airdrop Events around you" = "There are no Airdrop Events around you";
-"Discover" = "Discover";
 "On Going Events" = "On Going Events";
 "Top Airdrop Events" = "Top Airdrop Events";
 "Nearest Events" = "Nearest Events";
@@ -1257,11 +1253,6 @@
 "ticket_not_enough_mozo_for_vehicle" = "Not enough Mozo with this type of vehicle";
 "ticket_not_enough_mozo_for_vehicle_sub" = "Please ask parking employee to use traditional RFID.";
 
-"The parking ticket feature is not available with you at this store at the moment" = "The parking ticket feature is not available with you at this store at the moment";
-"You are already CHECK IN at this store. Please CHECK OUT the previous ticket before using another one." = "You are already CHECK IN at this store. Please CHECK OUT the previous ticket before using another one.";
-"You are already CHECK OUT at this store. CHECK OUT ticket is not available for you at the moment." = "You are already CHECK OUT at this store. CHECK OUT ticket is not available for you at the moment.";
-"CHECK IN ticket at this store is not available at the moment. Please ask parking employee to use traditional RFID." = "CHECK IN ticket at this store is not available at the moment. Please ask parking employee to use traditional RFID.";
-"CHECK OUT ticket at this store is not available at the moment. Please turn off your internet and open Offline Parking ticket." = "CHECK OUT ticket at this store is not available at the moment. Please turn off your internet and open Offline Parking ticket.";
 "FREE" = "FREE";
 
 "Next %@" = "Next %@";
@@ -1315,7 +1306,6 @@
 // Multiple Beacon
 "No. Thanks" = "No. Thanks";
 "Yes, go to Beacon List" = "Yes, go to Beacon List";
-"Beacon" = "Beacon";
 "No Beacon added yet" = "No Beacon added yet";
 "Beacon Detail" = "Beacon Detail";
 "Add Beacon" = "Add Beacon";

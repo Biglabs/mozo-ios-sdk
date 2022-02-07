@@ -60,7 +60,6 @@ extension ApiManager {
     
     public func updateWalletsForResettingPIN(walletInfo: WalletInfoDTO) -> Promise<UserProfileDTO> {
         return Promise { seal in
-            // PUT /api/app/user-profile/saveWalletResetPin
             let url = Configuration.BASE_STORE_URL + USER_API_PATH + "/saveWalletResetPin"
             let param = walletInfo.rawData()
             self.execute(.put, url: url, parameters: param)
@@ -85,7 +84,6 @@ extension ApiManager {
     
     public func updateWalletsForChangingPIN(walletInfo: WalletInfoDTO) -> Promise<UserProfileDTO> {
         return Promise { seal in
-            // PUT /api/app/user-profile/saveWalletChangePin
             let url = Configuration.BASE_STORE_URL + USER_API_PATH + "/saveWalletChangePin"
             let param = walletInfo.rawData()
             self.execute(.put, url: url, parameters: param)

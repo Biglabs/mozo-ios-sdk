@@ -69,10 +69,10 @@ class RDNInteractor: NSObject {
                 } else if rdNoti.event == NotificationEventType.AirdropInvite.rawValue,
                     let inviteNoti = InviteNotification(json: jobj) {
                     output?.didInvitedSuccess(inviteNoti: inviteNoti, rawMessage: rawJsonMessage)
-                } else if rdNoti.event == NotificationEventType.InvalidToken.rawValue,
-                    let tokenNoti = InvalidTokenNotification(json: jobj) {
-                    shouldReconnectAfterDisconnected = false
-                    output?.didInvalidToken(tokenNoti: tokenNoti)
+                    
+                } else if rdNoti.event == NotificationEventType.InvalidToken.rawValue {
+                    stopService(shouldReconnect: true)
+                    
                 } else if rdNoti.event == NotificationEventType.ProfileChanged.rawValue {
                     output?.profileDidChange()
                 } else if rdNoti.event == NotificationEventType.AirdropFounder.rawValue,
@@ -96,8 +96,6 @@ class RDNInteractor: NSObject {
                 } else if rdNoti.event == NotificationEventType.LuckyDraw.rawValue,
                     let noti = LuckyDrawNotification(json: jobj) {
                     output?.didReceivedLuckyDraw(noti: noti, rawMessage: rawJsonMessage)
-                } else {
-                    NSLog("Can not handle message: \(messageContent)")
                 }
                 if self.manager.appType == .Retailer && needSave {
 //                    saveNotification(content: rawJsonMessage)
@@ -107,7 +105,6 @@ class RDNInteractor: NSObject {
     }
     
     private func saveNotification(content: String) {
-        print("Save notification to local user defaults with content: \(content)")
         // Get current list notification
         var histories = SessionStoreManager.getNotificationHistory()
         // Add current content to list
@@ -124,7 +121,7 @@ extension RDNInteractor : RDNInteractorInput {
     func startService() {
         stopReconnectToWebSocket()
         if !manager.isConnected {
-            NSLog("RDNInteractor - Start services.")
+            "RDNInteractor - Start services.".log()
             connectToWebSocketServer()
         }
     }
@@ -133,7 +130,7 @@ extension RDNInteractor : RDNInteractorInput {
         stopReconnectToWebSocket()
         shouldReconnectAfterDisconnected = shouldReconnect
         if manager.isConnected {
-            NSLog("RDNInteractor - Stop services.")
+            "RDNInteractor - Stop services.".log()
             manager.disconnect()
         }
     }
@@ -146,16 +143,12 @@ extension RDNInteractor : SocketDelegate {
     }
     
     func onSocketDisconnected(_ error: String?) {
-        if let e = error {
-            NSLog("Websocket is disconnected: \(e)")
-        } else {
-            NSLog("Websocket disconnected")
-        }
+        "Websocket is disconnected: \(error ?? "")".log()
+        
         if shouldReconnectAfterDisconnected {
-            NSLog("RDNInteractor - Reconnect after disconnect")
             let mutiplier = pow(2.0, Double(retryCount))
             let timeInterval = Double(SOCKET_RETRY_DELAY_IN_SECONDS) * mutiplier
-            NSLog("RDNInteractor - Reconnect after disconnect - delay time in seconds: \(timeInterval)")
+            "RDNInteractor - Reconnect after disconnect - delay time in seconds: \(timeInterval)".log()
             reconnectTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(connectToWebSocketServer), userInfo: nil, repeats: false)
             retryCount += 1
             if retryCount > SOCKET_RETRY_MAXIMUM_TIME {

@@ -270,7 +270,6 @@
 "My Store" = "Cửa hàng";
 "More" = "Thêm";
 "Event List" = "Danh sách chương trình";
-"Beacon List" = "Danh sách Beacon";
 "Add Sub-Account" = "Thêm tài khoản phụ";
 "Add" = "Thêm";
 "Log Out" = "Đăng xuất";
@@ -477,8 +476,6 @@
 
 /* SHOPPER */
 "My wallet" = "Ví";
-"List view" = "Dạng list";
-"Map view" = "Bản đồ";
 "Search history" = "Lịch sử tìm kiếm";
 "Invite friends" = "Mời bạn bè";
 "Settings" = "Thiết lập";
@@ -800,7 +797,6 @@
 "Convert Failed" = "Chuyển đổi thất bại";
 "text_convert_failed_and_try" = "Không thể chuyển đổi từ MozoX thành điểm thưởng Mozo.";
 "There are no Airdrop Events around you" = "Không có chương trình Airdrop gần bạn";
-"Discover" = "Khám phá";
 "On Going Events" = "Chương trình sắp Airdrop";
 "Top Airdrop Events" = "Airdrop nhiều nhất";
 "Nearest Events" = "Airdrop gần nhất";
@@ -1022,7 +1018,7 @@
 "%d%% OFF" = "Giảm %d%%";
 "Trendy Hashtags" = "Khuynh hướng";
 "Others" = "Khác";
-"Purchased" = "Đã thanh toán";
+"Purchased" = "Đã mua";
 "Use" = "Dùng";
 "USE" = "DÙNG";
 "(%d) USE" = "(%d) DÙNG";
@@ -1258,11 +1254,6 @@
 "ticket_not_enough_mozo_for_vehicle" = "Không đủ Mozo để trả phí cho loại xe này";
 "ticket_not_enough_mozo_for_vehicle_sub" = "Xin vui lòng yêu cầu nhân viên giữ xe dùng thẻ từ như bình thường.";
 
-"The parking ticket feature is not available with you at this store at the moment" = "Hiện tại tính năng giữ xe không khả dụng với bạn ở cửa hàng này.";
-"You are already CHECK IN at this store. Please CHECK OUT the previous ticket before using another one." = "Xe của bạn đã được gởi thành công tại cửa hàng. Xin vui lòng lấy xe khỏi bãi trước khi lấy vé mới.";
-"You are already CHECK OUT at this store. CHECK OUT ticket is not available for you at the moment." = "Vé RA của bạn đã được xử lý thành công. Không có vé RA nào khả dụng tại cửa hàng lúc này.";
-"CHECK IN ticket at this store is not available at the moment. Please ask parking employee to use traditional RFID." = "Vé VÀO hiện không khả dụng tại cửa hàng này. Xin vui lòng yêu cầu nhân viên giữ xe dùng thẻ từ như bình thường.";
-"CHECK OUT ticket at this store is not available at the moment. Please turn off your internet and open Offline Parking ticket." = "Vé RA hiện không khả dụng tại cửa hàng này. Xin vui lòng tắt internet và dùng vé ngoại tuyến.";
 "FREE" = "MIỄN PHÍ";
 
 "Next %@" = "%@ nữa";
@@ -1316,7 +1307,6 @@
 // Multiple Beacon
 "No. Thanks" = "Không. Cảm ơn";
 "Yes, go to Beacon List" = "Có, chuyển đến danh sách beacon";
-"Beacon" = "Beacon";
 "No Beacon added yet" = "Chưa có beacon nào.";
 "Beacon Detail" = "Thông tin chi tiết của beacon";
 "Add Beacon" = "Thêm beacon";

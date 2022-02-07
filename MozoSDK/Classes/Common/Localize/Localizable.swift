@@ -17,28 +17,13 @@ extension String: Localizable {
     public func localizedFormat(_ arguments: CVarArg...) -> String {
         return String(format: self.localized, arguments: arguments)
     }
-    
-    public var mainLocalized: String {
-        return NSLocalizedString(self, comment: self)
-    }
-    
-    public func mainLocalizedFormat(_ arguments: CVarArg...) -> String {
-        return String(format: self.mainLocalized, arguments: arguments)
-    }
 }
 
 public protocol XIBLocalizable {
     var xibLocKey: String? { get set }
-    var mainLocalize: String? { get set }
 }
 
 extension UILabel: XIBLocalizable {
-    @IBInspectable public var mainLocalize: String? {
-        get { return nil }
-        set(key) {
-            text = key?.mainLocalized
-        }
-    }
     @IBInspectable public var xibLocKey: String? {
         get { return nil }
         set(key) {
@@ -47,12 +32,6 @@ extension UILabel: XIBLocalizable {
     }
 }
 extension UIButton: XIBLocalizable {
-    @IBInspectable public var mainLocalize: String? {
-        get { return nil }
-        set(key) {
-            setTitle(key?.mainLocalized, for: .normal)
-        }
-    }
     @IBInspectable public var xibLocKey: String? {
         get { return nil }
         set(key) {
@@ -61,12 +40,6 @@ extension UIButton: XIBLocalizable {
     }
 }
 extension UITextField: XIBLocalizable {
-    @IBInspectable public var mainLocalize: String? {
-        get { return nil }
-        set(key) {
-            placeholder = key?.mainLocalized
-        }
-    }
     @IBInspectable public var xibLocKey: String? {
         get { return nil }
         set(key) {
@@ -75,12 +48,6 @@ extension UITextField: XIBLocalizable {
     }
 }
 extension UITabBarItem: XIBLocalizable {
-    @IBInspectable public var mainLocalize: String? {
-        get { return nil }
-        set(key) {
-            title = key?.mainLocalized
-        }
-    }
     @IBInspectable public var xibLocKey: String? {
         get { return nil }
         set(key) {

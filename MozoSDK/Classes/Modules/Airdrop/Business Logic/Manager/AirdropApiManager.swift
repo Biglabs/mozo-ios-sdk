@@ -13,27 +13,6 @@ let SHOPPER_AIRDROP_REPORT_API_PATH = "/shopper-airdrop"
 let RETAILER_AIRDROP_API_PATH = "/air-drops"
 let RETAILER_AIRDROP_RESOURCE_API_PATH = "/retailer/airdrops"
 public extension ApiManager {
-    func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String: Any]> {
-        return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + SHOPPER_AIRDROP_REPORT_API_PATH + "/report-beacon/v5"
-            let data = ReportBeaconDTO(beaconInfoDTOList: beacons, status: status)
-            let param = data.toJSON()
-            print("Report ranged beacons params: \(data.rawString() ?? "NULL")")
-            self.execute(.post, url: url, parameters: param)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to send Ranged Beacons, json response: \(json)")
-                    seal.fulfill(json)
-                }
-                .catch { error in
-                    print("Error when request send Ranged Beacons: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
     
     func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?> {
         return Promise { seal in
@@ -43,7 +22,7 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get amount of collected coin from time \(startTime) to time \(endTime), json response: \(json)")
+                    "Finish request to get amount of collected coin from time \(startTime) to time \(endTime), json response: \(json)".log()
                     seal.fulfill(UserSummary(json: SwiftyJSON.JSON(json)))
                 }
                 .catch { error in

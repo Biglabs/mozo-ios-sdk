@@ -12,13 +12,13 @@ The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaini
   s.license          = { :type => "MIT", :file => "LICENSE" }
   s.authors          = { "Mozo Developers" => "developer@mozocoin.io" }
   s.source           = { :git => "https://github.com/Biglabs/mozo-ios-sdk.git", :tag => "v#{s.version}" }
-  s.social_media_url = "https://facebook.com/MozoXVietNam"
+  s.social_media_url = "https://www.facebook.com/mozoxvn"
 
   s.swift_version    = "5"
-  s.ios.deployment_target = "11.0"
+  s.ios.deployment_target = "12.0"
 
   s.source_files     = "MozoSDK/**/*.{h,m,swift}"
-  s.resources        = ['MozoSDK/Classes/**/*.xcdatamodeld', 'MozoSDK/Classes/**/*.txt']
+  s.resources        = ['MozoSDK/Classes/**/*.xcdatamodeld', 'MozoSDK/Classes/**/*.txt', 'MozoSDK/Assets/**']
   s.resource_bundles = {
       'MozoSDK' => ['MozoSDK/Classes/**/*.{storyboard,xib}',
                     'MozoSDK/Assets/*.{xcassets,gif}',
@@ -27,17 +27,17 @@ The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaini
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
   
   s.dependency 'AppAuth'
-  s.dependency 'CoreStore', '7.3.1'
+  s.dependency 'CoreStore'
   
   s.dependency 'RNCryptor', '~> 5.1.0'
   s.dependency 'web3swift', '~> 2.3.0'
 
   s.dependency 'ReachabilitySwift'
   s.dependency 'MBProgressHUD'
-  s.dependency 'AlamofireImage'
-  s.dependency 'Kingfisher'
+  s.dependency 'Alamofire'
   s.dependency 'SwiftyJSON'
   s.dependency 'libPhoneNumber-iOS'
   s.dependency 'JWTDecode'
+  s.dependency 'SDWebImage'
 
 end

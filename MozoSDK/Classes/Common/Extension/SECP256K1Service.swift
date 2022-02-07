@@ -59,9 +59,7 @@ extension String {
         // Serialize with DER format
         let signatureData = SECP256K1Service.serializeDerFormat(signature: &signature!)
         
-        let signedMessage = signatureData?.toHexString()
-        
-        return signedMessage
+        return signatureData?.toHexString().addHexPrefix()
     }
     
     func addHexPrefix() -> String {

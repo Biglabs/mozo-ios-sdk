@@ -60,7 +60,7 @@ public extension ApiManager {
     
     func updateUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_SOLO + USER_API_PATH
+            let url = Configuration.BASE_STORE_URL + USER_API_PATH
             let param = userProfile.rawData()
             self.execute(.put, url: url, parameters: param)
                 .done { json -> Void in

@@ -22,13 +22,13 @@ public extension ApiManager {
                 self.execute(.get, url: url)
                     .done { json -> Void in
                         // JSON info
-                        print("Finish request to get Promotion list with type \(statusRequest), json response: \(json)")
+                        "Finish request to get Promotion list with type \(statusRequest), json response: \(json)".log()
                         let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                         let array = PromotionDTO.arrayFromJson(jobj)
                         seal.fulfill(array)
                     }
                     .catch { error in
-                        print("Error when request get Promotion list with type \(statusRequest): " + error.localizedDescription)
+                        "Error when request get Promotion list with type \(statusRequest): \(error.localizedDescription)".log()
                         seal.reject(error)
                     }
                     .finally {
@@ -44,13 +44,13 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get Promotion list with type \(statusRequest), json response: \(json)")
+                    "Finish request to get Promotion list with type \(statusRequest), json response: \(json)".log()
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let array = PromotionDTO.arrayFromJson(jobj)
                     seal.fulfill(array)
                 }
                 .catch { error in
-                    print("Error when request get Promotion list with type \(statusRequest): " + error.localizedDescription)
+                    "Error when request get Promotion list with type \(statusRequest): \(error.localizedDescription)".log()
                     seal.reject(error)
                 }
                 .finally {
@@ -130,32 +130,6 @@ public extension ApiManager {
         }
     }
     
-    func getShopperPromotionListWithType(page: Int, size: Int, long: Double, lat: Double, type: PromotionListTypeEnum) -> Promise<[PromotionStoreDTO]> {
-        return Promise { seal in
-            let params = ["size" : size,
-                          "page" : page,
-                          "lat": lat,
-                          "lon": long,
-                          "type" : type.rawValue] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromo/v1?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get Shopper promotion list with type \(type.rawValue), json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let array = PromotionStoreDTO.arrayFrom(jobj)
-                    seal.fulfill(array)
-                }
-                .catch { error in
-                    print("Error when request get Shopper promotion list with type \(type.rawValue): " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
     func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
         return Promise { seal in
             let params = ["promoId" : promotionId,
@@ -185,61 +159,13 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get Scanned Promotion list, json response: \(json)")
+                    "Finish request to get Scanned Promotion list, json response: \(json)".log()
                     let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
                     let array = PromotionCodeInfoDTO.arrayFrom(jobj)
                     seal.fulfill(array)
                 }
                 .catch { error in
-                    print("Error when request get scanned Promotion list: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
-    func getShopperPromotionHistory(page: Int, size: Int) -> Promise<[PromotionStoreDTO]> {
-        return Promise { seal in
-            let params = ["size" : size,
-                          "page" : page] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoHistoryInBag/v1?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get Shopper promotion history, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let array = PromotionStoreDTO.arrayFrom(jobj)
-                    seal.fulfill(array)
-                }
-                .catch { error in
-                    print("Error when request get Shopper promotion history: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
-    func getShopperPromotionPurchased(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return Promise { seal in
-            let params = ["size" : size,
-                          "page" : page,
-                          "lat": lat,
-                          "lon": long] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoPurchasedInBag/v1?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get Shopper promotion purchased, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let array = PromotionStoreDTO.arrayFrom(jobj)
-                    seal.fulfill(array)
-                }
-                .catch { error in
-                    print("Error when request get Shopper promotion purchased: " + error.localizedDescription)
+                    "Error when request get scanned Promotion list: \(error.localizedDescription)".log()
                     seal.reject(error)
                 }
                 .finally {
@@ -259,37 +185,12 @@ public extension ApiManager {
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
-                    print("Finish request to get Shopper promotion running, json response: \(json)")
+                    "Finish request to get Shopper promotion running, json response: \(json)".log()
                     let jobj = SwiftyJSON.JSON(json)
                     seal.fulfill(jobj)
                 }
                 .catch { error in
-                    print("Error when request get Shopper promotion running: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
-    func getShopperPromotionSaved(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return Promise { seal in
-            let params = ["size" : size,
-                          "page" : page,
-                          "lat": lat,
-                          "lon": long] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoSavedInBag/v1?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get Shopper promotion saved, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let array = PromotionStoreDTO.arrayFrom(jobj)
-                    seal.fulfill(array)
-                }
-                .catch { error in
-                    print("Error when request get Shopper promotion saved: " + error.localizedDescription)
+                    "Error when request get Shopper promotion running: \(error.localizedDescription)".log()
                     seal.reject(error)
                 }
                 .finally {
@@ -319,35 +220,6 @@ public extension ApiManager {
         }
     }
     
-    func searchPromotionsWithText(_ text: String, page: Int = 0, size: Int = 15, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO> {
-        return Promise { seal in
-            let params = ["size" : size,
-                          "page" : page,
-                          "lon" : long,
-                          "lat" : lat,
-                          "text" : text] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/searchPromo/v1?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to search promotions, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)
-                    if let result = CollectionPromotionInfoDTO(json: jobj) {
-                        seal.fulfill(result)
-                    } else {
-                        seal.reject(ConnectionError.systemError)
-                    }
-                }
-                .catch { error in
-                    print("Error when request search promotions: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]> {
         return Promise { seal in
             let params = ["lat" : lat,
@@ -365,33 +237,6 @@ public extension ApiManager {
                 }
                 .catch { error in
                     print("Error when request get suggestion search for promotion: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
-    func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]> {
-        return Promise { seal in
-            let params = ["size" : size,
-                          "page" : page,
-                          "lat": lat,
-                          "lon": long,
-                          "branchId": storeId,
-                          "type": type] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getListPromoInBranch?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get Shopper promotion in store [\(storeId)], with type [\(type)], json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let array = PromotionStoreDTO.arrayFrom(jobj)
-                    seal.fulfill(array)
-                }
-                .catch { error in
-                    print("Error when request get Shopper promotion in store [\(storeId)], with type [\(type)]: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {

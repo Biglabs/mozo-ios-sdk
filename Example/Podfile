@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '11.0'
+platform :ios, '12.0'
 use_frameworks!
 
 target 'example' do
@@ -7,6 +7,7 @@ target 'example' do
 
   # Pods for example
   pod 'MozoSDK', :path => '../'
+  pod 'web3swift', :git => 'https://github.com/vuquangnguyen-biglabs/web3swift.git', :branch => 'develop'
 end
 
 post_install do |installer|

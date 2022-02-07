@@ -43,10 +43,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.deleteBeacon(beaconId: beaconId)
     }
     
-    func getListBeacons() -> Promise<[String : Any]> {
-        return apiManager.getListBeacons()
-    }
-    
     func getRetailerInfo() -> Promise<[String : Any]> {
         return apiManager.getRetailerInfo()
     }
@@ -55,17 +51,11 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.addSalePerson(parameters: parameters)
     }
     
-    func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String : Any]> {
-        return apiManager.sendRangedBeacons(beacons: beacons, status: status)
-    }
-    
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem> {
-        print("😎 Load balance info.")
         return Promise { seal in
             // TODO: Check authen and authorization first
             if let userObj = SessionStoreManager.loadCurrentUser() {
                 if let address = userObj.profile?.walletInfo?.offchainAddress {
-                    print("Address used to load balance: \(address)")
                     _ = apiManager.getTokenInfoFromAddress(address)
                         .done { (tokenInfo) in
                             SessionStoreManager.tokenInfo = tokenInfo
@@ -148,18 +138,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getListCountryCode()
     }
     
-    func searchStoresWithText(_ text: String, page: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO> {
-        return apiManager.searchStoresWithText(text, page: page, long: long, lat: lat, sort: sort)
-    }
-    
-    func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]> {
-        return apiManager.getFavoriteStores(page: page, size: size)
-    }
-    
-    func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]> {
-        return apiManager.updateFavoriteStore(storeId, isMarkFavorite: isMarkFavorite)
-    }
-    
     func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?> {
         return apiManager.getUserSummary(startTime: startTime, endTime: endTime)
     }
@@ -198,10 +176,6 @@ extension CoreInteractor: CoreInteractorService {
     
     func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO> {
         return apiManager.updateRetailerStoreInfo(storeInfo: storeInfo)
-    }
-    
-    func getStoreDetail(_ storeId: Int64) -> Promise<BranchInfoDTO> {
-        return apiManager.getStoreDetail(storeId)
     }
     
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
@@ -265,14 +239,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getCreateAirdropEventSettings()
     }
     
-    func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]> {
-        return apiManager.getShopperTodoList(blueToothOff: blueToothOff, long: long, lat: lat)
-    }
-    
-    func getTodoListSetting() -> Promise<TodoSettingDTO> {
-        return apiManager.getTodoListSetting()
-    }
-    
     func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
         return apiManager.getGPSBeacons(params: params)
     }
@@ -324,11 +290,6 @@ extension CoreInteractor: CoreInteractorService {
     
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
         return apiManager.updateSalePerson(account: account)
-    }
-    
-    // MARK: COVID-19 support APIs
-    func getCovidZones(params: [String : Any]) -> Promise<[CovidZone]> {
-        return apiManager.getCovidZones(params: params)
     }
     
     // MARK: Mozo Messages APIs

@@ -101,8 +101,8 @@ public extension String {
     }
     
     func toTextNumberWithoutGrouping() -> String {
-        let decimalSeparator = NSLocale.current.decimalSeparator ?? "."
-        let groupingSeparator = NSLocale.current.groupingSeparator ?? ","
+        let decimalSeparator = Locale.current.decimalSeparator ?? "."
+        let groupingSeparator = Locale.current.groupingSeparator ?? ","
         return self.replace(groupingSeparator, withString: "").replace(decimalSeparator, withString: ".")
     }
     
@@ -145,7 +145,7 @@ public extension String {
     }
     
     func log() {
-        if MozoSDK.network() != .MainNet {
+        if MozoSDK.network != .MainNet {
             print("[Mozo] \(self)")
         }
     }
@@ -423,6 +423,7 @@ public extension Dictionary {
         for (key,value) in self {
             output += "\(key)=\(value)&"
         }
+        output.removeLast()
         return output
     }
 }
@@ -452,7 +453,7 @@ public extension URL {
         let queryItem = URLQueryItem(name: name, value: value)
 
         // Append the new query item in the existing query items array
-        if let index = queryItems.index(of: queryItem) {
+        if let index = queryItems.firstIndex(of: queryItem) {
             queryItems.remove(at: index)
         }
         queryItems.append(queryItem)

@@ -10,20 +10,11 @@ import UserNotifications
 import SwiftyJSON
 extension CorePresenter {
     func registerForRichNotifications() {
-        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { (granted:Bool, error:Error?) in
-            if error != nil {
-                print(error?.localizedDescription as Any)
-            }
-            if granted {
-                print("Permission granted")
-                if DisplayUtils.appType == .Shopper {
-                    DispatchQueue.main.async {
-                        UIApplication.shared.registerForRemoteNotifications()
-                    }
+            if granted, MozoSDK.appType == .Shopper {
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
                 }
-            } else {
-                print("Permission not granted")
             }
         }
         

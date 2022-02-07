@@ -26,7 +26,6 @@ public struct Theme {
     public var error: UIColor = UIColor(hexString: "f05454")
     public var success: UIColor = UIColor(hexString: "17b978")
     public var darkBlue: UIColor = UIColor(hexString: "2B4283")
-    public var covidPassed: UIColor = UIColor(hexString: "caced3")
 }
 
 public struct ThemeManager {

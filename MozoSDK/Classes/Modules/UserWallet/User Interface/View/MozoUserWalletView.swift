@@ -10,7 +10,6 @@ import MBProgressHUD
 let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
 
 @IBDesignable class MozoUserWalletView: MozoView {
-    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var segmentControlHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var infoView: UIView!
@@ -66,20 +65,17 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
     
     var offchainInfo: OffchainInfoDTO?
+    private var refreshView : MozoRefreshView?
+    private var isAnonymous: Bool = false
     
     override func identifier() -> String {
         return "MozoUserWalletView"
     }
     
-    var isAnonymous: Bool = false
     override func loadViewFromNib() {
-        if AccessTokenManager.getAccessToken() == nil
-            || SessionStoreManager.loadCurrentUser() == nil {
-            isAnonymous = true
-        } else {
-            isAnonymous = false
-        }
+        isAnonymous = AccessTokenManager.getAccessToken() == nil || SessionStoreManager.loadCurrentUser() == nil
         super.loadViewFromNib()
+        
         #if !TARGET_INTERFACE_BUILDER
         lbBalanceExchange.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
         loadDisplayData()
@@ -162,6 +158,14 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         loadTokenInfo()
     }
     
+    func loadDisplayData() {
+        // Clear all data
+        clearValueOnUI()
+        if !isAnonymous {
+            refresh()
+        }
+    }
+    
     func setupButtonBorder() {
         infoViewBorderWidthConstraint.constant = UIScreen.main.bounds.width - 26
         infoViewBorder.dropShadow()
@@ -193,12 +197,10 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
                 btnAddress.setTitle(displayItem.address, for: .normal)
             }
         }
-        print("Save display item for later usage.")
         self.displayItem = displayItem
     }
     
     override func updateOnlyBalance(_ balance : Double) {
-        print("Update balance on Mozo UI Components")
         if lbBalance != nil {
             if balance >= 0 {
                 let balanceText = balance.roundAndAddCommas()
@@ -263,33 +265,12 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
             self.hideRefreshState()
         }).catch({ (error) in
             self.clearValueOnUI()
+            self.updateData(displayItem: DetailInfoDisplayItem(balance: 0.0, address: ""))
+            self.displayRefreshState()
         })
     }
     
-    func loadDisplayData() {
-        // Clear all data
-        clearValueOnUI()
-        if !isAnonymous {
-            loadTxHistory()
-            loadOnchainInfo()
-            print("\(String(describing: self)) - Load display data.")
-            if let item = SafetyDataManager.shared.offchainDetailDisplayData {
-                print("\(String(describing: self)) - Receive display data: \(item)")
-                self.updateData(displayItem: item)
-                hideRefreshState()
-            } else {
-                print("\(String(describing: self)) - No data for displaying")
-                let itemNoData = DetailInfoDisplayItem(balance: 0.0, address: "")
-                self.updateData(displayItem: itemNoData)
-                displayRefreshState()
-            }
-        } else {
-            
-        }
-    }
-    
     @IBAction func touchedViewAllHistory(_ sender: Any) {
-        print("Touched Up Inside Button View All history")
         MozoSDK.displayTransactionHistory()
     }
 
@@ -298,7 +279,6 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
     
     @objc func showQRCode() {
-        print("Touch Show QR code button, address: \(self.displayItem?.address ?? "NULL")")
         if let address = self.displayItem?.address {
             DisplayUtils.displayQRView(address: address)
         }
@@ -331,13 +311,10 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         }
     }
     
-    // MARK: Refresh state
-    var refreshView : MozoRefreshView?
-    
     func displayRefreshState() {
-        print("Display refresh state")
         if refreshView == nil {
             refreshView = MozoRefreshView(frame: UIScreen.main.bounds)
+            refreshView!.delegate = self
             if refreshView != nil {
                 addSubview(refreshView!)
             }
@@ -350,14 +327,12 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     
     func hideRefreshState() {
         if refreshView != nil {
-            print("Hide refresh state.")
             refreshView?.isHidden = true
             refreshView?.isRefreshing = false
         }
     }
     
     override func onLoadTokenInfoFailed(_ notification: Notification) {
-        print("On Load Token Info Failed: Display refresh state")
         clearValueOnUI()
     }
     
@@ -481,5 +456,10 @@ extension MozoUserWalletView : UITableViewDelegate {
                 MozoSDK.displayTransactionDetail(txHistory: selectedItem, tokenInfo: tokenInfo)
             }
         }
+    }
+}
+extension MozoUserWalletView: MozoRefreshViewDelegate {
+    func didRefresh() {
+        self.refresh(nil)
     }
 }

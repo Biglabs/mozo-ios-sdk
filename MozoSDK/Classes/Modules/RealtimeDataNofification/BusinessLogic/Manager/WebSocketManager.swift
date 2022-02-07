@@ -52,18 +52,16 @@ public class WebSocketManager: WebSocketDelegate {
     }
     
     func connect() {
-        print("WebSocketManager - [connect].")
-        // Build header with current access token
         let request = requestWithHeader()
         socket = WebSocket(request: request)
         socket.delegate = self
-        print("WebSocketManager - [connect] with URL \(String(describing: socket.request.url))")
+        "WebSocketManager - [connect] with URL \(String(describing: socket.request.url))".log()
         socket.connect()
     }
     
     func disconnect() {
         if self.isConnected {
-            print("WebSocketManager - [disconnect].")
+            "WebSocketManager - [disconnect].".log()
             socket.disconnect()
         }
     }
@@ -73,16 +71,16 @@ public class WebSocketManager: WebSocketDelegate {
             case .connected(let headers):
                 isConnected = true
                 delegate?.onSocketConnected()
-                print("WebSocketManager is connected: \(headers)")
+            "WebSocketManager is connected: \(headers)".log()
             case .disconnected(let reason, let code):
                 isConnected = false
                 delegate?.onSocketDisconnected(reason)
-                print("WebSocketManager is disconnected: \(reason) with code: \(code)")
+            "WebSocketManager is disconnected: \(reason) with code: \(code)".log()
             case .text(let string):
                 delegate?.onSocketReceivedText(string)
-                print("WebSocketManager - Received text: \(string)")
+            "WebSocketManager - Received text: \(string)".log()
             case .binary(let data):
-                print("WebSocketManager - Received data: \(data.count)")
+            "WebSocketManager - Received data: \(data.count)".log()
             case .ping(_):
                 break
             case .pong(_):
@@ -97,7 +95,7 @@ public class WebSocketManager: WebSocketDelegate {
             case .error(let error):
                 isConnected = false
                 delegate?.onSocketDisconnected(error?.localizedDescription)
-                print("WebSocketManager - [error] with URL \(String(describing: error))")
+            "WebSocketManager - [error] with URL \(String(describing: error))".log()
             }
     }
 }

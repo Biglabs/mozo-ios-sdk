@@ -63,23 +63,23 @@ class AutoPINViewController: MozoBasicViewController {
         checkView.addSubview(btnCheck)
         
         view.addConstraints([
-            NSLayoutConstraint(item: checkView, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: checkView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -30),
-            NSLayoutConstraint(item: checkView, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1.0, constant: -80),
-            NSLayoutConstraint(item: checkView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 50),
+            NSLayoutConstraint(item: checkView!, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: checkView!, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -30),
+            NSLayoutConstraint(item: checkView!, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1.0, constant: -80),
+            NSLayoutConstraint(item: checkView!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 50),
             
-            NSLayoutConstraint(item: checkLabel, attribute: .centerY, relatedBy: .equal, toItem: self.checkView, attribute: .centerY, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: checkLabel, attribute: .centerX, relatedBy: .equal, toItem: self.checkView, attribute: .centerX, multiplier: 1.0, constant: 15),
+            NSLayoutConstraint(item: checkLabel!, attribute: .centerY, relatedBy: .equal, toItem: self.checkView, attribute: .centerY, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: checkLabel!, attribute: .centerX, relatedBy: .equal, toItem: self.checkView, attribute: .centerX, multiplier: 1.0, constant: 15),
             
-            NSLayoutConstraint(item: checkImg, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: 30),
-            NSLayoutConstraint(item: checkImg, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 30),
-            NSLayoutConstraint(item: checkImg, attribute: .centerY, relatedBy: .equal, toItem: self.checkView, attribute: .centerY, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: checkImg, attribute: .trailing, relatedBy: .equal, toItem: self.checkLabel, attribute: .leading, multiplier: 1.0, constant: -10),
+            NSLayoutConstraint(item: checkImg!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: 30),
+            NSLayoutConstraint(item: checkImg!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 30),
+            NSLayoutConstraint(item: checkImg!, attribute: .centerY, relatedBy: .equal, toItem: self.checkView, attribute: .centerY, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: checkImg!, attribute: .trailing, relatedBy: .equal, toItem: self.checkLabel, attribute: .leading, multiplier: 1.0, constant: -10),
             
-            NSLayoutConstraint(item: btnCheck, attribute: .top, relatedBy: .equal, toItem: self.checkView, attribute: .top, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: btnCheck, attribute: .bottom, relatedBy: .equal, toItem: self.checkView, attribute: .bottom, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: btnCheck, attribute: .leading, relatedBy: .equal, toItem: self.checkView, attribute: .leading, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: btnCheck, attribute: .trailing, relatedBy: .equal, toItem: self.checkView, attribute: .trailing, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: btnCheck!, attribute: .top, relatedBy: .equal, toItem: self.checkView, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: btnCheck!, attribute: .bottom, relatedBy: .equal, toItem: self.checkView, attribute: .bottom, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: btnCheck!, attribute: .leading, relatedBy: .equal, toItem: self.checkView, attribute: .leading, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: btnCheck!, attribute: .trailing, relatedBy: .equal, toItem: self.checkView, attribute: .trailing, multiplier: 1.0, constant: 0),
             ])
     }
     

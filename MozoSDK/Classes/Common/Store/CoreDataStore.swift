@@ -11,6 +11,8 @@ import PromiseKit
 import CoreStore
 
 class CoreDataStore : NSObject {
+    public static let shared = CoreDataStore()
+    
     var stack : DataStack!
     
     override init() {
@@ -187,7 +189,6 @@ class CoreDataStore : NSObject {
     func getWalletsByUserId(_ id: String) -> Promise<[WalletModel]>{
         return Promise { seal in
             if let userEntity = try stack.fetchOne(From<ManagedUser>().where(\.id == id)) {
-                print("Wallets count: [\(userEntity.wallets?.count ?? -1)]")
                 let wallets : [WalletModel]? = userEntity.wallets?.map {
                     let wallet = $0 as! ManagedWallet
                     return WalletModel(address: wallet.address, privateKey: wallet.privateKey)
@@ -201,10 +202,7 @@ class CoreDataStore : NSObject {
     
     func getAllUsers() {
         if let list = try? stack.fetchAll(From<ManagedUser>()) {
-            print("User count: [\(list.count)]")
             for item in list {
-                let userModel = UserModel(id: item.id, mnemonic: item.mnemonic, pin: item.pin, wallets: NSSet(array: []))
-                print("User: \(userModel)")
                 let wallets : [WalletModel]? = item.wallets?.map {
                     let wallet = $0 as! ManagedWallet
                     return WalletModel(address: wallet.address, privateKey: wallet.privateKey)

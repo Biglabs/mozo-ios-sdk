@@ -27,10 +27,11 @@
         addUniqueAuthObserver()
         let image = UIImage(named: "ic_receive", in: BundleManager.mozoBundle(), compatibleWith: nil)
         button.setImage(image, for: .normal)
+        
+        self.roundedCircle()
     }
     
     @IBAction func touchedUpInside(_ sender: Any) {
-        print("Touched Up Inside Button Payment Request")
         MozoSDK.displayPaymentRequest()
     }
 }

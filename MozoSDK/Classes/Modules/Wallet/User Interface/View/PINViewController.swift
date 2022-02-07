@@ -171,6 +171,7 @@ class PINViewController : MozoBasicViewController {
     
     @objc func tapCancelBtn() {
         eventHandler?.cancel()
+        NotificationCenter.default.post(name: NSNotification.Name(TransactionSignManager.shared.notiReceivePin), object: nil, userInfo: nil)
     }
 }
 
@@ -305,6 +306,11 @@ private extension PINViewController {
                         eventHandler?.verifyCurrentPINToBackup(pin: input)
                     } else {
                         eventHandler?.verifyPIN(pin: input)
+                        NotificationCenter.default.post(
+                            name: NSNotification.Name(TransactionSignManager.shared.notiReceivePin),
+                            object: nil,
+                            userInfo: ["pin": input]
+                        )
                     }
                 }
             }

@@ -216,15 +216,3 @@ public enum MaintenanceStatusType: String {
     case MAINTAINED = "MAINTAINED"
     case HEALTHY = "HEALTHY"
 }
-
-public enum AirdropEventDiscoverType: String {
-    case NEAREST = "nearest"
-    case TOP_LOCAL = "topLocal"
-    case TOP = "top"
-    case UPCOMING = "upcoming"
-}
-
-public enum ParkingTicketStatusType: String {
-    case SUCCESS = "SUCCESS"
-    case NONE = "NONE"
-}

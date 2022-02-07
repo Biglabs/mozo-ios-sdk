@@ -67,10 +67,12 @@ class ExpandImageView: UIView {
         let imgClose = UIImage(named: "ic_close", in: BundleManager.mozoBundle(), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
         imgCloseView.image = imgClose
         imgCloseView.tintColor = .white
+        imgCloseView.backgroundColor = .lightGray
         let tap = UITapGestureRecognizer(target: self, action: #selector(touchClose))
         tap.numberOfTapsRequired = 1
         imgCloseView.isUserInteractionEnabled = true
         imgCloseView.addGestureRecognizer(tap)
+        imgCloseView.roundedCircle()
     }
     
     func setupCollectionView() {
@@ -94,7 +96,7 @@ class ExpandImageView: UIView {
         self.removeFromSuperview()
     }
 }
-extension ExpandImageView: UICollectionViewDataSource, UICollectionViewDelegate {
+extension ExpandImageView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return names.count
     }
@@ -104,11 +106,8 @@ extension ExpandImageView: UICollectionViewDataSource, UICollectionViewDelegate 
         cell.imageName = names[indexPath.row]
         return cell
     }
-}
-extension ExpandImageView: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //For entire screen size
-        let screenSize = UIScreen.main.bounds.size
-        return screenSize
+        return collectionView.frame.size
     }
 }

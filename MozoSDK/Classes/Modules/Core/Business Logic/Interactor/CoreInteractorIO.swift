@@ -54,11 +54,8 @@ protocol CoreInteractorService {
     func registerMoreBeacon(parameters: Any?) -> Promise<[String: Any]>
     func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]>
     func deleteBeacon(beaconId: Int64) -> Promise<Bool>
-    func getListBeacons() -> Promise<[String : Any]>
     func getRetailerInfo() -> Promise<[String : Any]>
     func addSalePerson(parameters: Any?) -> Promise<[String: Any]>
-    
-    func sendRangedBeacons(beacons: [BeaconInfoDTO], status: Bool) -> Promise<[String: Any]>
     
     func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection>
     func getLatestAirdropEvent() -> Promise<AirdropEventDTO>
@@ -72,9 +69,6 @@ protocol CoreInteractorService {
     func removeSalePerson(id: Int64) -> Promise<[String: Any]>
     func getListCountryCode() -> Promise<[CountryCodeDTO]>
     
-    func searchStoresWithText(_ text: String, page: Int, long: Double, lat: Double, sort: String) -> Promise<CollectionStoreInfoDTO>
-    func getFavoriteStores(page: Int, size: Int) -> Promise<[BranchInfoDTO]>
-    func updateFavoriteStore(_ storeId: Int64, isMarkFavorite: Bool) -> Promise<[String: Any]>
     func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?>
     
     func getUrlToUploadImage() -> Promise<String>
@@ -88,7 +82,6 @@ protocol CoreInteractorService {
     func updateRetailerStoreInfoHashtag(hashTags: [String]) -> Promise<StoreInfoDTO>
     func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO>
     
-    func getStoreDetail(_ storeId: Int64) -> Promise<BranchInfoDTO>
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]>
     
     func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]>
@@ -118,57 +111,21 @@ protocol CoreInteractorService {
     func usePromotionCode(code: String, billInfo: String?) -> Promise<PromotionCodeInfoDTO>
     func cancelPromotionCode(code: String) -> Promise<[String: Any]>
     
-    func getShopperPromotionListWithType(page: Int, size: Int, long: Double, lat: Double, type: PromotionListTypeEnum) -> Promise<[PromotionStoreDTO]>
-    
-    func getPromotionRedeemInfo(promotionId: Int64, branchId: Int64) -> Promise<PromotionRedeemInfoDTO>
-    
-    func getBranchesInChain(promotionId: Int64, lat: Double, lng: Double) -> Promise<[BranchInfoDTO]>
-    
-    func getPromotionPaidDetail(promotionId: Int64) -> Promise<PromotionPaidDTO>
-    
-    func getPromotionPaidDetailByCode(_ promotionCode: String) -> Promise<PromotionPaidDTO>
-    
-    func processPromotionByCustomCode(code: String, branchId: Int64, lat: Double?, lng: Double?) -> Promise<Any>
-    
     func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]>
     
-    func getPromotionPaidHistoryDetail(_ id: Int64) -> Promise<PromotionPaidDTO>
-    
-    func getShopperPromotionSaved(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]>
-    
     func getShopperPromotionRunning(page: Int, size: Int, long: Double, lat: Double, storeId: Int64) -> Promise<JSON>
-    
-    func getShopperPromotionPurchased(page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]>
-    
-    func getShopperPromotionHistory(page: Int, size: Int) -> Promise<[PromotionStoreDTO]>
     
     func getRetailerPromotionScannedList(page: Int, size: Int) -> Promise<[PromotionCodeInfoDTO]>
     
     func getRetailerCountPromotion() -> Promise<Int>
     
-    func getShopperTodoList(blueToothOff: Bool, long: Double, lat: Double) -> Promise<[TodoDTO]>
-    
-    func getTodoListSetting() -> Promise<TodoSettingDTO>
-    
     func getGPSBeacons(params: [String: Any]) -> Promise<[String]>
     
-    func searchPromotionsWithText(_ text: String, page: Int, size: Int, long: Double, lat: Double) -> Promise<CollectionPromotionInfoDTO>
-    
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]>
-    
-    func getParkingTicketStatus(id: Int64, isIn: Bool) -> Promise<ParkingTicketStatusType>
-    
-    func getParkingTicketByStoreId(storeId: Int64, isIn: Bool) -> Promise<TicketDTO>
-    
-    func getParkingTicketByStoreId(storeId: Int64) -> Promise<TicketDTO>
-    
-    func renewParkingTicket(id: Int64, vehicleTypeKey: String, isIn: Bool) -> Promise<TicketDTO>
     
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem>
         
     func loadTopUpHistory(topUpAddress: String?, page: Int, size: Int) -> Promise<TxHistoryDisplayCollection>
-    
-    func getShopperPromotionInStore(storeId: Int64, type: PromotionListTypeEnum, page: Int, size: Int, long: Double, lat: Double) -> Promise<[PromotionStoreDTO]>
     
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON>
      
@@ -181,9 +138,6 @@ protocol CoreInteractorService {
     func checkBranchName(_ name: String) -> Promise<Any>
     
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO>
-    
-    // MARK: COVID-19 support APIs
-    func getCovidZones(params: [String: Any]) -> Promise<[CovidZone]>
     
     // MARK: Mozo Messages APIs
     func getConversationList(text: String?, page: Int) -> Promise<[Conversation]>

@@ -270,7 +270,6 @@
 "My Store" = "상점";
 "More" = "추가";
 "Event List" = "이벤트 리스트";
-"Beacon List" = "Beacon 리스트";
 "Add Sub-Account" = "하위 계정 추가";
 "Add" = "추가";
 "Log Out" = "로그 아웃";
@@ -475,8 +474,6 @@
 
 // SHOPPER
 "My wallet" = "내 지갑";
-"List view" = "리스트 양식 보기";
-"Map view" = "지도";
 "Search history" = "기록 검색 ";
 "Invite friends" = "친구 초대";
 "Settings" = "설정";
@@ -797,7 +794,6 @@
 "Convert Failed" = "변환 실패";
 "text_convert_failed_and_try" = "MozoX에서 Mozo로 변환을 완료 할 수 없습니다.";
 "There are no Airdrop Events around you" = "주변에 Airdrop 이벤트가 없습니다.";
-"Discover" = "발견하기";
 "On Going Events" = "Airdrop 다가오는 이벤트";
 "Top Airdrop Events" = "가장 많은 Airdrop 이벤트";
 "Nearest Events" = "가장 가까운 Airdrop 이벤트";
@@ -1265,11 +1261,6 @@
 "ticket_not_enough_mozo_for_vehicle" = "이 차량 종류에 대한 Mozo 부족";
 "ticket_not_enough_mozo_for_vehicle_sub" = "전통 RFID 카드 사용하기 위해 직원에게 문의하세요.";
 
-"The parking ticket feature is not available with you at this store at the moment" = "당신에게 이 매점에서 주차 티켓 기능은 지원되지 않습니다.";
-"You are already CHECK IN at this store. Please CHECK OUT the previous ticket before using another one." = "이 매점에 이미 체크인 되었습니다. 기존 티켓 체크아웃 한 뒤 다은 것을 사용하세요.";
-"You are already CHECK OUT at this store. CHECK OUT ticket is not available for you at the moment." = "이 매점에서 이미 체크아웃 되었습니다. 현재 당신은 체크아웃 티켓을 사용 불가합니다.";
-"CHECK IN ticket at this store is not available at the moment. Please ask parking employee to use traditional RFID." = "현재 이 매점에서 체크인 티켓을 사용 불가합니다. 전통 RFID 카드 사용하기 위해 직원에게 문의하세요.";
-"CHECK OUT ticket at this store is not available at the moment. Please turn off your internet and open Offline Parking ticket." = "현재 이 매점에서 체크아웃 티켓을 사용 불가합니다. 인터넷 끄고 오프라인 주차 티켓을 사용해보세요.";
 "FREE" = "무료";
 
 "Next %@" = "다음 %@";
@@ -1323,7 +1314,6 @@
 // Multiple Beacon
 "No. Thanks" = "아니요. 감사합니다";
 "Yes, go to Beacon List" = "네, Beacon 리스트로 이동합니다";
-"Beacon" = "Beacon";
 "No Beacon added yet" = "추가된 Beacon 없음";
 "Beacon Detail" = "Beacon 디테일";
 "Add Beacon" = "Beacon 추가";
