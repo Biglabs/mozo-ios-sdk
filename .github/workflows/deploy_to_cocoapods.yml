@@ -2,10 +2,8 @@ name: Release to Cocoapods
 
 on:
   push:
-    branches:
-    - master
-    - release/*
-    - hotfix/*
+    tags:
+      - '*'
 
 jobs:
   build:
