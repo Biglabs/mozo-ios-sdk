@@ -71,7 +71,7 @@ class RDNInteractor: NSObject {
                     output?.didInvitedSuccess(inviteNoti: inviteNoti, rawMessage: rawJsonMessage)
                     
                 } else if rdNoti.event == NotificationEventType.InvalidToken.rawValue {
-                    stopService(shouldReconnect: true)
+                    //stopService(shouldReconnect: true)
                     
                 } else if rdNoti.event == NotificationEventType.ProfileChanged.rawValue {
                     output?.profileDidChange()
