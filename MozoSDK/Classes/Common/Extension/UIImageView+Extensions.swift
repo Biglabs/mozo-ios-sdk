@@ -35,7 +35,7 @@ public extension UIImageView {
             let iHeight = Int(self.frame.height * scale)
             finalUrl = "\(finalUrl)?width=\(iWidth)&height=\(iHeight)"
         }
-        let thumbnailSize = CGSize(width: 200 * scale, height: 200 * scale)
+//        let thumbnailSize = CGSize(width: 200 * scale, height: 200 * scale)
         
         self.sd_imageTransition = .fade
         self.sd_setImage(
@@ -44,8 +44,8 @@ public extension UIImageView {
             options: [
                 .progressiveLoad, .retryFailed
             ],
-            context: [
-                .imageThumbnailPixelSize: thumbnailSize
+            context: [:
+//                .imageThumbnailPixelSize: thumbnailSize
             ],
             progress: nil,
             completed: { _, error, _, loadedUrl in
