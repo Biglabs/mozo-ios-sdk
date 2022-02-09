@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,8 +31,8 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="error_fatal"/>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dE8-Tu-Wvn">
-                    <rect key="frame" x="78.5" y="217" width="143" height="45"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dE8-Tu-Wvn">
+                    <rect key="frame" x="78.5" y="235" width="143" height="45"/>
                     <color key="backgroundColor" red="0.35294117650000001" green="0.61176470589999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="HgM-N7-U0n"/>
@@ -81,15 +81,16 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="biA-eP-HyB"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="h9t-0c-y1F" firstAttribute="leading" secondItem="b3d-zQ-IBb" secondAttribute="trailing" constant="30" id="2jV-oJ-l7M"/>
                 <constraint firstItem="Gd6-P5-mJf" firstAttribute="top" secondItem="h9t-0c-y1F" secondAttribute="bottom" constant="10" id="2vZ-IM-xvm"/>
                 <constraint firstItem="h9t-0c-y1F" firstAttribute="height" secondItem="b3d-zQ-IBb" secondAttribute="height" id="7S7-mC-nKd"/>
+                <constraint firstItem="biA-eP-HyB" firstAttribute="bottom" secondItem="dE8-Tu-Wvn" secondAttribute="bottom" constant="20" id="979-W4-mvv"/>
                 <constraint firstItem="U0o-XE-jhu" firstAttribute="top" secondItem="TgV-dn-o6r" secondAttribute="bottom" constant="10" id="A08-N2-A1J"/>
                 <constraint firstItem="U0o-XE-jhu" firstAttribute="centerX" secondItem="TgV-dn-o6r" secondAttribute="centerX" id="BcM-Hk-8xJ"/>
                 <constraint firstItem="Jk6-0f-ICV" firstAttribute="top" secondItem="b3d-zQ-IBb" secondAttribute="bottom" constant="10" id="JOA-1K-nf1"/>
-                <constraint firstItem="dE8-Tu-Wvn" firstAttribute="top" secondItem="Gd6-P5-mJf" secondAttribute="bottom" constant="27" id="N51-nk-JvE"/>
                 <constraint firstItem="TgV-dn-o6r" firstAttribute="height" secondItem="h9t-0c-y1F" secondAttribute="height" id="Nwv-4c-ycT"/>
                 <constraint firstItem="gqw-r5-rHG" firstAttribute="leading" secondItem="biA-eP-HyB" secondAttribute="leading" constant="43" id="Pg0-IO-FUP"/>
                 <constraint firstItem="TgV-dn-o6r" firstAttribute="leading" secondItem="h9t-0c-y1F" secondAttribute="trailing" constant="30" id="R2L-RI-5Ns"/>
@@ -106,7 +107,6 @@
                 <constraint firstItem="b3d-zQ-IBb" firstAttribute="top" secondItem="h9t-0c-y1F" secondAttribute="top" id="y8I-Od-cB8"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="biA-eP-HyB"/>
             <point key="canvasLocation" x="-161.59999999999999" y="-116.04197901049476"/>
         </view>
     </objects>
