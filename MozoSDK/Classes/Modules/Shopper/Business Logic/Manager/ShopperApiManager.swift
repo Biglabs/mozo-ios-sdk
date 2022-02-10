@@ -19,28 +19,6 @@ let SHOPPER_RECOMMENDATION_API_PATH = SHOPPER_API_PATH + "/recommendation/branch
 
 public extension ApiManager {
     
-    func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
-        return Promise { seal in
-            let query = "?\(params.queryString)"
-            let url = Configuration.BASE_STORE_URL + SHOPPER_API_PATH + "/beacon/gps" + query
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    "Finish request to get GPS beacons, json response: \(json)".log()
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let list = (jobj.array ?? []).filter({ $0.string != nil }).map({ $0.string! })
-                    seal.fulfill(list)
-                }
-                .catch { error in
-                    "Error when request get GPS beacons: \(error.localizedDescription)".log()
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
         return Promise { seal in
             var params = ["branchId" : storeId,

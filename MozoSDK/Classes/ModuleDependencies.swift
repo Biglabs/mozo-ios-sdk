@@ -314,10 +314,6 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerCountPromotion())!
     }
     
-    func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getGPSBeacons(params: params))!
-    }
-    
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getSuggestKeySearchForPromotion(lat: lat, lon: lon))!
     }

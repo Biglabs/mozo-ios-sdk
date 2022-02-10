@@ -345,10 +345,6 @@ public class MozoSDK {
         return ModuleDependencies.shared.getRetailerCountPromotion()
     }
     
-    public static func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
-        return ModuleDependencies.shared.getGPSBeacons(params: params)
-    }
-    
     public static func getSuggestKeySearchForPromotion(lat: Double = 0, lon: Double = 0) -> Promise<[String]> {
         return ModuleDependencies.shared.getSuggestKeySearchForPromotion(lat: lat, lon: lon)
     }

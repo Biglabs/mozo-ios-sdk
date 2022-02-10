@@ -119,8 +119,6 @@ protocol CoreInteractorService {
     
     func getRetailerCountPromotion() -> Promise<Int>
     
-    func getGPSBeacons(params: [String: Any]) -> Promise<[String]>
-    
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]>
     
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem>

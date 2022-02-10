@@ -239,10 +239,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getCreateAirdropEventSettings()
     }
     
-    func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
-        return apiManager.getGPSBeacons(params: params)
-    }
-    
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem> {
         return Promise { seal in
             _ = apiManager.getTopUpBalance()
