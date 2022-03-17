@@ -186,10 +186,6 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getListCountryCode())!
     }
     
-    func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getUserSummary(startTime: startTime, endTime: endTime))!
-    }
-    
     func getUrlToUploadImage() -> Promise<String> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getUrlToUploadImage())!
     }

@@ -22,11 +22,11 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
     public var exchangeInfo: ExchangeInfoDTO?
     public var settings: String?
     
-    public required init(walletInfo: WalletInfoDTO?){
+    public required init(walletInfo: WalletInfoDTO?) {
         self.walletInfo = walletInfo
     }
     
-    public required init(avatarUrl: String?){
+    public required init(avatarUrl: String?) {
         self.avatarUrl = avatarUrl
     }
     

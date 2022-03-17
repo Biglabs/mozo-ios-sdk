@@ -13,28 +13,6 @@ let SHOPPER_AIRDROP_REPORT_API_PATH = "/shopper-airdrop"
 let RETAILER_AIRDROP_API_PATH = "/air-drops"
 let RETAILER_AIRDROP_RESOURCE_API_PATH = "/retailer/airdrops"
 public extension ApiManager {
-    
-    func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?> {
-        return Promise { seal in
-            let params = ["startTime" : startTime,
-                          "endTime" : endTime] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + "/shopper/getUserSummary?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    "Finish request to get amount of collected coin from time \(startTime) to time \(endTime), json response: \(json)".log()
-                    seal.fulfill(UserSummary(json: SwiftyJSON.JSON(json)))
-                }
-                .catch { error in
-                    print("Error when request get amount of collected coin from time \(startTime) to time \(endTime): " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
     func createAirdropEvent(event: AirdropEventDTO) -> Promise<[IntermediaryTransactionDTO]> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + RETAILER_AIRDROP_API_PATH + "/prepare-event/v2"

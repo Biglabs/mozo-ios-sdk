@@ -166,10 +166,6 @@ public class MozoSDK {
         return ModuleDependencies.shared.getListCountryCode()
     }
     
-    public static func getUserSummary(startTime: Int = 0, endTime: Int = 86400) -> Promise<UserSummary?> {
-        return ModuleDependencies.shared.getUserSummary(startTime: startTime, endTime: endTime)
-    }
-    
     public static func getUrlToUploadImage() -> Promise<String> {
         return ModuleDependencies.shared.getUrlToUploadImage()
     }

@@ -69,8 +69,6 @@ protocol CoreInteractorService {
     func removeSalePerson(id: Int64) -> Promise<[String: Any]>
     func getListCountryCode() -> Promise<[CountryCodeDTO]>
     
-    func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?>
-    
     func getUrlToUploadImage() -> Promise<String>
     func uploadImage(images: [UIImage], url: String, progressionHandler: @escaping (_ fractionCompleted: Double)-> Void) -> Promise<[String]>
     
