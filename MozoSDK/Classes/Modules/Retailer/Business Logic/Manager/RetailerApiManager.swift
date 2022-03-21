@@ -9,19 +9,13 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 
-let RETAILER_INFO_API_PATH = "/retailer/info"
 let RETAILER_SALE_PERSON_API_PATH = "/retailer/saleperson"
-let COMMON_COUNTRY_CODE_API_PATH = "/common/v1/countries"
 let TAGS_API_PATH = "/tags"
 let RETAILER_STORE_INFO_API_PATH = "/retailer/storeInfo"
-let RETAILER_STORE_INFO_HASHTAG_API_PATH = "/retailer/storeInfo/hashtag"
-let RETAILER_STORE_INFO_PHOTO_API_PATH = "/retailer/storeInfo/photo"
-let RETAILER_SUPPORT_BEACON_API_PATH = "/retailer/support/beacon"
-let RETAILER_MERCHANT_CONFIRM_STORE_API_PATH = "/merchantConfirmStore"
 public extension ApiManager {
     func getRetailerInfo() -> Promise<[String: Any]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_INFO_API_PATH
+            let url = Configuration.BASE_STORE_URL + "/retailer/info"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -39,22 +33,8 @@ public extension ApiManager {
     }
     
     func getRetailerInfoForLauching() -> Promise<[String: Any]> {
-        return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_RESOURCE_API_PATH + "/getRetailerInfoForLaunching"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get retailer info, json response: \(json)")
-                    seal.fulfill(json)
-                }
-                .catch { error in
-                    print("Error when request get retailer info: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
+        let url = Configuration.BASE_STORE_URL + "/retailer/getRetailerInfoForLaunching"
+        return self.execute(.get, url: url)
     }
     
     func addSalePerson(parameters: Any?) -> Promise<[String: Any]> {
@@ -144,7 +124,7 @@ public extension ApiManager {
     
     func getListCountryCode() -> Promise<[CountryCodeDTO]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + COMMON_COUNTRY_CODE_API_PATH
+            let url = Configuration.BASE_STORE_URL + "/common/v1/countries"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
@@ -211,7 +191,7 @@ public extension ApiManager {
     
     func updateRetailerStoreInfoHashtag(hashTags: [String]) -> Promise<StoreInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_STORE_INFO_HASHTAG_API_PATH
+            let url = Configuration.BASE_STORE_URL + "/retailer/storeInfo/hashtag"
             print("Request to update store info hashtag, param: \(hashTags)")
             self.execute(.put, url: url, parameters: hashTags)
                 .done { json -> Void in
@@ -234,8 +214,7 @@ public extension ApiManager {
     
     func updateRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_STORE_INFO_PHOTO_API_PATH
-            print("Request to update store info photo, param: \(photos)")
+            let url = Configuration.BASE_STORE_URL + "/retailer/storeInfo/photo"
             self.execute(.put, url: url, parameters: photos)
                 .done { json -> Void in
                     // JSON info
@@ -257,8 +236,7 @@ public extension ApiManager {
     
     func deleteRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_STORE_INFO_PHOTO_API_PATH
-            print("Request to delete store info photo, param: \(photos)")
+            let url = Configuration.BASE_STORE_URL + "/retailer/storeInfo/photo"
             self.execute(.delete, url: url, parameters: photos)
                 .done { json -> Void in
                     // JSON info
@@ -280,7 +258,7 @@ public extension ApiManager {
     
     func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
         return Promise { seal in
-            let url = Configuration.BASE_STORE_URL + RETAILER_SUPPORT_BEACON_API_PATH
+            let url = Configuration.BASE_STORE_URL + "/retailer/support/beacon"
             let param = info.toJSON()
             print("Request to support beacon, param: \(param)")
             self.execute(.post, url: url, parameters: param)
