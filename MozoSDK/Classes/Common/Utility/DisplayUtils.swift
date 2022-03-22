@@ -7,6 +7,10 @@
 
 import Foundation
 public class DisplayUtils {
+    public static func viewImages(_ parent: UIViewController, paths: [String], selected: Int = 0) {
+        ImageViewerVC.launch(parent, paths, selected)
+    }
+    
     public static func getExchangeTextFromAmount(_ amount: Double) -> String {
         let rateInfo = SessionStoreManager.exchangeRateInfo
         let curType = (rateInfo?.currency ?? CurrencyType.USD.rawValue)

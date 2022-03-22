@@ -35,19 +35,19 @@ public class WebSocketManager: WebSocketDelegate {
 
     public func requestWithHeader() -> URLRequest{
         let uuid = buildUUID()
-        var url = Configuration.WEB_SOCKET_URL + uuid + "/\(appType.rawValue)"
-        let headers = ["X-Atmosphere-tracking-id" : "0",
-                       "X-Atmosphere-Framework" : "2.3.3-javascript",
-                       "X-Atmosphere-Transport" : "websocket",
-                       "Content-Type" : "application/json",
-                       "X-atmo-protocol" : "true"]
-        url += "/?\(headers.queryString)"
-        
-        if let accessToken = AccessTokenManager.getAccessToken() {
-            url += "Authorization=bearer+\(accessToken)"
-        }
+        let url = Configuration.WEB_SOCKET_URL + uuid + "/\(appType.rawValue)"
         var request = URLRequest(url: URL(string: url)!)
         request.timeoutInterval = 5
+        request.allHTTPHeaderFields = [
+            "Content-Type" : "application/json",
+            "X-atmo-protocol" : "true",
+            "X-Atmosphere-Framework" : "2.3.3-javascript",
+            "X-Atmosphere-tracking-id" : "0",
+            "X-Atmosphere-Transport" : "websocket"
+        ]
+        if let accessToken = AccessTokenManager.getAccessToken() {
+            request.addValue(accessToken, forHTTPHeaderField: "Authorization")
+        }
         return request
     }
     

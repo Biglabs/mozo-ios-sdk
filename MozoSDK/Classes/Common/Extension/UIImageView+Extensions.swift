@@ -26,16 +26,23 @@ public extension UIImageView {
         }
 
         let scale = UIScreen.main.scale
+        let scaledW = Int(self.frame.width * scale)
+        let scaledH = Int(self.frame.height * scale)
+        
         var finalUrl = safeUrl
-        if !safeUrl.hasPrefix("http") {
+        if safeUrl == "dummy" {
+            let color = Int.random(in: 2000..<10000)
+            finalUrl = "https://dummyimage.com/\(scaledW)x\(scaledH)/\(color)/f\(color / 2)"
+            
+        } else if !safeUrl.hasPrefix("http") {
             finalUrl = "\(Configuration.DOMAIN_IMAGE)\(safeUrl)"
+            
+            if shouldScale {
+                finalUrl = "\(finalUrl)?width=\(scaledW)&height=\(scaledH)"
+            }
         }
-        if shouldScale {
-            let iWidth = Int(self.frame.width * scale)
-            let iHeight = Int(self.frame.height * scale)
-            finalUrl = "\(finalUrl)?width=\(iWidth)&height=\(iHeight)"
-        }
-        let thumbnailSize = CGSize(width: 200 * scale, height: 200 * scale)
+
+//        let thumbnailSize = CGSize(width: 200 * scale, height: 200 * scale)
         
         self.sd_imageTransition = .fade
         self.sd_setImage(
@@ -44,8 +51,8 @@ public extension UIImageView {
             options: [
                 .progressiveLoad, .retryFailed
             ],
-            context: [
-                .imageThumbnailPixelSize: thumbnailSize
+            context: [:
+//                .imageThumbnailPixelSize: thumbnailSize
             ],
             progress: nil,
             completed: { _, error, _, loadedUrl in

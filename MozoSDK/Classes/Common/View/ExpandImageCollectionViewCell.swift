@@ -7,10 +7,10 @@
 
 import Foundation
 import UIKit
-let EXPAND_IMAGE_COLLECTION_VIEW_CELL_IDENTIFIER = "ExpandImageCollectionViewCell"
+import SDWebImage
+
 class ExpandImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var imageName: String? {
         didSet {
@@ -20,24 +20,20 @@ class ExpandImageCollectionViewCell: UICollectionViewCell {
     var isZooming = false
     var originalImageCenter: CGPoint?
     
-    func bindData() {
-        imageView.transform = .identity
-        
-        if let imageName = self.imageName, !imageName.isEmpty {
-            loadingIndicator.startAnimating()
-            imageView.load(imageName, placeHolder: "") {
-                self.loadingIndicator?.stopAnimating()
-            }
-        } else {
-            imageView.image = nil
-        }
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    override func awakeFromNib() {
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(startZooming(_:)))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(pinchGesture)
+        imageView.sd_imageIndicator = SDWebImageActivityIndicator.white
+    }
+    
+    func bindData() {
+        imageView.transform = .identity
+        if let imageName = self.imageName, !imageName.isEmpty {
+            imageView.load(imageName, placeHolder: "")
+        } else {
+            imageView.image = nil
+        }
     }
     
     @objc private func startZooming(_ sender: UIPinchGestureRecognizer) {
@@ -45,5 +41,12 @@ class ExpandImageCollectionViewCell: UICollectionViewCell {
         guard let scale = scaleResult, scale.a > 1, scale.d > 1, scale.a < 5, scale.d < 5 else { return }
         sender.view?.transform = scale
         sender.scale = 1
+    }
+    
+    class func register(_ collectionView: UICollectionView) {
+        collectionView.register(
+            UINib.init(nibName: "ExpandImageCollectionViewCell", bundle: BundleManager.mozoBundle()),
+            forCellWithReuseIdentifier: "ExpandImageCollectionViewCell"
+        )
     }
 }

@@ -44,11 +44,7 @@ class MozoPopupContact: MozoView {
         super.loadViewFromNib()
         setImages()
         setupTarget()
-        setupButton()
-    }
-    
-    func setupButton() {
-        btnOK.roundCorners(cornerRadius: 0.15, borderColor: .white, borderWidth: 0.1)
+        btnOK.roundedCircle()
     }
     
     func setImages() {

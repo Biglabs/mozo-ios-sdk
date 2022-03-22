@@ -9,7 +9,6 @@ import Foundation
 import AppAuth
 extension DisplayUtils {
     public static func displayMaintenanceScreen() {
-        print("DisplayUtils - Display maintenance screen")
         if let topViewController = getTopViewController() {
             if topViewController is MaintenanceViewController {
                 print("DisplayUtils - Maintenence screen is being displayed.")
@@ -28,7 +27,7 @@ extension DisplayUtils {
             print("DisplayUtils - Display maintenance screen with top view controller: \(topViewController)")
             let viewController = MaintenanceViewController.viewControllerFromStoryboard()
             viewController.modalPresentationStyle = .fullScreen
-            topViewController.present(viewController, animated: false)
+            topViewController.present(viewController, animated: true)
         } else {
             print("DisplayUtils - Can not display maintenance screen - no top view controller")
         }

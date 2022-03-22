@@ -186,10 +186,6 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getListCountryCode())!
     }
     
-    func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getUserSummary(startTime: startTime, endTime: endTime))!
-    }
-    
     func getUrlToUploadImage() -> Promise<String> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getUrlToUploadImage())!
     }
@@ -312,10 +308,6 @@ class ModuleDependencies {
     
     func getRetailerCountPromotion() -> Promise<Int> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerCountPromotion())!
-    }
-    
-    func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getGPSBeacons(params: params))!
     }
     
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]> {

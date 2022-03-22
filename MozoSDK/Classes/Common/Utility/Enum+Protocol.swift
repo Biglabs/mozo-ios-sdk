@@ -21,9 +21,9 @@ internal enum ServiceType: String {
     var api: String {
         switch self {
         case .PRODUCTION:
-            return "gateway.mozotoken.com"
+            return "gateway.mozocoin.io"
         case .STAGING:
-            return "staging.gateway.mozotoken.com"
+            return "staging.gateway.mozocoin.io"
         default:
             return "gateway.cng.mozotoken.com"
         }
@@ -57,7 +57,7 @@ internal enum ServiceType: String {
         case .PRODUCTION:
             return "image.mozocoin.io"
         case .STAGING:
-            return "staging.image.mozotoken.com"
+            return "staging.image.mozocoin.io"
         default:
             return "image.cng.mozotoken.com"
         }

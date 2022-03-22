@@ -138,10 +138,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getListCountryCode()
     }
     
-    func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?> {
-        return apiManager.getUserSummary(startTime: startTime, endTime: endTime)
-    }
-    
     func getUrlToUploadImage() -> Promise<String> {
         return apiManager.getUrlToUploadImage()
     }
@@ -237,10 +233,6 @@ extension CoreInteractor: CoreInteractorService {
     
     func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO> {
         return apiManager.getCreateAirdropEventSettings()
-    }
-    
-    func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
-        return apiManager.getGPSBeacons(params: params)
     }
     
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem> {

@@ -69,8 +69,6 @@ protocol CoreInteractorService {
     func removeSalePerson(id: Int64) -> Promise<[String: Any]>
     func getListCountryCode() -> Promise<[CountryCodeDTO]>
     
-    func getUserSummary(startTime: Int, endTime: Int) -> Promise<UserSummary?>
-    
     func getUrlToUploadImage() -> Promise<String>
     func uploadImage(images: [UIImage], url: String, progressionHandler: @escaping (_ fractionCompleted: Double)-> Void) -> Promise<[String]>
     
@@ -118,8 +116,6 @@ protocol CoreInteractorService {
     func getRetailerPromotionScannedList(page: Int, size: Int) -> Promise<[PromotionCodeInfoDTO]>
     
     func getRetailerCountPromotion() -> Promise<Int>
-    
-    func getGPSBeacons(params: [String: Any]) -> Promise<[String]>
     
     func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]>
     

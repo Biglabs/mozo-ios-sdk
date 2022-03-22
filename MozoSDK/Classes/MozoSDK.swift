@@ -166,10 +166,6 @@ public class MozoSDK {
         return ModuleDependencies.shared.getListCountryCode()
     }
     
-    public static func getUserSummary(startTime: Int = 0, endTime: Int = 86400) -> Promise<UserSummary?> {
-        return ModuleDependencies.shared.getUserSummary(startTime: startTime, endTime: endTime)
-    }
-    
     public static func getUrlToUploadImage() -> Promise<String> {
         return ModuleDependencies.shared.getUrlToUploadImage()
     }
@@ -343,10 +339,6 @@ public class MozoSDK {
     
     public static func getRetailerCountPromotion() -> Promise<Int> {
         return ModuleDependencies.shared.getRetailerCountPromotion()
-    }
-    
-    public static func getGPSBeacons(params: [String: Any]) -> Promise<[String]> {
-        return ModuleDependencies.shared.getGPSBeacons(params: params)
     }
     
     public static func getSuggestKeySearchForPromotion(lat: Double = 0, lon: Double = 0) -> Promise<[String]> {
