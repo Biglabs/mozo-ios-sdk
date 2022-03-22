@@ -35,11 +35,14 @@ class ImageViewerVC: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         ExpandImageCollectionViewCell.register(collectionView)
-        collectionView.reloadData()
+        
         collectionView.performBatchUpdates(nil) { (result) in
             let indexPath = IndexPath(row: self.selectedIndex, section: 0)
-            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+            if let rect = collectionView.layoutAttributesForItem(at: indexPath)?.frame {
+                collectionView.scrollRectToVisible(rect, animated: false)
+            }
         }
+        collectionView.reloadData()
         
         let closeSize: CGFloat = 42
         let closeButton = UIButton(type: .custom)
