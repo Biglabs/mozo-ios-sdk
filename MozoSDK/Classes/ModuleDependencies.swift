@@ -258,10 +258,6 @@ class ModuleDependencies {
         return (coreWireframe.corePresenter?.coreInteractorService?.getListNotification(page: page, size: size))!
     }
     
-    func getSuggestKeySearch(lat: Double, lon: Double) -> Promise<[String]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getSuggestKeySearch(lat: lat, lon: lon))!
-    }
-    
     func loadUserProfile() -> Promise<UserProfileDTO> {
         return (coreWireframe.corePresenter?.coreInteractorService?.loadUserProfile())!
     }
@@ -308,10 +304,6 @@ class ModuleDependencies {
     
     func getRetailerCountPromotion() -> Promise<Int> {
         return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerCountPromotion())!
-    }
-    
-    func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getSuggestKeySearchForPromotion(lat: lat, lon: lon))!
     }
     
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem> {

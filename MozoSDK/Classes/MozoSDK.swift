@@ -289,10 +289,6 @@ public class MozoSDK {
         return ModuleDependencies.shared.getListNotification(page: page, size: size)
     }
     
-    public static func getSuggestKeySearch(lat: Double = 0, lon: Double = 0) -> Promise<[String]> {
-        return ModuleDependencies.shared.getSuggestKeySearch(lat: lat, lon: lon)
-    }
-    
     public static func loadUserProfile() -> Promise<UserProfileDTO> {
         return ModuleDependencies.shared.loadUserProfile()
     }
@@ -339,10 +335,6 @@ public class MozoSDK {
     
     public static func getRetailerCountPromotion() -> Promise<Int> {
         return ModuleDependencies.shared.getRetailerCountPromotion()
-    }
-    
-    public static func getSuggestKeySearchForPromotion(lat: Double = 0, lon: Double = 0) -> Promise<[String]> {
-        return ModuleDependencies.shared.getSuggestKeySearchForPromotion(lat: lat, lon: lon)
     }
     
     // MARK: TOP UP

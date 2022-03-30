@@ -9,9 +9,9 @@ import Foundation
 class ABImportViewController: MozoBasicViewController {
     @IBOutlet weak var lbLastUpdate: UILabel!
     @IBOutlet weak var updateContainerView: UIView!
-    @IBOutlet weak var loadingImageView: UIImageView!
     @IBOutlet weak var lbUpdate: UILabel!
     @IBOutlet weak var btnUpdate: UIButton!
+    @IBOutlet weak var btnUpdateLoading: UIActivityIndicatorView!
     
     var eventHandler: ABImportModuleInterface?
     
@@ -41,10 +41,6 @@ class ABImportViewController: MozoBasicViewController {
     }
     
     func setupLayout() {
-        let loading = UIImage(named: "ic_loading", in: BundleManager.mozoBundle(), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
-        loadingImageView.image = loading
-        loadingImageView.tintColor = .white
-        
         updateContainerView.roundCorners(borderColor: .white, borderWidth: 0.1)
         updateContainerView.layer.cornerRadius = 5
     }
@@ -56,11 +52,9 @@ class ABImportViewController: MozoBasicViewController {
         let text = (isCompleted ? "Synchronize" : "Synchronizing...").localized
         btnUpdate.isEnabled = enable
         lbUpdate.text = text
-        loadingImageView.isHidden = hidden
+        btnUpdateLoading.isHidden = hidden
         stopRotating = isCompleted
-        if !isCompleted {
-            rotateView()
-        } else {
+        if isCompleted {
             var dateText = "Not yet synchronized".localized
             if let updateAt = processStatus.updatedAt {
                 formatter.dateFormat = dateFormat
@@ -69,18 +63,6 @@ class ABImportViewController: MozoBasicViewController {
             }
             
             lbLastUpdate.text = dateText
-        }
-    }
-    
-    func rotateView(duration: Double = 1.0) {
-        UIView.animate(withDuration: duration, delay: 0.0, options: .curveLinear, animations: {
-            self.loadingImageView.transform = self.loadingImageView.transform.rotated(by: CGFloat.pi)
-        }) { finished in
-            if !self.stopRotating {
-                self.rotateView(duration: duration)
-            } else {
-                self.loadingImageView.transform = .identity
-            }
         }
     }
     

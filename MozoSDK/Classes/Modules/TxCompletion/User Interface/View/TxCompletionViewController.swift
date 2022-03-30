@@ -24,7 +24,7 @@ class TxCompletionViewController: MozoBasicViewController {
     @IBOutlet weak var addressBookView: AddressBookView!
     
     @IBOutlet weak var txStatusView: UIView!
-    @IBOutlet weak var txStatusImg: UIImageView!
+    @IBOutlet weak var txStatusLoading: UIActivityIndicatorView!
     @IBOutlet weak var txStatusReplaceImg: UIImageView!
     @IBOutlet weak var txStatusLabel: UILabel!
     
@@ -42,7 +42,6 @@ class TxCompletionViewController: MozoBasicViewController {
         super.viewDidLoad()
         lbAmountEx.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
         setBtnLayer()
-        startSpinnerAnimation()
         updateView()
         eventHandler?.requestWaitingForTxStatus(hash: detailItem.hash)
     }
@@ -113,35 +112,12 @@ class TxCompletionViewController: MozoBasicViewController {
     
     func updateView() {
         lbAmount.text = detailItem.amount.roundAndAddCommas()
-        
         lbAmountEx.text = DisplayUtils.getExchangeTextFromAmount(detailItem.amount)
-    }
-    
-    func startSpinnerAnimation() {
-//        rotateView()
-        setupSpinningView()
-    }
-    
-    func setupSpinningView() {
-        let advTimeGif = UIImage.gifImageWithName("spinner")
-        self.txStatusImg.image = advTimeGif
-    }
-    
-    private func rotateView(duration: Double = 1.0) {
-        UIView.animate(withDuration: duration, delay: 0.0, options: .curveLinear, animations: {
-            self.txStatusImg.transform = self.txStatusImg.transform.rotated(by: CGFloat.pi)
-        }) { finished in
-            if !self.stopWaiting {
-                self.rotateView(duration: duration)
-            } else {
-                self.txStatusImg.transform = .identity
-            }
-        }
     }
     
     func stopSpinnerAnimation(completion: (() -> Swift.Void)? = nil) {
         self.stopWaiting = true
-        txStatusImg.isHidden = true
+        txStatusLoading.isHidden = true
         txStatusReplaceImg.isHidden = false
     }
     

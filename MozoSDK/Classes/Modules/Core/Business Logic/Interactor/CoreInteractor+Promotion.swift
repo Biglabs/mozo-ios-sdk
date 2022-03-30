@@ -41,10 +41,6 @@ extension CoreInteractor {
         return apiManager.getRetailerCountPromotion()
     }
     
-    func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]> {
-        return apiManager.getSuggestKeySearchForPromotion(lat: lat, lon: lon)
-    }
-    
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {
         return apiManager.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat)
     }

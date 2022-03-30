@@ -215,10 +215,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.getListNotification(page: page, size: size)
     }
     
-    func getSuggestKeySearch(lat: Double, lon: Double) -> Promise<[String]> {
-        return apiManager.getSuggestKeySearch(lat: lat, lon: lon)
-    }
-    
     func loadUserProfile() -> Promise<UserProfileDTO> {
         return Promise { seal in
             _ = apiManager.getUserProfile().done { (userProfile) in
