@@ -606,6 +606,7 @@ class ModuleDependencies {
         let authInteractor = AuthInteractor(authManager: authManager)
         authInteractor.output = authPresenter
         
+        authPresenter.authManager = authManager
         authPresenter.authInteractor = authInteractor
         authPresenter.authWireframe = authWireframe
         authPresenter.authModuleDelegate = coreWireframe.corePresenter

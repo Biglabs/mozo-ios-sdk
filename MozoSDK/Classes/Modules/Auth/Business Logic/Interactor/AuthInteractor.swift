@@ -86,17 +86,6 @@ extension AuthInteractor : AuthInteractorInput {
         authManager?.clearAll()
     }
     
-    func buildAuthRequest() {
-        _ = authManager?.buildAuthRequest().done({ (request) in
-            if let rq = request {
-                self.output?.finishedBuildAuthRequest(rq)
-            }
-        }).catch({ (error) in
-            let connectionError = error as? ConnectionError ?? .systemError
-            self.output?.buildAuthRequestFailed(error: connectionError)
-        })
-    }
-    
     func setCurrentAuthorizationFlow(_ authorizationFlow : OIDExternalUserAgentSession?) {
         authManager?.setCurrentAuthorizationFlow(authorizationFlow)
     }

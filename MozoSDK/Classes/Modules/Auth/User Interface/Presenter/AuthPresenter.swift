@@ -12,6 +12,7 @@ class AuthPresenter : NSObject {
     var authInteractor : AuthInteractorInput?
     var authWireframe : AuthWireframe?
     var authModuleDelegate : AuthModuleDelegate?
+    var authManager: AuthManager?
     
     var retryOnResponse: OIDAuthorizationResponse?
         
@@ -39,7 +40,18 @@ class AuthPresenter : NSObject {
 extension AuthPresenter : AuthModuleInterface {
     func performAuthentication() {
         subcribeApplicationEvents()
-        authInteractor?.buildAuthRequest()
+        _ = self.authManager?.buildAuthRequest().done({ (request) in
+            if let rq = request, let topVC = DisplayUtils.getTopViewController() {
+                let flow = OIDAuthorizationService.present(rq, presenting: topVC) { (response, error) in
+                    self.authModuleDelegate?.willExecuteNextStep()
+                    self.authInteractor?.handleAuthorizationResponse(response, error: error)
+                }
+                self.authInteractor?.setCurrentAuthorizationFlow(flow)
+            }
+        }).catch({ (error) in
+            let connectionError = error as? ConnectionError ?? .systemError
+            self.buildAuthRequestFailed(error: connectionError)
+        })
     }
     
     func performLogout() {
@@ -74,15 +86,6 @@ extension AuthPresenter : AuthInteractorOutput {
     
     func didRemoveTokenAndLogout() {
         authModuleDelegate?.didRemoveTokenAndLogout()
-    }
-    
-    func finishedBuildAuthRequest(_ request: OIDAuthorizationRequest) {
-        let viewController = DisplayUtils.getTopViewController()
-        let currentAuthorizationFlow = OIDAuthorizationService.present(request, presenting: viewController!) { (response, error) in
-            self.authModuleDelegate?.willExecuteNextStep()
-            self.authInteractor?.handleAuthorizationResponse(response, error: error)
-        }
-        authInteractor?.setCurrentAuthorizationFlow(currentAuthorizationFlow)
     }
     
     func buildAuthRequestFailed(error: ConnectionError) {

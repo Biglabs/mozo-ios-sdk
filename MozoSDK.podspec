@@ -30,7 +30,7 @@ The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaini
   s.dependency 'CoreStore'
   
   s.dependency 'RNCryptor', '~> 5.1.0'
-  s.dependency 'web3swift', '~> 2.5.0'
+  s.dependency 'web3swift', '~> 2.5.1'
 
   s.dependency 'ReachabilitySwift'
   s.dependency 'MBProgressHUD'
