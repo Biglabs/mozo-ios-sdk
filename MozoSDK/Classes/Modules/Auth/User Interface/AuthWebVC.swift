@@ -194,7 +194,7 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
         guard let verifierData = input.data(using: .utf8),
               let sha256Verifier = NSMutableData(length: Int(CC_SHA256_DIGEST_LENGTH))
         else { return nil }
-        CC_SHA256(verifierData.bytes, CC_LONG(verifierData.count), sha256Verifier.mutableBytes)
+//        CC_SHA256(verifierData.bytes, CC_LONG(verifierData.count), sha256Verifier.mutableBytes)
         return sha256Verifier
     }
     
