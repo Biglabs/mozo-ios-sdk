@@ -46,10 +46,6 @@ extension AuthInteractor : AuthInteractorInput {
         authManager?.clearAll()
     }
     
-    func buildLogoutRequest() {
-        self.output?.finishBuildLogoutRequest()
-    }
-    
     func handleLogoutState() {
     }
 }

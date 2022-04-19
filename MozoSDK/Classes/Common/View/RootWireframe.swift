@@ -88,7 +88,7 @@ class RootWireframe : NSObject {
     }
     
     func presentViewController(_ viewController: UIViewController) {
-        let top = getTopViewController()
+        let top = DisplayUtils.getTopViewController()
         viewController.modalPresentationStyle = .fullScreen
         top?.present(viewController, animated: true, completion: nil)
     }
@@ -101,22 +101,12 @@ class RootWireframe : NSObject {
         }
     }
     
-    public func getTopViewController() -> UIViewController! {
-        let appDelegate = UIApplication.shared.delegate
-        if let window = appDelegate!.window { return window?.visibleViewController }
-        return nil
-    }
-    
     public func closeAllMozoUIs(completion: @escaping (() -> Swift.Void)) {
-        if mozoNavigationController.viewControllers.count == 0 {
-            completion()
-        } else {
-            mozoNavigationController.viewControllers.removeAll()
-            mozoNavigationController.dismiss(animated: false) {
-                print("Mozo: Dismiss Navigation Controller")
-                completion()
-            }
+        mozoNavigationController.viewControllers.forEach { vc in
+            vc.dismiss(animated: false)
         }
+        mozoNavigationController.dismiss(animated: false)
+        completion()
     }
     
     public func closeToLastMozoUIs() {

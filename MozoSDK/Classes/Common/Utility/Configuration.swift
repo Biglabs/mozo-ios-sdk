@@ -64,12 +64,10 @@ public class Configuration {
     
     public static let BEGIN_SESSION_URL_PATH = "/protocol/openid-connect/auth"
     
-    public static let END_SESSION_URL_PATH = "/protocol/openid-connect/logout"
-    
     internal static let END_POINT_TOKEN_PATH = "/protocol/openid-connect/token"
     
     // LOGOUT WITH REDIRECT
-    public static let LOGOUT_URL_WITH_REDIRECT_URI = "\(AUTH_ISSSUER)\(END_SESSION_URL_PATH)?redirect_uri="
+    public static let LOGOUT_URL_WITH_REDIRECT_URI = "\(AUTH_ISSSUER)/protocol/openid-connect/logout"
     
     public static let AUTH_CLIENT_ID = "native_app"
     

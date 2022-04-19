@@ -50,7 +50,7 @@ extension CorePresenter : AuthModuleDelegate {
         stopSilentServices(shouldReconnect: false)
     }
     
-    func checkToDismissAccessDeniedIfNeed(callback: (() -> Void)? = nil) {
+    private func checkToDismissAccessDeniedIfNeed(callback: (() -> Void)? = nil) {
         let topViewController = DisplayUtils.getTopViewController()
         if let klass = DisplayUtils.getAuthenticationClass(), topViewController?.isKind(of: klass) == true {
             "CorePresenter - \(klass) on top, try to dismiss AccessDeniedViewController after 2s".log()
@@ -69,7 +69,7 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidFinishLogout(callback: (() -> Void)?) {
-        checkToDismissAccessDeniedIfNeed {
+        self.checkToDismissAccessDeniedIfNeed {
             
             // Send delegate back to the app
             self.authDelegate?.mozoLogoutDidFinish()
