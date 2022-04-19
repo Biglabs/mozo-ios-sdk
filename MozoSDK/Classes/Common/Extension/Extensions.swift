@@ -246,6 +246,31 @@ public extension UIView {
         clipsToBounds = true
     }
     
+    func setCornerRadius(_ radius: CGFloat, corners: UIRectCorner) {
+        self.setCornerRadius(radius)
+        
+        var maskedCorners = CACornerMask()
+        if(corners.contains(.topLeft)) {
+            maskedCorners.insert(.layerMinXMinYCorner)
+        }
+        if(corners.contains(.topRight)) {
+            maskedCorners.insert(.layerMaxXMinYCorner)
+        }
+        if(corners.contains(.bottomLeft)) {
+            maskedCorners.insert(.layerMinXMaxYCorner)
+        }
+        if(corners.contains(.bottomRight)) {
+            maskedCorners.insert(.layerMaxXMaxYCorner)
+        }
+        self.layer.maskedCorners = maskedCorners
+    }
+    
+    func setCornerRadius(_ radius: CGFloat) {
+        self.layer.cornerRadius = CGFloat(radius)
+        self.layer.masksToBounds = true
+        self.clipsToBounds = true
+    }
+
     func roundedCircle() {
         layer.cornerRadius = bounds.height / 2
         clipsToBounds = true

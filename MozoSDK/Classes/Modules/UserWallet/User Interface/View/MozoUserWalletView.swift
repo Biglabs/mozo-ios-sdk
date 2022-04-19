@@ -386,7 +386,11 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
     
     @IBAction func touchAddress(_ sender: Any) {
-        copyAddressAndShowHud()
+//        copyAddressAndShowHud()
+        
+        let topVC = DisplayUtils.getTopViewController()
+        let vc = MozoAddressWalletVC(nibName: "MozoAddressWalletVC", bundle: nil)
+        topVC?.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func touchCopyButton(_ sender: Any) {
