@@ -389,7 +389,8 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
 //        copyAddressAndShowHud()
         
         let topVC = DisplayUtils.getTopViewController()
-        let vc = MozoAddressWalletVC(nibName: "MozoAddressWalletVC", bundle: nil)
+        let vc = MozoAddressWalletVC(nibName: "MozoAddressWalletVC", bundle: BundleManager.mozoBundle())
+        vc.displayItem = self.displayItem
         topVC?.present(vc, animated: true, completion: nil)
     }
     
