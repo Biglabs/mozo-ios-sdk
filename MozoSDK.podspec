@@ -18,11 +18,9 @@ The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaini
   s.ios.deployment_target = "12.0"
 
   s.source_files     = "MozoSDK/**/*.{h,m,swift}"
-  s.resources        = ['MozoSDK/Classes/**/*.xcdatamodeld', 'MozoSDK/Classes/**/*.txt', 'MozoSDK/Assets/**']
+  s.resources        = ['MozoSDK/Classes/**/*.xcdatamodeld', 'MozoSDK/Classes/**/*.txt', 'MozoSDK/Resources/**']
   s.resource_bundles = {
-      'MozoSDK' => ['MozoSDK/Classes/**/*.{storyboard,xib}',
-                    'MozoSDK/Assets/*.{xcassets,gif}',
-                    'MozoSDK/Localization/*.lproj/*.strings']
+      'MozoSDK' => ['MozoSDK/Classes/**/*.{storyboard,xib}', 'MozoSDK/Resources/*.*']
   }
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
   

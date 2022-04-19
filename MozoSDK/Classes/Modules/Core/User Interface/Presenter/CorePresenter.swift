@@ -21,8 +21,6 @@ class CorePresenter : NSObject {
     var waitingViewInterface: WaitingViewInterface?
     
     var requestingABModule: Module?
-    
-    internal var isProcessing = false
     internal var alertController: UIAlertController? = nil
     
     override init() {
@@ -127,7 +125,7 @@ private extension CorePresenter {
             "CorePresenter - Start silent services, socket service.".log()
             rdnInteractor?.startService()
             "CorePresenter - Start silent services, refresh token service.".log()
-            coreWireframe?.authWireframe?.startRefreshTokenTimer()
+            ModuleDependencies.shared.authPresenter.startRefreshTokenTimer()
         }
     }
     
@@ -161,19 +159,11 @@ private extension CorePresenter {
 }
 extension CorePresenter : CoreModuleInterface {
     func requestForAuthentication(module: Module) {
-        "Start login: \(!isProcessing)".log()
-        if !isProcessing {
-            isProcessing = true
-            coreInteractor?.checkForAuthentication(module: module)
-        }
+        coreInteractor?.checkForAuthentication(module: module)
     }
     
     func requestForLogout() {
-        "Start logout: \(!isProcessing)".log()
-        if !isProcessing {
-            isProcessing = true
-            coreWireframe?.authWireframe?.presentLogoutInterface()
-        }
+        ModuleDependencies.shared.authPresenter.performLogout()
     }
     
     func requestForCloseAllMozoUIs(_ callback: (() -> Void)?) {
@@ -187,7 +177,6 @@ extension CorePresenter : CoreModuleInterface {
         coreWireframe?.requestForCloseAllMozoUIs(completion: {
             self.authDelegate?.mozoUIDidCloseAll()
             self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers()
-            self.isProcessing = false
             callback?()
         })
         
@@ -208,7 +197,7 @@ extension CorePresenter : CoreModuleWaitingInterface {
     }
     
     func retryAuth() {
-        coreWireframe?.authWireframe?.presentInitialAuthInterface()
+        ModuleDependencies.shared.authPresenter.performAuthentication()
     }
 }
 extension CorePresenter: WalletModuleDelegate {
@@ -230,12 +219,10 @@ extension CorePresenter: WalletModuleDelegate {
             if coreWireframe?.rootWireframe?.mozoNavigationController.viewControllers.count ?? 0 > 0 {
                 // Close all existing Mozo's UIs
                 coreWireframe?.requestForCloseAllMozoUIs(completion: {
-                    self.isProcessing = false
                     // Send delegate back to the app
                     self.authDelegate?.mozoAuthenticationDidFinish()
                 })
             } else {
-                self.isProcessing = false
                 // Send delegate back to the app
                 self.authDelegate?.mozoAuthenticationDidFinish()
             }
@@ -276,7 +263,7 @@ extension CorePresenter : CoreInteractorOutput {
             if module != .Wallet {
                 self.callBackModule = module
             }
-            coreWireframe?.authenticate()
+            ModuleDependencies.shared.authPresenter.performAuthentication()
         } else {
             presentModuleInterface(module)
         }
@@ -310,8 +297,6 @@ extension CorePresenter : CoreInteractorOutput {
     }
     
     func didReceiveAuthorizationRequired() {
-        print("CorePresenter - Did receive authorization required")
-        isProcessing = false
         if let viewController = DisplayUtils.getTopViewController(), !viewController.isKind(of: WaitingViewController.self) {
             self.authDelegate?.mozoDidExpiredToken()
         } else {

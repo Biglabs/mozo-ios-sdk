@@ -8,7 +8,6 @@
 import Foundation
 
 class CoreWireframe : MozoWireframe {
-    var authWireframe: AuthWireframe?
     var walletWireframe: WalletWireframe?
     var txWireframe: TransactionWireframe?
     var txhWireframe: TxHistoryWireframe?
@@ -91,11 +90,6 @@ class CoreWireframe : MozoWireframe {
     func requestForTopUpTransfer() {
         presentWaitingInterface(corePresenter: corePresenter)
         corePresenter?.requestForAuthentication(module: .TopUp)
-    }
-    
-    // MARK: Communication with others wireframe
-    func authenticate() {
-        authWireframe?.presentInitialAuthInterface()
     }
     
     func prepareForTransferInterface() {

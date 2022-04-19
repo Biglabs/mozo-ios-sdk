@@ -19,7 +19,10 @@ class ModuleDependencies {
     let coreWireframe = CoreWireframe()
     let walletWireframe = WalletWireframe()
     let resetPINWireframe = ResetPINWireframe()
-    let authWireframe = AuthWireframe()
+    
+    let authManager = AuthManager()
+    let authPresenter = AuthPresenter()
+    
     let txWireframe = TransactionWireframe()
     let txhWireframe = TxHistoryWireframe()
     let txComWireframe = TxCompletionWireframe()
@@ -61,13 +64,6 @@ class ModuleDependencies {
     
     func authenticate() {
         coreWireframe.requestForAuthentication()
-    }
-    
-    func processAuthorizationCallBackUrl(_ url: URL) {
-        // SSO: not support
-//        if #available(iOS 10, *) {
-            authWireframe.processAuthorizationCallBackUrl(url)
-//        }
     }
     
     func logout() {
@@ -416,7 +412,6 @@ class ModuleDependencies {
         rootWireframe.mozoNavigationController.coreEventHandler = corePresenter
         
         coreWireframe.corePresenter = corePresenter
-        coreWireframe.authWireframe = authWireframe
         coreWireframe.walletWireframe = walletWireframe
         coreWireframe.txWireframe = txWireframe
         coreWireframe.txhWireframe = txhWireframe
@@ -599,20 +594,12 @@ class ModuleDependencies {
     }
     
     func authDependencies() {
-        let authPresenter = AuthPresenter()
-        
-        let authManager = AuthManager()
-        authManager.apiManager = ApiManager.shared
         let authInteractor = AuthInteractor(authManager: authManager)
         authInteractor.output = authPresenter
         
         authPresenter.authManager = authManager
         authPresenter.authInteractor = authInteractor
-        authPresenter.authWireframe = authWireframe
         authPresenter.authModuleDelegate = coreWireframe.corePresenter
-        
-        authWireframe.authPresenter = authPresenter
-        authWireframe.rootWireframe = rootWireframe
     }
     
     func walletDependencies() {
