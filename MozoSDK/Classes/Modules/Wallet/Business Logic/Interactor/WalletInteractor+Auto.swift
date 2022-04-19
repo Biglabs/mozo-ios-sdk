@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import JWTDecode
 extension WalletInteractor {
     func updateWalletsToUserProfileInAutoMode(isCreateNew: Bool, mnemonics: String, rawPin: String, wallets: [WalletModel]) {
         print("WalletInteractor - Update wallet to user profile in auto mode")

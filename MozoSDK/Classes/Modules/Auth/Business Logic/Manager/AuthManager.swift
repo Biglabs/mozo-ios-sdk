@@ -18,26 +18,15 @@ class AuthManager : NSObject {
     
     var clientId = Configuration.AUTH_SHOPPER_CLIENT_ID
     
-    var network = MozoNetwork.TestNet
-    
     var refreshTokenTimer: Timer?
-    
-    private (set) var currentAuthorizationFlow: OIDExternalUserAgentSession?
-    var apiManager : ApiManager? {
-        didSet {
-            authState = AuthDataManager.loadAuthState()
-            if authState != nil {
-                reportToken()
-                checkAuthorization()
-            }
-        }
-    }
     
     // A property to store the auth state
     private (set) var authState: OIDAuthState?
     
     override init() {
         super.init()
+        self.reportToken()
+        self.checkAuthorization()
     }
     
     func setupRefreshTokenTimer() {
@@ -46,7 +35,7 @@ class AuthManager : NSObject {
             return
         }
         "AuthManager - Setup refresh token timer.".log()
-        let tokenExpiredAfterSeconds = network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : network == .DevNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV : TOKEN_EXPIRE_AFTER_SECONDS_FOR_STAG
+        let tokenExpiredAfterSeconds = MozoSDK.network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : MozoSDK.network == .DevNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV : TOKEN_EXPIRE_AFTER_SECONDS_FOR_STAG
         var fireAt = Date()
         if let accessTokenExpirationDate = self.authState?.lastTokenResponse?.accessTokenExpirationDate {
             "Token Expiration Time: \(accessTokenExpirationDate.description(with: .current))".log()
@@ -96,14 +85,14 @@ class AuthManager : NSObject {
     
     func reportToken() {
         if let token = AccessTokenManager.getAccessToken(), !token.isEmpty {
-            _ = apiManager?.reportToken(token)
+            _ = ApiManager.shared.reportToken(token)
         }
     }
     
     private func checkRefreshToken(_ completion: @escaping (_ success: Bool) -> Void) {
         let expiresAt : Date = authState?.lastTokenResponse?.accessTokenExpirationDate ?? Date()
         "Check authorization, access token: \(authState?.lastTokenResponse?.accessToken ?? "NULL") \nexpires at: \(expiresAt), expires at time interval since now: \(expiresAt.timeIntervalSinceNow)".log()
-        let tokenExpiredAfterSeconds = network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV
+        let tokenExpiredAfterSeconds = MozoSDK.network == .MainNet ? TOKEN_EXPIRE_AFTER_SECONDS_FOR_PROD : TOKEN_EXPIRE_AFTER_SECONDS_FOR_DEV
         if(expiresAt.timeIntervalSinceNow < TimeInterval(tokenExpiredAfterSeconds)) {
             authState?.setNeedsTokenRefresh()
             authState?.performAction(freshTokens: { (accessToken, ic, error) in
@@ -113,7 +102,7 @@ class AuthManager : NSObject {
                 } else {
                     "Did refresh token, access token: \(self.authState?.lastTokenResponse?.accessToken ?? "NULL") \nrefresh token: \(self.authState?.lastTokenResponse?.refreshToken ?? "NULL") \nexpires at: \(String(describing: self.authState?.lastTokenResponse?.accessTokenExpirationDate))".log()
                     AccessTokenManager.saveToken(self.authState?.lastTokenResponse?.accessToken)
-                    AuthDataManager.saveAuthState(self.authState)
+                    //MARK: todo AccessTokenManager.save(<#T##token: AccessToken?##AccessToken?#>)
                     self.reportToken()
                     completion(true)
                 }
@@ -125,7 +114,7 @@ class AuthManager : NSObject {
     
     private func checkAuthorization() {
         SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKING
-        apiManager?.checkTokenExpired().done({ (result) in
+        ApiManager.shared.checkTokenExpired().done({ (result) in
             print("Did check token expired success.")
             self.delegate?.didCheckAuthorizationSuccess()
             // TODO: Reload user info in case error with user info at the latest login
@@ -151,38 +140,6 @@ class AuthManager : NSObject {
                 })
             }
         })
-    }
-    
-    func setCurrentAuthorizationFlow(_ authorizationFlow: OIDExternalUserAgentSession?) {
-        self.currentAuthorizationFlow = authorizationFlow
-    }
-    
-    func buildAuthRequest(_ hasRedirect: Bool = true) -> Promise<OIDAuthorizationRequest?> {
-        return Promise { seal in
-            guard let redirectURI = URL(string: Configuration.authRedirectURL()) else {
-                print("Error creating URL for : \(Configuration.authRedirectURL())")
-                return
-            }
-            let endSessionUrl = URL(string: Configuration.AUTH_ISSSUER.appending(Configuration.BEGIN_SESSION_URL_PATH))!
-            let tokenEndpointUrl = URL(string: Configuration.AUTH_ISSSUER.appending(Configuration.END_POINT_TOKEN_PATH))!
-            let config = OIDServiceConfiguration.init(authorizationEndpoint: endSessionUrl, tokenEndpoint: tokenEndpointUrl)
-            
-            // builds authentication request
-            let request = OIDAuthorizationRequest(
-                configuration: config,
-                clientId: self.clientId,
-                clientSecret: nil,
-                scopes: [OIDScopeOpenID, OIDScopeProfile, OIDScopePhone],
-                redirectURL: redirectURI,
-                responseType: OIDResponseTypeCode,
-                additionalParameters: [
-                    Configuration.AUTH_PARAM_KC_LOCALE : Configuration.LOCALE.replace("_", withString: "-"),
-                    Configuration.AUTH_PARAM_APPLICATION_TYPE : Configuration.AUTH_PARAM_APPLICATION_TYPE_VALUE,
-                    Configuration.AUTH_PARAM_PROMPT: "consent"
-                ])
-            
-            seal.fulfill(request)
-        }
     }
 }
 
@@ -269,67 +226,6 @@ extension AuthManager {
         }
         self.authState = authState
         self.authState?.stateChangeDelegate = self
-        self.stateChanged()
-    }
-    
-    func stateChanged() {
-        AuthDataManager.saveAuthState(self.authState)
-    }
-    
-    func codeExchange() -> Promise<String> {
-        return Promise { seal in
-            guard let tokenExchangeRequest = self.authState?.lastAuthorizationResponse.tokenExchangeRequest() else {
-                NSLog("Error creating authorization code exchange request")
-                return seal.reject(SystemError.incorrectCodeExchangeRequest)
-            }
-            // SSO: Not support
-            //            if tokenExchangeRequest.redirectURL?.absoluteString.contains(Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH) ?? false {
-            //                var urlString = tokenExchangeRequest.redirectURL?.absoluteString ?? ""
-            //                let startRange = urlString.range(of: Configuration.AUTH_ISSSUER + Configuration.BEGIN_SESSION_URL_PATH)!.lowerBound
-            //                let endRange = urlString.range(of: Configuration.authRedirectURL())!.lowerBound
-            //                let removeString = String(urlString[startRange..<endRange])
-            //                urlString = urlString.replace(removeString, withString: "")
-            //                let clientIdIndex = urlString.range(of: "&client_id=")!.lowerBound
-            //                urlString = String(urlString[urlString.startIndex..<clientIdIndex])
-            //                let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
-            //                let newRequest = OIDTokenRequest(configuration: tokenExchangeRequest.configuration, grantType: tokenExchangeRequest.grantType, authorizationCode: tokenExchangeRequest.authorizationCode, redirectURL: url!, clientID: tokenExchangeRequest.clientID, clientSecret: tokenExchangeRequest.clientSecret, scope: tokenExchangeRequest.scope, refreshToken: tokenExchangeRequest.refreshToken, codeVerifier: tokenExchangeRequest.codeVerifier, additionalParameters: tokenExchangeRequest.additionalParameters)
-            //                NSLog("Performing authorization code exchange with request: [\(newRequest)]")
-            //                OIDAuthorizationService.perform(newRequest){ response, error in
-            //                    if let tokenResponse = response {
-            //                        NSLog("Received token response with accessToken: \(tokenResponse.accessToken ?? "DEFAULT_TOKEN")")
-            //                        seal.fulfill(tokenResponse.accessToken ?? "")
-            //                    } else {
-            //                        NSLog("Token exchange error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
-            //                        seal.reject(error!)
-            //                    }
-            //                    self.authState?.update(with: response, error: error)
-            //                }
-            //                return
-            //            }
-            NSLog("Performing authorization code exchange with request: [\(tokenExchangeRequest)]")
-            OIDAuthorizationService.perform(tokenExchangeRequest) { response, error in
-                if let tokenResponse = response {
-                    NSLog("Received token response with accessToken: \(tokenResponse.accessToken ?? "DEFAULT_TOKEN")")
-                    AuthDataManager.saveIdToken(tokenResponse.idToken)
-                    seal.fulfill(tokenResponse.accessToken ?? "")
-                } else {
-                    NSLog("Token exchange error: \(error?.localizedDescription ?? "DEFAULT_ERROR")")
-                    var networkError = error != nil ? ConnectionError.network(error: error!) : .systemError
-                    // ID Token expired
-                    if let nsError = error as NSError?, nsError.code == -15 {
-                        networkError = .incorrectSystemDateTime
-                    } else {
-                        if let error = error {
-                            if error.localizedDescription.contains("PKCE") || error.localizedDescription.contains("invalid") {
-                                networkError = .authenticationRequired
-                            }
-                        }
-                    }
-                    seal.reject(networkError)
-                }
-                self.authState?.update(with: response, error: error)
-            }
-        }
     }
 }
 
@@ -337,7 +233,6 @@ extension AuthManager {
 extension AuthManager : OIDAuthStateChangeDelegate, OIDAuthStateErrorDelegate {
     func didChange(_ state: OIDAuthState) {
         print("AuthState did change.")
-        self.stateChanged()
     }
     
     func authState(_ state: OIDAuthState, didEncounterAuthorizationError error: Error) {

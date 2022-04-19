@@ -10,23 +10,15 @@ import AppAuth
 
 protocol AuthInteractorInput {
     func updateClientId(_ appType: AppType)
-    func updateNetwork(_ network: MozoNetwork)
-    
-    func setCurrentAuthorizationFlow(_ authorizationFlow : OIDExternalUserAgentSession?)
-    func handleAuthorizationResponse(_ response: OIDAuthorizationResponse?, error: Error?)
     
     func buildLogoutRequest()
     func handleLogoutState()
     func clearAllAuthSession()
     
     func startRefreshTokenTimer()
-    
-    func processAuthorizationCallBackUrl(_ url: URL)
-    func applicationDidEnterBackground()
 }
 
 protocol AuthInteractorOutput {
-    func buildAuthRequestFailed(error: ConnectionError)
     func finishedAuthenticate(accessToken: String?)
     func cancelledAuthenticateByUser()
     

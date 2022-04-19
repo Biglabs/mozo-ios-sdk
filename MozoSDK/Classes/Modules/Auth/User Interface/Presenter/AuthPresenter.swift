@@ -10,7 +10,6 @@ import AppAuth
 
 class AuthPresenter : NSObject {
     var authInteractor : AuthInteractorInput?
-    var authWireframe : AuthWireframe?
     var authModuleDelegate : AuthModuleDelegate?
     var authManager: AuthManager?
     
@@ -23,39 +22,18 @@ class AuthPresenter : NSObject {
     func clearAllSessionData() {
         authInteractor?.clearAllAuthSession()
     }
-    
-    func processAuthorizationCallBackUrl(_ url: URL) {
-        authInteractor?.processAuthorizationCallBackUrl(url)
-    }
-    
-    @objc func applicationDidEnterBackground() {
-        authInteractor?.applicationDidEnterBackground()
-    }
-    
-    func subcribeApplicationEvents() {
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
-    }
 }
 
 extension AuthPresenter : AuthModuleInterface {
     func performAuthentication() {
-        subcribeApplicationEvents()
-        _ = self.authManager?.buildAuthRequest().done({ (request) in
-            if let rq = request, let topVC = DisplayUtils.getTopViewController() {
-                let flow = OIDAuthorizationService.present(rq, presenting: topVC) { (response, error) in
-                    self.authModuleDelegate?.willExecuteNextStep()
-                    self.authInteractor?.handleAuthorizationResponse(response, error: error)
-                }
-                self.authInteractor?.setCurrentAuthorizationFlow(flow)
-            }
-        }).catch({ (error) in
-            let connectionError = error as? ConnectionError ?? .systemError
-            self.buildAuthRequestFailed(error: connectionError)
-        })
+        if let topVC = DisplayUtils.getTopViewController() {
+            AuthWebVC.launch(topVC)
+        } else {
+            self.authModuleDelegate?.authModuleDidCancelAuthentication()
+        }
     }
     
     func performLogout() {
-        subcribeApplicationEvents()
         clearAllSessionData()
         authModuleDelegate?.authModuleDidFinishLogout {
             self.authInteractor?.buildLogoutRequest()
@@ -88,10 +66,6 @@ extension AuthPresenter : AuthInteractorOutput {
         authModuleDelegate?.didRemoveTokenAndLogout()
     }
     
-    func buildAuthRequestFailed(error: ConnectionError) {
-        authModuleDelegate?.authModuleDidFailedToMakeAuthentication(error: error)
-    }
-    
     func finishedAuthenticate(accessToken: String?) {
         retryOnResponse = nil
         authModuleDelegate?.authModuleDidFinishAuthentication(accessToken: accessToken)
@@ -113,7 +87,7 @@ extension AuthPresenter : AuthInteractorOutput {
             }
             
             let redirectURI = URL(string: Configuration.authRedirectURL())
-            guard let idToken = AuthDataManager.loadIdToken() else { return }
+            guard let idToken = AccessTokenManager.load()?.idToken else { return }
             let request = OIDEndSessionRequest(
                 configuration: config,
                 idTokenHint: idToken,
@@ -125,12 +99,11 @@ extension AuthPresenter : AuthInteractorOutput {
             
             
             // performs logout request
-            let currentAuthorizationFlow = OIDAuthorizationService.present(request, externalUserAgent: userAgent) { (response, error) in
+            OIDAuthorizationService.present(request, externalUserAgent: userAgent) { (response, error) in
                 if error == nil {
                     "AuthPresenter - Logout success".log()
                     self.authInteractor?.clearAllAuthSession()
                     self.authModuleDelegate?.authModuleDidFinishLogout {
-                        self.authModuleDelegate?.willExecuteNextStep()
                         self.authModuleDelegate?.willRelaunchAuthentication()
                     }
                 } else {
@@ -138,7 +111,6 @@ extension AuthPresenter : AuthInteractorOutput {
                     self.authModuleDelegate?.authModuleDidCancelLogout()
                 }
             }
-            self.authInteractor?.setCurrentAuthorizationFlow(currentAuthorizationFlow)
         }
     }
     
@@ -148,9 +120,6 @@ extension AuthPresenter : AuthInteractorOutput {
 }
 extension AuthPresenter: PopupErrorDelegate {
     func didTouchTryAgainButton() {
-        if let response = self.retryOnResponse {
-            self.authInteractor?.handleAuthorizationResponse(response, error: nil)
-        }
     }
     
     func didClosePopupWithoutRetry() {

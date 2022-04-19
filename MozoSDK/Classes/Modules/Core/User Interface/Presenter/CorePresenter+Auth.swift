@@ -33,7 +33,6 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidFinishAuthentication(accessToken: String?) {
-        isProcessing = false
         "End process authModuleDidFinishAuthentication".log()
         coreInteractor?.handleAferAuth(accessToken: accessToken)
         // Notify for all observing objects
@@ -41,7 +40,6 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidFailedToMakeAuthentication(error: ConnectionError) {
-        isProcessing = false
         "End process authModuleDidFailedToMakeAuthentication".log()
         waitingViewInterface?.displayTryAgain(error, forAction: .BuildAuth)
     }
@@ -53,7 +51,6 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func checkToDismissAccessDeniedIfNeed(callback: (() -> Void)? = nil) {
-        "CorePresenter - try to dismiss AccessDeniedViewController, authentication in process: \(self.isProcessing)".log()
         let topViewController = DisplayUtils.getTopViewController()
         if let klass = DisplayUtils.getAuthenticationClass(), topViewController?.isKind(of: klass) == true {
             "CorePresenter - \(klass) on top, try to dismiss AccessDeniedViewController after 2s".log()
@@ -73,7 +70,6 @@ extension CorePresenter : AuthModuleDelegate {
     
     func authModuleDidFinishLogout(callback: (() -> Void)?) {
         checkToDismissAccessDeniedIfNeed {
-            "CorePresenter - checkToDismissAccessDeniedIfNeed complete, authentication in process: \(self.isProcessing)".log()
             
             // Send delegate back to the app
             self.authDelegate?.mozoLogoutDidFinish()
@@ -89,7 +85,6 @@ extension CorePresenter : AuthModuleDelegate {
     
     func authModuleDidCancelLogout() {
         coreInteractor?.stopCheckTokenTimer()
-        isProcessing = false
         "End process authModuleDidCancelLogout".log()
         stopSilentServices(shouldReconnect: false)
     }

@@ -8,11 +8,6 @@
 import Foundation
 import SwiftyJSON
 
-public enum MediaType: String {
-    case APPLICATION_JSON = "application/json"
-    case APPLICATION_FORM_URLENCODED = "application/x-www-form-urlencoded"
-}
-
 internal enum ServiceType: String {
     case DEVELOP
     case STAGING

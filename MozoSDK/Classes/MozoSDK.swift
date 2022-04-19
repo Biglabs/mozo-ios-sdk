@@ -13,16 +13,12 @@ import SwiftyJSON
 
 public class MozoSDK {
 
-    private(set) static var network: MozoNetwork = .TestNet {
-        didSet {
-            ModuleDependencies.shared.authWireframe.authPresenter?.authInteractor?.updateNetwork(network)
-        }
-    }
+    private(set) static var network: MozoNetwork = .TestNet
     
     private(set) static var appType: AppType = .Shopper {
         didSet {
             ModuleDependencies.shared.webSocketManager.appType = appType
-            ModuleDependencies.shared.authWireframe.authPresenter?.authInteractor?.updateClientId(appType)
+            ModuleDependencies.shared.authPresenter.authInteractor?.updateClientId(appType)
         }
     }
     
@@ -48,10 +44,6 @@ public class MozoSDK {
     
     public static func authenticate() {
         ModuleDependencies.shared.authenticate()
-    }
-    
-    public static func processAuthorizationCallBackUrl(_ url: URL) {
-        ModuleDependencies.shared.processAuthorizationCallBackUrl(url)
     }
     
     public static func logout() {
