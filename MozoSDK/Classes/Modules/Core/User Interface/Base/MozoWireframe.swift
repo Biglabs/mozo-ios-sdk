@@ -34,7 +34,7 @@ class MozoWireframe: NSObject {
     }
     
     func dismissAutoPinIfNeed() {
-        if isAutoPinPresenting || getTopViewController() is AutoPINViewController {
+        if isAutoPinPresenting || DisplayUtils.getTopViewController() is AutoPINViewController {
             dismissTopInterface()
             isAutoPinPresenting = false
         }
@@ -42,10 +42,6 @@ class MozoWireframe: NSObject {
     
     func dismissTopInterface() {
         rootWireframe?.dismissTopViewController()
-    }
-    
-    public func getTopViewController() -> UIViewController! {
-        return rootWireframe?.getTopViewController()
     }
     
     public func viewControllerFromStoryBoard(_ identifier: String, storyboardName: String = "") -> UIViewController {

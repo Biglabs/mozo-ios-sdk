@@ -204,7 +204,7 @@ public class DisplayUtils {
         return dateString
     }
     
-    public static func getTopViewController() -> UIViewController! {
+    public static func getTopViewController() -> UIViewController? {
         let appDelegate = UIApplication.shared.delegate
         if let window = appDelegate!.window { return window?.visibleViewController }
         return nil

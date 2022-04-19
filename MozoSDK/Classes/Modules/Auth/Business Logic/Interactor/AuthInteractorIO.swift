@@ -11,7 +11,6 @@ import AppAuth
 protocol AuthInteractorInput {
     func updateClientId(_ appType: AppType)
     
-    func buildLogoutRequest()
     func handleLogoutState()
     func clearAllAuthSession()
     
@@ -22,7 +21,6 @@ protocol AuthInteractorOutput {
     func finishedAuthenticate(accessToken: String?)
     func cancelledAuthenticateByUser()
     
-    func finishBuildLogoutRequest()
     func finishLogout()
     
     func didCheckAuthorizationSuccess()

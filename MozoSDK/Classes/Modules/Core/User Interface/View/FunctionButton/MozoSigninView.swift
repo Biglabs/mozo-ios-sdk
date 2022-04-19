@@ -36,6 +36,7 @@ import UIKit
     override func loadViewFromNib() {
         super.loadViewFromNib()
         addUniqueAuthObserver()
+        self.roundedCircle()
     }
     
     @IBAction func tapped(_ sender: Any) {

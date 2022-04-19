@@ -15,7 +15,10 @@ public class AccessToken {
     
     public let idToken: String?
     
+    let rawData: Data?
+    
     init(_ data: [String: Any]) {
+        self.rawData = try? JSONSerialization.data(withJSONObject: data)
         self.accessToken = data["access_token"] as? String
         self.refreshToken = data["refresh_token"] as? String
         
@@ -26,5 +29,12 @@ public class AccessToken {
         self.refreshExpireTime = Date(timeIntervalSinceNow: refreshExpireInSec ?? 0)
         
         self.idToken = data["id_token"] as? String
+    }
+    
+    class func parse(_ data: Data) -> AccessToken? {
+        guard let arr = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+            return nil
+        }
+        return AccessToken(arr)
     }
 }

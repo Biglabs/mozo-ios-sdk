@@ -27,7 +27,7 @@ class AuthPresenter : NSObject {
 extension AuthPresenter : AuthModuleInterface {
     func performAuthentication() {
         if let topVC = DisplayUtils.getTopViewController() {
-            AuthWebVC.launch(topVC)
+            AuthWebVC.signIn(topVC)
         } else {
             self.authModuleDelegate?.authModuleDidCancelAuthentication()
         }
@@ -36,7 +36,11 @@ extension AuthPresenter : AuthModuleInterface {
     func performLogout() {
         clearAllSessionData()
         authModuleDelegate?.authModuleDidFinishLogout {
-            self.authInteractor?.buildLogoutRequest()
+            if let topVC = DisplayUtils.getTopViewController() {
+                AuthWebVC.signOut(topVC)
+            } else {
+                self.authModuleDelegate?.authModuleDidCancelAuthentication()
+            }
         }
     }
 }
@@ -76,42 +80,6 @@ extension AuthPresenter : AuthInteractorOutput {
         retryOnResponse = nil
         authModuleDelegate?.authModuleDidCancelAuthentication()
         NotificationCenter.default.removeObserver(self)
-    }
-    
-    func finishBuildLogoutRequest() {
-        let issuer = URL(string: Configuration.AUTH_ISSSUER)
-        OIDAuthorizationService.discoverConfiguration(forIssuer: issuer!) { configuration, error in
-            guard let config = configuration else {
-                self.authModuleDelegate?.authModuleDidCancelLogout()
-                return
-            }
-            
-            let redirectURI = URL(string: Configuration.authRedirectURL())
-            guard let idToken = AccessTokenManager.load()?.idToken else { return }
-            let request = OIDEndSessionRequest(
-                configuration: config,
-                idTokenHint: idToken,
-                postLogoutRedirectURL: redirectURI!,
-                additionalParameters: nil
-            )
-            let viewController = DisplayUtils.getTopViewController()
-            guard let userAgent = OIDExternalUserAgentIOS(presenting: viewController!) else { return }
-            
-            
-            // performs logout request
-            OIDAuthorizationService.present(request, externalUserAgent: userAgent) { (response, error) in
-                if error == nil {
-                    "AuthPresenter - Logout success".log()
-                    self.authInteractor?.clearAllAuthSession()
-                    self.authModuleDelegate?.authModuleDidFinishLogout {
-                        self.authModuleDelegate?.willRelaunchAuthentication()
-                    }
-                } else {
-                    "AuthPresenter - Logout failed".log()
-                    self.authModuleDelegate?.authModuleDidCancelLogout()
-                }
-            }
-        }
     }
     
     func finishLogout() {

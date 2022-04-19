@@ -12,20 +12,14 @@ public class AccessTokenManager {
         if token == nil {
             UserDefaults.standard.removeObject(forKey: Configuration.AUTH_STATE)
         } else {
-            do {
-//                let data = try JSONSerialization.data(withJSONObject: token!)
-//                UserDefaults.standard.set(data, forKey: Configuration.AUTH_STATE)
-            } catch {
-                print("vuu save Accesstoken info failed")
-            }
+            UserDefaults.standard.set(token!.rawData, forKey: Configuration.AUTH_STATE)
         }
         self.saveToken(token?.accessToken)
     }
     
     public static func load() -> AccessToken? {
-        if let data = UserDefaults.standard.data(forKey: Configuration.AUTH_STATE),
-           let state = try? JSONSerialization.jsonObject(with: data) as? AccessToken {
-            return state
+        if let data = UserDefaults.standard.data(forKey: Configuration.AUTH_STATE) {
+            return AccessToken.parse(data)
         }
         return nil
     }
@@ -52,6 +46,7 @@ public class AccessTokenManager {
     }
     
     public static func clearToken() {
+        UserDefaults.standard.removeObject(forKey: Configuration.AUTH_STATE)
         UserDefaults.standard.removeObject(forKey: Configuration.ACCESS_TOKEN)
     }
     
