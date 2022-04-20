@@ -13,7 +13,6 @@ import MBProgressHUD
 class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
     private let webview = WKWebView()
     private let callbackScheme = Configuration.authRedirectURL()
-    private let tokenEndpoint = Configuration.AUTH_ISSSUER.appending(Configuration.END_POINT_TOKEN_PATH)
     private var codeVerifier: String!
     private var clientId: String!
     private var loadingHub: MBProgressHUD?
@@ -135,7 +134,6 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
         
         self.showLoading()
         _ = ApiManager.shared.requestToken(
-            url: self.tokenEndpoint,
             authorizationCode: code,
             codeVerifier: self.codeVerifier,
             clientId: self.clientId,
@@ -162,7 +160,7 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
             self.dismiss(animated: true)
             
             ModuleDependencies.shared.authPresenter.errorWhileExchangeCode(
-                error: error as? ConnectionError ?? .systemError, response: nil
+                error: error as? ConnectionError ?? .systemError
             )
         })
         

@@ -24,9 +24,7 @@ The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaini
   }
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
   
-  s.dependency 'AppAuth'
   s.dependency 'CoreStore'
-  
   s.dependency 'RNCryptor', '~> 5.1.0'
   s.dependency 'web3swift', '~> 2.5.1'
 

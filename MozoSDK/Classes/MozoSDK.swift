@@ -18,7 +18,6 @@ public class MozoSDK {
     private(set) static var appType: AppType = .Shopper {
         didSet {
             ModuleDependencies.shared.webSocketManager.appType = appType
-            ModuleDependencies.shared.authPresenter.authInteractor?.updateClientId(appType)
         }
     }
     

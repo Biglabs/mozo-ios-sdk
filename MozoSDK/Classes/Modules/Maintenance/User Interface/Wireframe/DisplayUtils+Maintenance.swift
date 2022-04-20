@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import AppAuth
+
 extension DisplayUtils {
     public static func displayMaintenanceScreen() {
         if let topViewController = getTopViewController() {

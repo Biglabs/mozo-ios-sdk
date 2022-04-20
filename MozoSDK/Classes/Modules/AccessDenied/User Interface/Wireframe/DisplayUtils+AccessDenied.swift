@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AppAuth
+
 extension DisplayUtils {
     public static func displayAccessDeniedScreen() {
         print("DisplayUtils - Display access denied screen")
