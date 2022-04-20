@@ -17,7 +17,7 @@ class CoreDataStore : NSObject {
     
     override init() {
         super.init()
-        let bundle = BundleManager.podBundle()
+        let bundle = BundleManager.mozoBundle()
         stack = DataStack(
             xcodeModelName: "Mozo",
             bundle: bundle
