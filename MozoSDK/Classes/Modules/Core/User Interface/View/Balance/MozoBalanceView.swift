@@ -129,7 +129,7 @@ import Foundation
     func updateData(displayItem: DetailInfoDisplayItem) {
         if lbBalance != nil {
             addUniqueBalanceChangeObserver()
-            updateOnlyBalance(displayItem.balance)
+            updateOnlyBalance(Double(displayItem.balance))
         }
         if lbAddress != nil {
             lbAddress.text = displayItem.address
