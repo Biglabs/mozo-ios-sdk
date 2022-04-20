@@ -38,6 +38,9 @@
 "promo_paid_explain_custom_code" = "Let clerk scan below QR code OR tap show code.";
 "promo_paid_action_show_store_code" = "Scan store's QR";
 
+"info_wallet" = "Wallet information";
+"Scan QR Mozo" = "Scan QR to get Mozo";
+
 // MARK: Restriction
 "promo_restrict_none" = "None";
 "promo_restrict_time_format" = "HH:mm yyyy/MMM/dd";

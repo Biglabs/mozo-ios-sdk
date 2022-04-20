@@ -224,6 +224,9 @@
 "Address Detail" = "주소 세부 정보";
 "View" = "보기";
 
+"info_wallet" = "Thông tin ví";
+"Scan QR Mozo" = "Quét QR để nhận Mozo";
+
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ" = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 // Retailer

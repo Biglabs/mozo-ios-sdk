@@ -7,7 +7,9 @@
 
 import Foundation
 import MBProgressHUD
+import UIKit
 let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
+let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTableViewCellDelegate "
 
 @IBDesignable class MozoUserWalletView: MozoView {
     @IBOutlet weak var segmentControl: UISegmentedControl!
@@ -101,6 +103,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
 
     func setupTableView() {
+        historyTable.register(UINib(nibName: HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER)
         historyTable.register(UINib(nibName: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER)
         historyTable.dataSource = self
         historyTable.delegate = self
@@ -435,14 +438,24 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
 extension MozoUserWalletView : UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         checkShowNoContent()
-        return collection != nil ? 1 : 0
+        return collection != nil ? 2 : 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        }
         return collection?.displayItems.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER, for: indexPath) as! HeaderMozoUserWalletTableViewCell
+            cell.customAttributedTextMozoToday(mozo: 9200)
+            cell.customAttributedTextMozoTotal(mozo: 4282500)
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, for: indexPath) as! TxHistoryTableViewCell
         let item = (collection?.displayItems[indexPath.row])!
         cell.txHistory = item
@@ -450,6 +463,9 @@ extension MozoUserWalletView : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 270.0
+        }
         return 61
     }
 }

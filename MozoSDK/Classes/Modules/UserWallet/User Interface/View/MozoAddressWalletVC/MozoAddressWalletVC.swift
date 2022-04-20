@@ -42,9 +42,9 @@ class MozoAddressWalletVC: UIViewController {
         
         self.addressWalletView.setCornerRadius(self.addressWalletView.frame.height/2)
         
-        self.lblInfoWallet.text = "Thông tin ví"
-        self.lblQRMozo.text = "Quét QR để nhận Mozo"
-        self.lblAddressWallet.text = "Địa chỉ ví"
+        self.lblInfoWallet.text = "info_wallet".localized
+        self.lblQRMozo.text = "Scan QR Mozo".localized
+        self.lblAddressWallet.text = "Wallet Address".localized
         
         self.btAddressWallet.titleLabel?.numberOfLines = 1
     }
