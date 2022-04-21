@@ -33,7 +33,7 @@ public class MozoSDK {
         self.appType = appType
     }
     
-    public static func setAuthDelegate(_ delegate: AuthenticationDelegate) {
+    public static func setAuthDelegate(_ delegate: MozoAuthenticationDelegate) {
         ModuleDependencies.shared.setAuthDelegate(delegate)
     }
     

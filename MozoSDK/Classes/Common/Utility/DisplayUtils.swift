@@ -274,12 +274,7 @@ public class DisplayUtils {
     }
     
     public static func getAuthenticationClass() -> AnyClass? {
-        var className = "SFAuthenticationViewController"
-        if #available(iOS 10, *) {
-            // iOS 9 and 10, use SFSafariViewController
-            className = "SFSafariViewController"
-        }
-        return NSClassFromString(className)
+        return AuthWebVC.classForCoder()
     }
     
     public static func isAuthenticationOnTop() -> Bool {

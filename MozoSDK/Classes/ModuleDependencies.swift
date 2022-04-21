@@ -51,7 +51,7 @@ class ModuleDependencies {
         configureDependencies()
     }
     
-    func setAuthDelegate(_ delegate: AuthenticationDelegate) {
+    func setAuthDelegate(_ delegate: MozoAuthenticationDelegate) {
         coreWireframe.corePresenter?.authDelegate = delegate
     }
     

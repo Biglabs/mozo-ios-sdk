@@ -52,7 +52,7 @@ class RootWireframe : NSObject {
         if inWindow.rootViewController != nil {
             let topController = DisplayUtils.getTopViewController()
             if let controller = topController, let klass = DisplayUtils.getAuthenticationClass(), controller.isKind(of: klass) {
-                controller.dismiss(animated: false, completion: nil)
+                //controller.dismiss(animated: false, completion: nil)
                 
                 "RootWireframe - topController == getAuthenticationClass".log()
                 

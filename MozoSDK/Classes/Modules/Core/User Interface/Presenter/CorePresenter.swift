@@ -14,7 +14,7 @@ class CorePresenter : NSObject {
     var coreInteractor : CoreInteractorInput?
     var coreInteractorService : CoreInteractorService?
     var rdnInteractor : RDNInteractorInput?
-    weak var authDelegate: AuthenticationDelegate?
+    weak var authDelegate: MozoAuthenticationDelegate?
     var callBackModule: Module?
     var reachability : Reachability?
     
@@ -189,11 +189,7 @@ extension CorePresenter : CoreModuleInterface {
 }
 extension CorePresenter : CoreModuleWaitingInterface {
     func retryGetUserProfile() {
-        if let module = callBackModule {
-            requestForAuthentication(module: module)
-        } else {
-            coreInteractor?.handleUserProfileAfterAuth()
-        }
+        requestForAuthentication(module: callBackModule ?? .Wallet)
     }
     
     func retryAuth() {
@@ -220,11 +216,11 @@ extension CorePresenter: WalletModuleDelegate {
                 // Close all existing Mozo's UIs
                 coreWireframe?.requestForCloseAllMozoUIs(completion: {
                     // Send delegate back to the app
-                    self.authDelegate?.mozoAuthenticationDidFinish()
+                    self.authDelegate?.didSignInSuccess()
                 })
             } else {
                 // Send delegate back to the app
-                self.authDelegate?.mozoAuthenticationDidFinish()
+                self.authDelegate?.didSignInSuccess()
             }
         }
         readyForGoingLive()
