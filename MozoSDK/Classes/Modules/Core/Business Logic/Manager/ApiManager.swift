@@ -298,24 +298,11 @@ public class ApiManager {
         return connectionError
     }
     
-    func requestToken(
-        url: String,
-        authorizationCode: String,
-        codeVerifier: String,
-        clientId: String,
-        redirectUri: String
-    ) -> Promise<AccessToken> {
+    private func requestToken(parameters: Parameters) -> Promise<AccessToken> {
         var headers: HTTPHeaders = [
             "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "*/*",
             "user-agent": "IOS"
-        ]
-        let parameters: Parameters = [
-            "grant_type" : "authorization_code",
-            "code" : authorizationCode,
-            "redirect_uri": redirectUri,
-            "code_verifier": codeVerifier,
-            "client_id": clientId
         ]
         do {
             let parameterData = try JSONSerialization.data(withJSONObject: parameters)
@@ -324,6 +311,7 @@ public class ApiManager {
         }
         
         return Promise { seal in
+            let url = Configuration.AUTH_ISSSUER.appending(Configuration.END_POINT_TOKEN_PATH)
             self.client.request(url, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers)
                 .validate()
                 .responseData { response in
@@ -338,5 +326,30 @@ public class ApiManager {
                 }
             }
         }
+    }
+    
+    func requestToken(
+        authorizationCode: String,
+        codeVerifier: String,
+        clientId: String,
+        redirectUri: String
+    ) -> Promise<AccessToken> {
+        let parameters: Parameters = [
+            "grant_type" : "authorization_code",
+            "code" : authorizationCode,
+            "redirect_uri": redirectUri,
+            "code_verifier": codeVerifier,
+            "client_id": clientId
+        ]
+        return requestToken(parameters: parameters)
+    }
+    
+    func refeshToken(refreshToken: String, clientId: String) -> Promise<AccessToken> {
+        let parameters: Parameters = [
+            "grant_type" : "refresh_token",
+            "refresh_token" : refreshToken,
+            "client_id": clientId
+        ]
+        return requestToken(parameters: parameters)
     }
 }

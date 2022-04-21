@@ -205,7 +205,7 @@ class CoreInteractor: NSObject {
 extension CoreInteractor: CoreInteractorInput {
     func downloadAndStoreConvenienceData() {
         print("Download convenience data and store at local.")
-        if AccessTokenManager.getAccessToken() != nil, SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING {
+        if AccessTokenManager.getAccessToken() != nil {
             // Check User info here
             _ = getUserProfile().done {
                 self.downloadData()
@@ -238,21 +238,11 @@ extension CoreInteractor: CoreInteractorInput {
     }
     
     func handleAferAuth(accessToken: String?) {
-        AccessTokenManager.saveToken(accessToken)
         anonManager.linkCoinFromAnonymousToCurrentUser()
-        handleUserProfileAfterAuth()
-    }
-    
-    func handleUserProfileAfterAuth() {
-        _ = getUserProfile().done({ () in
+        if accessToken != nil && !accessToken!.isEmpty {
             self.downloadData()
             self.checkAuthAndWallet(module: .Wallet)
-//            self.output?.finishedHandleAferAuth()
-//            self.processInvitation()
-        }).catch({ (err) in
-            // Handle case unable to load user profile
-            self.output?.failToLoadUserInfo(err as! ConnectionError, for: nil)
-        })
+        }
     }
     
     func notifyAuthSuccessForAllObservers() {

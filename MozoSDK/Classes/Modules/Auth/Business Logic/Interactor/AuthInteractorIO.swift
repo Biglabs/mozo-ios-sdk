@@ -6,10 +6,8 @@
 //
 
 import Foundation
-import AppAuth
 
 protocol AuthInteractorInput {
-    func updateClientId(_ appType: AppType)
     
     func handleLogoutState()
     func clearAllAuthSession()
@@ -26,5 +24,5 @@ protocol AuthInteractorOutput {
     func didCheckAuthorizationSuccess()
     func didRemoveTokenAndLogout()
     
-    func errorWhileExchangeCode(error: ConnectionError, response: OIDAuthorizationResponse?)
+    func errorWhileExchangeCode(error: ConnectionError)
 }

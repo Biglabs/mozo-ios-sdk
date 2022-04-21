@@ -9,12 +9,14 @@ import Foundation
 import JWTDecode
 public class AccessTokenManager {
     public static func save(_ token: AccessToken?) {
-        if token == nil {
-            UserDefaults.standard.removeObject(forKey: Configuration.AUTH_STATE)
-        } else {
-            UserDefaults.standard.set(token!.rawData, forKey: Configuration.AUTH_STATE)
+        DispatchQueue.main.async {
+            if token == nil {
+                UserDefaults.standard.removeObject(forKey: Configuration.AUTH_STATE)
+            } else {
+                UserDefaults.standard.set(token!.rawData, forKey: Configuration.AUTH_STATE)
+            }
+            self.saveToken(token?.accessToken)
         }
-        self.saveToken(token?.accessToken)
     }
     
     public static func load() -> AccessToken? {
@@ -35,7 +37,7 @@ public class AccessTokenManager {
         return UserDefaults.standard.string(forKey: Configuration.ACCESS_TOKEN)
     }
     
-    public static func saveToken(_ token: String?) {
+    private static func saveToken(_ token: String?) {
         UserDefaults.standard.set(token, forKey: Configuration.ACCESS_TOKEN)
         
         if let accessToken = token {

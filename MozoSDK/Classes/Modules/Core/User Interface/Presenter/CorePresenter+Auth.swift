@@ -72,7 +72,7 @@ extension CorePresenter : AuthModuleDelegate {
         self.checkToDismissAccessDeniedIfNeed {
             
             // Send delegate back to the app
-            self.authDelegate?.mozoLogoutDidFinish()
+            self.authDelegate?.didLogoutSuccess()
             // Notify for all observing objects
             self.coreInteractor?.notifyLogoutForAllObservers()
             self.coreInteractor?.stopCheckTokenTimer()
@@ -87,10 +87,6 @@ extension CorePresenter : AuthModuleDelegate {
         coreInteractor?.stopCheckTokenTimer()
         "End process authModuleDidCancelLogout".log()
         stopSilentServices(shouldReconnect: false)
-    }
-    
-    func willExecuteNextStep() {
-        self.authDelegate?.willExecuteNextStep()
     }
     
     func willRelaunchAuthentication() {

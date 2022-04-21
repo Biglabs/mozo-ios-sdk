@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import AppAuth
 
 class AuthInteractor : NSObject {
     var output : AuthInteractorOutput?
@@ -36,10 +35,6 @@ extension AuthInteractor : AuthInteractorInput {
     func startRefreshTokenTimer() {
         "AuthInteractor - Start Refresh token timer".log()
         authManager?.setupRefreshTokenTimer()
-    }
-    
-    func updateClientId(_ appType: AppType) {
-        self.authManager?.clientId = appType == .Retailer ? Configuration.AUTH_RETAILER_CLIENT_ID : Configuration.AUTH_SHOPPER_CLIENT_ID
     }
     
     func clearAllAuthSession() {

@@ -7,13 +7,11 @@
 
 import Foundation
 
-@objc public protocol AuthenticationDelegate {
-    func mozoAuthenticationDidFinish()
-    func mozoLogoutDidFinish()
+@objc public protocol MozoAuthenticationDelegate {
+    func didSignInSuccess()
+    func didLogoutSuccess()
     func mozoUIDidCloseAll()
-    
     func mozoDidExpiredToken()
-    func willExecuteNextStep()
 }
 
 protocol TransactionDelegate {

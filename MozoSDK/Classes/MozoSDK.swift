@@ -18,7 +18,6 @@ public class MozoSDK {
     private(set) static var appType: AppType = .Shopper {
         didSet {
             ModuleDependencies.shared.webSocketManager.appType = appType
-            ModuleDependencies.shared.authPresenter.authInteractor?.updateClientId(appType)
         }
     }
     
@@ -34,7 +33,7 @@ public class MozoSDK {
         self.appType = appType
     }
     
-    public static func setAuthDelegate(_ delegate: AuthenticationDelegate) {
+    public static func setAuthDelegate(_ delegate: MozoAuthenticationDelegate) {
         ModuleDependencies.shared.setAuthDelegate(delegate)
     }
     

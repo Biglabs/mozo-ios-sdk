@@ -13,7 +13,6 @@ import MBProgressHUD
 class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
     private let webview = WKWebView()
     private let callbackScheme = Configuration.authRedirectURL()
-    private let tokenEndpoint = Configuration.AUTH_ISSSUER.appending(Configuration.END_POINT_TOKEN_PATH)
     private var codeVerifier: String!
     private var clientId: String!
     private var loadingHub: MBProgressHUD?
@@ -109,7 +108,9 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
             self.touchedCancel()
             return
         }
-        webview.load(URLRequest(url: url4Launch))
+        DispatchQueue.main.async {
+            self.webview.load(URLRequest(url: url4Launch))
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -135,7 +136,6 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
         
         self.showLoading()
         _ = ApiManager.shared.requestToken(
-            url: self.tokenEndpoint,
             authorizationCode: code,
             codeVerifier: self.codeVerifier,
             clientId: self.clientId,
@@ -150,20 +150,20 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
     private func handleAuthSuccess(_ token: AccessToken) {
         AccessTokenManager.save(token)
         self.loadingHub?.hide(animated: true)
-        self.dismiss(animated: true)
-
-        ModuleDependencies.shared.authPresenter.finishedAuthenticate(accessToken: token.accessToken)
-        ModuleDependencies.shared.authManager.setupRefreshTokenTimer()
+        self.dismiss(animated: true) {
+            ModuleDependencies.shared.authPresenter.finishedAuthenticate(accessToken: token.accessToken)
+            ModuleDependencies.shared.authManager.setupRefreshTokenTimer()
+        }
     }
     
     private func handleAuthFailed(_ error: Error? = nil) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
             self.loadingHub?.hide(animated: true)
-            self.dismiss(animated: true)
-            
-            ModuleDependencies.shared.authPresenter.errorWhileExchangeCode(
-                error: error as? ConnectionError ?? .systemError, response: nil
-            )
+            self.dismiss(animated: true) {
+                ModuleDependencies.shared.authPresenter.errorWhileExchangeCode(
+                    error: error as? ConnectionError ?? .systemError
+                )
+            }
         })
         
         
@@ -184,7 +184,7 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if let url = navigationAction.request.url?.absoluteString, url.starts(with: callbackScheme) {
+        if let url = navigationAction.request.url?.absoluteString, url.lowercased().starts(with: callbackScheme.lowercased()) {
             decisionHandler(.cancel)
             self.handleResponse(url)
             return
@@ -230,18 +230,25 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
     }
     
     @objc func touchedCancel() {
-        ModuleDependencies.shared.authPresenter.cancelledAuthenticateByUser()
         loadingHub?.hide(animated: true)
-        self.dismiss(animated: true)
+        self.dismiss(animated: true) {
+            ModuleDependencies.shared.authPresenter.cancelledAuthenticateByUser()
+        }
     }
     
     class func signIn(_ parent: UIViewController) {
+        if let lastVC = DisplayUtils.getTopViewController(), lastVC is AuthWebVC {
+            return
+        }
         let vc = AuthWebVC()
         vc.modalPresentationStyle = .fullScreen
         parent.present(vc, animated: true)
     }
     
     class func signOut(_ parent: UIViewController) {
+        if let lastVC = DisplayUtils.getTopViewController(), lastVC is AuthWebVC {
+            return
+        }
         let vc = AuthWebVC()
         vc.modalPresentationStyle = .fullScreen
         vc.isSignOut = true
