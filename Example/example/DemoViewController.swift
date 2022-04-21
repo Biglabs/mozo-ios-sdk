@@ -25,26 +25,20 @@ class DemoViewController: UIViewController {
     }
 }
 
-extension DemoViewController: AuthenticationDelegate {
-	func mozoAuthenticationDidFinish() {
+extension DemoViewController: MozoAuthenticationDelegate {
+	func didSignInSuccess() {
 		let alert = UIAlertController(title: "MOZO", message: "Finish authentication", preferredStyle: .alert)
 		alert.addAction(.init(title: "OK", style: .default))
 		self.present(alert, animated: true, completion: nil)
+	}
+	
+	func didLogoutSuccess() {
 	}
 	
 	func mozoDidExpiredToken() {
 		print("Mozo: Token Expired")
 	}
 	
-	func willExecuteNextStep() {
-		print("Mozo: Execute Next Step")
+	func mozoUIDidCloseAll() {
 	}
-	
-    func mozoLogoutDidFinish() {
-        print("Mozo: Finish logout")
-    }
-    
-    func mozoUIDidCloseAll() {
-        print("Mozo: Did close all UIs")
-    }
 }
