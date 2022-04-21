@@ -8,7 +8,6 @@
 import Foundation
 extension WalletInteractor {
     func updateWalletsToUserProfileInAutoMode(isCreateNew: Bool, mnemonics: String, rawPin: String, wallets: [WalletModel]) {
-        print("WalletInteractor - Update wallet to user profile in auto mode")
         if isCreateNew {
             let offchainWallet = wallets[0]
             let offchainAddress = offchainWallet.address
@@ -35,12 +34,10 @@ extension WalletInteractor {
     }
     
     func updateFullWalletInfoInAutoMode(_ walletInfo: WalletInfoDTO, wallets: [WalletModel]) {
-        print("WalletInteractor - Update full wallet info in auto mode")
         _ = self.apiManager.updateWallets(walletInfo: walletInfo)
             .done { uProfile -> Void in
                 let userDto = UserDTO(id: uProfile.userId, profile: uProfile)
                 SessionStoreManager.saveCurrentUser(user: userDto)
-                print("WalletInteractor - Update Wallet To User Profile result: [\(uProfile)]")
                 self.updateWalletsForCurrentUser(wallets)
                 self.autoOutput?.manageWalletAutoSuccessfully()
             }.catch({ (error) in

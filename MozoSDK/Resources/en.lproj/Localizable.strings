@@ -625,11 +625,11 @@
 "System error" = "System error";
 // API ERROR MESSAGE
 "Your session has expired. Please login again" = "Your session has expired. Please login again";
-"error_fatal" = "Cannot connect to Mozo servers. Please contact us for more information. (email + phone)";
+"error_fatal" = "Cannot connect to Mozo servers. Please contact us for more information.";
 
-"Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)" = "Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)";
+"Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)" = "Your account has been deactivated temporarily. Please sign in with other account or contact us for more information";
 
-"This beacon has been registered to another branch. Please contact us for more information (email + phone)" = "This beacon has been registered to another branch. Please contact us for more information (email + phone)";
+"This beacon has been registered to another branch. Please contact us for more information (email + phone)" = "This beacon has been registered to another branch. Please contact us for more information ";
 
 "error_date_less_current" = "Event start date must be at least 10 minutes later than current time. Please check your input.";
 "error_date_start_must_earlier_end" = "Event start date must be earlier than its end date. Please check your input.";

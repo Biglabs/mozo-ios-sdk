@@ -143,37 +143,8 @@ public class DisplayUtils {
         }
     }
     
-    public static func displayMozoErrorWithContact(_ error: String, delegate: MozoPopupContactDelegate? = nil) {
-        if let parentView = UIApplication.shared.keyWindow {
-            let mozoContactView = MozoPopupContact(frame: CGRect(x: 0, y: 0, width: 300, height: 340))
-            mozoContactView.appType = MozoSDK.appType
-            mozoContactView.clipsToBounds = false
-            mozoContactView.dropShadow()
-            mozoContactView.containerView.roundCorners(borderColor: .white, borderWidth: 1)
-            
-            mozoContactView.center = parentView.center
-            
-            mozoContactView.errorMessage = error
-            mozoContactView.delegate = delegate
-            
-            // cover view
-            let displayWidth: CGFloat = parentView.frame.width
-            let displayHeight: CGFloat = parentView.frame.height
-            let coverView = UIView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight))
-            coverView.backgroundColor = .black
-            coverView.alpha = 0.5
-            parentView.addSubview(coverView)
-            
-            let coverViewTap = UITapGestureRecognizer(target: mozoContactView, action: #selector(MozoPopupContact.dismissView))
-            coverView.addGestureRecognizer(coverViewTap)
-            
-            mozoContactView.modalCloseHandler = {
-                mozoContactView.removeFromSuperview()
-                coverView.removeFromSuperview()
-            }
-            
-            parentView.addSubview(mozoContactView)
-        }
+    public static func displayMozoErrorWithContact(_ error: String, delegate: MozoErrorDelegate? = nil) {
+        MozoErrorVC.launch(error.localized, delegate)
     }
     
     public static func formatMessageTime(time: Double) -> String {
@@ -239,12 +210,24 @@ public class DisplayUtils {
         return nil
     }
     
-    public static func displayUnderConstructionPopup() {
+    public static func alert(title: String, message: String, button: String? = nil, _ touchedOk: (() -> Void)? = nil) {
         if let topViewController = getTopViewController() {
-            let alert = UIAlertController(title: "Under Construction".localized, message: "Coming soon".localized, preferredStyle: .alert)
-            alert.addAction(.init(title: "OK".localized, style: .default, handler: nil))
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(
+                .init(title: button ?? "OK".localized, style: .default, handler: { _ in
+                    touchedOk?()
+                })
+            )
             topViewController.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    public static func displayUnderConstructionPopup() {
+        self.alert(title: "Under Construction".localized, message: "Coming soon".localized)
+    }
+    
+    public static func displayTokenExpired() {
+        self.alert(title: "Session Expired".localized, message: "Please re-login to renew your session.".localized)
     }
     
     public static func defaultNoContentView(_ frame: CGRect, message: String, imageName: String = "img_no_content") -> UIView {

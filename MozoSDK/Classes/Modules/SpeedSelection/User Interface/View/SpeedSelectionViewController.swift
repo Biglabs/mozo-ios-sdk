@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MBProgressHUD
 
 class SpeedSelectionViewController : MozoBasicViewController {
     var eventHandler: SpeedSelectionModuleInterface?
@@ -20,6 +21,8 @@ class SpeedSelectionViewController : MozoBasicViewController {
     @IBOutlet weak var lbExplainRecoveryPhrase: UILabel!
     
     @IBOutlet weak var footerContainerView: UIView!
+    
+    private var loadingHub: MBProgressHUD?
     var containerViewAutoBorder: UIView!
     
     var isSelectAuto = true
@@ -37,9 +40,10 @@ class SpeedSelectionViewController : MozoBasicViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: barButtonView)
     }
     
-    override func viewDidLayoutSubviews() {
-        print("SpeedSelectionViewController - View did layout subviews")
-        super.viewDidLayoutSubviews()
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.loadingHub?.hide(animated: true)
+        self.loadingHub = nil
     }
     
     func updateLayout() {
@@ -98,10 +102,16 @@ class SpeedSelectionViewController : MozoBasicViewController {
                 eventHandler?.decideManualWay()
             }
          */
+        self.showLoading()
         eventHandler?.decideAutoWay()
     }
     
     @IBAction func touchBtnLogout(_ sender: Any) {
         eventHandler?.requestLogout()
+    }
+    
+    private func showLoading() {
+        loadingHub = MBProgressHUD.showAdded(to: self.view, animated: true)
+        loadingHub?.isUserInteractionEnabled = true
     }
 }

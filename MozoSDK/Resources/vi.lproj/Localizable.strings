@@ -628,11 +628,11 @@
 "System error" = "Lỗi hệ thống";
 /* API ERROR MESSAGE */
 "Your session has expired. Please login again" = "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại";
-"error_fatal" = "Không thể kết nối máy chủ Mozo. Liên hệ tư vấn viên để biết thêm thông tin (email + phone)";
+"error_fatal" = "Không thể kết nối máy chủ Mozo. Liên hệ tư vấn viên để biết thêm thông tin.";
 
-"Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)" = "Tài khoản của bạn tạm thời bị vô hiệu hóa. Xin đăng nhập bằng tài khoản khác hoặc liên hệ tư vấn viên để biết thêm thông tin (phone + email)";
+"Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)" = "Tài khoản của bạn tạm thời bị vô hiệu hóa. Xin đăng nhập bằng tài khoản khác hoặc liên hệ tư vấn viên để biết thêm thông tin";
 
-"This beacon has been registered to another branch. Please contact us for more information (email + phone)" = "Beacon đã được đăng ký bởi cửa hàng khác. Liên hệ tư vấn viên để biết thêm thông tin (email + phone)";
+"This beacon has been registered to another branch. Please contact us for more information (email + phone)" = "Beacon đã được đăng ký bởi cửa hàng khác. Liên hệ tư vấn viên để biết thêm thông tin";
 
 "error_date_less_current" = "Thời điểm bắt đầu chương trình phải lớn hơn hiện tại 10 phút. Vui lòng kiểm tra lại thông tin.";
 "error_date_start_must_earlier_end" = "Thời điểm bắt đầu chương trình phải diễn ra trước ngày kết thúc. Vui lòng kiểm tra lại thông tin.";
