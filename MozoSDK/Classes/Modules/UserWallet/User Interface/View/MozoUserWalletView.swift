@@ -9,32 +9,19 @@ import Foundation
 import MBProgressHUD
 import UIKit
 let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
-let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTableViewCellDelegate "
+let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTableViewCell"
 
 @IBDesignable class MozoUserWalletView: MozoView {
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var segmentControlHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var infoView: UIView!
-    @IBOutlet weak var infoViewBorder: UIView!
-    @IBOutlet weak var btnReload: UIButton!
-    @IBOutlet weak var lbBalance: UILabel!
-    @IBOutlet weak var imgMozo: UIImageView!
-    @IBOutlet weak var lbBalanceExchange: UILabel!
-    @IBOutlet weak var imgQR: UIImageView!
-    @IBOutlet weak var btnShowQR: UIButton!
-    
-    @IBOutlet weak var btnAddress: UIButton!
-    @IBOutlet weak var btnCopy: UIButton!
-    
-    @IBOutlet weak var sendMozoView: MozoSendView!
-    @IBOutlet weak var paymentRequestView: MozoPaymentRequestView!
-    
+        
     @IBOutlet weak var historyLoading: UIActivityIndicatorView!
     @IBOutlet weak var historyTable: UITableView!
-    @IBOutlet weak var infoViewBorderWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var onchainDetectedView: UIView!
     @IBOutlet weak var onchainDetectedViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     // Default is 74, 43 if offchain wallet is converting...
     let detectedViewHeightDefault = 74
     let detectedViewHeightConverting = 43
@@ -49,7 +36,6 @@ let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTa
     
     @IBOutlet weak var imgViewArrow: UIImageView!
     
-    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     // Default is 20, 113 if offchain wallet contains onchain tokens, 82 if offchain wallet is converting...
     let topConstraintDefault = 20
     let topConstraintWithAction = 113
@@ -79,11 +65,10 @@ let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTa
         super.loadViewFromNib()
         
         #if !TARGET_INTERFACE_BUILDER
-        lbBalanceExchange.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
+        loadTokenInfo()
         loadDisplayData()
         setupTableView()
         setupSegment()
-        setupButtonBorder()
         setupLayout()
         setupTarget()
         setupOnchainWalletView()
@@ -123,9 +108,6 @@ let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTa
     }
     
     func setupLayout() {
-        let imgReload = UIImage(named: "ic_curved_arrows", in: BundleManager.mozoBundle(), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
-        btnReload.setImage(imgReload, for: .normal)
-        btnReload.tintColor = UIColor(hexString: "d1d7dd")
         
         topConstraint.constant = CGFloat(topConstraintDefault)
         
@@ -139,9 +121,6 @@ let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTa
     }
     
     func setupTarget() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showQRCode))
-        imgQR.isUserInteractionEnabled = true
-        imgQR.addGestureRecognizer(tap)
         
         
         let tapConvert = UITapGestureRecognizer(target: self, action: #selector(openConvert))
@@ -163,57 +142,16 @@ let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTa
     
     func loadDisplayData() {
         // Clear all data
-        clearValueOnUI()
         if !isAnonymous {
             refresh()
         }
     }
     
-    func setupButtonBorder() {
-        infoViewBorderWidthConstraint.constant = UIScreen.main.bounds.width - 26
-        infoViewBorder.dropShadow()
-        let rectShadow = CGRect(x: infoViewBorder.bounds.origin.x, y: infoViewBorder.bounds.origin.y, width: UIScreen.main.bounds.width - 26, height: infoViewBorder.bounds.height)
-        infoViewBorder.layer.shadowPath = UIBezierPath(rect: rectShadow).cgPath
-        infoViewBorder.layer.shadowOffset = CGSize(width: 0.0, height: 2.5)
-        infoViewBorder.layer.shadowRadius = 3.0
-        infoViewBorder.layer.shadowColor = UIColor(hexString: "a8c5ec").cgColor
-    }
-
-    func clearValueOnUI() {
-        if lbBalance != nil {
-            lbBalance.text = "Loading...".localized
-            lbBalanceExchange.text = "Loading...".localized
-        }
-        collection = nil
-    }
 
     func updateData(displayItem: DetailInfoDisplayItem) {
-        if lbBalance != nil {
-            addUniqueBalanceChangeObserver()
-            updateOnlyBalance(displayItem.balance)
-        }
-        if imgQR != nil {
-            if !displayItem.address.isEmpty {
-                let qrImg = DisplayUtils.generateQRCode(from: displayItem.address)
-                imgQR.image = qrImg
-                
-                btnAddress.setTitle(displayItem.address, for: .normal)
-            }
-        }
         self.displayItem = displayItem
     }
     
-    override func updateOnlyBalance(_ balance : Double) {
-        if lbBalance != nil {
-            if balance >= 0 {
-                let balanceText = balance.roundAndAddCommas()
-                lbBalance.text = balanceText
-                lbBalanceExchange.text = DisplayUtils.getExchangeTextFromAmount(balance)
-            } else {
-                clearValueOnUI()
-            }
-        }
-    }
     
     func loadTxHistory() {
         _ = MozoSDK.getTxHistoryDisplayCollection().done { (collectionData) in
@@ -267,53 +205,12 @@ let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTa
             self.updateData(displayItem: displayItem)
             self.hideRefreshState()
         }).catch({ (error) in
-            self.clearValueOnUI()
             self.updateData(displayItem: DetailInfoDisplayItem(balance: 0.0, address: ""))
             self.displayRefreshState()
         })
     }
     
-    @IBAction func touchedViewAllHistory(_ sender: Any) {
-        MozoSDK.displayTransactionHistory()
-    }
-
-    @IBAction func touchedShowQR(_ sender: Any) {
-        showQRCode()
-    }
-    
-    @objc func showQRCode() {
-        if let address = self.displayItem?.address {
-            DisplayUtils.displayQRView(address: address)
-        }
-    }
-    
-    var isLoading = false
-    
-    @IBAction func touchedBtnReload(_ sender: Any) {
-        if !isLoading {
-            isLoading = true
-            rotateView()
-            MozoSDK.loadBalanceInfo().done { (displayItem) in
-                self.updateData(displayItem: displayItem)
-                self.isLoading = false
-            }.catch { (error) in
-                self.isLoading = false
-            }
-        }
-    }
-    
-    private func rotateView(duration: Double = 1.0) {
-        UIView.animate(withDuration: duration, delay: 0.0, options: .curveLinear, animations: {
-            self.btnReload.transform = self.btnReload.transform.rotated(by: CGFloat.pi)
-        }) { finished in
-            if self.isLoading {
-                self.rotateView(duration: duration)
-            } else {
-                self.btnReload.transform = .identity
-            }
-        }
-    }
-    
+        
     func displayRefreshState() {
         if refreshView == nil {
             refreshView = MozoRefreshView(frame: UIScreen.main.bounds)
@@ -334,16 +231,7 @@ let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTa
             refreshView?.isRefreshing = false
         }
     }
-    
-    override func onLoadTokenInfoFailed(_ notification: Notification) {
-        clearValueOnUI()
-    }
-    
-    func copyAddressAndShowHud() {
-        UIPasteboard.general.string = btnAddress.titleLabel?.text ?? ""
-        showHud()
-    }
-    
+        
     func showHud() {
         hud = MBProgressHUD.showAdded(to: self, animated: true)
         hud?.mode = .text
@@ -386,19 +274,6 @@ let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTa
             onchainWalletView.isHidden = false
             historyTable.isHidden = true
         }
-    }
-    
-    @IBAction func touchAddress(_ sender: Any) {
-//        copyAddressAndShowHud()
-        
-        let topVC = DisplayUtils.getTopViewController()
-        let vc = MozoAddressWalletVC(nibName: "MozoAddressWalletVC", bundle: BundleManager.mozoBundle())
-        vc.displayItem = self.displayItem
-        topVC?.present(vc, animated: true, completion: nil)
-    }
-    
-    @IBAction func touchCopyButton(_ sender: Any) {
-        copyAddressAndShowHud()
     }
     
     // MARK: NOTIFICATION - OBSERVATION
@@ -451,8 +326,12 @@ extension MozoUserWalletView : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER, for: indexPath) as! HeaderMozoUserWalletTableViewCell
+
+            cell.delegate = self
             cell.customAttributedTextMozoToday(mozo: 9200)
-            cell.customAttributedTextMozoTotal(mozo: 4282500)
+            if let balance = self.displayItem?.balance {
+                cell.customAttributedTextMozoTotal(mozo: balance)
+            }
             return cell
         }
         
@@ -464,17 +343,45 @@ extension MozoUserWalletView : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 270.0
+            return 300.0
         }
         return 61
     }
 }
+
+extension MozoUserWalletView: HeaderMozoUserWalletTableViewCellDelegate {
+    func didRequest() {
+        MozoSDK.displayPaymentRequest()
+    }
+    
+    func didBuy() {
+        
+    }
+    
+    func didInfo() {
+        let topVC = DisplayUtils.getTopViewController()
+        let vc = MozoAddressWalletVC(nibName: "MozoAddressWalletVC", bundle: BundleManager.mozoBundle())
+        vc.displayItem = self.displayItem
+        topVC?.present(vc, animated: true, completion: nil)
+    }
+    
+    func didSend() {
+        MozoSDK.transferMozo()
+    }
+    
+    func didAllHistory() {
+        MozoSDK.displayTransactionHistory()
+    }
+}
+
 extension MozoUserWalletView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        if let selectedItem = collection?.displayItems[indexPath.row] {
-            if let tokenInfo = SessionStoreManager.tokenInfo {
-                MozoSDK.displayTransactionDetail(txHistory: selectedItem, tokenInfo: tokenInfo)
+        if indexPath.section != 0 {
+            if let selectedItem = collection?.displayItems[indexPath.row] {
+                if let tokenInfo = SessionStoreManager.tokenInfo {
+                    MozoSDK.displayTransactionDetail(txHistory: selectedItem, tokenInfo: tokenInfo)
+                }
             }
         }
     }

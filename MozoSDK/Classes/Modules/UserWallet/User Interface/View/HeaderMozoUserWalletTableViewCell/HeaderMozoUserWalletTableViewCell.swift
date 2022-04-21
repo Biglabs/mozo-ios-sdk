@@ -12,6 +12,7 @@ protocol HeaderMozoUserWalletTableViewCellDelegate: NSObject {
     func didBuy()
     func didInfo()
     func didSend()
+    func didAllHistory()
 }
 
 class HeaderMozoUserWalletTableViewCell: UITableViewCell {
@@ -43,9 +44,9 @@ class HeaderMozoUserWalletTableViewCell: UITableViewCell {
         self.lblSend.text = "Send".localized
     }
 
-    func customAttributedTextMozoTotal(mozo: Int) {
+    func customAttributedTextMozoTotal(mozo: Double) {
         let attriString = NSAttributedString(string: "\(mozo.addCommas())", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 32.0), NSMutableAttributedString.Key.foregroundColor : UIColor.init(hexString: "FFFFFF")])
-        let attriString1 = NSAttributedString(string: "Mozo", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14.0), NSMutableAttributedString.Key.foregroundColor : UIColor.init(hexString: "CDE2FF")])
+        let attriString1 = NSAttributedString(string: " Mozo", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14.0), NSMutableAttributedString.Key.foregroundColor : UIColor.init(hexString: "CDE2FF")])
         
         let strContent = NSMutableAttributedString(attributedString: attriString)
         strContent.append(NSMutableAttributedString(attributedString: attriString1))
@@ -53,24 +54,19 @@ class HeaderMozoUserWalletTableViewCell: UITableViewCell {
         self.lblMozoTotal.attributedText = strContent
     }
     
-    func customAttributedTextMozoToday(mozo: NSNumber) {
-        let lAttachment = NSTextAttachment()
-        lAttachment.image = UIImage(named: "ic_arrow_top")?.withRenderingMode(.alwaysOriginal)
-        lAttachment.bounds = CGRect(x: 0, y: 0, width: 12, height: 12)
-        let icString = NSAttributedString(attachment: lAttachment)
+    func customAttributedTextMozoToday(mozo: Double) {
         
-        let attriString = NSAttributedString(string: self.loadMozoToday(mozo: mozo), attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 32.0), NSMutableAttributedString.Key.foregroundColor : UIColor.init(hexString: "FFFFFF")])
+        let attriString = NSAttributedString(string: self.loadMozoToday(mozo: mozo), attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16.0), NSMutableAttributedString.Key.foregroundColor : UIColor.init(hexString: "FFFFFF")])
         let attriString1 = NSAttributedString(string: " Mozo trong ngày", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14.0), NSMutableAttributedString.Key.foregroundColor : UIColor.init(hexString: "CDE2FF")])
 
-        let strContent = NSMutableAttributedString(attributedString: icString)
-        strContent.append(NSMutableAttributedString(attributedString: attriString))
+        let strContent = NSMutableAttributedString(attributedString: attriString)
         strContent.append(NSMutableAttributedString(attributedString: attriString1))
         
         self.lblMozoToday.attributedText = strContent
     }
     
-    func loadMozoToday(mozo: NSNumber) -> String {
-        if Int(truncating: mozo) > 0 {
+    func loadMozoToday(mozo: Double) -> String {
+        if mozo > 0 {
             return " +\(mozo.addCommas())"
         }
         
@@ -99,6 +95,10 @@ class HeaderMozoUserWalletTableViewCell: UITableViewCell {
     
     @IBAction func didSendMozo(_ sender: Any) {
         self.delegate?.didSend()
+    }
+    
+    @IBAction func didAllHistory(_ sender: Any) {
+        self.delegate?.didAllHistory()
     }
 
 }
