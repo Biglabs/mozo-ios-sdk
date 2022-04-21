@@ -15,13 +15,15 @@ public class TokenInfoDTO: ResponseObjectSerializable {
     public var symbol: String?
     public var decimals: Int?
     public var contractAddress: String?
-    
+    public var collectedMozo: NSNumber?
+
     public required init?(json: SwiftyJSON.JSON) {
         self.address = json["address"].string
         self.balance = json["balance"].number
         self.symbol = json["symbol"].string
         self.decimals = json["decimals"].int
         self.contractAddress = json["contractAddress"].string
+        self.collectedMozo = json["collectedMozo"].number
     }
     
     public required init?(){}
@@ -42,6 +44,9 @@ public class TokenInfoDTO: ResponseObjectSerializable {
         }
         if let contractAddress = self.contractAddress {
             json["contractAddress"] = contractAddress
+        }
+        if let collectedMozo = self.collectedMozo {
+            json["collectedMozo"] = collectedMozo
         }
         return json
     }

@@ -70,7 +70,7 @@ extension CoreInteractor: CoreInteractorService {
             }
         }
     }
-    
+        
     func loadEthAndOnchainBalanceInfo() -> Promise<OnchainInfoDTO> {
         print("😎 Load ETH and onchain balance info.")
         return Promise { seal in

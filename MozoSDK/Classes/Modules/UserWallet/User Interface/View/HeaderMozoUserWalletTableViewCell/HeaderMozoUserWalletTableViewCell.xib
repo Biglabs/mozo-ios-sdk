@@ -41,22 +41,22 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nkp-bq-hQn">
-                                        <rect key="frame" x="14.5" y="71.5" width="209.5" height="20.5"/>
+                                        <rect key="frame" x="10" y="71.5" width="214" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_arrow_top" translatesAutoresizingMaskIntoConstraints="NO" id="Rq9-Y7-N9i">
-                                        <rect key="frame" x="0.0" y="78" width="12.5" height="8"/>
+                                        <rect key="frame" x="0.0" y="79" width="8" height="8"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="8" id="fSp-bC-Usx"/>
-                                            <constraint firstAttribute="width" secondItem="Rq9-Y7-N9i" secondAttribute="height" multiplier="11:7" id="uKq-mG-QQh"/>
+                                            <constraint firstAttribute="width" secondItem="Rq9-Y7-N9i" secondAttribute="height" id="uKq-mG-QQh"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Rq9-Y7-N9i" firstAttribute="centerY" secondItem="Nkp-bq-hQn" secondAttribute="centerY" id="3xp-mf-VSJ"/>
+                                    <constraint firstItem="Rq9-Y7-N9i" firstAttribute="centerY" secondItem="Nkp-bq-hQn" secondAttribute="centerY" constant="1" id="3xp-mf-VSJ"/>
                                     <constraint firstItem="F1C-Cf-Q04" firstAttribute="top" secondItem="pVU-Ee-L7D" secondAttribute="top" id="8GZ-RZ-QbM"/>
                                     <constraint firstItem="Nkp-bq-hQn" firstAttribute="leading" secondItem="Rq9-Y7-N9i" secondAttribute="trailing" constant="2" id="N9m-PI-3ea"/>
                                     <constraint firstAttribute="bottom" secondItem="Nkp-bq-hQn" secondAttribute="bottom" id="Pop-ff-BRU"/>

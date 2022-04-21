@@ -36,6 +36,26 @@ public extension ApiManager {
         }
     }
     
+    func getSummary() -> Promise<NSNumber> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + "/shopper/getUserSummary?startTime=\(Int(Date().startOfDay.timeIntervalSince1970))&endTime=\(Int(Date().endOfDay.timeIntervalSince1970))"
+            self.execute(.get, url: url).done { json -> Void in
+                let jobj = SwiftyJSON.JSON(json)
+                let tokenInfo = TokenInfoDTO.init(json: jobj)
+                let mozoToday = tokenInfo?.collectedMozo?.convertOutputValue(decimal: SessionStoreManager.tokenInfo?.decimals ?? 0) ?? -1
+                seal.fulfill(NSNumber(value: mozoToday))
+            }
+            .catch { error in
+                let err = error as! ConnectionError
+                print("Error when request get token info: " + error.localizedDescription)
+                seal.reject(err)
+            }
+            .finally {
+                
+            }
+        }
+    }
+    
     func transferTransaction(_ transaction: TransactionDTO) -> Promise<IntermediaryTransactionDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + TX_API_PATH + "transfer"

@@ -491,6 +491,17 @@ public extension URL {
     }
 }
 public extension Date {
+    var startOfDay: Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+    
+    var endOfDay: Date {
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        return Calendar.current.date(byAdding: components, to: startOfDay)!
+    }
+
     func timeAgoDisplay() -> String {
         let calendar = Calendar.current
         let minuteAgo = calendar.date(byAdding: .minute, value: -1, to: Date())!

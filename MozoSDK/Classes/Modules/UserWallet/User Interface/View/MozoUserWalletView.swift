@@ -55,6 +55,7 @@ let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTa
     var offchainInfo: OffchainInfoDTO?
     private var refreshView : MozoRefreshView?
     private var isAnonymous: Bool = false
+    private var mozoToday: NSNumber = 0
     
     override func identifier() -> String {
         return "MozoUserWalletView"
@@ -138,6 +139,7 @@ let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTa
         loadTxHistory()
         loadOnchainInfo()
         loadTokenInfo()
+        loadSummary()
     }
     
     func loadDisplayData() {
@@ -163,7 +165,7 @@ let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTa
             self.historyTable.refreshControl?.endRefreshing()
         })
     }
-    
+        
     func loadOnchainInfo() {
         /**
          * Detect Onchain MozoX inside Offchain Wallet Address
@@ -207,6 +209,12 @@ let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTa
         }).catch({ (error) in
             self.updateData(displayItem: DetailInfoDisplayItem(balance: 0.0, address: ""))
             self.displayRefreshState()
+        })
+    }
+    
+    func loadSummary() {
+        _ = ApiManager.shared.getSummary().done({ mozoToday in
+            self.mozoToday = mozoToday
         })
     }
     
@@ -328,9 +336,9 @@ extension MozoUserWalletView : UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER, for: indexPath) as! HeaderMozoUserWalletTableViewCell
 
             cell.delegate = self
-            cell.customAttributedTextMozoToday(mozo: 9200)
             if let balance = self.displayItem?.balance {
                 cell.customAttributedTextMozoTotal(mozo: balance)
+                cell.customAttributedTextMozoToday(mozo: Double(truncating: self.mozoToday))
             }
             return cell
         }
