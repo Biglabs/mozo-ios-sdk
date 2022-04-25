@@ -113,5 +113,6 @@ class SpeedSelectionViewController : MozoBasicViewController {
     private func showLoading() {
         loadingHub = MBProgressHUD.showAdded(to: self.view, animated: true)
         loadingHub?.isUserInteractionEnabled = true
+        loadingHub?.label.text = "text_explain_creating_wallet".localized
     }
 }

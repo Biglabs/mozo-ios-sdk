@@ -18,18 +18,25 @@ extension WalletInteractor {
             if let pin_secret = AccessTokenManager.getPinSecret() {
                 let encryptedPin = rawPin.encrypt(key: pin_secret)
                 let updatingWalletInfo = WalletInfoDTO(encryptSeedPhrase: encryptedSeedPhrase, offchainAddress: offchainAddress, onchainAddress: onchainAddress, encryptedPin: encryptedPin)
-                // Must waiting for processing invitation
-                if SafetyDataManager.shared.checkProcessingInvitation == false {
-                    self.updateFullWalletInfoInAutoMode(updatingWalletInfo, wallets: wallets)
-                } else {
-                    self.setupTimerWaitingInvitation(updatingWalletInfo: updatingWalletInfo, wallets: wallets)
+                
+                DispatchQueue.main.async {
+                    // Must waiting for processing invitation
+                    if SafetyDataManager.shared.checkProcessingInvitation == false {
+                        self.updateFullWalletInfoInAutoMode(updatingWalletInfo, wallets: wallets)
+                    } else {
+                        self.setupTimerWaitingInvitation(updatingWalletInfo: updatingWalletInfo, wallets: wallets)
+                    }
                 }
             } else {
-                self.autoOutput?.errorWhileManageWalletAutomatically(connectionError: .systemError, showTryAgain: false)
+                DispatchQueue.main.async {
+                    self.autoOutput?.errorWhileManageWalletAutomatically(connectionError: .systemError, showTryAgain: false)
+                }
             }
         } else {
             self.updateWalletsForCurrentUser(wallets)
-            self.autoOutput?.manageWalletAutoSuccessfully()
+            DispatchQueue.main.async {
+                self.autoOutput?.manageWalletAutoSuccessfully()
+            }
         }
     }
     
@@ -46,21 +53,25 @@ extension WalletInteractor {
     }
     
     func manageWalletInAutoMode(isCreateNew: Bool, mnemonics: String, rawPin: String) {
-        var wallets = self.walletManager.createNewWallets(mnemonics: mnemonics)
-        // Handle wallets empty
-        if wallets.count < 2 {
-            self.autoOutput?.errorWhileManageWalletAutomatically(connectionError: .systemError, showTryAgain: false)
-            return
+        DispatchQueue.global(qos: .userInteractive).async {
+            var wallets = self.walletManager.createNewWallets(mnemonics: mnemonics)
+            // Handle wallets empty
+            if wallets.count < 2 {
+                DispatchQueue.main.async {
+                    self.autoOutput?.errorWhileManageWalletAutomatically(connectionError: .systemError, showTryAgain: false)
+                }
+                return
+            }
+            for i in 0..<wallets.count {
+                wallets[i].privateKey = wallets[i].privateKey.encrypt(key: rawPin)
+            }
+            let encryptedSeedPhrase = mnemonics.encrypt(key: rawPin)
+            _ = self.updateMnemonicAndPinForCurrentUser(mnemonic: encryptedSeedPhrase, pin: rawPin).done(on: .main) { (result) in
+                self.updateWalletsToUserProfileInAutoMode(isCreateNew: isCreateNew, mnemonics: mnemonics, rawPin: rawPin, wallets: wallets)
+            }.catch(on: .main, { (error) in
+                self.autoOutput?.errorWhileManageWalletAutomatically(connectionError: .systemError, showTryAgain: false)
+            })
         }
-        for i in 0..<wallets.count {
-            wallets[i].privateKey = wallets[i].privateKey.encrypt(key: rawPin)
-        }
-        let encryptedSeedPhrase = mnemonics.encrypt(key: rawPin)
-        _ = updateMnemonicAndPinForCurrentUser(mnemonic: encryptedSeedPhrase, pin: rawPin).done { (result) in
-            self.updateWalletsToUserProfileInAutoMode(isCreateNew: isCreateNew, mnemonics: mnemonics, rawPin: rawPin, wallets: wallets)
-        }.catch({ (error) in
-            self.autoOutput?.errorWhileManageWalletAutomatically(connectionError: .systemError, showTryAgain: false)
-        })
     }
 }
 extension WalletInteractor: WalletInteractorAutoInput {
