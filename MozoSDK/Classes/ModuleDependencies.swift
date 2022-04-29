@@ -448,11 +448,6 @@ class ModuleDependencies {
     func backupWalletDependencies() {
         let backupWalletPresenter = BackupWalletPresenter()
         
-        let backupWalletInteractor = BackupWalletInteractor()
-        backupWalletInteractor.output = backupWalletPresenter
-        
-        backupWalletPresenter.interactor = backupWalletInteractor
-        
         backupWalletPresenter.wireframe = backupWalletWireframe
         backupWalletPresenter.delegate = walletWireframe.walletPresenter
         

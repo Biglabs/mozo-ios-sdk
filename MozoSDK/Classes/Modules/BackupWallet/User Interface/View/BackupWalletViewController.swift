@@ -34,22 +34,30 @@ class BackupWalletViewController: MozoBasicViewController, UITextFieldDelegate {
         enableBackBarButton()
         btnFinish.roundCorners(cornerRadius: 0.015, borderColor: .clear, borderWidth: 0.1)
         btnFinish.layer.cornerRadius = 5
-        let index1st = Int.random(in: 1...6)
-        var index2nd = Int.random(in: 1...6)
-        while index2nd == index1st {
-            index2nd = Int.random(in: 1...6)
-        }
-        let index3rd = Int.random(in: 7...12)
-        var index4th = Int.random(in: 7...12)
-        while index4th == index3rd {
-            index4th = Int.random(in: 7...12)
-        }
-        //mnemonicsView.setIndexRandomly(true, randomIndexs: [index1st, index2nd, index3rd, index4th])
         
         input1.delegate = self
         input2.delegate = self
         input3.delegate = self
         input4.delegate = self
+        
+        guard let seed = mnemonics?.split(separator: " ") else { return }
+        let max = seed.count - 1
+        let word_1 = self.random(max: max)
+        let word_2 = self.random(max: max, exclude: [word_1])
+        let word_3 = self.random(max: max, exclude: [word_1, word_2])
+        let word_4 = self.random(max: max, exclude: [word_1, word_2, word_3])
+
+        input1Number.text = "\(word_1 + 1)."
+        input1.tag = word_1
+        
+        input2Number.text = "\(word_2 + 1)."
+        input2.tag = word_2
+        
+        input3Number.text = "\(word_3 + 1)."
+        input3.tag = word_3
+        
+        input4Number.text = "\(word_4 + 1)."
+        input4.tag = word_4
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,10 +66,8 @@ class BackupWalletViewController: MozoBasicViewController, UITextFieldDelegate {
         navigationController?.isNavigationBarHidden = false
     }
     
-    @IBAction func onEdittingChanged(_ sender: Any) {
-        let textField = sender as? UITextField
-        let focused = textField?.isFirstResponder ?? false
-        let lineColor: UIColor = focused ? .systemBlue : .systemGray
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let lineColor: UIColor = .systemBlue
         switch textField {
         case input1:
             input1Line.backgroundColor = lineColor
@@ -81,20 +87,53 @@ class BackupWalletViewController: MozoBasicViewController, UITextFieldDelegate {
         }
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        <#code#>
-    }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
-        <#code#>
+        let lineColor: UIColor = .systemGray
+        switch textField {
+        case input1:
+            input1Line.backgroundColor = lineColor
+            
+            break
+        case input2:
+            input2Line.backgroundColor = lineColor
+            break
+        case input3:
+            input3Line.backgroundColor = lineColor
+            break
+        case input4:
+            input4Line.backgroundColor = lineColor
+            break
+        default:
+            break
+        }
     }
     
     @IBAction func touchBtnFinish(_ sender: Any) {
-//        if let mnemonics = self.mnemonics, let randomIndexs = self.mnemonicsView.randomIndexs as? [Int] {
-//            eventHandler?.verifyPassPhrases(self.mnemonicsView.mnemonics, indexs: randomIndexs, originalPassPhrases: mnemonics)
-//        } else {
-//            displayVerifyFailed()
-//        }
+        guard let safeMnemonics = self.mnemonics,
+              let seed = self.mnemonics?.split(separator: " ") else { return }
+        
+        let word_1 = seed[input1.tag]
+        let word_2 = seed[input2.tag]
+        let word_3 = seed[input3.tag]
+        let word_4 = seed[input4.tag]
+        if word_1 == input1.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "",
+           word_2 == input2.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "",
+           word_3 == input3.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "",
+           word_4 == input4.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "" {
+            eventHandler?.verifyPassPhrases(safeMnemonics)
+        } else {
+            displayVerifyFailed()
+        }
+    }
+    
+    private func random(max: Int, exclude: [Int]? = nil) -> Int {
+        var r = Int.random(in: 0...max)
+        if let exs = exclude {
+            while(exs.contains(r)) {
+                r = Int.random(in: 0...max)
+            }
+        }
+        return r
     }
 }
 extension BackupWalletViewController: BackupWalletViewInterface {

@@ -8,7 +8,6 @@
 import Foundation
 class BackupWalletPresenter: NSObject {
     var wireframe: BackupWalletWireframe?
-    var interactor: BackupWalletInteractorInput?
     var viewInterface: BackupWalletViewInterface?
     var delegate: BackupWalletModuleDelegate?
     
@@ -44,25 +43,16 @@ class BackupWalletPresenter: NSObject {
     }
 }
 extension BackupWalletPresenter: BackupWalletModuleInterface {
-    func verifyPassPhrases(_ passPhrases: String, indexs: [Int], originalPassPhrases: String) {
-        interactor?.verifyPassPhrases(passPhrases, indexs: indexs, originalPassPhrases: originalPassPhrases)
+    func verifyPassPhrases(_ passPhrases: String) {
+        if requestedModule == .Wallet {
+            delegate?.didFinishCheckPassPhrase(passPhrases)
+        } else {
+            wireframe?.presentBackupWalletSuccessInterface()
+        }
     }
     
     func completeBackupWallet() {
         wireframe?.dismissModuleInterface()
-    }
-}
-extension BackupWalletPresenter: BackupWalletInteractorOutput {
-    func verifyFailed() {
-        viewInterface?.displayVerifyFailed()
-    }
-    
-    func verifySuccess(passPhrase: String) {
-        if requestedModule == .Wallet {
-            delegate?.didFinishCheckPassPhrase(passPhrase)
-        } else {
-            wireframe?.presentBackupWalletSuccessInterface()
-        }
     }
 }
 extension BackupWalletPresenter: PinModuleDelegate {
