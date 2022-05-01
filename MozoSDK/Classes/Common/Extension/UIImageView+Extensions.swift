@@ -19,7 +19,7 @@ public extension UIImageView {
     ) {
         let placeHolderImage = UIImage(named: placeHolder) ?? placeHolder.asMozoImage()?.withRenderingMode(.alwaysOriginal)
         
-        guard let safeUrl = url?.trimmingCharacters(in: .whitespacesAndNewlines), !safeUrl.isEmpty else {
+        guard let safeUrl = url?.trim(), !safeUrl.isEmpty else {
             self.image = placeHolderImage
             onLoadComplete?()
             return

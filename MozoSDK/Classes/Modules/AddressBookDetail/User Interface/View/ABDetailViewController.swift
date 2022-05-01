@@ -73,13 +73,12 @@ class ABDetailViewController : MozoBasicViewController {
     }
     
     @IBAction func save(_ sender: AnyObject) {
-        if let text = txtName.text {
-            let trim = text.trimmingCharacters(in: .whitespacesAndNewlines)
-            if trim.isEmpty {
+        if let text = txtName.text?.trim() {
+            if text.isEmpty {
                 displayMozoError("Name can not be empty")
                 return
             }
-            eventHandler?.saveAddressBookWithName(trim, address: address!)
+            eventHandler?.saveAddressBookWithName(text, address: address!)
         } else {
             displayMozoError("Name can not be empty")
         }

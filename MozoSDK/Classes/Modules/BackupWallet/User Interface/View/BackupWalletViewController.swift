@@ -25,8 +25,14 @@ class BackupWalletViewController: MozoBasicViewController, UITextFieldDelegate {
     @IBOutlet weak var input4Line: UIView!
     
     @IBOutlet weak var btnFinish: UIButton!
-    var eventHandler: BackupWalletModuleInterface?
     
+    private let MAX_INPUT: Int = 12
+
+    private lazy var words: [String] = {
+        return BIP39Language.english.words
+    }()
+    
+    var eventHandler: BackupWalletModuleInterface?
     var mnemonics: String?
     
     override func viewDidLoad() {
@@ -66,7 +72,17 @@ class BackupWalletViewController: MozoBasicViewController, UITextFieldDelegate {
         navigationController?.isNavigationBarHidden = false
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let count = text.count + string.count - range.length
+        
+        let allowedCharacters = CharacterSet.letters
+        let characterSet = CharacterSet(charactersIn: string)
+        return count <= MAX_INPUT && allowedCharacters.isSuperset(of: characterSet)
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.textColor = .darkText
         let lineColor: UIColor = .systemBlue
         switch textField {
         case input1:
@@ -88,20 +104,31 @@ class BackupWalletViewController: MozoBasicViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        let value = textField.text?.lowercased().trim() ?? ""
+        let isContains = value.isEmpty || words.contains(value)
+        let textColor: UIColor = isContains ? .systemBlue : .systemRed
+        
         let lineColor: UIColor = .systemGray
         switch textField {
         case input1:
             input1Line.backgroundColor = lineColor
+            input1.textColor = textColor
             
             break
         case input2:
             input2Line.backgroundColor = lineColor
+            input2.textColor = textColor
+            
             break
         case input3:
             input3Line.backgroundColor = lineColor
+            input3.textColor = textColor
+            
             break
         case input4:
             input4Line.backgroundColor = lineColor
+            input4.textColor = textColor
+            
             break
         default:
             break
@@ -112,14 +139,14 @@ class BackupWalletViewController: MozoBasicViewController, UITextFieldDelegate {
         guard let safeMnemonics = self.mnemonics,
               let seed = self.mnemonics?.split(separator: " ") else { return }
         
-        let word_1 = seed[input1.tag]
-        let word_2 = seed[input2.tag]
-        let word_3 = seed[input3.tag]
-        let word_4 = seed[input4.tag]
-        if word_1 == input1.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "",
-           word_2 == input2.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "",
-           word_3 == input3.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "",
-           word_4 == input4.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "" {
+        let word_1 = input1.text?.lowercased().trim() ?? ""
+        let word_2 = input2.text?.lowercased().trim() ?? ""
+        let word_3 = input3.text?.lowercased().trim() ?? ""
+        let word_4 = input4.text?.lowercased().trim() ?? ""
+        if word_1 == seed[input1.tag],
+           word_2 == seed[input2.tag],
+           word_3 == seed[input3.tag],
+           word_4 == seed[input4.tag] {
             eventHandler?.verifyPassPhrases(safeMnemonics)
         } else {
             displayVerifyFailed()

@@ -25,7 +25,7 @@ class TransactionInteractor : NSObject {
     
     func createTransactionToTransfer(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?) -> TransactionDTO? {
         let input = InputDTO(addresses: [(tokenInfo?.address)!])!
-        let trimToAddress = toAdress?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimToAddress = toAdress?.trim()
         var txValue = NSNumber(value: 0)
         if let amount = amount {
             // Fix issue: Convert Double value from String incorrectly
@@ -121,13 +121,13 @@ extension TransactionInteractor : TransactionInteractorInput {
         
         var isAddressEmpty = false
         var error : String? = nil
-        if toAdress == nil || toAdress?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+        if toAdress == nil || toAdress?.trim() == "" {
             error = "Error: The Receiver Address is not valid."
             isAddressEmpty = true
             hasError = true
             output?.didValidateTransferTransaction(error, isAddress: true)
         }
-        if !isAddressEmpty, let trimAddress = toAdress?.trimmingCharacters(in: .whitespacesAndNewlines), !trimAddress.isEthAddress() {
+        if !isAddressEmpty, let trimAddress = toAdress?.trim(), !trimAddress.isEthAddress() {
             error = "Error: The Receiver Address is not valid."
             hasError = true
             output?.didValidateTransferTransaction(error, isAddress: true)
