@@ -162,6 +162,10 @@ public extension String {
         let result = self.split(usingRegex: "\\.|\r\n|\n")
         return (result.first ?? self) + ((result.count > 1 && !result[1].isEmpty) ? "…" : "")
     }
+    
+    func trim() -> String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 }
 
 internal extension String {

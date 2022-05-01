@@ -6,11 +6,40 @@
 //
 
 import Foundation
-class ResetPINViewController: MozoBasicViewController {
+import web3swift
+
+class ResetPINViewController: MozoBasicViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var lbExplain: UILabel!
-    @IBOutlet weak var mnemonicsView: MnemonicsView!
+    @IBOutlet weak var input1: UITextField!
+    @IBOutlet weak var input1_line: UIView!
+    @IBOutlet weak var input2: UITextField!
+    @IBOutlet weak var input2_line: UIView!
+    @IBOutlet weak var input3: UITextField!
+    @IBOutlet weak var input3_line: UIView!
+    @IBOutlet weak var input4: UITextField!
+    @IBOutlet weak var input4_line: UIView!
+    @IBOutlet weak var input5: UITextField!
+    @IBOutlet weak var input5_line: UIView!
+    @IBOutlet weak var input6: UITextField!
+    @IBOutlet weak var input6_line: UIView!
+    @IBOutlet weak var input7: UITextField!
+    @IBOutlet weak var input7_line: UIView!
+    @IBOutlet weak var input8: UITextField!
+    @IBOutlet weak var input8_line: UIView!
+    @IBOutlet weak var input9: UITextField!
+    @IBOutlet weak var input9_line: UIView!
+    @IBOutlet weak var input10: UITextField!
+    @IBOutlet weak var input10_line: UIView!
+    @IBOutlet weak var input11: UITextField!
+    @IBOutlet weak var input11_line: UIView!
+    @IBOutlet weak var input12: UITextField!
+    @IBOutlet weak var input12_line: UIView!
+    
+    private let MAX_INPUT: Int = 12
+    private lazy var words: [String] = {
+        return BIP39Language.english.words
+    }()
     
     var eventHandler: ResetPINModuleInterface?
     
@@ -42,6 +71,20 @@ class ResetPINViewController: MozoBasicViewController {
         enableBackBarButton()
         setupCancelBtn()
         setupWaitingView()
+        
+        input1.delegate = self
+        input2.delegate = self
+        input3.delegate = self
+        input4.delegate = self
+        input5.delegate = self
+        input6.delegate = self
+        input7.delegate = self
+        input8.delegate = self
+        input9.delegate = self
+        input10.delegate = self
+        input11.delegate = self
+        input12.delegate = self
+        input12.addTarget(self, action: #selector(checkSeed), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,59 +96,116 @@ class ResetPINViewController: MozoBasicViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
-//            self.mnemonicsView.becomeFirstResponder()
-//        }
+        input1.becomeFirstResponder()
     }
-    
-//    func setNavigationBar() {
-//        //your custom view for back image with custom size
-//        let view = UIView(frame: CGRect(x: 0, y: 0, width: 85, height: 40))
-//        let imageView = UIImageView(frame: CGRect(x: -10, y: 10, width: 20, height: 20))
-//
-//        if let imgBackArrow = UIImage(named: "ic_left_arrow", in: BundleManager.mozoBundle(), compatibleWith: nil) {
-//            imageView.image = imgBackArrow.withRenderingMode(.alwaysTemplate)
-//            imageView.tintColor = ThemeManager.shared.main
-//        }
-//        view.addSubview(imageView)
-//
-//        let label = UILabel(frame: CGRect(x: 10, y: 10, width: 60, height: 18))
-//        label.text = "Back".localized
-//        label.textColor = ThemeManager.shared.main
-//
-//        view.addSubview(label)
-//
-//        let backTap = UITapGestureRecognizer(target: self, action: #selector(tapBackBtn))
-//        view.addGestureRecognizer(backTap)
-//
-//        let leftBarButtonItem = UIBarButtonItem(customView: view)
-//        self.navigationItem.leftBarButtonItem = leftBarButtonItem
-//    }
-//
-//    @objc func tapBackBtn() {
-//        if isChangePin {
-//            if let mozoNavigationController = navigationController as? MozoNavigationController,
-//                let coreEventHandler = mozoNavigationController.coreEventHandler {
-//                coreEventHandler.requestForCloseAllMozoUIs()
-//            }
-//        } else {
-//            if let mozoNavigationController = navigationController as? MozoNavigationController {
-//                mozoNavigationController.popViewController(animated: false)
-//            }
-//        }
-//    }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
     
-    override func viewSafeAreaInsetsDidChange() {
-        print("viewSafeAreaInsetsDidChange")
-        if #available(iOS 11.0, *) {
-            super.viewSafeAreaInsetsDidChange()
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let count = text.count + string.count - range.length
+        let allowedCharacters = CharacterSet.letters
+        let characterSet = CharacterSet(charactersIn: string)
+        return count <= MAX_INPUT && allowedCharacters.isSuperset(of: characterSet)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.textColor = .darkText
+        let lineColor: UIColor = .systemBlue
+        switch textField {
+        case input1:
+            input1_line.backgroundColor = lineColor
+            break
+        case input2:
+            input2_line.backgroundColor = lineColor
+            break
+        case input3:
+            input3_line.backgroundColor = lineColor
+            break
+        case input4:
+            input4_line.backgroundColor = lineColor
+            break
+        case input5:
+            input5_line.backgroundColor = lineColor
+            break
+        case input6:
+            input6_line.backgroundColor = lineColor
+            break
+        case input7:
+            input7_line.backgroundColor = lineColor
+            break
+        case input8:
+            input8_line.backgroundColor = lineColor
+            break
+        case input9:
+            input9_line.backgroundColor = lineColor
+            break
+        case input10:
+            input10_line.backgroundColor = lineColor
+            break
+        case input11:
+            input11_line.backgroundColor = lineColor
+            break
+        case input12:
+            input12_line.backgroundColor = lineColor
+            break
+        default:
+            break
         }
-        updateScrollViewInsets()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let value = textField.text?.lowercased().trim() ?? ""
+        let isContains = value.isEmpty || words.contains(value)
+        let textColor: UIColor = isContains ? .systemBlue : .systemRed
+        textField.textColor = textColor
+        
+        let lineColor: UIColor = .systemGray
+        switch textField {
+        case input1:
+            input1_line.backgroundColor = lineColor
+            break
+        case input2:
+            input2_line.backgroundColor = lineColor
+            break
+        case input3:
+            input3_line.backgroundColor = lineColor
+            break
+        case input4:
+            input4_line.backgroundColor = lineColor
+            break
+        case input5:
+            input5_line.backgroundColor = lineColor
+            break
+        case input6:
+            input6_line.backgroundColor = lineColor
+            break
+        case input7:
+            input7_line.backgroundColor = lineColor
+            break
+        case input8:
+            input8_line.backgroundColor = lineColor
+            break
+        case input9:
+            input9_line.backgroundColor = lineColor
+            break
+        case input10:
+            input10_line.backgroundColor = lineColor
+            break
+        case input11:
+            input11_line.backgroundColor = lineColor
+            break
+        case input12:
+            input12_line.backgroundColor = lineColor
+            break
+        default:
+            break
+        }
+        
+        self.checkSeed()
     }
     
     func setupKeyboardEvents() {
@@ -115,7 +215,6 @@ class ResetPINViewController: MozoBasicViewController {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        print("Keyboard will show")
         keyboardWasShown = true
         let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect ?? CGRect.zero).size
         keyboardHeight = keyboardSize.height
@@ -123,7 +222,6 @@ class ResetPINViewController: MozoBasicViewController {
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-        print("Keyboard will hide")
         if keyboardWasShown {
             let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect ?? CGRect.zero).size;
             keyboardHeight = keyboardSize.height
@@ -132,21 +230,18 @@ class ResetPINViewController: MozoBasicViewController {
     }
     
     @objc func keyboardWillChangeFrame(_ notification: Notification) {
-        print("Keyboard will change frame")
         keyboardWasShown = false
         keyboardHeight = 0.0
         updateScrollViewInsets()
     }
     
     func addSubmitBtn() {
-        print("ResetPINViewController - Add submit bar button.")
         submitButton = UIBarButtonItem(title: "Submit".localized, style: .plain, target: self, action: #selector(self.touchSubmitBarButton))
         submitButton.isEnabled = false
         self.navigationItem.rightBarButtonItem = submitButton
     }
     
     func setupCancelBtn() {
-        print("ResetPINViewController - Add cancel bar button.")
         cancelButton = UIBarButtonItem(title: "Cancel".localized, style: .plain, target: self, action: #selector(self.touchCancelBarButton))
         cancelButton.isEnabled = true
     }
@@ -171,16 +266,15 @@ class ResetPINViewController: MozoBasicViewController {
     }
     
     @objc func touchCancelBarButton() {
-        print("ResetPINViewController - touchCancelBarButton")
         requestCancel()
     }
     
     @objc func touchSubmitBarButton() {
-        print("ResetPINViewController - touchBarButton")
         if isDisplayingTryAgain {
             requestCancel()
         } else {
-            eventHandler?.resetPINWithMnemonics(self.mnemonicsView.mnemonics)
+            let mnemonics = mergeSeed()
+            eventHandler?.resetPINWithMnemonics(mnemonics)
         }
     }
     
@@ -189,7 +283,6 @@ class ResetPINViewController: MozoBasicViewController {
     }
     
     func updateScrollViewInsets() {
-        print("Update scroll view insets, keyboard height: \(keyboardHeight)")
         let bottomInset : CGFloat = keyboardHeight > 0 ? 258 : 0
         var insets = self.scrollView.contentInset
         if #available(iOS 11.0, *) {
@@ -197,12 +290,10 @@ class ResetPINViewController: MozoBasicViewController {
         }
         insets.bottom = keyboardHeight
         if #available(iOS 11.0, *) {
-            print("Update scroll view insets, safeAreaInsets bottom: \(self.view.safeAreaInsets.bottom)")
 //            insets.bottom -= self.view.safeAreaInsets.bottom
             insets.bottom = bottomInset
         }
         insets.top = 0.0
-        print("Insets, top [\(insets.top)], bottom [\(insets.bottom)]")
         self.scrollView.contentInset = insets
         
         var indicatorInset = self.scrollView.scrollIndicatorInsets
@@ -210,13 +301,18 @@ class ResetPINViewController: MozoBasicViewController {
         if #available(iOS 11.0, *) {
              indicatorInset.bottom = bottomInset
         }
-        print("Indicator Insets, top [\(indicatorInset.top)], bottom [\(indicatorInset.bottom)]")
         self.scrollView.scrollIndicatorInsets = indicatorInset
     }
     
-    @IBAction func mnemonicChange(_ sender: Any) {
-        print("ResetPINViewController - mnemonicChange: \(self.mnemonicsView.mnemonics)")
-        eventHandler?.checkMnemonics(self.mnemonicsView.mnemonics)
+    private func mergeSeed() -> String {
+        let inputs: [UITextField] = [input1, input2, input3, input4, input5, input6, input7, input8, input9, input10, input11, input12]
+        let seed = inputs.compactMap{ ($0.text ?? "").isEmpty ? nil : $0.text }.joined(separator: " ")
+        return seed.lowercased()
+    }
+    
+    @objc private func checkSeed() {
+        let seed = mergeSeed()
+        eventHandler?.checkMnemonics(seed)
     }
 }
 extension ResetPINViewController: ResetPINViewInterface {
@@ -266,8 +362,9 @@ extension ResetPINViewController: ResetPINViewInterface {
         waitingView.stopRotating = true
         
         if clearData {
-            print("Clear data after maintenance mode")
-            self.mnemonicsView.clearAllTextFields()
+            [
+                input1, input2, input3, input4, input5, input6, input7, input8, input9, input10, input11, input12
+            ].forEach { $0.text = nil }
         }
     }
 }
