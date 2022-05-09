@@ -363,7 +363,10 @@ extension MozoUserWalletView: HeaderMozoUserWalletTableViewCellDelegate {
     }
     
     func didBuy() {
-        
+        let topVC = DisplayUtils.getTopViewController()
+        let vc = BuyMozoVC(nibName: "BuyMozoVC", bundle: BundleManager.mozoBundle())
+        vc.modalPresentationStyle = .fullScreen
+        topVC?.present(vc, animated: true, completion: nil)
     }
     
     func didInfo() {
