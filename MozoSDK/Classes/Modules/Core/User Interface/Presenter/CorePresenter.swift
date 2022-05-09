@@ -18,10 +18,9 @@ class CorePresenter : NSObject {
     var callBackModule: Module?
     var reachability : Reachability?
     
-    var waitingViewInterface: WaitingViewInterface?
-    
     var requestingABModule: Module?
     internal var alertController: UIAlertController? = nil
+    private var retryAction: WaitingRetryAction?
     
     override init() {
         super.init()
@@ -104,6 +103,21 @@ class CorePresenter : NSObject {
         case .TopUp:
             coreWireframe?.presentTopUpTransferInterface()
         default: coreWireframe?.prepareForWalletInterface()
+        }
+    }
+    
+    func displayTryAgain(_ error: ConnectionError, forAction: WaitingRetryAction?) {
+        self.retryAction = forAction
+        if error == .apiError_INVALID_USER_TOKEN {
+            DisplayUtils.displayTokenExpired()
+            
+        } else if error == .apiError_MAINTAINING {
+            DisplayUtils.displayMaintenanceScreen()
+            
+        } else {
+            if let topViewController = DisplayUtils.getTopViewController(), topViewController is WaitingViewController {
+                DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
+            }
         }
     }
 }
@@ -275,17 +289,13 @@ extension CorePresenter : CoreInteractorOutput {
     }
     
     func failToLoadUserInfo(_ error: ConnectionError, for requestingModule: Module?) {
-        NSLog("CorePresenter - Failed to load user info")
-        if let requestingModule = requestingModule {
-            callBackModule = requestingModule
-        }
+        callBackModule = requestingModule
         // Check connection error
         if error == .authenticationRequired {
-            // TODO: Display different error for invalid token
-            waitingViewInterface?.displayTryAgain(ConnectionError.apiError_INVALID_USER_TOKEN, forAction: nil)
+            self.displayTryAgain(ConnectionError.apiError_INVALID_USER_TOKEN, forAction: nil)
             return
         }
-        waitingViewInterface?.displayTryAgain(error, forAction: .LoadUserProfile)
+        self.displayTryAgain(error, forAction: .LoadUserProfile)
     }
     
     func didReceiveInvalidToken() {
@@ -479,5 +489,24 @@ extension CorePresenter: PaymentQRModuleDelegate {
     func requestAddressBookInterfaceForPaymentRequest() {
         requestingABModule = .Payment
         coreWireframe?.presentAddressBookInterface()
+    }
+}
+extension CorePresenter : PopupErrorDelegate {
+    func didClosePopupWithoutRetry() {
+    }
+    
+    func didTouchTryAgainButton() {
+        if let retryAction = self.retryAction {
+            switch retryAction {
+            case .LoadUserProfile:
+                self.retryGetUserProfile()
+                break
+            case .BuildAuth:
+                self.retryAuth()
+                break
+            }
+            
+        }
+        self.retryAction = nil
     }
 }

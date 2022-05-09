@@ -168,7 +168,7 @@ class PaymentViewController: MozoBasicViewController {
     }
     
     @IBAction func touchedBtnCreate(_ sender: Any) {
-        if let text = txtAmount.text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+        if let text = txtAmount.text, !text.trim().isEmpty {
             if let tokenInfo = self.tokenInfo {
                 let valueText = text.toTextNumberWithoutGrouping()
                 eventHandler?.createPaymentRequest(valueText, tokenInfo: tokenInfo)

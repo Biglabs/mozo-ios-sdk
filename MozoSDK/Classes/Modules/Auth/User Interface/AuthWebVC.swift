@@ -27,7 +27,6 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
     
     override func loadView() {
         let root = UIView()
-        
         webview.navigationDelegate = self
         webview.uiDelegate = self
         webview.allowsBackForwardNavigationGestures = false

@@ -9,8 +9,14 @@ import Foundation
 
 extension CorePresenter : AuthModuleDelegate {
     func didReceiveErrorWhileExchangingCode() {
-        "didReceiveErrorWhileExchangingCode".log()
-        waitingViewInterface?.displayAlertIncorrectSystemDateTime()
+        DisplayUtils.alert(
+            title: "The time on your device is incorrect.".localized,
+            message: "Please update the date and time, then try again.".localized,
+            button: "Settings".localized
+        ) {
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+            UIApplication.shared.open(url)
+        }
     }
     
     func didCheckAuthorizationSuccess() {
@@ -40,8 +46,7 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidFailedToMakeAuthentication(error: ConnectionError) {
-        "End process authModuleDidFailedToMakeAuthentication".log()
-        waitingViewInterface?.displayTryAgain(error, forAction: .BuildAuth)
+        self.displayTryAgain(error, forAction: .BuildAuth)
     }
     
     func authModuleDidCancelAuthentication() {

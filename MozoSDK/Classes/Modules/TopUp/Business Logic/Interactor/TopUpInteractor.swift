@@ -51,7 +51,7 @@ class TopUpInteractor: NSObject {
     
     func createTransactionToTransfer(tokenInfo: TokenInfoDTO?, topUpAddress: String?, amount: String?) -> TransactionDTO? {
         let input = InputDTO(addresses: [(tokenInfo?.address)!])!
-        let trimToAddress = topUpAddress?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimToAddress = topUpAddress?.trim()
         var txValue = NSNumber(value: 0)
         if let amount = amount {
             // Fix issue: Get double value from NSNumber, result is incorrect

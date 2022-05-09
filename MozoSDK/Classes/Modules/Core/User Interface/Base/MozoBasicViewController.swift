@@ -167,30 +167,6 @@ public class MozoBasicViewController : UIViewController {
         }
     }
     
-    // MARK: Popup Token Expired
-    var mozoPopupTokenExpired: MozoPopupTokenExpired?
-    
-    func displayMozoPopupTokenExpired() {
-        mozoPopupTokenExpired = MozoPopupTokenExpired(frame: CGRect(x: 0, y: 0, width: 222, height: 193))
-        
-        mozoPopupTokenExpired?.clipsToBounds = false
-        mozoPopupTokenExpired?.dropShadow()
-        mozoPopupTokenExpired?.containerView.roundCorners(borderColor: .white, borderWidth: 1)
-        
-        mozoPopupTokenExpired?.center = view.center
-        
-        mozoPopupTokenExpired?.modalCloseHandler = {
-            self.mozoPopupTokenExpired?.removeFromSuperview()
-        }
-        self.view.addSubview(self.mozoPopupTokenExpired!)
-    }
-    
-    func removeMozoPopupTokenExpired() {
-        DispatchQueue.main.async {
-            self.mozoPopupTokenExpired?.removeFromSuperview()
-        }
-    }
-    
     override public var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }

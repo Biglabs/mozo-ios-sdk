@@ -46,7 +46,7 @@ class AirdropAddInteractor: NSObject {
     
     func transactionToTransfer(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: NSNumber) -> TransactionDTO? {
         let input = InputDTO(addresses: [(tokenInfo?.address)!])!
-        let trimToAddress = toAdress?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimToAddress = toAdress?.trim()
         let output = OutputDTO(addresses: [trimToAddress!], value: amount)!
         let transaction = TransactionDTO(inputs: [input], outputs: [output])
         

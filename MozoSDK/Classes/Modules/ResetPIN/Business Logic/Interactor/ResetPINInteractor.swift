@@ -158,21 +158,29 @@ extension ResetPINInteractor: ResetPINInteractorInput {
     }
     
     func validateMnemonicsForRestore(_ mnemonics: String) {
-        let result = self.walletManager.validateMnemonicsString(withString: mnemonics)
-        if result {
-            let wallets = walletManager.createNewWallets(mnemonics: mnemonics)
-            if wallets.count > 0 {
-                let justCreatedOffchainAddress = wallets[0].address
-                if let walletInfo = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo,
-                    let offchainAddress = walletInfo.offchainAddress,
-                    justCreatedOffchainAddress.lowercased() == offchainAddress.lowercased() {
-                    output?.requestEnterNewPIN(mnemonics: mnemonics)
-                    return
+        DispatchQueue.global().async {
+            if self.walletManager.validateMnemonicsString(withString: mnemonics) {
+                let wallets = self.walletManager.createNewWallets(mnemonics: mnemonics)
+                if wallets.count > 0 {
+                    let justCreatedOffchainAddress = wallets[0].address
+                    if let walletInfo = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo,
+                        let offchainAddress = walletInfo.offchainAddress,
+                        justCreatedOffchainAddress.lowercased() == offchainAddress.lowercased() {
+                        
+                        DispatchQueue.main.async {
+                            self.output?.requestEnterNewPIN(mnemonics: mnemonics)
+                        }
+                        return
+                    }
+                }
+                DispatchQueue.main.async {
+                    self.output?.mnemonicsNotBelongToUserWallet()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.output?.validateFailedForRestore()
                 }
             }
-            output?.mnemonicsNotBelongToUserWallet()
-        } else {
-            output?.validateFailedForRestore()
         }
     }
     

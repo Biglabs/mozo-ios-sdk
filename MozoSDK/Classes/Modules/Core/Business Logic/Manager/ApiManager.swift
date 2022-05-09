@@ -231,7 +231,9 @@ public class ApiManager {
                                 delegate?.didReceiveRequireUpdate(type: .TEMPORARILY_SUSPENDED)
                                 seal.reject(errorEnum.connectionError)
                                 break
-                                
+                            case .STORE_FATAL_USER_NO_OFFCHAIN_ADDRESS:
+                                ModuleDependencies.shared.authenticate()
+                                break
                             default:
                                 if errorEnum == .MAINTAINING {
                                     self.delegate?.didReceiveMaintenance()

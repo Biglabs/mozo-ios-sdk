@@ -448,11 +448,6 @@ class ModuleDependencies {
     func backupWalletDependencies() {
         let backupWalletPresenter = BackupWalletPresenter()
         
-        let backupWalletInteractor = BackupWalletInteractor()
-        backupWalletInteractor.output = backupWalletPresenter
-        
-        backupWalletPresenter.interactor = backupWalletInteractor
-        
         backupWalletPresenter.wireframe = backupWalletWireframe
         backupWalletPresenter.delegate = walletWireframe.walletPresenter
         
@@ -775,59 +770,5 @@ class ModuleDependencies {
         topUpWithdrawWireframe.presenter = presenter
         topUpWithdrawWireframe.walletWireframe = walletWireframe
         topUpWithdrawWireframe.rootWireframe = rootWireframe
-    }
-    
-    // MARK: TEST
-    func testSign() {
-        let tosign = "3e7c8671c98af65e4f957d0843a15ce0616a0624cc5fbc3e6f72b7871f118ac1"
-        let privatekey = "b7643ad0c07b2f2a1232fc4d276c5554e05fa1c8fddb2aed738c7ae0526f5350"
-        _ = "30440220742c8b23491f5560804bcb884cf1866a14598562819afe5fadd8c56a50c26fe5022030d2a9fe32c7f99a4f4adeb62442a360cdc2178f49f7f2907325c470a1d14d59"
-        
-        let signR : String? = tosign.ethSign(privateKey: privatekey)
-        print("Sign result: \(String(describing: signR))")
-        
-        let ts = "52204d20fd0131ae1afd173fd80a3a746d2dcc0cddced8c9dc3d61cc7ab6e966"
-        let pk = "16f243e962c59e71e54189e67e66cf2440a1334514c09c00ddcc21632bac9808"
-        _ = "304402204019e4c591580b2a626beef77f92f21fb30e9c201c6a01ed6e7e6dcbf788ff56022074ae76e4f47a3c23dbaa930994a4f98c2cc1e03cb39c73fd8a246c16e2f3d1a8"
-        
-        let sr : String? = ts.ethSign(privateKey: pk)
-        print("Sign result: \(String(describing: sr))")
-    }
-    
-    func testSeedAndEncryption(manager: WalletManager) {
-        for i in stride(from: 1, to: 11, by: 1) {
-            print("\(i)-seed:")
-            let mnemonic = manager.generateMnemonics()
-            print(mnemonic ?? "")
-            print("\(i)-seed encrypted:")
-            print(mnemonic?.encrypt(key: "000000") ?? "")
-//            let wallet = manager.createNewWallet(mnemonics: mnemonic!)
-//            print("\(i)-privateKey:")
-//            print(wallet.privateKey)
-//            print("\(i)-privateKey encrypted:")
-//            print(wallet.privateKey.encrypt(key: "000000"))
-        }
-    }
-    
-    func testLocalData() {
-        CoreDataStore.shared.getAllUsers()
-    }
-    
-    func testEthAddress() {
-        let result = "0x011df24265841dCdbf2e60984BB94007b0C1d76A".isEthAddress()
-        print(result)
-    }
-    
-    func testAssests() {
-        let img = UIImage(named: "ic_send", in: BundleManager.mozoBundle(), compatibleWith: nil)
-        if img != nil {
-            print("MOZO - TEST ASSESTS - CAN LOAD IMAGE")
-        } else {
-            print("MOZO - TEST ASSESTS - CAN NOT LOAD IMAGE")
-        }
-    }
-    
-    func testLocalization() {
-        print("MozoSDK Localization: \(Locale.current.languageCode ?? "NULL")")
     }
 }

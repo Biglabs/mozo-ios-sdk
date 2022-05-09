@@ -17,7 +17,7 @@ class PaymentInteractor: NSObject {
     func createTransaction(tokenInfo: TokenInfoDTO, item: PaymentRequestDisplayItem) -> TransactionDTO {
         let toAddress = item.requestingAddress
         let input = InputDTO(addresses: [tokenInfo.address!])!
-        let trimToAddress = toAddress.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimToAddress = toAddress.trim()
         let txValue = NSDecimalNumber(decimal: item.amount.decimalValue).multiplying(byPowerOf10: Int16(tokenInfo.decimals ?? 0))
         
         let output = OutputDTO(addresses: [trimToAddress], value: txValue)!
