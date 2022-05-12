@@ -212,31 +212,21 @@ extension CorePresenter : CoreModuleWaitingInterface {
 }
 extension CorePresenter: WalletModuleDelegate {
     func walletModuleDidFinish() {
-        print("CorePresenter - Wallet Module Did Finished, callbackModule: \(callBackModule?.value ?? "NO MODULE")")
-        if let topViewController = DisplayUtils.getTopViewController(), topViewController is MaintenanceViewController {
-            print("CorePresenter - Wallet Module Did Finished but top view controller is MaintenanceViewController - Must wait until maintenance mode back to healthy mode")
+        if let topVc = DisplayUtils.getTopViewController(), topVc is MaintenanceViewController {
+            "CorePresenter - Maintenance mode".log()
             return
         }
-        if callBackModule == .Wallet {
-            callBackModule = nil
-        }
-        if callBackModule != nil {
+        if callBackModule != nil, callBackModule != .Wallet {
             // Present call back module interface
             requestCloseToLastMozoUIs()
             presentModuleInterface(callBackModule!)
-            callBackModule = nil
         } else {
-            if coreWireframe?.rootWireframe?.mozoNavigationController.viewControllers.count ?? 0 > 0 {
-                // Close all existing Mozo's UIs
-                coreWireframe?.requestForCloseAllMozoUIs(completion: {
-                    // Send delegate back to the app
-                    self.authDelegate?.didSignInSuccess()
-                })
-            } else {
+            coreWireframe?.requestForCloseAllMozoUIs(completion: {
                 // Send delegate back to the app
                 self.authDelegate?.didSignInSuccess()
-            }
+            })
         }
+        callBackModule = nil
         readyForGoingLive()
     }
     

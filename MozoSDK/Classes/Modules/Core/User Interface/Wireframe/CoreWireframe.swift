@@ -76,9 +76,7 @@ class CoreWireframe : MozoWireframe {
     }
     
     func requestForCloseAllMozoUIs(completion: @escaping (() -> Swift.Void)) {
-        rootWireframe?.closeAllMozoUIs(completion: {
-            completion()
-        })
+        rootWireframe?.closeAllMozoUIs(completion: completion)
     }
     
     func requestCloseToLastMozoUIs() {
