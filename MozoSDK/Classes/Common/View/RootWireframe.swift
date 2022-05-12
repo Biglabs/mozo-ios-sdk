@@ -106,7 +106,8 @@ class RootWireframe : NSObject {
             vc.dismiss(animated: false)
         }
         mozoNavigationController.viewControllers.removeAll()
-        mozoNavigationController.dismiss(animated: true, completion: completion)
+        mozoNavigationController.dismiss(animated: true)
+        completion()
     }
     
     public func closeToLastMozoUIs() {
