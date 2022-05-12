@@ -17,7 +17,7 @@ class CoreDataStore : NSObject {
     
     override init() {
         super.init()
-        let bundle = BundleManager.podBundle()
+        let bundle = BundleManager.mozoBundle()
         stack = DataStack(
             xcodeModelName: "Mozo",
             bundle: bundle
@@ -111,11 +111,8 @@ class CoreDataStore : NSObject {
                 
                 return userEntity!
             }, success: { (userTransaction) in
-                let newUser = self.stack.fetchExisting(userTransaction)!
-                print("😁 Success to update user, mnemonic: [\(newUser.mnemonic ?? "")]")
                 seal.fulfill(true)
             }, failure: { (csError) in
-                print("😞 Failed to update user, error: [\(csError)]")
                 seal.reject(csError)
             })
         }

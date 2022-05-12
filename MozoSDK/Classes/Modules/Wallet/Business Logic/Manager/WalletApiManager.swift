@@ -15,8 +15,6 @@ extension ApiManager {
             let param = walletInfo.rawData()
             self.execute(.put, url: url, parameters: param)
                 .done { json -> Void in
-                    // JSON info
-                    print("Finish request to update wallet info to user profile, json response: \(json)")
                     let jobj = SwiftyJSON.JSON(json)
                     let userProfile = UserProfileDTO.init(json: jobj)
                     seal.fulfill(userProfile!)
@@ -24,7 +22,6 @@ extension ApiManager {
                 .catch { error in
                     //Handle error or give feedback to the user
                     let err = error as! ConnectionError
-                    print("Error when request update wallet info to user profile: " + error.localizedDescription)
                     seal.reject(err)
                 }
                 .finally {

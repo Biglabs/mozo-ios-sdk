@@ -30,7 +30,6 @@ public class Configuration {
     public static let ACCESS_TOKEN = "Mozo@AccessToken"
     // Pin Secrect
     public static let PIN_SECRET = "Mozo@PinSecret"
-    public static let JWT_TOKEN_CLAIM_PIN_SECRET = "pin_secret"
     // User info
     public static let USER_INFO = "Mozo@UserInfo"
     // User profile
@@ -65,38 +64,23 @@ public class Configuration {
     
     public static let BEGIN_SESSION_URL_PATH = "/protocol/openid-connect/auth"
     
-    public static let END_SESSION_URL_PATH = "/protocol/openid-connect/logout"
-    
     internal static let END_POINT_TOKEN_PATH = "/protocol/openid-connect/token"
     
     // LOGOUT WITH REDIRECT
-    public static let LOGOUT_URL_WITH_REDIRECT_URI = "\(AUTH_ISSSUER)\(END_SESSION_URL_PATH)?redirect_uri="
+    public static let LOGOUT_URL_WITH_REDIRECT_URI = "\(AUTH_ISSSUER)/protocol/openid-connect/logout"
     
-    /**
-     The OAuth client ID.
-     For client configuration instructions, see the [README](https://github.com/openid/AppAuth-iOS/blob/master/Examples/Example-iOS_Swift-Carthage/README.md).
-     Set to nil to use dynamic registration with this example.
-     */
     public static let AUTH_CLIENT_ID = "native_app"
     
     public static let AUTH_RETAILER_CLIENT_ID = "retailer_mobile_app"
     
     public static let AUTH_SHOPPER_CLIENT_ID = "shopper_mobile_app"
     
-    public static let AUTH_PARAM_KC_LOCALE = "kc_locale"
-    
-    public static let AUTH_PARAM_APPLICATION_TYPE = "application_type"
-    
-    public static let AUTH_PARAM_APPLICATION_TYPE_VALUE = "native"
-    
-    public static let AUTH_PARAM_PROMPT = "prompt"
-    
     public static let AUTH_STATE = "Mozo@AuthState"
     public static let AUTH_ID_TOKEN = "Mozo@IdToken"
     
     public static let TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS = 5
     
-    public static func authRedirectURL() -> String {
+    static func authRedirectURL() -> String {
         return "com.biglabs.mozosdk.\(String(describing: Bundle.main.bundleIdentifier!)):/oauth2redirect/mozo-provider"
     }
 }

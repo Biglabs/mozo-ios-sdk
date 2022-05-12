@@ -1,0 +1,1488 @@
+/*
+ Localizable.strings
+ Mozo SDK
+ 
+ Created by Hoang Nguyen on 9/15/18.\n Copyright © 2018 Hoang Nguyen. All rights reserved.\n */
+
+"error_bus_not_found" = "이 노선은 무료 승차권이 없습니다";
+"error_bus_reach_limit" = "오늘 모든 무료 티켓을 사용했어요. 내일 다시 시도하십시오.";
+"error_bus_out_of_time" = "이 노선은 운행 시간이 초과되었습니다.";
+
+"covid_card_title" = "Covid 경고 구역";
+"covid_card_locations" = "%@ 그리고 %d개 위치 더.";
+"covid_card_source" = "출처: 보건부 웹사이트";
+"covid_noti_title" = "Covid-19 경고!";
+"covid_noti_content" = "근처에 새로운 Covid 경고 구역이 %d개 있다.";
+
+"messages_action_accept" = "수락하다";
+"messages_action_reject" = "거부하다";
+"messages_attached_image_text" = "[이미지 첨부]";
+"messages_invite_notice" = "우리는 당신에게 특별한 혜택과 메시지를 제공하기 위해 장기 회원으로 초대하게 되어 기쁩니다.";
+"messages_reject_notice" = "이 출처로부터 메시지를 받는 것을 거부하시겠습니까?";
+"messages_msg_empty" = "아무 메시지가 없습니다";
+"messages_msg_accepted" = "이 근원으로 부터 메시지를 메시지를 수락했습니다";
+"messages_msg_blocked" = "이 근원으로 부터 메시지를 거절했습니다";
+"messages_hint_type_msg" = "메시지를 입력";
+"messages_hint_search_bar" = "소매점 이름으로 찾기";
+
+"lucky_draw_noti_title" = "Bạn đã trúng thưởng!";
+"lucky_draw_noti_content" = "Mozo 행운 추첨 프로그램의 보상을 받은 것을 축하한다.";
+
+"promo_branch_count" = "그리고 %d개 위치 더";
+"promo_branches_count" = "그리고 %d개 위치 더";
+"promo_branches_in_chain" = "체인점의 지점";
+"promo_branches_label" = "분기";
+"promo_for_branches_label" = "지점 프로모션";
+
+"promo_paid_explain_normal" = "점원에게 QR 코드 아래를 스캔하게 하거나 전화기를 사용하여 상점 QR을 스캔하도록 합니다.";
+"promo_paid_explain_custom_code" = "점원이 QR 코드 아래를 스캔하도록 하거나 show code를 누릅니다.";
+"promo_paid_action_show_store_code" = "상점 QR을 스캔";
+
+// MARK: Restriction
+"promo_restrict_none" = "아니요";
+"promo_restrict_time_format" = "HH:mm yyyy/MMM/dd";
+"promo_restrict_once_per_user" = "고객당 1회";
+"promo_restrict_once_per_user_msg" = "이 프로모션은 고객 1인당 1회 제한된다. %@에 구매하셨습니다.";
+"promo_restrict_once_per_day" = "1일 1회(24시간)";
+"promo_restrict_once_per_day_msg" = "이 프로모션은 다음 %@에 살 수 있다.";
+"promo_restrict_once_new_user_of_store" = "신규 고객 1회(모든 지점의 카운트)";
+"promo_restrict_once_new_user_of_store_msg" = "이 프로모션은 신규 고객에 적용된다. 당신은 %@에 구매하셨습니다.";
+"promo_restrict_once_per_new_register_user" = "신규 구독자에게 한 번";
+"promo_restrict_once_per_new_register_user_msg" = "이 프로모션은 신규 등록에 한해 적용된다.";
+"promo_price_discount" = "할인후가격";
+"promo_pos_custom_code_explain" = "이 코드를 상환하려면 출납원에게 표시";
+"btn_show_codes" = "코드 표시";
+"btn_show_code" = "코드 표시";
+
+"Address Book" = "주소록";
+"Select Address" = "주소 선택";
+"Select from Address Book" = "주소록에서 선택";
+"Results not found" = "결과를 찾을 수 없습니다";
+"Search Address" = "주소 검색";
+"Wallet Address" = "월렛 주소";
+"Name" = "이름";
+"Enter Contact Name" = "담당자 이름 입력";
+"Address Saved" = "저장된 주소";
+"This address already exists in your Address Book" = "이 주소는 이미 주소록에 있습니다.";
+"text_wallet_address" = "Mozo 월렛 주소";
+"Creating Interface" = "인터페이스 만들기";
+"Copied!" = "복사 됨!";
+"There is no internet connection!" = "인터넷에 연결되어 있지 않습니다!";
+"Scanned value is invalid." = "스캔 한 값이 유효하지 않습니다.";
+"An error has occurred." = "오류가 발생했습니다.";
+"Your balance is not insufficient for this transfer amount." = "금액을 이송하도록 밸런스가 부족되어있습니다.";
+"Deposit" = "예금";
+"btn_signin_mozo" = "Mozo에 로그인";
+"btn_logout_mozo" = "Mozo 로그 아웃";
+"Transaction History" = "거래 내역";
+"Withdraw" = "철수";
+"btn_withdraw_mozo" = "Mozo인출";
+"Confirm" = "확인";
+"Back" = "돌아가기";
+"Cancel" = "취소";
+"Copy" = "복사";
+"Continue" = "계속";
+"Close" = "닫기";
+"Clear" = "지우기";
+
+"Scan" = "스캔";
+"Enlarge QR Code" = "내 QR 코드 확대";
+"Send" = "보내기";
+"Save" = "저장";
+"Save Wallet Address" = "월렛 주소 저장";
+"Retry" = "재시도";
+"Refresh" = "새로 고침";
+"Try Again" = "다시 시도하십시오.";
+"Backup Wallet" = "월렛 백업 ";
+"Store Recovery Phrase" = "복구 데이터 프레이즈 저장";
+"Please write it down on paper and keep it in a safe place as you would with money." = "이 프레이즈를 적어 안전한 장소에 보관하십시오.";
+"*If you lose your Recovery Phrase, your wallet cannot be recovered." = "* 복구 데이터 문구를 분실하면 월렛을 복구 할 수 없습니다.";
+"If you lose your recovery phrase, your wallet cannot be recovered." = "복구 데이터 문구를 분실하면 월렛을 복구 할 수 없습니다.";
+"I have safely stored Recovery Phrase" = "복구 문구를 안전하게 저장했습니다.";
+"I have safely stored recovery phrase" = "복구 문구를 안전하게 저장했습니다.";
+"Create Security PIN" = "보안 PIN 생성";
+"Restore Wallet" = "월렛 복구";
+"Security PIN Confirmation" = "PIN 코드 확인";
+"Enter your Security PIN" = "PIN 코드 입력";
+"Enter Security PIN" = "PIN 코드 입력";
+"Enter your Security PIN\nto restore wallet" = "월렛을 복구할 PIN 코드를\n입력하십시오.";
+"title_enter_pin_to_send" = "Mozo를 보내도록 보안 PIN을\n입력하십시오.";
+"Enter your Security PIN\nto create airdrop event" = "MozoX를 보내도록 보안 PIN을\n입력하십시오.";
+"Security PIN must be 6 digits" = "PIN은 최소 6 자리 숫자 여야 합니다.";
+"Confirm Security PIN" = "보안 PIN 확인";
+"CONFIRM SERCURITY PIN" = "보안 PIN 확인";
+"Re-enter your PIN" = "PIN 코드를 다시 입력하십시오.";
+"Create Security PIN successful" = "보안 PIN을 성공적으로  생성합니다.";
+"Security PIN is correct" = "정확한 PIN 코드입니다.";
+"Incorrect Security PIN" = "PIN 코드가 잘못되었습니다.";
+"Create Wallet failed" = "월렛 생성에 실패했습니다.";
+"Customer has entered" = "고객이 상점에 방문하였습니다.";
+"Customer has left" = "고객이 떠났습니다.";
+"From %@" = "%@부터";
+"To %@" = "%@까지";
+"title_request_mozo" = "Mozo 요청";
+"Receive Amount" = "수신 금액";
+"Requested List" = "요청한 리스트";
+"Create Request" = "요청 만들기";
+"text_request_explain" = "Mozo를 수신 요청하는 방식으로 다른 사용자에게 Mozo 를 자신의 월렛으로 보내도록 요청할 수 있습니다.";
+"Send Request" = "요청 보내기";
+"btn_scan_to_send" = "Mozo를 보내도록 스캔하십시오.";
+"Scan to send:" = "보낼 스캔";
+"Send request to" = "요청 보내기";
+"Send Request Successful" = "요청을 성공적으로 보냈습니다.";
+"Requested list is empty" = "요청한 리스트가 비어 있습니다.";
+"From:" = "부터:";
+"Request:" = "요청하기";
+"title_send_mozo" = "Mozo 보내기";
+"Confirmation" = "확인";
+"text_from_mozo_wallet" = "Mozo 월렛에서";
+"Receiver Address" = "수신자 주소";
+"Enter receiver wallet address" = "수신자의 월렛 주소를 입력하십시오.";
+"Error: The Receiver Address is not valid." = "오류 : 수신자 주소가 유효하지 않습니다.";
+"Amount" = "금액";
+"Input value in decimal format" = "십진수로 값을 입력하십시오.";
+"Error: Your spendable is not enough for this." = "오류 : 잔액만으로는 충분하지 않습니다.";
+"Error: Amount is too low, please input valid amount." = "오류 : 금액이 너무 적습니다. 유효한 금액을 입력하십시오.";
+"Error: Please input value in decimal format." = "오류 :십진수로 값을 입력하십시오.";
+"Spendable:" = "가용 잔액:";
+"Send Complete" = "보내기 완료";
+
+"You have just sent:" = "방금 보낸 내용";
+"Transaction Detail" = "거래 세부 정보";
+"Wallet Address" = "월렛 주소";
+"View Transaction Detail" = "거래 세부 정보를 보기";
+"Transaction History" = "거래 내역";
+"text_mozo_wallet" = "Mozo 월렛";
+"Transaction history list is empty" = "거래 내역 리스트가 비어 있습니다.";
+"text_mozo_balance" = "Mozo 밸런스";
+"text_your_mozo_wallet_address" = "귀하의 Mozo 월렛 주소";
+"To" = "까지";
+"From" = "에서";
+"You must" = "이 기능을 사용하려면";
+"Login" = "로그인";
+"to use this function" = "귀하가 해야할 일이";
+"All" = "모두";
+"Received" = "수신됨";
+"Sent" = "보냈음";
+"Pending" = "처리중";
+"Failed" = "실패";
+"Success" = "성공";
+"View All" = "전체보기";
+"Phone Number" = "전화 번호";
+"Enter your mobile phone" = "전화 번호를 입력하십시오.";
+"Version 0.1" = "0.1 버전";
+"Search" = "검색";
+"SIGN IN" = "로그인";
+"SIGN UP" = "가입";
+"Password" = "비밀번호";
+"Enter your password to login" = "로그인 할 비밀번호를 입력하십시오.";
+"Show" = "보여 줌";
+"Forgot your password?" = "비밀번호를 잊어 버렸습니까?";
+"Hide" = "숨김";
+"Re-send activation code" = "활성화 코드 다시 보내기";
+"Or" = "또는";
+"Send voice OTP" = "음성 메시지로 OTP 보내기";
+"Confirmation successful!" = "확인 성공!";
+"Six characters miminum with no spaces" = "최소 6 자 이상에 공백이 포함되지 않습니다.";
+"Re-enter your password" = "비밀번호를 다시 입력하십시오.";
+"I’m not a robot" = "저는 로봇이 아닙니다.";
+"Re-sent successful" = "성공적으로 다시 보냈습니다.";
+"Verification code will send to this phone number" = "인증 코드가 이 전화 번호로 전송됩니다.";
+"Create New Password" = "새 비밀번호 만들기";
+"ENTER YOUR SECURITY PIN" = "PIN 코드를 입력하십시오.";
+"Security PIN must be 6 digit numbers" = "보안 PIN 코드는 6 자리 숫자 여야합니다.";
+"CONFIRM SECURITY PIN" = "PIN 코드를 확인하십시오.";
+"Re-enter your PIN" = "PIN 코드를 디사 입력하십시오.";
+"Successful" = "성공";
+"Restore Wallet" = "월렛 복구";
+"Account Verify" = "계정 확인";
+"Email" = "이메일";
+"Mail" = "메일";
+"Phone" = "전화 번호";
+"Call" = "전화하기";
+"Log in with another phone number" = "다른 전화 번호로 로그인하십시오.";
+"Account Verified" = "계정이 확인되었습니다";
+"Welcome" = "Mozo에 오신 것을 환영합니다";
+"Address" = "주소";
+"Start" = "시작";
+"Sign Up Succesful" = "성공적인 가입했습니다.";
+"You have a sub-account at" = "귀하의 계정이 .....에 하위 계정 였습니다.";
+"Access Denied" = "접근 불가능입니다.";
+"Your account has been removed" = "귀하의 계정이 삭제되었습니다.";
+"Log out" = "로그 아웃";
+"Do you want to log out this Sub-Account ?" = "이 하위 계정을 로그 아웃 하시겠습니까?";
+"OK" = "확인";
+"Log Out Successful!" = "성공적인 로그 아웃!";
+"Back to log in" = "로그인으로 돌아 가기";
+"Enter amount to receive" = "받을 Mozo 금액을 입력하십시오.";
+"Your TX has been broadcast" = "귀하의 TX가 방송되었습니다.";
+"TX hash:" = "TX 해시:";
+"Enter amount to send" = "보낼 Mozo  금액을 입력하십시오.";
+"Name can not be empty" = "이름이 비어 있으면 안 됩니다.";
+"Add New Address" = "새 주소 추가";
+"Save changes" = "변경 사항을 저장합니다.";
+"Address Detail" = "주소 세부 정보";
+"View" = "보기";
+
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ" = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+// Retailer
+"Mozo Business" = "Mozo비지니스";
+"Sync Beacon" = "Beacon 동기화";
+"Remove Beacon from its Package. Scan QR Code to sync Beacon with your store." = "Mozo 박스에서 Beacon을 가져와서  Beacon을 상점과 동기화하기 위하여 QR 코드를 스캔하십시오.";
+
+"Beacon Sync Successful!" = "성공적으로 Beacon 동기화";
+"Now stick Beacon where you want to use it (Wall, Counter, Ceiling) to detect Shoppers whenever they visit your store." = "상점을 방문 쇼핑객를 감지할 수 있는 위치(벽, 카운터, 천장)에 Beacon을 놓으십시오.";
+"Beacon Range Configuration" = "Beacon을 범위 설정";
+"Now scan to detect Beacon and configure Beacon range." = "이제  Beacon을 감지하기 위하여 스캔하며 활동 범위를 설정하십시오.";
+"*You need to turn on Bluetooth to detect the Beacon." = "Beacon을 감지하기 위하여 블루투스를 켜야합니다.";
+"Bluetooth is On" = "블루투스 켜짐";
+"Turn on Bluetooth" = "블루투스 열기";
+"Scan for the Beacon" = "Beacon을 스캔하기";
+"Set up range by sliding Distance Bar." = "거리 바 슬라이딩하는 방식으로 활동 범위를 설정하십시오.";
+"Beacon battery will last longer if you set signal range under %@m" = "당신이 %@m 아래에있는 Beacon을 범위를 설정 한 경우 비콘 배터리가 더 오래 지속됩니다.";
+"Beacon %@ is Detected" = "Beacon %@ 감지됨";
+"Beacon Location Setting" = "Beacon 의 위치 설정";
+"Make sure that your store location is displayed correctly. Shoppers will use this location to find your store." = "상점을 방문 쇼핑객을 감지할 수 있는 위치(벽, 카운터, 천장)에 Beacon을 놓으십시오.";
+
+"Store Location is correct. Let me continue." = "정확한 위치입니다.계속하십시오.";
+"Configuration Successful!" = "성공적으로 설정";
+"Beacon range and location on map are configured successfully." = "지도에 표시되는 위치와 Beacon 의 활동 위치를 성공적으로 설정했습니다.";
+"Create Airdrop Event" = "Airdrop 이벤트 만들기";
+"Continue" = "계속";
+"Log in with another phone number" = "다른 전화 번호로 로그인";
+"Use my location" = "현재 위치 사용";
+"Turn on GPS" = "GPS 켜기";
+"Account Verification" = "계정 확인";
+"Home" = "메인 페이지";
+"Analytics" = "보고서";
+"Wallet" = "월렛";
+"Notification" = "공지 사항";
+"More" = "추가";
+"Running Event" = "이벤트가 실행 중입니다.";
+"Mail" = "이메일";
+"Call" = "전화";
+"Saving.." = "저장 중 ..";
+"Scanning.." = "스캔 중 ..";
+"Beacon detected, connecting.." = "감지되어 있으며 연결 중 ..";
+"Connection failed!" = "연결에 실패했습니다!";
+"All" = "모두";
+"My Store" = "상점";
+"More" = "추가";
+"Event List" = "이벤트 리스트";
+"Add Sub-Account" = "하위 계정 추가";
+"Add" = "추가";
+"Log Out" = "로그 아웃";
+"Settings" = "설정";
+"Privacy Policy" = "프라이버시 및 정책";
+"Privacy Policy" = "프라이버시";
+"About" = "정보";
+"Add Beacon" = "Beacon 추가";
+"Create Event" = "새로 만들기";
+"Email" = "이메일";
+"Phone" = "전화 번호";
+"Hashtags" = "해시 태그";
+"Opening Hours" = "영업 시간";
+"Address" = "주소";
+"Edit" = "수정";
+"Store Information" = "상점 정보";
+"Map" = "지도";
+"Add\nPhoto" = "이미지\n추가";
+"Photo" = "이미지";
+"btn_buy_mozo" = "Mozo 구입";
+"btn_request_mozo" = "Mozo 요청";
+"Shoppers this month" = "월중 쇼핑객";
+"Active Events" = "이벤트가 실행 중입니다.";
+"View all Events" = "이벤트 전체보기";
+"View all Shoppers" = "쇼핑객 전체보기";
+"Visiting Shoppers" = "쇼핑객이 상점에 있습니다";
+"Airdrops per Shopper:" = "쇼핑객 당 Airdrops 수신";
+"Time:" = "시간";
+"Airdrop Time" = "Airdrop 시간";
+"Frequency:" = "빈도";
+"Frequency" = "빈도";
+"Duration:" = "기간";
+"Duration" = "기간";
+"text_store_location_on_map" = "Mozo 앱에 있는 지동에 귀하의 상점 위치";
+"Edit Location" = "위치수정";
+"Select Photo Album" = "이미지 앨범 선택";
+"Tap to select Images" = "이미지를 선택하기 위하여 터치하십시오";
+"%d selected" = "%d 선택했습니다.";
+"Can select a maximum of %d images" = "최대 이미지 %d 장을 선택하십시오.";
+"App requires permission to access \"Storage\" to view images." = "앱에서 이미지를 받기 위해 메모리 액세스가 필요합니다.";
+"App requires permission to access \"Storage\" to view images. Tap \"Settings\" and then \"Permissions\" to grant permission." = "앱에서 이미지를 받기 위해 메모리 액세스가 필요합니다.\n설정'을 선택하며 권한을 부여하기 위하여 '사용 권한'으로 이동하십시오.";
+"OK" = "확인";
+"Settings" = "설정";
+"Package" = "패키지";
+"Filter" = "필터";
+"Notification Filter" = "공지 사항 필터";
+"Notification" = "공지 사항";
+"Shopper Notification" = "월중 쇼핑객";
+"Display All" = "모두 표시";
+"Apply" = "신청";
+"New Shopper has arrived" = "방금 도착한 쇼핑객";
+"Mozo Sent" = "Mozo를 보내됨";
+"System Notification" = "시스템에서 공지 사항";
+"Update Notification" = "업데이트가 발생시 공지 사항";
+"Daily Analytics" = "일일 보고서";
+"text_analytic_number_of_mozo_airdroped" = "Airdrop 된 총 Mozo 코인";
+"text_event_total_mozo_airdroped" = "Airdrop 된 총 Mozo 코인 수량";
+"Create Airdrop Event" = "Airdrop 이벤트 만들기";
+"Event Name" = "이벤트이름";
+"Number of shoppers" = "수령인수";
+"Number of shoppers:" = "수령인수:";
+"Total Airdrop Amount" = "Airdrop이 필요한 총 Mozo";
+"Hour(s)" = "시간";
+"Event Period" = "기간";
+"Event Period:" = "기간";
+"Create" = "새로 만들기";
+"Selected days" = "활성 날짜";
+"Selected days:" = "반복:";
+"Create Event Successful!" = "성공적인 이벤트 만들기";
+"btn_add_more_mozo" = "Mozo 추가";
+"btn_add_mozo" = "Mozo 추가";
+"Add New Sub-Account" = "하위 계정 추가";
+"Select Country" = "국가 선택";
+"Select ISD" = "지역 코드";
+"Search" = "검색";
+"Sub-Account List" = "하위 계정 리스트";
+"Edit Sub-Account" = "하위 계정 수정";
+"Remove" = "삭제";
+"Enter your mobile phone number" = "휴대 전화 번호 입력";
+"Sign Up Successful!" = "성공적인 등록";
+"Do you want to remove this Sub-Account?" = "이 하위 계정을 삭제 하시겠습니까?";
+"Do you want to add this phone number as Sub-Account?" = "이 전화 번호를 하위 계정에 추가 하시겠습니까?";
+"Today" = "오늘";
+"AM" = "오전";
+"PM" = "오후";
+"Done" = "완료";
+"From" = "부터";
+"To:" = "까지:";
+"Everyday" = "매일";
+"Today" = "오늘";
+"Earlier" = "그 전에";
+"Our Products" = "상품";
+"Privacy Policy And Terms of Use" = "프라이버시 및 이용 약관";
+"Event list is empty" = "이벤트 리스트가 비어 있습니다.";
+"Shopper list is empty" = "쇼핑객 리스트가 비어 있습니다.";
+"In store" = "상점에 있습니다";
+"Last visited: %@" = "최근 방문 시간";
+"Invite user" = "사용자 초대";
+"FAQ" = "문의 사항 (FAQ)";
+
+"Notification list is empty" = "알림 리스트가 비어 있습니다.";
+"Beacons list is empty" = "Beacons 리스트가 비어 있습니다.";
+"Sub-Account list is empty" = "하위 계정 리스트가 비어 있습니다.";
+"New shopper" = "신규 쇼핑객";
+"Distance" = "거리";
+"Battery Life" = "배터리 수명";
+"Last Signal" = "최근 신호";
+"Close Hour" = "닫는 시간";
+"Open Hour" = "오픈 시간";
+"Invite customers" = "사용자 초대";
+"Reset" = "다시 놓기";
+"Edit Hashtag" = "해시 태그 수정";
+"Add new Hashtag" = "해시 태그 추가";
+"Enter new Hashtag" = "새 해시 태그 입력";
+"You can add maximum %d Hashtags for your store.\nThe first one will be your main Hashtag." = "상점에 최대 %d 개의 해시 태그를 추가 할 수 있습니다.\n첫 번째 것은 주요 해시 태그입니다.";
+"You may like" = "당신이 좋아할 까요";
+"Hashtag list is empty" = "해시 태그 리스트가 비어 있습니다.";
+"You can only add a maximum of %d Hashtags" = "해시 태그가 최대 %d 개까지 추가 할 수 있습니다.";
+"OK" = "확인";
+"Repeat" = "반복";
+"Repeat:" = "반복";
+"Your Store must have at least %d Hashtag." = "귀하의 상점은 적어도 하나의 해시 태그가 있어야합니다.";
+"Only letters and numbers are allowed." = "숫자 나 문자에만 허용됩니다.";
+"Yes" = "동의";
+"No" = "아니요";
+"Just now" = "지금";
+"%dm ago" = "%d일 전";
+"%d hour" = "%d시";
+"%d hours" = "%d시";
+"%d min" = "%d분";
+"%d mins" = "%d분";
+"The Event can only begin after %d minutes" = "이벤트의 시작 기간은  현재 기간보다 최소한 %d 분 이상 커야합니다.";
+"Period time \"To\" must be greater than currently" = "종료 기간은 현재 기간보다 커야합니다.";
+"Frequency must be greater than %d" = "빈도는 %d 보다 커야합니다.";
+"Can't find Beacon" = "Beacon을 찾을 수 없습니다.";
+"Please input \"Number of Shoppers\" and number of \"Airdrop per Shopper\"" = "쇼핑객 별에 '쇼핑객 수 '와 'Airdrop 수 '를 입력하십시오.";
+"text_msg_add_mozo_success" = "Mozo를 성공적으로 추가했습니다!";
+"Please input a valid Phone Number" = "유효한 전화 번호를 입력하십시오.";
+"Invalid country code" = "국가 코드가 잘못되었습니다.";
+"Photos uploading..." = "이미지 업로드 중 ...";
+"Maximum number of photos is %d" = "최대 이미지 수는 %d 개입니다.";
+"Closing Hour must be later than Opening Hour" = "닫는시간은 오픈 시간보다 늦어야합니다.";
+"You do not have permission to do this action!" = "이 작업을 수행 할 수있는 권한이 없습니다.";
+"Are you sure to logout" = "로그 아웃 하시겠습니까?";
+"Ex: 1st Tony Moly event" = "예 : 1 차 Tony Moly 이벤트";
+"Start" = "시작";
+"Currently" = "현재";
+"Invite friends" = "친구 초대";
+"Just Now" = "지금";
+"Create airdrop event failed. Please try again!" = "Airdrop 이벤트를 만들지 못했습니다. 다시 시도하십시오!";
+"Try again" = "다시 시도하십시오.";
+"Email Us" = "문의 이메일";
+"General" = "총괄";
+"Airdrop" = "Airdrop";
+
+"text_event_out_of_mozo" = "Mozo 부족";
+"End" = "종료 됨";
+"Scheduled_Airdrop" = "예정된";
+
+"Period:" = "행사기간";
+"Receivers:" = "수령인수:";
+
+"Monday" = "월요일";
+"Tuesday" = "화요일";
+"Wednesday" = "수요일";
+"Thursday" = "목요일";
+"Friday" = "금요일";
+"Saturday" = "토요일";
+"Sunday" = "일요일";
+"Every day" = "매일";
+"Weekends" = "주말";
+"Weekdays" = "평일";
+"Mon" = "월요일";
+"Tue" = "화요일";
+"Wed" = "수요일";
+"Thu" = "목요일";
+"Fri" = "금요일";
+"Sat" = "토요일";
+"Sun" = "일요일";
+
+"Let your staff to work on your behalf" = "직원에게 운영 권한을 부여하십시오";
+"%d sec(s) ago" = "%d 초 전에";
+"%d min(s) ago" = "%d 분 전에";
+"%d hour(s) ago" = "%d 시 전에";
+"%d day(s) ago" = "%d 일 전에";
+"%d week(s) ago" = "%d 주일 전에";
+
+"Minutes" = "분";
+"%d min(s)" = "%d 분";
+"Hours" = "시";
+"%d hour(s)" = "%d 시";
+"Days" = "일";
+"%d day" = "%d 일";
+"%d days" = "%d 일";
+"%d day(s)" = "%d 일";
+
+"Can not apply empty list for days of week." = "요일을 비워 둘 수 없습니다.";
+"There is no data to display" = "표시 할 데이터가 없습니다.";
+"Enter store name to search" = "검색 할 상점 이름을 입력하십시오.";
+"User Address" = "사용자 주소";
+"Store Address" = "상점 주소";
+
+// SHOPPER
+"My wallet" = "내 지갑";
+"Search history" = "기록 검색 ";
+"Invite friends" = "친구 초대";
+"Settings" = "설정";
+"Privacy & Policy" = "프라이버시 및 정책";
+"About" = "관하여";
+"Log Out" = "로그 아웃";
+"Apply" = "필터";
+"Directions" = "길";
+"Favorite" = "좋아하는";
+"Search" = "검색";
+"Share" = "공유";
+"Store Location" = "상점 위치";
+"Sort" = "정렬";
+"View Store list" = "상점 리스트";
+"Group Stores" = "상점 그룹";
+"Filter" = "필터";
+"Search Results" = "결과 검색";
+"Sort" = "정렬";
+"By Distance" = "거리로";
+"Only display stores in my range" = "내 범위의 상점 만 표시";
+"Nearest to Furthest" = "가장 가까운 곳에서 가장 먼 곳까지";
+"Airdrop list is empty" = "Airdrop 리스트가 비어 있습니다.";
+"Airdrop Events" = "Airdrop 이벤트";
+"There is no active airdrop event" = "활성 Airdrop 이벤트가 없습니다.";
+"Coin" = "코인";
+"Group %d Stores" = "상점 %d 그룹";
+"Hours: %@ - %@" = "시간: %@ - %@";
+"Hours: %@" = "시간: %@";
+"Hashtag" = "해시 태그";
+"You can also care about" = "가장 가까운 상점";
+"Your location" = "현 위치";
+"Enter Shop name to search" = "검색 할 상점 이름을 입력하십시오.";
+"Results not found" = "검색한 결과가 없습니다.";
+"%d Result(s) for" = "에 %d 개 결과";
+"Sorted by:" = "정렬 기준 :";
+"text_total_mozo" = "총 Mozo 코인 수:";
+"Not now" = "지금 아님";
+"App Settings" = "설정";
+"Added into favorite stores" = "가고싶은 상점으로 추가되었습니다.";
+"Cash" = "현금";
+"Today collected coins" = "오늘 수집 된 코인";
+"Name" = "이름";
+"Date of birth" = "생년월일";
+"Email" = "이메일";
+"Gender" = "성별";
+"None" = "아니요";
+"Save" = "저장";
+"Female" = "여성";
+"Edit" = "수정";
+"Currencies" = "통화 단위";
+"Languages" = "언어";
+"Two factors authentication setting" = "두 가지 요소 인증 설정";
+"Korean" = "한국어";
+"Chinese" = "중국어";
+"Japanese" = "일본어";
+"English" = "영어";
+"Korea Won (₩)" = "한국 원(₩)";
+"US Dollar ($)" = "미국 달러 ($)";
+"Privacy Policy" = "정책 및  프라이버시 ";
+"Change Password" = "비밀번호 변경";
+"You need to confirm your security PIN to change password" = "비밀번호를 변경하려면 PIN 코드를 확인해야합니다.";
+"Current password" = "현재 비밀번호";
+"Enter your current password" = "현재 비밀번호를 입력하십시오";
+"New password" = "새 비밀번호";
+"Enter new password" = "새 비밀번호를 입력하십시오.";
+"Change password successful!" = "비밀번호를 성공적으로 변경했습니다.";
+"Promotion Details" = "프로모션 세부 정보";
+// LOCAL ERROR MESSAGE
+"Unknown Error" = "알 수없는 오류";
+"Scan timeout" = "과도한 스캔 시간/ 스캔 타임 아웃";
+"Invalid QR Code" = "잘못된 QR 코드";
+"Connect failed!" = "연결 실패!";
+"Connect timeout" = "연결 시간 초과";
+"Couldn't connect to beacon" = "Beacon에 연결할 수 없습니다.";
+"Beacon ownership verification failed. Try again, and if the problem persists, set this beacon aside and try another one." = "Beacon소유권 인증에 실패했습니다. 다시 시도하십시오.같은 문제가 계속되면 확정된 위치 밖에 Beacon을 설정하고 다른 Beacon로 다시 시도하십시오.";
+"Couldn't reach Estimote Cloud. Check your Internet connection, then try again." = "Estimote Cloud에 연결할 수 없습니다. 인터넷 연결을 다시 확인하거나 다시 시도하십시오.";
+"Try again. If the problem persists, try restarting Bluetooth. If that doesn't help either, set this beacon aside and try another one." = "다시 시도하십시오. 같은 문제가 계속되면 Bluebooth를 다시 켜십시오. 아직도 가능하지 않은 경우, 확정된 위치 밖에 Beacon을 설정하고 다른 Beacon로 다시 시도하십시오.";
+"Beacon disconnected while connecting" = "Beacon연결이 중단되었습니다.";
+"Try again. If the problem persists, try restarting Bluetooth. If that doesn't help either, set this beacon aside and try another one." = "다시 시도하십시오. 같은 문제가 계속되면 Bluebooth를 다시 켜십시오. 아직도 가능하지 않은 경우, 확정된 위치 밖에 Beacon을 설정하고 다른 Beacon로 다시 시도하십시오.";
+"Copied!" = "복사됨!";
+"Scanned value is invalid." = "스캔 한 데이터가 유효하지 않습니다.";
+
+"Frequency must be equal or larger than %d minutes" = "Airdrop 빈도는  최소한 %d 분입니다.";
+"Sorry, something went wrong. Please try again or restart the app." = "죄송합니다. 무엇인가 잘못되었습니다. 다시 시도하거나 앱을 다시 시작하십시오.";
+"Back" = "돌아가기";
+"Error" = "오류";
+"To" = "까지";
+"From" = "부터";
+"Coin" = "코인";
+"Confirm" = "확인";
+"Yes" = "네";
+"No" = "아니요.";
+"Are you sure?" = "확실합니까?";
+"Contacts list is empty" = "연락처 리스트가 비어 있습니다.";
+
+"Customer come in" = "고객이 방금 상점에 도착합니다.";
+"Customer has just left" = "고객이 방금 떠났습니다.";
+"Sent" = "보내기";
+"Received" = "수신됨";
+"Unable to create transaction." = "거래를 생성 할 수 없습니다.";
+"Unable to create airdrop event." = "Airdrop이벤트를 만들 수 없습니다.";
+
+
+"You can only select less than %d images." = "이미지를 %d 개 미만 선택할 수 있습니다.";
+"Select Photo Album" = "이미지 앨범 선택";
+"Tap to select Images" = "이미지를 선택하기 위하여 누르십시오.";
+"App requires permission to access Storage to view images. Tap Settings and go toPermissions to grant permission." = "MozoX는 이미지 메모리 접속이 필요합니다. 설정을 선택하고 사용 권한을 부여하기 위하여 사용 권한으로 이동하십시오.";
+"App requires permission to access Storage to view images." = "MozoX는 이미지 메모리 접속이 필요합니다";
+"Photos are uploading..." = "이미지가 업로드 중입니다.";
+"A maximum of photos is %d" = "최대 이미지 수는 %d 개입니다.";
+"Open hour must not be later than Close hour" = "오픈 시간은 닫는 시간보다 더 크면 안 됩니다.";
+"Close hour must be later than Open hour" = "닫는 시간은 오픈 시간보다 더 켜야합니다.";
+"You do not have permission to do this action!" = "이 작업을 수행 할 수있는 권한이 없습니다.";
+
+
+"You can only add a maximum of %d hashtags" = "최대 해시 태그 %d 개만 추가 할 수 있습니다.";
+"Your Store has least one Hashtag." = "귀하의 상점에는 최소한 하나의 해시 태그가 있어야 합니다.";
+
+"Airdrop time \"To\" must be greater than time \"From\"" = "Airdrop 이벤트의  종료 시간은 시작 시간 후에 수행되어야합니다.";
+"Period time \"To\" must be greater than time \"From\"" = "Airdrop 이벤트의  종료 기간은 시작 기간 후에 수행되어야합니다.";
+"The Event can only begin after %d minutes" = "이벤트는 %d 분 후에만 시작될 수 있습니다.";
+"Period time \"To\" must be greater than currently" = "Airdrop 이벤트의  종료 기간은 시작 기간보다 커야합니다.";
+"Frequency must be greater than 0" = "Airdrop의 빈도는 0보다 커야합니다.";
+"Cannot find any beacon on your store" = "Beacon을 못 찾았습니다.";
+"Please input \"Receiver\" and number of \"Airdrop per shopper\"" = "수신자의 수량과' 각 쇼핑객에게 Airdrop한 Mozo'의 수량을 입력하십시오.";
+"Airdrop event transaction is created with failure status." = "Airdrop 이벤트 트랜잭션이 실패 상태로 생성됩니다.";
+
+"Invalid country code." = "국가 코드가 잘못되었습니다.";
+
+"Amount is too low, please input valid amount." = "금액이 너무 적으니까 유효 금액을 입력하십시오.";
+"No token info" = "코인 정보 없음";
+"Amount is empty." = "수량이 비어 있습니다.";
+"Please input value in decimal format." = "십진수 형식으로 값을 입력하십시오.";
+"The length of decimal places must be equal or smaller than %d" = "소수 자릿수는 %d 보다 작거나 같아야합니다.";
+"Scanning value is not a valid address." = "스캔 주소가 유효하지 않습니다.";
+"Invalid address." = "주소가 유효하지 않습니다.";
+"Please enter address or select from address book." = "주소를 입력하거나 주소록에서 선택하십시오.";
+"Your spendable is not enough." = "사용 가능한 잔액이 충분하지 않습니다.";
+"The Receiver Address is not valid." = "수신자 주소가 유효하지 않습니다.";
+"Please input amount." = "금액을 입력하십시오.";
+
+"Scanning not supported" = "스캔이 지원되지 않습니다.";
+"Your device does not support scanning a code from an item.\nPlease use a device with a camera." = "귀하의 장치는 코드 스캔을 지원하지 않습니다.\n카메라가있는 장치를 사용하십시오.";
+"Address is existing in address book list." = "주소가 이미 있습니다.";
+"Network error. Please try again." = "네트워크 오류가 발생합니다. 다시 시도하십시오.";
+"No Internet Connection" = "인터넷에 연결되지 않습니다.";
+"The request timed out" = "요청 시간이 초과되었습니다.";
+"Unknown error" = "알수없는 오류입니다.";
+"System error" = "시스템 오류입니다.";
+
+// API ERROR MESSAGE
+"Your session has expired. Please login again" = "기간이 만료되었습니다. 다시 로그인하십시오.";
+"error_fatal" = "Mozo 서버에 연결할 수 없습니다. 자세한 내용은 문의하십시오.";
+
+"Your account has been deactivated temporarily. Please sign in with other account or contact us for more information (phone + email)" = "계정서비스가 잠시 중단 되었습니다.다른 계정으로 로그인하거나 자세한 내용은 고객서비스팀에게 문의하십시오 (전화 + 이메일).";
+
+"This beacon has been registered to another branch. Please contact us for more information (email + phone)" = "이 Beacon은 다른 상점에 등록되었습니다. 자세한 내용은 카운슬러에게 문의하십시오 (이메일 + 전화).";
+
+"error_date_less_current" = "이벤트의 시작 시간은 현재 시간보다 10 분 전이여야 합니다. 정보를 다시 확인하십시오.";
+"error_date_start_must_earlier_end" = "이벤트의 시작 시간은 종료 날짜 이전에 이루어져야합니다. 정보를 다시확인하십시오.";
+"error_time_start_must_earlier_end" = "\"부터\"적용된 시간은 \"까지\" 적용된 시간보다 이전이어야합니다. 입력 내용을 다시 확인하십시오.";
+"error_invalid_frequency" = "빈도\'는 쇼핑객이  최근 성공적으로 수령 한 이후 동일한 이벤트에서 Mozo를 계속받을 수있는 최소 시간입니다. Mozo 수신 빈도는 30 분 이상이어야합니다. 정보를 다시 확인하십시오.";
+"error_invalid_total_amount" = "Airdrop한 Mozo 금액이 가능한 잔액보다 큽니다. 정보를 다시 확인하십시오";
+"error_invalid_per_customer_amount" = "각 쇼핑객에게 드린 Airdrop Mozo 금액이 유효하지 않습니다. 정보를 다시확인하십시오.";
+"error_input_number_of_shopper_out_of_range" = "\'%@\'가 허용 된 시스템 제한을 초과했습니다 (%@ - %@)";
+"error_temporary_suspend" = "이 기능은 일시적으로 중단된다. 그것은 다음 출시 때 곧 출시될 것이다.\n앱 스토어에서 업데이트를 확인하십시오.";
+"error_branch_name_existed" = "이름이 %@인 지점이 이미 있음 다른 이름을 선택하십시오.";
+"error_promo_other_store" = "다른 스토어의 프로모션입니다";
+"error_promo_target_consumer" = "이 프로모션은 사용할 수 없습니다";
+
+"Something is wrong with your account status. Please try again." = "오류가 발생했습니다. 다시 시도하십시오.";
+"Your wallet was updated but did not sync with your current device. Please restore your wallet first." = "월렛 계정이 업데이트되었지만 사용중인 장치와 동기화되지 않았습니다. 시작하기 전에 월렛을 복구하십시오.";
+"The destination wallet was not found. Please recheck the wallet address or try another wallet address" = "수신자의 월렛 주소를 찾을 수 없습니다. 월렛 주소를 다시 확인하거나 다른 월렛 주소를 시도하십시오.";
+
+"This phone number has already been registered. Please enter another number." = "이 전화 번호는 이미 등록되었습니다. 다른 번호를 입력하십시오.";
+
+// Updating content
+"Collectible" = "소장품";
+"Global Ultility" = "전 세계적으로 사용 가능";
+"Share Interest" = "관심 분야 공유";
+"Token of Discovery" = "발견된 코인";
+"intro_step_collectible" = "주위에 관심있는 상점을 찾고 Mozo 를 받으십시오.";
+"intro_step_global_ultility" = " 받은 Mozo 코인을 Mozo를 적용하는 상점에서 보상으로 바꿀 수 있습니다.";
+"intro_step_share_interest" = "Mozo 월렛을  통해 Mozo를 친구에게 쉽게 이전합니다.";
+"intro_step_token_of_discovery" = "Mozo 체험하고 받으시오";
+"Let's get started!" = "시작하자!";
+"Disrupt Foot Traffic" = "고객 트래픽 폭발";
+"Analytics" = "분석 보고";
+"Redeem" = "보상";
+"Liquidity" = "유동성";
+"Reduce Cost" = "비용 절감";
+"intro_step_disrupt_foot_traffic" = "Airdrop Mozo를 통해 상점에 더 많은 고객을  유치합니다.";
+"intro_step_analytics" = "더 좋은 전략을 세우기 위하여고객 정보를 수집하고 분석하십시오.";
+"intro_step_redeem" = "상점에서 고객이 보상을 바꾸는 방식으로 Mozo로 계산할 수있게 허락한다";
+"intro_step_liquidity" = "Mozo 월렛으로 Mozo 를 쉽게 이전하거나 충전 또는인출할 수 있습니다.";
+"intro_step_reduce_cost" = "Mozo로 방문자 수를 증가하고 비용을 절감합니다";
+"This month airdropped" = "이번 달에 airdrop 되었습니다.";
+"Visited Shoppers" = "방문한 쇼핑객 리스트";
+"Every (Frequency of Airdrop)" = "에어 드롭의 빈도";
+"Selected days" = "날짜 선택";
+"Next" = "다음 가기";
+"Skip" = "넘어가기";
+"day" = "일";
+"days" = "며칠";
+"Maximum of image size is %d" = "최대 이미지 크기는 %d 입니다.";
+"MMM d, yyyy" = "yyyy년 M월 d일";
+"MMMM yyyy" = "yyyy년 M월 d일";
+"HH:mm MMM d, yyyy" = "HH:mm yyyy년 M월 d일";
+"display_date_time_zone" = "HH:mm (O) yyyy년 M월 d일";
+"display_date_time_zone_brln" = "HH:mm (O)\nyyyy년 M월 d일";
+"From %@\nTo %@" = "부터 %@\n까지 %@";
+"Under Construction" = "개발중";
+"Info" = "정보";
+"Your name" = "이름";
+"Your phone number" = "전화 번호";
+"Action Complete" = "액션 완료";
+"Coming soon" = "출시 예정";
+"Foot Traffic" = "도보 트래픽";
+"%@ Coin" = "코인 %@";
+"To select photo from library." = "라이브러리에서 사진을 선택하기 위하여";
+"Take Photo" = "사진 찍기";
+"Use Photo" = "사진 사용";
+"Remove Photo" = "사진 제거";
+"Removed from favorite stores" = "좋아하는 상점에서 삭제되었습니다.";
+
+"Favorite list is empty" = "좋아하는 리스트가 비어 있습니다.";
+"Welcome, %@" = "%@ 이라는 전화번호를  환영합니다.";
+"You’re logged in as sub-account of" = "의 하위 계정으로 로그인했습니다.";
+"You’re logged in as sub-account of %@" = "%@ 의 하위 계정으로 로그인했습니다.";
+"Photo is uploading..." = "사진을 업로드하는 중 ...";
+
+"Male" = "남성";
+
+"Address:" = "주소:";
+
+"Invalid phone number" = "유효하지 않은 전화 번호입니다.";
+"Verification code cannot be sent to this phone number" = "이 전화 번호로 인증 코드를 보낼 수 없습니다.";
+"A strong password contains a mix of numbers, letters, and symbols. It is hard to guess, does not resemble a real word, and is only used for this account." = "강력한 비밀번호에는 숫자, 문자 및 기호가 혼합되어 있습니다. 추측하기 어렵기 위하여 실제 생활과 관련이 없어야하며 이 계정에만 사용해야합니다.";
+"Update Password" = "비밀번호 업데이트";
+"Passwords don't match." = "비밀번호가 일치하지 않습니다.";
+"You took too long to login.  Login process starting from beginning." = "로그인하는 데 너무 오래 걸렸습니다. 로그인 프로세스는 처음부터 시작됩니다.";
+"You need to change your password to activate your account." = "계정을 활성화하려면 비밀번호를 만들어야합니다.";
+"Left 60 (s)" = "60 초 남아 있습니다.";
+"Call me instead" = "저에게 전화 해주세요.";
+"Verification code has been send through SMS or Voice Message. Click this button to resend 60 seconds later." = "인증코드가 SMS 또는 음성 메시지를 통해 전송되었습니다. 60 초후에  다시 전송하려면 이 버튼을 클릭하십시오.";
+"We're sorry..." = "죄송합니다...";
+"Unexpected error when handling authentication request to identity provider." = "ID 공급자에 대한 인증 요청을 처리 할 때 예기치 않은 오류가 발생했습니다.";
+"Page has expired" = "페이지가 만료되었습니다.";
+"To restart the login process" = "로그인 프로세스를 다시 시작하기 위하여";
+"To continue the login process" = "로그인 프로세스를 계속하기 위하여";
+"Click here" = "여기를 클릭하십시오.";
+"The verification service is temporarily unavailable. Please try again after 30 seconds." = "인증 서비스를 일시적으로 사용할 수 없습니다. 30 초 후에 다시 시도하십시오.";
+"An internal server error has occurred" = "내부 서버 오류가 발생했습니다.";
+
+"Welcome, %@" = "%@ 이라는 전화번호를  환영합니다. ";
+"You’re logged in as sub-account of %@" = "%@ 의 하위 계정으로 로그인했습니다.";
+"Photo is uploading..." = "사진을 업로드하는 중 ...";
+"Creating Airdrop Event, it may take some minutes." = "Airdrop 이벤트 만들기중, 몇 분이 걸릴 수 있습니다.";
+"Back to Event List" = "이벤트 목록으로 돌아 가기";
+"Beacon %@ is Detected" = "Beacon %@ 이 검출되었습니다";
+"Set up signal range by sliding Distance Bar" = "거리 바 슬라이딩으로 신호 범위를 설정하십시오";
+"Beacon battery will last longer if you set distance under %@m" = "Beacon 배터리는 거리를 %@m 미만으로 설정하면 오래 지속됩니다.";
+"No images available" = "사용할 수있는 이미지가 없습니다.";
+"Camera is not available" = "카메라를 사용할 수 없습니다.";
+"Please, allow the application to access to your photo library." = "응용 프로그램에서 사진 라이브러리에 액세스하도록 허용하시기를 바랍니다.";
+"%@ is added %@" = "%@ 이 (가) %@ 을 (를) 추가되었습니다.";
+"%@ is removed %@" = "%@ 이 (가) %@ 을 (를) 삭제되었습니다.";
+"Added Hashtags %@" = "추가 된 해시 태그는  %@ 입니다.";
+"Beacon Range" = "Beacon 범위";
+"App requires permission to access \"Location Services\" to update beacon. Tap \"Settings\", \"Privacy\" and then \"Location Services\" to grant permission." = "Beacon을 업데이트하기 위하여 '위치 서비스'에 액세스 할 수있는 권한을 요청합니다. 권한을 부여하기 위하여 '설정', '개인 정보', 그리고  '위치 서비스'를 누르십시오.";
+"Please choose Beacon location!" = "Beacon 위치를 선택하세요!";
+"Beacon location accuracy problem." = "Beacon 위치 정확도에 대한 문제가 있습니다.";
+"MozoX uses this information to provide more relevant and personalized experiences. We'll never access your GPS location without your knowledge." = "MozoX는 더 적절하고 개인화 된 경험을 제공하기 위하여 이 정보를 사용합니다. 우리는 당신이 모르는 사이에 결코 당신의 GPS 위치에 접근하지 않을 것입니다.";
+"Location Settings" = "위치 설정";
+
+"Invalid email address" = "이메일 주소가 잘못되었습니다.";
+
+"text_msg_uploading_ask_go_back" = "이 화면을 종료하면 사진 업로드 진행 상태가 계속됩니다. 당신이 돌아가시겠습니까?";
+"text_msg_uploading_ask_continue" = "이 화면 나간 후 사진 업로드 계속 됩니다. 계속 진행하시겠습니까?";
+"Create Airdrop Event failed.\nPlease try again." = "에어 드롭 이벤트 만들기가 실패했습니다.\n다시 시도하십시오.";
+
+"App requires permission to access Camera to capture image. Tap \'Settings\' and go to \'Permissions\' to grant permission." = "앱에서 이미지를 캡처하려면 카메라에 액세스 할 수있는 권한이 필요합니다. \ '설정 \'을 선택하고  \ '권한 \'으로 이동하여 권한을 부여하십시오.";
+"Scanning beacon timeout. Please try again." = "과도한 Beacon  스캔 시간입니다. 다시 시도하시기를 바랍니다.";
+"Connecting beacon timeout. Please try again." = "과도한 Beacon  연결 시간입니다. 다시 시도하시기를 바랍니다.";
+"Time out, please try again." = "타임 아웃, 다시 시도하시기를 바랍니다.";
+"Onchain Wallets" = "Onchain 지갑";
+"Offchain Wallet" = "Offchain 지갑";
+"Request" = "요청";
+"Transfer" = "전송하기";
+"Copied to clipboard" = "클립 보드에 복사 됩니다.";
+"Go to Etherscan.io" = "Etherscan.io로 이동합니다.";
+"Token List:" = "Token 리스트";
+"btn_convert_to_mozo" = "Mozo으로 변환";
+"Pending transaction..." = "보류중인 거래 ...";
+"text_how_to_add_mozo_x" = "MozoX를 추가하는 방법은 무엇입니까?";
+"text_convert_hint_enter_amount" = "Mozo로 변환할 MozoX 수 입력";
+"text_convert_title" = "Mozo으로 변환";
+"Slow" = "느리다";
+"Average" = "평균";
+"Fast" = "빠르다";
+"Normal" = "정상";
+"text_convert_explain_gas_price" = "가스 가격은 가스 단위당(GWEI) 지불하는 금액입니다. TX fee = Txn에서 사용하는 가스 * Gas Price 이며  TX fee는 한 블록 내에 TX를 포함시키기 위하여 광부에게 지급됩니다. 가스 가격이 높을수록 거래는 빠르지 만 가격은 더 비쌉니다.";
+"Read more" = "자세히 보기";
+"Onchain balance is not enough." = "Onchain 밸런스가 충분하지 않습니다.";
+"ETH balance is not enough." = "ETH 밸런스가 충분하지 않습니다.";
+"From Onchain" = "Onchain에서";
+"To Offchain" = "Offchain으로";
+"title_enter_pin_to_convert" = "비밀 번호를 입력하여\nOnchain 지갑으로 MozoX를 Mozo로 변환하는.";
+"Broadcasting transaction..." = "거래 전송중...";
+"It’s might take about 3 minutes to complete" = "거래를 완료하기 위하여 약 3 분 정도 걸릴 수 있습니다.";
+"Hide transaction" = "거래 숨기기";
+"When you hide this screen, you will receive notify when transaction complete or fail." = "이 화면을 숨기면 거래가 완료되거나 실패 할 때 알림을 받게됩니다.";
+"Broadcast completed" = "전송 완료";
+"Waiting for transaction status..." = "거래 상태를 기다리는 중 ...";
+"Convert Successful" = "성공적으로 변환";
+"text_convert_just_converted" = "MozoX를 Mozo로 변환하셨습니다:";
+"Back to Onchain Wallet" = "Onchain 지갑으로 돌아 가기";
+"Convert Failed" = "변환 실패";
+"text_convert_failed_and_try" = "MozoX에서 Mozo로 변환을 완료 할 수 없습니다.";
+"There are no Airdrop Events around you" = "주변에 Airdrop 이벤트가 없습니다.";
+"On Going Events" = "Airdrop 다가오는 이벤트";
+"Top Airdrop Events" = "가장 많은 Airdrop 이벤트";
+"Nearest Events" = "가장 가까운 Airdrop 이벤트";
+
+"There is a pending transaction. Can not send another transaction. Please wait about 3 minutes and try again later." = "보류중인 거래가 있습니다. 다른 거래를 보낼 수 없습니다. 약 3 분 정도 기다렸다가 나중에 다시 시도하십시오.";
+"Can not send transaction to Ethereum network or sent but failed. Please check your data and try again." = "에테 리움 네트워크로 거래를 보낼 수 없거나 전송되었지만 실패했습니다. 데이터를 확인하고 다시 시도하십시오.";
+
+"Convert Failed" = "변환 실패";
+"Please try again after some time." = "잠시 후 다시 시도하십시오. ";
+"No routes found" = "경로를 찾을 수 없습니다.";
+"airdrop_discover_more_on_map" = "Mozo를 얻기 위하여 더 많은 Airdrop 이벤트를 발견하시기를 바랍니다 👌";
+"error_store_unregisted" = "귀하의 상점은 저희 웹 사이트에 아직 등록되지 않았습니다. Mozo 고객 서비스에 지원을 요청하십시오.";
+"error_store_suspened" = "이 스토어는 Mozo 에코시스템에서 나갔습니다. 불편 드려서 죄송합니다 ";
+"error_event_withdraw_failed" = "실패된 Airdrop 이벤트에서 Mozo를 철회합니다.";
+"error_event_can_not_withdraw" = "Airdrop 이벤트는 아직 끝나지 않았습니다. Mozo는 철회 할 수 없습니다. 나중에 다시 시도하십시오.";
+"error_event_no_mozo" = "Airdrop 이벤트에는 Mozo가 없습니다.  아무것도 일을 할 필요가 없습니다.";
+"You are not the owner of this event." = "이 이벤트의 소유자가 아닙니다.";
+
+"At least six characters" = "6 자 이상 필요합니다.";
+
+"text_token" = "Mozo";
+"text_navi_get_mozo" = "Mozo 받으시오";
+
+// Discover + Beacon Error + About Content + Group Stores
+"airdrop_empty_discover_more" = "Mozo Airdrop 이벤트를  더 검색해보세요.";
+"%.1fkm away" = "%.1fkm 거리에 있습니다.";
+"%.1fm away" = "%.1fm 거리에 있습니다.";
+"%dm away" = "%dm 거리에 있습니다.";
+"Version" = "버전";
+"Website" = "웹 사이트";
+"text_about_mozo" = "Mozo Token의 주요 응용 프로그램은 소매점이 도보 트래픽을 늘리고 제어 할 수 있도록 Mozo의 보상 기반 솔루션을위한 기반으로 사용하는 것입니다.Mozo 토큰은 보상으로 사용 된 다음 Mozo 네트워크에 참여하는 모든 소매점에서 사용할 수 있습니다.이 목적 외에도 Mozo 토큰은 선물로 교환하거나 선정 된 교환 플랫폼을 통해 판매 및 판매 할 수 있습니다.";
+
+
+"Beacon Error" = "Beacon 오류";
+"Did you make sure to:" = "당신이 확신 했습니까?";
+"Have the Beacon facing your front of the phone." = "전화기의 건너편에 Beacon을 두십시오.";
+"Have the Beacon and your phone in a well-lit area." = "Beacon과 전화기를 조명이 밝은 곳에 두십시오.";
+"Have your phone close to the Beacon." = "Beacon과 전화기를 가까이에 두십시오.";
+"Use another Beacon" = "다른 Beacon 사용";
+"Or you can" = "또는 할 수 있는 것은...";
+"Contact us for support" = "지원 문의";
+"Contact for support" = "지원 연락처";
+"Contact phone number" = "연락 전화 번호";
+"Enter your name" = "이름을 입력하십시오.";
+"Enter your phone number" = "전화 번호를 입력하십시오.";
+"Enter your email address" = "이메일 주소를 입력하십시오.";
+"Message" = "메시지";
+"error_beacon_not_working" = "내 Beacon이 작동하지 않습니다, Mozo 팀에서 다른 하나가 필요합니다.";
+"Thank you" = "감사합니다.";
+"We will get back to you shortly" = "곧 다시 연락 드리겠습니다.";
+
+"Group Events" = "그룹 이벤트";
+"Group %d Events" = "그룹 %d 이벤트";
+"View Event List" = "이벤트 리스트보기";
+
+"Select language to share" = "공유 할 언어 선택";
+"invite_shopper_app_name" = "Mozo 소비자 앱";
+"invite_retailer_app_name" = "Mozo 비지니스 앱";
+"invite_reward_amount" = "%@ 의 Mozo 보상을 받게 됩니다.";
+
+"Once per day" = "하루에 한 번";
+"Loading..." = "로드 중 ...";
+
+// Detect Onchain inside Offchain
+"text_detected_mozo_x" = "Onchain 지갑에서 %@MozoX 발견";
+"text_convert_confirm_question" = "이 지갑에 있는 MozoX를 Mozo로 변환하시겠습니까?";
+"Your ETH balance is: %@" = "ETH 잔액은 %@ 입니다.";
+"text_msg_required_eth" = "TX 요금을 지불하기 위하여 이 Onchain 지갑 주소로 %@ ETH를 전송해야합니다.";
+"text_converting_mozo" = "Mozo로 변환 중...";
+
+"error_wallet_address_not_exist" = "이 지갑 주소는 존재하지 않습니다. 등록 된 Mozo 지갑 주소만 지원합니다.";
+
+"nofity_invite_friend_joined" = "친구들이 Mozo에 가입했습니다.";
+"notify_invite_joined_mozo" = "%@ Mozo에 가입했습니다";
+
+// Invitation
+"Share via your network" = "네트워크를 통해 공유";
+"invite_explain_no_reward" = "친구가 이 QR 코드를 스캔하여 Mozo에 가입하도록 초대하거나 \"네트워크를 통해 공유\"버튼을 클릭하여 메시지를 보내도록하십시오.";
+"invite_explain_reward" = "친구에게 이 QR 코드를 스캔하게 하여 Mozo에 가입하도록 초대하거나 \"네트워크를 통해 공유\"버튼을 클릭하여 메시지를 보내도록하십시오. 가입 한 각 친구에 대한 보상을 받게됩니다.";
+
+"View Photo" = "사진보기";
+"invite_select_language" = "Mozo 초대 언어 선택";
+
+// Reset PIN - Notification Group - Suggestion Search - Empty state with CTA - Maintenance Mode - Profile Update Notification - Error Popup
+"notify_group_received_more" = "%u Mozo 더 수신됩니다.";
+"notify_group_sent" = "%u Mozo 더 전송 됩니다.";
+"notify_group_received_from_event" = "%u 총 Mozo를 Airdrop 이벤트에서  더 받았습니다.";
+"notify_group_friends_joined" = "%u 친구들이 Mozo에 더 가입했습니다.";
+"Customers arrived" = "고객이 도착했습니다.";
+"%u more customers arrived" = "%u 고객이 더 도착했습니다.";
+"Customers departed" = "고객이 떠났습니다.";
+"%u more customers departed" = "%u고객이 더 떠났습니다.";
+"Trending" = "주요 키워드";
+"Enter Store name or Hashtag to search" = "검색 할 상점 이름 또는 해시 태그 입력하십시오.";
+"Security PIN" = "보안 PIN";
+"Forgot your PIN?" = "PIN을 잊어 버리셨습니까?";
+"Reset PIN by using recovery phrases" = "복구 문구를 사용하여 PIN 재설정하십시오.";
+"Reset PIN" = "PIN 재설정";
+"Submit" = "제출하기";
+"Type your 12 recover phrases" = "귀하의 12 복구 구문을 입력하십시오.";
+"Recovery phrase contains unrecognized words." = "복구 구문에 인식 할 수없는 문자가 포함되어 있습니다.";
+"Checking recovery phrases" = "복구 구문 확인";
+"Wallet Recovery Phrase is invalid" = "지갑 복구 문구가 잘못되었습니다.";
+"ENTER NEW SECURITY PIN" = "새 보안 PIN 입력하십시오.";
+
+"Reset PIN is processing" = "PIN 재설정 처리 중";
+"There is an error occurred." = "오류가 발생했습니다.";
+
+"PIN Reset Successful" = "PIN 재설정 성공합니다.";
+
+"No internet connection!" = "인터넷에 연결할 수 없습니다!";
+"Once you have a stronger internet connection, we’ll automatically process your request." = "인터넷 연결이 더 강력 해지면 당신의 요청이 자동으로 처리됩니다.";
+
+"Sorry, we're down for maintenance. We'll be back shortly." = "죄송합니다. 유지 보수를 위해 대기 중입니다. 우리는 곧 돌아오겠습니다.";
+"Did you know?" = "당신이 알고 계십니까?";
+"Search Result" = "검색 결과";
+"Try one of these instead:" = "다음 대신 중 하나를 시도해보십시오.";
+
+"payment_empty_msg_title" = "요청한 리스트가 비어 있거나 연결 속도가 너무 느립니다.";
+"payment_empty_msg_content" = "친구들이 보낸 Mozo 요청은 여기에 표시됩니다.";
+
+"Favorite Stores is empty or your connection is too slow" = "좋아하는 상점이 비어 있거나 연결 속도가 너무 느립니다.";
+"Seems you didn't add any Favourite Stores, we love sharing some interesting stores for you." = "당신이 좋아하는 상점을 추가하지 않은 것 같습니다. 저희가 당신을 위해 흥미로운 상점을 공유하는 것을 좋아합니다.";
+"Discover more stores" = "더 많은 상점 검색하십시오.";
+
+"history_empty_title" = "거래 내역이 비어 있거나 연결 속도가 너무 느립니다.";
+"history_empty_content" = "Mozo를 친구들에게 전송하거나 Mozo를 보내달라고 요청하십시오.";
+"Go to Wallet" = "지갑으로 이동하기";
+
+"Airdrop Event List" = "Airdrop 이벤트 리스트";
+"Airdrop Event List is empty or your connection is too slow" = "Airdrop 이벤트 리스트가 비어 있거나 연결 속도가 너무 느립니다.";
+"text_event_empty" = "쇼핑객들이 상점 방문시 Mozo 토근을  Airdrop하십시오.";
+
+"Foot Traffic is empty or your connection is too slow" = "도보 트래픽이 비어 있거나 연결 속도가 너무 느립니다.";
+"text_empty_visit_customer" = "Mozo Airdropping을 통해 더 많은 고객을 유치하기 위하여 Airdrop 이벤트를 만듭니다.";
+"Go to Airdrop Events list" = "Airdrop 이벤트 리스트으로 이동하십시오.";
+"Go to Promotions list" = "프로모션 리스트으로 이동하십시오.";
+
+// Bonus Notification + Unregistered Store + Simplyfy Create Airdrop Event
+"notify_receive_bonus" = "%@ 개 보너스 Mozo를 가지고 있습니다.";
+"For signing up with us" = "우리와 함께 가입을 위하여";
+
+"notify_receive_bonus_verified_store" = "검증 된 상점이 되기 위하여";
+"notify_receive_bonus_top_retailers" = "처음 1,000 명의 Mozo 소매 업체가 되십시오.";
+
+"Unregistered Store" = "등록되지 않은 상점";
+"If you have not registered yet, please register." = "아직 등록하지 않으면 등록하십시오.";
+"text_msg_store_not_approved" = "상점니 아직 승인되지 않은 경우 Mozo 팀에 지원을 요청하십시오.";
+"Register Now" = "지금 등록하십시오.";
+
+"Basic Info" = "기본 정보";
+"Enter Airdrop Event name" = "에어 드롭 이벤트이름 입력";
+"text_event_number_of_mozo_per_shopper" = "소핑객 당 Airdrop을 한 Mozo의 수";
+"text_event_number_of_shopper_add_more" = "새로운 총 수령인";
+"Airdrop Event Time Setting" = "에어 드롭 이벤트 시간 설정";
+"Start from now" = "지금부터 시작";
+"Now" = "지금";
+"text_event_explain_name" = "소핑객은 Mozo 앱을 사용하여 이벤트 이름 볼 수 있으며 토큰 받을 수 있습니다";
+"text_event_explain_number_of_shopper" = "이 Airdrop 이벤트에서 Mozo 토큰을 받을 소핑객 수입니다.";
+"text_event_explain_number_of_mozo" = "각 소핑객이 귀하의 상점에 방문 할 때마다 Airdrop을 통해 받는 Mozo 토큰의 수입니다.";
+"PLEASE REVIEW THE INFORMATION BELOW, BECAUSE ONCE AN AIRDROP EVENT HAS BEEN CREATED, THE INFORMATION CANNOT BE CHANGED." = "에어 드롭 이벤트가 생성되면 정보를 변경할 수 없으므로 아래 정보를 검토하십시오.";
+"Please review the information below, because once an Airdrop Event has been created, the information cannot be changed." = "에어 드롭 이벤트가 생성되면 정보를 변경할 수 없으므로 아래 정보를 검토하십시오.";
+"Duration" = "기간";
+"text_not_available" = "(사용할 수 없습니다)";
+"Selected days of the week" = "일주일의 선택한 요일";
+
+"text_event_total_mozo_token" = "Mozo 토큰 총수";
+
+// Beacon Settings, Beacon Failure contact, Map Route, Speed Selection, Auto Create Wallet, Backup Wallet, Change PIN, Auto PIN
+"Writing data to Beacon..." = "비콘에 데이터 입력중...";
+"Sending Beacon information to server..." = "서버로 비콘 정보를 보내는 중...";
+
+
+"Can’t count calories burned" = "연소된 칼로리는 계산 안됩니다.";
+
+"Request for Support" = "지원 요청";
+"Attach Photo" = "사진 첨부";
+"This field is required." = "이 필드는 필수입니다";
+"Invalid phone number" = "유효하지 않은 전화 번호";
+"Invalid email address" = "유효하지 않은 이메일 주소";
+"Your attachment either has failed to upload or it still uploading. Send this message anyway?" = "첨부 파일을 실패하거나 업로드 중입니다. 이 메시지를 계속 보내시겠습니까?";
+
+"Create Wallet Automatically" = "지갑 자동 만들기";
+"Your Recovery Phrase* and security PIN will be auto generated and remembered by our system." = "당신의 복구 문구* 및 보안 PIN을 자동적으로 생성되어 시스템에 저장됩니다.";
+"Create Wallet Manually" = "지갑 직접 만들기";
+"mozo_create_wallet_manual_explain" = "Please back up your Recovery Phrase by clicking on \"Setting\" and \"Back up wallet\" menu";
+"*What are Recovery Phrase?" = "*복구 문구는 무엇입니까?";
+"Recovery Phrase are random set of words used to secure your digital wallet. You should write down these words in order so that in the event you lose your digital wallet or forget your PIN, you can recover your wallet and/or reset your PIN." = "복구 문구는 전자 지갑 보안을 위한 임의 글자 세트입니다. 전자 지갑 분실이나 PIN을 잊어버릴 경우, 자기 전자 지갑을 복구하거나 PIN을 재설정하기 위해 이 글자들을 꼭 써 놓아야 합니다.";
+
+"title_create_wallet" = "Mozo 지갑 만들기";
+"text_explain_creating_wallet" = "당신의 Mozo 지갑 만드는 중...";
+"text_explain_recovering_wallet" = "Mozo 전자지갑 정보 복구 중...";
+
+"Backup Wallet" = "지갑 백업하기";
+"This is your recovery phrase" = "당신의 복구 문구입니다.";
+"THIS IS YOUR RECOVERY PHRASE" = "당신의 복구 문구입니다.";
+"Please write it down on paper and keep it in a safe place as you would with money" = "종이에 써 놓고 자산 관리 만큼 안전한 곳에 보관하세요.";
+"If you lose your recovery phrase, your wallet cannot be recovered." = "복구 문구 없으면 당신의 지갑을 복구할 수 없습니다.";
+"I have safely stored recovery phrase" = "나는 복구 문구를 안전하게 보관했습니다.";
+
+"Verify" = "인증";
+"VERIFY" = "인증";
+"Using the completed Recovery Phrase as a reference, please enter the following words from your Recovery Phrase to complete the back up process." = "완성된 복구 문구 사용 참고를 삼아, 복구 문구에 있는 이 글자들을 입력해서 백업 과정 마무리하세요.";
+"Finish" = "완료";
+
+"Your Wallet is Backed Up" = "당신의 지갑은 백업되었습니다.";
+"YOUR WALLET IS BACKED UP" = "당신의 지갑은 백업되었습니다.";
+
+"Be sure to store your recovery phrase in a secure place. If this app is deleted, your wallet cannot be recovered without it." = "복구 문구를 안전한 곳에서 보관했다는 것을 확인하세요. 이 앱은 삭제되면 복구 문구 없이 지갑 복구를 못합니다.";
+"Got It" = "알겠습니다.";
+
+"Change Security PIN" = "보안 PIN 변경";
+"ENTER YOUR CURRENT SECURITY PIN" = "기존 보안 PIN 입력";
+"ENTER NEW SECURITY PIN" = "새로운 보안 PIN 입력";
+"CONFIRM NEW SECURITY PIN" = "새로운 보안 PIN 확인";
+"Re-enter your new PIN" = "새로운 PIN 제입력";
+"Change PIN is processing.." = "PIN 변경 중";
+"Change Security PIN Successful" = "PIN 변경 성공";
+
+"System is using automatically generated PIN to sign your transaction and send it to network..." = "시스템은 자동 생성된 PIN을 사용해 거래 결재하고 네트워크로 보내는 중";
+
+// Promotion
+"Redeem Tokens" = "토큰 사용";
+"Top Promotions" = "최고 프로모션";
+"%d days left" = "%d일 남았다";
+"%d day left" = "%d일 남았다";
+"REDEEM" = "보상";
+"%d% OFF" = "%d% 할인";
+"%d%% OFF" = "%d%% 할인";
+"Trendy Hashtags" = "트랜드 해쉬태그";
+"Others" = "기타";
+"Purchased" = "결제완료";
+"Use" = "사용";
+"USE" = "사용";
+"(%d) USE" = "(%d) 사용";
+"Khám phá cửa hàng xung quanh để kiếm thêm điểm thưởng Mozo." = "주변 상점를 살펴봐 Mozo를 더 받트세요";
+"Show me" = "나에게 보여줘";
+"promo_receive_more_by_tapping" = "탭해서 Mozo를 더 받으세요";
+"Paid Promotion" = "결제된 프로모션";
+"Purchased:" = "결제완료:";
+"Purchased Date & Time:" = "결제 날짜 및 시간:";
+"Valid Until:" = "유효기간:";
+"%@ is activating your promotion code..." = "%@가 프로모션 코드를 활성화 중...";
+"Promotion Used" = "사용한 프로모션";
+"Promotion used" = "사용한 프로모션";
+"Activation Date & Time:" = "활성화 날짜 및 시간:";
+"Running Promotions Now" = "현재 진행 중인 프로모션";
+"Activated" = "활성화 되었습니다";
+"Activate Date & Time:" = "활성화 될 날짜 및 시간:";
+"DETAIL" = "세부 사항";
+"Paid:" = "결제되었습니다:";
+"Active Promotions" = "활성화 중인 프로모션";
+"Active Promotion" = "활성화 중인 프로모션";
+"Show QR Code" = "QR 코드 표시";
+"Scan QR Code" = "QR 코드 스캔";
+"text_promo_empty" = "Mozo 토큰으로 상점 할인으로 전환하는 방법으로 구매자의 관심을 끌리기 위해 프로모션을 만드세요";
+"Create Promotion" = "프로모션 만들기";
+"Optional" = "옵션";
+"(Optional)" = "(옵션)";
+"Running" = "활동 중";
+"RUNNING" = "활동 중";
+"Ended" = "종료";
+"ENDED" = "종료";
+"Scheduled" = "진행 예정";
+"SCHEDULED" = "진행 예정";
+"Time to Expiration:" = "마감날짜:";
+"Promotion List is empty or your connection is too slow" = "프로모션 리스트는 없거나 당신의 인터넷 속도가 너무 느리다.";
+"Enter discount %" = "할인% 입력";
+"text_promo_mozo_for_discount" = "할인을 위해 필요할 Mozo의 수";
+"text_promo_hint_mozo_number" = "Mozo 넘버 입력";
+"Promotion Display Image (Optional)" = "프로모션 사진 (옵션)";
+"Promotion Display Image" = "프로모션 사진";
+"Take photo or upload from your gallery" = "사진첩에 가져오거나 새로운 사진 촬영하기";
+"promo_explain_percent" = "구매자가 Mozo를 결제할 때 받을 할인 퍼센트.\n\n예: 구매자가 코카콜라을 구매할 때 15,000Mozo를 결제하면 50%할인을 받을 수 있다.";
+"promo_explain_number_of_mozo" = "프로모션 할인을 받기 위해 필요할 Mozo";
+"promo_explain_description" = "구매자가 Mozo를 지불할 때 받을 수 있을 혜택을 묘사하세요";
+"Discount percentage" = "할인 퍼센트";
+"Discount Percentage" = "할인 퍼센트";
+"Preview Promotion" = "프로모션 보기";
+"Your Promotion will display on Shopper’s App as follows:" = "당신의 프로모션은 구매자의 앱에 다음과 같이 표시됩니다:";
+"Create Promotion successfully" = "프로모션 성공적으로 만들었습니다";
+"Store QR Code" = "스토어 QR 코드";
+"Let Shopper scan this QR Code to access your active Promotion list." = "당신의 모든 프로모션을 볼 수 있게 이 QR 크드를 구매자에게 스캔하게 하세요.";
+"Loading promotion data..." = "프로모션 데이타 로딩 중...";
+"Promotion Expired" = "종료된 프로모션";
+"Promotion belong to other store" = "다른 스토어의 프로모션입니다";
+"+ Create New" = "+ 새로 만들기";
+"Create New" = "새로 만들기";
+"Activating Shopper promotion..." = "구매자의 프로모션을 활성화 중...";
+"Promotion Period:" = "프로모션 기간:";
+"Activate successfully" = "성공적으로 활성화 되었습니다";
+"Start in next %d days" = "%d일 이후 진행 예정";
+"Start in next %d day" = "%d일 이후 진행 예정";
+"Invalid discount percent" = "잘못된 할인 퍼센트";
+"Invalid QR Code" = "잘못된 QR코드";
+"Invalid promotion code" = "잘못된 프로모션 코드";
+"Added into favorite promotions" = "즐겨보는 프로모션 리스트에 추가하였습니다";
+"Removed from favorite promotions" = "즐겨보는 프로모션 리스트에 삭제하였습니다";
+"Process time out. Please re-scan QR Code." = "처리 시간 초과. QR코드를 다시 스캔하세요.";
+"Don’t miss out other Promotions 🤩" = "다른 프로모션을 놓치지마세요 🤩";
+"Next %d days" = "다음 %d일";
+"Next %d day" = "다음 %d일";
+"Promotion is being processed" = "처리 중인 프로모션";
+"text_tips_event" = "에어드롭 이벤트는 당신의 스토어나 장소에 방문에 대한 보상 제공으로 구매자를 끌린다. 구매자는 당신의 스토어 구내에 방문 시 Mozo App에 있는 전자지갑으로 \"에어드롭\"을 통해 Mozo를 받을 수 있다.";
+"text_tips_sync_beacon_location" = "Beacon 주소를 사용해 Beacon 위치 추적하기";
+"Recommendation" = "추천";
+"Coming Soon" = "시작 예정";
+"COMING SOON" = "시작 예정";
+"promo_empty_nearby" = "근처에 있는 프로모션 없습니다. 당신 주변 상점 살펴봐 더 많은 Mozo 토큰 받아가세요.";
+"Redemption Amount" = "결제해야 할 Mozo";
+"text_your_mozo_balance" = "잔여 Mozo:";
+"text_your_mozo" = "당신의 Mozo";
+"text_mozo_collected_today" = "오늘 받으신 Mozo";
+"Activating..." = "활성화 중...";
+"Running Promotions (%d)" = "진행 중인 프로모션 (%d)";
+"Running Promotions" = "진행 중인 프로모션";
+"%d h" = "%d 시간";
+"%d h %d min(s)" = "%d 시간 %d 분";
+"Shopper purchased promotion" = "프로모션을 구매한 구매자";
+"Don’t show again" = "다시 보지 않습니다.";
+"Invalid Recovery Phrase" = "잘못된 복구 문구";
+"text_promo_mozo_received" = "받으신 Mozo";
+"Billing information (Optional)" = "영수증 정보 (옵션)";
+"Billing information" = "영수증 정보";
+"Enter billing information" = "영수증 정보 입력";
+"Invalid Promotion start date - end date." = "잘못된 프로모션 시작일 - 마감일";
+"Promotion cover image is uploading" = "프로모션 사진 업로드 중";
+"Promotion" = "프로모션";
+"This QR code is invalid." = "잘못된 QR코드";
+"At %@" = "%@에";
+"Description" = "설명";
+"Purchase" = "결제하기";
+"PURCHASE" = "결제하기";
+"Start in next %d min(s)" = "%d 분 이후 시작 예정";
+"Running Promotions is empty or your connection is too slow" = "진행 중 인 프로모션 없거나 연결 속도 너무 느립니다";
+"No data to display or your connection is too slow" = "데이터 없거나 연결 속도 너무 느립니다";
+"This Promotion is going to expire in next %dh %dmins. Are you sure you want to continue?" = "이 프로모션은 %d시간 %d분 이후 종료됩니다. 계속하시겠습니까?";
+"This Promotion is going to expire in next %dh %dmin. Are you sure you want to continue?" = "이 프로모션은 %d시간 %d분 이후 종료됩니다. 계속하시겠습니까?";
+"This Promotion is going to expire in next %dmins. Are you sure you want to continue?" = "이 프로모션은 %d분 이후 종료됩니다. 계속하시겠습니까?";
+"This Promotion is going to expire in next %dmin. Are you sure you want to continue?" = "이 프로모션은 %d분 이후 종료됩니다. 계속하시겠습니까?";
+"EXPIRED" = "만료";
+"Cancel processing promotion successfully" = "처리 중인 프로모션 취소 상공";
+"Processing Promotions" = "처리 중인 프로모션";
+"text_update_required_title" = "앱 사용을 위한 업데이트 필요합니다";
+"text_update_required_content" = "앱의 새로운 버전 나왔습니다\n최신 버전으로 업데이트 하세요.";
+"text_special_check_box" = "행운 추첨 프로그램 특별 프로모션";
+
+// Reminder - Todo List
+"Your internet connection has a problem 😔" = "인터넷 연결 문제 있다 😔";
+"YOUR INTERNET CONNECTION HAS A PROBLEM 😔" = "인터넷 연결 문제 있다 😔";
+"Go to Settings →" = "설정 바로가기 →";
+"Location service is off 🗺" = "위치 기능 꺼져 있다  🗺";
+"Bluetooth is tuned off 😔..." = "블루투스 꺼져 있다 😔...";
+"todo_msg_get_nearby_airdrop" = "근처에 있는 Airdrop에서 Mozo를 받으세요 🎁";
+"Interesting promotions nearby 🤩" = "매력적인 프로모션 근처 있다  🤩";
+"Purchased promotions nearby 🤣" = "구매한 프로모션은 근처 있다 🤣";
+"Purchased promotions expiring soon 😣" = "구매한 프로모션은 곧 만료 된다 😣";
+"Airdrop events that will expire soon ⏳" = "에어드롭 이베트 곧 종료됩니다 ⏳";
+"todo_msg_wallet_almost_out_of_mozo" = "당신 지갑에 Mozo 거의 다 떨어진다 😞";
+"Promotions that will expire soon 👌" = "곧 종료된 프로모션 👌";
+"No planned airdrop events 😐" = "진행 계획 있는 에어드롭 이번트 없습니다 😐";
+"No planned promotions 😐" = "진행 계획 있는 프로모션 없습니다 😐";
+"Unsecure wallet 😱" = "안전하지 않은 지갑 😱";
+"todo_msg_event_almost_out_of_mozo" = "Airdrop 이벤트에 Mozo 거의다 배분했습니다 😞";
+"Turn on for better experience →" = "더 좋은 체험을 위해 위치 기능 켜십시요 →";
+"todo_action_turn_on_bluetooth" = "Mozo 받기 위해 블루투스 기능 켜십시요 →";
+"Discover your bookmarked promotions →" = "좋아하는 프로모션 보기 →";
+"Discover your purchased promotions →" = "구매한 프로모션 사용하기 →";
+"Review and create a new airdrop event →" = "새로운 이벤트 리뷰하고 만들기 →";
+"todo_action_buy_mozo" = "Mozo 더 구매하기 →";
+"todo_action_discover_stores" = "Mozo 있는 가장 가까이 스토어 보기 →";
+"Create a new promotion →" = "새로운 프로모션 만들기 →";
+"Create to increase foot traffic →" = "방문 손님 향상 시키기 위해 만들기 →";
+"Create promotion →" = "프로모션 만들기 →";
+"Set up your own PIN →" = "당신의 PIN을 만들기 →";
+"todo_action_review_add_more_mozo" = "Mozo 보기와 추가하기 →";
+"todo_msg_event_message_new" = "읽지 않은 메시지가 있습니다 📩";
+"todo_action_event_message_new" = "읽기 →";
+"todo_msg_event_promo_special" = "특별한 혜택을 받았습니다 🎁";
+"todo_action_event_promo_special" = "보기 →";
+"todo_msg_event_lucky_award" = "Mozo 추첨 프로그램에서 선물을 받았습니다.🎁";
+"todo_action_event_lucky_award" = "메시지 보기 →";
+"todo_msg_event_lucky_notice" = "특별한 상을 받으려면 친구 초대 행사에 참여하세요";
+"todo_action_event_lucky_notice" = "친구 초대 →";
+"todo_header_unsolve" = "(%d) 처리되지 않았습니다";
+"todo_header_unsolves" = "(%d) 처리되지 않았습니다";
+"todo_action_explain" = "Mozo 앱을 문제 없이 사용하기 위해 아래에 나열된 것을 완료하세요.";
+"To Do List" = "해야 할 일";
+"Redemption" = "토큰 사용";
+
+// Import Address Book
+"text_contact_hint_input_address_phone" = "Mozo 주소 또는 연락처 입력";
+"error_contact_not_found" = "Mozo 연락처 집에서 검색한 결과 없습니다";
+"text_contact_find_system" = "Mozo 시스템에 검색 →";
+"text_msg_phone_not_belong_any_wallet" = "이 폰 번호와 연동된 Mozo 지갑 없습니다.";
+"We only support to search with phone number." = "폰 번호만 검색 가능";
+
+"Import Contacts" = "연락처에서 가져오기";
+"Import Contacts successful!" = "연락처 가져오기 성공";
+"text_contact_inport_from_phone" = "빠르게 연락처집에서 Mozo로 가져오기";
+"Update Contacts" = "연락처 업테이트";
+"Updating..." = "업데이트 중...";
+"text_contact_friends_will_be_added" = "핸드폰에 있는 연락처를 자동적으로 Mozo 연락처로 가져옵니다";
+"Last updated:" = "최근 업데이트:";
+
+"text_request_sent" = "에게 Mozo를 보내달라고 요청을 보냈습니다:";
+
+"Synchronize Contacts" = "연락처 동기화";
+"Synchronize Contacts successful!" = "연락처 동기화 성공";
+"Update" = "업데이트";
+"Change Settings" = "설정 수정";
+"Cannot access your Contact Book" = "연락처 집 접근 불가";
+"text_reuqest_permission_contact" = "Mozo에게 연락처 집 접근 권한 허용하세요";
+"Not yet synchronized" = "동기화하지 않음";
+"Cannot synchronize, your Contact Book is empty." = "연락처 집 정보 없음. 동기화 불가";
+
+"Synchronize" = "동기화";
+"Synchronizing..." = "동기화 중...";
+
+"Top Local Airdrop Events" = "로컬 탑 에어드롭 이벤트";
+"Top International Airdrop Events" = "글로벌 탑 에어드롭 이벤트";
+
+// Speed Selection + Login Incorrect Time
+"You want:" = "당신이 원하는 것은:";
+"text_already_have_account" = "다른 Mozo 계정을 가지고 계신거에요?";
+"The time on your device is incorrect." = "시간이 정확하지 않습니다";
+"Please update the date and time, then try again." = "시간 업데이트 하시고 다시 시도해보세요.";
+
+// Promotion (Update)
+"Latest Promotions" = "최신 프로모션";
+
+// Ticket
+"Parking Ticket" = "주차 티켓";
+"CHECK IN" = "체크인";
+"Select Vehicle Type" = "차량 종류 선택";
+"Motorbike" = "오토바이";
+"Car" = "자동차";
+"Bicycle" = "자전거";
+"CHECK OUT" = "체크아웃";
+"Scan this QR through QR code reader at parking gate to CHECK OUT" = "체크아웃 하기 위해 입구에 있는 QR 코드 인식기를 통해 이 QR 코드 스캔하세요";
+"Valid in %02d:%02d" = "%02d:%02d에 유효";
+"Extra fee" = "추가 비용";
+"Change" = "수정";
+"Select payment method" = "결제 방법 선택";
+"ticket_not_enough_mozo_in_top_up" = "TopUP 계정에 Mozo 수 부족";
+"ticket_not_enough_mozo_in_top_up_sub" = "TopUp 계정에 Mozo 충전한 뒤 다시 시도해보세요. 또는 현금으로 하세요.";
+"ticket_btn_deposit" = "Mozo 충전";
+"Check in successfully" = "체크인 성공";
+"Scan this QR through QR code reader at parking gate to CHECK IN" = "체크인 하기 위해 입구에 있는 QR 코드 인식기를 통해 이 QR 코드 스캔하세요";
+"Auto close in %02ds" = "%02d초 안에 자도 닫임";
+"Check out successfully" = "체크아웃 성공";
+"TopUp Account" = "TopUp 계정";
+"Deposit" = "입금";
+"Parking fee" = "주차 비용";
+"Withdraw successfully" = "출금 성공";
+"Withdraw failed, please try again later" = "출금 실패. 다시 시도해보세요.";
+"Enter amount to deposit" = "입금 수량 입력";
+"Deposit failed" = "입금 실패";
+"There is an error occurred, please try again later" = "오류가 발생되었습니다. 다시 시도해보세요.";
+"ticket_not_enough_to_deposit" = "입금하기 위한  Mozo 수 부족";
+"Show my parking ticket" = "나의 주차 티켓 보여주기";
+"Offline Parking Ticket" = "오프라인 주차 티켓";
+"Free Parking Ticket" = "무료 주차 티켓";
+"ticket_not_enough_mozo_for_check_out" = "Mozo 부족. 체크아웃 하기 위해 현금으로 하세요.";
+"ticket_not_enough_mozo_for_vehicle" = "이 차량 종류에 대한 Mozo 부족";
+"ticket_not_enough_mozo_for_vehicle_sub" = "전통 RFID 카드 사용하기 위해 직원에게 문의하세요.";
+
+"FREE" = "무료";
+
+"Next %@" = "다음 %@";
+"There are no Airdrop Events" = "Airdrop 이벤트 없다";
+"There are no Promotions" = "프로모션 없다";
+"Active Airdrop Events" = "진행 중 Airdrop 이벤트";
+"Next time Airdrop Events" = "진행 예정 Airdrop";
+"Promotions at store" = "스토어 프로모션";
+"Past Promotions" = "지나간 프로모션";
+
+"Stores Near By" = "주변 매점";
+"%d Promotions" = "%d 프로모션";
+"%d Promotion" = "%d 프로모션";
+
+// First X Promotion
+"Select Promotion Type" = "프로모션 종류 선택";
+"Time Based Limited Coupons" = "시간에 따른 쿠폰";
+"Limited Number Of Coupons" = "수량에 따른 쿠폰";
+"Number of coupons" = "쿠폰 수량";
+"Enter number of coupons" = "쿠폰 수량 입력";
+"Remaining Coupons: %@" = "남은 쿠폰: %@";
+"Remaining Coupons" = "남은 쿠폰";
+"%d Coupons Remaining" = "%d 쿠폰 남았습니다";
+"%d Coupon Remaining" = "%d 쿠폰 남았습니다";
+"Sold Out" = "매진";
+"Sold Out: %d" = "매진: %d";
+
+// Merchant
+"Uploading photos will be continuing after you leave this screen. Do you want to continue?" = "이 화면 나간 후 사진 업로드 계속 됩니다. 계속 진행하시겠습니까?";
+"Welcome %@" = "%@ 환영합니다";
+"Signed up successfully as merchant at %@" = "%@ 상점으로 등록 성공하였습니다 ";
+"Please check your information to make sure it is correct." = "정보 맞는지 확인해주세요";
+"Check store information" = "스토어 정보 확인";
+"Your store is not authorized to create Airdrop Event. Please contact Mall Owner if you need any support." = "당신 스토어는 Airdrop 이벤트 만들 수 없습니다. 이메일 주인 연락하여 지원 받으세요.";
+"Why my store is not able to create an Airdrop Event? →" = "왜 나의 스토어는 Airdrop 이벤트 만들 수 없습니까? →";
+"Phone number is required" = "연락처는 필수 입력 항목입니다";
+
+"Beacon list is empty" = "배콘 리스트 없습니다";
+
+// Notification Custom Actions
+"NOTIFICATION_INFO_LOCALE_KEY" = "Info";
+"NOTIFICATION_VENUE_LOCALE_KEY" = "Venue";
+"NOTIFICATION_GUIDE_LOCALE_KEY" = "Guide";
+"NOTIFICATION_HALL_LAYOUT_GUIDE_LOCALE_KEY" = "Hall Layout guide";
+"NOTIFICATION_PARKING_TICKET_LOCALE_KEY" = "Parking ticket";
+"NOTIFICATION_SAFETY_GUIDE_LOCALE_KEY" = "Safety guide";
+"NOTIFICATION_VIEW_LOCALE_KEY" = "View";
+"NOTIFICATION_NO_THANKS_LOCALE_KEY" = "No. Thanks";
+"NOTIFICATION_START_LOCALE_KEY" = "Start";
+
+// Multiple Beacon
+"No. Thanks" = "아니요. 감사합니다";
+"Yes, go to Beacon List" = "네, Beacon 리스트로 이동합니다";
+"No Beacon added yet" = "추가된 Beacon 없음";
+"Beacon Detail" = "Beacon 디테일";
+"Add Beacon" = "Beacon 추가";
+"Beacon Settings" = "Beacon 설정";
+"text_beacon_location_on_map" = "Mozo 앱 지도에 있는 Baecon 위치";
+"Beacon Range" = "Beacon 범위";
+"Branch" = "분기";
+"Beacon Name" = "Beacon 이름";
+"MAC Address" = "MAC 주소";
+"Enter Beacon Name" = "Beacon 이름 입력";
+"Change Beacon Settings Successful" = "Beacon 설정 성공";
+"Add New Beacon Successful" = "Beacon 추가 성공";
+"Select Beacon" = "Beacon 선택";
+"Setting up" = "설정";
+"Address is different from Branch" = "주소는 분기와 다릅니다";
+"Location is different from Branch" = "위치는 분기와 다릅니다";
+"Address & location are different from Branch" = "주소와 위치는 분기와 다릅니다";
+"Change Beacon Name Successful" = "Beacon 이름 바꾸기 성공";
+"Change Beacon address Successful" = "Beacon 주소 바꾸기 성공";
+"Change Beacon location Successful" = "Beacon 위치 바꾸기 성공";
+"Change Beacon range Successful" = "Beacon 범위 바꾸기 성공";
+"Sync Beacon address and location Successful" = "Beacon 주소와 위치 동기화 성공";
+"Beacon Address" = "Beacon 주소";
+"Enter Beacon address" = "Beacon 주소 입력";
+"Beacon Address can't be empty" = "Beacon 위치는 비어서 안된다";
+"Use Beacon's address to locate Beacon's location" = "Beacon 주소를 사용해 Beacon 위치 추적하기";
+"Use Branch Address" = "분기 주소 사용하기";
+"Use Branch Location" = "분기 위치 사용하기";
+"Edit Beacon Range" = "Beacon 범위 수정";
+"Beacon Location" = "Beacon 위치";
+"All Branches" = "모든 분기";
+"count_branch" = "%d 분기";
+"count_branches" = "%d 분기";
+
+"New Branch" = "새로운 분기";
+"Branch Name" = "분기 이름";
+"Enter Branch Name" = "분기 이름 입력";
+"Branch Address" = "분기 주소";
+"Enter New Branch Address" = "새로운 분기 주소 입력";
+"Create New Branch" = "새로운 분기 만들기";
+"Branch Location" = "분기 위치";
+"Switch Branch" = "분기 전환";
+"Switch" = "전환";
+"Select branch you want to switch" = "전환하고 싶은 분기 선택";
+"Active" = "활동중";
+"Editable" = "수정 가능";
+"Main Branch" = "메인 분기";
+"View only" = "보기만 합니다";
+"You’re not allowed to manage this Branch" = "이 분기를 관리할 권한 없습니다";
+"You’re not allowed to edit this Branch" = "이 분기를 수정할 권한 없습니다";
+"Don’t worry, you can do it later in Beacon List." = "걱정마세요. Beacon 리스트에서 나중에 작업해도 됩니다";
+"Branch Information" = "분기 정보";
+
+"Branch List" = "분기 리스트";
+"Unnamed" = "이름 미정";
+"Sub Accounts" = "하위 계정";
+"Sub Account Detail" = "하위 계정 디테일";
+"Sub Account Name" = "하위 계정 이름";
+"Add New" = "새로 추가";
+"New Sub Account" = "새로운 하위 계정 만들기";
+"Enter sub account name" = "하위 계정 이름 입력";
+"Remove Sub Account" = "하위 계정 삭제";
+"Remove Sub Account Successful" = "하위 계정 삭제 성공";
+"Change Sub Account Name Successful" = "하위 계정 이름 바꾸기 성공";
+"Enter sub account information" = "하위 계정 정보 입력";
+"Your staffs will uses this phone number to login." = "스텝이 이 전화번호를 사용해 로그인 합니다.";
+"Add New Sub Account Successful" = "새로운 하위 계정 추가 성공";
+"Location" = "위치";
+"The location service to locate your input address is not available now. Please try again." = "입력된 주소 추적을 위한 위치 서비스는 현재 사용 불가합니다. 다시 시도하세요.";
+"error_can_not_fetch_location_from_address" = "당신이 입력한 주소를 추적할 수 없습니다.";
+"Synced to %@" = "%@로 동기화";
+"Create New Branch Successful" = "새로운 분기 만들기 성공";
+"Sync Location" = "위치 동기화";
+
+"Update required to use App" = "앱 사용을 위한 업데이트 필요합니다";
+"We’ve released a new version of the app\nPlease update the latest version." = "앱의 새로운 버전 나왔습니다\n최신 버전으로 업데이트 하세요.";
+"Name and Address must not be empty" = "이름과 주소는 비어서 안된다.";
+"Beacon signal range is configured successfully.\n\nIf you want to modify Beacon Setting, go to More → Beacon List" = "Beacon 신호 범위 설정 성공.\n\nBeacon 설정 수정 원하면 기타 → Beacon 리스트로 이동하세요";
+"Beacon signal range and Beacon location on map are configured successfully.\n\nIf you want to modify Beacon Setting, go to More → Beacon List" = "Beacon 신호 범위 및 Beacon 지도 위치 설정 성공.\n\nBeacon 설정 수정 원하면 기타 → Beacon 리스트로 이동하세요";
+"Could not send Mozo to your own wallet" = "본인에게 Mozo 보내기 불가능";
+"More → Beacon List" = "기타 → Beacon 리스트";
+"Add New Sub Account" = "새로운 하위 계정 추가";
+
+/**
+FAQ contents
+*/
+"faq_shopper_1_title" = "Mozo 토큰은 무엇인가요? Mozo 토큰은 어디에 사용 되나요?";
+"faq_shopper_2_title" = "Mozo토큰을 어떻게 받나요?";
+"faq_shopper_3_title" = "Mozo토큰을 어떻게 친구에게 선물하나요?";
+"faq_shopper_4_title" = "Mozo토큰 에어드랍이벤트를 진행중인 매장을 통해, 얼마나 자주 Mozo 를 받을수 있나요?";
+"faq_shopper_5_title" = "에어드랍 이벤트가 진행중일때 왜 블루투스기능을 켜놓아야 하나요?";
+"faq_shopper_6_title" = "휴대폰을 분실하거나 교체 한 경우 어떻게 Mozo 계정으로 되돌릴 수 있습니까?";
+"faq_shopper_7_title" = "지원이 필요하면 Mozo 팀에 어떻게 연락 할 수 있습니까?";
+"faq_shopper_8_title" = "PIN이란 무엇입니까? 비밀번호와 다릅니까?";
+
+"faq_shopper_1_answer" = "Mozo토큰은 상인들이 배장을 방문하는 고객에게 보상해주는 디지털유틸리티 토큰입니다. 고객들은 Mozo토큰을 모아서 상품을 구매하거나 할인을 받는 용도로 사용할수 있습니다.";
+"faq_shopper_2_answer" = "Mozo어플은 에어드랍이벤트가 진행중인 매장을 지도를 통해 찿아내고 방문할수 있게 디자인 되어있습니다. 에어드랍 이벤트가 진행중인 시간과 날짜를 따라 방문하시면 Mozo토큰을 지급받을수 있습니다. 매장방문시 블루투스기능을 켜놓는것을 잊지마세요";
+"faq_shopper_3_answer" = "지갑내에, \"Send Mozo (Mozo 보내기)\" 기능이 있습니다. 그 기능을 통해서 친구의 지갑주소로 보내면 됩니다. 만약 친구가 당신옆에 있다면 QR코드를 스캔하여 보낼수도 있습니다. 그 친구의 지갑주소를 추후 쉽게 사용할수 있도록 당신의 지갑에 저장하는것 잊지마세요.";
+"faq_shopper_4_answer" = "매장에서 설정해놓은 에어드랍이벤트 빈도에따라 받을수 있습니다. 대부분의 경우 그 빈도는 1일 1회 입니다";
+"faq_shopper_5_answer" = "각 매장에는 하나 또는 두개의 비콘이 설치 되어있습니다. 고객들이 매장을 방문하고 블루투스 기능을 켜면, 비콘이 Mozo 어플을 통해 고객이 매장내에 있는것을 인식하고 Mozo토큰을 자동지급합니다.";
+"faq_shopper_6_answer" = "새 장치에 Mozo 비지니스 앱을 설치하기 만하면 됩니다. \"비밀번호 재설정\"기능을 사용하여 비밀번호를 변경하는 것이 좋습니다.";
+"faq_shopper_7_answer" = "Mozo 고객 지원팀에 문의하십시오:<br/>
+<a href=\"https://t.me/MozoXRetailerApp\">Telegram</a><br/>
+<a href=\"https://open.kakao.com/o/g6tvra5\">Kakao Talk</a><br/>
+<a href=\"https://zalo.me/4501855982660092369\">Zalo</a><br/>
+<a href=\"https://www.facebook.com/mozocoin.io\">Facebook</a><br/>
+<a href=\"https://twitter.com/MozoToken\">Twitter</a><br/>
+<br/>
+또는 <a href=\"mailto:support@mozocoin.io\">support@mozocoin.io</a>로 이메일을 보내주십시오.";
+"faq_shopper_8_answer" = "PIN은 개인 식별 번호 (Personal Identification Number)를 나타냅니다. PIN 번호는  비밀번호와 비슷하며 접근을 추구하는 사람이 접근 할 수있는 권한이있는 사람인지 확인하려고합니다.Mozo에서 비밀번호는 계정 (시스템에 로그인 할 때 전화 번호)을 보호하기 위하여 사용됩니다. PIN은 지갑을 보호하기 위하여 사용됩니다. Mozo를 전송하기 전에 항상 PIN을 요청할 것입니다.";
+
+"faq_retailer_1_title" = "Mozo 토큰은 무엇인가요? Mozo 토큰은 어디에 사용 되나요?";
+"faq_retailer_2_title" = "블록체인기술을 사용하는 Mozo 리워드 프로그램 어떻게 작용하나요?";
+"faq_retailer_3_title" = "Mozo토큰을 얻으려면 어떻게해야합니까?";
+"faq_retailer_4_title" = "어떻게 Mozo를 가지고 고객들을 유치할수 있을까요?";
+"faq_retailer_5_title" = "Mozo 와 다른종류의 광고가 다른점은 무엇인가요?";
+"faq_retailer_6_title" = "해시태그는 무엇인가요? 왜 내가 해시태그를 사용해야 하나요?";
+"faq_retailer_7_title" = "Mozo 계정에 등록된 전화번호를 바꿀 수 있습니까?";
+"faq_retailer_8_title" = "내 고객에게 적합한 Mozo 에어 드롭은 얼마입니까?";
+"faq_retailer_9_title" = "에어드랍이벤트를 설정한후, Mozo 를 돌려받을수 있을까요?";
+"faq_retailer_10_title" = "에어 드롭 이벤트가 생성 된 후 정보를 변경할 수 있습니까?";
+"faq_retailer_11_title" = "얼마나 에어 드롭 이벤트를 만들 수 있습니까?";
+"faq_retailer_12_title" = "나의 Admin 권리를 매장 매니저 와 공유할수있을까요?";
+"faq_retailer_13_title" = "언제 Mozo 토큰이 내 고객들에게 에어드랍 되나요?";
+"faq_retailer_14_title" = "Mozo 프모모션이라?";
+"faq_retailer_15_title" = "휴대폰을 분실하거나 교체 한 경우 어떻게 Mozo 계정으로 되돌릴 수 있습니까?";
+"faq_retailer_16_title" = "지원이 필요하면 Mozo 팀에 어떻게 연락 할 수 있습니까?";
+"faq_retailer_17_title" = "PIN이란 무엇입니까? 비밀번호와 다릅니까?";
+"faq_retailer_18_title" = "어떻게 Mozo를 구입합니까?";
+
+"faq_retailer_1_answer" = "Mozo토큰은 상인들이 배장을 방문하는 고객에게 보상해주는 디지털유틸리티 토큰입니다. 고객들은 Mozo토큰을 모아서 상품을 구매하거나 할인을 받는 용도로 사용할수 있습니다.";
+"faq_retailer_2_answer" = "고객들은 지급받은 Mozo토큰을 모아 할인등 여러가지 방법으로 보상프로그램에 참여할수 있습니다. 이에 따라 고객들이 매장과 서비스 운영자가 설정한 이벤트 있는 곳에 방무할 원동력이 있습니다. 그러면 그때 블록체인기술을 이용하여, 안전하게 편리하게 Mozo토큰을 지급받게됩니다. 이 외 위치 주척 기술 탑재하여 고객들이 원하는 장소에 잘 찾아갈 수 있게 합니다. Mozo는 고객들이 실제로 매장에 방문할 수 있도록, 매장내에 설치된 비콘을 통해, 설정되어있는 장소와 시간에만 Mozo토큰을 지급하는 기술입니다. 이를 통해 고객 배치 도와 주기도 합니다. 이때 매장주는 Mozo 비지니스 앱을 통해, 프로모션, 세일, 할인률을 홍보하고, 고객들의 희망방문 시간을 조정할수도 있습니다. 고객이 Mozo 소비자 앱을 사용하여 할인, 세일, 프로모션을 보고 검색하고 체험할 수 있습니다.<br/>
+    Mozo 소비자 앱과 Mozo 비지니스 앱은 할인, 세일, 프로모션을 효과적으로 운영하는 데 도와 줍니다.";
+"faq_retailer_3_answer" = "Mozo 소매점에 등록시 시작하는데 도움이되는 Mozo토큰을 제공 할 것입니다. 모든 초기 Mozo토큰을 고객에 대한 보상으로 사용한 후에는 더 많은 Mozo토큰을 직접 구입할 수 있습니다.";
+"faq_retailer_4_answer" = "Mozo토큰을 지급하여줌으로 고객들의 매장방문을 유도하게 됩니다. 또한 받은 Mozo토큰을 사용하여 매장의 상품을 구매시, 할인받게 함으로 고객들의 충성도를 높일수 있습니다.";
+"faq_retailer_5_answer" = "Mozo토큰을 통해, 방문시에만 고객들에게 보상해주기 때문에 정확하게 1:1의 광고비 집행이 됩니다. 그러나 다른 광고의 경우 당신의 매장을 광고를 보고 왔는지, 배너를 보고 왔는지 광고효과를 분석할수가 없습니다.";
+"faq_retailer_6_answer" = "해시태그는 #전에 나오는 단어나 문장입니다. Mozo에서 해시태그는 당신의 매장을 여러매장중에서 구분하기위해 잠재고객들에게 알려주는 방법입니다.";
+"faq_retailer_7_answer" = "제공된 전화 번호를 변경하는 것은 쉽지 않습니다. Mozo 시스템에서는 전화 번호를 사용하여 사용자를 식별하고 개인 키가 됩니다. 따라서 귀하가 제공하신 전화 번호는 매우 중요합니다. 전화 번호를 변경하려면 Mozo 팀에 연락해야합니다.";
+"faq_retailer_8_answer" = "저희는 인당 10,000 토큰을 드롭하도록 설정 스마트 계약을 고려하는 것이 좋습니다";
+"faq_retailer_9_answer" = "에어드랍이벤트를 생성하고나면 지급된 Mozo토큰을 돌려받을수 없습니다. 만약 에어드랍이벤트가 \"정해진(Schedule)\" 아니면 \"실행(Active)\" 하게되면 그 이벤트가 설정된 기간동안 진행됩니다. 그리고 이벤트 상태가 \"끝(end)\" 하게되면 그때에 남아있는 Mozo동전들을 돌려받을수 있습니다.";
+"faq_retailer_10_answer" = "아니요, 에어 드롭 정보를 만든 후에 변경할 수 없습니다.";
+"faq_retailer_11_answer" = "지갑에 충분한 Mozo 토큰이 있어야만 원하는 만큼 이벤트를 만들 수 있습니다.";
+"faq_retailer_12_answer" = "우리는 당신의 직원들과 관리자 권한을 공유하는 것을 추천하지 않습니다. Mozo 비지니스 앱은 하위 계정을 편집할 수 없는 점을 제외하고 관리자와 유사한 권한을 부여합니다. 하위 계정이 생성될 때 하위 계정 지갑은 0으로 설정된다는 점에 유의하십시오. 관리자는 하위 계정 소유자가 이벤트를 생성하기 위해 하위 계정으로 Mozo 토큰을 전송해야 합니다.";
+"faq_retailer_13_answer" = "고객들이 에어드랍 이벤트가 진행중인 매장의 설치된 비콘의 range로 들어오면, Mozo 토큰을 받게 됩니다.";
+"faq_retailer_14_answer" = "프로모션은 Mozo 결제 허락해 구매자에게 당신의 상품이나 서비스 할인을 제공함으로써  구매자를 끌린다. (예: 구매자가 1,000 Mozo 결제해 당신이 선택한 상품에 대해 20% 할인을 받을 것이다)";
+"faq_retailer_15_answer" = "새 장치에 Mozo 비지니스 앱을 설치하기 만하면 됩니다. \"비밀번호 재설정\"기능을 사용하여 비밀번호를 변경하는 것이 좋습니다.";
+"faq_retailer_16_answer" = "Mozo 고객 지원팀에 문의하십시오:<br/>
+<a href=\"https://t.me/MozoXRetailerApp\">Telegram</a><br/>
+<a href=\"https://open.kakao.com/o/g6tvra5\">Kakao Talk</a><br/>
+<a href=\"https://zalo.me/4501855982660092369\">Zalo</a><br/>
+<a href=\"https://www.facebook.com/mozocoin.io\">Facebook</a><br/>
+<a href=\"https://twitter.com/MozoToken\">Twitter</a><br/>
+<br/>
+또는 <a href=\"mailto:support@mozocoin.io\">support@mozocoin.io</a>로 이메일을 보내주십시오.";
+"faq_retailer_17_answer" = "PIN은 개인 식별 번호 (Personal Identification Number)를 나타냅니다. PIN 번호는  비밀번호와 비슷하며 접근을 추구하는 사람이 접근 할 수있는 권한이있는 사람인지 확인하려고합니다.Mozo에서 비밀번호는 계정 (시스템에 로그인 할 때 전화 번호)을 보호하기 위하여 사용됩니다. PIN은 지갑을 보호하기 위하여 사용됩니다. Mozo를 전송하기 전에 항상 PIN을 요청할 것입니다.";
+"faq_retailer_18_answer" = "<a href=\"https://mozotoken.com/portal/buy-mozo-by-crypto\">https://mozotoken.com/portal/buy-mozo-by-crypto</a>에서 Mozo를 구입할 수 있습니다.<br/>
+<br/>
+구입하기 전에 Mozo App 사용하는 Mozo 지갑을 가지고 있는지 확인하십시오.<br/>
+지갑이없는 경우 다음 지침을 따르십시오:<br/>
+- <a href=\"https://mozotoken.com/help-center?section=faq-retailer#how-to-sign-up-on-mozox-retailer-app\">Mozo 비지니스 앱</a><br/>
+- <a href=\"https://mozotoken.com/help-center?section=faq-shopper#home-faq-shopper-6\">Mozo 소비자 앱</a><br/>
+<br/>
+성공적으로 가입 한 후 저희 웹 사이트로 돌아와서 다시 시도하십시오.<br/>
+<br/>
+ETH 또는 BTC를 선택하십시오.<br/>
+구입할  Mozo의 번호를 입력하십시오. (또는 Mozo로 변경하고자하는 ETH / BTC의 번호)<br/>
+\"구입\"버튼을 클릭하십시오.<br/>
+시스템은 예약 된 ETH / BTC 주소를 제공합니다. ETH / BTC를 이 주소로 전송하면 시스템에서 Mozo 비지니스 또는 Mozo 소비자 앱으로 Mozo를 전송합니다.<br/>
+<br/>
+노트:<br/>
+- 이 주소는 24 시간 동안 예약되며 한 번만 사용할 수 있습니다. 다른 거래를 원하면 다른 주소가 필요합니다. 즉, 예약 된 주소로 한 번만 ETH 또는 BTC를 전송할 수 있습니다. 동일한 예약 주소를 사용하여 두 번 이상 전송하려고하면 ETH 또는 BTC가 손실됩니다. 저희는 당신의 코인을 회수 할 수 없습니다.<br/>
+- 당신이 예약 된 주소를 얻기 전에 구입 Mozo 트랜잭션을 만들고 싶어 확인하시기 바랍니다.당신이 거래를하지 않고 주소를 얻을 경우 다른 주소를 얻기 전에 일주일동안 계정을 차단 될 수 있습니다.<br/>";

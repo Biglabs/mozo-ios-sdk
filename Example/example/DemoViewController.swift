@@ -23,36 +23,22 @@ class DemoViewController: UIViewController {
         super.viewDidLayoutSubviews()
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: 1200)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
 
-extension DemoViewController: AuthenticationDelegate {
-	func mozoAuthenticationDidFinish() {
-		print("Mozo: Finish authentication")
+extension DemoViewController: MozoAuthenticationDelegate {
+	func didSignInSuccess() {
 		let alert = UIAlertController(title: "MOZO", message: "Finish authentication", preferredStyle: .alert)
-		alert.addAction(.init(title: "OK", style: .default) {(action) in
-			
-		})
+		alert.addAction(.init(title: "OK", style: .default))
 		self.present(alert, animated: true, completion: nil)
+	}
+	
+	func didLogoutSuccess() {
 	}
 	
 	func mozoDidExpiredToken() {
 		print("Mozo: Token Expired")
 	}
 	
-	func willExecuteNextStep() {
-		print("Mozo: Execute Next Step")
+	func mozoUIDidCloseAll() {
 	}
-	
-    func mozoLogoutDidFinish() {
-        print("Mozo: Finish logout")
-    }
-    
-    func mozoUIDidCloseAll() {
-        print("Mozo: Did close all UIs")
-    }
 }

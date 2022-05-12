@@ -52,7 +52,7 @@ class RootWireframe : NSObject {
         if inWindow.rootViewController != nil {
             let topController = DisplayUtils.getTopViewController()
             if let controller = topController, let klass = DisplayUtils.getAuthenticationClass(), controller.isKind(of: klass) {
-                controller.dismiss(animated: false, completion: nil)
+                //controller.dismiss(animated: false, completion: nil)
                 
                 "RootWireframe - topController == getAuthenticationClass".log()
                 
@@ -88,7 +88,7 @@ class RootWireframe : NSObject {
     }
     
     func presentViewController(_ viewController: UIViewController) {
-        let top = getTopViewController()
+        let top = DisplayUtils.getTopViewController()
         viewController.modalPresentationStyle = .fullScreen
         top?.present(viewController, animated: true, completion: nil)
     }
@@ -101,22 +101,13 @@ class RootWireframe : NSObject {
         }
     }
     
-    public func getTopViewController() -> UIViewController! {
-        let appDelegate = UIApplication.shared.delegate
-        if let window = appDelegate!.window { return window?.visibleViewController }
-        return nil
-    }
-    
     public func closeAllMozoUIs(completion: @escaping (() -> Swift.Void)) {
-        if mozoNavigationController.viewControllers.count == 0 {
-            completion()
-        } else {
-            mozoNavigationController.viewControllers.removeAll()
-            mozoNavigationController.dismiss(animated: false) {
-                print("Mozo: Dismiss Navigation Controller")
-                completion()
-            }
+        mozoNavigationController.viewControllers.forEach { vc in
+            vc.dismiss(animated: false)
         }
+        mozoNavigationController.viewControllers.removeAll()
+        mozoNavigationController.dismiss(animated: true)
+        completion()
     }
     
     public func closeToLastMozoUIs() {

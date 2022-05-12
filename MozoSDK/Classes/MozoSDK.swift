@@ -13,16 +13,11 @@ import SwiftyJSON
 
 public class MozoSDK {
 
-    private(set) static var network: MozoNetwork = .TestNet {
-        didSet {
-            ModuleDependencies.shared.authWireframe.authPresenter?.authInteractor?.updateNetwork(network)
-        }
-    }
+    private(set) static var network: MozoNetwork = .TestNet
     
     private(set) static var appType: AppType = .Shopper {
         didSet {
             ModuleDependencies.shared.webSocketManager.appType = appType
-            ModuleDependencies.shared.authWireframe.authPresenter?.authInteractor?.updateClientId(appType)
         }
     }
     
@@ -38,7 +33,7 @@ public class MozoSDK {
         self.appType = appType
     }
     
-    public static func setAuthDelegate(_ delegate: AuthenticationDelegate) {
+    public static func setAuthDelegate(_ delegate: MozoAuthenticationDelegate) {
         ModuleDependencies.shared.setAuthDelegate(delegate)
     }
     
@@ -48,10 +43,6 @@ public class MozoSDK {
     
     public static func authenticate() {
         ModuleDependencies.shared.authenticate()
-    }
-    
-    public static func processAuthorizationCallBackUrl(_ url: URL) {
-        ModuleDependencies.shared.processAuthorizationCallBackUrl(url)
     }
     
     public static func logout() {
@@ -289,10 +280,6 @@ public class MozoSDK {
         return ModuleDependencies.shared.getListNotification(page: page, size: size)
     }
     
-    public static func getSuggestKeySearch(lat: Double = 0, lon: Double = 0) -> Promise<[String]> {
-        return ModuleDependencies.shared.getSuggestKeySearch(lat: lat, lon: lon)
-    }
-    
     public static func loadUserProfile() -> Promise<UserProfileDTO> {
         return ModuleDependencies.shared.loadUserProfile()
     }
@@ -339,10 +326,6 @@ public class MozoSDK {
     
     public static func getRetailerCountPromotion() -> Promise<Int> {
         return ModuleDependencies.shared.getRetailerCountPromotion()
-    }
-    
-    public static func getSuggestKeySearchForPromotion(lat: Double = 0, lon: Double = 0) -> Promise<[String]> {
-        return ModuleDependencies.shared.getSuggestKeySearchForPromotion(lat: lat, lon: lon)
     }
     
     // MARK: TOP UP

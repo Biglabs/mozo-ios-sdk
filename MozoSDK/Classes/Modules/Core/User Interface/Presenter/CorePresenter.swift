@@ -14,16 +14,13 @@ class CorePresenter : NSObject {
     var coreInteractor : CoreInteractorInput?
     var coreInteractorService : CoreInteractorService?
     var rdnInteractor : RDNInteractorInput?
-    weak var authDelegate: AuthenticationDelegate?
+    weak var authDelegate: MozoAuthenticationDelegate?
     var callBackModule: Module?
     var reachability : Reachability?
     
-    var waitingViewInterface: WaitingViewInterface?
-    
     var requestingABModule: Module?
-    
-    internal var isProcessing = false
     internal var alertController: UIAlertController? = nil
+    private var retryAction: WaitingRetryAction?
     
     override init() {
         super.init()
@@ -108,6 +105,21 @@ class CorePresenter : NSObject {
         default: coreWireframe?.prepareForWalletInterface()
         }
     }
+    
+    func displayTryAgain(_ error: ConnectionError, forAction: WaitingRetryAction?) {
+        self.retryAction = forAction
+        if error == .apiError_INVALID_USER_TOKEN {
+            DisplayUtils.displayTokenExpired()
+            
+        } else if error == .apiError_MAINTAINING {
+            DisplayUtils.displayMaintenanceScreen()
+            
+        } else {
+            if let topViewController = DisplayUtils.getTopViewController(), topViewController is WaitingViewController {
+                DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
+            }
+        }
+    }
 }
 
 // MARK: Silent services methods
@@ -127,7 +139,7 @@ private extension CorePresenter {
             "CorePresenter - Start silent services, socket service.".log()
             rdnInteractor?.startService()
             "CorePresenter - Start silent services, refresh token service.".log()
-            coreWireframe?.authWireframe?.startRefreshTokenTimer()
+            ModuleDependencies.shared.authPresenter.startRefreshTokenTimer()
         }
     }
     
@@ -161,19 +173,11 @@ private extension CorePresenter {
 }
 extension CorePresenter : CoreModuleInterface {
     func requestForAuthentication(module: Module) {
-        "Start login: \(!isProcessing)".log()
-        if !isProcessing {
-            isProcessing = true
-            coreInteractor?.checkForAuthentication(module: module)
-        }
+        coreInteractor?.checkForAuthentication(module: module)
     }
     
     func requestForLogout() {
-        "Start logout: \(!isProcessing)".log()
-        if !isProcessing {
-            isProcessing = true
-            coreWireframe?.authWireframe?.presentLogoutInterface()
-        }
+        ModuleDependencies.shared.authPresenter.performLogout()
     }
     
     func requestForCloseAllMozoUIs(_ callback: (() -> Void)?) {
@@ -187,7 +191,6 @@ extension CorePresenter : CoreModuleInterface {
         coreWireframe?.requestForCloseAllMozoUIs(completion: {
             self.authDelegate?.mozoUIDidCloseAll()
             self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers()
-            self.isProcessing = false
             callback?()
         })
         
@@ -200,46 +203,30 @@ extension CorePresenter : CoreModuleInterface {
 }
 extension CorePresenter : CoreModuleWaitingInterface {
     func retryGetUserProfile() {
-        if let module = callBackModule {
-            requestForAuthentication(module: module)
-        } else {
-            coreInteractor?.handleUserProfileAfterAuth()
-        }
+        requestForAuthentication(module: callBackModule ?? .Wallet)
     }
     
     func retryAuth() {
-        coreWireframe?.authWireframe?.presentInitialAuthInterface()
+        ModuleDependencies.shared.authPresenter.performAuthentication()
     }
 }
 extension CorePresenter: WalletModuleDelegate {
     func walletModuleDidFinish() {
-        print("CorePresenter - Wallet Module Did Finished, callbackModule: \(callBackModule?.value ?? "NO MODULE")")
-        if let topViewController = DisplayUtils.getTopViewController(), topViewController is MaintenanceViewController {
-            print("CorePresenter - Wallet Module Did Finished but top view controller is MaintenanceViewController - Must wait until maintenance mode back to healthy mode")
+        if let topVc = DisplayUtils.getTopViewController(), topVc is MaintenanceViewController {
+            "CorePresenter - Maintenance mode".log()
             return
         }
-        if callBackModule == .Wallet {
-            callBackModule = nil
-        }
-        if callBackModule != nil {
+        if callBackModule != nil, callBackModule != .Wallet {
             // Present call back module interface
             requestCloseToLastMozoUIs()
             presentModuleInterface(callBackModule!)
-            callBackModule = nil
         } else {
-            if coreWireframe?.rootWireframe?.mozoNavigationController.viewControllers.count ?? 0 > 0 {
-                // Close all existing Mozo's UIs
-                coreWireframe?.requestForCloseAllMozoUIs(completion: {
-                    self.isProcessing = false
-                    // Send delegate back to the app
-                    self.authDelegate?.mozoAuthenticationDidFinish()
-                })
-            } else {
-                self.isProcessing = false
+            coreWireframe?.requestForCloseAllMozoUIs(completion: {
                 // Send delegate back to the app
-                self.authDelegate?.mozoAuthenticationDidFinish()
-            }
+                self.authDelegate?.didSignInSuccess()
+            })
         }
+        callBackModule = nil
         readyForGoingLive()
     }
     
@@ -276,7 +263,7 @@ extension CorePresenter : CoreInteractorOutput {
             if module != .Wallet {
                 self.callBackModule = module
             }
-            coreWireframe?.authenticate()
+            ModuleDependencies.shared.authPresenter.performAuthentication()
         } else {
             presentModuleInterface(module)
         }
@@ -292,17 +279,13 @@ extension CorePresenter : CoreInteractorOutput {
     }
     
     func failToLoadUserInfo(_ error: ConnectionError, for requestingModule: Module?) {
-        NSLog("CorePresenter - Failed to load user info")
-        if let requestingModule = requestingModule {
-            callBackModule = requestingModule
-        }
+        callBackModule = requestingModule
         // Check connection error
         if error == .authenticationRequired {
-            // TODO: Display different error for invalid token
-            waitingViewInterface?.displayTryAgain(ConnectionError.apiError_INVALID_USER_TOKEN, forAction: nil)
+            self.displayTryAgain(ConnectionError.apiError_INVALID_USER_TOKEN, forAction: nil)
             return
         }
-        waitingViewInterface?.displayTryAgain(error, forAction: .LoadUserProfile)
+        self.displayTryAgain(error, forAction: .LoadUserProfile)
     }
     
     func didReceiveInvalidToken() {
@@ -310,8 +293,6 @@ extension CorePresenter : CoreInteractorOutput {
     }
     
     func didReceiveAuthorizationRequired() {
-        print("CorePresenter - Did receive authorization required")
-        isProcessing = false
         if let viewController = DisplayUtils.getTopViewController(), !viewController.isKind(of: WaitingViewController.self) {
             self.authDelegate?.mozoDidExpiredToken()
         } else {
@@ -498,5 +479,24 @@ extension CorePresenter: PaymentQRModuleDelegate {
     func requestAddressBookInterfaceForPaymentRequest() {
         requestingABModule = .Payment
         coreWireframe?.presentAddressBookInterface()
+    }
+}
+extension CorePresenter : PopupErrorDelegate {
+    func didClosePopupWithoutRetry() {
+    }
+    
+    func didTouchTryAgainButton() {
+        if let retryAction = self.retryAction {
+            switch retryAction {
+            case .LoadUserProfile:
+                self.retryGetUserProfile()
+                break
+            case .BuildAuth:
+                self.retryAuth()
+                break
+            }
+            
+        }
+        self.retryAction = nil
     }
 }

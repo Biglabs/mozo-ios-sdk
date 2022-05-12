@@ -41,25 +41,12 @@ public class ApiManager {
     private func buildHTTPHeaders(withToken: Bool) -> HTTPHeaders {
         let headers: HTTPHeaders = [
             "Authorization": withToken ? getToken() : "",
-            "Content-Type": MediaType.APPLICATION_JSON.rawValue,
-            "Accept": MediaType.APPLICATION_JSON.rawValue,
+            "Content-Type": "application/json",
+            "Accept": "application/json",
             "Cache-Control": "private",
             "user-agent": "IOS"
         ]
         
-        return headers
-    }
-    
-    private func buildHeaderOauth() -> HTTPHeaders {
-        let credentialData = "{OAUTH_CLIENT_ID}:{OAUTH_SECRET}".data(using:String.Encoding.utf8)
-        let base64Credentials = credentialData?.base64EncodedString(options: []) ?? ""
-        let authorization = "Basic \(base64Credentials)"
-        let headers: HTTPHeaders = [
-            "Authorization": authorization,
-            "Content-Type": MediaType.APPLICATION_FORM_URLENCODED.rawValue,
-            "Accept": MediaType.APPLICATION_JSON.rawValue,
-            "user-agent": "IOS"
-        ]
         return headers
     }
     
@@ -244,7 +231,9 @@ public class ApiManager {
                                 delegate?.didReceiveRequireUpdate(type: .TEMPORARILY_SUSPENDED)
                                 seal.reject(errorEnum.connectionError)
                                 break
-                                
+                            case .STORE_FATAL_USER_NO_OFFCHAIN_ADDRESS:
+                                ModuleDependencies.shared.authenticate()
+                                break
                             default:
                                 if errorEnum == .MAINTAINING {
                                     self.delegate?.didReceiveMaintenance()
@@ -275,7 +264,7 @@ public class ApiManager {
         return errorMessage
     }
 
-    private func execute(_ method: Alamofire.HTTPMethod, url: String, headers: HTTPHeaders, params: [String: Any]?) -> Promise<[String: Any]>{
+    private func execute(_ method: Alamofire.HTTPMethod, url: String, headers: HTTPHeaders, params: Parameters?) -> Promise<[String: Any]>{
         return Promise { seal in
             self.client.request(url, method: method, parameters: params, encoding: JSONEncoding.default, headers: headers)
                 .validate()
@@ -309,5 +298,60 @@ public class ApiManager {
             connectionError = self.mappingConnectionError(response.response, error: error)!
         }
         return connectionError
+    }
+    
+    private func requestToken(parameters: Parameters) -> Promise<AccessToken> {
+        var headers: HTTPHeaders = [
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Accept": "*/*",
+            "user-agent": "IOS"
+        ]
+        do {
+            let parameterData = try JSONSerialization.data(withJSONObject: parameters)
+            headers.add(name: "Content-Length", value: "\(parameterData.count)")
+        } catch {
+        }
+        
+        return Promise { seal in
+            let url = Configuration.AUTH_ISSSUER.appending(Configuration.END_POINT_TOKEN_PATH)
+            self.client.request(url, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers)
+                .validate()
+                .responseData { response in
+                    switch response.result {
+                    case .success(let data):
+                        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                            return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil))
+                        }
+                        seal.fulfill(AccessToken(json))
+                    case .failure(let error):
+                        seal.reject(error)
+                }
+            }
+        }
+    }
+    
+    func requestToken(
+        authorizationCode: String,
+        codeVerifier: String,
+        clientId: String,
+        redirectUri: String
+    ) -> Promise<AccessToken> {
+        let parameters: Parameters = [
+            "grant_type" : "authorization_code",
+            "code" : authorizationCode,
+            "redirect_uri": redirectUri,
+            "code_verifier": codeVerifier,
+            "client_id": clientId
+        ]
+        return requestToken(parameters: parameters)
+    }
+    
+    func refeshToken(refreshToken: String, clientId: String) -> Promise<AccessToken> {
+        let parameters: Parameters = [
+            "grant_type" : "refresh_token",
+            "refresh_token" : refreshToken,
+            "client_id": clientId
+        ]
+        return requestToken(parameters: parameters)
     }
 }

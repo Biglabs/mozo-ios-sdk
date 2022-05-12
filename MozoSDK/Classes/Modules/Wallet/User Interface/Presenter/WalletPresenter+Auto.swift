@@ -38,8 +38,6 @@ extension WalletPresenter {
 }
 extension WalletPresenter: WalletInteractorAutoOutput {
     func manageWalletAutoSuccessfully() {
-        print("WalletPresenter - Manage wallet auto successfully")
-        // New wallet
         handleEndingWalletFlow()
     }
     

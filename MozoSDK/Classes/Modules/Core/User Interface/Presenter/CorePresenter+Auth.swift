@@ -9,8 +9,14 @@ import Foundation
 
 extension CorePresenter : AuthModuleDelegate {
     func didReceiveErrorWhileExchangingCode() {
-        "didReceiveErrorWhileExchangingCode".log()
-        waitingViewInterface?.displayAlertIncorrectSystemDateTime()
+        DisplayUtils.alert(
+            title: "The time on your device is incorrect.".localized,
+            message: "Please update the date and time, then try again.".localized,
+            button: "Settings".localized
+        ) {
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+            UIApplication.shared.open(url)
+        }
     }
     
     func didCheckAuthorizationSuccess() {
@@ -33,7 +39,6 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidFinishAuthentication(accessToken: String?) {
-        isProcessing = false
         "End process authModuleDidFinishAuthentication".log()
         coreInteractor?.handleAferAuth(accessToken: accessToken)
         // Notify for all observing objects
@@ -41,9 +46,7 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidFailedToMakeAuthentication(error: ConnectionError) {
-        isProcessing = false
-        "End process authModuleDidFailedToMakeAuthentication".log()
-        waitingViewInterface?.displayTryAgain(error, forAction: .BuildAuth)
+        self.displayTryAgain(error, forAction: .BuildAuth)
     }
     
     func authModuleDidCancelAuthentication() {
@@ -52,8 +55,7 @@ extension CorePresenter : AuthModuleDelegate {
         stopSilentServices(shouldReconnect: false)
     }
     
-    func checkToDismissAccessDeniedIfNeed(callback: (() -> Void)? = nil) {
-        "CorePresenter - try to dismiss AccessDeniedViewController, authentication in process: \(self.isProcessing)".log()
+    private func checkToDismissAccessDeniedIfNeed(callback: (() -> Void)? = nil) {
         let topViewController = DisplayUtils.getTopViewController()
         if let klass = DisplayUtils.getAuthenticationClass(), topViewController?.isKind(of: klass) == true {
             "CorePresenter - \(klass) on top, try to dismiss AccessDeniedViewController after 2s".log()
@@ -72,11 +74,10 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidFinishLogout(callback: (() -> Void)?) {
-        checkToDismissAccessDeniedIfNeed {
-            "CorePresenter - checkToDismissAccessDeniedIfNeed complete, authentication in process: \(self.isProcessing)".log()
+        self.checkToDismissAccessDeniedIfNeed {
             
             // Send delegate back to the app
-            self.authDelegate?.mozoLogoutDidFinish()
+            self.authDelegate?.didLogoutSuccess()
             // Notify for all observing objects
             self.coreInteractor?.notifyLogoutForAllObservers()
             self.coreInteractor?.stopCheckTokenTimer()
@@ -89,13 +90,8 @@ extension CorePresenter : AuthModuleDelegate {
     
     func authModuleDidCancelLogout() {
         coreInteractor?.stopCheckTokenTimer()
-        isProcessing = false
         "End process authModuleDidCancelLogout".log()
         stopSilentServices(shouldReconnect: false)
-    }
-    
-    func willExecuteNextStep() {
-        self.authDelegate?.willExecuteNextStep()
     }
     
     func willRelaunchAuthentication() {

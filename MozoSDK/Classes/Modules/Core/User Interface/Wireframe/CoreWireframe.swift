@@ -8,7 +8,6 @@
 import Foundation
 
 class CoreWireframe : MozoWireframe {
-    var authWireframe: AuthWireframe?
     var walletWireframe: WalletWireframe?
     var txWireframe: TransactionWireframe?
     var txhWireframe: TxHistoryWireframe?
@@ -28,8 +27,6 @@ class CoreWireframe : MozoWireframe {
     
     // MARK: Request
     func requestForAuthentication() {
-        //presentWaitingInterface(corePresenter: corePresenter)
-        corePresenter?.authDelegate?.willExecuteNextStep()
         corePresenter?.requestForAuthentication(module: Module.Wallet)
     }
     
@@ -79,9 +76,7 @@ class CoreWireframe : MozoWireframe {
     }
     
     func requestForCloseAllMozoUIs(completion: @escaping (() -> Swift.Void)) {
-        rootWireframe?.closeAllMozoUIs(completion: {
-            completion()
-        })
+        rootWireframe?.closeAllMozoUIs(completion: completion)
     }
     
     func requestCloseToLastMozoUIs() {
@@ -91,11 +86,6 @@ class CoreWireframe : MozoWireframe {
     func requestForTopUpTransfer() {
         presentWaitingInterface(corePresenter: corePresenter)
         corePresenter?.requestForAuthentication(module: .TopUp)
-    }
-    
-    // MARK: Communication with others wireframe
-    func authenticate() {
-        authWireframe?.presentInitialAuthInterface()
     }
     
     func prepareForTransferInterface() {

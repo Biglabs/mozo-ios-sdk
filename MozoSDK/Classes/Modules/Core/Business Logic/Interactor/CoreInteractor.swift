@@ -7,7 +7,6 @@
 
 import Foundation
 import PromiseKit
-import JWTDecode
 
 enum CheckTokenExpiredStatus : String {
     case IDLE = "IDLE"
@@ -22,7 +21,6 @@ class CoreInteractor: NSObject {
     let apiManager: ApiManager
     let userDataManager: UserDataManager
     
-    var checkTokenExpiredTimer : Timer?
     var checkTokenExpiredModule : Module?
     
     init(anonManager: AnonManager, apiManager : ApiManager, userDataManager: UserDataManager) {
@@ -141,7 +139,10 @@ class CoreInteractor: NSObject {
     func checkWallet(module: Module) {
         "CoreInteractor - Check wallet".log()
         // Check wallet
-        if let wallet = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo, wallet.encryptSeedPhrase != nil, let id = SessionStoreManager.loadCurrentUser()?.id {
+        if let wallet = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo,
+           wallet.encryptSeedPhrase != nil,
+           let id = SessionStoreManager.loadCurrentUser()?.id {
+            
             let serverHaveBothOffChainAndOnChain = wallet.offchainAddress != nil && wallet.onchainAddress != nil
             
             // Check local wallet in DB
@@ -202,20 +203,12 @@ class CoreInteractor: NSObject {
             output?.finishedCheckAuthentication(keepGoing: true, module: module)
         }
     }
-    
-    func saveDataFromToken(_ accessToken: String?) {
-        if let accessToken = accessToken {
-            let jwt = try! decode(jwt: accessToken)
-            let pin_secret = jwt.claim(name: Configuration.JWT_TOKEN_CLAIM_PIN_SECRET).string
-            AccessTokenManager.savePinSecret(pin_secret)
-        }
-    }
 }
 
 extension CoreInteractor: CoreInteractorInput {
     func downloadAndStoreConvenienceData() {
         print("Download convenience data and store at local.")
-        if AccessTokenManager.getAccessToken() != nil, SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING {
+        if AccessTokenManager.getAccessToken() != nil {
             // Check User info here
             _ = getUserProfile().done {
                 self.downloadData()
@@ -239,33 +232,20 @@ extension CoreInteractor: CoreInteractorInput {
         "CoreInteractor - Check for authentication. Waiting for check token expired from \(module.key).".log()
         stopCheckTokenTimer()
         checkTokenExpiredModule = module
-        checkTokenExpiredTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.repeatCheckForAuthentication), userInfo: nil, repeats: true)
+        self.checkAuthAndWallet(module: module)
     }
     
     func stopCheckTokenTimer() {
         "CoreInteractor - STOP Check Token Timer".log()
-        checkTokenExpiredTimer?.invalidate()
-        checkTokenExpiredTimer = nil
         SafetyDataManager.shared.checkTokenExpiredStatus = .IDLE
     }
     
     func handleAferAuth(accessToken: String?) {
-        AccessTokenManager.saveToken(accessToken)
-        saveDataFromToken(accessToken)
         anonManager.linkCoinFromAnonymousToCurrentUser()
-        handleUserProfileAfterAuth()
-    }
-    
-    func handleUserProfileAfterAuth() {
-        _ = getUserProfile().done({ () in
+        if accessToken != nil && !accessToken!.isEmpty {
             self.downloadData()
             self.checkAuthAndWallet(module: .Wallet)
-//            self.output?.finishedHandleAferAuth()
-//            self.processInvitation()
-        }).catch({ (err) in
-            // Handle case unable to load user profile
-            self.output?.failToLoadUserInfo(err as! ConnectionError, for: nil)
-        })
+        }
     }
     
     func notifyAuthSuccessForAllObservers() {

@@ -57,7 +57,7 @@ class ChangePINInteractor: NSObject {
                 
                 let updatingWalletInfo = WalletInfoDTO(encryptSeedPhrase: encryptedMnemonics, offchainAddress: offchainAddress, onchainAddress: onchainAddress)
                 DispatchQueue.main.async {
-                    _ = apiManager.updateWalletsForChangingPIN(walletInfo: updatingWalletInfo).done { (userProfile) in
+                    _ = self.apiManager.updateWalletsForChangingPIN(walletInfo: updatingWalletInfo).done { (userProfile) in
                         let userDto = UserDTO(id: userProfile.userId, profile: userProfile)
                         SessionStoreManager.saveCurrentUser(user: userDto)
                         self.updateMnemonicAndPinForCurrentUser(wallets: wallets, mnemonic: encryptedMnemonics, pin: pin)

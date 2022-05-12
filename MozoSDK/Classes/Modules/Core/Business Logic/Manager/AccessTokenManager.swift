@@ -6,8 +6,26 @@
 //
 
 import Foundation
-
+import JWTDecode
 public class AccessTokenManager {
+    public static func save(_ token: AccessToken?) {
+        DispatchQueue.main.async {
+            if token == nil {
+                UserDefaults.standard.removeObject(forKey: Configuration.AUTH_STATE)
+            } else {
+                UserDefaults.standard.set(token!.rawData, forKey: Configuration.AUTH_STATE)
+            }
+            self.saveToken(token?.accessToken)
+        }
+    }
+    
+    public static func load() -> AccessToken? {
+        if let data = UserDefaults.standard.data(forKey: Configuration.AUTH_STATE) {
+            return AccessToken.parse(data)
+        }
+        return nil
+    }
+    
     public static func loadToken() -> String? {
         if let token = UserDefaults.standard.string(forKey: Configuration.ACCESS_TOKEN) {
             return token
@@ -19,11 +37,18 @@ public class AccessTokenManager {
         return UserDefaults.standard.string(forKey: Configuration.ACCESS_TOKEN)
     }
     
-    public static func saveToken(_ token: String?) {
+    private static func saveToken(_ token: String?) {
         UserDefaults.standard.set(token, forKey: Configuration.ACCESS_TOKEN)
+        
+        if let accessToken = token {
+            let jwt = try! decode(jwt: accessToken)
+            let pin_secret = jwt.claim(name: "pin_secret").string
+            self.savePinSecret(pin_secret)
+        }
     }
     
     public static func clearToken() {
+        UserDefaults.standard.removeObject(forKey: Configuration.AUTH_STATE)
         UserDefaults.standard.removeObject(forKey: Configuration.ACCESS_TOKEN)
     }
     
@@ -31,7 +56,7 @@ public class AccessTokenManager {
         return UserDefaults.standard.string(forKey: Configuration.PIN_SECRET)
     }
     
-    public static func savePinSecret(_ pinSecrect: String?) {
+    private static func savePinSecret(_ pinSecrect: String?) {
         UserDefaults.standard.set(pinSecrect, forKey: Configuration.PIN_SECRET)
     }
     

@@ -12,7 +12,6 @@ protocol CoreInteractorInput {
     func checkForAuthentication(module: Module)
     func stopCheckTokenTimer()
     func handleAferAuth(accessToken: String?)
-    func handleUserProfileAfterAuth()
     
     func downloadAndStoreConvenienceData()
     func notifyAuthSuccessForAllObservers()
@@ -96,8 +95,6 @@ protocol CoreInteractorService {
     
     func getListNotification(page: Int, size: Int) -> Promise<[WSMessage]>
     
-    func getSuggestKeySearch(lat: Double, lon: Double) -> Promise<[String]>
-    
     func loadUserProfile() -> Promise<UserProfileDTO>
     
     func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO>
@@ -116,8 +113,6 @@ protocol CoreInteractorService {
     func getRetailerPromotionScannedList(page: Int, size: Int) -> Promise<[PromotionCodeInfoDTO]>
     
     func getRetailerCountPromotion() -> Promise<Int>
-    
-    func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]>
     
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem>
         

@@ -220,31 +220,6 @@ public extension ApiManager {
         }
     }
     
-    func getSuggestKeySearchForPromotion(lat: Double, lon: Double) -> Promise<[String]> {
-        return Promise { seal in
-            let params = ["lat" : lat,
-                          "lon" : lon] as [String : Any]
-            let url = Configuration.BASE_STORE_URL + SHOPPER_PROMOTION_RESOURCE_API_PATH + "/getSuggestPromoHashtags" + "?\(params.queryString)"
-            self.execute(.get, url: url)
-                .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get suggestion search for promotion, json response: \(json)")
-                    let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_ARRAY_KEY]
-                    let result = jobj.arrayObject as? [String]
-                    if let result = result {
-                        seal.fulfill(result)
-                    }
-                }
-                .catch { error in
-                    print("Error when request get suggestion search for promotion: " + error.localizedDescription)
-                    seal.reject(error)
-                }
-                .finally {
-                    //                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {
         return Promise { seal in
             let params = ["size" : size,

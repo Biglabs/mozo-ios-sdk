@@ -7,7 +7,6 @@
 
 import Foundation
 class TxProcessViewController: MozoBasicViewController {
-    @IBOutlet weak var imgLoading: UIImageView!
     @IBOutlet weak var lbStepTitle: UILabel!
     @IBOutlet weak var lbStepDes: UILabel!
     @IBOutlet weak var btnHide: UIButton!
@@ -36,21 +35,8 @@ class TxProcessViewController: MozoBasicViewController {
     }
     
     func updateLayout() {
-        rotateView()
         btnHide.roundCorners(cornerRadius: 0.15, borderColor: UIColor(hexString: "4e94f3"), borderWidth: 1.1)
         btnHide.layer.cornerRadius = 22.5
-    }
-    
-    private func rotateView(duration: Double = 1.0) {
-        UIView.animate(withDuration: duration, delay: 0.0, options: .curveLinear, animations: {
-            self.imgLoading.transform = self.imgLoading.transform.rotated(by: CGFloat.pi)
-        }) { finished in
-            if !self.stopLoading {
-                self.rotateView(duration: duration)
-            } else {
-                self.imgLoading.transform = .identity
-            }
-        }
     }
     
     func prepareNextSteps() {

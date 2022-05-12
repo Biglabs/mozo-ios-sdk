@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -49,7 +49,7 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="rY7-Z3-SdK">
-                                    <rect key="frame" x="0.0" y="161.5" width="375" height="155"/>
+                                    <rect key="frame" x="0.0" y="155.5" width="375" height="155"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quickly add friends to Mozo Address Book from the phone book" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISy-zm-Q7z">
@@ -91,7 +91,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="MozoAddressBookCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MozoAddressBookCell" textLabel="uYD-Wi-O3L" detailTextLabel="tyJ-aB-V5c" style="IBUITableViewCellStyleSubtitle" id="ZvT-J9-gj5">
-                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="93.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZvT-J9-gj5" id="X1f-1Q-Dyv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -204,20 +204,24 @@
                                 <rect key="frame" x="35" y="157.5" width="305" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="amx-j8-YAh">
-                                        <rect key="frame" x="110" y="13.5" width="85.5" height="23"/>
+                                        <rect key="frame" x="91" y="13" width="123" height="24"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loading" translatesAutoresizingMaskIntoConstraints="NO" id="uuF-lT-Y3A">
-                                                <rect key="frame" x="0.0" y="0.0" width="24" height="23"/>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="GSl-wj-Epx">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="23" id="FS1-Z6-C57"/>
-                                                    <constraint firstAttribute="width" constant="24" id="JsL-5a-3Xl"/>
+                                                    <constraint firstAttribute="width" constant="24" id="Das-Vi-1ue"/>
+                                                    <constraint firstAttribute="height" constant="24" id="i1I-6d-Uzl"/>
                                                 </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8W-s4-PKp">
-                                                <rect key="frame" x="32" y="0.0" width="53.5" height="23"/>
+                                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </activityIndicatorView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Synchronize" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8W-s4-PKp">
+                                                <rect key="frame" x="32" y="0.0" width="91" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Synchronize"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                     </stackView>
@@ -256,9 +260,9 @@
                     </view>
                     <connections>
                         <outlet property="btnUpdate" destination="wxb-ym-XT6" id="CE0-Me-9Xq"/>
+                        <outlet property="btnUpdateLoading" destination="GSl-wj-Epx" id="cYh-al-fQg"/>
                         <outlet property="lbLastUpdate" destination="8kQ-eL-uIi" id="7tq-Dt-sjW"/>
                         <outlet property="lbUpdate" destination="F8W-s4-PKp" id="xVh-1b-WfL"/>
-                        <outlet property="loadingImageView" destination="uuF-lT-Y3A" id="f5J-MN-6eB"/>
                         <outlet property="updateContainerView" destination="mqf-Xh-NIZ" id="Vu1-Pb-aZz"/>
                     </connections>
                 </viewController>
@@ -268,7 +272,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_loading" width="94.5" height="90"/>
         <namedColor name="color_text_title">
             <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

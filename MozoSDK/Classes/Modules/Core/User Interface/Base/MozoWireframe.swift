@@ -18,7 +18,6 @@ class MozoWireframe: NSObject {
     
     func presentWaitingInterface(corePresenter: CorePresenter?) {
         let viewController = viewControllerFromStoryBoard(WaitingViewControllerIdentifier) as! WaitingViewController
-        corePresenter?.waitingViewInterface = viewController
         viewController.eventHandler = corePresenter
         rootWireframe?.showRootViewController(viewController, inWindow: (UIApplication.shared.delegate?.window!)!)
     }
@@ -34,7 +33,7 @@ class MozoWireframe: NSObject {
     }
     
     func dismissAutoPinIfNeed() {
-        if isAutoPinPresenting || getTopViewController() is AutoPINViewController {
+        if isAutoPinPresenting || DisplayUtils.getTopViewController() is AutoPINViewController {
             dismissTopInterface()
             isAutoPinPresenting = false
         }
@@ -42,10 +41,6 @@ class MozoWireframe: NSObject {
     
     func dismissTopInterface() {
         rootWireframe?.dismissTopViewController()
-    }
-    
-    public func getTopViewController() -> UIViewController! {
-        return rootWireframe?.getTopViewController()
     }
     
     public func viewControllerFromStoryBoard(_ identifier: String, storyboardName: String = "") -> UIViewController {

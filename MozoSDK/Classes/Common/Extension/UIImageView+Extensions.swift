@@ -15,11 +15,12 @@ public extension UIImageView {
         _ url: String?,
         placeHolder: String = "ic_store_profile",
         shouldScale: Bool = true,
+        transforms: [SDImageTransformer]? = nil,
         _ onLoadComplete: (() -> Void)? = nil
     ) {
         let placeHolderImage = UIImage(named: placeHolder) ?? placeHolder.asMozoImage()?.withRenderingMode(.alwaysOriginal)
         
-        guard let safeUrl = url?.trimmingCharacters(in: .whitespacesAndNewlines), !safeUrl.isEmpty else {
+        guard let safeUrl = url?.trim(), !safeUrl.isEmpty else {
             self.image = placeHolderImage
             onLoadComplete?()
             return
@@ -43,6 +44,17 @@ public extension UIImageView {
         }
 
 //        let thumbnailSize = CGSize(width: 200 * scale, height: 200 * scale)
+        var pipeline = SDImagePipelineTransformer(
+            transformers: [
+//                thumbnailSize
+            ]
+        )
+        if var trans = transforms {
+            trans.append(contentsOf: pipeline.transformers)
+            pipeline = SDImagePipelineTransformer(
+                transformers: trans
+            )
+        }
         
         self.sd_imageTransition = .fade
         self.sd_setImage(
@@ -51,8 +63,8 @@ public extension UIImageView {
             options: [
                 .progressiveLoad, .retryFailed
             ],
-            context: [:
-//                .imageThumbnailPixelSize: thumbnailSize
+            context: [
+                .imageTransformer: pipeline
             ],
             progress: nil,
             completed: { _, error, _, loadedUrl in
