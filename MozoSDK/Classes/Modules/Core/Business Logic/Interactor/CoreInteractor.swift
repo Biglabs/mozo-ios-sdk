@@ -94,7 +94,7 @@ class CoreInteractor: NSObject {
     
     func downloadExchangeRateInfoAndStoreAtLocal() {
         print("😎 Load exchange rate data.")
-        _ = apiManager.getEthAndOnchainExchangeRateInfo().done({ (data) in
+        _ = apiManager.getEthAndOnchainExchangeRateInfo(locale: Configuration.LOCALE).done({ (data) in
             SessionStoreManager.exchangeRateInfo = data.token
             SessionStoreManager.ethExchangeRateInfo = data.eth
             self.notifyExchangeRateInfoForAllObservers()

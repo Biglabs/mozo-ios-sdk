@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,6 +14,8 @@
                 <outlet property="btPaymentPaypal" destination="xFz-9Y-nPT" id="zZg-rl-n8x"/>
                 <outlet property="lblEnterMozo" destination="Ypr-kj-zBH" id="7vI-vR-adb"/>
                 <outlet property="lblTitle" destination="qzD-iH-2QU" id="faU-gm-Fob"/>
+                <outlet property="txtMozo" destination="NMo-De-Wue" id="6kd-BE-YeG"/>
+                <outlet property="txtUSD" destination="KHO-by-p0f" id="EiN-0X-fhE"/>
                 <outlet property="vMozo" destination="93G-uC-Ga2" id="hmD-CV-Aac"/>
                 <outlet property="vUSD" destination="jFS-SS-4uB" id="XL5-ss-XGF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -88,7 +90,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFS-SS-4uB">
                     <rect key="frame" x="20" y="201" width="374" height="60"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_buy_mozo" translatesAutoresizingMaskIntoConstraints="NO" id="vER-0o-Csv">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_buy_usd" translatesAutoresizingMaskIntoConstraints="NO" id="vER-0o-Csv">
                             <rect key="frame" x="6" y="6" width="106" height="48"/>
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KHO-by-p0f">
@@ -146,7 +148,8 @@
     </objects>
     <resources>
         <image name="ic_buy_mozo" width="106" height="48"/>
-        <image name="ic_close" width="52" height="52"/>
+        <image name="ic_buy_usd" width="106" height="48"/>
+        <image name="ic_close" width="90" height="90"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

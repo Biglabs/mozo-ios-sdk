@@ -13,8 +13,24 @@
 		20F77114216C5AB200FF101F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20F77112216C5AB200FF101F /* LaunchScreen.storyboard */; };
 		20F7711D216C5D1300FF101F /* DemoCryptorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7711B216C5D1200FF101F /* DemoCryptorViewController.swift */; };
 		20F7711E216C5D1300FF101F /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7711C216C5D1200FF101F /* DemoViewController.swift */; };
+		BB05193628338879006C764D /* PayPalCheckout.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB05193528338879006C764D /* PayPalCheckout.xcframework */; };
+		BB05193728338879006C764D /* PayPalCheckout.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB05193528338879006C764D /* PayPalCheckout.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FAB1CCC8C8F918BAABF2FDCF /* Pods_example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 195E08790EB7DB39A9EBF932 /* Pods_example.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BB05193828338879006C764D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BB05193728338879006C764D /* PayPalCheckout.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		195E08790EB7DB39A9EBF932 /* Pods_example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,6 +46,7 @@
 		792613F721EDE88000D720F6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		792613F821EDE89300D720F6 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		792613F921EDE89300D720F6 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		BB05193528338879006C764D /* PayPalCheckout.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PayPalCheckout.xcframework; path = Pods/PayPalCheckout/PayPalCheckout.xcframework; sourceTree = "<group>"; };
 		CE44C7302EA47D0B2F7C8149 /* Pods-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.release.xcconfig"; path = "Pods/Target Support Files/Pods-example/Pods-example.release.xcconfig"; sourceTree = "<group>"; };
 		ED18B8801317D040FFB93FD3 /* Pods-example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-example/Pods-example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -39,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB05193628338879006C764D /* PayPalCheckout.xcframework in Frameworks */,
 				FAB1CCC8C8F918BAABF2FDCF /* Pods_example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,6 +109,7 @@
 		909ECCD9B59B03E7DB52BEEE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB05193528338879006C764D /* PayPalCheckout.xcframework */,
 				195E08790EB7DB39A9EBF932 /* Pods_example.framework */,
 			);
 			name = Frameworks;
@@ -108,6 +127,7 @@
 				20F77103216C5AB100FF101F /* Frameworks */,
 				20F77104216C5AB100FF101F /* Resources */,
 				DBFEE77555D520852D1CE4D0 /* [CP] Embed Pods Frameworks */,
+				BB05193828338879006C764D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

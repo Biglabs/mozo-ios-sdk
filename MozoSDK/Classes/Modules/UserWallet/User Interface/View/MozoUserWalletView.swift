@@ -8,6 +8,7 @@
 import Foundation
 import MBProgressHUD
 import UIKit
+
 let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
 let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTableViewCell"
 
@@ -217,7 +218,6 @@ let HEADER_MOZO_USER_WALLET_TABLE_VIEW_CELL_IDENTIFIER = "HeaderMozoUserWalletTa
             self.mozoToday = mozoToday
         })
     }
-    
         
     func displayRefreshState() {
         if refreshView == nil {

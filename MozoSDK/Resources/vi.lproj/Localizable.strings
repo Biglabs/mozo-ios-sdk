@@ -291,6 +291,8 @@
 "Add\nPhoto" = "Thêm\nảnh";
 "Photo" = "Ảnh";
 "btn_buy_mozo" = "Mua Mozo";
+"payment_mozo" = "Thanh toán bằng Paypal";
+"input_amount_mozo" = "Nhập số lượng Mozo cần mua";
 "btn_request_mozo" = "Yêu cầu Mozo";
 "Shoppers this month" = "Khách hàng trong tháng";
 "Active Events" = "Chương trình đang chạy";

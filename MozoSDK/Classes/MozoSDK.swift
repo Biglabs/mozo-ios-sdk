@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import PromiseKit
 import SwiftyJSON
+import PayPalCheckout
 
 public class MozoSDK {
 
@@ -22,7 +23,7 @@ public class MozoSDK {
     }
     
     public private(set) static var homePage: String = "https://\(Configuration.BASE_DOMAIN.landingPage)"
-    
+       
     public static func configure(network: MozoNetwork = .TestNet, appType: AppType = .Shopper) {
         switch network {
             case .DevNet: Configuration.BASE_DOMAIN = .DEVELOP
@@ -31,6 +32,12 @@ public class MozoSDK {
         }
         self.network = network
         self.appType = appType
+    }
+    
+    public static func configurePaypal() {
+        let config = CheckoutConfig(clientID: "AU9NZgSx_uKMnPKtQD1PuAgnfjugv-HfMTbaIVhD3xzo8jA10B34XzrKWu5nEGrgRCvHD8eHmE9oat5P", returnUrl: "com.biglabs.mozo.example://paypalpay", environment: .sandbox)
+        
+        Checkout.set(config: config)
     }
     
     public static func setAuthDelegate(_ delegate: MozoAuthenticationDelegate) {

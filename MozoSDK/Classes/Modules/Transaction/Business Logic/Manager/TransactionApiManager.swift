@@ -55,7 +55,7 @@ public extension ApiManager {
             }
         }
     }
-    
+            
     func transferTransaction(_ transaction: TransactionDTO) -> Promise<IntermediaryTransactionDTO> {
         return Promise { seal in
             let url = Configuration.BASE_STORE_URL + TX_API_PATH + "transfer"

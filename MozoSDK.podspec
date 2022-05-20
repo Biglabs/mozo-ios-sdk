@@ -31,4 +31,5 @@ The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaini
   s.dependency 'SwiftyJSON'
   s.dependency 'libPhoneNumber-iOS'
   s.dependency 'JWTDecode'
+  s.dependency 'PayPalCheckout'
 end

@@ -290,6 +290,8 @@
 "Add\nPhoto" = "Add\nPhoto";
 "Photo" = "Photo";
 "btn_buy_mozo" = "Buy Mozo";
+"payment_mozo" = "Payment by Paypal";
+"input_amount_mozo" = "Input the amount Mozo to buy";
 "btn_request_mozo" = "Request Mozo";
 "Shoppers this month" = "Shoppers this month";
 "Active Events" = "Active Events";

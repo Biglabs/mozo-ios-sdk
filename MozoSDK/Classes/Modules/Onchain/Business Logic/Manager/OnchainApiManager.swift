@@ -40,9 +40,9 @@ extension ApiManager {
     
     /// Call API to get exchange rate info.
     ///
-    public func getEthAndOnchainExchangeRateInfo() -> Promise<EthRateInfoDTO> {
+    public func getEthAndOnchainExchangeRateInfo(locale: String) -> Promise<EthRateInfoDTO> {
         return Promise { seal in
-            let url = Configuration.BASE_SOLO + "/exchange/rateETHAndToken?locale=\(Configuration.LOCALE)"
+            let url = Configuration.BASE_SOLO + "/exchange/rateETHAndToken?locale=\(locale)"
             self.execute(.get, url: url)
                 .done { json -> Void in
                     // JSON info
