@@ -17,6 +17,8 @@ class ModuleDependencies {
     let rootWireframe = RootWireframe()
     
     let coreWireframe = CoreWireframe()
+    let corePresenter = CorePresenter()
+    
     let walletWireframe = WalletWireframe()
     let resetPINWireframe = ResetPINWireframe()
     
@@ -52,14 +54,11 @@ class ModuleDependencies {
     }
     
     func setAuthDelegate(_ delegate: MozoAuthenticationDelegate) {
-        coreWireframe.corePresenter?.authDelegate = delegate
+        corePresenter.authDelegate = delegate
     }
     
     func isNetworkReachable() -> Bool {
-        if let reachability = coreWireframe.corePresenter?.reachability {
-            return reachability.connection != .none
-        }
-        return false
+        return corePresenter.isNetworkAvailable == true
     }
     
     func authenticate() {
@@ -95,39 +94,39 @@ class ModuleDependencies {
     }
     
     func loadBalanceInfo() -> Promise<DetailInfoDisplayItem>{
-        return (coreWireframe.corePresenter?.coreInteractorService?.loadBalanceInfo())!
+        return (corePresenter.coreInteractorService?.loadBalanceInfo())!
     }
     
     func loadEthAndOnchainBalanceInfo() -> Promise<OnchainInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.loadEthAndOnchainBalanceInfo())!
+        return (corePresenter.coreInteractorService?.loadEthAndOnchainBalanceInfo())!
     }
     
     func registerBeacon(parameters: Any?) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.registerBeacon(parameters: parameters))!
+        return (corePresenter.coreInteractorService?.registerBeacon(parameters: parameters))!
     }
     
     func registerMoreBeacon(parameters: Any?) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.registerMoreBeacon(parameters: parameters))!
+        return (corePresenter.coreInteractorService?.registerMoreBeacon(parameters: parameters))!
     }
     
     func updateBeaconSettings(parameters: Any?) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateBeaconSettings(parameters: parameters))!
+        return (corePresenter.coreInteractorService?.updateBeaconSettings(parameters: parameters))!
     }
     
     func deleteBeacon(beaconId: Int64) -> Promise<Bool> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.deleteBeacon(beaconId: beaconId))!
+        return (corePresenter.coreInteractorService?.deleteBeacon(beaconId: beaconId))!
     }
     
     func getRetailerInfo() -> Promise<[String : Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerInfo())!
+        return (corePresenter.coreInteractorService?.getRetailerInfo())!
     }
     
     func addRetailerSalePerson(parameters: Any?) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.addSalePerson(parameters:parameters))!
+        return (corePresenter.coreInteractorService?.addSalePerson(parameters:parameters))!
     }
     
     func getTxHistoryDisplayCollection() -> Promise<TxHistoryDisplayCollection> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getTxHistoryDisplayCollection())!
+        return (corePresenter.coreInteractorService?.getTxHistoryDisplayCollection())!
     }
     
     func createAirdropEvent(event: AirdropEventDTO, delegate: AirdropEventDelegate) {
@@ -143,123 +142,123 @@ class ModuleDependencies {
     }
     
     func getLatestAirdropEvent() -> Promise<AirdropEventDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getLatestAirdropEvent())!
+        return (corePresenter.coreInteractorService?.getLatestAirdropEvent())!
     }
     
     func getAirdropEventList(page: Int, branchId: Int64? = nil) -> Promise<[AirdropEventDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getAirdropEventList(page: page, branchId: branchId))!
+        return (corePresenter.coreInteractorService?.getAirdropEventList(page: page, branchId: branchId))!
     }
     
     func getRetailerAnalyticHome() -> Promise<RetailerAnalyticsHomeDTO?> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerAnalyticHome())!
+        return (corePresenter.coreInteractorService?.getRetailerAnalyticHome())!
     }
     
     func getRetailerAnalyticList() -> Promise<[RetailerCustomerAnalyticDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerAnalyticList())!
+        return (corePresenter.coreInteractorService?.getRetailerAnalyticList())!
     }
     
     func getVisitCustomerList(page: Int, size: Int, year: Int, month: Int) -> Promise<[VisitedCustomerDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getVisitCustomerList(page: page, size: size, year: year, month: month))!
+        return (corePresenter.coreInteractorService?.getVisitCustomerList(page: page, size: size, year: year, month: month))!
     }
     
     func getRetailerAnalyticAmountAirdropList(page: Int, size: Int, year: Int, month: Int) -> Promise<[AirDropReportDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerAnalyticAmountAirdropList(page: page, size: size, year: year, month: month))!
+        return (corePresenter.coreInteractorService?.getRetailerAnalyticAmountAirdropList(page: page, size: size, year: year, month: month))!
     }
     
     func getRunningAirdropEvents(page: Int, size: Int) -> Promise<[AirdropEventDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRunningAirdropEvents(page: page, size: size))!
+        return (corePresenter.coreInteractorService?.getRunningAirdropEvents(page: page, size: size))!
     }
     
     func getListSalePerson() -> Promise<[SalePersonDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getListSalePerson())!
+        return (corePresenter.coreInteractorService?.getListSalePerson())!
     }
     
     func removeSalePerson(id: Int64) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.removeSalePerson(id: id))!
+        return (corePresenter.coreInteractorService?.removeSalePerson(id: id))!
     }
     
     func getListCountryCode() -> Promise<[CountryCodeDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getListCountryCode())!
+        return (corePresenter.coreInteractorService?.getListCountryCode())!
     }
     
     func getUrlToUploadImage() -> Promise<String> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getUrlToUploadImage())!
+        return (corePresenter.coreInteractorService?.getUrlToUploadImage())!
     }
     
     func uploadImage(images: [UIImage], url: String, progressionHandler: @escaping (_ fractionCompleted: Double)-> Void) -> Promise<[String]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.uploadImage(images: images, url: url, progressionHandler: progressionHandler))!
+        return (corePresenter.coreInteractorService?.uploadImage(images: images, url: url, progressionHandler: progressionHandler))!
     }
     
     func updateUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateUserProfile(userProfile: userProfile))!
+        return (corePresenter.coreInteractorService?.updateUserProfile(userProfile: userProfile))!
     }
     
     func updateAvatarToUserProfile(userProfile: UserProfileDTO) -> Promise<UserProfileDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateAvatarToUserProfile(userProfile: userProfile))!
+        return (corePresenter.coreInteractorService?.updateAvatarToUserProfile(userProfile: userProfile))!
     }
     
     func getCommonHashtag() -> Promise<[String]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getCommonHashtag())!
+        return (corePresenter.coreInteractorService?.getCommonHashtag())!
     }
     
     func deleteRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.deleteRetailerStoreInfoPhotos(photos: photos))!
+        return (corePresenter.coreInteractorService?.deleteRetailerStoreInfoPhotos(photos: photos))!
     }
     
     func updateRetailerStoreInfoPhotos(photos: [String]) -> Promise<StoreInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateRetailerStoreInfoPhotos(photos: photos))!
+        return (corePresenter.coreInteractorService?.updateRetailerStoreInfoPhotos(photos: photos))!
     }
     
     func updateRetailerStoreInfoHashtag(hashTags: [String]) -> Promise<StoreInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateRetailerStoreInfoHashtag(hashTags: hashTags))!
+        return (corePresenter.coreInteractorService?.updateRetailerStoreInfoHashtag(hashTags: hashTags))!
     }
     
     func updateRetailerStoreInfo(storeInfo: StoreInfoDTO) -> Promise<StoreInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateRetailerStoreInfo(storeInfo: storeInfo))!
+        return (corePresenter.coreInteractorService?.updateRetailerStoreInfo(storeInfo: storeInfo))!
     }
     
     func getRecommendationStores(_ storeId: Int64, size: Int, long: Double?, lat: Double?) -> Promise<[BranchInfoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRecommendationStores(storeId, size: size, long: long, lat: lat))!
+        return (corePresenter.coreInteractorService?.getRecommendationStores(storeId, size: size, long: long, lat: lat))!
     }
     
     func handleAccessRemove() {
-        coreWireframe.corePresenter?.handleAccessRemoved()
+        corePresenter.handleAccessRemoved()
     }
     
     func requestSupportBeacon(info: SupportRequestDTO) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.requestSupportBeacon(info: info))!
+        return (corePresenter.coreInteractorService?.requestSupportBeacon(info: info))!
     }
     
     func getOffchainTokenInfo() -> Promise<OffchainInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getOffchainTokenInfo())!
+        return (corePresenter.coreInteractorService?.getOffchainTokenInfo())!
     }
     
     func getInviteLink(locale: String, inviteAppType: AppType) -> Promise<InviteLinkDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getInviteLink(locale: locale, inviteAppType: inviteAppType))!
+        return (corePresenter.coreInteractorService?.getInviteLink(locale: locale, inviteAppType: inviteAppType))!
     }
     
     func getListLanguageInfo() -> Promise<[InviteLanguageDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getListLanguageInfo())!
+        return (corePresenter.coreInteractorService?.getListLanguageInfo())!
     }
     
     func updateCodeLinkInstallApp(codeString: String) -> Promise<InviteLinkDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateCodeLinkInstallApp(codeString: codeString))!
+        return (corePresenter.coreInteractorService?.updateCodeLinkInstallApp(codeString: codeString))!
     }
     
     func processInvitationCode() {
-        return (coreWireframe.corePresenter?.coreInteractorService?.processInvitationCode())!
+        return (corePresenter.coreInteractorService?.processInvitationCode())!
     }
     
     func getListNotification(page: Int, size: Int) -> Promise<[WSMessage]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getListNotification(page: page, size: size))!
+        return (corePresenter.coreInteractorService?.getListNotification(page: page, size: size))!
     }
     
     func loadUserProfile() -> Promise<UserProfileDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.loadUserProfile())!
+        return (corePresenter.coreInteractorService?.loadUserProfile())!
     }
     
     func getCreateAirdropEventSettings() -> Promise<AirdropEventSettingDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getCreateAirdropEventSettings())!
+        return (corePresenter.coreInteractorService?.getCreateAirdropEventSettings())!
     }
     
     func requestForChangePin() {
@@ -271,43 +270,43 @@ class ModuleDependencies {
     }
     
     func getRetailerPromotionList(page: Int, size: Int, statusRequest: PromotionStatusRequestEnum) -> Promise<[PromotionDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerPromotionList(page: page, size: size, statusRequest: statusRequest))!
+        return (corePresenter.coreInteractorService?.getRetailerPromotionList(page: page, size: size, statusRequest: statusRequest))!
     }
     
     func processPromotionCode(code: String) -> Promise<PromotionCodeInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.processPromotionCode(code: code))!
+        return (corePresenter.coreInteractorService?.processPromotionCode(code: code))!
     }
     
     func usePromotionCode(code: String, billInfo: String?) -> Promise<PromotionCodeInfoDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.usePromotionCode(code: code, billInfo: billInfo))!
+        return (corePresenter.coreInteractorService?.usePromotionCode(code: code, billInfo: billInfo))!
     }
     
     func cancelPromotionCode(code: String) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.cancelPromotionCode(code: code))!
+        return (corePresenter.coreInteractorService?.cancelPromotionCode(code: code))!
     }
     
     func updateFavoritePromotion(_ promotionId: Int64, isFavorite: Bool) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateFavoritePromotion(promotionId, isFavorite: isFavorite))!
+        return (corePresenter.coreInteractorService?.updateFavoritePromotion(promotionId, isFavorite: isFavorite))!
     }
     
     func getShopperPromotionRunning(page: Int, size: Int, long: Double, lat: Double, storeId: Int64) -> Promise<JSON> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getShopperPromotionRunning(page: page, size: size, long: long, lat: lat, storeId: storeId))!
+        return (corePresenter.coreInteractorService?.getShopperPromotionRunning(page: page, size: size, long: long, lat: lat, storeId: storeId))!
     }
     
     func getRetailerPromotionScannedList(page: Int, size: Int) -> Promise<[PromotionCodeInfoDTO]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerPromotionScannedList(page: page, size: size))!
+        return (corePresenter.coreInteractorService?.getRetailerPromotionScannedList(page: page, size: size))!
     }
     
     func getRetailerCountPromotion() -> Promise<Int> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerCountPromotion())!
+        return (corePresenter.coreInteractorService?.getRetailerCountPromotion())!
     }
     
     func loadTopUpBalanceInfo() -> Promise<DetailInfoDisplayItem> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.loadTopUpBalanceInfo())!
+        return (corePresenter.coreInteractorService?.loadTopUpBalanceInfo())!
     }
     
     func loadTopUpHistory(topUpAddress: String?, page: Int, size: Int) -> Promise<TxHistoryDisplayCollection> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.loadTopUpHistory(topUpAddress: topUpAddress, page: page, size: size))!
+        return (corePresenter.coreInteractorService?.loadTopUpHistory(topUpAddress: topUpAddress, page: page, size: size))!
     }
     
     func openTopUpTransfer(delegate: TopUpDelegate) {
@@ -319,47 +318,47 @@ class ModuleDependencies {
     }
     
     func getPromotionStoreGroup(page: Int, size: Int, long: Double, lat: Double) -> Promise<JSON> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat))!
+        return (corePresenter.coreInteractorService?.getPromotionStoreGroup(page: page, size: size, long: long, lat: lat))!
     }
     
     func getBranchList(page: Int, forSwitching: Bool) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getBranchList(page: page, forSwitching: forSwitching))!
+        return (corePresenter.coreInteractorService?.getBranchList(page: page, forSwitching: forSwitching))!
     }
      
     func switchBranch(_ branchId: Int64) -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.switchBranch(branchId))!
+        return (corePresenter.coreInteractorService?.switchBranch(branchId))!
     }
     
     func getRetailerInfoForLauching() -> Promise<[String: Any]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getRetailerInfoForLauching())!
+        return (corePresenter.coreInteractorService?.getRetailerInfoForLauching())!
     }
 
     func checkBranchName(_ name: String) -> Promise<Any> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.checkBranchName(name))!
+        return (corePresenter.coreInteractorService?.checkBranchName(name))!
     }
     
     func updateSalePerson(account: SalePersonDTO) -> Promise<SalePersonDTO> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateSalePerson(account: account))!
+        return (corePresenter.coreInteractorService?.updateSalePerson(account: account))!
     }
     
     // MARK: Mozo Messages APIs
     func getConversationList(text: String?, page: Int) -> Promise<[Conversation]> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getConversationList(text: text, page: page))!
+        return (corePresenter.coreInteractorService?.getConversationList(text: text, page: page))!
     }
     func getConversationDetails(id: Int64) -> Promise<Conversation?> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.getConversationDetails(id: id))!
+        return (corePresenter.coreInteractorService?.getConversationDetails(id: id))!
     }
     func getChatMessages(id: Int64, page: Int) -> Promise<[ConversationMessage]> {
-       return (coreWireframe.corePresenter?.coreInteractorService?.getChatMessages(id: id, page: page))!
+       return (corePresenter.coreInteractorService?.getChatMessages(id: id, page: page))!
     }
     func responseConversation(conversationId: Int64, status: String) -> Promise<Any> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.responseConversation(conversationId: conversationId, status: status))!
+        return (corePresenter.coreInteractorService?.responseConversation(conversationId: conversationId, status: status))!
     }
     func updateReadConversation(conversationId: Int64, lastMessageId: Int64) -> Promise<Any> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.updateReadConversation(conversationId: conversationId, lastMessageId: lastMessageId))!
+        return (corePresenter.coreInteractorService?.updateReadConversation(conversationId: conversationId, lastMessageId: lastMessageId))!
     }
     func sendMessage(id: Int64, message: String?, images: [String]?, userSend: Bool) -> Promise<Any> {
-        return (coreWireframe.corePresenter?.coreInteractorService?.sendMessage(id: id, message: message, images: images, userSend: userSend))!
+        return (corePresenter.coreInteractorService?.sendMessage(id: id, message: message, images: images, userSend: userSend))!
     }
     func configureDependencies() {
         // MARK: Core
@@ -391,7 +390,6 @@ class ModuleDependencies {
     }
     
     func coreDependencies() {
-        let corePresenter = CorePresenter()
         
         let anonManager = AnonManager()
         anonManager.apiManager = ApiManager.shared
