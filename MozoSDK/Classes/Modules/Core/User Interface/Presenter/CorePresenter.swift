@@ -7,8 +7,9 @@
 
 import Foundation
 import UserNotifications
-import Reachability
 import UserNotificationsUI
+import Alamofire
+
 class CorePresenter : NSObject {
     var coreWireframe : CoreWireframe?
     var coreInteractor : CoreInteractorInput?
@@ -16,11 +17,12 @@ class CorePresenter : NSObject {
     var rdnInteractor : RDNInteractorInput?
     weak var authDelegate: MozoAuthenticationDelegate?
     var callBackModule: Module?
-    var reachability : Reachability?
     
     var requestingABModule: Module?
+    var isNetworkAvailable = false
     internal var alertController: UIAlertController? = nil
     private var retryAction: WaitingRetryAction?
+    private var networkManager: NetworkReachabilityManager?
     
     override init() {
         super.init()
@@ -32,7 +34,20 @@ class CorePresenter : NSObject {
         
         initSilentServices()
         initUserNotificationCenter()
-        setupReachability()
+        
+        networkManager = NetworkReachabilityManager()!
+        networkManager?.startListening(onQueue: DispatchQueue.main) { (status) in
+            switch(status) {
+            case .reachable(.ethernetOrWiFi), .reachable(.cellular):
+                self.isNetworkAvailable = true
+                self.readyForGoingLive()
+                break
+            default:
+                self.isNetworkAvailable = false
+                self.stopSilentServices()
+                break
+            }
+        }
     }
     
     func readyForGoingLive() {
@@ -40,32 +55,8 @@ class CorePresenter : NSObject {
         startSlientServices()
     }
     
-    // MARK: Reachability
-    func setupReachability() {
-        let hostName = Configuration.BASE_HOST
-        print("Set up Reachability with host name: \(hostName)")
-        do {
-            try reachability = Reachability(hostname: hostName)
-            reachability?.whenReachable = { reachability in
-                print("Reachability when reachable: \(reachability.description) - \(reachability.connection)")
-                self.readyForGoingLive()
-            }
-            reachability?.whenUnreachable = { reachability in
-                print("Reachability when unreachable: \(reachability.description) - \(reachability.connection)")
-                self.stopSilentServices()
-            }
-            print("Reachability --- start notifier")
-            
-            try reachability?.startNotifier()
-        } catch {
-            
-        }
-    }
-    
     func stopNotifier() {
-        print("Reachability --- stop notifier")
-        reachability?.stopNotifier()
-        reachability = nil
+        networkManager?.stopListening()
     }
     
     func handleAccessRemoved() {
@@ -173,11 +164,32 @@ private extension CorePresenter {
 }
 extension CorePresenter : CoreModuleInterface {
     func requestForAuthentication(module: Module) {
-        coreInteractor?.checkForAuthentication(module: module)
+        if ModuleDependencies.shared.isNetworkReachable() {
+            coreInteractor?.checkForAuthentication(module: module)
+        } else {
+            if let vc = DisplayUtils.getTopViewController() {
+                self.callBackModule = module
+                self.retryAction = .PerformSignIn
+                DisplayUtils.displayTryAgainPopupInParentView(
+                    parentView: vc.view,
+                    delegate: self
+                )
+            }
+        }
     }
     
     func requestForLogout() {
-        ModuleDependencies.shared.authPresenter.performLogout()
+        if ModuleDependencies.shared.isNetworkReachable() {
+            ModuleDependencies.shared.authPresenter.performLogout()
+        } else {
+            if let vc = DisplayUtils.getTopViewController() {
+                self.retryAction = .PerformSignOut
+                DisplayUtils.displayTryAgainPopupInParentView(
+                    parentView: vc.view,
+                    delegate: self
+                )
+            }
+        }
     }
     
     func requestForCloseAllMozoUIs(_ callback: (() -> Void)?) {
@@ -483,6 +495,17 @@ extension CorePresenter: PaymentQRModuleDelegate {
 }
 extension CorePresenter : PopupErrorDelegate {
     func didClosePopupWithoutRetry() {
+        if let action = self.retryAction {
+            switch action {
+            case .PerformSignIn, .PerformSignOut:
+                self.callBackModule = nil
+                self.authModuleDidCancelAuthentication()
+                break
+            default:
+                break
+            }
+        }
+        self.retryAction = nil
     }
     
     func didTouchTryAgainButton() {
@@ -494,8 +517,17 @@ extension CorePresenter : PopupErrorDelegate {
             case .BuildAuth:
                 self.retryAuth()
                 break
+            case .PerformSignIn:
+                if let module = self.callBackModule {
+                    self.requestForAuthentication(module: module)
+                } else {
+                    self.authModuleDidCancelAuthentication()
+                }
+                break
+            case .PerformSignOut:
+                self.requestForLogout()
+                break
             }
-            
         }
         self.retryAction = nil
     }

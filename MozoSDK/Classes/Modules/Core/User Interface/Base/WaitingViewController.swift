@@ -9,6 +9,8 @@ import Foundation
 enum WaitingRetryAction {
     case LoadUserProfile
     case BuildAuth
+    case PerformSignIn
+    case PerformSignOut
 }
 class WaitingViewController: MozoBasicViewController {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
