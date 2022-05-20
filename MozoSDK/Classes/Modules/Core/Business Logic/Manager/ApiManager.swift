@@ -159,9 +159,8 @@ public class ApiManager {
                         let connectionError = self.checkResponse(response: response, error: error)
                         if connectionError == .authenticationRequired, let viewController = DisplayUtils.getTopViewController(), !viewController.isKind(of: WaitingViewController.self) {
                             self.delegate?.didReceiveAuthorizationRequired()
-                        } else {
-                            seal.reject(connectionError)
                         }
+                        seal.reject(connectionError)
                     }
             }
         }
@@ -193,9 +192,8 @@ public class ApiManager {
                         let connectionError = self.checkResponse(response: response, error: error)
                         if connectionError == .authenticationRequired, let viewController = DisplayUtils.getTopViewController(), !viewController.isKind(of: WaitingViewController.self) {
                             self.delegate?.didReceiveAuthorizationRequired()
-                        } else {
-                            seal.reject(connectionError)
                         }
+                        seal.reject(connectionError)
                     }
             }
         }
@@ -284,9 +282,8 @@ public class ApiManager {
                         let connectionError = self.checkResponse(response: response, error: error)
                         if connectionError == .authenticationRequired, let viewController = DisplayUtils.getTopViewController(), !viewController.isKind(of: WaitingViewController.self) {
                             self.delegate?.didReceiveAuthorizationRequired()
-                        } else {
-                            seal.reject(connectionError)
                         }
+                        seal.reject(connectionError)
                 }
             }
         }

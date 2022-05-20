@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import Reachability
+import Alamofire
+
 public protocol PopupErrorDelegate {
     func didTouchTryAgainButton()
     func didClosePopupWithoutRetry()
@@ -30,72 +31,49 @@ public class MozoPopupErrorView : MozoView {
     let defaultImgErrorSize = CGSize(width: 102, height: 102)
     let networkImgErrorSize = CGSize(width: 95, height: 67)
     
-    var error : ConnectionError = ConnectionError.apiError_INTERNAL_ERROR { //System Error
-        didSet {
-            commonInit()
-            setImageAndLabel()
-        }
-    }
+    var error : ConnectionError = ConnectionError.apiError_INTERNAL_ERROR
     var delegate: PopupErrorDelegate?
     
-    var reachability : Reachability?
+    private var networkManager: NetworkReachabilityManager?
     
-    override init(frame: CGRect) {
-        print("MozoPopupErrorView - Init with frame")
-        super.init(frame: frame)
-        commonInit()
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.commonInit()
+        self.setImageAndLabel()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        print("MozoPopupErrorView - Init with coder")
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    func commonInit() {
-        if error == .noInternetConnection, reachability == nil, shouldTrackNetwork {
-            setupReachability()
-        }
-    }
-    
-    // MARK: Reachability
-    func setupReachability() {
-        let hostName = Configuration.BASE_HOST
-        print("MozoPopupErrorView - Set up Reachability with host name: \(hostName)")
-        do {
-            try reachability = Reachability(hostname: hostName)
-            reachability?.whenReachable = { reachability in
-                print("MozoPopupErrorView - Reachability when reachable: \(reachability.description) - \(reachability.connection)")
-                self.stopNotifier()
-                self.tryAgain()
+    private func commonInit() {
+        if shouldTrackNetwork {
+            if error != .noInternetConnection, !ModuleDependencies.shared.corePresenter.isNetworkAvailable {
+                error = .noInternetConnection
             }
-            reachability?.whenUnreachable = { reachability in
-                print("MozoPopupErrorView - Reachability when unreachable: \(reachability.description) - \(reachability.connection)")
-                
-            }
-            print("MozoPopupErrorView - Reachability --- start notifier")
-
-            try reachability?.startNotifier()
-        } catch {
             
+            networkManager = NetworkReachabilityManager()!
+            networkManager?.stopListening()
+            networkManager?.startListening(onQueue: DispatchQueue.main) { (status) in
+                switch(status) {
+                case .reachable(.ethernetOrWiFi), .reachable(.cellular):
+                    self.stopNotifier()
+                    self.tryAgain()
+                    break
+                default:
+                    break
+                }
+            }
         }
     }
     
     public func forceDisable() {
-        print("MozoPopupErrorView - Force disable")
         stopNotifier()
     }
     
     func stopNotifier() {
-        print("MozoPopupErrorView - Reachability --- stop notifier")
-        reachability?.stopNotifier()
-        reachability = nil
+        networkManager?.stopListening()
+        networkManager = nil
     }
     
     deinit {
-        if error == .noInternetConnection {
-            stopNotifier()
-        }
+        stopNotifier()
     }
     
     override func identifier() -> String {

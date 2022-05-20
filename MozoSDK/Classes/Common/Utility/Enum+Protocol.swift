@@ -20,7 +20,7 @@ internal enum ServiceType: String {
         case .STAGING:
             return "staging.gateway.mozocoin.io"
         default:
-            return "gateway.cng.mozotoken.com"
+            return "gateway.cng.mozocoin.io"
         }
     }
     
@@ -31,7 +31,7 @@ internal enum ServiceType: String {
         case .STAGING:
             return "staging.noti.mozocoin.io"
         default:
-            return "noti.cng.mozotoken.com"
+            return "noti.cng.mozocoin.io"
         }
     }
     
@@ -42,7 +42,7 @@ internal enum ServiceType: String {
         case .STAGING:
             return "staging.login.mozocoin.io"
         default:
-            return "login.cng.mozotoken.com"
+            return "login.cng.mozocoin.io"
         }
     }
     
@@ -54,18 +54,18 @@ internal enum ServiceType: String {
         case .STAGING:
             return "staging.image.mozocoin.io"
         default:
-            return "image.cng.mozotoken.com"
+            return "image.cng.mozocoin.io"
         }
     }
     
     var landingPage: String {
         switch self {
         case .PRODUCTION:
-            return "mozotoken.com"
+            return "mozocoin.io"
         case .STAGING:
-            return "staging.mozotoken.com"
+            return "staging.mozocoin.io"
         default:
-            return "cng.mozotoken.com"
+            return "cng.mozocoin.io"
         }
     }
 }
