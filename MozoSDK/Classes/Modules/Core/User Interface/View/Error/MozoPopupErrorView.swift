@@ -44,20 +44,22 @@ public class MozoPopupErrorView : MozoView {
     
     private func commonInit() {
         if shouldTrackNetwork {
-            if error != .noInternetConnection, !ModuleDependencies.shared.corePresenter.isNetworkAvailable {
+            if error != .noInternetConnection {
                 error = .noInternetConnection
             }
             
-            networkManager = NetworkReachabilityManager()!
-            networkManager?.stopListening()
-            networkManager?.startListening(onQueue: DispatchQueue.main) { (status) in
-                switch(status) {
-                case .reachable(.ethernetOrWiFi), .reachable(.cellular):
-                    self.stopNotifier()
-                    self.tryAgain()
-                    break
-                default:
-                    break
+            if !ModuleDependencies.shared.corePresenter.isNetworkAvailable {
+                networkManager = NetworkReachabilityManager()!
+                networkManager?.stopListening()
+                networkManager?.startListening(onQueue: DispatchQueue.main) { (status) in
+                    switch(status) {
+                    case .reachable(.ethernetOrWiFi), .reachable(.cellular):
+                        self.stopNotifier()
+                        self.tryAgain()
+                        break
+                    default:
+                        break
+                    }
                 }
             }
         }
