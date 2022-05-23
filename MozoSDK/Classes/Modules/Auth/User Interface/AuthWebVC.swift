@@ -192,11 +192,13 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        let alert = UIAlertController(title: nil, message: "There is an error occurred.".localized, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { action in
-            self.touchedCancel()
-        }))
-        self.present(alert, animated: true, completion: nil)
+        if error.localizedDescription.contains("certificate") {
+            let alert = UIAlertController(title: "There is an error occurred.".localized, message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { action in
+                self.touchedCancel()
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     private func randomURLSafeStringWithSize(_ size: Int) -> String? {
