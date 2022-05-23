@@ -191,6 +191,14 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
         decisionHandler(.allow)
     }
     
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        let alert = UIAlertController(title: nil, message: "There is an error occurred.".localized, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { action in
+            self.touchedCancel()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     private func randomURLSafeStringWithSize(_ size: Int) -> String? {
         guard let randomData = NSMutableData(length: size) else {
             return nil
