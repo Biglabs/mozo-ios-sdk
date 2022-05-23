@@ -1205,6 +1205,11 @@
 
 "Synchronize" = "Đồng bộ";
 "Synchronizing..." = "Đang đồng bộ...";
+"text_contact_access_title" = "Truy cập Danh Bạ";
+"text_contact_access_explain" = "Cho phép Mozo truy cập danh bạ của bạn để tìm tất cả bạn bè của bạn một cách liền mạch.";
+"text_contact_access_button" = "Cho phép truy cập";
+"text_contact_privacy_explain" = "Mozo lưu trữ danh bạ của bạn trên máy chủ và giữ cho nó an toàn.";
+"text_contact_privacy_button" = "Chính sách bảo mật";
 
 "Top Local Airdrop Events" = "Những chương trình airdrop đỉnh tại địa phương";
 "Top International Airdrop Events" = "Những chương trình airdrop đỉnh trên thế giới";

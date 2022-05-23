@@ -1212,6 +1212,11 @@
 
 "Synchronize" = "동기화";
 "Synchronizing..." = "동기화 중...";
+"text_contact_access_title" = "연락처 접근 권한";
+"text_contact_access_explain" = "모든 친구들을 원활히 찾으려면 텔레그램의 연락처 접 근을 허용해 주세요.";
+"text_contact_access_button" = "접근 허용";
+"text_contact_privacy_explain" = "Mozo는 연락처를 서버에 저장하고 비밀로 유지합니다.";
+"text_contact_privacy_button" = "개인 정보 보호 정책";
 
 "Top Local Airdrop Events" = "로컬 탑 에어드롭 이벤트";
 "Top International Airdrop Events" = "글로벌 탑 에어드롭 이벤트";
