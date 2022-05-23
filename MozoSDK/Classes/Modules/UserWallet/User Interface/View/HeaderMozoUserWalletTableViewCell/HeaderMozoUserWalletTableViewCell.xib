@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vbk-ER-4h0">
                         <rect key="frame" x="24" y="16" width="272" height="140"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet-background" translatesAutoresizingMaskIntoConstraints="NO" id="6r8-LF-SKB">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet-background" translatesAutoresizingMaskIntoConstraints="NO" id="6r8-LF-SKB">
                                 <rect key="frame" x="0.0" y="0.0" width="272" height="140"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pVU-Ee-L7D">
@@ -252,6 +252,7 @@
                 <outlet property="lblRequest" destination="DDx-KQ-MMu" id="hno-Y0-ntk"/>
                 <outlet property="lblSend" destination="NLq-Za-f2h" id="5L3-V2-PlD"/>
                 <outlet property="lblTotal" destination="F1C-Cf-Q04" id="O9W-Fl-NhU"/>
+                <outlet property="vBGWallet" destination="Vbk-ER-4h0" id="BKo-Ng-4OV"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="219.97767857142856"/>
         </tableViewCell>

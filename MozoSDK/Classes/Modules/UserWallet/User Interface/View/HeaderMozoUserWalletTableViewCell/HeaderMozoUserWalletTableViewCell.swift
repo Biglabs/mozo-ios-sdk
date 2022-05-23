@@ -16,6 +16,8 @@ protocol HeaderMozoUserWalletTableViewCellDelegate: NSObject {
 }
 
 class HeaderMozoUserWalletTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var vBGWallet: UIView!
 
     @IBOutlet weak var lblTotal: UILabel!
     @IBOutlet weak var lblMozoTotal: UILabel!
@@ -35,6 +37,8 @@ class HeaderMozoUserWalletTableViewCell: UITableViewCell {
     }
     
     func customCell() {
+        self.vBGWallet.setCornerRadius(24.0)
+        
         self.lblTotal.text = "Tổng số dư"
         self.lblTotal.font = UIFont.systemFont(ofSize: 16.0)
         

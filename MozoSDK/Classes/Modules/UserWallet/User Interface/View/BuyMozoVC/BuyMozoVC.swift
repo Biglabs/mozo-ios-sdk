@@ -93,6 +93,7 @@ class BuyMozoVC: UIViewController {
         let vc = BuyMozoPaymentStatusVC(nibName: "BuyMozoPaymentStatusVC", bundle: BundleManager.mozoBundle())
         vc.modalPresentationStyle = .fullScreen
         vc.isSuccess = false
+        vc.modalPresentationStyle = .formSheet
         topVC?.present(vc, animated: true, completion: nil)
 
     }

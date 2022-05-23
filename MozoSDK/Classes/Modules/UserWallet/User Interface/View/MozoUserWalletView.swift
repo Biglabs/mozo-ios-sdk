@@ -373,6 +373,7 @@ extension MozoUserWalletView: HeaderMozoUserWalletTableViewCellDelegate {
         let topVC = DisplayUtils.getTopViewController()
         let vc = MozoAddressWalletVC(nibName: "MozoAddressWalletVC", bundle: BundleManager.mozoBundle())
         vc.displayItem = self.displayItem
+        vc.modalPresentationStyle = .formSheet
         topVC?.present(vc, animated: true, completion: nil)
     }
     
