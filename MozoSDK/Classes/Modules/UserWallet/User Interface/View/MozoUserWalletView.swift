@@ -373,14 +373,12 @@ extension MozoUserWalletView: HeaderMozoUserWalletTableViewCellDelegate {
         let topVC = DisplayUtils.getTopViewController()
         let vc = MozoAddressWalletVC(nibName: "MozoAddressWalletVC", bundle: BundleManager.mozoBundle())
         vc.displayItem = self.displayItem
-        if #available(iOS 15.0, *) {
-            if let sheet = vc.sheetPresentationController, UIDevice.current.userInterfaceIdiom == .phone {
-                sheet.detents = [.medium(), .large()]
-                sheet.prefersGrabberVisible = true
-                sheet.preferredCornerRadius = 20
-            }else {
-                vc.modalPresentationStyle = .formSheet
-            }
+        if #available(iOS 15.0, *), let sheet = vc.sheetPresentationController, UIDevice.current.userInterfaceIdiom == .phone {
+            sheet.detents = [.medium(), .large()]
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 20
+        }else {
+            vc.modalPresentationStyle = .formSheet
         }
         topVC?.present(vc, animated: true, completion: nil)
     }

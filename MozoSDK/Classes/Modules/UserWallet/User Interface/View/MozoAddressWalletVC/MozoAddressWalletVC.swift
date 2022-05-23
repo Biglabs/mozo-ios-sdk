@@ -77,4 +77,8 @@ class MozoAddressWalletVC: UIViewController {
     @IBAction func didCopyAddressWallet(_ sender: Any) {
         self.copyAddressAndShowHud()
     }
+    
+    @IBAction func didClose(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

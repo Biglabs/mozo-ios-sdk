@@ -96,6 +96,18 @@
                                 <constraint firstAttribute="bottom" secondItem="zTh-7H-n9x" secondAttribute="bottom" constant="12" id="vNG-Ya-IFz"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSw-Ug-TNz">
+                            <rect key="frame" x="366" y="16" width="32" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="22X-eF-hMD"/>
+                                <constraint firstAttribute="width" secondItem="wSw-Ug-TNz" secondAttribute="height" multiplier="1:1" id="cdv-ax-pvA"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="ic_close"/>
+                            <connections>
+                                <action selector="didClose:" destination="-1" eventType="touchUpInside" id="Eme-8C-Peq"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -103,6 +115,7 @@
                         <constraint firstItem="W5e-DC-oGw" firstAttribute="centerX" secondItem="BJE-pi-cOF" secondAttribute="centerX" id="62s-z2-MBe"/>
                         <constraint firstItem="hg0-V0-Rdb" firstAttribute="top" secondItem="Ohx-tI-n1z" secondAttribute="top" constant="24" id="AKJ-bN-68g"/>
                         <constraint firstItem="7BW-mQ-ffg" firstAttribute="top" secondItem="hg0-V0-Rdb" secondAttribute="bottom" constant="40" id="DAp-6D-Xkd"/>
+                        <constraint firstItem="wSw-Ug-TNz" firstAttribute="top" secondItem="Ohx-tI-n1z" secondAttribute="top" constant="16" id="DpB-Xh-IWk"/>
                         <constraint firstItem="Kod-dc-qs2" firstAttribute="top" secondItem="BJE-pi-cOF" secondAttribute="top" constant="16" id="EYy-bg-O9h"/>
                         <constraint firstItem="BJE-pi-cOF" firstAttribute="top" secondItem="7BW-mQ-ffg" secondAttribute="bottom" constant="12" id="FWX-jW-NQz"/>
                         <constraint firstItem="7BW-mQ-ffg" firstAttribute="centerX" secondItem="hg0-V0-Rdb" secondAttribute="centerX" id="LWF-Dp-12u"/>
@@ -115,6 +128,7 @@
                         <constraint firstAttribute="trailing" secondItem="BJE-pi-cOF" secondAttribute="trailing" constant="50" id="oDA-DT-uZD"/>
                         <constraint firstItem="Kod-dc-qs2" firstAttribute="leading" secondItem="BJE-pi-cOF" secondAttribute="leading" constant="16" id="qFH-9y-QlC"/>
                         <constraint firstItem="Kod-dc-qs2" firstAttribute="trailing" secondItem="BJE-pi-cOF" secondAttribute="trailing" constant="-16" id="s93-GY-hUp"/>
+                        <constraint firstAttribute="trailing" secondItem="wSw-Ug-TNz" secondAttribute="trailing" constant="16" id="tcb-pt-d8J"/>
                     </constraints>
                 </view>
             </subviews>
@@ -130,6 +144,7 @@
         </view>
     </objects>
     <resources>
+        <image name="ic_close" width="90" height="90"/>
         <image name="ic_copy_content" width="16" height="15"/>
     </resources>
 </document>
