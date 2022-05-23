@@ -9,7 +9,6 @@ import UIKit
 import MBProgressHUD
 class MozoAddressWalletVC: UIViewController {
 
-    @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var addressView: UIView!
     @IBOutlet weak var qrCodeView: UIView!
     @IBOutlet weak var addressWalletView: UIView!
@@ -34,7 +33,6 @@ class MozoAddressWalletVC: UIViewController {
     }
 
     func customView() {
-        self.lineView.setCornerRadius(self.lineView.frame.height/2)
         self.addressView.setCornerRadius(20.0, corners: [.topLeft, .topRight])
         
         self.qrCodeView.alpha = 0.1

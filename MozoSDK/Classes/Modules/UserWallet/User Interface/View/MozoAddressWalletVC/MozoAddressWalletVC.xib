@@ -17,7 +17,6 @@
                 <outlet property="lblAddressWallet" destination="W5e-DC-oGw" id="gYD-Ie-Z5W"/>
                 <outlet property="lblInfoWallet" destination="hg0-V0-Rdb" id="qfi-Sq-PL7"/>
                 <outlet property="lblQRMozo" destination="7BW-mQ-ffg" id="Qzw-X9-INE"/>
-                <outlet property="lineView" destination="BtU-64-cmh" id="tLz-Ch-1Zg"/>
                 <outlet property="qrCodeView" destination="BJE-pi-cOF" id="OC7-Qd-GQP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,16 +26,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BtU-64-cmh">
-                    <rect key="frame" x="167" y="225" width="80" height="6"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="80" id="i7J-7W-vxg"/>
-                        <constraint firstAttribute="height" constant="6" id="jex-xN-eNE"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ohx-tI-n1z">
-                    <rect key="frame" x="0.0" y="239" width="414" height="657"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hg0-V0-Rdb">
                             <rect key="frame" x="178" y="24" width="58.5" height="29"/>
@@ -130,12 +121,10 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="BtU-64-cmh" firstAttribute="centerX" secondItem="Ohx-tI-n1z" secondAttribute="centerX" id="26C-jk-XdT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ohx-tI-n1z" secondAttribute="trailing" id="5hk-mL-SmH"/>
-                <constraint firstItem="Ohx-tI-n1z" firstAttribute="top" secondItem="BtU-64-cmh" secondAttribute="bottom" constant="8" id="A2R-68-kV3"/>
-                <constraint firstItem="Ohx-tI-n1z" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="2.2:3" id="DPh-Fs-I2K"/>
                 <constraint firstAttribute="bottom" secondItem="Ohx-tI-n1z" secondAttribute="bottom" id="dsb-lW-oOk"/>
                 <constraint firstItem="Ohx-tI-n1z" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fAh-I0-jpo"/>
+                <constraint firstItem="Ohx-tI-n1z" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="kQS-dT-f3q"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="139.95535714285714"/>
         </view>
