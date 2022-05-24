@@ -14,10 +14,6 @@
         <scene sceneID="PNl-qD-QOY">
             <objects>
                 <viewController storyboardIdentifier="AddressBookViewController" title="Address Book" id="Tqc-TO-q5d" customClass="AddressBookViewController" customModule="MozoSDK" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xDm-dY-gvX"/>
-                        <viewControllerLayoutGuide type="bottom" id="dh0-ju-Lb3"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eRI-vH-gly">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,16 +124,16 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="dDC-zb-x8l"/>
+                        <viewLayoutGuide key="safeArea" id="KcQ-YK-09m"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="W35-q8-UB5" firstAttribute="top" secondItem="eRI-vH-gly" secondAttribute="top" id="76L-7A-JDZ"/>
-                            <constraint firstItem="85v-si-OHX" firstAttribute="leading" secondItem="eRI-vH-gly" secondAttribute="leading" id="9d9-cD-cmD"/>
-                            <constraint firstAttribute="trailing" secondItem="W35-q8-UB5" secondAttribute="trailing" id="KhG-Ea-qgU"/>
-                            <constraint firstItem="W35-q8-UB5" firstAttribute="leading" secondItem="eRI-vH-gly" secondAttribute="leading" id="ZZm-7L-0m6"/>
-                            <constraint firstAttribute="trailing" secondItem="85v-si-OHX" secondAttribute="trailing" id="abH-xJ-qjY"/>
-                            <constraint firstItem="dh0-ju-Lb3" firstAttribute="top" secondItem="W35-q8-UB5" secondAttribute="bottom" id="oJb-wS-6En"/>
-                            <constraint firstItem="dh0-ju-Lb3" firstAttribute="top" secondItem="85v-si-OHX" secondAttribute="bottom" id="s4Y-Uc-6DH"/>
+                            <constraint firstItem="85v-si-OHX" firstAttribute="leading" secondItem="KcQ-YK-09m" secondAttribute="leading" id="9d9-cD-cmD"/>
+                            <constraint firstItem="KcQ-YK-09m" firstAttribute="trailing" secondItem="W35-q8-UB5" secondAttribute="trailing" id="KhG-Ea-qgU"/>
+                            <constraint firstItem="W35-q8-UB5" firstAttribute="leading" secondItem="KcQ-YK-09m" secondAttribute="leading" id="ZZm-7L-0m6"/>
+                            <constraint firstItem="KcQ-YK-09m" firstAttribute="trailing" secondItem="85v-si-OHX" secondAttribute="trailing" id="abH-xJ-qjY"/>
+                            <constraint firstItem="KcQ-YK-09m" firstAttribute="bottom" secondItem="W35-q8-UB5" secondAttribute="bottom" id="oJb-wS-6En"/>
+                            <constraint firstItem="KcQ-YK-09m" firstAttribute="bottom" secondItem="85v-si-OHX" secondAttribute="bottom" id="s4Y-Uc-6DH"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -243,18 +239,105 @@
                                     <constraint firstItem="amx-j8-YAh" firstAttribute="centerY" secondItem="mqf-Xh-NIZ" secondAttribute="centerY" id="xWg-wz-TTn"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jbd-6M-0wI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="18N-2o-AyA">
+                                        <rect key="frame" x="137.5" y="86" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="FeC-W4-7C8"/>
+                                            <constraint firstAttribute="width" secondItem="18N-2o-AyA" secondAttribute="height" multiplier="1:1" id="S6r-98-Aet"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access to Contacts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpv-ii-MiE">
+                                        <rect key="frame" x="94" y="236" width="187.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="text_contact_access_title"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please allow Mozo access to your phonebook to seamlessly find all your friends." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdc-aF-vaL">
+                                        <rect key="frame" x="37.5" y="277.5" width="300" height="33.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="text_contact_access_explain"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxj-0l-AAi">
+                                        <rect key="frame" x="94" y="351" width="187.5" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Allow Access"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="text_contact_access_button"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="touchAllow:" destination="AuQ-pb-gq6" eventType="touchUpInside" id="rpe-S7-0aN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJQ-Vc-Cc4">
+                                        <rect key="frame" x="131" y="599" width="113.5" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="xTd-bs-idO"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Privacy Policy"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="text_contact_privacy_button"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="touchPrivacy:" destination="AuQ-pb-gq6" eventType="touchUpInside" id="NI6-QM-s7S"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mozo will store your contacts and keep it secret on out server." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEd-Uk-XXU">
+                                        <rect key="frame" x="37.5" y="570" width="300" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="text_contact_privacy_explain"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                                <viewLayoutGuide key="safeArea" id="yHZ-YX-ro3"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="18N-2o-AyA" firstAttribute="top" secondItem="yHZ-YX-ro3" secondAttribute="top" constant="86" id="5C9-IB-ioN"/>
+                                    <constraint firstItem="xEd-Uk-XXU" firstAttribute="width" secondItem="Jbd-6M-0wI" secondAttribute="width" multiplier="0.8" id="FfA-D3-3Ee"/>
+                                    <constraint firstItem="pxj-0l-AAi" firstAttribute="centerX" secondItem="Jbd-6M-0wI" secondAttribute="centerX" id="Kxq-5k-gsD"/>
+                                    <constraint firstItem="Qpv-ii-MiE" firstAttribute="top" secondItem="18N-2o-AyA" secondAttribute="bottom" constant="50" id="LCD-r7-xmO"/>
+                                    <constraint firstItem="18N-2o-AyA" firstAttribute="centerX" secondItem="Jbd-6M-0wI" secondAttribute="centerX" id="RU6-M1-Kp5"/>
+                                    <constraint firstItem="gdc-aF-vaL" firstAttribute="width" secondItem="Jbd-6M-0wI" secondAttribute="width" multiplier="0.8" id="TNt-dn-1zN"/>
+                                    <constraint firstItem="Qpv-ii-MiE" firstAttribute="centerX" secondItem="Jbd-6M-0wI" secondAttribute="centerX" id="WVg-Fd-pf3"/>
+                                    <constraint firstItem="yHZ-YX-ro3" firstAttribute="bottom" secondItem="CJQ-Vc-Cc4" secondAttribute="bottom" constant="20" id="YrT-9S-mtk"/>
+                                    <constraint firstItem="gdc-aF-vaL" firstAttribute="centerX" secondItem="Jbd-6M-0wI" secondAttribute="centerX" id="aSh-Qh-Nwg"/>
+                                    <constraint firstItem="pxj-0l-AAi" firstAttribute="top" secondItem="gdc-aF-vaL" secondAttribute="bottom" constant="40" id="bTr-oS-mne"/>
+                                    <constraint firstItem="CJQ-Vc-Cc4" firstAttribute="centerX" secondItem="Jbd-6M-0wI" secondAttribute="centerX" id="fvn-Cl-dRN"/>
+                                    <constraint firstItem="gdc-aF-vaL" firstAttribute="top" secondItem="Qpv-ii-MiE" secondAttribute="bottom" constant="20" id="jHY-5f-rIk"/>
+                                    <constraint firstItem="xEd-Uk-XXU" firstAttribute="centerX" secondItem="yHZ-YX-ro3" secondAttribute="centerX" id="oi3-RT-ZND"/>
+                                    <constraint firstItem="pxj-0l-AAi" firstAttribute="width" secondItem="Jbd-6M-0wI" secondAttribute="width" multiplier="0.5" id="rcw-7l-UbJ"/>
+                                    <constraint firstItem="Qpv-ii-MiE" firstAttribute="width" secondItem="Jbd-6M-0wI" secondAttribute="width" multiplier="0.5" id="ugx-Gx-TEQ"/>
+                                    <constraint firstItem="CJQ-Vc-Cc4" firstAttribute="top" secondItem="xEd-Uk-XXU" secondAttribute="bottom" id="xIh-zU-nRr"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6kB-Up-iXO"/>
+                        <viewLayoutGuide key="safeArea" id="zM0-PO-IzI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="kjH-q1-HCG" firstAttribute="top" secondItem="6kB-Up-iXO" secondAttribute="top" constant="18" id="ANR-jZ-J4P"/>
-                            <constraint firstItem="kjH-q1-HCG" firstAttribute="leading" secondItem="6kB-Up-iXO" secondAttribute="leading" constant="25" id="Eec-aa-ggo"/>
-                            <constraint firstItem="6kB-Up-iXO" firstAttribute="trailing" secondItem="mqf-Xh-NIZ" secondAttribute="trailing" constant="35" id="N7L-fP-1eE"/>
-                            <constraint firstItem="MU4-tX-8qL" firstAttribute="leading" secondItem="6kB-Up-iXO" secondAttribute="leading" constant="8" id="Qcc-26-42B"/>
+                            <constraint firstItem="Jbd-6M-0wI" firstAttribute="leading" secondItem="zM0-PO-IzI" secondAttribute="leading" id="1zT-Ot-Idl"/>
+                            <constraint firstItem="kjH-q1-HCG" firstAttribute="top" secondItem="zM0-PO-IzI" secondAttribute="top" constant="18" id="ANR-jZ-J4P"/>
+                            <constraint firstItem="kjH-q1-HCG" firstAttribute="leading" secondItem="zM0-PO-IzI" secondAttribute="leading" constant="25" id="Eec-aa-ggo"/>
+                            <constraint firstItem="zM0-PO-IzI" firstAttribute="trailing" secondItem="mqf-Xh-NIZ" secondAttribute="trailing" constant="35" id="N7L-fP-1eE"/>
+                            <constraint firstItem="MU4-tX-8qL" firstAttribute="leading" secondItem="zM0-PO-IzI" secondAttribute="leading" constant="8" id="Qcc-26-42B"/>
+                            <constraint firstItem="zM0-PO-IzI" firstAttribute="trailing" secondItem="Jbd-6M-0wI" secondAttribute="trailing" id="TES-yF-7QT"/>
+                            <constraint firstItem="Jbd-6M-0wI" firstAttribute="top" secondItem="XII-Cy-Ila" secondAttribute="top" id="TPe-lJ-luw"/>
                             <constraint firstItem="MU4-tX-8qL" firstAttribute="top" secondItem="kjH-q1-HCG" secondAttribute="bottom" constant="25" id="XAs-L3-tHt"/>
-                            <constraint firstAttribute="trailing" secondItem="kjH-q1-HCG" secondAttribute="trailing" constant="25" id="bZl-tx-cay"/>
-                            <constraint firstItem="6kB-Up-iXO" firstAttribute="trailing" secondItem="MU4-tX-8qL" secondAttribute="trailing" constant="8" id="kb4-H5-6gP"/>
-                            <constraint firstItem="mqf-Xh-NIZ" firstAttribute="leading" secondItem="6kB-Up-iXO" secondAttribute="leading" constant="35" id="ocv-VN-oMp"/>
+                            <constraint firstAttribute="bottom" secondItem="Jbd-6M-0wI" secondAttribute="bottom" id="YLk-Bi-JNc"/>
+                            <constraint firstItem="zM0-PO-IzI" firstAttribute="trailing" secondItem="kjH-q1-HCG" secondAttribute="trailing" constant="25" id="bZl-tx-cay"/>
+                            <constraint firstItem="zM0-PO-IzI" firstAttribute="trailing" secondItem="MU4-tX-8qL" secondAttribute="trailing" constant="8" id="kb4-H5-6gP"/>
+                            <constraint firstItem="mqf-Xh-NIZ" firstAttribute="leading" secondItem="zM0-PO-IzI" secondAttribute="leading" constant="35" id="ocv-VN-oMp"/>
                             <constraint firstItem="mqf-Xh-NIZ" firstAttribute="top" secondItem="MU4-tX-8qL" secondAttribute="bottom" constant="16" id="zMj-Th-zux"/>
                         </constraints>
                     </view>
@@ -263,6 +346,8 @@
                         <outlet property="btnUpdateLoading" destination="GSl-wj-Epx" id="cYh-al-fQg"/>
                         <outlet property="lbLastUpdate" destination="8kQ-eL-uIi" id="7tq-Dt-sjW"/>
                         <outlet property="lbUpdate" destination="F8W-s4-PKp" id="xVh-1b-WfL"/>
+                        <outlet property="permissionGroup" destination="Jbd-6M-0wI" id="1XS-qU-cjo"/>
+                        <outlet property="permissionImage" destination="18N-2o-AyA" id="HR2-JF-xtA"/>
                         <outlet property="updateContainerView" destination="mqf-Xh-NIZ" id="Vu1-Pb-aZz"/>
                     </connections>
                 </viewController>

@@ -6,12 +6,16 @@
 //
 
 import Foundation
+import Contacts
+
 class ABImportViewController: MozoBasicViewController {
     @IBOutlet weak var lbLastUpdate: UILabel!
     @IBOutlet weak var updateContainerView: UIView!
     @IBOutlet weak var lbUpdate: UILabel!
     @IBOutlet weak var btnUpdate: UIButton!
     @IBOutlet weak var btnUpdateLoading: UIActivityIndicatorView!
+    @IBOutlet weak var permissionGroup: UIView!
+    @IBOutlet weak var permissionImage: UIImageView!
     
     var eventHandler: ABImportModuleInterface?
     
@@ -24,12 +28,28 @@ class ABImportViewController: MozoBasicViewController {
         super.viewDidLoad()
         enableBackBarButton()
         eventHandler?.loadProcessStatusForInitializing()
-        setupLayout()
+        
+        updateContainerView.roundCorners(borderColor: .white, borderWidth: 0.1)
+        updateContainerView.layer.cornerRadius = 5
+        permissionImage.image = "ic_notif_user_come".asMozoImage()?.withRenderingMode(.alwaysOriginal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = "Synchronize Contacts".localized
+        
+        let status = CNContactStore.authorizationStatus(for: .contacts)
+        switch(status) {
+        case .notDetermined:
+            permissionGroup.isHidden = false
+            break
+        case .restricted, .denied:
+            permissionGroup.isHidden = false
+            break
+        default:
+            permissionGroup.isHidden = true
+            break
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -38,11 +58,6 @@ class ABImportViewController: MozoBasicViewController {
             eventHandler?.stopCheckStatus()
             stopRotating = true
         }
-    }
-    
-    func setupLayout() {
-        updateContainerView.roundCorners(borderColor: .white, borderWidth: 0.1)
-        updateContainerView.layer.cornerRadius = 5
     }
 
     func updateLayoutWithProcessStatus(_ processStatus: AddressBookImportProcessDTO) {
@@ -67,12 +82,31 @@ class ABImportViewController: MozoBasicViewController {
     }
     
     func openSettings() {
-        let url = URL(string: UIApplication.openSettingsURLString)
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(url)
+        }
     }
     
     @IBAction func touchBtnUpdate(_ sender: Any) {
         eventHandler?.requestToImport()
+    }
+    @IBAction func touchAllow(_ sender: Any) {
+        let status = CNContactStore.authorizationStatus(for: .contacts)
+        if status == .notDetermined {
+            CNContactStore().requestAccess(for: .contacts) { granted, error in
+                if granted {
+                    self.permissionGroup.isHidden = true
+                    self.eventHandler?.requestToImport()
+                }
+            }
+        } else {
+            self.showSettingPermissionAlert()
+        }
+    }
+    @IBAction func touchPrivacy(_ sender: Any) {
+        if let url = URL(string: "\(MozoSDK.homePage)/info/privacy-and-cookies-policy") {
+            UIApplication.shared.open(url)
+        }
     }
 }
 extension ABImportViewController: ABImportViewInterface {
@@ -85,13 +119,15 @@ extension ABImportViewController: ABImportViewInterface {
     }
     
     func showSettingPermissionAlert() {
-        let alert = UIAlertController(title: "Cannot access your Contact Book".localized, message: "text_reuqest_permission_contact".localized, preferredStyle: .alert)
+        let alert = UIAlertController(
+            title: "Cannot access your Contact Book".localized,
+            message: "text_reuqest_permission_contact".localized,
+            preferredStyle: .alert
+        )
         alert.addAction(.init(title: "Change Settings".localized, style: .default, handler: { (action) in
             self.openSettings()
         }))
-        alert.addAction(.init(title: "OK".localized, style: .default, handler: { (action) in
-            
-        }))
+        alert.addAction(.init(title: "Close".localized, style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     

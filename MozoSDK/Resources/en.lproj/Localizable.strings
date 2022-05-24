@@ -1209,6 +1209,11 @@
 
 "Synchronize" = "Synchronize";
 "Synchronizing..." = "Synchronizing...";
+"text_contact_access_title" = "Access to Contacts";
+"text_contact_access_explain" = "Please allow Mozo access to your phonebook to seamlessly find all your friends.";
+"text_contact_access_button" = "Allow Access";
+"text_contact_privacy_explain" = "Mozo store your contacts in server and keep it secret.";
+"text_contact_privacy_button" = "Privacy Policy";
 
 "Top Local Airdrop Events" = "Top Local Airdrop Events";
 "Top International Airdrop Events" = "Top International Airdrop Events";
