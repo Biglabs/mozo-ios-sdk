@@ -76,10 +76,13 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
             URLQueryItem(name: "code_challenge_method", value: "S256"),
             URLQueryItem(name: "prompt", value: "consent"),
             URLQueryItem(name: "nonce", value: self.randomURLSafeStringWithSize(kStateSizeBytes)),
-            URLQueryItem(name: "state", value: self.randomURLSafeStringWithSize(kStateSizeBytes)),
             URLQueryItem(name: "scope", value: "openid profile phone"),
             URLQueryItem(name: "kc_locale", value: Configuration.LOCALE.replace("_", withString: "-"))
         ]
+        let newState = URLQueryItem(name: "state", value: self.randomURLSafeStringWithSize(kStateSizeBytes))
+        if !isSignOut {
+            authUrlComponent.queryItems?.append(newState)
+        }
         let signInUrl = authUrlComponent.url
         var finalUrl = signInUrl
         
@@ -100,6 +103,7 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
             urlComponent.queryItems?.append(
                 URLQueryItem(name: "redirect_uri", value: signInUrl?.absoluteString ?? callbackScheme)
             )
+            urlComponent.queryItems?.append(newState)
             finalUrl = urlComponent.url
         }
         

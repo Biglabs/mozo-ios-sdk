@@ -16,33 +16,33 @@ internal enum ServiceType: String {
     var api: String {
         switch self {
         case .PRODUCTION:
-            return "gateway.mozocoin.io"
+            return "gateway.mozotoken.com"
         case .STAGING:
-            return "staging.gateway.mozocoin.io"
+            return "staging.gateway.mozotoken.com"
         default:
-            return "gateway.cng.mozocoin.io"
+            return "gateway.cng.mozotoken.com"
         }
     }
     
     var socket: String {
         switch self {
         case .PRODUCTION:
-            return "noti.mozocoin.io"
+            return "noti.mozotoken.com"
         case .STAGING:
-            return "staging.noti.mozocoin.io"
+            return "staging.noti.mozotoken.com"
         default:
-            return "noti.cng.mozocoin.io"
+            return "noti.cng.mozotoken.com"
         }
     }
     
     var auth: String {
         switch self {
         case .PRODUCTION:
-            return "login.mozocoin.io"
+            return "login.mozotoken.com"
         case .STAGING:
-            return "staging.login.mozocoin.io"
+            return "staging.login.mozotoken.com"
         default:
-            return "login.cng.mozocoin.io"
+            return "login.cng.mozotoken.com"
         }
     }
     
@@ -50,11 +50,11 @@ internal enum ServiceType: String {
     var image: String {
         switch self {
         case .PRODUCTION:
-            return "image.mozocoin.io"
+            return "image.mozotoken.com"
         case .STAGING:
-            return "staging.image.mozocoin.io"
+            return "staging.image.mozotoken.com"
         default:
-            return "image.cng.mozocoin.io"
+            return "image.cng.mozotoken.com"
         }
     }
     

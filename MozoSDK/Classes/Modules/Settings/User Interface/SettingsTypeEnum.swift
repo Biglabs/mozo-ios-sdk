@@ -6,11 +6,12 @@
 //
 
 import Foundation
-enum SettingsTypeEnum: Int {
+enum SettingsTypeEnum: Int, CaseIterable {
     case Currencies = 0
     case Password = 1
     case Pin = 2
     case Backup = 3
+    case Cache = 4
     
     public var name: String {
         switch self {
@@ -18,6 +19,7 @@ enum SettingsTypeEnum: Int {
         case .Password: return "Change Password"
         case .Pin: return "Change Security PIN"
         case .Backup: return "Backup Wallet"
+        case .Cache: return "Clear Cache"
         }
     }
     
@@ -27,6 +29,7 @@ enum SettingsTypeEnum: Int {
         case .Password: return "ic_change_password"
         case .Pin: return "ic_change_pin"
         case .Backup: return "ic_back_up"
+        case .Cache: return "ic_clear_cache"
         }
     }
 }

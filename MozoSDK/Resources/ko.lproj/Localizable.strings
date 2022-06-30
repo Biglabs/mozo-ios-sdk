@@ -93,7 +93,8 @@
 "Retry" = "재시도";
 "Refresh" = "새로 고침";
 "Try Again" = "다시 시도하십시오.";
-"Backup Wallet" = "월렛 백업 ";
+"Backup Wallet" = "월렛 백업";
+"Clear Cache" = "캐시 지우기";
 "Store Recovery Phrase" = "복구 데이터 프레이즈 저장";
 "Please write it down on paper and keep it in a safe place as you would with money." = "이 프레이즈를 적어 안전한 장소에 보관하십시오.";
 "*If you lose your Recovery Phrase, your wallet cannot be recovered." = "* 복구 데이터 문구를 분실하면 월렛을 복구 할 수 없습니다.";

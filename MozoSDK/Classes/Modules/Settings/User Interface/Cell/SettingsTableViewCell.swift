@@ -14,9 +14,10 @@ class SettingsTableViewCell: UITableViewCell {
     @IBOutlet weak var constraintCenterY: NSLayoutConstraint!
     @IBOutlet weak var constraintImageHeight: NSLayoutConstraint!
     @IBOutlet weak var constraintImageWidth: NSLayoutConstraint!
-    
     @IBOutlet weak var lbSettingType: UILabel!
+    
     var settingsTypeEnum = SettingsTypeEnum.Currencies
+    var additionalText: String = ""
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -24,7 +25,7 @@ class SettingsTableViewCell: UITableViewCell {
     }
     
     func bindData() {
-        lbSettingType.text = settingsTypeEnum.name.localized
+        lbSettingType.text = settingsTypeEnum.name.localized + additionalText
         let image = UIImage(named: settingsTypeEnum.icon, in: BundleManager.mozoBundle(), compatibleWith: nil)
         imgViewType.image = image
         
@@ -43,6 +44,10 @@ class SettingsTableViewCell: UITableViewCell {
             break
         case .Backup:
             constraintImageWidth.constant = 21
+            constraintImageHeight.constant = 22
+            break
+        case .Cache:
+            constraintImageWidth.constant = 22
             constraintImageHeight.constant = 22
             break
         }
