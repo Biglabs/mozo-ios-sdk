@@ -65,6 +65,10 @@ public class MozoSDK {
         ModuleDependencies.shared.displayAddressBook()
     }
     
+    public static func displaySettings(_ controller: UINavigationController) {
+        SettingsViewController.launch(root: controller)
+    }
+    
     public static func convertMozoXOnchain(isConvertOffchainToOffchain: Bool = false) {
         ModuleDependencies.shared.convertMozoXOnchain(isConvertOffchainToOffchain: isConvertOffchainToOffchain)
     }
