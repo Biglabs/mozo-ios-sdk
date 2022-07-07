@@ -18,9 +18,9 @@ internal enum ServiceType: String {
         case .PRODUCTION:
             return "gateway.mozotoken.com"
         case .STAGING:
-            return "staging.gateway.mozotoken.com"
+            return "gateway.staging.mozotoken.com"
         default:
-            return "gateway.cng.mozotoken.com"
+            return "cng.gateway.mozotoken.com"
         }
     }
     
@@ -29,7 +29,7 @@ internal enum ServiceType: String {
         case .PRODUCTION:
             return "noti.mozotoken.com"
         case .STAGING:
-            return "staging.noti.mozotoken.com"
+            return "noti.staging.mozotoken.com"
         default:
             return "noti.cng.mozotoken.com"
         }
@@ -40,7 +40,7 @@ internal enum ServiceType: String {
         case .PRODUCTION:
             return "login.mozotoken.com"
         case .STAGING:
-            return "staging.login.mozotoken.com"
+            return "login.staging.mozotoken.com"
         default:
             return "login.cng.mozotoken.com"
         }
@@ -52,7 +52,7 @@ internal enum ServiceType: String {
         case .PRODUCTION:
             return "image.mozotoken.com"
         case .STAGING:
-            return "staging.image.mozotoken.com"
+            return "image.staging.mozotoken.com"
         default:
             return "image.cng.mozotoken.com"
         }
