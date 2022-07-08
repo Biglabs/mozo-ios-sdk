@@ -20,7 +20,7 @@ internal enum ServiceType: String {
         case .STAGING:
             return "gateway.staging.mozotoken.com"
         default:
-            return "cng.gateway.mozotoken.com"
+            return "gateway.cng.mozotoken.com"
         }
     }
     
