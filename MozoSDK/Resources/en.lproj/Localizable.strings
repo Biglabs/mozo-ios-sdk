@@ -1004,6 +1004,7 @@
 "Re-enter your new PIN" = "Re-enter your new PIN";
 "Change PIN is processing.." = "Change PIN is processing..";
 "Change Security PIN Successful" = "Change Security PIN Successful";
+"Change Languages" = "Languages";
 
 "System is using automatically generated PIN to sign your transaction and send it to network..." = "System is using automatically generated PIN to sign your transaction and send it to network...";
 

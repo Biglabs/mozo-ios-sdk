@@ -1013,6 +1013,7 @@
 "Re-enter your new PIN" = "새로운 PIN 제입력";
 "Change PIN is processing.." = "PIN 변경 중";
 "Change Security PIN Successful" = "PIN 변경 성공";
+"Change Languages" = "언어";
 
 "System is using automatically generated PIN to sign your transaction and send it to network..." = "시스템은 자동 생성된 PIN을 사용해 거래 결재하고 네트워크로 보내는 중";
 

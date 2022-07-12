@@ -21,9 +21,11 @@ public class MozoSDK {
         }
     }
     
+    private(set) static var baseApplication: BaseApplication?
+    
     public private(set) static var homePage: String = "https://\(Configuration.BASE_DOMAIN.landingPage)"
     
-    public static func configure(network: MozoNetwork = .TestNet, appType: AppType = .Shopper) {
+    public static func configure(application: BaseApplication ,network: MozoNetwork = .TestNet, appType: AppType = .Shopper) {
         switch network {
             case .DevNet: Configuration.BASE_DOMAIN = .DEVELOP
             case .TestNet: Configuration.BASE_DOMAIN = .STAGING
@@ -31,6 +33,7 @@ public class MozoSDK {
         }
         self.network = network
         self.appType = appType
+        self.baseApplication = application
     }
     
     public static func setAuthDelegate(_ delegate: MozoAuthenticationDelegate) {

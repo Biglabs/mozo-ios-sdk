@@ -137,10 +137,61 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             case .Backup:
                 MozoSDK.requestForBackUpWallet()
                 break
+            case .ChangeLanguages:
+                self.alertListItemLanguages()
+                break
             case .Cache:
                 self.clearDocuments()
                 break
             }
         }
     }
+    
+    func alertListItemLanguages() {
+        let language = UserDefaults.standard.string(forKey: "AppLanguage")
+
+        print("Language: \(language ?? "")")
+        
+        var arrLanguages = [String]()
+        if language == "en" {
+            arrLanguages = ["English(US) - English", "Korean - 한국어", "Vietnamese - Tiếng Việt"]
+        }else if language == "ko" {
+            arrLanguages = ["영어(미국) - English", "한국어 - 한국어", "베트남어 - Tiếng Việt"]
+        }else {
+            arrLanguages = ["Tiếng Anh(Mỹ) - English", "Tiếng Hàn Quốc - 한국어", "Tiếng Việt - Tiếng Việt"]
+        }
+        
+        let alert = UIAlertController(title: "Change Languages".localized, message: nil, preferredStyle: .alert)
+        
+        let closure = { [self] (action: UIAlertAction!) -> Void in
+            let index = alert.actions.firstIndex(of: action)
+            var language = ""
+            if index != nil {
+                if index == 0 {
+                    language = "en"
+                }else if index == 1 {
+                    language = "ko"
+                }else {
+                    language = "vi"
+                }
+                                                
+                UserDefaults.standard.set(language, forKey: "AppLanguage")
+                UserDefaults.standard.synchronize()
+                
+                MozoSDK.baseApplication?.resetApp()
+                
+                print("Index: \(index!) - Language: \(language)")
+            }
+        }
+        
+        for itemLanguage in arrLanguages {
+            alert.addAction(UIAlertAction(title: itemLanguage, style: .default, handler: closure))
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: {(_) in }))
+
+        self.present(alert, animated: false, completion: nil)
+
+    }
+
 }

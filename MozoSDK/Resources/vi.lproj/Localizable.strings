@@ -1006,6 +1006,7 @@
 "Re-enter your new PIN" = "Nhập lại mã PIN mới";
 "Change PIN is processing.." = "Đang xử lý thay đổi mã PIN...";
 "Change Security PIN Successful" = "Thay đổi mã PIN thành công";
+"Change Languages" = "Ngôn ngữ";
 
 "System is using automatically generated PIN to sign your transaction and send it to network..." = "Đang dùng mã PIN được tự động tạo bởi hệ thống để ký giao dịch và gởi đến máy chủ...";
 
