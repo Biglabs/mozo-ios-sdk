@@ -148,18 +148,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func alertListItemLanguages() {
-        let language = UserDefaults.standard.string(forKey: "AppLanguage")
-
-        print("Language: \(language ?? "")")
-        
-        var arrLanguages = [String]()
-        if language == "en" {
-            arrLanguages = ["🇺🇸 English(US) - English", "🇰🇷 Korean - 한국어", "🇻🇳 Vietnamese - Tiếng Việt"]
-        }else if language == "ko" {
-            arrLanguages = ["🇺🇸 영어(미국) - English", "🇰🇷 한국어 - 한국어", "🇻🇳 베트남어 - Tiếng Việt"]
-        }else {
-            arrLanguages = ["🇺🇸 Tiếng Anh(Mỹ) - English", "🇰🇷 Tiếng Hàn Quốc - 한국어", "🇻🇳 Tiếng Việt - Tiếng Việt"]
-        }
+        let arrLanguages = ["Language_English".localized, "Language_Korean".localized, "Language_Vietnamese".localized]
         
         let alert = UIAlertController(title: "Change Languages".localized, message: nil, preferredStyle: .alert)
         
