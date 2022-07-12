@@ -10,12 +10,12 @@ import UIKit
 import MozoSDK
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: BaseApplication {
 
     var window: UIWindow?
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-		MozoSDK.configure(network: .DevNet)
+		MozoSDK.configure(application: self, network: .DevNet)
 		return true
 	}
 }
