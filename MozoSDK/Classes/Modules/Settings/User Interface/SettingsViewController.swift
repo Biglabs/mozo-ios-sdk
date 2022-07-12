@@ -154,16 +154,16 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
         var arrLanguages = [String]()
         if language == "en" {
-            arrLanguages = ["English(US) - English", "Korean - 한국어", "Vietnamese - Tiếng Việt"]
+            arrLanguages = ["🇺🇸 English(US) - English", "🇰🇷 Korean - 한국어", "🇻🇳 Vietnamese - Tiếng Việt"]
         }else if language == "ko" {
-            arrLanguages = ["영어(미국) - English", "한국어 - 한국어", "베트남어 - Tiếng Việt"]
+            arrLanguages = ["🇺🇸 영어(미국) - English", "🇰🇷 한국어 - 한국어", "🇻🇳 베트남어 - Tiếng Việt"]
         }else {
-            arrLanguages = ["Tiếng Anh(Mỹ) - English", "Tiếng Hàn Quốc - 한국어", "Tiếng Việt - Tiếng Việt"]
+            arrLanguages = ["🇺🇸 Tiếng Anh(Mỹ) - English", "🇰🇷 Tiếng Hàn Quốc - 한국어", "🇻🇳 Tiếng Việt - Tiếng Việt"]
         }
         
         let alert = UIAlertController(title: "Change Languages".localized, message: nil, preferredStyle: .alert)
         
-        let closure = { [self] (action: UIAlertAction!) -> Void in
+        let closure = { (action: UIAlertAction!) -> Void in
             let index = alert.actions.firstIndex(of: action)
             var language = ""
             if index != nil {
