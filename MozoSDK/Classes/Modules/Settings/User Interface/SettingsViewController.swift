@@ -180,7 +180,5 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: {(_) in }))
 
         self.present(alert, animated: false, completion: nil)
-
     }
-
 }
