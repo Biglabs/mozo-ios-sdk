@@ -85,6 +85,10 @@ class AuthManager : NSObject {
     }
     
     private func checkAuthorization() {
+        let token = AccessTokenManager.getAccessToken()
+        if token == nil || token?.isEmpty == true {
+            return
+        }
         SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKING
         ApiManager.shared.checkTokenExpired().done({ (result) in
             self.delegate?.didCheckAuthorizationSuccess()
