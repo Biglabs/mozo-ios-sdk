@@ -15,7 +15,7 @@ import UIKit
     }
     
     override func checkDisable() {
-        if AccessTokenManager.getAccessToken() != nil {
+        if SessionStoreManager.isWalletSafe() {
             isUserInteractionEnabled = true
             button.backgroundColor = ThemeManager.shared.main
         } else {

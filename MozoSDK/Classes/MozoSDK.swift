@@ -36,6 +36,10 @@ public class MozoSDK {
         self.baseApplication = application
     }
     
+    public static func accessToken() -> String {
+        return AccessTokenManager.getAccessToken() ?? ""
+    }
+    
     public static func setAuthDelegate(_ delegate: MozoAuthenticationDelegate) {
         ModuleDependencies.shared.setAuthDelegate(delegate)
     }

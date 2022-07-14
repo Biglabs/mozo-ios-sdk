@@ -85,8 +85,7 @@ class AuthManager : NSObject {
     }
     
     private func checkAuthorization() {
-        let token = AccessTokenManager.getAccessToken()
-        if token == nil || token?.isEmpty == true {
+        if SessionStoreManager.isWalletSafe() == false {
             return
         }
         SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKING

@@ -56,13 +56,7 @@ import Foundation
     }
     
     override func loadViewFromNib() {
-        // Fix issue: Must include checking user profile in case user profile was loaded failed
-        if AccessTokenManager.getAccessToken() == nil
-            || SessionStoreManager.loadCurrentUser() == nil {
-            isAnonymous = true
-        } else {
-            isAnonymous = false
-        }
+        isAnonymous = !SessionStoreManager.isWalletSafe()
         super.loadViewFromNib()
         loadDisplayData()
         setupButtonBorder()

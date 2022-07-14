@@ -7,8 +7,8 @@
 
 import Foundation
 import JWTDecode
-public class AccessTokenManager {
-    public static func save(_ token: AccessToken?) {
+internal class AccessTokenManager {
+    static func save(_ token: AccessToken?) {
         DispatchQueue.main.async {
             if token == nil {
                 UserDefaults.standard.removeObject(forKey: Configuration.AUTH_STATE)
@@ -19,25 +19,25 @@ public class AccessTokenManager {
         }
     }
     
-    public static func load() -> AccessToken? {
+    static func load() -> AccessToken? {
         if let data = UserDefaults.standard.data(forKey: Configuration.AUTH_STATE) {
             return AccessToken.parse(data)
         }
         return nil
     }
     
-    public static func loadToken() -> String? {
+    static func loadToken() -> String? {
         if let token = UserDefaults.standard.string(forKey: Configuration.ACCESS_TOKEN) {
             return token
         }
         return UserDefaults.standard.string(forKey: Configuration.ACCESS_TOKEN_ANONYMOUS)
     }
     
-    public static func getAccessToken() -> String? {
+    static func getAccessToken() -> String? {
         return UserDefaults.standard.string(forKey: Configuration.ACCESS_TOKEN)
     }
     
-    private static func saveToken(_ token: String?) {
+    static func saveToken(_ token: String?) {
         UserDefaults.standard.set(token, forKey: Configuration.ACCESS_TOKEN)
         
         if let accessToken = token {
@@ -47,24 +47,24 @@ public class AccessTokenManager {
         }
     }
     
-    public static func clearToken() {
+    static func clearToken() {
         UserDefaults.standard.removeObject(forKey: Configuration.AUTH_STATE)
         UserDefaults.standard.removeObject(forKey: Configuration.ACCESS_TOKEN)
     }
     
-    public static func getPinSecret() -> String? {
+    static func getPinSecret() -> String? {
         return UserDefaults.standard.string(forKey: Configuration.PIN_SECRET)
     }
     
-    private static func savePinSecret(_ pinSecrect: String?) {
+    static func savePinSecret(_ pinSecrect: String?) {
         UserDefaults.standard.set(pinSecrect, forKey: Configuration.PIN_SECRET)
     }
     
-    public static func clearPinSecret() {
+    static func clearPinSecret() {
         UserDefaults.standard.removeObject(forKey: Configuration.PIN_SECRET)
     }
     
-    public static func saveAnonymousToken(_ token: String?) {
+    static func saveAnonymousToken(_ token: String?) {
         UserDefaults.standard.set(token, forKey: Configuration.ACCESS_TOKEN_ANONYMOUS)
     }
 }

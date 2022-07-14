@@ -91,4 +91,12 @@ public class SessionStoreManager {
     public static var inviteLinkRetailer: InviteLinkDTO?
     
     public static var isAccessDenied = false
+    
+    public static func isWalletSafe() -> Bool {
+        if let user = loadCurrentUser(), user.profile?.walletInfo?.offchainAddress != nil {
+            return true
+        }
+        
+        return false
+    }
 }

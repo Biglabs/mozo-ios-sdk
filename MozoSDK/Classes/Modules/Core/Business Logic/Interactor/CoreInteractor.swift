@@ -139,9 +139,8 @@ class CoreInteractor: NSObject {
     func checkWallet(module: Module) {
         "CoreInteractor - Check wallet".log()
         // Check wallet
-        if let wallet = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo,
-           wallet.encryptSeedPhrase != nil,
-           let id = SessionStoreManager.loadCurrentUser()?.id {
+        let user = SessionStoreManager.loadCurrentUser()
+        if let wallet = user?.profile?.walletInfo, wallet.encryptSeedPhrase != nil, let id = user?.id {
             
             let serverHaveBothOffChainAndOnChain = wallet.offchainAddress != nil && wallet.onchainAddress != nil
             
