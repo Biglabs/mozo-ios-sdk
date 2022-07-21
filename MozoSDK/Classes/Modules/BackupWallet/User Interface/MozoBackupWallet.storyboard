@@ -17,6 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8As-Q0-qzb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="didDismissKeyboard:" destination="Haz-Q5-5g0" eventType="touchUpInside" id="WqW-jC-1rS"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VERIFY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omq-5T-Rwy">
                                 <rect key="frame" x="160.5" y="28" width="54" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -224,12 +231,16 @@
                         <viewLayoutGuide key="safeArea" id="g7B-Ds-8Uo"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="8As-Q0-qzb" firstAttribute="bottom" secondItem="g7B-Ds-8Uo" secondAttribute="bottom" id="2JB-Rz-1yJ"/>
+                            <constraint firstItem="8As-Q0-qzb" firstAttribute="leading" secondItem="sVn-xq-PJx" secondAttribute="leading" id="2Z8-ua-JRh"/>
+                            <constraint firstItem="8As-Q0-qzb" firstAttribute="trailing" secondItem="g7B-Ds-8Uo" secondAttribute="trailing" id="GTg-ec-oen"/>
                             <constraint firstItem="Inq-dL-K8b" firstAttribute="centerY" secondItem="g7B-Ds-8Uo" secondAttribute="centerY" multiplier="0.7" id="Lej-Je-KR6"/>
                             <constraint firstItem="g7B-Ds-8Uo" firstAttribute="trailing" secondItem="7z1-LM-A6O" secondAttribute="trailing" constant="40" id="NwE-xJ-cHE"/>
                             <constraint firstItem="Inq-dL-K8b" firstAttribute="width" secondItem="sVn-xq-PJx" secondAttribute="width" multiplier="0.7" priority="750" id="Qqw-hS-0tf"/>
                             <constraint firstItem="uNq-GK-TOU" firstAttribute="leading" secondItem="g7B-Ds-8Uo" secondAttribute="leading" constant="40" id="Tkl-80-R2b"/>
                             <constraint firstItem="Omq-5T-Rwy" firstAttribute="centerX" secondItem="sVn-xq-PJx" secondAttribute="centerX" id="VGP-Mc-DXN"/>
                             <constraint firstItem="7z1-LM-A6O" firstAttribute="leading" secondItem="g7B-Ds-8Uo" secondAttribute="leading" constant="40" id="btq-OX-ewx"/>
+                            <constraint firstItem="8As-Q0-qzb" firstAttribute="top" secondItem="g7B-Ds-8Uo" secondAttribute="top" id="n52-cB-SZH"/>
                             <constraint firstItem="Inq-dL-K8b" firstAttribute="centerX" secondItem="sVn-xq-PJx" secondAttribute="centerX" id="oFU-XW-2b6"/>
                             <constraint firstItem="7z1-LM-A6O" firstAttribute="top" secondItem="Omq-5T-Rwy" secondAttribute="bottom" constant="11" id="qs2-Tf-dG7"/>
                             <constraint firstItem="g7B-Ds-8Uo" firstAttribute="bottom" secondItem="uNq-GK-TOU" secondAttribute="bottom" constant="30" id="rf4-9d-bKV"/>
@@ -255,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B1L-wT-HLI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="21"/>
+            <point key="canvasLocation" x="64.799999999999997" y="20.239880059970016"/>
         </scene>
         <!--Backup Wallet Success View Controller-->
         <scene sceneID="0VA-gU-UP7">

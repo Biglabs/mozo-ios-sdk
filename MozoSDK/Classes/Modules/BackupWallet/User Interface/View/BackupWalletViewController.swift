@@ -87,7 +87,6 @@ class BackupWalletViewController: MozoBasicViewController, UITextFieldDelegate {
         switch textField {
         case input1:
             input1Line.backgroundColor = lineColor
-            
             break
         case input2:
             input2Line.backgroundColor = lineColor
@@ -113,28 +112,47 @@ class BackupWalletViewController: MozoBasicViewController, UITextFieldDelegate {
         case input1:
             input1Line.backgroundColor = lineColor
             input1.textColor = textColor
-            
             break
         case input2:
             input2Line.backgroundColor = lineColor
             input2.textColor = textColor
-            
+
             break
         case input3:
             input3Line.backgroundColor = lineColor
             input3.textColor = textColor
-            
+
             break
         case input4:
             input4Line.backgroundColor = lineColor
             input4.textColor = textColor
-            
+
             break
         default:
             break
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case input1:
+            input2.becomeFirstResponder()
+            break
+        case input2:
+            input3.becomeFirstResponder()
+            break
+        case input3:
+            input4.becomeFirstResponder()
+            break
+        case input4:
+            input4.resignFirstResponder()
+            break
+        default:
+            break
+        }
+        return false
+    }
+
     @IBAction func touchBtnFinish(_ sender: Any) {
         guard let safeMnemonics = self.mnemonics,
               let seed = self.mnemonics?.split(separator: " ") else { return }
@@ -151,6 +169,10 @@ class BackupWalletViewController: MozoBasicViewController, UITextFieldDelegate {
         } else {
             displayVerifyFailed()
         }
+    }
+    
+    @IBAction func didDismissKeyboard(_ sender: Any) {
+        self.dismissKeyboard()
     }
     
     private func random(max: Int, exclude: [Int]? = nil) -> Int {
