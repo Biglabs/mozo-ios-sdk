@@ -62,7 +62,7 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
         let authEndpoint = Configuration.AUTH_ISSSUER.appending(Configuration.BEGIN_SESSION_URL_PATH)
         codeVerifier = self.randomURLSafeStringWithSize(kCodeVerifierBytes)
         let codeChallenge = self.codeChallengeS256ForVerifier(code: codeVerifier)
-        clientId = MozoSDK.appType == .Retailer ? Configuration.AUTH_RETAILER_CLIENT_ID : Configuration.AUTH_SHOPPER_CLIENT_ID
+        clientId = MozoSDK.appType.clientId
         guard var authUrlComponent = URLComponents(string: authEndpoint) else {
             self.touchedCancel()
             return

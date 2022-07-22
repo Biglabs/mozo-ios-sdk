@@ -23,14 +23,9 @@ public class MozoSDK {
     
     private(set) static var baseApplication: BaseApplication?
     
-    public private(set) static var homePage: String = "https://\(Configuration.BASE_DOMAIN.landingPage)"
+    public private(set) static var homePage: String = "https://\(network.landingPage)"
     
     public static func configure(application: BaseApplication ,network: MozoNetwork = .TestNet, appType: AppType = .Shopper) {
-        switch network {
-            case .DevNet: Configuration.BASE_DOMAIN = .DEVELOP
-            case .TestNet: Configuration.BASE_DOMAIN = .STAGING
-            case .MainNet: Configuration.BASE_DOMAIN = .PRODUCTION
-        }
         self.network = network
         self.appType = appType
         self.baseApplication = application

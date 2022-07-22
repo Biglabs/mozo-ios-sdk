@@ -7,6 +7,35 @@
 
 import Foundation
 
+public enum AppType: String {
+    case Shopper = "shopper"
+    case Retailer = "retailer"
+    
+    public var scheme: String {
+        var suffix = ""
+        switch MozoSDK.network {
+        case .DevNet: suffix = "dev."
+        case .TestNet: suffix = "staging."
+        default: break
+        }
+        return "\(suffix)mozox.\(rawValue)"
+    }
+    
+    public var appStoreUrl: String {
+        switch self {
+        case .Retailer: return "https://apps.apple.com/app/id1447347986"
+        case .Shopper:  return "https://apps.apple.com/app/id1447452721"
+        }
+    }
+    
+    var clientId: String {
+        switch self {
+        case .Shopper: return "shopper_mobile_app"
+        case .Retailer: return "retailer_mobile_app"
+        }
+    }
+}
+
 public enum CoinType {
     case BTC
     case ETH
@@ -168,6 +197,62 @@ public enum MozoNetwork {
         case .MainNet: return "MainNet"
         }
     }
+    
+    internal var api: String {
+        switch self {
+        case .MainNet:
+            return "gateway.\(Configuration.baseDomain)"
+        case .TestNet:
+            return "gateway.staging.\(Configuration.baseDomain)"
+        default:
+            return "gateway.cng.\(Configuration.baseDomain)"
+        }
+    }
+    
+    internal var socket: String {
+        switch self {
+        case .MainNet:
+            return "noti.\(Configuration.baseDomain)"
+        case .TestNet:
+            return "noti.staging.\(Configuration.baseDomain)"
+        default:
+            return "noti.cng.\(Configuration.baseDomain)"
+        }
+    }
+    
+    internal var auth: String {
+        switch self {
+        case .MainNet:
+            return "login.\(Configuration.baseDomain)"
+        case .TestNet:
+            return "login.staging.\(Configuration.baseDomain)"
+        default:
+            return "login.cng.\(Configuration.baseDomain)"
+        }
+    }
+    
+    
+    internal var image: String {
+        switch self {
+        case .MainNet:
+            return "image.\(Configuration.baseDomain)"
+        case .TestNet:
+            return "image.staging.\(Configuration.baseDomain)"
+        default:
+            return "image.cng.\(Configuration.baseDomain)"
+        }
+    }
+    
+    internal var landingPage: String {
+        switch self {
+        case .MainNet:
+            return Configuration.baseDomain
+        case .TestNet:
+            return "staging.\(Configuration.baseDomain)"
+        default:
+            return "cng.\(Configuration.baseDomain)"
+        }
+    }
 }
 
 public enum CurrencyType: String {
@@ -202,6 +287,19 @@ public enum SymbolType {
         case .SOLO: return "SOLO"
         case .MOZO: return "MOZO"
         case .MOZOX: return "MOZOX"
+        }
+    }
+}
+
+enum TransactionDisplayContactEnum: Int {
+    case NoDetail = 0
+    case AddressBookDetail = 1
+    case StoreBookDetail = 2
+    
+    var icon: String {
+        switch self {
+        case .StoreBookDetail: return "ic_store"
+        default: return "ic_user"
         }
     }
 }

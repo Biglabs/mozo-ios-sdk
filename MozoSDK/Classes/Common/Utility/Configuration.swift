@@ -42,25 +42,25 @@ public class Configuration {
     //Wallet
     public static let WALLLET_ID = "WalletId"
     
-    internal static var BASE_DOMAIN = ServiceType.DEVELOP
-    public static let BASE_HOST = "https://\(BASE_DOMAIN.api)"
+    internal static let baseDomain: String = "mozotoken.com"
+    public static let BASE_HOST = "https://\(MozoSDK.network.api)"
     public static let BASE_SOLO = "\(BASE_HOST)/solomon/api/app"
     public static let BASE_STORE_URL = "\(BASE_HOST)/store/api/app"
     public static let BASE_SCAN_URL = "\(BASE_HOST)/mozoscan/api/app"
     public static let BASE_NOTIFICATION_URL = "\(BASE_HOST)/notification/api/app"
     
     // WEB_SOCKET
-    public static let WEB_SOCKET_URL = "wss://\(BASE_DOMAIN.socket)/websocket/user/"
+    public static let WEB_SOCKET_URL = "wss://\(MozoSDK.network.socket)/websocket/user/"
     
     // MARK: Auth
     /**
      The OIDC issuer from which the configuration will be discovered.
      */
     // AUTHENTICATION
-    public static let AUTH_ISSSUER = "https://\(BASE_DOMAIN.auth)/auth/realms/mozo"
+    public static let AUTH_ISSSUER = "https://\(MozoSDK.network.auth)/auth/realms/mozo"
     
     // IMAGE SERVER
-    public static let DOMAIN_IMAGE = "https://\(BASE_DOMAIN.image)/api/public/"
+    public static let DOMAIN_IMAGE = "https://\(MozoSDK.network.image)/api/public/"
     
     public static let BEGIN_SESSION_URL_PATH = "/protocol/openid-connect/auth"
     
@@ -68,12 +68,6 @@ public class Configuration {
     
     // LOGOUT WITH REDIRECT
     public static let LOGOUT_URL_WITH_REDIRECT_URI = "\(AUTH_ISSSUER)/protocol/openid-connect/logout"
-    
-    public static let AUTH_CLIENT_ID = "native_app"
-    
-    public static let AUTH_RETAILER_CLIENT_ID = "retailer_mobile_app"
-    
-    public static let AUTH_SHOPPER_CLIENT_ID = "shopper_mobile_app"
     
     public static let AUTH_STATE = "Mozo@AuthState"
     public static let AUTH_ID_TOKEN = "Mozo@IdToken"

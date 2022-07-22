@@ -67,10 +67,9 @@ class AuthManager : NSObject {
             return
         }
         if(expireTime.timeIntervalSinceNow < expireOffset()) {
-            let clientId = MozoSDK.appType == .Retailer ? Configuration.AUTH_RETAILER_CLIENT_ID : Configuration.AUTH_SHOPPER_CLIENT_ID
             _ = ApiManager.shared.refeshToken(
                 refreshToken: refreshToken,
-                clientId: clientId
+                clientId: MozoSDK.appType.clientId
             ).done { res -> Void in
                 AccessTokenManager.save(res)
                 self.reportToken(res)
