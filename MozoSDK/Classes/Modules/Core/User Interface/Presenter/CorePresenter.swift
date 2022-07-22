@@ -119,7 +119,6 @@ extension CorePresenter {
         // Check walletInfo from UserProfile to start silent services
         if SessionStoreManager.isWalletSafe(), SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING {
             rdnInteractor?.startService()
-            ModuleDependencies.shared.authPresenter.startRefreshTokenTimer()
         }
     }
     

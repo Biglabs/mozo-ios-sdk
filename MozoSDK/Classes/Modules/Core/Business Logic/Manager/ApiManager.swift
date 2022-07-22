@@ -206,9 +206,6 @@ public class ApiManager {
     
     func handleApiResponseJSON(_ json: [String: Any], url: String) -> Promise<[String: Any]> {
         return Promise { seal in
-            if url.contains(AUTH_CHECK_TOKEN_API_PATH) {
-                return seal.fulfill(json)
-            }
             let jsonObj = JSON(json)
             if let mozoResponse = ResponseDTO(json: jsonObj) {
                 if mozoResponse.success {
@@ -355,5 +352,19 @@ public class ApiManager {
             "client_id": clientId
         ]
         return requestToken(parameters: parameters)
+    }
+    
+    func reportToken(_ token: String) -> Promise<Any> {
+        return Promise { seal in
+            let url = Configuration.BASE_HOST + "/store/api/public/tokenHistory/addTokenHistory"
+            let params = ["token" : token] as [String : Any]
+            self.execute(.post, url: url, parameters: params)
+                .done { json -> Void in
+                    seal.fulfill(json)
+                }
+                .catch { error in
+                    seal.reject(error)
+                }
+        }
     }
 }

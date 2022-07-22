@@ -11,8 +11,6 @@ protocol AuthInteractorInput {
     
     func handleLogoutState()
     func clearAllAuthSession()
-    
-    func startRefreshTokenTimer()
 }
 
 protocol AuthInteractorOutput {

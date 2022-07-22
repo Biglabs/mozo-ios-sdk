@@ -155,7 +155,6 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
         self.loadingHub?.hide(animated: true)
         self.dismiss(animated: true) {
             ModuleDependencies.shared.authPresenter.finishedAuthenticate(accessToken: token.accessToken)
-            ModuleDependencies.shared.authManager.setupRefreshTokenTimer()
         }
     }
     

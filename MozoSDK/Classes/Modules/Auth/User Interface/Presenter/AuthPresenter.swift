@@ -11,10 +11,6 @@ class AuthPresenter : NSObject {
     var authInteractor : AuthInteractorInput?
     var authModuleDelegate : AuthModuleDelegate?
     var authManager: AuthManager?
-        
-    func startRefreshTokenTimer() {
-        authInteractor?.startRefreshTokenTimer()
-    }
     
     func clearAllSessionData() {
         authInteractor?.clearAllAuthSession()
