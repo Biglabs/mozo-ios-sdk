@@ -38,13 +38,18 @@ public class ApiManager {
         return "bearer \(AccessTokenManager.getAccessToken() ?? "")"
     }
     
+    private func userAgent() -> String {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+        return "iOS - \(MozoSDK.appType) \(version) - \(MozoSDK.network.value)"
+    }
+    
     private func buildHTTPHeaders(withToken: Bool) -> HTTPHeaders {
         let headers: HTTPHeaders = [
             "Authorization": withToken ? getToken() : "",
             "Content-Type": "application/json",
             "Accept": "application/json",
             "Cache-Control": "private",
-            "user-agent": "IOS"
+            "user-agent": userAgent()
         ]
         
         return headers
@@ -301,7 +306,7 @@ public class ApiManager {
         var headers: HTTPHeaders = [
             "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "*/*",
-            "user-agent": "IOS"
+            "user-agent": userAgent()
         ]
         do {
             let parameterData = try JSONSerialization.data(withJSONObject: parameters)
