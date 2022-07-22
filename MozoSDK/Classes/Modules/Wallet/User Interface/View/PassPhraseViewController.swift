@@ -82,12 +82,12 @@ class PassPhraseViewController: MozoBasicViewController {
             checkLabel.textColor = ThemeManager.shared.main
             continueBtn.isEnabled = true
             continueBtn.backgroundColor = ThemeManager.shared.main
-            checkImg.isHighlighted = true
+            checkImg.image = "ic_check".asMozoImage()
             checkView.layer.borderColor = ThemeManager.shared.main.cgColor
         } else {
             continueBtn.isEnabled = false
             continueBtn.backgroundColor = UIColor(hexString: "cacaca")
-            checkImg.isHighlighted = false
+            checkImg.image = nil
         }
     }
     
