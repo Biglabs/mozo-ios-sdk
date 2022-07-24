@@ -1004,6 +1004,7 @@
 "Re-enter your new PIN" = "Re-enter your new PIN";
 "Change PIN is processing.." = "Change PIN is processing..";
 "Change Security PIN Successful" = "Change Security PIN Successful";
+"Change Languages" = "Languages";
 
 "System is using automatically generated PIN to sign your transaction and send it to network..." = "System is using automatically generated PIN to sign your transaction and send it to network...";
 
@@ -1204,6 +1205,11 @@
 
 "Synchronize" = "Synchronize";
 "Synchronizing..." = "Synchronizing...";
+"text_contact_access_title" = "Access to Contacts";
+"text_contact_access_explain" = "Please allow Mozo access to your phonebook to seamlessly find all your friends.";
+"text_contact_access_button" = "Allow Access";
+"text_contact_privacy_explain" = "Mozo store your contacts in server and keep it secret.";
+"text_contact_privacy_button" = "Privacy Policy";
 
 "Top Local Airdrop Events" = "Top Local Airdrop Events";
 "Top International Airdrop Events" = "Top International Airdrop Events";
@@ -1414,7 +1420,7 @@ Best practise:<br/>
 <a href=\"https://t.me/MozoXRetailerApp\">Telegram</a><br/>
 <a href=\"https://open.kakao.com/o/g6tvra5\">Kakao Talk</a><br/>
 <a href=\"https://zalo.me/4501855982660092369\">Zalo</a><br/>
-<a href=\"https://www.facebook.com/mozocoin.io\">Facebook</a><br/>
+<a href=\"https://www.facebook.com/mozoxvn\">Facebook</a><br/>
 <a href=\"https://twitter.com/MozoToken\">Twitter</a><br/>
 <br/>
 Or email to <a href=\"mailto:support@mozocoin.io\">support@mozocoin.io</a>";
@@ -1440,6 +1446,10 @@ In Mozo, a password is used to protect your account (phone number when you login
 "faq_retailer_17_title" = "What is a PIN? Is it different than a password?";
 "faq_retailer_18_title" = "How to buy Mozo?";
 
+"Language_English" = "🇺🇸 English(US) - English";
+"Language_Korean" = "🇰🇷 Korean - 한국어";
+"Language_Vietnamese" = "🇻🇳 Vietnamese - Tiếng Việt";
+
 "faq_retailer_1_answer" = "Mozo Tokens are digital utility tokens that can be used by merchants to reward customers for visiting their venues. Customers can collect Mozo Tokens and redeem them for discounts on products and services as determined by each merchant.";
 "faq_retailer_2_answer" = "Customers will accumulate enough reward tokens aka Mozo to redeem them for deals, discounts and promotions in the rewards program. So these customers now have an incentive to go to where retailers and venue operators are set up airdrop events. By applying blockchain technology, Mozo is more secure and convenient than any traditional loyalty applications. Furthermore, by incorporating with location based service technology, Mozo ensures that user really physically enter the venue.<br/>
 Retailers and venue operators use Mozo Business App to set up airdrop events through the use of a beacon, a specific location detector, that requires the users must be in range of the beacon in order to receive Mozo. This will help Retailers and venue operators control their foot traffic. Additionally, using Mozo Business App, Retailers and venue operators can set up their deals, discounts and promotions.<br/>
@@ -1462,7 +1472,7 @@ Mozo Consumer and Business App also help Retailers/venue operators and customers
 <a href=\"https://t.me/MozoXRetailerApp\">Telegram</a><br/>
 <a href=\"https://open.kakao.com/o/g6tvra5\">Kakao Talk</a><br/>
 <a href=\"https://zalo.me/4501855982660092369\">Zalo</a><br/>
-<a href=\"https://www.facebook.com/mozocoin.io\">Facebook</a><br/>
+<a href=\"https://www.facebook.com/mozoxvn\">Facebook</a><br/>
 <a href=\"https://twitter.com/MozoToken\">Twitter</a><br/>
 <br/>
 Or email to <a href=\"mailto:support@mozocoin.io\">support@mozocoin.io</a>";

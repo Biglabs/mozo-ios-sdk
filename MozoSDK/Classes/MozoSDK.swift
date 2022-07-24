@@ -21,16 +21,18 @@ public class MozoSDK {
         }
     }
     
-    public private(set) static var homePage: String = "https://\(Configuration.BASE_DOMAIN.landingPage)"
+    private(set) static var baseApplication: BaseApplication?
     
-    public static func configure(network: MozoNetwork = .TestNet, appType: AppType = .Shopper) {
-        switch network {
-            case .DevNet: Configuration.BASE_DOMAIN = .DEVELOP
-            case .TestNet: Configuration.BASE_DOMAIN = .STAGING
-            case .MainNet: Configuration.BASE_DOMAIN = .PRODUCTION
-        }
+    public private(set) static var homePage: String = "https://\(network.landingPage)"
+    
+    public static func configure(application: BaseApplication ,network: MozoNetwork = .TestNet, appType: AppType = .Shopper) {
         self.network = network
         self.appType = appType
+        self.baseApplication = application
+    }
+    
+    public static func accessToken() -> String {
+        return AccessTokenManager.getAccessToken() ?? ""
     }
     
     public static func setAuthDelegate(_ delegate: MozoAuthenticationDelegate) {
@@ -63,6 +65,10 @@ public class MozoSDK {
     
     public static func displayAddressBook() {
         ModuleDependencies.shared.displayAddressBook()
+    }
+    
+    public static func displaySettings(_ controller: UINavigationController) {
+        SettingsViewController.launch(root: controller)
     }
     
     public static func convertMozoXOnchain(isConvertOffchainToOffchain: Bool = false) {

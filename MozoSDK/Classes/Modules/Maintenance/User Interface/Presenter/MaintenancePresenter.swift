@@ -17,7 +17,7 @@ class MaintenancePresenter: NSObject {
     }
     
     func openReadMore(item: FAQDisplayItem, controller: UIViewController) {
-        controller.openLink(link: "https://\(Configuration.BASE_DOMAIN.landingPage)\(item.link)")
+        controller.openLink(link: "https://\(MozoSDK.network.landingPage)\(item.link)")
     }
     
     func startWaiting() {

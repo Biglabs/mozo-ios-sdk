@@ -19,4 +19,6 @@ public class BundleManager {
         let bundle = Bundle.init(url: bundleURL!)!
         return bundle
     }
+    
 }
+

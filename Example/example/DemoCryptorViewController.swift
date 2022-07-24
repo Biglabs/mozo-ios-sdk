@@ -41,7 +41,7 @@ class DemoCryptorViewController: UIViewController {
             let decryptedString = String(data: decryptedData, encoding: .utf8) // Getting original string, using same .utf8 encoding option,which we used for encryption.
             return decryptedString ?? ""
         }
-        catch let error as Error {
+        catch let error {
 			let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)

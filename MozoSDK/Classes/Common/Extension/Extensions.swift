@@ -519,3 +519,5 @@ public extension Notification.Name {
     static let didExpiredToken = Notification.Name("didExpiredToken")
     static let openStoreDetailsFromHistory = Notification.Name("openStoreDetailsFromHistory")
 }
+
+

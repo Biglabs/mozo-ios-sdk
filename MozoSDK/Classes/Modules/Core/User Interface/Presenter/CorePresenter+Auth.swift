@@ -30,7 +30,6 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func didRemoveTokenAndLogout() {
-        "On Check Authorization Did remove token and logout".log()
         SafetyDataManager.shared.checkTokenExpiredStatus = .CHECKED
         // Notify for all observing objects
         coreInteractor?.notifyLogoutForAllObservers()
@@ -39,7 +38,6 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidFinishAuthentication(accessToken: String?) {
-        "End process authModuleDidFinishAuthentication".log()
         coreInteractor?.handleAferAuth(accessToken: accessToken)
         // Notify for all observing objects
         self.coreInteractor?.notifyAuthSuccessForAllObservers()
@@ -50,7 +48,6 @@ extension CorePresenter : AuthModuleDelegate {
     }
     
     func authModuleDidCancelAuthentication() {
-        "End process authModuleDidCancelAuthentication".log()
         requestForCloseAllMozoUIs(nil)
         stopSilentServices(shouldReconnect: false)
     }

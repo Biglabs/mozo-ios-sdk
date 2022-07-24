@@ -55,6 +55,7 @@ class ModuleDependencies {
     
     func setAuthDelegate(_ delegate: MozoAuthenticationDelegate) {
         corePresenter.authDelegate = delegate
+        authManager.checkAuthorization()
     }
     
     func isNetworkReachable() -> Bool {

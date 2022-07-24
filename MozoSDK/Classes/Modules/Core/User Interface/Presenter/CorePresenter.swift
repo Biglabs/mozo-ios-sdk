@@ -10,7 +10,7 @@ import UserNotifications
 import UserNotificationsUI
 import Alamofire
 
-class CorePresenter : NSObject {
+internal class CorePresenter : NSObject {
     var coreWireframe : CoreWireframe?
     var coreInteractor : CoreInteractorInput?
     var coreInteractorService : CoreInteractorService?
@@ -32,9 +32,6 @@ class CorePresenter : NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(willTerminate), name: UIApplication.willTerminateNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveMaintenanceHealthy), name: .didMaintenanceComplete, object: nil)
         
-        initSilentServices()
-        initUserNotificationCenter()
-        
         networkManager = NetworkReachabilityManager()!
         networkManager?.startListening(onQueue: DispatchQueue.main) { (status) in
             switch(status) {
@@ -51,8 +48,11 @@ class CorePresenter : NSObject {
     }
     
     func readyForGoingLive() {
-        coreInteractor?.downloadAndStoreConvenienceData()
-        startSlientServices()
+        if SessionStoreManager.isWalletSafe() {
+            coreInteractor?.downloadAndStoreConvenienceData()
+            self.startSlientServices()
+            self.registerForRichNotifications()
+        }
     }
     
     func stopNotifier() {
@@ -114,23 +114,11 @@ class CorePresenter : NSObject {
 }
 
 // MARK: Silent services methods
-private extension CorePresenter {
-    private func initUserNotificationCenter() {
-        registerForRichNotifications()
-    }
-    
-    private func initSilentServices() {
-        
-    }
-    
+extension CorePresenter {
     private func startSlientServices() {
         // Check walletInfo from UserProfile to start silent services
-        if let userObj = SessionStoreManager.loadCurrentUser(), let profile = userObj.profile, profile.walletInfo?.offchainAddress != nil, SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING,
-           AccessTokenManager.getAccessToken() != nil {
-            "CorePresenter - Start silent services, socket service.".log()
+        if SessionStoreManager.isWalletSafe(), SafetyDataManager.shared.checkTokenExpiredStatus != .CHECKING {
             rdnInteractor?.startService()
-            "CorePresenter - Start silent services, refresh token service.".log()
-            ModuleDependencies.shared.authPresenter.startRefreshTokenTimer()
         }
     }
     

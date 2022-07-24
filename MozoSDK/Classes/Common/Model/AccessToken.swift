@@ -13,8 +13,6 @@ public class AccessToken {
     public let refreshToken: String?
     public let refreshExpireTime: Date?
     
-    public let idToken: String?
-    
     let rawData: Data?
     
     init(_ data: [String: Any]) {
@@ -27,8 +25,6 @@ public class AccessToken {
         
         let refreshExpireInSec = data["refresh_expires_in"] as? Double
         self.refreshExpireTime = Date(timeIntervalSinceNow: refreshExpireInSec ?? 0)
-        
-        self.idToken = data["id_token"] as? String
     }
     
     class func parse(_ data: Data) -> AccessToken? {

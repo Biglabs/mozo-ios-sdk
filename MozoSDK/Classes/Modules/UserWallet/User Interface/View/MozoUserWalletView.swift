@@ -73,7 +73,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     }
     
     override func loadViewFromNib() {
-        isAnonymous = AccessTokenManager.getAccessToken() == nil || SessionStoreManager.loadCurrentUser() == nil
+        isAnonymous = !SessionStoreManager.isWalletSafe()
         super.loadViewFromNib()
         
         #if !TARGET_INTERFACE_BUILDER

@@ -62,7 +62,7 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
         let authEndpoint = Configuration.AUTH_ISSSUER.appending(Configuration.BEGIN_SESSION_URL_PATH)
         codeVerifier = self.randomURLSafeStringWithSize(kCodeVerifierBytes)
         let codeChallenge = self.codeChallengeS256ForVerifier(code: codeVerifier)
-        clientId = MozoSDK.appType == .Retailer ? Configuration.AUTH_RETAILER_CLIENT_ID : Configuration.AUTH_SHOPPER_CLIENT_ID
+        clientId = MozoSDK.appType.clientId
         guard var authUrlComponent = URLComponents(string: authEndpoint) else {
             self.touchedCancel()
             return
@@ -76,10 +76,13 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
             URLQueryItem(name: "code_challenge_method", value: "S256"),
             URLQueryItem(name: "prompt", value: "consent"),
             URLQueryItem(name: "nonce", value: self.randomURLSafeStringWithSize(kStateSizeBytes)),
-            URLQueryItem(name: "state", value: self.randomURLSafeStringWithSize(kStateSizeBytes)),
             URLQueryItem(name: "scope", value: "openid profile phone"),
             URLQueryItem(name: "kc_locale", value: Configuration.LOCALE.replace("_", withString: "-"))
         ]
+        let newState = URLQueryItem(name: "state", value: self.randomURLSafeStringWithSize(kStateSizeBytes))
+        if !isSignOut {
+            authUrlComponent.queryItems?.append(newState)
+        }
         let signInUrl = authUrlComponent.url
         var finalUrl = signInUrl
         
@@ -100,6 +103,7 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
             urlComponent.queryItems?.append(
                 URLQueryItem(name: "redirect_uri", value: signInUrl?.absoluteString ?? callbackScheme)
             )
+            urlComponent.queryItems?.append(newState)
             finalUrl = urlComponent.url
         }
         
@@ -151,7 +155,6 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
         self.loadingHub?.hide(animated: true)
         self.dismiss(animated: true) {
             ModuleDependencies.shared.authPresenter.finishedAuthenticate(accessToken: token.accessToken)
-            ModuleDependencies.shared.authManager.setupRefreshTokenTimer()
         }
     }
     
@@ -189,6 +192,16 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
             return
         }
         decisionHandler(.allow)
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        if error.localizedDescription.contains("certificate") {
+            let alert = UIAlertController(title: "There is an error occurred.".localized, message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { action in
+                self.touchedCancel()
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     private func randomURLSafeStringWithSize(_ size: Int) -> String? {

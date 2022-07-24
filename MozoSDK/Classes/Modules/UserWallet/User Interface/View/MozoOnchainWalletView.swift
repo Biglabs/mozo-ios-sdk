@@ -140,7 +140,7 @@ class MozoOnchainWalletView: MozoView {
     }
     
     @objc func openHowTo() {
-        guard var url = URL(string: "https://\(Configuration.BASE_DOMAIN.landingPage)/help-center?section=faq-contributer#home-faq-how-to-buy-mozox-onchain-on-exchange") else { return }
+        guard var url = URL(string: "https://\(MozoSDK.network.landingPage)/help-center?section=faq-contributer#home-faq-how-to-buy-mozox-onchain-on-exchange") else { return }
         url.appendQueryItem(name: "language", value: Configuration.LOCALE)
         UIApplication.shared.open(url)
     }
@@ -151,7 +151,6 @@ class MozoOnchainWalletView: MozoView {
     }
     
     @objc func showQRCode() {
-        print("Touch Show QR code, address: \(self.ethDisplayItem?.address ?? "NULL")")
         if let address = self.ethDisplayItem?.address {
             DisplayUtils.displayQRView(address: address)
         }

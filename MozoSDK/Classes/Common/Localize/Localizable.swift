@@ -11,7 +11,11 @@ public protocol Localizable {
 }
 extension String: Localizable {
     public var localized: String {
-        return NSLocalizedString(self, tableName: nil, bundle: BundleManager.mozoBundle(), value: "", comment: "")
+        let language = UserDefaults.standard.string(forKey: "AppLanguage")
+        let bundlePath = BundleManager.mozoBundle().path(forResource: language, ofType: "lproj")
+        let bundle = Bundle(path: bundlePath!)
+
+        return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
     }
     
     public func localizedFormat(_ arguments: CVarArg...) -> String {

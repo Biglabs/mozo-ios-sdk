@@ -96,6 +96,7 @@
 "Refresh" = "Làm mới";
 "Try Again" = "Thử lại";
 "Backup Wallet" = "Sao lưu ví";
+"Clear Cache" = "Xoá dữ liệu tạm";
 "Store Recovery Phrase" = "Kí tự dùng khôi phục ví";
 "Please write it down on paper and keep it in a safe place as you would with money." = "Ghi lại những từ này và cất giữ ở nơi an toàn để khôi phục lại ví khi cần thiết.";
 "*If you lose your Recovery Phrase, your wallet cannot be recovered." = "*Nếu mất bản ghi này, ví của bạn sẽ không thể khôi phục.";
@@ -1005,6 +1006,7 @@
 "Re-enter your new PIN" = "Nhập lại mã PIN mới";
 "Change PIN is processing.." = "Đang xử lý thay đổi mã PIN...";
 "Change Security PIN Successful" = "Thay đổi mã PIN thành công";
+"Change Languages" = "Ngôn ngữ";
 
 "System is using automatically generated PIN to sign your transaction and send it to network..." = "Đang dùng mã PIN được tự động tạo bởi hệ thống để ký giao dịch và gởi đến máy chủ...";
 
@@ -1205,6 +1207,11 @@
 
 "Synchronize" = "Đồng bộ";
 "Synchronizing..." = "Đang đồng bộ...";
+"text_contact_access_title" = "Truy cập Danh Bạ";
+"text_contact_access_explain" = "Cho phép Mozo truy cập danh bạ của bạn để tìm tất cả bạn bè của bạn một cách liền mạch.";
+"text_contact_access_button" = "Cho phép truy cập";
+"text_contact_privacy_explain" = "Mozo lưu trữ danh bạ của bạn trên máy chủ và giữ cho nó an toàn.";
+"text_contact_privacy_button" = "Chính sách bảo mật";
 
 "Top Local Airdrop Events" = "Những chương trình airdrop đỉnh tại địa phương";
 "Top International Airdrop Events" = "Những chương trình airdrop đỉnh trên thế giới";
@@ -1415,7 +1422,7 @@ Mẹo:<br/>
 <a href=\"https://t.me/MozoXRetailerApp\">Telegram</a><br/>
 <a href=\"https://open.kakao.com/o/g6tvra5\">Kakao Talk</a><br/>
 <a href=\"https://zalo.me/4501855982660092369\">Zalo</a><br/>
-<a href=\"https://www.facebook.com/MozoXVietNam\">Facebook</a><br/>
+<a href=\"https://www.facebook.com/mozoxvn\">Facebook</a><br/>
 <a href=\"https://twitter.com/MozoToken\">Twitter</a><br/>
 <br/>
 Hoặc gởi email đến <a href=\"mailto:support@mozocoin.io\">support@mozocoin.io</a>";
@@ -1441,6 +1448,10 @@ Trong Mozo, mật khẩu dùng để bảo vệ tài khoản của bạn (số �
 "faq_retailer_17_title" = "Mã PIN là gì, có khác với mật khẩu đăng nhập hay không?";
 "faq_retailer_18_title" = "Làm sao để mua Mozo?";
 
+"Language_English" = "🇺🇸 Tiếng Anh(Mỹ) - English";
+"Language_Korean" = "🇰🇷 Tiếng Hàn Quốc - 한국어";
+"Language_Vietnamese" = "🇻🇳 Tiếng Việt - Tiếng Việt";
+
 "faq_retailer_1_answer" = "Mozo là điểm thưởng dùng công nghệ blockchain mà người bán hàng có thể lì xì cho khách hàng khi họ đến cửa hàng. Người nhận được lì xì có thể dùng nó để được hưởng khuyến mãi do người bán hàng tạo ra.";
 "faq_retailer_2_answer" = "Khách hàng sẽ phải tích lũy đủ điểm thưởng Mozo để có thể quy đổi các chương trình hậu mãi, giảm giá và khuyến mãi trong các chương trình dành riêng cho khách hàng thân thiết. Do đó họ có động lực để đi đến những nơi đã được thiết lập chương trình lì xì bởi người bán hàng và nhà điều hành dịch vụ. Ứng dụng công nghệ mới blockchain, Mozo bảo bảo tính an toàn hơn hẳn tất cả các ứng dụng cổ điển trong lĩnh vực này. Ngoài ra, kết hợp với công nghệ định vị, Mozo bảo đảm lượt khách đến đúng vị trí mong muốn.<br/>
 Người bán hàng và nhà điều hành dịch vụ sẽ dùng ứng dụng Mozo Kinh doanh để thiết lập các chương trình lì xì gắn với beacon, loại thiết bị định vị bảo đảm khách hàng phải đến nơi cần đến. Công cụ này giúp họ có thể làm chủ được cách bố trí lượt khách. Hơn nữa, họ có thể thiết lập các chương trình hậu mãi, giảm giá và khuyến mãi với ứng dụng Mozo Kinh doanh.<br/>
@@ -1463,7 +1474,7 @@ Khách hàng sẽ dùng ứng dụng Mozo Người dùng để duyệt, tìm ki�
 <a href=\"https://t.me/MozoXRetailerApp\">Telegram</a><br/>
 <a href=\"https://open.kakao.com/o/g6tvra5\">Kakao Talk</a><br/>
 <a href=\"https://zalo.me/4501855982660092369\">Zalo</a><br/>
-<a href=\"https://www.facebook.com/MozoXVietNam\">Facebook</a><br/>
+<a href=\"https://www.facebook.com/mozoxvn\">Facebook</a><br/>
 <a href=\"https://twitter.com/MozoToken\">Twitter</a><br/>
 <br/>
 Hoặc gởi email đến <a href=\"mailto:support@mozocoin.io\">support@mozocoin.io</a>";

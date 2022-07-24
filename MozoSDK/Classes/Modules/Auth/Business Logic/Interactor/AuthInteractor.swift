@@ -31,12 +31,7 @@ extension AuthInteractor: AuthManagerDelegate {
         output?.didRemoveTokenAndLogout()
     }
 }
-extension AuthInteractor : AuthInteractorInput {    
-    func startRefreshTokenTimer() {
-        "AuthInteractor - Start Refresh token timer".log()
-        authManager?.setupRefreshTokenTimer()
-    }
-    
+extension AuthInteractor : AuthInteractorInput {     
     func clearAllAuthSession() {
         authManager?.clearAll()
     }
