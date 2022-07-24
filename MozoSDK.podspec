@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "MozoSDK"
-  s.version         = "2.1.3.3"
+  s.version         = "2.1.4"
   s.summary         = "Mozo protocol toolkit for Swift"
   s.description     = <<-DESC
 The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaining authentication, authorization with Mozo Services, receiving Mozo Tokens via beacons and buying, selling, transferring Mozo. It is also supporting UI components for authentication and buying, selling, transferring Mozo.
@@ -14,11 +14,11 @@ The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaini
   s.swift_version    = "5"
   s.ios.deployment_target = "12.0"
 
-  s.source_files     = "MozoSDK/Classes/**/*.{h,m,swift}"
+  s.source_files     = "MozoSDK/**/*.{h,m,swift}"
+  s.resources        = ['MozoSDK/Resources/**']
   s.resource_bundles = {
       'MozoSDK' => ['MozoSDK/Classes/**/*.*', 'MozoSDK/Resources/**']
   }
-  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
   
   s.dependency 'Alamofire'
   s.dependency 'CoreStore'
