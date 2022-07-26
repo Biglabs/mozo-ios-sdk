@@ -407,9 +407,7 @@ class ModuleDependencies {
         corePresenter.rdnInteractor = rdnInteractor
         corePresenter.coreInteractorService = coreInteractor
         corePresenter.coreWireframe = coreWireframe
-        
-        rootWireframe.mozoNavigationController.coreEventHandler = corePresenter
-        
+         
         coreWireframe.corePresenter = corePresenter
         coreWireframe.walletWireframe = walletWireframe
         coreWireframe.txWireframe = txWireframe

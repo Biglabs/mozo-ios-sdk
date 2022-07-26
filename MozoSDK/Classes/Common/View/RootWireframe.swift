@@ -72,6 +72,8 @@ class RootWireframe : NSObject {
     }
     
     func displayViewController(_ viewController: UIViewController) {
+        WaitingViewController.dismiss()
+        
         if mozoNavigationController.viewControllers.count > 0 || DisplayUtils.getTopViewController() is MozoNavigationController {
             // Need to call override function to push view controller
             var viewControllers : [UIViewController] = mozoNavigationController.viewControllers

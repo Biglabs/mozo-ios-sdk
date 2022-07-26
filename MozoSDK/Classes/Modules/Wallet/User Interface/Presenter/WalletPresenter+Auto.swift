@@ -17,7 +17,7 @@ extension WalletPresenter {
             wallet.encryptedPin != nil {
                 walletInteractorAuto?.recoverWalletsAutomatically()
         } else {
-            processingViewInterface?.displayError(ConnectionError.systemError.errorDescription!)
+            self.displayError(ConnectionError.systemError.errorDescription!)
         }
     }
     
@@ -28,7 +28,7 @@ extension WalletPresenter {
     @objc func onDidReceiveMaintenanceHealthy(_ notification: Notification) {
         print("WalletPresenter - On did maintenance back to healthy")
         if let topViewController = DisplayUtils.getTopViewController() {
-            if topViewController is WalletProcessingViewController {
+            if topViewController is WaitingViewController {
                 didTouchTryAgainButton()
             } else if topViewController is SpeedSelectionViewController {
                 // Do nothing
@@ -51,10 +51,10 @@ extension WalletPresenter: WalletInteractorAutoOutput {
             case .SOLOMON_USER_PROFILE_WALLET_ADDRESS_IN_USED,
                  .SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_MISSING_FIELD,
                  .SOLOMON_USER_PROFILE_WALLET_INVALID_UPDATE_EXISTING_WALLET_ADDRESS:
-                processingViewInterface?.displayErrorAndLogout(apiError)
+                self.displayErrorAndLogout(apiError)
                 break
             default:
-                processingViewInterface?.displayError(apiError.description)
+                self.displayError(apiError.description)
                 break
             }
         } else {

@@ -217,9 +217,7 @@ class TxHistoryViewController: MozoBasicViewController {
     }
     
     @objc func touchBtnGoToWallet() {
-        if let navigationController = self.navigationController as? MozoNavigationController, let coreEventHandler = navigationController.coreEventHandler {
-            coreEventHandler.requestForCloseAllMozoUIs(nil)
-        }
+        ModuleDependencies.shared.corePresenter.requestForCloseAllMozoUIs(nil)
     }
     
     func checkShowNoContent() {

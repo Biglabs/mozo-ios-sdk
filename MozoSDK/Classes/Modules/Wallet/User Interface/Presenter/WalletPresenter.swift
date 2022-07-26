@@ -14,7 +14,6 @@ class WalletPresenter : NSObject {
     var walletInteractorAuto: WalletInteractorAutoInput?
     var walletWireframe : WalletWireframe?
     var pinUserInterface : PINViewInterface?
-    var processingViewInterface: WalletProcessingViewInterface?
     var passPharseUserInterface : PassPhraseViewInterface?
     var walletModuleDelegate : WalletModuleDelegate?
     var pinModuleDelegate: PinModuleDelegate?
@@ -47,12 +46,24 @@ class WalletPresenter : NSObject {
                 // Check use rememberred PIN
                 if walletInfo.encryptedPin != nil {
                     // Create wallet with encrypted seed phrase and pin from server
-                    walletWireframe?.presentWalletProcessingInterface(isCreateNew: false)
-                    processInitialWalletInterfaceAutomatically(isCreateNew: false)
+                    walletWireframe?.processInitialWallet(isCreateNew: false)
                 } else {
                     // Create wallet
                     walletWireframe?.presentPassPhraseInterface()
                 }
+            }
+        }
+    }
+    
+    func displayError(_ error: String) {
+        if let vc = DisplayUtils.getTopViewController(), let baseVC = vc as? MozoBasicViewController {
+            baseVC.displayMozoError(error)
+        }
+    }
+    func displayErrorAndLogout(_ error: ErrorApiResponse) {       
+        if let vc = DisplayUtils.getTopViewController(), let baseVC = vc as? MozoBasicViewController {
+            baseVC.displayMozoAlertInfo(infoMessage: error.description) {
+                MozoSDK.logout()
             }
         }
     }
