@@ -16,17 +16,14 @@ class ChangePINWireframe: MozoWireframe {
     }
     
     func presentChangePINSuccessInterface() {
-        rootWireframe?.dismissTopViewController()
-        let viewController = viewControllerFromStoryBoard(ChangePINSuccessViewControllerIdentifier, storyboardName: Module.ChangePIN.value) as! ChangePINSuccessViewController
-        viewController.eventHandler = presenter
-        rootWireframe?.displayViewController(viewController)
+        let vc = viewControllerFromStoryBoard(ChangePINSuccessViewControllerIdentifier, storyboardName: Module.ChangePIN.value) as! ChangePINSuccessViewController
+        rootWireframe?.displayViewController(vc)
     }
     
     func presentChangePINProcessInterface() {
-        let viewController = viewControllerFromStoryBoard(ChangePINProcessViewControllerIdentifier, storyboardName: Module.ChangePIN.value) as! ChangePINProcessViewController
-        viewController.eventHandler = presenter
-        presenter?.processInterface = viewController
-        rootWireframe?.displayViewController(viewController)
+        let vc = viewControllerFromStoryBoard(ChangePINProcessViewControllerIdentifier, storyboardName: Module.ChangePIN.value) as! ChangePINProcessViewController
+        presenter?.processInterface = vc
+        rootWireframe?.displayViewController(vc)
     }
     
     func presentPINInterface(enterNewPINToChangePIN: Bool = false) {

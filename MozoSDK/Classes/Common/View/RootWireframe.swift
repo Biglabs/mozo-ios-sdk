@@ -75,10 +75,7 @@ class RootWireframe : NSObject {
         WaitingViewController.dismiss()
         
         if mozoNavigationController.viewControllers.count > 0 || DisplayUtils.getTopViewController() is MozoNavigationController {
-            // Need to call override function to push view controller
-            var viewControllers : [UIViewController] = mozoNavigationController.viewControllers
-            viewControllers.append(viewController)
-            mozoNavigationController.setViewControllers(viewControllers, animated: false)
+            mozoNavigationController.pushViewController(viewController, animated: true)
         } else {
             // Handle case: one of our mozo view controllers need to be displayed while MozoNavigationController is dismissed
             showRootViewController(viewController, inWindow: (UIApplication.shared.delegate?.window!)!)
@@ -93,7 +90,7 @@ class RootWireframe : NSObject {
     
     func dismissTopViewController() {
         if mozoNavigationController.viewControllers.count > 1 {
-            _ = mozoNavigationController.viewControllers.popLast()
+            _ = mozoNavigationController.popViewController(animated: true)
         } else {
             closeAllMozoUIs(completion: {})
         }
@@ -109,10 +106,6 @@ class RootWireframe : NSObject {
     }
     
     public func closeToLastMozoUIs() {
-        let controllers = mozoNavigationController.viewControllers
-        // Check controllers count after get first
-        if controllers.count > 0 {
-            mozoNavigationController.setViewControllers([controllers[0]], animated: false)
-        }
+        mozoNavigationController.popToRootViewController(animated: true)
     }
 }

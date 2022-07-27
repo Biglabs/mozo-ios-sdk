@@ -8,7 +8,6 @@
 import Foundation
 class ChangePINSuccessViewController: MozoBasicViewController {
     @IBOutlet weak var btnDone: UIButton!
-    var eventHandler: ChangePINModuleInterface?
     
     var isChangePin = false
     
@@ -24,6 +23,6 @@ class ChangePINSuccessViewController: MozoBasicViewController {
     }
     
     @IBAction func touchBtnDone(_ sender: Any) {
-        eventHandler?.finishChangePIN()
+        ModuleDependencies.shared.corePresenter.requestForCloseAllMozoUIs(nil)
     }
 }
