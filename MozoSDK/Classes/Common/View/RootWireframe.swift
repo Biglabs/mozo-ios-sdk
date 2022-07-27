@@ -85,10 +85,6 @@ class RootWireframe : NSObject {
         }
     }
     
-    func changeRootViewController(_ newRootViewController: UIViewController) {
-        mozoNavigationController.setViewControllers([newRootViewController], animated: false)
-    }
-    
     func presentViewController(_ viewController: UIViewController) {
         let top = DisplayUtils.getTopViewController()
         viewController.modalPresentationStyle = .fullScreen

@@ -16,7 +16,7 @@ public class MozoBasicViewController : UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if self is WaitingViewController {
+        if self is WaitingViewController || self is SettingsViewController {
             return
         }
         if self.navigationItem.rightBarButtonItem == nil {
