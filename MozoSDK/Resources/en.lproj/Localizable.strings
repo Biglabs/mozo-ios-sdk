@@ -1450,6 +1450,8 @@ In Mozo, a password is used to protect your account (phone number when you login
 "Language_Korean" = "🇰🇷 Korean - 한국어";
 "Language_Vietnamese" = "🇻🇳 Vietnamese - Tiếng Việt";
 
+"Delete Account" = "Delete account";
+
 "faq_retailer_1_answer" = "Mozo Tokens are digital utility tokens that can be used by merchants to reward customers for visiting their venues. Customers can collect Mozo Tokens and redeem them for discounts on products and services as determined by each merchant.";
 "faq_retailer_2_answer" = "Customers will accumulate enough reward tokens aka Mozo to redeem them for deals, discounts and promotions in the rewards program. So these customers now have an incentive to go to where retailers and venue operators are set up airdrop events. By applying blockchain technology, Mozo is more secure and convenient than any traditional loyalty applications. Furthermore, by incorporating with location based service technology, Mozo ensures that user really physically enter the venue.<br/>
 Retailers and venue operators use Mozo Business App to set up airdrop events through the use of a beacon, a specific location detector, that requires the users must be in range of the beacon in order to receive Mozo. This will help Retailers and venue operators control their foot traffic. Additionally, using Mozo Business App, Retailers and venue operators can set up their deals, discounts and promotions.<br/>

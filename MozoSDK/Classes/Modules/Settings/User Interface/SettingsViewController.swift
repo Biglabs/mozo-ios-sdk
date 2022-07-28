@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import PromiseKit
+
 class SettingsViewController: MozoBasicViewController {
     private var tableView: UITableView!
     
@@ -16,6 +18,8 @@ class SettingsViewController: MozoBasicViewController {
         super.viewDidLoad()
         setLeftNavigationBarButton()
         setupTableView()
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,8 +147,48 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             case .Cache:
                 self.clearDocuments()
                 break
+            case .DeleteAccount:
+                self.alertDeleteAccount()
+                break
             }
         }
+    }
+    
+    func alertNotiDeleteAccount() {
+        let alert = UIAlertController(title: "Your account has been scheduled for deletion.", message: "Please login with in the next 30 days to cancel the schedule.", preferredStyle: .alert)
+
+        let closeAppAction = UIAlertAction(title: "Close App", style: .default) { closeApp in
+            ModuleDependencies.shared.authPresenter.authInteractor?.clearAllAuthSession()
+            exit(0)
+        }
+        
+        let loginAction = UIAlertAction(title: "Login", style: .default) { login in
+            MozoSDK.logout()
+        }
+        
+        alert.addAction(closeAppAction)
+        alert.addAction(loginAction)
+        self.present(alert, animated: false, completion: nil)
+
+    }
+    
+    func alertDeleteAccount() {
+        let alert = UIAlertController(title: "Delete Account".localized, message: "\nAre you sure you want to delete your whole account?\nYou’ll lose everything, your MozoX wallet including the token, purchased vouchers, friend list, liked and shared forever.", preferredStyle: .alert)
+        
+        let deleteAction = UIAlertAction(title: "Delete everything", style: .default) { deleteAction in
+            _ = ApiManager.shared.deleteAccount().done({ isSuccess in
+                if isSuccess {
+                    self.alertNotiDeleteAccount()
+                }
+            })
+        }
+        
+        deleteAction.titleTextColor = .red
+
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: {(_) in }))
+        alert.addAction(deleteAction)
+        
+        self.present(alert, animated: false, completion: nil)
     }
     
     func alertListItemLanguages() {
@@ -180,5 +224,23 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: {(_) in }))
 
         self.present(alert, animated: false, completion: nil)
+    }
+}
+
+extension ApiManager {
+    func deleteAccount() -> Promise<Bool> {
+        return Promise {seal in
+            let url = Configuration.BASE_STORE_URL + "/accountDeleted/deletedUserInShopperApp"
+            self.execute(.post, url: url).done { json in
+                seal.fulfill(true)
+            }
+            .catch { error in
+                print("Error when delete account:" + error.localizedDescription)
+                seal.reject(error)
+            }
+            .finally {
+                
+            }
+        }
     }
 }
