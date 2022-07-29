@@ -1451,7 +1451,8 @@ In Mozo, a password is used to protect your account (phone number when you login
 "Language_Vietnamese" = "🇻🇳 Vietnamese - Tiếng Việt";
 
 "Delete Account" = "Delete account";
-"Message Delete Account" = "Are you sure you want to delete your whole account?\nYou’ll lose everything, your MozoX wallet including the token, purchased vouchers, friend list, liked and shared forever";
+"Title Delete Account" = "Are you sure you want to delete your whole account?";
+"Message Delete Account" = "You’ll lose everything, your Mozo wallet including the token, purchased vouchers, friend list, liked and shared forever";
 "Close App" = "Close App";
 "Delete everything" = "Delete everything";
 "Title Delete Account Success" = "Your account has been scheduled for deletion.";

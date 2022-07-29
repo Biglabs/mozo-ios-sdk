@@ -173,7 +173,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func alertDeleteAccount() {
-        let alert = UIAlertController(title: "Delete Account".localized, message: "Message Delete Account".localized, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Title Delete Account".localized, message: "Message Delete Account".localized, preferredStyle: .alert)
         
         let deleteAction = UIAlertAction(title: "Delete everything".localized, style: .default) { deleteAction in
             _ = ApiManager.shared.deleteAccount().done({ isSuccess in
