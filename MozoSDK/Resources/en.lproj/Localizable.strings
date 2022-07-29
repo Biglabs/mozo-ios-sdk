@@ -1451,6 +1451,11 @@ In Mozo, a password is used to protect your account (phone number when you login
 "Language_Vietnamese" = "🇻🇳 Vietnamese - Tiếng Việt";
 
 "Delete Account" = "Delete account";
+"Message Delete Account" = "Are you sure you want to delete your whole account?\nYou’ll lose everything, your MozoX wallet including the token, purchased vouchers, friend list, liked and shared forever";
+"Close App" = "Close App";
+"Delete everything" = "Delete everything";
+"Title Delete Account Success" = "Your account has been scheduled for deletion.";
+"Message Delete Account Success" = "Please login with in the next 30 days to cancel the schedule.";
 
 "faq_retailer_1_answer" = "Mozo Tokens are digital utility tokens that can be used by merchants to reward customers for visiting their venues. Customers can collect Mozo Tokens and redeem them for discounts on products and services as determined by each merchant.";
 "faq_retailer_2_answer" = "Customers will accumulate enough reward tokens aka Mozo to redeem them for deals, discounts and promotions in the rewards program. So these customers now have an incentive to go to where retailers and venue operators are set up airdrop events. By applying blockchain technology, Mozo is more secure and convenient than any traditional loyalty applications. Furthermore, by incorporating with location based service technology, Mozo ensures that user really physically enter the venue.<br/>

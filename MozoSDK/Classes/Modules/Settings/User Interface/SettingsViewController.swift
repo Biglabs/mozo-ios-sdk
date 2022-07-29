@@ -155,14 +155,14 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func alertNotiDeleteAccount() {
-        let alert = UIAlertController(title: "Your account has been scheduled for deletion.", message: "Please login with in the next 30 days to cancel the schedule.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Title Delete Account Success".localized, message: "Message Delete Account Success".localized, preferredStyle: .alert)
 
-        let closeAppAction = UIAlertAction(title: "Close App", style: .default) { closeApp in
+        let closeAppAction = UIAlertAction(title: "Close App".localized, style: .default) { closeApp in
             ModuleDependencies.shared.authPresenter.authInteractor?.clearAllAuthSession()
             exit(0)
         }
         
-        let loginAction = UIAlertAction(title: "Login", style: .default) { login in
+        let loginAction = UIAlertAction(title: "Login".localized, style: .default) { login in
             MozoSDK.logout()
         }
         
@@ -173,9 +173,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func alertDeleteAccount() {
-        let alert = UIAlertController(title: "Delete Account".localized, message: "\nAre you sure you want to delete your whole account?\nYou’ll lose everything, your MozoX wallet including the token, purchased vouchers, friend list, liked and shared forever.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Delete Account".localized, message: "Message Delete Account".localized, preferredStyle: .alert)
         
-        let deleteAction = UIAlertAction(title: "Delete everything", style: .default) { deleteAction in
+        let deleteAction = UIAlertAction(title: "Delete everything".localized, style: .default) { deleteAction in
             _ = ApiManager.shared.deleteAccount().done({ isSuccess in
                 if isSuccess {
                     self.alertNotiDeleteAccount()
