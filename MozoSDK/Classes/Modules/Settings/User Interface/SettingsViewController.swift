@@ -155,8 +155,13 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func alertNotiDeleteAccount() {
-        let alert = UIAlertController(title: "Title Delete Account Success".localized, message: "Message Delete Account Success".localized, preferredStyle: .alert)
+        
+        let customMessage = NSMutableAttributedString(string: "Message Delete Account Success".localized, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)])
+        customMessage.append(NSMutableAttributedString(string:  "Message Delete Account Success 1".localized, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14.0)]))
+        customMessage.append(NSMutableAttributedString(string: "Message Delete Account Success 2".localized, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)]))
 
+        let alert = UIAlertController(title: "Title Delete Account Success".localized, message: nil, preferredStyle: .alert)
+        alert.setValue(customMessage, forKey: "attributedMessage")
         let closeAppAction = UIAlertAction(title: "Close App".localized, style: .default) { closeApp in
             ModuleDependencies.shared.authPresenter.authInteractor?.clearAllAuthSession()
             exit(0)
