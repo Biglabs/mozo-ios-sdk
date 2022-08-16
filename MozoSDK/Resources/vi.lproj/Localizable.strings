@@ -1452,6 +1452,16 @@ Trong Mozo, mật khẩu dùng để bảo vệ tài khoản của bạn (số �
 "Language_Korean" = "🇰🇷 Tiếng Hàn Quốc - 한국어";
 "Language_Vietnamese" = "🇻🇳 Tiếng Việt - Tiếng Việt";
 
+"Delete Account" = "Xoá tài khoản";
+"Title Delete Account" = "Bạn chắc chắn muốn xoá tài khoản của mình không?";
+"Message Delete Account" = "Bạn sẽ mất tất cả bao gồm ví Mozo và toàn bộ điểm thưởng, khuyến mãi đã mua, danh sách bạn bè, lượt thích hoặc bất kỳ dữ liệu đã chia sẻ.";
+"Close App" = "Thoát ứng dụng";
+"Delete everything" = "Xoá tất cả";
+"Title Delete Account Success" = "Tài khoản của bạn đã được đặt lịch hẹn để xoá.";
+"Message Delete Account Success" = "Hãy đăng nhập trong vòng ";
+"Message Delete Account Success 1" = "30 ngày tiếp theo";
+"Message Delete Account Success 2" = " để huỷ lịch hẹn xoá.";
+
 "faq_retailer_1_answer" = "Mozo là điểm thưởng dùng công nghệ blockchain mà người bán hàng có thể lì xì cho khách hàng khi họ đến cửa hàng. Người nhận được lì xì có thể dùng nó để được hưởng khuyến mãi do người bán hàng tạo ra.";
 "faq_retailer_2_answer" = "Khách hàng sẽ phải tích lũy đủ điểm thưởng Mozo để có thể quy đổi các chương trình hậu mãi, giảm giá và khuyến mãi trong các chương trình dành riêng cho khách hàng thân thiết. Do đó họ có động lực để đi đến những nơi đã được thiết lập chương trình lì xì bởi người bán hàng và nhà điều hành dịch vụ. Ứng dụng công nghệ mới blockchain, Mozo bảo bảo tính an toàn hơn hẳn tất cả các ứng dụng cổ điển trong lĩnh vực này. Ngoài ra, kết hợp với công nghệ định vị, Mozo bảo đảm lượt khách đến đúng vị trí mong muốn.<br/>
 Người bán hàng và nhà điều hành dịch vụ sẽ dùng ứng dụng Mozo Kinh doanh để thiết lập các chương trình lì xì gắn với beacon, loại thiết bị định vị bảo đảm khách hàng phải đến nơi cần đến. Công cụ này giúp họ có thể làm chủ được cách bố trí lượt khách. Hơn nữa, họ có thể thiết lập các chương trình hậu mãi, giảm giá và khuyến mãi với ứng dụng Mozo Kinh doanh.<br/>

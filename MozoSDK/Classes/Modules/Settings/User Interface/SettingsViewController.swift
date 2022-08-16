@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import PromiseKit
+
 class SettingsViewController: MozoBasicViewController {
     private var tableView: UITableView!
     
@@ -16,6 +18,8 @@ class SettingsViewController: MozoBasicViewController {
         super.viewDidLoad()
         setLeftNavigationBarButton()
         setupTableView()
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,8 +147,53 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             case .Cache:
                 self.clearDocuments()
                 break
+            case .DeleteAccount:
+                self.alertDeleteAccount()
+                break
             }
         }
+    }
+    
+    func alertNotiDeleteAccount() {
+        
+        let customMessage = NSMutableAttributedString(string: "Message Delete Account Success".localized, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)])
+        customMessage.append(NSMutableAttributedString(string:  "Message Delete Account Success 1".localized, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14.0)]))
+        customMessage.append(NSMutableAttributedString(string: "Message Delete Account Success 2".localized, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)]))
+
+        let alert = UIAlertController(title: "Title Delete Account Success".localized, message: nil, preferredStyle: .alert)
+        alert.setValue(customMessage, forKey: "attributedMessage")
+        let closeAppAction = UIAlertAction(title: "Close App".localized, style: .default) { closeApp in
+            ModuleDependencies.shared.authPresenter.authInteractor?.clearAllAuthSession()
+            exit(0)
+        }
+        
+        let loginAction = UIAlertAction(title: "Login".localized, style: .default) { login in
+            MozoSDK.logout()
+        }
+        
+        alert.addAction(closeAppAction)
+        alert.addAction(loginAction)
+        self.present(alert, animated: false, completion: nil)
+
+    }
+    
+    func alertDeleteAccount() {
+        let alert = UIAlertController(title: "Title Delete Account".localized, message: "Message Delete Account".localized, preferredStyle: .alert)
+        
+        let deleteAction = UIAlertAction(title: "Delete everything".localized, style: .default) { deleteAction in
+            _ = ApiManager.shared.deleteAccount().done({ isSuccess in
+                if isSuccess {
+                    self.alertNotiDeleteAccount()
+                }
+            })
+        }
+        
+        deleteAction.titleTextColor = .red
+
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: {(_) in }))
+        alert.addAction(deleteAction)
+        
+        self.present(alert, animated: false, completion: nil)
     }
     
     func alertListItemLanguages() {
@@ -180,5 +229,23 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: {(_) in }))
 
         self.present(alert, animated: false, completion: nil)
+    }
+}
+
+extension ApiManager {
+    func deleteAccount() -> Promise<Bool> {
+        return Promise {seal in
+            let url = Configuration.BASE_STORE_URL + "/accountDeleted/deletedUserInShopperApp"
+            self.execute(.post, url: url).done { json in
+                seal.fulfill(true)
+            }
+            .catch { error in
+                print("Error when delete account:" + error.localizedDescription)
+                seal.reject(error)
+            }
+            .finally {
+                
+            }
+        }
     }
 }
