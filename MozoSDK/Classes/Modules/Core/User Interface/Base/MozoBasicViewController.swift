@@ -14,6 +14,17 @@ public class MozoBasicViewController : UIViewController {
         self.navigationItem.hidesBackButton = true
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self is WaitingViewController || self is SettingsViewController {
+            return
+        }
+        if self.navigationItem.rightBarButtonItem == nil {
+            let cancelBtn = UIBarButtonItem(title: "Cancel".localized, style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.tapRightBtn))
+            self.navigationItem.rightBarButtonItem = cancelBtn
+        }
+    }
+    
     func enableBackBarButton() {
         self.navigationController?.navigationBar.backItem?.title = "Back".localized
         navigationItem.hidesBackButton = false
@@ -45,6 +56,10 @@ public class MozoBasicViewController : UIViewController {
 
     @objc func tapBackBtn() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func tapRightBtn() {
+        ModuleDependencies.shared.corePresenter.requestForCloseAllMozoUIs(nil)
     }
     
     func displayMozoError(_ error: String) {

@@ -29,13 +29,7 @@ class ConvertFailedViewController: MozoBasicViewController {
         btnBack.roundCorners(cornerRadius: 0.015, borderColor: .white, borderWidth: 0.1)
     }
     
-    func handleBackToOnchainWallet() {
-        if let navigationController = self.navigationController as? MozoNavigationController, let coreEventHandler = navigationController.coreEventHandler {
-            coreEventHandler.requestForCloseAllMozoUIs(nil)
-        }
-    }
-    
     @IBAction func touchBack(_ sender: Any) {
-        handleBackToOnchainWallet()
+        ModuleDependencies.shared.corePresenter.requestForCloseAllMozoUIs(nil)
     }
 }

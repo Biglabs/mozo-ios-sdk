@@ -20,6 +20,11 @@ class WalletWireframe: MozoWireframe {
         walletPresenter?.processInitialWalletInterface()
     }
     
+    func processInitialWallet(isCreateNew : Bool = false) {
+        self.presentWaitingInterface(autoPin: true, isCreateMode: isCreateNew)
+        walletPresenter?.processInitialWalletInterfaceAutomatically(isCreateNew: isCreateNew)
+    }
+    
     func presentPINInterface(passPharse: String?, requestFrom module: Module = Module.Wallet,
                              recoverFromServerEncryptedPhrase : Bool = false,
                              enterNewPINToChangePIN: Bool = false) {
@@ -34,8 +39,6 @@ class WalletWireframe: MozoWireframe {
         walletPresenter?.pinUserInterface = viewController
         if module == .Airdrop || module == .Withdraw {
             rootWireframe?.showRootViewController(viewController, inWindow: (UIApplication.shared.delegate?.window!)!)
-        } else if module == .BackupWallet {
-            rootWireframe?.changeRootViewController(viewController)
         } else {
             rootWireframe?.displayViewController(viewController)
         }

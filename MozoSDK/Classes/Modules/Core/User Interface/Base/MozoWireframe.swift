@@ -12,14 +12,18 @@ class MozoWireframe: NSObject {
     private var isAutoPinPresenting = false
     
     func dismissModuleInterface() {
-        let coreEventHandler = rootWireframe?.mozoNavigationController.coreEventHandler
-        coreEventHandler?.requestForCloseAllMozoUIs(nil)
+        ModuleDependencies.shared.corePresenter.requestForCloseAllMozoUIs(nil)
     }
     
-    func presentWaitingInterface(corePresenter: CorePresenter?) {
-        let viewController = viewControllerFromStoryBoard(WaitingViewControllerIdentifier) as! WaitingViewController
-        viewController.eventHandler = corePresenter
-        rootWireframe?.showRootViewController(viewController, inWindow: (UIApplication.shared.delegate?.window!)!)
+    func presentWaitingInterface(autoPin: Bool = false, isCreateMode: Bool = false) {
+        if !autoPin && SessionStoreManager.isWalletSafe() {
+            // MARK: The wallet is ready, no need to display waiting
+            return
+        }
+        let vc = viewControllerFromStoryBoard(WaitingViewControllerIdentifier) as! WaitingViewController
+        vc.autoPin = autoPin
+        vc.isCreateMode = isCreateMode
+        rootWireframe?.displayViewController(vc)
     }
     
     func presentAutoPINInterface(needShowRoot: Bool = false) {

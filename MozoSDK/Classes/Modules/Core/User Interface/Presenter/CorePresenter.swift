@@ -191,7 +191,9 @@ extension CorePresenter : CoreModuleInterface {
         coreWireframe?.requestForCloseAllMozoUIs(completion: {
             self.authDelegate?.mozoUIDidCloseAll()
             self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers()
-            callback?()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                callback?()
+            })
         })
         
         removePINDelegate()

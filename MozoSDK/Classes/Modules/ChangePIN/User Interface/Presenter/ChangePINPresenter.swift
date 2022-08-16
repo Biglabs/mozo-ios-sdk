@@ -34,12 +34,8 @@ class ChangePINPresenter: NSObject {
             interactor?.changePIN(currentPIN: currentPin, newPIN: newPin)
         } else {
             // System error
+            DisplayUtils.displayTryAgainPopup(allowTapToDismiss: true, isEmbedded: true, error: nil, delegate: self)
         }
-    }
-}
-extension ChangePINPresenter: ChangePINModuleInterface {
-    func finishChangePIN() {
-        wireframe?.dismissModuleInterface()
     }
 }
 extension ChangePINPresenter: ChangePINInteractorOutput {
@@ -74,6 +70,6 @@ extension ChangePINPresenter: PopupErrorDelegate {
     }
     
     func didClosePopupWithoutRetry() {
-        
+        wireframe?.rootWireframe?.closeAllMozoUIs(completion: {})
     }
 }

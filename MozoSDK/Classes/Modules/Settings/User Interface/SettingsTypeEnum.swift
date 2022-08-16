@@ -13,6 +13,7 @@ enum SettingsTypeEnum: Int, CaseIterable {
     case Backup = 3
     case ChangeLanguages = 4
     case Cache = 5
+    case DeleteAccount = 6
     
     public var name: String {
         switch self {
@@ -22,6 +23,7 @@ enum SettingsTypeEnum: Int, CaseIterable {
         case .Backup: return "Backup Wallet"
         case .ChangeLanguages: return "Change Languages"
         case .Cache: return "Clear Cache"
+        case .DeleteAccount: return "Delete Account"
         }
     }
     
@@ -33,6 +35,7 @@ enum SettingsTypeEnum: Int, CaseIterable {
         case .Backup: return "ic_back_up"
         case .ChangeLanguages: return "ic_language"
         case .Cache: return "ic_clear_cache"
+        case .DeleteAccount: return "ic_delete_account"
         }
     }
 }

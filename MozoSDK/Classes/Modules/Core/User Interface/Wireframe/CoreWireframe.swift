@@ -35,43 +35,43 @@ class CoreWireframe : MozoWireframe {
     }
     
     func requestForTransfer() {
-        presentWaitingInterface(corePresenter: corePresenter)
+        presentWaitingInterface()
         corePresenter?.requestForAuthentication(module: Module.Transaction)
     }
     
     func requestForTxHistory() {
-        presentWaitingInterface(corePresenter: corePresenter)
+        presentWaitingInterface()
         corePresenter?.requestForAuthentication(module: Module.TxHistory)
     }
     
     func requestForPaymentRequest() {
-        presentWaitingInterface(corePresenter: corePresenter)
+        presentWaitingInterface()
         corePresenter?.requestForAuthentication(module: Module.Payment)
     }
     
     func requestForAddressBook() {
-        presentWaitingInterface(corePresenter: corePresenter)
+        presentWaitingInterface()
         corePresenter?.requestForAuthentication(module: Module.AddressBook)
     }
     
     func requestForTransactionDetail(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
-        presentWaitingInterface(corePresenter: corePresenter)
+        presentWaitingInterface()
         corePresenter?.txHistoryModuleDidChooseItemOnUI(txHistory: txHistory, tokenInfo: tokenInfo, type: .All)
     }
     
     func requestForConvert(isConvertOffchainToOffchain: Bool) {
         convertWireframe?.isConvertOffchainToOffchain = isConvertOffchainToOffchain
-        presentWaitingInterface(corePresenter: corePresenter)
+        presentWaitingInterface()
         corePresenter?.requestForAuthentication(module: Module.Convert)
     }
     
     func requestForChangePin() {
-        presentWaitingInterface(corePresenter: corePresenter)
+        presentWaitingInterface()
         corePresenter?.requestForAuthentication(module: Module.ChangePIN)
     }
     
     func requestForBackUpWallet() {
-        presentWaitingInterface(corePresenter: corePresenter)
+        presentWaitingInterface()
         corePresenter?.requestForAuthentication(module: Module.BackupWallet)
     }
     
@@ -84,7 +84,7 @@ class CoreWireframe : MozoWireframe {
     }
     
     func requestForTopUpTransfer() {
-        presentWaitingInterface(corePresenter: corePresenter)
+        presentWaitingInterface()
         corePresenter?.requestForAuthentication(module: .TopUp)
     }
     

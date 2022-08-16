@@ -55,6 +55,11 @@ class SettingsTableViewCell: UITableViewCell {
             constraintImageWidth.constant = 22
             constraintImageHeight.constant = 22
             break
+        case .DeleteAccount:
+            constraintImageWidth.constant = 26
+            constraintImageHeight.constant = 30
+            lbSettingType.textColor = .red
+            break
         }
     }
 }

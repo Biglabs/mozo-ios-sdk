@@ -43,12 +43,6 @@ class ConvertCompletionViewController: MozoBasicViewController {
         }
     }
     
-    func handleBackToOnchainWallet() {
-        if let navigationController = self.navigationController as? MozoNavigationController, let coreEventHandler = navigationController.coreEventHandler {
-            coreEventHandler.requestForCloseAllMozoUIs(nil)
-        }
-    }
-    
     @IBAction func touchHash(_ sender: Any) {
         if let hash = btnHash.titleLabel?.text {
             eventHandler?.handleViewHash(hash, controller: self)
@@ -56,6 +50,6 @@ class ConvertCompletionViewController: MozoBasicViewController {
     }
     
     @IBAction func touchBack(_ sender: Any) {
-        handleBackToOnchainWallet()
+        ModuleDependencies.shared.corePresenter.requestForCloseAllMozoUIs(nil)
     }
 }

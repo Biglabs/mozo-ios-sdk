@@ -49,14 +49,7 @@ class TxProcessViewController: MozoBasicViewController {
         }
     }
     
-    func handleHideAction() {
-        if let navigationController = self.navigationController as? MozoNavigationController, let coreEventHandler = navigationController.coreEventHandler {
-            eventHandler?.hideProcess()
-            coreEventHandler.requestForCloseAllMozoUIs(nil)
-        }
-    }
-    
     @IBAction func touchBtnHide(_ sender: Any) {
-        handleHideAction()
+        ModuleDependencies.shared.corePresenter.requestForCloseAllMozoUIs(nil)
     }
 }

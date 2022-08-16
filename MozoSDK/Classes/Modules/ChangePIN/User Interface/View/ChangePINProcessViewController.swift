@@ -9,8 +9,6 @@ import Foundation
 class ChangePINProcessViewController: MozoBasicViewController {
     @IBOutlet weak var lbExplainWaiting: UILabel!
     
-    var eventHandler: ChangePINModuleInterface?
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = "Change Security PIN".localized
