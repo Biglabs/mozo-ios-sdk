@@ -12,16 +12,18 @@ class TransactionWireframe: MozoWireframe {
     var txPresenter : TransactionPresenter?
     var transferViewController : TransferViewController?
     var confirmViewController: ConfirmTransferViewController?
-    
+    var pay: [String: Any]?
+
     func presentTransferInterface() {
         let viewController = viewControllerFromStoryBoard(TransferViewControllerIdentifier) as! TransferViewController
         viewController.eventHandler = txPresenter
+        viewController.pay = pay
         transferViewController = viewController
         
         txPresenter?.transferUserInterface = viewController
         rootWireframe?.displayViewController(viewController)
     }
-    
+        
     func updateInterfaceWithDisplayItem(_ displayItem: AddressBookDisplayItem) {
         txPresenter?.updateInterfaceWithDisplayItem(displayItem)
     }
