@@ -13,6 +13,4 @@ protocol PaymentViewInterface {
     func displayTryAgain(_ error: ConnectionError)
     
     func showPaymentRequestCollection(_ collection: PaymentRequestDisplayCollection, forPage: Int)
-    
-    func updateUserInterfaceWithTokenInfo(_ tokenInfo: TokenInfoDTO)
 }

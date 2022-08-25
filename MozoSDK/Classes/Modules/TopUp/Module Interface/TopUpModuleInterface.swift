@@ -10,7 +10,7 @@ protocol TopUpModuleInterface {
     func loadTokenInfo()
     func loadTopUpAddress()
     
-    func validateTopUpTransferTransaction(tokenInfo: TokenInfoDTO, amount: String)
+    func validateTopUpTransferTransaction(amount: String)
     func requestGetToken()
     func dismiss()
 }

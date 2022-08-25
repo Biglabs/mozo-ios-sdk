@@ -24,6 +24,8 @@ internal class CorePresenter : NSObject {
     private var retryAction: WaitingRetryAction?
     private var networkManager: NetworkReachabilityManager?
     
+    private(set) var tokenInfo: TokenInfoDTO?
+    
     override init() {
         super.init()
         NotificationCenter.default.addObserver(self, selector: #selector(didFinishLaunching), name: UIApplication.didFinishLaunchingNotification, object: nil)
@@ -109,6 +111,23 @@ internal class CorePresenter : NSObject {
             if let topViewController = DisplayUtils.getTopViewController(), topViewController is WaitingViewController {
                 DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
             }
+        }
+    }
+    
+    func fetchTokenInfo(callback: ((TokenInfoDTO?, Error?) -> Void)? = nil) {
+        if(tokenInfo != nil) {
+            callback?(tokenInfo, nil)
+            return
+        }
+        if let address = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo?.offchainAddress {
+            _ = ApiManager.shared.getTokenInfoFromAddress(address).done { (tokenInfo) in
+                self.tokenInfo = tokenInfo
+                callback?(tokenInfo, nil)
+            }.catch({ error in
+                callback?(nil, error)
+            })
+        } else {
+            callback?(nil, ConnectionError.apiError_USER_PROFILE_NOT_FOUND_ERROR)
         }
     }
 }
@@ -267,6 +286,7 @@ extension CorePresenter : CoreInteractorOutput {
             }
             ModuleDependencies.shared.authPresenter.performAuthentication()
         } else {
+            fetchTokenInfo()
             presentModuleInterface(module)
         }
     }
@@ -333,12 +353,14 @@ extension CorePresenter: TransactionModuleDelegate {
         coreWireframe?.walletWireframe?.walletPresenter?.pinModuleDelegate = nil
     }
     
-    func didSendTxSuccess(_ tx: IntermediaryTransactionDTO, tokenInfo: TokenInfoDTO) {
+    func didSendTxSuccess(_ tx: IntermediaryTransactionDTO) {
         // Build transaction detail item
-        let data = TxDetailDisplayData(transaction: tx, tokenInfo: tokenInfo)
-        let detailItem = data.collectDisplayItem()
-        // Display transaction completion interface
-        coreWireframe?.presentTransactionCompleteInterface(detailItem)
+        if let tokenInfo = self.tokenInfo {
+            let data = TxDetailDisplayData(transaction: tx, tokenInfo: tokenInfo)
+            let detailItem = data.collectDisplayItem()
+            // Display transaction completion interface
+            coreWireframe?.presentTransactionCompleteInterface(detailItem)
+        }
     }
     
     func requestAddressBookInterfaceForTransaction() {

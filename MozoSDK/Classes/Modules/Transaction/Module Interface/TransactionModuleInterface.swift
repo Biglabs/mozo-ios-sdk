@@ -8,8 +8,8 @@
 import Foundation
 
 protocol TransactionModuleInterface {
-    func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?)
-    func sendConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO)
+    func validateTransferTransaction(toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?)
+    func sendConfirmTransaction(_ transaction: TransactionDTO)
     func showScanQRCodeInterface()
     func loadTokenInfo()
     func requestToRetryTransfer()
@@ -18,5 +18,5 @@ protocol TransactionModuleInterface {
     
     func findContact(_ phoneNo: String)
     
-    func topUpConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO)
+    func topUpConfirmTransaction(_ transaction: TransactionDTO)
 }

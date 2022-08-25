@@ -27,7 +27,6 @@ class ConfirmTransferViewController: MozoBasicViewController {
     @IBOutlet weak var layoutConstraint: NSLayoutConstraint!
     
     var transaction : TransactionDTO?
-    var tokenInfo: TokenInfoDTO?
     var displayContactItem: AddressBookDisplayItem?
     var moduleRequest: Module = .Transaction
     
@@ -63,9 +62,10 @@ class ConfirmTransferViewController: MozoBasicViewController {
     }
     
     func updateView() {
+        let tokenInfo = ModuleDependencies.shared.corePresenter.tokenInfo
         let address = transaction?.outputs?.first?.addresses![0] ?? ""
         lbAddress.text = address
-        let amount = transaction?.outputs?.first?.value?.convertOutputValue(decimal: tokenInfo?.decimals ?? 0) ?? 0.0
+        let amount = transaction?.outputs?.first?.value?.convertOutputValue(decimal: tokenInfo.safeDecimals) ?? 0.0
         lbAmountValue.text = amount.roundAndAddCommas()
         
         let labelText = "Receiver Address"
@@ -113,10 +113,10 @@ class ConfirmTransferViewController: MozoBasicViewController {
     
     @IBAction func btnConfirmTapped(_ sender: Any) {
         if moduleRequest == .TopUp {
-            eventHandler?.topUpConfirmTransaction(transaction!, tokenInfo: tokenInfo!)
+            eventHandler?.topUpConfirmTransaction(transaction!)
             return
         }
-        eventHandler?.sendConfirmTransaction(transaction!, tokenInfo: self.tokenInfo!)
+        eventHandler?.sendConfirmTransaction(transaction!)
     }
 }
 extension ConfirmTransferViewController : PopupErrorDelegate {

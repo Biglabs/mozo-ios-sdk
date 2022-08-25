@@ -94,10 +94,6 @@ class ModuleDependencies {
         coreWireframe.requestForTransactionDetail(txHistory: txHistory, tokenInfo: tokenInfo)
     }
     
-    func loadBalanceInfo() -> Promise<DetailInfoDisplayItem>{
-        return (corePresenter.coreInteractorService?.loadBalanceInfo())!
-    }
-    
     func loadEthAndOnchainBalanceInfo() -> Promise<OnchainInfoDTO> {
         return (corePresenter.coreInteractorService?.loadEthAndOnchainBalanceInfo())!
     }

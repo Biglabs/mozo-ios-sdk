@@ -289,7 +289,7 @@ public enum ConnectionError: Error {
 }
 
 extension ConnectionError: LocalizedError {
-    public var errorDescription: String? {
+    public var errorDescription: String {
         switch self {
         case .network:
             return "Network error"
@@ -312,7 +312,7 @@ extension ConnectionError: LocalizedError {
         case .incorrectSystemDateTime:
             return "Incorrect System Date Time"
         default:
-            return self.isApiError ? self.apiError?.description : "Api Error"
+            return self.apiError?.description ?? "Api Error"
         }
     }
 }

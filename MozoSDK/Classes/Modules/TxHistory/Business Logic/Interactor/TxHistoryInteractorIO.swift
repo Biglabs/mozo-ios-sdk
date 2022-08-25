@@ -9,12 +9,9 @@ import Foundation
 
 protocol TxHistoryInteractorInput {
     func getListTxHistory(page: Int, type: TransactionType)
-    func getTokenInfoForHistory()
 }
 
 protocol TxHistoryInteractorOutput {
     func finishGetListTxHistory(_ txHistories: [TxHistoryDTO], forPage: Int)
-    func finishGetTokenInfo(_ tokenInfo: TokenInfoDTO)
-    func errorWhileLoadTokenInfo(error: Error)
     func errorWhileLoadTxHistory(_ error: ConnectionError)
 }

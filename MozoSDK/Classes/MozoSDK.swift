@@ -79,8 +79,16 @@ public class MozoSDK {
         ModuleDependencies.shared.displayTransactionDetail(txHistory: txHistory, tokenInfo: tokenInfo)
     }
     
-    public static func loadBalanceInfo() -> Promise<DetailInfoDisplayItem> {
-        return (ModuleDependencies.shared.loadBalanceInfo())
+    public static func loadBalanceInfo() -> Promise<TokenInfoDTO> {
+        return Promise { seal in
+            ModuleDependencies.shared.corePresenter.fetchTokenInfo(callback: {tokenInfo, error in
+                if let info = tokenInfo {
+                    seal.fulfill(info)
+                } else {
+                    seal.reject(error ?? ConnectionError.unknowError)
+                }
+            })
+        }
     }
     
     public static func loadEthAndOnchainBalanceInfo() -> Promise<OnchainInfoDTO> {
@@ -222,28 +230,17 @@ public class MozoSDK {
             {
                 switch type {
                 case .Airdropped, .AirdropInvite, .AirdropSignup, .BalanceChanged:
-                    if SessionStoreManager.tokenInfo == nil {
-                        _ = ModuleDependencies.shared.coreWireframe.corePresenter?.coreInteractorService?.loadBalanceInfo().done({ _ in
-                            if let tokenInfo = SessionStoreManager.tokenInfo {
-                                ModuleDependencies.shared.displayTransactionDetail(
-                                    txHistory: TxDetailDisplayData(
-                                        notify: balanceNoti,
-                                        tokenInfo: tokenInfo
-                                    ).buildHistoryDisplayItem(wsMessage?.time),
-                                    tokenInfo: tokenInfo
-                                )
-                            }
-                        })
-                    } else {
-                        ModuleDependencies.shared.displayTransactionDetail(
-                            txHistory: TxDetailDisplayData(
-                                notify: balanceNoti,
-                                tokenInfo: SessionStoreManager.tokenInfo!
-                            ).buildHistoryDisplayItem(wsMessage?.time),
-                            tokenInfo: SessionStoreManager.tokenInfo!
-                        )
-
-                    }
+                    ModuleDependencies.shared.corePresenter.fetchTokenInfo(callback: {tokenInfo, _ in
+                        if let info = tokenInfo {
+                            ModuleDependencies.shared.displayTransactionDetail(
+                                txHistory: TxDetailDisplayData(
+                                    notify: balanceNoti,
+                                    tokenInfo: info
+                                ).buildHistoryDisplayItem(wsMessage?.time),
+                                tokenInfo: info
+                            )
+                        }
+                    })
                     break
                 default:
                     let luckyNotify = LuckyDrawNotification(json: jobj)

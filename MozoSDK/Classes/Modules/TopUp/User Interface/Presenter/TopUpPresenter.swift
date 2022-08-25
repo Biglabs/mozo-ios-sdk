@@ -54,7 +54,13 @@ extension TopUpPresenter: TopUpModuleInterface {
     func loadTokenInfo() {
         isLoadingTokenInfo = true
         transferViewInterface?.displaySpinner()
-        interactor?.loadTokenInfo()
+        ModuleDependencies.shared.corePresenter.fetchTokenInfo(callback: {tokenInfo, error in
+            if let info = tokenInfo {
+                self.didLoadTokenInfo(info)
+            } else {
+                self.didFailedToLoadTokenInfo(error: (error as? ConnectionError) ?? .unknowError)
+            }
+        })
     }
     
     func loadTopUpAddress() {
@@ -63,8 +69,8 @@ extension TopUpPresenter: TopUpModuleInterface {
         interactor?.loadTopUpAddress()
     }
     
-    func validateTopUpTransferTransaction(tokenInfo: TokenInfoDTO, amount: String) {
-        interactor?.validateTransferTransaction(tokenInfo: tokenInfo, amount: amount, topUpAddress: self.topUpAddress)
+    func validateTopUpTransferTransaction(amount: String) {
+        interactor?.validateTransferTransaction(amount: amount, topUpAddress: self.topUpAddress)
     }
     
     func requestGetToken() {
@@ -78,11 +84,11 @@ extension TopUpPresenter: TopUpModuleInterface {
     }
 }
 extension TopUpPresenter: TopUpConfirmModuleDelegate {
-    func didConfirmTopUpTransaction(_ tx: TransactionDTO, tokenInfo: TokenInfoDTO) {
+    func didConfirmTopUpTransaction(_ tx: TransactionDTO) {
         // Current screen is ConfirmTransferViewController
         let viewController = DisplayUtils.getTopViewController() as? ConfirmTransferViewController
         viewController?.displaySpinner()
-        interactor?.topUpTransaction(tx, tokenInfo: tokenInfo, topUpAddress: self.topUpAddress)
+        interactor?.topUpTransaction(tx, topUpAddress: self.topUpAddress)
     }
 }
 extension TopUpPresenter: TopUpCompletionModuleDelegate {
@@ -104,17 +110,21 @@ extension TopUpPresenter: TopUpInteractorOutput {
         transferViewInterface?.showErrorValidation(error)
     }
     
-    func validateSuccessWithTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO) {
-        wireframe?.presentConfirmTransferInterface(transaction, tokenInfo: tokenInfo)
+    func validateSuccessWithTransaction(_ transaction: TransactionDTO) {
+        wireframe?.presentConfirmTransferInterface(transaction)
     }
     
-    func requestTxCompletion(tokenInfo: TokenInfoDTO, tx: IntermediaryTransactionDTO, moduleRequest: Module) {
+    func requestTxCompletion(tx: IntermediaryTransactionDTO, moduleRequest: Module) {
         // Current screen is ConfirmTransferViewController
         let viewController = DisplayUtils.getTopViewController() as? ConfirmTransferViewController
         viewController?.removeSpinner()
         
-        let txData = TxDetailDisplayData(transaction: tx, tokenInfo: tokenInfo)
-        wireframe?.presentTransactionCompleteInterface(txData.buildDisplayItemFromTransaction(), moduleRequest: moduleRequest)
+        ModuleDependencies.shared.corePresenter.fetchTokenInfo(callback: {tokenInfo, _ in
+            if let info = tokenInfo {
+                let txData = TxDetailDisplayData(transaction: tx, tokenInfo: info)
+                self.wireframe?.presentTransactionCompleteInterface(txData.buildDisplayItemFromTransaction(), moduleRequest: moduleRequest)
+            }
+        })
     }
     
     func didLoadTokenInfo(_ tokenInfo: TokenInfoDTO) {

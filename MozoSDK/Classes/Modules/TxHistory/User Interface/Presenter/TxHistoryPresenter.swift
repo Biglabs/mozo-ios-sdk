@@ -18,22 +18,11 @@ extension TxHistoryPresenter : TxHistoryModuleInterface {
         txhModuleDelegate?.txHistoryModuleDidChooseItemOnUI(txHistory: txHistory, tokenInfo: tokenInfo, type: type)
     }
     
-    func loadTokenInfo() {
-        txhInteractor?.getTokenInfoForHistory()
-    }
-    
     func updateDisplayData(page: Int, type: TransactionType) {
         txhInteractor?.getListTxHistory(page: page, type: type)
     }
 }
 extension TxHistoryPresenter: TxHistoryInteractorOutput {
-    func finishGetTokenInfo(_ tokenInfo: TokenInfoDTO) {
-        txhUserInterface?.didReceiveTokenInfo(tokenInfo)
-    }
-    
-    func errorWhileLoadTokenInfo(error: Error) {
-        
-    }
     
     func finishGetListTxHistory(_ txHistories: [TxHistoryDTO], forPage: Int) {
         let collection = TxHistoryDisplayCollection(items: txHistories)
