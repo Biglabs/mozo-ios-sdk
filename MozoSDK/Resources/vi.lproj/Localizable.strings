@@ -642,7 +642,7 @@
 "error_invalid_total_amount" = "Số Mozo Airdrop lớn hơn số dư khả dụng. Xin kiểm tra lại thông tin.";
 "error_invalid_per_customer_amount" = "Số điểm thưởng Mozo Airdrop cho mỗi khách không hợp lệ. Xin kiểm tra lại thông tin.";
 "error_input_number_of_shopper_out_of_range" = "\'%@\' vượt quá giới hạn cho phép của hệ thống (%@ - %@)";
-"error_temporary_suspend" = "Tính năng này tạm thời bị khóa. Sẽ khả dụng sớm trong đợt phát hành tới.\nXin vui lòng theo dõi những cập nhật của chúng tôi trên kho Ứng dụng.";
+"error_temporary_suspend" = "Tính năng này tạm thời bị khóa.\nSẽ khả dụng sớm trong đợt\nphát hành tới.\nXin vui lòng theo dõi những\ncập nhật của chúng tôi trên kho\nỨng dụng.";
 "error_branch_name_existed" = "Chi nhánh tên %@ đã tồn tại. Xin vui lòng đặt tên khác.";
 "error_promo_other_store" = "Khuyến mãi này của cửa hàng khác";
 "error_promo_target_consumer" = "Khuyến mãi này không còn khả dụng với bạn";

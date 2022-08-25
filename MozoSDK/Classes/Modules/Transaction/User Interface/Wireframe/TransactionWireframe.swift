@@ -9,8 +9,11 @@ import Foundation
 import UIKit
 
 class TransactionWireframe: MozoWireframe {
+    var pay: [String: Any]?
+
     func presentTransferInterface() {
         let viewController = viewControllerFromStoryBoard(TransferViewControllerIdentifier) as! TransferViewController
+        viewController.pay = pay
         rootWireframe?.displayViewController(viewController)
     }
     

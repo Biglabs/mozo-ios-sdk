@@ -32,6 +32,12 @@ public class MozoSDK {
         self.appType = appType
         self.baseApplication = application
     }
+        
+    public static func pay(_ receiver: String, _ amount: String, _ data: String) {
+        ModuleDependencies.shared.coreWireframe.presentWaitingInterface()
+        ModuleDependencies.shared.corePresenter.requestForAuthentication(module: Module.Transaction)
+        ModuleDependencies.shared.txWireframe.pay = ["receiver": receiver, "amount": amount, "data": data]
+    }
     
     public static func accessToken() -> String {
         return AccessTokenManager.getAccessToken() ?? ""
