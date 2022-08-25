@@ -8,5 +8,5 @@
 import Foundation
 
 protocol TxHistoryModuleDelegate {
-    func txHistoryModuleDidChooseItemOnUI(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO, type: TransactionType)
+    func txHistoryModuleDidChooseItemOnUI(txHistory: TxHistoryDisplayItem, type: TransactionType)
 }

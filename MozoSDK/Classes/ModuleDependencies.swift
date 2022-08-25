@@ -90,8 +90,8 @@ class ModuleDependencies {
         coreWireframe.requestForConvert(isConvertOffchainToOffchain: isConvertOffchainToOffchain)
     }
     
-    func displayTransactionDetail(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
-        coreWireframe.requestForTransactionDetail(txHistory: txHistory, tokenInfo: tokenInfo)
+    func displayTransactionDetail(txHistory: TxHistoryDisplayItem) {
+        coreWireframe.requestForTransactionDetail(txHistory: txHistory)
     }
     
     func loadEthAndOnchainBalanceInfo() -> Promise<OnchainInfoDTO> {

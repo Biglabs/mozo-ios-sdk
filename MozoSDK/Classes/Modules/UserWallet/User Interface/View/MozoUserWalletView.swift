@@ -449,9 +449,7 @@ extension MozoUserWalletView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         if let selectedItem = collection?.displayItems[indexPath.row] {
-            if let tokenInfo = ModuleDependencies.shared.corePresenter.tokenInfo {
-                MozoSDK.displayTransactionDetail(txHistory: selectedItem, tokenInfo: tokenInfo)
-            }
+            MozoSDK.displayTransactionDetail(txHistory: selectedItem)
         }
     }
 }

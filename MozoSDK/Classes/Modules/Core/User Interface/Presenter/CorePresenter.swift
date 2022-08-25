@@ -423,12 +423,15 @@ extension CorePresenter: ABDetailModuleDelegate {
 }
 
 extension CorePresenter: TxHistoryModuleDelegate {
-    func txHistoryModuleDidChooseItemOnUI(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO, type: TransactionType) {
-        let data = TxDetailDisplayData(txHistory: txHistory, tokenInfo: tokenInfo)
-        data.type = type
-        let detailItem = data.collectDisplayItem()
-        // Display transaction completion interface
-        coreWireframe?.presentTransactionDetailInterface(detailItem)
+    func txHistoryModuleDidChooseItemOnUI(txHistory: TxHistoryDisplayItem, type: TransactionType) {
+        fetchTokenInfo(callback: {tokenInfo, _ in
+            guard let info = tokenInfo else { return }
+            let data = TxDetailDisplayData(txHistory: txHistory, tokenInfo: info)
+            data.type = type
+            let detailItem = data.collectDisplayItem()
+            // Display transaction completion interface
+            self.coreWireframe?.presentTransactionDetailInterface(detailItem)
+        })
     }
 }
 

@@ -48,7 +48,7 @@ public class TokenInfoDTO: ResponseObjectSerializable {
 }
 
 extension TokenInfoDTO : Equatable {
-    var safeDecimals: Int {
+    public var safeDecimals: Int {
         return self.decimals ?? 2
     }
     
@@ -58,11 +58,11 @@ extension TokenInfoDTO : Equatable {
 }
 
 extension Optional where Wrapped == TokenInfoDTO {
-    var safeDecimals: Int {
+    public var safeDecimals: Int {
         return self?.decimals ?? 2
     }
     
-    func displayBalance() -> Double {
+    public func displayBalance() -> Double {
         return self?.balance?.convertOutputValue(decimal: safeDecimals) ?? 0
     }
 }

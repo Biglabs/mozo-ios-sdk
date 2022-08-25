@@ -25,6 +25,8 @@ public class MozoSDK {
     
     public private(set) static var homePage: String = "https://\(network.landingPage)"
     
+    public private(set) static var balanceInfo: TokenInfoDTO? = ModuleDependencies.shared.corePresenter.tokenInfo
+    
     public static func configure(application: BaseApplication ,network: MozoNetwork = .TestNet, appType: AppType = .Shopper) {
         self.network = network
         self.appType = appType
@@ -75,8 +77,8 @@ public class MozoSDK {
         ModuleDependencies.shared.convertMozoXOnchain(isConvertOffchainToOffchain: isConvertOffchainToOffchain)
     }
     
-    public static func displayTransactionDetail(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
-        ModuleDependencies.shared.displayTransactionDetail(txHistory: txHistory, tokenInfo: tokenInfo)
+    public static func displayTransactionDetail(txHistory: TxHistoryDisplayItem) {
+        ModuleDependencies.shared.displayTransactionDetail(txHistory: txHistory)
     }
     
     public static func loadBalanceInfo() -> Promise<TokenInfoDTO> {
@@ -236,8 +238,7 @@ public class MozoSDK {
                                 txHistory: TxDetailDisplayData(
                                     notify: balanceNoti,
                                     tokenInfo: info
-                                ).buildHistoryDisplayItem(wsMessage?.time),
-                                tokenInfo: info
+                                ).buildHistoryDisplayItem(wsMessage?.time)
                             )
                         }
                     })
