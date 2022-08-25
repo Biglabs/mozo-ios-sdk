@@ -132,13 +132,10 @@ class ConfirmTransferViewController: MozoBasicViewController {
         }
         
         if transaction == nil {
-            let transaction = eventHandler.validateInputs(toAdress: lbAddress.text!, amount: lbAmountValue.text!, callback: self)
-            if transaction != nil {
-                transaction!.additionalData = pay?["data"]
-                eventHandler.sendConfirmTransaction(transaction!)
-            }else {
-                
-            }
+            transaction = eventHandler.validateInputs(toAdress: lbAddress.text!, amount: lbAmountValue.text!, callback: self)
+            transaction?.additionalData = pay?["data"]
+            guard let tx = transaction else { return }
+            eventHandler.sendConfirmTransaction(tx)
         }else {
             eventHandler.sendConfirmTransaction(transaction!)
         }
@@ -147,7 +144,8 @@ class ConfirmTransferViewController: MozoBasicViewController {
 
 extension ConfirmTransferViewController: TransactionValidation {
     func didReceiveError(_ error: String?, causeByReceiver: Bool) {
-        displayError(error!)
+        guard let e = error else { return }
+        displayMozoError(e)
     }
 }
 
@@ -157,7 +155,6 @@ extension ConfirmTransferViewController : PopupErrorDelegate {
     }
     
     func didTouchTryAgainButton() {
-        print("ConfirmTransferViewController - User try transfer transaction again.")
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
             self.eventHandler.requestToRetryTransfer()
         }
@@ -165,7 +162,11 @@ extension ConfirmTransferViewController : PopupErrorDelegate {
 }
 extension ConfirmTransferViewController : ConfirmTransferViewInterface {
     func displayTryAgain(_ error: ConnectionError) {
-        DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
+        if error == .apiError_TRANSACTION_ERROR_INVALID_ADDRESS {
+            displayMozoError(error.errorDescription)
+        } else {
+            DisplayUtils.displayTryAgainPopup(error: error, delegate: self)
+        }
     }
     
     func displaySpinner() {
