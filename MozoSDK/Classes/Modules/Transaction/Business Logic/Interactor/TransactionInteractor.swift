@@ -70,7 +70,7 @@ class TransactionInteractor : NSObject {
 extension TransactionInteractor : TransactionInteractorInput {
     func validateValueFromScanner(_ scanValue: String) {
         if !scanValue.isEthAddress() {
-            output?.didValidateTransferTransaction("Error".localized + ": " + "Scanning value is not a valid address.".localized, isAddress: true)
+            output?.didReceiveError("Error".localized + ": " + "Scanning value is not a valid address.".localized, causeByReceiver: true)
         } else {
             let list = SafetyDataManager.shared.addressBookList
             if let addressBook = AddressBookDTO.addressBookFromAddress(scanValue, array: list) {
@@ -93,7 +93,7 @@ extension TransactionInteractor : TransactionInteractorInput {
         let spendable = tokenInfo?.balance ?? NSNumber(value: 0)
         let outputValue = transaction.outputs?[0].value ?? NSNumber(value: 0)
         if outputValue.compare(spendable) == .orderedDescending {
-            output?.didReceiveError("Error: Your spendable is not enough for this.")
+            output?.didReceiveError("Error: Your spendable is not enough for this.", causeByReceiver: false)
             return
         }
         _ = apiManager.transferTransaction(transaction).done { (interTx) in
@@ -113,7 +113,7 @@ extension TransactionInteractor : TransactionInteractorInput {
             })
     }
     
-    func validateTransferTransaction(toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?) {
+    func validateInputs(toAdress: String?, amount: String?, callback: TransactionValidation?) -> TransactionDTO? {
         let tokenInfo = ModuleDependencies.shared.corePresenter.tokenInfo
         var hasError = false
         
@@ -123,17 +123,17 @@ extension TransactionInteractor : TransactionInteractorInput {
             error = "Error: The Receiver Address is not valid."
             isAddressEmpty = true
             hasError = true
-            output?.didValidateTransferTransaction(error, isAddress: true)
+            callback?.didReceiveError(error, causeByReceiver: true)
         }
         if !isAddressEmpty, let trimAddress = toAdress?.trim() {
             if !trimAddress.isEthAddress() {
                 error = "Error: The Receiver Address is not valid."
                 hasError = true
-                output?.didValidateTransferTransaction(error, isAddress: true)
+                callback?.didReceiveError(error, causeByReceiver: true)
             } else if (tokenInfo?.address?.caseInsensitiveCompare(trimAddress) == .orderedSame) {
                 error = "Could not send Mozo to your own wallet"
                 hasError = true
-                output?.didReceiveError(error)
+                callback?.didReceiveError(error, causeByReceiver: true)
             }
         }
         
@@ -143,7 +143,7 @@ extension TransactionInteractor : TransactionInteractorInput {
             error = "Error".localized + ": " + "Please input amount.".localized
             isAmountEmpty = true
             hasError = true
-            output?.didValidateTransferTransaction(error, isAddress: false)
+            callback?.didReceiveError(error, causeByReceiver: false)
         }
         
         if !isAmountEmpty {
@@ -151,26 +151,32 @@ extension TransactionInteractor : TransactionInteractorInput {
             if spendable! <= 0.0 {
                 error = "Error: Your spendable is not enough for this."
                 hasError = true
-                output?.didValidateTransferTransaction(error, isAddress: false)
+                callback?.didReceiveError(error, causeByReceiver: false)
             }
             
             if Double(value ?? "0")! > spendable! {
                 error = "Error: Your spendable is not enough for this."
                 hasError = true
-                output?.didValidateTransferTransaction(error, isAddress: false)
+                callback?.didReceiveError(error, causeByReceiver: false)
             }
             
             if (value?.isValidDecimalMinValue(decimal: tokenInfo.safeDecimals) == false) {
                 error = "Error: Amount is too low, please input valid amount."
                 hasError = true
-                output?.didValidateTransferTransaction(error, isAddress: false)
+                callback?.didReceiveError(error, causeByReceiver: false)
             }
         }
 
         if !hasError {
-            let tx = createTransactionToTransfer(tokenInfo: tokenInfo, toAdress: toAdress, amount: value)
-            output?.continueWithTransaction(tx!, displayContactItem: displayContactItem)
+            return createTransactionToTransfer(tokenInfo: tokenInfo, toAdress: toAdress, amount: value)
+        } else {
+            return nil
         }
+    }
+    
+    func validateTransferTransaction(toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?) {
+        guard let tx = validateInputs(toAdress: toAdress, amount: amount, callback: output) else { return }
+        output?.continueWithTransaction(tx, displayContactItem: displayContactItem)
     }
     
     func performTransfer(pin: String) {
@@ -196,7 +202,7 @@ extension TransactionInteractor : TransactionInteractorInput {
                     self.output?.performTransferWithError(err as? ConnectionError ?? .systemError, isTransferScreen: false)
                 })
             }.catch({ (err) in
-                self.output?.didReceiveError(ConnectionError.systemError.localizedDescription)
+                self.output?.didReceiveError(ConnectionError.systemError.localizedDescription, causeByReceiver: false)
             })
     }
     

@@ -24,8 +24,4 @@ class TransactionWireframe: MozoWireframe {
         viewController.moduleRequest = moduleRequest
         rootWireframe?.displayViewController(viewController)
     }
-    
-    func presentScannerQRCodeInterface() {
-        rootWireframe?.presentViewController(ScannerViewController())
-    }
 }

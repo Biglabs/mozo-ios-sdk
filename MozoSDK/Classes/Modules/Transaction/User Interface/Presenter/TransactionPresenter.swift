@@ -40,12 +40,16 @@ extension TransactionPresenter: TransactionModuleInterface {
         topUpModuleDelegate?.didConfirmTopUpTransaction(transaction)
     }
     
+    func validateInputs(toAdress: String?, amount: String?, callback: TransactionValidation?) -> TransactionDTO? {
+        return txInteractor?.validateInputs(toAdress: toAdress, amount: amount, callback: callback)
+    }
+    
     func validateTransferTransaction(toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?) {
         txInteractor?.validateTransferTransaction(toAdress: toAdress, amount: amount, displayContactItem: displayContactItem)
     }
     
     func showScanQRCodeInterface() {
-        txWireframe?.presentScannerQRCodeInterface()
+        ScannerViewController.launch(delegate: self)
     }
     
     func loadTokenInfo() {
@@ -66,6 +70,7 @@ extension TransactionPresenter: ScannerViewControllerDelegate {
 }
 
 extension TransactionPresenter : TransactionInteractorOutput {
+    
     func requestAutoPINInterface() {
         txWireframe?.presentAutoPINInterface()
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Configuration.TIME_TO_USER_READ_AUTO_PIN_IN_SECONDS)) {
@@ -104,19 +109,15 @@ extension TransactionPresenter : TransactionInteractorOutput {
         txWireframe?.presentConfirmInterface(transaction: transaction, displayContactItem: displayContactItem)
     }
     
-    func didReceiveError(_ error: String?) {
+    func didReceiveError(_ error: String?, causeByReceiver: Bool) {
         confirmUserInterface?.removeSpinner()
         guard let e = error else { return }
         confirmUserInterface?.displayError(e)
-        transferUserInterface?.displayError(e)
+        transferUserInterface?.showErrorValidation(error, isAddress: causeByReceiver)
     }
     
     func didLoadTokenInfo(_ tokenInfo: TokenInfoDTO) {
         transferUserInterface?.updateUserInterfaceWithTokenInfo(tokenInfo)
-    }
-    
-    func didValidateTransferTransaction(_ error: String?, isAddress: Bool) {
-        transferUserInterface?.showErrorValidation(error, isAddress: isAddress)
     }
     
     func requestPinToSignTransaction() {
