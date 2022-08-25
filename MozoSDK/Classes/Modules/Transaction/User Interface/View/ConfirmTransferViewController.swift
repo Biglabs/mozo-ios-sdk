@@ -38,6 +38,8 @@ class ConfirmTransferViewController: MozoBasicViewController {
     let addressBookHeight: CGFloat = 108
     let storeBookHeight: CGFloat = 134
     
+    var pay: [String: String]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         lbAmountValueExchange.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
@@ -67,10 +69,18 @@ class ConfirmTransferViewController: MozoBasicViewController {
     
     func updateView() {
         let tokenInfo = ModuleDependencies.shared.corePresenter.tokenInfo
-        let address = transaction?.outputs?.first?.addresses![0] ?? ""
-        lbAddress.text = address
-        let amount = transaction?.outputs?.first?.value?.convertOutputValue(decimal: tokenInfo.safeDecimals) ?? 0.0
-        lbAmountValue.text = amount.roundAndAddCommas()
+        var amount: Double = 0
+        if pay != nil {
+            lbAddress.text = String(format: "%@", pay!["receiver"]!)
+            let number = NumberFormatter().number(from: pay!["amount"]!) ?? 0
+            amount = number.doubleValue//.convertOutputValue(decimal: tokenInfo.safeDecimals)
+            lbAmountValue.text = amount.roundAndAddCommas()
+        }else {
+            let address = transaction?.outputs?.first?.addresses![0] ?? ""
+            lbAddress.text = address
+            amount = (transaction?.outputs?.first?.value?.convertOutputValue(decimal: tokenInfo.safeDecimals))!
+            lbAmountValue.text = amount.roundAndAddCommas()
+        }
         
         let labelText = "Receiver Address"
         var displayType = TransactionDisplayContactEnum.NoDetail
@@ -120,9 +130,27 @@ class ConfirmTransferViewController: MozoBasicViewController {
             eventHandler.topUpConfirmTransaction(transaction!)
             return
         }
-        eventHandler.sendConfirmTransaction(transaction!)
+        
+        if transaction == nil {
+            let transaction = eventHandler.validateInputs(toAdress: lbAddress.text!, amount: lbAmountValue.text!, callback: self)
+            if transaction != nil {
+                transaction!.additionalData = pay?["data"]
+                eventHandler.sendConfirmTransaction(transaction!)
+            }else {
+                
+            }
+        }else {
+            eventHandler.sendConfirmTransaction(transaction!)
+        }
     }
 }
+
+extension ConfirmTransferViewController: TransactionValidation {
+    func didReceiveError(_ error: String?, causeByReceiver: Bool) {
+        displayError(error!)
+    }
+}
+
 extension ConfirmTransferViewController : PopupErrorDelegate {
     func didClosePopupWithoutRetry() {
         removeSpinner()

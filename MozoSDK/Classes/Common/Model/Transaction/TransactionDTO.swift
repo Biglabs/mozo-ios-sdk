@@ -87,6 +87,8 @@ public class TransactionDTO: ResponseObjectSerializable {
     /// Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts.
     public var gas_limit: Int64?
     
+    public var additionalData: String?
+    
     public required init?(inputs : [InputDTO]?, outputs : [OutputDTO]?) {
         self.inputs = inputs
         self.outputs = outputs
@@ -202,6 +204,9 @@ public class TransactionDTO: ResponseObjectSerializable {
         }
         if let receive_count = self.receive_count {
             json["receive_count"] = receive_count
+        }
+        if let additionalData = self.additionalData {
+            json["additionalData"] = additionalData
         }
         return json
     }

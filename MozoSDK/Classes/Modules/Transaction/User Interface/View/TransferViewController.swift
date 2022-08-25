@@ -38,9 +38,7 @@ class TransferViewController: MozoBasicViewController {
     
     let topSpace : CGFloat = 14.0
     let topSpaceWithAB: CGFloat = 45
-    
-    var pay: [String: Any]?
-    
+        
     private let refreshControl = UIRefreshControl()
     var tokenInfo : TokenInfoDTO?
     var displayContactItem: AddressBookDisplayItem? {
@@ -66,15 +64,7 @@ class TransferViewController: MozoBasicViewController {
         setupTarget()
         setupDropdown()
         setupAddressBook()
-        
-        if pay != nil {
-            if let receiver = pay!["receiver"], let amount = pay!["amount"] {
-                txtAddressOrPhoneNo.text = "\(receiver)"
-                txtAmount.text = "\(amount)"
-                btnContinueTapped(btnContinue)
-            }
-        }
-                
+                        
 //        if Locale.current.languageCode == "en" {
 //            let attribute = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 10)]
 //            txtAddress.placeholder = ""

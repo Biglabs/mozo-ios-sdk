@@ -9,12 +9,18 @@ import Foundation
 import UIKit
 
 class TransactionWireframe: MozoWireframe {
-    var pay: [String: Any]?
+    var pay: [String: String]?
 
     func presentTransferInterface() {
-        let viewController = viewControllerFromStoryBoard(TransferViewControllerIdentifier) as! TransferViewController
-        viewController.pay = pay
-        rootWireframe?.displayViewController(viewController)
+        if pay != nil {
+            let viewController = viewControllerFromStoryBoard(ConfirmTransferViewControllerIdentifier) as! ConfirmTransferViewController
+            viewController.pay = pay
+            rootWireframe?.displayViewController(viewController)
+            self.pay = nil
+        }else {
+            let viewController = viewControllerFromStoryBoard(TransferViewControllerIdentifier) as! TransferViewController
+            rootWireframe?.displayViewController(viewController)
+        }
     }
     
     func presentConfirmInterface(transaction: TransactionDTO, displayContactItem: AddressBookDisplayItem?, moduleRequest: Module = .Transaction) {
