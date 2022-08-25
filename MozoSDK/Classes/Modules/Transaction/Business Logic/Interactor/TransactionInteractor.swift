@@ -125,10 +125,16 @@ extension TransactionInteractor : TransactionInteractorInput {
             hasError = true
             output?.didValidateTransferTransaction(error, isAddress: true)
         }
-        if !isAddressEmpty, let trimAddress = toAdress?.trim(), !trimAddress.isEthAddress() {
-            error = "Error: The Receiver Address is not valid."
-            hasError = true
-            output?.didValidateTransferTransaction(error, isAddress: true)
+        if !isAddressEmpty, let trimAddress = toAdress?.trim() {
+            if !trimAddress.isEthAddress() {
+                error = "Error: The Receiver Address is not valid."
+                hasError = true
+                output?.didValidateTransferTransaction(error, isAddress: true)
+            } else if (tokenInfo?.address?.caseInsensitiveCompare(trimAddress) == .orderedSame) {
+                error = "Could not send Mozo to your own wallet"
+                hasError = true
+                output?.didReceiveError(error)
+            }
         }
         
         var isAmountEmpty = false
@@ -141,23 +147,23 @@ extension TransactionInteractor : TransactionInteractorInput {
         }
         
         if !isAmountEmpty {
-            let spendable = tokenInfo?.balance?.convertOutputValue(decimal: tokenInfo?.decimals ?? 0)
+            let spendable = tokenInfo?.balance?.convertOutputValue(decimal: tokenInfo.safeDecimals)
             if spendable! <= 0.0 {
                 error = "Error: Your spendable is not enough for this."
+                hasError = true
                 output?.didValidateTransferTransaction(error, isAddress: false)
-                return
             }
             
             if Double(value ?? "0")! > spendable! {
                 error = "Error: Your spendable is not enough for this."
+                hasError = true
                 output?.didValidateTransferTransaction(error, isAddress: false)
-                return
             }
             
-            if (value?.isValidDecimalMinValue(decimal: tokenInfo?.decimals ?? 0) == false){
+            if (value?.isValidDecimalMinValue(decimal: tokenInfo.safeDecimals) == false) {
                 error = "Error: Amount is too low, please input valid amount."
+                hasError = true
                 output?.didValidateTransferTransaction(error, isAddress: false)
-                return
             }
         }
 

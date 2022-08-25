@@ -9,8 +9,6 @@ import Foundation
 import UIKit
 
 class ConfirmTransferViewController: MozoBasicViewController {
-    var eventHandler : TransactionModuleInterface?
-    
     @IBOutlet weak var circleView: UIView!
     @IBOutlet weak var lbAddress: CopyableLabel!
     @IBOutlet weak var lbAmountValue: UILabel!
@@ -25,6 +23,12 @@ class ConfirmTransferViewController: MozoBasicViewController {
     
     @IBOutlet weak var btnConfirm: UIButton!
     @IBOutlet weak var layoutConstraint: NSLayoutConstraint!
+    
+    private lazy var eventHandler: TransactionModuleInterface = {
+        var handler = ModuleDependencies.shared.txPresenter
+        handler.confirmUserInterface = self
+        return handler
+    }()
     
     var transaction : TransactionDTO?
     var displayContactItem: AddressBookDisplayItem?
@@ -113,10 +117,10 @@ class ConfirmTransferViewController: MozoBasicViewController {
     
     @IBAction func btnConfirmTapped(_ sender: Any) {
         if moduleRequest == .TopUp {
-            eventHandler?.topUpConfirmTransaction(transaction!)
+            eventHandler.topUpConfirmTransaction(transaction!)
             return
         }
-        eventHandler?.sendConfirmTransaction(transaction!)
+        eventHandler.sendConfirmTransaction(transaction!)
     }
 }
 extension ConfirmTransferViewController : PopupErrorDelegate {
@@ -127,7 +131,7 @@ extension ConfirmTransferViewController : PopupErrorDelegate {
     func didTouchTryAgainButton() {
         print("ConfirmTransferViewController - User try transfer transaction again.")
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
-            self.eventHandler?.requestToRetryTransfer()
+            self.eventHandler.requestToRetryTransfer()
         }
     }
 }

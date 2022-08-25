@@ -105,7 +105,7 @@ class CoreWireframe : MozoWireframe {
     }
     
     func presentPINInterfaceForTransaction() {
-        walletWireframe?.walletPresenter?.pinModuleDelegate = txWireframe?.txPresenter
+        walletWireframe?.walletPresenter?.pinModuleDelegate = ModuleDependencies.shared.txPresenter
         walletWireframe?.presentPINInterface(passPharse: nil, requestFrom: Module.Transaction)
     }
     
@@ -138,7 +138,7 @@ class CoreWireframe : MozoWireframe {
     }
     
     func updateAddressBookInterfaceForTransaction(displayItem: AddressBookDisplayItem) {
-        txWireframe?.updateInterfaceWithDisplayItem(displayItem)
+        ModuleDependencies.shared.txPresenter.updateInterfaceWithDisplayItem(displayItem)
     }
     
     func updateAddressBookInterfaceForPaymentRequest(displayItem: AddressBookDisplayItem) {

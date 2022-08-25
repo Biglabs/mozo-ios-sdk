@@ -31,7 +31,7 @@ class PaymentPresenter: NSObject {
 extension PaymentPresenter: PaymentModuleInterface {
     func openScanner(tokenInfo: TokenInfoDTO) {
         self.tokenInfo = tokenInfo
-        wireframe?.presentScannerQRCodeInterface()
+        ScannerViewController.launch(delegate: self)
     }
     
     func createPaymentRequest(_ amount: String, tokenInfo: TokenInfoDTO) {

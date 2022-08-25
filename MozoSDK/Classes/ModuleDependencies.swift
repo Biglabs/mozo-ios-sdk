@@ -26,6 +26,7 @@ class ModuleDependencies {
     let authPresenter = AuthPresenter()
     
     let txWireframe = TransactionWireframe()
+    let txPresenter = TransactionPresenter()
     let txhWireframe = TxHistoryWireframe()
     let txComWireframe = TxCompletionWireframe()
     let txDetailWireframe = TxDetailWireframe()
@@ -557,8 +558,6 @@ class ModuleDependencies {
     }
     
     func transactionDependencies() {
-        let txPresenter = TransactionPresenter()
-        
         let txInteractor = TransactionInteractor(apiManager: ApiManager.shared)
         txInteractor.output = txPresenter
         
@@ -569,7 +568,6 @@ class ModuleDependencies {
         txPresenter.txWireframe = txWireframe
         txPresenter.transactionModuleDelegate = coreWireframe.corePresenter
         
-        txWireframe.txPresenter = txPresenter
         txWireframe.rootWireframe = rootWireframe
         
         airdropDependencies(signManager: signManager)
@@ -743,7 +741,7 @@ class ModuleDependencies {
         topUpWireframe.txCompletionWireframe = txComWireframe
         topUpWireframe.rootWireframe = rootWireframe
         
-        txWireframe.txPresenter?.topUpModuleDelegate = presenter
+        txPresenter.topUpModuleDelegate = presenter
         txComWireframe.txComPresenter?.topUpModuleDelegate = presenter
         
         coreWireframe.topUpWireframe = topUpWireframe

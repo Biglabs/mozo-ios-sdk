@@ -132,7 +132,7 @@ extension TransferViewController {
             return
         }
         if inputValue.hasPrefix("0") {
-            eventHandler?.findContact(inputValue)
+            eventHandler.findContact(inputValue)
             return
         }
         if let country = countryData.findCountryByText(inputValue) {
@@ -141,7 +141,7 @@ extension TransferViewController {
                     self.displayError("Invalid phone number")
                     return
                 }
-                eventHandler?.findContact(inputValue)
+                eventHandler.findContact(inputValue)
             } else {
                 self.displayError("Invalid phone number")
             }

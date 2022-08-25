@@ -106,7 +106,9 @@ extension TransactionPresenter : TransactionInteractorOutput {
     
     func didReceiveError(_ error: String?) {
         confirmUserInterface?.removeSpinner()
-        confirmUserInterface?.displayError(error!)
+        guard let e = error else { return }
+        confirmUserInterface?.displayError(e)
+        transferUserInterface?.displayError(e)
     }
     
     func didLoadTokenInfo(_ tokenInfo: TokenInfoDTO) {

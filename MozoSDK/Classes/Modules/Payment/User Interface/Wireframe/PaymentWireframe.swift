@@ -20,12 +20,6 @@ class PaymentWireframe: MozoWireframe {
         rootWireframe?.displayViewController(viewController)
     }
     
-    func presentScannerQRCodeInterface() {
-        let viewController = ScannerViewController()
-        viewController.delegate = presenter
-        rootWireframe?.presentViewController(viewController)
-    }
-    
     func presentPaymentQRInterface(displayItem: PaymentRequestDisplayItem) {
         paymentQRWireframe?.presentPaymentQRInterface(displayItem: displayItem)
     }

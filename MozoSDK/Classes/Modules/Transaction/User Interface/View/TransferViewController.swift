@@ -10,7 +10,6 @@ import UIKit
 import libPhoneNumber_iOS
 let MAXIMUM_MOZOX_AMOUNT_TEXT_LENGTH = 12
 class TransferViewController: MozoBasicViewController {
-    var eventHandler : TransactionModuleInterface?
     @IBOutlet weak var lbBalance: UILabel!
     @IBOutlet weak var lbExchange: UILabel!
     @IBOutlet weak var lbReceiverAddress: UILabel!
@@ -30,6 +29,13 @@ class TransferViewController: MozoBasicViewController {
     @IBOutlet weak var addressBookView: AddressBookView!
     @IBOutlet weak var btnContinue: UIButton!
     @IBOutlet weak var constraintTopSpace: NSLayoutConstraint!
+    
+    internal lazy var eventHandler: TransactionModuleInterface = {
+        var handler = ModuleDependencies.shared.txPresenter
+        handler.transferUserInterface = self
+        return handler
+    }()
+    
     let topSpace : CGFloat = 14.0
     let topSpaceWithAB: CGFloat = 45
     
@@ -53,7 +59,7 @@ class TransferViewController: MozoBasicViewController {
         super.viewDidLoad()
         lbExchangeAmount.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
         
-        eventHandler?.loadTokenInfo()
+        eventHandler.loadTokenInfo()
         addDoneButtonOnKeyboard()
         setupTarget()
         setupDropdown()
@@ -125,7 +131,7 @@ class TransferViewController: MozoBasicViewController {
     }
     
     @objc func refresh(_ sender: Any? = nil) {
-        eventHandler?.loadTokenInfo()
+        eventHandler.loadTokenInfo()
         if let refreshControl = sender as? UIRefreshControl, refreshControl.isRefreshing {
             refreshControl.endRefreshing()
         }
@@ -133,11 +139,11 @@ class TransferViewController: MozoBasicViewController {
     
     // MARK: Button tap events
     @IBAction func btnAddressBookTapped(_ sender: Any) {
-        eventHandler?.showAddressBookInterface()
+        eventHandler.showAddressBookInterface()
     }
     
     @IBAction func btnScanTapped(_ sender: Any) {
-        eventHandler?.showScanQRCodeInterface()
+        eventHandler.showScanQRCodeInterface()
     }
     
     @IBAction func btnContinueTapped(_ sender: Any) {
@@ -145,7 +151,7 @@ class TransferViewController: MozoBasicViewController {
         dropdown.hide()
         let receiverAddress = displayContactItem?.address ?? txtAddressOrPhoneNo.text
         let clearAmountText = txtAmount.text //?.toTextNumberWithoutGrouping()
-        eventHandler?.validateTransferTransaction(toAdress: receiverAddress, amount: clearAmountText, displayContactItem: txtAddressOrPhoneNo.isHidden ? displayContactItem : nil)
+        eventHandler.validateTransferTransaction(toAdress: receiverAddress, amount: clearAmountText, displayContactItem: txtAddressOrPhoneNo.isHidden ? displayContactItem : nil)
     }
     
     func setHighlightAddressTextField(isHighlighted: Bool) {
@@ -248,7 +254,7 @@ extension TransferViewController : PopupErrorDelegate {
     func didTouchTryAgainButton() {
         print("TransferViewController - User try reload balance on transfer screen again.")
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
-            self.eventHandler?.loadTokenInfo()
+            self.eventHandler.loadTokenInfo()
         }
     }
 }
