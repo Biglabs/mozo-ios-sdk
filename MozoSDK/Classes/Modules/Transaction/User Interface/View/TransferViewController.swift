@@ -67,10 +67,12 @@ class TransferViewController: MozoBasicViewController {
         setupDropdown()
         setupAddressBook()
         
-        if let receiver = pay!["receiver"], let amount = pay!["amount"] {
-            txtAddressOrPhoneNo.text = "\(receiver)"
-            txtAmount.text = "\(amount)"
-            btnContinueTapped(btnContinue)
+        if pay != nil {
+            if let receiver = pay!["receiver"], let amount = pay!["amount"] {
+                txtAddressOrPhoneNo.text = "\(receiver)"
+                txtAmount.text = "\(amount)"
+                btnContinueTapped(btnContinue)
+            }
         }
                 
 //        if Locale.current.languageCode == "en" {
