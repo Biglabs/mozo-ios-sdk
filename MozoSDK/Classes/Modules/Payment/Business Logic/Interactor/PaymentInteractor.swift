@@ -73,21 +73,6 @@ extension PaymentInteractor : PaymentInteractorInput {
         }
     }
     
-    func loadTokenInfo() {
-        if let userObj = SessionStoreManager.loadCurrentUser() {
-            if let address = userObj.profile?.walletInfo?.offchainAddress {
-                print("Address used to load balance: \(address)")
-                _ = apiManager.getTokenInfoFromAddress(address)
-                    .done { (tokenInfo) in
-                        SessionStoreManager.tokenInfo = tokenInfo
-                        self.output?.didLoadTokenInfo(tokenInfo)
-                    }.catch({ (err) in
-                        self.output?.errorWhileLoadingTokenInfo(err as? ConnectionError ?? .systemError)
-                    })
-            }
-        }
-    }
-    
     func getListPaymentRequest(page: Int = 0) {
         _ = apiManager.getListPaymentRequest(page: page)
             .done { (listPayment) in

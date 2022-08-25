@@ -51,26 +51,6 @@ extension CoreInteractor: CoreInteractorService {
         return apiManager.addSalePerson(parameters: parameters)
     }
     
-    func loadBalanceInfo() -> Promise<DetailInfoDisplayItem> {
-        return Promise { seal in
-            // TODO: Check authen and authorization first
-            if let userObj = SessionStoreManager.loadCurrentUser() {
-                if let address = userObj.profile?.walletInfo?.offchainAddress {
-                    _ = apiManager.getTokenInfoFromAddress(address)
-                        .done { (tokenInfo) in
-                            SessionStoreManager.tokenInfo = tokenInfo
-                            let item = DetailInfoDisplayItem(tokenInfo: tokenInfo)
-                            seal.fulfill(item)
-                    }.catch({ (err) in
-                        seal.reject(err)
-                    })
-                }
-            } else {
-                seal.reject(SystemError.noAuthen)
-            }
-        }
-    }
-    
     func loadEthAndOnchainBalanceInfo() -> Promise<OnchainInfoDTO> {
         print("😎 Load ETH and onchain balance info.")
         return Promise { seal in

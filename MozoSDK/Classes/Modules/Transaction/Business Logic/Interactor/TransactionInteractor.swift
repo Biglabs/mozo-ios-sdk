@@ -14,7 +14,6 @@ class TransactionInteractor : NSObject {
     
     var originalTransaction: TransactionDTO?
     var transactionData : IntermediaryTransactionDTO?
-    var tokenInfo: TokenInfoDTO?
     var pinToRetry: String?
     
     init(apiManager: ApiManager) {
@@ -89,11 +88,9 @@ extension TransactionInteractor : TransactionInteractorInput {
         }
     }
     
-    func sendUserConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO) {
-        if self.tokenInfo == nil {
-            self.tokenInfo = tokenInfo
-        }
-        let spendable = tokenInfo.balance ?? NSNumber(value: 0)
+    func sendUserConfirmTransaction(_ transaction: TransactionDTO) {
+        let tokenInfo = ModuleDependencies.shared.corePresenter.tokenInfo
+        let spendable = tokenInfo?.balance ?? NSNumber(value: 0)
         let outputValue = transaction.outputs?[0].value ?? NSNumber(value: 0)
         if outputValue.compare(spendable) == .orderedDescending {
             output?.didReceiveError("Error: Your spendable is not enough for this.")
@@ -116,7 +113,8 @@ extension TransactionInteractor : TransactionInteractorInput {
             })
     }
     
-    func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?) {
+    func validateTransferTransaction(toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?) {
+        let tokenInfo = ModuleDependencies.shared.corePresenter.tokenInfo
         var hasError = false
         
         var isAddressEmpty = false
@@ -165,8 +163,7 @@ extension TransactionInteractor : TransactionInteractorInput {
 
         if !hasError {
             let tx = createTransactionToTransfer(tokenInfo: tokenInfo, toAdress: toAdress, amount: value)
-            self.tokenInfo = tokenInfo
-            output?.continueWithTransaction(tx!, tokenInfo: tokenInfo!, displayContactItem: displayContactItem)
+            output?.continueWithTransaction(tx!, displayContactItem: displayContactItem)
         }
     }
     
@@ -186,7 +183,7 @@ extension TransactionInteractor : TransactionInteractorInput {
                     self.originalTransaction = nil
                     print("Original output value: \(receivedTx.tx?.outputs![0].value ?? 0)")
                     // TODO: Avoid depending on received transaction data
-                    self.output?.didSendTransactionSuccess(receivedTx, tokenInfo: self.tokenInfo!)
+                    self.output?.didSendTransactionSuccess(receivedTx)
                 }).catch({ (err) in
                     print("Send signed transaction failed, show popup to retry.")
                     self.pinToRetry = pin
@@ -197,25 +194,9 @@ extension TransactionInteractor : TransactionInteractorInput {
             })
     }
     
-    func loadTokenInfo() {
-        if let userObj = SessionStoreManager.loadCurrentUser() {
-            if let address = userObj.profile?.walletInfo?.offchainAddress {
-                print("Address used to load balance: \(address)")
-                _ = apiManager.getTokenInfoFromAddress(address)
-                    .done { (tokenInfo) in
-                        SessionStoreManager.tokenInfo = tokenInfo
-                        // TODO: Notify for all observing objects.
-                        self.output?.didLoadTokenInfo(tokenInfo)
-                    }.catch({ (err) in
-                        self.output?.performTransferWithError(err as! ConnectionError, isTransferScreen: true)
-                    })
-            }
-        }
-    }
-    
     func requestToRetryTransfer() {
         if let transaction = originalTransaction {
-            sendUserConfirmTransaction(transaction, tokenInfo: self.tokenInfo!)
+            sendUserConfirmTransaction(transaction)
         }
     }
 }

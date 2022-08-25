@@ -50,9 +50,9 @@ class PaymentViewController: MozoBasicViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tokenInfo = ModuleDependencies.shared.corePresenter.tokenInfo
         lbExchange.isHidden = !Configuration.SHOW_MOZO_EQUIVALENT_CURRENCY
         setupNoticeEmptyView()
-        eventHandler?.loadTokenInfo()
         setupSegment()
         setupTableView()
         setupTarget()
@@ -314,10 +314,6 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 extension PaymentViewController: PaymentViewInterface {
-    func updateUserInterfaceWithTokenInfo(_ tokenInfo: TokenInfoDTO) {
-        self.tokenInfo = tokenInfo
-    }
-    
     func showPaymentRequestCollection(_ collection: PaymentRequestDisplayCollection, forPage: Int) {
         if forPage > currentPage {
             if collection.displayItems.count > 1 {

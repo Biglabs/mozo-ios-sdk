@@ -7,13 +7,12 @@
 
 import Foundation
 protocol TopUpInteractorInput {
-    func loadTokenInfo()
     func loadTopUpAddress()
     
     func sendSignedTopUpTx(pin: String)
     
-    func validateTransferTransaction(tokenInfo: TokenInfoDTO, amount: String, topUpAddress: String?)
-    func topUpTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO, topUpAddress: String?)
+    func validateTransferTransaction(amount: String, topUpAddress: String?)
+    func topUpTransaction(_ transaction: TransactionDTO, topUpAddress: String?)
     
     func requestToRetryTransfer()
 }
@@ -34,7 +33,7 @@ protocol TopUpInteractorOutput {
     func requestAutoPINInterface()
     
     func validateError(_ error: String)
-    func validateSuccessWithTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO)
+    func validateSuccessWithTransaction(_ transaction: TransactionDTO)
     
-    func requestTxCompletion(tokenInfo: TokenInfoDTO, tx: IntermediaryTransactionDTO, moduleRequest: Module)
+    func requestTxCompletion(tx: IntermediaryTransactionDTO, moduleRequest: Module)
 }

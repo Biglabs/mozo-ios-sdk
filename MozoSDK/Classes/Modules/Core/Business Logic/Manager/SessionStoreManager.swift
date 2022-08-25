@@ -80,8 +80,6 @@ public class SessionStoreManager {
     
     public static var ethExchangeRateInfo : RateInfoDTO?
     
-    public static var tokenInfo: TokenInfoDTO?
-    
     public static var onchainInfo: OnchainInfoDTO?
     
     public static var countryList: [CountryCodeDTO] = []

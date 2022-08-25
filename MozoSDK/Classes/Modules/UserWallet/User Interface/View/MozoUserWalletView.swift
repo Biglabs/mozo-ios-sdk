@@ -57,7 +57,7 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
     
     let onchainWalletView = MozoOnchainWalletView.init(frame: CGRect(x: 0, y: 66, width: UIScreen.main.bounds.width, height: 650))
     
-    var displayItem : DetailInfoDisplayItem?
+    var displayItem : TokenInfoDTO?
     var collection : TxHistoryDisplayCollection? {
         didSet {
             historyTable.reloadData()
@@ -184,18 +184,14 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         collection = nil
     }
 
-    func updateData(displayItem: DetailInfoDisplayItem) {
+    func updateData(displayItem: TokenInfoDTO?) {
         if lbBalance != nil {
             addUniqueBalanceChangeObserver()
-            updateOnlyBalance(displayItem.balance)
+            updateOnlyBalance(displayItem.displayBalance())
         }
-        if imgQR != nil {
-            if !displayItem.address.isEmpty {
-                let qrImg = DisplayUtils.generateQRCode(from: displayItem.address)
-                imgQR.image = qrImg
-                
-                btnAddress.setTitle(displayItem.address, for: .normal)
-            }
+        if imgQR != nil, let address = displayItem?.address, !address.isEmpty {
+            imgQR.image = DisplayUtils.generateQRCode(from: address)
+            btnAddress.setTitle(address, for: .normal)
         }
         self.displayItem = displayItem
     }
@@ -259,14 +255,15 @@ let TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER = "TxHistoryTableViewCell"
         }
     }
     
-    func loadTokenInfo() {
-        _ = MozoSDK.loadBalanceInfo().done({ (displayItem) in
-            self.updateData(displayItem: displayItem)
-            self.hideRefreshState()
-        }).catch({ (error) in
-            self.clearValueOnUI()
-            self.updateData(displayItem: DetailInfoDisplayItem(balance: 0.0, address: ""))
-            self.displayRefreshState()
+    private func loadTokenInfo() {
+        ModuleDependencies.shared.corePresenter.fetchTokenInfo(callback: {tokenInfo, error in
+            self.updateData(displayItem: tokenInfo)
+            if tokenInfo != nil {
+                self.hideRefreshState()
+            } else {
+                self.clearValueOnUI()
+                self.displayRefreshState()
+            }
         })
     }
     
@@ -452,9 +449,7 @@ extension MozoUserWalletView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         if let selectedItem = collection?.displayItems[indexPath.row] {
-            if let tokenInfo = SessionStoreManager.tokenInfo {
-                MozoSDK.displayTransactionDetail(txHistory: selectedItem, tokenInfo: tokenInfo)
-            }
+            MozoSDK.displayTransactionDetail(txHistory: selectedItem)
         }
     }
 }

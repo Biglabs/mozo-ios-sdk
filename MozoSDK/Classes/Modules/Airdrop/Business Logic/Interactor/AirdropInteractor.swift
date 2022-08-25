@@ -135,18 +135,13 @@ class AirdropInteractor: NSObject {
 }
 extension AirdropInteractor: AirdropInteractorInput {
     func validateAndCalculateEvent(_ event: AirdropEventDTO) {
-        if let userObj = SessionStoreManager.loadCurrentUser() {
-            if let address = userObj.profile?.walletInfo?.offchainAddress {
-                print("Address used to load balance: \(address)")
-                _ = apiManager?.getTokenInfoFromAddress(address)
-                    .done { (tokenInfo) in
-                        SessionStoreManager.tokenInfo = tokenInfo
-                        self.processAirdropEvent(event, tokenInfo: tokenInfo)
-                    }.catch({ (err) in
-                        self.output?.didFailedToLoadTokenInfo()
-                    })
+        ModuleDependencies.shared.corePresenter.fetchTokenInfo(callback: { tokenInfo, _ in
+            if let info = tokenInfo {
+                self.processAirdropEvent(event, tokenInfo: info)
+            } else {
+                self.output?.didFailedToLoadTokenInfo()
             }
-        }
+        })
     }
     
     func sendSignedAirdropEventTx(pin: String) {

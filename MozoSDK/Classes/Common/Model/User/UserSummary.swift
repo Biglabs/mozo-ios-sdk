@@ -17,6 +17,7 @@ public class UserSummary: ResponseObjectSerializable {
     }
     
     public func todayCollected() -> Double {
-        return collectedMozo?.convertOutputValue(decimal: SessionStoreManager.tokenInfo?.decimals ?? 0) ?? 0
+        let decimal = ModuleDependencies.shared.corePresenter.tokenInfo.safeDecimals
+        return collectedMozo?.convertOutputValue(decimal: decimal) ?? 0
     }
 }

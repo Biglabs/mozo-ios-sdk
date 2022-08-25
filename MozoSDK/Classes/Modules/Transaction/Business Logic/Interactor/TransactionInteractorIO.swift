@@ -8,9 +8,8 @@
 import Foundation
 
 protocol TransactionInteractorInput: ABSupportInteractorInput {
-    func loadTokenInfo()
-    func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?)
-    func sendUserConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO)
+    func validateTransferTransaction(toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?)
+    func sendUserConfirmTransaction(_ transaction: TransactionDTO)
     func performTransfer(pin: String)
     func requestToRetryTransfer()
     func validateValueFromScanner(_ scanValue: String)
@@ -22,8 +21,8 @@ protocol TransactionInteractorOutput: ABSupportInteractorOutput {
     func performTransferWithError(_ error: ConnectionError, isTransferScreen: Bool)
     func requestPinToSignTransaction()
     func didValidateTransferTransaction(_ error: String?, isAddress: Bool)
-    func continueWithTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayContactItem: AddressBookDisplayItem?)
-    func didSendTransactionSuccess(_ transaction: IntermediaryTransactionDTO, tokenInfo: TokenInfoDTO)
+    func continueWithTransaction(_ transaction: TransactionDTO, displayContactItem: AddressBookDisplayItem?)
+    func didSendTransactionSuccess(_ transaction: IntermediaryTransactionDTO)
     func didReceiveAddressBookDisplayItem(_ item: AddressBookDisplayItem)
     func didReceiveAddressfromScanner(_ address: String)
     

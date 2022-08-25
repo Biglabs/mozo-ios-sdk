@@ -28,11 +28,10 @@ class TransactionWireframe: MozoWireframe {
         txPresenter?.updateInterfaceWithDisplayItem(displayItem)
     }
     
-    func presentConfirmInterface(transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayContactItem: AddressBookDisplayItem?, moduleRequest: Module = .Transaction) {
+    func presentConfirmInterface(transaction: TransactionDTO, displayContactItem: AddressBookDisplayItem?, moduleRequest: Module = .Transaction) {
         let viewController = viewControllerFromStoryBoard(ConfirmTransferViewControllerIdentifier) as! ConfirmTransferViewController
         viewController.eventHandler = txPresenter
         viewController.transaction = transaction
-        viewController.tokenInfo = tokenInfo
         viewController.displayContactItem = displayContactItem
         viewController.moduleRequest = moduleRequest
         confirmViewController = viewController

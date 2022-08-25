@@ -31,17 +31,17 @@ extension TransactionPresenter: TransactionModuleInterface {
         transactionModuleDelegate?.requestAddressBookInterfaceForTransaction()
     }
     
-    func sendConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO) {
+    func sendConfirmTransaction(_ transaction: TransactionDTO) {
         confirmUserInterface?.displaySpinner()
-        txInteractor?.sendUserConfirmTransaction(transaction, tokenInfo: tokenInfo)
+        txInteractor?.sendUserConfirmTransaction(transaction)
     }
     
-    func topUpConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO) {
-        topUpModuleDelegate?.didConfirmTopUpTransaction(transaction, tokenInfo: tokenInfo)
+    func topUpConfirmTransaction(_ transaction: TransactionDTO) {
+        topUpModuleDelegate?.didConfirmTopUpTransaction(transaction)
     }
     
-    func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?) {
-        txInteractor?.validateTransferTransaction(tokenInfo: tokenInfo, toAdress: toAdress, amount: amount, displayContactItem: displayContactItem)
+    func validateTransferTransaction(toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?) {
+        txInteractor?.validateTransferTransaction(toAdress: toAdress, amount: amount, displayContactItem: displayContactItem)
     }
     
     func showScanQRCodeInterface() {
@@ -49,7 +49,13 @@ extension TransactionPresenter: TransactionModuleInterface {
     }
     
     func loadTokenInfo() {
-        txInteractor?.loadTokenInfo()
+        ModuleDependencies.shared.corePresenter.fetchTokenInfo(callback: {tokenInfo, error in
+            if let info = tokenInfo {
+                self.didLoadTokenInfo(info)
+            } else {
+                self.performTransferWithError((error as? ConnectionError) ?? .unknowError, isTransferScreen: true)
+            }
+        })
     }
 }
 
@@ -93,9 +99,9 @@ extension TransactionPresenter : TransactionInteractorOutput {
         }
     }
     
-    func continueWithTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayContactItem: AddressBookDisplayItem?) {
+    func continueWithTransaction(_ transaction: TransactionDTO, displayContactItem: AddressBookDisplayItem?) {
         transferUserInterface?.hideErrorValidation()
-        txWireframe?.presentConfirmInterface(transaction: transaction, tokenInfo: tokenInfo, displayContactItem: displayContactItem)
+        txWireframe?.presentConfirmInterface(transaction: transaction, displayContactItem: displayContactItem)
     }
     
     func didReceiveError(_ error: String?) {
@@ -115,8 +121,8 @@ extension TransactionPresenter : TransactionInteractorOutput {
         transactionModuleDelegate?.requestPINInterfaceForTransaction()
     }
     
-    func didSendTransactionSuccess(_ transaction: IntermediaryTransactionDTO, tokenInfo: TokenInfoDTO) {
-        transactionModuleDelegate?.didSendTxSuccess(transaction, tokenInfo: tokenInfo)
+    func didSendTransactionSuccess(_ transaction: IntermediaryTransactionDTO) {
+        transactionModuleDelegate?.didSendTxSuccess(transaction)
     }
 }
 

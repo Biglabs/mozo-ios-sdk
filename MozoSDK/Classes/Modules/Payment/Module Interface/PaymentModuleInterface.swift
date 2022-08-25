@@ -7,7 +7,6 @@
 
 import Foundation
 protocol PaymentModuleInterface {
-    func loadTokenInfo()
     func selectPaymentRequestOnUI(_ item: PaymentRequestDisplayItem, tokenInfo: TokenInfoDTO)
     func updateDisplayData(page: Int)
     
