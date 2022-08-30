@@ -7,6 +7,11 @@
 
 import Foundation
 
+public class Constants {
+    public static let URL_MOZOBACK = "mozoback.com"
+
+}
+
 public enum AppType: String {
     case Shopper = "shopper"
     case Retailer = "retailer"
