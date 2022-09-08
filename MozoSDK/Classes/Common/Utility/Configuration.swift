@@ -47,6 +47,7 @@ public class Configuration {
     public static let BASE_SOLO = "\(BASE_HOST)/solomon/api/app"
     public static let BASE_STORE_URL = "\(BASE_HOST)/store/api/app"
     public static let BASE_SCAN_URL = "\(BASE_HOST)/mozoscan/api/app"
+    public static let BASE_GAME_URL = "\(BASE_HOST)/game/api/app"
     public static let BASE_NOTIFICATION_URL = "\(BASE_HOST)/notification/api/app"
     
     // WEB_SOCKET

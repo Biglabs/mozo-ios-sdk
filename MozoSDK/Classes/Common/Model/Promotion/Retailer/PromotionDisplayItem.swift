@@ -191,7 +191,7 @@ public class PromotionDisplayItem {
     }
     
     public var mozoRequireDouble: Double {
-        let decimals = SessionStoreManager.tokenInfo?.decimals ?? 2
+        let decimals = ModuleDependencies.shared.corePresenter.tokenInfo.safeDecimals
         return self.value.convertOutputValue(decimal: decimals)
     }
     
@@ -204,7 +204,7 @@ public class PromotionDisplayItem {
     }
     
     public var mozoTotalReceived: Double {
-        let decimals = SessionStoreManager.tokenInfo?.decimals ?? 2
+        let decimals = ModuleDependencies.shared.corePresenter.tokenInfo.safeDecimals
         return self.receivedMozoX.convertOutputValue(decimal: decimals)
     }
     

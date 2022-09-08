@@ -54,9 +54,9 @@ class CoreWireframe : MozoWireframe {
         corePresenter?.requestForAuthentication(module: Module.AddressBook)
     }
     
-    func requestForTransactionDetail(txHistory: TxHistoryDisplayItem, tokenInfo: TokenInfoDTO) {
+    func requestForTransactionDetail(txHistory: TxHistoryDisplayItem) {
         presentWaitingInterface()
-        corePresenter?.txHistoryModuleDidChooseItemOnUI(txHistory: txHistory, tokenInfo: tokenInfo, type: .All)
+        corePresenter?.txHistoryModuleDidChooseItemOnUI(txHistory: txHistory, type: .All)
     }
     
     func requestForConvert(isConvertOffchainToOffchain: Bool) {
@@ -105,7 +105,7 @@ class CoreWireframe : MozoWireframe {
     }
     
     func presentPINInterfaceForTransaction() {
-        walletWireframe?.walletPresenter?.pinModuleDelegate = txWireframe?.txPresenter
+        walletWireframe?.walletPresenter?.pinModuleDelegate = ModuleDependencies.shared.txPresenter
         walletWireframe?.presentPINInterface(passPharse: nil, requestFrom: Module.Transaction)
     }
     
@@ -138,7 +138,7 @@ class CoreWireframe : MozoWireframe {
     }
     
     func updateAddressBookInterfaceForTransaction(displayItem: AddressBookDisplayItem) {
-        txWireframe?.updateInterfaceWithDisplayItem(displayItem)
+        ModuleDependencies.shared.txPresenter.updateInterfaceWithDisplayItem(displayItem)
     }
     
     func updateAddressBookInterfaceForPaymentRequest(displayItem: AddressBookDisplayItem) {

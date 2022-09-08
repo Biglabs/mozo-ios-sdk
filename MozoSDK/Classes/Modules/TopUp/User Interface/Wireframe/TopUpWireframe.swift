@@ -39,7 +39,7 @@ class TopUpWireframe: MozoWireframe {
         txCompletionWireframe?.presentTransactionCompleteInterface(detail, moduleRequest: moduleRequest)
     }
     
-    func presentConfirmTransferInterface(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO) {
-        txWireframe?.presentConfirmInterface(transaction: transaction, tokenInfo: tokenInfo, displayContactItem: nil, moduleRequest: .TopUp)
+    func presentConfirmTransferInterface(_ transaction: TransactionDTO) {
+        txWireframe?.presentConfirmInterface(transaction: transaction, displayContactItem: nil, moduleRequest: .TopUp)
     }
 }

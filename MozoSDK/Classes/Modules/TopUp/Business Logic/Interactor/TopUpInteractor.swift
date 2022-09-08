@@ -15,8 +15,6 @@ class TopUpInteractor: NSObject {
     var transactionData : IntermediaryTransactionDTO?
     
     var transactionDataArray : [IntermediaryTransactionDTO]?
-    
-    var tokenInfo: TokenInfoDTO?
     var pinToRetry: String?
     var topUpAddress: String?
     
@@ -115,7 +113,7 @@ class TopUpInteractor: NSObject {
                 self.originalTransaction = nil
                 print("Original output value: \(receivedTx.tx?.outputs![0].value ?? 0)")
                 // TODO: Avoid depending on received transaction data
-                self.output?.requestTxCompletion(tokenInfo: self.tokenInfo!, tx: receivedTx, moduleRequest: .TopUpTransfer)
+                self.output?.requestTxCompletion(tx: receivedTx, moduleRequest: .TopUpTransfer)
             }).catch({ (err) in
                 print("Send signed transaction failed, show popup to retry.")
                 self.pinToRetry = pin
@@ -135,9 +133,9 @@ class TopUpInteractor: NSObject {
                 self.pinToRetry = nil
                 // Clear original transaction
                 self.transactionDataArray = nil
-                if let tokenInfo = self.tokenInfo, let originalTransaction = self.originalTransaction, let interTx = IntermediaryTransactionDTO(tx: originalTransaction) {
+                if let originalTransaction = self.originalTransaction, let interTx = IntermediaryTransactionDTO(tx: originalTransaction) {
                     interTx.tx?.hash = smartContractAddress
-                    self.output?.requestTxCompletion(tokenInfo: tokenInfo, tx: interTx, moduleRequest: .TopUp)
+                    self.output?.requestTxCompletion(tx: interTx, moduleRequest: .TopUp)
                 }
                 self.originalTransaction = nil
             }).catch({ (err) in
@@ -151,50 +149,53 @@ class TopUpInteractor: NSObject {
     }
 }
 extension TopUpInteractor: TopUpInteractorInput {
-    func validateTransferTransaction(tokenInfo: TokenInfoDTO, amount: String, topUpAddress: String?) {
-        var hasError = false
-        
-        var isAmountEmpty = false
-        let value = amount.toTextNumberWithoutGrouping()
-        if value.isEmpty {
-            let error = "Error".localized + ": " + "Please input amount.".localized
-            isAmountEmpty = true
-            hasError = true
-            output?.validateError(error)
-        }
-        
-        if !isAmountEmpty {
-            let spendable = tokenInfo.balance?.convertOutputValue(decimal: tokenInfo.decimals ?? 0)
-            if spendable! <= 0.0 {
-                let error = "Error: Your spendable is not enough for this."
-                output?.validateError(error)
+    func validateTransferTransaction(amount: String, topUpAddress: String?) {
+        ModuleDependencies.shared.corePresenter.fetchTokenInfo(callback: {tokenInfo, e in
+            guard let info = tokenInfo else {
+                self.output?.validateError(e?.localizedDescription ?? ConnectionError.unknowError.errorDescription)
                 return
             }
             
-            if Double(value)! > spendable! {
-                let error = "Error: Your spendable is not enough for this."
-                output?.validateError(error)
-                return
+            var hasError = false
+            
+            var isAmountEmpty = false
+            let value = amount.toTextNumberWithoutGrouping()
+            if value.isEmpty {
+                let error = "Error".localized + ": " + "Please input amount.".localized
+                isAmountEmpty = true
+                hasError = true
+                self.output?.validateError(error)
             }
             
-            if (value.isValidDecimalMinValue(decimal: tokenInfo.decimals ?? 0) == false){
-                let error = "Error: Amount is too low, please input valid amount."
-                output?.validateError(error)
-                return
+            if !isAmountEmpty {
+                let spendable = info.balance?.convertOutputValue(decimal: info.safeDecimals)
+                if spendable! <= 0.0 {
+                    let error = "Error: Your spendable is not enough for this."
+                    self.output?.validateError(error)
+                    return
+                }
+                
+                if Double(value)! > spendable! {
+                    let error = "Error: Your spendable is not enough for this."
+                    self.output?.validateError(error)
+                    return
+                }
+                
+                if (value.isValidDecimalMinValue(decimal: info.safeDecimals) == false){
+                    let error = "Error: Amount is too low, please input valid amount."
+                    self.output?.validateError(error)
+                    return
+                }
             }
-        }
 
-        if !hasError {
-            let tx = createTransactionToTransfer(tokenInfo: tokenInfo, topUpAddress: topUpAddress, amount: value)
-            self.tokenInfo = tokenInfo
-            output?.validateSuccessWithTransaction(tx!, tokenInfo: tokenInfo)
-        }
+            if !hasError {
+                let tx = self.createTransactionToTransfer(tokenInfo: tokenInfo, topUpAddress: topUpAddress, amount: value)
+                self.output?.validateSuccessWithTransaction(tx!)
+            }
+        })
     }
     
-    func topUpTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO, topUpAddress: String?) {
-        if self.tokenInfo == nil {
-            self.tokenInfo = tokenInfo
-        }
+    func topUpTransaction(_ transaction: TransactionDTO, topUpAddress: String?) {
         self.topUpAddress = topUpAddress
         
         if topUpAddress == nil || (topUpAddress ?? "").isEmpty {
@@ -205,23 +206,8 @@ extension TopUpInteractor: TopUpInteractorInput {
     }
     
     func requestToRetryTransfer() {
-        if let transaction = originalTransaction, let tokenInfo = self.tokenInfo {
-            topUpTransaction(transaction, tokenInfo: tokenInfo, topUpAddress: self.topUpAddress)
-        }
-    }
-    
-    func loadTokenInfo() {
-        if let userObj = SessionStoreManager.loadCurrentUser() {
-            if let address = userObj.profile?.walletInfo?.offchainAddress {
-                print("TopUpInteractor - Address used to load balance: \(address)")
-                _ = apiManager.getTokenInfoFromAddress(address)
-                    .done { (tokenInfo) in
-                        SessionStoreManager.tokenInfo = tokenInfo
-                        self.output?.didLoadTokenInfo(tokenInfo)
-                    }.catch({ (err) in
-                        self.output?.didFailedToLoadTokenInfo(error: err as? ConnectionError ?? .systemError)
-                    })
-            }
+        if let transaction = originalTransaction {
+            topUpTransaction(transaction, topUpAddress: self.topUpAddress)
         }
     }
     

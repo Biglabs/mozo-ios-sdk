@@ -14,7 +14,6 @@ class TransactionInteractor : NSObject {
     
     var originalTransaction: TransactionDTO?
     var transactionData : IntermediaryTransactionDTO?
-    var tokenInfo: TokenInfoDTO?
     var pinToRetry: String?
     
     init(apiManager: ApiManager) {
@@ -71,7 +70,7 @@ class TransactionInteractor : NSObject {
 extension TransactionInteractor : TransactionInteractorInput {
     func validateValueFromScanner(_ scanValue: String) {
         if !scanValue.isEthAddress() {
-            output?.didValidateTransferTransaction("Error".localized + ": " + "Scanning value is not a valid address.".localized, isAddress: true)
+            output?.didReceiveError("Error".localized + ": " + "Scanning value is not a valid address.".localized, causeByReceiver: true)
         } else {
             let list = SafetyDataManager.shared.addressBookList
             if let addressBook = AddressBookDTO.addressBookFromAddress(scanValue, array: list) {
@@ -89,14 +88,12 @@ extension TransactionInteractor : TransactionInteractorInput {
         }
     }
     
-    func sendUserConfirmTransaction(_ transaction: TransactionDTO, tokenInfo: TokenInfoDTO) {
-        if self.tokenInfo == nil {
-            self.tokenInfo = tokenInfo
-        }
-        let spendable = tokenInfo.balance ?? NSNumber(value: 0)
+    func sendUserConfirmTransaction(_ transaction: TransactionDTO) {
+        let tokenInfo = ModuleDependencies.shared.corePresenter.tokenInfo
+        let spendable = tokenInfo?.balance ?? NSNumber(value: 0)
         let outputValue = transaction.outputs?[0].value ?? NSNumber(value: 0)
         if outputValue.compare(spendable) == .orderedDescending {
-            output?.didReceiveError("Error: Your spendable is not enough for this.")
+            output?.didReceiveError("Error: Your spendable is not enough for this.", causeByReceiver: false)
             return
         }
         _ = apiManager.transferTransaction(transaction).done { (interTx) in
@@ -116,7 +113,8 @@ extension TransactionInteractor : TransactionInteractorInput {
             })
     }
     
-    func validateTransferTransaction(tokenInfo: TokenInfoDTO?, toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?) {
+    func validateInputs(toAdress: String?, amount: String?, callback: TransactionValidation?) -> TransactionDTO? {
+        let tokenInfo = ModuleDependencies.shared.corePresenter.tokenInfo
         var hasError = false
         
         var isAddressEmpty = false
@@ -125,12 +123,18 @@ extension TransactionInteractor : TransactionInteractorInput {
             error = "Error: The Receiver Address is not valid."
             isAddressEmpty = true
             hasError = true
-            output?.didValidateTransferTransaction(error, isAddress: true)
+            callback?.didReceiveError(error, causeByReceiver: true)
         }
-        if !isAddressEmpty, let trimAddress = toAdress?.trim(), !trimAddress.isEthAddress() {
-            error = "Error: The Receiver Address is not valid."
-            hasError = true
-            output?.didValidateTransferTransaction(error, isAddress: true)
+        if !isAddressEmpty, let trimAddress = toAdress?.trim() {
+            if !trimAddress.isEthAddress() {
+                error = "Error: The Receiver Address is not valid."
+                hasError = true
+                callback?.didReceiveError(error, causeByReceiver: true)
+            } else if (tokenInfo?.address?.caseInsensitiveCompare(trimAddress) == .orderedSame) {
+                error = "Could not send Mozo to your own wallet"
+                hasError = true
+                callback?.didReceiveError(error, causeByReceiver: true)
+            }
         }
         
         var isAmountEmpty = false
@@ -139,35 +143,40 @@ extension TransactionInteractor : TransactionInteractorInput {
             error = "Error".localized + ": " + "Please input amount.".localized
             isAmountEmpty = true
             hasError = true
-            output?.didValidateTransferTransaction(error, isAddress: false)
+            callback?.didReceiveError(error, causeByReceiver: false)
         }
         
         if !isAmountEmpty {
-            let spendable = tokenInfo?.balance?.convertOutputValue(decimal: tokenInfo?.decimals ?? 0)
+            let spendable = tokenInfo?.balance?.convertOutputValue(decimal: tokenInfo.safeDecimals)
             if spendable! <= 0.0 {
                 error = "Error: Your spendable is not enough for this."
-                output?.didValidateTransferTransaction(error, isAddress: false)
-                return
+                hasError = true
+                callback?.didReceiveError(error, causeByReceiver: false)
             }
             
             if Double(value ?? "0")! > spendable! {
                 error = "Error: Your spendable is not enough for this."
-                output?.didValidateTransferTransaction(error, isAddress: false)
-                return
+                hasError = true
+                callback?.didReceiveError(error, causeByReceiver: false)
             }
             
-            if (value?.isValidDecimalMinValue(decimal: tokenInfo?.decimals ?? 0) == false){
+            if (value?.isValidDecimalMinValue(decimal: tokenInfo.safeDecimals) == false) {
                 error = "Error: Amount is too low, please input valid amount."
-                output?.didValidateTransferTransaction(error, isAddress: false)
-                return
+                hasError = true
+                callback?.didReceiveError(error, causeByReceiver: false)
             }
         }
 
         if !hasError {
-            let tx = createTransactionToTransfer(tokenInfo: tokenInfo, toAdress: toAdress, amount: value)
-            self.tokenInfo = tokenInfo
-            output?.continueWithTransaction(tx!, tokenInfo: tokenInfo!, displayContactItem: displayContactItem)
+            return createTransactionToTransfer(tokenInfo: tokenInfo, toAdress: toAdress, amount: value)
+        } else {
+            return nil
         }
+    }
+    
+    func validateTransferTransaction(toAdress: String?, amount: String?, displayContactItem: AddressBookDisplayItem?) {
+        guard let tx = validateInputs(toAdress: toAdress, amount: amount, callback: output) else { return }
+        output?.continueWithTransaction(tx, displayContactItem: displayContactItem)
     }
     
     func performTransfer(pin: String) {
@@ -186,36 +195,20 @@ extension TransactionInteractor : TransactionInteractorInput {
                     self.originalTransaction = nil
                     print("Original output value: \(receivedTx.tx?.outputs![0].value ?? 0)")
                     // TODO: Avoid depending on received transaction data
-                    self.output?.didSendTransactionSuccess(receivedTx, tokenInfo: self.tokenInfo!)
+                    self.output?.didSendTransactionSuccess(receivedTx)
                 }).catch({ (err) in
                     print("Send signed transaction failed, show popup to retry.")
                     self.pinToRetry = pin
                     self.output?.performTransferWithError(err as? ConnectionError ?? .systemError, isTransferScreen: false)
                 })
             }.catch({ (err) in
-                self.output?.didReceiveError(ConnectionError.systemError.localizedDescription)
+                self.output?.didReceiveError(ConnectionError.systemError.localizedDescription, causeByReceiver: false)
             })
-    }
-    
-    func loadTokenInfo() {
-        if let userObj = SessionStoreManager.loadCurrentUser() {
-            if let address = userObj.profile?.walletInfo?.offchainAddress {
-                print("Address used to load balance: \(address)")
-                _ = apiManager.getTokenInfoFromAddress(address)
-                    .done { (tokenInfo) in
-                        SessionStoreManager.tokenInfo = tokenInfo
-                        // TODO: Notify for all observing objects.
-                        self.output?.didLoadTokenInfo(tokenInfo)
-                    }.catch({ (err) in
-                        self.output?.performTransferWithError(err as! ConnectionError, isTransferScreen: true)
-                    })
-            }
-        }
     }
     
     func requestToRetryTransfer() {
         if let transaction = originalTransaction {
-            sendUserConfirmTransaction(transaction, tokenInfo: self.tokenInfo!)
+            sendUserConfirmTransaction(transaction)
         }
     }
 }

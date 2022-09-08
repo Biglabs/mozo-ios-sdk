@@ -12,7 +12,9 @@ public protocol ScannerViewControllerDelegate {
     func didReceiveValueFromScanner(_ value: String)
 }
 public class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOutputObjectsDelegate {
-    public var delegate: ScannerViewControllerDelegate?
+    
+    internal var delegate: ScannerViewControllerDelegate?
+    
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
 
@@ -208,5 +210,22 @@ public class ScannerViewController: MozoBasicViewController, AVCaptureMetadataOu
     
     public override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    open class func launch(_ parent: UIViewController? = nil, delegate: ScannerViewControllerDelegate?) {
+        let vc = ScannerViewController()
+        vc.delegate = delegate
+        vc.modalPresentationStyle = .fullScreen
+        
+        if let p = parent {
+            p.present(vc, animated: true, completion: nil)
+            return
+        }
+        
+        if delegate is UIViewController {
+            (delegate as? UIViewController)?.present(vc, animated: true, completion: nil)
+        } else {
+            ModuleDependencies.shared.rootWireframe.presentViewController(vc)
+        }
     }
 }

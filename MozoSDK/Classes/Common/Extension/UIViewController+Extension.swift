@@ -31,7 +31,13 @@ public extension UIViewController {
     
     func openLink(_ parent: UIViewController? = nil, link : String) {
         if var url = URL(string: link) {
-            url.appendQueryItem(name: "language", value: Configuration.LOCALE)
+            if url.host == Constants.URL_MOZOBACK {
+                if let token = AccessTokenManager.getAccessToken() {
+                    url.appendQueryItem(name: "token", value: token)
+                }
+            }else {
+                url.appendQueryItem(name: "language", value: Configuration.LOCALE)
+            }
             
             let config = SFSafariViewController.Configuration()
             config.entersReaderIfAvailable = false

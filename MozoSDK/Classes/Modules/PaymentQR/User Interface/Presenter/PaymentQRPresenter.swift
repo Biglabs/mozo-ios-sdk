@@ -29,7 +29,7 @@ extension PaymentQRPresenter: PaymentQRModuleInterface {
     }
     
     func showScanQRCodeInterface() {
-        wireframe?.presentScannerQRCodeInterface()
+        ScannerViewController.launch(delegate: self)
     }
     
     func sendPaymentRequest(_ displayItem: PaymentRequestDisplayItem, toAddress: String) {

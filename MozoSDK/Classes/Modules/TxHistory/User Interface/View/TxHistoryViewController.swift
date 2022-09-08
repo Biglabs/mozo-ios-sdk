@@ -77,13 +77,23 @@ class TxHistoryViewController: MozoBasicViewController {
         tableView.register(UINib(nibName: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER, bundle: BundleManager.mozoBundle()), forCellReuseIdentifier: TX_HISTORY_TABLE_VIEW_CELL_IDENTIFIER)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
         
-        eventHandler?.loadTokenInfo()
+        loadTokenInfo()
         loadHistoryWithPage()
     }
     
     @objc func refresh(_ sender: Any? = nil) {
         pageCollection(0)
         loadHistoryWithPage()
+    }
+    
+    func loadTokenInfo() {
+        ModuleDependencies.shared.corePresenter.fetchTokenInfo(callback: {tokenInfo, error in
+            if let info = tokenInfo {
+                self.tokenInfo = info
+            } else {
+                self.displayTryAgain((error as? ConnectionError) ?? .unknowError)
+            }
+        })
     }
     
     func loadHistoryWithPage() {
@@ -269,17 +279,13 @@ extension TxHistoryViewController: UITableViewDataSource {
 extension TxHistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let selectedItem = dataCollection()?.displayItems.getElement(indexPath.row), let tokenInfo = tokenInfo {
-            eventHandler?.selectTxHistoryOnUI(selectedItem, tokenInfo: tokenInfo, type: filterType)
+        if let selectedItem = dataCollection()?.displayItems.getElement(indexPath.row) {
+            eventHandler?.selectTxHistoryOnUI(selectedItem, type: filterType)
         }
     }
 }
 
 extension TxHistoryViewController : TxHistoryViewInterface {
-    func didReceiveTokenInfo(_ tokenInfo: TokenInfoDTO) {
-        self.tokenInfo = tokenInfo
-    }
-    
     func showTxHistoryDisplayData(_ data: TxHistoryDisplayCollection, forPage: Int) {
         isLoadingChanged = false
         isLoadingMoreTH = false
@@ -342,7 +348,7 @@ extension TxHistoryViewController : PopupErrorDelegate {
     
     func didTouchTryAgainButton() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
-            self.eventHandler?.loadTokenInfo()
+            self.loadTokenInfo()
             self.loadHistoryWithPage()
         }
     }

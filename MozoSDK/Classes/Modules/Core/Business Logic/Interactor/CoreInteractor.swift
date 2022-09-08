@@ -66,7 +66,6 @@ class CoreInteractor: NSObject {
     func downloadData() {
         downloadAddressBookAndStoreAtLocal()
         downloadStoreBookAndStoreAtLocal()
-        _ = loadBalanceInfo()
         _ = loadEthAndOnchainBalanceInfo()
         downloadExchangeRateInfoAndStoreAtLocal()
         downloadCountryListAndStoreAtLocal()
@@ -261,11 +260,9 @@ extension CoreInteractor: CoreInteractorInput {
     
     func notifyBalanceChangesForAllObservers(balanceNoti: BalanceNotification) {
         if let amount = balanceNoti.amount?.convertOutputValue(decimal: balanceNoti.decimal!), amount > 0.00 {
-            loadBalanceInfo().done { (displayItem) in
-                NotificationCenter.default.post(name: .didChangeBalance, object: nil, userInfo: ["balance" : displayItem.balance])
-            }.catch { (error) in
-                    
-            }
+            ModuleDependencies.shared.corePresenter.fetchTokenInfo(callback: {tokenInfo, _ in
+                NotificationCenter.default.post(name: .didChangeBalance, object: nil, userInfo: ["balance" : tokenInfo?.balance])
+            })
         }
     }
     

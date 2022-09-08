@@ -46,3 +46,23 @@ public class TokenInfoDTO: ResponseObjectSerializable {
         return json
     }
 }
+
+extension TokenInfoDTO : Equatable {
+    public var safeDecimals: Int {
+        return self.decimals ?? 2
+    }
+    
+    public static func == (leftSide: TokenInfoDTO, rightSide: TokenInfoDTO) -> Bool {
+        return rightSide.balance == leftSide.balance && rightSide.address == rightSide.address
+    }
+}
+
+extension Optional where Wrapped == TokenInfoDTO {
+    public var safeDecimals: Int {
+        return self?.decimals ?? 2
+    }
+    
+    public func displayBalance() -> Double {
+        return self?.balance?.convertOutputValue(decimal: safeDecimals) ?? 0
+    }
+}

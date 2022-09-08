@@ -7,7 +7,7 @@
 
 import Foundation
 protocol TopUpConfirmModuleDelegate {
-    func didConfirmTopUpTransaction(_ tx: TransactionDTO, tokenInfo: TokenInfoDTO)
+    func didConfirmTopUpTransaction(_ tx: TransactionDTO)
 }
 protocol TopUpCompletionModuleDelegate {
     func didTopUpCompleteFailure()

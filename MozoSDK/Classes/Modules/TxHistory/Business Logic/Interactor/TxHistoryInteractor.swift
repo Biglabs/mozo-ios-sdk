@@ -27,19 +27,4 @@ extension TxHistoryInteractor : TxHistoryInteractorInput {
                 }
         }
     }
-    
-    func getTokenInfoForHistory() {
-        if let userObj = SessionStoreManager.loadCurrentUser(),
-            let address = userObj.profile?.walletInfo?.offchainAddress {
-                print("Address used to load token info: \(address)")
-                apiManager.getTokenInfoFromAddress(address)
-                    .done { (tokenInfo) in
-                        SessionStoreManager.tokenInfo = tokenInfo
-                        // TODO: Notify for all observing objects.
-                        self.output?.finishGetTokenInfo(tokenInfo)
-                    }.catch { (error) in
-                        self.output?.errorWhileLoadTokenInfo(error: error)
-                    }
-        }
-    }
 }

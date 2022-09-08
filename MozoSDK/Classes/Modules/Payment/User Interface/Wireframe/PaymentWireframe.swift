@@ -20,17 +20,11 @@ class PaymentWireframe: MozoWireframe {
         rootWireframe?.displayViewController(viewController)
     }
     
-    func presentScannerQRCodeInterface() {
-        let viewController = ScannerViewController()
-        viewController.delegate = presenter
-        rootWireframe?.presentViewController(viewController)
-    }
-    
     func presentPaymentQRInterface(displayItem: PaymentRequestDisplayItem) {
         paymentQRWireframe?.presentPaymentQRInterface(displayItem: displayItem)
     }
     
-    func presentTransactionConfirmInterface(transaction: TransactionDTO, tokenInfo: TokenInfoDTO, displayContactItem: AddressBookDisplayItem?) {
-        txWireframe?.presentConfirmInterface(transaction: transaction, tokenInfo: tokenInfo, displayContactItem: displayContactItem, moduleRequest: .Payment)
+    func presentTransactionConfirmInterface(transaction: TransactionDTO, displayContactItem: AddressBookDisplayItem?) {
+        txWireframe?.presentConfirmInterface(transaction: transaction, displayContactItem: displayContactItem, moduleRequest: .Payment)
     }
 }

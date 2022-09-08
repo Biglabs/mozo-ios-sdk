@@ -7,7 +7,6 @@
 
 import Foundation
 enum PaymentModuleRetryAction {
-    case TokenInfo
     case PaymentList
     case DeletePayment
 }
@@ -32,7 +31,7 @@ class PaymentPresenter: NSObject {
 extension PaymentPresenter: PaymentModuleInterface {
     func openScanner(tokenInfo: TokenInfoDTO) {
         self.tokenInfo = tokenInfo
-        wireframe?.presentScannerQRCodeInterface()
+        ScannerViewController.launch(delegate: self)
     }
     
     func createPaymentRequest(_ amount: String, tokenInfo: TokenInfoDTO) {
@@ -50,10 +49,6 @@ extension PaymentPresenter: PaymentModuleInterface {
         interactor?.getListPaymentRequest(page: page)
     }
     
-    func loadTokenInfo() {
-        interactor?.loadTokenInfo()
-    }
-    
     func deletePaymentRequest(_ request: PaymentRequestDisplayItem) {
         if deleteRequest == nil {
             deleteRequest = request
@@ -66,8 +61,7 @@ extension PaymentPresenter: PopupErrorDelegate {
     func didTouchTryAgainButton() {
         if let action = retryAction {
             switch action {
-            case .TokenInfo, .PaymentList:
-                interactor?.loadTokenInfo()
+            case .PaymentList:
                 interactor?.getListPaymentRequest(page: 0)
                 break
             default:
@@ -97,7 +91,7 @@ extension PaymentPresenter: PaymentInteractorOutput {
     }
     
     func didReceiveTransaction(transaction: TransactionDTO, displayContactItem: AddressBookDisplayItem?, isFromScannedValue: Bool) {
-        wireframe?.presentTransactionConfirmInterface(transaction: transaction, tokenInfo: tokenInfo!, displayContactItem: displayContactItem)
+        wireframe?.presentTransactionConfirmInterface(transaction: transaction, displayContactItem: displayContactItem)
     }
     
     func errorWhileLoadPaymentRequest(_ error: ConnectionError) {
@@ -107,14 +101,6 @@ extension PaymentPresenter: PaymentInteractorOutput {
     func finishGetListPaymentRequest(_ list: [PaymentRequestDTO], forPage: Int) {
         let collection = PaymentRequestDisplayCollection(items: list)
         viewInterface?.showPaymentRequestCollection(collection, forPage: forPage)
-    }
-    
-    func didLoadTokenInfo(_ tokenInfo: TokenInfoDTO) {
-        viewInterface?.updateUserInterfaceWithTokenInfo(tokenInfo)
-    }
-    
-    func errorWhileLoadingTokenInfo(_ error: ConnectionError) {
-        // No need to handle error here
     }
     
     func didReceiveError(_ error: Error) {

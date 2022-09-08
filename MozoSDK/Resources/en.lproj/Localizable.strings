@@ -638,7 +638,7 @@
 "error_invalid_total_amount" = "Incorrect total amount of Mozo to be airdropped. Please check your input.";
 "error_invalid_per_customer_amount" = "Incorrect amount of Mozo tokens to be airdropped to each Shopper visiting your store. Please check your input.";
 "error_input_number_of_shopper_out_of_range" = "\'%@\' is outside of the minimums %@ and maximums %@ allowed by our system.";
-"error_temporary_suspend" = "This feature is temporarily suspended.\It will be available soon in next release. Please check for our updates on App stores.";
+"error_temporary_suspend" = "This feature is temporarily\nsuspended. It will be available soon\nin next release.\nPlease check for our updates\non App stores.";
 "error_branch_name_existed" = "Branch named %@ is already existed. Please choose another name.";
 "error_promo_other_store" = "Promotion belong to other store";
 "error_promo_target_consumer" = "This promotion is not available for you";
@@ -852,7 +852,7 @@
 "View Event List" = "View Event List";
 
 "Select language to share" = "Select language to share";
-"invite_shopper_app_name" = "Mozo Consumer App";
+"invite_shopper_app_name" = "Mozo App";
 "invite_retailer_app_name" = "Mozo Business App";
 "invite_reward_amount" = "Reward %@ Mozo";
 
@@ -943,7 +943,7 @@
 "Airdrop Event Time Setting" = "Airdrop Event Time Setting";
 "Start from now" = "Start from now";
 "Now" = "Now";
-"text_event_explain_name" = "Shopper will see event name when they use Mozo Consumer App to get tokens.";
+"text_event_explain_name" = "Shopper will see event name when they use Mozo App to get tokens.";
 "text_event_explain_number_of_shopper" = "The number of Shoppers who will receive Mozo tokens from this Airdrop Event.";
 "text_event_explain_number_of_mozo" = "The number of Mozo tokens each Shopper will receive via Airdrop every time they visit to your Store.";
 "PLEASE REVIEW THE INFORMATION BELOW, BECAUSE ONCE AN AIRDROP EVENT HAS BEEN CREATED, THE INFORMATION CANNOT BE CHANGED." = "PLEASE REVIEW THE INFORMATION BELOW, BECAUSE ONCE AN AIRDROP EVENT HAS BEEN CREATED, THE INFORMATION CANNOT BE CHANGED.";
@@ -1408,7 +1408,7 @@ FAQ contents
 "faq_shopper_8_title" = "What is a PIN? Is it different than a password?";
 
 "faq_shopper_1_answer" = "Mozo Tokens are digital utility tokens that can be used by merchants to reward customers for visiting their venues. Customers can collect Mozo Tokens and redeem them for discounts on products and services as determined by each merchant.";
-"faq_shopper_2_answer" = "Mozo Consumer App provides functions so that allow you to discover airdrop events using a map view or a list view, search… Check the airdrop date and time and then go to store during those dates and times to receive Mozo. DO NOT forget to turn on bluetooth when you enter the store.";
+"faq_shopper_2_answer" = "Mozo App provides functions so that allow you to discover airdrop events using a map view or a list view, search… Check the airdrop date and time and then go to store during those dates and times to receive Mozo. DO NOT forget to turn on bluetooth when you enter the store.";
 "faq_shopper_3_answer" = "On the wallet screen, using the feature \"Send Mozo\" to send Mozo to your friend\'s wallet.<br/>
 You can send Mozo by inputting your friend\'s phone number.<br/>
 Best practise:<br/>
@@ -1463,8 +1463,8 @@ In Mozo, a password is used to protect your account (phone number when you login
 "faq_retailer_1_answer" = "Mozo Tokens are digital utility tokens that can be used by merchants to reward customers for visiting their venues. Customers can collect Mozo Tokens and redeem them for discounts on products and services as determined by each merchant.";
 "faq_retailer_2_answer" = "Customers will accumulate enough reward tokens aka Mozo to redeem them for deals, discounts and promotions in the rewards program. So these customers now have an incentive to go to where retailers and venue operators are set up airdrop events. By applying blockchain technology, Mozo is more secure and convenient than any traditional loyalty applications. Furthermore, by incorporating with location based service technology, Mozo ensures that user really physically enter the venue.<br/>
 Retailers and venue operators use Mozo Business App to set up airdrop events through the use of a beacon, a specific location detector, that requires the users must be in range of the beacon in order to receive Mozo. This will help Retailers and venue operators control their foot traffic. Additionally, using Mozo Business App, Retailers and venue operators can set up their deals, discounts and promotions.<br/>
-Customers use Mozo Consumer App to browse, search, discover airdrop events, deals, discounts and promotions offered by both Retailer and venu operator.<br/>
-Mozo Consumer and Business App also help Retailers/venue operators and customers consummates the deals, discounts and promotions in effective and efficient way.";
+Customers use Mozo App to browse, search, discover airdrop events, deals, discounts and promotions offered by both Retailer and venu operator.<br/>
+Mozo and Business App also help Retailers/venue operators and customers consummates the deals, discounts and promotions in effective and efficient way.";
 "faq_retailer_3_answer" = "When you sign up to be a Mozo Retailer, we will give you a certain number of Mozo Tokens to help you get started. Once you have used all the initial Mozo Tokens as a reward for your customers, you can purchase more Mozo Tokens directly from us.";
 "faq_retailer_4_answer" = "By offering Mozo Tokens for visiting your venue, customers will have an incentive to come there and, by offering discounts through a redemption program, you are ensured that customers will want to keep collecting Mozo Tokens.";
 "faq_retailer_5_answer" = "With Mozo, you only reward customers when they physically enter your venue, so there is a 1:1 correlation between advertising monies spent and customers at your venue. Other advertising channels do not offer any guarantees that their clicks or banners will result in customers in your venue.";
@@ -1493,14 +1493,14 @@ In Mozo, a password is used to protect your account (phone number when you login
 Please make sure you have a Mozo wallet using the Mozo App before BUYing.<br/>
 If you don\'t have wallet, please follow these instructions:<br/>
 - <a href=\"https://mozocoin.io/help-center?section=faq-retailer#how-to-sign-up-on-mozox-retailer-app\">Mozo Business App</a><br/>
-- <a href=\"https://mozocoin.io/help-center?section=faq-shopper#home-faq-shopper-6\">Mozo Consumer App</a><br/>
+- <a href=\"https://mozocoin.io/help-center?section=faq-shopper#home-faq-shopper-6\">Mozo App</a><br/>
 <br/>
 After signing up successfully, return to our website and try again.<br/>
 <br/>
 Choose ETH or BTC.<br/>
 Input number of Mozo you want to BUY (or number of ETH/BTC you want to change to Mozo)<br/>
 Click on \"Buy\" button.<br/>
-The system will provide a reserved ETH/BTC address. You should transfer your ETH/BTC to this address and the system will transfer Mozo to your wallet in Mozo Business App or Mozo Consumer App.<br/>
+The system will provide a reserved ETH/BTC address. You should transfer your ETH/BTC to this address and the system will transfer Mozo to your wallet in Mozo Business App or Mozo App.<br/>
 <br/>
 Note:<br/>
 - This address will be reserved for 24 hours and can be used only once. You will need another address if you want to do another transaction. This means that you can only transfer ETH or BTC to this reserved address once. If you try transfer more than once using the same reserved address, your ETH or BTC will be lost. We are not able to recover your coins.<br/>
