@@ -195,7 +195,7 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        if error.localizedDescription.contains("certificate") {
+        if error.localizedDescription.contains("certificate") || error.localizedDescription.contains("not connect") {
             let alert = UIAlertController(title: "There is an error occurred.".localized, message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { action in
                 self.touchedCancel()

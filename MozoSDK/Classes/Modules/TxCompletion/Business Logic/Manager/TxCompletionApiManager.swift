@@ -9,7 +9,6 @@ import Foundation
 import PromiseKit
 import SwiftyJSON
 
-let TX_ETH_SOLO_API_PATH = "/eth/solo"
 public extension ApiManager {
     /// Call API to get transaction status from a transaction hash.
     ///
@@ -20,8 +19,6 @@ public extension ApiManager {
             let url = Configuration.BASE_STORE_URL + "/txs/\(hash)/status"
             self.execute(.get, url: url)
                 .done { json -> Void in
-                    // JSON info
-                    print("Finish request to get tx status, json response: \(json)")
                     if let jobj = SwiftyJSON.JSON(json)[RESPONSE_TYPE_STATUS_KEY].string {
                         if let status = TransactionStatusType(rawValue: jobj) {
                             seal.fulfill(status)
@@ -29,7 +26,6 @@ public extension ApiManager {
                     }
                 }
                 .catch { error in
-                    print("Error when request get tx status: " + error.localizedDescription)
                     seal.reject(error)
                 }
                 .finally {
