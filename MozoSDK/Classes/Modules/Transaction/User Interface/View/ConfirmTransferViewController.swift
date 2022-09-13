@@ -71,7 +71,7 @@ class ConfirmTransferViewController: MozoBasicViewController {
         let tokenInfo = ModuleDependencies.shared.corePresenter.tokenInfo
         var amount: Double = 0
         if pay != nil {
-            lbAddress.text = String(format: "%@", pay!["receiver"]!)
+            lbAddress.text = pay!["receiver"]?.trim().lowercased()
             let number = NumberFormatter().number(from: pay!["amount"]!) ?? 0
             amount = number.doubleValue//.convertOutputValue(decimal: tokenInfo.safeDecimals)
             lbAmountValue.text = amount.roundAndAddCommas()
