@@ -446,6 +446,11 @@ public extension URL {
         return parameters
     }
     
+    subscript(queryParam:String) -> String? {
+        guard let url = URLComponents(string: self.absoluteString) else { return nil }
+        return url.queryItems?.first(where: { $0.name == queryParam })?.value
+    }
+
     mutating func appendQueryItem(name: String, value: String?) {
 
         guard var urlComponents = URLComponents(string: absoluteString) else { return }

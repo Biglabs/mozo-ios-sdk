@@ -65,7 +65,17 @@ extension TransactionPresenter: TransactionModuleInterface {
 
 extension TransactionPresenter: ScannerViewControllerDelegate {
     func didReceiveValueFromScanner(_ value: String) {
-        txInteractor?.validateValueFromScanner(value)
+        if let urlPay = URL(string: value), urlPay.host == "apps.mozotoken.com" {
+            let receiver = urlPay["receiver"]
+            let amount = urlPay["amount"]
+            let data = urlPay["data"]
+            if receiver != "" && amount != "" {
+                MozoSDK.pay(receiver!, amount!, data!)
+            }
+        }else {
+            txInteractor?.validateValueFromScanner(value)
+        }
+
     }
 }
 
