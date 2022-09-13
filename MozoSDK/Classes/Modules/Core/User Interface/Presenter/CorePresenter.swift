@@ -62,7 +62,6 @@ internal class CorePresenter : NSObject {
     }
     
     func handleAccessRemoved() {
-        print("CorePresenter - Handle processed after account's access removed")
         SessionStoreManager.isAccessDenied = true
         
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
@@ -115,11 +114,14 @@ internal class CorePresenter : NSObject {
     }
     
     func fetchTokenInfo(callback: ((TokenInfoDTO?, Error?) -> Void)? = nil) {
-        if(tokenInfo != nil) {
-            callback?(tokenInfo, nil)
-            return
-        }
         if let address = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo?.offchainAddress {
+            if let lastTokenInfo = tokenInfo, lastTokenInfo.address == address {
+                callback?(lastTokenInfo, nil)
+                return
+            }
+            // MARK: Clear last token infos
+            tokenInfo = nil
+            
             _ = ApiManager.shared.getTokenInfoFromAddress(address).done { (tokenInfo) in
                 self.tokenInfo = tokenInfo
                 callback?(tokenInfo, nil)
@@ -258,7 +260,6 @@ extension CorePresenter: WalletModuleDelegate {
 
 extension CorePresenter : CoreInteractorOutput {
     func continueWithSpeedSelection(_ callbackModule: Module) {
-        print("CorePresenter - Continue with Speed Selection, callbackModule: \(callbackModule.value)")
         // Should display call back module (if any)
         self.callBackModule = callbackModule
         presentModuleInterface(.SpeedSelection)

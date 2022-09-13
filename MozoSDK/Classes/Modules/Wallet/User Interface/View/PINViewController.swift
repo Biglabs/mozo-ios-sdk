@@ -160,7 +160,6 @@ class PINViewController : MozoBasicViewController {
     }
     
     func refreshUIsAfterResettingPIN() {
-        print("Refresh UIs after resetting PIN")
         statusLabel.isHidden = true
         pinTextField.text = ""
     }
@@ -209,7 +208,6 @@ extension PINViewController : PINViewInterface {
             self.hideAllUIs()
         }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
-            print("PINViewController - Manage wallet after hide UIs")
             self.manageWallet()
         }
     }
@@ -253,7 +251,6 @@ extension PINViewController : PopupErrorDelegate {
     }
     
     func didTouchTryAgainButton() {
-        print("User try manage wallet again.")
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
             self.manageWallet()
         }
@@ -261,7 +258,6 @@ extension PINViewController : PopupErrorDelegate {
 }
 private extension PINViewController {
     func hideAllUIs() {
-        print("PINViewController - Hide all UIs")
         self.view.endEditing(true)
         view.subviews.forEach({ $0.isHidden = true })
         enterPINLabel.isHidden = false
