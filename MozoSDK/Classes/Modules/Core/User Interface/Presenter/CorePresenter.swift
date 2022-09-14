@@ -115,13 +115,6 @@ internal class CorePresenter : NSObject {
     
     func fetchTokenInfo(callback: ((TokenInfoDTO?, Error?) -> Void)? = nil) {
         if let address = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo?.offchainAddress {
-            if let lastTokenInfo = tokenInfo, lastTokenInfo.address == address {
-                callback?(lastTokenInfo, nil)
-                return
-            }
-            // MARK: Clear last token infos
-            tokenInfo = nil
-            
             _ = ApiManager.shared.getTokenInfoFromAddress(address).done { (tokenInfo) in
                 self.tokenInfo = tokenInfo
                 callback?(tokenInfo, nil)
