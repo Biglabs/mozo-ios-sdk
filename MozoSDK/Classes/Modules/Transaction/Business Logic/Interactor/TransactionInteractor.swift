@@ -182,6 +182,7 @@ extension TransactionInteractor : TransactionInteractorInput {
     func performTransfer(pin: String) {
         signManager?.signTransaction(transactionData!, pin: pin)
             .done { (signedInterTx) in
+                signedInterTx.additionalData = self.originalTransaction?.additionalData
                 self.apiManager.sendSignedTransaction(signedInterTx).done({ (receivedTx) in
                     print("Send successfully with hash: \(receivedTx.tx?.hash ?? "NULL")")
                     // Clear retry PIN

@@ -29,6 +29,9 @@ public class IntermediaryTransactionDTO: ResponseObjectSerializable {
     /// The nonce is the number of transactions sent from a given address. Each time you send a transaction, the nonce increases by 1 . There are rules about what transactions are valid transactions and the nonce is used to enforce some of these rules.
     public var nonce: NSNumber?
     
+    public var additionalData: String?
+    
+    
     public required init?(json: SwiftyJSON.JSON) {
         self.tx = TransactionDTO(json: json["tx"])
         self.signatures = json["signatures"].array?.filter({ $0.string != nil }).map({ $0.string! })
@@ -38,6 +41,7 @@ public class IntermediaryTransactionDTO: ResponseObjectSerializable {
             $0.dictionaryObject!["error"]
         }) as? [String]
         self.nonce = json["nonce"].number
+        
     }
     
     public required init?(){}
@@ -66,6 +70,10 @@ public class IntermediaryTransactionDTO: ResponseObjectSerializable {
         if let nonce = self.nonce {
             json["nonce"] = nonce
         }
+        if let additionalData = self.additionalData {
+            json["additionalData"] = additionalData
+        }
+
         return json
     }
     
