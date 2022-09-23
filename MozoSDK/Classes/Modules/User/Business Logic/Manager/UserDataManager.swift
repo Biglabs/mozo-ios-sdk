@@ -30,7 +30,7 @@ class UserDataManager : NSObject {
      */
     func addNewUser(_ user: UserModel) -> Bool {
         let count = coreDataStore.countById(user.id!)
-        if count != nil && count! == 0 {
+        if count == 0 {
             return coreDataStore.addNewUser(userModel: user)
         }
         return true

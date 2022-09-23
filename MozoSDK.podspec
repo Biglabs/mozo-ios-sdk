@@ -12,7 +12,7 @@ The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaini
   s.social_media_url = "https://www.facebook.com/mozoxvn"
 
   s.swift_version    = "5"
-  s.ios.deployment_target = "13.0"
+  s.ios.deployment_target = "12.0"
 
   s.source_files     = "MozoSDK/**/*.{h,m,swift}"
   s.resources        = ['MozoSDK/Resources/**']
@@ -21,7 +21,6 @@ The Mozo SDK is a Swift implementation of the Mozo protocol. It allows maintaini
   }
   
   s.dependency 'Alamofire'
-  s.dependency 'CoreStore'
   s.dependency 'RNCryptor', '~> 5.1.0'
   s.dependency 'web3swift', '~> 2.6.6'
   s.dependency 'MBProgressHUD'

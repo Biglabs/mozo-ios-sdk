@@ -8,54 +8,45 @@
 
 import Foundation
 import PromiseKit
-import CoreStore
+import CoreData
 
-class CoreDataStore : NSObject {
-    public static let shared = CoreDataStore()
+internal class CoreDataStore : NSObject {
+    internal static let shared = CoreDataStore()
+    private let ENTITY_USER = "User"
+    private let ENTITY_WALLET = "Wallet"
     
-    var stack : DataStack!
-    
-    override init() {
-        super.init()
-        let bundle = BundleManager.mozoBundle()
-        stack = DataStack(
-            xcodeModelName: "Mozo",
-            bundle: bundle
-        )
-        let sqliteStore = SQLiteStore(
-            fileName: "Mozo.sqlite",
-            localStorageOptions: .recreateStoreOnModelMismatch // Provides settings that tells the DataStack how to setup the persistent store
-        )
-        do {
-            try stack.addStorageAndWait(sqliteStore)
-        } catch {
-            print("Add storage error: [\(error)]")
-        }
-    }
+    private lazy var managedContext: NSManagedObjectContext? = {
+        guard let appDelegate = UIApplication.shared.delegate as? BaseApplication else { return nil }
+        return appDelegate.persistentContainer.viewContext
+    }()
     
     // MARK: User
     
-    func countById(_ id: String) -> Int? {
-        let count = try? stack.fetchCount(From<ManagedUser>().where(\.id == id))
-        return count
+    func countById(_ id: String) -> Int {
+        let userFetch = NSFetchRequest<NSNumber>(entityName: ENTITY_USER)
+        userFetch.predicate = NSPredicate(format: "%K = %@", #keyPath(ManagedUser.id), id)
+        userFetch.resultType = .countResultType
+        let count = try? managedContext?.fetch(userFetch).first?.intValue
+        return count ?? 0
     }
     
     func countWalletByUserId(_ id: String) -> Promise<Int> {
         return Promise { seal in
-            if let user = try? stack.fetchOne(From<ManagedUser>().where(\.id == id)) {
-                let count = user.wallets?.count ?? -1
-                print("Wallets count: [\(count)]")
-                seal.fulfill(count)
-            } else {
-                seal.reject(ConnectionError.unknowError)
-            }
+            let fetchRequest = NSFetchRequest<ManagedUser>(entityName: ENTITY_USER)
+            fetchRequest.fetchLimit = 1
+            fetchRequest.predicate = NSPredicate(format: "%K = %@", #keyPath(ManagedUser.id), id)
+            let user = try? managedContext?.fetch(fetchRequest).first
+            let walletCount = user?.wallets?.count ?? -1
+            seal.fulfill(walletCount)
         }
     }
     
-    func getUserById(_ id: String) -> Promise<UserModel>{
+    func getUserById(_ id: String) -> Promise<UserModel> {
         return Promise { seal in
-            if let user = try? stack.fetchOne(From<ManagedUser>().where(\.id == id)) {
-                print("Wallets count: [\(user.wallets?.count ?? -1)]")
+            let fetchRequest = NSFetchRequest<ManagedUser>(entityName: ENTITY_USER)
+            fetchRequest.fetchLimit = 1
+            fetchRequest.predicate = NSPredicate(format: "%K = %@", #keyPath(ManagedUser.id), id)
+            if let user = try? managedContext?.fetch(fetchRequest).first {
                 let wallets : [WalletModel]? = user.wallets?.map {
                     let wallet = $0 as! ManagedWallet
                     return WalletModel(address: wallet.address, privateKey: wallet.privateKey)
@@ -70,51 +61,45 @@ class CoreDataStore : NSObject {
 
     func addNewUser(userModel: UserModel) -> Bool {
         do {
-            _ = try stack.perform(synchronous: { (transaction) -> ManagedUser in
-                let userEntity = transaction.create(Into<ManagedUser>())
-                userEntity.id = userModel.id!
-                return userEntity
-            })
+            guard let context = managedContext else { return false }
+            guard let userEntity = NSEntityDescription.entity(forEntityName: ENTITY_USER, in: context) else { return false }
+
+            let user = NSManagedObject(entity: userEntity, insertInto: context)
+            user.setValue(userModel.id, forKeyPath: #keyPath(ManagedUser.id))
+            user.setValue(userModel.mnemonic, forKey: #keyPath(ManagedUser.mnemonic))
+            user.setValue(userModel.pin, forKey: #keyPath(ManagedUser.pin))
+            user.setValue(userModel.wallets, forKey: #keyPath(ManagedUser.wallets))
+            
+            try context.save()
+            return true
         } catch {
-            print("Failed to add new user, error: [\(error)]")
             return false
-        }
-        return true
-    }
-    
-    func newUser(userModel: UserModel) -> Promise<Any?>{
-        return Promise { seal in
-            stack.perform(asynchronous: { (transaction) -> ManagedUser in
-                let userEntity = transaction.create(Into<ManagedUser>())
-                userEntity.id = userModel.id!
-                return userEntity
-            }, success: { (userTransaction) in
-                let newUser = self.stack.fetchExisting(userTransaction)!
-                print("Success to add new user, id: [\(newUser.id)]")
-                seal.fulfill(true)
-            }, failure: { (csError) in
-                print("Failed to add new user, error: [\(csError)]")
-                seal.reject(csError)
-            })
         }
     }
     
     func updateUser(_ userModel: UserModel) -> Promise<Any?>{
         return Promise { seal in
-            stack.perform(asynchronous: { (transaction) -> ManagedUser in
-                let userEntity = try transaction.fetchOne(
-                    From<ManagedUser>()
-                        .where(\.id == userModel.id!)
-                )
-                userEntity?.mnemonic = userModel.mnemonic
-                userEntity?.pin = userModel.pin
-                
-                return userEntity!
-            }, success: { (userTransaction) in
-                seal.fulfill(true)
-            }, failure: { (csError) in
-                seal.reject(csError)
-            })
+            guard let context = managedContext, let id = userModel.id else {
+                seal.reject(ConnectionError.unknowError)
+                return
+            }
+            
+            let fetchRequest = NSFetchRequest<ManagedUser>(entityName: ENTITY_USER)
+            fetchRequest.fetchLimit = 1
+            fetchRequest.predicate = NSPredicate(format: "%K = %@", #keyPath(ManagedUser.id), id)
+            if let user = try? context.fetch(fetchRequest).first {
+                user.mnemonic = userModel.mnemonic
+                user.pin = userModel.pin
+                user.wallets = userModel.wallets
+                do {
+                    try context.save()
+                    seal.fulfill(true)
+                } catch {
+                    seal.reject(ConnectionError.unknowError)
+                }
+            } else {
+                seal.reject(ConnectionError.unknowError)
+            }
         }
     }
     
@@ -122,71 +107,84 @@ class CoreDataStore : NSObject {
     
     func updateWallet(_ walletModel: WalletModel, toUser id: String) -> Promise<Any?>{
         return Promise { seal in
-            stack.perform(asynchronous: { (transaction) -> ManagedUser in
-                let userEntity = try transaction.fetchOne(
-                    From<ManagedUser>()
-                        .where(\.id == id)
-                )
-                let walletEntity = transaction.create(Into<ManagedWallet>())
-                walletEntity.address = walletModel.address
-                walletEntity.privateKey = walletModel.privateKey
-                walletEntity.user = userEntity!
-                
-                userEntity?.wallets?.adding(walletEntity)
-        
-                return userEntity!
-            }, success: { (userTransaction) in
-                let newUser = self.stack.fetchExisting(userTransaction)!
-                print("😁 Success to update wallet to user, wallet count: [\(newUser.wallets?.count ?? 0)]")
-                seal.fulfill(true)
-            }, failure: { (csError) in
-                print("😞 Failed to update wallet to user, error: [\(csError)]")
-                seal.reject(csError)
-            })
-        }
-    }
-    
-    func updatePrivateKeysOfWallet(_ walletModel: WalletModel) -> Promise<Bool>{
-        return Promise { seal in
-            stack.perform(asynchronous: { (transaction) -> ManagedWallet in
-                let walletEntity = try transaction.fetchOne(
-                    From<ManagedWallet>()
-                        .where(\.address == walletModel.address)
-                )
-                print("Update private key \(walletEntity?.privateKey ?? "") with private key \(walletModel.privateKey)")
-                walletEntity?.privateKey = walletModel.privateKey
-                
-                return walletEntity!
-            }, success: { (transaction) in
-                let wallet = self.stack.fetchExisting(transaction)!
-                print("😁 Success to update private key of wallet, new private key: \(wallet.privateKey)")
-                seal.fulfill(true)
-            }, failure: { (csError) in
-                print("😞 Failed to update private key of wallet, error: [\(csError)]")
-                seal.reject(csError)
-            })
-        }
-    }
-    
-    func getWalletByUserId(_ id: String) -> Promise<WalletModel>{
-        return Promise { seal in
-            if let userEntity = try stack.fetchOne(From<ManagedUser>().where(\.id == id)) {
-                print("Wallets count: [\(userEntity.wallets?.count ?? -1)]")
-                let wallets : [WalletModel]? = userEntity.wallets?.map {
-                    let wallet = $0 as! ManagedWallet
-                    return WalletModel(address: wallet.address, privateKey: wallet.privateKey)
+            guard let context = managedContext,
+                  let walletEntity = NSEntityDescription.entity(forEntityName: ENTITY_WALLET, in: context) else {
+                seal.reject(ConnectionError.unknowError)
+                return
+            }
+            
+            let fetchRequest = NSFetchRequest<ManagedUser>(entityName: ENTITY_USER)
+            fetchRequest.fetchLimit = 1
+            fetchRequest.predicate = NSPredicate(format: "%K = %@", #keyPath(ManagedUser.id), id)
+            if let user = try? context.fetch(fetchRequest).first {
+                let wallet = NSManagedObject(entity: walletEntity, insertInto: context)
+                wallet.setValue(walletModel.address, forKeyPath: #keyPath(ManagedWallet.address))
+                wallet.setValue(walletModel.privateKey, forKeyPath: #keyPath(ManagedWallet.privateKey))
+                wallet.setValue(user, forKeyPath: #keyPath(ManagedWallet.user))
+                user.wallets?.adding(wallet)
+                do {
+                    try context.save()
+                    seal.fulfill(true)
+                } catch {
+                    seal.reject(ConnectionError.unknowError)
                 }
-                seal.fulfill((wallets?.first)!)
             } else {
                 seal.reject(ConnectionError.unknowError)
             }
         }
     }
     
-    func getWalletsByUserId(_ id: String) -> Promise<[WalletModel]>{
+    func updatePrivateKeysOfWallet(_ walletModel: WalletModel) -> Promise<Bool>{
         return Promise { seal in
-            if let userEntity = try stack.fetchOne(From<ManagedUser>().where(\.id == id)) {
-                let wallets : [WalletModel]? = userEntity.wallets?.map {
+            guard let context = managedContext else {
+                seal.reject(ConnectionError.unknowError)
+                return
+            }
+            let fetchRequest = NSFetchRequest<ManagedWallet>(entityName: ENTITY_WALLET)
+            fetchRequest.fetchLimit = 1
+            fetchRequest.predicate = NSPredicate(format: "%K = %@", #keyPath(ManagedWallet.address), walletModel.address)
+            if let wallet = try? context.fetch(fetchRequest).first {
+                wallet.privateKey = walletModel.privateKey
+                do {
+                    try context.save()
+                    seal.fulfill(true)
+                } catch {
+                    seal.reject(ConnectionError.unknowError)
+                }
+            } else {
+                seal.reject(ConnectionError.unknowError)
+            }
+        }
+    }
+    
+    func getWalletByUserId(_ id: String) -> Promise<WalletModel> {
+        return Promise { seal in
+            let fetchRequest = NSFetchRequest<ManagedUser>(entityName: ENTITY_USER)
+            fetchRequest.fetchLimit = 1
+            fetchRequest.predicate = NSPredicate(format: "%K = %@", #keyPath(ManagedUser.id), id)
+            if let user = try? managedContext?.fetch(fetchRequest).first {
+                let wallets : [WalletModel]? = user.wallets?.map {
+                    let wallet = $0 as! ManagedWallet
+                    return WalletModel(address: wallet.address, privateKey: wallet.privateKey)
+                }
+                if let w = wallets?.first {
+                    seal.fulfill(w)
+                } else {
+                    seal.reject(ConnectionError.unknowError)
+                }
+            } else {
+                seal.reject(ConnectionError.unknowError)
+            }
+        }
+    }
+    
+    func getWalletsByUserId(_ id: String) -> Promise<[WalletModel]> {
+        return Promise { seal in
+            let fetchRequest = NSFetchRequest<ManagedUser>(entityName: ENTITY_USER)
+            fetchRequest.fetchLimit = 1
+            fetchRequest.predicate = NSPredicate(format: "%K = %@", #keyPath(ManagedUser.id), id)
+            if let user = try? managedContext?.fetch(fetchRequest).first {
+                let wallets : [WalletModel]? = user.wallets?.map {
                     let wallet = $0 as! ManagedWallet
                     return WalletModel(address: wallet.address, privateKey: wallet.privateKey)
                 }
@@ -194,24 +192,6 @@ class CoreDataStore : NSObject {
             } else {
                 seal.reject(ConnectionError.unknowError)
             }
-        }
-    }
-    
-    func getAllUsers() {
-        if let list = try? stack.fetchAll(From<ManagedUser>()) {
-            for item in list {
-                let wallets : [WalletModel]? = item.wallets?.map {
-                    let wallet = $0 as! ManagedWallet
-                    return WalletModel(address: wallet.address, privateKey: wallet.privateKey)
-                }
-                if let wallets = wallets {
-                    for wallet in wallets {
-                        print("Wallet: \(wallet)")
-                    }
-                }
-            }
-        } else {
-            
         }
     }
 }
