@@ -99,11 +99,12 @@ internal class CorePresenter : NSObject {
     }
     
     func displayTryAgain(_ error: ConnectionError, forAction: WaitingRetryAction?) {
-        self.retryAction = forAction
         if error == .apiError_INVALID_USER_TOKEN {
-            DisplayUtils.displayTokenExpired()
-            
-        } else if error == .apiError_MAINTAINING {
+            return
+        }
+        
+        self.retryAction = forAction
+        if error == .apiError_MAINTAINING {
             DisplayUtils.displayMaintenanceScreen()
             
         } else {

@@ -226,10 +226,6 @@ public class DisplayUtils {
         self.alert(title: "Under Construction".localized, message: "Coming soon".localized)
     }
     
-    public static func displayTokenExpired() {
-        self.alert(title: "Session Expired".localized, message: "Please re-login to renew your session.".localized)
-    }
-    
     public static func defaultNoContentView(_ frame: CGRect, message: String, imageName: String = "img_no_content") -> UIView {
         let noContentView = UIView(frame: frame)
         let image = UIImage(named: imageName, in: BundleManager.mozoBundle(), compatibleWith: nil)
