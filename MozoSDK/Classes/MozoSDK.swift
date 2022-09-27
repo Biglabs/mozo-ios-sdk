@@ -15,11 +15,7 @@ public class MozoSDK {
 
     private(set) static var network: MozoNetwork = .TestNet
     
-    private(set) static var appType: AppType = .Shopper {
-        didSet {
-            ModuleDependencies.shared.webSocketManager.appType = appType
-        }
-    }
+    private(set) static var appType: AppType = .Shopper
     
     private(set) static var baseApplication: BaseApplication?
     

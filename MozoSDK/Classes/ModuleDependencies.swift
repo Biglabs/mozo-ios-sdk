@@ -47,7 +47,7 @@ class ModuleDependencies {
     let topUpWireframe = TopUpWireframe()
     let topUpWithdrawWireframe = TopUpWithdrawWireframe()
     
-    let webSocketManager = WebSocketManager()
+//    let webSocketManager = WebSocketManager()
     
     // MARK: Initialization
     init() {
@@ -397,11 +397,11 @@ class ModuleDependencies {
         let coreInteractor = CoreInteractor(anonManager: anonManager, apiManager: ApiManager.shared, userDataManager: userDataManager)
         coreInteractor.output = corePresenter
         
-        let rdnInteractor = RDNInteractor(webSocketManager: webSocketManager)
-        rdnInteractor.output = corePresenter
+//        let rdnInteractor = RDNInteractor(webSocketManager: webSocketManager)
+//        rdnInteractor.output = corePresenter
         
         corePresenter.coreInteractor = coreInteractor
-        corePresenter.rdnInteractor = rdnInteractor
+//        corePresenter.rdnInteractor = rdnInteractor
         corePresenter.coreInteractorService = coreInteractor
         corePresenter.coreWireframe = coreWireframe
          

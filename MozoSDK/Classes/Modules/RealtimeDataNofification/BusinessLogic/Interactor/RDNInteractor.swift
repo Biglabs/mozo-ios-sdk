@@ -119,15 +119,15 @@ class RDNInteractor: NSObject {
 }
 extension RDNInteractor : RDNInteractorInput {
     func startService() {
-        stopReconnectToWebSocket()
+//        stopReconnectToWebSocket()
         if !manager.isConnected {
             "RDNInteractor - Start services.".log()
-            connectToWebSocketServer()
+//            connectToWebSocketServer()
         }
     }
     
     func stopService(shouldReconnect: Bool) {
-        stopReconnectToWebSocket()
+//        stopReconnectToWebSocket()
         shouldReconnectAfterDisconnected = shouldReconnect
         if manager.isConnected {
             "RDNInteractor - Stop services.".log()
@@ -138,7 +138,7 @@ extension RDNInteractor : RDNInteractorInput {
 // MARK: Websocket Delegate Methods.
 extension RDNInteractor : SocketDelegate {
     func onSocketConnected() {
-        stopReconnectToWebSocket()
+//        stopReconnectToWebSocket()
         shouldReconnectAfterDisconnected = true
     }
     
