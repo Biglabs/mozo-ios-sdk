@@ -11,7 +11,7 @@ import UserNotificationsUI
 import Alamofire
 
 internal class CorePresenter : NSObject {
-    var coreWireframe : CoreWireframe?
+    lazy var coreWireframe : CoreWireframe = ModuleDependencies.shared.coreWireframe
     var coreInteractor : CoreInteractorInput?
     var coreInteractorService : CoreInteractorService?
     var rdnInteractor : RDNInteractorInput?
@@ -77,24 +77,24 @@ internal class CorePresenter : NSObject {
         // Should continue with any module
         switch module {
         case .Transaction:
-            coreWireframe?.prepareForTransferInterface()
+            coreWireframe.prepareForTransferInterface()
         case .TxHistory:
-            coreWireframe?.prepareForTxHistoryInterface()
+            coreWireframe.prepareForTxHistoryInterface()
         case .Payment:
-            coreWireframe?.prepareForPaymentRequestInterface()
+            coreWireframe.prepareForPaymentRequestInterface()
         case .AddressBook:
-            coreWireframe?.presentAddressBookInterface(false)
+            coreWireframe.presentAddressBookInterface(false)
         case .Convert:
-            coreWireframe?.presentConvertInterface()
+            coreWireframe.presentConvertInterface()
         case .SpeedSelection:
-            coreWireframe?.presentSpeedSelectionInterface()
+            coreWireframe.presentSpeedSelectionInterface()
         case .ChangePIN:
-            coreWireframe?.presentChangePINInterface()
+            coreWireframe.presentChangePINInterface()
         case .BackupWallet:
-            coreWireframe?.presentBackupWalletInterface()
+            coreWireframe.presentBackupWalletInterface()
         case .TopUp:
-            coreWireframe?.presentTopUpTransferInterface()
-        default: coreWireframe?.prepareForWalletInterface()
+            coreWireframe.presentTopUpTransferInterface()
+        default: coreWireframe.prepareForWalletInterface()
         }
     }
     
@@ -203,7 +203,7 @@ extension CorePresenter : CoreModuleInterface {
             }
             return
         }
-        coreWireframe?.requestForCloseAllMozoUIs(completion: {
+        coreWireframe.requestForCloseAllMozoUIs(completion: {
             self.authDelegate?.mozoUIDidCloseAll()
             self.coreInteractor?.notifyDidCloseAllMozoUIForAllObservers()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
@@ -215,7 +215,7 @@ extension CorePresenter : CoreModuleInterface {
     }
     
     func requestCloseToLastMozoUIs() {
-        coreWireframe?.requestCloseToLastMozoUIs()
+        coreWireframe.requestCloseToLastMozoUIs()
     }
 }
 extension CorePresenter : CoreModuleWaitingInterface {
@@ -238,7 +238,7 @@ extension CorePresenter: WalletModuleDelegate {
             requestCloseToLastMozoUIs()
             presentModuleInterface(callBackModule!)
         } else {
-            coreWireframe?.requestForCloseAllMozoUIs(completion: {
+            coreWireframe.requestForCloseAllMozoUIs(completion: {
                 // Send delegate back to the app
                 self.authDelegate?.didSignInSuccess()
             })
@@ -254,16 +254,20 @@ extension CorePresenter: WalletModuleDelegate {
 
 extension CorePresenter : CoreInteractorOutput {
     func continueWithSpeedSelection(_ callbackModule: Module) {
-        // Should display call back module (if any)
         self.callBackModule = callbackModule
-        presentModuleInterface(.SpeedSelection)
+        
+        //MARK: presentModuleInterface(.SpeedSelection)
+        /**
+         *  Skip speed selection screen, let create Auto-Pin wallet and move on
+         */
+        coreWireframe.processWalletAuto(isCreateNew: true)
     }
     
     func continueWithWalletAuto(_ callbackModule: Module) {
         "CorePresenter - Continue with Wallet Auto, callbackModule: \(callbackModule.value)".log()
         // Should display call back module (if any)
         self.callBackModule = callbackModule
-        coreWireframe?.processWalletAuto()
+        coreWireframe.processWalletAuto()
     }
     
     func continueWithWallet(_ callbackModule: Module) {
@@ -292,7 +296,7 @@ extension CorePresenter : CoreInteractorOutput {
     }
     
     func finishedHandleAferAuth() {
-        coreWireframe?.prepareForWalletInterface()
+        coreWireframe.prepareForWalletInterface()
     }
     
     func failToLoadUserInfo(_ error: ConnectionError, for requestingModule: Module?) {
@@ -341,11 +345,11 @@ extension CorePresenter : CoreInteractorOutput {
 
 extension CorePresenter: TransactionModuleDelegate {
     func requestPINInterfaceForTransaction() {
-        coreWireframe?.presentPINInterfaceForTransaction()
+        coreWireframe.presentPINInterfaceForTransaction()
     }
     
     func removePINDelegate() {
-        coreWireframe?.walletWireframe?.walletPresenter?.pinModuleDelegate = nil
+        coreWireframe.walletWireframe?.walletPresenter?.pinModuleDelegate = nil
     }
     
     func didSendTxSuccess(_ tx: IntermediaryTransactionDTO) {
@@ -354,13 +358,13 @@ extension CorePresenter: TransactionModuleDelegate {
             let data = TxDetailDisplayData(transaction: tx, tokenInfo: tokenInfo)
             let detailItem = data.collectDisplayItem()
             // Display transaction completion interface
-            coreWireframe?.presentTransactionCompleteInterface(detailItem)
+            coreWireframe.presentTransactionCompleteInterface(detailItem)
         }
     }
     
     func requestAddressBookInterfaceForTransaction() {
         requestingABModule = Module.Transaction
-        coreWireframe?.presentAddressBookInterface()
+        coreWireframe.presentAddressBookInterface()
     }
 }
 
@@ -372,12 +376,12 @@ extension CorePresenter: TxCompletionModuleDelegate {
         if contain {
             // TODO: Show message address is existing in address book list
         } else {
-            coreWireframe?.presentAddressBookDetailInterface(address: address)
+            coreWireframe.presentAddressBookDetailInterface(address: address)
         }
     }
     
     func requestShowDetail(_ detail: TxDetailDisplayItem) {
-        coreWireframe?.presentTransactionDetailInterface(detail)
+        coreWireframe.presentTransactionDetailInterface(detail)
     }
 }
 
@@ -393,14 +397,14 @@ extension CorePresenter: AddressBookModuleDelegate {
             if let module = requestingABModule {
                 switch module {
                 case .Transaction:
-                    coreWireframe?.updateAddressBookInterfaceForTransaction(displayItem: addressBook)
+                    coreWireframe.updateAddressBookInterfaceForTransaction(displayItem: addressBook)
                 case .Payment:
-                    coreWireframe?.updateAddressBookInterfaceForPaymentRequest(displayItem: addressBook)
+                    coreWireframe.updateAddressBookInterfaceForPaymentRequest(displayItem: addressBook)
                 default: break
                 }
                 requestingABModule = nil
             }
-            coreWireframe?.dismissAddressBookInterface()
+            coreWireframe.dismissAddressBookInterface()
         } else {
             
         }
@@ -413,7 +417,7 @@ extension CorePresenter: ABDetailModuleDelegate {
     }
     
     func detailModuleDidSaveAddressBook() {
-        coreWireframe?.dismissAddressBookDetailInterface()
+        coreWireframe.dismissAddressBookDetailInterface()
     }
 }
 
@@ -425,7 +429,7 @@ extension CorePresenter: TxHistoryModuleDelegate {
             data.type = type
             let detailItem = data.collectDisplayItem()
             // Display transaction completion interface
-            self.coreWireframe?.presentTransactionDetailInterface(detailItem)
+            self.coreWireframe.presentTransactionDetailInterface(detailItem)
         })
     }
 }
@@ -500,7 +504,7 @@ extension CorePresenter : RDNInteractorOutput {
 extension CorePresenter: PaymentQRModuleDelegate {
     func requestAddressBookInterfaceForPaymentRequest() {
         requestingABModule = .Payment
-        coreWireframe?.presentAddressBookInterface()
+        coreWireframe.presentAddressBookInterface()
     }
 }
 extension CorePresenter : PopupErrorDelegate {

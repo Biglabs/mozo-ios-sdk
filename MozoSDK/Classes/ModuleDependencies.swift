@@ -403,7 +403,6 @@ class ModuleDependencies {
         corePresenter.coreInteractor = coreInteractor
 //        corePresenter.rdnInteractor = rdnInteractor
         corePresenter.coreInteractorService = coreInteractor
-        corePresenter.coreWireframe = coreWireframe
          
         coreWireframe.corePresenter = corePresenter
         coreWireframe.walletWireframe = walletWireframe

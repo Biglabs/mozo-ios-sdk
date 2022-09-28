@@ -8,16 +8,16 @@
 import Foundation
 extension CorePresenter: SpeedSelectionModuleDelegate {
     func didSelectAutoWay() {
-        coreWireframe?.processWalletAuto(isCreateNew: true)
+        coreWireframe.processWalletAuto(isCreateNew: true)
     }
     
     func didSelectManualWay() {
-        coreWireframe?.prepareForWalletInterface()
+        coreWireframe.prepareForWalletInterface()
     }
     
     func didRequestLogoutInternally() {
-        coreWireframe?.corePresenter?.requestForCloseAllMozoUIs() {
-            self.coreWireframe?.requestForLogout()
+        coreWireframe.corePresenter?.requestForCloseAllMozoUIs() {
+            self.coreWireframe.requestForLogout()
         }
     }
 }
