@@ -178,25 +178,28 @@ class CoreInteractor: NSObject {
     }
     
     func checkAuthAndWallet(module: Module) {
-        if AccessTokenManager.getAccessToken() != nil {
-            // TODO: Must load user info here, not use local user
-            if SessionStoreManager.loadCurrentUser() != nil {
-                self.checkWallet(module: module)
-                // TODO: Handle update local user profile data
-                
-                // Process invitation if any.
-                self.processInvitation()
-            } else {
-                "😎 Load user info.".log()
-                _ = getUserProfile().done({ () in
+        if let token = AccessTokenManager.getAccessToken(), !token.isEmpty {
+            _ = apiManager.checkSession(token).done({ _ in
+                // TODO: Must load user info here, not use local user
+                if SessionStoreManager.loadCurrentUser() != nil {
                     self.checkWallet(module: module)
+                    // TODO: Handle update local user profile data
+                    
                     // Process invitation if any.
                     self.processInvitation()
-                }).catch({ (err) in
-                    // No user profile, can not continue with any module
-                    self.output?.failToLoadUserInfo((err as? ConnectionError) ?? .systemError, for: module)
-                })
-            }
+                } else {
+                    _ = self.getUserProfile().done({ () in
+                        self.checkWallet(module: module)
+                        // Process invitation if any.
+                        self.processInvitation()
+                    }).catch({ (err) in
+                        // No user profile, can not continue with any module
+                        self.output?.failToLoadUserInfo((err as? ConnectionError) ?? .systemError, for: module)
+                    })
+                }
+            }).catch({ _ in
+                self.output?.didReceiveInvalidToken()
+            })
         } else {
             output?.finishedCheckAuthentication(keepGoing: true, module: module)
         }

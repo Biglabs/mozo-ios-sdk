@@ -89,7 +89,7 @@ extension WalletInteractor: WalletInteractorAutoInput {
         if let wallet = SessionStoreManager.loadCurrentUser()?.profile?.walletInfo,
             let encryptedSeedPhrase = wallet.encryptSeedPhrase,
             let encryptedPin = wallet.encryptedPin,
-            let pin_secret = AccessTokenManager.getPinSecret(){
+            let pin_secret = AccessTokenManager.getPinSecret() {
                 let decryptPin = encryptedPin.decrypt(key: pin_secret)
                 let mnemonics = encryptedSeedPhrase.decrypt(key: decryptPin)
                 manageWalletInAutoMode(isCreateNew: false, mnemonics: mnemonics, rawPin: decryptPin)

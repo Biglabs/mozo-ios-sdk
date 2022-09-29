@@ -43,10 +43,6 @@ public class MozoSDK {
         ModuleDependencies.shared.setAuthDelegate(delegate)
     }
     
-    public static func isNetworkReachable() -> Bool {
-        return ModuleDependencies.shared.isNetworkReachable()
-    }
-    
     public static func authenticate() {
         ModuleDependencies.shared.authenticate()
     }

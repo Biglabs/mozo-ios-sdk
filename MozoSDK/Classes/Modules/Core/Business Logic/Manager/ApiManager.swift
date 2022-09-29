@@ -367,4 +367,21 @@ public class ApiManager {
                 }
         }
     }
+    
+    func checkSession(_ token: String) -> Promise<Any> {
+        return Promise { seal in
+            let url = Configuration.AUTH_ISSSUER.appending("/protocol/openid-connect/userinfo")
+            let headers = self.buildHTTPHeaders(withToken: true)
+            self.client.request(url, method: .get, headers: headers)
+                .validate()
+                .responseData { response in
+                    switch response.result {
+                    case .success(let data):
+                        seal.fulfill(data)
+                    case .failure(let error):
+                        seal.reject(error)
+                }
+            }
+        }
+    }
 }

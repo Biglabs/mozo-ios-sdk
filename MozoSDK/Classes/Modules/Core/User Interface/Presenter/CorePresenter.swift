@@ -23,8 +23,8 @@ internal class CorePresenter : NSObject {
     internal var alertController: UIAlertController? = nil
     private var retryAction: WaitingRetryAction?
     private var networkManager: NetworkReachabilityManager?
-    
     private(set) var tokenInfo: TokenInfoDTO?
+    private var isRequestingForAuthentication = false
     
     override init() {
         super.init()
@@ -54,6 +54,10 @@ internal class CorePresenter : NSObject {
             coreInteractor?.downloadAndStoreConvenienceData()
             self.startSlientServices()
             self.registerForRichNotifications()
+        } else if isRequestingForAuthentication, let module = self.callBackModule {
+            self.isRequestingForAuthentication = false
+            self.callBackModule = nil
+            self.requestForAuthentication(module: module)
         }
     }
     
@@ -77,11 +81,11 @@ internal class CorePresenter : NSObject {
         // Should continue with any module
         switch module {
         case .Transaction:
-            coreWireframe.prepareForTransferInterface()
+            coreWireframe.requestForTransfer()
         case .TxHistory:
             coreWireframe.prepareForTxHistoryInterface()
         case .Payment:
-            coreWireframe.prepareForPaymentRequestInterface()
+            coreWireframe.requestForPaymentRequest()
         case .AddressBook:
             coreWireframe.presentAddressBookInterface(false)
         case .Convert:
@@ -167,7 +171,12 @@ extension CorePresenter {
 }
 extension CorePresenter : CoreModuleInterface {
     func requestForAuthentication(module: Module) {
-        if ModuleDependencies.shared.isNetworkReachable() {
+        if networkManager == nil {
+            self.callBackModule = module
+            self.isRequestingForAuthentication = true
+            return
+        }
+        if isNetworkAvailable {
             coreInteractor?.checkForAuthentication(module: module)
         } else {
             if let vc = DisplayUtils.getTopViewController() {
@@ -182,7 +191,7 @@ extension CorePresenter : CoreModuleInterface {
     }
     
     func requestForLogout() {
-        if ModuleDependencies.shared.isNetworkReachable() {
+        if isNetworkAvailable {
             ModuleDependencies.shared.authPresenter.performLogout()
         } else {
             if let vc = DisplayUtils.getTopViewController() {

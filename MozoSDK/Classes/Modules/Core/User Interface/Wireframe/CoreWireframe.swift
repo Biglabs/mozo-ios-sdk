@@ -35,8 +35,7 @@ class CoreWireframe : MozoWireframe {
     }
     
     func requestForTransfer() {
-        presentWaitingInterface()
-        corePresenter?.requestForAuthentication(module: Module.Transaction)
+        txWireframe?.presentTransferInterface()
     }
     
     func requestForTxHistory() {
@@ -45,8 +44,7 @@ class CoreWireframe : MozoWireframe {
     }
     
     func requestForPaymentRequest() {
-        presentWaitingInterface()
-        corePresenter?.requestForAuthentication(module: Module.Payment)
+        paymentWireframe?.presentPaymentRequestInterface()
     }
     
     func requestForAddressBook() {
@@ -88,20 +86,12 @@ class CoreWireframe : MozoWireframe {
         corePresenter?.requestForAuthentication(module: .TopUp)
     }
     
-    func prepareForTransferInterface() {
-        txWireframe?.presentTransferInterface()
-    }
-    
     func prepareForTxHistoryInterface() {
         txhWireframe?.presentTxHistoryInterface()
     }
     
     func prepareForWalletInterface() {
         walletWireframe?.presentInitialWalletInterface()
-    }
-    
-    func prepareForPaymentRequestInterface() {
-        paymentWireframe?.presentPaymentRequestInterface()
     }
     
     func presentPINInterfaceForTransaction() {

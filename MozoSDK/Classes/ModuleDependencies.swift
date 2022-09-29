@@ -59,10 +59,6 @@ class ModuleDependencies {
         authManager.checkAuthorization()
     }
     
-    func isNetworkReachable() -> Bool {
-        return corePresenter.isNetworkAvailable == true
-    }
-    
     func authenticate() {
         coreWireframe.requestForAuthentication()
     }
