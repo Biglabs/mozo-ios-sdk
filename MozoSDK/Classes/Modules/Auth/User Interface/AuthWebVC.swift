@@ -111,6 +111,7 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
             self.touchedCancel()
             return
         }
+        self.showLoading()
         DispatchQueue.main.async {
             self.webview.load(URLRequest(url: url4Launch))
         }
@@ -152,7 +153,7 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
     
     private func handleAuthSuccess(_ token: AccessToken) {
         AccessTokenManager.save(token)
-        self.loadingHub?.hide(animated: true)
+        hideLoading()
         self.dismiss(animated: true) {
             ModuleDependencies.shared.authPresenter.finishedAuthenticate(accessToken: token.accessToken)
         }
@@ -160,7 +161,7 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
     
     private func handleAuthFailed(_ error: Error? = nil) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
-            self.loadingHub?.hide(animated: true)
+            self.hideLoading()
             self.dismiss(animated: true) {
                 ModuleDependencies.shared.authPresenter.errorWhileExchangeCode(
                     error: error as? ConnectionError ?? .systemError
@@ -185,6 +186,10 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
          */
     }
     
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        hideLoading()
+    }
+    
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if let url = navigationAction.request.url?.absoluteString, url.lowercased().starts(with: callbackScheme.lowercased()) {
             decisionHandler(.cancel)
@@ -195,6 +200,7 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        hideLoading()
         if error.localizedDescription.contains("certificate") || error.localizedDescription.contains("not connect") {
             let alert = UIAlertController(title: "There is an error occurred.".localized, message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { action in
@@ -241,6 +247,11 @@ class AuthWebVC: UIViewController, WKNavigationDelegate, WKUIDelegate {
     private func showLoading() {
         loadingHub = MBProgressHUD.showAdded(to: self.view, animated: true)
         loadingHub?.isUserInteractionEnabled = true
+    }
+    
+    private func hideLoading() {
+        self.loadingHub?.hide(animated: true)
+        self.loadingHub = nil
     }
     
     @objc func touchedCancel() {
