@@ -17,6 +17,7 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
     public var birthDay: Int64?
     public var email: String?
     public var gender: String?
+    public var language: String?
     
     public var walletInfo: WalletInfoDTO?
     public var exchangeInfo: ExchangeInfoDTO?
@@ -49,6 +50,7 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
         self.birthDay = json["birthDay"].int64
         self.email = json["email"].string
         self.gender = json["gender"].string
+        self.language = json["language"].string
     }
     
     public required init?(){}
@@ -84,6 +86,9 @@ public class UserProfileDTO: Codable, ResponseObjectSerializable {
         }
         if let gender = self.gender {
             json["gender"] = gender
+        }
+        if let language = self.language {
+            json["language"] = language
         }
         return json
     }

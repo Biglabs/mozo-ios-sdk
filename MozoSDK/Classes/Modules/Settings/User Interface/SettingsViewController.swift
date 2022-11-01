@@ -216,6 +216,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 UserDefaults.standard.set(language, forKey: "AppLanguage")
                 UserDefaults.standard.synchronize()
                 
+                _ = ApiManager.shared.setLocale(language, Locale.current.identifier, Locale.current.regionCode!).done({ isSuccess in
+                    
+                })
+
                 MozoSDK.baseApplication?.resetApp()
                 
                 print("Index: \(index!) - Language: \(language)")
@@ -245,6 +249,18 @@ extension ApiManager {
             }
             .finally {
                 
+            }
+        }
+    }
+    
+    func setLocale(_ language: String, _ locale: String, _ region: String) -> Promise<Bool> {
+        return Promise { seal in
+            let url = Configuration.BASE_STORE_URL + "/user-profile/v1/locale"
+            let params = ["language": language, "locale": locale, "region": region]
+            self.execute(.put, url: url, parameters: params).done { json -> Void in
+                seal.fulfill(true)
+            }.catch { error in
+                seal.reject(error)
             }
         }
     }

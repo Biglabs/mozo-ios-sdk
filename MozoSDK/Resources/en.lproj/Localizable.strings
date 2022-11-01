@@ -395,6 +395,9 @@
 "%d days ago" = "%d days ago";
 "%d hour" = "%d hour";
 "%d hours" = "%d hours";
+"%d hours left" = "%d hours left";
+"%d minute left" = "%d hours left";
+"%d seconds left" = "%d seconds left";
 "%d min" = "%d min";
 "%d mins" = "%d mins";
 "Airdrop time \"To\" must be greater than time \"From\"" = "Airdrop time \"To\" must be greater than time \"From\"";

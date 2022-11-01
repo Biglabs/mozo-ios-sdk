@@ -399,6 +399,9 @@
 "%d days ago" = "%d ngày trước";
 "%d hour" = "%d giờ";
 "%d hours" = "%d giờ";
+"%d hours left" = "Còn %d giờ";
+"%d minute left" = "Còn %d phút";
+"%d seconds left" = "Còn %d giây";
 "%d min" = "%d phút";
 "%d mins" = "%d phút";
 "Airdrop time \"To\" must be greater than time \"From\"" = "Thời điểm kết thúc phải diễn ra sau thời điểm bắt đầu";
